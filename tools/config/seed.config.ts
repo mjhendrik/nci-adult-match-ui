@@ -144,7 +144,7 @@ export class SeedConfig {
    * `index.html`.
    * @type {string}
    */
-  APP_TITLE = 'Welcome to nci-match-ui-adult-study!';
+  APP_TITLE = 'Welcome to nci-adult-match-ui!';
 
   /**
    * The base folder of the applications source files.

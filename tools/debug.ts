@@ -10,7 +10,7 @@ if (!TASK) {
 }
 
 console.log('**********************');
-console.log('* nci-match-ui-adult-study tools ');
+console.log('* nci-adult-match-ui tools ');
 console.log('* debugging task:', TASK);
 console.log('**********************');
 

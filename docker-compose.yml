@@ -2,13 +2,13 @@ version: '2'
 
 services:
 
-  nci-match-ui-adult-study:
+  nci-adult-match-ui:
     build:
       context: .
-      dockerfile: ./.docker/nci-match-ui-adult-study.development.dockerfile
+      dockerfile: ./.docker/nci-adult-match-ui.development.dockerfile
     command: npm start
-    container_name: nci-match-ui-adult-study-start
-    image: nci-match-ui-adult-study
+    container_name: nci-adult-match-ui-start
+    image: nci-adult-match-ui
     networks:
       - dev-network
     ports:

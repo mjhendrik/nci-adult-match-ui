@@ -6,7 +6,7 @@ RUN useradd --user-group --create-home --shell /bin/false app
 ENV HOME=/home/app
 WORKDIR $HOME
 
-ENV APP_NAME=nci-match-ui-adult-study
+ENV APP_NAME=nci-adult-match-ui
 
 # before switching to user we need to set permission properly
 # copy all files, except the ignored files from .dockerignore

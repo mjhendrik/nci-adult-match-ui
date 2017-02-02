@@ -7,7 +7,7 @@ describe('App', () => {
   });
 
   it('should have a title', () => {
-    expect(browser.getTitle()).toEqual('Welcome to nci-match-ui-adult-study!');
+    expect(browser.getTitle()).toEqual('Welcome to nci-adult-match-ui!');
   });
 
   it('should have <nav>', () => {
