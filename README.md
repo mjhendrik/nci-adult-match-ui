@@ -2,12 +2,9 @@
 
 ## How to start
 
-**Note** that this seed project requires node v4.x.x or higher and npm 2.14.7 but in order to be able to take advantage of the complete functionality we **strongly recommend node >=v6.5.0 and npm >=3.10.3**.
+**Note** that this project requires node v4.x.x or higher and npm 2.14.7 but in order to be able to take advantage of the complete functionality we **strongly recommend node >=v6.5.0 and npm >=3.10.3**.
 
 **Here is how to [speed-up the build on Windows](https://github.com/mgechev/angular-seed/wiki/Speed-up-the-build-on-Windows)**.
-
-In order to start the seed use:
-
 
 ```bash
 $ git clone https://github.com/CBIIT/nci-match-ui-adult-study.git
@@ -46,7 +43,7 @@ _Does not rely on any global dependencies._
 
 **Note** that AoT compilation requires **node v6.5.0 or higher** and **npm 3.10.3 or higher**.
 
-In order to start the seed with AoT use:
+In order to start with AoT use:
 
 ```bash
 # prod build with AoT compilation, will output the production application in `dist/prod`
