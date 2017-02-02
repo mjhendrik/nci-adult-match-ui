@@ -7,8 +7,8 @@
 **Here is how to [speed-up the build on Windows](https://github.com/mgechev/angular-seed/wiki/Speed-up-the-build-on-Windows)**.
 
 ```bash
-$ git clone https://github.com/CBIIT/nci-match-ui-adult-study.git
-$ cd nci-match-ui-adult-study
+$ git clone https://github.com/CBIIT/nci-adult-match-ui.git
+$ cd nci-adult-match-ui
 
 # install the project's dependencies
 $ npm install
@@ -78,8 +78,8 @@ The application provides full Docker support. You can use it for both developmen
 
 The Dockerization infrastructure is described in the `docker-compose.yml` (respectively `docker-compose.production.yml`.
 The application consists of two containers:
-- `nci-match-ui-adult-study` - In development mode, this container serves the angular app. In production mode it builds the angular app, with the build artifacts being served by the Nginx container
-- `nci-match-ui-adult-study-nginx` - This container is used only production mode. It serves the built angular app with Nginx.
+- `nci-adult-match-ui` - In development mode, this container serves the angular app. In production mode it builds the angular app, with the build artifacts being served by the Nginx container
+- `nci-adult-match-ui-nginx` - This container is used only production mode. It serves the built angular app with Nginx.
 
 ### Development build and deployment
 
@@ -98,6 +98,6 @@ Run the following:
 
 ```bash
 $ docker-compose -f docker-compose.production.yml build
-$ docker-compose -f docker-compose.production.yml up nci-match-ui-adult-study   # Wait until this container has finished building, as the nginx container is dependent on the production build artifacts
-$ docker-compose -f docker-compose.production.yml up -d nci-match-ui-adult-study-nginx  # Start the nginx container in detached mode
+$ docker-compose -f docker-compose.production.yml up nci-adult-match-ui   # Wait until this container has finished building, as the nginx container is dependent on the production build artifacts
+$ docker-compose -f docker-compose.production.yml up -d nci-adult-match-ui-nginx  # Start the nginx container in detached mode
 ```

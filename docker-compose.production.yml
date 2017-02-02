@@ -2,21 +2,21 @@ version: '2'
 
 services:
 
-  nci-match-ui-adult-study:
+  nci-adult-match-ui:
     build:
       context: .
-      dockerfile: ./.docker/nci-match-ui-adult-study.production.dockerfile
+      dockerfile: ./.docker/nci-adult-match-ui.production.dockerfile
     command: npm run build.prod
-    container_name: nci-match-ui-adult-study-build-prod
-    image: nci-match-ui-adult-study
+    container_name: nci-adult-match-ui-build-prod
+    image: nci-adult-match-ui
     networks:
       - prod-network
     volumes:
-      - ./dist:/home/app/nci-match-ui-adult-study/dist
+      - ./dist:/home/app/nci-adult-match-ui/dist
 
-  nci-match-ui-adult-study-nginx:
-    command: /bin/bash -c "envsubst '$$NGINX_HOST $$NGINX_PORT' < /etc/nginx/conf.d/nci-match-ui-adult-study.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
-    container_name: nci-match-ui-adult-study-nginx-prod
+  nci-adult-match-ui-nginx:
+    command: /bin/bash -c "envsubst '$$NGINX_HOST $$NGINX_PORT' < /etc/nginx/conf.d/nci-adult-match-ui.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+    container_name: nci-adult-match-ui-nginx-prod
     environment:
       - NGINX_HOST=localhost
       - NGINX_PORT=80
@@ -26,7 +26,7 @@ services:
     ports:
       - '5555:80'
     volumes:
-      - ./.docker/nginx.conf:/etc/nginx/conf.d/nci-match-ui-adult-study.template
+      - ./.docker/nginx.conf:/etc/nginx/conf.d/nci-adult-match-ui.template
       - ./dist/prod:/var/www/dist/prod
 
 networks:

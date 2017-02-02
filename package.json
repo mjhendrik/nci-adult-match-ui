@@ -1,9 +1,9 @@
 {
-  "name": "nci-match-ui-adult-study",
+  "name": "nci-adult-match-ui",
   "version": "0.0.1",
   "description": "NCI MATCH Adult Study Front-End",
   "repository": {
-    "url": "https://github.com/CBIIT/nci-match-ui-adult-study"
+    "url": "https://github.com/CBIIT/nci-adult-match-ui"
   },
   "scripts": {
     "build.dev": "gulp build.dev --color --env-config dev",
