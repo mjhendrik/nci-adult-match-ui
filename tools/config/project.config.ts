@@ -11,6 +11,9 @@ export class ProjectConfig extends SeedConfig {
 
   PROJECT_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'project');
 
+  // Enabling SCSS to overide the seed's setting as per https://github.com/mgechev/angular-seed/wiki/Working-with-SASS
+  ENABLE_SCSS = true;
+
   constructor() {
     super();
     // this.APP_TITLE = 'Put name of your app here';
