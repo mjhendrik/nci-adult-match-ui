@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+
+  nci-match-ui-adult-study:
+    build:
+      context: .
+      dockerfile: ./.docker/nci-match-ui-adult-study.development.dockerfile
+    command: npm start
+    container_name: nci-match-ui-adult-study-start
+    image: nci-match-ui-adult-study
+    networks:
+      - dev-network
+    ports:
+      - '5555:5555'
+
+networks:
+  dev-network:
+    driver: bridge
