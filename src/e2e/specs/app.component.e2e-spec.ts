@@ -14,12 +14,12 @@ describe('App', () => {
     expect(element(by.css('sd-app sd-navbar nav')).isPresent()).toEqual(true);
   });
 
-  it('should have correct nav text for Home', () => {
-    expect(element(by.css('sd-app sd-navbar nav a:first-child')).getText()).toEqual('HOME');
+  it('should have correct nav text for dashboard', () => {
+    expect(element(by.css('sd-app sd-navbar nav a:first-child')).getText()).toEqual('dashboard');
   });
 
-  it('should have correct nav text for About', () => {
-    expect(element(by.css('sd-app sd-navbar nav a:nth-child(2)')).getText()).toEqual('ABOUT');
+  it('should have correct nav text for patients', () => {
+    expect(element(by.css('sd-app sd-navbar nav a:nth-child(2)')).getText()).toEqual('patients');
   });
 
 });
