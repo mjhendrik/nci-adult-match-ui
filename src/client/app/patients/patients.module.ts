@@ -8,4 +8,4 @@ import { PatientsRoutingModule } from './patients-routing.module';
   declarations: [PatientsComponent],
   exports: [PatientsComponent]
 })
-export class AboutModule { }
+export class PatientsModule { }

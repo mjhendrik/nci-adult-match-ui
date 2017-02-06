@@ -14,6 +14,11 @@ export class ProjectConfig extends SeedConfig {
   // Enabling SCSS to overide the seed's setting as per https://github.com/mgechev/angular-seed/wiki/Working-with-SASS
   ENABLE_SCSS = true;
 
+  FONTS_DEST = `${this.APP_DEST}/fonts`;
+  FONTS_SRC = [
+      'node_modules/bootstrap/dist/fonts/**'
+  ];
+
   constructor() {
     super();
     // this.APP_TITLE = 'Put name of your app here';
