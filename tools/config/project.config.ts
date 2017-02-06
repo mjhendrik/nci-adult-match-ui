@@ -32,7 +32,7 @@ export class ProjectConfig extends SeedConfig {
       {src: 'jquery/dist/jquery.slim.min.js', inject: 'libs'},
       // {src: 'lodash/lodash.min.js', inject: 'libs'},
       {src: 'bootstrap/dist/js/bootstrap.min.js', inject: 'libs'},
-      // {src: 'font-awesome/css/font-awesome.min.css', inject: true},
+      {src: 'font-awesome/css/font-awesome.min.css', inject: true},
       {src: 'bootstrap/dist/css/bootstrap.min.css', inject: true},
     ];
 
