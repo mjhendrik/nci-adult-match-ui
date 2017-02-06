@@ -4,10 +4,10 @@ import {
   TestBed
 } from '@angular/core/testing';
 
-import { AboutModule } from './about.module';
+import { AboutModule } from './patients.module';
 
 export function main() {
-   describe('About component', () => {
+   describe('patients component', () => {
     // Setting module for testing
     // Disable old forms
 
@@ -34,6 +34,6 @@ export function main() {
 
 @Component({
   selector: 'test-cmp',
-  template: '<sd-about></sd-about>'
+  template: '<sd-patients></sd-patients>'
 })
 class TestComponent {}

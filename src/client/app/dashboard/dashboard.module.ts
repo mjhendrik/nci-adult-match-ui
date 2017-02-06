@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeComponent } from './home.component';
-import { HomeRoutingModule } from './home-routing.module';
+import { HomeComponent } from './dashboard.component';
+import { HomeRoutingModule } from './dashboard-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { NameListService } from '../shared/name-list/name-list.service';
 
@@ -11,4 +11,4 @@ import { NameListService } from '../shared/name-list/name-list.service';
   exports: [HomeComponent],
   providers: [NameListService]
 })
-export class HomeModule { }
+export class DashboardModule { }
