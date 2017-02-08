@@ -5,12 +5,13 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import { TAModule } from './ta/ta.module';
 import { PatientsModule } from './patients/patients.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({
-  imports: [BrowserModule, HttpModule, AppRoutingModule, PatientsModule, DashboardModule, SharedModule.forRoot()],
+  imports: [BrowserModule, HttpModule, AppRoutingModule, TAModule, PatientsModule, DashboardModule, SharedModule.forRoot()],
   declarations: [AppComponent],
   providers: [{
     provide: APP_BASE_HREF,
