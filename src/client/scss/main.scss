@@ -2,6 +2,7 @@
 @import "../../theme/style.min.css";
 
 /* Reset */
+
 html,
 body,
 div {
@@ -10,17 +11,22 @@ div {
   padding: 0;
 }
 
+
 /* Box-sizing border-box */
+
 * {
   box-sizing: border-box;
 }
 
+
 /* Set up a default font and some padding to provide breathing room */
+
 body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #EAECEB !important;
 }
 
 p {
