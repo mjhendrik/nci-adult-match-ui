@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
    *
    * @param {NameListService} nameListService - The injected NameListService.
    */
-  constructor(public nameListService: NameListService) {}
+  constructor(public nameListService: NameListService) { }
 
   /**
    * Get the names OnInit
@@ -37,8 +37,8 @@ export class HomeComponent implements OnInit {
   getNames() {
     this.nameListService.get()
       .subscribe(
-        names => this.names = names,
-        error => this.errorMessage = <any>error
+      names => this.names = names,
+      error => this.errorMessage = <any>error
       );
   }
 
