@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NameListService } from '../shared/name-list/name-list.service';
 
 /**
- * This class represents the lazy loaded HomeComponent.
+ * This class represents the lazy loaded DashboardComponent.
  */
 @Component({
   moduleId: module.id,
@@ -10,14 +10,14 @@ import { NameListService } from '../shared/name-list/name-list.service';
   templateUrl: 'dashboard.component.html',
   styleUrls: ['dashboard.component.css'],
 })
-export class HomeComponent implements OnInit {
+export class DashboardComponent implements OnInit {
 
   newName: string = '';
   errorMessage: string;
   names: any[] = [];
 
   /**
-   * Creates an instance of the HomeComponent with the injected
+   * Creates an instance of the DashboardComponent with the injected
    * NameListService.
    *
    * @param {NameListService} nameListService - The injected NameListService.

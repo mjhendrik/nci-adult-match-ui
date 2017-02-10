@@ -6,7 +6,7 @@ import {
 
 import { Observable } from 'rxjs/Observable';
 
-import { HomeComponent } from './dashboard.component';
+import { DashboardComponent } from './dashboard.component';
 import { NameListService } from '../shared/name-list/name-list.service';
 
 export function main() {
@@ -16,7 +16,7 @@ export function main() {
 
       TestBed.configureTestingModule({
         imports: [FormsModule],
-        declarations: [HomeComponent],
+        declarations: [DashboardComponent],
         providers: [
           { provide: NameListService, useValue: new MockNameListService() }
         ]
@@ -29,9 +29,9 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.createComponent(HomeComponent);
-            let homeInstance = fixture.debugElement.componentInstance;
-            let homeDOMEl = fixture.debugElement.nativeElement;
+            let fixture = TestBed.createComponent(DashboardComponent);
+            let dashboardInstance = fixture.debugElement.componentInstance;
+            let dashboardDOMEl = fixture.debugElement.nativeElement;
             let mockNameListService = <MockNameListService>fixture.debugElement.injector.get(NameListService);
             let nameListServiceSpy = spyOn(mockNameListService, 'get').and.callThrough();
 
@@ -39,17 +39,17 @@ export function main() {
 
             fixture.detectChanges();
 
-            expect(homeInstance.nameListService).toEqual(jasmine.any(MockNameListService));
-            expect(homeDOMEl.querySelectorAll('li').length).toEqual(3);
+            expect(dashboardInstance.nameListService).toEqual(jasmine.any(MockNameListService));
+            expect(dashboardDOMEl.querySelectorAll('li').length).toEqual(16);
             expect(nameListServiceSpy.calls.count()).toBe(1);
 
-            homeInstance.newName = 'Minko';
-            homeInstance.addName();
+            dashboardInstance.newName = '3';
+            dashboardInstance.addName();
 
             fixture.detectChanges();
 
-            expect(homeDOMEl.querySelectorAll('li').length).toEqual(4);
-            expect(homeDOMEl.querySelectorAll('li')[3].textContent).toEqual('Minko');
+            expect(dashboardDOMEl.querySelectorAll('li').length).toEqual(16);
+            expect(dashboardDOMEl.querySelectorAll('li')[3].textContent).toEqual('3');
           });
 
       }));
