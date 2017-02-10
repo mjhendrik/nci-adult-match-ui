@@ -22,4 +22,16 @@ describe('App', () => {
     expect(element(by.css('sd-app sd-navbar nav a:nth-child(2)')).getText()).toEqual('patients');
   });
 
+  it('should have correct nav text for treatment arms', () => {
+    expect(element(by.css('sd-app sd-navbar nav a:nth-child(3)')).getText()).toEqual('treatment arms');
+  });
+
+  it('should have correct nav text for biopsy tracking', () => {
+    expect(element(by.css('sd-app sd-navbar nav a:nth-child(4)')).getText()).toEqual('biopsy tracking');
+  });
+
+  it('should have correct nav text for clia labs', () => {
+    expect(element(by.css('sd-app sd-navbar nav a:nth-child(5)')).getText()).toEqual('clia labs');
+  });
+
 });
