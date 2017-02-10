@@ -7,7 +7,7 @@ import {
 import { PatientsModule } from './patients.module';
 
 export function main() {
-   describe('patients component', () => {
+  describe('patients component', () => {
     // Setting module for testing
     // Disable old forms
 
@@ -27,12 +27,12 @@ export function main() {
             let aboutDOMEl = fixture.debugElement.children[0].nativeElement;
 
           });
-        }));
-    });
+      }));
+  });
 }
 
 @Component({
   selector: 'test-cmp',
   template: '<sd-patients></sd-patients>'
 })
-class TestComponent {}
+class TestComponent { }
