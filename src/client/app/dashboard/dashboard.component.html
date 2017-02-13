@@ -75,26 +75,23 @@
                     <thead>
                       <tr class="purple">
                         <th>Patient ID</th>
-                        <th class="text-center">Molecular ID</th>
-                        <th class="text-center">Variant Report</th>
-                        <th class="text-center">Location</th>
-                        <th class="text-center">Patient Status</th>
-                        <th class="text-center">Specimen Recieved data</th>
-                        <th class="text-center">Variant Report Recieved Date</th>
-                        <th class="text-center">Days Pending</th>
-                        <th></th>
+                        <th>Molecular ID</th>
+                        <th>Analysis ID</th>
+                        <th>IR ID</th>
+                        <th>Specimen Received Date</th>
+                        <th>Variant Report Recieved Date</th>
+                        <th>Days Pending</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr *ngFor="let table1 of tableData.tissue_variant_reports;let i=index" [ngClass]="{true:'evenclass',false:'oddclass'}[i%2==0]">
                         <td>{{table1.patient_id}}</td>
-                        <td class="text-center">{{table1.molecular_id}}</td>
-                        <td class="text-center">{{table1.analysis_id}}</td>
-                        <td class="text-center">{{table1.surgical_event_id}}</td>
-                        <td class="text-center">{{table1.ion_reporter_id}}</td>
-                        <td class="text-center">{{table1.variant_report_received_date}}</td>
-                        <td class="text-center">{{table1.specimen_received_date}}</td>
-                        <td class="text-center">79</td>
+                        <td>{{table1.molecular_id}}</td>
+                        <td>{{table1.analysis_id}}</td>
+                        <td>{{table1.ion_reporter_id}}</td>
+                        <td>{{table1.specimen_received_date}}</td>
+                        <td>{{table1.variant_report_received_date}}</td>
+                        <td>79</td>
                       </tr>
                     </tbody>
                   </table>
@@ -127,94 +124,94 @@
                       <thead>
                         <tr class="info">
                           <th>Patient ID</th>
-                          <th class="text-center">Molecular ID</th>
-                          <th class="text-center">Variant Report</th>
-                          <th class="text-center">Location</th>
-                          <th class="text-center">Patient Status</th>
-                          <th class="text-center">Specimen Recieved data</th>
-                          <th class="text-center">Variant Report Recieved Date</th>
-                          <th class="text-center">Tracking Number</th>
-                          <th class="text-center">Days Pending</th>
+                          <th>Molecular ID</th>
+                          <th>Variant Report</th>
+                          <th>Location</th>
+                          <th>Patient Status</th>
+                          <th>Specimen Recieved data</th>
+                          <th>Variant Report Recieved Date</th>
+                          <th>Tracking Number</th>
+                          <th>Days Pending</th>
                           <th></th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
                           <td>43902112</td>
-                          <td class="text-center">28/9/2015</td>
-                          <td class="text-center">MATCH</td>
-                          <td class="text-center">RECEIVED</td>
-                          <td class="text-center">RECEIVED</td>
-                          <td class="text-center">RECEIVED</td>
-                          <td class="text-center">RECEIVED</td>
-                          <td class="text-center">RECEIVED</td>
-                          <td class="text-center">RECEIVED</td>
+                          <td>28/9/2015</td>
+                          <td>MATCH</td>
+                          <td>RECEIVED</td>
+                          <td>RECEIVED</td>
+                          <td>RECEIVED</td>
+                          <td>RECEIVED</td>
+                          <td>RECEIVED</td>
+                          <td>RECEIVED</td>
                         </tr>
                         <tr>
                           <td>29012923</td>
-                          <td class="text-center">27/9/2015</td>
-                          <td class="text-center">MATCH</td>
-                          <td class="text-center">RECEIVED</td>
-                          <td class="text-center">RECEIVED</td>
-                          <td class="text-center">RECEIVED</td>
-                          <td class="text-center">RECEIVED</td>
-                          <td class="text-center">RECEIVED</td>
-                          <td class="text-center">RECEIVED</td>
+                          <td>27/9/2015</td>
+                          <td>MATCH</td>
+                          <td>RECEIVED</td>
+                          <td>RECEIVED</td>
+                          <td>RECEIVED</td>
+                          <td>RECEIVED</td>
+                          <td>RECEIVED</td>
+                          <td>RECEIVED</td>
                         </tr>
                         <tr>
                           <td>38291034</td>
-                          <td class="text-center">25/8/2015</td>
-                          <td class="text-center">MATCH</td>
-                          <td class="text-center">RECEIVED</td>
-                          <td class="text-center">RECEIVED</td>
-                          <td class="text-center">RECEIVED</td>
-                          <td class="text-center">RECEIVED</td>
-                          <td class="text-center">RECEIVED</td>
-                          <td class="text-center">RECEIVED</td>
+                          <td>25/8/2015</td>
+                          <td>MATCH</td>
+                          <td>RECEIVED</td>
+                          <td>RECEIVED</td>
+                          <td>RECEIVED</td>
+                          <td>RECEIVED</td>
+                          <td>RECEIVED</td>
+                          <td>RECEIVED</td>
                         </tr>
                         <tr>
                           <td>44399212</td>
-                          <td class="text-center">25/8/2015</td>
-                          <td class="text-center">MATCH</td>
-                          <td class="text-center">RECEIVED</td>
-                          <td class="text-center">RECEIVED</td>
-                          <td class="text-center">RECEIVED</td>
-                          <td class="text-center">RECEIVED</td>
-                          <td class="text-center">RECEIVED</td>
-                          <td class="text-center">RECEIVED</td>
+                          <td>25/8/2015</td>
+                          <td>MATCH</td>
+                          <td>RECEIVED</td>
+                          <td>RECEIVED</td>
+                          <td>RECEIVED</td>
+                          <td>RECEIVED</td>
+                          <td>RECEIVED</td>
+                          <td>RECEIVED</td>
                         </tr>
                         <tr>
                           <td>44399212</td>
-                          <td class="text-center">25/8/2015</td>
-                          <td class="text-center">MATCH</td>
-                          <td class="text-center">RECEIVED</td>
-                          <td class="text-center">RECEIVED</td>
-                          <td class="text-center">RECEIVED</td>
-                          <td class="text-center">RECEIVED</td>
-                          <td class="text-center">RECEIVED</td>
-                          <td class="text-center">RECEIVED</td>
+                          <td>25/8/2015</td>
+                          <td>MATCH</td>
+                          <td>RECEIVED</td>
+                          <td>RECEIVED</td>
+                          <td>RECEIVED</td>
+                          <td>RECEIVED</td>
+                          <td>RECEIVED</td>
+                          <td>RECEIVED</td>
                         </tr>
                         <tr>
                           <td>82918102</td>
-                          <td class="text-center">25/8/2015</td>
-                          <td class="text-center">MATCH</td>
-                          <td class="text-center">RECEIVED</td>
-                          <td class="text-center">RECEIVED</td>
-                          <td class="text-center">RECEIVED</td>
-                          <td class="text-center">RECEIVED</td>
-                          <td class="text-center">RECEIVED</td>
-                          <td class="text-center">RECEIVED</td>
+                          <td>25/8/2015</td>
+                          <td>MATCH</td>
+                          <td>RECEIVED</td>
+                          <td>RECEIVED</td>
+                          <td>RECEIVED</td>
+                          <td>RECEIVED</td>
+                          <td>RECEIVED</td>
+                          <td>RECEIVED</td>
                         </tr>
                         <tr>
                           <td>82918102</td>
-                          <td class="text-center">22/8/2015</td>
-                          <td class="text-center">MATCH</td>
-                          <td class="text-center">RECEIVED</td>
-                          <td class="text-center">RECEIVED</td>
-                          <td class="text-center">RECEIVED</td>
-                          <td class="text-center">RECEIVED</td>
-                          <td class="text-center">RECEIVED</td>
-                          <td class="text-center">RECEIVED</td>
+                          <td>22/8/2015</td>
+                          <td>MATCH</td>
+                          <td>RECEIVED</td>
+                          <td>RECEIVED</td>
+                          <td>RECEIVED</td>
+                          <td>RECEIVED</td>
+                          <td>RECEIVED</td>
+                          <td>RECEIVED</td>
                         </tr>
                       </tbody>
                     </table>

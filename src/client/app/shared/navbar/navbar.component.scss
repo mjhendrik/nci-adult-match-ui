@@ -2,9 +2,6 @@
   width: 320px
 }
 
-// a:hover {
-//   background-color: #5f7471 !important;
-// }
 .header-height {
   height: 75px;
 }
@@ -15,4 +12,17 @@
 
 .header-position {
   padding-right: 10px;
+}
+
+.top-menu .nav>li.active>a {
+  background-color: #374342;
+}
+
+// fix_me: .top-menu
+top-menu .nav>li>a:hover {
+  background-color: #5f7471 !important;
+}
+
+.top-menu>div {
+  background-color: #445350;
 }
