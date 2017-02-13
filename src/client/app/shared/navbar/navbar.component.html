@@ -1,10 +1,10 @@
 <!--  begin #header -->
 <div id="header" class="header navbar navbar-default navbar-fixed-top">
   <!-- begin container-fluid -->
-  <div class="container-fluid">
+  <div class="container-fluid header-height">
     <!-- begin mobile sidebar expand / collapse button -->
     <div class="navbar-header">
-      <a href="#" class="navbar-brand f-s-15"><img src="assets/svg/nci-logo-full.svg" class="logo" alt="" />NCI Adult MATCH</a>
+      <a href="" class="navbar-brand f-s-15"><img src="assets/svg/nci-logo-full.svg" class="logo" alt="" /><span class="pull-right">Molecular Analysis for Therapy Choice</span></a>
       <button type="button" class="navbar-toggle" data-click="sidebar-toggled">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -32,41 +32,47 @@
       </li>
     </ul>
     <!-- end navbar-right -->
-    <div id="top-menu" class="top-menu">
-      <div class="container-fluid">
-        <!-- begin top-menu nav -->
-        <ul class="nav">
-          <li class="active">
-            <a href="">
-              <i class="fa fa-home"></i>
-              <span>Dashboard</span>
-            </a>
-          </li>
-          <li>
-            <a href="/patients">
-              <i class="fa fa-users"></i>
-              <span>Patients</span>
-            </a>
-          </li>
-          <li>
-            <a href="/ta">
-              <i class="fa fa-medkit"></i>
-              <span>Treatment Arms</span>
-            </a>
-          </li>
-          <li>
-            <a href="/">
-              <i class="fa fa-truck"></i>
-              <span>Biopsy Tracking</span>
-            </a>
-          </li>
-          <li>
-            <a href="/">
-              <i class="fa fa-flask"></i>
-              <span>CLIA Labs</span>
-            </a>
-          </li>
-          <!--<li class="has-sub">
+  </div>
+  <!-- end container-fluid -->
+</div>
+<!-- end #header -->
+<div id="top-menu" class="top-menu top-menu-position">
+  <div class="container-fluid" style="background-color: #445350">
+    <!--FIX_ME: remove style/padding-->
+    <!-- begin top-menu nav -->
+    <ul class="nav">
+      <li class="active">
+        <a href="" style="background-color: #374342 !important">
+          <!--FIX_ME: remove style/padding-->
+          <i class="fa fa-home"></i>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a href="/patients">
+          <i class="fa fa-users"></i>
+          <span>Patients</span>
+        </a>
+      </li>
+      <li>
+        <a href="/ta">
+          <i class="fa fa-medkit"></i>
+          <span>Treatment Arms</span>
+        </a>
+      </li>
+      <li>
+        <a href="/tracking">
+          <i class="fa fa-truck"></i>
+          <span>Biopsy Tracking</span>
+        </a>
+      </li>
+      <li>
+        <a href="/clia">
+          <i class="fa fa-flask"></i>
+          <span>CLIA Labs</span>
+        </a>
+      </li>
+      <!--<li class="has-sub">
             <a href="javascript:;">
               <i class="fa fa-inbox"></i>
               <span>Patients <span class="badge">10</span></span>
@@ -135,19 +141,12 @@
               </li>
             </ul>
           </li>-->
-        </ul>
-        <!-- end top-menu nav -->
-      </div>
-    </div>
+    </ul>
+    <!-- end top-menu nav -->
   </div>
-  <!-- end container-fluid -->
 </div>
-<!-- end #header -->
-<!--<nav>
-  <a [routerLink]="['/']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">DASHBOARD</a>
-  <a [routerLink]="['/patients']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">patients</a>
-</nav>-->
-<div id="footer" class="footer text-center" style="background-color: white !important; position: fixed; z-index: 1000;">
+<!--  begin #footer -->
+<div id="footer" class="footer text-center" style="background-color: white !important; position: fixed; z-index: 2000;">
   <!--FIX_ME: remove style/bg-color-->
   <span class="pull-right">
                     <a href="javascript:;" class="btn-scroll-to-top" data-click="scroll-top">
@@ -156,3 +155,4 @@
   </span>
   © 2017 <b>MATCHbox</b> All Right Reserved
 </div>
+<!-- end #footer -->
