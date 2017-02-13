@@ -27,6 +27,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #EAECEB !important;
+  // fix_me: style
 }
 
 p {
@@ -70,3 +71,8 @@ button {
 button:hover {
   background-color: #28739e;
 }
+
+.content {
+  padding-top: 44px !important;
+}
+  // fix_me: style

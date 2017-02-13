@@ -1,6 +1,6 @@
 :host {
   display: block;
-  padding: 0 16px;
+  // padding: 0 16px;
 }
 
 input {
@@ -10,4 +10,9 @@ input {
 ul {
   list-style-type: none;
   padding: 0 0 0 8px;
+}
+
+.content {
+  padding-top: 44px;
+  padding-bottom: 45px;
 }
