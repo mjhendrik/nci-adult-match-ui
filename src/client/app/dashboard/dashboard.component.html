@@ -86,7 +86,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let table1 of tableData.tissue_variant_reports">
+                      <tr *ngFor="let table1 of tableData.tissue_variant_reports;let i=index" [ngClass]="{true:'evenclass',false:'oddclass'}[i%2==0]">
                         <td>{{table1.patient_id}}</td>
                         <td class="text-center">{{table1.molecular_id}}</td>
                         <td class="text-center">{{table1.analysis_id}}</td>
@@ -227,14 +227,21 @@
                   <div class="col-md-7">
                     <div class="dataTables_paginate paging_simple_numbers" id="data-table_paginate">
                       <ul class="pagination">
-                        <li class="paginate_button previous disabled" id="data-table_previous"><a href="#" aria-controls="data-table" data-dt-idx="0" tabindex="0">Previous</a></li>
-                        <li class="paginate_button active"><a href="#" aria-controls="data-table" data-dt-idx="1" tabindex="0">1</a></li>
-                        <li class="paginate_button "><a href="#" aria-controls="data-table" data-dt-idx="2" tabindex="0">2</a></li>
-                        <li class="paginate_button "><a href="#" aria-controls="data-table" data-dt-idx="3" tabindex="0">3</a></li>
-                        <li class="paginate_button "><a href="#" aria-controls="data-table" data-dt-idx="4" tabindex="0">4</a></li>
-                        <li class="paginate_button "><a href="#" aria-controls="data-table" data-dt-idx="5" tabindex="0">5</a></li>
-                        <li class="paginate_button "><a href="#" aria-controls="data-table" data-dt-idx="6" tabindex="0">6</a></li>
-                        <li class="paginate_button next" id="data-table_next"><a href="#" aria-controls="data-table" data-dt-idx="7" tabindex="0">Next</a></li>
+                        <li class="paginate_button previous" id="data-table_previous">
+                          <a href="javascript:void(0)" (click)="firstPage()" aria-controls="data-table" data-dt-idx="0" tabindex="0">First</a>
+                        </li>
+                        <li class="paginate_button previous" id="data-table_previous" [ngClass]="disablePrevious()">
+                          <a href="javascript:void(0)" (click)="prevPage()" aria-controls="data-table" data-dt-idx="0" tabindex="0">Previous</a>
+                        </li>
+                        <li class="paginate_button" *ngFor="let p of paginationRange();let i =index" (click)="setPage(p)">
+                          <a href="javascript:void(0)" (click)="pageClicked(p)" aria-controls="data-table" data-dt-idx="1" tabindex="0">{{p+1}}</a>
+                        </li>
+                        <li class="paginate_button next" id="data-table_next" [ngClass]="disableNext()">
+                          <a href="javascript:void(0)" (click)="nextPage()" aria-controls="data-table" data-dt-idx="7" tabindex="0">Next</a>
+                        </li>
+                        <li class="paginate_button next" id="data-table_next">
+                          <a href="javascript:void(0)" (click)="lastPage()" aria-controls="data-table" data-dt-idx="0" tabindex="0">Last</a>
+                        </li>
                       </ul>
                     </div>
                   </div>
