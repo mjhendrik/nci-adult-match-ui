@@ -39,7 +39,7 @@ export function main() {
           PatientsComponent, TAComponent,
           BTComponent, CLIAComponent],
         providers: [
-          { provide: APP_BASE_HREF, useValue: '/' }
+          { provide: APP_BASE_HREF, useValue: '' }
         ]
       });
     });
