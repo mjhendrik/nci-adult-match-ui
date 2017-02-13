@@ -55,9 +55,10 @@
       <!-- begin panel -->
       <div class="panel">
         <ul class="nav nav-tabs nav-tabs-primary">
-          <li class="active"><a href="#justified-tab-1" data-toggle="tab" aria-expanded="true">Tab One</a></li>
-          <li class=""><a href="#justified-tab-2" data-toggle="tab" aria-expanded="false">Tab Two</a></li>
-          <li class=""><a href="#justified-tab-3" data-toggle="tab" aria-expanded="false">Tab Three</a></li>
+          <li class="active"><a href="#justified-tab-1" data-toggle="tab" aria-expanded="true">Variant Report(s)</a></li>
+          <li class=""><a href="#justified-tab-2" data-toggle="tab" aria-expanded="false">Assignment Report(s)</a></li>
+          <li class=""><a href="#justified-tab-3" data-toggle="tab" aria-expanded="false">Patient(s) Waiting</a></li>
+          <li class=""><a href="#justified-tab-4" data-toggle="tab" aria-expanded="false">Extra Tab</a></li>
         </ul>
         <div class="tab-content m-b-0">
           <div class="tab-pane fade active in" id="justified-tab-1">
@@ -70,31 +71,71 @@
                   </div>
                   <h4 class="panel-title">Pending Review</h4>
                 </div>
-                <div class="table-responsive">
-                  <table class="table table-td-valign-middle">
-                    <thead>
-                      <tr class="purple">
-                        <th>Patient ID</th>
-                        <th>Molecular ID</th>
-                        <th>Analysis ID</th>
-                        <th>IR ID</th>
-                        <th>Specimen Received Date</th>
-                        <th>Variant Report Recieved Date</th>
-                        <th>Days Pending</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let table1 of tableData.tissue_variant_reports;let i=index" [ngClass]="{true:'evenclass',false:'oddclass'}[i%2==0]">
-                        <td>{{table1.patient_id}}</td>
-                        <td>{{table1.molecular_id}}</td>
-                        <td>{{table1.analysis_id}}</td>
-                        <td>{{table1.ion_reporter_id}}</td>
-                        <td>{{table1.specimen_received_date}}</td>
-                        <td>{{table1.variant_report_received_date}}</td>
-                        <td>79</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                <div class="col-md-12 bg-purple-light">
+                  <div class="col-md-6">
+                    <div class="dataTables_length" id="data-table_length"><label>Show <select name="data-table_length" aria-controls="data-table" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div>
+                  </div>
+                  <div class="col-md-6">
+                    <div id="data-table_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="data-table"></label></div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="table-responsive col-lg-12">
+                    <table class="table table-td-valign-middle">
+                      <thead>
+                        <tr class="purple">
+                          <th>Patient ID</th>
+                          <th>Molecular ID</th>
+                          <th>Variant Report</th>
+                          <th>Location</th>
+                          <th>Patient Status</th>
+                          <th>Specimen Received Date</th>
+                          <th>Variant Report Recieved Date</th>
+                          <th>Days Pending</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let table1 of table1Data.variant_reports;let i=index" [ngClass]="{true:'evenclass',false:'oddclass'}[i%2==0]">
+                          <td>{{table1.patientSequenceNumber}}</td>
+                          <td>{{table1.molecularSequenceNumber}}</td>
+                          <td><strong>Variant Report</strong></td>
+                          <td>{{table1.location}}</td>
+                          <td>{{table1.currentPatientStatus}}</td>
+                          <!--| date:'shortDate'-->
+                          <td>{{table1.specimenReceivedDate}}</td>
+                          <!--| date:'shortDate'-->
+                          <td>{{table1.ngsDateReceived}}</td>
+                          <td>{{table1.daysPending}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-5">
+                    <div class="dataTables_info" id="data-table_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
+                  </div>
+                  <div class="col-md-7">
+                    <div class="dataTables_paginate paging_simple_numbers" id="data-table_paginate">
+                      <ul class="pagination">
+                        <li class="paginate_button previous" id="data-table_previous" [ngClass]="disablePrevious()">
+                          <a href="javascript:void(0)" (click)="firstPage()" aria-controls="data-table" data-dt-idx="0" tabindex="0">First</a>
+                        </li>
+                        <li class="paginate_button previous" id="data-table_previous" [ngClass]="disablePrevious()">
+                          <a href="javascript:void(0)" (click)="prevPage()" aria-controls="data-table" data-dt-idx="0" tabindex="0">Previous</a>
+                        </li>
+                        <li class="paginate_button" *ngFor="let p of paginationRange();let i =index" (click)="setPage(p)">
+                          <a href="javascript:void(0)" (click)="pageClicked(p)" aria-controls="data-table" data-dt-idx="1" tabindex="0">{{p+1}}</a>
+                        </li>
+                        <li class="paginate_button next" id="data-table_next" [ngClass]="disableNext()">
+                          <a href="javascript:void(0)" (click)="nextPage()" aria-controls="data-table" data-dt-idx="7" tabindex="0">Next</a>
+                        </li>
+                        <li class="paginate_button next" id="data-table_next" [ngClass]="disableNext()">
+                          <a href="javascript:void(0)" (click)="lastPage()" aria-controls="data-table" data-dt-idx="0" tabindex="0">Last</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
               </div>
               <!-- end panel -->
@@ -102,6 +143,79 @@
           </div>
           <div class="tab-pane fade" id="justified-tab-2">
             <!-- table 2 -->
+            <div class="row">
+              <!-- begin panel -->
+              <div class="panel panel-purple">
+                <div class="panel-heading">
+                  <div class="panel-heading-btn">
+                  </div>
+                  <h4 class="panel-title">Pending Review</h4>
+                </div>
+                <div class="col-md-12 bg-purple-light">
+                  <div class="col-md-6">
+                    <div class="dataTables_length" id="data-table_length"><label>Show <select name="data-table_length" aria-controls="data-table" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div>
+                  </div>
+                  <div class="col-md-6">
+                    <div id="data-table_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="data-table"></label></div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="table-responsive col-lg-12">
+                    <table class="table table-td-valign-middle">
+                      <thead>
+                        <tr class="purple">
+                          <th>Patient ID</th>
+                          <th>Patient Current Status</th>
+                          <th>Assignment Report</th>
+                          <th>Assignment Date</th>
+                          <th>Hours Pending</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let table2 of table2Data.assignment_reports;let i=index" [ngClass]="{true:'evenclass',false:'oddclass'}[i%2==0]">
+                          <td>{{table2.patientSequenceNumber}}</td>
+                          <td>{{table2.patientCurrentStatus}}</td>
+                          <td><strong>Assignment Report</strong></td>
+                          <td>{{table2.dateAssigned}}</td>
+                          <!--| date:'shortDate'-->
+                          <td>{{table2.hoursPending}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-5">
+                    <div class="dataTables_info" id="data-table_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
+                  </div>
+                  <div class="col-md-7">
+                    <div class="dataTables_paginate paging_simple_numbers" id="data-table_paginate">
+                      <ul class="pagination">
+                        <li class="paginate_button previous" id="data-table_previous" [ngClass]="disablePrevious()">
+                          <a href="javascript:void(0)" (click)="firstPage()" aria-controls="data-table" data-dt-idx="0" tabindex="0">First</a>
+                        </li>
+                        <li class="paginate_button previous" id="data-table_previous" [ngClass]="disablePrevious()">
+                          <a href="javascript:void(0)" (click)="prevPage()" aria-controls="data-table" data-dt-idx="0" tabindex="0">Previous</a>
+                        </li>
+                        <li class="paginate_button" *ngFor="let p of paginationRange();let i =index" (click)="setPage(p)">
+                          <a href="javascript:void(0)" (click)="pageClicked(p)" aria-controls="data-table" data-dt-idx="1" tabindex="0">{{p+1}}</a>
+                        </li>
+                        <li class="paginate_button next" id="data-table_next" [ngClass]="disableNext()">
+                          <a href="javascript:void(0)" (click)="nextPage()" aria-controls="data-table" data-dt-idx="7" tabindex="0">Next</a>
+                        </li>
+                        <li class="paginate_button next" id="data-table_next" [ngClass]="disableNext()">
+                          <a href="javascript:void(0)" (click)="lastPage()" aria-controls="data-table" data-dt-idx="0" tabindex="0">Last</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- end panel -->
+            </div>
+          </div>
+          <div class="tab-pane fade" id="justified-tab-3">
+            <!-- table 3 -->
             <div class="row">
               <!-- begin panel -->
               <div class="panel panel-info">
@@ -247,8 +361,8 @@
               <!-- end panel -->
             </div>
           </div>
-          <div class="tab-pane fade" id="justified-tab-3">
-            <!-- table 3 -->
+          <div class="tab-pane fade" id="justified-tab-4">
+            <!-- table 4 -->
             <div class="row">
               <div class="panel pagination-inverse m-b-0 clearfix">
                 <div id="data-table_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
@@ -268,18 +382,18 @@
                           <tr class="inverse" role="row">
                             <th data-sorting="disabled" class="sorting_disabled" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" aria-label=": activate to sort column descending"
                               style="width: 15px;"></th>
-                              <th class="sorting_asc" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending"
-                                style="width: 149px;">Rendering engine</th>
-                                <th class="sorting" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending"
-                                  style="width: 211px;">Browser</th>
-                                  <th class="sorting" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending"
-                                    style="width: 198px;">Platform(s)</th>
-                                    <th class="sorting" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending"
-                                      style="width: 126px;">Engine version</th>
-                                      <th class="sorting" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending"
-                                        style="width: 96px;">CSS grade</th>
-                                        <th data-sorting="disabled" class="sorting_disabled" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" aria-label=": activate to sort column descending"
-                                          style="width: 85px;"></th>
+                            <th class="sorting_asc" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending"
+                              style="width: 149px;">Rendering engine</th>
+                            <th class="sorting" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending"
+                              style="width: 211px;">Browser</th>
+                            <th class="sorting" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending"
+                              style="width: 198px;">Platform(s)</th>
+                            <th class="sorting" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending"
+                              style="width: 126px;">Engine version</th>
+                            <th class="sorting" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending"
+                              style="width: 96px;">CSS grade</th>
+                            <th data-sorting="disabled" class="sorting_disabled" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" aria-label=": activate to sort column descending"
+                              style="width: 85px;"></th>
                           </tr>
                         </thead>
                         <tbody>
@@ -374,7 +488,7 @@
                             <td><a href="#" class="btn btn-default btn-xs"><i class="fa fa-cog"></i> Setting</a></td>
                           </tr>
                         </tbody>
-                        </table>
+                      </table>
                     </div>
                   </div>
                   <div class="row">
@@ -404,81 +518,79 @@
       </div>
       <!-- end panel -->
     </div>
-    <div class="col-md-12">
-      <!-- begin col-3 -->
-      <div class="col-md-1">
-        <!-- begin widget -->
-        <div class="widget widget-stat bg-inverse text-white">
-        </div>
-        <!-- end widget -->
+    <!-- begin col-3 -->
+    <div class="col-md-1">
+      <!-- begin widget -->
+      <div class="widget widget-stat bg-inverse text-white">
       </div>
-      <!-- end col-3 -->
-      <div class="col-md-1">
-        <!-- begin widget -->
-        <div class="widget widget-stat bg-grey text-white">
-        </div>
-        <!-- end widget -->
+      <!-- end widget -->
+    </div>
+    <!-- end col-3 -->
+    <div class="col-md-1">
+      <!-- begin widget -->
+      <div class="widget widget-stat bg-grey text-white">
       </div>
-      <div class="col-md-1">
-        <!-- begin widget -->
-        <div class="widget widget-stat bg-purple text-white">
-        </div>
-        <!-- end widget -->
+      <!-- end widget -->
+    </div>
+    <div class="col-md-1">
+      <!-- begin widget -->
+      <div class="widget widget-stat bg-purple text-white">
       </div>
-      <div class="col-md-1">
-        <!-- begin widget -->
-        <div class="widget widget-stat bg-red text-white">
-        </div>
-        <!-- end widget -->
+      <!-- end widget -->
+    </div>
+    <div class="col-md-1">
+      <!-- begin widget -->
+      <div class="widget widget-stat bg-red text-white">
       </div>
-      <div class="col-md-1">
-        <!-- begin widget -->
-        <div class="widget widget-stat bg-primary text-white">
-        </div>
-        <!-- end widget -->
+      <!-- end widget -->
+    </div>
+    <div class="col-md-1">
+      <!-- begin widget -->
+      <div class="widget widget-stat bg-primary text-white">
       </div>
-      <div class="col-md-1">
-        <!-- begin widget -->
-        <div class="widget widget-stat bg-info text-white">
-        </div>
-        <!-- end widget -->
+      <!-- end widget -->
+    </div>
+    <div class="col-md-1">
+      <!-- begin widget -->
+      <div class="widget widget-stat bg-info text-white">
       </div>
-      <div class="col-md-1">
-        <!-- begin widget -->
-        <div class="widget widget-stat bg-success text-white">
-        </div>
-        <!-- end widget -->
+      <!-- end widget -->
+    </div>
+    <div class="col-md-1">
+      <!-- begin widget -->
+      <div class="widget widget-stat bg-success text-white">
       </div>
-      <div class="col-md-1">
-        <!-- begin widget -->
-        <div class="widget widget-stat bg-lime text-white">
-        </div>
-        <!-- end widget -->
+      <!-- end widget -->
+    </div>
+    <div class="col-md-1">
+      <!-- begin widget -->
+      <div class="widget widget-stat bg-lime text-white">
       </div>
-      <div class="col-md-1">
-        <!-- begin widget -->
-        <div class="widget widget-stat bg-warning text-white">
-        </div>
-        <!-- end widget -->
+      <!-- end widget -->
+    </div>
+    <div class="col-md-1">
+      <!-- begin widget -->
+      <div class="widget widget-stat bg-warning text-white">
       </div>
-      <div class="col-md-1">
-        <!-- begin widget -->
-        <div class="widget widget-stat bg-danger text-white">
-        </div>
-        <!-- end widget -->
+      <!-- end widget -->
+    </div>
+    <div class="col-md-1">
+      <!-- begin widget -->
+      <div class="widget widget-stat bg-danger text-white">
       </div>
-      <div class="col-md-1">
-        <!-- begin widget -->
-        <div class="widget widget-stat no-bg text-white">
-        </div>
-        <!-- end widget -->
+      <!-- end widget -->
+    </div>
+    <div class="col-md-1">
+      <!-- begin widget -->
+      <div class="widget widget-stat no-bg text-white">
       </div>
-      <div class="col-md-1">
-        <!-- begin widget -->
-        <div class="widget widget-stat bg-white text-white">
-        </div>
-        <!-- end widget -->
+      <!-- end widget -->
+    </div>
+    <div class="col-md-1">
+      <!-- begin widget -->
+      <div class="widget widget-stat bg-white text-white">
       </div>
+      <!-- end widget -->
     </div>
   </div>
 </div>
