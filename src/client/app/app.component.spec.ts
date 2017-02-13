@@ -16,7 +16,7 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PatientsComponent } from './patients/patients.component';
 import { TAComponent } from './ta/ta.component';
-import { TrackingComponent } from './tracking/tracking.component';
+import { BTComponent } from './bt/bt.component';
 import { CLIAComponent } from './clia/clia.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 
@@ -28,7 +28,7 @@ export function main() {
       { path: '', component: DashboardComponent },
       { path: 'patients', component: PatientsComponent },
       { path: 'ta', component: TAComponent },
-      { path: 'tracking', component: TrackingComponent },
+      { path: 'bt', component: BTComponent },
       { path: 'clia', component: CLIAComponent }
     ];
     beforeEach(() => {
@@ -37,7 +37,7 @@ export function main() {
         declarations: [TestComponent, NavbarComponent,
           AppComponent, DashboardComponent,
           PatientsComponent, TAComponent,
-          TrackingComponent, CLIAComponent],
+          BTComponent, CLIAComponent],
         providers: [
           { provide: APP_BASE_HREF, useValue: '/' }
         ]

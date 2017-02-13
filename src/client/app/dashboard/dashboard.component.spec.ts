@@ -43,13 +43,11 @@ export function main() {
             expect(dashboardDOMEl.querySelectorAll('li').length).toEqual(19);
             expect(nameListServiceSpy.calls.count()).toBe(1);
 
-            dashboardInstance.newName = 'Previous';
             dashboardInstance.addName();
 
             fixture.detectChanges();
 
             expect(dashboardDOMEl.querySelectorAll('li').length).toEqual(19);
-            expect(dashboardDOMEl.querySelectorAll('li')[3].textContent).toEqual('Previous');
           });
 
       }));

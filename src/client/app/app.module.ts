@@ -6,14 +6,14 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { CLIAModule } from './clia/clia.module';
-import { TrackingModule } from './tracking/tracking.module';
+import { BTModule } from './bt/bt.module';
 import { TAModule } from './ta/ta.module';
 import { PatientsModule } from './patients/patients.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({
-  imports: [BrowserModule, HttpModule, AppRoutingModule, CLIAModule, TrackingModule, TAModule, PatientsModule, DashboardModule, SharedModule.forRoot()],
+  imports: [BrowserModule, HttpModule, AppRoutingModule, CLIAModule, BTModule, TAModule, PatientsModule, DashboardModule, SharedModule.forRoot()],
   declarations: [AppComponent],
   providers: [{
     provide: APP_BASE_HREF,
