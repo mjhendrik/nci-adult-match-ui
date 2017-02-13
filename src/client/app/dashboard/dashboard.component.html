@@ -1,9 +1,9 @@
 <div id="content" class="content">
   <div class="row">
     <!-- begin col-3 -->
-    <div class="col-md-4">
+    <div class="col-md-4" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
       <!-- begin widget -->
-      <a href="/patients" style="text-decoration: none;">
+      <a href="javascript:void(0)" [routerLink]="['/patients']" style="text-decoration: none;">
         <!--FIX_ME: remove style/padding (first row)-->
         <div class="widget widget-stat bg-purple text-white">
           <div class="widget-stat-icon"><i class="fa fa-users fa-lg"></i></div>
@@ -18,9 +18,9 @@
     </div>
     <!-- end col-3 -->
     <!-- begin col-3 -->
-    <div class="col-md-4">
+    <div class="col-md-4" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
       <!-- begin widget -->
-      <a href="/ta" style="text-decoration: none;">
+      <a href="javascript:void(0)" [routerLink]="['/ta']" style="text-decoration: none;">
         <!--FIX_ME: remove style/padding (first row)-->
         <div class="widget widget-stat bg-success text-white">
           <div class="widget-stat-icon"><i class="fa fa-medkit fa-lg"></i></div>
@@ -35,9 +35,9 @@
     </div>
     <!-- end col-3 -->
     <!-- begin col-3 -->
-    <div class="col-md-4">
+    <div class="col-md-4" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
       <!-- begin widget -->
-      <a href="/" style="text-decoration: none;">
+      <a href="javascript:void(0)" [routerLink]="['/bt']" style="text-decoration: none;">
         <!--FIX_ME: remove style/padding (first row)-->
         <div class="widget widget-stat bg-info text-white">
           <div class="widget-stat-icon"><i class="fa fa-truck fa-lg"></i></div>
@@ -227,7 +227,7 @@
                   <div class="col-md-7">
                     <div class="dataTables_paginate paging_simple_numbers" id="data-table_paginate">
                       <ul class="pagination">
-                        <li class="paginate_button previous" id="data-table_previous">
+                        <li class="paginate_button previous" id="data-table_previous" [ngClass]="disablePrevious()">
                           <a href="javascript:void(0)" (click)="firstPage()" aria-controls="data-table" data-dt-idx="0" tabindex="0">First</a>
                         </li>
                         <li class="paginate_button previous" id="data-table_previous" [ngClass]="disablePrevious()">
@@ -239,7 +239,7 @@
                         <li class="paginate_button next" id="data-table_next" [ngClass]="disableNext()">
                           <a href="javascript:void(0)" (click)="nextPage()" aria-controls="data-table" data-dt-idx="7" tabindex="0">Next</a>
                         </li>
-                        <li class="paginate_button next" id="data-table_next">
+                        <li class="paginate_button next" id="data-table_next" [ngClass]="disableNext()">
                           <a href="javascript:void(0)" (click)="lastPage()" aria-controls="data-table" data-dt-idx="0" tabindex="0">Last</a>
                         </li>
                       </ul>
