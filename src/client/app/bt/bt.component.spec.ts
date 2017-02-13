@@ -4,17 +4,17 @@ import {
   TestBed
 } from '@angular/core/testing';
 
-import { TrackingModule } from './tracking.module';
+import { BTModule } from './bt.module';
 
 export function main() {
-  describe('tracking component', () => {
+  describe('bt component', () => {
     // Setting module for testing
     // Disable old forms
 
     beforeEach(() => {
       TestBed.configureTestingModule({
         declarations: [TestComponent],
-        imports: [TrackingModule]
+        imports: [BTModule]
       });
     });
 
@@ -33,6 +33,6 @@ export function main() {
 
 @Component({
   selector: 'test-cmp',
-  template: '<sd-tracking></sd-tracking>'
+  template: '<sd-bt></sd-bt>'
 })
 class TestComponent { }

@@ -1,13 +1,13 @@
 import { browser, element, by } from 'protractor';
 
-describe('tracking', () => {
+describe('bt', () => {
 
   beforeEach(async () => {
-    return await browser.get('/tracking');
+    return await browser.get('/bt');
   });
 
   it('should have correct feature heading', () => {
-    expect(element(by.css('sd-tracking h2')).getText()).toEqual('Features');
+    expect(element(by.css('sd-bt h2')).getText()).toEqual('Features');
   });
 
 });
