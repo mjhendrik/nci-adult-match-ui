@@ -15,6 +15,8 @@ export class DashboardComponent implements OnInit {
   newName: string = '';
   errorMessage: string;
   names: any[] = [];
+  currentPage: number;
+  numberOfRecords: number;
 
   /**
    * Creates an instance of the DashboardComponent with the injected
@@ -29,6 +31,8 @@ export class DashboardComponent implements OnInit {
    */
   ngOnInit() {
     this.getNames();
+    this.currentPage = 0;
+    this.numberOfRecords = 25;
   }
 
   /**
@@ -51,6 +55,70 @@ export class DashboardComponent implements OnInit {
     this.names.push(this.newName);
     this.newName = '';
     return false;
+  }
+
+  disablePrevious(): string {
+    return this.currentPage === 0 ? 'disabled' : '';
+  }
+
+  disableNext(): string {
+    return this.currentPage === this.totalPages() ? "disabled" : "";
+  }
+
+  totalPages(): number {
+    return Math.ceil(this.tableData.tissue_variant_reports.length / this.numberOfRecords) - 1;
+  }
+
+  setPage(page: number): void {
+    this.currentPage = page;
+  }
+
+  nextPage(): void {
+    if (this.currentPage < this.totalPages())
+      this.currentPage++;
+  }
+
+  prevPage(): void {
+    if (this.currentPage > 0)
+      this.currentPage--;
+  }
+
+  pageClicked(p: number): void {
+    console.log(p);
+  }
+
+  rangeSize: number = 5;
+  ps: number[] = [];
+  start: number;
+  paginationRange(): number[] {
+
+    this.ps = [];
+
+    this.start = this.currentPage;
+
+    if (this.start > this.totalPages() - this.rangeSize) {
+
+      this.start = this.totalPages() - this.rangeSize + 1;
+
+    }
+
+    for (var i = this.start; i < this.start + this.rangeSize; i++) {
+      if (i >= 0)
+        this.ps.push(i);
+    }
+
+    return this.ps;
+  }
+
+  lastPage(): void {
+    console.log(this.totalPages());
+    this.currentPage = this.totalPages();
+    console.log(this.currentPage);
+  }
+
+  firstPage(): void {
+    this.currentPage = 0;
+    console.log(this.currentPage);
   }
 
   tableData: any = {
