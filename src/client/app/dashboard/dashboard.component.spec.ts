@@ -40,16 +40,16 @@ export function main() {
             fixture.detectChanges();
 
             expect(dashboardInstance.nameListService).toEqual(jasmine.any(MockNameListService));
-            expect(dashboardDOMEl.querySelectorAll('li').length).toEqual(16);
+            expect(dashboardDOMEl.querySelectorAll('li').length).toEqual(19);
             expect(nameListServiceSpy.calls.count()).toBe(1);
 
-            dashboardInstance.newName = '3';
+            dashboardInstance.newName = 'Previous';
             dashboardInstance.addName();
 
             fixture.detectChanges();
 
-            expect(dashboardDOMEl.querySelectorAll('li').length).toEqual(16);
-            expect(dashboardDOMEl.querySelectorAll('li')[3].textContent).toEqual('3');
+            expect(dashboardDOMEl.querySelectorAll('li').length).toEqual(19);
+            expect(dashboardDOMEl.querySelectorAll('li')[3].textContent).toEqual('Previous');
           });
 
       }));
