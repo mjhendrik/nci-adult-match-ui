@@ -9,4 +9,4 @@ import { Component } from '@angular/core';
   templateUrl: 'clia.component.html',
   styleUrls: ['clia.component.css']
 })
-export class CLIAComponent { }
+export class CliaComponent { }

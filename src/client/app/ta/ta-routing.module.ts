@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { TAComponent } from './ta.component';
+import { TaComponent } from './ta.component';
 
 @NgModule({
   imports: [
     RouterModule.forChild([
-      { path: 'ta', component: TAComponent }
+      { path: 'ta', component: TaComponent }
     ])
   ],
   exports: [RouterModule]
 })
-export class TARoutingModule { }
+export class TaRoutingModule { }

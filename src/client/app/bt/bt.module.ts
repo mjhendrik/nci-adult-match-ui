@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BTComponent } from './bt.component';
-import { BTRoutingModule } from './bt-routing.module';
+import { BtComponent } from './bt.component';
+import { BtRoutingModule } from './bt-routing.module';
 
 @NgModule({
-  imports: [CommonModule, BTRoutingModule],
-  declarations: [BTComponent],
-  exports: [BTComponent]
+  imports: [CommonModule, BtRoutingModule],
+  declarations: [BtComponent],
+  exports: [BtComponent]
 })
-export class BTModule { }
+export class BtModule { }

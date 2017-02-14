@@ -9,4 +9,4 @@ import { Component } from '@angular/core';
   templateUrl: 'ta.component.html',
   styleUrls: ['ta.component.css']
 })
-export class TAComponent { }
+export class TaComponent { }

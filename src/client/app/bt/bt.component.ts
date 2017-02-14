@@ -9,4 +9,4 @@ import { Component } from '@angular/core';
   templateUrl: 'bt.component.html',
   styleUrls: ['bt.component.css']
 })
-export class BTComponent { }
+export class BtComponent { }

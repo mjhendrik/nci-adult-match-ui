@@ -4,7 +4,7 @@ import {
   TestBed
 } from '@angular/core/testing';
 
-import { CLIAModule } from './clia.module';
+import { CliaModule } from './clia.module';
 
 export function main() {
   describe('clia component', () => {
@@ -14,7 +14,7 @@ export function main() {
     beforeEach(() => {
       TestBed.configureTestingModule({
         declarations: [TestComponent],
-        imports: [CLIAModule]
+        imports: [CliaModule]
       });
     });
 

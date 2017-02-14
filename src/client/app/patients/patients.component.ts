@@ -1,4 +1,13 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  trigger,
+  state,
+  style,
+  transition,
+  animate
+} from '@angular/core';
+
+import { routerTransition } from './../shared/router.animations';
 
 /**
  * This class represents the lazy loaded PatientsComponent.
@@ -7,6 +16,8 @@ import { Component } from '@angular/core';
   moduleId: module.id,
   selector: 'sd-patients',
   templateUrl: 'patients.component.html',
-  styleUrls: ['patients.component.css']
+  styleUrls: ['patients.component.css'],
+  animations: [routerTransition()],
+  host: {'[@routerTransition]': ''}
 })
-export class PatientsComponent { }
+export class PatientsComponent {}
