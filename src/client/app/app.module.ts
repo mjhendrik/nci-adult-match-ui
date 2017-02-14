@@ -5,15 +5,15 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
-import { CLIAModule } from './clia/clia.module';
-import { BTModule } from './bt/bt.module';
-import { TAModule } from './ta/ta.module';
+import { CliaModule } from './clia/clia.module';
+import { BtModule } from './bt/bt.module';
+import { TaModule } from './ta/ta.module';
 import { PatientsModule } from './patients/patients.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({
-  imports: [BrowserModule, HttpModule, AppRoutingModule, CLIAModule, BTModule, TAModule, PatientsModule, DashboardModule, SharedModule.forRoot()],
+  imports: [BrowserModule, HttpModule, AppRoutingModule, CliaModule, BtModule, TaModule, PatientsModule, DashboardModule, SharedModule.forRoot()],
   declarations: [AppComponent],
   providers: [{
     provide: APP_BASE_HREF,

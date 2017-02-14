@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { BTComponent } from './bt.component';
+import { BtComponent } from './bt.component';
 
 @NgModule({
   imports: [
     RouterModule.forChild([
-      { path: 'bt', component: BTComponent }
+      { path: 'bt', component: BtComponent }
     ])
   ],
   exports: [RouterModule]
 })
-export class BTRoutingModule { }
+export class BtRoutingModule { }

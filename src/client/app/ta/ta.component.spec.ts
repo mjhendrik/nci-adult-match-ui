@@ -4,7 +4,7 @@ import {
   TestBed
 } from '@angular/core/testing';
 
-import { TAModule } from './ta.module';
+import { TaModule } from './ta.module';
 
 export function main() {
   describe('ta component', () => {
@@ -14,7 +14,7 @@ export function main() {
     beforeEach(() => {
       TestBed.configureTestingModule({
         declarations: [TestComponent],
-        imports: [TAModule]
+        imports: [TaModule]
       });
     });
 

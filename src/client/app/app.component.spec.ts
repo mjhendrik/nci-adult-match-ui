@@ -15,9 +15,9 @@ import {
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PatientsComponent } from './patients/patients.component';
-import { TAComponent } from './ta/ta.component';
-import { BTComponent } from './bt/bt.component';
-import { CLIAComponent } from './clia/clia.component';
+import { TaComponent } from './ta/ta.component';
+import { BtComponent } from './bt/bt.component';
+import { CliaComponent } from './clia/clia.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 
 export function main() {
@@ -27,17 +27,17 @@ export function main() {
     let config: Route[] = [
       { path: '', component: DashboardComponent },
       { path: 'patients', component: PatientsComponent },
-      { path: 'ta', component: TAComponent },
-      { path: 'bt', component: BTComponent },
-      { path: 'clia', component: CLIAComponent }
+      { path: 'ta', component: TaComponent },
+      { path: 'bt', component: BtComponent },
+      { path: 'clia', component: CliaComponent }
     ];
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [FormsModule, RouterTestingModule.withRoutes(config)],
         declarations: [TestComponent, NavbarComponent,
           AppComponent, DashboardComponent,
-          PatientsComponent, TAComponent,
-          BTComponent, CLIAComponent],
+          PatientsComponent, TaComponent,
+          BtComponent, CliaComponent],
         providers: [
           { provide: APP_BASE_HREF, useValue: '' }
         ]

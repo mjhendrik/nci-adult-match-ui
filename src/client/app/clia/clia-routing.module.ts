@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { CLIAComponent } from './clia.component';
+import { CliaComponent } from './clia.component';
 
 @NgModule({
   imports: [
     RouterModule.forChild([
-      { path: 'clia', component: CLIAComponent }
+      { path: 'clia', component: CliaComponent }
     ])
   ],
   exports: [RouterModule]
 })
-export class CLIARoutingModule { }
+export class CliaRoutingModule { }

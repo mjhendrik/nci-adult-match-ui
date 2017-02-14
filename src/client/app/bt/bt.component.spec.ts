@@ -4,7 +4,7 @@ import {
   TestBed
 } from '@angular/core/testing';
 
-import { BTModule } from './bt.module';
+import { BtModule } from './bt.module';
 
 export function main() {
   describe('bt component', () => {
@@ -14,7 +14,7 @@ export function main() {
     beforeEach(() => {
       TestBed.configureTestingModule({
         declarations: [TestComponent],
-        imports: [BTModule]
+        imports: [BtModule]
       });
     });
 
