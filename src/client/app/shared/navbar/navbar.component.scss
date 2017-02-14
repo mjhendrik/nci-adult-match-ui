@@ -22,7 +22,14 @@
 .top-menu .nav>li>a:hover {
   background-color: #5f7471 !important;
 }
+// fix_me: hover + top-menu
 
 .top-menu>div {
   background-color: #445350;
+}
+
+.footer-format {
+  background-color: white !important;
+  position: fixed;
+  z-index: 2000;
 }
