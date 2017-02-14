@@ -12,7 +12,7 @@ import { routerTransition } from './../shared/router.animations';
   templateUrl: 'dashboard.component.html',
   styleUrls: ['dashboard.component.css'],
   animations: [routerTransition()],
-  host: {'[@routerTransition]': ''}
+  host: { '[@routerTransition]': '' }
 })
 export class DashboardComponent implements OnInit {
 
@@ -334,5 +334,163 @@ export class DashboardComponent implements OnInit {
       }
     ]
   }
+
+  table3Data: any = [
+    {
+      "psn": "11767",
+      "msn": "MSN20818",
+      "date_verified": "2016-09-16T15:10:53.241Z"
+    },
+    {
+      "psn": "13066",
+      "msn": "MSN30353",
+      "date_verified": "2016-11-18T15:53:36.164Z"
+    },
+    {
+      "psn": "13134",
+      "msn": "MSN31351",
+      "date_verified": "2016-11-23T15:56:41.951Z"
+    },
+    {
+      "psn": "13397",
+      "msn": "MSN32698",
+      "date_verified": "2016-12-05T20:07:24.121Z"
+    },
+    {
+      "psn": "13459",
+      "msn": "MSN36343",
+      "date_verified": "2017-01-09T18:40:36.272Z"
+    },
+    {
+      "psn": "13537",
+      "msn": "MSN35386",
+      "date_verified": "2016-12-19T20:50:22.018Z"
+    },
+    {
+      "psn": "13626",
+      "msn": "MSN37481",
+      "date_verified": "2016-12-30T21:39:23.162Z"
+    },
+    {
+      "psn": "13663",
+      "msn": "MSN35675",
+      "date_verified": "2016-12-23T15:15:36.350Z"
+    },
+    {
+      "psn": "13676",
+      "msn": "MSN36467",
+      "date_verified": "2016-12-22T21:37:46.169Z"
+    },
+    {
+      "psn": "13693",
+      "msn": "MSN36426",
+      "date_verified": "2016-12-22T21:08:34.867Z"
+    },
+    {
+      "psn": "13705",
+      "msn": "MSN40295",
+      "date_verified": "2017-01-20T23:34:17.798Z"
+    },
+    {
+      "psn": "13784",
+      "msn": "MSN37150",
+      "date_verified": "2016-12-30T19:39:43.729Z"
+    },
+    {
+      "psn": "14028",
+      "msn": "MSN39016",
+      "date_verified": "2017-01-12T19:51:27.674Z"
+    },
+    {
+      "psn": "14225",
+      "msn": "MSN41087",
+      "date_verified": "2017-01-26T18:53:08.268Z"
+    },
+    {
+      "psn": "14260",
+      "msn": "MSN42002",
+      "date_verified": "2017-02-03T20:44:15.422Z"
+    },
+    {
+      "psn": "14277",
+      "msn": "MSN42614",
+      "date_verified": "2017-02-07T18:53:58.185Z"
+    },
+    {
+      "psn": "14282",
+      "msn": "MSN43109",
+      "date_verified": "2017-02-11T20:01:46.549Z"
+    },
+    {
+      "psn": "14298",
+      "msn": "MSN41343",
+      "date_verified": "2017-02-01T17:19:02.544Z"
+    },
+    {
+      "psn": "14310",
+      "msn": "MSN43935",
+      "date_verified": "2017-02-13T19:44:43.228Z"
+    },
+    {
+      "psn": "14330",
+      "msn": "MSN41350",
+      "date_verified": "2017-02-01T18:32:57.773Z"
+    },
+    {
+      "psn": "14331",
+      "msn": "MSN42036",
+      "date_verified": "2017-02-03T21:23:05.330Z"
+    },
+    {
+      "psn": "14339",
+      "msn": "MSN42846",
+      "date_verified": "2017-02-07T19:24:03.439Z"
+    },
+    {
+      "psn": "14342",
+      "msn": "MSN43042",
+      "date_verified": "2017-02-04T01:40:53.662Z"
+    },
+    {
+      "psn": "14421",
+      "msn": "MSN42804",
+      "date_verified": "2017-02-07T19:09:29.688Z"
+    },
+    {
+      "psn": "14452",
+      "msn": "MSN43778",
+      "date_verified": "2017-02-09T00:37:57.253Z"
+    },
+    {
+      "psn": "14490",
+      "msn": "MSN43224",
+      "date_verified": "2017-02-10T02:32:42.410Z"
+    },
+    {
+      "psn": "14491",
+      "msn": "MSN43604",
+      "date_verified": "2017-02-10T22:33:57.708Z"
+    },
+    {
+      "psn": "14503",
+      "msn": "MSN43208",
+      "date_verified": "2017-02-11T21:59:17.556Z"
+    },
+    {
+      "psn": "14519",
+      "msn": "MSN43729",
+      "date_verified": "2017-02-09T00:25:21.497Z"
+    },
+    {
+      "psn": "14531",
+      "msn": "MSN43265",
+      "date_verified": "2017-02-11T21:23:49.114Z"
+    },
+    {
+      "psn": "14549",
+      "msn": "MSN43786",
+      "date_verified": "2017-02-10T22:51:12.316Z"
+    }
+  ]
 
 }
