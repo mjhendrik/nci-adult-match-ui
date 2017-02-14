@@ -1,6 +1,6 @@
 <div id="content" class="content">
   <div class="row">
-    <!-- begin col-3 -->
+    <!-- begin col-4 -->
     <div class="col-md-4" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
       <!-- begin widget -->
       <a class="link-none" href="javascript:void(0)" [routerLink]="['/patients']">
@@ -15,8 +15,8 @@
       </a>
       <!-- end widget -->
     </div>
-    <!-- end col-3 -->
-    <!-- begin col-3 -->
+    <!-- end col-4 -->
+    <!-- begin col-4 -->
     <div class="col-md-4" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
       <!-- begin widget -->
       <a class="link-none" href="javascript:void(0)" [routerLink]="['/ta']">
@@ -31,8 +31,8 @@
       </a>
       <!-- end widget -->
     </div>
-    <!-- end col-3 -->
-    <!-- begin col-3 -->
+    <!-- end col-4 -->
+    <!-- begin col-4 -->
     <div class="col-md-4" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
       <!-- begin widget -->
       <a class="link-none" href="javascript:void(0)" [routerLink]="['/bt']">
@@ -47,7 +47,7 @@
       </a>
       <!-- end widget -->
     </div>
-    <!-- end col-3 -->
+    <!-- end col-4 -->
     <div class="col-md-12">
       <!-- begin panel -->
       <div class="panel">
@@ -215,13 +215,13 @@
             <!-- table 3 -->
             <div class="row">
               <!-- begin panel -->
-              <div class="panel panel-info">
+              <div class="panel panel-purple">
                 <div class="panel-heading">
                   <div class="panel-heading-btn">
                   </div>
                   <h4 class="panel-title">Assignment Report</h4>
                 </div>
-                <div class="col-md-12 bg-info-light">
+                <div class="col-md-12 bg-purple-light">
                   <div class="col-md-6">
                     <div class="dataTables_length" id="data-table_length"><label>Show <select name="data-table_length" aria-controls="data-table" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div>
                   </div>
@@ -233,96 +233,21 @@
                   <div class="table-responsive col-lg-12">
                     <table class="table table-td-valign-middle">
                       <thead>
-                        <tr class="info">
+                        <tr class="purple">
                           <th>Patient ID</th>
                           <th>Molecular ID</th>
                           <th>Variant Report</th>
-                          <th>Location</th>
-                          <th>Patient Status</th>
-                          <th>Specimen Recieved data</th>
-                          <th>Variant Report Recieved Date</th>
-                          <th>Tracking Number</th>
-                          <th>Days Pending</th>
-                          <th></th>
+                          <th>Concordance</th>
+                          <th>Variant Report Confirmation Date</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>43902112</td>
-                          <td>28/9/2015</td>
-                          <td>MATCH</td>
-                          <td>RECEIVED</td>
-                          <td>RECEIVED</td>
-                          <td>RECEIVED</td>
-                          <td>RECEIVED</td>
-                          <td>RECEIVED</td>
-                          <td>RECEIVED</td>
-                        </tr>
-                        <tr>
-                          <td>29012923</td>
-                          <td>27/9/2015</td>
-                          <td>MATCH</td>
-                          <td>RECEIVED</td>
-                          <td>RECEIVED</td>
-                          <td>RECEIVED</td>
-                          <td>RECEIVED</td>
-                          <td>RECEIVED</td>
-                          <td>RECEIVED</td>
-                        </tr>
-                        <tr>
-                          <td>38291034</td>
-                          <td>25/8/2015</td>
-                          <td>MATCH</td>
-                          <td>RECEIVED</td>
-                          <td>RECEIVED</td>
-                          <td>RECEIVED</td>
-                          <td>RECEIVED</td>
-                          <td>RECEIVED</td>
-                          <td>RECEIVED</td>
-                        </tr>
-                        <tr>
-                          <td>44399212</td>
-                          <td>25/8/2015</td>
-                          <td>MATCH</td>
-                          <td>RECEIVED</td>
-                          <td>RECEIVED</td>
-                          <td>RECEIVED</td>
-                          <td>RECEIVED</td>
-                          <td>RECEIVED</td>
-                          <td>RECEIVED</td>
-                        </tr>
-                        <tr>
-                          <td>44399212</td>
-                          <td>25/8/2015</td>
-                          <td>MATCH</td>
-                          <td>RECEIVED</td>
-                          <td>RECEIVED</td>
-                          <td>RECEIVED</td>
-                          <td>RECEIVED</td>
-                          <td>RECEIVED</td>
-                          <td>RECEIVED</td>
-                        </tr>
-                        <tr>
-                          <td>82918102</td>
-                          <td>25/8/2015</td>
-                          <td>MATCH</td>
-                          <td>RECEIVED</td>
-                          <td>RECEIVED</td>
-                          <td>RECEIVED</td>
-                          <td>RECEIVED</td>
-                          <td>RECEIVED</td>
-                          <td>RECEIVED</td>
-                        </tr>
-                        <tr>
-                          <td>82918102</td>
-                          <td>22/8/2015</td>
-                          <td>MATCH</td>
-                          <td>RECEIVED</td>
-                          <td>RECEIVED</td>
-                          <td>RECEIVED</td>
-                          <td>RECEIVED</td>
-                          <td>RECEIVED</td>
-                          <td>RECEIVED</td>
+                        <tr *ngFor="let table3 of table3Data;let i=index" [ngClass]="{true:'evenclass',false:'oddclass'}[i%2==0]">
+                          <td>{{table3.psn}}</td>
+                          <td>{{table3.msn}}</td>
+                          <td><strong>Variant Report</strong></td>
+                          <td>AWAITING DATA</td>
+                          <td>{{table3.date_verified}}</td>
                         </tr>
                       </tbody>
                     </table>
@@ -515,14 +440,12 @@
       </div>
       <!-- end panel -->
     </div>
-    <!-- begin col-3 -->
     <div class="col-md-1">
       <!-- begin widget -->
       <div class="widget widget-stat bg-inverse text-white">
       </div>
       <!-- end widget -->
     </div>
-    <!-- end col-3 -->
     <div class="col-md-1">
       <!-- begin widget -->
       <div class="widget widget-stat bg-grey text-white">
