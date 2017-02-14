@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NameListService } from '../shared/name-list/name-list.service';
 
+import { routerTransition } from './../shared/router.animations';
+
 /**
  * This class represents the lazy loaded DashboardComponent.
  */
@@ -9,6 +11,8 @@ import { NameListService } from '../shared/name-list/name-list.service';
   selector: 'sd-dashboard',
   templateUrl: 'dashboard.component.html',
   styleUrls: ['dashboard.component.css'],
+  animations: [routerTransition()],
+  host: {'[@routerTransition]': ''}
 })
 export class DashboardComponent implements OnInit {
 
