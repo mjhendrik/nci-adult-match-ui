@@ -1,5 +1,95 @@
 <div id="content" class="content">
   <div class="row">
-    <h1>TA</h1>
+    <div class="col-md-12">
+      <!-- begin panel -->
+      <div class="panel">
+        <ul class="nav nav-tabs nav-tabs-primary">
+          <li class="active"><a href="#justified-tab-1" data-toggle="tab" aria-expanded="true">Variant Report(s)</a></li>
+        </ul>
+        <div class="tab-content m-b-0">
+          <div class="tab-pane fade active in" id="justified-tab-1">
+            <!-- table 4 -->
+            <div class="row">
+              <!-- begin panel -->
+              <div class="panel panel-success">
+                <div class="panel-heading">
+                  <div class="panel-heading-btn">
+                  </div>
+                  <h4 class="panel-title">Pending Review</h4>
+                </div>
+                <div class="col-md-12 bg-success-light">
+                  <div class="col-md-6">
+                    <div class="dataTables_length text-white" id="data-table_length"><label>Show <select name="data-table_length" aria-controls="data-table" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div>
+                  </div>
+                  <div class="col-md-6">
+                    <div id="data-table_filter" class="dataTables_filter pull-right text-white"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="data-table"></label></div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="table-responsive col-lg-12">
+                    <table class="table table-td-valign-middle">
+                      <thead>
+                        <tr class="success">
+                          <th>Patient ID</th>
+                          <th>Molecular ID</th>
+                          <th>Variant Report</th>
+                          <th>Location</th>
+                          <th>Patient Status</th>
+                          <th>Specimen Received Date</th>
+                          <th>Variant Report Recieved Date</th>
+                          <th>Days Pending</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let table4 of table4Data.variant_reports;let i=index" [ngClass]="{true:'evenclass',false:'oddclass'}[i%2==0]">
+                          <td>{{table4.patientSequenceNumber}}</td>
+                          <td>{{table4.molecularSequenceNumber}}</td>
+                          <td><strong>Variant Report</strong></td>
+                          <td>{{table4.location}}</td>
+                          <td>{{table4.currentPatientStatus}}</td>
+                          <!--| date:'shortDate'-->
+                          <td>{{table4.specimenReceivedDate}}</td>
+                          <!--| date:'shortDate'-->
+                          <td>{{table4.ngsDateReceived}}</td>
+                          <td>{{table4.daysPending}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-5">
+                    <div class="dataTables_info" id="data-table_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
+                  </div>
+                  <div class="col-md-7">
+                    <div class="dataTables_paginate paging_simple_numbers pull-right" id="data-table_paginate">
+                      <ul class="pagination">
+                        <li class="paginate_button previous" id="data-table_previous" [ngClass]="disablePrevious()">
+                          <a href="javascript:void(0)" (click)="firstPage()" aria-controls="data-table" data-dt-idx="0" tabindex="0">First</a>
+                        </li>
+                        <li class="paginate_button previous" id="data-table_previous" [ngClass]="disablePrevious()">
+                          <a href="javascript:void(0)" (click)="prevPage()" aria-controls="data-table" data-dt-idx="0" tabindex="0">Previous</a>
+                        </li>
+                        <li class="paginate_button" *ngFor="let p of paginationRange();let i =index" (click)="setPage(p)">
+                          <a href="javascript:void(0)" (click)="pageClicked(p)" aria-controls="data-table" data-dt-idx="1" tabindex="0">{{p+1}}</a>
+                        </li>
+                        <li class="paginate_button next" id="data-table_next" [ngClass]="disableNext()">
+                          <a href="javascript:void(0)" (click)="nextPage()" aria-controls="data-table" data-dt-idx="7" tabindex="0">Next</a>
+                        </li>
+                        <li class="paginate_button next" id="data-table_next" [ngClass]="disableNext()">
+                          <a href="javascript:void(0)" (click)="lastPage()" aria-controls="data-table" data-dt-idx="0" tabindex="0">Last</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- end panel -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end panel -->
+    </div>
   </div>
 </div>
