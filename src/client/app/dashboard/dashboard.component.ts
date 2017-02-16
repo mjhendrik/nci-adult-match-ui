@@ -3,6 +3,7 @@ import { NameListService } from '../shared/name-list/name-list.service';
 
 import { routerTransition } from './../shared/router.animations';
 
+
 /**
  * This class represents the lazy loaded DashboardComponent.
  */
@@ -12,7 +13,7 @@ import { routerTransition } from './../shared/router.animations';
   templateUrl: 'dashboard.component.html',
   styleUrls: ['dashboard.component.css'],
   animations: [routerTransition()],
-  host: { '[@routerTransition]': '' }
+  host: { '[@routerTransition]': '' },
 })
 export class DashboardComponent implements OnInit {
 
@@ -21,7 +22,13 @@ export class DashboardComponent implements OnInit {
   names: any[] = [];
   currentPage: number;
   numberOfRecords: number;
-
+  searchterm: string = '';
+  orderByString: string[];
+  totalPages: number;
+  RecordsPerPage:number[];
+  paginationRange:number[];
+  rangeSize: number = 5;
+  start: number;
   /**
    * Creates an instance of the DashboardComponent with the injected
    * NameListService.
@@ -36,7 +43,13 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.getNames();
     this.currentPage = 0;
-    this.numberOfRecords = 25;
+    this.numberOfRecords = 10;
+    this.orderByString = new Array(2);
+    this.RecordsPerPage=[10,25,50,100];
+    this.orderByString.push("patientSequenceNumber");
+    this.paginationRange=new Array<number>(this.rangeSize);
+    this.calculatetotalPages(this.table1Data.variant_reports.length);
+    
   }
 
   /**
@@ -66,11 +79,14 @@ export class DashboardComponent implements OnInit {
   }
 
   disableNext(): string {
-    return this.currentPage === this.totalPages() ? "disabled" : "";
+    return this.currentPage === this.totalPages ? "disabled" : "";
   }
 
-  totalPages(): number {
-    return Math.ceil(this.table1Data.variant_reports.length / this.numberOfRecords) - 1;
+  calculatetotalPages(tablelen: number): void {
+    this.numberOfRecords=this.RecordsPerPage[0];
+    this.totalPages = Math.ceil(tablelen / this.numberOfRecords) - 1;
+    this.currentPage=0;
+    this.setPaginationRange();
   }
 
   setPage(page: number): void {
@@ -78,7 +94,7 @@ export class DashboardComponent implements OnInit {
   }
 
   nextPage(): void {
-    if (this.currentPage < this.totalPages())
+    if (this.currentPage < this.totalPages)
       this.currentPage++;
   }
 
@@ -91,38 +107,77 @@ export class DashboardComponent implements OnInit {
     console.log(p);
   }
 
-  rangeSize: number = 5;
-  ps: number[] = [];
-  start: number;
-  paginationRange(): number[] {
 
-    this.ps = [];
+  resetPaginationRange(tabIndex:number):void{
+    this.currentPage=0;
+     switch (tabIndex) {
+      case 1:
+        this.totalPages = Math.ceil(this.table1Data.variant_reports.length / this.numberOfRecords) - 1;
+        break;
+      case 2:
+       this.totalPages = Math.ceil(this.table2Data.assignment_reports.length / this.numberOfRecords) - 1;
+        break;
+      case 3:
+        this.totalPages = Math.ceil(this.table3Data.length / this.numberOfRecords) - 1;
+        break;
+      default: this.totalPages = Math.ceil(this.table1Data.variant_reports.length / this.numberOfRecords) - 1;
+        break;
+
+    }
+    console.log(this.totalPages);
+    this.setPaginationRange();
+  }
+  
+  setPaginationRange(): void {
+    console.log("changed");
+
+    this.paginationRange = [];
 
     this.start = this.currentPage;
 
-    if (this.start > this.totalPages() - this.rangeSize) {
+    if (this.start > this.totalPages - this.rangeSize) {
 
-      this.start = this.totalPages() - this.rangeSize + 1;
+      this.start = this.totalPages - this.rangeSize + 1;
 
     }
 
     for (var i = this.start; i < this.start + this.rangeSize; i++) {
       if (i >= 0)
-        this.ps.push(i);
+        this.paginationRange.push(i);
     }
-
-    return this.ps;
   }
 
   lastPage(): void {
-    console.log(this.totalPages());
-    this.currentPage = this.totalPages();
-    console.log(this.currentPage);
+    this.currentPage = this.totalPages;
   }
 
   firstPage(): void {
     this.currentPage = 0;
     console.log(this.currentPage);
+  }
+
+
+  orderByColumn(key: string): void {
+    this.orderByString.length = 0;
+    this.orderByString.push(key);
+  }
+
+  setTab(tabIndex: number): void {
+
+    switch (tabIndex) {
+      case 1:
+        this.calculatetotalPages(this.table1Data.variant_reports.length);
+        break;
+      case 2:
+        this.calculatetotalPages(this.table2Data.assignment_reports.length);
+        break;
+      case 3:
+        this.calculatetotalPages(this.table3Data.length);
+        break;
+      default: this.calculatetotalPages(this.table1Data.variant_reports.length);
+        break;
+
+    }
   }
 
 
