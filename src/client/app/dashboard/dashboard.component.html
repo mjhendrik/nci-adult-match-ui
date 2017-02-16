@@ -92,7 +92,7 @@
                     <table class="table table-td-valign-middle">
                       <thead>
                         <tr class="purple">
-                          <th (click)="orderByColumn('patientSequenceNumber')">Patient Sequence Number </th>
+                          <th (click)="orderByColumn('patientSequenceNumber')">Patient ID </th>
                           <th (click)="orderByColumn('molecularSequenceNumber')">Molecular ID</th>
                           <th (click)="orderByColumn('Variant Report')">Variant Report</th>
                           <th (click)="orderByColumn('location')">Location</th>
@@ -111,6 +111,7 @@
                           <td>{{table1.location}}</td>
                           <td>{{table1.currentPatientStatus}}</td>
                           <td>{{table1.specimenReceivedDate | date:'MMMM d, y h:mm a UTC'}}</td>
+                          <!--provide: LOCALE_ID, useValue: "IS-IS"-->
                           <td>{{table1.ngsDateReceived | date:'MMMM d, y h:mm a UTC'}}</td>
                           <td>{{table1.daysPending}}</td>
                         </tr>
