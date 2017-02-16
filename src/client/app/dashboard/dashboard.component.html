@@ -69,22 +69,24 @@
                   <h4 class="panel-title">Pending Review</h4>
                 </div>
                 <div class="col-md-12 bg-purple-light">
-                  <div class="col-md-6">
-                    <div class="dataTables_length text-white" id="data-table_length">
+                  <div class="col-md-6 p-l-5">
+                    <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                       <label>Show
-                        <select name="data-table_length" [(ngModel)]="numberOfRecords" (change)="resetPaginationRange(2)" aria-controls="data-table" class="form-control input-sm">
+                        <select name="data-table_length" [(ngModel)]="numberOfRecords" (change)="resetPaginationRange(1)" aria-controls="data-table" class="form-control input-sm">
                           <option value=10>10</option>
                           <option value=25>25</option>
                           <option value=50>50</option>
                           <option value=100>100</option>
-                          </select> 
-                          entries</label></div>
+                        </select>
+                      entries</label>
+                    </div>
                   </div>
-                  <div class="col-md-6">
-                    <div id="data-table_filter" class="dataTables_filter pull-right text-white">
-                      <label>Search:{{searchterm}}
-                      <input type="text" [(ngModel)]="searchterm" class="form-control input-sm" placeholder="" aria-controls="data-table">
-                      </label></div>
+                  <div class="col-md-6 p-r-5">
+                    <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
+                      <label>Search:
+                        <input type="text" [(ngModel)]="searchterm" class="form-control input-sm" placeholder="" aria-controls="data-table">
+                      </label>
+                    </div>
                   </div>
                 </div>
                 <div class="row">
@@ -160,19 +162,24 @@
                   <h4 class="panel-title">Needing Confirmation</h4>
                 </div>
                 <div class="col-md-12 bg-purple-light">
-                  <div class="col-md-6">
-                    <div class="dataTables_length text-white" id="data-table_length">
+                  <div class="col-md-6 p-l-5">
+                    <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                       <label>Show
                         <select name="data-table_length" [(ngModel)]="numberOfRecords" (change)="resetPaginationRange(2)" aria-controls="data-table" class="form-control input-sm">
                           <option value=10>10</option>
                           <option value=25>25</option>
                           <option value=50>50</option>
                           <option value=100>100</option>
-                          </select> 
-                          entries</label></div>
+                        </select> 
+                      entries</label>
+                    </div>
                   </div>
-                  <div class="col-md-6">
-                    <div id="data-table_filter" class="dataTables_filter pull-right text-white"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="data-table"></label></div>
+                  <div class="col-md-6 p-r-5">
+                    <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
+                      <label>Search:
+                        <input type="search" class="form-control input-sm" placeholder="" aria-controls="data-table">
+                      </label>
+                    </div>
                   </div>
                 </div>
                 <div class="row">
@@ -241,19 +248,24 @@
                   <h4 class="panel-title">Assignment Report</h4>
                 </div>
                 <div class="col-md-12 bg-purple-light">
-                  <div class="col-md-6">
-                    <div class="dataTables_length text-white" id="data-table_length">
+                  <div class="col-md-6 p-l-5">
+                    <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                       <label>Show
-                        <select name="data-table_length" [(ngModel)]="numberOfRecords" (change)="resetPaginationRange(2)" aria-controls="data-table" class="form-control input-sm">
+                        <select name="data-table_length" [(ngModel)]="numberOfRecords" (change)="resetPaginationRange(3)" aria-controls="data-table" class="form-control input-sm">
                           <option value=10>10</option>
                           <option value=25>25</option>
                           <option value=50>50</option>
                           <option value=100>100</option>
-                          </select> 
-                          entries</label></div>
+                        </select> 
+                      entries</label>
+                    </div>
                   </div>
-                  <div class="col-md-6">
-                    <div id="data-table_filter" class="dataTables_filter pull-right text-white"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="data-table"></label></div>
+                  <div class="col-md-6 p-r-5">
+                    <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
+                      <label>Search:
+                        <input type="text" [(ngModel)]="searchterm" class="form-control input-sm" placeholder="" aria-controls="data-table">
+                      </label>
+                    </div>
                   </div>
                 </div>
                 <div class="row">
