@@ -1,7 +1,7 @@
 <div id="content" class="content">
   <div class="row">
-    <!-- begin col-4 -->
-    <div class="col-md-4" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+    <!-- begin col-3 -->
+    <div class="col-md-3" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
       <!-- begin widget -->
       <a class="link-none" href="javascript:void(0)" [routerLink]="['/patients']">
         <div class="widget widget-stat bg-purple text-white">
@@ -9,15 +9,15 @@
           <div class="widget-stat-info">
             <div class="widget-stat-title text-right">Patients</div>
             <div class="widget-stat-number text-right">206</div>
-            <div class="widget-stat-text text-right">8 Patients Awaiting Approval</div>
+            <div class="widget-stat-text text-right">On Treatment Arm | Off Trail</div>
           </div>
         </div>
       </a>
       <!-- end widget -->
     </div>
-    <!-- end col-4 -->
-    <!-- begin col-4 -->
-    <div class="col-md-4" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+    <!-- end col-3 -->
+    <!-- begin col-3 -->
+    <div class="col-md-3" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
       <!-- begin widget -->
       <a class="link-none" href="javascript:void(0)" [routerLink]="['/ta']">
         <div class="widget widget-stat bg-success text-white">
@@ -25,15 +25,15 @@
           <div class="widget-stat-info">
             <div class="widget-stat-title text-right">Treatment Arms</div>
             <div class="widget-stat-number text-right">29</div>
-            <div class="widget-stat-text text-right">48 Treatment Arm Slots Available</div>
+            <div class="widget-stat-text text-right">Pending | Open | Suspended</div>
           </div>
         </div>
       </a>
       <!-- end widget -->
     </div>
-    <!-- end col-4 -->
-    <!-- begin col-4 -->
-    <div class="col-md-4" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+    <!-- end col-3 -->
+    <!-- begin col-3 -->
+    <div class="col-md-3" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
       <!-- begin widget -->
       <a class="link-none" href="javascript:void(0)" [routerLink]="['/bt']">
         <div class="widget widget-stat bg-info text-white">
@@ -41,13 +41,29 @@
           <div class="widget-stat-info">
             <div class="widget-stat-title text-right">Biopsy Tracking</div>
             <div class="widget-stat-number text-right">164</div>
-            <div class="widget-stat-text text-right">37 Biopsy Specimen In Transit</div>
+            <div class="widget-stat-text text-right">Biopsy | Molecular</div>
           </div>
         </div>
       </a>
       <!-- end widget -->
     </div>
-    <!-- end col-4 -->
+    <!-- end col-3 -->
+    <!-- begin col-3 -->
+    <div class="col-md-3" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      <!-- begin widget -->
+      <a class="link-none" href="javascript:void(0)" [routerLink]="['/bt']">
+        <div class="widget widget-stat bg-inverse text-white">
+          <div class="widget-stat-icon"><i class="fa fa-flask fa-lg"></i></div>
+          <div class="widget-stat-info">
+            <div class="widget-stat-title text-right">CLIA Lab</div>
+            <div class="widget-stat-number text-right">123</div>
+            <div class="widget-stat-text text-right">Failed | Passed | Pending</div>
+          </div>
+        </div>
+      </a>
+      <!-- end widget -->
+    </div>
+    <!-- end col-3 -->
     <div class="col-md-12">
       <!-- begin panel -->
       <div class="panel">
@@ -479,78 +495,6 @@
         </div>
       </div>
       <!-- end panel -->
-    </div>
-    <div class="col-md-1">
-      <!-- begin widget -->
-      <div class="widget widget-stat bg-inverse text-white">
-      </div>
-      <!-- end widget -->
-    </div>
-    <div class="col-md-1">
-      <!-- begin widget -->
-      <div class="widget widget-stat bg-grey text-white">
-      </div>
-      <!-- end widget -->
-    </div>
-    <div class="col-md-1">
-      <!-- begin widget -->
-      <div class="widget widget-stat bg-purple text-white">
-      </div>
-      <!-- end widget -->
-    </div>
-    <div class="col-md-1">
-      <!-- begin widget -->
-      <div class="widget widget-stat bg-red text-white">
-      </div>
-      <!-- end widget -->
-    </div>
-    <div class="col-md-1">
-      <!-- begin widget -->
-      <div class="widget widget-stat bg-primary text-white">
-      </div>
-      <!-- end widget -->
-    </div>
-    <div class="col-md-1">
-      <!-- begin widget -->
-      <div class="widget widget-stat bg-info text-white">
-      </div>
-      <!-- end widget -->
-    </div>
-    <div class="col-md-1">
-      <!-- begin widget -->
-      <div class="widget widget-stat bg-success text-white">
-      </div>
-      <!-- end widget -->
-    </div>
-    <div class="col-md-1">
-      <!-- begin widget -->
-      <div class="widget widget-stat bg-lime text-white">
-      </div>
-      <!-- end widget -->
-    </div>
-    <div class="col-md-1">
-      <!-- begin widget -->
-      <div class="widget widget-stat bg-warning text-white">
-      </div>
-      <!-- end widget -->
-    </div>
-    <div class="col-md-1">
-      <!-- begin widget -->
-      <div class="widget widget-stat bg-danger text-white">
-      </div>
-      <!-- end widget -->
-    </div>
-    <div class="col-md-1">
-      <!-- begin widget -->
-      <div class="widget widget-stat no-bg text-white">
-      </div>
-      <!-- end widget -->
-    </div>
-    <div class="col-md-1">
-      <!-- begin widget -->
-      <div class="widget widget-stat bg-white text-white">
-      </div>
-      <!-- end widget -->
     </div>
   </div>
 </div>
