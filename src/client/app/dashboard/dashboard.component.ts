@@ -22,7 +22,9 @@ export class DashboardComponent implements OnInit {
   names: any[] = [];
   currentPage: number;
   numberOfRecords: number;
-  searchterm: string = '';
+  searchterm1: string = '';
+  searchterm2: string = '';
+  searchterm3: string = '';
   orderByString: string[];
   totalPages: number;
   RecordsPerPage: number[];
