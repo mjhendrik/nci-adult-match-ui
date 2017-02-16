@@ -11,9 +11,10 @@ import { TaModule } from './ta/ta.module';
 import { PatientsModule } from './patients/patients.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { SharedModule } from './shared/shared.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  imports: [BrowserModule, HttpModule, AppRoutingModule, CliaModule, BtModule, TaModule, PatientsModule, DashboardModule, SharedModule.forRoot()],
+  imports: [BrowserModule, HttpModule, AppRoutingModule, CliaModule, BtModule, TaModule, PatientsModule, DashboardModule, SharedModule.forRoot(), FormsModule],
   declarations: [AppComponent],
   providers: [{
     provide: APP_BASE_HREF,
