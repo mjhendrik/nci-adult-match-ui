@@ -52,10 +52,10 @@
       <!-- begin panel -->
       <div class="panel">
         <ul class="nav nav-tabs nav-tabs-primary">
-          <li class="active"><a href="#justified-tab-1" data-toggle="tab" aria-expanded="true">Variant Report(s)</a></li>
-          <li class=""><a href="#justified-tab-2" data-toggle="tab" aria-expanded="false">Assignment Report(s)</a></li>
-          <li class=""><a href="#justified-tab-3" data-toggle="tab" aria-expanded="false">Patient(s) Awaiting</a></li>
-          <li class=""><a href="#justified-tab-4" data-toggle="tab" aria-expanded="false">Extra Tab</a></li>
+          <li class="active"><a href="#justified-tab-1" (click)="setTab(1)" data-toggle="tab" aria-expanded="true">Variant Report(s)</a></li>
+          <li class=""><a href="#justified-tab-2" (click)="setTab(2)" data-toggle="tab" aria-expanded="false">Assignment Report(s)</a></li>
+          <li class=""><a href="#justified-tab-3" (click)="setTab(3)" data-toggle="tab" aria-expanded="false">Patient(s) Awaiting</a></li>
+          <li class=""><a href="#justified-tab-4" (click)="setTab(4)" data-toggle="tab" aria-expanded="false">Extra Tab</a></li>
         </ul>
         <div class="tab-content m-b-0">
           <div class="tab-pane fade active in" id="justified-tab-1">
@@ -70,10 +70,21 @@
                 </div>
                 <div class="col-md-12 bg-purple-light">
                   <div class="col-md-6">
-                    <div class="dataTables_length" id="data-table_length"><label>Show <select name="data-table_length" aria-controls="data-table" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div>
+                    <div class="dataTables_length text-white" id="data-table_length">
+                      <label>Show
+                        <select name="data-table_length" [(ngModel)]="numberOfRecords" (change)="resetPaginationRange(2)" aria-controls="data-table" class="form-control input-sm">
+                          <option value=10>10</option>
+                          <option value=25>25</option>
+                          <option value=50>50</option>
+                          <option value=100>100</option>
+                          </select> 
+                          entries</label></div>
                   </div>
                   <div class="col-md-6">
-                    <div id="data-table_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="data-table"></label></div>
+                    <div id="data-table_filter" class="dataTables_filter pull-right text-white">
+                      <label>Search:{{searchterm}}
+                      <input type="text" [(ngModel)]="searchterm" class="form-control input-sm" placeholder="" aria-controls="data-table">
+                      </label></div>
                   </div>
                 </div>
                 <div class="row">
@@ -81,27 +92,26 @@
                     <table class="table table-td-valign-middle">
                       <thead>
                         <tr class="purple">
-                          <th>Patient ID</th>
-                          <th>Molecular ID</th>
-                          <th>Variant Report</th>
-                          <th>Location</th>
-                          <th>Patient Status</th>
-                          <th>Specimen Received Date</th>
-                          <th>Variant Report Recieved Date</th>
-                          <th>Days Pending</th>
+                          <th (click)="orderByColumn('patientSequenceNumber')">Patient Sequence Number </th>
+                          <th (click)="orderByColumn('molecularSequenceNumber')">Molecular ID</th>
+                          <th (click)="orderByColumn('Variant Report')">Variant Report</th>
+                          <th (click)="orderByColumn('location')">Location</th>
+                          <th (click)="orderByColumn('currentPatientStatus')">Patient Status</th>
+                          <th (click)="orderByColumn('specimenReceivedDate')">Specimen Received Date</th>
+                          <th (click)="orderByColumn('ngsDateReceived')">Variant Report Recieved Date</th>
+                          <th (click)="orderByColumn('daysPending')">Days Pending</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let table1 of table1Data.variant_reports;let i=index" [ngClass]="{true:'evenclass',false:'oddclass'}[i%2==0]">
+                        <tr *ngFor="let table1 of table1Data.variant_reports | filterByText: searchterm | slice: (currentPage)*numberOfRecords: (currentPage+1)*numberOfRecords | orderBy : orderByString;let i=index"
+                          [ngClass]="{true:'evenclass',false:'oddclass'}[i%2==0]">
                           <td>{{table1.patientSequenceNumber}}</td>
                           <td>{{table1.molecularSequenceNumber}}</td>
                           <td><strong>Variant Report</strong></td>
                           <td>{{table1.location}}</td>
                           <td>{{table1.currentPatientStatus}}</td>
-                          <!--| date:'shortDate'-->
-                          <td>{{table1.specimenReceivedDate}}</td>
-                          <!--| date:'shortDate'-->
-                          <td>{{table1.ngsDateReceived}}</td>
+                          <td>{{table1.specimenReceivedDate | date:'fullDate'}}</td>
+                          <td>{{table1.ngsDateReceived | date:'fullDate'}}</td>
                           <td>{{table1.daysPending}}</td>
                         </tr>
                       </tbody>
@@ -113,7 +123,7 @@
                     <div class="dataTables_info" id="data-table_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
                   </div>
                   <div class="col-md-7">
-                    <div class="dataTables_paginate paging_simple_numbers" id="data-table_paginate">
+                    <div class="dataTables_paginate paging_simple_numbers pull-right" id="data-table_paginate">
                       <ul class="pagination">
                         <li class="paginate_button previous" id="data-table_previous" [ngClass]="disablePrevious()">
                           <a href="javascript:void(0)" (click)="firstPage()" aria-controls="data-table" data-dt-idx="0" tabindex="0">First</a>
@@ -121,7 +131,7 @@
                         <li class="paginate_button previous" id="data-table_previous" [ngClass]="disablePrevious()">
                           <a href="javascript:void(0)" (click)="prevPage()" aria-controls="data-table" data-dt-idx="0" tabindex="0">Previous</a>
                         </li>
-                        <li class="paginate_button" *ngFor="let p of paginationRange();let i =index" (click)="setPage(p)">
+                        <li class="paginate_button" *ngFor="let p of paginationRange;let i =index" (click)="setPage(p)">
                           <a href="javascript:void(0)" (click)="pageClicked(p)" aria-controls="data-table" data-dt-idx="1" tabindex="0">{{p+1}}</a>
                         </li>
                         <li class="paginate_button next" id="data-table_next" [ngClass]="disableNext()">
@@ -150,10 +160,18 @@
                 </div>
                 <div class="col-md-12 bg-purple-light">
                   <div class="col-md-6">
-                    <div class="dataTables_length" id="data-table_length"><label>Show <select name="data-table_length" aria-controls="data-table" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div>
+                    <div class="dataTables_length text-white" id="data-table_length">
+                      <label>Show
+                        <select name="data-table_length" [(ngModel)]="numberOfRecords" (change)="resetPaginationRange(2)" aria-controls="data-table" class="form-control input-sm">
+                          <option value=10>10</option>
+                          <option value=25>25</option>
+                          <option value=50>50</option>
+                          <option value=100>100</option>
+                          </select> 
+                          entries</label></div>
                   </div>
                   <div class="col-md-6">
-                    <div id="data-table_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="data-table"></label></div>
+                    <div id="data-table_filter" class="dataTables_filter pull-right text-white"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="data-table"></label></div>
                   </div>
                 </div>
                 <div class="row">
@@ -169,7 +187,8 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let table2 of table2Data.assignment_reports;let i=index" [ngClass]="{true:'evenclass',false:'oddclass'}[i%2==0]">
+                        <tr *ngFor="let table2 of table2Data.assignment_reports | slice: (currentPage)*numberOfRecords: (currentPage+1)*numberOfRecords;let i=index"
+                          [ngClass]="{true:'evenclass',false:'oddclass'}[i%2==0]">
                           <td>{{table2.patientSequenceNumber}}</td>
                           <td>{{table2.patientCurrentStatus}}</td>
                           <td><strong>Assignment Report</strong></td>
@@ -186,7 +205,7 @@
                     <div class="dataTables_info" id="data-table_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
                   </div>
                   <div class="col-md-7">
-                    <div class="dataTables_paginate paging_simple_numbers" id="data-table_paginate">
+                    <div class="dataTables_paginate paging_simple_numbers pull-right" id="data-table_paginate">
                       <ul class="pagination">
                         <li class="paginate_button previous" id="data-table_previous" [ngClass]="disablePrevious()">
                           <a href="javascript:void(0)" (click)="firstPage()" aria-controls="data-table" data-dt-idx="0" tabindex="0">First</a>
@@ -194,7 +213,7 @@
                         <li class="paginate_button previous" id="data-table_previous" [ngClass]="disablePrevious()">
                           <a href="javascript:void(0)" (click)="prevPage()" aria-controls="data-table" data-dt-idx="0" tabindex="0">Previous</a>
                         </li>
-                        <li class="paginate_button" *ngFor="let p of paginationRange();let i =index" (click)="setPage(p)">
+                        <li class="paginate_button" *ngFor="let p of paginationRange;let i =index" (click)="setPage(p)">
                           <a href="javascript:void(0)" (click)="pageClicked(p)" aria-controls="data-table" data-dt-idx="1" tabindex="0">{{p+1}}</a>
                         </li>
                         <li class="paginate_button next" id="data-table_next" [ngClass]="disableNext()">
@@ -223,10 +242,18 @@
                 </div>
                 <div class="col-md-12 bg-purple-light">
                   <div class="col-md-6">
-                    <div class="dataTables_length" id="data-table_length"><label>Show <select name="data-table_length" aria-controls="data-table" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div>
+                    <div class="dataTables_length text-white" id="data-table_length">
+                      <label>Show
+                        <select name="data-table_length" [(ngModel)]="numberOfRecords" (change)="resetPaginationRange(2)" aria-controls="data-table" class="form-control input-sm">
+                          <option value=10>10</option>
+                          <option value=25>25</option>
+                          <option value=50>50</option>
+                          <option value=100>100</option>
+                          </select> 
+                          entries</label></div>
                   </div>
                   <div class="col-md-6">
-                    <div id="data-table_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="data-table"></label></div>
+                    <div id="data-table_filter" class="dataTables_filter pull-right text-white"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="data-table"></label></div>
                   </div>
                 </div>
                 <div class="row">
@@ -242,7 +269,8 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let table3 of table3Data;let i=index" [ngClass]="{true:'evenclass',false:'oddclass'}[i%2==0]">
+                        <tr *ngFor="let table3 of table3Data | slice: (currentPage)*numberOfRecords: (currentPage+1)*numberOfRecords;let i=index"
+                          [ngClass]="{true:'evenclass',false:'oddclass'}[i%2==0]">
                           <td>{{table3.psn}}</td>
                           <td>{{table3.msn}}</td>
                           <td><strong>Variant Report</strong></td>
@@ -258,7 +286,7 @@
                     <div class="dataTables_info" id="data-table_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
                   </div>
                   <div class="col-md-7">
-                    <div class="dataTables_paginate paging_simple_numbers" id="data-table_paginate">
+                    <div class="dataTables_paginate paging_simple_numbers pull-right" id="data-table_paginate">
                       <ul class="pagination">
                         <li class="paginate_button previous" id="data-table_previous" [ngClass]="disablePrevious()">
                           <a href="javascript:void(0)" (click)="firstPage()" aria-controls="data-table" data-dt-idx="0" tabindex="0">First</a>
@@ -266,7 +294,7 @@
                         <li class="paginate_button previous" id="data-table_previous" [ngClass]="disablePrevious()">
                           <a href="javascript:void(0)" (click)="prevPage()" aria-controls="data-table" data-dt-idx="0" tabindex="0">Previous</a>
                         </li>
-                        <li class="paginate_button" *ngFor="let p of paginationRange();let i =index" (click)="setPage(p)">
+                        <li class="paginate_button" *ngFor="let p of paginationRange;let i =index" (click)="setPage(p)">
                           <a href="javascript:void(0)" (click)="pageClicked(p)" aria-controls="data-table" data-dt-idx="1" tabindex="0">{{p+1}}</a>
                         </li>
                         <li class="paginate_button next" id="data-table_next" [ngClass]="disableNext()">
@@ -286,14 +314,14 @@
           <div class="tab-pane fade" id="justified-tab-4">
             <!-- table 4 -->
             <div class="row">
-              <div class="panel pagination-inverse m-b-0 clearfix">
+              <div class="panel pagination-inverse clearfix">
                 <div id="data-table_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="dataTables_length" id="data-table_length"><label>Show <select name="data-table_length" aria-controls="data-table" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div>
                     </div>
                     <div class="col-sm-6">
-                      <div id="data-table_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="data-table"></label></div>
+                      <div id="data-table_filter" class="dataTables_filter pull-right"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="data-table"></label></div>
                     </div>
                   </div>
                   <div class="row">
@@ -418,7 +446,7 @@
                       <div class="dataTables_info" id="data-table_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
                     </div>
                     <div class="col-sm-7">
-                      <div class="dataTables_paginate paging_simple_numbers" id="data-table_paginate">
+                      <div class="dataTables_paginate paging_simple_numbers pull-right" id="data-table_paginate">
                         <ul class="pagination">
                           <li class="paginate_button previous disabled" id="data-table_previous"><a href="#" aria-controls="data-table" data-dt-idx="0" tabindex="0">Previous</a></li>
                           <li class="paginate_button active"><a href="#" aria-controls="data-table" data-dt-idx="1" tabindex="0">1</a></li>
