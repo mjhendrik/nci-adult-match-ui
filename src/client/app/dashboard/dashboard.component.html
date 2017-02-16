@@ -110,8 +110,8 @@
                           <td><strong>Variant Report</strong></td>
                           <td>{{table1.location}}</td>
                           <td>{{table1.currentPatientStatus}}</td>
-                          <td>{{table1.specimenReceivedDate | date:'MMMM d, y h:mm a Z'}}</td>
-                          <td>{{table1.ngsDateReceived | date:'MMMM d, y h:mm a Z'}}</td>
+                          <td>{{table1.specimenReceivedDate | date:'MMMM d, y h:mm a UTC'}}</td>
+                          <td>{{table1.ngsDateReceived | date:'MMMM d, y h:mm a UTC'}}</td>
                           <td>{{table1.daysPending}}</td>
                         </tr>
                       </tbody>
@@ -192,7 +192,7 @@
                           <td>{{table2.patientSequenceNumber}}</td>
                           <td>{{table2.patientCurrentStatus}}</td>
                           <td><strong>Assignment Report</strong></td>
-                          <td>{{table2.dateAssigned | date:'MMMM d, y h:mm a Z'}}</td>
+                          <td>{{table2.dateAssigned | date:'MMMM d, y h:mm a UTC'}}</td>
                           <td>{{table2.hoursPending}}</td>
                         </tr>
                       </tbody>
@@ -274,7 +274,7 @@
                           <td>{{table3.msn}}</td>
                           <td><strong>Variant Report</strong></td>
                           <td>AWAITING DATA</td>
-                          <td>{{table3.date_verified | date:'MMMM d, y h:mm a Z'}}</td>
+                          <td>{{table3.date_verified | date:'MMMM d, y h:mm a UTC'}}</td>
                         </tr>
                       </tbody>
                     </table>
