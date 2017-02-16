@@ -25,8 +25,8 @@ export class DashboardComponent implements OnInit {
   searchterm: string = '';
   orderByString: string[];
   totalPages: number;
-  RecordsPerPage:number[];
-  paginationRange:number[];
+  RecordsPerPage: number[];
+  paginationRange: number[];
   rangeSize: number = 5;
   start: number;
   /**
@@ -45,11 +45,11 @@ export class DashboardComponent implements OnInit {
     this.currentPage = 0;
     this.numberOfRecords = 10;
     this.orderByString = new Array(2);
-    this.RecordsPerPage=[10,25,50,100];
+    this.RecordsPerPage = [10, 25, 50, 100];
     this.orderByString.push("patientSequenceNumber");
-    this.paginationRange=new Array<number>(this.rangeSize);
+    this.paginationRange = new Array<number>(this.rangeSize);
     this.calculatetotalPages(this.table1Data.variant_reports.length);
-    
+
   }
 
   /**
@@ -83,9 +83,9 @@ export class DashboardComponent implements OnInit {
   }
 
   calculatetotalPages(tablelen: number): void {
-    this.numberOfRecords=this.RecordsPerPage[0];
+    this.numberOfRecords = this.RecordsPerPage[0];
     this.totalPages = Math.ceil(tablelen / this.numberOfRecords) - 1;
-    this.currentPage=0;
+    this.currentPage = 0;
     this.setPaginationRange();
   }
 
@@ -108,14 +108,14 @@ export class DashboardComponent implements OnInit {
   }
 
 
-  resetPaginationRange(tabIndex:number):void{
-    this.currentPage=0;
-     switch (tabIndex) {
+  resetPaginationRange(tabIndex: number): void {
+    this.currentPage = 0;
+    switch (tabIndex) {
       case 1:
         this.totalPages = Math.ceil(this.table1Data.variant_reports.length / this.numberOfRecords) - 1;
         break;
       case 2:
-       this.totalPages = Math.ceil(this.table2Data.assignment_reports.length / this.numberOfRecords) - 1;
+        this.totalPages = Math.ceil(this.table2Data.assignment_reports.length / this.numberOfRecords) - 1;
         break;
       case 3:
         this.totalPages = Math.ceil(this.table3Data.length / this.numberOfRecords) - 1;
@@ -127,7 +127,7 @@ export class DashboardComponent implements OnInit {
     console.log(this.totalPages);
     this.setPaginationRange();
   }
-  
+
   setPaginationRange(): void {
     console.log("changed");
 
