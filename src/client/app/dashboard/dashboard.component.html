@@ -84,7 +84,7 @@
                   <div class="col-md-6 p-r-5">
                     <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                       <label>Search:
-                        <input type="text" [(ngModel)]="searchterm" class="form-control input-sm" placeholder="" aria-controls="data-table">
+                        <input type="text" [(ngModel)]="searchterm1" class="form-control input-sm " placeholder="" aria-controls="data-table">
                       </label>
                     </div>
                   </div>
@@ -105,7 +105,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let table1 of table1Data.variant_reports | filterByText: searchterm | slice: (currentPage)*numberOfRecords: (currentPage+1)*numberOfRecords | orderBy : orderByString;let i=index"
+                        <tr *ngFor="let table1 of table1Data.variant_reports | filterByText: searchterm1 | slice: (currentPage)*numberOfRecords: (currentPage+1)*numberOfRecords | orderBy : orderByString;let i=index"
                           [ngClass]="{true:'evenclass',false:'oddclass'}[i%2==0]">
                           <td>{{table1.patientSequenceNumber}}</td>
                           <td>{{table1.molecularSequenceNumber}}</td>
@@ -177,7 +177,7 @@
                   <div class="col-md-6 p-r-5">
                     <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                       <label>Search:
-                        <input type="search" class="form-control input-sm" placeholder="" aria-controls="data-table">
+                        <input type="text" [(ngModel)]="searchterm2" class="form-control input-sm" placeholder="" aria-controls="data-table">
                       </label>
                     </div>
                   </div>
@@ -195,7 +195,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let table2 of table2Data.assignment_reports | slice: (currentPage)*numberOfRecords: (currentPage+1)*numberOfRecords;let i=index"
+                        <tr *ngFor="let table2 of table2Data.assignment_reports | filterByText: searchterm2 | slice: (currentPage)*numberOfRecords: (currentPage+1)*numberOfRecords | orderBy : orderByString;let i=index"
                           [ngClass]="{true:'evenclass',false:'oddclass'}[i%2==0]">
                           <td>{{table2.patientSequenceNumber}}</td>
                           <td>{{table2.patientCurrentStatus}}</td>
@@ -263,7 +263,7 @@
                   <div class="col-md-6 p-r-5">
                     <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                       <label>Search:
-                        <input type="text" [(ngModel)]="searchterm" class="form-control input-sm" placeholder="" aria-controls="data-table">
+                        <input type="text" [(ngModel)]="searchterm3" class="form-control input-sm" placeholder="" aria-controls="data-table">
                       </label>
                     </div>
                   </div>
@@ -281,7 +281,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let table3 of table3Data | slice: (currentPage)*numberOfRecords: (currentPage+1)*numberOfRecords;let i=index"
+                        <tr *ngFor="let table3 of table3Data | filterByText: searchterm3 | slice: (currentPage)*numberOfRecords: (currentPage+1)*numberOfRecords | orderBy : orderByString;let i=index"
                           [ngClass]="{true:'evenclass',false:'oddclass'}[i%2==0]">
                           <td>{{table3.psn}}</td>
                           <td>{{table3.msn}}</td>
