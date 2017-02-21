@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { routerTransition } from './../shared/router.animations';
-import { Pagination } from './../dashboard/paginationSetup';
+import { Pagination } from './../shared/pagination/paginationSetup';
 import { filterByText } from './../shared/pipes/filterpipe';
 /**
  * This class represents the lazy loaded TAComponent.
