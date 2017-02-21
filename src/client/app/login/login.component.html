@@ -37,7 +37,7 @@
       <br/>
 
       <p routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-        <button href="javascript:void(0)" [routerLink]="['/dashboard']" type="submit" class="btn btn-success btn-block">ACCESS NCI-MATCHBox</button>
+        <button href (click)="auth.login()" type="submit" class="btn btn-success btn-block">ACCESS NCI-MATCHBox</button>
       </p>
 
       <hr/>
@@ -50,22 +50,3 @@
     </div>
   </div>
 </div>
-<!-- auth0-js -->
-<!-- app/login.template.html -->
-
-<!--<form>
-  <div class="form-group">
-    <label for="name">Username</label>
-    <input type="text" class="form-control" #username placeholder="Enter your email">
-  </div>
-  <div class="form-group">
-    <label for="name">Password</label>
-    <input type="password" class="form-control" #password placeholder="Enter your password">
-  </div>
-  <button type="submit" class="btn btn-default" (click)="auth.login(username.value, password.value)">
-      Log In
-  </button>
-  <button type="submit" class="btn btn-default" (click)="auth.signup(username.value, password.value)">
-      Sign Up
-  </button>
-</form>-->

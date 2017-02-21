@@ -1,5 +1,6 @@
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { Component } from '@angular/core';
+import { Auth } from './../auth.service';
 
 /**
  * This class represents the navigation bar component.
@@ -13,5 +14,7 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
   location: Location;
-  constructor(location: Location) { this.location = location; }
+  constructor(location: Location, private auth: Auth) {
+    this.location = location;
+  }
 }
