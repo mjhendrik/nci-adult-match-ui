@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { routerTransition } from './../shared/router.animations';
-
+import { Pagination } from './../dashboard/paginationSetup';
+import { filterByText } from './../shared/pipes/filterpipe';
 /**
  * This class represents the lazy loaded TAComponent.
  */
@@ -11,9 +12,28 @@ import { routerTransition } from './../shared/router.animations';
   templateUrl: 'ta.component.html',
   styleUrls: ['ta.component.css'],
   animations: [routerTransition()],
-  host: { '[@routerTransition]': '' }
+  host: { '[@routerTransition]': '' },
+  providers: [filterByText]
 })
-export class TaComponent {
+export class TaComponent extends Pagination implements OnInit {
+
+  searchterm1: string = '';
+
+  constructor(public filterbytext: filterByText) {
+    super();
+
+  }
+
+  ngOnInit() {
+    this.initPagination(this.table4Data.variant_reports.length);
+    console.log(this.table4Data.variant_reports.length);
+  }
+
+  filterText(items: any[]): any[] {
+    let result = this.filterbytext.transform(items, this.searchterm1);
+    this.initPagination(result.length);
+    return result;
+  }
 
   table4Data: any = {
     "variant_reports": [

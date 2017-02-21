@@ -68,10 +68,10 @@
       <!-- begin panel -->
       <div class="panel">
         <ul class="nav nav-tabs nav-tabs-primary">
-          <li class="active"><a href="#justified-tab-1" (click)="setTab(1)" data-toggle="tab" aria-expanded="true">Variant Report(s)</a></li>
-          <li class=""><a href="#justified-tab-2" (click)="setTab(2)" data-toggle="tab" aria-expanded="false">Assignment Report(s)</a></li>
-          <li class=""><a href="#justified-tab-3" (click)="setTab(3)" data-toggle="tab" aria-expanded="false">Patient(s) Awaiting</a></li>
-          <li class=""><a href="#justified-tab-4" (click)="setTab(4)" data-toggle="tab" aria-expanded="false">Extra Tab</a></li>
+          <li class="active"><a href="#justified-tab-1" (click)="initTab(1)" data-toggle="tab" aria-expanded="true">Variant Report(s)</a></li>
+          <li class=""><a href="#justified-tab-2" (click)="initTab(2)" data-toggle="tab" aria-expanded="false">Assignment Report(s)</a></li>
+          <li class=""><a href="#justified-tab-3" (click)="initTab(3)" data-toggle="tab" aria-expanded="false">Patient(s) Awaiting</a></li>
+          <li class=""><a href="#justified-tab-4" (click)="initTab(4)" data-toggle="tab" aria-expanded="false">Extra Tab</a></li>
         </ul>
         <div class="tab-content m-b-0">
           <div class="tab-pane fade active in" id="justified-tab-1">
@@ -88,7 +88,7 @@
                   <div class="col-md-6 p-l-5">
                     <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                       <label>Show
-                        <select name="data-table_length" [(ngModel)]="numberOfRecords" (change)="resetPaginationRange(1)" aria-controls="data-table" class="form-control input-sm">
+                        <select name="data-table_length" [(ngModel)]="numberOfRecords" (change)="ifTableAvailable(1)" aria-controls="data-table" class="form-control input-sm">
                           <option value=10>10</option>
                           <option value=25>25</option>
                           <option value=50>50</option>
@@ -100,7 +100,7 @@
                   <div class="col-md-6 p-r-5">
                     <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                       <label>Search:
-                        <input type="text" [(ngModel)]="searchterm1" class="form-control input-sm " placeholder="" aria-controls="data-table">
+                        <input type="text" [(ngModel)]="searchterm1" (ngModelChange)="filterText(table1Data.variant_reports)" class="form-control input-sm " placeholder="" aria-controls="data-table">
                       </label>
                     </div>
                   </div>
@@ -121,7 +121,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let table1 of table1Data.variant_reports | filterByText: searchterm1 | slice: (currentPage)*numberOfRecords: (currentPage+1)*numberOfRecords | orderBy : orderByString;let i=index"
+                        <tr *ngFor="let table1 of table1Data.variant_reports |filterByText:searchterm1 | slice: (currentPage)*numberOfRecords: (currentPage+1)*numberOfRecords | orderBy : orderByString;let i=index"
                           [ngClass]="{true:'evenclass',false:'oddclass'}[i%2==0]">
                           <td>{{table1.patientSequenceNumber}}</td>
                           <td>{{table1.molecularSequenceNumber}}</td>
@@ -181,7 +181,7 @@
                   <div class="col-md-6 p-l-5">
                     <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                       <label>Show
-                        <select name="data-table_length" [(ngModel)]="numberOfRecords" (change)="resetPaginationRange(2)" aria-controls="data-table" class="form-control input-sm">
+                        <select name="data-table_length" [(ngModel)]="numberOfRecords" (change)="ifTableAvailable(2)" aria-controls="data-table" class="form-control input-sm">
                           <option value=10>10</option>
                           <option value=25>25</option>
                           <option value=50>50</option>
@@ -193,7 +193,7 @@
                   <div class="col-md-6 p-r-5">
                     <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                       <label>Search:
-                        <input type="text" [(ngModel)]="searchterm2" class="form-control input-sm" placeholder="" aria-controls="data-table">
+                        <input type="text" [(ngModel)]="searchterm1" (ngModelChange)="filterText(table2Data.assignment_reports)" class="form-control input-sm" placeholder="" aria-controls="data-table">
                       </label>
                     </div>
                   </div>
@@ -211,8 +211,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let table2 of table2Data.assignment_reports | filterByText: searchterm2 | slice: (currentPage)*numberOfRecords: (currentPage+1)*numberOfRecords | orderBy : orderByString;let i=index"
-                          [ngClass]="{true:'evenclass',false:'oddclass'}[i%2==0]">
+                        <tr *ngFor="let table2 of table2Data.assignment_reports | filterByText: searchterm1 | slice: (currentPage)*numberOfRecords: (currentPage+1)*numberOfRecords | orderBy : orderByString;let i=index" [ngClass]="{true:'evenclass',false:'oddclass'}[i%2==0]">
                           <td>{{table2.patientSequenceNumber}}</td>
                           <td>{{table2.patientCurrentStatus}}</td>
                           <td><strong>Assignment Report</strong></td>
@@ -267,7 +266,7 @@
                   <div class="col-md-6 p-l-5">
                     <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                       <label>Show
-                        <select name="data-table_length" [(ngModel)]="numberOfRecords" (change)="resetPaginationRange(3)" aria-controls="data-table" class="form-control input-sm">
+                        <select name="data-table_length" [(ngModel)]="numberOfRecords" (change)="ifTableAvailable(3)" aria-controls="data-table" class="form-control input-sm">
                           <option value=10>10</option>
                           <option value=25>25</option>
                           <option value=50>50</option>
@@ -279,7 +278,7 @@
                   <div class="col-md-6 p-r-5">
                     <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                       <label>Search:
-                        <input type="text" [(ngModel)]="searchterm3" class="form-control input-sm" placeholder="" aria-controls="data-table">
+                        <input type="text"  [(ngModel)]="searchterm1" (ngModelChange)="filterText(table3Data)" class="form-control input-sm" placeholder="" aria-controls="data-table">
                       </label>
                     </div>
                   </div>
@@ -297,8 +296,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let table3 of table3Data | filterByText: searchterm3 | slice: (currentPage)*numberOfRecords: (currentPage+1)*numberOfRecords | orderBy : orderByString;let i=index"
-                          [ngClass]="{true:'evenclass',false:'oddclass'}[i%2==0]">
+                        <tr *ngFor="let table3 of table3Data | filterByText: searchterm1 | slice: (currentPage)*numberOfRecords: (currentPage+1)*numberOfRecords | orderBy : orderByString;let i=index" [ngClass]="{true:'evenclass',false:'oddclass'}[i%2==0]">
                           <td>{{table3.psn}}</td>
                           <td>{{table3.msn}}</td>
                           <td><strong>Variant Report</strong></td>
