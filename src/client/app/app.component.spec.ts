@@ -12,6 +12,7 @@ import {
 import {
   RouterTestingModule
 } from '@angular/router/testing';
+import { LoginComponent } from './login/login.component';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PatientsComponent } from './patients/patients.component';
@@ -25,7 +26,8 @@ export function main() {
   describe('App component', () => {
 
     let config: Route[] = [
-      { path: '', component: DashboardComponent },
+      { path: '', component: LoginComponent },
+      { path: 'dashboard', component: DashboardComponent },
       { path: 'patients', component: PatientsComponent },
       { path: 'ta', component: TaComponent },
       { path: 'bt', component: BtComponent },
@@ -35,9 +37,10 @@ export function main() {
       TestBed.configureTestingModule({
         imports: [FormsModule, RouterTestingModule.withRoutes(config)],
         declarations: [TestComponent, NavbarComponent,
-          AppComponent, DashboardComponent,
-          PatientsComponent, TaComponent,
-          BtComponent, CliaComponent],
+          AppComponent, LoginComponent,
+          DashboardComponent, PatientsComponent,
+          TaComponent, BtComponent,
+          CliaComponent],
         providers: [
           { provide: APP_BASE_HREF, useValue: '' }
         ]

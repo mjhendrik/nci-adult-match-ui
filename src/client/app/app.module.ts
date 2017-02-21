@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import { LoginModule } from './login/login.module';
 import { CliaModule } from './clia/clia.module';
 import { BtModule } from './bt/bt.module';
 import { TaModule } from './ta/ta.module';
@@ -15,7 +16,7 @@ import { SharedModule } from './shared/shared.module';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  imports: [BrowserModule, HttpModule, AppRoutingModule, CliaModule, BtModule, TaModule, PatientsModule, DashboardModule, SharedModule.forRoot(), FormsModule],
+  imports: [BrowserModule, HttpModule, AppRoutingModule, LoginModule, CliaModule, BtModule, TaModule, PatientsModule, DashboardModule, SharedModule.forRoot(), FormsModule],
   declarations: [AppComponent],
   providers: [
     {
