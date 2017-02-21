@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NameListService } from '../shared/name-list/name-list.service';
 import { routerTransition } from './../shared/router.animations';
-import { Pagination } from './paginationSetup';
+import { Pagination } from './../shared/pagination/paginationSetup';
 import { filterByText } from './../shared/pipes/filterpipe';
 
 
