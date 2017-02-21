@@ -69,9 +69,6 @@
               <div class="dataTables_paginate paging_simple_numbers pull-right" id="data-table_paginate">
                 <ul class="pagination">
                   <li class="paginate_button previous" id="data-table_previous" [ngClass]="disablePrevious()">
-                    <a href="javascript:void(0)" (click)="firstPage()" aria-controls="data-table" data-dt-idx="0" tabindex="0">First</a>
-                  </li>
-                  <li class="paginate_button previous" id="data-table_previous" [ngClass]="disablePrevious()">
                     <a href="javascript:void(0)" (click)="prevPage()" aria-controls="data-table" data-dt-idx="0" tabindex="0">Previous</a>
                   </li>
                   <li class="paginate_button" *ngFor="let p of paginationRange;let i =index" (click)="setPage(p)">
@@ -79,9 +76,6 @@
                   </li>
                   <li class="paginate_button next" id="data-table_next" [ngClass]="disableNext()">
                     <a href="javascript:void(0)" (click)="nextPage()" aria-controls="data-table" data-dt-idx="7" tabindex="0">Next</a>
-                  </li>
-                  <li class="paginate_button next" id="data-table_next" [ngClass]="disableNext()">
-                    <a href="javascript:void(0)" (click)="lastPage()" aria-controls="data-table" data-dt-idx="0" tabindex="0">Last</a>
                   </li>
                 </ul>
               </div>

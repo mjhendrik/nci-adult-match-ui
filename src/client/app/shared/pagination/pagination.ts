@@ -102,7 +102,7 @@ export abstract class Pagination {
     this.currentPage = this.totalPages;
   }
 
-  firstPage(): void {
+  firstPage(): void { // remove
     this.currentPage = 0;
     console.log(this.currentPage);
   }
