@@ -15,7 +15,7 @@
     </div>
     <!-- end mobile sidebar expand / collapse button -->
     <!-- begin navbar-right -->
-    <ul class="nav navbar-nav navbar-right">
+    <ul *ngIf="location.path()!=''" class="nav navbar-nav navbar-right">
       <li>
         <form class="navbar-form form-input-flat">
           <div class="form-group">
