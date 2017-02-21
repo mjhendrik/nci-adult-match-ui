@@ -1,6 +1,6 @@
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { Component } from '@angular/core';
-import { Auth } from './../auth.service';
+import { Auth } from './../auth/auth.service';
 
 /**
  * This class represents the navigation bar component.

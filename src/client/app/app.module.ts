@@ -14,10 +14,21 @@ import { TaModule } from './ta/ta.module';
 import { PatientsModule } from './patients/patients.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { SharedModule } from './shared/shared.module';
-import { Auth } from './shared/auth.service';
+import { Auth } from './shared/auth/auth.service';
+import { AuthGuard } from './shared/auth/auth.guard.service';
 
 @NgModule({
-  imports: [BrowserModule, HttpModule, AppRoutingModule, LoginModule, CliaModule, BtModule, TaModule, PatientsModule, DashboardModule, SharedModule.forRoot(), FormsModule],
+  imports: [BrowserModule,
+    HttpModule,
+    AppRoutingModule,
+    LoginModule,
+    CliaModule,
+    BtModule,
+    TaModule,
+    PatientsModule,
+    DashboardModule,
+    SharedModule.forRoot(),
+    FormsModule],
   declarations: [AppComponent],
   providers: [
     {
@@ -25,7 +36,8 @@ import { Auth } from './shared/auth.service';
       useValue: '<%= APP_BASE %>'
     },
     AUTH_PROVIDERS,
-    Auth
+    Auth,
+    AuthGuard,
   ],
   bootstrap: [AppComponent]
 })
