@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { routerTransition } from './../shared/router.animations';
-import { Auth } from './../shared/auth.service';
+import { Auth } from './../shared/auth/auth.service';
 
 /**
  * This class represents the lazy loaded LoginComponent.
