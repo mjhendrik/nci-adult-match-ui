@@ -11,8 +11,8 @@ import './operators';
   templateUrl: 'app.component.html',
 })
 export class AppComponent {
-  constructor(private auth: Auth) { // auth0-js
+  constructor() { // private auth: Auth // auth0-js
     console.log('Environment config', Config);
-    this.auth.handleAuthentication(); // auth0-js
+    // this.auth.handleAuthentication(); // auth0-js
   }
 }
