@@ -1,2 +1,8 @@
 <sd-navbar></sd-navbar>
 <router-outlet></router-outlet>
+
+<h4 *ngIf="auth.authenticated()">You are logged in</h4>
+<h4 *ngIf="!auth.authenticated()">
+    You are not logged in, please click 'Log in' button to login
+    <button class="btn btn-default" (click)=auth.login()></button>
+</h4>
