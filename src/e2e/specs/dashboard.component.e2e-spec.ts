@@ -3,7 +3,7 @@ import { browser, element, by } from 'protractor';
 describe('dashboard', () => {
 
   beforeEach(async () => {
-    return await browser.get('');
+    return await browser.get('/dashboard');
   });
 
   it('should have an input', () => {

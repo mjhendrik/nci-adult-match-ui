@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
  */
 @Component({
   moduleId: module.id,
-  selector: 'sd-dashboard',
+  selector: 'sd-dashboard', // fix_me: shared
   templateUrl: 'dashboard.component.html',
   styleUrls: ['dashboard.component.css'],
   host: { '[@routerTransition]': '' },
