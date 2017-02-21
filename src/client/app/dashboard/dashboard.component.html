@@ -9,7 +9,7 @@
           <div class="widget-stat-info">
             <div class="widget-stat-title text-right">Patients</div>
             <div class="widget-stat-number text-right">206</div>
-            <div class="widget-stat-text text-right">On Treatment Arm | Off Trail</div>
+            <div class="widget-stat-text text-right">On Treatment Arm | Off Trial</div>
           </div>
         </div>
       </a>
@@ -51,8 +51,8 @@
     <!-- begin col-3 -->
     <div class="col-md-3" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
       <!-- begin widget -->
-      <a class="link-none" href="javascript:void(0)" [routerLink]="['/bt']">
-        <div class="widget widget-stat bg-inverse text-white">
+      <a class="link-none" href="javascript:void(0)" [routerLink]="['/clia']">
+        <div class="widget widget-stat bg-orangeshade text-white">
           <div class="widget-stat-icon"><i class="fa fa-flask fa-lg"></i></div>
           <div class="widget-stat-info">
             <div class="widget-stat-title text-right">CLIA Lab</div>
@@ -70,8 +70,6 @@
         <ul class="nav nav-tabs nav-tabs-primary">
           <li class="active"><a href="#justified-tab-1" (click)="initTab(1)" data-toggle="tab" aria-expanded="true">Variant Report(s)</a></li>
           <li class=""><a href="#justified-tab-2" (click)="initTab(2)" data-toggle="tab" aria-expanded="false">Assignment Report(s)</a></li>
-          <li class=""><a href="#justified-tab-3" (click)="initTab(3)" data-toggle="tab" aria-expanded="false">Patient(s) Awaiting</a></li>
-          <li class=""><a href="#justified-tab-4" (click)="initTab(4)" data-toggle="tab" aria-expanded="false">Extra Tab</a></li>
         </ul>
         <div class="tab-content m-b-0">
           <div class="tab-pane fade active in" id="justified-tab-1">
@@ -205,7 +203,8 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let table2 of table2Data.assignment_reports | filterByText: searchterm1 | slice: (currentPage)*numberOfRecords: (currentPage+1)*numberOfRecords | orderBy : orderByString;let i=index" [ngClass]="{true:'evenclass',false:'oddclass'}[i%2==0]">
+                        <tr *ngFor="let table2 of table2Data.assignment_reports | filterByText: searchterm1 | slice: (currentPage)*numberOfRecords: (currentPage+1)*numberOfRecords | orderBy : orderByString;let i=index"
+                          [ngClass]="{true:'evenclass',false:'oddclass'}[i%2==0]">
                           <td>{{table2.patientSequenceNumber}}</td>
                           <td>{{table2.patientCurrentStatus}}</td>
                           <td><strong>Assignment Report</strong></td>
@@ -240,20 +239,23 @@
               <!-- end panel -->
             </div>
           </div>
-          <div class="tab-pane fade" id="justified-tab-3">
-            <!-- table 3 -->
-            <div class="row">
-              <!-- begin panel -->
-              <div class="panel panel-purple">
-                <div class="panel-heading">
-                  <div class="panel-heading-btn">
-                  </div>
-                  <h4 class="panel-title">Assignment Report</h4>
-                </div>
-                <div class="col-md-12 bg-purple-light">
-                  <div class="col-md-6 p-l-5">
-                    <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
-                      <label>Show
+        </div>
+      </div>
+      <!-- end panel -->
+    </div>
+    <!-- table 3 -->
+    <div class="col-md-12">
+      <!-- begin panel -->
+      <div class="panel panel-purple">
+        <div class="panel-heading">
+          <div class="panel-heading-btn">
+          </div>
+          <h4 class="panel-title">Patients Awaiting Further Action Or Information</h4>
+        </div>
+        <div class="col-md-12 bg-purple-light">
+          <div class="col-md-6 p-l-5">
+            <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
+              <label>Show
                         <select name="data-table_length" [(ngModel)]="numberOfRecords" (change)="ifTableAvailable(3)" aria-controls="data-table" class="form-control input-sm">
                           <option value=10>10</option>
                           <option value=25>25</option>
@@ -261,215 +263,58 @@
                           <option value=100>100</option>
                         </select> 
                       entries</label>
-                    </div>
-                  </div>
-                  <div class="col-md-6 p-r-5">
-                    <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
-                      <label>Search:
-                        <input type="text"  [(ngModel)]="searchterm1" (ngModelChange)="filterText(table3Data)" class="form-control input-sm" placeholder="" aria-controls="data-table">
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="table-responsive col-lg-12">
-                    <table class="table table-td-valign-middle">
-                      <thead>
-                        <tr class="purple">
-                          <th>Patient ID</th>
-                          <th>Molecular ID</th>
-                          <th>Variant Report</th>
-                          <th>Concordance</th>
-                          <th>Variant Report Confirmation Date</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr *ngFor="let table3 of table3Data | filterByText: searchterm1 | slice: (currentPage)*numberOfRecords: (currentPage+1)*numberOfRecords | orderBy : orderByString;let i=index" [ngClass]="{true:'evenclass',false:'oddclass'}[i%2==0]">
-                          <td>{{table3.psn}}</td>
-                          <td>{{table3.msn}}</td>
-                          <td><strong>Variant Report</strong></td>
-                          <td>AWAITING DATA</td>
-                          <td>{{table3.date_verified | date:'MMMM d, y h:mm a UTC'}}</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-5">
-                    <div class="dataTables_info" id="data-table_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
-                  </div>
-                  <div class="col-md-7">
-                    <div class="dataTables_paginate paging_simple_numbers pull-right" id="data-table_paginate">
-                      <ul class="pagination">
-                        <li class="paginate_button previous" id="data-table_previous" [ngClass]="disablePrevious()">
-                          <a href="javascript:void(0)" (click)="prevPage()" aria-controls="data-table" data-dt-idx="0" tabindex="0">Previous</a>
-                        </li>
-                        <li class="paginate_button" *ngFor="let p of paginationRange;let i =index" (click)="setPage(p)">
-                          <a href="javascript:void(0)" (click)="pageClicked(p)" aria-controls="data-table" data-dt-idx="1" tabindex="0">{{p+1}}</a>
-                        </li>
-                        <li class="paginate_button next" id="data-table_next" [ngClass]="disableNext()">
-                          <a href="javascript:void(0)" (click)="nextPage()" aria-controls="data-table" data-dt-idx="7" tabindex="0">Next</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- end panel -->
             </div>
           </div>
-          <div class="tab-pane fade" id="justified-tab-4">
-            <!-- table 4 -->
-            <div class="row">
-              <div class="panel pagination-inverse clearfix">
-                <div id="data-table_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <div class="dataTables_length" id="data-table_length"><label>Show <select name="data-table_length" aria-controls="data-table" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div id="data-table_filter" class="dataTables_filter pull-right"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="data-table"></label></div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <table id="data-table" data-order="[[1,&quot;asc&quot;]]" class="table table-bordered table-hover dataTable no-footer dtr-inline"
-                        role="grid" aria-describedby="data-table_info">
-                        <thead>
-                          <tr class="inverse" role="row">
-                            <th data-sorting="disabled" class="sorting_disabled" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" aria-label=": activate to sort column descending"
-                              style="width: 15px;"></th>
-                            <th class="sorting_asc" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending"
-                              style="width: 149px;">Rendering engine</th>
-                            <th class="sorting" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending"
-                              style="width: 211px;">Browser</th>
-                            <th class="sorting" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending"
-                              style="width: 198px;">Platform(s)</th>
-                            <th class="sorting" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending"
-                              style="width: 126px;">Engine version</th>
-                            <th class="sorting" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending"
-                              style="width: 96px;">CSS grade</th>
-                            <th data-sorting="disabled" class="sorting_disabled" tabindex="0" aria-controls="data-table" rowspan="1" colspan="1" aria-label=": activate to sort column descending"
-                              style="width: 85px;"></th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr class="gradeA odd" role="row">
-                            <td><input type="checkbox" name="record[]" value="1"></td>
-                            <td class="sorting_1">Gecko</td>
-                            <td>Firefox 1.0</td>
-                            <td>Win 98+ / OSX.2+</td>
-                            <td>1.7</td>
-                            <td>A</td>
-                            <td><a href="#" class="btn btn-default btn-xs"><i class="fa fa-cog"></i> Setting</a></td>
-                          </tr>
-                          <tr class="gradeA even" role="row">
-                            <td><input type="checkbox" name="record[]" value="1"></td>
-                            <td class="sorting_1">Gecko</td>
-                            <td>Firefox 1.5</td>
-                            <td>Win 98+ / OSX.2+</td>
-                            <td>1.8</td>
-                            <td>A</td>
-                            <td><a href="#" class="btn btn-default btn-xs"><i class="fa fa-cog"></i> Setting</a></td>
-                          </tr>
-                          <tr class="gradeA odd" role="row">
-                            <td><input type="checkbox" name="record[]" value="1"></td>
-                            <td class="sorting_1">Gecko</td>
-                            <td>Firefox 2.0</td>
-                            <td>Win 98+ / OSX.2+</td>
-                            <td>1.8</td>
-                            <td>A</td>
-                            <td><a href="#" class="btn btn-default btn-xs"><i class="fa fa-cog"></i> Setting</a></td>
-                          </tr>
-                          <tr class="gradeA even" role="row">
-                            <td><input type="checkbox" name="record[]" value="1"></td>
-                            <td class="sorting_1">Gecko</td>
-                            <td>Firefox 3.0</td>
-                            <td>Win 2k+ / OSX.3+</td>
-                            <td>1.9</td>
-                            <td>A</td>
-                            <td><a href="#" class="btn btn-default btn-xs"><i class="fa fa-cog"></i> Setting</a></td>
-                          </tr>
-                          <tr class="gradeA odd" role="row">
-                            <td><input type="checkbox" name="record[]" value="1"></td>
-                            <td class="sorting_1">Gecko</td>
-                            <td>Camino 1.0</td>
-                            <td>OSX.2+</td>
-                            <td>1.8</td>
-                            <td>A</td>
-                            <td><a href="#" class="btn btn-default btn-xs"><i class="fa fa-cog"></i> Setting</a></td>
-                          </tr>
-                          <tr class="gradeA even" role="row">
-                            <td><input type="checkbox" name="record[]" value="1"></td>
-                            <td class="sorting_1">Gecko</td>
-                            <td>Camino 1.5</td>
-                            <td>OSX.3+</td>
-                            <td>1.8</td>
-                            <td>A</td>
-                            <td><a href="#" class="btn btn-default btn-xs"><i class="fa fa-cog"></i> Setting</a></td>
-                          </tr>
-                          <tr class="gradeA odd" role="row">
-                            <td><input type="checkbox" name="record[]" value="1"></td>
-                            <td class="sorting_1">Gecko</td>
-                            <td>Netscape 7.2</td>
-                            <td>Win 95+ / Mac OS 8.6-9.2</td>
-                            <td>1.7</td>
-                            <td>A</td>
-                            <td><a href="#" class="btn btn-default btn-xs"><i class="fa fa-cog"></i> Setting</a></td>
-                          </tr>
-                          <tr class="gradeA even" role="row">
-                            <td><input type="checkbox" name="record[]" value="1"></td>
-                            <td class="sorting_1">Gecko</td>
-                            <td>Netscape Browser 8</td>
-                            <td>Win 98SE+</td>
-                            <td>1.7</td>
-                            <td>A</td>
-                            <td><a href="#" class="btn btn-default btn-xs"><i class="fa fa-cog"></i> Setting</a></td>
-                          </tr>
-                          <tr class="gradeA odd" role="row">
-                            <td><input type="checkbox" name="record[]" value="1"></td>
-                            <td class="sorting_1">Gecko</td>
-                            <td>Netscape Navigator 9</td>
-                            <td>Win 98+ / OSX.2+</td>
-                            <td>1.8</td>
-                            <td>A</td>
-                            <td><a href="#" class="btn btn-default btn-xs"><i class="fa fa-cog"></i> Setting</a></td>
-                          </tr>
-                          <tr class="gradeA even" role="row">
-                            <td><input type="checkbox" name="record[]" value="1"></td>
-                            <td class="sorting_1">Gecko</td>
-                            <td>Mozilla 1.0</td>
-                            <td>Win 95+ / OSX.1+</td>
-                            <td>1</td>
-                            <td>A</td>
-                            <td><a href="#" class="btn btn-default btn-xs"><i class="fa fa-cog"></i> Setting</a></td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-5">
-                      <div class="dataTables_info" id="data-table_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
-                    </div>
-                    <div class="col-sm-7">
-                      <div class="dataTables_paginate paging_simple_numbers pull-right" id="data-table_paginate">
-                        <ul class="pagination">
-                          <li class="paginate_button previous disabled" id="data-table_previous"><a href="#" aria-controls="data-table" data-dt-idx="0" tabindex="0">Previous</a></li>
-                          <li class="paginate_button active"><a href="#" aria-controls="data-table" data-dt-idx="1" tabindex="0">1</a></li>
-                          <li class="paginate_button "><a href="#" aria-controls="data-table" data-dt-idx="2" tabindex="0">2</a></li>
-                          <li class="paginate_button "><a href="#" aria-controls="data-table" data-dt-idx="3" tabindex="0">3</a></li>
-                          <li class="paginate_button "><a href="#" aria-controls="data-table" data-dt-idx="4" tabindex="0">4</a></li>
-                          <li class="paginate_button "><a href="#" aria-controls="data-table" data-dt-idx="5" tabindex="0">5</a></li>
-                          <li class="paginate_button "><a href="#" aria-controls="data-table" data-dt-idx="6" tabindex="0">6</a></li>
-                          <li class="paginate_button next" id="data-table_next"><a href="#" aria-controls="data-table" data-dt-idx="7" tabindex="0">Next</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          <div class="col-md-6 p-r-5">
+            <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
+              <label>Search:
+                        <input type="text"  [(ngModel)]="searchterm1" (ngModelChange)="filterText(table3Data)" class="form-control input-sm" placeholder="" aria-controls="data-table">
+                      </label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="table-responsive col-lg-12">
+            <table class="table table-td-valign-middle">
+              <thead>
+                <tr class="purple">
+                  <th>Patient ID</th>
+                  <th>Molecular ID</th>
+                  <th>Variant Report</th>
+                  <th>Concordance</th>
+                  <th>Variant Report Confirmation Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let table3 of table3Data | filterByText: searchterm1 | slice: (currentPage)*numberOfRecords: (currentPage+1)*numberOfRecords | orderBy : orderByString;let i=index"
+                  [ngClass]="{true:'evenclass',false:'oddclass'}[i%2==0]">
+                  <td>{{table3.psn}}</td>
+                  <td>{{table3.msn}}</td>
+                  <td><strong>Variant Report</strong></td>
+                  <td>AWAITING DATA</td>
+                  <td>{{table3.date_verified | date:'MMMM d, y h:mm a UTC'}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+            <div class="dataTables_info" id="data-table_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
+          </div>
+          <div class="col-md-7">
+            <div class="dataTables_paginate paging_simple_numbers pull-right" id="data-table_paginate">
+              <ul class="pagination">
+                <li class="paginate_button previous" id="data-table_previous" [ngClass]="disablePrevious()">
+                  <a href="javascript:void(0)" (click)="prevPage()" aria-controls="data-table" data-dt-idx="0" tabindex="0">Previous</a>
+                </li>
+                <li class="paginate_button" *ngFor="let p of paginationRange;let i =index" (click)="setPage(p)">
+                  <a href="javascript:void(0)" (click)="pageClicked(p)" aria-controls="data-table" data-dt-idx="1" tabindex="0">{{p+1}}</a>
+                </li>
+                <li class="paginate_button next" id="data-table_next" [ngClass]="disableNext()">
+                  <a href="javascript:void(0)" (click)="nextPage()" aria-controls="data-table" data-dt-idx="7" tabindex="0">Next</a>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
