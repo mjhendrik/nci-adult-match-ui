@@ -16,7 +16,7 @@ export class ProjectConfig extends SeedConfig {
 
   FONTS_DEST = `${this.APP_DEST}/fonts`;
   FONTS_SRC = [
-      'node_modules/bootstrap/dist/fonts/**'
+    'node_modules/bootstrap/dist/fonts/**'
   ];
 
   constructor() {
@@ -29,19 +29,21 @@ export class ProjectConfig extends SeedConfig {
     // Add `NPM` third-party libraries to be injected/bundled.
     this.NPM_DEPENDENCIES = [
       ...this.NPM_DEPENDENCIES,
-      {src: 'jquery/dist/jquery.slim.min.js', inject: 'libs'},
+      { src: 'jquery/dist/jquery.slim.min.js', inject: 'libs' },
       // {src: 'lodash/lodash.min.js', inject: 'libs'},
-      {src: 'bootstrap/dist/js/bootstrap.min.js', inject: 'libs'},
-      {src: 'font-awesome/css/font-awesome.min.css', inject: true},
-      {src: 'bootstrap/dist/css/bootstrap.min.css', inject: true},
+      { src: 'bootstrap/dist/js/bootstrap.min.js', inject: 'libs' },
+      { src: 'auth0-js/build/auth0.min.js', inject: 'libs' }, // auth0-js
+      { src: 'angular2-jwt/angular2-jwt.js', inject: 'libs' },
+      { src: 'font-awesome/css/font-awesome.min.css', inject: true },
+      { src: 'bootstrap/dist/css/bootstrap.min.css', inject: true },
     ];
 
     // Add `local` third-party libraries to be injected/bundled.
     this.APP_ASSETS = [
       ...this.APP_ASSETS,
       // {src: `${this.APP_SRC}/your-path-to-lib/libs/jquery-ui.js`, inject: true, vendor: false}
-      {src: `${this.APP_SRC}/polyfills/web-animations.min.js`, inject: 'libs'},
-      {src: `${this.CSS_SRC}/theme/style.min.css`, inject: true, vendor: false},
+      { src: `${this.APP_SRC}/polyfills/web-animations.min.js`, inject: 'libs' },
+      { src: `${this.CSS_SRC}/theme/style.min.css`, inject: true, vendor: false },
     ];
 
     // Add packages (e.g. ng2-translate)
