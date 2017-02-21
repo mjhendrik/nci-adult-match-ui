@@ -9,6 +9,29 @@
           </div>
           <h4 class="panel-title">Pending Review</h4>
         </div>
+        <div class="col-md-12 bg-success-light">
+          <div class="col-md-6 p-l-5">
+            <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
+              <label>Show {{numberOfRecords}}
+                        <!---->
+                        <select name="data-table_length" [(ngModel)]="numberOfRecords" (change)="initPagination(table4Data.variant_reports.length)"  aria-controls="data-table" class="form-control input-sm">
+                          <option value=10>10</option>
+                          <option value=25>25</option>
+                          <option value=50>50</option>
+                          <option value=100>100</option>
+                        </select>
+                      entries</label>
+            </div>
+          </div>
+          <!-- -->
+          <div class="col-md-6 p-r-5">
+            <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
+              <label>Search:
+                        <input type="text" class="form-control input-sm" [(ngModel)]="searchterm1" (ngModelChange)="filterText(table4Data.variant_reports)" placeholder="" aria-controls="data-table">
+                      </label>
+            </div>
+          </div>
+        </div>
         <div class="row">
           <div class="table-responsive col-lg-12">
             <table class="table table-td-valign-middle">
@@ -25,7 +48,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let table4 of table4Data.variant_reports">
+                <tr *ngFor="let table4 of table4Data.variant_reports| slice: (currentPage)*numberOfRecords: (currentPage+1)*numberOfRecords">
                   <td>{{table4.patientSequenceNumber}}</td>
                   <td>{{table4.molecularSequenceNumber}}</td>
                   <td><strong>Variant Report</strong></td>
@@ -37,6 +60,32 @@
                 </tr>
               </tbody>
             </table>
+          </div>
+          <div class="row">
+            <div class="col-md-5">
+              <div class="dataTables_info" id="data-table_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
+            </div>
+            <div class="col-md-7">
+              <div class="dataTables_paginate paging_simple_numbers pull-right" id="data-table_paginate">
+                <ul class="pagination">
+                  <li class="paginate_button previous" id="data-table_previous" [ngClass]="disablePrevious()">
+                    <a href="javascript:void(0)" (click)="firstPage()" aria-controls="data-table" data-dt-idx="0" tabindex="0">First</a>
+                  </li>
+                  <li class="paginate_button previous" id="data-table_previous" [ngClass]="disablePrevious()">
+                    <a href="javascript:void(0)" (click)="prevPage()" aria-controls="data-table" data-dt-idx="0" tabindex="0">Previous</a>
+                  </li>
+                  <li class="paginate_button" *ngFor="let p of paginationRange;let i =index" (click)="setPage(p)">
+                    <a href="javascript:void(0)" (click)="pageClicked(p)" aria-controls="data-table" data-dt-idx="1" tabindex="0">{{p+1}}</a>
+                  </li>
+                  <li class="paginate_button next" id="data-table_next" [ngClass]="disableNext()">
+                    <a href="javascript:void(0)" (click)="nextPage()" aria-controls="data-table" data-dt-idx="7" tabindex="0">Next</a>
+                  </li>
+                  <li class="paginate_button next" id="data-table_next" [ngClass]="disableNext()">
+                    <a href="javascript:void(0)" (click)="lastPage()" aria-controls="data-table" data-dt-idx="0" tabindex="0">Last</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>

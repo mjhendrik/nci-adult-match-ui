@@ -1,8 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NameListService } from '../shared/name-list/name-list.service';
-import { routerTransition } from './../shared/router.animations';
-import { Pagination } from './paginationSetup';
-import { filterByText } from './../shared/pipes/filterpipe';
 
 
 /**
@@ -13,87 +9,34 @@ import { filterByText } from './../shared/pipes/filterpipe';
   selector: 'sd-dashboard',
   templateUrl: 'dashboard.component.html',
   styleUrls: ['dashboard.component.css'],
-  animations: [routerTransition()],
   host: { '[@routerTransition]': '' },
-  providers: [filterByText]
 })
-export class DashboardComponent extends Pagination implements OnInit {
+export class PaginationComponent implements OnInit  {
 
-  newName: string = '';
-  errorMessage: string;
-  names: any[] = [];
-  searchterm1: string = '';
-  start: number;
-  /**
-   * Creates an instance of the DashboardComponent with the injected
-   * NameListService.
-   *
-   * @param {NameListService} nameListService - The injected NameListService.
-   */
-  constructor(public nameListService: NameListService, public filterbytext: filterByText) {
-    super();
+ 
+  
+  constructor() { 
+   
   }
 
   /**
    * Get the names OnInit
    */
   ngOnInit() {
-    this.getNames();
-    this.initPagination(this.table1Data.variant_reports.length);
   }
 
   /**
    * Handle the nameListService observable
    */
   getNames() {
-    this.nameListService.get()
-      .subscribe(
-      names => this.names = names,
-      error => this.errorMessage = <any>error
-      );
+    // this.nameListService.get()
+    //   .subscribe(
+    //   names => this.names = names,
+    //   error => this.errorMessage = <any>error
+    //   );
   }
 
-  ifTableAvailable(tabIndex: number): void {
-    switch (tabIndex) {
-      case 1:
-        this.initPagination(this.table1Data.variant_reports.length);
-        break;
-      case 2:
-        this.initPagination(this.table2Data.assignment_reports.length);
-        break;
-      case 3:
-        this.initPagination(this.table3Data.length);
-        break;
-      default: this.initPagination(this.table1Data.variant_reports.length);
-        break;
-    }
-  }
-
-  initTab(tabIndex: number):void{
-    this.searchterm1='';
-    this.resetRecordsPerpage();
-    this.ifTableAvailable(tabIndex);
-  }
-
-
-
-  /**
-   * Pushes a new name onto the names array
-   * @return {boolean} false to prevent default form submit behavior to refresh the page.
-   */
-  addName(): boolean {
-    // TODO: implement nameListService.post
-    this.names.push(this.newName);
-    this.newName = '';
-    return false;
-  }
-
-
-  filterText(items: any[]): any[] {
-    let result=this.filterbytext.transform(items, this.searchterm1);
-    this.initPagination(result.length);
-    return result;
-  }
+ 
 
 
   table1Data: any = {
