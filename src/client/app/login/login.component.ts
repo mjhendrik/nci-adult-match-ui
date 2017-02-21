@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { routerTransition } from './../shared/router.animations';
+import { Auth } from './../shared/auth.service';
 
 /**
  * This class represents the lazy loaded LoginComponent.
@@ -13,15 +14,6 @@ import { routerTransition } from './../shared/router.animations';
   animations: [routerTransition()],
   host: {'[@routerTransition]': ''}
 })
-export class LoginComponent { }
-// // auth0-js
-// import { Component } from '@angular/core';
-// import { Auth } from './auth.service';
-
-// @Component({
-//     selector: 'login',
-//     templateUrl: 'login.component.html'
-// })
-// export class LoginComponent {
-//     constructor(private auth: Auth) { }
-// }
+export class LoginComponent {
+    constructor(private auth: Auth) { }
+ }
