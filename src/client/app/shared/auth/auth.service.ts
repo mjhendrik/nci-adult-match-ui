@@ -28,9 +28,6 @@ export class Auth {
         this.userProfile = profile;
       });
 
-      var check = tokenNotExpired();
-      console.debug('check', check);
-
       this.router.navigate(['dashboard']);
     });
   }
