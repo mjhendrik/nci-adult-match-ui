@@ -56,13 +56,13 @@
         </a>
       </li>
       <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-        <a href="javascript:void(0)" [routerLink]="['/ta']">
+        <a href="javascript:void(0)" [routerLink]="['/treatments']">
           <i class="fa fa-medkit"></i>
           <span>Treatment Arms</span>
         </a>
       </li>
       <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-        <a href="javascript:void(0)" [routerLink]="['/bt']">
+        <a href="javascript:void(0)" [routerLink]="['/tracking']">
           <i class="fa fa-truck"></i>
           <span>Biopsy Tracking</span>
         </a>
@@ -155,5 +155,9 @@
     </a>
   </span>
   © 2017 <b>MATCHbox</b> All Right Reserved
+  <p>
+    location.path {{location.path()}}
+  </p>
+
 </div>
 <!-- end #footer -->
