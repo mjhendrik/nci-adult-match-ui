@@ -8,8 +8,8 @@
           <div class="widget-stat-icon"><i class="fa fa-users fa-lg"></i></div>
           <div class="widget-stat-info">
             <div class="widget-stat-title text-right">Patients</div>
-            <div class="widget-stat-number text-right">206</div>
-            <div class="widget-stat-text text-right">On Treatment Arm | Off Trial</div>
+            <div class="widget-stat-number text-right">253</div>
+            <div class="widget-stat-text text-right">22 On Treatment Arm&nbsp;&nbsp;|&nbsp;&nbsp;5 Off Trial</div>
           </div>
         </div>
       </a>
@@ -25,7 +25,7 @@
           <div class="widget-stat-info">
             <div class="widget-stat-title text-right">Treatment Arms</div>
             <div class="widget-stat-number text-right">29</div>
-            <div class="widget-stat-text text-right">Pending | Open | Suspended</div>
+            <div class="widget-stat-text text-right">4 Pending&nbsp;&nbsp;|&nbsp;&nbsp;19 Open&nbsp;&nbsp;|&nbsp;&nbsp;3 Suspended</div>
           </div>
         </div>
       </a>
@@ -40,8 +40,8 @@
           <div class="widget-stat-icon"><i class="fa fa-truck fa-lg"></i></div>
           <div class="widget-stat-info">
             <div class="widget-stat-title text-right">Biopsy Tracking</div>
-            <div class="widget-stat-number text-right">164</div>
-            <div class="widget-stat-text text-right">Biopsy | Molecular</div>
+            <div class="widget-stat-number text-right">175</div>
+            <div class="widget-stat-text text-right">90 Biopsies&nbsp;&nbsp;|&nbsp;&nbsp;85 Moleculars</div>
           </div>
         </div>
       </a>
@@ -56,8 +56,8 @@
           <div class="widget-stat-icon"><i class="fa fa-flask fa-lg"></i></div>
           <div class="widget-stat-info">
             <div class="widget-stat-title text-right">CLIA Lab</div>
-            <div class="widget-stat-number text-right">123</div>
-            <div class="widget-stat-text text-right">Failed | Passed | Pending</div>
+            <div class="widget-stat-number text-right">51</div>
+            <div class="widget-stat-text text-right">25 Failed&nbsp;&nbsp;|&nbsp;&nbsp;19 Passed&nbsp;&nbsp;|&nbsp;&nbsp;3 Pending</div>
           </div>
         </div>
       </a>
@@ -67,25 +67,41 @@
     <div class="col-md-12">
       <!-- begin panel -->
       <div class="panel">
-        <ul class="nav nav-tabs nav-tabs-primary">
-          <li class="active"><a href="#justified-tab-1" (click)="initTab(1)" data-toggle="tab" aria-expanded="true">Variant Report(s)</a></li>
-          <li class=""><a href="#justified-tab-2" (click)="initTab(2)" data-toggle="tab" aria-expanded="false">Assignment Report(s)</a></li>
-        </ul>
-        <div class="tab-content m-b-0">
-          <div class="tab-pane fade active in" id="justified-tab-1">
-            <!-- table 1 -->
-            <div class="row">
-              <!-- begin panel -->
-              <div class="panel panel-purple">
-                <div class="panel-heading">
-                  <div class="panel-heading-btn">
+        <div class="panel-heading">
+          <h4 class="panel-title">Pending Review</h4>
+        </div>
+        <div class="panel-body m-0 p-0">
+          <div class="panel panel-purple">
+            <ul class="nav nav-tabs nav-tabs-primary p-l-0">
+              <li class="active">
+                <a class="p-0" href="#justified-tab-1" (click)="initTab(1)" data-toggle="tab" aria-expanded="true">
+                  <div class="panel-heading border-no-right">
+                    <div class="panel-heading-btn">
+                    </div>
+                    <h4 class="panel-title">Variant Report(s)</h4>
                   </div>
-                  <h4 class="panel-title">Pending Review</h4>
-                </div>
-                <div class="col-md-12 bg-purple-light">
-                  <div class="col-md-6 p-l-5">
-                    <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
-                      <label>Show
+                </a>
+              </li>
+              <li class="">
+                <a class="p-0" href="#justified-tab-2" (click)="initTab(2)" data-toggle="tab" aria-expanded="false">
+                  <div class="panel-heading border-no-left">
+                    <div class="panel-heading-btn">
+                    </div>
+                    <h4 class="panel-title">Needing Confirmation</h4>
+                  </div>
+                </a>
+              </li>
+            </ul>
+            <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
+              <div class="tab-pane fade active in" id="justified-tab-1">
+                <!-- table 1 -->
+                <div class="row">
+                  <!-- begin panel -->
+                  <div class="panel panel-purple">
+                    <div class="col-md-12 bg-purple-light">
+                      <div class="col-md-6 p-l-5">
+                        <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
+                          <label>Show
                         <select name="data-table_length" [(ngModel)]="numberOfRecords" (change)="ifTableAvailable(1)" aria-controls="data-table" class="form-control input-sm">
                           <option value=10>10</option>
                           <option value=25>25</option>
@@ -93,86 +109,88 @@
                           <option value=100>100</option>
                         </select>
                       entries</label>
-                    </div>
-                  </div>
-                  <div class="col-md-6 p-r-5">
-                    <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
-                      <label>Search:
+                        </div>
+                      </div>
+                      <div class="col-md-6 p-r-5">
+                        <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
+                          <label>Search:
                         <input type="text" [(ngModel)]="searchterm1" (ngModelChange)="filterText(table1Data.variant_reports)" class="form-control input-sm " placeholder="" aria-controls="data-table">
                       </label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="table-responsive col-lg-12">
+                        <table class="table table-td-valign-middle">
+                          <thead>
+                            <tr class="purple">
+                              <th (click)="orderByColumn('patientSequenceNumber')">Patient ID </th>
+                              <th (click)="orderByColumn('molecularSequenceNumber')">Molecular ID</th>
+                              <th class="text-center" (click)="orderByColumn('Variant Report')">Variant Report</th>
+                              <th (click)="orderByColumn('location')">Location</th>
+                              <th (click)="orderByColumn('currentPatientStatus')">Patient Status</th>
+                              <th (click)="orderByColumn('specimenReceivedDate')">Specimen Received Date</th>
+                              <th (click)="orderByColumn('ngsDateReceived')">Variant Report Recieved Date</th>
+                              <th (click)="orderByColumn('daysPending')">Days Pending</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let table1 of table1Data.variant_reports |filterByText:searchterm1 | slice: (currentPage)*numberOfRecords: (currentPage+1)*numberOfRecords | orderBy : orderByString;let i=index"
+                              [ngClass]="{true:'evenclass',false:'oddclass'}[i%2==0]">
+                              <td>{{table1.patientSequenceNumber}}</td>
+                              <td>{{table1.molecularSequenceNumber}}</td>
+                              <td class="text-center"><i class="fa fa-file-text-o"></i></td>
+                              <td>{{table1.location}}</td>
+                              <td>{{table1.currentPatientStatus}}</td>
+                              <td>{{table1.specimenReceivedDate | date:'MMMM d, y h:mm a UTC'}}</td>
+                              <!--provide: LOCALE_ID, useValue: "IS-IS"-->
+                              <td>{{table1.ngsDateReceived | date:'MMMM d, y h:mm a UTC'}}</td>
+                              <td [colorcode]="table1.daysPending">{{table1.daysPending}}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-5">
+                        <div class="dataTables_info" *ngIf="result==undefined" id="data-table_info" role="status" aria-live="polite">Showing {{currentPage*numberOfRecords+1}} to {{table1Data.variant_reports.length>currentPage*numberOfRecords+numberOfRecords
+                          ? currentPage*numberOfRecords+numberOfRecords:table1Data.variant_reports.length }} of {{table1Data.variant_reports.length}}
+                          entries
+                        </div>
+                        <div class="dataTables_info" *ngIf="result!=undefined" id="data-table_info1" role="status" aria-live="polite">Showing {{currentPage*numberOfRecords+1}} to {{result.length>currentPage*numberOfRecords+numberOfRecords
+                          ? currentPage*numberOfRecords+numberOfRecords:result.length }} of {{result.length}} entries (filtered
+                          from {{table1Data.variant_reports.length}} total entries)</div>
+                      </div>
+
+                      <div class="col-md-7">
+                        <div class="dataTables_paginate paging_simple_numbers pull-right" id="data-table_paginate">
+                          <ul class="pagination">
+                            <li class="paginate_button previous" id="data-table_previous" [ngClass]="disablePrevious()">
+                              <a href="javascript:void(0)" (click)="prevPage()" aria-controls="data-table" data-dt-idx="0" tabindex="0">Previous</a>
+                            </li>
+                            <li class="paginate_button" *ngFor="let p of paginationRange;let i =index" (click)="setPage(p)">
+                              <a href="javascript:void(0)" (click)="pageClicked(p)" aria-controls="data-table" data-dt-idx="1" tabindex="0">{{p+1}}</a>
+                            </li>
+                            <li class="paginate_button next" id="data-table_next" [ngClass]="disableNext()">
+                              <a href="javascript:void(0)" (click)="nextPage()" aria-controls="data-table" data-dt-idx="7" tabindex="0">Next</a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="row">
-                  <div class="table-responsive col-lg-12">
-                    <table class="table table-td-valign-middle">
-                      <thead>
-                        <tr class="purple">
-                          <th (click)="orderByColumn('patientSequenceNumber')">Patient ID </th>
-                          <th (click)="orderByColumn('molecularSequenceNumber')">Molecular ID</th>
-                          <th (click)="orderByColumn('Variant Report')">Variant Report</th>
-                          <th (click)="orderByColumn('location')">Location</th>
-                          <th (click)="orderByColumn('currentPatientStatus')">Patient Status</th>
-                          <th (click)="orderByColumn('specimenReceivedDate')">Specimen Received Date</th>
-                          <th (click)="orderByColumn('ngsDateReceived')">Variant Report Recieved Date</th>
-                          <th (click)="orderByColumn('daysPending')">Days Pending</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr *ngFor="let table1 of table1Data.variant_reports |filterByText:searchterm1 | slice: (currentPage)*numberOfRecords: (currentPage+1)*numberOfRecords | orderBy : orderByString;let i=index"
-                          [ngClass]="{true:'evenclass',false:'oddclass'}[i%2==0]">
-                          <td>{{table1.patientSequenceNumber}}</td>
-                          <td>{{table1.molecularSequenceNumber}}</td>
-                          <td><strong>Variant Report</strong></td>
-                          <td>{{table1.location}}</td>
-                          <td>{{table1.currentPatientStatus}}</td>
-                          <td>{{table1.specimenReceivedDate | date:'MMMM d, y h:mm a UTC'}}</td>
-                          <!--provide: LOCALE_ID, useValue: "IS-IS"-->
-                          <td>{{table1.ngsDateReceived | date:'MMMM d, y h:mm a UTC'}}</td>
-                          <td>{{table1.daysPending}}</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-5">
-                    <div class="dataTables_info" id="data-table_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
-                  </div>
-                  <div class="col-md-7">
-                    <div class="dataTables_paginate paging_simple_numbers pull-right" id="data-table_paginate">
-                      <ul class="pagination">
-                        <li class="paginate_button previous" id="data-table_previous" [ngClass]="disablePrevious()">
-                          <a href="javascript:void(0)" (click)="prevPage()" aria-controls="data-table" data-dt-idx="0" tabindex="0">Previous</a>
-                        </li>
-                        <li class="paginate_button" *ngFor="let p of paginationRange;let i =index" (click)="setPage(p)">
-                          <a href="javascript:void(0)" (click)="pageClicked(p)" aria-controls="data-table" data-dt-idx="1" tabindex="0">{{p+1}}</a>
-                        </li>
-                        <li class="paginate_button next" id="data-table_next" [ngClass]="disableNext()">
-                          <a href="javascript:void(0)" (click)="nextPage()" aria-controls="data-table" data-dt-idx="7" tabindex="0">Next</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
+                  <!-- end panel -->
                 </div>
               </div>
-              <!-- end panel -->
-            </div>
-          </div>
-          <div class="tab-pane fade" id="justified-tab-2">
-            <!-- table 2 -->
-            <div class="row">
-              <!-- begin panel -->
-              <div class="panel panel-purple">
-                <div class="panel-heading">
-                  <div class="panel-heading-btn">
-                  </div>
-                  <h4 class="panel-title">Needing Confirmation</h4>
-                </div>
-                <div class="col-md-12 bg-purple-light">
-                  <div class="col-md-6 p-l-5">
-                    <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
-                      <label>Show
+              <div class="tab-pane fade" id="justified-tab-2">
+                <!-- table 2 -->
+                <div class="row">
+                  <!-- begin panel -->
+                  <div class="panel panel-purple">
+                    <div class="col-md-12 bg-purple-light">
+                      <div class="col-md-6 p-l-5">
+                        <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
+                          <label>Show
                         <select name="data-table_length" [(ngModel)]="numberOfRecords" (change)="ifTableAvailable(2)" aria-controls="data-table" class="form-control input-sm">
                           <option value=10>10</option>
                           <option value=25>25</option>
@@ -180,67 +198,70 @@
                           <option value=100>100</option>
                         </select> 
                       entries</label>
-                    </div>
-                  </div>
-                  <div class="col-md-6 p-r-5">
-                    <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
-                      <label>Search:
+                        </div>
+                      </div>
+                      <div class="col-md-6 p-r-5">
+                        <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
+                          <label>Search:
                         <input type="text" [(ngModel)]="searchterm1" (ngModelChange)="filterText(table2Data.assignment_reports)" class="form-control input-sm" placeholder="" aria-controls="data-table">
                       </label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="table-responsive col-lg-12">
+                        <table class="table table-td-valign-middle">
+                          <thead>
+                            <tr class="purple">
+                              <th>Patient ID</th>
+                              <th>Patient Current Status</th>
+                              <th class="text-center">Assignment Report</th>
+                              <th>Assignment Date</th>
+                              <th>Hours Pending</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let table2 of table2Data.assignment_reports | filterByText: searchterm1 | slice: (currentPage)*numberOfRecords: (currentPage+1)*numberOfRecords | orderBy : orderByString;let i=index"
+                              [ngClass]="{true:'evenclass',false:'oddclass'}[i%2==0]">
+                              <td>{{table2.patientSequenceNumber}}</td>
+                              <td>{{table2.patientCurrentStatus}}</td>
+                              <td class="text-center"><i class="fa fa-file-text-o"></i></td>
+                              <td>{{table2.dateAssigned | date:'MMMM d, y h:mm a UTC'}}</td>
+                              <td [colorcode]="table2.hoursPending">{{table2.hoursPending}}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-5">
+                        <div class="dataTables_info" id="data-table_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
+                      </div>
+                      <div class="col-md-7">
+                        <div class="dataTables_paginate paging_simple_numbers pull-right" id="data-table_paginate">
+                          <ul class="pagination">
+                            <li class="paginate_button previous" id="data-table_previous" [ngClass]="disablePrevious()">
+                              <a href="javascript:void(0)" (click)="prevPage()" aria-controls="data-table" data-dt-idx="0" tabindex="0">Previous</a>
+                            </li>
+                            <li class="paginate_button" *ngFor="let p of paginationRange;let i =index" (click)="setPage(p)">
+                              <a href="javascript:void(0)" (click)="pageClicked(p)" aria-controls="data-table" data-dt-idx="1" tabindex="0">{{p+1}}</a>
+                            </li>
+                            <li class="paginate_button next" id="data-table_next" [ngClass]="disableNext()">
+                              <a href="javascript:void(0)" (click)="nextPage()" aria-controls="data-table" data-dt-idx="7" tabindex="0">Next</a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="row">
-                  <div class="table-responsive col-lg-12">
-                    <table class="table table-td-valign-middle">
-                      <thead>
-                        <tr class="purple">
-                          <th>Patient ID</th>
-                          <th>Patient Current Status</th>
-                          <th>Assignment Report</th>
-                          <th>Assignment Date</th>
-                          <th>Hours Pending</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr *ngFor="let table2 of table2Data.assignment_reports | filterByText: searchterm1 | slice: (currentPage)*numberOfRecords: (currentPage+1)*numberOfRecords | orderBy : orderByString;let i=index"
-                          [ngClass]="{true:'evenclass',false:'oddclass'}[i%2==0]">
-                          <td>{{table2.patientSequenceNumber}}</td>
-                          <td>{{table2.patientCurrentStatus}}</td>
-                          <td><strong>Assignment Report</strong></td>
-                          <td>{{table2.dateAssigned | date:'MMMM d, y h:mm a UTC'}}</td>
-                          <td>{{table2.hoursPending}}</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-5">
-                    <div class="dataTables_info" id="data-table_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
-                  </div>
-                  <div class="col-md-7">
-                    <div class="dataTables_paginate paging_simple_numbers pull-right" id="data-table_paginate">
-                      <ul class="pagination">
-                        <li class="paginate_button previous" id="data-table_previous" [ngClass]="disablePrevious()">
-                          <a href="javascript:void(0)" (click)="prevPage()" aria-controls="data-table" data-dt-idx="0" tabindex="0">Previous</a>
-                        </li>
-                        <li class="paginate_button" *ngFor="let p of paginationRange;let i =index" (click)="setPage(p)">
-                          <a href="javascript:void(0)" (click)="pageClicked(p)" aria-controls="data-table" data-dt-idx="1" tabindex="0">{{p+1}}</a>
-                        </li>
-                        <li class="paginate_button next" id="data-table_next" [ngClass]="disableNext()">
-                          <a href="javascript:void(0)" (click)="nextPage()" aria-controls="data-table" data-dt-idx="7" tabindex="0">Next</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
+                  <!-- end panel -->
                 </div>
               </div>
-              <!-- end panel -->
             </div>
           </div>
         </div>
       </div>
+
       <!-- end panel -->
     </div>
     <!-- table 3 -->
@@ -268,7 +289,7 @@
           <div class="col-md-6 p-r-5">
             <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
               <label>Search:
-                        <input type="text"  [(ngModel)]="searchterm1" (ngModelChange)="filterText(table3Data)" class="form-control input-sm" placeholder="" aria-controls="data-table">
+                        <input type="text" [(ngModel)]="searchterm3" (ngModelChange)="filterText(table3Data,'t3')" class="form-control input-sm" placeholder="" aria-controls="data-table">
                       </label>
             </div>
           </div>
@@ -279,18 +300,20 @@
               <thead>
                 <tr class="purple">
                   <th>Patient ID</th>
+                  <th>Biopsy ID</th>
                   <th>Molecular ID</th>
-                  <th>Variant Report</th>
-                  <th>Concordance</th>
+                  <th class="text-center">Variant Report</th>
+                  <th>Reason</th>
                   <th>Variant Report Confirmation Date</th>
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let table3 of table3Data | filterByText: searchterm1 | slice: (currentPage)*numberOfRecords: (currentPage+1)*numberOfRecords | orderBy : orderByString;let i=index"
+                <tr *ngFor="let table3 of table3Data | filterByText: searchterm3 | slice: (currentPage)*numberOfRecords: (currentPage+1)*numberOfRecords | orderBy : orderByString;let i=index"
                   [ngClass]="{true:'evenclass',false:'oddclass'}[i%2==0]">
                   <td>{{table3.psn}}</td>
+                  <td>{{table3.bsn}}</td>
                   <td>{{table3.msn}}</td>
-                  <td><strong>Variant Report</strong></td>
+                  <td class="text-center"><i class="fa fa-file-text-o"></i></td>
                   <td>AWAITING DATA</td>
                   <td>{{table3.date_verified | date:'MMMM d, y h:mm a UTC'}}</td>
                 </tr>

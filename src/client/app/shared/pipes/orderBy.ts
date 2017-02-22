@@ -23,6 +23,9 @@ export class OrderBy implements PipeTransform {
 
         if (!Array.isArray(input)) return input;
 
+        if (input.length == 0 || !Object.keys(input[0]).some(key => key.includes(config)))
+            return input;
+
         if (!Array.isArray(config) || (Array.isArray(config) && config.length == 1)) {
             var propertyToCheck: string = !Array.isArray(config) ? config : config[0];
             var desc = propertyToCheck.substr(0, 1) == '-';
