@@ -16,6 +16,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { SharedModule } from './shared/shared.module';
 import { Auth } from './shared/auth/auth.service';
 import { AuthGuard } from './shared/auth/auth.guard.service';
+import { LoginGuard } from './shared/auth/login.guard.service';
 
 @NgModule({
   imports: [BrowserModule,
@@ -38,6 +39,7 @@ import { AuthGuard } from './shared/auth/auth.guard.service';
     AUTH_PROVIDERS,
     Auth,
     AuthGuard,
+    LoginGuard
   ],
   bootstrap: [AppComponent]
 })

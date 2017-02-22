@@ -7,7 +7,7 @@ import { AuthGuard } from './../shared/auth/auth.guard.service';
 @NgModule({
   imports: [
     RouterModule.forChild([
-      { path: 'bt', component: BtComponent, canActivate: [AuthGuard]  }
+      { path: 'tracking', component: BtComponent, canActivate: [AuthGuard] }
     ])
   ],
   exports: [RouterModule]
