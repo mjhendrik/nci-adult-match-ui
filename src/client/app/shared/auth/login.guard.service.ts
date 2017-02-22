@@ -9,7 +9,6 @@ export class LoginGuard implements CanActivate {
   constructor(private auth: Auth, private router: Router) { }
 
   canActivate() {
-    console.debug('LoginGuard, this.auth.authenticated() = ', this.auth.authenticated());
     if (this.auth.authenticated()) {
       this.router.navigate(['dashboard']);
       return false;
