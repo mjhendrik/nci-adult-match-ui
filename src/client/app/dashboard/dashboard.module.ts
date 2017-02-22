@@ -5,12 +5,13 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { NameListService } from '../shared/name-list/name-list.service';
 import { filterByText } from '../shared/pipes/filterpipe';
+import { colorCode } from '../shared/directives/colorcode';
 import { OrderBy } from '../shared/pipes/orderBy';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [CommonModule, DashboardRoutingModule, SharedModule, FormsModule],
-  declarations: [DashboardComponent, filterByText, OrderBy],
+  declarations: [DashboardComponent, filterByText, OrderBy, colorCode],
   exports: [DashboardComponent],
   providers: [NameListService]
 })
