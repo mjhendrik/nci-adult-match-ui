@@ -1,5 +1,6 @@
-import { Injectable }      from '@angular/core';
+import { Injectable } from '@angular/core';
 import { tokenNotExpired } from 'angular2-jwt';
+import { Router } from '@angular/router';
 
 // Avoid name not found warnings
 declare var Auth0Lock: any;
@@ -9,10 +10,25 @@ export class Auth {
   // Configure Auth0
   lock = new Auth0Lock('RjoYZXUDEzQxMJw04C6B5dsQKqUAEYzA', 'ncimatch.auth0.com', {});
 
-  constructor() {
+  private userProfile: any;
+
+  constructor(private router: Router) {
     // Add callback for lock `authenticated` event
     this.lock.on('authenticated', (authResult: any) => {
       localStorage.setItem('id_token', authResult.idToken);
+
+      this.lock.getProfile(authResult.idToken, (error: any, profile: any) => {
+        if (error) {
+          // Handle error
+          alert(error);
+          return;
+        }
+
+        localStorage.setItem('profile', JSON.stringify(profile));
+        this.userProfile = profile;
+      });
+
+      this.router.navigate(['dashboard']);
     });
   }
 
@@ -30,5 +46,7 @@ export class Auth {
   public logout() {
     // Remove token from localStorage
     localStorage.removeItem('id_token');
+    localStorage.removeItem('profile');
+    this.userProfile = null;
   };
 }
