@@ -26,7 +26,7 @@ export class TaComponent extends Pagination implements OnInit {
 
   ngOnInit() {
     this.initPagination(this.table4Data.variant_reports.length);
-    console.log(this.table4Data.variant_reports.length);
+    // console.log(this.table4Data.variant_reports.length);
   }
 
   filterText(items: any[]): any[] {
