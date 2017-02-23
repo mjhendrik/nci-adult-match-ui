@@ -98,11 +98,11 @@ export abstract class Pagination {
     }
   }
 
-  lastPage(): void {
+  lastPage(): void { // remove_this
     this.currentPage = this.totalPages;
   }
 
-  firstPage(): void { // remove
+  firstPage(): void { // remove_this
     this.currentPage = 0;
     console.log(this.currentPage);
   }

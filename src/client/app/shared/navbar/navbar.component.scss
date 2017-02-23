@@ -8,6 +8,7 @@
 
 .top-menu-position {
   top: 75px;
+  z-index: 1025;
 }
 
 .header-position {
@@ -20,7 +21,7 @@
 
 // fix_me: .top-menu
 .top-menu .nav>li>a:hover {
-  background-color: #5f7471 !important;
+  background-color: #5f7471;
 }
 
 // fix_me: hover + top-menu
@@ -29,7 +30,7 @@
 }
 
 .footer-format {
-  background-color: white !important;
+  background-color: #ffffff;
   position: fixed;
   z-index: 2000;
 }

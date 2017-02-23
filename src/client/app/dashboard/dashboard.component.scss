@@ -37,15 +37,22 @@ ul {
   background: #ff9966;
 }
 
-.border-no-left {
-  border-top-left-radius: 0;
-}
-
-.border-no-right {
-  border-top-right-radius: 0;
+// .border-no-left {
+//   border-top-left-radius: 0;
+// }
+// .border-no-right {
+//   border-top-right-radius: 0;
+// }
+.table-header {
+  color: #ffffff;
+  text-decoration: none;
 }
 
 // .active {
 //   background: white;
 //   color: black;
 // }
+.tfoot-padding {
+  padding-left: 15px;
+  padding-right: 15px;
+}
