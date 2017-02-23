@@ -43,7 +43,7 @@ export abstract class Pagination {
     }
 
     calculatetotalPages(tablelen: number): void {
-        console.log(Math.ceil(tablelen / this.numberOfRecords));
+        // console.log(Math.ceil(tablelen / this.numberOfRecords));
         this.totalPages = Math.ceil(tablelen / this.numberOfRecords) - 1;
     }
 
@@ -62,7 +62,7 @@ export abstract class Pagination {
     }
 
     pageClicked(p: number): void {
-        console.log(p);
+        // console.log(p);
     }
 
 
@@ -90,7 +90,7 @@ export abstract class Pagination {
 
     firstPage(): void { // remove_this
         this.currentPage = 0;
-        console.log(this.currentPage);
+        // console.log(this.currentPage);
     }
 
 

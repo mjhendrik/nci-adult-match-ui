@@ -4,8 +4,7 @@
   <div class="container-fluid header-height">
     <!-- begin mobile sidebar expand / collapse button -->
     <div class="navbar-header" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-      <!--to_do: redirect or route?!-->
-      <a *ngIf="location.path()==='/login'" class="navbar-brand f-s-15"><img src="assets/svg/nci-logo-full.svg" class="logo" alt="" /><span class="pull-right header-position">Molecular Analysis for Therapy Choice</span></a>      
+      <a *ngIf="location.path()==='/login'" class="navbar-brand f-s-15"><img src="assets/svg/nci-logo-full.svg" class="logo" alt="" /><span class="pull-right header-position">Molecular Analysis for Therapy Choice</span></a>
       <a *ngIf="location.path()!=='/login'" href="javascript:void(0)" [routerLink]="['/dashboard']" class="navbar-brand f-s-15"><img src="assets/svg/nci-logo-full.svg" class="logo" alt="" /><span class="pull-right header-position">Molecular Analysis for Therapy Choice</span></a>
       <button type="button" class="navbar-toggle" data-click="sidebar-toggled">
         <span class="icon-bar"></span>
@@ -152,7 +151,7 @@
   <span *ngIf="location.path()!=='/login'" class="pull-right" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
     <a href="javascript:void(0)" class="btn-scroll-to-top" data-click="scroll-top">
         <i class="fa fa-arrow-up"></i> <span class="hidden-xs">Back to Top</span>
-    </a>
+  </a>
   </span>
   © 2017 <b>MATCHbox</b> All Right Reserved
 </div>

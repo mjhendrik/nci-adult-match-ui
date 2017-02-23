@@ -56,7 +56,7 @@ export abstract class Pagination {
     }
 
     pageClicked(p: number): void {
-        console.log(p);
+        // console.log(p);
     }
 
     resetPaginationRange(tabIndex: number): void {
@@ -75,12 +75,12 @@ export abstract class Pagination {
         break;
 
     }
-    console.log(this.totalPages);
+    // console.log(this.totalPages);
     this.setPaginationRange();
   }
 
   setPaginationRange(): void {
-    console.log("changed");
+    // console.log("changed");
 
     this.paginationRange = [];
 
@@ -104,7 +104,7 @@ export abstract class Pagination {
 
   firstPage(): void { // remove_this
     this.currentPage = 0;
-    console.log(this.currentPage);
+    // console.log(this.currentPage);
   }
 
 
