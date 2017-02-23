@@ -25,7 +25,7 @@
           <div class="widget-stat-info">
             <div class="widget-stat-title text-right">Treatment Arms</div>
             <div class="widget-stat-number text-right">29</div>
-            <div class="widget-stat-text text-right">4 Pending&nbsp;&nbsp;|&nbsp;&nbsp;19 Open&nbsp;&nbsp;|&nbsp;&nbsp;3 Suspended</div>
+            <div class="widget-stat-text text-right">19 Open&nbsp;&nbsp;|&nbsp;&nbsp;3 Suspended&nbsp;&nbsp;|&nbsp;&nbsp;2 Closed</div>
           </div>
         </div>
       </a>
@@ -41,7 +41,7 @@
           <div class="widget-stat-info">
             <div class="widget-stat-title text-right">Biopsy Tracking</div>
             <div class="widget-stat-number text-right">175</div>
-            <div class="widget-stat-text text-right">90 Biopsies&nbsp;&nbsp;|&nbsp;&nbsp;85 Moleculars</div>
+            <div class="widget-stat-text text-right">90 Biopsy IDs&nbsp;&nbsp;|&nbsp;&nbsp;85 Molecular IDs</div>
           </div>
         </div>
       </a>
@@ -68,7 +68,7 @@
       <!-- begin panel -->
       <div class="panel">
         <div class="panel-heading">
-          <h4 class="panel-title">Pending Review</h4>
+          <h4 class="panel-title f-s-18">Pending Review</h4>
         </div>
         <div class="m-0 p-0">
           <div>
@@ -216,23 +216,26 @@
                                 <mfDefaultSorter by="patientSequenceNumber"><span class="table-header">Patient ID</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="patientCurrentStatus"><span class="table-header">Patient Current Status</span></mfDefaultSorter>
+                                <mfDefaultSorter by="treatmentArm.id"><span class="table-header">Selected Treatment Arm</span></mfDefaultSorter>
                               </th>
                               <th class="text-center">
                                 Assignment Report
                               </th>
                               <th>
-                                <mfDefaultSorter by="dateAssigned"><span class="table-header">Patient ID</span></mfDefaultSorter>
+                                <mfDefaultSorter by="dateAssigned"><span class="table-header">Assignment Date</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="hoursPending"><span class="table-header">Patient ID</span></mfDefaultSorter>
+                                <mfDefaultSorter by="hoursPending"><span class="table-header">Hours Pending</span></mfDefaultSorter>
                               </th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftable2.data">
                               <td>{{item.patientSequenceNumber}}</td>
-                              <td>{{item.patientCurrentStatus}}</td>
+                              <td><span *ngIf="item.treatmentArm.id!==null">{{item.treatmentArm.id}} ({{item.treatmentArm.version}})</span>
+                                <span
+                                  *ngIf="item.treatmentArm.id===null">None</span>
+                              </td>
                               <td class="text-center"><i class="fa fa-file-text-o"></i></td>
                               <td>{{item.dateAssigned | date:'MMMM d, y h:mm a UTC'}}</td>
                               <td [colorcode]="item.hoursPending">{{item.hoursPending}}</td>
