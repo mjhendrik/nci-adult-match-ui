@@ -221,92 +221,146 @@ export class DashboardComponent extends Pagination implements OnInit {
       {
         "patientSequenceNumber": "10402",
         "dateAssigned": 1463178437398,
-        "patientCurrentStatus": "PENDING_CONFIRMATION",
+        "treatmentArm": {
+          "id": "EAY131-Q",
+          "version": "2016-01-20"
+        },
         "hoursPending": 6621
       },
       {
         "patientSequenceNumber": "10373",
         "dateAssigned": 1465318217747,
-        "patientCurrentStatus": "PENDING_CONFIRMATION",
+        "treatmentArm": {
+          "id": "EAY131-Q",
+          "version": "2016-01-20"
+        },
         "hoursPending": 6027
       },
       {
         "patientSequenceNumber": "10400",
         "dateAssigned": 1463666179838,
-        "patientCurrentStatus": "PENDING_CONFIRMATION",
+        "treatmentArm": {
+          "id": "EAY131-Q",
+          "version": "2016-01-20"
+        },
         "hoursPending": 6486
       },
       {
         "patientSequenceNumber": "10401",
         "dateAssigned": 1464299430419,
-        "patientCurrentStatus": "PENDING_CONFIRMATION",
+        "treatmentArm": {
+          "id": null,
+          "version": null
+        },
         "hoursPending": 6310
       },
       {
         "patientSequenceNumber": "10376",
         "dateAssigned": 1470402537070,
-        "patientCurrentStatus": "PENDING_CONFIRMATION",
+        "treatmentArm": {
+          "id": null,
+          "version": null
+        },
         "hoursPending": 4614
       },
       {
         "patientSequenceNumber": "10641",
         "dateAssigned": 1465312718728,
-        "patientCurrentStatus": "PENDING_CONFIRMATION",
+        "treatmentArm": {
+          "id": null,
+          "version": null
+        },
         "hoursPending": 6028
       },
       {
         "patientSequenceNumber": "10644",
         "dateAssigned": 1465564956324,
-        "patientCurrentStatus": "PENDING_CONFIRMATION",
+        "treatmentArm": {
+          "id": "EAY131-Z1D",
+          "version": "05-03-2016"
+        },
         "hoursPending": 5958
       },
       {
         "patientSequenceNumber": "10649",
         "dateAssigned": 1465828170798,
-        "patientCurrentStatus": "PENDING_CONFIRMATION",
+        "treatmentArm": {
+          "id": null,
+          "version": null
+        },
         "hoursPending": 5885
       },
       {
         "patientSequenceNumber": "10647",
         "dateAssigned": 1464972942205,
-        "patientCurrentStatus": "PENDING_CONFIRMATION",
+        "treatmentArm": {
+          "id": null,
+          "version": null
+        },
         "hoursPending": 6123
       },
       {
         "patientSequenceNumber": "10374",
         "dateAssigned": 1465318364678,
-        "patientCurrentStatus": "PENDING_CONFIRMATION",
+        "treatmentArm": {
+          "id": "EAY131-F",
+          "version": "2016-05-31"
+        },
         "hoursPending": 6027
       },
       {
         "patientSequenceNumber": "10372",
         "dateAssigned": 1470084396071,
-        "patientCurrentStatus": "PENDING_CONFIRMATION",
+        "treatmentArm": {
+          "id": null,
+          "version": null
+        },
         "hoursPending": 4703
       },
       {
         "patientSequenceNumber": "10741",
         "dateAssigned": 1479837779853,
-        "patientCurrentStatus": "PENDING_CONFIRMATION",
+        "treatmentArm": {
+          "id": "EAY131-IX1",
+          "version": "2016-11-18"
+        },
         "hoursPending": 1994
       },
       {
         "patientSequenceNumber": "10742",
         "dateAssigned": 1479919619007,
-        "patientCurrentStatus": "PENDING_CONFIRMATION",
+        "treatmentArm": {
+          "id": null,
+          "version": null
+        },
         "hoursPending": 1971
       },
       {
         "patientSequenceNumber": "10761",
         "dateAssigned": 1481834875643,
-        "patientCurrentStatus": "PENDING_CONFIRMATION",
+        "treatmentArm": {
+          "id": null,
+          "version": null
+        },
         "hoursPending": 1439
       },
       {
         "patientSequenceNumber": "10763",
         "dateAssigned": 1481833036889,
-        "patientCurrentStatus": "PENDING_CONFIRMATION",
+        "treatmentArm": {
+          "id": null,
+          "version": null
+        },
         "hoursPending": 1439
+      },
+      {
+        "patientSequenceNumber": "10812",
+        "dateAssigned": 1487693527223,
+        "treatmentArm": {
+          "id": "EAY131-Q",
+          "version": "2017-01-12"
+        },
+        "hoursPending": 51
       }
     ]
   }
