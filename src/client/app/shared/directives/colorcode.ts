@@ -11,7 +11,7 @@ export class colorCode {
     ngOnInit() {
         if (this.con < 1000) {
             if (this.con < 200) {
-                this.el.nativeElement.style.color = '#2184DA';
+                this.el.nativeElement.style.color = '#17B6A4';
             }
             else if (this.con < 400) {
                 this.el.nativeElement.style.color = '#fcaf41';
@@ -22,7 +22,7 @@ export class colorCode {
         }
         else {
             if (this.con < 2000) {
-                this.el.nativeElement.style.color = '#2184DA';
+                this.el.nativeElement.style.color = '#17B6A4';
             }
             else if (this.con < 4000) {
                 this.el.nativeElement.style.color = '#fcaf41';
