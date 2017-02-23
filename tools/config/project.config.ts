@@ -48,6 +48,10 @@ export class ProjectConfig extends SeedConfig {
       name: 'angular2-jwt',
       // Path to the package's bundle
       path: 'node_modules/angular2-jwt/angular2-jwt.js'
+    },
+    {
+      name: 'lodash',
+      path: 'node_modules/lodash/lodash.js'
     }];
 
     this.addPackagesBundles(additionalPackages);
