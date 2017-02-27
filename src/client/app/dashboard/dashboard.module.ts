@@ -8,7 +8,7 @@ import { filterByText } from '../shared/pipes/filterpipe';
 import { colorCode } from '../shared/directives/colorcode';
 import { OrderBy } from '../shared/pipes/orderBy';
 import { FormsModule } from '@angular/forms';
-import { DataTableModule } from "angular2-datatable/index";
+import { DataTableModule } from "../shared/datatables/index";
 
 @NgModule({
   imports: [CommonModule, DashboardRoutingModule, SharedModule, FormsModule, DataTableModule],
