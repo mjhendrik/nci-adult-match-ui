@@ -75,7 +75,7 @@
             <!--panel-purple-->
             <ul class="nav nav-tabs nav-tabs-primary p-l-0">
               <li class="active">
-                <a class="p-0" href="#justified-tab-1" (click)="initTab(1)" data-toggle="tab" aria-expanded="true">
+                <a class="p-0" href="#justified-tab-1" data-toggle="tab" aria-expanded="true">
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
@@ -84,7 +84,7 @@
                 </a>
               </li>
               <li class="">
-                <a class="p-0" href="#justified-tab-2" (click)="initTab(2)" data-toggle="tab" aria-expanded="false">
+                <a class="p-0" href="#justified-tab-2" data-toggle="tab" aria-expanded="false">
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
@@ -103,11 +103,11 @@
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select name="data-table_length" [(ngModel)]="numberOfRecords" (change)="ifTableAvailable(1)" aria-controls="data-table" class="form-control input-sm">
-                          <option value="10">10</option>
-                          <option value=25>25</option>
-                          <option value=50>50</option>
-                          <option value=100>100</option>
+                        <select name="data-table_length" [(ngModel)]="recordsPerPage1" aria-controls="data-table" class="form-control input-sm">
+                          <option [ngValue]=10>10</option>
+                          <option [ngValue]=25>25</option>
+                          <option [ngValue]=50>50</option>
+                          <option [ngValue]=100>100</option>
                         </select>
                       entries</label>
                         </div>
@@ -123,7 +123,7 @@
                     <div class="row">
                       <div class="table-responsive col-lg-12">
                         <table class="table table-td-valign-middle table-striped" [mfData]="table1Data.variant_reports | filterByText: searchterm1"
-                          #mftable1="mfDataTable" [mfRowsOnPage]="10">
+                          #mftable1="mfDataTable" [mfRowsOnPage]="recordsPerPage1">
                           <thead>
                             <tr class="purple">
                               <th>
@@ -168,7 +168,7 @@
                           <tfoot>
                             <tr>
                               <td class="tfoot-padding" colspan="8">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]"></mfBootstrapPaginator>
+                                <span class=" pull-right"><mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]"></mfBootstrapPaginator></span>
                               </td>
                             </tr>
                           </tfoot>
@@ -189,7 +189,7 @@
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select name="data-table_length" [(ngModel)]="numberOfRecords"  aria-controls="data-table" class="form-control input-sm">
+                        <select name="data-table_length" [(ngModel)]="recordsPerPage2"  aria-controls="data-table" class="form-control input-sm">
                           <option value=10>10</option>
                           <option value=25>25</option>
                           <option value=50>50</option>
@@ -209,7 +209,7 @@
                     <div class="row">
                       <div class="table-responsive col-lg-12">
                         <table class="table table-td-valign-middle table-striped" [mfData]="table2Data.assignment_reports | filterByText: searchterm1"
-                          #mftable2="mfDataTable" [mfRowsOnPage]="10">
+                          #mftable2="mfDataTable" [mfRowsOnPage]="recordsPerPage2">
                           <thead>
                             <tr class="purple">
                               <th>
@@ -233,8 +233,7 @@
                             <tr *ngFor="let item of mftable2.data">
                               <td>{{item.patientSequenceNumber}}</td>
                               <td><span *ngIf="item.treatmentArm.id!==null">{{item.treatmentArm.id}} ({{item.treatmentArm.version}})</span>
-                                <span
-                                  *ngIf="item.treatmentArm.id===null">None</span>
+                                <span *ngIf="item.treatmentArm.id===null">None</span>
                               </td>
                               <td class="text-center"><i class="fa fa-file-text-o"></i></td>
                               <td>{{item.dateAssigned | date:'MMMM d, y h:mm a UTC'}}</td>
@@ -244,7 +243,7 @@
                           <tfoot>
                             <tr>
                               <td class="tfoot-padding" colspan="5">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]"></mfBootstrapPaginator>
+                                <span class=" pull-right"><mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]"></mfBootstrapPaginator></span>
                               </td>
                             </tr>
                           </tfoot>
@@ -276,7 +275,7 @@
           <div class="col-md-6 p-l-5">
             <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
               <label>Show
-                        <select name="data-table_length" [(ngModel)]="numberOfRecords" (change)="ifTableAvailable(3)" aria-controls="data-table" class="form-control input-sm">
+                        <select name="data-table_length" [(ngModel)]="recordsPerPage3" aria-controls="data-table" class="form-control input-sm">
                           <option value=10>10</option>
                           <option value=25>25</option>
                           <option value=50>50</option>
@@ -288,7 +287,7 @@
           <div class="col-md-6 p-r-5">
             <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
               <label>Search:
-              <input type="text" [(ngModel)]="searchterm3" (ngModelChange)="filterText(table3Data,'t3')" class="form-control input-sm" placeholder="" aria-controls="data-table">
+              <input type="text" [(ngModel)]="searchterm3" class="form-control input-sm" placeholder="" aria-controls="data-table">
                       </label>
             </div>
           </div>
@@ -296,7 +295,7 @@
         <div class="row">
           <div class="table-responsive col-lg-12">
             <table class="table table-td-valign-middle table-striped" [mfData]="table3Data | filterByText: searchterm3" #mftable3="mfDataTable"
-              [mfRowsOnPage]="10">
+              [mfRowsOnPage]="recordsPerPage3">
               <thead>
                 <tr class="purple">
                   <th>
@@ -331,7 +330,7 @@
               <tfoot>
                 <tr>
                   <td class="tfoot-padding" colspan="6">
-                    <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]"></mfBootstrapPaginator>
+                    <span class=" pull-right"><mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]"></mfBootstrapPaginator></span>
                   </td>
                 </tr>
               </tfoot>

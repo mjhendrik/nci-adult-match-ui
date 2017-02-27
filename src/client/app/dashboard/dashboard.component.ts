@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NameListService } from '../shared/name-list/name-list.service';
 import { routerTransition } from './../shared/router.animations';
-import { Pagination } from './../shared/pagination/paginationSetup';
 import { filterByText } from './../shared/pipes/filterpipe';
 import { colorCode } from './../shared/directives/colorcode'
 
@@ -18,7 +17,7 @@ import { colorCode } from './../shared/directives/colorcode'
   host: { '[@routerTransition]': '' },
   providers: [filterByText]
 })
-export class DashboardComponent extends Pagination implements OnInit {
+export class DashboardComponent implements OnInit {
 
   newName: string = '';
   errorMessage: string;
@@ -27,6 +26,9 @@ export class DashboardComponent extends Pagination implements OnInit {
   searchterm3: string = '';
   start: number;
   result: any[];
+  recordsPerPage1: number;
+  recordsPerPage2: number;
+  recordsPerPage3: number;
   /**
    * Creates an instance of the DashboardComponent with the injected
    * NameListService.
@@ -34,7 +36,7 @@ export class DashboardComponent extends Pagination implements OnInit {
    * @param {NameListService} nameListService - The injected NameListService.
    */
   constructor(public nameListService: NameListService, public filterbytext: filterByText) {
-    super();
+
   }
 
   /**
@@ -42,7 +44,9 @@ export class DashboardComponent extends Pagination implements OnInit {
    */
   ngOnInit() {
     this.getNames();
-    this.initPagination(this.table1Data.variant_reports.length);
+    this.recordsPerPage1 = 10;
+    this.recordsPerPage2 = 10;
+    this.recordsPerPage3 = 10;
   }
 
   /**
@@ -56,27 +60,7 @@ export class DashboardComponent extends Pagination implements OnInit {
       );
   }
 
-  ifTableAvailable(tabIndex: number): void {
-    switch (tabIndex) {
-      case 1:
-        this.initPagination(this.table1Data.variant_reports.length);
-        break;
-      case 2:
-        this.initPagination(this.table2Data.assignment_reports.length);
-        break;
-      case 3:
-        this.initPagination(this.table3Data.length);
-        break;
-      default: this.initPagination(this.table1Data.variant_reports.length);
-        break;
-    }
-  }
 
-  initTab(tabIndex: number): void {
-    this.searchterm1 = '';
-    this.resetRecordsPerpage();
-    this.ifTableAvailable(tabIndex);
-  }
 
 
 
@@ -89,16 +73,6 @@ export class DashboardComponent extends Pagination implements OnInit {
     this.names.push(this.newName);
     this.newName = '';
     return false;
-  }
-
-
-  filterText(items: any[], type: string): void {
-    if (type == "t3")
-      this.result = this.filterbytext.transform(items, this.searchterm3);
-    else
-      this.result = this.filterbytext.transform(items, this.searchterm1);
-    this.initPagination(this.result.length);
-    //return this.result;
   }
 
 

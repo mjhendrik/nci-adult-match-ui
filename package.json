@@ -152,7 +152,6 @@
     "rxjs": "~5.0.3",
     "systemjs": "0.19.41",
     "zone.js": "^0.7.2",
-    "angular2-datatable": "",
     "lodash": "4.17.4"
   }
 }
