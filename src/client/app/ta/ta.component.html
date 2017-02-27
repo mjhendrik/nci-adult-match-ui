@@ -37,7 +37,8 @@
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table class="table table-td-valign-middle table-striped" [mfData]="table1Data.variant_reports" #mftable1="mfDataTable" [mfRowsOnPage]="recordsPerPage1">
+                        <table class="table table-td-valign-middle table-striped" [mfData]="table1Data.variant_reports | filterByText: searchterm1"
+                          #mftable1="mfDataTable" [mfRowsOnPage]="recordsPerPage1">
                           <thead>
                             <tr class="success">
                               <th>
