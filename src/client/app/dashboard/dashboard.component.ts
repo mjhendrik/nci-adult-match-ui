@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NameListService } from '../shared/name-list/name-list.service';
 import { routerTransition } from './../shared/router.animations';
 import { filterByText } from './../shared/pipes/filterpipe';
-import { colorCode } from './../shared/directives/colorcode'
+import { colorCode } from './../shared/directives/colorcode';
 
 
 /**
@@ -15,7 +15,6 @@ import { colorCode } from './../shared/directives/colorcode'
   styleUrls: ['dashboard.component.css'],
   animations: [routerTransition()],
   host: { '[@routerTransition]': '' },
-  providers: [filterByText]
 })
 export class DashboardComponent implements OnInit {
 
@@ -35,7 +34,7 @@ export class DashboardComponent implements OnInit {
    *
    * @param {NameListService} nameListService - The injected NameListService.
    */
-  constructor(public nameListService: NameListService, public filterbytext: filterByText) {
+  constructor(public nameListService: NameListService) {
 
   }
 
