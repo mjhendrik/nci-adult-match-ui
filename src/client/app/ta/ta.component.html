@@ -4,13 +4,13 @@
       <!-- begin panel -->
       <div class="panel">
         <div class="panel-heading">
-          <h4 class="panel-title f-s-18">Pending Review</h4>
+          <h4 class="panel-title f-s-18">Treatment Arms</h4>
         </div>
         <div class="m-0 p-0">
           <div>
             <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
-              <div class="tab-pane fade active in" id="justified-tab-1">
-                <!-- table 1 -->
+              <div class="tab-pane active">
+                <!-- table 4 -->
                 <div class="row">
                   <!-- begin panel -->
                   <div>
@@ -18,7 +18,7 @@
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select name="data-table_length" [(ngModel)]="recordsPerPage1" aria-controls="data-table" class="form-control input-sm">
+                        <select name="data-table_length" [(ngModel)]="recordsPerPage4" aria-controls="data-table" class="form-control input-sm">
                           <option [ngValue]=10>10</option>
                           <option [ngValue]=25>25</option>
                           <option [ngValue]=50>50</option>
@@ -30,59 +30,67 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input type="text" [(ngModel)]="searchterm1" class="form-control input-sm" placeholder="" aria-controls="data-table">                      
+                        <input type="text" [(ngModel)]="searchterm4" class="form-control input-sm" placeholder="" aria-controls="data-table">                      
                         </label>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table class="table table-td-valign-middle table-striped" [mfData]="table1Data.variant_reports | filterByText: searchterm1"
-                          #mftable1="mfDataTable" [mfRowsOnPage]="recordsPerPage1">
+                        <table class="table table-td-valign-middle table-striped" [mfData]="table4Data | filterByText: searchterm4" #mftable4="mfDataTable"
+                          [mfRowsOnPage]="recordsPerPage4">
                           <thead>
                             <tr class="success">
-                              <th>
-                                <mfDefaultSorter by="patientSequenceNumber"><span class="table-header">Patient ID</span></mfDefaultSorter>
+                              <th width="10%">
+                                <mfDefaultSorter by="treatmentArmId"><span class="table-header">ID</span></mfDefaultSorter>
                               </th>
-                              <th>
-                                <mfDefaultSorter by="molecularSequenceNumber"><span class="table-header">Molecular ID</span></mfDefaultSorter>
+                              <th width="10%">
+                                <mfDefaultSorter by="treatmentArmName"><span class="table-header">Name</span></mfDefaultSorter>
                               </th>
-                              <th class="text-center">
-                                Variant Report
+                              <th width="8%">
+                                <mfDefaultSorter by="currentPatients"><span class="table-header">Current Patients</span></mfDefaultSorter>
                               </th>
-                              <th>
-                                <mfDefaultSorter by="location"><span class="table-header">Location</span></mfDefaultSorter>
+                              <th width="8%">
+                                <mfDefaultSorter by="formerPatients"><span class="table-header">Former Patient</span></mfDefaultSorter>
                               </th>
-                              <th>
-                                <mfDefaultSorter by="currentPatientStatus"><span class="table-header">Patient Status</span></mfDefaultSorter>
+                              <th width="8%">
+                                <mfDefaultSorter by="notEnrolledPatients"><span class="table-header">Not Enrolled Patients</span></mfDefaultSorter>
                               </th>
-                              <th>
-                                <mfDefaultSorter by="specimenReceivedDate"><span class="table-header">Specimen Received Date</span></mfDefaultSorter>
+                              <th width="8%">
+                                <mfDefaultSorter by="pendingPatients"><span class="table-header">Pending Arm Approval</span></mfDefaultSorter>
                               </th>
-                              <th>
-                                <mfDefaultSorter by="ngsDateReceived"><span class="table-header">Variant Report Recieved Date</span></mfDefaultSorter>
+                              <th width="10%">
+                                <mfDefaultSorter by="treatmentArmStatus"><span class="table-header">Status</span></mfDefaultSorter>
                               </th>
-                              <th>
-                                <mfDefaultSorter by="daysPending"><span class="table-header">Days Pending</span></mfDefaultSorter>
+                              <th width="10%">
+                                <mfDefaultSorter by="dateCreated"><span class="table-header">Date Created</span></mfDefaultSorter>
+                              </th>
+                              <th width="10%">
+                                <mfDefaultSorter by="dateOpened"><span class="table-header">Date Open</span></mfDefaultSorter>
+                              </th>
+                              <th width="18%">
+                                <!--<mfDefaultSorter by="dateSuspendedOrClosed"><span class="table-header">Date Suspended/Closed</span></mfDefaultSorter>-->
+                                <mfDefaultSorter by="dateSuspended"><span class="table-header">Date Suspended</span></mfDefaultSorter>
                               </th>
                             </tr>
                           </thead>
                           <tbody>
-                            <tr *ngFor="let item of mftable1.data">
-                              <td>{{item.patientSequenceNumber}}</td>
-                              <td>{{item.molecularSequenceNumber}}</td>
-                              <td class="text-center"><i class="fa fa-file-text-o"></i></td>
-                              <td>{{item.location}}</td>
-                              <td>{{item.currentPatientStatus}}</td>
-                              <td>{{item.specimenReceivedDate | date:'MMMM d, y h:mm a UTC'}}</td>
-                              <!--provide: LOCALE_ID, useValue: "IS-IS"-->
-                              <td>{{item.ngsDateReceived | date:'MMMM d, y h:mm a UTC'}}</td>
-                              <td>{{item.daysPending}}</td>
+                            <tr *ngFor="let item of mftable4.data">
+                              <td>{{item.treatmentArmId}}</td>
+                              <td>{{item.treatmentArmName}}</td>
+                              <td>{{item.currentPatients}}</td>
+                              <td>{{item.formerPatients}}</td>
+                              <td>{{item.notEnrolledPatients}}</td>
+                              <td>{{item.pendingPatients}}</td>
+                              <td>{{item.treatmentArmStatus}}</td>
+                              <td>{{item.dateCreated | date:'MMMM d, y h:mm a UTC'}}</td>
+                              <td>{{item.dateOpened | date:'MMMM d, y h:mm a UTC'}}</td>
+                              <td>{{item.dateSuspended | date:'MMMM d, y h:mm a UTC'}}</td>
                             </tr>
                           </tbody>
                           <tfoot>
                             <tr>
-                              <td class="tfoot-padding" colspan="8">
+                              <td class="tfoot-padding" colspan="10">
                                 <span class=" pull-right"><mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]"></mfBootstrapPaginator></span>
                               </td>
                             </tr>
@@ -98,9 +106,7 @@
             </div>
           </div>
         </div>
-
       </div>
-
       <!-- end panel -->
     </div>
   </div>
