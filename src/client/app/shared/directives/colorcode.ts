@@ -5,7 +5,6 @@ export class colorCode {
     @Input('colorcode') con: number;
 
     constructor(private el: ElementRef) {
-        el.nativeElement.style.color = 'black';
     }
 
     ngOnInit() {

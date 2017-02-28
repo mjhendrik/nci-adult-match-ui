@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NameListService } from '../shared/name-list/name-list.service';
 import { routerTransition } from './../shared/router.animations';
-import { filterByText } from './../shared/pipes/filterpipe';
 import { colorCode } from './../shared/directives/colorcode';
 
 

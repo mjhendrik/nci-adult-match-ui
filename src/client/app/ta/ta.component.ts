@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { routerTransition } from './../shared/router.animations';
-import { filterByText } from './../shared/pipes/filterpipe';
 /**
  * This class represents the lazy loaded TAComponent.
  */
@@ -11,25 +10,22 @@ import { filterByText } from './../shared/pipes/filterpipe';
   templateUrl: 'ta.component.html',
   styleUrls: ['ta.component.css'],
   animations: [routerTransition()],
-  host: { '[@routerTransition]': '' },
-  providers: [filterByText]
+  host: { '[@routerTransition]': '' }
 })
 export class TaComponent implements OnInit {
 
   searchterm4: string = '';
   recordsPerPage4: number;
 
-  constructor(public filterbytext: filterByText) {
+  constructor() {
 
   }
 
   ngOnInit() {
     this.recordsPerPage4 = 100;
-  }
-
-  filterText(items: any[]): any[] {
-    let result = this.filterbytext.transform(items, this.searchterm4);
-    return result;
+    for (let i = 0; i < this.table4Data.length; i++) {
+      this.table4Data[i].dateSuspendedOrClosed = this.table4Data[i].dateClosed == null ? this.table4Data[i].dateSuspended:this.table4Data[i].dateClosed;
+    }
   }
 
   table4Data: any = [
