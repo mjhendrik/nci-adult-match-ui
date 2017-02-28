@@ -162,7 +162,7 @@
                               <td>{{item.specimenReceivedDate | date:'MMMM d, y h:mm a UTC'}}</td>
                               <!--provide: LOCALE_ID, useValue: "IS-IS"-->
                               <td>{{item.ngsDateReceived | date:'MMMM d, y h:mm a UTC'}}</td>
-                              <td [colorcode]="item.daysPending">{{item.daysPending}}</td>
+                              <td [colorcode-days]="item.daysPending">{{item.daysPending}}</td>
                             </tr>
                           </tbody>
                           <tfoot>
@@ -238,7 +238,7 @@
                               </td>
                               <td class="text-center"><i class="fa fa-file-text-o"></i></td>
                               <td>{{item.dateAssigned | date:'MMMM d, y h:mm a UTC'}}</td>
-                              <td [colorcode]="item.hoursPending">{{item.hoursPending}}</td>
+                              <td [colorcode-hours]="item.hoursPending">{{item.hoursPending}}</td>
                             </tr>
                           </tbody>
                           <tfoot>

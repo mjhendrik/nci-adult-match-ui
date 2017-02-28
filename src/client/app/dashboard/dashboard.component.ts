@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NameListService } from '../shared/name-list/name-list.service';
 import { routerTransition } from './../shared/router.animations';
-import { colorCode } from './../shared/directives/colorcode';
+import { colorCodeDays } from './../shared/directives/colorcode-days';
+import { colorCodeHours } from './../shared/directives/colorcode-hours';
 
 
 /**
