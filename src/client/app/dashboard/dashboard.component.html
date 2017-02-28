@@ -201,14 +201,14 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input type="text" [(ngModel)]="searchterm1" class="form-control input-sm" placeholder="" aria-controls="data-table">
+                        <input type="text" [(ngModel)]="searchterm2" class="form-control input-sm" placeholder="" aria-controls="data-table">
                       </label>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table class="table table-td-valign-middle table-striped" [mfData]="table2Data.assignment_reports | filterByText: searchterm1"
+                        <table class="table table-td-valign-middle table-striped" [mfData]="table2Data.assignment_reports | filterByText: searchterm2"
                           #mftable2="mfDataTable" [mfRowsOnPage]="recordsPerPage2">
                           <thead>
                             <tr class="purple">
