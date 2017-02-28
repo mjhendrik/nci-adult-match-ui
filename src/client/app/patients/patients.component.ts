@@ -9,6 +9,8 @@ import {
 } from '@angular/core';
 
 import { routerTransition } from './../shared/router.animations';
+import { colorCodePatients } from './../shared/directives/colorcode-patients';
+
 
 /**
  * This class represents the lazy loaded PatientsComponent.

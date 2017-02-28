@@ -81,7 +81,7 @@
                               <td>{{item.formerPatients}}</td>
                               <td>{{item.notEnrolledPatients}}</td>
                               <td>{{item.pendingPatients}}</td>
-                              <td>{{item.treatmentArmStatus}}</td>
+                              <td [colorcode-ta]="item.treatmentArmStatus">{{item.treatmentArmStatus}}</td>
                               <td>{{item.dateCreated | date:'MMMM d, y h:mm a UTC'}}</td>
                               <td>{{item.dateOpened | date:'MMMM d, y h:mm a UTC'}}</td>
                               <td>{{item.dateSuspendedOrClosed | date:'MMMM d, y h:mm a UTC'}}</td>
