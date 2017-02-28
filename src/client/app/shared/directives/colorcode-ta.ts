@@ -11,13 +11,13 @@ export class colorCodeTa {
         if (this.con == "OPEN" || "REACTIVATED") {
             this.el.nativeElement.style.color = '#17B6A4';
         }
-        else if (this.con == "SUSPENDED") {
+        if (this.con == "SUSPENDED") {
             this.el.nativeElement.style.color = '#fcaf41';
         }
-        else if (this.con == "CLOSED") {
+        if (this.con == "CLOSED") {
             this.el.nativeElement.style.color = '#F04B46';
         }
-        else if (this.con == "PENDING") {
+        if (this.con == "PENDING") {
             this.el.nativeElement.style.color = '#2184DA';
         }
     }
