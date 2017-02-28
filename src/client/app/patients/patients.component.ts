@@ -9,7 +9,6 @@ import {
 } from '@angular/core';
 
 import { routerTransition } from './../shared/router.animations';
-import { filterByText } from './../shared/pipes/filterpipe';
 
 /**
  * This class represents the lazy loaded PatientsComponent.
@@ -20,25 +19,19 @@ import { filterByText } from './../shared/pipes/filterpipe';
   templateUrl: 'patients.component.html',
   styleUrls: ['patients.component.css'],
   animations: [routerTransition()],
-  host: { '[@routerTransition]': '' },
-  providers: [filterByText]
+  host: { '[@routerTransition]': '' }
 })
 export class PatientsComponent {
 
   searchterm5: string = '';
   recordsPerPage5: number;
 
-  constructor(public filterbytext: filterByText) {
+  constructor() {
 
   }
 
   ngOnInit() {
     this.recordsPerPage5 = 100;
-  }
-
-  filterText(items: any[]): any[] {
-    let result = this.filterbytext.transform(items, this.searchterm5);
-    return result;
   }
 
   table5Data: any = [
