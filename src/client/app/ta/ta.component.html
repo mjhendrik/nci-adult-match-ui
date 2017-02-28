@@ -69,8 +69,7 @@
                                 <mfDefaultSorter by="dateOpened"><span class="table-header">Date Open</span></mfDefaultSorter>
                               </th>
                               <th width="18%">
-                                <!--<mfDefaultSorter by="dateSuspendedOrClosed"><span class="table-header">Date Suspended/Closed</span></mfDefaultSorter>-->
-                                <mfDefaultSorter by="dateSuspended"><span class="table-header">Date Suspended</span></mfDefaultSorter>
+                                <mfDefaultSorter by="dateSuspendedOrClosed"><span class="table-header">Date Suspended/Closed</span></mfDefaultSorter>
                               </th>
                             </tr>
                           </thead>
@@ -85,7 +84,7 @@
                               <td>{{item.treatmentArmStatus}}</td>
                               <td>{{item.dateCreated | date:'MMMM d, y h:mm a UTC'}}</td>
                               <td>{{item.dateOpened | date:'MMMM d, y h:mm a UTC'}}</td>
-                              <td>{{item.dateSuspended | date:'MMMM d, y h:mm a UTC'}}</td>
+                              <td>{{item.dateSuspendedOrClosed | date:'MMMM d, y h:mm a UTC'}}</td>
                             </tr>
                           </tbody>
                           <tfoot>
