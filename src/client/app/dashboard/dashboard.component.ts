@@ -22,6 +22,7 @@ export class DashboardComponent implements OnInit {
   errorMessage: string;
   names: any[] = [];
   searchterm1: string = '';
+  searchterm2: string = '';
   searchterm3: string = '';
   start: number;
   result: any[];
