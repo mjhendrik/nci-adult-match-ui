@@ -225,7 +225,7 @@
                               <td>{{item.patientSequenceNumber}}</td>
                               <td>
                                 <span *ngIf="item.treatmentArm.id!==null">{{item.treatmentArm.id}} ({{item.treatmentArm.version}})</span>
-                                <span *ngIf="item.treatmentArm.id===null">None</span>
+                                <span *ngIf="item.treatmentArm.id===null">No available treatment arm</span>
                               </td>
                               <td class="text-center"><i class="fa fa-file-text-o"></i></td>
                               <td>{{item.dateAssigned | date:'MMMM d, y h:mm a UTC'}}</td>
