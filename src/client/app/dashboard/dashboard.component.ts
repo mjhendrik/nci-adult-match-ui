@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NameListService } from '../shared/name-list/name-list.service';
 import { routerTransition } from './../shared/router.animations';
 import { colorCodeDays } from './../shared/directives/colorcode-days';
 import { colorCodeHours } from './../shared/directives/colorcode-hours';
@@ -20,7 +19,6 @@ export class DashboardComponent implements OnInit {
 
   newName: string = '';
   errorMessage: string;
-  names: any[] = [];
   searchterm1: string = '';
   searchterm2: string = '';
   searchterm3: string = '';
@@ -29,52 +27,12 @@ export class DashboardComponent implements OnInit {
   recordsPerPage1: number;
   recordsPerPage2: number;
   recordsPerPage3: number;
-  /**
-   * Creates an instance of the DashboardComponent with the injected
-   * NameListService.
-   *
-   * @param {NameListService} nameListService - The injected NameListService.
-   */
-  constructor(public nameListService: NameListService) {
 
-  }
-
-  /**
-   * Get the names OnInit
-   */
   ngOnInit() {
-    this.getNames();
     this.recordsPerPage1 = 10;
     this.recordsPerPage2 = 10;
     this.recordsPerPage3 = 10;
   }
-
-  /**
-   * Handle the nameListService observable
-   */
-  getNames() {
-    this.nameListService.get()
-      .subscribe(
-      names => this.names = names,
-      error => this.errorMessage = <any>error
-      );
-  }
-
-
-
-
-
-  /**
-   * Pushes a new name onto the names array
-   * @return {boolean} false to prevent default form submit behavior to refresh the page.
-   */
-  addName(): boolean {
-    // TODO: implement nameListService.post
-    this.names.push(this.newName);
-    this.newName = '';
-    return false;
-  }
-
 
   table1Data: any = {
     "variant_reports": [
@@ -188,7 +146,6 @@ export class DashboardComponent implements OnInit {
       }
     ]
   }
-
 
   table2Data: any = {
     "assignment_reports": [
