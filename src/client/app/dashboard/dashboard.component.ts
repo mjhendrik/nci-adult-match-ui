@@ -38,7 +38,6 @@ export class DashboardComponent implements OnInit {
     "variant_reports": [
       {
         "patientSequenceNumber": "10405",
-        "currentPatientStatus": "REGISTRATION",
         "specimenReceivedDate": 1463784009913,
         "molecularSequenceNumber": "MSN2147",
         "ngsDateReceived": 1464815517857,
@@ -47,7 +46,6 @@ export class DashboardComponent implements OnInit {
       },
       {
         "patientSequenceNumber": "10403",
-        "currentPatientStatus": "REGISTRATION",
         "specimenReceivedDate": 1464039237037,
         "molecularSequenceNumber": "MSN2188",
         "ngsDateReceived": 1464815610741,
@@ -56,7 +54,6 @@ export class DashboardComponent implements OnInit {
       },
       {
         "patientSequenceNumber": "10377",
-        "currentPatientStatus": "REGISTRATION",
         "specimenReceivedDate": 1449922209071,
         "molecularSequenceNumber": "10377_127",
         "ngsDateReceived": 1464815222770,
@@ -65,7 +62,6 @@ export class DashboardComponent implements OnInit {
       },
       {
         "patientSequenceNumber": "20001",
-        "currentPatientStatus": "REGISTRATION",
         "specimenReceivedDate": 1449922209071,
         "molecularSequenceNumber": "20001_MSN",
         "ngsDateReceived": 1478112979467,
@@ -74,7 +70,6 @@ export class DashboardComponent implements OnInit {
       },
       {
         "patientSequenceNumber": "20002",
-        "currentPatientStatus": "REGISTRATION",
         "specimenReceivedDate": 1449922209071,
         "molecularSequenceNumber": "20002_MSN",
         "ngsDateReceived": 1464965824447,
@@ -83,7 +78,6 @@ export class DashboardComponent implements OnInit {
       },
       {
         "patientSequenceNumber": "20003",
-        "currentPatientStatus": "REGISTRATION",
         "specimenReceivedDate": 1449922209071,
         "molecularSequenceNumber": "20003_MSN",
         "ngsDateReceived": 1464965910364,
@@ -92,7 +86,6 @@ export class DashboardComponent implements OnInit {
       },
       {
         "patientSequenceNumber": "20004",
-        "currentPatientStatus": "REGISTRATION",
         "specimenReceivedDate": 1449922209071,
         "molecularSequenceNumber": "20004_MSN",
         "ngsDateReceived": 1464966017316,
@@ -101,7 +94,6 @@ export class DashboardComponent implements OnInit {
       },
       {
         "patientSequenceNumber": "20005",
-        "currentPatientStatus": "REGISTRATION",
         "specimenReceivedDate": 1449922209071,
         "molecularSequenceNumber": "20005_MSN",
         "ngsDateReceived": 1464966127083,
@@ -110,7 +102,6 @@ export class DashboardComponent implements OnInit {
       },
       {
         "patientSequenceNumber": "20006",
-        "currentPatientStatus": "REGISTRATION",
         "specimenReceivedDate": 1449922209071,
         "molecularSequenceNumber": "20006_MSN",
         "ngsDateReceived": 1464966211251,
@@ -119,7 +110,6 @@ export class DashboardComponent implements OnInit {
       },
       {
         "patientSequenceNumber": "20007",
-        "currentPatientStatus": "REGISTRATION",
         "specimenReceivedDate": 1449922209071,
         "molecularSequenceNumber": "20007_MSN",
         "ngsDateReceived": 1464966294481,
@@ -128,7 +118,6 @@ export class DashboardComponent implements OnInit {
       },
       {
         "patientSequenceNumber": "20009",
-        "currentPatientStatus": "REGISTRATION",
         "specimenReceivedDate": 1449922209071,
         "molecularSequenceNumber": "20009_MSN",
         "ngsDateReceived": 1464966495653,
@@ -137,7 +126,6 @@ export class DashboardComponent implements OnInit {
       },
       {
         "patientSequenceNumber": "20010",
-        "currentPatientStatus": "REGISTRATION",
         "specimenReceivedDate": 1449922209071,
         "molecularSequenceNumber": "20010_MSN",
         "ngsDateReceived": 1464966632805,
