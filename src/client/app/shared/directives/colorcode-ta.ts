@@ -8,16 +8,16 @@ export class colorCodeTa {
     }
 
     ngOnInit() {
-        if (this.con == "OPEN" || "REACTIVATED") {
+        if (this.con == "OPEN" || this.con == "REACTIVATED") {
             this.el.nativeElement.style.color = '#17B6A4';
         }
-        if (this.con == "SUSPENDED") {
+        else if (this.con == "SUSPENDED") {
             this.el.nativeElement.style.color = '#fcaf41';
         }
-        if (this.con == "CLOSED") {
+        else if (this.con == "CLOSED") {
             this.el.nativeElement.style.color = '#F04B46';
         }
-        if (this.con == "PENDING") {
+        else if (this.con == "PENDING") {
             this.el.nativeElement.style.color = '#2184DA';
         }
     }
