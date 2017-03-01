@@ -5,7 +5,7 @@ import {DataTable, SortEvent} from "./DataTable";
     selector: "mfDefaultSorter",
     template: `
         <a style="cursor: pointer; color: #ffffff; text-decoration: none;" (click)="sort()" class="text-nowrap">
-            <ng-content></ng-content>
+            <ng-content></ng-content>&nbsp;
             <span *ngIf="isSortedByMeAsc" class="fa fa-sort-amount-asc" aria-hidden="true"></span>
             <span *ngIf="isSortedByMeDesc" class="fa fa-sort-amount-desc" aria-hidden="true"></span>
         </a>`
