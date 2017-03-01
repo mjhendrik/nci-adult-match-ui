@@ -77,10 +77,13 @@
                               <td>{{item.registrationDate | date:'MMMM d, y h:mm a UTC'}}</td>
                               <td>{{item.offTrialDate | date:'MMMM d, y h:mm a UTC'}}</td>
                             </tr>
+                            <tr *ngIf="mftable5.data.length == 0">
+                              <td class="f-s-15" colspan="7">No matching search results found for "{{searchterm5}}"</td>
+                            </tr>
                           </tbody>
                           <tfoot>
                             <tr>
-                              <td class="tfoot-padding" colspan="10">
+                              <td class="tfoot-padding" colspan="7">
                                 <span class=" pull-right"><mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]"></mfBootstrapPaginator></span>
                               </td>
                             </tr>

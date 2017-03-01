@@ -164,6 +164,9 @@
                               <td>{{item.ngsDateReceived | date:'MMMM d, y h:mm a UTC'}}</td>
                               <td [colorcode-days]="item.daysPending">{{item.daysPending}}</td>
                             </tr>
+                            <tr *ngIf="mftable1.data.length == 0">
+                              <td class="f-s-15" colspan="8">No matching search results found for "{{searchterm1}}"</td>
+                            </tr>
                           </tbody>
                           <tfoot>
                             <tr>
@@ -239,6 +242,9 @@
                               <td class="text-center"><i class="fa fa-file-text-o"></i></td>
                               <td>{{item.dateAssigned | date:'MMMM d, y h:mm a UTC'}}</td>
                               <td [colorcode-hours]="item.hoursPending">{{item.hoursPending}}</td>
+                            </tr>
+                            <tr *ngIf="mftable2.data.length == 0">
+                              <td class="f-s-15" colspan="5">No matching search results found for "{{searchterm2}}"</td>
                             </tr>
                           </tbody>
                           <tfoot>
@@ -326,6 +332,9 @@
                   <td class="text-center"><i class="fa fa-file-text-o"></i></td>
                   <td>AWAITING DATA</td>
                   <td>{{item.date_verified | date:'MMMM d, y h:mm a UTC'}}</td>
+                </tr>
+                <tr *ngIf="mftable3.data.length == 0">
+                  <td class="f-s-15" colspan="6">No matching search results found for "{{searchterm3}}"</td>
                 </tr>
               </tbody>
               <tfoot>
