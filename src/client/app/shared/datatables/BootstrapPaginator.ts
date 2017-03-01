@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from "@angular/core";
+import { Component, Input, OnChanges, OnInit } from "@angular/core";
 import { DataTable } from "./DataTable";
 import * as _ from "lodash";
 
@@ -7,10 +7,15 @@ import * as _ from "lodash";
     template: `
     <mfPaginator #p [mfTable]="mfTable">
         <div>
-            <div class="dataTables_info" id="data-table_info" style="margin: 30px 0 0 0;" *ngIf="p.dataLength!=0">
+            <div class="dataTables_info" id="data-table_info" style="margin: 30px 0 0 0;" *ngIf="p.dataLength!=0 && (searchTerm==undefined || searchTerm.length==0)">
                 Showing {{p.dataLength==0 ? 0 : (p.activePage-1)*(p.rowsOnPage)+1}} to 
                 {{ p.dataLength < (p.activePage-1)*(p.rowsOnPage)+p.rowsOnPage ? p.dataLength: (p.activePage-1)*(p.rowsOnPage)+p.rowsOnPage}} of {{p.dataLength}}
                           entries
+            </div>
+            <div class="dataTables_info" id="data-table_info" style="margin: 30px 0 0 0;" *ngIf="p.dataLength!=0 && searchTerm!=undefined && searchTerm.length!=0">
+                Showing {{p.dataLength==0 ? 0 : (p.activePage-1)*(p.rowsOnPage)+1}} to 
+                {{ p.dataLength < (p.activePage-1)*(p.rowsOnPage)+p.rowsOnPage ? p.dataLength: (p.activePage-1)*(p.rowsOnPage)+p.rowsOnPage}} of {{p.dataLength}}
+                          entries (filtered from {{totallength}} total entries)
             </div>
         </div>
         <ul style="margin-bottom: 0;" class="pagination pull-right" *ngIf="p.dataLength > p.rowsOnPage">
@@ -56,9 +61,11 @@ import * as _ from "lodash";
     </mfPaginator>
     `
 })
-export class BootstrapPaginator implements OnChanges {
+export class BootstrapPaginator implements OnChanges, OnInit {
     @Input("rowsOnPageSet") rowsOnPageSet: any[] = [];
     @Input("mfTable") mfTable: DataTable;
+    @Input("search") searchTerm: string;
+    @Input("totallength") totallength: string;
 
     minRowsOnPage = 0;
 
@@ -67,4 +74,8 @@ export class BootstrapPaginator implements OnChanges {
             this.minRowsOnPage = _.min(this.rowsOnPageSet)
         }
     }
+
+    ngOnInit(): void {
+    }
+
 }
