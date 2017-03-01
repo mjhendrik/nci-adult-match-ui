@@ -37,38 +37,38 @@
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table class="table table-td-valign-middle table-striped" [mfData]="table4Data | filterByText: searchterm4" #mftable4="mfDataTable"
-                          [mfRowsOnPage]="recordsPerPage4">
+                        <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="table4Data | filterByText: searchterm4"
+                          #mftable4="mfDataTable" [mfRowsOnPage]="recordsPerPage4">
                           <thead>
                             <tr class="success">
-                              <th width="10%">
+                              <th>
                                 <mfDefaultSorter by="treatmentArmId"><span class="table-header">ID</span></mfDefaultSorter>
                               </th>
-                              <th width="10%">
+                              <th>
                                 <mfDefaultSorter by="treatmentArmName"><span class="table-header">Name</span></mfDefaultSorter>
                               </th>
-                              <th width="8%">
+                              <th>
                                 <mfDefaultSorter by="currentPatients"><span class="table-header">Current Patients</span></mfDefaultSorter>
                               </th>
-                              <th width="8%">
+                              <th>
                                 <mfDefaultSorter by="formerPatients"><span class="table-header">Former Patient</span></mfDefaultSorter>
                               </th>
-                              <th width="8%">
+                              <th>
                                 <mfDefaultSorter by="notEnrolledPatients"><span class="table-header">Not Enrolled Patients</span></mfDefaultSorter>
                               </th>
-                              <th width="8%">
+                              <th>
                                 <mfDefaultSorter by="pendingPatients"><span class="table-header">Pending Arm Approval</span></mfDefaultSorter>
                               </th>
-                              <th width="10%">
+                              <th>
                                 <mfDefaultSorter by="treatmentArmStatus"><span class="table-header">Status</span></mfDefaultSorter>
                               </th>
-                              <th width="10%">
+                              <th>
                                 <mfDefaultSorter by="dateCreated"><span class="table-header">Date Created</span></mfDefaultSorter>
                               </th>
-                              <th width="10%">
+                              <th>
                                 <mfDefaultSorter by="dateOpened"><span class="table-header">Date Open</span></mfDefaultSorter>
                               </th>
-                              <th width="18%">
+                              <th>
                                 <mfDefaultSorter by="dateSuspendedOrClosed"><span class="table-header">Date Suspended/Closed</span></mfDefaultSorter>
                               </th>
                             </tr>
@@ -85,6 +85,9 @@
                               <td>{{item.dateCreated | date:'MMMM d, y h:mm a UTC'}}</td>
                               <td>{{item.dateOpened | date:'MMMM d, y h:mm a UTC'}}</td>
                               <td>{{item.dateSuspendedOrClosed | date:'MMMM d, y h:mm a UTC'}}</td>
+                            </tr>
+                            <tr *ngIf="mftable4.data.length == 0">
+                              <td class="f-s-15" colspan="10">No matching search results found for "{{searchterm4}}"</td>
                             </tr>
                           </tbody>
                           <tfoot>
