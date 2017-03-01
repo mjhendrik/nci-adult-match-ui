@@ -8,6 +8,7 @@ import { LoginGuard } from './../shared/auth/login.guard.service';
   imports: [
     RouterModule.forChild([
       { path: 'signin', redirectTo: 'login' },
+      { path: '', redirectTo: 'login', pathMatch: 'full' },
       { path: 'login', component: LoginComponent, canActivate: [LoginGuard] }
     ])
   ],
