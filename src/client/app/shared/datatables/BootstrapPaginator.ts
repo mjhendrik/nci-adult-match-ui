@@ -1,12 +1,19 @@
-import {Component, Input, OnChanges} from "@angular/core";
-import {DataTable} from "./DataTable";
+import { Component, Input, OnChanges } from "@angular/core";
+import { DataTable } from "./DataTable";
 import * as _ from "lodash";
 
 @Component({
     selector: "mfBootstrapPaginator",
     template: `
     <mfPaginator #p [mfTable]="mfTable">
-        <ul style="margin-bottom: -5px;" class="pagination" *ngIf="p.dataLength > p.rowsOnPage">
+        <div>
+            <div class="dataTables_info" id="data-table_info" style="margin: 30px 0 0 0;" *ngIf="p.dataLength!=0">
+                Showing {{p.dataLength==0 ? 0 : (p.activePage-1)*(p.rowsOnPage)+1}} to 
+                {{ p.dataLength < (p.activePage-1)*(p.rowsOnPage)+p.rowsOnPage ? p.dataLength: (p.activePage-1)*(p.rowsOnPage)+p.rowsOnPage}} of {{p.dataLength}}
+                          entries
+            </div>
+        </div>
+        <ul style="margin-bottom: 0;" class="pagination pull-right" *ngIf="p.dataLength > p.rowsOnPage">
             <li class="page-item" [class.disabled]="p.activePage <= 1" (click)="p.setPage(1)">
                 <a class="page-link" style="cursor: pointer">&laquo;</a>
             </li>
@@ -41,7 +48,7 @@ import * as _ from "lodash";
                 <a class="page-link" style="cursor: pointer">&raquo;</a>
             </li>
         </ul>
-        <ul style="margin-bottom: -5px;" class="pagination pull-right float-sm-right" *ngIf="false">
+        <ul style="margin-bottom: 0;" class="pagination pull-right float-sm-right" *ngIf="false">
             <li class="page-item" *ngFor="let rows of rowsOnPageSet" [class.active]="p.rowsOnPage===rows" (click)="p.setRowsOnPage(rows)">
                 <a class="page-link" style="cursor: pointer">{{rows}}</a>
             </li>
