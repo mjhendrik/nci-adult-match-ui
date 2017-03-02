@@ -17,6 +17,8 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PatientsComponent } from './patients/patients.component';
 import { TaComponent } from './ta/ta.component';
+import { PatientsDetailsComponent } from './patients/patients-details/patients-details.component';
+import { TaDetailsComponent } from './ta/ta-details/ta-details.component';
 import { BtComponent } from './bt/bt.component';
 import { CliaComponent } from './clia/clia.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
@@ -29,7 +31,9 @@ export function main() {
       { path: '', component: LoginComponent },
       { path: 'dashboard', component: DashboardComponent },
       { path: 'patients', component: PatientsComponent },
-      { path: 'ta', component: TaComponent },
+      { path: 'treatments', component: TaComponent },
+      { path: 'patients/details', component: PatientsDetailsComponent },
+      { path: 'treatments/details', component: TaDetailsComponent },
       { path: 'bt', component: BtComponent },
       { path: 'clia', component: CliaComponent }
     ];
@@ -40,7 +44,8 @@ export function main() {
           AppComponent, LoginComponent,
           DashboardComponent, PatientsComponent,
           TaComponent, BtComponent,
-          CliaComponent],
+          CliaComponent, PatientsDetailsComponent,
+          TaDetailsComponent],
         providers: [
           { provide: APP_BASE_HREF, useValue: '' }
         ]

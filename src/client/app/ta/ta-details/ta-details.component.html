@@ -1,0 +1,116 @@
+<div id="content" class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <!-- begin panel -->
+      <div class="panel">
+        <div class="panel-heading">
+          <h4 class="panel-title f-s-18">Treatment Arm's Details</h4>
+        </div>
+        <div class="m-0 p-0">
+          <div>
+            <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
+              <div class="tab-pane active">
+                <!-- table 4 -->
+                <div class="row">
+                  <!-- begin panel -->
+                  <div>
+                    <div class="col-md-12 bg-success-light">
+                      <div class="col-md-6 p-l-5">
+                        <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
+                          <label>Show
+                        <select name="data-table_length" [(ngModel)]="recordsPerPage4" aria-controls="data-table" class="form-control input-sm">
+                          <option [ngValue]=10>10</option>
+                          <option [ngValue]=25>25</option>
+                          <option [ngValue]=50>50</option>
+                          <option [ngValue]=100>100</option>
+                        </select>
+                      entries</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6 p-r-5">
+                        <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
+                          <label>Search:
+                        <input type="text" [(ngModel)]="searchterm4" class="form-control input-sm" placeholder="" aria-controls="data-table">                      
+                        </label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="table-responsive col-lg-12">
+                        <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="table4Data | filterByText: searchterm4"
+                          #mftable4="mfDataTable" [mfRowsOnPage]="recordsPerPage4">
+                          <thead>
+                            <tr class="success">
+                              <th>
+                                <mfDefaultSorter by="treatmentArmId"><span class="table-header">ID</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="treatmentArmName"><span class="table-header">Name</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="currentPatients"><span class="table-header">Current Patients</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="formerPatients"><span class="table-header">Former Patient</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="notEnrolledPatients"><span class="table-header">Not Enrolled Patients</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="pendingPatients"><span class="table-header">Pending Arm Approval</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="treatmentArmStatus"><span class="table-header">Status</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="dateCreated"><span class="table-header">Created Date</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="dateOpened"><span class="table-header">Open Date</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="dateSuspendedOrClosed"><span class="table-header">Suspended/Closed Date</span></mfDefaultSorter>
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let item of mftable4.data">
+                              <td>{{item.treatmentArmId}}</td>
+                              <td>{{item.treatmentArmName}}</td>
+                              <td>{{item.currentPatients}}</td>
+                              <td>{{item.formerPatients}}</td>
+                              <td>{{item.notEnrolledPatients}}</td>
+                              <td>{{item.pendingPatients}}</td>
+                              <td>{{item.treatmentArmStatus}}</td>
+                              <!--[colorcode-ta]="item.treatmentArmStatus"-->
+                              <td>{{item.dateCreated | date:'MMMM d, y h:mm a UTC'}}</td>
+                              <td>{{item.dateOpened | date:'MMMM d, y h:mm a UTC'}}</td>
+                              <td>{{item.dateSuspendedOrClosed | date:'MMMM d, y h:mm a UTC'}}</td>
+                            </tr>
+                            <tr *ngIf="mftable4.data.length == 0">
+                              <td class="f-s-15" colspan="10">No matching search results found for "{{searchterm4}}"</td>
+                            </tr>
+                          </tbody>
+                          <tfoot>
+                            <tr>
+                              <td class="tfoot-padding" colspan="10">
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchterm4" [totallength]="table4Data.length"></mfBootstrapPaginator>
+                              </td>
+                            </tr>
+                          </tfoot>
+                        </table>
+                      </div>
+                    </div>
+
+                  </div>
+                  <!-- end panel -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end panel -->
+    </div>
+  </div>
+</div>
