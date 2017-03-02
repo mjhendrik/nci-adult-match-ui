@@ -1,0 +1,35 @@
+:host {
+  display: block;
+  // padding: 0 16px;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.005em;
+  margin-bottom: 0;
+  margin-top: 0.83em;
+}
+
+.content {
+  padding-top: 44px;
+  padding-bottom: 45px;
+}
+
+.form-control {
+  border-color: #094942;
+}
+
+.tfoot-padding {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.table-header {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.table-col-width .table-header {
+  white-space: normal;
+}

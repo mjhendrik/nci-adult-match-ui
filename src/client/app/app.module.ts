@@ -12,6 +12,8 @@ import { CliaModule } from './clia/clia.module';
 import { BtModule } from './bt/bt.module';
 import { TaModule } from './ta/ta.module';
 import { PatientsModule } from './patients/patients.module';
+import { TaDetailsModule } from './ta/ta-details/ta-details.module';
+import { PatientsDetailsModule } from './patients/patients-details/patients-details.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { SharedModule } from './shared/shared.module';
 import { Auth } from './shared/auth/auth.service';
@@ -27,6 +29,8 @@ import { LoginGuard } from './shared/auth/login.guard.service';
     BtModule,
     TaModule,
     PatientsModule,
+    TaDetailsModule,
+    PatientsDetailsModule,
     DashboardModule,
     SharedModule.forRoot(),
     FormsModule],
