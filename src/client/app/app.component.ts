@@ -9,7 +9,7 @@ import './operators';
   moduleId: module.id,
   selector: 'sd-app',
   templateUrl: 'app.component.html',
-  // styleUrls: ['scss/main.css'] // fix_me: main-styles
+  // styleUrls: ['../scss/main.css'] // fix_me: main-styles
 })
 export class AppComponent {
 }
