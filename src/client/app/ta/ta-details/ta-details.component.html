@@ -1,10 +1,140 @@
 <div id="content" class="content">
   <div class="row">
+    <div class="col-md-4">
+      <!-- begin panel -->
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <h4 class="panel-title f-s-18">Treatment Arm ABC's Details</h4>
+        </div>
+        <div class="m-0 p-0">
+          <div>
+            <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
+              <div class="tab-pane active">
+                <!-- table 4 -->
+                <div class="row">
+                  <!-- begin panel -->
+                  <div>
+                    <div class="row">
+                      <div class="table-responsive col-lg-12">
+                        <table class="table table-td-valign-middle table-striped table-col-width" *ngFor="let item of table4Data">
+                          <tr>
+                            <th><span class="pull-right">ID</span></th>
+                            <td>{{item.id}}</td>
+                          </tr>
+                          <tr>
+                            <th><span class="pull-right">Name</span></th>
+                            <td>{{item.name}}</td>
+                          </tr>
+                          <tr>
+                            <th><span class="pull-right">Treatment Arm Approval Date</span></th>
+                            <td>{{item.version}}</td>
+                          </tr>
+                          <tr>
+                            <th><span class="pull-right">Target</span></th>
+                            <td>{{item.targetName}}</td>
+                          </tr>
+                          <tr>
+                            <th><span class="pull-right">Genes</span></th>
+                            <td>{{item.gene}}</td>
+                          </tr>
+                          <tr>
+                            <th><span class="pull-right">Description</span></th>
+                            <td>{{item.description}}</td>
+                          </tr>
+                          <tr>
+                            <th><span class="pull-right">Patients Assigned</span></th>
+                            <td>{{item.numPatientsAssigned}} of {{item.maxPatientsAllowed}}</td>
+                          </tr>
+                          <tr>
+                            <th><span class="pull-right">Current Status</span></th>
+                            <td>{{item.treatmentArmStatus}}</td>
+                          </tr>
+                          <tr>
+                            <th><span class="pull-right">Drug ID</span></th>
+                            <td>{{item.targetId}}</td>
+                          </tr>
+                          <tr>
+                            <th><span class="pull-right">Drug Name</span></th>
+                            <td>{{item.targetName}}</td>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- end panel -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end panel -->
+    </div>
+    <div class="col-md-4">
+      <!-- begin panel -->
+      <div class="panel">
+        <div class="panel-heading">
+          <h4 class="panel-title">Patient Assignment Outcome</h4>
+        </div>
+        <div class="m-0 p-0">
+          <div>
+            <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
+              <div class="tab-pane active">
+                <!-- table 4 -->
+                <div class="row">
+                  <!-- begin panel -->
+                  <div>
+                    <div class="row">
+                      <div class="table-responsive col-lg-12">
+                        <h1 style="padding: 147px; margin-bottom: 57px;">CHART 1</h1>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- end panel -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end panel -->
+    </div>
+    <div class="col-md-4">
+      <!-- begin panel -->
+      <div class="panel">
+        <div class="panel-heading">
+          <h4 class="panel-title">Disease Represented In Assignments To This Treatment Arm</h4>
+        </div>
+        <div class="m-0 p-0">
+          <div>
+            <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
+              <div class="tab-pane active">
+                <!-- table 4 -->
+                <div class="row">
+                  <!-- begin panel -->
+                  <div>
+                    <div class="row">
+                      <div class="table-responsive col-lg-12">
+                        <h1 style="padding: 147px; margin-bottom: 57px;">CHART 2</h1>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- end panel -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end panel -->
+    </div>
+  </div>
+  <div class="row">
     <div class="col-md-12">
       <!-- begin panel -->
       <div class="panel">
         <div class="panel-heading">
-          <h4 class="panel-title f-s-18">Treatment Arm's Details</h4>
+          <h4 class="panel-title">History</h4>
         </div>
         <div class="m-0 p-0">
           <div>
@@ -82,7 +212,6 @@
                               <td>{{item.notEnrolledPatients}}</td>
                               <td>{{item.pendingPatients}}</td>
                               <td>{{item.treatmentArmStatus}}</td>
-                              <!--[colorcode-ta]="item.treatmentArmStatus"-->
                               <td>{{item.dateCreated | date:'MMMM d, y h:mm a UTC'}}</td>
                               <td>{{item.dateOpened | date:'MMMM d, y h:mm a UTC'}}</td>
                               <td>{{item.dateSuspendedOrClosed | date:'MMMM d, y h:mm a UTC'}}</td>
