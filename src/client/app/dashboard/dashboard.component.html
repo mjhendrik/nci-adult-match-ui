@@ -95,7 +95,7 @@
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select name="data-table_length" [(ngModel)]="recordsPerPage1" aria-controls="data-table" class="form-control input-sm">
+                        <select [disabled]="table1Data.variant_reports.length==0" name="data-table_length" [(ngModel)]="recordsPerPage1" aria-controls="data-table" class="form-control input-sm">
                           <option [ngValue]=10>10</option>
                           <option [ngValue]=25>25</option>
                           <option [ngValue]=50>50</option>
@@ -107,15 +107,47 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input type="text" [(ngModel)]="searchterm1" class="form-control input-sm" placeholder="" aria-controls="data-table">                      
+                        <input [disabled]="table1Data.variant_reports.length==0" type="text" [(ngModel)]="searchterm1" class="form-control input-sm" placeholder="" aria-controls="data-table">                      
                         </label>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table class="table table-td-valign-middle table-striped" [mfData]="table1Data.variant_reports | filterByText: searchterm1"
-                          #mftable1="mfDataTable" [mfRowsOnPage]="recordsPerPage1">
+                        <table *ngIf="table1Data.variant_reports.length==0" class="table table-td-valign-middle table-striped">
+                          <thead>
+                            <tr class="purple">
+                              <th>
+                                Patient Sequence Number
+                              </th>
+                              <th>
+                                Molecular Sequence Number
+                              </th>
+                              <th class="text-center">
+                                Variant Report
+                              </th>
+                              <th>
+                                Location
+                              </th>
+                              <th>
+                                Specimen Received Date
+                              </th>
+                              <th>
+                                Variant Report Recieved Date
+                              </th>
+                              <th>
+                                Days Pending
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="f-s-15" colspan="8">There are no pending variant reports that need review</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <table *ngIf="table1Data.variant_reports!=0" class="table table-td-valign-middle table-striped" [mfData]="table1Data.variant_reports | filterByText: searchterm1"
+                          #mftable1="mfDataTable" [(mfSortBy)]="table1DefaultSort" [mfRowsOnPage]="recordsPerPage1">
                           <thead>
                             <tr class="purple">
                               <th>
@@ -166,7 +198,6 @@
                         </table>
                       </div>
                     </div>
-
                   </div>
                   <!-- end panel -->
                 </div>
@@ -180,7 +211,7 @@
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select name="data-table_length" [(ngModel)]="recordsPerPage2"  aria-controls="data-table" class="form-control input-sm">
+                        <select [disabled]="table2Data.assignment_reports.length==0" name="data-table_length" [(ngModel)]="recordsPerPage2"  aria-controls="data-table" class="form-control input-sm">
                           <option value=10>10</option>
                           <option value=25>25</option>
                           <option value=50>50</option>
@@ -192,15 +223,41 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input type="text" [(ngModel)]="searchterm2" class="form-control input-sm" placeholder="" aria-controls="data-table">
+                        <input [disabled]="table2Data.assignment_reports.length==0" type="text" [(ngModel)]="searchterm2" class="form-control input-sm" placeholder="" aria-controls="data-table">
                       </label>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table class="table table-td-valign-middle table-striped" [mfData]="table2Data.assignment_reports | filterByText: searchterm2"
-                          #mftable2="mfDataTable" [mfRowsOnPage]="recordsPerPage2">
+                        <table *ngIf="table2Data.assignment_reports.length==0" class="table table-td-valign-middle table-striped">
+                          <thead>
+                            <tr class="purple">
+                              <th>
+                                Patient Sequence Number
+                              </th>
+                              <th>
+                                Selected Treatment Arm
+                              </th>
+                              <th class="text-center">
+                                Assignment Report
+                              </th>
+                              <th>
+                                Assignment Date
+                              </th>
+                              <th>
+                                Hours Pending
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="f-s-15" colspan="5">There are no pending assignment reports that need review</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <table *ngIf="table2Data.assignment_reports.length!=0" class="table table-td-valign-middle table-striped" [mfData]="table2Data.assignment_reports | filterByText: searchterm2"
+                          #mftable2="mfDataTable" [(mfSortBy)]="table2DefaultSort" [mfRowsOnPage]="recordsPerPage2">
                           <thead>
                             <tr class="purple">
                               <th>
@@ -252,9 +309,7 @@
             </div>
           </div>
         </div>
-
       </div>
-
       <!-- end panel -->
     </div>
     <!-- table 3 -->
@@ -270,7 +325,7 @@
           <div class="col-md-6 p-l-5">
             <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
               <label>Show
-                        <select name="data-table_length" [(ngModel)]="recordsPerPage3" aria-controls="data-table" class="form-control input-sm">
+                        <select [disabled]="table3Data.length==0" name="data-table_length" [(ngModel)]="recordsPerPage3" aria-controls="data-table" class="form-control input-sm">
                           <option value=10>10</option>
                           <option value=25>25</option>
                           <option value=50>50</option>
@@ -282,15 +337,44 @@
           <div class="col-md-6 p-r-5">
             <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
               <label>Search:
-              <input type="text" [(ngModel)]="searchterm3" class="form-control input-sm" placeholder="" aria-controls="data-table">
+              <input [disabled]="table3Data.length==0" type="text" [(ngModel)]="searchterm3" class="form-control input-sm" placeholder="" aria-controls="data-table">
                       </label>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="table-responsive col-lg-12">
-            <table class="table table-td-valign-middle table-striped" [mfData]="table3Data | filterByText: searchterm3" #mftable3="mfDataTable"
-              [mfRowsOnPage]="recordsPerPage3">
+            <table *ngIf="table3Data.length==0" class="table table-td-valign-middle table-striped">
+              <thead>
+                <tr class="purple">
+                  <th>
+                    Patient Sequence Number
+                  </th>
+                  <th>
+                    Biopsy Sequence Number
+                  </th>
+                  <th>
+                    Molecular Sequence Number
+                  </th>
+                  <th class="text-center">
+                    Variant Report
+                  </th>
+                  <th>
+                    Reason
+                  </th>
+                  <th>
+                    Confirmation Date
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="f-s-15" colspan="6">There are no patients awaiting further action or information</td>
+                </tr>
+              </tbody>
+            </table>
+            <table *ngIf="table3Data.length!=0" class="table table-td-valign-middle table-striped" [mfData]="table3Data | filterByText: searchterm3"
+              #mftable3="mfDataTable" [(mfSortBy)]="table3DefaultSort" [mfRowsOnPage]="recordsPerPage3">
               <thead>
                 <tr class="purple">
                   <th>
@@ -302,7 +386,9 @@
                   <th>
                     <mfDefaultSorter by="msn"><span class="table-header">Molecular Sequence Number</span></mfDefaultSorter>
                   </th>
-                  <th class="text-center">Variant Report</th>
+                  <th class="text-center">
+                    Variant Report
+                  </th>
                   <th>
                     Reason
                     <!--<mfDefaultSorter by="reason?!"><span class="table-header">Reason</span></mfDefaultSorter>-->
