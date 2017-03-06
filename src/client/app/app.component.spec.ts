@@ -3,15 +3,10 @@ import { FormsModule } from '@angular/forms';
 import { TestBed } from '@angular/core/testing';
 import { APP_BASE_HREF } from '@angular/common';
 
-import {
-  async
-} from '@angular/core/testing';
-import {
-  Route
-} from '@angular/router';
-import {
-  RouterTestingModule
-} from '@angular/router/testing';
+import { async } from '@angular/core/testing';
+import { Route } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+
 import { LoginComponent } from './login/login.component';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';

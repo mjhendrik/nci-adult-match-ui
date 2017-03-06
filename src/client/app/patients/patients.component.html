@@ -74,8 +74,8 @@
                                 <span *ngIf="item.assignedTreatmentArm!==null">{{item.assignedTreatmentArm}} ({{item.assignedTreatmentArmVersion}})</span>
                                 <span *ngIf="item.assignedTreatmentArm===null"></span>
                               </td>
-                              <td>{{item.registrationDate | date:'MMMM d, y h:mm a UTC'}}</td>
-                              <td>{{item.offTrialDate | date:'MMMM d, y h:mm a UTC'}}</td>
+                              <td>{{item.registrationDate | date:'MMMM d, y h:mm a'}} GMT</td>
+                              <td>{{item.offTrialDate | date:'MMMM d, y h:mm a'}} GMT</td>
                             </tr>
                             <tr *ngIf="mftable5.data.length == 0">
                               <td class="f-s-15" colspan="7">No matching search results found for "{{searchterm5}}"</td>

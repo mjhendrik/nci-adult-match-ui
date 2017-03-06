@@ -82,9 +82,9 @@
                               <td>{{item.notEnrolledPatients}}</td>
                               <td>{{item.pendingPatients}}</td>
                               <td [colorcode-ta]="item.treatmentArmStatus">{{item.treatmentArmStatus}}</td>
-                              <td>{{item.dateCreated | date:'MMMM d, y h:mm a UTC'}}</td>
-                              <td>{{item.dateOpened | date:'MMMM d, y h:mm a UTC'}}</td>
-                              <td>{{item.dateSuspendedOrClosed | date:'MMMM d, y h:mm a UTC'}}</td>
+                              <td>{{item.dateCreated | date:'MMMM d, y h:mm a'}} GMT</td>
+                              <td>{{item.dateOpened | date:'MMMM d, y h:mm a'}} GMT</td>
+                              <td>{{item.dateSuspendedOrClosed | date:'MMMM d, y h:mm a'}} GMT</td>
                             </tr>
                             <tr *ngIf="mftable4.data.length == 0">
                               <td class="f-s-15" colspan="10">No matching search results found for "{{searchterm4}}"</td>

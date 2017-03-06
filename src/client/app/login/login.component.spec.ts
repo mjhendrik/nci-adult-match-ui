@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
-import {
-  async,
-  TestBed
-} from '@angular/core/testing';
+import { async, TestBed } from '@angular/core/testing';
 
 import { LoginModule } from './login.module';
 
