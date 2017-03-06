@@ -18,7 +18,7 @@
       <li>
         <form class="navbar-form form-input-flat">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search..." />
+            <input type="text" class="form-control" placeholder="Search..." (keypress)="stopReload($event.keyCode);" />
             <button type="button" class="btn btn-search"><i class="fa fa-search"></i></button>
           </div>
         </form>
@@ -149,7 +149,7 @@
 <!--  begin #footer -->
 <div id="footer" class="footer text-center footer-format">
   <span *ngIf="location.path()!=='/login'" class="pull-right" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-    <a href="javascript:void(0)" class="btn-scroll-to-top" data-click="scroll-top">
+    <a href="javascript:void(0)" class="btn-scroll-to-top" data-click="scroll-top" (click)="backToTop();">
         <i class="fa fa-arrow-up"></i> <span class="hidden-xs">Back to Top</span>
   </a>
   </span>
