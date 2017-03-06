@@ -17,4 +17,15 @@ export class NavbarComponent {
   constructor(location: Location, private auth: Auth) {
     this.location = location;
   }
+
+  backToTop(): void {
+    setTimeout(() => window.scrollTo(0, 0), 1);
+  }
+
+  stopReload(keycode: number): boolean {
+    if (keycode == 13)
+      return false;
+    return true;
+  }
+
 }
