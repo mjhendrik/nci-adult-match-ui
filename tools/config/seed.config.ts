@@ -378,7 +378,6 @@ export class SeedConfig {
       '@angular/platform-browser-dynamic/testing':
       'node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic-testing.umd.js',
       '@angular/router/testing': 'node_modules/@angular/router/bundles/router-testing.umd.js',
-      'angular2-datatable': 'node_modules/angular2-datatable/index.js', // remove_this
 
       'app/*': '/app/*',
       // For test config
