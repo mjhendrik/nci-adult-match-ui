@@ -19,7 +19,7 @@ import * as _ from "lodash";
             </div>
         </div>
         <ul style="margin-bottom: 0;" class="pagination pull-right" *ngIf="p.dataLength > p.rowsOnPage">
-            <li class="page-item" [class.disabled]="p.activePage <= 1" (click)="p.setPage(1)">
+            <li class="page-item" [class.disabled]="p.activePage <= 1" (click)="p.setPage(p.activePage - 1)">
                 <a class="page-link" style="cursor: pointer">Previous</a>
             </li>
             <li class="page-item" *ngIf="p.activePage > 4 && p.activePage + 1 > p.lastPage" (click)="p.setPage(p.activePage - 4)">
@@ -48,8 +48,8 @@ import * as _ from "lodash";
             </li>
             <li class="page-item" *ngIf="p.activePage + 4 <= p.lastPage && p.activePage < 2" (click)="p.setPage(p.activePage + 4)">
                 <a class="page-link" style="cursor: pointer">{{p.activePage+4}}</a>
-            </li>
-            <li class="page-item" [class.disabled]="p.activePage >= p.lastPage" (click)="p.setPage(p.lastPage)">
+            </li>   
+            <li class="page-item" [class.disabled]="p.activePage >= p.lastPage" (click)="p.setPage(p.activePage + 1)">
                 <a class="page-link" style="cursor: pointer">Next</a>
             </li>
         </ul>
