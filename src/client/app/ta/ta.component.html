@@ -38,7 +38,7 @@
                     <div class="row">
                       <div class="table-responsive col-lg-12">
                         <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="table4Data | filterByText: searchterm4"
-                          #mftable4="mfDataTable" [mfRowsOnPage]="recordsPerPage4">
+                          #mftable4="mfDataTable" [(mfSortBy)]="table4DefaultSort" [mfRowsOnPage]="recordsPerPage4">
                           <thead>
                             <tr class="success">
                               <th>

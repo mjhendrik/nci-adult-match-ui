@@ -147,7 +147,7 @@
                           </tbody>
                         </table>
                         <table *ngIf="table1Data.variant_reports!=0" class="table table-td-valign-middle table-striped" [mfData]="table1Data.variant_reports | filterByText: searchterm1"
-                          #mftable1="mfDataTable" [(mfSortBy)]="table1DefaultSort" [mfRowsOnPage]="recordsPerPage1">
+                          #mftable1="mfDataTable" [(mfSortBy)]="table1DefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPage1">
                           <thead>
                             <tr class="purple">
                               <th>
@@ -257,7 +257,7 @@
                           </tbody>
                         </table>
                         <table *ngIf="table2Data.assignment_reports.length!=0" class="table table-td-valign-middle table-striped" [mfData]="table2Data.assignment_reports | filterByText: searchterm2"
-                          #mftable2="mfDataTable" [(mfSortBy)]="table2DefaultSort" [mfRowsOnPage]="recordsPerPage2">
+                          #mftable2="mfDataTable" [(mfSortBy)]="table2DefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPage2">
                           <thead>
                             <tr class="purple">
                               <th>

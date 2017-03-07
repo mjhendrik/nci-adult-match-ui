@@ -37,6 +37,8 @@ export class DashboardComponent implements OnInit {
   table1DefaultSort: string;
   table2DefaultSort: string;
   table3DefaultSort: string;
+  sortByAsc: string;
+  sortByDesc: string;
 
   ngOnInit() {
     this.recordsPerPage1 = 10;
@@ -45,6 +47,8 @@ export class DashboardComponent implements OnInit {
     this.table1DefaultSort = 'daysPending';
     this.table2DefaultSort = 'hoursPending';
     this.table3DefaultSort = 'date_verified';
+    this.sortByAsc = 'asc';
+    this.sortByDesc = 'desc';
     // console.log(new Date(1463784009913).toUTCString());
     // for (let i = 0; i < this.table1Data.variant_reports.length; i++) {
     // this.table1Data.variant_reports[i].specimenReceivedDate = new Date(this.table1Data.variant_reports[i].specimenReceivedDate).toUTCString();

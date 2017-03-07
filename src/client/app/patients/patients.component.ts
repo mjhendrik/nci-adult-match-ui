@@ -27,6 +27,7 @@ export class PatientsComponent {
 
   searchterm5: string = '';
   recordsPerPage5: number;
+  table5DefaultSort: string;
 
   constructor() {
 
@@ -34,6 +35,7 @@ export class PatientsComponent {
 
   ngOnInit() {
     this.recordsPerPage5 = 100;
+    this.table5DefaultSort = 'patientSequenceNumber';
   }
 
   table5Data: any = [
