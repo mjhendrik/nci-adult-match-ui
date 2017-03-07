@@ -20,6 +20,10 @@ h2 {
   border-color: #094942;
 }
 
+.form-control-patients {
+  border-color: #3e2449;
+}
+
 .tfoot-padding {
   padding-left: 15px;
   padding-right: 15px;
@@ -32,4 +36,16 @@ h2 {
 
 .table-col-width .table-header {
   white-space: normal;
+}
+
+.panel-btn {
+  margin-top: -5px;
+}
+
+.table-split-left {
+  margin-right: -15px;
+}
+
+.table-split-right {
+  margin-left: -15px;
 }
