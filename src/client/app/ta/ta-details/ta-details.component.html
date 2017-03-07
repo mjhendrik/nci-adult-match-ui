@@ -950,7 +950,7 @@
                               <td>{{item.dateOnArm}}</td>
                               <td>{{item.dateOffArm}}</td>
                               <td>{{item.stepNumber}}</td>
-                              <td>{{item.diseases.shortName}}</td>
+                              <td *ngFor="let items of item.diseases">{{items.shortName}}</td>
                             </tr>
                             <tr *ngIf="mftablePatient.data.length == 0">
                               <td class="f-s-15" colspan="11">No matching search results found for "{{searchterm5}}"</td>
