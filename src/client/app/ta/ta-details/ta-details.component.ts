@@ -21,6 +21,7 @@ export class TaDetailsComponent implements OnInit {
   recordsPerPage4: number;
   searchterm5: string = '';
   recordsPerPage5: number;
+  button: boolean;
 
   constructor() {
 
@@ -29,6 +30,7 @@ export class TaDetailsComponent implements OnInit {
   ngOnInit() {
     this.recordsPerPage4 = 10;
     this.recordsPerPage5 = 10;
+    this.button = true;
   }
 
   table4Data: any = {
