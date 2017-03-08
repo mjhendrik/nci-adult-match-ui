@@ -43,5 +43,21 @@ h2 {
 }
 
 .panel-height-fixed {
-  min-height: 410px;
+  min-height: 358px;
+}
+
+.dl-horizontal dt {
+  white-space: normal;
+}
+
+.dl-horizontal dt {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 8px;
+}
+
+.dl-horizontal dd {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-right: 8px;
 }
