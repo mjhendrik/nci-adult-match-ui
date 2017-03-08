@@ -33,7 +33,7 @@
                           </tr>
                           <tr>
                             <th><span class="pull-right">Treatment Arm Approval Date</span></th>
-                            <td>{{table4Data.version | dashify}}</td>
+                            <td>{{table4Data.version | date:'MMMM d, y h:mm a Z' | dashify}}</td>
                           </tr>
                           <tr>
                             <th><span class="pull-right">Target</span></th>
@@ -256,9 +256,9 @@
                               <td>{{item.formattedPatientStatus | dashify}}</td>
                               <td class="text-center"><i class="fa fa-file-text-o"></i></td>
                               <td class="text-center"><i class="fa fa-file-text-o"></i></td>
-                              <td>{{item.dateSelected | dashify}}</td>
-                              <td>{{item.dateOnArm | dashify}}</td>
-                              <td>{{item.dateOffArm | dashify}}</td>
+                              <td>{{item.dateSelected | date:'MMMM d, y h:mm a Z' | dashify}}</td>
+                              <td>{{item.dateOnArm | date:'MMMM d, y h:mm a Z' | dashify}}</td>
+                              <td>{{item.dateOffArm | date:'MMMM d, y h:mm a Z' | dashify}}</td>
                               <td>{{item.stepNumber | dashify}}</td>
                               <td *ngFor="let items of item.diseases">{{items.shortName | dashify}}</td>
                             </tr>
