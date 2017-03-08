@@ -5,16 +5,22 @@ import * as _ from "lodash";
 @Component({
     selector: "mfBootstrapPaginator",
     template: `
+    <style>
+        li.disabled a, li.disabled {
+            pointer-events:none;
+            cursor:default !important;
+        }
+    </style>    
     <mfPaginator #p [mfTable]="mfTable">
         <div>
             <div class="dataTables_info" id="data-table_info" style="margin: 30px 0 0 0;" *ngIf="p.dataLength!=0 && (searchTerm==undefined || searchTerm.length==0)">
                 Showing {{p.dataLength==0 ? 0 : (p.activePage-1)*(p.rowsOnPage)+1}} to 
-                {{ p.dataLength < (p.activePage-1)*(p.rowsOnPage)+p.rowsOnPage ? p.dataLength: (p.activePage-1)*(p.rowsOnPage)+p.rowsOnPage}} of {{p.dataLength}}
+                {{ p.dataLength < (p.activePage-1)*(p.rowsOnPage)+p.rowsOnPage ? p.dataLength: (p.activePage-1)*(p.rowsOnPage)+paginationParse(p.rowsOnPage)}} of {{p.dataLength}}
                           entries
             </div>
             <div class="dataTables_info" id="data-table_info" style="margin: 30px 0 0 0;" *ngIf="p.dataLength!=0 && searchTerm!=undefined && searchTerm.length!=0">
                 Showing {{p.dataLength==0 ? 0 : (p.activePage-1)*(p.rowsOnPage)+1}} to 
-                {{ p.dataLength < (p.activePage-1)*(p.rowsOnPage)+p.rowsOnPage ? p.dataLength: (p.activePage-1)*(p.rowsOnPage)+p.rowsOnPage}} of {{p.dataLength}}
+                {{ p.dataLength < (p.activePage-1)*(p.rowsOnPage)+p.rowsOnPage ? p.dataLength: (p.activePage-1)*(p.rowsOnPage)+paginationParse(p.rowsOnPage)}} of {{p.dataLength}}
                           entries (filtered from {{totallength}} total entries)
             </div>
         </div>
@@ -73,6 +79,10 @@ export class BootstrapPaginator implements OnChanges, OnInit {
         if (changes.rowsOnPageSet) {
             this.minRowsOnPage = _.min(this.rowsOnPageSet)
         }
+    }
+
+    paginationParse(value: string): number {
+        return parseInt(value);
     }
 
     ngOnInit(): void {
