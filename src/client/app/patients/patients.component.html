@@ -69,7 +69,7 @@
                               <td>{{item.patientSequenceNumber | dashify}}</td>
                               <td [colorcode-patients]="item.currentStatus">{{item.currentStatus | dashify}}</td>
                               <td>{{item.currentStepNumber | dashify}}</td>
-                              <td>{{item.diseases | dashify | dashify}}</td>
+                              <td>{{item.diseases | dashify}}</td>
                               <td>
                                 <span *ngIf="item.assignedTreatmentArm!==null">{{item.assignedTreatmentArm | dashify}} ({{item.assignedTreatmentArmVersion | dashify}})</span>
                                 <span *ngIf="item.assignedTreatmentArm===null">-</span>
