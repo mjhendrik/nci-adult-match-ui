@@ -15,7 +15,7 @@
         <div class="m-0 p-0">
           <div>
             <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
-              <div *ngIf="button" class="tab-pane fade active in">
+              <div *ngIf="button" class="tab-pane fade" [ngClass]="{true: 'active in'}[button]">
                 <!-- table details -->
                 <div class="row">
                   <!-- begin panel -->
@@ -70,7 +70,7 @@
                   <!-- end panel -->
                 </div>
               </div>
-              <div *ngIf="!button" class="tab-pane fade">
+              <div *ngIf="!button" class="tab-pane fade" [ngClass]="{true: 'active in'}[!button]">
                 <!-- table history -->
                 <div class="row">
                   <!-- begin panel -->
@@ -251,9 +251,9 @@
                 <div class="row">
                   <!-- begin panel -->
                   <div>
-                    <div class="col-md-6 bg-success-light">
-                      <div class="col-md-6 p-l-5">
-                        <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
+                    <div class="col-md-6 p-l-0 p-r-10">
+                      <div class="col-md-6 bg-success-light">
+                        <div class="dataTables_length text-white form-inline p-t-15 p-b-10 p-l-5" id="data-table_length">
                           <label>
                             Show
                             <select name="data-table_length" [(ngModel)]="recordsPerPage4"  aria-controls="data-table" class="form-control input-sm">
@@ -266,17 +266,17 @@
                           </label>
                         </div>
                       </div>
-                      <div class="col-md-6 p-r-5">
-                        <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
+                      <div class="col-md-6 bg-success-light">
+                        <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10 p-r-5">
                           <label>Search:
                             <input type="text" [(ngModel)]="searchterm4" class="form-control input-sm" placeholder="" aria-controls="data-table">
                           </label>
                         </div>
                       </div>
                     </div>
-                    <div class="col-md-6 bg-success-light">
-                      <div class="col-md-6 p-l-5">
-                        <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
+                    <div class="col-md-6 p-l-0 p-l-10 p-r-0">
+                      <div class="col-md-6 bg-success-light">
+                        <div class="dataTables_length text-white form-inline p-t-15 p-b-10 p-l-5" id="data-table_length">
                           <label>Show
                         <select name="data-table_length" [(ngModel)]="recordsPerPage4"  aria-controls="data-table" class="form-control input-sm">
                           <option value=10>10</option>
@@ -287,8 +287,8 @@
                       entries</label>
                         </div>
                       </div>
-                      <div class="col-md-6 p-r-5">
-                        <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
+                      <div class="col-md-6 bg-success-light">
+                        <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10 p-r-5">
                           <label>Search:
                         <input type="text" [(ngModel)]="searchterm4" class="form-control input-sm" placeholder="" aria-controls="data-table">
                       </label>
