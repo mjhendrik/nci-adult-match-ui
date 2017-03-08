@@ -7,9 +7,9 @@
           <span class="panel-title f-s-18">
             Treatment Arm EAY131-IX1
           </span>
-          <button type="button" class="btn btn-white pull-right panel-btn">
-            <span *ngIf="button" (click)="button = button ? false : true;" class="text-success-light">History</span>
-            <span *ngIf="!button" (click)="button = button ? false : true;" class="text-success-light">Details</span>
+          <button type="button" (click)="button = button ? false : true;" class="btn btn-white pull-right panel-btn">
+            <span *ngIf="button" class="text-success-light">History</span>
+            <span *ngIf="!button" class="text-success-light">Details</span>
           </button>
         </div>
         <div class="m-0 p-0">
@@ -70,7 +70,7 @@
                   <!-- end panel -->
                 </div>
               </div>
-              <div *ngIf="!button" class="tab-pane fade" [ngClass]="{true: 'active in'}[!button]">
+              <div *ngIf="!button" class="tab-pane fade panel-height-fixed" [ngClass]="{true: 'active in'}[!button]">
                 <!-- table history -->
                 <div class="row">
                   <!-- begin panel -->
@@ -127,7 +127,7 @@
                   <div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <h1 style="padding: 147px; margin-bottom: 57px;">CHART 1</h1>
+                        <h1 style="padding: 147px; margin-bottom: 58px;">CHART 1</h1>
                       </div>
                     </div>
                   </div>
@@ -156,7 +156,7 @@
                   <div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <h1 style="padding: 147px; margin-bottom: 57px;">CHART 2</h1>
+                        <h1 style="padding: 147px; margin-bottom: 58px;">CHART 2</h1>
                       </div>
                     </div>
                   </div>
