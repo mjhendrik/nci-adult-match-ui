@@ -75,7 +75,9 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftable4.data">
-                              <td>{{item.treatmentArmId | dashify}}</td>
+                              <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                                <a href="javascript:void(0)" [routerLink]="['/treatments/details']">{{item.treatmentArmId | dashify}}</a>
+                              </td>
                               <td>{{item.treatmentArmName | dashify}}</td>
                               <td>{{item.currentPatients | dashify}}</td>
                               <td>{{item.formerPatients | dashify}}</td>
