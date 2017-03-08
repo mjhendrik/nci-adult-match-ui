@@ -25,43 +25,43 @@
                         <table class="table table-td-valign-middle table-striped table-col-width">
                           <tr>
                             <th><span class="pull-right">ID</span></th>
-                            <td>{{table4Data.id}}</td>
+                            <td>{{table4Data.id | dashify}}</td>
                           </tr>
                           <tr>
                             <th><span class="pull-right">Name</span></th>
-                            <td>{{table4Data.name}}</td>
+                            <td>{{table4Data.name | dashify}}</td>
                           </tr>
                           <tr>
                             <th><span class="pull-right">Treatment Arm Approval Date</span></th>
-                            <td>{{table4Data.version}}</td>
+                            <td>{{table4Data.version | dashify}}</td>
                           </tr>
                           <tr>
                             <th><span class="pull-right">Target</span></th>
-                            <td>{{table4Data.targetName}}</td>
+                            <td>{{table4Data.targetName | dashify}}</td>
                           </tr>
                           <tr>
                             <th><span class="pull-right">Genes</span></th>
-                            <td>{{table4Data.gene}}</td>
+                            <td>{{table4Data.gene | dashify}}</td>
                           </tr>
                           <tr>
                             <th><span class="pull-right">Description</span></th>
-                            <td>{{table4Data.description}}</td>
+                            <td>{{table4Data.description | dashify}}</td>
                           </tr>
                           <tr>
                             <th><span class="pull-right">Patients Assigned</span></th>
-                            <td>{{table4Data.numPatientsAssigned}} of {{table4Data.maxPatientsAllowed}}</td>
+                            <td>{{table4Data.numPatientsAssigned | dashify}} of {{table4Data.maxPatientsAllowed | dashify}}</td>
                           </tr>
                           <tr>
                             <th><span class="pull-right">Current Status</span></th>
-                            <td>{{table4Data.treatmentArmStatus}}</td>
+                            <td>{{table4Data.treatmentArmStatus | dashify}}</td>
                           </tr>
                           <tr>
                             <th><span class="pull-right">Drug ID</span></th>
-                            <td>{{table4Data.targetId}}</td>
+                            <td>{{table4Data.targetId | dashify}}</td>
                           </tr>
                           <tr>
                             <th><span class="pull-right">Drug Name</span></th>
-                            <td>{{table4Data.targetName}}</td>
+                            <td>{{table4Data.targetName | dashify}}</td>
                           </tr>
                         </table>
                       </div>
@@ -91,8 +91,8 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableHistory.data">
-                              <td>{{item.status}}</td>
-                              <td>{{item.date | date:'MMMM d, y h:mm a'}} GMT</td>
+                              <td>{{item.status | dashify}}</td>
+                              <td>{{item.date | date:'MMMM d, y h:mm a Z' | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftableHistory.data.length == 0">
                               <td class="f-s-15" colspan="2">No matching search results found for "{{searchterm4}}"</td>
@@ -314,8 +314,8 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableExdr.data">
-                              <td *ngFor="let items of item.drugs">{{items.drugId}}</td>
-                              <td *ngFor="let items of item.drugs">{{items.name}}</td>
+                              <td *ngFor="let items of item.drugs">{{items.drugId | dashify}}</td>
+                              <td *ngFor="let items of item.drugs">{{items.name | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftableExdr.data.length == 0">
                               <td class="f-s-15" colspan="2">No matching search results found for "{{searchterm4}}"</td>
@@ -349,9 +349,9 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableExdz.data">
-                              <td>{{item.ctepCategory}}</td>
-                              <td>{{item.ctepTerm}}</td>
-                              <td>{{item.medraCode}}</td>
+                              <td>{{item.ctepCategory | dashify}}</td>
+                              <td>{{item.ctepTerm | dashify}}</td>
+                              <td>{{item.medraCode | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftableExdz.data.length == 0">
                               <td class="f-s-15" colspan="3">No matching search results found for "{{searchterm4}}"</td>
@@ -429,13 +429,13 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableSvn.data">
-                              <td>{{item.identifier}}</td>
-                              <td>{{item.chromosome}}</td>
-                              <td>{{item.position}}</td>
-                              <td>{{item.reference}}</td>
-                              <td>{{item.alternative}}</td>
-                              <td>{{item.levelOfEvidence}}</td>
-                              <td>{{item.publicMedIds}}</td>
+                              <td>{{item.identifier | dashify}}</td>
+                              <td>{{item.chromosome | dashify}}</td>
+                              <td>{{item.position | dashify}}</td>
+                              <td>{{item.reference | dashify}}</td>
+                              <td>{{item.alternative | dashify}}</td>
+                              <td>{{item.levelOfEvidence | dashify}}</td>
+                              <td>{{item.publicMedIds | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftableSvn.data.length == 0">
                               <td class="f-s-15" colspan="7">No matching search results found for "{{searchterm4}}"</td>
@@ -513,13 +513,13 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableIndel.data">
-                              <td>{{item.variant.identifier}}</td>
-                              <td>{{item.variant.chromosome}}</td>
-                              <td>{{item.variant.position}}</td>
-                              <td>{{item.variant.reference}}</td>
-                              <td>{{item.variant.alternative}}</td>
-                              <td>{{item.variant.levelOfEvidence}}</td>
-                              <td>{{item.variant.publicMedIds}}</td>
+                              <td>{{item.variant.identifier | dashify}}</td>
+                              <td>{{item.variant.chromosome | dashify}}</td>
+                              <td>{{item.variant.position | dashify}}</td>
+                              <td>{{item.variant.reference | dashify}}</td>
+                              <td>{{item.variant.alternative | dashify}}</td>
+                              <td>{{item.variant.levelOfEvidence | dashify}}</td>
+                              <td>{{item.variant.publicMedIds | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftableIndel.data.length == 0">
                               <td class="f-s-15" colspan="7">No matching search results found for "{{searchterm4}}"</td>
@@ -592,11 +592,11 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableCnv.data">
-                              <td>{{item.variant.geneName}}</td>
-                              <td>{{item.variant.chromosome}}</td>
-                              <td>{{item.variant.position}}</td>
-                              <td>{{item.variant.levelOfEvidence}}</td>
-                              <td>{{item.variant.publicMedIds}}</td>
+                              <td>{{item.variant.geneName | dashify}}</td>
+                              <td>{{item.variant.chromosome | dashify}}</td>
+                              <td>{{item.variant.position | dashify}}</td>
+                              <td>{{item.variant.levelOfEvidence | dashify}}</td>
+                              <td>{{item.variant.publicMedIds | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftableCnv.data.length == 0">
                               <td class="f-s-15" colspan="5">No matching search results found for "{{searchterm4}}"</td>
@@ -662,9 +662,9 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableGene.data">
-                              <td>{{item.variant.identifier}}</td>
-                              <td>{{item.variant.levelOfEvidence}}</td>
-                              <td>{{item.variant.publicMedIds}}</td>
+                              <td>{{item.variant.identifier | dashify}}</td>
+                              <td>{{item.variant.levelOfEvidence | dashify}}</td>
+                              <td>{{item.variant.publicMedIds | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftableGene.data.length == 0">
                               <td class="f-s-15" colspan="3">No matching search results found for "{{searchterm4}}"</td>
@@ -739,12 +739,12 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableRule.data">
-                              <td>{{item.geneName}}</td>
-                              <td>{{item.exon}}</td>
-                              <td>{{item.oncominevariantclass}}</td>
-                              <td>{{item.function}}</td>
-                              <td>{{item.levelOfEvidence}}</td>
-                              <td>{{item.publicMedIds}}</td>
+                              <td>{{item.geneName | dashify}}</td>
+                              <td>{{item.exon | dashify}}</td>
+                              <td>{{item.oncominevariantclass | dashify}}</td>
+                              <td>{{item.function | dashify}}</td>
+                              <td>{{item.levelOfEvidence | dashify}}</td>
+                              <td>{{item.publicMedIds | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftableRule.data.length == 0">
                               <td class="f-s-15" colspan="6">No matching search results found for "{{searchterm4}}"</td>
@@ -812,10 +812,10 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableAssay.data">
-                              <td>{{item.gene}}</td>
-                              <td>{{item.assayResultStatus}}</td>
-                              <td>{{item.assayVariant}}</td>
-                              <td>{{item.levelOfEvidence}}</td>
+                              <td>{{item.gene | dashify}}</td>
+                              <td>{{item.assayResultStatus | dashify}}</td>
+                              <td>{{item.assayVariant | dashify}}</td>
+                              <td>{{item.levelOfEvidence | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftableAssay.data.length == 0">
                               <td class="f-s-15" colspan="4">No matching search results found for "{{searchterm4}}"</td>
@@ -922,17 +922,17 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftablePatient.data">
-                              <td>{{item.slot}}</td>
-                              <td>{{item.patientSequenceNumber}}</td>
-                              <td>{{item.treatmentArmVersion}}</td>
-                              <td>{{item.formattedPatientStatus}}</td>
+                              <td>{{item.slot | dashify}}</td>
+                              <td>{{item.patientSequenceNumber | dashify}}</td>
+                              <td>{{item.treatmentArmVersion | dashify}}</td>
+                              <td>{{item.formattedPatientStatus | dashify}}</td>
                               <td class="text-center"><i class="fa fa-file-text-o"></i></td>
                               <td class="text-center"><i class="fa fa-file-text-o"></i></td>
-                              <td>{{item.dateSelected}}</td>
-                              <td>{{item.dateOnArm}}</td>
-                              <td>{{item.dateOffArm}}</td>
-                              <td>{{item.stepNumber}}</td>
-                              <td *ngFor="let items of item.diseases">{{items.shortName}}</td>
+                              <td>{{item.dateSelected | dashify}}</td>
+                              <td>{{item.dateOnArm | dashify}}</td>
+                              <td>{{item.dateOffArm | dashify}}</td>
+                              <td>{{item.stepNumber | dashify}}</td>
+                              <td *ngFor="let items of item.diseases">{{items.shortName | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftablePatient.data.length == 0">
                               <td class="f-s-15" colspan="11">No matching search results found for "{{searchterm5}}"</td>

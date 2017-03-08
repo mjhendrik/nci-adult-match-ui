@@ -66,17 +66,17 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftable5.data">
-                              <td>{{item.patientSequenceNumber}}</td>
-                              <td>{{item.currentStatus}}</td>
+                              <td>{{item.patientSequenceNumber | dashify}}</td>
+                              <td>{{item.currentStatus | dashify}}</td>
                               <!--[colorcode-patients]="item.currentStatus"-->
-                              <td>{{item.currentStepNumber}}</td>
-                              <td>{{item.diseases}}</td>
+                              <td>{{item.currentStepNumber | dashify}}</td>
+                              <td>{{item.diseases | dashify}}</td>
                               <td>
-                                <span *ngIf="item.assignedTreatmentArm!==null">{{item.assignedTreatmentArm}} ({{item.assignedTreatmentArmVersion}})</span>
-                                <span *ngIf="item.assignedTreatmentArm===null"></span>
+                                <span *ngIf="item.assignedTreatmentArm!==null">{{item.assignedTreatmentArm | dashify}} ({{item.assignedTreatmentArmVersion | dashify}})</span>
+                                <span *ngIf="item.assignedTreatmentArm===null">-</span>
                               </td>
-                              <td>{{item.registrationDate | date:'MMMM d, y h:mm a'}} GMT</td>
-                              <td>{{item.offTrialDate | date:'MMMM d, y h:mm a'}} GMT</td>
+                              <td>{{item.registrationDate | date:'MMMM d, y h:mm a Z' | dashify}}</td>
+                              <td>{{item.offTrialDate | date:'MMMM d, y h:mm a Z' | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftable5.data.length == 0">
                               <td class="f-s-15" colspan="7">No matching search results found for "{{searchterm5}}"</td>
