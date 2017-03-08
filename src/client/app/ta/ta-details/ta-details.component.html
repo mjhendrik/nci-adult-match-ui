@@ -5,7 +5,7 @@
       <div class="panel panel-success">
         <div class="panel-heading">
           <span class="panel-title f-s-18">
-            Treatment Arm EAY131-IX1
+            Treatment Arm {{table4Data.id | dashify}}
           </span>
           <button type="button" (click)="button = button ? false : true;" class="btn btn-white pull-right panel-btn">
             <span *ngIf="button" class="text-success-light">History</span>
@@ -175,6 +175,122 @@
       <!-- begin panel -->
       <div class="panel">
         <div class="panel-heading">
+          <h4 class="panel-title f-s-18">All Patients Data</h4>
+        </div>
+        <div class="m-0 p-0">
+          <div>
+            <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
+              <div class="tab-pane fade active in" id="justified-tab-9">
+                <!-- table patient -->
+                <div class="row">
+                  <!-- begin panel -->
+                  <div>
+                    <div class="col-md-12 bg-purple-light">
+                      <div class="col-md-6 p-l-5">
+                        <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
+                          <label>Show
+                        <select name="data-table_length" [(ngModel)]="recordsPerPage5"  aria-controls="data-table" class="form-control form-control-patients input-sm">
+                          <option value=10>10</option>
+                          <option value=25>25</option>
+                          <option value=50>50</option>
+                          <option value=100>100</option>
+                        </select> 
+                      entries</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6 p-r-5">
+                        <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
+                          <label>Search:
+                        <input type="text" [(ngModel)]="searchterm5" class="form-control form-control-patients input-sm" placeholder="" aria-controls="data-table">
+                      </label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="table-responsive col-lg-12">
+                        <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="table5Data | filterByText: searchterm5"
+                          #mftablePatient="mfDataTable" [mfRowsOnPage]="recordsPerPage5">
+                          <thead>
+                            <tr class="purple">
+                              <th>
+                                <mfDefaultSorter by="slot"><span class="table-header">Slot</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="patientSequenceNumber"><span class="table-header">Patient Sequence Number</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="treatmentArmVersion"><span class="table-header">Treatment Arm Version</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="formattedPatientStatus"><span class="table-header">Patient Assignment Status Outcome</span></mfDefaultSorter>
+                              </th>
+                              <th class="text-center">
+                                Assignment Logic
+                              </th>
+                              <th class="text-center">
+                                Variant Report
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="dateSelected"><span class="table-header">Selected Date</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="dateOnArm"><span class="table-header">On Arm Date</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="dateOffArm"><span class="table-header">Off Arm Date</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="stepNumber"><span class="table-header">Step</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <span class="table-header">Disease</span>
+                                <!--<mfDefaultSorter by="diseases.shortName"></mfDefaultSorter>-->
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let item of mftablePatient.data">
+                              <td>{{item.slot | dashify}}</td>
+                              <td>{{item.patientSequenceNumber | dashify}}</td>
+                              <td>{{item.treatmentArmVersion | dashify}}</td>
+                              <td>{{item.formattedPatientStatus | dashify}}</td>
+                              <td class="text-center"><i class="fa fa-file-text-o"></i></td>
+                              <td class="text-center"><i class="fa fa-file-text-o"></i></td>
+                              <td>{{item.dateSelected | dashify}}</td>
+                              <td>{{item.dateOnArm | dashify}}</td>
+                              <td>{{item.dateOffArm | dashify}}</td>
+                              <td>{{item.stepNumber | dashify}}</td>
+                              <td *ngFor="let items of item.diseases">{{items.shortName | dashify}}</td>
+                            </tr>
+                            <tr *ngIf="mftablePatient.data.length == 0">
+                              <td class="f-s-15" colspan="11">No matching search results found for "{{searchterm5}}"</td>
+                            </tr>
+                          </tbody>
+                          <tfoot>
+                            <tr>
+                              <td class="tfoot-padding" colspan="11">
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchterm5" [totallength]="table5Data.length"></mfBootstrapPaginator>
+                              </td>
+                            </tr>
+                          </tfoot>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- end panel -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <!-- begin panel -->
+      <div class="panel">
+        <div class="panel-heading">
           <h4 class="panel-title f-s-18">Rules</h4>
         </div>
         <div class="m-0 p-0">
@@ -186,7 +302,7 @@
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
-                    <h4 class="panel-title">Exclusions</h4>
+                    <h4 class="panel-title">Drugs & Diseases</h4>
                   </div>
                 </a>
               </li>
@@ -231,7 +347,7 @@
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
-                    <h4 class="panel-title">Non Hot Spot Rules</h4>
+                    <h4 class="panel-title">Non-Hotspot Rules</h4>
                   </div>
                 </a>
               </li>
@@ -252,6 +368,9 @@
                   <!-- begin panel -->
                   <div>
                     <div class="col-md-6 p-l-0 p-r-10">
+                      <div class="panel-heading">
+                        <h4 class="panel-title f-s-18">Exclusionary Drugs</h4>
+                      </div>
                       <div class="col-md-6 bg-success-light">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10 p-l-5" id="data-table_length">
                           <label>
@@ -275,6 +394,9 @@
                       </div>
                     </div>
                     <div class="col-md-6 p-l-0 p-l-10 p-r-0">
+                      <div class="panel-heading">
+                        <h4 class="panel-title f-s-18">Exclusionary Diseases</h4>
+                      </div>
                       <div class="col-md-6 bg-success-light">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10 p-l-5" id="data-table_length">
                           <label>Show
@@ -840,122 +962,6 @@
         </div>
       </div>
       <!-- end panel -->
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <!-- begin panel -->
-      <div class="panel">
-        <div class="panel-heading">
-          <h4 class="panel-title f-s-18">All Patients Data</h4>
-        </div>
-        <div class="m-0 p-0">
-          <div>
-            <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
-              <div class="tab-pane fade active in" id="justified-tab-9">
-                <!-- table patient -->
-                <div class="row">
-                  <!-- begin panel -->
-                  <div>
-                    <div class="col-md-12 bg-purple-light">
-                      <div class="col-md-6 p-l-5">
-                        <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
-                          <label>Show
-                        <select name="data-table_length" [(ngModel)]="recordsPerPage5"  aria-controls="data-table" class="form-control form-control-patients input-sm">
-                          <option value=10>10</option>
-                          <option value=25>25</option>
-                          <option value=50>50</option>
-                          <option value=100>100</option>
-                        </select> 
-                      entries</label>
-                        </div>
-                      </div>
-                      <div class="col-md-6 p-r-5">
-                        <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
-                          <label>Search:
-                        <input type="text" [(ngModel)]="searchterm5" class="form-control form-control-patients input-sm" placeholder="" aria-controls="data-table">
-                      </label>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="table-responsive col-lg-12">
-                        <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="table5Data | filterByText: searchterm5"
-                          #mftablePatient="mfDataTable" [mfRowsOnPage]="recordsPerPage5">
-                          <thead>
-                            <tr class="purple">
-                              <th>
-                                <mfDefaultSorter by="slot"><span class="table-header">Slot</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <mfDefaultSorter by="patientSequenceNumber"><span class="table-header">Patient Sequence Number</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <mfDefaultSorter by="treatmentArmVersion"><span class="table-header">Treatment Arm Version</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <mfDefaultSorter by="formattedPatientStatus"><span class="table-header">Patient Assignment Status Outcome</span></mfDefaultSorter>
-                              </th>
-                              <th class="text-center">
-                                Assignment Logic
-                              </th>
-                              <th class="text-center">
-                                Variant Report
-                              </th>
-                              <th>
-                                <mfDefaultSorter by="dateSelected"><span class="table-header">Selected Date</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <mfDefaultSorter by="dateOnArm"><span class="table-header">On Arm Date</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <mfDefaultSorter by="dateOffArm"><span class="table-header">Off Arm Date</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <mfDefaultSorter by="stepNumber"><span class="table-header">Step</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <span class="table-header">Disease</span>
-                                <!--<mfDefaultSorter by="diseases.shortName"></mfDefaultSorter>-->
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr *ngFor="let item of mftablePatient.data">
-                              <td>{{item.slot | dashify}}</td>
-                              <td>{{item.patientSequenceNumber | dashify}}</td>
-                              <td>{{item.treatmentArmVersion | dashify}}</td>
-                              <td>{{item.formattedPatientStatus | dashify}}</td>
-                              <td class="text-center"><i class="fa fa-file-text-o"></i></td>
-                              <td class="text-center"><i class="fa fa-file-text-o"></i></td>
-                              <td>{{item.dateSelected | dashify}}</td>
-                              <td>{{item.dateOnArm | dashify}}</td>
-                              <td>{{item.dateOffArm | dashify}}</td>
-                              <td>{{item.stepNumber | dashify}}</td>
-                              <td *ngFor="let items of item.diseases">{{items.shortName | dashify}}</td>
-                            </tr>
-                            <tr *ngIf="mftablePatient.data.length == 0">
-                              <td class="f-s-15" colspan="11">No matching search results found for "{{searchterm5}}"</td>
-                            </tr>
-                          </tbody>
-                          <tfoot>
-                            <tr>
-                              <td class="tfoot-padding" colspan="11">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchterm5" [totallength]="table5Data.length"></mfBootstrapPaginator>
-                              </td>
-                            </tr>
-                          </tfoot>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- end panel -->
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </div>
