@@ -11,7 +11,7 @@
         <div class="m-0 p-0">
           <div>
             <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
-              <div class="tab-pane fade active in">
+              <div class="tab-pane active in">
                 <!-- table details -->
                 <div class="row">
                   <!-- begin panel -->
@@ -24,7 +24,14 @@
                           <dt>Name</dt>
                           <dd>{{table4Data.name | dashify}}</dd>
                           <dt>Treatment Arm Approval Date</dt>
-                          <dd><button type="button" class="btn btn-success" data-toggle="dropdown">{{table4Data.version | dashify}}&nbsp;&nbsp;<span class="caret"></span></button></dd>
+                          <dd>
+                            <div class="btn-group m-b-5 m-r-5">
+                              <a href="javascript:;" data-toggle="dropdown" class="btn btn-success dropdown-toggle" aria-expanded="false">{{table4Data.version | dashify}}&nbsp;&nbsp;<span class="caret"></span></a>
+                              <ul class="dropdown-menu">
+                                <li *ngFor="let item of table3Data"><a href="javascript:;">{{item | dashify}}</a></li>
+                              </ul>
+                            </div>
+                          </dd>
                           <dt>Target</dt>
                           <dd>{{table4Data.targetName | dashify}}</dd>
                           <dt>Genes</dt>
@@ -60,8 +67,8 @@
         </div>
         <div class="m-0 p-0">
           <div>
-            <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
-              <div class="tab-pane fade panel-height-fixed active in">
+            <div class="tab-content m-b-0 p-l-0 p-r-0 p-t-0 p-b-0">
+              <div class="tab-pane panel-height-fixed active in">
                 <!-- table history -->
                 <div class="row">
                   <!-- begin panel -->
@@ -85,6 +92,10 @@
                               <td>{{item.status | dashify}}</td>
                               <td>{{item.date | date:'MMMM d, y h:mm a Z' | dashify}}</td>
                             </tr>
+                            <!--<tr *ngFor="let item of mftableHistory.data">
+                              <td>{{item.status | dashify}}</td>
+                              <td>{{item.date | date:'MMMM d, y h:mm a Z' | dashify}}</td>
+                            </tr>-->
                             <tr *ngIf="mftableHistory.data.length == 0">
                               <td class="f-s-15" colspan="2">No matching search results found for "{{searchterm4}}"</td>
                             </tr>
@@ -111,14 +122,14 @@
         <div class="m-0 p-0">
           <div>
             <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
-              <div class="tab-pane active">
+              <div class="tab-pane active panel-height-fixed">
                 <!-- chart -->
                 <div class="row">
                   <!-- begin panel -->
                   <div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <h1 style="padding: 150px; margin-bottom: 0;">CHART</h1>
+                        <i class="fa fa-pie-chart fa-4x" style="color: #f2f2f2; padding-left: 71px; font-size: 359px;"></i>
                       </div>
                     </div>
                   </div>

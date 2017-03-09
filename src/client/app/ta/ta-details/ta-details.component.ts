@@ -33,6 +33,11 @@ export class TaDetailsComponent implements OnInit {
     this.button = true;
   }
 
+  table3Data: any = [
+    "2016-11-18",
+    "2016-11-19"
+  ]
+
   table4Data: any = {
     "id": "EAY131-IX1",
     "name": "GDC-0032 in PIK3CA mutation",
