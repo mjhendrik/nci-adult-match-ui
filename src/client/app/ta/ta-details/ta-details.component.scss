@@ -41,6 +41,7 @@ h2 {
 .panel-height-fixed {
   height: 358px;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .dl-horizontal dt {
@@ -57,4 +58,8 @@ h2 {
   padding-top: 4px;
   padding-bottom: 4px;
   padding-right: 8px;
+}
+
+.link-none {
+  text-decoration: none;
 }

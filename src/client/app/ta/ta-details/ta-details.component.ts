@@ -17,10 +17,37 @@ import { routerTransition } from './../../shared/router.animations';
 })
 export class TaDetailsComponent implements OnInit {
 
-  searchterm4: string = '';
-  recordsPerPage4: number;
-  searchterm5: string = '';
-  recordsPerPage5: number;
+  searchtermExdr: string = '';
+  searchtermExdz: string = '';
+  searchtermSnv: string = '';
+  searchtermIndel: string = '';
+  searchtermCnv: string = '';
+  searchtermGene: string = '';
+  searchtermRule: string = '';
+  searchtermAssay: string = '';
+  searchtermPatient: string = '';
+
+  recordsPerPageExdr: number;
+  recordsPerPageExdz: number;
+  recordsPerPageSnv: number;
+  recordsPerPageIndel: number;
+  recordsPerPageCnv: number;
+  recordsPerPageGene: number;
+  recordsPerPageRule: number;
+  recordsPerPageAssay: number;
+  recordsPerPagePatient: number;
+
+  tableHistoryDefaultSort: string;
+  tableExdrDefaultSort: string;
+  tableExdzDefaultSort: string;
+  tableSnvDefaultSort: string;
+  tableIndelDefaultSort: string;
+  tableCnvDefaultSort: string;
+  tableGeneDefaultSort: string;
+  tableRuleDefaultSort: string;
+  tableAssayDefaultSort: string;
+  tablePatientDefaultSort: string;
+
   button: boolean;
 
   constructor() {
@@ -28,17 +55,36 @@ export class TaDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.recordsPerPage4 = 10;
-    this.recordsPerPage5 = 10;
+    this.recordsPerPageExdr = 10;
+    this.recordsPerPageExdz = 10;
+    this.recordsPerPageSnv = 10;
+    this.recordsPerPageIndel = 10;
+    this.recordsPerPageCnv = 10;
+    this.recordsPerPageGene = 10;
+    this.recordsPerPageRule = 10;
+    this.recordsPerPageAssay = 10;
+    this.recordsPerPagePatient = 10;
+
+    this.tableHistoryDefaultSort = 'date';
+    this.tableExdrDefaultSort = 'drugId';
+    this.tableExdzDefaultSort = 'medraCode';
+    this.tableSnvDefaultSort = 'identifier';
+    this.tableIndelDefaultSort = 'variant.identifier';
+    this.tableCnvDefaultSort = 'variant.geneName';
+    this.tableGeneDefaultSort = 'variant.identifier';
+    this.tableRuleDefaultSort = 'gene';
+    this.tableAssayDefaultSort = 'gene';
+    this.tablePatientDefaultSort = 'dateSelected';
+
     this.button = true;
   }
 
-  table3Data: any = [
+  versionData: any = [
     "2016-11-18",
     "2016-11-19"
   ]
 
-  table4Data: any = {
+  tableRulesData: any = {
     "id": "EAY131-IX1",
     "name": "GDC-0032 in PIK3CA mutation",
     "version": "2016-11-19",
@@ -9787,6 +9833,34 @@ export class TaDetailsComponent implements OnInit {
         "date": 1479790800000
       },
       {
+        "status": "OPEN",
+        "date": 1479790800000
+      },
+      {
+        "status": "OPEN",
+        "date": 1479790800000
+      },
+      {
+        "status": "OPEN",
+        "date": 1479790800000
+      },
+      {
+        "status": "OPEN",
+        "date": 1479790800000
+      },
+      {
+        "status": "OPEN",
+        "date": 1479790800000
+      },
+      {
+        "status": "OPEN",
+        "date": 1479790800000
+      },
+      {
+        "status": "OPEN",
+        "date": 1479790800000
+      },
+      {
         "status": "SUSPENDED",
         "date": 1479790800001
       },
@@ -9820,7 +9894,7 @@ export class TaDetailsComponent implements OnInit {
   }
 
 
-  table5Data: any = [
+  tablePatientData: any = [
     {
       "slot": "-",
       "patientSequenceNumber": "10361",
