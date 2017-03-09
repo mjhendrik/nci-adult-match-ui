@@ -39,7 +39,8 @@ h2 {
 }
 
 .panel-height-fixed {
-  min-height: 358px;
+  height: 358px;
+  overflow-y: scroll;
 }
 
 .dl-horizontal dt {
