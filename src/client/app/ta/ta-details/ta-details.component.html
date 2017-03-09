@@ -274,7 +274,24 @@
                     <div class="row">
                       <!-- table exdr -->
                       <div class="table-responsive col-lg-6">
-                        <table class="table table-td-valign-middle table-striped" [mfData]="tableRulesData.exclusionDrugs | filterByText: searchtermExdr"
+                        <table *ngIf="tableRulesData.exclusionDrugs.length == 0" class="table table-td-valign-middle table-striped">
+                          <thead>
+                            <tr class="success">
+                              <th>
+                                ID
+                              </th>
+                              <th>
+                                Name
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="f-s-15" colspan="2">There are no exclusionary drugs for treatment arm "{{tableRulesData.id | dashify}}"</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <table *ngIf="tableRulesData.exclusionDrugs.length!=0" class="table table-td-valign-middle table-striped" [mfData]="tableRulesData.exclusionDrugs | filterByText: searchtermExdr"
                           #mftableExdr="mfDataTable" [(mfSortBy)]="tableExdrDefaultSort" [mfRowsOnPage]="recordsPerPageExdr">
                           <thead>
                             <tr class="success">
@@ -308,7 +325,27 @@
                       </div>
                       <!-- table exdz -->
                       <div class="table-responsive col-lg-6">
-                        <table class="table table-td-valign-middle table-striped" [mfData]="tableRulesData.exclusionDiseases | filterByText: searchtermExdz"
+                        <table *ngIf="tableRulesData.exclusionDiseases.length == 0" class="table table-td-valign-middle table-striped">
+                          <thead>
+                            <tr class="success">
+                              <th>
+                                CTEP Category
+                              </th>
+                              <th>
+                                CTEP Term
+                              </th>
+                              <th>
+                                MedDRA Code
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="f-s-15" colspan="3">There are no exclusionary diseases for treatment arm "{{tableRulesData.id | dashify}}"</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <table *ngIf="tableRulesData.exclusionDiseases.length!=0" class="table table-td-valign-middle table-striped" [mfData]="tableRulesData.exclusionDiseases | filterByText: searchtermExdz"
                           #mftableExdz="mfDataTable" [(mfSortBy)]="tableExdzDefaultSort" [mfRowsOnPage]="recordsPerPageExdz">
                           <thead>
                             <tr class="success">
@@ -375,8 +412,41 @@
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table class="table table-td-valign-middle table-striped" [mfData]="tableRulesData.variantReport.singleNucleotideVariants | filterByText: searchtermSnv"
-                          #mftableSnv="mfDataTable" [(mfSortBy)]="tableSnvDefaultSort" [mfRowsOnPage]="recordsPerPageSnv">
+                        <table *ngIf="tableRulesData.variantReport.singleNucleotideVariants.length == 0" class="table table-td-valign-middle table-striped">
+                          <thead>
+                            <tr class="success">
+                              <th>
+                                ID
+                              </th>
+                              <th>
+                                Chorm
+                              </th>
+                              <th>
+                                Position
+                              </th>
+                              <th>
+                                OCP Ref
+                              </th>
+                              <th>
+                                OCP Alt
+                              </th>
+                              <th>
+                                LOE
+                              </th>
+                              <th>
+                                Lit
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="f-s-15" colspan="7">There are no single nucleotide variants for treatment arm "{{tableRulesData.id | dashify}}"</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <table *ngIf="tableRulesData.variantReport.singleNucleotideVariants.length!=0" class="table table-td-valign-middle table-striped"
+                          [mfData]="tableRulesData.variantReport.singleNucleotideVariants | filterByText: searchtermSnv" #mftableSnv="mfDataTable"
+                          [(mfSortBy)]="tableSnvDefaultSort" [mfRowsOnPage]="recordsPerPageSnv">
                           <thead>
                             <tr class="success">
                               <th>
@@ -461,7 +531,39 @@
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table class="table table-td-valign-middle table-striped" [mfData]="tableRulesData.variantReport.indels | filterByText: searchtermIndel"
+                        <table *ngIf="tableRulesData.variantReport.indels.length == 0" class="table table-td-valign-middle table-striped">
+                          <thead>
+                            <tr class="success">
+                              <th>
+                                ID
+                              </th>
+                              <th>
+                                Chorm
+                              </th>
+                              <th>
+                                Position
+                              </th>
+                              <th>
+                                OCP Ref
+                              </th>
+                              <th>
+                                OCP Alt
+                              </th>
+                              <th>
+                                LOE
+                              </th>
+                              <th>
+                                Lit
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="f-s-15" colspan="7">There are no indels for treatment arm "{{tableRulesData.id | dashify}}"</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <table *ngIf="tableRulesData.variantReport.indels.length!=0" class="table table-td-valign-middle table-striped" [mfData]="tableRulesData.variantReport.indels | filterByText: searchtermIndel"
                           #mftableIndel="mfDataTable" [(mfSortBy)]="tableIndelDefaultSort" [mfRowsOnPage]="recordsPerPageIndel">
                           <thead>
                             <tr class="success">
@@ -545,8 +647,35 @@
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table class="table table-td-valign-middle table-striped" [mfData]="tableRulesData.variantReport.copyNumberVariants | filterByText: searchtermCnv"
-                          #mftableCnv="mfDataTable" [(mfSortBy)]="tableCnvDefaultSort" [mfRowsOnPage]="recordsPerPageCnv">
+                        <table *ngIf="tableRulesData.variantReport.copyNumberVariants.length == 0" class="table table-td-valign-middle table-striped">
+                          <thead>
+                            <tr class="success">
+                              <th>
+                                Gene
+                              </th>
+                              <th>
+                                Chorm
+                              </th>
+                              <th>
+                                Position
+                              </th>
+                              <th>
+                                LOE
+                              </th>
+                              <th>
+                                Lit
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="f-s-15" colspan="5">There are no copy number variants for treatment arm "{{tableRulesData.id | dashify}}"</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <table *ngIf="tableRulesData.variantReport.copyNumberVariants.length!=0" class="table table-td-valign-middle table-striped"
+                          [mfData]="tableRulesData.variantReport.copyNumberVariants | filterByText: searchtermCnv" #mftableCnv="mfDataTable"
+                          [(mfSortBy)]="tableCnvDefaultSort" [mfRowsOnPage]="recordsPerPageCnv">
                           <thead>
                             <tr class="success">
                               <!--inclusion-->
@@ -623,7 +752,27 @@
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table class="table table-td-valign-middle table-striped" [mfData]="tableRulesData.variantReport.geneFusions | filterByText: searchtermGene"
+                        <table *ngIf="tableRulesData.variantReport.geneFusions.length == 0" class="table table-td-valign-middle table-striped">
+                          <thead>
+                            <tr class="success">
+                              <th>
+                                ID
+                              </th>
+                              <th>
+                                LOE
+                              </th>
+                              <th>
+                                Lit
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="f-s-15" colspan="3">There are no gene fusions for treatment arm "{{tableRulesData.id | dashify}}"</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <table *ngIf="tableRulesData.variantReport.geneFusions.length!=0" class="table table-td-valign-middle table-striped" [mfData]="tableRulesData.variantReport.geneFusions | filterByText: searchtermGene"
                           #mftableGene="mfDataTable" [(mfSortBy)]="tableGeneDefaultSort" [mfRowsOnPage]="recordsPerPageGene">
                           <thead>
                             <tr class="success">
@@ -692,8 +841,38 @@
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table class="table table-td-valign-middle table-striped" [mfData]="tableRulesData.variantReport.nonHotspotRules | filterByText: searchtermRule"
-                          #mftableRule="mfDataTable" [(mfSortBy)]="tableRuleDefaultSort" [mfRowsOnPage]="recordsPerPageRule">
+                        <table *ngIf="tableRulesData.variantReport.nonHotspotRules.length == 0" class="table table-td-valign-middle table-striped">
+                          <thead>
+                            <tr class="success">
+                              <th>
+                                Gene
+                              </th>
+                              <th>
+                                Exon
+                              </th>
+                              <th>
+                                Oncomine Variant Class
+                              </th>
+                              <th>
+                                Function
+                              </th>
+                              <th>
+                                LOE
+                              </th>
+                              <th>
+                                Lit
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="f-s-15" colspan="6">There are no non-hotspot rules for treatment arm "{{tableRulesData.id | dashify}}"</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <table *ngIf="tableRulesData.variantReport.nonHotspotRules.length!=0" class="table table-td-valign-middle table-striped"
+                          [mfData]="tableRulesData.variantReport.nonHotspotRules | filterByText: searchtermRule" #mftableRule="mfDataTable"
+                          [(mfSortBy)]="tableRuleDefaultSort" [mfRowsOnPage]="recordsPerPageRule">
                           <thead>
                             <tr class="success">
                               <th>
@@ -773,7 +952,30 @@
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table class="table table-td-valign-middle table-striped" [mfData]="tableRulesData.assayResults | filterByText: searchtermAssay"
+                        <table *ngIf="tableRulesData.assayResults.length == 0" class="table table-td-valign-middle table-striped">
+                          <thead>
+                            <tr class="success">
+                              <th>
+                                Gene
+                              </th>
+                              <th>
+                                Result
+                              </th>
+                              <th>
+                                Variant Association
+                              </th>
+                              <th>
+                                LOE
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="f-s-15" colspan="4">There are no assay results for treatment arm "{{tableRulesData.id | dashify}}"</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <table *ngIf="tableRulesData.assayResults.length!=0" class="table table-td-valign-middle table-striped" [mfData]="tableRulesData.assayResults | filterByText: searchtermAssay"
                           #mftableAssay="mfDataTable" [(mfSortBy)]="tableAssayDefaultSort" [mfRowsOnPage]="recordsPerPageAssay">
                           <thead>
                             <tr class="success">
@@ -861,7 +1063,51 @@
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="tablePatientData | filterByText: searchtermPatient"
+                        <table *ngIf="tablePatientData.length == 0" class="table table-td-valign-middle table-striped table-col-width">
+                          <thead>
+                            <tr class="success">
+                              <th>
+                                Slot
+                              </th>
+                              <th>
+                                Patient Sequence Number
+                              </th>
+                              <th>
+                                Treatment Arm Version
+                              </th>
+                              <th>
+                                Patient Assignment Status Outcome
+                              </th>
+                              <th class="text-center">
+                                Assignment Logic
+                              </th>
+                              <th class="text-center">
+                                Variant Report
+                              </th>
+                              <th>
+                                Selected Date
+                              </th>
+                              <th>
+                                On Arm Date
+                              </th>
+                              <th>
+                                Off Arm Date
+                              </th>
+                              <th>
+                                Step
+                              </th>
+                              <th>
+                                Disease
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="f-s-15" colspan="11">There have never been any patients assigned to treatment arm "{{tableRulesData.id | dashify}}"</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <table *ngIf="tablePatientData.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="tablePatientData | filterByText: searchtermPatient"
                           #mftablePatient="mfDataTable" [(mfSortBy)]="tablePatientDefaultSort" [mfRowsOnPage]="recordsPerPagePatient">
                           <thead>
                             <tr class="purple">
