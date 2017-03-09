@@ -5,7 +5,7 @@
       <div class="panel panel-success">
         <div class="panel-heading">
           <span class="panel-title f-s-18">
-            Treatment Arm {{table4Data.id | dashify}}
+            Treatment Arm {{tableRulesData.id | dashify}}
           </span>
         </div>
         <div class="m-0 p-0">
@@ -20,32 +20,32 @@
                       <div class="table-responsive col-lg-12">
                         <dl class="dl-horizontal m-t-20">
                           <dt>ID</dt>
-                          <dd>{{table4Data.id | dashify}}</dd>
+                          <dd>{{tableRulesData.id | dashify}}</dd>
                           <dt>Name</dt>
-                          <dd>{{table4Data.name | dashify}}</dd>
+                          <dd>{{tableRulesData.name | dashify}}</dd>
                           <dt>Treatment Arm Approval Date</dt>
                           <dd>
                             <div class="btn-group m-b-5 m-r-5">
-                              <a href="javascript:;" data-toggle="dropdown" class="btn btn-success dropdown-toggle" aria-expanded="false">{{table4Data.version | dashify}}&nbsp;&nbsp;<span class="caret"></span></a>
+                              <a href="javascript:;" data-toggle="dropdown" class="btn btn-success dropdown-toggle" aria-expanded="false">{{tableRulesData.version | dashify}}&nbsp;&nbsp;<span class="caret"></span></a>
                               <ul class="dropdown-menu">
-                                <li *ngFor="let item of table3Data"><a href="javascript:;">{{item | dashify}}</a></li>
+                                <li *ngFor="let item of versionData"><a href="javascript:;">{{item | dashify}}</a></li>
                               </ul>
                             </div>
                           </dd>
                           <dt>Target</dt>
-                          <dd>{{table4Data.targetName | dashify}}</dd>
+                          <dd>{{tableRulesData.targetName | dashify}}</dd>
                           <dt>Genes</dt>
-                          <dd>{{table4Data.gene | dashify}}</dd>
+                          <dd>{{tableRulesData.gene | dashify}}</dd>
                           <dt>Description</dt>
-                          <dd>{{table4Data.description | dashify}}</dd>
+                          <dd>{{tableRulesData.description | dashify}}</dd>
                           <dt>Patients Assigned</dt>
-                          <dd>{{table4Data.numPatientsAssigned | dashify}} of {{table4Data.maxPatientsAllowed | dashify}}</dd>
+                          <dd>{{tableRulesData.numPatientsAssigned | dashify}} of {{tableRulesData.maxPatientsAllowed | dashify}}</dd>
                           <dt>Current Status</dt>
-                          <dd>{{table4Data.treatmentArmStatus | dashify}}</dd>
+                          <dd>{{tableRulesData.treatmentArmStatus | dashify}}</dd>
                           <dt>Drug ID</dt>
-                          <dd>{{table4Data.targetId | dashify}}</dd>
+                          <dd>{{tableRulesData.targetId | dashify}}</dd>
                           <dt>Drug Name</dt>
-                          <dd>{{table4Data.targetName | dashify}}</dd>
+                          <dd>{{tableRulesData.targetName | dashify}}</dd>
                         </dl>
                       </div>
                     </div>
@@ -75,8 +75,8 @@
                   <div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table class="table table-td-valign-middle table-striped" [mfData]="table4Data.statusLog | filterByText: searchterm4" #mftableHistory="mfDataTable"
-                          [mfRowsOnPage]="recordsPerPage4">
+                        <table class="table table-td-valign-middle table-striped" [mfData]="tableRulesData.statusLog" #mftableHistory="mfDataTable"
+                          [(mfSortBy)]="tableHistoryDefaultSort">
                           <thead>
                             <tr class="success">
                               <th>
@@ -96,9 +96,6 @@
                               <td>{{item.status | dashify}}</td>
                               <td>{{item.date | date:'MMMM d, y h:mm a Z' | dashify}}</td>
                             </tr>-->
-                            <tr *ngIf="mftableHistory.data.length == 0">
-                              <td class="f-s-15" colspan="2">No matching search results found for "{{searchterm4}}"</td>
-                            </tr>
                           </tbody>
                         </table>
                       </div>
@@ -168,7 +165,7 @@
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
-                    <h4 class="panel-title">SVNs</h4>
+                    <h4 class="panel-title">SNVs</h4>
                   </div>
                 </a>
               </li>
@@ -232,7 +229,7 @@
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10 p-l-5" id="data-table_length">
                           <label>
                             Show
-                            <select name="data-table_length" [(ngModel)]="recordsPerPage4"  aria-controls="data-table" class="form-control input-sm">
+                            <select name="data-table_length" [(ngModel)]="recordsPerPageExdr"  aria-controls="data-table" class="form-control input-sm">
                               <option value=10>10</option>
                               <option value=25>25</option>
                               <option value=50>50</option>
@@ -245,7 +242,7 @@
                       <div class="col-md-6 bg-success-light">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10 p-r-5">
                           <label>Search:
-                            <input type="text" [(ngModel)]="searchterm4" class="form-control input-sm" placeholder="" aria-controls="data-table">
+                            <input type="text" [(ngModel)]="searchtermExdr" class="form-control input-sm" placeholder="" aria-controls="data-table">
                           </label>
                         </div>
                       </div>
@@ -257,7 +254,7 @@
                       <div class="col-md-6 bg-success-light">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10 p-l-5" id="data-table_length">
                           <label>Show
-                        <select name="data-table_length" [(ngModel)]="recordsPerPage4"  aria-controls="data-table" class="form-control input-sm">
+                        <select name="data-table_length" [(ngModel)]="recordsPerPageExdz"  aria-controls="data-table" class="form-control input-sm">
                           <option value=10>10</option>
                           <option value=25>25</option>
                           <option value=50>50</option>
@@ -269,7 +266,7 @@
                       <div class="col-md-6 bg-success-light">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10 p-r-5">
                           <label>Search:
-                        <input type="text" [(ngModel)]="searchterm4" class="form-control input-sm" placeholder="" aria-controls="data-table">
+                        <input type="text" [(ngModel)]="searchtermExdz" class="form-control input-sm" placeholder="" aria-controls="data-table">
                       </label>
                         </div>
                       </div>
@@ -277,8 +274,8 @@
                     <div class="row">
                       <!-- table exdr -->
                       <div class="table-responsive col-lg-6">
-                        <table class="table table-td-valign-middle table-striped" [mfData]="table4Data.exclusionDrugs | filterByText: searchterm4"
-                          #mftableExdr="mfDataTable" [mfRowsOnPage]="recordsPerPage4">
+                        <table class="table table-td-valign-middle table-striped" [mfData]="tableRulesData.exclusionDrugs | filterByText: searchtermExdr"
+                          #mftableExdr="mfDataTable" [(mfSortBy)]="tableExdrDefaultSort" [mfRowsOnPage]="recordsPerPageExdr">
                           <thead>
                             <tr class="success">
                               <th>
@@ -297,13 +294,13 @@
                               <td *ngFor="let items of item.drugs">{{items.name | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftableExdr.data.length == 0">
-                              <td class="f-s-15" colspan="2">No matching search results found for "{{searchterm4}}"</td>
+                              <td class="f-s-15" colspan="2">No matching search results found for "{{searchtermExdr}}"</td>
                             </tr>
                           </tbody>
                           <tfoot>
                             <tr>
                               <td class="tfoot-padding" colspan="2">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchterm4" [totallength]="table4Data.exclusionDrugs.length"></mfBootstrapPaginator>
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermExdr" [totallength]="tableRulesData.exclusionDrugs.length"></mfBootstrapPaginator>
                               </td>
                             </tr>
                           </tfoot>
@@ -311,35 +308,35 @@
                       </div>
                       <!-- table exdz -->
                       <div class="table-responsive col-lg-6">
-                        <table class="table table-td-valign-middle table-striped" [mfData]="table4Data.exclusionDiseases | filterByText: searchterm4"
-                          #mftableExdz="mfDataTable" [mfRowsOnPage]="recordsPerPage4">
+                        <table class="table table-td-valign-middle table-striped" [mfData]="tableRulesData.exclusionDiseases | filterByText: searchtermExdz"
+                          #mftableExdz="mfDataTable" [(mfSortBy)]="tableExdzDefaultSort" [mfRowsOnPage]="recordsPerPageExdz">
                           <thead>
                             <tr class="success">
                               <th>
-                                <mfDefaultSorter by="geneName"><span class="table-header">CTEP Category</span></mfDefaultSorter>
+                                <mfDefaultSorter by="ctepCategory"><span class="table-header">CTEP Category</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="geneName"><span class="table-header">CTEP Term</span></mfDefaultSorter>
+                                <mfDefaultSorter by="shortName"><span class="table-header">CTEP Term</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="levelOfEvidence"><span class="table-header">MedDRA Code</span></mfDefaultSorter>
+                                <mfDefaultSorter by="medraCode"><span class="table-header">MedDRA Code</span></mfDefaultSorter>
                               </th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableExdz.data">
                               <td>{{item.ctepCategory | dashify}}</td>
-                              <td>{{item.ctepTerm | dashify}}</td>
+                              <td>{{item.shortName | dashify}}</td>
                               <td>{{item.medraCode | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftableExdz.data.length == 0">
-                              <td class="f-s-15" colspan="3">No matching search results found for "{{searchterm4}}"</td>
+                              <td class="f-s-15" colspan="3">No matching search results found for "{{searchtermExdz}}"</td>
                             </tr>
                           </tbody>
                           <tfoot>
                             <tr>
                               <td class="tfoot-padding" colspan="3">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchterm4" [totallength]="table4Data.exclusionDiseases.length"></mfBootstrapPaginator>
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermExdz" [totallength]="tableRulesData.exclusionDiseases.length"></mfBootstrapPaginator>
                               </td>
                             </tr>
                           </tfoot>
@@ -351,7 +348,7 @@
                 </div>
               </div>
               <div class="tab-pane fade" id="justified-tab-2">
-                <!-- table svn -->
+                <!-- table snv -->
                 <div class="row">
                   <!-- begin panel -->
                   <div>
@@ -359,7 +356,7 @@
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select name="data-table_length" [(ngModel)]="recordsPerPage4"  aria-controls="data-table" class="form-control input-sm">
+                        <select name="data-table_length" [(ngModel)]="recordsPerPageSnv"  aria-controls="data-table" class="form-control input-sm">
                           <option value=10>10</option>
                           <option value=25>25</option>
                           <option value=50>50</option>
@@ -371,15 +368,15 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input type="text" [(ngModel)]="searchterm4" class="form-control input-sm" placeholder="" aria-controls="data-table">
+                        <input type="text" [(ngModel)]="searchtermSnv" class="form-control input-sm" placeholder="" aria-controls="data-table">
                       </label>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table class="table table-td-valign-middle table-striped" [mfData]="table4Data.variantReport.singleNucleotideVariants | filterByText: searchterm4"
-                          #mftableSvn="mfDataTable" [mfRowsOnPage]="recordsPerPage4">
+                        <table class="table table-td-valign-middle table-striped" [mfData]="tableRulesData.variantReport.singleNucleotideVariants | filterByText: searchtermSnv"
+                          #mftableSnv="mfDataTable" [(mfSortBy)]="tableSnvDefaultSort" [mfRowsOnPage]="recordsPerPageSnv">
                           <thead>
                             <tr class="success">
                               <th>
@@ -407,23 +404,25 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <tr *ngFor="let item of mftableSvn.data">
-                              <td>{{item.identifier | dashify}}</td>
+                            <tr *ngFor="let item of mftableSnv.data">
+                              <td><a href="javascript:;" class="link-none">{{item.identifier | dashify}}</a></td>
+                              <!--only for COSM-->
                               <td>{{item.chromosome | dashify}}</td>
                               <td>{{item.position | dashify}}</td>
                               <td>{{item.reference | dashify}}</td>
                               <td>{{item.alternative | dashify}}</td>
                               <td>{{item.levelOfEvidence | dashify}}</td>
-                              <td>{{item.publicMedIds | dashify}}</td>
+                              <td><a href="javascript:;" class="link-none">{{item.publicMedIds | dashify}}</a></td>
+                              <!--multiple links-->
                             </tr>
-                            <tr *ngIf="mftableSvn.data.length == 0">
-                              <td class="f-s-15" colspan="7">No matching search results found for "{{searchterm4}}"</td>
+                            <tr *ngIf="mftableSnv.data.length == 0">
+                              <td class="f-s-15" colspan="7">No matching search results found for "{{searchtermSnv}}"</td>
                             </tr>
                           </tbody>
                           <tfoot>
                             <tr>
                               <td class="tfoot-padding" colspan="7">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchterm4" [totallength]="table4Data.variantReport.singleNucleotideVariants.length"></mfBootstrapPaginator>
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermSnv" [totallength]="tableRulesData.variantReport.singleNucleotideVariants.length"></mfBootstrapPaginator>
                               </td>
                             </tr>
                           </tfoot>
@@ -443,7 +442,7 @@
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select name="data-table_length" [(ngModel)]="recordsPerPage4"  aria-controls="data-table" class="form-control input-sm">
+                        <select name="data-table_length" [(ngModel)]="recordsPerPageIndel"  aria-controls="data-table" class="form-control input-sm">
                           <option value=10>10</option>
                           <option value=25>25</option>
                           <option value=50>50</option>
@@ -455,15 +454,15 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input type="text" [(ngModel)]="searchterm4" class="form-control input-sm" placeholder="" aria-controls="data-table">
+                        <input type="text" [(ngModel)]="searchtermIndel" class="form-control input-sm" placeholder="" aria-controls="data-table">
                       </label>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table class="table table-td-valign-middle table-striped" [mfData]="table4Data.variantReport.indels | filterByText: searchterm4"
-                          #mftableIndel="mfDataTable" [mfRowsOnPage]="recordsPerPage4">
+                        <table class="table table-td-valign-middle table-striped" [mfData]="tableRulesData.variantReport.indels | filterByText: searchtermIndel"
+                          #mftableIndel="mfDataTable" [(mfSortBy)]="tableIndelDefaultSort" [mfRowsOnPage]="recordsPerPageIndel">
                           <thead>
                             <tr class="success">
                               <th>
@@ -492,7 +491,7 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableIndel.data">
-                              <td>{{item.variant.identifier | dashify}}</td>
+                              <td><a href="javascript:;" class="link-none">{{item.variant.identifier | dashify}}</a></td>
                               <td>{{item.variant.chromosome | dashify}}</td>
                               <td>{{item.variant.position | dashify}}</td>
                               <td>{{item.variant.reference | dashify}}</td>
@@ -501,13 +500,13 @@
                               <td>{{item.variant.publicMedIds | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftableIndel.data.length == 0">
-                              <td class="f-s-15" colspan="7">No matching search results found for "{{searchterm4}}"</td>
+                              <td class="f-s-15" colspan="7">No matching search results found for "{{searchtermIndel}}"</td>
                             </tr>
                           </tbody>
                           <tfoot>
                             <tr>
                               <td class="tfoot-padding" colspan="7">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchterm4" [totallength]="table4Data.variantReport.indels.length"></mfBootstrapPaginator>
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermIndel" [totallength]="tableRulesData.variantReport.indels.length"></mfBootstrapPaginator>
                               </td>
                             </tr>
                           </tfoot>
@@ -527,7 +526,7 @@
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select name="data-table_length" [(ngModel)]="recordsPerPage4"  aria-controls="data-table" class="form-control input-sm">
+                        <select name="data-table_length" [(ngModel)]="recordsPerPageCnv"  aria-controls="data-table" class="form-control input-sm">
                           <option value=10>10</option>
                           <option value=25>25</option>
                           <option value=50>50</option>
@@ -539,15 +538,15 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input type="text" [(ngModel)]="searchterm4" class="form-control input-sm" placeholder="" aria-controls="data-table">
+                        <input type="text" [(ngModel)]="searchtermCnv" class="form-control input-sm" placeholder="" aria-controls="data-table">
                       </label>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table class="table table-td-valign-middle table-striped" [mfData]="table4Data.variantReport.copyNumberVariants | filterByText: searchterm4"
-                          #mftableCnv="mfDataTable" [mfRowsOnPage]="recordsPerPage4">
+                        <table class="table table-td-valign-middle table-striped" [mfData]="tableRulesData.variantReport.copyNumberVariants | filterByText: searchtermCnv"
+                          #mftableCnv="mfDataTable" [(mfSortBy)]="tableCnvDefaultSort" [mfRowsOnPage]="recordsPerPageCnv">
                           <thead>
                             <tr class="success">
                               <!--inclusion-->
@@ -571,20 +570,21 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableCnv.data">
-                              <td>{{item.variant.geneName | dashify}}</td>
+                              <td><a href="javascript:;" class="link-none">{{item.variant.geneName | dashify}}</a></td>
+                              <!--same as id-->
                               <td>{{item.variant.chromosome | dashify}}</td>
                               <td>{{item.variant.position | dashify}}</td>
                               <td>{{item.variant.levelOfEvidence | dashify}}</td>
-                              <td>{{item.variant.publicMedIds | dashify}}</td>
+                              <td><a href="javascript:;" class="link-none">{{item.variant.publicMedIds | dashify}}</a></td>
                             </tr>
                             <tr *ngIf="mftableCnv.data.length == 0">
-                              <td class="f-s-15" colspan="5">No matching search results found for "{{searchterm4}}"</td>
+                              <td class="f-s-15" colspan="5">No matching search results found for "{{searchtermCnv}}"</td>
                             </tr>
                           </tbody>
                           <tfoot>
                             <tr>
                               <td class="tfoot-padding" colspan="5">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchterm4" [totallength]="table4Data.variantReport.copyNumberVariants.length"></mfBootstrapPaginator>
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermCnv" [totallength]="tableRulesData.variantReport.copyNumberVariants.length"></mfBootstrapPaginator>
                               </td>
                             </tr>
                           </tfoot>
@@ -604,7 +604,7 @@
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select name="data-table_length" [(ngModel)]="recordsPerPage4"  aria-controls="data-table" class="form-control input-sm">
+                        <select name="data-table_length" [(ngModel)]="recordsPerPageGene"  aria-controls="data-table" class="form-control input-sm">
                           <option value=10>10</option>
                           <option value=25>25</option>
                           <option value=50>50</option>
@@ -616,15 +616,15 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input type="text" [(ngModel)]="searchterm4" class="form-control input-sm" placeholder="" aria-controls="data-table">
+                        <input type="text" [(ngModel)]="searchtermGene" class="form-control input-sm" placeholder="" aria-controls="data-table">
                       </label>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table class="table table-td-valign-middle table-striped" [mfData]="table4Data.variantReport.geneFusions | filterByText: searchterm4"
-                          #mftableGene="mfDataTable" [mfRowsOnPage]="recordsPerPage4">
+                        <table class="table table-td-valign-middle table-striped" [mfData]="tableRulesData.variantReport.geneFusions | filterByText: searchtermGene"
+                          #mftableGene="mfDataTable" [(mfSortBy)]="tableGeneDefaultSort" [mfRowsOnPage]="recordsPerPageGene">
                           <thead>
                             <tr class="success">
                               <th>
@@ -641,18 +641,19 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableGene.data">
-                              <td>{{item.variant.identifier | dashify}}</td>
+                              <td><a href="javascript:;" class="link-none">{{item.variant.identifier | dashify}}</a></td>
+                              <!--only for COSF-->
                               <td>{{item.variant.levelOfEvidence | dashify}}</td>
-                              <td>{{item.variant.publicMedIds | dashify}}</td>
+                              <td><a href="javascript:;" class="link-none">{{item.variant.publicMedIds | dashify}}</a></td>
                             </tr>
                             <tr *ngIf="mftableGene.data.length == 0">
-                              <td class="f-s-15" colspan="3">No matching search results found for "{{searchterm4}}"</td>
+                              <td class="f-s-15" colspan="3">No matching search results found for "{{searchtermGene}}"</td>
                             </tr>
                           </tbody>
                           <tfoot>
                             <tr>
                               <td class="tfoot-padding" colspan="3">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchterm4" [totallength]="table4Data.variantReport.geneFusions.length"></mfBootstrapPaginator>
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermGene" [totallength]="tableRulesData.variantReport.geneFusions.length"></mfBootstrapPaginator>
                               </td>
                             </tr>
                           </tfoot>
@@ -672,7 +673,7 @@
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select name="data-table_length" [(ngModel)]="recordsPerPage4"  aria-controls="data-table" class="form-control input-sm">
+                        <select name="data-table_length" [(ngModel)]="recordsPerPageRule"  aria-controls="data-table" class="form-control input-sm">
                           <option value=10>10</option>
                           <option value=25>25</option>
                           <option value=50>50</option>
@@ -684,19 +685,19 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input type="text" [(ngModel)]="searchterm4" class="form-control input-sm" placeholder="" aria-controls="data-table">
+                        <input type="text" [(ngModel)]="searchtermRule" class="form-control input-sm" placeholder="" aria-controls="data-table">
                       </label>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table class="table table-td-valign-middle table-striped" [mfData]="table4Data.variantReport.nonHotspotRules | filterByText: searchterm4"
-                          #mftableRule="mfDataTable" [mfRowsOnPage]="recordsPerPage4">
+                        <table class="table table-td-valign-middle table-striped" [mfData]="tableRulesData.variantReport.nonHotspotRules | filterByText: searchtermRule"
+                          #mftableRule="mfDataTable" [(mfSortBy)]="tableRuleDefaultSort" [mfRowsOnPage]="recordsPerPageRule">
                           <thead>
                             <tr class="success">
                               <th>
-                                <mfDefaultSorter by="geneName"><span class="table-header">Gene</span></mfDefaultSorter>
+                                <mfDefaultSorter by="gene"><span class="table-header">Gene</span></mfDefaultSorter>
                               </th>
                               <th>
                                 <mfDefaultSorter by="exon"><span class="table-header">Exon</span></mfDefaultSorter>
@@ -718,21 +719,22 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableRule.data">
-                              <td>{{item.geneName | dashify}}</td>
+                              <td><a href="javascript:;" class="link-none">{{item.gene | dashify}}</a></td>
                               <td>{{item.exon | dashify}}</td>
                               <td>{{item.oncominevariantclass | dashify}}</td>
                               <td>{{item.function | dashify}}</td>
                               <td>{{item.levelOfEvidence | dashify}}</td>
-                              <td>{{item.publicMedIds | dashify}}</td>
+                              <td><a href="javascript:;" class="link-none">{{item.publicMedIds | dashify}}</a></td>
+                              <!--problem with dashify-->
                             </tr>
                             <tr *ngIf="mftableRule.data.length == 0">
-                              <td class="f-s-15" colspan="6">No matching search results found for "{{searchterm4}}"</td>
+                              <td class="f-s-15" colspan="6">No matching search results found for "{{searchtermRule}}"</td>
                             </tr>
                           </tbody>
                           <tfoot>
                             <tr>
                               <td class="tfoot-padding" colspan="6">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchterm4" [totallength]="table4Data.variantReport.nonHotspotRules.length"></mfBootstrapPaginator>
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermRule" [totallength]="tableRulesData.variantReport.nonHotspotRules.length"></mfBootstrapPaginator>
                               </td>
                             </tr>
                           </tfoot>
@@ -752,7 +754,7 @@
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select name="data-table_length" [(ngModel)]="recordsPerPage4"  aria-controls="data-table" class="form-control input-sm">
+                        <select name="data-table_length" [(ngModel)]="recordsPerPageAssay"  aria-controls="data-table" class="form-control input-sm">
                           <option value=10>10</option>
                           <option value=25>25</option>
                           <option value=50>50</option>
@@ -764,15 +766,15 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input type="text" [(ngModel)]="searchterm4" class="form-control input-sm" placeholder="" aria-controls="data-table">
+                        <input type="text" [(ngModel)]="searchtermAssay" class="form-control input-sm" placeholder="" aria-controls="data-table">
                       </label>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table class="table table-td-valign-middle table-striped" [mfData]="table4Data.assayResults | filterByText: searchterm4"
-                          #mftableAssay="mfDataTable" [mfRowsOnPage]="recordsPerPage4">
+                        <table class="table table-td-valign-middle table-striped" [mfData]="tableRulesData.assayResults | filterByText: searchtermAssay"
+                          #mftableAssay="mfDataTable" [(mfSortBy)]="tableAssayDefaultSort" [mfRowsOnPage]="recordsPerPageAssay">
                           <thead>
                             <tr class="success">
                               <th>
@@ -797,13 +799,13 @@
                               <td>{{item.levelOfEvidence | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftableAssay.data.length == 0">
-                              <td class="f-s-15" colspan="4">No matching search results found for "{{searchterm4}}"</td>
+                              <td class="f-s-15" colspan="4">No matching search results found for "{{searchtermAssay}}"</td>
                             </tr>
                           </tbody>
                           <tfoot>
                             <tr>
                               <td class="tfoot-padding" colspan="4">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchterm4" [totallength]="table4Data.assayResults.length"></mfBootstrapPaginator>
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermAssay" [totallength]="tableRulesData.assayResults.length"></mfBootstrapPaginator>
                               </td>
                             </tr>
                           </tfoot>
@@ -840,7 +842,7 @@
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select name="data-table_length" [(ngModel)]="recordsPerPage5"  aria-controls="data-table" class="form-control form-control-patients input-sm">
+                        <select name="data-table_length" [(ngModel)]="recordsPerPagePatient"  aria-controls="data-table" class="form-control form-control-patients input-sm">
                           <option value=10>10</option>
                           <option value=25>25</option>
                           <option value=50>50</option>
@@ -852,15 +854,15 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input type="text" [(ngModel)]="searchterm5" class="form-control form-control-patients input-sm" placeholder="" aria-controls="data-table">
+                        <input type="text" [(ngModel)]="searchtermPatient" class="form-control form-control-patients input-sm" placeholder="" aria-controls="data-table">
                       </label>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="table5Data | filterByText: searchterm5"
-                          #mftablePatient="mfDataTable" [mfRowsOnPage]="recordsPerPage5">
+                        <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="tablePatientData | filterByText: searchtermPatient"
+                          #mftablePatient="mfDataTable" [(mfSortBy)]="tablePatientDefaultSort" [mfRowsOnPage]="recordsPerPagePatient">
                           <thead>
                             <tr class="purple">
                               <th>
@@ -914,13 +916,13 @@
                               <td *ngFor="let items of item.diseases">{{items.shortName | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftablePatient.data.length == 0">
-                              <td class="f-s-15" colspan="11">No matching search results found for "{{searchterm5}}"</td>
+                              <td class="f-s-15" colspan="11">No matching search results found for "{{searchtermPatient}}"</td>
                             </tr>
                           </tbody>
                           <tfoot>
                             <tr>
                               <td class="tfoot-padding" colspan="11">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchterm5" [totallength]="table5Data.length"></mfBootstrapPaginator>
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermPatient" [totallength]="tablePatientData.length"></mfBootstrapPaginator>
                               </td>
                             </tr>
                           </tfoot>
