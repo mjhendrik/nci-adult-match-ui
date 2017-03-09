@@ -1,106 +1,79 @@
 <div id="content" class="content">
   <div class="row">
-    <div class="col-md-12">
-      <!-- begin panel -->
-      <div class="panel">
+    <div class="col-md-6">
+      <div class="panel panel-white overflow-hidden m-b-10">
         <div class="panel-heading">
-          <h4 class="panel-title f-s-18">Patients' Details</h4>
-        </div>
-        <div class="m-0 p-0">
-          <div>
-            <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
-              <div class="tab-pane active">
-                <!-- table 5 -->
-                <div class="row">
-                  <!-- begin panel -->
-                  <div>
-                    <div class="col-md-12 bg-purple-light">
-                      <div class="col-md-6 p-l-5">
-                        <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
-                          <label>Show
-                        <select name="data-table_length" [(ngModel)]="recordsPerPage5" aria-controls="data-table" class="form-control input-sm">
-                          <option [ngValue]=10>10</option>
-                          <option [ngValue]=25>25</option>
-                          <option [ngValue]=50>50</option>
-                          <option [ngValue]=100>100</option>
-                        </select>
-                      entries</label>
-                        </div>
-                      </div>
-                      <div class="col-md-6 p-r-5">
-                        <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
-                          <label>Search:
-                        <input type="text" [(ngModel)]="searchterm5" class="form-control input-sm" placeholder="" aria-controls="data-table">                      
-                        </label>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="table-responsive col-lg-12">
-                        <table class="table table-td-valign-middle table-striped" [mfData]="table5Data | filterByText: searchterm5" #mftable5="mfDataTable"
-                          [mfRowsOnPage]="recordsPerPage5">
-                          <thead>
-                            <tr class="purple">
-                              <th>
-                                <mfDefaultSorter by="patientSequenceNumber"><span class="table-header">PSN</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <mfDefaultSorter by="currentStatus"><span class="table-header">Status</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <mfDefaultSorter by="currentStepNumber"><span class="table-header">Step Number</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <mfDefaultSorter by="diseases"><span class="table-header">Diseases</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <mfDefaultSorter by="assignedTreatmentArm"><span class="table-header">Treatment Arm</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <mfDefaultSorter by="registrationDate"><span class="table-header">Registration Date</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <mfDefaultSorter by="offTrialDate"><span class="table-header">Off Trial Date</span></mfDefaultSorter>
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr *ngFor="let item of mftable5.data">
-                              <td>{{item.patientSequenceNumber | dashify}}</td>
-                              <td>{{item.currentStatus | dashify}}</td>
-                              <!--[colorcode-patients]="item.currentStatus"-->
-                              <td>{{item.currentStepNumber | dashify}}</td>
-                              <td>{{item.diseases | dashify}}</td>
-                              <td>
-                                <span *ngIf="item.assignedTreatmentArm!==null">{{item.assignedTreatmentArm | dashify}} ({{item.assignedTreatmentArmVersion | dashify}})</span>
-                                <span *ngIf="item.assignedTreatmentArm===null">-</span>
-                              </td>
-                              <td>{{item.registrationDate | date:'MMMM d, y h:mm a Z' | dashify}}</td>
-                              <td>{{item.offTrialDate | date:'MMMM d, y h:mm a Z' | dashify}}</td>
-                            </tr>
-                            <tr *ngIf="mftable5.data.length == 0">
-                              <td class="f-s-15" colspan="7">No matching search results found for "{{searchterm5}}"</td>
-                            </tr>
-                          </tbody>
-                          <tfoot>
-                            <tr>
-                              <td class="tfoot-padding" colspan="7">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchterm5" [totallength]="table5Data.length"></mfBootstrapPaginator>
-                              </td>
-                            </tr>
-                          </tfoot>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- end panel -->
-                </div>
-              </div>
-            </div>
-          </div>
+          <dl class="dl-horizontal">
+            <dt>Patient Sequence Number</dt>
+            <dd>10069</dd>
+
+            <dt>Patient</dt>
+            <dd>MALE, WHITE</dd>
+
+            <dt>Status</dt>
+            <dd>ON_TREATMENT_ARM</dd>
+
+            <dt>Assignment Reason</dt>
+            <dd>The patient and treatment arm match on non-hotspot variant [(ID: .,GENE: NF1,OVA: Deleterious,EXON: 35,FUNC:
+              nonsense,PROTEIN:p.Arg1534Ter)].</dd>
+
+            <dt>Current Step</dt>
+            <dd>1</dd>
+
+            <dt>Treatment Arm</dt>
+            <dd> EAY131-S1</dd>
+
+            <dt>Registration Date</dt>
+            <dd>September 4, 2015 7:00 PM GMT</dd>
+
+            <dt>Last Rejoin Scan Date</dt>
+            <dd>February 29, 2016 5:04 PM GMT</dd>
+
+          </dl>
         </div>
       </div>
-      <!-- end panel -->
+    </div>
+
+    <div class="col-md-6">
+      <div class="panel panel-white overflow-hidden m-b-10">
+        <div class="panel-heading">
+          <dl class="dl-horizontal">
+            <dt>Concordance</dt>
+            <dd>YES</dd>
+
+            <dt>Disease(s)</dt>
+            <dd></dd>
+
+            <dt>Short Name</dt>
+            <dd>Glioblastoma multiforme</dd>
+
+            <dt>CTEP Category</dt>
+            <dd>CNS Neoplasm (Primary Tumor)</dd>
+
+            <dt>CTEP Sub Category</dt>
+            <dd>Astrocytoma, High Grade</dd>
+
+            <dt>CTEP Term</dt>
+            <dd>Glioblastoma multiforme</dd>
+
+            <dt>MedDRA Code</dt>
+            <dd>10018337</dd>
+
+
+          </dl>
+        </div>
+      </div>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-white overflow-hidden m-b-10">
+        <div class="panel-heading">
+          <h4 class="panel-title">Patient Table</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
