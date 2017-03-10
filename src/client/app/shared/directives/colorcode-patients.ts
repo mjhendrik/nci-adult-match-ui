@@ -1,4 +1,5 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
+
 @Directive({ selector: '[colorcode-patients]' })
 export class colorCodePatients {
 
@@ -8,7 +9,6 @@ export class colorCodePatients {
     }
 
     ngOnInit() {
-        debugger;
         if (this.con == "ON_TREATMENT_ARM") {
             this.el.nativeElement.style.color = '#17B6A4';
         }
