@@ -7,8 +7,7 @@ import './operators';
 @Component({
   moduleId: module.id,
   selector: 'sd-app',
-  templateUrl: 'app.component.html',
-  // styleUrls: ['../scss/main.css'] // fix_me: main-styles
+  templateUrl: 'app.component.html'
 })
 export class AppComponent {
 }
