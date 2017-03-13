@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CliaComponent } from './clia.component';
 import { CliaRoutingModule } from './clia-routing.module';
-import { colorCodeClia } from '../shared/directives/colorcode-clia';
+import { DirectivesModule } from '../shared/directives/directives.module';
 
 @NgModule({
-  imports: [CommonModule, CliaRoutingModule],
-  declarations: [CliaComponent, colorCodeClia],
+  imports: [CommonModule, CliaRoutingModule, DirectivesModule],
+  declarations: [CliaComponent],
   exports: [CliaComponent]
 })
 export class CliaModule { }

@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from './../shared/router.animations';
-import { colorCodeDays } from './../shared/directives/colorcode-days';
-import { colorCodeHours } from './../shared/directives/colorcode-hours';
 
 
 /**

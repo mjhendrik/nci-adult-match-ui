@@ -5,12 +5,12 @@ import { TaDetailsRoutingModule } from './ta-details-routing.module';
 import { FormsModule } from '@angular/forms';
 import { DataTableModule } from '../../shared/datatables/index';
 import { PipesModule } from '../../shared/pipes/pipes.module';
-// import { colorCodeTa } from '../../shared/directives/colorcode-ta';
+import { DirectivesModule } from '../../shared/directives/directives.module';
 
 
 @NgModule({
-  imports: [CommonModule, TaDetailsRoutingModule, FormsModule, DataTableModule, PipesModule],
-  declarations: [TaDetailsComponent], //, colorCodeTa
+  imports: [CommonModule, TaDetailsRoutingModule, FormsModule, DataTableModule, PipesModule, DirectivesModule],
+  declarations: [TaDetailsComponent],
   exports: [TaDetailsComponent]
 })
 export class TaDetailsModule { }
