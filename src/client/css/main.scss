@@ -7,9 +7,13 @@
 //     background-color: $test-color;
 // }
 
-.panel-accent-purple {
+.panel-accent-sides-purple {
     border-left: 2px solid #9b59b6;
     border-right: 2px solid #9b59b6;
+}
+
+.panel-accent-bottom-purple {
+    border-bottom: 2px solid #9b59b6;
 }
 
 .widget {
