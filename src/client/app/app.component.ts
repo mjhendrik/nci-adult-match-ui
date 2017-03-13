@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Config } from './shared/config/env.config';
 import './operators';
 
 /**
@@ -8,8 +7,7 @@ import './operators';
 @Component({
   moduleId: module.id,
   selector: 'sd-app',
-  templateUrl: 'app.component.html',
-  // styleUrls: ['../scss/main.css'] // fix_me: main-styles
+  templateUrl: 'app.component.html'
 })
 export class AppComponent {
 }
