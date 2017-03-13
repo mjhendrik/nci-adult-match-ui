@@ -6,8 +6,8 @@ export class filterByText implements PipeTransform {
     transform(items: any[], filterText: string): any[] {
         var keys = Object.keys(items[0]);
         return items.filter(item => {
-            return Object.keys(item).some(key =>item[key]!=null ? item[key].toString().toLowerCase().includes(filterText.toLowerCase()):false);
+            return JSON.stringify(item).toLocaleLowerCase().indexOf(filterText.toLocaleLowerCase()) != -1 ? true : false;
         }
-        )
+        );
     }
 }

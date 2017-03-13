@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { routerTransition } from './../shared/router.animations';
-import { colorCodeTa } from './../shared/directives/colorcode-ta';
 
 
 /**

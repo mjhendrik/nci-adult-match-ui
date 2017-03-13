@@ -3,14 +3,14 @@ import { CommonModule } from '@angular/common';
 import { TaComponent } from './ta.component';
 import { TaRoutingModule } from './ta-routing.module';
 import { FormsModule } from '@angular/forms';
-import { DataTableModule } from "../shared/datatables/index";
-import { PipesModule } from "../shared/pipes/pipes.module"
-import { colorCodeTa} from '../shared/directives/colorcode-ta';
+import { DataTableModule } from '../shared/datatables/index';
+import { PipesModule } from '../shared/pipes/pipes.module';
+import { DirectivesModule } from '../shared/directives/directives.module';
 
 
 @NgModule({
-  imports: [CommonModule, TaRoutingModule, FormsModule, DataTableModule, PipesModule],
-  declarations: [TaComponent, colorCodeTa],
+  imports: [CommonModule, TaRoutingModule, FormsModule, DataTableModule, PipesModule, DirectivesModule],
+  declarations: [TaComponent],
   exports: [TaComponent]
 })
 export class TaModule { }
