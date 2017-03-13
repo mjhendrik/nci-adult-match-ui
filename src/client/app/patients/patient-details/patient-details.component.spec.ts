@@ -4,17 +4,17 @@ import {
   TestBed
 } from '@angular/core/testing';
 
-import { PatientsDetailsModule } from './patients-details.module';
+import { PatientDetailsModule } from './patient-details.module';
 
 export function main() {
-  describe('patients-details component', () => {
+  describe('patient-details component', () => {
     // Setting module for testing
     // Disable old forms
 
     beforeEach(() => {
       TestBed.configureTestingModule({
         declarations: [TestComponent],
-        imports: [PatientsDetailsModule]
+        imports: [PatientDetailsModule]
       });
     });
 
@@ -33,6 +33,6 @@ export function main() {
 
 @Component({
   selector: 'test-cmp',
-  template: '<sd-patients-details></sd-patients-details>'
+  template: '<sd-patient-details></sd-patient-details>'
 })
 class TestComponent { }
