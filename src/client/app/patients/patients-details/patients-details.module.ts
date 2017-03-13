@@ -5,11 +5,11 @@ import { PatientsDetailsRoutingModule } from './patients-details-routing.module'
 import { FormsModule } from '@angular/forms';
 import { DataTableModule } from '../../shared/datatables/index';
 import { PipesModule } from '../../shared/pipes/pipes.module';
-// import { colorCodePatients } from '../../shared/directives/colorcode-patients';
+import { DirectivesModule } from '../../shared/directives/directives.module';
 
 @NgModule({
-  imports: [CommonModule, PatientsDetailsRoutingModule, FormsModule, DataTableModule, PipesModule],
-  declarations: [PatientsDetailsComponent], //, colorCodePatients
+  imports: [CommonModule, PatientsDetailsRoutingModule, FormsModule, DataTableModule, PipesModule, DirectivesModule],
+  declarations: [PatientsDetailsComponent],
   exports: [PatientsDetailsComponent]
 })
 export class PatientsDetailsModule { }
