@@ -2,10 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { routerTransition } from './../shared/router.animations';
 import { colorCodeDays } from './../shared/directives/colorcode-days';
 import { colorCodeHours } from './../shared/directives/colorcode-hours';
-// import { DatePipe } from '@angular/common';
-// import * as moment from 'moment/moment';
-// import 'moment-timezone';
-// import * as moment-timezone from 'moment-timezone/moment-timezone';
 
 
 /**
@@ -49,16 +45,6 @@ export class DashboardComponent implements OnInit {
     this.table3DefaultSort = 'date_verified';
     this.sortByAsc = 'asc';
     this.sortByDesc = 'desc';
-    // console.log(new Date(1463784009913).toUTCString());
-    // for (let i = 0; i < this.table1Data.variant_reports.length; i++) {
-    // this.table1Data.variant_reports[i].specimenReceivedDate = new Date(this.table1Data.variant_reports[i].specimenReceivedDate).toUTCString();
-    // console.log(this.dateFormat.transform(new Date(this.table1Data.variant_reports[i].specimenReceivedDate).toUTCString(), 'MMMM d, y h:mm a'));
-    // console.log(moment(new Date(this.table1Data.variant_reports[i].specimenReceivedDate).toUTCString()).format('MMMM D, Y h:mm a'));
-    // console.log(moment(this.table1Data.variant_reports[i].specimenReceivedDate).tz('America/Los_Angeles').format('z'));
-    // console.log(moment.tz.names());
-    // .format('MMMM D, y h:mm A z')
-    //  | date:'MMMM d, y h:mm a Z'
-    // }
   }
 
   table1Data: any = {
