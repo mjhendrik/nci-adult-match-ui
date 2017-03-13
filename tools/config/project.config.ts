@@ -52,6 +52,10 @@ export class ProjectConfig extends SeedConfig {
     {
       name: 'lodash',
       path: 'node_modules/lodash/lodash.js'
+    },
+    {
+      name: 'moment',
+      path: 'node_modules/moment/moment.js'
     }];
 
     this.addPackagesBundles(additionalPackages);
