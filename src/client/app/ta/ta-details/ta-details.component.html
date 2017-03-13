@@ -28,7 +28,7 @@
                             <div class="btn-group m-b-5 m-r-5">
                               <a href="javascript:;" data-toggle="dropdown" class="btn btn-success dropdown-toggle" aria-expanded="false">{{tableRulesData.version | dashify}}&nbsp;&nbsp;<span class="caret"></span></a>
                               <ul class="dropdown-menu">
-                                <li *ngFor="let item of versionData"><a href="javascript:;">{{item | dashify}}</a></li>
+                                <li *ngFor="let item of versionData"><a href="javascript:;" *ngIf="item!=tableRulesData.version">{{item | dashify}}</a></li>
                               </ul>
                             </div>
                           </dd>
@@ -75,27 +75,22 @@
                   <div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table class="table table-td-valign-middle table-striped" [mfData]="tableRulesData.statusLog" #mftableHistory="mfDataTable"
-                          [(mfSortBy)]="tableHistoryDefaultSort">
+                        <table class="table table-fixed" [mfData]="tableRulesData.statusLog" #mftableHistory="mfDataTable" [(mfSortBy)]="tableHistoryDefaultSort">
                           <thead>
                             <tr class="success">
-                              <th>
+                              <th class="col-xs-4">
                                 <mfDefaultSorter by="status"><span class="table-header">Status</span></mfDefaultSorter>
                               </th>
-                              <th>
+                              <th class="col-xs-8">
                                 <mfDefaultSorter by="date"><span class="table-header">Date</span></mfDefaultSorter>
                               </th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableHistory.data">
-                              <td>{{item.status | dashify}}</td>
-                              <td>{{item.date | date:'MMMM d, y h:mm a Z' | dashify}}</td>
+                              <td [colorcode-ta]="item.status" class="col-xs-4">{{item.status | dashify}}</td>
+                              <td class="col-xs-8">{{item.date | gmt | dashify}}</td>
                             </tr>
-                            <!--<tr *ngFor="let item of mftableHistory.data">
-                              <td>{{item.status | dashify}}</td>
-                              <td>{{item.date | date:'MMMM d, y h:mm a Z' | dashify}}</td>
-                            </tr>-->
                           </tbody>
                         </table>
                       </div>
@@ -1152,12 +1147,12 @@
                               <td>{{item.slot | dashify}}</td>
                               <td>{{item.patientSequenceNumber | dashify}}</td>
                               <td>{{item.treatmentArmVersion | dashify}}</td>
-                              <td>{{item.formattedPatientStatus | dashify}}</td>
+                              <td [colorcode-patients]="item.formattedPatientStatus">{{item.formattedPatientStatus | dashify}}</td>
                               <td class="text-center"><i class="fa fa-file-text-o"></i></td>
                               <td class="text-center"><i class="fa fa-file-text-o"></i></td>
-                              <td>{{item.dateSelected | date:'MMMM d, y h:mm a Z' | dashify}}</td>
-                              <td>{{item.dateOnArm | date:'MMMM d, y h:mm a Z' | dashify}}</td>
-                              <td>{{item.dateOffArm | date:'MMMM d, y h:mm a Z' | dashify}}</td>
+                              <td>{{item.dateSelected | gmt | dashify}}</td>
+                              <td>{{item.dateOnArm | gmt | dashify}}</td>
+                              <td>{{item.dateOffArm | gmt | dashify}}</td>
                               <td>{{item.stepNumber | dashify}}</td>
                               <td *ngFor="let items of item.diseases">{{items.shortName | dashify}}</td>
                             </tr>
