@@ -39,8 +39,7 @@ export class ProjectConfig extends SeedConfig {
     this.APP_ASSETS = [
       ...this.APP_ASSETS,
       // {src: `${this.APP_SRC}/your-path-to-lib/libs/jquery-ui.js`, inject: true, vendor: false}
-      { src: `${this.APP_SRC}/polyfills/web-animations.min.js`, inject: 'libs' },
-      { src: `${this.CSS_SRC}/theme/style.min.css`, inject: true, vendor: false },
+      { src: `${this.APP_SRC}/polyfills/web-animations.min.js`, inject: 'libs' }
     ];
 
     // Add packages (e.g. ng2-translate)
