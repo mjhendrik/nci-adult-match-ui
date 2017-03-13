@@ -12,4 +12,4 @@ import { DirectivesModule } from '../../shared/directives/directives.module';
   declarations: [PatientDetailsComponent],
   exports: [PatientDetailsComponent]
 })
-export class PatientsDetailsModule { }
+export class PatientDetailsModule { }
