@@ -41,7 +41,7 @@
                           <dt>Patients Assigned</dt>
                           <dd>{{tableRulesData.numPatientsAssigned | dashify}} of {{tableRulesData.maxPatientsAllowed | dashify}}</dd>
                           <dt>Current Status</dt>
-                          <dd>{{tableRulesData.treatmentArmStatus | dashify}}</dd>
+                          <dd [colorcode-ta]="tableRulesData.treatmentArmStatus">{{tableRulesData.treatmentArmStatus | dashify}}</dd>
                           <dt>Drug ID</dt>
                           <dd>{{tableRulesData.targetId | dashify}}</dd>
                           <dt>Drug Name</dt>
