@@ -9,17 +9,20 @@ export class colorCodePatients {
     }
 
     ngOnInit() {
-        if (this.con == "ON_TREATMENT_ARM") {
+        if (this.con === 'ON_TREATMENT_ARM') {
             this.el.nativeElement.style.color = '#17B6A4';
         }
-        else if (this.con == "REGISTRATION") {
+        else if (this.con === 'REGISTRATION') {
             this.el.nativeElement.style.color = '#2184DA';
         }
-        else if (this.con == "COMPASSIONATE_CARE" || this.con == "PENDING_APPROVAL" || this.con == "PENDING_CONFIRMATION" || this.con == "REJOIN_REQUESTED") {
+        else if (this.con === 'COMPASSIONATE_CARE' || this.con === 'PENDING_APPROVAL' || this.con === 'PENDING_CONFIRMATION' || this.con === 'REJOIN_REQUESTED' || this.con === 'NOT_ELIGIBLE') {
             this.el.nativeElement.style.color = '#9b59b6';
         }
-        else if (this.con == "OFF_TRIAL_DECEASED" || this.con == "OFF_TRIAL_NO_TA_AVAILABLE" || this.con == "OFF_TRIAL_NOT_CONSENTED") {
+        else if (this.con === 'OFF_TRIAL_DECEASED' || this.con === 'OFF_TRIAL_NO_TA_AVAILABLE' || this.con === 'OFF_TRIAL_NOT_CONSENTED') {
             this.el.nativeElement.style.color = '#F04B46';
+        }
+        else if (this.con === 'FORMERLY_ON_ARM_OFF_TRIAL') {
+            this.el.nativeElement.style.color = '#fcaf41';
         }
     }
 
