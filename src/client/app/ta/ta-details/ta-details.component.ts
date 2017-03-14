@@ -65,6 +65,17 @@ export class TaDetailsComponent implements OnInit {
   sortByAsc: string;
   sortByDesc: string;
 
+  snvIn: any[];
+  snvEx: any[];
+  indelIn: any[];
+  indelEx: any[];
+  cnvIn: any[];
+  cnvEx: any[];
+  geneIn: any[];
+  geneEx: any[];
+  ruleIn: any[];
+  ruleEx: any[];
+
   constructor() {
 
   }
@@ -103,6 +114,52 @@ export class TaDetailsComponent implements OnInit {
 
     this.sortByAsc = 'asc';
     this.sortByDesc = 'desc';
+
+    let itemsSnv: any[] = this.tableRulesData.variantReport.singleNucleotideVariants;
+    this.snvIn = itemsSnv.filter(item => {
+      return item.inclusion == true;
+    });
+
+    this.snvEx = itemsSnv.filter(item => {
+      return item.inclusion == false;
+    });
+
+    let itemsIndel: any[] = this.tableRulesData.variantReport.indels;
+    this.indelIn = itemsIndel.filter(item => {
+      return item.variant.inclusion == true;
+    });
+
+    this.indelEx = itemsIndel.filter(item => {
+      return item.variant.inclusion == false;
+    });
+
+    let itemsCnv: any[] = this.tableRulesData.variantReport.copyNumberVariants;
+    this.cnvIn = itemsCnv.filter(item => {
+      return item.variant.inclusion == true;
+    });
+
+    this.cnvEx = itemsCnv.filter(item => {
+      return item.variant.inclusion == false;
+    });
+
+    let itemsGene: any[] = this.tableRulesData.variantReport.geneFusions;
+    this.geneIn = itemsGene.filter(item => {
+      return item.variant.inclusion == true;
+    });
+
+    this.geneEx = itemsGene.filter(item => {
+      return item.variant.inclusion == false;
+    });
+
+    let itemsRule: any[] = this.tableRulesData.variantReport.nonHotspotRules;
+    this.ruleIn = itemsRule.filter(item => {
+      return item.inclusion == true;
+    });
+
+    this.ruleEx = itemsRule.filter(item => {
+      return item.inclusion == false;
+    });
+
   }
 
   versionData: any = [
