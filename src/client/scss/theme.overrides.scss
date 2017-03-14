@@ -6,3 +6,8 @@
     margin-left: 190px;
   }
 }
+
+.table > thead > tr > th {
+    // border-bottom-width: 2px !important; */
+    border-bottom-style: none !important;
+}
