@@ -47,6 +47,9 @@ export class TaDetailsComponent implements OnInit {
   tableAssayDefaultSort: string;
   tablePatientDefaultSort: string;
 
+  sortByAsc: string;
+  sortByDesc: string;
+
   button: boolean;
 
   constructor() {
@@ -74,6 +77,9 @@ export class TaDetailsComponent implements OnInit {
     this.tableRuleDefaultSort = 'gene';
     this.tableAssayDefaultSort = 'gene';
     this.tablePatientDefaultSort = 'dateSelected';
+
+    this.sortByAsc = 'asc';
+    this.sortByDesc = 'desc';
 
     this.button = true;
   }
@@ -154,440 +160,293 @@ export class TaDetailsComponent implements OnInit {
     ],
     "exclusionDrugs": [
       {
-        "drugs": [
-          {
-            "drugId": "778795",
-            "name": "GDC-0032 (taselisib)",
-            "description": null,
-            "drugClass": null,
-            "pathway": null,
-            "target": null
-          }
-        ]
+        "drugId": "778795",
+        "name": "GDC-0032 (taselisib)",
+        "description": null,
+        "drugClass": null,
+        "pathway": null,
+        "target": null
       },
       {
-        "drugs": [
-          {
-            "drugId": "",
-            "name": "BEZ235",
-            "description": null,
-            "drugClass": null,
-            "pathway": null,
-            "target": null
-          }
-        ]
+        "drugId": "",
+        "name": "BEZ235",
+        "description": null,
+        "drugClass": null,
+        "pathway": null,
+        "target": null
       },
       {
-        "drugs": [
-          {
-            "drugId": "",
-            "name": "XL-765 (SAR245409)",
-            "description": null,
-            "drugClass": null,
-            "pathway": null,
-            "target": null
-          }
-        ]
+        "drugId": "",
+        "name": "XL-765 (SAR245409)",
+        "description": null,
+        "drugClass": null,
+        "pathway": null,
+        "target": null
       },
       {
-        "drugs": [
-          {
-            "drugId": "",
-            "name": "GDC-0980",
-            "description": null,
-            "drugClass": null,
-            "pathway": null,
-            "target": null
-          }
-        ]
+        "drugId": "",
+        "name": "GDC-0980",
+        "description": null,
+        "drugClass": null,
+        "pathway": null,
+        "target": null
       },
       {
-        "drugs": [
-          {
-            "drugId": "",
-            "name": "PF-04691502",
-            "description": null,
-            "drugClass": null,
-            "pathway": null,
-            "target": null
-          }
-        ]
+        "drugId": "",
+        "name": "PF-04691502",
+        "description": null,
+        "drugClass": null,
+        "pathway": null,
+        "target": null
       },
       {
-        "drugs": [
-          {
-            "drugId": "",
-            "name": "PF-05212384 (PKI-587)",
-            "description": null,
-            "drugClass": null,
-            "pathway": null,
-            "target": null
-          }
-        ]
+        "drugId": "",
+        "name": "PF-05212384 (PKI-587)",
+        "description": null,
+        "drugClass": null,
+        "pathway": null,
+        "target": null
       },
       {
-        "drugs": [
-          {
-            "drugId": "",
-            "name": "SF-1126",
-            "description": null,
-            "drugClass": null,
-            "pathway": null,
-            "target": null
-          }
-        ]
+        "drugId": "",
+        "name": "SF-1126",
+        "description": null,
+        "drugClass": null,
+        "pathway": null,
+        "target": null
       },
       {
-        "drugs": [
-          {
-            "drugId": "",
-            "name": "GSK 2126458",
-            "description": null,
-            "drugClass": null,
-            "pathway": null,
-            "target": null
-          }
-        ]
+        "drugId": "",
+        "name": "GSK 2126458",
+        "description": null,
+        "drugClass": null,
+        "pathway": null,
+        "target": null
       },
       {
-        "drugs": [
-          {
-            "drugId": "",
-            "name": "P-7170",
-            "description": null,
-            "drugClass": null,
-            "pathway": null,
-            "target": null
-          }
-        ]
+        "drugId": "",
+        "name": "P-7170",
+        "description": null,
+        "drugClass": null,
+        "pathway": null,
+        "target": null
       },
       {
-        "drugs": [
-          {
-            "drugId": "",
-            "name": "BGT-226",
-            "description": null,
-            "drugClass": null,
-            "pathway": null,
-            "target": null
-          }
-        ]
+        "drugId": "",
+        "name": "BGT-226",
+        "description": null,
+        "drugClass": null,
+        "pathway": null,
+        "target": null
       },
       {
-        "drugs": [
-          {
-            "drugId": "",
-            "name": "LY3023414",
-            "description": null,
-            "drugClass": null,
-            "pathway": null,
-            "target": null
-          }
-        ]
+        "drugId": "",
+        "name": "LY3023414",
+        "description": null,
+        "drugClass": null,
+        "pathway": null,
+        "target": null
       },
       {
-        "drugs": [
-          {
-            "drugId": "",
-            "name": "BAY-80-6946",
-            "description": null,
-            "drugClass": null,
-            "pathway": null,
-            "target": null
-          }
-        ]
+        "drugId": "",
+        "name": "BAY-80-6946",
+        "description": null,
+        "drugClass": null,
+        "pathway": null,
+        "target": null
       },
       {
-        "drugs": [
-          {
-            "drugId": "",
-            "name": "ZSTK-474",
-            "description": null,
-            "drugClass": null,
-            "pathway": null,
-            "target": null
-          }
-        ]
+        "drugId": "",
+        "name": "ZSTK-474",
+        "description": null,
+        "drugClass": null,
+        "pathway": null,
+        "target": null
       },
       {
-        "drugs": [
-          {
-            "drugId": "",
-            "name": "WX 037",
-            "description": null,
-            "drugClass": null,
-            "pathway": null,
-            "target": null
-          }
-        ]
+        "drugId": "",
+        "name": "WX 037",
+        "description": null,
+        "drugClass": null,
+        "pathway": null,
+        "target": null
       },
       {
-        "drugs": [
-          {
-            "drugId": "",
-            "name": "AZD8835",
-            "description": null,
-            "drugClass": null,
-            "pathway": null,
-            "target": null
-          }
-        ]
+        "drugId": "",
+        "name": "AZD8835",
+        "description": null,
+        "drugClass": null,
+        "pathway": null,
+        "target": null
       },
       {
-        "drugs": [
-          {
-            "drugId": "",
-            "name": "GSK2636771",
-            "description": null,
-            "drugClass": null,
-            "pathway": null,
-            "target": null
-          }
-        ]
+        "drugId": "",
+        "name": "GSK2636771",
+        "description": null,
+        "drugClass": null,
+        "pathway": null,
+        "target": null
       },
       {
-        "drugs": [
-          {
-            "drugId": "",
-            "name": "GS-9820",
-            "description": null,
-            "drugClass": null,
-            "pathway": null,
-            "target": null
-          }
-        ]
+        "drugId": "",
+        "name": "GS-9820",
+        "description": null,
+        "drugClass": null,
+        "pathway": null,
+        "target": null
       },
       {
-        "drugs": [
-          {
-            "drugId": "",
-            "name": "BYL719",
-            "description": null,
-            "drugClass": null,
-            "pathway": null,
-            "target": null
-          }
-        ]
+        "drugId": "",
+        "name": "BYL719",
+        "description": null,
+        "drugClass": null,
+        "pathway": null,
+        "target": null
       },
       {
-        "drugs": [
-          {
-            "drugId": "",
-            "name": "MLN1117 (INK1117)",
-            "description": null,
-            "drugClass": null,
-            "pathway": null,
-            "target": null
-          }
-        ]
+        "drugId": "",
+        "name": "MLN1117 (INK1117)",
+        "description": null,
+        "drugClass": null,
+        "pathway": null,
+        "target": null
       },
       {
-        "drugs": [
-          {
-            "drugId": "",
-            "name": "Idelalisib",
-            "description": null,
-            "drugClass": null,
-            "pathway": null,
-            "target": null
-          }
-        ]
+        "drugId": "",
+        "name": "Idelalisib",
+        "description": null,
+        "drugClass": null,
+        "pathway": null,
+        "target": null
       },
       {
-        "drugs": [
-          {
-            "drugId": "",
-            "name": "TGR1202",
-            "description": null,
-            "drugClass": null,
-            "pathway": null,
-            "target": null
-          }
-        ]
+        "drugId": "",
+        "name": "TGR1202",
+        "description": null,
+        "drugClass": null,
+        "pathway": null,
+        "target": null
       },
       {
-        "drugs": [
-          {
-            "drugId": "",
-            "name": "RP6530",
-            "description": null,
-            "drugClass": null,
-            "pathway": null,
-            "target": null
-          }
-        ]
+        "drugId": "",
+        "name": "RP6530",
+        "description": null,
+        "drugClass": null,
+        "pathway": null,
+        "target": null
       },
       {
-        "drugs": [
-          {
-            "drugId": "",
-            "name": "duvelisib (IPI-145)",
-            "description": null,
-            "drugClass": null,
-            "pathway": null,
-            "target": null
-          }
-        ]
+        "drugId": "",
+        "name": "duvelisib (IPI-145)",
+        "description": null,
+        "drugClass": null,
+        "pathway": null,
+        "target": null
       },
       {
-        "drugs": [
-          {
-            "drugId": "",
-            "name": "CUDC-907",
-            "description": null,
-            "drugClass": null,
-            "pathway": null,
-            "target": null
-          }
-        ]
+        "drugId": "",
+        "name": "CUDC-907",
+        "description": null,
+        "drugClass": null,
+        "pathway": null,
+        "target": null
       },
       {
-        "drugs": [
-          {
-            "drugId": "",
-            "name": "MK-2206",
-            "description": null,
-            "drugClass": null,
-            "pathway": null,
-            "target": null
-          }
-        ]
+        "drugId": "",
+        "name": "MK-2206",
+        "description": null,
+        "drugClass": null,
+        "pathway": null,
+        "target": null
       },
       {
-        "drugs": [
-          {
-            "drugId": "",
-            "name": "GSK690693",
-            "description": null,
-            "drugClass": null,
-            "pathway": null,
-            "target": null
-          }
-        ]
+        "drugId": "",
+        "name": "GSK690693",
+        "description": null,
+        "drugClass": null,
+        "pathway": null,
+        "target": null
       },
       {
-        "drugs": [
-          {
-            "drugId": "",
-            "name": "AZD5363",
-            "description": null,
-            "drugClass": null,
-            "pathway": null,
-            "target": null
-          }
-        ]
+        "drugId": "",
+        "name": "AZD5363",
+        "description": null,
+        "drugClass": null,
+        "pathway": null,
+        "target": null
       },
       {
-        "drugs": [
-          {
-            "drugId": "",
-            "name": "triciribine",
-            "description": null,
-            "drugClass": null,
-            "pathway": null,
-            "target": null
-          }
-        ]
+        "drugId": "",
+        "name": "triciribine",
+        "description": null,
+        "drugClass": null,
+        "pathway": null,
+        "target": null
       },
       {
-        "drugs": [
-          {
-            "drugId": "",
-            "name": "perifosine",
-            "description": null,
-            "drugClass": null,
-            "pathway": null,
-            "target": null
-          }
-        ]
+        "drugId": "",
+        "name": "perifosine",
+        "description": null,
+        "drugClass": null,
+        "pathway": null,
+        "target": null
       },
       {
-        "drugs": [
-          {
-            "drugId": "",
-            "name": "GSK2141795",
-            "description": null,
-            "drugClass": null,
-            "pathway": null,
-            "target": null
-          }
-        ]
+        "drugId": "",
+        "name": "GSK2141795",
+        "description": null,
+        "drugClass": null,
+        "pathway": null,
+        "target": null
       },
       {
-        "drugs": [
-          {
-            "drugId": "",
-            "name": "GSK2110183",
-            "description": null,
-            "drugClass": null,
-            "pathway": null,
-            "target": null
-          }
-        ]
+        "drugId": "",
+        "name": "GSK2110183",
+        "description": null,
+        "drugClass": null,
+        "pathway": null,
+        "target": null
       },
       {
-        "drugs": [
-          {
-            "drugId": "",
-            "name": "SR13668",
-            "description": null,
-            "drugClass": null,
-            "pathway": null,
-            "target": null
-          }
-        ]
+        "drugId": "",
+        "name": "SR13668",
+        "description": null,
+        "drugClass": null,
+        "pathway": null,
+        "target": null
       },
       {
-        "drugs": [
-          {
-            "drugId": "",
-            "name": "BAY1125976",
-            "description": null,
-            "drugClass": null,
-            "pathway": null,
-            "target": null
-          }
-        ]
+        "drugId": "",
+        "name": "BAY1125976",
+        "description": null,
+        "drugClass": null,
+        "pathway": null,
+        "target": null
       },
       {
-        "drugs": [
-          {
-            "drugId": "",
-            "name": "GDC-0068 (ipatasertib)",
-            "description": null,
-            "drugClass": null,
-            "pathway": null,
-            "target": null
-          }
-        ]
+        "drugId": "",
+        "name": "GDC-0068 (ipatasertib)",
+        "description": null,
+        "drugClass": null,
+        "pathway": null,
+        "target": null
       },
       {
-        "drugs": [
-          {
-            "drugId": "",
-            "name": "LY2780301",
-            "description": null,
-            "drugClass": null,
-            "pathway": null,
-            "target": null
-          }
-        ]
+        "drugId": "",
+        "name": "LY2780301",
+        "description": null,
+        "drugClass": null,
+        "pathway": null,
+        "target": null
       },
       {
-        "drugs": [
-          {
-            "drugId": "",
-            "name": "ARQ092",
-            "description": null,
-            "drugClass": null,
-            "pathway": null,
-            "target": null
-          }
-        ]
+        "drugId": "",
+        "name": "ARQ092",
+        "description": null,
+        "drugClass": null,
+        "pathway": null,
+        "target": null
       }
-    ],
-    "exclusionCriterias": [
-
     ],
     "assayResults": [
       {
@@ -9784,9 +9643,6 @@ export class TaDetailsComponent implements OnInit {
           "numberOfPatientsWithVariantOnArm": 0,
           "percentPatientsWithVariantOnArm": 0
         }
-      ],
-      "unifiedGeneFusions": [
-
       ],
       "nonHotspotRules": [
         {

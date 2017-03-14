@@ -287,23 +287,21 @@
                           </tbody>
                         </table>
                         <table *ngIf="tableRulesData.exclusionDrugs.length!=0" class="table table-td-valign-middle table-striped" [mfData]="tableRulesData.exclusionDrugs | filterByText: searchtermExdr"
-                          #mftableExdr="mfDataTable" [(mfSortBy)]="tableExdrDefaultSort" [mfRowsOnPage]="recordsPerPageExdr">
+                          #mftableExdr="mfDataTable" [(mfSortBy)]="tableExdrDefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPageExdr">
                           <thead>
                             <tr class="success">
                               <th>
-                                <span class="table-header">ID</span>
-                                <!--<mfDefaultSorter by="drugs.drugId"></mfDefaultSorter>-->
+                                <mfDefaultSorter by="drugId"><span class="table-header">ID</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <span class="table-header">Name</span>
-                                <!--<mfDefaultSorter by="drugs.name"></mfDefaultSorter>-->
+                                <mfDefaultSorter by="name"><span class="table-header">Name</span></mfDefaultSorter>
                               </th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableExdr.data">
-                              <td *ngFor="let items of item.drugs">{{items.drugId | dashify}}</td>
-                              <td *ngFor="let items of item.drugs">{{items.name | dashify}}</td>
+                              <td>{{item.drugId | dashify}}</td>
+                              <td>{{item.name | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftableExdr.data.length == 0">
                               <td class="f-s-15" colspan="2">No matching search results found for "{{searchtermExdr}}"</td>
