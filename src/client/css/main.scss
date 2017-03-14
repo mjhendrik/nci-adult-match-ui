@@ -35,3 +35,11 @@
     -webkit-box-shadow: 0 1px $dark-purple-color;
     box-shadow: 0 1px $dark-purple-color;
 }
+
+.table > thead > tr.purple-light > th {
+    color: #fff;
+    background-color: $light-purple-color !important;
+    border-top-color: $dark-purple-color !important;
+    border-top-style: solid !important;
+    border-top-width: 1px !important;
+}
