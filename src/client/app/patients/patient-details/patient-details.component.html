@@ -1,7 +1,7 @@
 <div id="content" class="content">
   <div class="row" matchHeight="panel-height">
     <div class="col-md-6">
-      <div class="panel panel-white panel-accent-purple overflow-hidden m-b-10 panel-height">
+      <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height">
         <div class="panel-heading">
           <dl class="dl-horizontal">
             <dt>Patient Sequence Number</dt>
@@ -36,7 +36,7 @@
     </div>
 
     <div class="col-md-6">
-      <div class="panel panel-white panel-accent-purple overflow-hidden m-b-10 panel-height">
+      <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height">
         <div class="panel-heading">
           <dl class="dl-horizontal">
             <dt>Concordance</dt>
@@ -70,20 +70,319 @@
     <div class="col-md-12">
       <div class="panel">
         <ul class="nav nav-tabs nav-tabs-purple">
-          <li class="active"><a href="#tab-summary" data-toggle="tab">Summary</a></li>
-          <li class=""><a href="#tab-biopsy-t-16-000762" data-toggle="tab">Biopsy T-16-000762</a></li>
+          <li class=""><a href="#tab-summary" data-toggle="tab">Summary</a></li>
+          <li class="active"><a href="#tab-biopsy-t-16-000762" data-toggle="tab">Biopsy T-16-000762</a></li>
           <li class=""><a href="#tab-biopsy-t-16-000789" data-toggle="tab">Biopsy T-16-000789</a></li>
         </ul>
         <div class="tab-content m-b-0">
-          <div class="tab-pane fade active in" id="tab-summary">
+
+          <div class="tab-pane fade in" id="tab-summary">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="widget widget-stat bg-danger">
+                  <a href="#">
+                    <div class="widget-stat-icon"><i class="fa fa-file"></i></div>
+                    <div class="widget-stat-info">
+                      <div class="widget-stat-title">Pending Variant Report</div>
+                      <div class="widget-stat-number">15 days</div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="widget widget-stat bg-warning">
+                  <a href="#">
+                    <div class="widget-stat-icon"><i class="fa fa-file"></i></div>
+                    <div class="widget-stat-info">
+                      <div class="widget-stat-title">Pending Assignment Report</div>
+                      <div class="widget-stat-number">10 days</div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+
+                <div class="widget widget-chat">
+                  <div class="widget-header bg-info">
+                    <h4 class="text-white">Patient Timeline</h4>
+                  </div>
+
+                  <div class="widget-body">
+                    <ul class="widget-chat-list">
+
+                      <li>
+                        <a href="#" data-toggle="chat-detail">
+                          <div class="chat-image">
+                            <img src="assets/img/user_1.jpg" alt="">
+                          </div>
+                          <div class="chat-info has-new">
+                            <h4>Jengo Chima (1)</h4>
+                            <p>
+                              Aliquam erat volutpat. Etiam vulputate arcu feugiat ante imperdiet, ut bibendum ipsum rhoncus.
+                            </p>
+                            <span class="chat-time">08:41</span>
+                          </div>
+                        </a>
+                      </li>
+
+                      <li>
+                        <a href="#" data-toggle="chat-detail">
+                          <div class="chat-image">
+                            <img src="assets/img/user_2.jpg" alt="">
+                          </div>
+                          <div class="chat-info">
+                            <h4>Pontus Dragomir</h4>
+                            <p>
+                              <i class="fa fa-check send-icon text-success-light"></i> Sed quis ante rutrum, cursus enim
+                              sit amet, placerat turpis.
+                            </p>
+                            <span class="chat-time">YESTERDAY</span>
+                          </div>
+                        </a>
+                      </li>
+
+                      <li>
+                        <a href="#" data-toggle="chat-detail">
+                          <div class="chat-image">
+                            <img src="assets/img/user_3.jpg" alt="">
+                          </div>
+                          <div class="chat-info">
+                            <h4>Lovro Étienne</h4>
+                            <p>
+                              <i class="fa fa-check send-icon text-success-light"></i> Morbi ultrices diam vitae placerat
+                              suscipit. Morbi consectetur ante et ex mollis eleifend.
+                            </p>
+                            <span class="chat-time">YESTERDAY</span>
+                          </div>
+                        </a>
+                      </li>
+
+                      <li>
+                        <a href="#" data-toggle="chat-detail">
+                          <div class="chat-image">
+                            <img src="assets/img/user_4.jpg" alt="">
+                          </div>
+                          <div class="chat-info">
+                            <h4>Kendal Matheus</h4>
+                            <p>
+                              <i class="fa fa-check send-icon text-success-light"></i> Aenean consectetur in velit vitae
+                              faucibus. Fusce libero est, euismod eu erat eu, luctus rutrum nunc.
+                            </p>
+                            <span class="chat-time">YESTERDAY</span>
+                          </div>
+                        </a>
+                      </li>
+
+                      <li>
+                        <a href="#" data-toggle="chat-detail">
+                          <div class="chat-image">
+                            <img src="assets/img/user_5.jpg" alt="">
+                          </div>
+                          <div class="chat-info">
+                            <h4>Eivind Andrew</h4>
+                            <p>
+                              <i class="fa fa-check send-icon text-success-light"></i> Cum sociis natoque penatibus et magnis
+                              dis parturient montes, nascetur ridiculus mus.
+                            </p>
+                            <span class="chat-time">YESTERDAY</span>
+                          </div>
+                        </a>
+                      </li>
+                    </ul>
+                    <div class="widget-chat-detail">
+                      <div class="widget-header bg-inverse">
+                        <h4 class="text-white"><a href="#" data-dismiss="chat-detail" class="m-r-5 text-white"><i class="fa fa-arrow-left"></i> Group Chat</a></h4>
+                      </div>
+                      <div class="widget-chat-detail-container">
+                        <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 100%;">
+                          <div data-scrollbar="true" data-height="100%" data-init="true" style="overflow: hidden; width: auto; height: 100%;">
+                            <ul class="widget-chat-detail-list">
+                              <li>
+                                <a href="javascript:;" class="image"><img src="assets/img/user_7.jpg" alt=""></a>
+                                <div class="chat-info">
+                                  <span class="time">04:15 am</span>
+                                  <a href="#" class="name">Neck Jolly</a>
+                                  <div class="message">
+                                    Euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                                  </div>
+                                </div>
+                              </li>
+                              <li class="right highlight">
+                                <a href="javascript:;" class="image"><img src="assets/img/user_6.jpg" alt=""></a>
+                                <div class="chat-info">
+                                  <span class="time">05:21 am</span>
+                                  <a href="#" class="name">Sean Ngu</a>
+                                  <div class="message">
+                                    Nullam posuere, nisl a varius rhoncus, risus tellus hendrerit neque.
+                                  </div>
+                                </div>
+                              </li>
+                              <li>
+                                <a href="javascript:;" class="image"><img src="assets/img/user_1.jpg" alt=""></a>
+                                <div class="chat-info">
+                                  <span class="time">12:20pm</span>
+                                  <a href="#" class="name">Shag Strap</a>
+                                  <div class="message">
+                                    Nullam iaculis pharetra pharetra. Proin sodales tristique sapien mattis placerat.
+                                  </div>
+                                </div>
+                              </li>
+                              <li>
+                                <a href="javascript:;" class="image"><img src="assets/img/user_5.jpg" alt=""></a>
+                                <div class="chat-info">
+                                  <span class="time">Just Now</span>
+                                  <a href="javascript:;" class="name">Sowse Bawdy</a>
+                                  <div class="message">
+                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit volutpat. Praesent mattis interdum arcu eu feugiat.
+                                  </div>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                          <div class="slimScrollBar" style="background: rgb(0, 0, 0); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 0px; height: 213.01px;"></div>
+                          <div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 0px;"></div>
+                        </div>
+                      </div>
+                      <div class="widget-chat-input">
+                        <form method="POST" name="widget_chat_form" class="form-input-flat">
+                          <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Type a message">
+                            <div class="input-group-btn">
+                              <button type="button" class="btn btn-inverse">Send</button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
           </div>
-          <div class="tab-pane fade" id="tab-biopsy-t-16-000762">
+
+          <div class="tab-pane active fade" id="tab-biopsy-t-16-000762">
+            
+            <div class="row" matchHeight="panel-height">
+
+              <div class="col-md-6">
+                <div class="panel panel-white overflow-hidden panel-height panel-accent-bottom-purple">
+
+                  <div class="panel-heading">
+                    <dl class="dl-horizontal">
+
+                      <dt>Specimen Collection Date</dt>
+                      <dd>August 12, 2016 5:40 PM GMT</dd>
+
+                      <dt>Specimen Received Date</dt>
+                      <dd>August 13, 2016 5:26 PM GMT</dd>
+
+                      <dt>Specimen Failure Date</dt>
+                      <dd>-</dd>
+
+                    </dl>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="panel panel-white overflow-hidden panel-height panel-accent-bottom-purple">
+
+                  <div class="panel-heading">
+                    <dl class="dl-horizontal">
+
+                      <dt>Pathology Status</dt>
+                      <dd>-</dd>
+
+                      <dt>Pathology Received Date</dt>
+                      <dd>-</dd>
+
+                      <dt>Concordance</dt>
+                      <dd>YES</dd>
+
+                      <dt>Comment</dt>
+                      <dd>-</dd>
+
+                    </dl>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="panel panel-accent-bottom-purple">
+                  <div class="panel-heading">
+                      <h4 class="panel-title">Assay History</h4>
+                  </div>
+                  <div class="table-responsive">
+                      <table class="table table-td-valign-middle">
+                          <thead>
+                              <tr>
+                                <th>IHC</th>
+                                <th>Assay Order Date</th>
+                                <th>Assay Result Date</th>
+                                <th>Result</th>
+                                <th>Comment</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                            <tr><td>RB</td><td>Not Applicable</td><td>Not Applicable</td><td>Not Applicable</td><td>Patient does not have CCND1, CDK4 or CDK6 gene amplification to require RB assay.</td></tr>
+                            <tr><td>MSH2</td><td>August 15, 2016 1:59 PM GMT</td><td>August 17, 2016 3:11 AM GMT</td><td>POSITIVE</td><td>-</td></tr>
+                            <tr><td>MLH1</td><td>August 15, 2016 1:59 PM GMT</td><td>August 17, 2016 3:11 AM GMT</td><td>NEGATIVE</td><td>-</td></tr>
+                            <tr><td>PTEN</td><td>August 15, 2016 1:59 PM GMT</td><td>August 17, 2016 3:11 AM GMT</td><td>POSITIVE</td><td>-</td></tr>
+                          </tbody>
+                      </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="panel panel-accent-bottom-purple">
+                  <div class="panel-heading">
+                      <h4 class="panel-title">Nucleic Acid Sendout</h4>
+                  </div>
+                  <div class="table-responsive">
+                      <table class="table table-td-valign-middle">
+                          <thead>
+                              <tr>
+                                  <th>Molecular Sequence Number</th>
+                                  <th>Destination Site</th>
+                                  <th>Tracking Number</th>
+                                  <th>DNA Conc</th>
+                                  <th>DNA Vol</th>
+                                  <th>Reported Date</th>
+                                  <th>Comment</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>MSN17772</td><td>MoCha</td><td>783854296970</td><td>51</td><td>10</td><td>August 17, 2016 11:58 PM GMT</td><td>-</td>
+                            </tr>
+                          </tbody>
+                      </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
+
           <div class="tab-pane fade" id="tab-biopsy-t-16-000789">
           </div>
+
         </div>
       </div>
     </div>
   </div>
 
 </div>
+
