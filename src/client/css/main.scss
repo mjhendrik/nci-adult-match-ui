@@ -24,3 +24,14 @@
 .panel.panel-purple-light .panel-heading {
     background-color: $light-purple-color;
 }
+
+.panel-details-row {
+    margin-left: 4em;
+}
+
+.btn.btn-purple-light {
+    color: #fff;
+    background: $light-purple-color;
+    -webkit-box-shadow: 0 1px $dark-purple-color;
+    box-shadow: 0 1px $dark-purple-color;
+}

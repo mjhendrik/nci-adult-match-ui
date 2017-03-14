@@ -376,26 +376,50 @@
                             <tr>
                               <td colspan="7" class="body-background-color">
 
-                                <div class="panel panel-purple-light panel-with-tabs">
+                                <div class="panel panel-with-tabs panel-accent-sides-purple panel-details-row">
                                   <div class="panel-heading">
-                                    <ul id="panel-tab" class="nav nav-tabs pull-right">
-                                      <li class=""><a href="#panel-tab-info" data-toggle="tab" aria-expanded="false"><i class="fa fa-home"></i> <span class="hidden-xs">Info</span></a></li>
-                                      <li class="active"><a href="#panel-tab-files" data-toggle="tab" aria-expanded="true"><i class="fa fa-user"></i> <span class="hidden-xs">Files</span></a></li>
+                                    <ul id="panel-tab" class="nav nav-tabs pull-right nav-tabs-purple">
+                                      <li class="active"><a href="#panel-tab-info" data-toggle="tab" aria-expanded="true"><i class="fa fa-home"></i> <span class="hidden-xs">Info</span></a></li>
+                                      <li class=""><a href="#panel-tab-files" data-toggle="tab" aria-expanded="false"><i class="fa fa-user"></i> <span class="hidden-xs">Files</span></a></li>
                                     </ul>
                                     <h4 class="panel-title">Analysis ID: MSN17772_v1_92ad9833-e79a-4807-b1f3-6be88a0ab824</h4>
                                   </div>
                                   <div id="panel-tab-content" class="tab-content">
-                                    <div class="tab-pane fade" id="panel-tab-info">
-                                      <p>
-                                        
-Analysis Id	File Received Date	Rejected/Confirmed Date	Status	Files
-MSN17772_v1_92ad9833-e79a-4807-b1f3-6be88a0ab824	August 25, 2016 10:13 PM GMT	August 26, 2016 3:28 PM GMT	CONFIRMED	
-                                        
-                                      </p>
+                                    <div class="tab-pane fade active in" id="panel-tab-info">
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <dl class="dl-horizontal">
+                                              <dt>File Received Date</dt>
+                                              <dd>August 25, 2016 10:13 PM GMT</dd>
+
+                                              <dt>Rejected/Confirmed Date</dt>
+                                              <dd>August 26, 2016 3:28 PM GMT</dd>
+
+                                              <dt>Status</dt>
+                                              <dd>CONFIRMED	</dd>
+                                          </dl>                                      
+                                        </div>
+                                        <div class="col-md-6">
+                                          <dl class="dl-horizontal">
+                                              <dt>File Received Date</dt>
+                                              <dd>August 25, 2016 10:13 PM GMT</dd>
+
+                                              <dt>Rejected/Confirmed Date</dt>
+                                              <dd>August 26, 2016 3:28 PM GMT</dd>
+
+                                              <dt>Status</dt>
+                                              <dd>CONFIRMED	</dd>
+                                          </dl>                                      
+                                        </div>
+                                      </div>
                                     </div>
-                                    <div class="tab-pane fade active in" id="panel-tab-files">
+                                    <div class="tab-pane fade" id="panel-tab-files">
                                       <p>
-                                        DNA BAM  DNA BAI   RNA BAM   RNA BAI  VCF
+                                        <button type="button" class="btn btn-purple-light btn-rounded">DNA BAM</button>
+                                        <button type="button" class="btn btn-purple-light btn-rounded">DNA BAI</button>
+                                        <button type="button" class="btn btn-purple-light btn-rounded">RNA BAM</button>
+                                        <button type="button" class="btn btn-purple-light btn-rounded">RNA BAI</button>
+                                        <button type="button" class="btn btn-purple-light btn-rounded">VCF</button>
                                       </p>
                                     </div>
                                   </div>
