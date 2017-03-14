@@ -9832,34 +9832,6 @@ export class TaDetailsComponent implements OnInit {
         "date": 1479790800000
       },
       {
-        "status": "OPEN",
-        "date": 1479790800000
-      },
-      {
-        "status": "OPEN",
-        "date": 1479790800000
-      },
-      {
-        "status": "OPEN",
-        "date": 1479790800000
-      },
-      {
-        "status": "OPEN",
-        "date": 1479790800000
-      },
-      {
-        "status": "OPEN",
-        "date": 1479790800000
-      },
-      {
-        "status": "OPEN",
-        "date": 1479790800000
-      },
-      {
-        "status": "OPEN",
-        "date": 1479790800000
-      },
-      {
         "status": "SUSPENDED",
         "date": 1479790800001
       },

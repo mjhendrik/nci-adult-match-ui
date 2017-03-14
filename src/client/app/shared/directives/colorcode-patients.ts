@@ -15,7 +15,8 @@ export class colorCodePatients {
         else if (this.con === 'REGISTRATION') {
             this.el.nativeElement.style.color = '#2184DA';
         }
-        else if (this.con === 'COMPASSIONATE_CARE' || this.con === 'PENDING_APPROVAL' || this.con === 'PENDING_CONFIRMATION' || this.con === 'REJOIN_REQUESTED' || this.con === 'NOT_ELIGIBLE') {
+        else if (this.con === 'COMPASSIONATE_CARE' || this.con === 'PENDING_APPROVAL' || this.con === 'PENDING_CONFIRMATION'
+            || this.con === 'REJOIN_REQUESTED' || this.con === 'NOT_ELIGIBLE') {
             this.el.nativeElement.style.color = '#9b59b6';
         }
         else if (this.con === 'OFF_TRIAL_DECEASED' || this.con === 'OFF_TRIAL_NO_TA_AVAILABLE' || this.con === 'OFF_TRIAL_NOT_CONSENTED') {
