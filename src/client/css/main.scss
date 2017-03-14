@@ -1,11 +1,6 @@
 @import "style.css";
-// @import "style.min.css";
+// replace for production: @import "style.min.css";
 @import "../scss/index";
-
-// Uncomment to test the application-wide SASS styles 
-// .content {
-//     background-color: $test-color;
-// }
 
 .panel-accent-sides-purple {
     border-left: 2px solid #9b59b6;
@@ -20,4 +15,23 @@
     a {
         color: white;
     }
+}
+
+.body-background-color {
+    background-color: $body-back-color;
+}
+
+.panel.panel-purple-light .panel-heading {
+    background-color: $light-purple-color;
+}
+
+.panel-details-row {
+    margin-left: 4em;
+}
+
+.btn.btn-purple-light {
+    color: #fff;
+    background: $light-purple-color;
+    -webkit-box-shadow: 0 1px $dark-purple-color;
+    box-shadow: 0 1px $dark-purple-color;
 }
