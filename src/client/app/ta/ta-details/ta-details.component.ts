@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { routerTransition } from './../../shared/router.animations';
+import { GMTFilter } from './../../shared/pipes/gmt';
 
 
 /**
@@ -12,7 +13,8 @@ import { routerTransition } from './../../shared/router.animations';
   templateUrl: 'ta-details.component.html',
   styleUrls: ['ta-details.component.css'],
   animations: [routerTransition()],
-  host: { '[@routerTransition]': '' }
+  host: { '[@routerTransition]': '' },
+  providers: [GMTFilter]
 })
 export class TaDetailsComponent implements OnInit {
 
@@ -159,6 +161,20 @@ export class TaDetailsComponent implements OnInit {
     this.ruleEx = itemsRule.filter(item => {
       return item.inclusion == false;
     });
+
+    let gmt = new GMTFilter();
+
+    for (let i = 0; i < this.tablePatientData.length; i++) {
+      this.tablePatientData[i].dateSelected = gmt.transform(this.tablePatientData[i].dateSelected);
+    }
+
+    for (let i = 0; i < this.tablePatientData.length; i++) {
+      this.tablePatientData[i].dateOnArm = gmt.transform(this.tablePatientData[i].dateOnArm);
+    }
+
+    for (let i = 0; i < this.tablePatientData.length; i++) {
+      this.tablePatientData[i].dateOffArm = gmt.transform(this.tablePatientData[i].dateOffArm);
+    }
 
   }
 

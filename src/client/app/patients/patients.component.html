@@ -81,8 +81,8 @@
                                 <span *ngIf="item.assignedTreatmentArm!==null">{{item.assignedTreatmentArm | dashify}} ({{item.assignedTreatmentArmVersion | dashify}})</span>
                                 <span *ngIf="item.assignedTreatmentArm===null">-</span>
                               </td>
-                              <td>{{item.registrationDate | gmt | dashify}}</td>
-                              <td>{{item.offTrialDate | gmt | dashify}}</td>
+                              <td>{{item.registrationDate | dashify}}</td>
+                              <td>{{item.offTrialDate | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftable5.data.length == 0">
                               <td class="f-s-15" colspan="7">No matching search results found for "{{searchterm5}}"</td>
