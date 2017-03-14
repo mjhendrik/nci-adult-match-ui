@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 
 import { routerTransition } from './../shared/router.animations';
+import { GMTFilter } from './../shared/pipes/gmt';
 
 
 /**
@@ -20,7 +21,8 @@ import { routerTransition } from './../shared/router.animations';
   templateUrl: 'patients.component.html',
   styleUrls: ['patients.component.css'],
   animations: [routerTransition()],
-  host: { '[@routerTransition]': '' }
+  host: { '[@routerTransition]': '' },
+  providers: [GMTFilter]
 })
 export class PatientsComponent {
 
@@ -35,6 +37,17 @@ export class PatientsComponent {
   ngOnInit() {
     this.recordsPerPage5 = 100;
     this.table5DefaultSort = 'patientSequenceNumber';
+
+    let gmt = new GMTFilter();
+
+    for (let i = 0; i < this.table5Data.length; i++) {
+      this.table5Data[i].registrationDate = gmt.transform(this.table5Data[i].registrationDate);
+    }
+
+    for (let i = 0; i < this.table5Data.length; i++) {
+      this.table5Data[i].registrationDate = gmt.transform(this.table5Data[i].registrationDate);
+    }
+
   }
 
   table5Data: any = [

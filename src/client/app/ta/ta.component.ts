@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { routerTransition } from './../shared/router.animations';
+import { GMTFilter } from './../shared/pipes/gmt';
 
 
 /**
@@ -12,7 +13,8 @@ import { routerTransition } from './../shared/router.animations';
   templateUrl: 'ta.component.html',
   styleUrls: ['ta.component.css'],
   animations: [routerTransition()],
-  host: { '[@routerTransition]': '' }
+  host: { '[@routerTransition]': '' },
+  providers: [GMTFilter]
 })
 export class TaComponent implements OnInit {
 
@@ -30,6 +32,21 @@ export class TaComponent implements OnInit {
       this.table4Data[i].dateSuspendedOrClosed = this.table4Data[i].dateClosed == null ? this.table4Data[i].dateSuspended : this.table4Data[i].dateClosed;
     }
     this.table4DefaultSort = 'treatmentArmId';
+
+    let gmt = new GMTFilter();
+
+    for (let i = 0; i < this.table4Data.length; i++) {
+      this.table4Data[i].dateCreated = gmt.transform(this.table4Data[i].dateCreated);
+    }
+
+    for (let i = 0; i < this.table4Data.length; i++) {
+      this.table4Data[i].dateOpened = gmt.transform(this.table4Data[i].dateOpened);
+    }
+
+    for (let i = 0; i < this.table4Data.length; i++) {
+      this.table4Data[i].dateSuspendedOrClosed = gmt.transform(this.table4Data[i].dateSuspendedOrClosed);
+    }
+
   }
 
   table4Data: any = [
