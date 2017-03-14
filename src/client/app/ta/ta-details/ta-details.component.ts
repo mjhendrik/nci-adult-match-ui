@@ -18,39 +18,52 @@ export class TaDetailsComponent implements OnInit {
 
   searchtermExdr: string = '';
   searchtermExdz: string = '';
-  searchtermSnv: string = '';
-  searchtermIndel: string = '';
-  searchtermCnv: string = '';
-  searchtermGene: string = '';
-  searchtermRule: string = '';
+  searchtermSnvIn: string = '';
+  searchtermSnvEx: string = '';
+  searchtermIndelIn: string = '';
+  searchtermIndelEx: string = '';
+  searchtermCnvIn: string = '';
+  searchtermCnvEx: string = '';
+  searchtermGeneIn: string = '';
+  searchtermGeneEx: string = '';
+  searchtermRuleIn: string = '';
+  searchtermRuleEx: string = '';
   searchtermAssay: string = '';
   searchtermPatient: string = '';
 
   recordsPerPageExdr: number;
   recordsPerPageExdz: number;
-  recordsPerPageSnv: number;
-  recordsPerPageIndel: number;
-  recordsPerPageCnv: number;
-  recordsPerPageGene: number;
-  recordsPerPageRule: number;
+  recordsPerPageSnvIn: number;
+  recordsPerPageSnvEx: number;
+  recordsPerPageIndelIn: number;
+  recordsPerPageIndelEx: number;
+  recordsPerPageCnvIn: number;
+  recordsPerPageCnvEx: number;
+  recordsPerPageGeneIn: number;
+  recordsPerPageGeneEx: number;
+  recordsPerPageRuleIn: number;
+  recordsPerPageRuleEx: number;
   recordsPerPageAssay: number;
   recordsPerPagePatient: number;
 
   tableHistoryDefaultSort: string;
   tableExdrDefaultSort: string;
   tableExdzDefaultSort: string;
-  tableSnvDefaultSort: string;
-  tableIndelDefaultSort: string;
-  tableCnvDefaultSort: string;
-  tableGeneDefaultSort: string;
-  tableRuleDefaultSort: string;
+  tableSnvInDefaultSort: string;
+  tableSnvExDefaultSort: string;
+  tableIndelInDefaultSort: string;
+  tableIndelExDefaultSort: string;
+  tableCnvInDefaultSort: string;
+  tableCnvExDefaultSort: string;
+  tableGeneInDefaultSort: string;
+  tableGeneExDefaultSort: string;
+  tableRuleInDefaultSort: string;
+  tableRuleExDefaultSort: string;
   tableAssayDefaultSort: string;
   tablePatientDefaultSort: string;
 
   sortByAsc: string;
   sortByDesc: string;
-
-  button: boolean;
 
   constructor() {
 
@@ -59,29 +72,37 @@ export class TaDetailsComponent implements OnInit {
   ngOnInit() {
     this.recordsPerPageExdr = 10;
     this.recordsPerPageExdz = 10;
-    this.recordsPerPageSnv = 10;
-    this.recordsPerPageIndel = 10;
-    this.recordsPerPageCnv = 10;
-    this.recordsPerPageGene = 10;
-    this.recordsPerPageRule = 10;
+    this.recordsPerPageSnvIn = 5;
+    this.recordsPerPageSnvEx = 5;
+    this.recordsPerPageIndelIn = 5;
+    this.recordsPerPageIndelEx = 5;
+    this.recordsPerPageCnvIn = 5;
+    this.recordsPerPageCnvEx = 5;
+    this.recordsPerPageGeneIn = 5;
+    this.recordsPerPageGeneEx = 5;
+    this.recordsPerPageRuleIn = 5;
+    this.recordsPerPageRuleEx = 5;
     this.recordsPerPageAssay = 10;
     this.recordsPerPagePatient = 10;
 
     this.tableHistoryDefaultSort = 'date';
     this.tableExdrDefaultSort = 'drugId';
     this.tableExdzDefaultSort = 'medraCode';
-    this.tableSnvDefaultSort = 'identifier';
-    this.tableIndelDefaultSort = 'variant.identifier';
-    this.tableCnvDefaultSort = 'variant.geneName';
-    this.tableGeneDefaultSort = 'variant.identifier';
-    this.tableRuleDefaultSort = 'gene';
+    this.tableSnvInDefaultSort = 'identifier';
+    this.tableSnvExDefaultSort = 'identifier';
+    this.tableIndelInDefaultSort = 'variant.identifier';
+    this.tableIndelExDefaultSort = 'variant.identifier';
+    this.tableCnvInDefaultSort = 'variant.geneName';
+    this.tableCnvExDefaultSort = 'variant.geneName';
+    this.tableGeneInDefaultSort = 'variant.identifier';
+    this.tableGeneExDefaultSort = 'variant.identifier';
+    this.tableRuleInDefaultSort = 'gene';
+    this.tableRuleExDefaultSort = 'gene';
     this.tableAssayDefaultSort = 'gene';
     this.tablePatientDefaultSort = 'dateSelected';
 
     this.sortByAsc = 'asc';
     this.sortByDesc = 'desc';
-
-    this.button = true;
   }
 
   versionData: any = [

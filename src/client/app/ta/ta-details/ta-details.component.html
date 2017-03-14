@@ -382,15 +382,18 @@
                 <div class="row">
                   <!-- begin panel -->
                   <div>
+                    <div class="panel-heading">
+                      <h4 class="panel-title f-s-18">Inclusions</h4>
+                    </div>
                     <div class="col-md-12 bg-success-light">
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select name="data-table_length" [(ngModel)]="recordsPerPageSnv"  aria-controls="data-table" class="form-control input-sm">
+                        <select name="data-table_length" [(ngModel)]="recordsPerPageSnvIn"  aria-controls="data-table" class="form-control input-sm">
+                          <option value=5>5</option>
                           <option value=10>10</option>
                           <option value=25>25</option>
                           <option value=50>50</option>
-                          <option value=100>100</option>
                         </select> 
                       entries</label>
                         </div>
@@ -398,7 +401,7 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input type="text" [(ngModel)]="searchtermSnv" class="form-control input-sm" placeholder="" aria-controls="data-table">
+                        <input type="text" [(ngModel)]="searchtermSnvIn" class="form-control input-sm" placeholder="" aria-controls="data-table">
                       </label>
                         </div>
                       </div>
@@ -433,13 +436,13 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td class="f-s-15" colspan="7">There are no single nucleotide variants for treatment arm "{{tableRulesData.id | dashify}}"</td>
+                              <td class="f-s-15" colspan="7">There are no included single nucleotide variants for treatment arm "{{tableRulesData.id | dashify}}"</td>
                             </tr>
                           </tbody>
                         </table>
                         <table *ngIf="tableRulesData.variantReport.singleNucleotideVariants.length!=0" class="table table-td-valign-middle table-striped"
-                          [mfData]="tableRulesData.variantReport.singleNucleotideVariants | filterByText: searchtermSnv" #mftableSnv="mfDataTable"
-                          [(mfSortBy)]="tableSnvDefaultSort" [mfRowsOnPage]="recordsPerPageSnv">
+                          [mfData]="tableRulesData.variantReport.singleNucleotideVariants | filterByText: searchtermSnvIn"
+                          #mftableSnvIn="mfDataTable" [(mfSortBy)]="tableSnvInDefaultSort" [mfRowsOnPage]="recordsPerPageSnvIn">
                           <thead>
                             <tr class="success">
                               <th>
@@ -467,7 +470,7 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <tr *ngFor="let item of mftableSnv.data">
+                            <tr *ngFor="let item of mftableSnvIn.data">
                               <td><a href="javascript:;" class="link-none">{{item.identifier | dashify}}</a></td>
                               <!--only for COSM-->
                               <td>{{item.chromosome | dashify}}</td>
@@ -478,14 +481,129 @@
                               <td><a href="javascript:;" class="link-none">{{item.publicMedIds | dashify}}</a></td>
                               <!--multiple links-->
                             </tr>
-                            <tr *ngIf="mftableSnv.data.length == 0">
-                              <td class="f-s-15" colspan="7">No matching search results found for "{{searchtermSnv}}"</td>
+                            <tr *ngIf="mftableSnvIn.data.length == 0">
+                              <td class="f-s-15" colspan="7">No matching search results found for "{{searchtermSnvIn}}"</td>
                             </tr>
                           </tbody>
                           <tfoot>
                             <tr>
                               <td class="tfoot-padding" colspan="7">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermSnv" [totallength]="tableRulesData.variantReport.singleNucleotideVariants.length"></mfBootstrapPaginator>
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermSnvIn" [totallength]="tableRulesData.variantReport.singleNucleotideVariants.length"></mfBootstrapPaginator>
+                              </td>
+                            </tr>
+                          </tfoot>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="panel-heading">
+                      <h4 class="panel-title f-s-18">Exclusions</h4>
+                    </div>
+                    <div class="col-md-12 bg-success-light">
+                      <div class="col-md-6 p-l-5">
+                        <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
+                          <label>Show
+                        <select name="data-table_length" [(ngModel)]="recordsPerPageSnvEx"  aria-controls="data-table" class="form-control input-sm">
+                          <option value=5>5</option>
+                          <option value=10>10</option>
+                          <option value=25>25</option>
+                          <option value=50>50</option>
+                        </select> 
+                      entries</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6 p-r-5">
+                        <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
+                          <label>Search:
+                        <input type="text" [(ngModel)]="searchtermSnvEx" class="form-control input-sm" placeholder="" aria-controls="data-table">
+                      </label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="table-responsive col-lg-12">
+                        <table *ngIf="tableRulesData.variantReport.singleNucleotideVariants.length == 0" class="table table-td-valign-middle table-striped">
+                          <thead>
+                            <tr class="success">
+                              <th>
+                                ID
+                              </th>
+                              <th>
+                                Chorm
+                              </th>
+                              <th>
+                                Position
+                              </th>
+                              <th>
+                                OCP Ref
+                              </th>
+                              <th>
+                                OCP Alt
+                              </th>
+                              <th>
+                                LOE
+                              </th>
+                              <th>
+                                Lit
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="f-s-15" colspan="7">There are no excluded single nucleotide variants for treatment arm "{{tableRulesData.id | dashify}}"</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <table *ngIf="tableRulesData.variantReport.singleNucleotideVariants.length!=0" class="table table-td-valign-middle table-striped"
+                          [mfData]="tableRulesData.variantReport.singleNucleotideVariants | filterByText: searchtermSnvEx"
+                          #mftableSnvEx="mfDataTable" [(mfSortBy)]="tableSnvExDefaultSort" [mfRowsOnPage]="recordsPerPageSnvEx">
+                          <thead>
+                            <tr class="success">
+                              <th>
+                                <mfDefaultSorter by="identifier"><span class="table-header">ID</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="chromosome"><span class="table-header">Chorm</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="position"><span class="table-header">Position</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="reference"><span class="table-header">OCP Ref</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="alternative"><span class="table-header">OCP Alt</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="levelOfEvidence"><span class="table-header">LOE</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <span class="table-header">Lit</span>
+                                <!--<mfDefaultSorter by="publicMedIds"></mfDefaultSorter>-->
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let item of mftableSnvEx.data">
+                              <td><a href="javascript:;" class="link-none">{{item.identifier | dashify}}</a></td>
+                              <!--only for COSM-->
+                              <td>{{item.chromosome | dashify}}</td>
+                              <td>{{item.position | dashify}}</td>
+                              <td>{{item.reference | dashify}}</td>
+                              <td>{{item.alternative | dashify}}</td>
+                              <td>{{item.levelOfEvidence | dashify}}</td>
+                              <td><a href="javascript:;" class="link-none">{{item.publicMedIds | dashify}}</a></td>
+                              <!--multiple links-->
+                            </tr>
+                            <tr *ngIf="mftableSnvEx.data.length == 0">
+                              <td class="f-s-15" colspan="7">No matching search results found for "{{searchtermSnvEx}}"</td>
+                            </tr>
+                          </tbody>
+                          <tfoot>
+                            <tr>
+                              <td class="tfoot-padding" colspan="7">
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermSnvEx" [totallength]="tableRulesData.variantReport.singleNucleotideVariants.length"></mfBootstrapPaginator>
                               </td>
                             </tr>
                           </tfoot>
@@ -501,15 +619,18 @@
                 <div class="row">
                   <!-- begin panel -->
                   <div>
+                    <div class="panel-heading">
+                      <h4 class="panel-title f-s-18">Inclusions</h4>
+                    </div>
                     <div class="col-md-12 bg-success-light">
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select name="data-table_length" [(ngModel)]="recordsPerPageIndel"  aria-controls="data-table" class="form-control input-sm">
+                        <select name="data-table_length" [(ngModel)]="recordsPerPageIndelIn"  aria-controls="data-table" class="form-control input-sm">
+                          <option value=5>5</option>
                           <option value=10>10</option>
                           <option value=25>25</option>
                           <option value=50>50</option>
-                          <option value=100>100</option>
                         </select> 
                       entries</label>
                         </div>
@@ -517,7 +638,7 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input type="text" [(ngModel)]="searchtermIndel" class="form-control input-sm" placeholder="" aria-controls="data-table">
+                        <input type="text" [(ngModel)]="searchtermIndelIn" class="form-control input-sm" placeholder="" aria-controls="data-table">
                       </label>
                         </div>
                       </div>
@@ -552,12 +673,12 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td class="f-s-15" colspan="7">There are no indels for treatment arm "{{tableRulesData.id | dashify}}"</td>
+                              <td class="f-s-15" colspan="7">There are no included indels for treatment arm "{{tableRulesData.id | dashify}}"</td>
                             </tr>
                           </tbody>
                         </table>
-                        <table *ngIf="tableRulesData.variantReport.indels.length!=0" class="table table-td-valign-middle table-striped" [mfData]="tableRulesData.variantReport.indels | filterByText: searchtermIndel"
-                          #mftableIndel="mfDataTable" [(mfSortBy)]="tableIndelDefaultSort" [mfRowsOnPage]="recordsPerPageIndel">
+                        <table *ngIf="tableRulesData.variantReport.indels.length!=0" class="table table-td-valign-middle table-striped" [mfData]="tableRulesData.variantReport.indels | filterByText: searchtermIndelIn"
+                          #mftableIndelIn="mfDataTable" [(mfSortBy)]="tableIndelExDefaultSort" [mfRowsOnPage]="recordsPerPageIndelIn">
                           <thead>
                             <tr class="success">
                               <th>
@@ -585,7 +706,7 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <tr *ngFor="let item of mftableIndel.data">
+                            <tr *ngFor="let item of mftableIndelIn.data">
                               <td><a href="javascript:;" class="link-none">{{item.variant.identifier | dashify}}</a></td>
                               <td>{{item.variant.chromosome | dashify}}</td>
                               <td>{{item.variant.position | dashify}}</td>
@@ -594,14 +715,126 @@
                               <td>{{item.variant.levelOfEvidence | dashify}}</td>
                               <td>{{item.variant.publicMedIds | dashify}}</td>
                             </tr>
-                            <tr *ngIf="mftableIndel.data.length == 0">
-                              <td class="f-s-15" colspan="7">No matching search results found for "{{searchtermIndel}}"</td>
+                            <tr *ngIf="mftableIndelIn.data.length == 0">
+                              <td class="f-s-15" colspan="7">No matching search results found for "{{searchtermIndelIn}}"</td>
                             </tr>
                           </tbody>
                           <tfoot>
                             <tr>
                               <td class="tfoot-padding" colspan="7">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermIndel" [totallength]="tableRulesData.variantReport.indels.length"></mfBootstrapPaginator>
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermIndelIn" [totallength]="tableRulesData.variantReport.indels.length"></mfBootstrapPaginator>
+                              </td>
+                            </tr>
+                          </tfoot>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="panel-heading">
+                      <h4 class="panel-title f-s-18">Exclusions</h4>
+                    </div>
+                    <div class="col-md-12 bg-success-light">
+                      <div class="col-md-6 p-l-5">
+                        <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
+                          <label>Show
+                        <select name="data-table_length" [(ngModel)]="recordsPerPageIndelEx"  aria-controls="data-table" class="form-control input-sm">
+                          <option value=5>5</option>
+                          <option value=10>10</option>
+                          <option value=25>25</option>
+                          <option value=50>50</option>
+                        </select> 
+                      entries</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6 p-r-5">
+                        <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
+                          <label>Search:
+                        <input type="text" [(ngModel)]="searchtermIndelEx" class="form-control input-sm" placeholder="" aria-controls="data-table">
+                      </label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="table-responsive col-lg-12">
+                        <table *ngIf="tableRulesData.variantReport.indels.length == 0" class="table table-td-valign-middle table-striped">
+                          <thead>
+                            <tr class="success">
+                              <th>
+                                ID
+                              </th>
+                              <th>
+                                Chorm
+                              </th>
+                              <th>
+                                Position
+                              </th>
+                              <th>
+                                OCP Ref
+                              </th>
+                              <th>
+                                OCP Alt
+                              </th>
+                              <th>
+                                LOE
+                              </th>
+                              <th>
+                                Lit
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="f-s-15" colspan="7">There are no excluded indels for treatment arm "{{tableRulesData.id | dashify}}"</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <table *ngIf="tableRulesData.variantReport.indels.length!=0" class="table table-td-valign-middle table-striped" [mfData]="tableRulesData.variantReport.indels | filterByText: searchtermIndelEx"
+                          #mftableIndelEx="mfDataTable" [(mfSortBy)]="tableIndelInDefaultSort" [mfRowsOnPage]="recordsPerPageIndelEx">
+                          <thead>
+                            <tr class="success">
+                              <th>
+                                <mfDefaultSorter by="variant.identifier"><span class="table-header">ID</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="variant.chromosome"><span class="table-header">Chorm</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="variant.position"><span class="table-header">Position</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="variant.reference"><span class="table-header">OCP Ref</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="variant.alternative"><span class="table-header">OCP Alt</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="variant.levelOfEvidence"><span class="table-header">LOE</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <span class="table-header">Lit</span>
+                                <!--<mfDefaultSorter by="variant.publicMedIds"></mfDefaultSorter>-->
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let item of mftableIndelEx.data">
+                              <td><a href="javascript:;" class="link-none">{{item.variant.identifier | dashify}}</a></td>
+                              <td>{{item.variant.chromosome | dashify}}</td>
+                              <td>{{item.variant.position | dashify}}</td>
+                              <td>{{item.variant.reference | dashify}}</td>
+                              <td>{{item.variant.alternative | dashify}}</td>
+                              <td>{{item.variant.levelOfEvidence | dashify}}</td>
+                              <td>{{item.variant.publicMedIds | dashify}}</td>
+                            </tr>
+                            <tr *ngIf="mftableIndelEx.data.length == 0">
+                              <td class="f-s-15" colspan="7">No matching search results found for "{{searchtermIndelEx}}"</td>
+                            </tr>
+                          </tbody>
+                          <tfoot>
+                            <tr>
+                              <td class="tfoot-padding" colspan="7">
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermIndelEx" [totallength]="tableRulesData.variantReport.indels.length"></mfBootstrapPaginator>
                               </td>
                             </tr>
                           </tfoot>
@@ -617,15 +850,18 @@
                 <div class="row">
                   <!-- begin panel -->
                   <div>
+                    <div class="panel-heading">
+                      <h4 class="panel-title f-s-18">Inclusions</h4>
+                    </div>
                     <div class="col-md-12 bg-success-light">
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select name="data-table_length" [(ngModel)]="recordsPerPageCnv"  aria-controls="data-table" class="form-control input-sm">
+                        <select name="data-table_length" [(ngModel)]="recordsPerPageCnvIn"  aria-controls="data-table" class="form-control input-sm">
+                          <option value=5>5</option>
                           <option value=10>10</option>
                           <option value=25>25</option>
                           <option value=50>50</option>
-                          <option value=100>100</option>
                         </select> 
                       entries</label>
                         </div>
@@ -633,7 +869,7 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input type="text" [(ngModel)]="searchtermCnv" class="form-control input-sm" placeholder="" aria-controls="data-table">
+                        <input type="text" [(ngModel)]="searchtermCnvIn" class="form-control input-sm" placeholder="" aria-controls="data-table">
                       </label>
                         </div>
                       </div>
@@ -662,13 +898,13 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td class="f-s-15" colspan="5">There are no copy number variants for treatment arm "{{tableRulesData.id | dashify}}"</td>
+                              <td class="f-s-15" colspan="5">There are no included copy number variants for treatment arm "{{tableRulesData.id | dashify}}"</td>
                             </tr>
                           </tbody>
                         </table>
                         <table *ngIf="tableRulesData.variantReport.copyNumberVariants.length!=0" class="table table-td-valign-middle table-striped"
-                          [mfData]="tableRulesData.variantReport.copyNumberVariants | filterByText: searchtermCnv" #mftableCnv="mfDataTable"
-                          [(mfSortBy)]="tableCnvDefaultSort" [mfRowsOnPage]="recordsPerPageCnv">
+                          [mfData]="tableRulesData.variantReport.copyNumberVariants | filterByText: searchtermCnvIn" #mftableCnvIn="mfDataTable"
+                          [(mfSortBy)]="tableCnvInDefaultSort" [mfRowsOnPage]="recordsPerPageCnvIn">
                           <thead>
                             <tr class="success">
                               <!--inclusion-->
@@ -691,7 +927,7 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <tr *ngFor="let item of mftableCnv.data">
+                            <tr *ngFor="let item of mftableCnvIn.data">
                               <td><a href="javascript:;" class="link-none">{{item.variant.geneName | dashify}}</a></td>
                               <!--same as id-->
                               <td>{{item.variant.chromosome | dashify}}</td>
@@ -699,14 +935,115 @@
                               <td>{{item.variant.levelOfEvidence | dashify}}</td>
                               <td><a href="javascript:;" class="link-none">{{item.variant.publicMedIds | dashify}}</a></td>
                             </tr>
-                            <tr *ngIf="mftableCnv.data.length == 0">
-                              <td class="f-s-15" colspan="5">No matching search results found for "{{searchtermCnv}}"</td>
+                            <tr *ngIf="mftableCnvIn.data.length == 0">
+                              <td class="f-s-15" colspan="5">No matching search results found for "{{searchtermCnvIn}}"</td>
                             </tr>
                           </tbody>
                           <tfoot>
                             <tr>
                               <td class="tfoot-padding" colspan="5">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermCnv" [totallength]="tableRulesData.variantReport.copyNumberVariants.length"></mfBootstrapPaginator>
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermCnvIn" [totallength]="tableRulesData.variantReport.copyNumberVariants.length"></mfBootstrapPaginator>
+                              </td>
+                            </tr>
+                          </tfoot>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="panel-heading">
+                      <h4 class="panel-title f-s-18">Exclusions</h4>
+                    </div>
+                    <div class="col-md-12 bg-success-light">
+                      <div class="col-md-6 p-l-5">
+                        <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
+                          <label>Show
+                        <select name="data-table_length" [(ngModel)]="recordsPerPageCnvEx"  aria-controls="data-table" class="form-control input-sm">
+                          <option value=5>5</option>
+                          <option value=10>10</option>
+                          <option value=25>25</option>
+                          <option value=50>50</option>
+                        </select> 
+                      entries</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6 p-r-5">
+                        <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
+                          <label>Search:
+                        <input type="text" [(ngModel)]="searchtermCnvEx" class="form-control input-sm" placeholder="" aria-controls="data-table">
+                      </label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="table-responsive col-lg-12">
+                        <table *ngIf="tableRulesData.variantReport.copyNumberVariants.length == 0" class="table table-td-valign-middle table-striped">
+                          <thead>
+                            <tr class="success">
+                              <th>
+                                Gene
+                              </th>
+                              <th>
+                                Chorm
+                              </th>
+                              <th>
+                                Position
+                              </th>
+                              <th>
+                                LOE
+                              </th>
+                              <th>
+                                Lit
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="f-s-15" colspan="5">There are no excluded copy number variants for treatment arm "{{tableRulesData.id | dashify}}"</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <table *ngIf="tableRulesData.variantReport.copyNumberVariants.length!=0" class="table table-td-valign-middle table-striped"
+                          [mfData]="tableRulesData.variantReport.copyNumberVariants | filterByText: searchtermCnvEx" #mftableCnvEx="mfDataTable"
+                          [(mfSortBy)]="tableCnvExDefaultSort" [mfRowsOnPage]="recordsPerPageCnvEx">
+                          <thead>
+                            <tr class="success">
+                              <!--inclusion-->
+                              <th>
+                                <mfDefaultSorter by="variant.geneName"><span class="table-header">Gene</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="variant.chromosome"><span class="table-header">Chorm</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="variant.position"><span class="table-header">Position</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="variant.levelOfEvidence"><span class="table-header">LOE</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <span class="table-header">Lit</span>
+                                <!--<mfDefaultSorter by="variant.publicMedIds"></mfDefaultSorter>-->
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let item of mftableCnvEx.data">
+                              <td><a href="javascript:;" class="link-none">{{item.variant.geneName | dashify}}</a></td>
+                              <!--same as id-->
+                              <td>{{item.variant.chromosome | dashify}}</td>
+                              <td>{{item.variant.position | dashify}}</td>
+                              <td>{{item.variant.levelOfEvidence | dashify}}</td>
+                              <td><a href="javascript:;" class="link-none">{{item.variant.publicMedIds | dashify}}</a></td>
+                            </tr>
+                            <tr *ngIf="mftableCnvEx.data.length == 0">
+                              <td class="f-s-15" colspan="5">No matching search results found for "{{searchtermCnvEx}}"</td>
+                            </tr>
+                          </tbody>
+                          <tfoot>
+                            <tr>
+                              <td class="tfoot-padding" colspan="5">
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermCnvEx" [totallength]="tableRulesData.variantReport.copyNumberVariants.length"></mfBootstrapPaginator>
                               </td>
                             </tr>
                           </tfoot>
@@ -722,15 +1059,18 @@
                 <div class="row">
                   <!-- begin panel -->
                   <div>
+                    <div class="panel-heading">
+                      <h4 class="panel-title f-s-18">Inclusions</h4>
+                    </div>
                     <div class="col-md-12 bg-success-light">
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select name="data-table_length" [(ngModel)]="recordsPerPageGene"  aria-controls="data-table" class="form-control input-sm">
+                        <select name="data-table_length" [(ngModel)]="recordsPerPageGeneIn"  aria-controls="data-table" class="form-control input-sm">
+                          <option value=5>5</option>
                           <option value=10>10</option>
                           <option value=25>25</option>
                           <option value=50>50</option>
-                          <option value=100>100</option>
                         </select> 
                       entries</label>
                         </div>
@@ -738,7 +1078,7 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input type="text" [(ngModel)]="searchtermGene" class="form-control input-sm" placeholder="" aria-controls="data-table">
+                        <input type="text" [(ngModel)]="searchtermGeneIn" class="form-control input-sm" placeholder="" aria-controls="data-table">
                       </label>
                         </div>
                       </div>
@@ -761,12 +1101,12 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td class="f-s-15" colspan="3">There are no gene fusions for treatment arm "{{tableRulesData.id | dashify}}"</td>
+                              <td class="f-s-15" colspan="3">There are no included gene fusions for treatment arm "{{tableRulesData.id | dashify}}"</td>
                             </tr>
                           </tbody>
                         </table>
-                        <table *ngIf="tableRulesData.variantReport.geneFusions.length!=0" class="table table-td-valign-middle table-striped" [mfData]="tableRulesData.variantReport.geneFusions | filterByText: searchtermGene"
-                          #mftableGene="mfDataTable" [(mfSortBy)]="tableGeneDefaultSort" [mfRowsOnPage]="recordsPerPageGene">
+                        <table *ngIf="tableRulesData.variantReport.geneFusions.length!=0" class="table table-td-valign-middle table-striped" [mfData]="tableRulesData.variantReport.geneFusions | filterByText: searchtermGeneIn"
+                          #mftableGeneIn="mfDataTable" [(mfSortBy)]="tableGeneInDefaultSort" [mfRowsOnPage]="recordsPerPageGeneIn">
                           <thead>
                             <tr class="success">
                               <th>
@@ -782,20 +1122,105 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <tr *ngFor="let item of mftableGene.data">
+                            <tr *ngFor="let item of mftableGeneIn.data">
                               <td><a href="javascript:;" class="link-none">{{item.variant.identifier | dashify}}</a></td>
                               <!--only for COSF-->
                               <td>{{item.variant.levelOfEvidence | dashify}}</td>
                               <td><a href="javascript:;" class="link-none">{{item.variant.publicMedIds | dashify}}</a></td>
                             </tr>
-                            <tr *ngIf="mftableGene.data.length == 0">
-                              <td class="f-s-15" colspan="3">No matching search results found for "{{searchtermGene}}"</td>
+                            <tr *ngIf="mftableGeneIn.data.length == 0">
+                              <td class="f-s-15" colspan="3">No matching search results found for "{{searchtermGeneIn}}"</td>
                             </tr>
                           </tbody>
                           <tfoot>
                             <tr>
                               <td class="tfoot-padding" colspan="3">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermGene" [totallength]="tableRulesData.variantReport.geneFusions.length"></mfBootstrapPaginator>
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermGeneIn" [totallength]="tableRulesData.variantReport.geneFusions.length"></mfBootstrapPaginator>
+                              </td>
+                            </tr>
+                          </tfoot>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="panel-heading">
+                      <h4 class="panel-title f-s-18">Exclusions</h4>
+                    </div>
+                    <div class="col-md-12 bg-success-light">
+                      <div class="col-md-6 p-l-5">
+                        <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
+                          <label>Show
+                        <select name="data-table_length" [(ngModel)]="recordsPerPageGeneEx"  aria-controls="data-table" class="form-control input-sm">
+                          <option value=5>5</option>
+                          <option value=10>10</option>
+                          <option value=25>25</option>
+                          <option value=50>50</option>
+                        </select> 
+                      entries</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6 p-r-5">
+                        <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
+                          <label>Search:
+                        <input type="text" [(ngModel)]="searchtermGeneEx" class="form-control input-sm" placeholder="" aria-controls="data-table">
+                      </label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="table-responsive col-lg-12">
+                        <table *ngIf="tableRulesData.variantReport.geneFusions.length == 0" class="table table-td-valign-middle table-striped">
+                          <thead>
+                            <tr class="success">
+                              <th>
+                                ID
+                              </th>
+                              <th>
+                                LOE
+                              </th>
+                              <th>
+                                Lit
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="f-s-15" colspan="3">There are no excluded gene fusions for treatment arm "{{tableRulesData.id | dashify}}"</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <table *ngIf="tableRulesData.variantReport.geneFusions.length!=0" class="table table-td-valign-middle table-striped" [mfData]="tableRulesData.variantReport.geneFusions | filterByText: searchtermGeneEx"
+                          #mftableGeneEx="mfDataTable" [(mfSortBy)]="tableGeneExDefaultSort" [mfRowsOnPage]="recordsPerPageGeneEx">
+                          <thead>
+                            <tr class="success">
+                              <th>
+                                <mfDefaultSorter by="variant.identifier"><span class="table-header">ID</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="variant.levelOfEvidence"><span class="table-header">LOE</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <span class="table-header">Lit</span>
+                                <!--<mfDefaultSorter by="publicMedIds"></mfDefaultSorter>-->
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let item of mftableGeneEx.data">
+                              <td><a href="javascript:;" class="link-none">{{item.variant.identifier | dashify}}</a></td>
+                              <!--only for COSF-->
+                              <td>{{item.variant.levelOfEvidence | dashify}}</td>
+                              <td><a href="javascript:;" class="link-none">{{item.variant.publicMedIds | dashify}}</a></td>
+                            </tr>
+                            <tr *ngIf="mftableGeneEx.data.length == 0">
+                              <td class="f-s-15" colspan="3">No matching search results found for "{{searchtermGeneEx}}"</td>
+                            </tr>
+                          </tbody>
+                          <tfoot>
+                            <tr>
+                              <td class="tfoot-padding" colspan="3">
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermGeneEx" [totallength]="tableRulesData.variantReport.geneFusions.length"></mfBootstrapPaginator>
                               </td>
                             </tr>
                           </tfoot>
@@ -811,15 +1236,18 @@
                 <div class="row">
                   <!-- begin panel -->
                   <div>
+                    <div class="panel-heading">
+                      <h4 class="panel-title f-s-18">Inclusions</h4>
+                    </div>
                     <div class="col-md-12 bg-success-light">
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select name="data-table_length" [(ngModel)]="recordsPerPageRule"  aria-controls="data-table" class="form-control input-sm">
+                        <select name="data-table_length" [(ngModel)]="recordsPerPageRuleIn"  aria-controls="data-table" class="form-control input-sm">
+                          <option value=5>5</option>
                           <option value=10>10</option>
                           <option value=25>25</option>
                           <option value=50>50</option>
-                          <option value=100>100</option>
                         </select> 
                       entries</label>
                         </div>
@@ -827,7 +1255,7 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input type="text" [(ngModel)]="searchtermRule" class="form-control input-sm" placeholder="" aria-controls="data-table">
+                        <input type="text" [(ngModel)]="searchtermRuleIn" class="form-control input-sm" placeholder="" aria-controls="data-table">
                       </label>
                         </div>
                       </div>
@@ -859,13 +1287,13 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td class="f-s-15" colspan="6">There are no non-hotspot rules for treatment arm "{{tableRulesData.id | dashify}}"</td>
+                              <td class="f-s-15" colspan="6">There are no included non-hotspot rules for treatment arm "{{tableRulesData.id | dashify}}"</td>
                             </tr>
                           </tbody>
                         </table>
                         <table *ngIf="tableRulesData.variantReport.nonHotspotRules.length!=0" class="table table-td-valign-middle table-striped"
-                          [mfData]="tableRulesData.variantReport.nonHotspotRules | filterByText: searchtermRule" #mftableRule="mfDataTable"
-                          [(mfSortBy)]="tableRuleDefaultSort" [mfRowsOnPage]="recordsPerPageRule">
+                          [mfData]="tableRulesData.variantReport.nonHotspotRules | filterByText: searchtermRuleIn" #mftableRuleIn="mfDataTable"
+                          [(mfSortBy)]="tableRuleInDefaultSort" [mfRowsOnPage]="recordsPerPageRuleIn">
                           <thead>
                             <tr class="success">
                               <th>
@@ -890,7 +1318,7 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <tr *ngFor="let item of mftableRule.data">
+                            <tr *ngFor="let item of mftableRuleIn.data">
                               <td><a href="javascript:;" class="link-none">{{item.gene | dashify}}</a></td>
                               <td>{{item.exon | dashify}}</td>
                               <td>{{item.oncominevariantclass | dashify}}</td>
@@ -899,14 +1327,121 @@
                               <td><a href="javascript:;" class="link-none">{{item.publicMedIds | dashify}}</a></td>
                               <!--problem with dashify-->
                             </tr>
-                            <tr *ngIf="mftableRule.data.length == 0">
-                              <td class="f-s-15" colspan="6">No matching search results found for "{{searchtermRule}}"</td>
+                            <tr *ngIf="mftableRuleIn.data.length == 0">
+                              <td class="f-s-15" colspan="6">No matching search results found for "{{searchtermRuleIn}}"</td>
                             </tr>
                           </tbody>
                           <tfoot>
                             <tr>
                               <td class="tfoot-padding" colspan="6">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermRule" [totallength]="tableRulesData.variantReport.nonHotspotRules.length"></mfBootstrapPaginator>
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermRuleIn" [totallength]="tableRulesData.variantReport.nonHotspotRules.length"></mfBootstrapPaginator>
+                              </td>
+                            </tr>
+                          </tfoot>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="panel-heading">
+                      <h4 class="panel-title f-s-18">Exclusions</h4>
+                    </div>
+                    <div class="col-md-12 bg-success-light">
+                      <div class="col-md-6 p-l-5">
+                        <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
+                          <label>Show
+                        <select name="data-table_length" [(ngModel)]="recordsPerPageRuleEx"  aria-controls="data-table" class="form-control input-sm">
+                          <option value=5>5</option>
+                          <option value=10>10</option>
+                          <option value=25>25</option>
+                          <option value=50>50</option>
+                        </select> 
+                      entries</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6 p-r-5">
+                        <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
+                          <label>Search:
+                        <input type="text" [(ngModel)]="searchtermRuleEx" class="form-control input-sm" placeholder="" aria-controls="data-table">
+                      </label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="table-responsive col-lg-12">
+                        <table *ngIf="tableRulesData.variantReport.nonHotspotRules.length == 0" class="table table-td-valign-middle table-striped">
+                          <thead>
+                            <tr class="success">
+                              <th>
+                                Gene
+                              </th>
+                              <th>
+                                Exon
+                              </th>
+                              <th>
+                                Oncomine Variant Class
+                              </th>
+                              <th>
+                                Function
+                              </th>
+                              <th>
+                                LOE
+                              </th>
+                              <th>
+                                Lit
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="f-s-15" colspan="6">There are no excluded non-hotspot rules for treatment arm "{{tableRulesData.id | dashify}}"</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <table *ngIf="tableRulesData.variantReport.nonHotspotRules.length!=0" class="table table-td-valign-middle table-striped"
+                          [mfData]="tableRulesData.variantReport.nonHotspotRules | filterByText: searchtermRuleEx" #mftableRuleEx="mfDataTable"
+                          [(mfSortBy)]="tableRuleExDefaultSort" [mfRowsOnPage]="recordsPerPageRuleEx">
+                          <thead>
+                            <tr class="success">
+                              <th>
+                                <mfDefaultSorter by="gene"><span class="table-header">Gene</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="exon"><span class="table-header">Exon</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="oncominevariantclass"><span class="table-header">Oncomine Variant Class</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="function"><span class="table-header">Function</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="levelOfEvidence"><span class="table-header">LOE</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <span class="table-header">Lit</span>
+                                <!--<mfDefaultSorter by="publicMedIds"></mfDefaultSorter>-->
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let item of mftableRuleEx.data">
+                              <td><a href="javascript:;" class="link-none">{{item.gene | dashify}}</a></td>
+                              <td>{{item.exon | dashify}}</td>
+                              <td>{{item.oncominevariantclass | dashify}}</td>
+                              <td>{{item.function | dashify}}</td>
+                              <td>{{item.levelOfEvidence | dashify}}</td>
+                              <td><a href="javascript:;" class="link-none">{{item.publicMedIds | dashify}}</a></td>
+                              <!--problem with dashify-->
+                            </tr>
+                            <tr *ngIf="mftableRuleEx.data.length == 0">
+                              <td class="f-s-15" colspan="6">No matching search results found for "{{searchtermRuleEx}}"</td>
+                            </tr>
+                          </tbody>
+                          <tfoot>
+                            <tr>
+                              <td class="tfoot-padding" colspan="6">
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermRuleEx" [totallength]="tableRulesData.variantReport.nonHotspotRules.length"></mfBootstrapPaginator>
                               </td>
                             </tr>
                           </tfoot>
