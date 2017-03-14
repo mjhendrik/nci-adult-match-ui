@@ -440,8 +440,7 @@
                             </tr>
                           </tbody>
                         </table>
-                        <table *ngIf="snvIn.length!=0" class="table table-td-valign-middle table-striped"
-                          [mfData]="snvIn | filterByText: searchtermSnvIn"
+                        <table *ngIf="snvIn.length!=0" class="table table-td-valign-middle table-striped" [mfData]="snvIn | filterByText: searchtermSnvIn"
                           #mftableSnvIn="mfDataTable" [(mfSortBy)]="tableSnvInDefaultSort" [mfRowsOnPage]="recordsPerPageSnvIn">
                           <thead>
                             <tr class="success">
@@ -471,17 +470,21 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableSnvIn.data">
-                              <td><a href="javascript:;" class="link-none">{{item.identifier | dashify}}</a></td>
-                              <!--only for COSM-->
-                              <!--http://cancer.sanger.ac.uk/cosmic/mutation/overview?id=746-->
+                              <td><a href="javascript:;" class="link-none" [linkExternal]="'cosmicId'" target="_blank">{{item.identifier | dashify}}</a></td>
                               <td>{{item.chromosome | dashify}}</td>
                               <td>{{item.position | dashify}}</td>
                               <td>{{item.reference | dashify}}</td>
                               <td>{{item.alternative | dashify}}</td>
                               <td>{{item.levelOfEvidence | dashify}}</td>
-                              <td><a href="javascript:;" class="link-none">{{item.publicMedIds | dashify}}</a></td>
-                              <!--multiple links-->
-                              <!--https://www.ncbi.nlm.nih.gov/pubmed/?term=21266528-->
+                              <td>
+                                <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
+                                <span *ngFor="let items of item.publicMedIds; let last=last">
+                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items | dashify}}" class="link-none" target="_blank">{{items | dashify}}</a>
+                                  <span *ngIf="!last">, </span>
+                                </span>
+                                </span>
+                                <span *ngIf="item.publicMedIds==null || item.publicMedIds==0">-</span>
+                              </td>
                             </tr>
                             <tr *ngIf="mftableSnvIn.data.length == 0">
                               <td class="f-s-15" colspan="7">No matching search results found for "{{searchtermSnvIn}}"</td>
@@ -557,8 +560,7 @@
                             </tr>
                           </tbody>
                         </table>
-                        <table *ngIf="snvEx.length!=0" class="table table-td-valign-middle table-striped"
-                          [mfData]="snvEx | filterByText: searchtermSnvEx"
+                        <table *ngIf="snvEx.length!=0" class="table table-td-valign-middle table-striped" [mfData]="snvEx | filterByText: searchtermSnvEx"
                           #mftableSnvEx="mfDataTable" [(mfSortBy)]="tableSnvExDefaultSort" [mfRowsOnPage]="recordsPerPageSnvEx">
                           <thead>
                             <tr class="success">
@@ -588,15 +590,21 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableSnvEx.data">
-                              <td><a href="javascript:;" class="link-none">{{item.identifier | dashify}}</a></td>
-                              <!--only for COSM-->
+                              <td><a href="javascript:;" class="link-none" [linkExternal]="'cosmicId'" target="_blank">{{item.identifier | dashify}}</a></td>
                               <td>{{item.chromosome | dashify}}</td>
                               <td>{{item.position | dashify}}</td>
                               <td>{{item.reference | dashify}}</td>
                               <td>{{item.alternative | dashify}}</td>
                               <td>{{item.levelOfEvidence | dashify}}</td>
-                              <td><a href="javascript:;" class="link-none">{{item.publicMedIds | dashify}}</a></td>
-                              <!--multiple links-->
+                              <td>
+                                <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
+                                <span *ngFor="let items of item.publicMedIds; let last=last">
+                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items | dashify}}" class="link-none" target="_blank">{{items | dashify}}</a>
+                                  <span *ngIf="!last">, </span>
+                                </span>
+                                </span>
+                                <span *ngIf="item.publicMedIds==null || item.publicMedIds==0">-</span>
+                              </td>
                             </tr>
                             <tr *ngIf="mftableSnvEx.data.length == 0">
                               <td class="f-s-15" colspan="7">No matching search results found for "{{searchtermSnvEx}}"</td>
@@ -709,14 +717,21 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableIndelIn.data">
-                              <td><a href="javascript:;" class="link-none">{{item.variant.identifier | dashify}}</a></td>
-                              <!--http://cancer.sanger.ac.uk/cosmic/mutation/overview?id=26038-->
+                              <td><a href="javascript:;" class="link-none" [linkExternal]="'cosmicId'" target="_blank">{{item.variant.identifier | dashify}}</a></td>
                               <td>{{item.variant.chromosome | dashify}}</td>
                               <td>{{item.variant.position | dashify}}</td>
                               <td>{{item.variant.reference | dashify}}</td>
                               <td>{{item.variant.alternative | dashify}}</td>
                               <td>{{item.variant.levelOfEvidence | dashify}}</td>
-                              <td>{{item.variant.publicMedIds | dashify}}</td>
+                              <td>
+                                <span *ngIf="item.variant.publicMedIds!=null && item.variant.publicMedIds!=0">
+                                <span *ngFor="let items of item.variant.publicMedIds; let last=last">
+                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items | dashify}}" class="link-none" target="_blank">{{items | dashify}}</a>
+                                  <span *ngIf="!last">, </span>
+                                </span>
+                                </span>
+                                <span *ngIf="item.variant.publicMedIds==null || item.variant.publicMedIds==0">-</span>
+                              </td>
                             </tr>
                             <tr *ngIf="mftableIndelIn.data.length == 0">
                               <td class="f-s-15" colspan="7">No matching search results found for "{{searchtermIndelIn}}"</td>
@@ -822,13 +837,21 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableIndelEx.data">
-                              <td><a href="javascript:;" class="link-none">{{item.variant.identifier | dashify}}</a></td>
+                              <td><a href="javascript:;" class="link-none" [linkExternal]="'cosmicId'" target="_blank">{{item.variant.identifier | dashify}}</a></td>
                               <td>{{item.variant.chromosome | dashify}}</td>
                               <td>{{item.variant.position | dashify}}</td>
                               <td>{{item.variant.reference | dashify}}</td>
                               <td>{{item.variant.alternative | dashify}}</td>
                               <td>{{item.variant.levelOfEvidence | dashify}}</td>
-                              <td>{{item.variant.publicMedIds | dashify}}</td>
+                              <td>
+                                <span *ngIf="item.variant.publicMedIds!=null && item.variant.publicMedIds!=0">
+                                <span *ngFor="let items of item.variant.publicMedIds; let last=last">
+                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items | dashify}}" class="link-none" target="_blank">{{items | dashify}}</a>
+                                  <span *ngIf="!last">, </span>
+                                </span>
+                                </span>
+                                <span *ngIf="item.variant.publicMedIds==null || item.variant.publicMedIds==0">-</span>
+                              </td>
                             </tr>
                             <tr *ngIf="mftableIndelEx.data.length == 0">
                               <td class="f-s-15" colspan="7">No matching search results found for "{{searchtermIndelEx}}"</td>
@@ -905,9 +928,8 @@
                             </tr>
                           </tbody>
                         </table>
-                        <table *ngIf="cnvIn.length!=0" class="table table-td-valign-middle table-striped"
-                          [mfData]="cnvIn | filterByText: searchtermCnvIn" #mftableCnvIn="mfDataTable"
-                          [(mfSortBy)]="tableCnvInDefaultSort" [mfRowsOnPage]="recordsPerPageCnvIn">
+                        <table *ngIf="cnvIn.length!=0" class="table table-td-valign-middle table-striped" [mfData]="cnvIn | filterByText: searchtermCnvIn"
+                          #mftableCnvIn="mfDataTable" [(mfSortBy)]="tableCnvInDefaultSort" [mfRowsOnPage]="recordsPerPageCnvIn">
                           <thead>
                             <tr class="success">
                               <!--inclusion-->
@@ -931,14 +953,20 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableCnvIn.data">
-                              <td><a href="javascript:;" class="link-none">{{item.variant.geneName | dashify}}</a></td>
-                              <!--same as id-->
-                              <!--http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln=erbb2-->
+                              <td><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln={{item.variant.geneName | dashify}}"
+                                  class="link-none" target="_blank">{{item.variant.geneName | dashify}}</a></td>
                               <td>{{item.variant.chromosome | dashify}}</td>
                               <td>{{item.variant.position | dashify}}</td>
                               <td>{{item.variant.levelOfEvidence | dashify}}</td>
-                              <td><a href="javascript:;" class="link-none">{{item.variant.publicMedIds | dashify}}</a></td>
-                              <!--https://www.ncbi.nlm.nih.gov/pubmed/?term=3798106-->
+                              <td>
+                                <span *ngIf="item.variant.publicMedIds!=null && item.variant.publicMedIds!=0">
+                                <span *ngFor="let items of item.variant.publicMedIds; let last=last">
+                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items | dashify}}" class="link-none" target="_blank">{{items | dashify}}</a>
+                                  <span *ngIf="!last">, </span>
+                                </span>
+                                </span>
+                                <span *ngIf="item.variant.publicMedIds==null || item.variant.publicMedIds==0">-</span>
+                              </td>
                             </tr>
                             <tr *ngIf="mftableCnvIn.data.length == 0">
                               <td class="f-s-15" colspan="5">No matching search results found for "{{searchtermCnvIn}}"</td>
@@ -1008,9 +1036,8 @@
                             </tr>
                           </tbody>
                         </table>
-                        <table *ngIf="cnvEx.length!=0" class="table table-td-valign-middle table-striped"
-                          [mfData]="cnvEx | filterByText: searchtermCnvEx" #mftableCnvEx="mfDataTable"
-                          [(mfSortBy)]="tableCnvExDefaultSort" [mfRowsOnPage]="recordsPerPageCnvEx">
+                        <table *ngIf="cnvEx.length!=0" class="table table-td-valign-middle table-striped" [mfData]="cnvEx | filterByText: searchtermCnvEx"
+                          #mftableCnvEx="mfDataTable" [(mfSortBy)]="tableCnvExDefaultSort" [mfRowsOnPage]="recordsPerPageCnvEx">
                           <thead>
                             <tr class="success">
                               <!--inclusion-->
@@ -1034,12 +1061,21 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableCnvEx.data">
-                              <td><a href="javascript:;" class="link-none">{{item.variant.geneName | dashify}}</a></td>
+                              <td><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln={{item.variant.geneName | dashify}}"
+                                  class="link-none" target="_blank">{{item.variant.geneName | dashify}}</a></td>
                               <!--same as id-->
                               <td>{{item.variant.chromosome | dashify}}</td>
                               <td>{{item.variant.position | dashify}}</td>
                               <td>{{item.variant.levelOfEvidence | dashify}}</td>
-                              <td><a href="javascript:;" class="link-none">{{item.variant.publicMedIds | dashify}}</a></td>
+                              <td>
+                                <span *ngIf="item.variant.publicMedIds!=null && item.variant.publicMedIds!=0">
+                                <span *ngFor="let items of item.variant.publicMedIds; let last=last">
+                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items | dashify}}" class="link-none" target="_blank">{{items | dashify}}</a>
+                                  <span *ngIf="!last">, </span>
+                                </span>
+                                </span>
+                                <span *ngIf="item.variant.publicMedIds==null || item.variant.publicMedIds==0">-</span>
+                              </td>
                             </tr>
                             <tr *ngIf="mftableCnvEx.data.length == 0">
                               <td class="f-s-15" colspan="5">No matching search results found for "{{searchtermCnvEx}}"</td>
@@ -1128,12 +1164,18 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableGeneIn.data">
-                              <td><a href="javascript:;" class="link-none">{{item.variant.identifier | dashify}}</a></td>
+                              <td><a href="javascript:;" class="link-none" [linkExternal]="'cosmicFusionId'" target="_blank">{{item.variant.identifier | dashify}}</a></td>
                               <!--only for COSF-->
-                              <!--http://cancer.sanger.ac.uk/cosmic/fusion/summary?id=1062-->
                               <td>{{item.variant.levelOfEvidence | dashify}}</td>
-                              <td><a href="javascript:;" class="link-none">{{item.variant.publicMedIds | dashify}}</a></td>
-                              <!--https://www.ncbi.nlm.nih.gov/pubmed/?term=24965693-->
+                              <td>
+                                <span *ngIf="item.variant.publicMedIds!=null && item.variant.publicMedIds!=0">
+                                <span *ngFor="let items of item.variant.publicMedIds; let last=last">
+                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items | dashify}}" class="link-none" target="_blank">{{items | dashify}}</a>
+                                  <span *ngIf="!last">, </span>
+                                </span>
+                                </span>
+                                <span *ngIf="item.variant.publicMedIds==null || item.variant.publicMedIds==0">-</span>
+                              </td>
                             </tr>
                             <tr *ngIf="mftableGeneIn.data.length == 0">
                               <td class="f-s-15" colspan="3">No matching search results found for "{{searchtermGeneIn}}"</td>
@@ -1215,10 +1257,18 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableGeneEx.data">
-                              <td><a href="javascript:;" class="link-none">{{item.variant.identifier | dashify}}</a></td>
+                              <td><a href="javascript:;" class="link-none" [linkExternal]="'cosmicFusionId'" target="_blank">{{item.variant.identifier | dashify}}</a></td>
                               <!--only for COSF-->
                               <td>{{item.variant.levelOfEvidence | dashify}}</td>
-                              <td><a href="javascript:;" class="link-none">{{item.variant.publicMedIds | dashify}}</a></td>
+                              <td>
+                                <span *ngIf="item.variant.publicMedIds!=null && item.variant.publicMedIds!=0">
+                                <span *ngFor="let items of item.variant.publicMedIds; let last=last">
+                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items | dashify}}" class="link-none" target="_blank">{{items | dashify}}</a>
+                                  <span *ngIf="!last">, </span>
+                                </span>
+                                </span>
+                                <span *ngIf="item.variant.publicMedIds==null || item.variant.publicMedIds==0">-</span>
+                              </td>
                             </tr>
                             <tr *ngIf="mftableGeneEx.data.length == 0">
                               <td class="f-s-15" colspan="3">No matching search results found for "{{searchtermGeneEx}}"</td>
@@ -1298,9 +1348,8 @@
                             </tr>
                           </tbody>
                         </table>
-                        <table *ngIf="ruleIn.length!=0" class="table table-td-valign-middle table-striped"
-                          [mfData]="ruleIn | filterByText: searchtermRuleIn" #mftableRuleIn="mfDataTable"
-                          [(mfSortBy)]="tableRuleInDefaultSort" [mfRowsOnPage]="recordsPerPageRuleIn">
+                        <table *ngIf="ruleIn.length!=0" class="table table-td-valign-middle table-striped" [mfData]="ruleIn | filterByText: searchtermRuleIn"
+                          #mftableRuleIn="mfDataTable" [(mfSortBy)]="tableRuleInDefaultSort" [mfRowsOnPage]="recordsPerPageRuleIn">
                           <thead>
                             <tr class="success">
                               <th>
@@ -1326,15 +1375,21 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableRuleIn.data">
-                              <td><a href="javascript:;" class="link-none">{{item.gene | dashify}}</a></td>
-                              <!--http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln=pten-->
+                              <td><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln={{item.gene | dashify}}" class="link-none"
+                                  target="_blank">{{item.gene | dashify}}</a></td>
                               <td>{{item.exon | dashify}}</td>
                               <td>{{item.oncominevariantclass | dashify}}</td>
                               <td>{{item.function | dashify}}</td>
                               <td>{{item.levelOfEvidence | dashify}}</td>
-                              <td><a href="javascript:;" class="link-none">{{item.publicMedIds | dashify}}</a></td>
-                              <!--problem with dashify-->
-                              <!--https://www.ncbi.nlm.nih.gov/pubmed/?term=21266528-->
+                              <td>
+                                <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
+                                <span *ngFor="let items of item.publicMedIds; let last=last">
+                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items | dashify}}" class="link-none" target="_blank">{{items | dashify}}</a>
+                                  <span *ngIf="!last">, </span>
+                                </span>
+                                </span>
+                                <span *ngIf="item.publicMedIds==null || item.publicMedIds==0">-</span>
+                              </td>
                             </tr>
                             <tr *ngIf="mftableRuleIn.data.length == 0">
                               <td class="f-s-15" colspan="6">No matching search results found for "{{searchtermRuleIn}}"</td>
@@ -1407,9 +1462,8 @@
                             </tr>
                           </tbody>
                         </table>
-                        <table *ngIf="ruleEx.length!=0" class="table table-td-valign-middle table-striped"
-                          [mfData]="ruleEx | filterByText: searchtermRuleEx" #mftableRuleEx="mfDataTable"
-                          [(mfSortBy)]="tableRuleExDefaultSort" [mfRowsOnPage]="recordsPerPageRuleEx">
+                        <table *ngIf="ruleEx.length!=0" class="table table-td-valign-middle table-striped" [mfData]="ruleEx | filterByText: searchtermRuleEx"
+                          #mftableRuleEx="mfDataTable" [(mfSortBy)]="tableRuleExDefaultSort" [mfRowsOnPage]="recordsPerPageRuleEx">
                           <thead>
                             <tr class="success">
                               <th>
@@ -1435,13 +1489,21 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableRuleEx.data">
-                              <td><a href="javascript:;" class="link-none">{{item.gene | dashify}}</a></td>
+                              <td><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln={{item.gene | dashify}}" class="link-none"
+                                  target="_blank">{{item.gene | dashify}}</a></td>
                               <td>{{item.exon | dashify}}</td>
                               <td>{{item.oncominevariantclass | dashify}}</td>
                               <td>{{item.function | dashify}}</td>
                               <td>{{item.levelOfEvidence | dashify}}</td>
-                              <td><a href="javascript:;" class="link-none">{{item.publicMedIds | dashify}}</a></td>
-                              <!--problem with dashify-->
+                              <td>
+                                <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
+                                <span *ngFor="let items of item.publicMedIds; let last=last">
+                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items | dashify}}" class="link-none" target="_blank">{{items | dashify}}</a>
+                                  <span *ngIf="!last">, </span>
+                                </span>
+                                </span>
+                                <span *ngIf="item.publicMedIds==null || item.publicMedIds==0">-</span>
+                              </td>
                             </tr>
                             <tr *ngIf="mftableRuleEx.data.length == 0">
                               <td class="f-s-15" colspan="6">No matching search results found for "{{searchtermRuleEx}}"</td>
