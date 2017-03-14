@@ -7,11 +7,12 @@ import { colorCodeDays } from './colorcode-days';
 import { colorCodeHours } from './colorcode-hours';
 import { colorCodeClia } from './colorcode-clia';
 import { MatchHeightDirective } from './match-height.directive';
+import { ExternalLinkDirective } from './external-links.directive';
 
 @NgModule({
   imports: [CommonModule],
-  declarations: [colorCodeTa, colorCodePatients, colorCodeDays, colorCodeHours, colorCodeClia, MatchHeightDirective],
-  exports: [colorCodeTa, colorCodePatients, colorCodeDays, colorCodeHours, colorCodeClia, MatchHeightDirective],
+  declarations: [colorCodeTa, colorCodePatients, colorCodeDays, colorCodeHours, colorCodeClia, MatchHeightDirective, ExternalLinkDirective],
+  exports: [colorCodeTa, colorCodePatients, colorCodeDays, colorCodeHours, colorCodeClia, MatchHeightDirective, ExternalLinkDirective],
 })
 export class DirectivesModule {
 }

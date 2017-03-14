@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from './../shared/router.animations';
+import { GMTFilter } from './../shared/pipes/gmt';
 
 
 /**
@@ -12,7 +13,7 @@ import { routerTransition } from './../shared/router.animations';
   styleUrls: ['dashboard.component.css'],
   animations: [routerTransition()],
   host: { '[@routerTransition]': '' },
-  // providers: [DatePipe]
+  providers: [GMTFilter]
 })
 export class DashboardComponent implements OnInit {
 
@@ -38,11 +39,32 @@ export class DashboardComponent implements OnInit {
     this.recordsPerPage1 = 10;
     this.recordsPerPage2 = 10;
     this.recordsPerPage3 = 10;
+
     this.table1DefaultSort = 'daysPending';
     this.table2DefaultSort = 'hoursPending';
     this.table3DefaultSort = 'date_verified';
+
     this.sortByAsc = 'asc';
     this.sortByDesc = 'desc';
+
+    let gmt = new GMTFilter();
+
+    for (let i = 0; i < this.table1Data.variant_reports.length; i++) {
+      this.table1Data.variant_reports[i].specimenReceivedDate = gmt.transform(this.table1Data.variant_reports[i].specimenReceivedDate);
+    }
+
+    for (let i = 0; i < this.table1Data.variant_reports.length; i++) {
+      this.table1Data.variant_reports[i].ngsDateReceived = gmt.transform(this.table1Data.variant_reports[i].ngsDateReceived);
+    }
+
+    for (let i = 0; i < this.table2Data.assignment_reports.length; i++) {
+      this.table2Data.assignment_reports[i].dateAssigned = gmt.transform(this.table2Data.assignment_reports[i].dateAssigned);
+    }
+
+    for (let i = 0; i < this.table3Data.length; i++) {
+      this.table3Data[i].date_verified = gmt.transform(this.table3Data[i].date_verified);
+    }
+
   }
 
   table1Data: any = {
