@@ -47,12 +47,23 @@
   border-top-width: 1px !important;
 }
 
+.panel.panel-success-light .panel-heading {
+  background-color: $light-success-color;
+}
+
 .table>thead>tr.success-light>th {
   color: #fff;
   background-color: $light-success-color !important;
   border-top-color: $dark-success-color !important;
   border-top-style: solid !important;
   border-top-width: 1px !important;
+}
+
+.btn.btn-success-light {
+  color: #fff;
+  background: $light-success-color;
+  -webkit-box-shadow: 0 1px $dark-success-color;
+  box-shadow: 0 1px $dark-success-color;
 }
 
 /* Widget - Timeline */
