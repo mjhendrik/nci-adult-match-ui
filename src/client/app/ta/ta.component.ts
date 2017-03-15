@@ -28,10 +28,11 @@ export class TaComponent implements OnInit {
 
   ngOnInit() {
     this.recordsPerPage4 = 100;
+    this.table4DefaultSort = 'treatmentArmId';
+
     for (let i = 0; i < this.table4Data.length; i++) {
       this.table4Data[i].dateSuspendedOrClosed = this.table4Data[i].dateClosed == null ? this.table4Data[i].dateSuspended : this.table4Data[i].dateClosed;
     }
-    this.table4DefaultSort = 'treatmentArmId';
 
     let gmt = new GMTFilter();
 

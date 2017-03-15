@@ -45,7 +45,7 @@ export class PatientsComponent {
     }
 
     for (let i = 0; i < this.table5Data.length; i++) {
-      this.table5Data[i].registrationDate = gmt.transform(this.table5Data[i].registrationDate);
+      this.table5Data[i].offTrialDate = gmt.transform(this.table5Data[i].offTrialDate);
     }
 
   }
