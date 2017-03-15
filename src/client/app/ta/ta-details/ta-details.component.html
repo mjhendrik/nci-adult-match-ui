@@ -77,7 +77,7 @@
                       <div class="table-responsive col-lg-12 m-l-10 p-r-30">
                         <table class="table table-fixed" [mfData]="tableRulesData.statusLog" #mftableHistory="mfDataTable" [(mfSortBy)]="tableHistoryDefaultSort">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th class="col-xs-4">
                                 <mfDefaultSorter by="status"><span class="table-header">Status</span></mfDefaultSorter>
                               </th>
@@ -271,7 +271,7 @@
                       <div class="table-responsive col-lg-6">
                         <table *ngIf="tableRulesData.exclusionDrugs.length == 0" class="table table-td-valign-middle table-striped">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 ID
                               </th>
@@ -289,7 +289,7 @@
                         <table *ngIf="tableRulesData.exclusionDrugs.length!=0" class="table table-td-valign-middle table-striped" [mfData]="tableRulesData.exclusionDrugs | filterByText: searchtermExdr"
                           #mftableExdr="mfDataTable" [(mfSortBy)]="tableExdrDefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPageExdr">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 <mfDefaultSorter by="drugId"><span class="table-header">ID</span></mfDefaultSorter>
                               </th>
@@ -320,7 +320,7 @@
                       <div class="table-responsive col-lg-6">
                         <table *ngIf="tableRulesData.exclusionDiseases.length == 0" class="table table-td-valign-middle table-striped">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 CTEP Category
                               </th>
@@ -341,7 +341,7 @@
                         <table *ngIf="tableRulesData.exclusionDiseases.length!=0" class="table table-td-valign-middle table-striped" [mfData]="tableRulesData.exclusionDiseases | filterByText: searchtermExdz"
                           #mftableExdz="mfDataTable" [(mfSortBy)]="tableExdzDefaultSort" [mfRowsOnPage]="recordsPerPageExdz">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 <mfDefaultSorter by="ctepCategory"><span class="table-header">CTEP Category</span></mfDefaultSorter>
                               </th>
@@ -410,7 +410,7 @@
                       <div class="table-responsive col-lg-12">
                         <table *ngIf="snvIn.length == 0" class="table table-td-valign-middle table-striped">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 ID
                               </th>
@@ -443,7 +443,7 @@
                         <table *ngIf="snvIn.length!=0" class="table table-td-valign-middle table-striped" [mfData]="snvIn | filterByText: searchtermSnvIn"
                           #mftableSnvIn="mfDataTable" [(mfSortBy)]="tableSnvInDefaultSort" [mfRowsOnPage]="recordsPerPageSnvIn">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 <mfDefaultSorter by="identifier"><span class="table-header">ID</span></mfDefaultSorter>
                               </th>
@@ -530,7 +530,7 @@
                       <div class="table-responsive col-lg-12">
                         <table *ngIf="snvEx.length == 0" class="table table-td-valign-middle table-striped">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 ID
                               </th>
@@ -563,7 +563,7 @@
                         <table *ngIf="snvEx.length!=0" class="table table-td-valign-middle table-striped" [mfData]="snvEx | filterByText: searchtermSnvEx"
                           #mftableSnvEx="mfDataTable" [(mfSortBy)]="tableSnvExDefaultSort" [mfRowsOnPage]="recordsPerPageSnvEx">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 <mfDefaultSorter by="identifier"><span class="table-header">ID</span></mfDefaultSorter>
                               </th>
@@ -657,7 +657,7 @@
                       <div class="table-responsive col-lg-12">
                         <table *ngIf="indelIn.length == 0" class="table table-td-valign-middle table-striped">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 ID
                               </th>
@@ -690,7 +690,7 @@
                         <table *ngIf="indelIn.length!=0" class="table table-td-valign-middle table-striped" [mfData]="indelIn | filterByText: searchtermIndelIn"
                           #mftableIndelIn="mfDataTable" [(mfSortBy)]="tableIndelExDefaultSort" [mfRowsOnPage]="recordsPerPageIndelIn">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 <mfDefaultSorter by="variant.identifier"><span class="table-header">ID</span></mfDefaultSorter>
                               </th>
@@ -777,7 +777,7 @@
                       <div class="table-responsive col-lg-12">
                         <table *ngIf="indelEx.length == 0" class="table table-td-valign-middle table-striped">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 ID
                               </th>
@@ -810,7 +810,7 @@
                         <table *ngIf="indelEx.length!=0" class="table table-td-valign-middle table-striped" [mfData]="indelEx | filterByText: searchtermIndelEx"
                           #mftableIndelEx="mfDataTable" [(mfSortBy)]="tableIndelInDefaultSort" [mfRowsOnPage]="recordsPerPageIndelEx">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 <mfDefaultSorter by="variant.identifier"><span class="table-header">ID</span></mfDefaultSorter>
                               </th>
@@ -904,7 +904,7 @@
                       <div class="table-responsive col-lg-12">
                         <table *ngIf="cnvIn.length == 0" class="table table-td-valign-middle table-striped">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 Gene
                               </th>
@@ -931,7 +931,7 @@
                         <table *ngIf="cnvIn.length!=0" class="table table-td-valign-middle table-striped" [mfData]="cnvIn | filterByText: searchtermCnvIn"
                           #mftableCnvIn="mfDataTable" [(mfSortBy)]="tableCnvInDefaultSort" [mfRowsOnPage]="recordsPerPageCnvIn">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <!--inclusion-->
                               <th>
                                 <mfDefaultSorter by="variant.geneName"><span class="table-header">Gene</span></mfDefaultSorter>
@@ -1012,7 +1012,7 @@
                       <div class="table-responsive col-lg-12">
                         <table *ngIf="cnvEx.length == 0" class="table table-td-valign-middle table-striped">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 Gene
                               </th>
@@ -1039,7 +1039,7 @@
                         <table *ngIf="cnvEx.length!=0" class="table table-td-valign-middle table-striped" [mfData]="cnvEx | filterByText: searchtermCnvEx"
                           #mftableCnvEx="mfDataTable" [(mfSortBy)]="tableCnvExDefaultSort" [mfRowsOnPage]="recordsPerPageCnvEx">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <!--inclusion-->
                               <th>
                                 <mfDefaultSorter by="variant.geneName"><span class="table-header">Gene</span></mfDefaultSorter>
@@ -1128,7 +1128,7 @@
                       <div class="table-responsive col-lg-12">
                         <table *ngIf="geneIn.length == 0" class="table table-td-valign-middle table-striped">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 ID
                               </th>
@@ -1149,7 +1149,7 @@
                         <table *ngIf="geneIn.length!=0" class="table table-td-valign-middle table-striped" [mfData]="geneIn | filterByText: searchtermGeneIn"
                           #mftableGeneIn="mfDataTable" [(mfSortBy)]="tableGeneInDefaultSort" [mfRowsOnPage]="recordsPerPageGeneIn">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 <mfDefaultSorter by="variant.identifier"><span class="table-header">ID</span></mfDefaultSorter>
                               </th>
@@ -1221,7 +1221,7 @@
                       <div class="table-responsive col-lg-12">
                         <table *ngIf="geneEx.length == 0" class="table table-td-valign-middle table-striped">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 ID
                               </th>
@@ -1242,7 +1242,7 @@
                         <table *ngIf="geneEx.length!=0" class="table table-td-valign-middle table-striped" [mfData]="geneEx | filterByText: searchtermGeneEx"
                           #mftableGeneEx="mfDataTable" [(mfSortBy)]="tableGeneExDefaultSort" [mfRowsOnPage]="recordsPerPageGeneEx">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 <mfDefaultSorter by="variant.identifier"><span class="table-header">ID</span></mfDefaultSorter>
                               </th>
@@ -1321,7 +1321,7 @@
                       <div class="table-responsive col-lg-12">
                         <table *ngIf="ruleIn.length == 0" class="table table-td-valign-middle table-striped">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 Gene
                               </th>
@@ -1351,7 +1351,7 @@
                         <table *ngIf="ruleIn.length!=0" class="table table-td-valign-middle table-striped" [mfData]="ruleIn | filterByText: searchtermRuleIn"
                           #mftableRuleIn="mfDataTable" [(mfSortBy)]="tableRuleInDefaultSort" [mfRowsOnPage]="recordsPerPageRuleIn">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 <mfDefaultSorter by="gene"><span class="table-header">Gene</span></mfDefaultSorter>
                               </th>
@@ -1435,7 +1435,7 @@
                       <div class="table-responsive col-lg-12">
                         <table *ngIf="ruleEx.length == 0" class="table table-td-valign-middle table-striped">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 Gene
                               </th>
@@ -1465,7 +1465,7 @@
                         <table *ngIf="ruleEx.length!=0" class="table table-td-valign-middle table-striped" [mfData]="ruleEx | filterByText: searchtermRuleEx"
                           #mftableRuleEx="mfDataTable" [(mfSortBy)]="tableRuleExDefaultSort" [mfRowsOnPage]="recordsPerPageRuleEx">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 <mfDefaultSorter by="gene"><span class="table-header">Gene</span></mfDefaultSorter>
                               </th>
@@ -1553,7 +1553,7 @@
                       <div class="table-responsive col-lg-12">
                         <table *ngIf="tableRulesData.assayResults.length == 0" class="table table-td-valign-middle table-striped">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 Gene
                               </th>
@@ -1577,7 +1577,7 @@
                         <table *ngIf="tableRulesData.assayResults.length!=0" class="table table-td-valign-middle table-striped" [mfData]="tableRulesData.assayResults | filterByText: searchtermAssay"
                           #mftableAssay="mfDataTable" [(mfSortBy)]="tableAssayDefaultSort" [mfRowsOnPage]="recordsPerPageAssay">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 <mfDefaultSorter by="gene"><span class="table-header">Gene</span></mfDefaultSorter>
                               </th>
@@ -1664,7 +1664,7 @@
                       <div class="table-responsive col-lg-12">
                         <table *ngIf="tablePatientData.length == 0" class="table table-td-valign-middle table-striped table-col-width">
                           <thead>
-                            <tr class="success">
+                            <tr class="purple-light">
                               <th>
                                 Slot
                               </th>
@@ -1709,7 +1709,7 @@
                         <table *ngIf="tablePatientData.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="tablePatientData | filterByText: searchtermPatient"
                           #mftablePatient="mfDataTable" [(mfSortBy)]="tablePatientDefaultSort" [mfRowsOnPage]="recordsPerPagePatient">
                           <thead>
-                            <tr class="purple">
+                            <tr class="purple-light">
                               <th>
                                 <mfDefaultSorter by="slot"><span class="table-header">Slot</span></mfDefaultSorter>
                               </th>
