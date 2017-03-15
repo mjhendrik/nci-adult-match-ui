@@ -8,9 +8,9 @@
   <div class="row">
     <div class="col-md-4">
       <!-- begin panel -->
-      <div class="panel panel-success">
+      <div class="panel panel-success-light">
         <div class="panel-heading">
-          <span class="panel-title f-s-18">
+          <span class="text-white f-s-18">
             Overview
           </span>
         </div>
@@ -32,7 +32,7 @@
                           <dt>Treatment Arm Approval Date</dt>
                           <dd>
                             <div class="btn-group m-b-5 m-r-5">
-                              <a href="javascript:;" data-toggle="dropdown" class="btn btn-success dropdown-toggle" aria-expanded="false">{{tableRulesData.version | dashify}}&nbsp;&nbsp;<span class="caret"></span></a>
+                              <a href="javascript:;" data-toggle="dropdown" class="btn btn-success-light dropdown-toggle" aria-expanded="false">{{tableRulesData.version | dashify}}&nbsp;&nbsp;<span class="caret"></span></a>
                               <ul class="dropdown-menu">
                                 <li *ngFor="let item of versionData"><a href="javascript:;" *ngIf="item!=tableRulesData.version">{{item | dashify}}</a></li>
                               </ul>
@@ -67,9 +67,11 @@
     </div>
     <div class="col-md-4">
       <!-- begin panel -->
-      <div class="panel panel-success">
+      <div class="panel panel-success-light">
         <div class="panel-heading">
-          <h4 class="panel-title f-s-18">History</h4>
+          <span class="text-white f-s-18">
+            History
+          </span>
         </div>
         <div class="m-0 p-0">
           <div>
@@ -1168,7 +1170,10 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableGeneIn.data">
-                              <td><a href="javascript:;" class="link-none" [linkExternal]="'cosmicFusionId'" target="_blank">{{item.variant.identifier | dashify}}</a></td>
+                              <td>
+                                <a href="javascript:;" class="link-none" [linkExternal]="'cosmicFusionId'" target="_blank">{{item.variant.identifier | dashify}}</a>
+                                <!--<external-links [externalLink]="'cosmicFusionId'" [linkId]="item.variant.identifier"></external-links>-->
+                              </td>
                               <!--only for COSF-->
                               <td>{{item.variant.levelOfEvidence | dashify}}</td>
                               <td>
