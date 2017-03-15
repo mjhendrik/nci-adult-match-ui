@@ -16,58 +16,60 @@ import { GMTFilter } from './../shared/pipes/gmt';
   providers: [GMTFilter]
 })
 export class DashboardComponent implements OnInit {
-
-  // constructor(private dateFormat: DatePipe) { }
-
   newName: string = '';
   errorMessage: string;
-  searchterm1: string = '';
-  searchterm2: string = '';
-  searchterm3: string = '';
+
+  searchtermVR: string = '';
+  searchtermAR: string = '';
+  searchtermPatientsAwaiting: string = '';
+
   start: number;
   result: any[];
-  recordsPerPage1: number;
-  recordsPerPage2: number;
-  recordsPerPage3: number;
-  table1DefaultSort: string;
-  table2DefaultSort: string;
-  table3DefaultSort: string;
+
+  recordsPerPageVR: number;
+  recordsPerPageAR: number;
+  recordsPerPagePatientsAwaiting: number;
+
+  tableVRDefaultSort: string;
+  tableARDefaultSort: string;
+  tablePatientsAwaitingDefaultSort: string;
+
   sortByAsc: string;
   sortByDesc: string;
 
   ngOnInit() {
-    this.recordsPerPage1 = 10;
-    this.recordsPerPage2 = 10;
-    this.recordsPerPage3 = 10;
+    this.recordsPerPageVR = 10;
+    this.recordsPerPageAR = 10;
+    this.recordsPerPagePatientsAwaiting = 10;
 
-    this.table1DefaultSort = 'daysPending';
-    this.table2DefaultSort = 'hoursPending';
-    this.table3DefaultSort = 'date_verified';
+    this.tableVRDefaultSort = 'daysPending';
+    this.tableARDefaultSort = 'hoursPending';
+    this.tablePatientsAwaitingDefaultSort = 'date_verified';
 
     this.sortByAsc = 'asc';
     this.sortByDesc = 'desc';
 
     let gmt = new GMTFilter();
 
-    for (let i = 0; i < this.table1Data.variant_reports.length; i++) {
-      this.table1Data.variant_reports[i].specimenReceivedDate = gmt.transform(this.table1Data.variant_reports[i].specimenReceivedDate);
+    for (let i = 0; i < this.tableVRData.variant_reports.length; i++) {
+      this.tableVRData.variant_reports[i].specimenReceivedDate = gmt.transform(this.tableVRData.variant_reports[i].specimenReceivedDate);
     }
 
-    for (let i = 0; i < this.table1Data.variant_reports.length; i++) {
-      this.table1Data.variant_reports[i].ngsDateReceived = gmt.transform(this.table1Data.variant_reports[i].ngsDateReceived);
+    for (let i = 0; i < this.tableVRData.variant_reports.length; i++) {
+      this.tableVRData.variant_reports[i].ngsDateReceived = gmt.transform(this.tableVRData.variant_reports[i].ngsDateReceived);
     }
 
-    for (let i = 0; i < this.table2Data.assignment_reports.length; i++) {
-      this.table2Data.assignment_reports[i].dateAssigned = gmt.transform(this.table2Data.assignment_reports[i].dateAssigned);
+    for (let i = 0; i < this.tableARData.assignment_reports.length; i++) {
+      this.tableARData.assignment_reports[i].dateAssigned = gmt.transform(this.tableARData.assignment_reports[i].dateAssigned);
     }
 
-    for (let i = 0; i < this.table3Data.length; i++) {
-      this.table3Data[i].date_verified = gmt.transform(this.table3Data[i].date_verified);
+    for (let i = 0; i < this.tablePatientsAwaitingData.length; i++) {
+      this.tablePatientsAwaitingData[i].date_verified = gmt.transform(this.tablePatientsAwaitingData[i].date_verified);
     }
 
   }
 
-  table1Data: any = {
+  tableVRData: any = {
     "variant_reports": [
       {
         "patientSequenceNumber": "10405",
@@ -168,7 +170,7 @@ export class DashboardComponent implements OnInit {
     ]
   }
 
-  table2Data: any = {
+  tableARData: any = {
     "assignment_reports": [
       {
         "patientSequenceNumber": "10402",
@@ -317,7 +319,7 @@ export class DashboardComponent implements OnInit {
     ]
   }
 
-  table3Data: any = [
+  tablePatientsAwaitingData: any = [
     {
       "psn": "11767",
       "bsn": "T-16-001089",
