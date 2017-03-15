@@ -1,11 +1,17 @@
 <div id="content" class="content">
+  <ol class="breadcrumb pull-right">
+    <li><a href="javascript:;">Dashboard</a></li>
+    <li><a href="javascript:;">Treatment Arms</a></li>
+    <li class="active">Treatment Arm {{tableRulesData.id | dashify}}</li>
+  </ol>
+  <h1 class="page-header">Treatment Arm {{tableRulesData.id | dashify}}</h1>
   <div class="row">
     <div class="col-md-4">
       <!-- begin panel -->
       <div class="panel panel-success">
         <div class="panel-heading">
           <span class="panel-title f-s-18">
-            Treatment Arm {{tableRulesData.id | dashify}}
+            Overview
           </span>
         </div>
         <div class="m-0 p-0">
@@ -77,7 +83,7 @@
                       <div class="table-responsive col-lg-12 m-l-10 p-r-30">
                         <table class="table table-fixed" [mfData]="tableRulesData.statusLog" #mftableHistory="mfDataTable" [(mfSortBy)]="tableHistoryDefaultSort">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th class="col-xs-4">
                                 <mfDefaultSorter by="status"><span class="table-header">Status</span></mfDefaultSorter>
                               </th>
@@ -271,7 +277,7 @@
                       <div class="table-responsive col-lg-6">
                         <table *ngIf="tableRulesData.exclusionDrugs.length == 0" class="table table-td-valign-middle table-striped">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 ID
                               </th>
@@ -289,7 +295,7 @@
                         <table *ngIf="tableRulesData.exclusionDrugs.length!=0" class="table table-td-valign-middle table-striped" [mfData]="tableRulesData.exclusionDrugs | filterByText: searchtermExdr"
                           #mftableExdr="mfDataTable" [(mfSortBy)]="tableExdrDefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPageExdr">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 <mfDefaultSorter by="drugId"><span class="table-header">ID</span></mfDefaultSorter>
                               </th>
@@ -320,7 +326,7 @@
                       <div class="table-responsive col-lg-6">
                         <table *ngIf="tableRulesData.exclusionDiseases.length == 0" class="table table-td-valign-middle table-striped">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 CTEP Category
                               </th>
@@ -341,7 +347,7 @@
                         <table *ngIf="tableRulesData.exclusionDiseases.length!=0" class="table table-td-valign-middle table-striped" [mfData]="tableRulesData.exclusionDiseases | filterByText: searchtermExdz"
                           #mftableExdz="mfDataTable" [(mfSortBy)]="tableExdzDefaultSort" [mfRowsOnPage]="recordsPerPageExdz">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 <mfDefaultSorter by="ctepCategory"><span class="table-header">CTEP Category</span></mfDefaultSorter>
                               </th>
@@ -410,7 +416,7 @@
                       <div class="table-responsive col-lg-12">
                         <table *ngIf="snvIn.length == 0" class="table table-td-valign-middle table-striped">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 ID
                               </th>
@@ -443,7 +449,7 @@
                         <table *ngIf="snvIn.length!=0" class="table table-td-valign-middle table-striped" [mfData]="snvIn | filterByText: searchtermSnvIn"
                           #mftableSnvIn="mfDataTable" [(mfSortBy)]="tableSnvInDefaultSort" [mfRowsOnPage]="recordsPerPageSnvIn">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 <mfDefaultSorter by="identifier"><span class="table-header">ID</span></mfDefaultSorter>
                               </th>
@@ -479,7 +485,7 @@
                               <td>
                                 <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
                                 <span *ngFor="let items of item.publicMedIds; let last=last">
-                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items | dashify}}" class="link-none" target="_blank">{{items | dashify}}</a>
+                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
                                   <span *ngIf="!last">, </span>
                                 </span>
                                 </span>
@@ -530,7 +536,7 @@
                       <div class="table-responsive col-lg-12">
                         <table *ngIf="snvEx.length == 0" class="table table-td-valign-middle table-striped">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 ID
                               </th>
@@ -563,7 +569,7 @@
                         <table *ngIf="snvEx.length!=0" class="table table-td-valign-middle table-striped" [mfData]="snvEx | filterByText: searchtermSnvEx"
                           #mftableSnvEx="mfDataTable" [(mfSortBy)]="tableSnvExDefaultSort" [mfRowsOnPage]="recordsPerPageSnvEx">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 <mfDefaultSorter by="identifier"><span class="table-header">ID</span></mfDefaultSorter>
                               </th>
@@ -599,7 +605,7 @@
                               <td>
                                 <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
                                 <span *ngFor="let items of item.publicMedIds; let last=last">
-                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items | dashify}}" class="link-none" target="_blank">{{items | dashify}}</a>
+                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
                                   <span *ngIf="!last">, </span>
                                 </span>
                                 </span>
@@ -657,7 +663,7 @@
                       <div class="table-responsive col-lg-12">
                         <table *ngIf="indelIn.length == 0" class="table table-td-valign-middle table-striped">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 ID
                               </th>
@@ -690,7 +696,7 @@
                         <table *ngIf="indelIn.length!=0" class="table table-td-valign-middle table-striped" [mfData]="indelIn | filterByText: searchtermIndelIn"
                           #mftableIndelIn="mfDataTable" [(mfSortBy)]="tableIndelExDefaultSort" [mfRowsOnPage]="recordsPerPageIndelIn">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 <mfDefaultSorter by="variant.identifier"><span class="table-header">ID</span></mfDefaultSorter>
                               </th>
@@ -726,7 +732,7 @@
                               <td>
                                 <span *ngIf="item.variant.publicMedIds!=null && item.variant.publicMedIds!=0">
                                 <span *ngFor="let items of item.variant.publicMedIds; let last=last">
-                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items | dashify}}" class="link-none" target="_blank">{{items | dashify}}</a>
+                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
                                   <span *ngIf="!last">, </span>
                                 </span>
                                 </span>
@@ -777,7 +783,7 @@
                       <div class="table-responsive col-lg-12">
                         <table *ngIf="indelEx.length == 0" class="table table-td-valign-middle table-striped">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 ID
                               </th>
@@ -810,7 +816,7 @@
                         <table *ngIf="indelEx.length!=0" class="table table-td-valign-middle table-striped" [mfData]="indelEx | filterByText: searchtermIndelEx"
                           #mftableIndelEx="mfDataTable" [(mfSortBy)]="tableIndelInDefaultSort" [mfRowsOnPage]="recordsPerPageIndelEx">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 <mfDefaultSorter by="variant.identifier"><span class="table-header">ID</span></mfDefaultSorter>
                               </th>
@@ -846,7 +852,7 @@
                               <td>
                                 <span *ngIf="item.variant.publicMedIds!=null && item.variant.publicMedIds!=0">
                                 <span *ngFor="let items of item.variant.publicMedIds; let last=last">
-                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items | dashify}}" class="link-none" target="_blank">{{items | dashify}}</a>
+                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
                                   <span *ngIf="!last">, </span>
                                 </span>
                                 </span>
@@ -904,7 +910,7 @@
                       <div class="table-responsive col-lg-12">
                         <table *ngIf="cnvIn.length == 0" class="table table-td-valign-middle table-striped">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 Gene
                               </th>
@@ -931,7 +937,7 @@
                         <table *ngIf="cnvIn.length!=0" class="table table-td-valign-middle table-striped" [mfData]="cnvIn | filterByText: searchtermCnvIn"
                           #mftableCnvIn="mfDataTable" [(mfSortBy)]="tableCnvInDefaultSort" [mfRowsOnPage]="recordsPerPageCnvIn">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <!--inclusion-->
                               <th>
                                 <mfDefaultSorter by="variant.geneName"><span class="table-header">Gene</span></mfDefaultSorter>
@@ -961,7 +967,7 @@
                               <td>
                                 <span *ngIf="item.variant.publicMedIds!=null && item.variant.publicMedIds!=0">
                                 <span *ngFor="let items of item.variant.publicMedIds; let last=last">
-                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items | dashify}}" class="link-none" target="_blank">{{items | dashify}}</a>
+                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
                                   <span *ngIf="!last">, </span>
                                 </span>
                                 </span>
@@ -1012,7 +1018,7 @@
                       <div class="table-responsive col-lg-12">
                         <table *ngIf="cnvEx.length == 0" class="table table-td-valign-middle table-striped">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 Gene
                               </th>
@@ -1039,7 +1045,7 @@
                         <table *ngIf="cnvEx.length!=0" class="table table-td-valign-middle table-striped" [mfData]="cnvEx | filterByText: searchtermCnvEx"
                           #mftableCnvEx="mfDataTable" [(mfSortBy)]="tableCnvExDefaultSort" [mfRowsOnPage]="recordsPerPageCnvEx">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <!--inclusion-->
                               <th>
                                 <mfDefaultSorter by="variant.geneName"><span class="table-header">Gene</span></mfDefaultSorter>
@@ -1070,7 +1076,7 @@
                               <td>
                                 <span *ngIf="item.variant.publicMedIds!=null && item.variant.publicMedIds!=0">
                                 <span *ngFor="let items of item.variant.publicMedIds; let last=last">
-                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items | dashify}}" class="link-none" target="_blank">{{items | dashify}}</a>
+                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
                                   <span *ngIf="!last">, </span>
                                 </span>
                                 </span>
@@ -1128,7 +1134,7 @@
                       <div class="table-responsive col-lg-12">
                         <table *ngIf="geneIn.length == 0" class="table table-td-valign-middle table-striped">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 ID
                               </th>
@@ -1149,7 +1155,7 @@
                         <table *ngIf="geneIn.length!=0" class="table table-td-valign-middle table-striped" [mfData]="geneIn | filterByText: searchtermGeneIn"
                           #mftableGeneIn="mfDataTable" [(mfSortBy)]="tableGeneInDefaultSort" [mfRowsOnPage]="recordsPerPageGeneIn">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 <mfDefaultSorter by="variant.identifier"><span class="table-header">ID</span></mfDefaultSorter>
                               </th>
@@ -1170,7 +1176,7 @@
                               <td>
                                 <span *ngIf="item.variant.publicMedIds!=null && item.variant.publicMedIds!=0">
                                 <span *ngFor="let items of item.variant.publicMedIds; let last=last">
-                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items | dashify}}" class="link-none" target="_blank">{{items | dashify}}</a>
+                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
                                   <span *ngIf="!last">, </span>
                                 </span>
                                 </span>
@@ -1221,7 +1227,7 @@
                       <div class="table-responsive col-lg-12">
                         <table *ngIf="geneEx.length == 0" class="table table-td-valign-middle table-striped">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 ID
                               </th>
@@ -1242,7 +1248,7 @@
                         <table *ngIf="geneEx.length!=0" class="table table-td-valign-middle table-striped" [mfData]="geneEx | filterByText: searchtermGeneEx"
                           #mftableGeneEx="mfDataTable" [(mfSortBy)]="tableGeneExDefaultSort" [mfRowsOnPage]="recordsPerPageGeneEx">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 <mfDefaultSorter by="variant.identifier"><span class="table-header">ID</span></mfDefaultSorter>
                               </th>
@@ -1263,7 +1269,7 @@
                               <td>
                                 <span *ngIf="item.variant.publicMedIds!=null && item.variant.publicMedIds!=0">
                                 <span *ngFor="let items of item.variant.publicMedIds; let last=last">
-                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items | dashify}}" class="link-none" target="_blank">{{items | dashify}}</a>
+                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
                                   <span *ngIf="!last">, </span>
                                 </span>
                                 </span>
@@ -1321,7 +1327,7 @@
                       <div class="table-responsive col-lg-12">
                         <table *ngIf="ruleIn.length == 0" class="table table-td-valign-middle table-striped">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 Gene
                               </th>
@@ -1351,7 +1357,7 @@
                         <table *ngIf="ruleIn.length!=0" class="table table-td-valign-middle table-striped" [mfData]="ruleIn | filterByText: searchtermRuleIn"
                           #mftableRuleIn="mfDataTable" [(mfSortBy)]="tableRuleInDefaultSort" [mfRowsOnPage]="recordsPerPageRuleIn">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 <mfDefaultSorter by="gene"><span class="table-header">Gene</span></mfDefaultSorter>
                               </th>
@@ -1375,7 +1381,7 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableRuleIn.data">
-                              <td><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln={{item.gene | dashify}}" class="link-none"
+                              <td><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln={{item.gene}}" class="link-none"
                                   target="_blank">{{item.gene | dashify}}</a></td>
                               <td>{{item.exon | dashify}}</td>
                               <td>{{item.oncominevariantclass | dashify}}</td>
@@ -1384,7 +1390,7 @@
                               <td>
                                 <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
                                 <span *ngFor="let items of item.publicMedIds; let last=last">
-                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items | dashify}}" class="link-none" target="_blank">{{items | dashify}}</a>
+                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
                                   <span *ngIf="!last">, </span>
                                 </span>
                                 </span>
@@ -1435,7 +1441,7 @@
                       <div class="table-responsive col-lg-12">
                         <table *ngIf="ruleEx.length == 0" class="table table-td-valign-middle table-striped">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 Gene
                               </th>
@@ -1465,7 +1471,7 @@
                         <table *ngIf="ruleEx.length!=0" class="table table-td-valign-middle table-striped" [mfData]="ruleEx | filterByText: searchtermRuleEx"
                           #mftableRuleEx="mfDataTable" [(mfSortBy)]="tableRuleExDefaultSort" [mfRowsOnPage]="recordsPerPageRuleEx">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 <mfDefaultSorter by="gene"><span class="table-header">Gene</span></mfDefaultSorter>
                               </th>
@@ -1489,7 +1495,7 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableRuleEx.data">
-                              <td><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln={{item.gene | dashify}}" class="link-none"
+                              <td><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln={{item.gene}}" class="link-none"
                                   target="_blank">{{item.gene | dashify}}</a></td>
                               <td>{{item.exon | dashify}}</td>
                               <td>{{item.oncominevariantclass | dashify}}</td>
@@ -1498,7 +1504,7 @@
                               <td>
                                 <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
                                 <span *ngFor="let items of item.publicMedIds; let last=last">
-                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items | dashify}}" class="link-none" target="_blank">{{items | dashify}}</a>
+                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
                                   <span *ngIf="!last">, </span>
                                 </span>
                                 </span>
@@ -1553,7 +1559,7 @@
                       <div class="table-responsive col-lg-12">
                         <table *ngIf="tableRulesData.assayResults.length == 0" class="table table-td-valign-middle table-striped">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 Gene
                               </th>
@@ -1577,7 +1583,7 @@
                         <table *ngIf="tableRulesData.assayResults.length!=0" class="table table-td-valign-middle table-striped" [mfData]="tableRulesData.assayResults | filterByText: searchtermAssay"
                           #mftableAssay="mfDataTable" [(mfSortBy)]="tableAssayDefaultSort" [mfRowsOnPage]="recordsPerPageAssay">
                           <thead>
-                            <tr class="success">
+                            <tr class="success-light">
                               <th>
                                 <mfDefaultSorter by="gene"><span class="table-header">Gene</span></mfDefaultSorter>
                               </th>
@@ -1664,7 +1670,7 @@
                       <div class="table-responsive col-lg-12">
                         <table *ngIf="tablePatientData.length == 0" class="table table-td-valign-middle table-striped table-col-width">
                           <thead>
-                            <tr class="success">
+                            <tr class="purple-light">
                               <th>
                                 Slot
                               </th>
@@ -1709,7 +1715,7 @@
                         <table *ngIf="tablePatientData.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="tablePatientData | filterByText: searchtermPatient"
                           #mftablePatient="mfDataTable" [(mfSortBy)]="tablePatientDefaultSort" [mfRowsOnPage]="recordsPerPagePatient">
                           <thead>
-                            <tr class="purple">
+                            <tr class="purple-light">
                               <th>
                                 <mfDefaultSorter by="slot"><span class="table-header">Slot</span></mfDefaultSorter>
                               </th>

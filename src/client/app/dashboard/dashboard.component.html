@@ -116,7 +116,7 @@
                       <div class="table-responsive col-lg-12">
                         <table *ngIf="table1Data.variant_reports.length == 0" class="table table-td-valign-middle table-striped">
                           <thead>
-                            <tr class="purple">
+                            <tr class="purple-light">
                               <th>
                                 Patient Sequence Number
                               </th>
@@ -149,7 +149,7 @@
                         <table *ngIf="table1Data.variant_reports!=0" class="table table-td-valign-middle table-striped" [mfData]="table1Data.variant_reports | filterByText: searchterm1"
                           #mftable1="mfDataTable" [(mfSortBy)]="table1DefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPage1">
                           <thead>
-                            <tr class="purple">
+                            <tr class="purple-light">
                               <th>
                                 <mfDefaultSorter by="patientSequenceNumber"><span class="table-header">Patient Sequence Number</span></mfDefaultSorter>
                               </th>
@@ -233,7 +233,7 @@
                       <div class="table-responsive col-lg-12">
                         <table *ngIf="table2Data.assignment_reports.length == 0" class="table table-td-valign-middle table-striped">
                           <thead>
-                            <tr class="purple">
+                            <tr class="purple-light">
                               <th>
                                 Patient Sequence Number
                               </th>
@@ -260,7 +260,7 @@
                         <table *ngIf="table2Data.assignment_reports.length!=0" class="table table-td-valign-middle table-striped" [mfData]="table2Data.assignment_reports | filterByText: searchterm2"
                           #mftable2="mfDataTable" [(mfSortBy)]="table2DefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPage2">
                           <thead>
-                            <tr class="purple">
+                            <tr class="purple-light">
                               <th>
                                 <mfDefaultSorter by="patientSequenceNumber"><span class="table-header">Patient Sequence Number</span></mfDefaultSorter>
                               </th>
@@ -349,7 +349,7 @@
           <div class="table-responsive col-lg-12">
             <table *ngIf="table3Data.length == 0" class="table table-td-valign-middle table-striped">
               <thead>
-                <tr class="purple">
+                <tr class="purple-light">
                   <th>
                     Patient Sequence Number
                   </th>
@@ -379,7 +379,7 @@
             <table *ngIf="table3Data.length!=0" class="table table-td-valign-middle table-striped" [mfData]="table3Data | filterByText: searchterm3"
               #mftable3="mfDataTable" [(mfSortBy)]="table3DefaultSort" [mfRowsOnPage]="recordsPerPage3">
               <thead>
-                <tr class="purple">
+                <tr class="purple-light">
                   <th>
                     <mfDefaultSorter by="psn"><span class="table-header">Patient Sequence Number</span></mfDefaultSorter>
                   </th>
