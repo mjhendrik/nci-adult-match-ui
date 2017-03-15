@@ -23,7 +23,7 @@
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select name="data-table_length" [(ngModel)]="recordsPerPage5" aria-controls="data-table" class="form-control form-control-purple input-sm">
+                        <select name="data-table_length" [(ngModel)]="recordsPerPagePatients" aria-controls="data-table" class="form-control form-control-purple input-sm">
                           <option [ngValue]=10>10</option>
                           <option [ngValue]=25>25</option>
                           <option [ngValue]=50>50</option>
@@ -35,15 +35,15 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input type="text" [(ngModel)]="searchterm5" class="form-control form-control-purple input-sm" placeholder="" aria-controls="data-table">                      
+                        <input type="text" [(ngModel)]="searchtermPatients" class="form-control form-control-purple input-sm" placeholder="" aria-controls="data-table">                      
                         </label>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table class="table table-td-valign-middle table-striped" [mfData]="table5Data | filterByText: searchterm5" #mftable5="mfDataTable"
-                          [(mfSortBy)]="table5DefaultSort" [mfRowsOnPage]="recordsPerPage5">
+                        <table class="table table-td-valign-middle table-striped" [mfData]="tablePatientsData | filterByText: searchtermPatients" #mftablePatients="mfDataTable"
+                          [(mfSortBy)]="tablePatientsDefaultSort" [mfRowsOnPage]="recordsPerPagePatients">
                           <thead>
                             <tr class="purple-light">
                               <th>
@@ -70,7 +70,7 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <tr *ngFor="let item of mftable5.data">
+                            <tr *ngFor="let item of mftablePatients.data">
                               <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                                 <a href [routerLink]="['/patients/details']" class="link-none">{{item.patientSequenceNumber | dashify}}</a>
                               </td>
@@ -84,14 +84,14 @@
                               <td>{{item.registrationDate | dashify}}</td>
                               <td>{{item.offTrialDate | dashify}}</td>
                             </tr>
-                            <tr *ngIf="mftable5.data.length == 0">
-                              <td class="f-s-15" colspan="7">No matching search results found for "{{searchterm5}}"</td>
+                            <tr *ngIf="mftablePatients.data.length == 0">
+                              <td class="f-s-15" colspan="7">No matching search results found for "{{searchtermPatients}}"</td>
                             </tr>
                           </tbody>
                           <tfoot>
                             <tr>
                               <td class="tfoot-padding" colspan="7">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchterm5" [totallength]="table5Data.length"></mfBootstrapPaginator>
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermPatients" [totallength]="tablePatientsData.length"></mfBootstrapPaginator>
                               </td>
                             </tr>
                           </tfoot>

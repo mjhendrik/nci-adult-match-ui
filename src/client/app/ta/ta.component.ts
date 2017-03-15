@@ -18,39 +18,39 @@ import { GMTFilter } from './../shared/pipes/gmt';
 })
 export class TaComponent implements OnInit {
 
-  searchterm4: string = '';
-  recordsPerPage4: number;
-  table4DefaultSort: string;
+  searchtermTA: string = '';
+  recordsPerPageTA: number;
+  tableTADefaultSort: string;
 
   constructor() {
 
   }
 
   ngOnInit() {
-    this.recordsPerPage4 = 100;
-    this.table4DefaultSort = 'treatmentArmId';
+    this.recordsPerPageTA = 100;
+    this.tableTADefaultSort = 'treatmentArmId';
 
-    for (let i = 0; i < this.table4Data.length; i++) {
-      this.table4Data[i].dateSuspendedOrClosed = this.table4Data[i].dateClosed == null ? this.table4Data[i].dateSuspended : this.table4Data[i].dateClosed;
+    for (let i = 0; i < this.tableTAData.length; i++) {
+      this.tableTAData[i].dateSuspendedOrClosed = this.tableTAData[i].dateClosed == null ? this.tableTAData[i].dateSuspended : this.tableTAData[i].dateClosed;
     }
 
     let gmt = new GMTFilter();
 
-    for (let i = 0; i < this.table4Data.length; i++) {
-      this.table4Data[i].dateCreated = gmt.transform(this.table4Data[i].dateCreated);
+    for (let i = 0; i < this.tableTAData.length; i++) {
+      this.tableTAData[i].dateCreated = gmt.transform(this.tableTAData[i].dateCreated);
     }
 
-    for (let i = 0; i < this.table4Data.length; i++) {
-      this.table4Data[i].dateOpened = gmt.transform(this.table4Data[i].dateOpened);
+    for (let i = 0; i < this.tableTAData.length; i++) {
+      this.tableTAData[i].dateOpened = gmt.transform(this.tableTAData[i].dateOpened);
     }
 
-    for (let i = 0; i < this.table4Data.length; i++) {
-      this.table4Data[i].dateSuspendedOrClosed = gmt.transform(this.table4Data[i].dateSuspendedOrClosed);
+    for (let i = 0; i < this.tableTAData.length; i++) {
+      this.tableTAData[i].dateSuspendedOrClosed = gmt.transform(this.tableTAData[i].dateSuspendedOrClosed);
     }
 
   }
 
-  table4Data: any = [
+  tableTAData: any = [
     {
       "treatmentArmId": "EAY131-S1",
       "treatmentArmName": "Trametinib in  NF1 mutation",

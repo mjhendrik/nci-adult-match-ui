@@ -26,31 +26,31 @@ import { GMTFilter } from './../shared/pipes/gmt';
 })
 export class PatientsComponent {
 
-  searchterm5: string = '';
-  recordsPerPage5: number;
-  table5DefaultSort: string;
+  searchtermPatients: string = '';
+  recordsPerPagePatients: number;
+  tablePatientsDefaultSort: string;
 
   constructor() {
 
   }
 
   ngOnInit() {
-    this.recordsPerPage5 = 100;
-    this.table5DefaultSort = 'patientSequenceNumber';
+    this.recordsPerPagePatients = 100;
+    this.tablePatientsDefaultSort = 'patientSequenceNumber';
 
     let gmt = new GMTFilter();
 
-    for (let i = 0; i < this.table5Data.length; i++) {
-      this.table5Data[i].registrationDate = gmt.transform(this.table5Data[i].registrationDate);
+    for (let i = 0; i < this.tablePatientsData.length; i++) {
+      this.tablePatientsData[i].registrationDate = gmt.transform(this.tablePatientsData[i].registrationDate);
     }
 
-    for (let i = 0; i < this.table5Data.length; i++) {
-      this.table5Data[i].offTrialDate = gmt.transform(this.table5Data[i].offTrialDate);
+    for (let i = 0; i < this.tablePatientsData.length; i++) {
+      this.tablePatientsData[i].offTrialDate = gmt.transform(this.tablePatientsData[i].offTrialDate);
     }
 
   }
 
-  table5Data: any = [
+  tablePatientsData: any = [
     {
       "patientSequenceNumber": "10586",
       "currentStatus": "REGISTRATION",

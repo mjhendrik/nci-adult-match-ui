@@ -20,7 +20,7 @@
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select name="data-table_length" [(ngModel)]="recordsPerPage4" aria-controls="data-table" class="form-control form-control-success input-sm">
+                        <select name="data-table_length" [(ngModel)]="recordsPerPageTA" aria-controls="data-table" class="form-control form-control-success input-sm">
                           <option [ngValue]=10>10</option>
                           <option [ngValue]=25>25</option>
                           <option [ngValue]=50>50</option>
@@ -32,15 +32,15 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input type="text" [(ngModel)]="searchterm4" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">                      
+                        <input type="text" [(ngModel)]="searchtermTA" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">                      
                         </label>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="table4Data | filterByText: searchterm4"
-                          #mftable4="mfDataTable" [(mfSortBy)]="table4DefaultSort" [mfRowsOnPage]="recordsPerPage4">
+                        <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="tableTAData | filterByText: searchtermTA"
+                          #mftableTA="mfDataTable" [(mfSortBy)]="tableTADefaultSort" [mfRowsOnPage]="recordsPerPageTA">
                           <thead>
                             <tr class="success-light">
                               <th>
@@ -76,7 +76,7 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <tr *ngFor="let item of mftable4.data">
+                            <tr *ngFor="let item of mftableTA.data">
                               <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                                 <a href [routerLink]="['/treatments/details']" class="link-none">{{item.treatmentArmId | dashify}}</a>
                               </td>
@@ -90,14 +90,14 @@
                               <td>{{item.dateOpened | dashify}}</td>
                               <td>{{item.dateSuspendedOrClosed | dashify}}</td>
                             </tr>
-                            <tr *ngIf="mftable4.data.length == 0">
-                              <td class="f-s-15" colspan="10">No matching search results found for "{{searchterm4}}"</td>
+                            <tr *ngIf="mftableTA.data.length == 0">
+                              <td class="f-s-15" colspan="10">No matching search results found for "{{searchtermTA}}"</td>
                             </tr>
                           </tbody>
                           <tfoot>
                             <tr>
                               <td class="tfoot-padding" colspan="10">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchterm4" [totallength]="table4Data.length"></mfBootstrapPaginator>
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermTA" [totallength]="tableTAData.length"></mfBootstrapPaginator>
                               </td>
                             </tr>
                           </tfoot>

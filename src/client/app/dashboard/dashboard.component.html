@@ -65,7 +65,7 @@
             <!--panel-purple-->
             <ul class="nav nav-tabs nav-tabs-purple p-l-0">
               <li class="active">
-                <a class="p-0" href="#justified-tab-1" data-toggle="tab" aria-expanded="true">
+                <a class="p-0" href="#justified-tab-VR" data-toggle="tab" aria-expanded="true">
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
@@ -74,7 +74,7 @@
                 </a>
               </li>
               <li class="">
-                <a class="p-0" href="#justified-tab-2" data-toggle="tab" aria-expanded="false">
+                <a class="p-0" href="#justified-tab-AR" data-toggle="tab" aria-expanded="false">
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
@@ -84,7 +84,7 @@
               </li>
             </ul>
             <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
-              <div class="tab-pane fade active in" id="justified-tab-1">
+              <div class="tab-pane fade active in" id="justified-tab-VR">
                 <!-- table 1 -->
                 <div class="row">
                   <!-- begin panel -->
@@ -93,7 +93,7 @@
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select [disabled]="table1Data.variant_reports.length == 0" name="data-table_length" [(ngModel)]="recordsPerPage1" aria-controls="data-table" class="form-control form-control-purple input-sm">
+                        <select [disabled]="tableVRData.variant_reports.length == 0" name="data-table_length" [(ngModel)]="recordsPerPageVR" aria-controls="data-table" class="form-control form-control-purple input-sm">
                           <option [ngValue]=10>10</option>
                           <option [ngValue]=25>25</option>
                           <option [ngValue]=50>50</option>
@@ -105,14 +105,14 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input [disabled]="table1Data.variant_reports.length == 0" type="text" [(ngModel)]="searchterm1" class="form-control form-control-purple input-sm" placeholder="" aria-controls="data-table">                      
+                        <input [disabled]="tableVRData.variant_reports.length == 0" type="text" [(ngModel)]="searchtermVR" class="form-control form-control-purple input-sm" placeholder="" aria-controls="data-table">                      
                         </label>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table *ngIf="table1Data.variant_reports.length == 0" class="table table-td-valign-middle table-striped">
+                        <table *ngIf="tableVRData.variant_reports.length == 0" class="table table-td-valign-middle table-striped">
                           <thead>
                             <tr class="purple-light">
                               <th>
@@ -144,8 +144,8 @@
                             </tr>
                           </tbody>
                         </table>
-                        <table *ngIf="table1Data.variant_reports!=0" class="table table-td-valign-middle table-striped" [mfData]="table1Data.variant_reports | filterByText: searchterm1"
-                          #mftable1="mfDataTable" [(mfSortBy)]="table1DefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPage1">
+                        <table *ngIf="tableVRData.variant_reports!=0" class="table table-td-valign-middle table-striped" [mfData]="tableVRData.variant_reports | filterByText: searchtermVR"
+                          #mftableVR="mfDataTable" [(mfSortBy)]="tableVRDefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPageVR">
                           <thead>
                             <tr class="purple-light">
                               <th>
@@ -172,7 +172,7 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <tr *ngFor="let item of mftable1.data">
+                            <tr *ngFor="let item of mftableVR.data">
                               <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                                 <a href [routerLink]="['/patients/details']" class="link-none">{{item.patientSequenceNumber | dashify}}</a>
                               </td>
@@ -183,14 +183,14 @@
                               <td>{{item.ngsDateReceived | dashify}}</td>
                               <td [colorcode-days]="item.daysPending">{{item.daysPending | dashify}}</td>
                             </tr>
-                            <tr *ngIf="mftable1.data.length == 0">
-                              <td class="f-s-15" colspan="8">No matching search results found for "{{searchterm1}}"</td>
+                            <tr *ngIf="mftableVR.data.length == 0">
+                              <td class="f-s-15" colspan="8">No matching search results found for "{{searchtermVR}}"</td>
                             </tr>
                           </tbody>
                           <tfoot>
                             <tr>
                               <td class="tfoot-padding" colspan="8">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchterm1" [totallength]="table1Data.variant_reports.length"></mfBootstrapPaginator>
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermVR" [totallength]="tableVRData.variant_reports.length"></mfBootstrapPaginator>
                               </td>
                             </tr>
                           </tfoot>
@@ -201,7 +201,7 @@
                   <!-- end panel -->
                 </div>
               </div>
-              <div class="tab-pane fade" id="justified-tab-2">
+              <div class="tab-pane fade" id="justified-tab-AR">
                 <!-- table 2 -->
                 <div class="row">
                   <!-- begin panel -->
@@ -210,7 +210,7 @@
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select [disabled]="table2Data.assignment_reports.length == 0" name="data-table_length" [(ngModel)]="recordsPerPage2"  aria-controls="data-table" class="form-control form-control-purple input-sm">
+                        <select [disabled]="tableARData.assignment_reports.length == 0" name="data-table_length" [(ngModel)]="recordsPerPageAR"  aria-controls="data-table" class="form-control form-control-purple input-sm">
                           <option value=10>10</option>
                           <option value=25>25</option>
                           <option value=50>50</option>
@@ -222,14 +222,14 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input [disabled]="table2Data.assignment_reports.length == 0" type="text" [(ngModel)]="searchterm2" class="form-control form-control-purple input-sm" placeholder="" aria-controls="data-table">
+                        <input [disabled]="tableARData.assignment_reports.length == 0" type="text" [(ngModel)]="searchtermAR" class="form-control form-control-purple input-sm" placeholder="" aria-controls="data-table">
                       </label>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table *ngIf="table2Data.assignment_reports.length == 0" class="table table-td-valign-middle table-striped">
+                        <table *ngIf="tableARData.assignment_reports.length == 0" class="table table-td-valign-middle table-striped">
                           <thead>
                             <tr class="purple-light">
                               <th>
@@ -255,8 +255,8 @@
                             </tr>
                           </tbody>
                         </table>
-                        <table *ngIf="table2Data.assignment_reports.length!=0" class="table table-td-valign-middle table-striped" [mfData]="table2Data.assignment_reports | filterByText: searchterm2"
-                          #mftable2="mfDataTable" [(mfSortBy)]="table2DefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPage2">
+                        <table *ngIf="tableARData.assignment_reports.length!=0" class="table table-td-valign-middle table-striped" [mfData]="tableARData.assignment_reports | filterByText: searchtermAR"
+                          #mftableAR="mfDataTable" [(mfSortBy)]="tableARDefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPageAR">
                           <thead>
                             <tr class="purple-light">
                               <th>
@@ -277,7 +277,7 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <tr *ngFor="let item of mftable2.data">
+                            <tr *ngFor="let item of mftableAR.data">
                               <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                                 <a href [routerLink]="['/patients/details']" class="link-none">{{item.patientSequenceNumber | dashify}}</a>
                               </td>
@@ -289,14 +289,14 @@
                               <td>{{item.dateAssigned | dashify}}</td>
                               <td [colorcode-hours]="item.hoursPending">{{item.hoursPending | dashify}}</td>
                             </tr>
-                            <tr *ngIf="mftable2.data.length == 0">
-                              <td class="f-s-15" colspan="5">No matching search results found for "{{searchterm2}}"</td>
+                            <tr *ngIf="mftableAR.data.length == 0">
+                              <td class="f-s-15" colspan="5">No matching search results found for "{{searchtermAR}}"</td>
                             </tr>
                           </tbody>
                           <tfoot>
                             <tr>
                               <td class="tfoot-padding" colspan="5">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchterm2" [totallength]="table2Data.assignment_reports.length"></mfBootstrapPaginator>
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermAR" [totallength]="tableARData.assignment_reports.length"></mfBootstrapPaginator>
                               </td>
                             </tr>
                           </tfoot>
@@ -322,7 +322,7 @@
           <div class="col-md-6 p-l-5">
             <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
               <label>Show
-                        <select [disabled]="table3Data.length == 0" name="data-table_length" [(ngModel)]="recordsPerPage3" aria-controls="data-table" class="form-control form-control-purple input-sm">
+                        <select [disabled]="tablePatientsAwaitingData.length == 0" name="data-table_length" [(ngModel)]="recordsPerPagePatientsAwaiting" aria-controls="data-table" class="form-control form-control-purple input-sm">
                           <option value=10>10</option>
                           <option value=25>25</option>
                           <option value=50>50</option>
@@ -334,14 +334,14 @@
           <div class="col-md-6 p-r-5">
             <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
               <label>Search:
-              <input [disabled]="table3Data.length == 0" type="text" [(ngModel)]="searchterm3" class="form-control form-control-purple input-sm" placeholder="" aria-controls="data-table">
+              <input [disabled]="tablePatientsAwaitingData.length == 0" type="text" [(ngModel)]="searchtermPatientsAwaiting" class="form-control form-control-purple input-sm" placeholder="" aria-controls="data-table">
                       </label>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="table-responsive col-lg-12">
-            <table *ngIf="table3Data.length == 0" class="table table-td-valign-middle table-striped">
+            <table *ngIf="tablePatientsAwaitingData.length == 0" class="table table-td-valign-middle table-striped">
               <thead>
                 <tr class="purple-light">
                   <th>
@@ -370,8 +370,8 @@
                 </tr>
               </tbody>
             </table>
-            <table *ngIf="table3Data.length!=0" class="table table-td-valign-middle table-striped" [mfData]="table3Data | filterByText: searchterm3"
-              #mftable3="mfDataTable" [(mfSortBy)]="table3DefaultSort" [mfRowsOnPage]="recordsPerPage3">
+            <table *ngIf="tablePatientsAwaitingData.length!=0" class="table table-td-valign-middle table-striped" [mfData]="tablePatientsAwaitingData | filterByText: searchtermPatientsAwaiting"
+              #mftablePatientsAwaiting="mfDataTable" [(mfSortBy)]="tablePatientsAwaitingDefaultSort" [mfRowsOnPage]="recordsPerPagePatientsAwaiting">
               <thead>
                 <tr class="purple-light">
                   <th>
@@ -396,7 +396,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let item of mftable3.data">
+                <tr *ngFor="let item of mftablePatientsAwaiting.data">
                   <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                     <a href [routerLink]="['/patients/details']" class="link-none">{{item.psn | dashify}}</a>
                   </td>
@@ -406,14 +406,14 @@
                   <td>AWAITING DATA</td>
                   <td>{{item.date_verified | dashify}}</td>
                 </tr>
-                <tr *ngIf="mftable3.data.length == 0">
-                  <td class="f-s-15" colspan="6">No matching search results found for "{{searchterm3}}"</td>
+                <tr *ngIf="mftablePatientsAwaiting.data.length == 0">
+                  <td class="f-s-15" colspan="6">No matching search results found for "{{searchtermPatientsAwaiting}}"</td>
                 </tr>
               </tbody>
               <tfoot>
                 <tr>
                   <td class="tfoot-padding" colspan="6">
-                    <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchterm3" [totallength]="table3Data.length"></mfBootstrapPaginator>
+                    <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermPatientsAwaiting" [totallength]="tablePatientsAwaitingData.length"></mfBootstrapPaginator>
                   </td>
                 </tr>
               </tfoot>
