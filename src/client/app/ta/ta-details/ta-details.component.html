@@ -1,11 +1,17 @@
 <div id="content" class="content">
+  <ol class="breadcrumb pull-right">
+    <li><a href="javascript:;">Dashboard</a></li>
+    <li><a href="javascript:;">Treatment Arms</a></li>
+    <li class="active">Treatment Arm {{tableRulesData.id | dashify}}</li>
+  </ol>
+  <h1 class="page-header">Treatment Arm {{tableRulesData.id | dashify}}</h1>
   <div class="row">
     <div class="col-md-4">
       <!-- begin panel -->
       <div class="panel panel-success">
         <div class="panel-heading">
           <span class="panel-title f-s-18">
-            Treatment Arm {{tableRulesData.id | dashify}}
+            Overview
           </span>
         </div>
         <div class="m-0 p-0">
@@ -479,7 +485,7 @@
                               <td>
                                 <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
                                 <span *ngFor="let items of item.publicMedIds; let last=last">
-                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items | dashify}}" class="link-none" target="_blank">{{items | dashify}}</a>
+                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
                                   <span *ngIf="!last">, </span>
                                 </span>
                                 </span>
@@ -599,7 +605,7 @@
                               <td>
                                 <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
                                 <span *ngFor="let items of item.publicMedIds; let last=last">
-                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items | dashify}}" class="link-none" target="_blank">{{items | dashify}}</a>
+                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
                                   <span *ngIf="!last">, </span>
                                 </span>
                                 </span>
@@ -726,7 +732,7 @@
                               <td>
                                 <span *ngIf="item.variant.publicMedIds!=null && item.variant.publicMedIds!=0">
                                 <span *ngFor="let items of item.variant.publicMedIds; let last=last">
-                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items | dashify}}" class="link-none" target="_blank">{{items | dashify}}</a>
+                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
                                   <span *ngIf="!last">, </span>
                                 </span>
                                 </span>
@@ -846,7 +852,7 @@
                               <td>
                                 <span *ngIf="item.variant.publicMedIds!=null && item.variant.publicMedIds!=0">
                                 <span *ngFor="let items of item.variant.publicMedIds; let last=last">
-                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items | dashify}}" class="link-none" target="_blank">{{items | dashify}}</a>
+                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
                                   <span *ngIf="!last">, </span>
                                 </span>
                                 </span>
@@ -961,7 +967,7 @@
                               <td>
                                 <span *ngIf="item.variant.publicMedIds!=null && item.variant.publicMedIds!=0">
                                 <span *ngFor="let items of item.variant.publicMedIds; let last=last">
-                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items | dashify}}" class="link-none" target="_blank">{{items | dashify}}</a>
+                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
                                   <span *ngIf="!last">, </span>
                                 </span>
                                 </span>
@@ -1070,7 +1076,7 @@
                               <td>
                                 <span *ngIf="item.variant.publicMedIds!=null && item.variant.publicMedIds!=0">
                                 <span *ngFor="let items of item.variant.publicMedIds; let last=last">
-                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items | dashify}}" class="link-none" target="_blank">{{items | dashify}}</a>
+                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
                                   <span *ngIf="!last">, </span>
                                 </span>
                                 </span>
@@ -1170,7 +1176,7 @@
                               <td>
                                 <span *ngIf="item.variant.publicMedIds!=null && item.variant.publicMedIds!=0">
                                 <span *ngFor="let items of item.variant.publicMedIds; let last=last">
-                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items | dashify}}" class="link-none" target="_blank">{{items | dashify}}</a>
+                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
                                   <span *ngIf="!last">, </span>
                                 </span>
                                 </span>
@@ -1263,7 +1269,7 @@
                               <td>
                                 <span *ngIf="item.variant.publicMedIds!=null && item.variant.publicMedIds!=0">
                                 <span *ngFor="let items of item.variant.publicMedIds; let last=last">
-                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items | dashify}}" class="link-none" target="_blank">{{items | dashify}}</a>
+                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
                                   <span *ngIf="!last">, </span>
                                 </span>
                                 </span>
@@ -1375,7 +1381,7 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableRuleIn.data">
-                              <td><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln={{item.gene | dashify}}" class="link-none"
+                              <td><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln={{item.gene}}" class="link-none"
                                   target="_blank">{{item.gene | dashify}}</a></td>
                               <td>{{item.exon | dashify}}</td>
                               <td>{{item.oncominevariantclass | dashify}}</td>
@@ -1384,7 +1390,7 @@
                               <td>
                                 <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
                                 <span *ngFor="let items of item.publicMedIds; let last=last">
-                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items | dashify}}" class="link-none" target="_blank">{{items | dashify}}</a>
+                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
                                   <span *ngIf="!last">, </span>
                                 </span>
                                 </span>
@@ -1489,7 +1495,7 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableRuleEx.data">
-                              <td><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln={{item.gene | dashify}}" class="link-none"
+                              <td><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln={{item.gene}}" class="link-none"
                                   target="_blank">{{item.gene | dashify}}</a></td>
                               <td>{{item.exon | dashify}}</td>
                               <td>{{item.oncominevariantclass | dashify}}</td>
@@ -1498,7 +1504,7 @@
                               <td>
                                 <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
                                 <span *ngFor="let items of item.publicMedIds; let last=last">
-                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items | dashify}}" class="link-none" target="_blank">{{items | dashify}}</a>
+                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
                                   <span *ngIf="!last">, </span>
                                 </span>
                                 </span>
