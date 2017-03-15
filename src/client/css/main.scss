@@ -77,27 +77,21 @@
     margin-top: -1px;
 }
 .match-timeline-list > li:before,
-.match-timeline-list > li:after,
-.match-timeline-list > li a:before,
-.match-timeline-list > li a:after {
+.match-timeline-list > li:after {
     content: '';
     display: table;
     clear: both;
 }
 .match-timeline-list a {
-    text-decoration: none;
-    color: #30373e;
-    display: block;
-    padding: 0 20px;
-    transition: background .1s linear;
+    color: $text-primary-light-color;
 }
-.match-timeline-list li:last-child a {
-    border-radius: 0 0 5px 5px;
-}
-.match-timeline-list a:hover,
-.match-timeline-list a:focus {
-    background: #ebeced;
-}
+// .match-timeline-list li:last-child a {
+//     border-radius: 0 0 5px 5px;
+// }
+// .match-timeline-list a:hover,
+// .match-timeline-list a:focus {
+//     background: #ebeced;
+// }
 .match-timeline-list .timeline-image {
     float: left;
     overflow: hidden;
