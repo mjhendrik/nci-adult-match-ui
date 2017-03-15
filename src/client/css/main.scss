@@ -1,20 +1,19 @@
 @import "style.css";
 // replace for production: @import "style.min.css";
 @import "../scss/index";
-
 .panel-accent-sides-purple {
-    border-left: 2px solid #9b59b6;
-    border-right: 2px solid #9b59b6;
+  border-left: 2px solid #9b59b6;
+  border-right: 2px solid #9b59b6;
 }
 
 .panel-accent-bottom-purple {
-    border-bottom: 2px solid #9b59b6;
+  border-bottom: 2px solid #9b59b6;
 }
 
 .widget {
-    a {
-        color: white;
-    }
+  a {
+    color: white;
+  }
 }
 
 .bg-body {
@@ -26,26 +25,34 @@
 }
 
 .panel.panel-purple-light .panel-heading {
-    background-color: $light-purple-color;
+  background-color: $light-purple-color;
 }
 
 .panel-details-row {
-    margin-left: 4em;
+  margin-left: 4em;
 }
 
 .btn.btn-purple-light {
-    color: #fff;
-    background: $light-purple-color;
-    -webkit-box-shadow: 0 1px $dark-purple-color;
-    box-shadow: 0 1px $dark-purple-color;
+  color: #fff;
+  background: $light-purple-color;
+  -webkit-box-shadow: 0 1px $dark-purple-color;
+  box-shadow: 0 1px $dark-purple-color;
 }
 
-.table > thead > tr.purple-light > th {
-    color: #fff;
-    background-color: $light-purple-color !important;
-    border-top-color: $dark-purple-color !important;
-    border-top-style: solid !important;
-    border-top-width: 1px !important;
+.table>thead>tr.purple-light>th {
+  color: #fff;
+  background-color: $light-purple-color !important;
+  border-top-color: $dark-purple-color !important;
+  border-top-style: solid !important;
+  border-top-width: 1px !important;
+}
+
+.table>thead>tr.success-light>th {
+  color: #fff;
+  background-color: $light-success-color !important;
+  border-top-color: $dark-success-color !important;
+  border-top-style: solid !important;
+  border-top-width: 1px !important;
 }
 
 /* Widget - Timeline */
