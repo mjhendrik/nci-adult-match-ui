@@ -1757,12 +1757,12 @@
                             <tr *ngFor="let item of mftablePatient.data">
                               <td>{{item.slot | dashify}}</td>
                               <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                                <a href [routerLink]="['/patients/details']" class="link-none">{{item.patientSequenceNumber | dashify}}</a>
+                                <a href [routerLink]="['/patients/details']" class="link-none"><i class="fa fa-user"></i> {{item.patientSequenceNumber | dashify}}</a>
                               </td>
-                              <td>{{item.treatmentArmVersion | dashify}}</td>
+                              <td><a href="javascript:;" class="link-none"><i class="fa fa-medkit"></i> {{item.treatmentArmVersion | dashify}}</a></td>
                               <td [colorcode-patients]="item.formattedPatientStatus">{{item.formattedPatientStatus | dashify}}</td>
-                              <td class="text-center"><i class="fa fa-file-text-o"></i></td>
-                              <td class="text-center"><i class="fa fa-file-text-o"></i></td>
+                              <td class="text-center"><a href="javascript:;" class="link-none"><i class="fa fa-file-text-o"></i></a></td>
+                              <td class="text-center"><a href="javascript:;" class="link-none"><i class="fa fa-file-text-o"></i></a></td>
                               <td>{{item.dateSelected | dashify}}</td>
                               <td>{{item.dateOnArm | dashify}}</td>
                               <td>{{item.dateOffArm | dashify}}</td>
