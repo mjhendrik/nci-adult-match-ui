@@ -9817,7 +9817,7 @@ export class TaDetailsComponent implements OnInit {
 
   tablePatientData: any = [
     {
-      "slot": "-",
+      "slot": null,
       "patientSequenceNumber": "10361",
       "patientStatus": "OFF_TRIAL_NOT_CONSENTED",
       "formattedPatientStatus": "OFF_TRIAL_NOT_CONSENTED",
@@ -9845,7 +9845,7 @@ export class TaDetailsComponent implements OnInit {
       "variantReportConfirmed": false
     },
     {
-      "slot": "-",
+      "slot": null,
       "patientSequenceNumber": "10545",
       "patientStatus": "OFF_TRIAL_NOT_CONSENTED",
       "formattedPatientStatus": "OFF_TRIAL_NOT_CONSENTED",
@@ -9873,7 +9873,7 @@ export class TaDetailsComponent implements OnInit {
       "variantReportConfirmed": false
     },
     {
-      "slot": "1",
+      "slot": 1,
       "patientSequenceNumber": "10612",
       "patientStatus": "OFF_TRIAL",
       "formattedPatientStatus": "FORMERLY_ON_ARM_OFF_TRIAL",
@@ -9901,7 +9901,7 @@ export class TaDetailsComponent implements OnInit {
       "variantReportConfirmed": false
     },
     {
-      "slot": "-",
+      "slot": null,
       "patientSequenceNumber": "10700",
       "patientStatus": "NOT_ELIGIBLE",
       "formattedPatientStatus": "NOT_ELIGIBLE",
@@ -9929,7 +9929,7 @@ export class TaDetailsComponent implements OnInit {
       "variantReportConfirmed": false
     },
     {
-      "slot": "2",
+      "slot": 2,
       "patientSequenceNumber": "10768",
       "patientStatus": "ON_TREATMENT_ARM",
       "formattedPatientStatus": "ON_TREATMENT_ARM",
@@ -9957,7 +9957,7 @@ export class TaDetailsComponent implements OnInit {
       "variantReportConfirmed": false
     },
     {
-      "slot": "2",
+      "slot": 2,
       "patientSequenceNumber": "10886",
       "patientStatus": "ON_TREATMENT_ARM",
       "formattedPatientStatus": "ON_TREATMENT_ARM",
@@ -9985,7 +9985,7 @@ export class TaDetailsComponent implements OnInit {
       "variantReportConfirmed": false
     },
     {
-      "slot": "1",
+      "slot": 1,
       "patientSequenceNumber": "10828",
       "patientStatus": "ON_TREATMENT_ARM",
       "formattedPatientStatus": "ON_TREATMENT_ARM",
@@ -10013,7 +10013,7 @@ export class TaDetailsComponent implements OnInit {
       "variantReportConfirmed": false
     },
     {
-      "slot": "-",
+      "slot": null,
       "patientSequenceNumber": "11094",
       "patientStatus": "NOT_ELIGIBLE",
       "formattedPatientStatus": "NOT_ELIGIBLE",
@@ -10041,7 +10041,7 @@ export class TaDetailsComponent implements OnInit {
       "variantReportConfirmed": false
     },
     {
-      "slot": "3",
+      "slot": 3,
       "patientSequenceNumber": "11055",
       "patientStatus": "ON_TREATMENT_ARM",
       "formattedPatientStatus": "ON_TREATMENT_ARM",
@@ -10069,7 +10069,7 @@ export class TaDetailsComponent implements OnInit {
       "variantReportConfirmed": false
     },
     {
-      "slot": "4",
+      "slot": 4,
       "patientSequenceNumber": "11315",
       "patientStatus": "ON_TREATMENT_ARM",
       "formattedPatientStatus": "ON_TREATMENT_ARM",
@@ -10097,7 +10097,7 @@ export class TaDetailsComponent implements OnInit {
       "variantReportConfirmed": false
     },
     {
-      "slot": "-",
+      "slot": null,
       "patientSequenceNumber": "11763",
       "patientStatus": "OFF_TRIAL_DECEASED",
       "formattedPatientStatus": "OFF_TRIAL_DECEASED",
@@ -10125,7 +10125,7 @@ export class TaDetailsComponent implements OnInit {
       "variantReportConfirmed": false
     },
     {
-      "slot": "-",
+      "slot": null,
       "patientSequenceNumber": "11929",
       "patientStatus": "NOT_ELIGIBLE",
       "formattedPatientStatus": "NOT_ELIGIBLE",
@@ -10153,7 +10153,7 @@ export class TaDetailsComponent implements OnInit {
       "variantReportConfirmed": false
     },
     {
-      "slot": "-",
+      "slot": null,
       "patientSequenceNumber": "12531",
       "patientStatus": "OFF_TRIAL_NOT_CONSENTED",
       "formattedPatientStatus": "OFF_TRIAL_NOT_CONSENTED",
@@ -10181,7 +10181,7 @@ export class TaDetailsComponent implements OnInit {
       "variantReportConfirmed": false
     },
     {
-      "slot": "5",
+      "slot": 5,
       "patientSequenceNumber": "12633",
       "patientStatus": "ON_TREATMENT_ARM",
       "formattedPatientStatus": "ON_TREATMENT_ARM",
@@ -10209,7 +10209,7 @@ export class TaDetailsComponent implements OnInit {
       "variantReportConfirmed": false
     },
     {
-      "slot": "6",
+      "slot": 6,
       "patientSequenceNumber": "13070",
       "patientStatus": "ON_TREATMENT_ARM",
       "formattedPatientStatus": "ON_TREATMENT_ARM",
@@ -10237,7 +10237,7 @@ export class TaDetailsComponent implements OnInit {
       "variantReportConfirmed": false
     },
     {
-      "slot": "-",
+      "slot": null,
       "patientSequenceNumber": "13073",
       "patientStatus": "OFF_TRIAL_NOT_CONSENTED",
       "formattedPatientStatus": "OFF_TRIAL_NOT_CONSENTED",
@@ -10265,7 +10265,7 @@ export class TaDetailsComponent implements OnInit {
       "variantReportConfirmed": false
     },
     {
-      "slot": "-",
+      "slot": null,
       "patientSequenceNumber": "13019",
       "patientStatus": "NOT_ELIGIBLE",
       "formattedPatientStatus": "NOT_ELIGIBLE",
@@ -10293,7 +10293,7 @@ export class TaDetailsComponent implements OnInit {
       "variantReportConfirmed": false
     },
     {
-      "slot": "8",
+      "slot": 8,
       "patientSequenceNumber": "13365",
       "patientStatus": "ON_TREATMENT_ARM",
       "formattedPatientStatus": "ON_TREATMENT_ARM",
@@ -10321,7 +10321,7 @@ export class TaDetailsComponent implements OnInit {
       "variantReportConfirmed": false
     },
     {
-      "slot": "7",
+      "slot": 7,
       "patientSequenceNumber": "13249",
       "patientStatus": "ON_TREATMENT_ARM",
       "formattedPatientStatus": "ON_TREATMENT_ARM",
@@ -10349,7 +10349,7 @@ export class TaDetailsComponent implements OnInit {
       "variantReportConfirmed": false
     },
     {
-      "slot": "9",
+      "slot": 9,
       "patientSequenceNumber": "13623",
       "patientStatus": "ON_TREATMENT_ARM",
       "formattedPatientStatus": "ON_TREATMENT_ARM",
@@ -10377,7 +10377,7 @@ export class TaDetailsComponent implements OnInit {
       "variantReportConfirmed": false
     },
     {
-      "slot": "-",
+      "slot": null,
       "patientSequenceNumber": "13640",
       "patientStatus": "OFF_TRIAL_NOT_CONSENTED",
       "formattedPatientStatus": "OFF_TRIAL_NOT_CONSENTED",
@@ -10405,7 +10405,7 @@ export class TaDetailsComponent implements OnInit {
       "variantReportConfirmed": false
     },
     {
-      "slot": "-",
+      "slot": null,
       "patientSequenceNumber": "13958",
       "patientStatus": "NOT_ELIGIBLE",
       "formattedPatientStatus": "NOT_ELIGIBLE",
@@ -10433,7 +10433,7 @@ export class TaDetailsComponent implements OnInit {
       "variantReportConfirmed": false
     },
     {
-      "slot": "12",
+      "slot": 12,
       "patientSequenceNumber": "13875",
       "patientStatus": "ON_TREATMENT_ARM",
       "formattedPatientStatus": "ON_TREATMENT_ARM",
@@ -10461,7 +10461,7 @@ export class TaDetailsComponent implements OnInit {
       "variantReportConfirmed": false
     },
     {
-      "slot": "10",
+      "slot": 10,
       "patientSequenceNumber": "13782",
       "patientStatus": "ON_TREATMENT_ARM",
       "formattedPatientStatus": "ON_TREATMENT_ARM",
@@ -10489,7 +10489,7 @@ export class TaDetailsComponent implements OnInit {
       "variantReportConfirmed": false
     },
     {
-      "slot": "11",
+      "slot": 11,
       "patientSequenceNumber": "13835",
       "patientStatus": "ON_TREATMENT_ARM",
       "formattedPatientStatus": "ON_TREATMENT_ARM",
@@ -10517,7 +10517,7 @@ export class TaDetailsComponent implements OnInit {
       "variantReportConfirmed": false
     },
     {
-      "slot": "13",
+      "slot": 13,
       "patientSequenceNumber": "14473",
       "patientStatus": "ON_TREATMENT_ARM",
       "formattedPatientStatus": "ON_TREATMENT_ARM",
@@ -10545,7 +10545,7 @@ export class TaDetailsComponent implements OnInit {
       "variantReportConfirmed": false
     },
     {
-      "slot": "14",
+      "slot": 14,
       "patientSequenceNumber": "14499",
       "patientStatus": "PENDING_APPROVAL",
       "formattedPatientStatus": "PENDING_APPROVAL",
@@ -10573,7 +10573,7 @@ export class TaDetailsComponent implements OnInit {
       "variantReportConfirmed": false
     },
     {
-      "slot": "16",
+      "slot": 16,
       "patientSequenceNumber": "14687",
       "patientStatus": "PENDING_APPROVAL",
       "formattedPatientStatus": "PENDING_APPROVAL",
@@ -10601,7 +10601,7 @@ export class TaDetailsComponent implements OnInit {
       "variantReportConfirmed": false
     },
     {
-      "slot": "15",
+      "slot": 15,
       "patientSequenceNumber": "14644",
       "patientStatus": "PENDING_APPROVAL",
       "formattedPatientStatus": "PENDING_APPROVAL",
@@ -10629,7 +10629,7 @@ export class TaDetailsComponent implements OnInit {
       "variantReportConfirmed": false
     },
     {
-      "slot": "17",
+      "slot": 17,
       "patientSequenceNumber": "14788",
       "patientStatus": "PENDING_CONFIRMATION",
       "formattedPatientStatus": "PENDING_CONFIRMATION",
