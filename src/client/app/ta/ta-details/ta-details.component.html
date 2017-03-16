@@ -5,10 +5,10 @@
     <li class="active">Treatment Arm {{tableRulesData.id | dashify}}</li>
   </ol>
   <h1 class="page-header">Treatment Arm {{tableRulesData.id | dashify}}</h1>
-  <div class="row">
+  <div class="row" matchHeight="panel-height">
     <div class="col-md-4">
       <!-- begin panel -->
-      <div class="panel panel-success-light">
+      <div class="panel panel-success-light panel-height">
         <div class="panel-heading">
           <span class="text-white f-s-18">
             Overview
@@ -17,7 +17,7 @@
         <div class="m-0 p-0">
           <div>
             <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
-              <div class="tab-pane active in">
+              <div class="tab-pane active">
                 <!-- table details -->
                 <div class="row">
                   <!-- begin panel -->
@@ -67,7 +67,7 @@
     </div>
     <div class="col-md-4">
       <!-- begin panel -->
-      <div class="panel panel-success-light">
+      <div class="panel panel-success-light panel-height">
         <div class="panel-heading">
           <span class="text-white f-s-18">
             History
@@ -76,7 +76,7 @@
         <div class="m-0 p-0">
           <div>
             <div class="tab-content m-b-0 p-l-0 p-r-0 p-t-0 p-b-0">
-              <div class="tab-pane panel-height-fixed active in">
+              <div class="tab-pane active">
                 <!-- table history -->
                 <div class="row">
                   <!-- begin panel -->
@@ -94,7 +94,7 @@
                               </th>
                             </tr>
                           </thead>
-                          <tbody>
+                          <tbody id="tbody-height">
                             <tr *ngFor="let item of mftableHistory.data">
                               <td [colorcode-ta]="item.status" class="col-xs-4">{{item.status | dashify}}</td>
                               <td class="col-xs-8">{{item.date | gmt | dashify}}</td>
@@ -115,21 +115,23 @@
     </div>
     <div class="col-md-4">
       <!-- begin panel -->
-      <div class="panel">
+      <div class="panel panel-success-light panel-height">
         <div class="panel-heading">
-          <h4 class="panel-title">Disease Represented In Assignments To This Treatment Arm</h4>
+          <span class="text-white f-s-18">
+            Treatment Arm Chart
+          </span>
         </div>
         <div class="m-0 p-0">
           <div>
             <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
-              <div class="tab-pane active panel-height-fixed">
+              <div class="tab-pane active">
                 <!-- chart -->
                 <div class="row">
                   <!-- begin panel -->
                   <div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <i class="fa fa-pie-chart fa-4x" style="color: #f2f2f2; padding-left: 71px; font-size: 359px;"></i>
+                        <i class="fa fa-pie-chart fa-4x" style="color: #f2f2f2; padding-left: 71px; padding-top: 10px; font-size: 359px;"></i>
                       </div>
                     </div>
                   </div>
@@ -1171,10 +1173,8 @@
                           <tbody>
                             <tr *ngFor="let item of mftableGeneIn.data">
                               <td>
-                                <a href="javascript:;" class="link-none" [linkExternal]="'cosmicFusionId'" target="_blank">{{item.variant.identifier | dashify}}</a>
-                                <!--<external-links [externalLink]="'cosmicFusionId'" [linkId]="item.variant.identifier"></external-links>-->
+                                <external-links [externalLink]="'cosmicFusionId'" [linkId]="item.variant.identifier"></external-links>
                               </td>
-                              <!--only for COSF-->
                               <td>{{item.variant.levelOfEvidence | dashify}}</td>
                               <td>
                                 <span *ngIf="item.variant.publicMedIds!=null && item.variant.publicMedIds!=0">
@@ -1266,8 +1266,9 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableGeneEx.data">
-                              <td><a href="javascript:;" class="link-none" [linkExternal]="'cosmicFusionId'" target="_blank">{{item.variant.identifier | dashify}}</a></td>
-                              <!--only for COSF-->
+                              <td>
+                                <external-links [externalLink]="'cosmicFusionId'" [linkId]="item.variant.identifier"></external-links>
+                              </td>
                               <td>{{item.variant.levelOfEvidence | dashify}}</td>
                               <td>
                                 <span *ngIf="item.variant.publicMedIds!=null && item.variant.publicMedIds!=0">
