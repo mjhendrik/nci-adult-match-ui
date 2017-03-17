@@ -696,45 +696,45 @@
                           <thead>
                             <tr class="success-light">
                               <th>
-                                <mfDefaultSorter by="variant.identifier"><span class="table-header">ID</span></mfDefaultSorter>
+                                <mfDefaultSorter by="identifier"><span class="table-header">ID</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="variant.chromosome"><span class="table-header">Chorm</span></mfDefaultSorter>
+                                <mfDefaultSorter by="chromosome"><span class="table-header">Chorm</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="variant.position"><span class="table-header">Position</span></mfDefaultSorter>
+                                <mfDefaultSorter by="position"><span class="table-header">Position</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="variant.reference"><span class="table-header">OCP Ref</span></mfDefaultSorter>
+                                <mfDefaultSorter by="reference"><span class="table-header">OCP Ref</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="variant.alternative"><span class="table-header">OCP Alt</span></mfDefaultSorter>
+                                <mfDefaultSorter by="alternative"><span class="table-header">OCP Alt</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="variant.levelOfEvidence"><span class="table-header">LOE</span></mfDefaultSorter>
+                                <mfDefaultSorter by="levelOfEvidence"><span class="table-header">LOE</span></mfDefaultSorter>
                               </th>
                               <th>
                                 <span class="table-header">Lit</span>
-                                <!--<mfDefaultSorter by="variant.publicMedIds"></mfDefaultSorter>-->
+                                <!--<mfDefaultSorter by="publicMedIds"></mfDefaultSorter>-->
                               </th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableIndelIn.data">
-                              <td><a href="javascript:;" class="link-none" [linkExternal]="'cosmicId'" target="_blank">{{item.variant.identifier | dashify}}</a></td>
-                              <td>{{item.variant.chromosome | dashify}}</td>
-                              <td>{{item.variant.position | dashify}}</td>
-                              <td>{{item.variant.reference | dashify}}</td>
-                              <td>{{item.variant.alternative | dashify}}</td>
-                              <td>{{item.variant.levelOfEvidence | dashify}}</td>
+                              <td><a href="javascript:;" class="link-none" [linkExternal]="'cosmicId'" target="_blank">{{item.identifier | dashify}}</a></td>
+                              <td>{{item.chromosome | dashify}}</td>
+                              <td>{{item.position | dashify}}</td>
+                              <td>{{item.reference | dashify}}</td>
+                              <td>{{item.alternative | dashify}}</td>
+                              <td>{{item.levelOfEvidence | dashify}}</td>
                               <td>
-                                <span *ngIf="item.variant.publicMedIds!=null && item.variant.publicMedIds!=0">
-                                <span *ngFor="let items of item.variant.publicMedIds; let last=last">
+                                <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
+                                <span *ngFor="let items of item.publicMedIds; let last=last">
                                   <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
                                   <span *ngIf="!last">, </span>
                                 </span>
                                 </span>
-                                <span *ngIf="item.variant.publicMedIds==null || item.variant.publicMedIds==0">-</span>
+                                <span *ngIf="item.publicMedIds==null || item.publicMedIds==0">-</span>
                               </td>
                             </tr>
                             <tr *ngIf="mftableIndelIn.data.length == 0">
@@ -816,45 +816,45 @@
                           <thead>
                             <tr class="success-light">
                               <th>
-                                <mfDefaultSorter by="variant.identifier"><span class="table-header">ID</span></mfDefaultSorter>
+                                <mfDefaultSorter by="identifier"><span class="table-header">ID</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="variant.chromosome"><span class="table-header">Chorm</span></mfDefaultSorter>
+                                <mfDefaultSorter by="chromosome"><span class="table-header">Chorm</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="variant.position"><span class="table-header">Position</span></mfDefaultSorter>
+                                <mfDefaultSorter by="position"><span class="table-header">Position</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="variant.reference"><span class="table-header">OCP Ref</span></mfDefaultSorter>
+                                <mfDefaultSorter by="reference"><span class="table-header">OCP Ref</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="variant.alternative"><span class="table-header">OCP Alt</span></mfDefaultSorter>
+                                <mfDefaultSorter by="alternative"><span class="table-header">OCP Alt</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="variant.levelOfEvidence"><span class="table-header">LOE</span></mfDefaultSorter>
+                                <mfDefaultSorter by="levelOfEvidence"><span class="table-header">LOE</span></mfDefaultSorter>
                               </th>
                               <th>
                                 <span class="table-header">Lit</span>
-                                <!--<mfDefaultSorter by="variant.publicMedIds"></mfDefaultSorter>-->
+                                <!--<mfDefaultSorter by="publicMedIds"></mfDefaultSorter>-->
                               </th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableIndelEx.data">
-                              <td><a href="javascript:;" class="link-none" [linkExternal]="'cosmicId'" target="_blank">{{item.variant.identifier | dashify}}</a></td>
-                              <td>{{item.variant.chromosome | dashify}}</td>
-                              <td>{{item.variant.position | dashify}}</td>
-                              <td>{{item.variant.reference | dashify}}</td>
-                              <td>{{item.variant.alternative | dashify}}</td>
-                              <td>{{item.variant.levelOfEvidence | dashify}}</td>
+                              <td><a href="javascript:;" class="link-none" [linkExternal]="'cosmicId'" target="_blank">{{item.identifier | dashify}}</a></td>
+                              <td>{{item.chromosome | dashify}}</td>
+                              <td>{{item.position | dashify}}</td>
+                              <td>{{item.reference | dashify}}</td>
+                              <td>{{item.alternative | dashify}}</td>
+                              <td>{{item.levelOfEvidence | dashify}}</td>
                               <td>
-                                <span *ngIf="item.variant.publicMedIds!=null && item.variant.publicMedIds!=0">
-                                <span *ngFor="let items of item.variant.publicMedIds; let last=last">
+                                <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
+                                <span *ngFor="let items of item.publicMedIds; let last=last">
                                   <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
                                   <span *ngIf="!last">, </span>
                                 </span>
                                 </span>
-                                <span *ngIf="item.variant.publicMedIds==null || item.variant.publicMedIds==0">-</span>
+                                <span *ngIf="item.publicMedIds==null || item.publicMedIds==0">-</span>
                               </td>
                             </tr>
                             <tr *ngIf="mftableIndelEx.data.length == 0">
@@ -938,38 +938,38 @@
                             <tr class="success-light">
                               <!--inclusion-->
                               <th>
-                                <mfDefaultSorter by="variant.geneName"><span class="table-header">Gene</span></mfDefaultSorter>
+                                <mfDefaultSorter by="geneName"><span class="table-header">Gene</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="variant.chromosome"><span class="table-header">Chorm</span></mfDefaultSorter>
+                                <mfDefaultSorter by="chromosome"><span class="table-header">Chorm</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="variant.position"><span class="table-header">Position</span></mfDefaultSorter>
+                                <mfDefaultSorter by="position"><span class="table-header">Position</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="variant.levelOfEvidence"><span class="table-header">LOE</span></mfDefaultSorter>
+                                <mfDefaultSorter by="levelOfEvidence"><span class="table-header">LOE</span></mfDefaultSorter>
                               </th>
                               <th>
                                 <span class="table-header">Lit</span>
-                                <!--<mfDefaultSorter by="variant.publicMedIds"></mfDefaultSorter>-->
+                                <!--<mfDefaultSorter by="publicMedIds"></mfDefaultSorter>-->
                               </th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableCnvIn.data">
-                              <td><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln={{item.variant.geneName | dashify}}"
-                                  class="link-none" target="_blank">{{item.variant.geneName | dashify}}</a></td>
-                              <td>{{item.variant.chromosome | dashify}}</td>
-                              <td>{{item.variant.position | dashify}}</td>
-                              <td>{{item.variant.levelOfEvidence | dashify}}</td>
+                              <td><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln={{item.geneName | dashify}}"
+                                  class="link-none" target="_blank">{{item.geneName | dashify}}</a></td>
+                              <td>{{item.chromosome | dashify}}</td>
+                              <td>{{item.position | dashify}}</td>
+                              <td>{{item.levelOfEvidence | dashify}}</td>
                               <td>
-                                <span *ngIf="item.variant.publicMedIds!=null && item.variant.publicMedIds!=0">
-                                <span *ngFor="let items of item.variant.publicMedIds; let last=last">
+                                <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
+                                <span *ngFor="let items of item.publicMedIds; let last=last">
                                   <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
                                   <span *ngIf="!last">, </span>
                                 </span>
                                 </span>
-                                <span *ngIf="item.variant.publicMedIds==null || item.variant.publicMedIds==0">-</span>
+                                <span *ngIf="item.publicMedIds==null || item.publicMedIds==0">-</span>
                               </td>
                             </tr>
                             <tr *ngIf="mftableCnvIn.data.length == 0">
@@ -1046,39 +1046,39 @@
                             <tr class="success-light">
                               <!--inclusion-->
                               <th>
-                                <mfDefaultSorter by="variant.geneName"><span class="table-header">Gene</span></mfDefaultSorter>
+                                <mfDefaultSorter by="geneName"><span class="table-header">Gene</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="variant.chromosome"><span class="table-header">Chorm</span></mfDefaultSorter>
+                                <mfDefaultSorter by="chromosome"><span class="table-header">Chorm</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="variant.position"><span class="table-header">Position</span></mfDefaultSorter>
+                                <mfDefaultSorter by="position"><span class="table-header">Position</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="variant.levelOfEvidence"><span class="table-header">LOE</span></mfDefaultSorter>
+                                <mfDefaultSorter by="levelOfEvidence"><span class="table-header">LOE</span></mfDefaultSorter>
                               </th>
                               <th>
                                 <span class="table-header">Lit</span>
-                                <!--<mfDefaultSorter by="variant.publicMedIds"></mfDefaultSorter>-->
+                                <!--<mfDefaultSorter by="publicMedIds"></mfDefaultSorter>-->
                               </th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableCnvEx.data">
-                              <td><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln={{item.variant.geneName | dashify}}"
-                                  class="link-none" target="_blank">{{item.variant.geneName | dashify}}</a></td>
+                              <td><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln={{item.geneName | dashify}}"
+                                  class="link-none" target="_blank">{{item.geneName | dashify}}</a></td>
                               <!--same as id-->
-                              <td>{{item.variant.chromosome | dashify}}</td>
-                              <td>{{item.variant.position | dashify}}</td>
-                              <td>{{item.variant.levelOfEvidence | dashify}}</td>
+                              <td>{{item.chromosome | dashify}}</td>
+                              <td>{{item.position | dashify}}</td>
+                              <td>{{item.levelOfEvidence | dashify}}</td>
                               <td>
-                                <span *ngIf="item.variant.publicMedIds!=null && item.variant.publicMedIds!=0">
-                                <span *ngFor="let items of item.variant.publicMedIds; let last=last">
+                                <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
+                                <span *ngFor="let items of item.publicMedIds; let last=last">
                                   <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
                                   <span *ngIf="!last">, </span>
                                 </span>
                                 </span>
-                                <span *ngIf="item.variant.publicMedIds==null || item.variant.publicMedIds==0">-</span>
+                                <span *ngIf="item.publicMedIds==null || item.publicMedIds==0">-</span>
                               </td>
                             </tr>
                             <tr *ngIf="mftableCnvEx.data.length == 0">
@@ -1155,10 +1155,10 @@
                           <thead>
                             <tr class="success-light">
                               <th>
-                                <mfDefaultSorter by="variant.identifier"><span class="table-header">ID</span></mfDefaultSorter>
+                                <mfDefaultSorter by="identifier"><span class="table-header">ID</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="variant.levelOfEvidence"><span class="table-header">LOE</span></mfDefaultSorter>
+                                <mfDefaultSorter by="levelOfEvidence"><span class="table-header">LOE</span></mfDefaultSorter>
                               </th>
                               <th>
                                 <span class="table-header">Lit</span>
@@ -1169,17 +1169,17 @@
                           <tbody>
                             <tr *ngFor="let item of mftableGeneIn.data">
                               <td>
-                                <external-links [externalLink]="'cosmicFusionId'" [linkId]="item.variant.identifier"></external-links>
+                                <external-links [externalLink]="'cosmicFusionId'" [linkId]="item.identifier"></external-links>
                               </td>
-                              <td>{{item.variant.levelOfEvidence | dashify}}</td>
+                              <td>{{item.levelOfEvidence | dashify}}</td>
                               <td>
-                                <span *ngIf="item.variant.publicMedIds!=null && item.variant.publicMedIds!=0">
-                                <span *ngFor="let items of item.variant.publicMedIds; let last=last">
+                                <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
+                                <span *ngFor="let items of item.publicMedIds; let last=last">
                                   <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
                                   <span *ngIf="!last">, </span>
                                 </span>
                                 </span>
-                                <span *ngIf="item.variant.publicMedIds==null || item.variant.publicMedIds==0">-</span>
+                                <span *ngIf="item.publicMedIds==null || item.publicMedIds==0">-</span>
                               </td>
                             </tr>
                             <tr *ngIf="mftableGeneIn.data.length == 0">
@@ -1249,10 +1249,10 @@
                           <thead>
                             <tr class="success-light">
                               <th>
-                                <mfDefaultSorter by="variant.identifier"><span class="table-header">ID</span></mfDefaultSorter>
+                                <mfDefaultSorter by="identifier"><span class="table-header">ID</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="variant.levelOfEvidence"><span class="table-header">LOE</span></mfDefaultSorter>
+                                <mfDefaultSorter by="levelOfEvidence"><span class="table-header">LOE</span></mfDefaultSorter>
                               </th>
                               <th>
                                 <span class="table-header">Lit</span>
@@ -1263,17 +1263,17 @@
                           <tbody>
                             <tr *ngFor="let item of mftableGeneEx.data">
                               <td>
-                                <external-links [externalLink]="'cosmicFusionId'" [linkId]="item.variant.identifier"></external-links>
+                                <external-links [externalLink]="'cosmicFusionId'" [linkId]="item.identifier"></external-links>
                               </td>
-                              <td>{{item.variant.levelOfEvidence | dashify}}</td>
+                              <td>{{item.levelOfEvidence | dashify}}</td>
                               <td>
-                                <span *ngIf="item.variant.publicMedIds!=null && item.variant.publicMedIds!=0">
-                                <span *ngFor="let items of item.variant.publicMedIds; let last=last">
+                                <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
+                                <span *ngFor="let items of item.publicMedIds; let last=last">
                                   <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
                                   <span *ngIf="!last">, </span>
                                 </span>
                                 </span>
-                                <span *ngIf="item.variant.publicMedIds==null || item.variant.publicMedIds==0">-</span>
+                                <span *ngIf="item.publicMedIds==null || item.publicMedIds==0">-</span>
                               </td>
                             </tr>
                             <tr *ngIf="mftableGeneEx.data.length == 0">
