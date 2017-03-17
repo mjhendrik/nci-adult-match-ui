@@ -9828,15 +9828,6 @@ export class TaDetailsComponent implements OnInit {
       "dateOnArm": null,
       "dateOffArm": null,
       "formattedDiseaseNames": "Lung adenocarcinoma",
-      "diseases": [
-        {
-          "medraCode": "10025032",
-          "ctepCategory": "Lung, Mediastinal and Pleural Neoplasm",
-          "ctepSubCategory": "Non-Small Cell Lung Cancer",
-          "ctepTerm": "Lung adenocarcinoma",
-          "shortName": "Lung adenocarcinoma"
-        }
-      ],
       "biopsySequenceNumber": "T-15-000325",
       "molecularSequenceNumber": "MSN5710",
       "ngsIdentifier": "MSN5710_v2_249df0e6-d2d1-4772-9e48-b508a41a36cf",
@@ -9856,15 +9847,6 @@ export class TaDetailsComponent implements OnInit {
       "dateOnArm": null,
       "dateOffArm": null,
       "formattedDiseaseNames": "Lung adenocar. w/ bronch. feat.",
-      "diseases": [
-        {
-          "medraCode": "90600324",
-          "ctepCategory": "Lung, Mediastinal and Pleural Neoplasm",
-          "ctepSubCategory": "Non-Small Cell Lung Cancer",
-          "ctepTerm": "Lung adenocarcinoma with bronchioloalveolar features",
-          "shortName": "Lung adenocar. w/ bronch. feat."
-        }
-      ],
       "biopsySequenceNumber": "T-15-000488",
       "molecularSequenceNumber": "MSN7765",
       "ngsIdentifier": "MSN7765_v1_411862ea-b60e-4ee5-a0bf-5b4b7ee7d6d3",
@@ -9884,15 +9866,6 @@ export class TaDetailsComponent implements OnInit {
       "dateOnArm": 1451919617018,
       "dateOffArm": 1475155338408,
       "formattedDiseaseNames": "Neuroendocrine cancer, NOS",
-      "diseases": [
-        {
-          "medraCode": "10057270",
-          "ctepCategory": "Endocrine Neoplasm",
-          "ctepSubCategory": "Neuroendocrine Cancer",
-          "ctepTerm": "Neuroendocrine cancer, NOS",
-          "shortName": "Neuroendocrine cancer, NOS"
-        }
-      ],
       "biopsySequenceNumber": "T-15-000599",
       "molecularSequenceNumber": "MSN8771",
       "ngsIdentifier": "MSN8771_v1_a1ed8d72-f503-4d4b-a883-08431d76a7dd",
@@ -9912,15 +9885,6 @@ export class TaDetailsComponent implements OnInit {
       "dateOnArm": null,
       "dateOffArm": null,
       "formattedDiseaseNames": "Lung adenocarcinoma",
-      "diseases": [
-        {
-          "medraCode": "10025032",
-          "ctepCategory": "Lung, Mediastinal and Pleural Neoplasm",
-          "ctepSubCategory": "Non-Small Cell Lung Cancer",
-          "ctepTerm": "Lung adenocarcinoma",
-          "shortName": "Lung adenocarcinoma"
-        }
-      ],
       "biopsySequenceNumber": "T-15-000648",
       "molecularSequenceNumber": "MSN9134",
       "ngsIdentifier": "MSN9134_v1_6cb6bf22-1843-4774-a1a1-95670497d384",
@@ -9940,15 +9904,6 @@ export class TaDetailsComponent implements OnInit {
       "dateOnArm": 1452202216958,
       "dateOffArm": null,
       "formattedDiseaseNames": "Lung adenocarcinoma",
-      "diseases": [
-        {
-          "medraCode": "10025032",
-          "ctepCategory": "Lung, Mediastinal and Pleural Neoplasm",
-          "ctepSubCategory": "Non-Small Cell Lung Cancer",
-          "ctepTerm": "Lung adenocarcinoma",
-          "shortName": "Lung adenocarcinoma"
-        }
-      ],
       "biopsySequenceNumber": "T-15-000682",
       "molecularSequenceNumber": "MSN9779",
       "ngsIdentifier": "MSN9779_v1_98622e42-dc7a-4191-98ee-476866a198d4",
@@ -9968,15 +9923,6 @@ export class TaDetailsComponent implements OnInit {
       "dateOnArm": 1468935018558,
       "dateOffArm": null,
       "formattedDiseaseNames": "Neuroendocrine cancer, NOS",
-      "diseases": [
-        {
-          "medraCode": "10057270",
-          "ctepCategory": "Endocrine Neoplasm",
-          "ctepSubCategory": "Neuroendocrine Cancer",
-          "ctepTerm": "Neuroendocrine cancer, NOS",
-          "shortName": "Neuroendocrine cancer, NOS"
-        }
-      ],
       "biopsySequenceNumber": "T-16-000056",
       "molecularSequenceNumber": "MSN11270",
       "ngsIdentifier": "MSN11270_v1_1c1c3e5a-ca44-4768-a213-22decc11b77b",
@@ -9996,15 +9942,6 @@ export class TaDetailsComponent implements OnInit {
       "dateOnArm": 1469203218627,
       "dateOffArm": null,
       "formattedDiseaseNames": "Bone cancer, NOS",
-      "diseases": [
-        {
-          "medraCode": "10053650",
-          "ctepCategory": "Bone Neoplasm",
-          "ctepSubCategory": "Bone Neoplasm, Miscellaneous",
-          "ctepTerm": "Bone cancer, NOS",
-          "shortName": "Bone cancer, NOS"
-        }
-      ],
       "biopsySequenceNumber": "T-16-000066",
       "molecularSequenceNumber": "MSN11387",
       "ngsIdentifier": "MSN11387_v3_596b408d-fbf0-40a4-9fec-b2b544d8eec0",
@@ -10024,15 +9961,6 @@ export class TaDetailsComponent implements OnInit {
       "dateOnArm": null,
       "dateOffArm": null,
       "formattedDiseaseNames": "Neuroendocrine cancer, NOS",
-      "diseases": [
-        {
-          "medraCode": "10057270",
-          "ctepCategory": "Endocrine Neoplasm",
-          "ctepSubCategory": "Neuroendocrine Cancer",
-          "ctepTerm": "Neuroendocrine cancer, NOS",
-          "shortName": "Neuroendocrine cancer, NOS"
-        }
-      ],
       "biopsySequenceNumber": "T-16-000288",
       "molecularSequenceNumber": "MSN13425",
       "ngsIdentifier": "MSN13425_v1_102ecd76-79dd-40be-aef9-a802491bd6a5",
@@ -10052,15 +9980,6 @@ export class TaDetailsComponent implements OnInit {
       "dateOnArm": 1472140822893,
       "dateOffArm": null,
       "formattedDiseaseNames": "Lung adenocarcinoma",
-      "diseases": [
-        {
-          "medraCode": "10025032",
-          "ctepCategory": "Lung, Mediastinal and Pleural Neoplasm",
-          "ctepSubCategory": "Non-Small Cell Lung Cancer",
-          "ctepTerm": "Lung adenocarcinoma",
-          "shortName": "Lung adenocarcinoma"
-        }
-      ],
       "biopsySequenceNumber": "T-16-000368",
       "molecularSequenceNumber": "MSN14167",
       "ngsIdentifier": "MSN14167_v1_9853d1e1-c651-4c69-8b43-903a9ab4aa12",
@@ -10080,15 +9999,6 @@ export class TaDetailsComponent implements OnInit {
       "dateOnArm": 1473195623287,
       "dateOffArm": null,
       "formattedDiseaseNames": "Adenocarcinoma, NOS",
-      "diseases": [
-        {
-          "medraCode": "10001166",
-          "ctepCategory": "Miscellaneous Neoplasm",
-          "ctepSubCategory": "Carcinoma, Miscellaneous",
-          "ctepTerm": "Adenocarcinoma, NOS",
-          "shortName": "Adenocarcinoma, NOS"
-        }
-      ],
       "biopsySequenceNumber": "T-16-000530",
       "molecularSequenceNumber": "MSN15701",
       "ngsIdentifier": "MSN15701_v1_7ad90d3c-5491-4c06-8453-3b467e09386d",
@@ -10108,15 +10018,6 @@ export class TaDetailsComponent implements OnInit {
       "dateOnArm": null,
       "dateOffArm": null,
       "formattedDiseaseNames": "Pancreatic neuroendocrine tumor",
-      "diseases": [
-        {
-          "medraCode": "10067518",
-          "ctepCategory": "Endocrine Neoplasm",
-          "ctepSubCategory": "Neuroendocrine Cancer",
-          "ctepTerm": "Pancreatic neuroendocrine tumor",
-          "shortName": "Pancreatic neuroendocrine tumor"
-        }
-      ],
       "biopsySequenceNumber": "T-16-000853",
       "molecularSequenceNumber": "MSN18630",
       "ngsIdentifier": "MSN18630_v1_346da89f-8ea3-4435-95bb-1fd0acd693cf",
@@ -10136,15 +10037,6 @@ export class TaDetailsComponent implements OnInit {
       "dateOnArm": null,
       "dateOffArm": null,
       "formattedDiseaseNames": "Non-small cell lung cancer, NOS",
-      "diseases": [
-        {
-          "medraCode": "10029514",
-          "ctepCategory": "Lung, Mediastinal and Pleural Neoplasm",
-          "ctepSubCategory": "Non-Small Cell Lung Cancer",
-          "ctepTerm": "Non-small cell lung cancer, NOS",
-          "shortName": "Non-small cell lung cancer, NOS"
-        }
-      ],
       "biopsySequenceNumber": "T-16-001171",
       "molecularSequenceNumber": "MSN21675",
       "ngsIdentifier": "MSN21675_v1_6fcfa418-84f6-4dda-868b-bbc3d5b0cc88",
@@ -10164,15 +10056,6 @@ export class TaDetailsComponent implements OnInit {
       "dateOnArm": null,
       "dateOffArm": null,
       "formattedDiseaseNames": "Ovarian epithelial cancer",
-      "diseases": [
-        {
-          "medraCode": "10033159",
-          "ctepCategory": "Reproductive System Neoplasm, Female",
-          "ctepSubCategory": "Ovarian Cancer (excluding Ovarian Germ Cell Cancer)",
-          "ctepTerm": "Ovarian epithelial cancer",
-          "shortName": "Ovarian epithelial cancer"
-        }
-      ],
       "biopsySequenceNumber": "T-16-001685",
       "molecularSequenceNumber": "MSN26039",
       "ngsIdentifier": "MSN26039_v2_048c0f8a-f5b5-4e15-aab7-0c2536b339d4",
@@ -10192,15 +10075,6 @@ export class TaDetailsComponent implements OnInit {
       "dateOnArm": 1478710824998,
       "dateOffArm": null,
       "formattedDiseaseNames": "Lung adenocarcinoma",
-      "diseases": [
-        {
-          "medraCode": "10025032",
-          "ctepCategory": "Lung, Mediastinal and Pleural Neoplasm",
-          "ctepSubCategory": "Non-Small Cell Lung Cancer",
-          "ctepTerm": "Lung adenocarcinoma",
-          "shortName": "Lung adenocarcinoma"
-        }
-      ],
       "biopsySequenceNumber": "T-16-001791",
       "molecularSequenceNumber": "MSN27060",
       "ngsIdentifier": "MSN27060_v2_d245b9f3-c4fc-4b26-856b-0dae1481383b",
@@ -10220,15 +10094,6 @@ export class TaDetailsComponent implements OnInit {
       "dateOnArm": 1481662819201,
       "dateOffArm": null,
       "formattedDiseaseNames": "Cholangiocar.- intra/extrahepatic",
-      "diseases": [
-        {
-          "medraCode": "10004669",
-          "ctepCategory": "Gastrointestinal Neoplasm",
-          "ctepSubCategory": "Liver and Hepatobiliary Cancer",
-          "ctepTerm": "Cholangiocarcinoma, intrahepatic and extrahepatic bile ducts (adenocarcinoma)",
-          "shortName": "Cholangiocar.- intra/extrahepatic"
-        }
-      ],
       "biopsySequenceNumber": "T-16-002251",
       "molecularSequenceNumber": "MSN31054",
       "ngsIdentifier": "MSN31054_v1_a9272d97-98c7-4b97-9c2b-3925cd19a60b",
@@ -10248,15 +10113,6 @@ export class TaDetailsComponent implements OnInit {
       "dateOnArm": null,
       "dateOffArm": null,
       "formattedDiseaseNames": "Ovarian epithelial cancer",
-      "diseases": [
-        {
-          "medraCode": "10033159",
-          "ctepCategory": "Reproductive System Neoplasm, Female",
-          "ctepSubCategory": "Ovarian Cancer (excluding Ovarian Germ Cell Cancer)",
-          "ctepTerm": "Ovarian epithelial cancer",
-          "shortName": "Ovarian epithelial cancer"
-        }
-      ],
       "biopsySequenceNumber": "T-16-002189",
       "molecularSequenceNumber": "MSN31138",
       "ngsIdentifier": "MSN31138_v1_9955960a-b908-409f-a117-37700c8c06ff",
@@ -10276,15 +10132,6 @@ export class TaDetailsComponent implements OnInit {
       "dateOnArm": null,
       "dateOffArm": null,
       "formattedDiseaseNames": "Adenocarcinoma, NOS",
-      "diseases": [
-        {
-          "medraCode": "10001166",
-          "ctepCategory": "Miscellaneous Neoplasm",
-          "ctepSubCategory": "Carcinoma, Miscellaneous",
-          "ctepTerm": "Adenocarcinoma, NOS",
-          "shortName": "Adenocarcinoma, NOS"
-        }
-      ],
       "biopsySequenceNumber": "T-16-002138",
       "molecularSequenceNumber": "MSN30700",
       "ngsIdentifier": "MSN30700_v4_f8d616a8-81e4-4485-98a7-b37cb09c5ddb",
@@ -10304,15 +10151,6 @@ export class TaDetailsComponent implements OnInit {
       "dateOnArm": 1482262219341,
       "dateOffArm": null,
       "formattedDiseaseNames": "Ovarian epithelial cancer",
-      "diseases": [
-        {
-          "medraCode": "10033159",
-          "ctepCategory": "Reproductive System Neoplasm, Female",
-          "ctepSubCategory": "Ovarian Cancer (excluding Ovarian Germ Cell Cancer)",
-          "ctepTerm": "Ovarian epithelial cancer",
-          "shortName": "Ovarian epithelial cancer"
-        }
-      ],
       "biopsySequenceNumber": "T-16-002535",
       "molecularSequenceNumber": "MSN33894",
       "ngsIdentifier": "MSN33894_v1_60eb44e4-7731-41a5-8d62-e3cc5151a0ea",
@@ -10332,15 +10170,6 @@ export class TaDetailsComponent implements OnInit {
       "dateOnArm": 1483135219417,
       "dateOffArm": null,
       "formattedDiseaseNames": "Ovarian epithelial cancer",
-      "diseases": [
-        {
-          "medraCode": "10033159",
-          "ctepCategory": "Reproductive System Neoplasm, Female",
-          "ctepSubCategory": "Ovarian Cancer (excluding Ovarian Germ Cell Cancer)",
-          "ctepTerm": "Ovarian epithelial cancer",
-          "shortName": "Ovarian epithelial cancer"
-        }
-      ],
       "biopsySequenceNumber": "T-16-002355",
       "molecularSequenceNumber": "MSN32805",
       "ngsIdentifier": "MSN32805_v2_b78b1c4b-6c42-43f0-9c4f-f4398ed96b7b",
@@ -10360,15 +10189,6 @@ export class TaDetailsComponent implements OnInit {
       "dateOnArm": 1483734618635,
       "dateOffArm": null,
       "formattedDiseaseNames": "Cholangiocar.- intra/extrahepatic",
-      "diseases": [
-        {
-          "medraCode": "10004669",
-          "ctepCategory": "Gastrointestinal Neoplasm",
-          "ctepSubCategory": "Liver and Hepatobiliary Cancer",
-          "ctepTerm": "Cholangiocarcinoma, intrahepatic and extrahepatic bile ducts (adenocarcinoma)",
-          "shortName": "Cholangiocar.- intra/extrahepatic"
-        }
-      ],
       "biopsySequenceNumber": "T-16-002775",
       "molecularSequenceNumber": "MSN35766",
       "ngsIdentifier": "MSN35766_v2_1821578a-fa3e-4fad-b3df-ab44cef1a0e5",
@@ -10388,15 +10208,6 @@ export class TaDetailsComponent implements OnInit {
       "dateOnArm": null,
       "dateOffArm": null,
       "formattedDiseaseNames": "Adenocarcinoma, NOS",
-      "diseases": [
-        {
-          "medraCode": "10001166",
-          "ctepCategory": "Miscellaneous Neoplasm",
-          "ctepSubCategory": "Carcinoma, Miscellaneous",
-          "ctepTerm": "Adenocarcinoma, NOS",
-          "shortName": "Adenocarcinoma, NOS"
-        }
-      ],
       "biopsySequenceNumber": "T-16-002852",
       "molecularSequenceNumber": "MSN36491",
       "ngsIdentifier": "MSN36491_v1_8601a95c-2bb6-42eb-b4e5-0d4cb0195bc8",
@@ -10416,15 +10227,6 @@ export class TaDetailsComponent implements OnInit {
       "dateOnArm": null,
       "dateOffArm": null,
       "formattedDiseaseNames": "Adenocarcinoma, NOS",
-      "diseases": [
-        {
-          "medraCode": "10001166",
-          "ctepCategory": "Miscellaneous Neoplasm",
-          "ctepSubCategory": "Carcinoma, Miscellaneous",
-          "ctepTerm": "Adenocarcinoma, NOS",
-          "shortName": "Adenocarcinoma, NOS"
-        }
-      ],
       "biopsySequenceNumber": "T-16-003051",
       "molecularSequenceNumber": "MSN38208",
       "ngsIdentifier": "MSN38208_v2_827d0068-7322-4050-9723-2b327d489199",
@@ -10444,15 +10246,6 @@ export class TaDetailsComponent implements OnInit {
       "dateOnArm": 1486495816399,
       "dateOffArm": null,
       "formattedDiseaseNames": "Carcinoma, NOS",
-      "diseases": [
-        {
-          "medraCode": "10007423",
-          "ctepCategory": "Miscellaneous Neoplasm",
-          "ctepSubCategory": "Carcinoma, Miscellaneous",
-          "ctepTerm": "Carcinoma, NOS",
-          "shortName": "Carcinoma, NOS"
-        }
-      ],
       "biopsySequenceNumber": "T-16-003039",
       "molecularSequenceNumber": "MSN37853",
       "ngsIdentifier": "MSN37853_v1_f4a8179a-b675-430f-bee3-b889f4f61ad5",
@@ -10472,15 +10265,6 @@ export class TaDetailsComponent implements OnInit {
       "dateOnArm": 1487694621424,
       "dateOffArm": null,
       "formattedDiseaseNames": "Carcinoma, NOS",
-      "diseases": [
-        {
-          "medraCode": "10007423",
-          "ctepCategory": "Miscellaneous Neoplasm",
-          "ctepSubCategory": "Carcinoma, Miscellaneous",
-          "ctepTerm": "Carcinoma, NOS",
-          "shortName": "Carcinoma, NOS"
-        }
-      ],
       "biopsySequenceNumber": "T-16-003079",
       "molecularSequenceNumber": "MSN38380",
       "ngsIdentifier": "MSN38380_v4_2d7772c4-5155-426d-8f57-79835708cbcf",
@@ -10500,15 +10284,6 @@ export class TaDetailsComponent implements OnInit {
       "dateOnArm": 1487788224089,
       "dateOffArm": null,
       "formattedDiseaseNames": "Adenocarcinoma - pancreas",
-      "diseases": [
-        {
-          "medraCode": "10052747",
-          "ctepCategory": "Gastrointestinal Neoplasm",
-          "ctepSubCategory": "Pancreatic Cancer (excluding Islets)",
-          "ctepTerm": "Adenocarcinoma of the pancreas",
-          "shortName": "Adenocarcinoma - pancreas"
-        }
-      ],
       "biopsySequenceNumber": "T-17-000111",
       "molecularSequenceNumber": "MSN39974",
       "ngsIdentifier": "MSN39974_v1_5aa69b62-e4dc-43e5-a70f-673905c772e0",
@@ -10528,15 +10303,6 @@ export class TaDetailsComponent implements OnInit {
       "dateOnArm": 1488409218705,
       "dateOffArm": null,
       "formattedDiseaseNames": "Female reprod. system cancer, NOS",
-      "diseases": [
-        {
-          "medraCode": "10016411",
-          "ctepCategory": "Reproductive System Neoplasm, Female",
-          "ctepSubCategory": "Female Reproductive System Neoplasm, Miscellaneous",
-          "ctepTerm": "Female reproductive system cancer, NOS",
-          "shortName": "Female reprod. system cancer, NOS"
-        }
-      ],
       "biopsySequenceNumber": "T-17-000392",
       "molecularSequenceNumber": "MSN42788",
       "ngsIdentifier": "MSN42788_v1_1b7cb490-e4ab-4795-a488-a3540b173823",
@@ -10556,15 +10322,6 @@ export class TaDetailsComponent implements OnInit {
       "dateOnArm": null,
       "dateOffArm": null,
       "formattedDiseaseNames": "Adenocarcinoma, NOS",
-      "diseases": [
-        {
-          "medraCode": "10001166",
-          "ctepCategory": "Miscellaneous Neoplasm",
-          "ctepSubCategory": "Carcinoma, Miscellaneous",
-          "ctepTerm": "Adenocarcinoma, NOS",
-          "shortName": "Adenocarcinoma, NOS"
-        }
-      ],
       "biopsySequenceNumber": "T-17-000518",
       "molecularSequenceNumber": "MSN43802",
       "ngsIdentifier": "MSN43802_v1_b9c0bb96-ec7c-4b4b-9941-4165e879ed94",
@@ -10584,15 +10341,6 @@ export class TaDetailsComponent implements OnInit {
       "dateOnArm": null,
       "dateOffArm": null,
       "formattedDiseaseNames": "Lung adenocarcinoma",
-      "diseases": [
-        {
-          "medraCode": "10025032",
-          "ctepCategory": "Lung, Mediastinal and Pleural Neoplasm",
-          "ctepSubCategory": "Non-Small Cell Lung Cancer",
-          "ctepTerm": "Lung adenocarcinoma",
-          "shortName": "Lung adenocarcinoma"
-        }
-      ],
       "biopsySequenceNumber": "T-17-000669",
       "molecularSequenceNumber": "MSN45237",
       "ngsIdentifier": "MSN45237_v1_d2c1091f-7e91-4186-a49f-bce01e97bf7f",
@@ -10612,15 +10360,6 @@ export class TaDetailsComponent implements OnInit {
       "dateOnArm": null,
       "dateOffArm": null,
       "formattedDiseaseNames": "CNS primary tumor, NOS",
-      "diseases": [
-        {
-          "medraCode": "10007959",
-          "ctepCategory": "CNS Neoplasm (Primary Tumor)",
-          "ctepSubCategory": "CNS Neoplasm (Primary Tumor), Miscellaneous",
-          "ctepTerm": "CNS primary tumor, NOS",
-          "shortName": "CNS primary tumor, NOS"
-        }
-      ],
       "biopsySequenceNumber": "T-17-000579",
       "molecularSequenceNumber": "MSN44503",
       "ngsIdentifier": "MSN44503_v1_2ce9b9e7-c9eb-49c7-936e-098b78650ae7",
@@ -10640,15 +10379,6 @@ export class TaDetailsComponent implements OnInit {
       "dateOnArm": null,
       "dateOffArm": null,
       "formattedDiseaseNames": "Thyroid cancer, NOS",
-      "diseases": [
-        {
-          "medraCode": "10043738",
-          "ctepCategory": "Endocrine Neoplasm",
-          "ctepSubCategory": "Thyroid Cancer",
-          "ctepTerm": "Thyroid cancer, NOS",
-          "shortName": "Thyroid cancer, NOS"
-        }
-      ],
       "biopsySequenceNumber": "T-17-000763",
       "molecularSequenceNumber": "MSN46243",
       "ngsIdentifier": "MSN46243_v1_5049469a-988d-4539-a2a5-9848c64cd5b7",
