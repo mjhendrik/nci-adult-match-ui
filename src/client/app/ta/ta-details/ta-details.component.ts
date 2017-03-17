@@ -188,20 +188,9 @@ export class TaDetailsComponent implements OnInit {
     "id": "EAY131-IX1",
     "name": "GDC-0032 in PIK3CA mutation",
     "version": "2015-08-06",
-    "description": "GDC-0032 in PIK3CA mutation",
     "targetId": "778795",
     "targetName": "GDC-0032",
     "gene": "PIK3C",
-    "treatmentArmDrugs": [
-      {
-        "drugId": "778795",
-        "name": "GDC-0032",
-        "description": null,
-        "drugClass": null,
-        "pathway": "PIK",
-        "target": null
-      }
-    ],
     "exclusionDiseases": [
       {
         "medraCode": "10053130",
