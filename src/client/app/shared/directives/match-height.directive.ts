@@ -15,7 +15,7 @@ export class MatchHeightDirective implements AfterViewChecked {
     @Input()
     matchHeight: any;
 
-    constructor(private el: ElementRef) {}
+    constructor(private el: ElementRef) { }
 
     ngAfterViewChecked() {
         // call our matchHeight function here later
@@ -53,5 +53,11 @@ export class MatchHeightDirective implements AfterViewChecked {
         // apply max height
         Array.from(children)
             .forEach((x: HTMLElement) => x.style.height = `${maxHeight}px`);
+
+        if (document.getElementById('tbody-height') !== null) {
+            let contentHeight: number = maxHeight - 122;
+            document.getElementById('tbody-height').style.height = `${contentHeight}px`;
+        }
+
     }
 }
