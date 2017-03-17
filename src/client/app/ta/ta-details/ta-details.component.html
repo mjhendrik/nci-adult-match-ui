@@ -1,9 +1,9 @@
 <div id="content" class="content">
-  <ol class="breadcrumb pull-right">
-    <li><a href="javascript:;">Dashboard</a></li>
-    <li><a href="javascript:;">Treatment Arms</a></li>
+  <ul class="breadcrumb pull-right">
+    <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
+    <li><a href [routerLink]="['/treatments']" class="link-none">Treatment Arms</a></li>
     <li class="active">Treatment Arm {{tableRulesData.id | dashify}}</li>
-  </ol>
+  </ul>
   <h1 class="page-header">Treatment Arm {{tableRulesData.id | dashify}}</h1>
   <div class="row" matchHeight="panel-height">
     <div class="col-md-4">
