@@ -1759,7 +1759,10 @@
                               <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                                 <a href [routerLink]="['/patients/details']" class="link-none"><i class="fa fa-user"></i> {{item.patientSequenceNumber | dashify}}</a>
                               </td>
-                              <td><a href="javascript:;" class="link-none"><i class="fa fa-medkit"></i> {{item.treatmentArmVersion | dashify}}</a></td>
+                              <td>
+                                <span *ngIf="item.treatmentArmVersion!=tableRulesData.version"><a href="javascript:;" class="link-none"><i class="fa fa-medkit"></i> {{item.treatmentArmVersion | dashify}}</a></span>
+                                <span *ngIf="item.treatmentArmVersion == tableRulesData.version"><i class="fa fa-medkit"></i> {{item.treatmentArmVersion | dashify}}</span>
+                              </td>
                               <td [colorcode-patients]="item.formattedPatientStatus">{{item.formattedPatientStatus | dashify}}</td>
                               <td class="text-center"><a href="javascript:;" class="link-none"><i class="fa fa-file-text-o"></i></a></td>
                               <td class="text-center"><a href="javascript:;" class="link-none"><i class="fa fa-file-text-o"></i></a></td>

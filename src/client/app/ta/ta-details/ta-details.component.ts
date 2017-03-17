@@ -179,6 +179,7 @@ export class TaDetailsComponent implements OnInit {
   }
 
   versionData: any = [
+    "2015-08-06",
     "2016-11-18",
     "2016-11-19"
   ]
@@ -186,7 +187,7 @@ export class TaDetailsComponent implements OnInit {
   tableRulesData: any = {
     "id": "EAY131-IX1",
     "name": "GDC-0032 in PIK3CA mutation",
-    "version": "2016-11-19",
+    "version": "2015-08-06",
     "description": "GDC-0032 in PIK3CA mutation",
     "targetId": "778795",
     "targetName": "GDC-0032",
