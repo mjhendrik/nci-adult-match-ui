@@ -7,7 +7,11 @@
   }
 }
 
-.table > thead > tr > th {
-    // border-bottom-width: 2px !important; */
-    border-bottom-style: none !important;
+.table>thead>tr>th {
+  // border-bottom-width: 2px !important; */
+  border-bottom-style: none !important;
+}
+
+.breadcrumb {
+  z-index: 1020;
 }
