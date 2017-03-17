@@ -474,7 +474,9 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableSnvIn.data">
-                              <td><a href="javascript:;" class="link-none" [linkExternal]="'cosmicId'" target="_blank">{{item.identifier | dashify}}</a></td>
+                              <td>
+                                <external-link [externalLink]="'cosmicId'" [linkId]="item.identifier"></external-link>
+                              </td>
                               <td>{{item.chromosome | dashify}}</td>
                               <td>{{item.position | dashify}}</td>
                               <td>{{item.reference | dashify}}</td>
@@ -594,7 +596,9 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableSnvEx.data">
-                              <td><a href="javascript:;" class="link-none" [linkExternal]="'cosmicId'" target="_blank">{{item.identifier | dashify}}</a></td>
+                              <td>
+                                <external-link [externalLink]="'cosmicId'" [linkId]="item.identifier"></external-link>
+                              </td>
                               <td>{{item.chromosome | dashify}}</td>
                               <td>{{item.position | dashify}}</td>
                               <td>{{item.reference | dashify}}</td>
@@ -721,7 +725,9 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableIndelIn.data">
-                              <td><a href="javascript:;" class="link-none" [linkExternal]="'cosmicId'" target="_blank">{{item.identifier | dashify}}</a></td>
+                              <td>
+                                <external-link [externalLink]="'cosmicId'" [linkId]="item.identifier"></external-link>
+                              </td>
                               <td>{{item.chromosome | dashify}}</td>
                               <td>{{item.position | dashify}}</td>
                               <td>{{item.reference | dashify}}</td>
@@ -841,7 +847,9 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableIndelEx.data">
-                              <td><a href="javascript:;" class="link-none" [linkExternal]="'cosmicId'" target="_blank">{{item.identifier | dashify}}</a></td>
+                              <td>
+                                <external-link [externalLink]="'cosmicId'" [linkId]="item.identifier"></external-link>
+                              </td>
                               <td>{{item.chromosome | dashify}}</td>
                               <td>{{item.position | dashify}}</td>
                               <td>{{item.reference | dashify}}</td>
@@ -957,8 +965,8 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableCnvIn.data">
-                              <td><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln={{item.geneName | dashify}}"
-                                  class="link-none" target="_blank">{{item.geneName | dashify}}</a></td>
+                              <td><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln={{item.geneName | dashify}}" class="link-none"
+                                  target="_blank">{{item.geneName | dashify}}</a></td>
                               <td>{{item.chromosome | dashify}}</td>
                               <td>{{item.position | dashify}}</td>
                               <td>{{item.levelOfEvidence | dashify}}</td>
@@ -1065,8 +1073,8 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableCnvEx.data">
-                              <td><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln={{item.geneName | dashify}}"
-                                  class="link-none" target="_blank">{{item.geneName | dashify}}</a></td>
+                              <td><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln={{item.geneName | dashify}}" class="link-none"
+                                  target="_blank">{{item.geneName | dashify}}</a></td>
                               <!--same as id-->
                               <td>{{item.chromosome | dashify}}</td>
                               <td>{{item.position | dashify}}</td>
@@ -1169,7 +1177,7 @@
                           <tbody>
                             <tr *ngFor="let item of mftableGeneIn.data">
                               <td>
-                                <external-links [externalLink]="'cosmicFusionId'" [linkId]="item.identifier"></external-links>
+                                <external-link [externalLink]="'cosmicFusionId'" [linkId]="item.identifier"></external-link>
                               </td>
                               <td>{{item.levelOfEvidence | dashify}}</td>
                               <td>
@@ -1263,7 +1271,7 @@
                           <tbody>
                             <tr *ngFor="let item of mftableGeneEx.data">
                               <td>
-                                <external-links [externalLink]="'cosmicFusionId'" [linkId]="item.identifier"></external-links>
+                                <external-link [externalLink]="'cosmicFusionId'" [linkId]="item.identifier"></external-link>
                               </td>
                               <td>{{item.levelOfEvidence | dashify}}</td>
                               <td>
