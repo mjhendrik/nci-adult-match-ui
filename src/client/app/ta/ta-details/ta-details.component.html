@@ -59,6 +59,9 @@
     <div class="col-md-4">
       <!-- begin panel -->
       <div class="panel panel-success-light panel-accent-bottom-success panel-height">
+        <div class="panel-heading">
+          <h4 class="text-white f-s-18 m-0">History</h4>
+        </div>
         <div class="m-0 p-0">
           <div>
             <div class="tab-content m-b-0 p-l-0 p-r-0 p-t-0 p-b-0">
@@ -81,7 +84,7 @@
                             </tr>
                           </thead>
                           <tbody>
-                             <!--id="tbody-height"-->
+                            <!--id="tbody-height"-->
                             <tr *ngFor="let item of mftableHistory.data">
                               <td [colorcode-ta]="item.status" class="col-xs-4">{{item.status | dashify}}</td>
                               <td class="col-xs-8">{{item.date | gmt | dashify}}</td>
