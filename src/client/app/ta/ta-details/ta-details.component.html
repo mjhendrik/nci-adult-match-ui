@@ -8,12 +8,7 @@
   <div class="row" matchHeight="panel-height">
     <div class="col-md-4">
       <!-- begin panel -->
-      <div class="panel panel-success-light panel-height">
-        <div class="panel-heading">
-          <span class="text-white f-s-18">
-            Overview
-          </span>
-        </div>
+      <div class="panel panel-success-light panel-accent-sides-success panel-height">
         <div class="m-0 p-0">
           <div>
             <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
@@ -63,12 +58,7 @@
     </div>
     <div class="col-md-4">
       <!-- begin panel -->
-      <div class="panel panel-success-light panel-height">
-        <div class="panel-heading">
-          <span class="text-white f-s-18">
-            History
-          </span>
-        </div>
+      <div class="panel panel-success-light panel-accent-bottom-success panel-height">
         <div class="m-0 p-0">
           <div>
             <div class="tab-content m-b-0 p-l-0 p-r-0 p-t-0 p-b-0">
@@ -90,7 +80,8 @@
                               </th>
                             </tr>
                           </thead>
-                          <tbody id="tbody-height">
+                          <tbody>
+                             <!--id="tbody-height"-->
                             <tr *ngFor="let item of mftableHistory.data">
                               <td [colorcode-ta]="item.status" class="col-xs-4">{{item.status | dashify}}</td>
                               <td class="col-xs-8">{{item.date | gmt | dashify}}</td>
@@ -111,12 +102,7 @@
     </div>
     <div class="col-md-4">
       <!-- begin panel -->
-      <div class="panel panel-success-light panel-height">
-        <div class="panel-heading">
-          <span class="text-white f-s-18">
-            Treatment Arm Chart
-          </span>
-        </div>
+      <div class="panel panel-success-light panel-accent-sides-success panel-height">
         <div class="m-0 p-0">
           <div>
             <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
