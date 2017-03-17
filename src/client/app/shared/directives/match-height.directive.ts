@@ -54,10 +54,10 @@ export class MatchHeightDirective implements AfterViewChecked {
         Array.from(children)
             .forEach((x: HTMLElement) => x.style.height = `${maxHeight}px`);
 
-        if (document.getElementById('tbody-height') !== null) {
-            let contentHeight: number = maxHeight - 122;
-            document.getElementById('tbody-height').style.height = `${contentHeight}px`;
-        }
+        // if (document.getElementById('tbody-height') !== null) {
+        //     let contentHeight: number = maxHeight - 67;
+        //     document.getElementById('tbody-height').style.height = `${contentHeight}px`;
+        // }
 
     }
 }

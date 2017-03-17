@@ -85,6 +85,15 @@ body {
   border-top-width: 1px !important;
 }
 
+.panel-accent-sides-success {
+  border-left: 2px solid $success-color;
+  border-right: 2px solid $success-color;
+}
+
+.panel-accent-bottom-success {
+  border-bottom: 2px solid $success-color;
+}
+
 .panel.panel-success-light .panel-heading {
   background-color: $light-success-color;
 }
