@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 @Component({
     moduleId: module.id,
-    selector: 'external-links',
+    selector: 'external-link',
     template: `
     <a *ngIf="isValidLink()" style="text-decoration: none;" href="{{getLinkUrl()}}" target="_blank">{{ text }}</a>
     <span *ngIf="!isValidLink()">{{ text }}</span>
