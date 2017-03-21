@@ -9,13 +9,13 @@ export class colorCodeClia {
 
     ngOnInit() {
         if (this.con == "PASSED") {
-            this.el.nativeElement.style.color = '#17B6A4';
+            this.el.nativeElement.className = 'text-success-light';
         }
         else if (this.con == "FAILED") {
-            this.el.nativeElement.style.color = '#F04B46';
+            this.el.nativeElement.className = 'text-danger-light';
         }
         else if (this.con == "PENDING") {
-            this.el.nativeElement.style.color = '#9b59b6';
+            this.el.nativeElement.className = 'text-purple-light';
         }
     }
 

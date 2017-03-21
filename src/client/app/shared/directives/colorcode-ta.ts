@@ -9,16 +9,16 @@ export class colorCodeTa {
 
     ngOnInit() {
         if (this.con === 'OPEN' || this.con === 'REACTIVATED') {
-            this.el.nativeElement.style.color = '#17B6A4';
+            this.el.nativeElement.className = 'text-success-light';
         }
         else if (this.con === 'SUSPENDED') {
-            this.el.nativeElement.style.color = '#fcaf41';
+            this.el.nativeElement.className = 'text-warning-light';
         }
         else if (this.con === 'CLOSED' || this.con === 'AMENDED') {
-            this.el.nativeElement.style.color = '#F04B46';
+            this.el.nativeElement.className = 'text-danger-light';
         }
         else if (this.con === 'PENDING' || this.con === 'READY') {
-            this.el.nativeElement.style.color = '#2184DA';
+            this.el.nativeElement.className = 'text-primary-light';
         }
     }
 
