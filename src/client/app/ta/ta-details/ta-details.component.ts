@@ -118,49 +118,24 @@ export class TaDetailsComponent implements OnInit {
     this.sortByDesc = 'desc';
 
     let itemsSnv: any[] = this.tableRulesData.variantReport.singleNucleotideVariants;
-    this.snvIn = itemsSnv.filter(item => {
-      return item.inclusion == true;
-    });
-
-    this.snvEx = itemsSnv.filter(item => {
-      return item.inclusion == false;
-    });
+    this.snvIn = itemsSnv.filter(item => item.inclusion == true);
+    this.snvEx = itemsSnv.filter(item => item.inclusion == false);
 
     let itemsIndel: any[] = this.tableRulesData.variantReport.indels;
-    this.indelIn = itemsIndel.filter(item => {
-      return item.inclusion == true;
-    });
-
-    this.indelEx = itemsIndel.filter(item => {
-      return item.inclusion == false;
-    });
+    this.indelIn = itemsIndel.filter(item => item.inclusion == true);
+    this.indelEx = itemsIndel.filter(item => item.inclusion == false);
 
     let itemsCnv: any[] = this.tableRulesData.variantReport.copyNumberVariants;
-    this.cnvIn = itemsCnv.filter(item => {
-      return item.inclusion == true;
-    });
-
-    this.cnvEx = itemsCnv.filter(item => {
-      return item.inclusion == false;
-    });
+    this.cnvIn = itemsCnv.filter(item => item.inclusion == true);
+    this.cnvEx = itemsCnv.filter(item => item.inclusion == false);
 
     let itemsGene: any[] = this.tableRulesData.variantReport.geneFusions;
-    this.geneIn = itemsGene.filter(item => {
-      return item.inclusion == true;
-    });
-
-    this.geneEx = itemsGene.filter(item => {
-      return item.inclusion == false;
-    });
+    this.geneIn = itemsGene.filter(item => item.inclusion == true);
+    this.geneEx = itemsGene.filter(item => item.inclusion == false);
 
     let itemsRule: any[] = this.tableRulesData.variantReport.nonHotspotRules;
-    this.ruleIn = itemsRule.filter(item => {
-      return item.inclusion == true;
-    });
-
-    this.ruleEx = itemsRule.filter(item => {
-      return item.inclusion == false;
-    });
+    this.ruleIn = itemsRule.filter(item => item.inclusion == true);
+    this.ruleEx = itemsRule.filter(item => item.inclusion == false);
 
     let gmt = new GMTFilter();
 
@@ -178,11 +153,76 @@ export class TaDetailsComponent implements OnInit {
 
   }
 
+  view: any[] = [700, 400];
+
+  colorScheme: any = {
+    domain: ['#5bc0de', '#00aedb', '#428bca', '#0057e7', '#88d8b0', '#96ceb4', '#5cb85c', '#00b159', '#008744', '#ffcc5c', '#ffc425', '#ffa700', '#f37735', '#ff6f69']
+  };
+
+  chartData: any = [
+    {
+      "name": "Adenocarcinoma - pancreas",
+      "value": 1
+    },
+    {
+      "name": "Adenocarcinoma, NOS",
+      "value": 5
+    },
+    {
+      "name": "Bone cancer, NOS",
+      "value": 1
+    },
+    {
+      "name": "Carcinoma, NOS",
+      "value": 2
+    },
+    {
+      "name": "Cholangiocar.- intra/extrahepatic",
+      "value": 2
+    },
+    {
+      "name": "CNS primary tumor, NOS",
+      "value": 1
+    },
+    {
+      "name": "Female reprod. system cancer, NOS",
+      "value": 1
+    },
+    {
+      "name": "Lung adenocar. w/ bronch. feat.",
+      "value": 1
+    },
+    {
+      "name": "Lung adenocarcinoma",
+      "value": 6
+    },
+    {
+      "name": "Neuroendocrine cancer, NOS",
+      "value": 3
+    },
+    {
+      "name": "Non-small cell lung cancer, NOS",
+      "value": 1
+    },
+    {
+      "name": "Ovarian epithelial cancer",
+      "value": 4
+    },
+    {
+      "name": "Pancreatic neuroendocrine tumor",
+      "value": 1
+    },
+    {
+      "name": "Thyroid cancer, NOS",
+      "value": 1
+    }
+  ];
+
   versionData: any = [
     "2015-08-06",
     "2016-11-18",
     "2016-11-19"
-  ]
+  ];
 
   tableRulesData: any = {
     "id": "EAY131-IX1",
@@ -2815,7 +2855,7 @@ export class TaDetailsComponent implements OnInit {
         "date": 1479488658486
       }
     ]
-  }
+  };
 
 
   tablePatientData: any = [
@@ -3149,6 +3189,6 @@ export class TaDetailsComponent implements OnInit {
       "formattedDiseaseNames": "Thyroid cancer, NOS",
       "stepNumber": "0"
     }
-  ]
+  ];
 
 }
