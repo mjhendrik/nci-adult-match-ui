@@ -6,10 +6,11 @@ import { FormsModule } from '@angular/forms';
 import { DataTableModule } from '../../shared/datatables/index';
 import { PipesModule } from '../../shared/pipes/pipes.module';
 import { DirectivesModule } from '../../shared/directives/directives.module';
+import { NgxChartsModule } from '@swimlane/ngx-charts/release/index';
 
 
 @NgModule({
-  imports: [CommonModule, TaDetailsRoutingModule, FormsModule, DataTableModule, PipesModule, DirectivesModule],
+  imports: [CommonModule, TaDetailsRoutingModule, FormsModule, DataTableModule, PipesModule, DirectivesModule, NgxChartsModule],
   declarations: [TaDetailsComponent],
   exports: [TaDetailsComponent]
 })

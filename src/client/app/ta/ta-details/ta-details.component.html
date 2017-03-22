@@ -116,7 +116,13 @@
                   <div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <i class="fa fa-pie-chart fa-4x" style="color: #f2f2f2; padding-left: 110px; padding-top: 20px; font-size: 218px;"></i>
+
+                        <ngx-charts-gauge [view]="view" [scheme]="colorScheme" [results]="chartData" [min]="0" [max]="10" [legend]="true" [angleSpan]="360"
+                          [startAngle]="-180" [units]="'patients'" [bigSegments]="10" [smallSegments]="0">
+                          <!--(select)="onSelect($event)"-->                          
+                        </ngx-charts-gauge>
+
+                        <!--<i class="fa fa-pie-chart fa-4x" style="color: #f2f2f2; padding-left: 110px; padding-top: 20px; font-size: 218px;"></i>-->
                       </div>
                     </div>
                   </div>

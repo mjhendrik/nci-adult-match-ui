@@ -153,10 +153,10 @@ export class TaDetailsComponent implements OnInit {
 
   }
 
-  view: any[] = [700, 400];
+  view: any[] = [450, 250];
 
   colorScheme: any = {
-    domain: ['#5bc0de', '#00aedb', '#428bca', '#0057e7', '#88d8b0', '#96ceb4', '#5cb85c', '#00b159', '#008744', '#ffcc5c', '#ffc425', '#ffa700', '#f37735', '#ff6f69']
+    domain: ["rgb(141,211,199)", "rgb(190,186,218)", "rgb(251,128,114)", "rgb(128,177,211)", "rgb(253,180,98)", "rgb(179,222,105)", "rgb(252,205,229)", "rgb(188,128,189)"]
   };
 
   chartData: any = [
