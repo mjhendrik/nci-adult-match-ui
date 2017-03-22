@@ -55,7 +55,92 @@ export class ProjectConfig extends SeedConfig {
     {
       name: 'moment',
       path: 'node_modules/moment/moment.js'
+    },
+    {
+      name: 'd3',
+      path: 'node_modules/d3/index.js'
+    }, {
+      name: '@swimlane/ngx-charts',
+      path: 'node_modules/@swimlane/ngx-charts/release/index.js',
+    },
+    {
+      name: 'd3-hierarchy',
+      path: 'node_modules/d3-hierarchy/build/d3-hierarchy.js',
+    },
+    {
+      name: 'd3-array',
+      path: 'node_modules/d3-array/build/d3-array.js',
+    },
+    {
+      name: 'd3-brush',
+      path: 'node_modules/d3-brush/build/d3-brush.js',
+    },
+    {
+      name: 'd3-force',
+      path: 'node_modules/d3-force/build/d3-force.js',
+    },
+    {
+      name: 'd3-format',
+      path: 'node_modules/d3-format/build/d3-format.js',
+    },
+    {
+      name: 'd3-interpolate',
+      path: 'node_modules/d3-interpolate/build/d3-interpolate.js',
+    },
+    {
+      name: 'd3-scale',
+      path: 'node_modules/d3-scale/build/d3-scale.js',
+    },
+    {
+      name: 'd3-selection',
+      path: 'node_modules/d3-selection/build/d3-selection.js',
+    },
+    {
+      name: 'd3-shape',
+      path: 'node_modules/d3-hierarchy/build/d3-hierarchy.js',
+    },
+    {
+      name: 'd3-time',
+      path: 'node_modules/d3-time/build/d3-time.js',
+    },
+    {
+      name: 'd3-time-format',
+      path: 'node_modules/d3-time-format/build/d3-time-format.js',
+    },
+    {
+      name: 'd3-color',
+      path: 'node_modules/d3-color/build/d3-color.js',
+    },
+    {
+      name: 'd3-dispatch',
+      path: 'node_modules/d3-dispatch/build/d3-dispatch.js',
+    },
+    {
+      name: 'd3-drag',
+      path: 'node_modules/d3-drag/build/d3-drag.js',
+    },
+    {
+      name: 'd3-transition',
+      path: 'node_modules/d3-transition/build/d3-transition.js',
+    },
+    {
+      name: 'd3-quadtree',
+      path: 'node_modules/d3-quadtree/build/d3-quadtree.js',
+    },
+    {
+      name: 'd3-collection',
+      path: 'node_modules/d3-collection/build/d3-collection.js',
+    },
+    {
+      name: 'd3-timer',
+      path: 'node_modules/d3-timer/build/d3-timer.js',
+    },
+    {
+      name: 'd3-ease',
+      path: 'node_modules/d3-ease/build/d3-ease.js',
     }];
+
+    this.SYSTEM_BUILDER_CONFIG.paths.d3 = 'node_modules/d3/build/d3.js';
 
     this.addPackagesBundles(additionalPackages);
 

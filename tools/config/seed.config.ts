@@ -378,6 +378,8 @@ export class SeedConfig {
       '@angular/platform-browser-dynamic/testing':
       'node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic-testing.umd.js',
       '@angular/router/testing': 'node_modules/@angular/router/bundles/router-testing.umd.js',
+      '@swimlane/ngx-charts': 'node_modules/@swimlane/ngx-charts/release/index.js',
+      'd3': 'node_modules/d3/index.js',
 
       'app/*': '/app/*',
       // For test config
@@ -404,6 +406,7 @@ export class SeedConfig {
     base: this.PROJECT_ROOT,
     packageConfigPaths: [
       join('node_modules', '*', 'package.json'),
+      join('node_modules', '**', 'package.json'),
       join('node_modules', '@angular', '*', 'package.json')
     ],
     paths: {
