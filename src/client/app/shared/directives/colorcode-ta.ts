@@ -18,7 +18,7 @@ export class colorCodeTa {
             this.el.nativeElement.className = 'text-danger-light';
         }
         else if (this.con === 'PENDING' || this.con === 'READY') {
-            this.el.nativeElement.className = 'text-primary-light';
+            this.el.nativeElement.className = 'text-info-light';
         }
     }
 

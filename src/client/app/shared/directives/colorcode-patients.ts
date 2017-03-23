@@ -13,7 +13,7 @@ export class colorCodePatients {
             this.el.nativeElement.className = 'text-success-light';
         }
         else if (this.con === 'REGISTRATION') {
-            this.el.nativeElement.className = 'text-primary-light';
+            this.el.nativeElement.className = 'text-info-light';
         }
         else if (this.con === 'COMPASSIONATE_CARE' || this.con === 'PENDING_APPROVAL' || this.con === 'PENDING_CONFIRMATION'
             || this.con === 'REJOIN_REQUESTED' || this.con === 'NOT_ELIGIBLE') {
