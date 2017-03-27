@@ -57,11 +57,12 @@ export class ProjectConfig extends SeedConfig {
       path: 'node_modules/moment/moment.js'
     },
     {
+      name: '@swimlane/ngx-charts',
+      path: 'node_modules/@swimlane/ngx-charts/release/index.js'
+    },
+    {
       name: 'd3',
       path: 'node_modules/d3/index.js'
-    }, {
-      name: '@swimlane/ngx-charts',
-      path: 'node_modules/@swimlane/ngx-charts/release/index.js',
     },
     {
       name: 'd3-hierarchy',
@@ -140,7 +141,7 @@ export class ProjectConfig extends SeedConfig {
       path: 'node_modules/d3-ease/build/d3-ease.js',
     }];
 
-    this.SYSTEM_BUILDER_CONFIG.paths.d3 = 'node_modules/d3/build/d3.js';
+    this.SYSTEM_BUILDER_CONFIG.paths.d3 = 'node_modules/d3/build/d3.min.js';
 
     this.addPackagesBundles(additionalPackages);
 
