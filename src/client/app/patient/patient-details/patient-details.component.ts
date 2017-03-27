@@ -1,11 +1,5 @@
 import {
-  Component,
-  trigger,
-  state,
-  style,
-  transition,
-  animate,
-  OnInit
+  Component
 } from '@angular/core';
 
 import { routerTransition } from './../../shared/router.animations';

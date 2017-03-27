@@ -5,7 +5,7 @@ import {
 import { routerTransition } from './../../shared/router.animations';
 
 /**
- * This class represents the lazy loaded PatientDetailsComponent.
+ * This class represents the lazy loaded PatientVariantReportComponent.
  */
 @Component({
   moduleId: module.id,
@@ -15,5 +15,5 @@ import { routerTransition } from './../../shared/router.animations';
   animations: [routerTransition()],
   host: { '[@routerTransition]': '' }
 })
-export class PatientDetailsComponent {
+export class PatientVariantReportComponent {
 }
