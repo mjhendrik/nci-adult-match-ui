@@ -3,57 +3,165 @@
   <ul class="breadcrumb pull-right">
     <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
     <li><a href [routerLink]="['/patients']" class="link-none">Patients</a></li>
-    <li><a href [routerLink]="['/patient/details']" class="link-none">Patient 10069</a></li>
+    <li><a href [routerLink]="['/patients/details']" class="link-none">Patient 10069</a></li>
     <li class="active">Variant Report</li>
   </ul>
   
-  <h1 class="page-header">Variant Report</h1>
+  <h1 class="page-header">Variant and Assignment Report</h1>
 
   <div class="row" matchHeight="panel-height-top">
     <div class="col-md-6">
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-top">
         <div class="panel-heading">
           <dl class="dl-horizontal">
-            Attributes
+            <h3>Variant Report</h3>
+            
+            <dt>Patient Sequence Number</dt>
+            <dd>11276</dd>
+
+            <dt>Patient Status</dt>
+            <dd>PENDING_CONFIRMATION</dd>
+
+            <dt>Patient Step Number</dt>
+            <dd>0</dd>
+
+            <dt>Patient Concordance</dt>
+            <dd>YES</dd>
+
+            <dt>Biopsy Sequence Number</dt>
+            <dd>T-16-000762</dd>
+
+            <dt>Molecular Sequence Number</dt>
+            <dd>MSN17772</dd>
+
+            <dt>Analysis Id</dt>
+            <dd>MSN17772_v1_92ad9833-e79a-4807-b1f3-6be88a0ab824</dd>
+
+
+            <dt>MAPD</dt>
+            <dd>0.317</dd>
+
+            <dt>Cellularity</dt>
+            <dd>1.000000</dd>
+
+            <dt>File Received Date</dt>
+            <dd>August 25, 2016 10:13 PM GMT</dd>
+
+            <dt>Torrent Variant Caller Version</dt>
+            <dd>5.0-9</dd>
+
+            <dt>Rejected/Confirmed Date</dt>
+            <dd>August 26, 2016 3:28 PM GMT</dd>
+
+            <dt>Status</dt>
+            <dd>CONFIRMED</dd>
+
+
           </dl>
         </div>
       </div>
     </div>
 
-    <div class="col-md-3">
+    <div class="col-md-6">
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-top">
         <div class="panel-heading">
           <dl class="dl-horizontal">
-            Assays
+            <h3>Assignment</h3>
+
+            <dt>Generation Date</dt>
+            <dd>August 26, 2016 3:28 PM GMT</dd>
+
+            <dt>Confirmation Date</dt>
+            <dd>August 26, 2016 4:36 PM GMT</dd>
+
+            <dt>Sent to ECOG Date</dt>
+            <dd>August 26, 2016 4:36 PM GMT</dd>
+
+            <dt>Received from ECOG Date</dt>
+            <dd>August 26, 2016 4:36 PM GMT</dd>
+
           </dl>
         </div>
       </div>
     </div>
 
-    <div class="col-md-3">
-      <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-top">
-        <div class="panel-heading">
-          <dl class="dl-horizontal">
-            MOI/aMOi
-          </dl>
-        </div>
-      </div>
-    </div>
   </div>
 
-  <div class="row">
-    <div class="col-md-6">
-      <div class="panel panel-white panel-accent-sides-purple overflow-hidden">
+  <div class="row" matchHeight="panel-height-middle">
+
+    <div class="col-md-3">
+      <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-middle">
         <div class="panel-heading">
-          Chart
+          <dl class="dl-horizontal">
+            <h3>MOI/aMOI Summary</h3>
+
+            <dt>Total Variants</dt>
+            <dd>2</dd>
+            <dt>Variant Report aMOI(s)</dt>
+            <dd>p.L755S ( COSM14060 )</dd>
+            
+            <dt>Total Number of aMOIs</dt>
+            <dd>1</dd>
+
+            <dt>Total Number of MOIs</dt>
+            <dd>2</dd>
+
+            <dt>Total Number of Confirmed aMOIs</dt>
+            <dd>1</dd>
+
+            <dt>Total Number of Confirmed MOIs</dt>
+            <dd>2</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-middle">
+        <div class="panel-heading">
+          <dl class="dl-horizontal">
+            <h3>Assays</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>IHC</td>
+                  <td>Result</td>
+                  <td>Comment</td>
+                </tr>
+                <tr>
+                  <td>PTEN</td>
+                  <td>POSITIVE</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>MLH1</td>
+                  <td>NEGATIVE</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>MSH2</td>
+                  <td>POSITIVE</td>
+                  <td>-</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </dl>
         </div>
       </div>
     </div>
 
     <div class="col-md-6">
-      <div class="panel panel-white panel-accent-sides-purple overflow-hidden">
+      <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-middle">
         <div class="panel-heading">
-          Assignment Logic
+          Chart
         </div>
       </div>
     </div>
