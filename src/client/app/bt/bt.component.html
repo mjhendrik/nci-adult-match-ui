@@ -12,7 +12,7 @@
           <div>
             <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
               <div class="tab-pane active">
-                <!-- table 4 -->
+                <!-- table BT -->
                 <div class="row">
                   <!-- begin panel -->
                   <div>
@@ -20,7 +20,7 @@
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select name="data-table_length" [(ngModel)]="recordsPerPageTA" aria-controls="data-table" class="form-control form-control-info input-sm">
+                        <select name="data-table_length" [(ngModel)]="recordsPerPageBT" aria-controls="data-table" class="form-control form-control-info input-sm">
                           <option [ngValue]=10>10</option>
                           <option [ngValue]=25>25</option>
                           <option [ngValue]=50>50</option>
@@ -32,72 +32,68 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input type="text" [(ngModel)]="searchtermTA" class="form-control form-control-info input-sm" placeholder="" aria-controls="data-table">                      
+                        <input type="text" [(ngModel)]="searchtermBT" class="form-control form-control-info input-sm" placeholder="" aria-controls="data-table">                      
                         </label>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="tableTAData | filterByText: searchtermTA"
-                          #mftableTA="mfDataTable" [(mfSortBy)]="tableTADefaultSort" [mfRowsOnPage]="recordsPerPageTA">
+                        <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="tableBTData | filterByText: searchtermBT"
+                          #mftableBT="mfDataTable" [(mfSortBy)]="tableBTDefaultSort" [mfRowsOnPage]="recordsPerPageBT">
                           <thead>
                             <tr class="info-light">
                               <th>
-                                <mfDefaultSorter by="treatmentArmId"><span class="table-header">ID</span></mfDefaultSorter>
+                                <mfDefaultSorter by="biopsies.biopsySequenceNumber"><span class="table-header">BSN</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="treatmentArmName"><span class="table-header">Name</span></mfDefaultSorter>
+                                <mfDefaultSorter by="patientSequenceNumber"><span class="table-header">PSN</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="currentPatients"><span class="table-header">Current Patients</span></mfDefaultSorter>
+                                <mfDefaultSorter by="biopsies.samples.molecularSequenceNumber"><span class="table-header">MSN</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="formerPatients"><span class="table-header">Former Patient</span></mfDefaultSorter>
+                                <mfDefaultSorter by="biopsies.samples.lab"><span class="table-header">Location</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="notEnrolledPatients"><span class="table-header">Not Enrolled Patients</span></mfDefaultSorter>
+                                <mfDefaultSorter by="biopsies.samples.trackingNumber"><span class="table-header">Tracking Number</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="pendingPatients"><span class="table-header">Pending Arm Approval</span></mfDefaultSorter>
+                                <mfDefaultSorter by="biopsies.specimenReceivedDate"><span class="table-header">Specimen Received Date</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="treatmentArmStatus"><span class="table-header">Status</span></mfDefaultSorter>
+                                <mfDefaultSorter by="biopsies.specimenFailureDate"><span class="table-header">Specimen Failure Date</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="dateCreated"><span class="table-header">Created Date</span></mfDefaultSorter>
+                                <mfDefaultSorter by="biopsies.pathologyReviewdate"><span class="table-header">Pathology Confirmation Date</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="dateOpened"><span class="table-header">Open Date</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <mfDefaultSorter by="dateSuspendedOrClosed"><span class="table-header">Suspended/Closed Date</span></mfDefaultSorter>
+                                <mfDefaultSorter by="biopsies.samples.dnaShippedDate"><span class="table-header">Nucleic Acid Sendout Date</span></mfDefaultSorter>
                               </th>
                             </tr>
                           </thead>
                           <tbody>
-                            <tr *ngFor="let item of mftableTA.data">
+                            <tr *ngFor="let item of mftableBT.data">
                               <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                                <a href [routerLink]="['/treatments/details']" class="link-none"><i class="fa fa-medkit"></i> {{item.treatmentArmId | dashify}}</a>
+                                <a href [routerLink]="['/treatments/details']" class="link-none"><i class="fa fa-medkit"></i> {{item.biopsies.biopsySequenceNumber | dashify}}</a>
                               </td>
-                              <td>{{item.treatmentArmName | dashify}}</td>
-                              <td>{{item.currentPatients | dashify}}</td>
-                              <td>{{item.formerPatients | dashify}}</td>
-                              <td>{{item.notEnrolledPatients | dashify}}</td>
-                              <td>{{item.pendingPatients | dashify}}</td>
-                              <td>{{item.treatmentArmStatus | dashify}}</td>
-                              <td>{{item.dateCreated | dashify}}</td>
-                              <td>{{item.dateOpened | dashify}}</td>
-                              <td>{{item.dateSuspendedOrClosed | dashify}}</td>
+                              <td>{{item.patientSequenceNumber | dashify}}</td>
+                              <td>{{item.biopsies.samples.molecularSequenceNumber | dashify}}</td>
+                              <td>{{item.biopsies.samples.lab | dashify}}</td>
+                              <td>{{item.biopsies.samples.trackingNumber | dashify}}</td>
+                              <td>{{item.biopsies.specimenReceivedDate | dashify}}</td>
+                              <td>{{item.biopsies.specimenFailureDate | dashify}}</td>
+                              <td>{{item.biopsies.pathologyReviewdate | dashify}}</td>
+                              <td>{{item.biopsies.samples.dnaShippedDate | dashify}}</td>
                             </tr>
-                            <tr *ngIf="mftableTA.data.length == 0">
-                              <td class="f-s-15" colspan="10">No matching search results found for "{{searchtermTA}}"</td>
+                            <tr *ngIf="mftableBT.data.length == 0">
+                              <td class="f-s-15" colspan="10">No matching search results found for "{{searchtermBT}}"</td>
                             </tr>
                           </tbody>
                           <tfoot>
                             <tr>
                               <td class="tfoot-padding" colspan="10">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermTA" [totallength]="tableTAData.length"></mfBootstrapPaginator>
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermBT" [totallength]="tableBTData.length"></mfBootstrapPaginator>
                               </td>
                             </tr>
                           </tfoot>
