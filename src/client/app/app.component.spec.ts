@@ -28,7 +28,7 @@ export function main() {
       { path: 'dashboard', component: DashboardComponent },
       { path: 'patients', component: PatientListComponent },
       { path: 'patients/details', component: PatientDetailsComponent },
-      { path: 'patients/details/variant_report', component: PatientVariantReportComponent },
+      { path: 'patients/variant_report', component: PatientVariantReportComponent },
       { path: 'treatments', component: TaComponent },
       { path: 'treatments/details', component: TaDetailsComponent },
       { path: 'bt', component: BtComponent },
