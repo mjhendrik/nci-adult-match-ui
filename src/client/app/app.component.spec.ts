@@ -13,6 +13,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { PatientListComponent } from './patient/patient-list/patient-list.component';
 import { TaComponent } from './ta/ta.component';
 import { PatientDetailsComponent } from './patient/patient-details/patient-details.component';
+import { PatientVariantReportComponent } from './patient/patient-variant-report/patient-variant-report.component';
 import { TaDetailsComponent } from './ta/ta-details/ta-details.component';
 import { BtComponent } from './bt/bt.component';
 import { CliaComponent } from './clia/clia.component';
@@ -26,8 +27,9 @@ export function main() {
       { path: '', component: LoginComponent },
       { path: 'dashboard', component: DashboardComponent },
       { path: 'patients', component: PatientListComponent },
-      { path: 'treatments', component: TaComponent },
       { path: 'patients/details', component: PatientDetailsComponent },
+      { path: 'patients/details/variant_report', component: PatientVariantReportComponent },
+      { path: 'treatments', component: TaComponent },
       { path: 'treatments/details', component: TaDetailsComponent },
       { path: 'bt', component: BtComponent },
       { path: 'clia', component: CliaComponent }
@@ -35,12 +37,19 @@ export function main() {
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [FormsModule, RouterTestingModule.withRoutes(config)],
-        declarations: [TestComponent, NavbarComponent,
-          AppComponent, LoginComponent,
-          DashboardComponent, PatientListComponent,
-          TaComponent, BtComponent,
-          CliaComponent, PatientDetailsComponent,
-          TaDetailsComponent],
+        declarations: [
+          TestComponent,
+          NavbarComponent,
+          AppComponent,
+          LoginComponent,
+          DashboardComponent,
+          PatientListComponent,
+          TaComponent,
+          TaDetailsComponent,
+          BtComponent,
+          CliaComponent,
+          PatientDetailsComponent,
+          PatientVariantReportComponent],
         providers: [
           { provide: APP_BASE_HREF, useValue: '' }
         ]
@@ -65,7 +74,6 @@ export function main() {
   selector: 'test-cmp',
   template: '<sd-app></sd-app>'
 })
-
 class TestComponent {
 }
 
