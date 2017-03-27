@@ -11,11 +11,15 @@ body {
 }
 
 .form-control-purple {
-  border-color: #3e2449;
+  border-color: $border-purple-color;
 }
 
 .form-control-success {
-  border-color: #094942;
+  border-color: $border-success-color;
+}
+
+.form-control-info {
+  border-color: $border-info-color;
 }
 
 .tfoot-padding {
@@ -118,6 +122,22 @@ body {
   box-shadow: 0 1px $dark-success-color;
 }
 
+.panel.panel-info-light .panel-heading {
+  background-color: $light-info-color;
+}
+
+.table>thead>tr.info-light>th {
+  color: #fff;
+  background-color: $light-info-color !important;
+  border-top-color: $dark-info-color !important;
+  border-top-style: solid !important;
+  border-top-width: 1px !important;
+}
+
+.table>thead>tr.info-light-no-border>th {
+  color: #fff;
+  background-color: $light-info-color !important;
+}
 
 /* Widget - Timeline */
 
