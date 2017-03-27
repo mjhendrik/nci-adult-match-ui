@@ -4,7 +4,7 @@ import {
   TestBed
 } from '@angular/core/testing';
 
-import { PatientDetailsModule } from './patient-variant-report.module';
+import { PatientVariantReportModule } from './patient-variant-report.module';
 
 export function main() {
   describe('patient-details component', () => {
@@ -14,7 +14,7 @@ export function main() {
     beforeEach(() => {
       TestBed.configureTestingModule({
         declarations: [TestComponent],
-        imports: [PatientDetailsModule]
+        imports: [PatientVariantReportModule]
       });
     });
 

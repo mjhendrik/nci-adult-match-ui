@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { PatientDetailsComponent } from './patient-variant-report.component';
+import { PatientVariantReportComponent } from './patient-variant-report.component';
 import { AuthGuard } from './../../shared/auth/auth.guard.service';
 
 @NgModule({
   imports: [
     RouterModule.forChild([
-      { path: 'patients/variant_report', component: PatientDetailsComponent, canActivate: [AuthGuard] }
+      { path: 'patients/variant_report', component: PatientVariantReportComponent, canActivate: [AuthGuard] }
     ])
   ],
   exports: [RouterModule]
 })
-export class PatientDetailsRoutingModule { }
+export class PatientVariantReportRoutingModule { }
