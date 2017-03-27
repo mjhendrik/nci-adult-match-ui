@@ -74,13 +74,18 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableBT.data">
+                              <td><a href="javascript:;" class="link-none"><i class="fa fa-tasks"></i> {{item.biopsySequenceNumber | dashify}}</a></td>
                               <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                                <a href [routerLink]="['/treatments/details']" class="link-none"><i class="fa fa-medkit"></i> {{item.biopsySequenceNumber | dashify}}</a>
+                                <a href [routerLink]="['/patients/details']" class="link-none"><i class="fa fa-user"></i> {{item.patientSequenceNumber | dashify}}</a>
                               </td>
-                              <td>{{item.patientSequenceNumber | dashify}}</td>
-                              <td>{{item.molecularSequenceNumber | dashify}}</td>
+                              <td><a href="javascript:;" class="link-none"><i class="fa fa-share-alt"></i> {{item.molecularSequenceNumber | dashify}}</a></td>
                               <td>{{item.lab | dashify}}</td>
-                              <td>{{item.trackingNumber | dashify}}</td>
+                              <td>
+                                <span *ngIf="item.trackingNumber!==null && item.trackingNumber!=='Local'">
+                                  <a href="https://www.fedex.com/apps/fedextrack/?tracknumbers={{item.trackingNumber | dashify}}" class="link-none" target="_blank"><i class="fa fa-truck"></i> {{item.trackingNumber | dashify}}</a>
+                                </span>
+                                <span *ngIf="item.trackingNumber===null || item.trackingNumber==='Local'">{{item.trackingNumber | dashify}}</span>
+                              </td>
                               <td>{{item.specimenReceivedDate | dashify}}</td>
                               <td>{{item.specimenFailureDate | dashify}}</td>
                               <td>{{item.pathologyReviewdate | dashify}}</td>
