@@ -11,7 +11,7 @@ import { LoginModule } from './login/login.module';
 import { CliaModule } from './clia/clia.module';
 import { BtModule } from './bt/bt.module';
 import { TaModule } from './ta/ta.module';
-import { PatientListModule } from './patient/patient-list/patients.module';
+import { PatientListModule } from './patient/patient-list/patient-list.module';
 import { TaDetailsModule } from './ta/ta-details/ta-details.module';
 import { PatientDetailsModule } from './patient/patient-details/patient-details.module';
 import { DashboardModule } from './dashboard/dashboard.module';

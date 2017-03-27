@@ -10,7 +10,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { LoginComponent } from './login/login.component';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { PatientListComponent } from './patient/patient-list/patients.component';
+import { PatientListComponent } from './patient/patient-list/patient-list.component';
 import { TaComponent } from './ta/ta.component';
 import { PatientDetailsComponent } from './patient/patient-details/patient-details.component';
 import { TaDetailsComponent } from './ta/ta-details/ta-details.component';

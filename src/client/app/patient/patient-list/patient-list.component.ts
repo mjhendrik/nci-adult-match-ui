@@ -17,8 +17,8 @@ import { GMTFilter } from './../../shared/pipes/gmt';
 @Component({
   moduleId: module.id,
   selector: 'sd-patients',
-  templateUrl: 'patients.component.html',
-  styleUrls: ['patients.component.css'],
+  templateUrl: 'patient-list.component.html',
+  styleUrls: ['patient-list.component.css'],
   animations: [routerTransition()],
   host: { '[@routerTransition]': '' },
   providers: [GMTFilter]

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import './operators';
 
@@ -10,7 +10,7 @@ import './operators';
   selector: 'sd-app',
   templateUrl: 'app.component.html'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   constructor(private router: Router) { }
 
