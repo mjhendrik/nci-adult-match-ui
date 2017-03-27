@@ -8,12 +8,11 @@ import {
   OnInit
 } from '@angular/core';
 
-import { routerTransition } from './../shared/router.animations';
-import { GMTFilter } from './../shared/pipes/gmt';
-
+import { routerTransition } from './../../shared/router.animations';
+import { GMTFilter } from './../../shared/pipes/gmt';
 
 /**
- * This class represents the lazy loaded PatientsComponent.
+ * This class represents the lazy loaded PatientListComponent.
  */
 @Component({
   moduleId: module.id,
@@ -24,15 +23,11 @@ import { GMTFilter } from './../shared/pipes/gmt';
   host: { '[@routerTransition]': '' },
   providers: [GMTFilter]
 })
-export class PatientsComponent {
+export class PatientListComponent {
 
   searchtermPatients: string = '';
   recordsPerPagePatients: number;
   tablePatientsDefaultSort: string;
-
-  constructor() {
-
-  }
 
   ngOnInit() {
     this.recordsPerPagePatients = 100;

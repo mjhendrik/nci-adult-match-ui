@@ -10,9 +10,9 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { LoginComponent } from './login/login.component';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { PatientsComponent } from './patients/patients.component';
+import { PatientListComponent } from './patient/patient-list/patients.component';
 import { TaComponent } from './ta/ta.component';
-import { PatientDetailsComponent } from './patients/patient-details/patient-details.component';
+import { PatientDetailsComponent } from './patient/patient-details/patient-details.component';
 import { TaDetailsComponent } from './ta/ta-details/ta-details.component';
 import { BtComponent } from './bt/bt.component';
 import { CliaComponent } from './clia/clia.component';
@@ -25,7 +25,7 @@ export function main() {
     let config: Route[] = [
       { path: '', component: LoginComponent },
       { path: 'dashboard', component: DashboardComponent },
-      { path: 'patients', component: PatientsComponent },
+      { path: 'patients', component: PatientListComponent },
       { path: 'treatments', component: TaComponent },
       { path: 'patients/details', component: PatientDetailsComponent },
       { path: 'treatments/details', component: TaDetailsComponent },
@@ -37,7 +37,7 @@ export function main() {
         imports: [FormsModule, RouterTestingModule.withRoutes(config)],
         declarations: [TestComponent, NavbarComponent,
           AppComponent, LoginComponent,
-          DashboardComponent, PatientsComponent,
+          DashboardComponent, PatientListComponent,
           TaComponent, BtComponent,
           CliaComponent, PatientDetailsComponent,
           TaDetailsComponent],

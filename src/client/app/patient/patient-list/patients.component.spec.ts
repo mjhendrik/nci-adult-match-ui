@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { async, TestBed } from '@angular/core/testing';
 
-import { PatientsModule } from './patients.module';
+import { PatientListModule } from './patients.module';
 
 export function main() {
   describe('patients component', () => {
@@ -11,7 +11,7 @@ export function main() {
     beforeEach(() => {
       TestBed.configureTestingModule({
         declarations: [TestComponent],
-        imports: [PatientsModule]
+        imports: [PatientListModule]
       });
     });
 
