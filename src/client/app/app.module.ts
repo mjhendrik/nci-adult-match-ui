@@ -11,9 +11,9 @@ import { LoginModule } from './login/login.module';
 import { CliaModule } from './clia/clia.module';
 import { BtModule } from './bt/bt.module';
 import { TaModule } from './ta/ta.module';
-import { PatientsModule } from './patients/patients.module';
+import { PatientListModule } from './patient/patient-list/patients.module';
 import { TaDetailsModule } from './ta/ta-details/ta-details.module';
-import { PatientDetailsModule } from './patients/patient-details/patient-details.module';
+import { PatientDetailsModule } from './patient/patient-details/patient-details.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { SharedModule } from './shared/shared.module';
 import { Auth } from './shared/auth/auth.service';
@@ -29,7 +29,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     CliaModule,
     BtModule,
     TaModule,
-    PatientsModule,
+    PatientListModule,
     TaDetailsModule,
     PatientDetailsModule,
     DashboardModule,
