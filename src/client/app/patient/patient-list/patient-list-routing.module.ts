@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { PatientListComponent } from './patients.component';
+import { PatientListComponent } from './patient-list.component';
 import { AuthGuard } from './../../shared/auth/auth.guard.service';
 
 @NgModule({

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { async, TestBed } from '@angular/core/testing';
 
-import { PatientListModule } from './patients.module';
+import { PatientListModule } from './patient-list.module';
 
 export function main() {
   describe('patients component', () => {
