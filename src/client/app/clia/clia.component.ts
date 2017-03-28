@@ -28,19 +28,24 @@ export class CliaComponent {
 
   searchtermVR: string = '';
   searchtermAR: string = '';
+  searchtermAR2: string = '';
 
   recordsPerPageVR: number;
   recordsPerPageAR: number;
+  recordsPerPageAR2: number;
 
   tableVRDefaultSort: string;
   tableARDefaultSort: string;
+  tableAR2DefaultSort: string;
 
   ngOnInit() {
     this.recordsPerPageVR = 10;
     this.recordsPerPageAR = 10;
+    this.recordsPerPageAR2 = 10;
 
     this.tableVRDefaultSort = 'daysPending';
     this.tableARDefaultSort = 'hoursPending';
+    this.tableAR2DefaultSort = 'hoursPending';
 
     this.sortByAsc = 'asc';
     this.sortByDesc = 'desc';
