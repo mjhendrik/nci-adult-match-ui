@@ -28,4 +28,12 @@ export class NavbarComponent {
     return true;
   }
 
+  cliaLabData: any = [
+    "Mocha",
+    "Yale",
+    "MGH",
+    "MD Anderson",
+    "Dartmouth"
+  ]
+
 }
