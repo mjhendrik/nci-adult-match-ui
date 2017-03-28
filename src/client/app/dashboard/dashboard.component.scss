@@ -1,6 +1,5 @@
 :host {
-  display: block;
-  // padding: 0 16px;
+  display: block; // padding: 0 16px;
 }
 
 input {
@@ -10,4 +9,8 @@ input {
 ul {
   list-style-type: none;
   padding: 0 0 0 8px;
+}
+
+.bg-orangeshade {
+  background: #ff9966;
 }

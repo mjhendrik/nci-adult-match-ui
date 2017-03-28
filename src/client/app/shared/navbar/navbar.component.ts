@@ -13,6 +13,15 @@ import { Auth } from './../auth/auth.service';
   styleUrls: ['navbar.component.css'],
 })
 export class NavbarComponent {
+
+  cliaLabData: any = [
+    "Mocha",
+    "Yale",
+    "MGH",
+    "MD Anderson",
+    "Dartmouth"
+  ];
+
   location: Location;
   constructor(location: Location, private auth: Auth) {
     this.location = location;
@@ -23,17 +32,9 @@ export class NavbarComponent {
   }
 
   stopReload(keycode: number): boolean {
-    if (keycode == 13)
+    if (keycode === 13)
       return false;
     return true;
   }
-
-  cliaLabData: any = [
-    "Mocha",
-    "Yale",
-    "MGH",
-    "MD Anderson",
-    "Dartmouth"
-  ]
 
 }

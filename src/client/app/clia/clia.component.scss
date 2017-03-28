@@ -1,6 +1,5 @@
 :host {
-  display: block;
-  // padding: 0 16px;
+  display: block; // padding: 0 16px;
 }
 
 h2 {
@@ -9,4 +8,33 @@ h2 {
   letter-spacing: 0.005em;
   margin-bottom: 0;
   margin-top: 0.83em;
+}
+
+.clia-nav {
+  padding-top: 10px;
+}
+
+.clia-nav>ul>li {
+  font-size: 26px;
+}
+
+.clia-nav>ul>li>a {
+  color: #ff9966;
+  padding-bottom: 15px;
+}
+
+.clia-nav>ul>li.active>a,
+.clia-nav>ul>li.active>a:hover,
+.clia-nav>ul>li.active>a:focus {
+  font-weight: 900;
+}
+
+.clia-nav>ul>li>a>span {
+  font-size: 46px;
+  color: #000000;
+  font-weight: 100;
+}
+
+.content {
+  padding-top: 24px;
 }
