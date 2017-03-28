@@ -1,4 +1,4 @@
-<!--  begin #header -->
+<!-- begin #header -->
 <div id="header" class="header navbar navbar-default navbar-fixed-top">
   <!-- begin container-fluid -->
   <div class="container-fluid header-height">
@@ -37,7 +37,7 @@
   <!-- end container-fluid -->
 </div>
 <!-- end #header -->
-
+<!-- begin #top-menu -->
 <div id="top-menu" class="top-menu top-menu-position" *ngIf="location.path()!=='/login'">
   <div class="container-fluid">
     <!-- begin top-menu nav -->
@@ -66,87 +66,21 @@
           <span>Biopsy Tracking</span>
         </a>
       </li>
-      <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="has-sub">
         <a href="javascript:void(0)" [routerLink]="['/clia']">
           <i class="fa fa-flask"></i>
-          <span>CLIA Labs</span>
+          <span>CLIA Labs <b class="caret"></b></span>
         </a>
+        <ul class="sub-menu">
+          <li *ngFor="let item of cliaLabData"><a href="javascript:void(0)" [routerLink]="['/clia']">{{item}}</a></li>
+        </ul>
       </li>
-      <!--<li class="has-sub">
-            <a href="javascript:;">
-              <i class="fa fa-inbox"></i>
-              <span>Patients <span class="badge">10</span></span>
-            </a>
-            <ul class="sub-menu">
-              <li><a href="email_inbox.html">Inbox</a></li>
-              <li><a href="email_compose.html">Compose</a></li>
-              <li><a href="email_detail.html">Detail</a></li>
-            </ul>
-          </li>
-          <li class="has-sub">
-            <a href="javascript:;">
-              <i class="fa fa-suitcase"></i>
-              <span>UI Elements <b class="caret"></b></span>
-            </a>
-            <ul class="sub-menu">
-              <li><a href="ui_general.html">General</a></li>
-              <li><a href="ui_typography.html">Typography</a></li>
-              <li><a href="ui_tabs_accordions.html">Tabs &amp; Accordions</a></li>
-              <li><a href="ui_modal_notification.html">Modal &amp; Notification</a></li>
-              <li><a href="ui_widget_boxes.html">Widget Boxes</a></li>
-              <li><a href="ui_media_object.html">Media Object</a></li>
-              <li><a href="ui_buttons.html">Buttons</a></li>
-              <li><a href="ui_font_awesome.html">Font Awesome</a></li>
-              <li><a href="ui_simple_line_icons.html">Simple Line Icons</a></li>
-              <li><a href="ui_ionicons.html">Ionicons</a></li>
-            </ul>
-          </li>
-          <li class="has-sub">
-            <a href="javascript:;">
-              <i class="fa fa-file-o"></i>
-              <span>Form Stuff <b class="caret"></b></span>
-            </a>
-            <ul class="sub-menu">
-              <li><a href="form_elements.html">Form Elements</a></li>
-              <li><a href="form_plugins.html">Form Plugins</a></li>
-              <li><a href="form_slider_switcher.html">Form Slider + Switcher</a></li>
-              <li><a href="form_validation.html">Form Validation</a></li>
-              <li><a href="form_wizards.html">Wizards</a></li>
-              <li><a href="form_wysiwyg.html">WYSIWYG</a></li>
-            </ul>
-          </li>
-          <li class="has-sub">
-            <a href="javascript:;">
-              <i class="fa fa-th"></i>
-              <span>Tables <b class="caret"></b></span>
-            </a>
-            <ul class="sub-menu">
-              <li><a href="table_basic.html">Basic Tables</a></li>
-              <li class="has-sub">
-                <a href="javascript:;"><b class="caret pull-right"></b> Managed Tables</a>
-                <ul class="sub-menu">
-                  <li><a href="table_manage.html">Default</a></li>
-                  <li><a href="table_manage_autofill.html">Autofill</a></li>
-                  <li><a href="table_manage_buttons.html">Buttons</a></li>
-                  <li><a href="table_manage_colreorder.html">ColReorder</a></li>
-                  <li><a href="table_manage_fixed_columns.html">Fixed Column</a></li>
-                  <li><a href="table_manage_fixed_header.html">Fixed Header</a></li>
-                  <li><a href="table_manage_keytable.html">KeyTable</a></li>
-                  <li><a href="table_manage_responsive.html">Responsive</a></li>
-                  <li><a href="table_manage_rowreorder.html">RowReorder</a></li>
-                  <li><a href="table_manage_scroller.html">Scroller</a></li>
-                  <li><a href="table_manage_select.html">Select</a></li>
-                  <li><a href="table_manage_combine.html">Extension Combination</a></li>
-                </ul>
-              </li>
-            </ul>
-          </li>-->
     </ul>
     <!-- end top-menu nav -->
   </div>
 </div>
-
-<!--  begin #footer -->
+<!-- end #top-menu -->
+<!-- begin #footer -->
 <div id="footer" class="footer text-center footer-format">
   <span *ngIf="location.path()!=='/login'" class="pull-right" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
     <a href="javascript:void(0)" class="btn-scroll-to-top" data-click="scroll-top" (click)="backToTop();">
