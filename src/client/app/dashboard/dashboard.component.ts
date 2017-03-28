@@ -16,6 +16,7 @@ import { GMTFilter } from './../shared/pipes/gmt';
   providers: [GMTFilter]
 })
 export class DashboardComponent implements OnInit {
+  
   newName: string = '';
   errorMessage: string;
 
@@ -168,7 +169,7 @@ export class DashboardComponent implements OnInit {
         "location": "Boston"
       }
     ]
-  }
+  };
 
   tableARData: any = {
     "assignment_reports": [
@@ -317,7 +318,7 @@ export class DashboardComponent implements OnInit {
         "hoursPending": 51
       }
     ]
-  }
+  };
 
   tablePatientsAwaitingData: any = [
     {
@@ -506,6 +507,6 @@ export class DashboardComponent implements OnInit {
       "msn": "MSN43786",
       "date_verified": "2017-02-10T22:51:12.316Z"
     }
-  ]
+  ];
 
 }
