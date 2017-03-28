@@ -22,6 +22,10 @@ body {
   border-color: $border-info-color;
 }
 
+.form-control-orangeshade {
+  border-color: $border-orangeshade-color;
+}
+
 .tfoot-padding {
   padding-left: 15px !important;
   padding-right: 15px !important;
@@ -139,6 +143,15 @@ body {
   background-color: $light-info-color !important;
 }
 
+.table>thead>tr.orangeshade-light>th {
+  color: #fff;
+  background-color: $light-orangeshade-color !important;
+  border-top-color: $dark-orangeshade-color !important;
+  border-top-style: solid !important;
+  border-top-width: 1px !important;
+}
+
+
 /* Widget - Timeline */
 
 .match-timeline {
@@ -233,4 +246,17 @@ body {
 // Fixed Panel Heights
 .biopsy-panel-height {
   height: 120px;
+}
+
+
+/* CLIA Labs - Theme Styles */
+
+.nav.nav-tabs.nav-tabs-orangeshade>li.active:after,
+.nav.nav-tabs.nav-tabs-orangeshade>li.active:hover:after,
+.nav.nav-tabs.nav-tabs-orangeshade>li.active:focus:after {
+  background: $orangeshade-color;
+}
+
+.bg-orangeshade-light {
+  background: $light-orangeshade-color !important;
 }
