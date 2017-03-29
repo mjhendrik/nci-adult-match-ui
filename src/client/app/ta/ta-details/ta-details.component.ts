@@ -2802,6 +2802,14 @@ export class TaDetailsComponent implements OnInit {
     },
     "statusLog": [
       {
+        "status": "PENDING",
+        "date": 1479488658486
+      },
+      {
+        "status": "READY",
+        "date": 1479762799825
+      },
+      {
         "status": "OPEN",
         "date": 1479790800000
       },
@@ -2810,16 +2818,8 @@ export class TaDetailsComponent implements OnInit {
         "date": 1479790800001
       },
       {
-        "status": "READY",
-        "date": 1479762799825
-      },
-      {
         "status": "AMENDED",
         "date": 1485544254663
-      },
-      {
-        "status": "PENDING",
-        "date": 1479488658486
       }
     ]
   };
