@@ -20,7 +20,7 @@
             <dd>MALE, WHITE</dd>
 
             <dt>Status</dt>
-            <dd>ON_TREATMENT_ARM</dd>
+            <dd><span [colorcode-patients]="'ON_TREATMENT_ARM'">ON_TREATMENT_ARM</span></dd>
 
             <dt>Assignment Reason</dt>
             <dd class="widget-stat-text">The patient and treatment arm match on non-hotspot variant [(ID: .,GENE: NF1,OVA: Deleterious,EXON: 35,FUNC: nonsense,PROTEIN:p.Arg1534Ter)].</dd>
@@ -90,7 +90,7 @@
             <div class="row">
               <div class="col-md-3">
                 <div class="widget widget-stat bg-danger">
-                  <a href="#">
+                  <a href [routerLink]="['/patients/variant_report']">
                     <div class="widget-stat-icon"><i class="fa fa-file"></i></div>
                     <div class="widget-stat-info">
                       <div class="widget-stat-title">Pending Variant Report</div>
