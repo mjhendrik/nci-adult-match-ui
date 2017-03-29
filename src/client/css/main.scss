@@ -260,3 +260,25 @@ body {
     border-bottom-width: 2px !important;
     border-bottom-style: solid !important;
 }
+
+.top-menu {
+    .nav > li.active.nav-dashboard > a i {
+      color: #fff;
+    }
+
+    .nav > li.active.nav-patient > a i {
+      color: $light-purple-color;
+    }
+
+    .nav > li.active.nav-treatments > a i {
+      color: $success-color;
+    }
+
+    .nav > li.active.nav-biopsy-tracking > a i {
+      color: $light-info-color;
+    }
+
+    .nav > li.active.nav-clia-lab > a i {
+      color: $light-orangeshade-color;
+    }
+}
