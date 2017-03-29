@@ -56,10 +56,10 @@
                                 <mfDefaultSorter by="formerPatients"><span class="table-header">Former Patient</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="notEnrolledPatients"><span class="table-header">Not Enrolled Patients</span></mfDefaultSorter>
+                                <mfDefaultSorter by="pendingPatients"><span class="table-header">Pending Arm Approval</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="pendingPatients"><span class="table-header">Pending Arm Approval</span></mfDefaultSorter>
+                                <mfDefaultSorter by="notEnrolledPatients"><span class="table-header">Not Enrolled Patients</span></mfDefaultSorter>
                               </th>
                               <th>
                                 <mfDefaultSorter by="treatmentArmStatus"><span class="table-header">Status</span></mfDefaultSorter>
@@ -83,8 +83,8 @@
                               <td>{{item.treatmentArmName | dashify}}</td>
                               <td>{{item.currentPatients | dashify}}</td>
                               <td>{{item.formerPatients | dashify}}</td>
-                              <td>{{item.notEnrolledPatients | dashify}}</td>
                               <td>{{item.pendingPatients | dashify}}</td>
+                              <td>{{item.notEnrolledPatients | dashify}}</td>
                               <td [colorcode-ta]="item.treatmentArmStatus">{{item.treatmentArmStatus | dashify}}</td>
                               <td>{{item.dateCreated | dashify}}</td>
                               <td>{{item.dateOpened | dashify}}</td>
