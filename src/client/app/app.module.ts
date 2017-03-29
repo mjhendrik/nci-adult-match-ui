@@ -20,7 +20,6 @@ import { SharedModule } from './shared/shared.module';
 import { Auth } from './shared/auth/auth.service';
 import { AuthGuard } from './shared/auth/auth.guard.service';
 import { LoginGuard } from './shared/auth/login.guard.service';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
   imports: [BrowserModule,
@@ -36,8 +35,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     PatientVariantReportModule,
     DashboardModule,
     SharedModule.forRoot(),
-    FormsModule,
-    NgxChartsModule],
+    FormsModule
+    ],
   declarations: [AppComponent],
   providers: [
     {
