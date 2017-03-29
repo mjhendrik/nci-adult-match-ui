@@ -1,6 +1,7 @@
 @import "style.css";
 // replace for production: @import "style.min.css";
 @import "../scss/index";
+
 body {
   background-color: #EAECEB;
 }
@@ -48,12 +49,12 @@ body {
 }
 
 .panel-accent-sides-purple {
-  border-left: 2px solid #9b59b6;
-  border-right: 2px solid #9b59b6;
+  border-left: 2px solid $light-purple-color;
+  border-right: 2px solid $light-purple-color;
 }
 
 .panel-accent-bottom-purple {
-  border-bottom: 2px solid #9b59b6;
+  border-bottom: 2px solid $light-purple-color;
 }
 
 .widget {
