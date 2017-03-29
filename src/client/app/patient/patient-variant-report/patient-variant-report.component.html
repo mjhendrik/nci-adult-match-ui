@@ -20,8 +20,8 @@
             <dd><a href [routerLink]="['/patients/details']" class="link-none">11276</a>, <span [colorcode-patients]="'PENDING_CONFIRMATION'">PENDING_CONFIRMATION</span>, at Step 0</dd>
 
             <dt>Status</dt>
-            <dd><span [colorcode-patients]="'CONFIRMED'">CONFIRMED</span></dd>
-            
+            <!--<dd><span [colorcode-variant-report]="'CONFIRMED'">CONFIRMED</span></dd>-->
+
             <dt>Patient Concordance</dt>
             <dd>YES</dd>
 
@@ -61,7 +61,7 @@
             <h5>Assignment</h5>
 
             <dt>Status</dt>
-            <dd>CONFIRMED</dd>
+            <dd [colorcodeAssignment]="'CONFIRMED'">CONFIRMED</dd>
 
             <dt>Generation Date</dt>
             <dd>August 26, 2016 3:28 PM GMT</dd>
