@@ -91,15 +91,24 @@ export class TaDetailsComponent implements OnInit {
     }
   };
 
-  // public barChartLabels: string[] = ['Adenocarcinoma - pancreas', 'Adenocarcinoma, NOS', 'Bone cancer, NOS', 'Carcinoma, NOS', 'Cholangiocar.- intra/extrahepatic', 'CNS primary tumor, NOS', 'Female reprod. system cancer, NOS', 'Lung adenocarcinoma', 'Neuroendocrine cancer, NOS', 'Ovarian epithelial cancer', 'Pancreatic neuroendocrine tumor', 'Thyroid cancer, NOS'];
-  public barChartLabels: string[] = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
+  public barChartLabels: string[] = ['Adenocarcinoma - pancreas', 'Adenocarcinoma, NOS', 'Bone cancer, NOS', 'Carcinoma, NOS', 'Cholangiocar.- intra/extrahepatic', 'CNS primary tumor, NOS', 'Female reprod. system cancer, NOS', 'Lung adenocarcinoma', 'Neuroendocrine cancer, NOS', 'Ovarian epithelial cancer', 'Pancreatic neuroendocrine tumor', 'Thyroid cancer, NOS'];
+  // public barChartLabels: string[] = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
   public barChartType: string = 'bar';
   public barChartLegend: boolean = true;
 
   public barChartData: any[] = [
-    { data: [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0], label: 'Off Trial' },
-    { data: [1, 1, 1, 2, 2, 0, 1, 3, 1, 2, 0, 0], label: 'On Treatment Arm' },
-    { data: [0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1], label: 'Pending Review' }
+    {
+      data: [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0],
+      label: 'Off Trial'
+    },
+    {
+      data: [1, 1, 1, 2, 2, 0, 1, 3, 1, 2, 0, 0],
+      label: 'On Treatment Arm'
+    },
+    {
+      data: [0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1],
+      label: 'Pending Review'
+    }
   ];
 
   constructor() {
