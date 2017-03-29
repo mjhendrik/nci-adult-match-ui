@@ -19,7 +19,7 @@ import { GMTFilter } from './../shared/pipes/gmt';
 export class CliaComponent {
 
   cliaLabData: any = [
-    "Mocha",
+    "MoCha",
     "Yale",
     "MGH",
     "MD Anderson",
