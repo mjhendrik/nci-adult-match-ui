@@ -60,7 +60,7 @@
       <div class="panel panel-white panel-accent-sides-success panel-height">
         <div class="panel-heading">
           <dl class="dl-horizontal">
-            <h5>History</h5>
+            <h5 class="m-t-5">History</h5>
             <table class="table table-condensed white-header">
               <thead>
                 <tr>
@@ -81,7 +81,7 @@
     </div>
     <div class="col-md-4">
       <!-- begin panel -->
-      <div class="panel panel-success-light panel-accent-sides-success panel-height">
+      <div class="panel panel-white panel-accent-sides-success panel-height">
         <div class="m-0 p-0">
           <div>
             <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
@@ -92,14 +92,11 @@
                   <div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-
-
-
-                        <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend"
-                          [chartType]="barChartType"></canvas>
-
-
-
+                        <div class="panel-heading">
+                          <h5 class="m-t-5">Disease Representation of Patients</h5>
+                          <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend"
+                            [chartType]="barChartType"></canvas>
+                        </div>
                       </div>
                     </div>
                   </div>
