@@ -57,51 +57,27 @@
       <!-- end panel -->
     </div>
     <div class="col-md-4">
-      <!-- begin panel -->
-      <div class="panel panel-accent-bottom-success panel-height">
+      <div class="panel panel-white panel-accent-sides-success panel-height">
         <div class="panel-heading">
-          <h4 class="f-s-18 m-0">History</h4>
-        </div>
-        <div class="m-0 p-0">
-          <div>
-            <div class="tab-content m-b-0 p-l-0 p-r-0 p-t-0 p-b-0">
-              <div class="tab-pane active">
-                <!-- table history -->
-                <div class="row">
-                  <!-- begin panel -->
-                  <div>
-                    <div class="row">
-                      <div class="table-responsive col-lg-12 m-l-10 p-r-30">
-                        <table class="table" [mfData]="tableRulesData.statusLog" #mftableHistory="mfDataTable" [(mfSortBy)]="tableHistoryDefaultSort">
-                          <thead>
-                            <tr class="success-light-no-border">
-                              <th class="col-xs-4">
-                                <mfDefaultSorter by="status"><span class="table-header">Status</span></mfDefaultSorter>
-                              </th>
-                              <th class="col-xs-8">
-                                <mfDefaultSorter by="date"><span class="table-header">Date</span></mfDefaultSorter>
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <!--id="tbody-height"-->
-                            <tr *ngFor="let item of mftableHistory.data">
-                              <td [colorcode-ta]="item.status" class="col-xs-4">{{item.status | dashify}}</td>
-                              <td class="col-xs-8">{{item.date | gmt | dashify}}</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- end panel -->
-                </div>
-              </div>
-            </div>
-          </div>
+          <dl class="dl-horizontal">
+            <h5>History</h5>
+            <table class="table table-condensed white-header">
+              <thead>
+                <tr>
+                  <th>Status</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of tableRulesData.statusLog">
+                  <td [colorcode-ta]="item.status" class="col-xs-4">{{item.status | dashify}}</td>
+                  <td class="col-xs-8">{{item.date | gmt | dashify}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </dl>
         </div>
       </div>
-      <!-- end panel -->
     </div>
     <div class="col-md-4">
       <!-- begin panel -->
