@@ -260,3 +260,9 @@ body {
 .bg-orangeshade-light {
   background: $light-orangeshade-color !important;
 }
+
+.table.white-header > thead > tr > th {
+    background-color: inherit;
+    border-bottom-width: 2px !important;
+    border-bottom-style: solid !important;
+}
