@@ -97,12 +97,9 @@ export class TaDetailsComponent implements OnInit {
   public barChartLegend: boolean = true;
 
   public barChartData: any[] = [
-    // { data: [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0], label: 'FORMERLY_ON_ARM_OFF_TRIAL and OFF_TRIAL_DECEASED' },
-    // { data: [1, 1, 1, 2, 2, 0, 1, 3, 1, 2, 0, 0], label: 'ON_TREATMENT_ARM' },
-    // { data: [0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1], label: 'PENDING_CONFIRMATION and PENDING_APPROVAL' }
-    { data: [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0], label: 'PAST' },
-    { data: [1, 1, 1, 2, 2, 0, 1, 3, 1, 2, 0, 0], label: 'PRESENT' },
-    { data: [0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1], label: 'FUTURE' }
+    { data: [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0], label: 'Off Trial' },
+    { data: [1, 1, 1, 2, 2, 0, 1, 3, 1, 2, 0, 0], label: 'On Treatment Arm' },
+    { data: [0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1], label: 'Pending Review' }
   ];
 
   constructor() {
