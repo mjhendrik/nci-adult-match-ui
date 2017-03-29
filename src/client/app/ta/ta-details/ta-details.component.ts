@@ -83,16 +83,19 @@ export class TaDetailsComponent implements OnInit {
     responsive: true,
     scales: {
       xAxes: [{
-        stacked: true
+        stacked: true,
+        display: false
       }],
       yAxes: [{
-        stacked: true
+        stacked: true,
+        ticks: {
+          suggestedMax: 10
+        }
       }]
     }
   };
 
   public barChartLabels: string[] = ['Adenocarcinoma - pancreas', 'Adenocarcinoma, NOS', 'Bone cancer, NOS', 'Carcinoma, NOS', 'Cholangiocar.- intra/extrahepatic', 'CNS primary tumor, NOS', 'Female reprod. system cancer, NOS', 'Lung adenocarcinoma', 'Neuroendocrine cancer, NOS', 'Ovarian epithelial cancer', 'Pancreatic neuroendocrine tumor', 'Thyroid cancer, NOS'];
-  // public barChartLabels: string[] = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
   public barChartType: string = 'bar';
   public barChartLegend: boolean = true;
 
@@ -107,7 +110,7 @@ export class TaDetailsComponent implements OnInit {
     },
     {
       data: [0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1],
-      label: 'Pending Review'
+      label: 'Pending'
     }
   ];
 
