@@ -176,8 +176,8 @@
                               <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                                 <a href [routerLink]="['/patients/details']" class="link-none"><i class="fa fa-user"></i> {{item.patientSequenceNumber | dashify}}</a>
                               </td>
-                              <td><a href="javascript:;" class="link-none"><i class="fa fa-share-alt"></i> {{item.molecularSequenceNumber | dashify}}</a></td>
-                              <td class="text-center"><a href="javascript:;" class="link-none"><i class="fa fa-file-text-o"></i></a></td>
+                              <td><a href [routerLink]="['/patients/details']" class="link-none"><i class="fa fa-share-alt"></i> {{item.molecularSequenceNumber | dashify}}</a></td>
+                              <td class="text-center"><a href [routerLink]="['/patients/variant_report']" class="link-none"><i class="fa fa-file-text-o"></i></a></td>
                               <td>{{item.location | dashify}}</td>
                               <td>{{item.specimenReceivedDate | dashify}}</td>
                               <td>{{item.ngsDateReceived | dashify}}</td>
@@ -285,7 +285,7 @@
                                 <span *ngIf="item.treatmentArm.id!==null"><a href [routerLink]="['/treatments/details']" class="link-none"><i class="fa fa-medkit"></i> {{item.treatmentArm.id | dashify}} ({{item.treatmentArm.version | dashify}})</a></span>
                                 <span *ngIf="item.treatmentArm.id===null">No available treatment arm</span>
                               </td>
-                              <td class="text-center"><a href="javascript:;" class="link-none"><i class="fa fa-file-text-o"></i></a></td>
+                              <td class="text-center"><a href [routerLink]="['/patients/variant_report']" class="link-none"><i class="fa fa-file-text-o"></i></a></td>
                               <td>{{item.dateAssigned | dashify}}</td>
                               <td [colorcode-hours]="item.hoursPending">{{item.hoursPending | dashify}}</td>
                             </tr>
@@ -400,9 +400,9 @@
                   <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                     <a href [routerLink]="['/patients/details']" class="link-none"><i class="fa fa-user"></i> {{item.psn | dashify}}</a>
                   </td>
-                  <td><a href="javascript:;" class="link-none"><i class="fa fa-tasks"></i> {{item.bsn | dashify}}</a></td>
-                  <td><a href="javascript:;" class="link-none"><i class="fa fa-share-alt"></i> {{item.msn | dashify}}</a></td>
-                  <td class="text-center"><a href="javascript:;" class="link-none"><i class="fa fa-file-text-o"></i></a></td>
+                  <td><a href [routerLink]="['/patients/details']" class="link-none"><i class="fa fa-tasks"></i> {{item.bsn | dashify}}</a></td>
+                  <td><a href [routerLink]="['/patients/details']" class="link-none"><i class="fa fa-share-alt"></i> {{item.msn | dashify}}</a></td>
+                  <td class="text-center"><a href [routerLink]="['/patients/variant_report']" class="link-none"><i class="fa fa-file-text-o"></i></a></td>
                   <td>AWAITING DATA</td>
                   <td>{{item.date_verified | dashify}}</td>
                 </tr>
