@@ -78,6 +78,38 @@ export class TaDetailsComponent implements OnInit {
   ruleIn: any[];
   ruleEx: any[];
 
+  public barChartOptions:any = {
+    scaleShowVerticalLines: false,
+    responsive: true,
+    scales:{
+      xAxes: [{
+                stacked: true
+            }],
+      yAxes: [{
+                stacked: true
+            }]
+    }
+  };
+
+  public barChartLabels:string[] = ['Adenocarcinoma - pancreas', 'Adenocarcinoma, NOS', 'Bone cancer, NOS', 'Carcinoma, NOS', 'Cholangiocar.- intra/extrahepatic', 'CNS primary tumor, NOS', 'Female reprod. system cancer, NOS', 'Lung adenocarcinoma', 'Neuroendocrine cancer, NOS', 'Ovarian epithelial cancer', 'Pancreatic neuroendocrine tumor', 'Thyroid cancer, NOS'];
+  public barChartType:string = 'bar';
+  public barChartLegend:boolean = true;
+
+  public barChartData:any[] = [
+    {data: [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0], label: 'FORMERLY_ON_ARM_OFF_TRIAL and OFF_TRIAL_DECEASED'},
+    {data: [1, 1, 1, 2, 2, 0, 1, 3, 1, 2, 0, 0], label: 'ON_TREATMENT_ARM'},
+    {data: [0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1], label: 'PENDING_CONFIRMATION and PENDING_APPROVAL'}
+  ];
+
+  // events
+  public chartClicked(e:any):void {
+    console.log(e);
+  }
+
+  public chartHovered(e:any):void {
+    console.log(e);
+  }
+
   constructor() {
 
   }
@@ -152,71 +184,6 @@ export class TaDetailsComponent implements OnInit {
     }
 
   }
-
-  view: any[] = [450, 250];
-
-  colorScheme: any = {
-    domain: ["rgb(141,211,199)", "rgb(190,186,218)", "rgb(251,128,114)", "rgb(128,177,211)", "rgb(253,180,98)", "rgb(179,222,105)", "rgb(252,205,229)", "rgb(188,128,189)"]
-  };
-
-  chartData: any = [
-    {
-      "name": "Adenocarcinoma - pancreas",
-      "value": 1
-    },
-    {
-      "name": "Adenocarcinoma, NOS",
-      "value": 5
-    },
-    {
-      "name": "Bone cancer, NOS",
-      "value": 1
-    },
-    {
-      "name": "Carcinoma, NOS",
-      "value": 2
-    },
-    {
-      "name": "Cholangiocar.- intra/extrahepatic",
-      "value": 2
-    },
-    {
-      "name": "CNS primary tumor, NOS",
-      "value": 1
-    },
-    {
-      "name": "Female reprod. system cancer, NOS",
-      "value": 1
-    },
-    {
-      "name": "Lung adenocar. w/ bronch. feat.",
-      "value": 1
-    },
-    {
-      "name": "Lung adenocarcinoma",
-      "value": 6
-    },
-    {
-      "name": "Neuroendocrine cancer, NOS",
-      "value": 3
-    },
-    {
-      "name": "Non-small cell lung cancer, NOS",
-      "value": 1
-    },
-    {
-      "name": "Ovarian epithelial cancer",
-      "value": 4
-    },
-    {
-      "name": "Pancreatic neuroendocrine tumor",
-      "value": 1
-    },
-    {
-      "name": "Thyroid cancer, NOS",
-      "value": 1
-    }
-  ];
 
   versionData: any = [
     "2015-08-06",
