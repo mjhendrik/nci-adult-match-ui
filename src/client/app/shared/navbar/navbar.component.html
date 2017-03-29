@@ -42,31 +42,31 @@
   <div class="container-fluid">
     <!-- begin top-menu nav -->
     <ul class="nav">
-      <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-dashboard">
         <a href="javascript:void(0)" [routerLink]="['/dashboard']">
           <i class="fa fa-home"></i>
           <span>Dashboard</span>
         </a>
       </li>
-      <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-patient">
         <a href="javascript:void(0)" [routerLink]="['/patients']">
           <i class="fa fa-users"></i>
           <span>Patients</span>
         </a>
       </li>
-      <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-treatments">
         <a href="javascript:void(0)" [routerLink]="['/treatments']">
           <i class="fa fa-medkit"></i>
           <span>Treatment Arms</span>
         </a>
       </li>
-      <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-biopsy-tracking">
         <a href="javascript:void(0)" [routerLink]="['/tracking']">
           <i class="fa fa-truck"></i>
           <span>Biopsy Tracking</span>
         </a>
       </li>
-      <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="has-sub">
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-clia-lab has-sub">
         <a href="javascript:void(0)" [routerLink]="['/clia']">
           <i class="fa fa-flask"></i>
           <span>CLIA Labs&nbsp;&nbsp;<b class="caret"></b></span>
