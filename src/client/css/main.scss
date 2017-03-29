@@ -1,8 +1,9 @@
 @import "style.css";
 // replace for production: @import "style.min.css";
 @import "../scss/index";
+
 body {
-  background-color: #EAECEB;
+  background-color: $body-back-color;
 }
 
 .content {
@@ -48,12 +49,12 @@ body {
 }
 
 .panel-accent-sides-purple {
-  border-left: 2px solid #9b59b6;
-  border-right: 2px solid #9b59b6;
+  border-left: 2px solid $light-purple-color;
+  border-right: 2px solid $light-purple-color;
 }
 
 .panel-accent-bottom-purple {
-  border-bottom: 2px solid #9b59b6;
+  border-bottom: 2px solid $light-purple-color;
 }
 
 .widget {
@@ -190,13 +191,6 @@ body {
   color: $text-primary-light-color;
 }
 
-// .match-timeline-list li:last-child a {
-//     border-radius: 0 0 5px 5px;
-// }
-// .match-timeline-list a:hover,
-// .match-timeline-list a:focus {
-//     background: #ebeced;
-// }
 .match-timeline-list .timeline-image {
   float: left;
   overflow: hidden;

@@ -8,7 +8,8 @@ import { colorCodeHours } from './colorcode-hours';
 import { colorCodeClia } from './colorcode-clia';
 import { MatchHeightDirective } from './match-height.directive';
 import { ExternalLinksComponent } from './external-links.component';
-import { colorCodeAssignment } from './colorcode-assignment';
+import { ColorCodeAssignmentDirective } from './colorcode-assignment.directive';
+import { ColorCodeVariantReportDirective } from './colorcode-variant-report.directive';
 
 @NgModule({
   imports: [CommonModule],
@@ -20,7 +21,8 @@ import { colorCodeAssignment } from './colorcode-assignment';
     colorCodeClia,
     MatchHeightDirective,
     ExternalLinksComponent,
-    colorCodeAssignment
+    ColorCodeAssignmentDirective,
+    ColorCodeVariantReportDirective
   ],
   exports: [
     colorCodeTa,
@@ -30,7 +32,8 @@ import { colorCodeAssignment } from './colorcode-assignment';
     colorCodeClia,
     MatchHeightDirective,
     ExternalLinksComponent,
-    colorCodeAssignment
+    ColorCodeAssignmentDirective,
+    ColorCodeVariantReportDirective
   ],
 })
 export class DirectivesModule {
