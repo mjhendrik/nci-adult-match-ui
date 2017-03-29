@@ -38,6 +38,9 @@ export class CliaComponent {
   tableARDefaultSort: string;
   tableAR2DefaultSort: string;
 
+  sortByAsc: string;
+  sortByDesc: string;
+
   ngOnInit() {
     this.recordsPerPageVR = 10;
     this.recordsPerPageAR = 10;
