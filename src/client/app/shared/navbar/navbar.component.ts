@@ -15,7 +15,7 @@ import { Auth } from './../auth/auth.service';
 export class NavbarComponent {
 
   cliaLabData: any = [
-    "Mocha",
+    "MoCha",
     "Yale",
     "MGH",
     "MD Anderson",
