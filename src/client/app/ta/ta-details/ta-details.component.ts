@@ -78,37 +78,28 @@ export class TaDetailsComponent implements OnInit {
   ruleIn: any[];
   ruleEx: any[];
 
-  public barChartOptions:any = {
+  public barChartOptions: any = {
     scaleShowVerticalLines: false,
     responsive: true,
-    scales:{
+    scales: {
       xAxes: [{
-                stacked: true
-            }],
+        stacked: true
+      }],
       yAxes: [{
-                stacked: true
-            }]
+        stacked: true
+      }]
     }
   };
 
-  public barChartLabels:string[] = ['Adenocarcinoma - pancreas', 'Adenocarcinoma, NOS', 'Bone cancer, NOS', 'Carcinoma, NOS', 'Cholangiocar.- intra/extrahepatic', 'CNS primary tumor, NOS', 'Female reprod. system cancer, NOS', 'Lung adenocarcinoma', 'Neuroendocrine cancer, NOS', 'Ovarian epithelial cancer', 'Pancreatic neuroendocrine tumor', 'Thyroid cancer, NOS'];
-  public barChartType:string = 'bar';
-  public barChartLegend:boolean = true;
+  public barChartLabels: string[] = ['Adenocarcinoma - pancreas', 'Adenocarcinoma, NOS', 'Bone cancer, NOS', 'Carcinoma, NOS', 'Cholangiocar.- intra/extrahepatic', 'CNS primary tumor, NOS', 'Female reprod. system cancer, NOS', 'Lung adenocarcinoma', 'Neuroendocrine cancer, NOS', 'Ovarian epithelial cancer', 'Pancreatic neuroendocrine tumor', 'Thyroid cancer, NOS'];
+  public barChartType: string = 'bar';
+  public barChartLegend: boolean = true;
 
-  public barChartData:any[] = [
-    {data: [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0], label: 'FORMERLY_ON_ARM_OFF_TRIAL and OFF_TRIAL_DECEASED'},
-    {data: [1, 1, 1, 2, 2, 0, 1, 3, 1, 2, 0, 0], label: 'ON_TREATMENT_ARM'},
-    {data: [0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1], label: 'PENDING_CONFIRMATION and PENDING_APPROVAL'}
+  public barChartData: any[] = [
+    { data: [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0], label: 'FORMERLY_ON_ARM_OFF_TRIAL and OFF_TRIAL_DECEASED' },
+    { data: [1, 1, 1, 2, 2, 0, 1, 3, 1, 2, 0, 0], label: 'ON_TREATMENT_ARM' },
+    { data: [0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1], label: 'PENDING_CONFIRMATION and PENDING_APPROVAL' }
   ];
-
-  // events
-  public chartClicked(e:any):void {
-    console.log(e);
-  }
-
-  public chartHovered(e:any):void {
-    console.log(e);
-  }
 
   constructor() {
 
@@ -2823,7 +2814,6 @@ export class TaDetailsComponent implements OnInit {
       }
     ]
   };
-
 
   tablePatientData: any = [
     {
