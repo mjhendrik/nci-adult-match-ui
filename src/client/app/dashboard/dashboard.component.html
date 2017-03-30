@@ -69,15 +69,6 @@
             <!--panel-purple-->
             <ul class="nav nav-tabs nav-tabs-purple p-l-0">
               <li class="active">
-                <a class="p-0" href="#tab-VR" data-toggle="tab" aria-expanded="true">
-                  <div class="panel-heading">
-                    <div class="panel-heading-btn">
-                    </div>
-                    <h4 class="panel-title">Variant Reports</h4>
-                  </div>
-                </a>
-              </li>
-              <li class="">
                 <a class="p-0" href="#tab-AR" data-toggle="tab" aria-expanded="false">
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
@@ -86,9 +77,125 @@
                   </div>
                 </a>
               </li>
+              <li>
+                <a class="p-0" href="#tab-VR" data-toggle="tab" aria-expanded="true">
+                  <div class="panel-heading">
+                    <div class="panel-heading-btn">
+                    </div>
+                    <h4 class="panel-title">Variant Reports</h4>
+                  </div>
+                </a>
+              </li>
             </ul>
             <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
-              <div class="tab-pane fade active in" id="tab-VR">
+
+              <div class="tab-pane fade active in" id="tab-AR">
+                <!-- table 2 -->
+                <div class="row">
+                  <!-- begin panel -->
+                  <div>
+                    <div class="col-md-12 bg-purple-light">
+                      <div class="col-md-6 p-l-5">
+                        <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
+                          <label>Show
+                        <select [disabled]="tableARData.assignment_reports.length == 0" name="data-table_length" [(ngModel)]="recordsPerPageAR"  aria-controls="data-table" class="form-control form-control-purple input-sm">
+                          <option value=10>10</option>
+                          <option value=25>25</option>
+                          <option value=50>50</option>
+                          <option value=100>100</option>
+                        </select> 
+                      entries</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6 p-r-5">
+                        <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
+                          <label>Search:
+                        <input [disabled]="tableARData.assignment_reports.length == 0" type="text" [(ngModel)]="searchtermAR" class="form-control form-control-purple input-sm" placeholder="" aria-controls="data-table">
+                      </label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="table-responsive col-lg-12">
+                        <table *ngIf="tableARData.assignment_reports.length == 0" class="table table-td-valign-middle table-striped">
+                          <thead>
+                            <tr class="purple-light">
+                              <th>
+                                Patient Sequence Number
+                              </th>
+                              <th>
+                                Selected Treatment Arm
+                              </th>
+                              <th class="text-center">
+                                Assignment Report
+                              </th>
+                              <th>
+                                Assignment Date
+                              </th>
+                              <th>
+                                Hours Pending
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="f-s-15" colspan="5">There are no pending assignment reports that need review</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <table *ngIf="tableARData.assignment_reports.length!=0" class="table table-td-valign-middle table-striped" [mfData]="tableARData.assignment_reports | filterByText: searchtermAR"
+                          #mftableAR="mfDataTable" [(mfSortBy)]="tableARDefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPageAR">
+                          <thead>
+                            <tr class="purple-light">
+                              <th>
+                                <mfDefaultSorter by="patientSequenceNumber"><span class="table-header">Patient Sequence Number</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="treatmentArm.id"><span class="table-header">Selected Treatment Arm</span></mfDefaultSorter>
+                              </th>
+                              <th class="text-center">
+                                Assignment Report
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="dateAssigned"><span class="table-header">Assignment Date</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="hoursPending"><span class="table-header">Hours Pending</span></mfDefaultSorter>
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let item of mftableAR.data">
+                              <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                                <a href [routerLink]="['/patients/details']" class="link-none"><i class="fa fa-user"></i> {{item.patientSequenceNumber | dashify}}</a>
+                              </td>
+                              <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                                <span *ngIf="item.treatmentArm.id!==null"><a href [routerLink]="['/treatments/details']" class="link-none"><i class="fa fa-medkit"></i> {{item.treatmentArm.id | dashify}} ({{item.treatmentArm.version | dashify}})</a></span>
+                                <span *ngIf="item.treatmentArm.id===null">No available treatment arm</span>
+                              </td>
+                              <td class="text-center"><a href [routerLink]="['/patients/variant_report']" class="link-none"><i class="fa fa-file-text-o"></i></a></td>
+                              <td>{{item.dateAssigned | dashify}}</td>
+                              <td [colorcode-hours]="item.hoursPending">{{item.hoursPending | dashify}}</td>
+                            </tr>
+                            <tr *ngIf="mftableAR.data.length == 0">
+                              <td class="f-s-15" colspan="5">No matching search results found for "{{searchtermAR}}"</td>
+                            </tr>
+                          </tbody>
+                          <tfoot>
+                            <tr>
+                              <td class="tfoot-padding" colspan="5">
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermAR" [totallength]="tableARData.assignment_reports.length"></mfBootstrapPaginator>
+                              </td>
+                            </tr>
+                          </tfoot>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- end panel -->
+                </div>
+              </div>
+              <div class="tab-pane fade" id="tab-VR">
                 <!-- table 1 -->
                 <div class="row">
                   <!-- begin panel -->
@@ -195,112 +302,6 @@
                             <tr>
                               <td class="tfoot-padding" colspan="8">
                                 <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermVR" [totallength]="tableVRData.variant_reports.length"></mfBootstrapPaginator>
-                              </td>
-                            </tr>
-                          </tfoot>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- end panel -->
-                </div>
-              </div>
-              <div class="tab-pane fade" id="tab-AR">
-                <!-- table 2 -->
-                <div class="row">
-                  <!-- begin panel -->
-                  <div>
-                    <div class="col-md-12 bg-purple-light">
-                      <div class="col-md-6 p-l-5">
-                        <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
-                          <label>Show
-                        <select [disabled]="tableARData.assignment_reports.length == 0" name="data-table_length" [(ngModel)]="recordsPerPageAR"  aria-controls="data-table" class="form-control form-control-purple input-sm">
-                          <option value=10>10</option>
-                          <option value=25>25</option>
-                          <option value=50>50</option>
-                          <option value=100>100</option>
-                        </select> 
-                      entries</label>
-                        </div>
-                      </div>
-                      <div class="col-md-6 p-r-5">
-                        <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
-                          <label>Search:
-                        <input [disabled]="tableARData.assignment_reports.length == 0" type="text" [(ngModel)]="searchtermAR" class="form-control form-control-purple input-sm" placeholder="" aria-controls="data-table">
-                      </label>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="table-responsive col-lg-12">
-                        <table *ngIf="tableARData.assignment_reports.length == 0" class="table table-td-valign-middle table-striped">
-                          <thead>
-                            <tr class="purple-light">
-                              <th>
-                                Patient Sequence Number
-                              </th>
-                              <th>
-                                Selected Treatment Arm
-                              </th>
-                              <th class="text-center">
-                                Assignment Report
-                              </th>
-                              <th>
-                                Assignment Date
-                              </th>
-                              <th>
-                                Hours Pending
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td class="f-s-15" colspan="5">There are no pending assignment reports that need review</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                        <table *ngIf="tableARData.assignment_reports.length!=0" class="table table-td-valign-middle table-striped" [mfData]="tableARData.assignment_reports | filterByText: searchtermAR"
-                          #mftableAR="mfDataTable" [(mfSortBy)]="tableARDefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPageAR">
-                          <thead>
-                            <tr class="purple-light">
-                              <th>
-                                <mfDefaultSorter by="patientSequenceNumber"><span class="table-header">Patient Sequence Number</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <mfDefaultSorter by="treatmentArm.id"><span class="table-header">Selected Treatment Arm</span></mfDefaultSorter>
-                              </th>
-                              <th class="text-center">
-                                Assignment Report
-                              </th>
-                              <th>
-                                <mfDefaultSorter by="dateAssigned"><span class="table-header">Assignment Date</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <mfDefaultSorter by="hoursPending"><span class="table-header">Hours Pending</span></mfDefaultSorter>
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr *ngFor="let item of mftableAR.data">
-                              <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                                <a href [routerLink]="['/patients/details']" class="link-none"><i class="fa fa-user"></i> {{item.patientSequenceNumber | dashify}}</a>
-                              </td>
-                              <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                                <span *ngIf="item.treatmentArm.id!==null"><a href [routerLink]="['/treatments/details']" class="link-none"><i class="fa fa-medkit"></i> {{item.treatmentArm.id | dashify}} ({{item.treatmentArm.version | dashify}})</a></span>
-                                <span *ngIf="item.treatmentArm.id===null">No available treatment arm</span>
-                              </td>
-                              <td class="text-center"><a href [routerLink]="['/patients/variant_report']" class="link-none"><i class="fa fa-file-text-o"></i></a></td>
-                              <td>{{item.dateAssigned | dashify}}</td>
-                              <td [colorcode-hours]="item.hoursPending">{{item.hoursPending | dashify}}</td>
-                            </tr>
-                            <tr *ngIf="mftableAR.data.length == 0">
-                              <td class="f-s-15" colspan="5">No matching search results found for "{{searchtermAR}}"</td>
-                            </tr>
-                          </tbody>
-                          <tfoot>
-                            <tr>
-                              <td class="tfoot-padding" colspan="5">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermAR" [totallength]="tableARData.assignment_reports.length"></mfBootstrapPaginator>
                               </td>
                             </tr>
                           </tfoot>
