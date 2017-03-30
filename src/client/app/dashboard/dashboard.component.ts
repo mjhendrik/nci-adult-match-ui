@@ -16,7 +16,7 @@ import { GMTFilter } from './../shared/pipes/gmt';
   providers: [GMTFilter]
 })
 export class DashboardComponent implements OnInit {
-  
+
   newName: string = '';
   errorMessage: string;
 
@@ -69,6 +69,25 @@ export class DashboardComponent implements OnInit {
     }
 
   }
+
+  overviewData: any {
+    "patients": {
+      "total": 253,
+      "onTreatmentArm": 22,
+      "offTrial": 5
+    },
+    "treatmentArms": {
+      "total": 29,
+      "open": 19,
+      "suspended": 3,
+      "closed": 2
+    },
+    "biopsyTracking": {
+      "total": 110,
+      "biopsySequences": 90,
+      "molecularSequences": 85
+    }
+  };
 
   tableVRData: any = {
     "variant_reports": [
