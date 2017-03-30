@@ -1,7 +1,6 @@
 @import "style.css";
 // replace for production: @import "style.min.css";
 @import "../scss/index";
-
 body {
   background-color: $body-back-color;
 }
@@ -65,10 +64,6 @@ body {
 
 .bg-body {
   background-color: $body-back-color;
-}
-
-.bg-light-purple {
-  background-color: $light-purple-color;
 }
 
 .panel.panel-purple-light .panel-heading {
@@ -255,30 +250,26 @@ body {
   background: $light-orangeshade-color !important;
 }
 
-.table.white-header > thead > tr > th {
-    background-color: inherit;
-    border-bottom-width: 2px !important;
-    border-bottom-style: solid !important;
+.table.white-header>thead>tr>th {
+  background-color: inherit;
+  border-bottom-width: 2px !important;
+  border-bottom-style: solid !important;
 }
 
 .top-menu {
-    .nav > li.active.nav-dashboard > a i {
-      color: #ffffff;
-    }
-
-    .nav > li.active.nav-patient > a i {
-      color: $light-purple-color;
-    }
-
-    .nav > li.active.nav-treatments > a i {
-      color: $light-success-color;
-    }
-
-    .nav > li.active.nav-biopsy-tracking > a i {
-      color: $light-info-color;
-    }
-
-    .nav > li.active.nav-clia-lab > a i {
-      color: $light-orangeshade-color;
-    }
+  .nav>li.active.nav-dashboard>a i {
+    color: #ffffff;
+  }
+  .nav>li.active.nav-patient>a i {
+    color: $light-purple-color;
+  }
+  .nav>li.active.nav-treatments>a i {
+    color: $light-success-color;
+  }
+  .nav>li.active.nav-biopsy-tracking>a i {
+    color: $light-info-color;
+  }
+  .nav>li.active.nav-clia-lab>a i {
+    color: $light-orangeshade-color;
+  }
 }
