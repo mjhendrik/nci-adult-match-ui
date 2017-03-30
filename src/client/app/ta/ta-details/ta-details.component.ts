@@ -96,17 +96,17 @@ export class TaDetailsComponent implements OnInit {
   };
 
   public lineChartColors: Array<any> = [
-    { // Max color
-      borderColor: '#F04B46'
+    { // 'Max' color
+      borderColor: 'rgba(240,75,70, 1)'
     },
-    { // Off Trial color
-      backgroundColor: '#fcaf41'
+    { // 'Off Trial' color
+      backgroundColor: 'rgba(252,175,65, 0.75)'
     },
-    { // On Treatment Arm color
-      backgroundColor: '#17B6A4'
+    { // 'On Treatment Arm' color
+      backgroundColor: 'rgba(23,182,164, 0.75)'
     },
-    { // Pending color
-      backgroundColor: '#9b59b6'
+    { // 'Pending' color
+      backgroundColor: 'rgba(155,89,182, 0.75)'
     }
   ];
 
