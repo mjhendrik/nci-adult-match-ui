@@ -16,4 +16,7 @@ import { routerTransition } from './../../shared/router.animations';
   host: { '[@routerTransition]': '' }
 })
 export class PatientVariantReportComponent {
+  scrollToAssignmentDetails(): void {
+    setTimeout(() => window.scrollTo('assignment-details'), 1);
+  }
 }
