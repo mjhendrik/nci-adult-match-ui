@@ -197,7 +197,7 @@
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10 p-l-5" id="data-table_length">
                           <label>
                             Show
-                            <select name="data-table_length" [(ngModel)]="recordsPerPageExdr"  aria-controls="data-table" class="form-control form-control-success input-sm">
+                            <select [disabled]="tableRulesData.exclusionDrugs.length == 0" name="data-table_length" [(ngModel)]="recordsPerPageExdr"  aria-controls="data-table" class="form-control form-control-success input-sm">
                               <option value=10>10</option>
                               <option value=25>25</option>
                               <option value=50>50</option>
@@ -210,7 +210,7 @@
                       <div class="col-md-6 bg-success-light">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10 p-r-5">
                           <label>Search:
-                            <input type="text" [(ngModel)]="searchtermExdr" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">
+                            <input [disabled]="tableRulesData.exclusionDrugs.length == 0" type="text" [(ngModel)]="searchtermExdr" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">
                           </label>
                         </div>
                       </div>
@@ -222,7 +222,7 @@
                       <div class="col-md-6 bg-success-light">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10 p-l-5" id="data-table_length">
                           <label>Show
-                        <select name="data-table_length" [(ngModel)]="recordsPerPageExdz"  aria-controls="data-table" class="form-control form-control-success input-sm">
+                        <select [disabled]="tableRulesData.exclusionDiseases.length == 0" name="data-table_length" [(ngModel)]="recordsPerPageExdz"  aria-controls="data-table" class="form-control form-control-success input-sm">
                           <option value=10>10</option>
                           <option value=25>25</option>
                           <option value=50>50</option>
@@ -234,7 +234,7 @@
                       <div class="col-md-6 bg-success-light">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10 p-r-5">
                           <label>Search:
-                        <input type="text" [(ngModel)]="searchtermExdz" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">
+                        <input [disabled]="tableRulesData.exclusionDiseases.length == 0" type="text" [(ngModel)]="searchtermExdz" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">
                       </label>
                         </div>
                       </div>
@@ -362,7 +362,7 @@
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select name="data-table_length" [(ngModel)]="recordsPerPageSnvIn"  aria-controls="data-table" class="form-control form-control-success input-sm">
+                        <select [disabled]="snvIn.length == 0" name="data-table_length" [(ngModel)]="recordsPerPageSnvIn"  aria-controls="data-table" class="form-control form-control-success input-sm">
                           <option value=5>5</option>
                           <option value=10>10</option>
                           <option value=25>25</option>
@@ -374,7 +374,7 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input type="text" [(ngModel)]="searchtermSnvIn" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">
+                        <input [disabled]="snvIn.length == 0" type="text" [(ngModel)]="searchtermSnvIn" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">
                       </label>
                         </div>
                       </div>
@@ -484,7 +484,7 @@
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select name="data-table_length" [(ngModel)]="recordsPerPageSnvEx"  aria-controls="data-table" class="form-control form-control-success input-sm">
+                        <select [disabled]="snvEx.length == 0" name="data-table_length" [(ngModel)]="recordsPerPageSnvEx"  aria-controls="data-table" class="form-control form-control-success input-sm">
                           <option value=5>5</option>
                           <option value=10>10</option>
                           <option value=25>25</option>
@@ -496,7 +496,7 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input type="text" [(ngModel)]="searchtermSnvEx" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">
+                        <input [disabled]="snvEx.length == 0" type="text" [(ngModel)]="searchtermSnvEx" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">
                       </label>
                         </div>
                       </div>
@@ -613,7 +613,7 @@
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select name="data-table_length" [(ngModel)]="recordsPerPageIndelIn"  aria-controls="data-table" class="form-control form-control-success input-sm">
+                        <select [disabled]="indelIn.length == 0" name="data-table_length" [(ngModel)]="recordsPerPageIndelIn"  aria-controls="data-table" class="form-control form-control-success input-sm">
                           <option value=5>5</option>
                           <option value=10>10</option>
                           <option value=25>25</option>
@@ -625,7 +625,7 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input type="text" [(ngModel)]="searchtermIndelIn" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">
+                        <input [disabled]="indelIn.length == 0" type="text" [(ngModel)]="searchtermIndelIn" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">
                       </label>
                         </div>
                       </div>
@@ -735,7 +735,7 @@
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select name="data-table_length" [(ngModel)]="recordsPerPageIndelEx"  aria-controls="data-table" class="form-control form-control-success input-sm">
+                        <select [disabled]="indelEx.length == 0" name="data-table_length" [(ngModel)]="recordsPerPageIndelEx"  aria-controls="data-table" class="form-control form-control-success input-sm">
                           <option value=5>5</option>
                           <option value=10>10</option>
                           <option value=25>25</option>
@@ -747,7 +747,7 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input type="text" [(ngModel)]="searchtermIndelEx" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">
+                        <input [disabled]="indelEx.length == 0" type="text" [(ngModel)]="searchtermIndelEx" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">
                       </label>
                         </div>
                       </div>
@@ -864,7 +864,7 @@
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select name="data-table_length" [(ngModel)]="recordsPerPageCnvIn"  aria-controls="data-table" class="form-control form-control-success input-sm">
+                        <select [disabled]="cnvIn.length == 0" name="data-table_length" [(ngModel)]="recordsPerPageCnvIn"  aria-controls="data-table" class="form-control form-control-success input-sm">
                           <option value=5>5</option>
                           <option value=10>10</option>
                           <option value=25>25</option>
@@ -876,7 +876,7 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input type="text" [(ngModel)]="searchtermCnvIn" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">
+                        <input [disabled]="cnvIn.length == 0" type="text" [(ngModel)]="searchtermCnvIn" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">
                       </label>
                         </div>
                       </div>
@@ -972,7 +972,7 @@
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select name="data-table_length" [(ngModel)]="recordsPerPageCnvEx"  aria-controls="data-table" class="form-control form-control-success input-sm">
+                        <select [disabled]="cnvEx.length == 0" name="data-table_length" [(ngModel)]="recordsPerPageCnvEx"  aria-controls="data-table" class="form-control form-control-success input-sm">
                           <option value=5>5</option>
                           <option value=10>10</option>
                           <option value=25>25</option>
@@ -984,7 +984,7 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input type="text" [(ngModel)]="searchtermCnvEx" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">
+                        <input [disabled]="cnvEx.length == 0" type="text" [(ngModel)]="searchtermCnvEx" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">
                       </label>
                         </div>
                       </div>
@@ -1088,7 +1088,7 @@
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select name="data-table_length" [(ngModel)]="recordsPerPageGeneIn"  aria-controls="data-table" class="form-control form-control-success input-sm">
+                        <select [disabled]="geneIn.length == 0" name="data-table_length" [(ngModel)]="recordsPerPageGeneIn"  aria-controls="data-table" class="form-control form-control-success input-sm">
                           <option value=5>5</option>
                           <option value=10>10</option>
                           <option value=25>25</option>
@@ -1100,7 +1100,7 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input type="text" [(ngModel)]="searchtermGeneIn" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">
+                        <input [disabled]="geneIn.length == 0" type="text" [(ngModel)]="searchtermGeneIn" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">
                       </label>
                         </div>
                       </div>
@@ -1182,7 +1182,7 @@
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select name="data-table_length" [(ngModel)]="recordsPerPageGeneEx"  aria-controls="data-table" class="form-control form-control-success input-sm">
+                        <select [disabled]="geneEx.length == 0" name="data-table_length" [(ngModel)]="recordsPerPageGeneEx"  aria-controls="data-table" class="form-control form-control-success input-sm">
                           <option value=5>5</option>
                           <option value=10>10</option>
                           <option value=25>25</option>
@@ -1194,7 +1194,7 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input type="text" [(ngModel)]="searchtermGeneEx" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">
+                        <input [disabled]="geneEx.length == 0" type="text" [(ngModel)]="searchtermGeneEx" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">
                       </label>
                         </div>
                       </div>
@@ -1283,7 +1283,7 @@
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select name="data-table_length" [(ngModel)]="recordsPerPageRuleIn"  aria-controls="data-table" class="form-control form-control-success input-sm">
+                        <select [disabled]="ruleIn.length == 0" name="data-table_length" [(ngModel)]="recordsPerPageRuleIn"  aria-controls="data-table" class="form-control form-control-success input-sm">
                           <option value=5>5</option>
                           <option value=10>10</option>
                           <option value=25>25</option>
@@ -1295,7 +1295,7 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input type="text" [(ngModel)]="searchtermRuleIn" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">
+                        <input [disabled]="ruleIn.length == 0" type="text" [(ngModel)]="searchtermRuleIn" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">
                       </label>
                         </div>
                       </div>
@@ -1397,7 +1397,7 @@
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select name="data-table_length" [(ngModel)]="recordsPerPageRuleEx"  aria-controls="data-table" class="form-control form-control-success input-sm">
+                        <select [disabled]="ruleEx.length == 0" name="data-table_length" [(ngModel)]="recordsPerPageRuleEx"  aria-controls="data-table" class="form-control form-control-success input-sm">
                           <option value=5>5</option>
                           <option value=10>10</option>
                           <option value=25>25</option>
@@ -1409,7 +1409,7 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input type="text" [(ngModel)]="searchtermRuleEx" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">
+                        <input [disabled]="ruleEx.length == 0" type="text" [(ngModel)]="searchtermRuleEx" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">
                       </label>
                         </div>
                       </div>
@@ -1515,7 +1515,7 @@
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select name="data-table_length" [(ngModel)]="recordsPerPageAssay"  aria-controls="data-table" class="form-control form-control-success input-sm">
+                        <select [disabled]="tableRulesData.assayResults.length == 0" name="data-table_length" [(ngModel)]="recordsPerPageAssay"  aria-controls="data-table" class="form-control form-control-success input-sm">
                           <option value=10>10</option>
                           <option value=25>25</option>
                           <option value=50>50</option>
@@ -1527,7 +1527,7 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input type="text" [(ngModel)]="searchtermAssay" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">
+                        <input [disabled]="tableRulesData.assayResults.length == 0" type="text" [(ngModel)]="searchtermAssay" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">
                       </label>
                         </div>
                       </div>
@@ -1624,7 +1624,7 @@
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select name="data-table_length" [(ngModel)]="recordsPerPagePatient"  aria-controls="data-table" class="form-control form-control-purple input-sm">
+                        <select [disabled]="tablePatientData.length == 0" name="data-table_length" [(ngModel)]="recordsPerPagePatient"  aria-controls="data-table" class="form-control form-control-purple input-sm">
                           <option value=10>10</option>
                           <option value=25>25</option>
                           <option value=50>50</option>
@@ -1636,7 +1636,7 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input type="text" [(ngModel)]="searchtermPatient" class="form-control form-control-purple input-sm" placeholder="" aria-controls="data-table">
+                        <input [disabled]="tablePatientData.length == 0" type="text" [(ngModel)]="searchtermPatient" class="form-control form-control-purple input-sm" placeholder="" aria-controls="data-table">
                       </label>
                         </div>
                       </div>
