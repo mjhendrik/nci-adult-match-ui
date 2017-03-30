@@ -95,11 +95,34 @@ export class TaDetailsComponent implements OnInit {
     }
   };
 
+  public lineChartColors: Array<any> = [
+    { // Max color
+      borderColor: '#F04B46'
+    },
+    { // Off Trial color
+      backgroundColor: '#fcaf41'
+    },
+    { // On Treatment Arm color
+      backgroundColor: '#17B6A4'
+    },
+    { // Pending color
+      backgroundColor: '#9b59b6'
+    }
+  ];
+
   public barChartLabels: string[] = ['Adenocarcinoma - pancreas', 'Adenocarcinoma, NOS', 'Bone cancer, NOS', 'Carcinoma, NOS', 'Cholangiocar.- intra/extrahepatic', 'CNS primary tumor, NOS', 'Female reprod. system cancer, NOS', 'Lung adenocarcinoma', 'Neuroendocrine cancer, NOS', 'Ovarian epithelial cancer', 'Pancreatic neuroendocrine tumor', 'Thyroid cancer, NOS'];
   public barChartType: string = 'bar';
-  public barChartLegend: boolean = true;
+  public barChartLegend: boolean = false;
 
   public barChartData: any[] = [
+    {
+      data: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
+      label: 'Max',
+      type: 'line',
+      fill: false,
+      pointRadius: 0,
+      pointHoverRadius: 0
+    },
     {
       data: [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0],
       label: 'Off Trial'
