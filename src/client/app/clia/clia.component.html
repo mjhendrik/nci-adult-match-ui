@@ -1,7 +1,7 @@
 <div class="clia-nav bg-white">
   <ul>
-    <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *ngFor="let item of cliaLabData; let last=last" class="active"
-      style="display: inline;"><a class="link-none" href="javascript:void(0)" [routerLink]="['/clia']">{{item}}</a><span *ngIf="!last"> | </span></li>
+    <li routerLinkActive="active" activeClass [routerLinkActiveOptions]="{exact: true}" *ngFor="let item of cliaLabData; let last = last; let first = first;"
+      [class.active-class]="first" class="active" style="display: inline;"><a class="link-none" href="javascript:void(0)" [routerLink]="['/clia']">{{item}}</a><span *ngIf="!last"> | </span></li>
   </ul>
 </div>
 <div id="content" class="content">
@@ -477,7 +477,7 @@
                         </div>
 
 
-                      
+
                       </div>
                     </div>
                   </div>
