@@ -10,6 +10,7 @@ import { MatchHeightDirective } from './match-height.directive';
 import { ExternalLinksComponent } from './external-links.component';
 import { ColorCodeAssignmentDirective } from './colorcode-assignment.directive';
 import { ColorCodeVariantReportDirective } from './colorcode-variant-report.directive';
+import { ActiveClassDirective } from './active-class.directive';
 
 @NgModule({
   imports: [CommonModule],
@@ -22,7 +23,8 @@ import { ColorCodeVariantReportDirective } from './colorcode-variant-report.dire
     MatchHeightDirective,
     ExternalLinksComponent,
     ColorCodeAssignmentDirective,
-    ColorCodeVariantReportDirective
+    ColorCodeVariantReportDirective,
+    ActiveClassDirective
   ],
   exports: [
     colorCodeTa,
@@ -33,7 +35,8 @@ import { ColorCodeVariantReportDirective } from './colorcode-variant-report.dire
     MatchHeightDirective,
     ExternalLinksComponent,
     ColorCodeAssignmentDirective,
-    ColorCodeVariantReportDirective
+    ColorCodeVariantReportDirective,
+    ActiveClassDirective
   ],
 })
 export class DirectivesModule {
