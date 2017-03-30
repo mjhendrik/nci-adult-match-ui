@@ -100,13 +100,13 @@ export class TaDetailsComponent implements OnInit {
       borderColor: 'rgba(240,75,70, 1)'
     },
     { // 'Off Trial' color
-      backgroundColor: 'rgba(252,175,65, 0.75)'
+      backgroundColor: 'rgba(252,191,103, 0.75)'
     },
     { // 'On Treatment Arm' color
-      backgroundColor: 'rgba(23,182,164, 0.75)'
+      backgroundColor: 'rgba(69,196,182, 0.75)'
     },
     { // 'Pending' color
-      backgroundColor: 'rgba(155,89,182, 0.75)'
+      backgroundColor: 'rgba(175,122,196, 0.75)'
     }
   ];
 
