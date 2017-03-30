@@ -70,7 +70,7 @@ export class DashboardComponent implements OnInit {
 
   }
 
-  overviewData: any {
+  overviewData: any = {
     "patients": {
       "total": 253,
       "onTreatmentArm": 22,
