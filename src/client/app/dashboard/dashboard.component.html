@@ -145,7 +145,7 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td class="f-s-15" colspan="5">There are no pending assignment reports that need review</td>
+                              <td class="f-s-15" colspan="7">There are no pending assignment reports that need review</td>
                             </tr>
                           </tbody>
                         </table>
@@ -196,12 +196,12 @@
                               <td [colorcode-hours]="item.hoursPending">{{item.hoursPending | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftableAR.data.length == 0">
-                              <td class="f-s-15" colspan="5">No matching search results found for "{{searchtermAR}}"</td>
+                              <td class="f-s-15" colspan="7">No matching search results found for "{{searchtermAR}}"</td>
                             </tr>
                           </tbody>
                           <tfoot>
                             <tr>
-                              <td class="tfoot-padding" colspan="5">
+                              <td class="tfoot-padding" colspan="7">
                                 <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermAR" [totallength]="tableARData.length"></mfBootstrapPaginator>
                               </td>
                             </tr>
@@ -390,13 +390,16 @@
                     Reason
                   </th>
                   <th>
+                    AMOI
+                  </th>
+                  <th>
                     Confirmation Date
                   </th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td class="f-s-15" colspan="6">There are no patients awaiting further action or information</td>
+                  <td class="f-s-15" colspan="7">There are no patients awaiting further action or information</td>
                 </tr>
               </tbody>
             </table>
@@ -420,6 +423,9 @@
                     Reason
                     <!--<mfDefaultSorter by="reason?!"><span class="table-header">Reason</span></mfDefaultSorter>-->
                   </th>
+                  <th class="text-center">
+                    <mfDefaultSorter by="amoi"><span class="table-header">AMOI</span></mfDefaultSorter>
+                  </th>
                   <th>
                     <mfDefaultSorter by="date_verified"><span class="table-header">Confirmation Date</span></mfDefaultSorter>
                   </th>
@@ -434,15 +440,19 @@
                   <td><a href [routerLink]="['/patients/details']" class="link-none"><i class="fa fa-share-alt"></i> {{item.msn | dashify}}</a></td>
                   <td class="text-center"><a href [routerLink]="['/patients/variant_report']" class="link-none"><i class="fa fa-file-text-o"></i></a></td>
                   <td>AWAITING DATA</td>
+                  <td class="text-center">
+                    <span *ngIf="item.amoi===true"><i class="fa fa-check-circle text-success"></i></span>
+                    <span *ngIf="item.amoi===false"><i class="fa fa-times-circle text-danger"></i></span>
+                  </td>
                   <td>{{item.date_verified | dashify}}</td>
                 </tr>
                 <tr *ngIf="mftablePatientsAwaiting.data.length == 0">
-                  <td class="f-s-15" colspan="6">No matching search results found for "{{searchtermPatientsAwaiting}}"</td>
+                  <td class="f-s-15" colspan="7">No matching search results found for "{{searchtermPatientsAwaiting}}"</td>
                 </tr>
               </tbody>
               <tfoot>
                 <tr>
-                  <td class="tfoot-padding" colspan="6">
+                  <td class="tfoot-padding" colspan="7">
                     <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermPatientsAwaiting" [totallength]="tablePatientsAwaitingData.length"></mfBootstrapPaginator>
                   </td>
                 </tr>
