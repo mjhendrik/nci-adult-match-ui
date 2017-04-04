@@ -57,8 +57,8 @@ export class DashboardComponent implements OnInit {
       this.tableVRData[i].ngsDateReceived = gmt.transform(this.tableVRData[i].ngsDateReceived);
     }
 
-    for (let i = 0; i < this.tableARData.assignment_reports.length; i++) {
-      this.tableARData.assignment_reports[i].dateAssigned = gmt.transform(this.tableARData.assignment_reports[i].dateAssigned);
+    for (let i = 0; i < this.tableARData.length; i++) {
+      this.tableARData[i].dateAssigned = gmt.transform(this.tableARData[i].dateAssigned);
     }
 
     for (let i = 0; i < this.tablePatientsAwaitingData.length; i++) {
@@ -86,154 +86,184 @@ export class DashboardComponent implements OnInit {
     }
   };
 
-  tableARData: any = {
-    "assignment_reports": [
-      {
-        "patientSequenceNumber": "10402",
-        "dateAssigned": 1463178437398,
-        "treatmentArm": {
-          "id": "EAY131-Q",
-          "version": "2016-01-20"
-        },
-        "hoursPending": 6621
+  tableARData: any = [
+    {
+      "patientSequenceNumber": "10402",
+      "biopsySequenceNumber": "N-15-00005",
+      "molecularSequenceNumber": "10373_1000_N-15-00005",
+      "dateAssigned": 1463178437398,
+      "treatmentArm": {
+        "id": "EAY131-Q",
+        "version": "2016-01-20"
       },
-      {
-        "patientSequenceNumber": "10373",
-        "dateAssigned": 1465318217747,
-        "treatmentArm": {
-          "id": "EAY131-Q",
-          "version": "2016-01-20"
-        },
-        "hoursPending": 6027
+      "hoursPending": 6621
+    },
+    {
+      "patientSequenceNumber": "10373",
+      "biopsySequenceNumber": "T-16-000006",
+      "molecularSequenceNumber": "MSN2089",
+      "dateAssigned": 1465318217747,
+      "treatmentArm": {
+        "id": "EAY131-Q",
+        "version": "2016-01-20"
       },
-      {
-        "patientSequenceNumber": "10400",
-        "dateAssigned": 1463666179838,
-        "treatmentArm": {
-          "id": "EAY131-Q",
-          "version": "2016-01-20"
-        },
-        "hoursPending": 6486
+      "hoursPending": 6027
+    },
+    {
+      "patientSequenceNumber": "10400",
+      "biopsySequenceNumber": "T-16-000007",
+      "molecularSequenceNumber": "MSN2097D",
+      "dateAssigned": 1463666179838,
+      "treatmentArm": {
+        "id": "EAY131-Q",
+        "version": "2016-01-20"
       },
-      {
-        "patientSequenceNumber": "10401",
-        "dateAssigned": 1464299430419,
-        "treatmentArm": {
-          "id": null,
-          "version": null
-        },
-        "hoursPending": 6310
+      "hoursPending": 6486
+    },
+    {
+      "patientSequenceNumber": "10401",
+      "biopsySequenceNumber": "N-15-00005",
+      "molecularSequenceNumber": "10376_123",
+      "dateAssigned": 1464299430419,
+      "treatmentArm": {
+        "id": null,
+        "version": null
       },
-      {
-        "patientSequenceNumber": "10376",
-        "dateAssigned": 1470402537070,
-        "treatmentArm": {
-          "id": null,
-          "version": null
-        },
-        "hoursPending": 4614
+      "hoursPending": 6310
+    },
+    {
+      "patientSequenceNumber": "10376",
+      "biopsySequenceNumber": "N-15-00005",
+      "molecularSequenceNumber": "10641_1000_N-15-00005",
+      "dateAssigned": 1470402537070,
+      "treatmentArm": {
+        "id": null,
+        "version": null
       },
-      {
-        "patientSequenceNumber": "10641",
-        "dateAssigned": 1465312718728,
-        "treatmentArm": {
-          "id": null,
-          "version": null
-        },
-        "hoursPending": 6028
+      "hoursPending": 4614
+    },
+    {
+      "patientSequenceNumber": "10641",
+      "biopsySequenceNumber": "N-15-00005",
+      "molecularSequenceNumber": "10644_1000_N-15-00005",
+      "dateAssigned": 1465312718728,
+      "treatmentArm": {
+        "id": null,
+        "version": null
       },
-      {
-        "patientSequenceNumber": "10644",
-        "dateAssigned": 1465564956324,
-        "treatmentArm": {
-          "id": "EAY131-Z1D",
-          "version": "05-03-2016"
-        },
-        "hoursPending": 5958
+      "hoursPending": 6028
+    },
+    {
+      "patientSequenceNumber": "10644",
+      "biopsySequenceNumber": "N-15-00005",
+      "molecularSequenceNumber": "10649_1000_N-15-00005",
+      "dateAssigned": 1465564956324,
+      "treatmentArm": {
+        "id": "EAY131-Z1D",
+        "version": "05-03-2016"
       },
-      {
-        "patientSequenceNumber": "10649",
-        "dateAssigned": 1465828170798,
-        "treatmentArm": {
-          "id": null,
-          "version": null
-        },
-        "hoursPending": 5885
+      "hoursPending": 5958
+    },
+    {
+      "patientSequenceNumber": "10649",
+      "biopsySequenceNumber": "N-15-00005",
+      "molecularSequenceNumber": "10647_1000_N-15-00005",
+      "dateAssigned": 1465828170798,
+      "treatmentArm": {
+        "id": null,
+        "version": null
       },
-      {
-        "patientSequenceNumber": "10647",
-        "dateAssigned": 1464972942205,
-        "treatmentArm": {
-          "id": null,
-          "version": null
-        },
-        "hoursPending": 6123
+      "hoursPending": 5885
+    },
+    {
+      "patientSequenceNumber": "10647",
+      "biopsySequenceNumber": "N-15-00005",
+      "molecularSequenceNumber": "10374_1000_N-15-00005",
+      "dateAssigned": 1464972942205,
+      "treatmentArm": {
+        "id": null,
+        "version": null
       },
-      {
-        "patientSequenceNumber": "10374",
-        "dateAssigned": 1465318364678,
-        "treatmentArm": {
-          "id": "EAY131-F",
-          "version": "2016-05-31"
-        },
-        "hoursPending": 6027
+      "hoursPending": 6123
+    },
+    {
+      "patientSequenceNumber": "10374",
+      "biopsySequenceNumber": "N-15-00005",
+      "molecularSequenceNumber": "10372_1000_N-15-00005",
+      "dateAssigned": 1465318364678,
+      "treatmentArm": {
+        "id": "EAY131-F",
+        "version": "2016-05-31"
       },
-      {
-        "patientSequenceNumber": "10372",
-        "dateAssigned": 1470084396071,
-        "treatmentArm": {
-          "id": null,
-          "version": null
-        },
-        "hoursPending": 4703
+      "hoursPending": 6027
+    },
+    {
+      "patientSequenceNumber": "10372",
+      "biopsySequenceNumber": "BSN-10741",
+      "molecularSequenceNumber": "MSN-10741",
+      "dateAssigned": 1470084396071,
+      "treatmentArm": {
+        "id": null,
+        "version": null
       },
-      {
-        "patientSequenceNumber": "10741",
-        "dateAssigned": 1479837779853,
-        "treatmentArm": {
-          "id": "EAY131-IX1",
-          "version": "2016-11-18"
-        },
-        "hoursPending": 1994
+      "hoursPending": 4703
+    },
+    {
+      "patientSequenceNumber": "10741",
+      "biopsySequenceNumber": "BSN-10742",
+      "molecularSequenceNumber": "MSN-10742",
+      "dateAssigned": 1479837779853,
+      "treatmentArm": {
+        "id": "EAY131-IX1",
+        "version": "2016-11-18"
       },
-      {
-        "patientSequenceNumber": "10742",
-        "dateAssigned": 1479919619007,
-        "treatmentArm": {
-          "id": null,
-          "version": null
-        },
-        "hoursPending": 1971
+      "hoursPending": 1994
+    },
+    {
+      "patientSequenceNumber": "10742",
+      "biopsySequenceNumber": "N-15-00005",
+      "molecularSequenceNumber": "10761_1000_N-15-00005",
+      "dateAssigned": 1479919619007,
+      "treatmentArm": {
+        "id": null,
+        "version": null
       },
-      {
-        "patientSequenceNumber": "10761",
-        "dateAssigned": 1481834875643,
-        "treatmentArm": {
-          "id": null,
-          "version": null
-        },
-        "hoursPending": 1439
+      "hoursPending": 1971
+    },
+    {
+      "patientSequenceNumber": "10761",
+      "biopsySequenceNumber": "N-15-00005",
+      "molecularSequenceNumber": "10763_1000_N-15-00005",
+      "dateAssigned": 1481834875643,
+      "treatmentArm": {
+        "id": null,
+        "version": null
       },
-      {
-        "patientSequenceNumber": "10763",
-        "dateAssigned": 1481833036889,
-        "treatmentArm": {
-          "id": null,
-          "version": null
-        },
-        "hoursPending": 1439
+      "hoursPending": 1439
+    },
+    {
+      "patientSequenceNumber": "10763",
+      "biopsySequenceNumber": "N-15-00005",
+      "molecularSequenceNumber": "10812_1000_N-15-00005",
+      "dateAssigned": 1481833036889,
+      "treatmentArm": {
+        "id": null,
+        "version": null
       },
-      {
-        "patientSequenceNumber": "10812",
-        "dateAssigned": 1487693527223,
-        "treatmentArm": {
-          "id": "EAY131-Q",
-          "version": "2017-01-12"
-        },
-        "hoursPending": 51
-      }
-    ]
-  };
+      "hoursPending": 1439
+    },
+    {
+      "patientSequenceNumber": "10812",
+      "biopsySequenceNumber": "N-15-00005",
+      "molecularSequenceNumber": "10813_1000_N-15-00005",
+      "dateAssigned": 1487693527223,
+      "treatmentArm": {
+        "id": "EAY131-Q",
+        "version": "2017-01-12"
+      },
+      "hoursPending": 51
+    }
+  ];
 
   tableVRData: any = [
     {
