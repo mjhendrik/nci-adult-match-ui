@@ -117,7 +117,7 @@
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table *ngIf="tableARData.length == 0" class="table table-td-valign-middle table-striped">
+                        <table *ngIf="tableARData.length == 0" class="table table-td-valign-middle table-striped table-col-width">
                           <thead>
                             <tr class="purple-light">
                               <th>
@@ -149,7 +149,7 @@
                             </tr>
                           </tbody>
                         </table>
-                        <table *ngIf="tableARData.length!=0" class="table table-td-valign-middle table-striped" [mfData]="tableARData | filterByText: searchtermAR"
+                        <table *ngIf="tableARData.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="tableARData | filterByText: searchtermAR"
                           #mftableAR="mfDataTable" [(mfSortBy)]="tableARDefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPageAR">
                           <thead>
                             <tr class="purple-light">
@@ -371,7 +371,7 @@
         </div>
         <div class="row">
           <div class="table-responsive col-lg-12">
-            <table *ngIf="tablePatientsAwaitingData.length == 0" class="table table-td-valign-middle table-striped">
+            <table *ngIf="tablePatientsAwaitingData.length == 0" class="table table-td-valign-middle table-striped table-col-width">
               <thead>
                 <tr class="purple-light">
                   <th>
@@ -403,7 +403,7 @@
                 </tr>
               </tbody>
             </table>
-            <table *ngIf="tablePatientsAwaitingData.length!=0" class="table table-td-valign-middle table-striped" [mfData]="tablePatientsAwaitingData | filterByText: searchtermPatientsAwaiting"
+            <table *ngIf="tablePatientsAwaitingData.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="tablePatientsAwaitingData | filterByText: searchtermPatientsAwaiting"
               #mftablePatientsAwaiting="mfDataTable" [(mfSortBy)]="tablePatientsAwaitingDefaultSort" [mfRowsOnPage]="recordsPerPagePatientsAwaiting">
               <thead>
                 <tr class="purple-light">

@@ -39,7 +39,7 @@
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table class="table table-td-valign-middle table-striped" [mfData]="tablePatientsData | filterByText: searchtermPatients"
+                        <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="tablePatientsData | filterByText: searchtermPatients"
                           #mftablePatients="mfDataTable" [(mfSortBy)]="tablePatientsDefaultSort" [mfRowsOnPage]="recordsPerPagePatients">
                           <thead>
                             <tr class="purple-light">

@@ -193,7 +193,7 @@
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table *ngIf="tableARData.assignment_reports.length == 0" class="table table-td-valign-middle table-striped">
+                        <table *ngIf="tableARData.assignment_reports.length == 0" class="table table-td-valign-middle table-striped table-col-width">
                           <thead>
                             <tr class="orangeshade-light">
                               <th>
@@ -219,7 +219,7 @@
                             </tr>
                           </tbody>
                         </table>
-                        <table *ngIf="tableARData.assignment_reports.length!=0" class="table table-td-valign-middle table-striped" [mfData]="tableARData.assignment_reports | filterByText: searchtermAR"
+                        <table *ngIf="tableARData.assignment_reports.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="tableARData.assignment_reports | filterByText: searchtermAR"
                           #mftableAR="mfDataTable" [(mfSortBy)]="tableARDefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPageAR">
                           <thead>
                             <tr class="orangeshade-light">
@@ -299,7 +299,7 @@
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table *ngIf="tableARData.assignment_reports.length == 0" class="table table-td-valign-middle table-striped">
+                        <table *ngIf="tableARData.assignment_reports.length == 0" class="table table-td-valign-middle table-striped table-col-width">
                           <thead>
                             <tr class="orangeshade-light">
                               <th>
@@ -325,7 +325,7 @@
                             </tr>
                           </tbody>
                         </table>
-                        <table *ngIf="tableARData.assignment_reports.length!=0" class="table table-td-valign-middle table-striped" [mfData]="tableARData.assignment_reports | filterByText: searchtermAR"
+                        <table *ngIf="tableARData.assignment_reports.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="tableARData.assignment_reports | filterByText: searchtermAR"
                           #mftableAR="mfDataTable" [(mfSortBy)]="tableARDefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPageAR">
                           <thead>
                             <tr class="orangeshade-light">
