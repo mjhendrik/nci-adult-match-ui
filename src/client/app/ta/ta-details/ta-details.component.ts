@@ -213,7 +213,7 @@ export class TaDetailsComponent implements OnInit {
   }
 
   versionData: any = [
-    "2015-08-06",
+    "2017-08-06*",
     "2016-11-18",
     "2016-11-19"
   ];
@@ -221,7 +221,7 @@ export class TaDetailsComponent implements OnInit {
   tableRulesData: any = {
     "id": "EAY131-IX1",
     "name": "GDC-0032 in PIK3CA mutation",
-    "version": "2015-08-06",
+    "version": "2017-08-06*",
     "targetId": "778795",
     "targetName": "GDC-0032",
     "gene": "PIK3C",
@@ -2856,7 +2856,7 @@ export class TaDetailsComponent implements OnInit {
       "slot": null,
       "patientSequenceNumber": "10361",
       "formattedPatientStatus": "OFF_TRIAL_NOT_CONSENTED",
-      "treatmentArmVersion": "2015-08-06",
+      "treatmentArmVersion": "2017-08-06*",
       "dateSelected": 1448046697678,
       "dateOnArm": null,
       "dateOffArm": null,
@@ -2867,7 +2867,7 @@ export class TaDetailsComponent implements OnInit {
       "slot": null,
       "patientSequenceNumber": "10545",
       "formattedPatientStatus": "OFF_TRIAL_NOT_CONSENTED",
-      "treatmentArmVersion": "2015-08-06",
+      "treatmentArmVersion": "2017-08-06*",
       "dateSelected": 1448459559651,
       "dateOnArm": null,
       "dateOffArm": null,
@@ -2878,7 +2878,7 @@ export class TaDetailsComponent implements OnInit {
       "slot": 1,
       "patientSequenceNumber": "10612",
       "formattedPatientStatus": "FORMERLY_ON_ARM_OFF_TRIAL",
-      "treatmentArmVersion": "2015-08-06",
+      "treatmentArmVersion": "2017-08-06*",
       "dateSelected": 1450128145904,
       "dateOnArm": 1451919617018,
       "dateOffArm": 1475155338408,
@@ -2889,7 +2889,7 @@ export class TaDetailsComponent implements OnInit {
       "slot": null,
       "patientSequenceNumber": "10700",
       "formattedPatientStatus": "NOT_ELIGIBLE",
-      "treatmentArmVersion": "2015-08-06",
+      "treatmentArmVersion": "2017-08-06*",
       "dateSelected": 1450389274395,
       "dateOnArm": null,
       "dateOffArm": null,
@@ -2900,7 +2900,7 @@ export class TaDetailsComponent implements OnInit {
       "slot": 2,
       "patientSequenceNumber": "10768",
       "formattedPatientStatus": "ON_TREATMENT_ARM",
-      "treatmentArmVersion": "2015-08-06",
+      "treatmentArmVersion": "2017-08-06*",
       "dateSelected": 1450733203822,
       "dateOnArm": 1452202216958,
       "dateOffArm": null,
