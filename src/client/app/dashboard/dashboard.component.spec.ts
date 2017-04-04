@@ -28,25 +28,36 @@ export function main() {
             let fixture = TestBed.createComponent(DashboardComponent);
             let dashboardInstance = fixture.debugElement.componentInstance;
             let dashboardDOMEl = fixture.debugElement.nativeElement;
-            // let mockNameListService = <MockNameListService>fixture.debugElement.injector.get(NameListService);
-            // let nameListServiceSpy = spyOn(mockNameListService, 'get').and.callThrough();
-
-            // mockNameListService.returnValue = ['1', '2', '3'];
-
             fixture.detectChanges();
-
-            //expect(dashboardInstance.nameListService).toEqual(jasmine.any(MockNameListService));
             expect(dashboardDOMEl.querySelectorAll('li').length).toEqual(19);
-            // expect(nameListServiceSpy.calls.count()).toBe(1);
-
             dashboardInstance.addName();
-
             fixture.detectChanges();
-
             expect(dashboardDOMEl.querySelectorAll('li').length).toEqual(19);
           });
-
       });
+
+    it('onInit should work',
+      () => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.createComponent(DashboardComponent);
+            let dashboardInstance = fixture.debugElement.componentInstance;
+            // let dashboardDOMEl = fixture.debugElement.nativeElement;
+            dashboardInstance.ngOnInit();
+
+            expect(dashboardInstance.recordsPerPageVR).toEqual(30);
+            console.log(dashboardInstance.recordsPerPageVR);
+            alert(dashboardInstance.recordsPerPageVR);
+
+            // fixture.detectChanges();
+            // expect(dashboardDOMEl.querySelectorAll('li').length).toEqual(19);
+            // dashboardInstance.addName();
+            // fixture.detectChanges();
+            // expect(dashboardDOMEl.querySelectorAll('li').length).toEqual(19);
+          });
+      });
+
   });
 }
 
