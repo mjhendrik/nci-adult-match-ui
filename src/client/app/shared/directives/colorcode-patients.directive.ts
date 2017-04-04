@@ -1,12 +1,11 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 
 @Directive({ selector: '[colorcodePatients]' })
-export class ColorCodePatientsDirective {
+export class ColorCodePatientsDirective implements OnInit {
 
     @Input() 'colorcodePatients': string;
 
-    constructor(private el: ElementRef) {
-    }
+    constructor(private el: ElementRef) { }
 
     ngOnInit() {
         if (this.colorcodePatients === 'ON_TREATMENT_ARM') {

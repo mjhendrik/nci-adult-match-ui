@@ -1,12 +1,11 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 
 @Directive({ selector: '[colorcodeHours]' })
-export class ColorCodeHoursDirective {
+export class ColorCodeHoursDirective implements OnInit {
 
     @Input() 'colorcodeHours': number;
 
-    constructor(private el: ElementRef) {
-    }
+    constructor(private el: ElementRef) { }
 
     ngOnInit() {
         if (this.colorcodeHours < 8) {

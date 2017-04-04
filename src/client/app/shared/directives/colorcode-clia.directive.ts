@@ -1,12 +1,11 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 
 @Directive({ selector: '[colorcodeClia]' })
-export class ColorCodeCliaDirective {
+export class ColorCodeCliaDirective implements OnInit {
 
     @Input() 'colorcodeClia': string;
 
-    constructor(private el: ElementRef) {
-    }
+    constructor(private el: ElementRef) { }
 
     ngOnInit() {
         if (this.colorcodeClia === 'PASSED') {
