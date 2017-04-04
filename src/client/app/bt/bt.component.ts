@@ -16,7 +16,7 @@ import { GMTFilter } from './../shared/pipes/gmt';
   templateUrl: 'bt.component.html',
   styleUrls: ['bt.component.css'],
   animations: [routerTransition()],
-  host: {'[@routerTransition]': ''}
+  host: { '[@routerTransition]': '' }
 })
 export class BtComponent implements OnInit {
 

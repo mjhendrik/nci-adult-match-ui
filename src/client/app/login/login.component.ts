@@ -12,8 +12,8 @@ import { Auth } from './../shared/auth/auth.service';
   templateUrl: 'login.component.html',
   styleUrls: ['login.component.css'],
   animations: [routerTransition()],
-  host: {'[@routerTransition]': ''}
+  host: { '[@routerTransition]': '' }
 })
 export class LoginComponent {
-    constructor(private auth: Auth) { }
- }
+  constructor(private auth: Auth) { }
+}
