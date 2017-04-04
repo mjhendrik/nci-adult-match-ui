@@ -49,12 +49,12 @@ export class DashboardComponent implements OnInit {
 
     let gmt = new GMTFilter();
 
-    for (let i = 0; i < this.tableVRData.variant_reports.length; i++) {
-      this.tableVRData.variant_reports[i].specimenReceivedDate = gmt.transform(this.tableVRData.variant_reports[i].specimenReceivedDate);
+    for (let i = 0; i < this.tableVRData.length; i++) {
+      this.tableVRData[i].specimenReceivedDate = gmt.transform(this.tableVRData[i].specimenReceivedDate);
     }
 
-    for (let i = 0; i < this.tableVRData.variant_reports.length; i++) {
-      this.tableVRData.variant_reports[i].ngsDateReceived = gmt.transform(this.tableVRData.variant_reports[i].ngsDateReceived);
+    for (let i = 0; i < this.tableVRData.length; i++) {
+      this.tableVRData[i].ngsDateReceived = gmt.transform(this.tableVRData[i].ngsDateReceived);
     }
 
     for (let i = 0; i < this.tableARData.assignment_reports.length; i++) {
@@ -84,107 +84,6 @@ export class DashboardComponent implements OnInit {
       "biopsySequences": 90,
       "molecularSequences": 85
     }
-  };
-
-  tableVRData: any = {
-    "variant_reports": [
-      {
-        "patientSequenceNumber": "10405",
-        "specimenReceivedDate": 1463784009913,
-        "molecularSequenceNumber": "MSN2147",
-        "ngsDateReceived": 1464815517857,
-        "daysPending": 268,
-        "location": "Yale"
-      },
-      {
-        "patientSequenceNumber": "10403",
-        "specimenReceivedDate": 1464039237037,
-        "molecularSequenceNumber": "MSN2188",
-        "ngsDateReceived": 1464815610741,
-        "daysPending": 265,
-        "location": "MoCha"
-      },
-      {
-        "patientSequenceNumber": "10377",
-        "specimenReceivedDate": 1449922209071,
-        "molecularSequenceNumber": "10377_127",
-        "ngsDateReceived": 1464815222770,
-        "daysPending": 429,
-        "location": "Boston"
-      },
-      {
-        "patientSequenceNumber": "20001",
-        "specimenReceivedDate": 1449922209071,
-        "molecularSequenceNumber": "20001_MSN",
-        "ngsDateReceived": 1478112979467,
-        "daysPending": 429,
-        "location": "Boston"
-      },
-      {
-        "patientSequenceNumber": "20002",
-        "specimenReceivedDate": 1449922209071,
-        "molecularSequenceNumber": "20002_MSN",
-        "ngsDateReceived": 1464965824447,
-        "daysPending": 429,
-        "location": "Boston"
-      },
-      {
-        "patientSequenceNumber": "20003",
-        "specimenReceivedDate": 1449922209071,
-        "molecularSequenceNumber": "20003_MSN",
-        "ngsDateReceived": 1464965910364,
-        "daysPending": 429,
-        "location": "Boston"
-      },
-      {
-        "patientSequenceNumber": "20004",
-        "specimenReceivedDate": 1449922209071,
-        "molecularSequenceNumber": "20004_MSN",
-        "ngsDateReceived": 1464966017316,
-        "daysPending": 429,
-        "location": "Boston"
-      },
-      {
-        "patientSequenceNumber": "20005",
-        "specimenReceivedDate": 1449922209071,
-        "molecularSequenceNumber": "20005_MSN",
-        "ngsDateReceived": 1464966127083,
-        "daysPending": 429,
-        "location": "Boston"
-      },
-      {
-        "patientSequenceNumber": "20006",
-        "specimenReceivedDate": 1449922209071,
-        "molecularSequenceNumber": "20006_MSN",
-        "ngsDateReceived": 1464966211251,
-        "daysPending": 429,
-        "location": "Boston"
-      },
-      {
-        "patientSequenceNumber": "20007",
-        "specimenReceivedDate": 1449922209071,
-        "molecularSequenceNumber": "20007_MSN",
-        "ngsDateReceived": 1464966294481,
-        "daysPending": 429,
-        "location": "Boston"
-      },
-      {
-        "patientSequenceNumber": "20009",
-        "specimenReceivedDate": 1449922209071,
-        "molecularSequenceNumber": "20009_MSN",
-        "ngsDateReceived": 1464966495653,
-        "daysPending": 429,
-        "location": "Boston"
-      },
-      {
-        "patientSequenceNumber": "20010",
-        "specimenReceivedDate": 1449922209071,
-        "molecularSequenceNumber": "20010_MSN",
-        "ngsDateReceived": 1464966632805,
-        "daysPending": 429,
-        "location": "Boston"
-      }
-    ]
   };
 
   tableARData: any = {
@@ -335,6 +234,117 @@ export class DashboardComponent implements OnInit {
       }
     ]
   };
+
+  tableVRData: any = [
+    {
+      "patientSequenceNumber": "10405",
+      "biopsySequenceNumber": "T-16-000017",
+      "specimenReceivedDate": 1463784009913,
+      "molecularSequenceNumber": "MSN2147",
+      "ngsDateReceived": 1464815517857,
+      "daysPending": 268,
+      "location": "Yale"
+    },
+    {
+      "patientSequenceNumber": "10403",
+      "biopsySequenceNumber": "N-15-00007",
+      "specimenReceivedDate": 1464039237037,
+      "molecularSequenceNumber": "MSN2188",
+      "ngsDateReceived": 1464815610741,
+      "daysPending": 265,
+      "location": "MoCha"
+    },
+    {
+      "patientSequenceNumber": "10377",
+      "biopsySequenceNumber": "BSN-2001",
+      "specimenReceivedDate": 1449922209071,
+      "molecularSequenceNumber": "10377_127",
+      "ngsDateReceived": 1464815222770,
+      "daysPending": 429,
+      "location": "Boston"
+    },
+    {
+      "patientSequenceNumber": "20001",
+      "biopsySequenceNumber": "BSN-2002",
+      "specimenReceivedDate": 1449922209071,
+      "molecularSequenceNumber": "20001_MSN",
+      "ngsDateReceived": 1478112979467,
+      "daysPending": 429,
+      "location": "Boston"
+    },
+    {
+      "patientSequenceNumber": "20002",
+      "biopsySequenceNumber": "BSN-2003",
+      "specimenReceivedDate": 1449922209071,
+      "molecularSequenceNumber": "20002_MSN",
+      "ngsDateReceived": 1464965824447,
+      "daysPending": 429,
+      "location": "Boston"
+    },
+    {
+      "patientSequenceNumber": "20003",
+      "biopsySequenceNumber": "BSN-2004",
+      "specimenReceivedDate": 1449922209071,
+      "molecularSequenceNumber": "20003_MSN",
+      "ngsDateReceived": 1464965910364,
+      "daysPending": 429,
+      "location": "Boston"
+    },
+    {
+      "patientSequenceNumber": "20004",
+      "biopsySequenceNumber": "BSN-2005",
+      "specimenReceivedDate": 1449922209071,
+      "molecularSequenceNumber": "20004_MSN",
+      "ngsDateReceived": 1464966017316,
+      "daysPending": 429,
+      "location": "Boston"
+    },
+    {
+      "patientSequenceNumber": "20005",
+      "biopsySequenceNumber": "BSN-2006",
+      "specimenReceivedDate": 1449922209071,
+      "molecularSequenceNumber": "20005_MSN",
+      "ngsDateReceived": 1464966127083,
+      "daysPending": 429,
+      "location": "Boston"
+    },
+    {
+      "patientSequenceNumber": "20006",
+      "biopsySequenceNumber": "BSN-2007",
+      "specimenReceivedDate": 1449922209071,
+      "molecularSequenceNumber": "20006_MSN",
+      "ngsDateReceived": 1464966211251,
+      "daysPending": 429,
+      "location": "Boston"
+    },
+    {
+      "patientSequenceNumber": "20007",
+      "biopsySequenceNumber": "BSN-2009",
+      "specimenReceivedDate": 1449922209071,
+      "molecularSequenceNumber": "20007_MSN",
+      "ngsDateReceived": 1464966294481,
+      "daysPending": 429,
+      "location": "Boston"
+    },
+    {
+      "patientSequenceNumber": "20009",
+      "biopsySequenceNumber": "BSN-2010",
+      "specimenReceivedDate": 1449922209071,
+      "molecularSequenceNumber": "20009_MSN",
+      "ngsDateReceived": 1464966495653,
+      "daysPending": 429,
+      "location": "Boston"
+    },
+    {
+      "patientSequenceNumber": "20010",
+      "biopsySequenceNumber": "BSN-3366",
+      "specimenReceivedDate": 1449922209071,
+      "molecularSequenceNumber": "20010_MSN",
+      "ngsDateReceived": 1464966632805,
+      "daysPending": 429,
+      "location": "Boston"
+    }
+  ];
 
   tablePatientsAwaitingData: any = [
     {
