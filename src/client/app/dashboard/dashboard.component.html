@@ -204,7 +204,7 @@
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select [disabled]="tableVRData.variant_reports.length == 0" name="data-table_length" [(ngModel)]="recordsPerPageVR" aria-controls="data-table" class="form-control form-control-purple input-sm">
+                        <select [disabled]="tableVRData.length == 0" name="data-table_length" [(ngModel)]="recordsPerPageVR" aria-controls="data-table" class="form-control form-control-purple input-sm">
                           <option [ngValue]=10>10</option>
                           <option [ngValue]=25>25</option>
                           <option [ngValue]=50>50</option>
@@ -216,18 +216,21 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input [disabled]="tableVRData.variant_reports.length == 0" type="text" [(ngModel)]="searchtermVR" class="form-control form-control-purple input-sm" placeholder="" aria-controls="data-table">                      
+                        <input [disabled]="tableVRData.length == 0" type="text" [(ngModel)]="searchtermVR" class="form-control form-control-purple input-sm" placeholder="" aria-controls="data-table">                      
                         </label>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table *ngIf="tableVRData.variant_reports.length == 0" class="table table-td-valign-middle table-striped">
+                        <table *ngIf="tableVRData.length == 0" class="table table-td-valign-middle table-striped">
                           <thead>
                             <tr class="purple-light">
                               <th>
                                 Patient Sequence Number
+                              </th>
+                              <th>
+                                Biopsy Sequence Number
                               </th>
                               <th>
                                 Molecular Sequence Number
@@ -255,12 +258,15 @@
                             </tr>
                           </tbody>
                         </table>
-                        <table *ngIf="tableVRData.variant_reports!=0" class="table table-td-valign-middle table-striped" [mfData]="tableVRData.variant_reports | filterByText: searchtermVR"
+                        <table *ngIf="tableVRData!=0" class="table table-td-valign-middle table-striped" [mfData]="tableVRData | filterByText: searchtermVR"
                           #mftableVR="mfDataTable" [(mfSortBy)]="tableVRDefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPageVR">
                           <thead>
                             <tr class="purple-light">
                               <th>
                                 <mfDefaultSorter by="patientSequenceNumber"><span class="table-header">Patient Sequence Number</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="molecularSequenceNumber"><span class="table-header">Biopsy Sequence Number</span></mfDefaultSorter>
                               </th>
                               <th>
                                 <mfDefaultSorter by="molecularSequenceNumber"><span class="table-header">Molecular Sequence Number</span></mfDefaultSorter>
@@ -287,6 +293,7 @@
                               <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                                 <a href [routerLink]="['/patients/details']" class="link-none"><i class="fa fa-user"></i> {{item.patientSequenceNumber | dashify}}</a>
                               </td>
+                              <td><a href [routerLink]="['/patients/details']" class="link-none"><i class="fa fa-tasks"></i> {{item.biopsySequenceNumber | dashify}}</a></td>
                               <td><a href [routerLink]="['/patients/details']" class="link-none"><i class="fa fa-share-alt"></i> {{item.molecularSequenceNumber | dashify}}</a></td>
                               <td class="text-center"><a href [routerLink]="['/patients/variant_report']" class="link-none"><i class="fa fa-file-text-o"></i></a></td>
                               <td>{{item.location | dashify}}</td>
@@ -301,7 +308,7 @@
                           <tfoot>
                             <tr>
                               <td class="tfoot-padding" colspan="8">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermVR" [totallength]="tableVRData.variant_reports.length"></mfBootstrapPaginator>
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermVR" [totallength]="tableVRData.length"></mfBootstrapPaginator>
                               </td>
                             </tr>
                           </tfoot>
