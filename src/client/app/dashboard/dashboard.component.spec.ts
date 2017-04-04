@@ -13,9 +13,7 @@ export function main() {
       TestBed.configureTestingModule({
         imports: [FormsModule],
         declarations: [DashboardComponent],
-        providers: [
-          // { provide: NameListService, useValue: new MockNameListService() }
-        ]
+        providers: []
       });
 
     });
@@ -28,6 +26,7 @@ export function main() {
             let fixture = TestBed.createComponent(DashboardComponent);
             let dashboardInstance = fixture.debugElement.componentInstance;
             let dashboardDOMEl = fixture.debugElement.nativeElement;
+
             fixture.detectChanges();
             expect(dashboardDOMEl.querySelectorAll('li').length).toEqual(19);
             dashboardInstance.addName();
@@ -43,18 +42,11 @@ export function main() {
           .then(() => {
             let fixture = TestBed.createComponent(DashboardComponent);
             let dashboardInstance = fixture.debugElement.componentInstance;
-            // let dashboardDOMEl = fixture.debugElement.nativeElement;
-            dashboardInstance.ngOnInit();
 
+            dashboardInstance.ngOnInit();
             expect(dashboardInstance.recordsPerPageVR).toEqual(30);
             console.log(dashboardInstance.recordsPerPageVR);
             alert(dashboardInstance.recordsPerPageVR);
-
-            // fixture.detectChanges();
-            // expect(dashboardDOMEl.querySelectorAll('li').length).toEqual(19);
-            // dashboardInstance.addName();
-            // fixture.detectChanges();
-            // expect(dashboardDOMEl.querySelectorAll('li').length).toEqual(19);
           });
       });
 
