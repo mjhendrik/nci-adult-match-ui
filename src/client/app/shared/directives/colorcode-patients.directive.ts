@@ -1,9 +1,9 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 
-@Directive({ selector: '[colorcode-patients]' })
+@Directive({ selector: '[colorcodePatients]' })
 export class colorCodePatients {
 
-    @Input('colorcode-patients') con: string;
+    @Input('colorcodePatients') con: string;
 
     constructor(private el: ElementRef) {
     }

@@ -1,8 +1,8 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
-@Directive({ selector: '[colorcode-ta]' })
+@Directive({ selector: '[colorcodeTa]' })
 export class colorCodeTa {
 
-    @Input('colorcode-ta') con: string;
+    @Input('colorcodeTa') con: string;
 
     constructor(private el: ElementRef) {
     }

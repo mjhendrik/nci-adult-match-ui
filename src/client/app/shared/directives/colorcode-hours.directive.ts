@@ -1,8 +1,8 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
-@Directive({ selector: '[colorcode-hours]' })
+@Directive({ selector: '[colorcodeHours]' })
 export class colorCodeHours {
 
-    @Input('colorcode-hours') con: number;
+    @Input('colorcodeHours') con: number;
 
     constructor(private el: ElementRef) {
     }
