@@ -36,7 +36,7 @@ import { LoginGuard } from './shared/auth/login.guard.service';
     DashboardModule,
     SharedModule.forRoot(),
     FormsModule
-    ],
+  ],
   declarations: [AppComponent],
   providers: [
     {
