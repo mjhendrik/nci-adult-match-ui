@@ -42,7 +42,7 @@
                           <dt>Patients Assigned</dt>
                           <dd>{{tableRulesData.numPatientsAssigned | dashify}} of {{tableRulesData.maxPatientsAllowed | dashify}}</dd>
                           <dt>Current Status</dt>
-                          <dd [colorcode-ta]="tableRulesData.treatmentArmStatus">{{tableRulesData.treatmentArmStatus | dashify}}</dd>
+                          <dd [colorcodeTa]="tableRulesData.treatmentArmStatus">{{tableRulesData.treatmentArmStatus | dashify}}</dd>
                         </dl>
                       </div>
                     </div>
@@ -70,7 +70,7 @@
               </thead>
               <tbody>
                 <tr *ngFor="let item of tableRulesData.statusLog">
-                  <td [colorcode-ta]="item.status" class="col-xs-4">{{item.status | dashify}}</td>
+                  <td [colorcodeTa]="item.status" class="col-xs-4">{{item.status | dashify}}</td>
                   <td class="col-xs-8">{{item.date | gmt | dashify}}</td>
                 </tr>
               </tbody>
@@ -1736,7 +1736,7 @@
                                 <span *ngIf="item.treatmentArmVersion!=tableRulesData.version"><a href="javascript:;" class="link-none"><i class="fa fa-medkit"></i> {{item.treatmentArmVersion | dashify}}</a></span>
                                 <span *ngIf="item.treatmentArmVersion == tableRulesData.version"><i class="fa fa-medkit"></i> {{item.treatmentArmVersion | dashify}}</span>
                               </td>
-                              <td [colorcode-patients]="item.formattedPatientStatus">{{item.formattedPatientStatus | dashify}}</td>
+                              <td [colorcodePatients]="item.formattedPatientStatus">{{item.formattedPatientStatus | dashify}}</td>
                               <td class="text-center"><a href [routerLink]="['/patients/variant_report']" class="link-none"><i class="fa fa-file-text-o"></i></a></td>
                               <td class="text-center"><a href [routerLink]="['/patients/variant_report']" class="link-none"><i class="fa fa-file-text-o"></i></a></td>
                               <td>{{item.dateSelected | dashify}}</td>

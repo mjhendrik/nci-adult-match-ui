@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { colorCodeTa } from './colorcode-ta';
-import { colorCodePatients } from './colorcode-patients';
-import { colorCodeDays } from './colorcode-days';
-import { colorCodeHours } from './colorcode-hours';
-import { colorCodeClia } from './colorcode-clia';
+import { colorCodeTa } from './colorcode-ta.directive';
+import { colorCodePatients } from './colorcode-patients.directive';
+import { colorCodeDays } from './colorcode-days.directive';
+import { colorCodeHours } from './colorcode-hours.directive';
+import { colorCodeClia } from './colorcode-clia.directive';
 import { MatchHeightDirective } from './match-height.directive';
 import { ExternalLinksComponent } from './external-links.component';
 import { ColorCodeAssignmentDirective } from './colorcode-assignment.directive';
