@@ -1,5 +1,5 @@
 import { FormsModule } from '@angular/forms';
-import { async, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 
 import { Observable } from 'rxjs/Observable';
 
@@ -21,7 +21,7 @@ export function main() {
     });
 
     it('should work',
-      async(() => {
+      () => {
         TestBed
           .compileComponents()
           .then(() => {
@@ -35,7 +35,7 @@ export function main() {
 
             fixture.detectChanges();
 
-            expect(dashboardInstance.nameListService).toEqual(jasmine.any(MockNameListService));
+            //expect(dashboardInstance.nameListService).toEqual(jasmine.any(MockNameListService));
             expect(dashboardDOMEl.querySelectorAll('li').length).toEqual(19);
             // expect(nameListServiceSpy.calls.count()).toBe(1);
 
@@ -46,7 +46,7 @@ export function main() {
             expect(dashboardDOMEl.querySelectorAll('li').length).toEqual(19);
           });
 
-      }));
+      });
   });
 }
 

@@ -17,9 +17,6 @@ import { GMTFilter } from './../shared/pipes/gmt';
 })
 export class DashboardComponent implements OnInit {
 
-  newName: string = '';
-  errorMessage: string;
-
   searchtermVR: string = '';
   searchtermAR: string = '';
   searchtermPatientsAwaiting: string = '';
