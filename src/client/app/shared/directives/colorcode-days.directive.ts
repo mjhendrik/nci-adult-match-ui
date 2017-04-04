@@ -1,22 +1,22 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
-@Directive({ selector: '[colorcodeDays]' })
-export class colorCodeDays {
 
-    @Input('colorcodeDays') con: number;
+@Directive({ selector: '[colorcodeDays]' })
+export class ColorCodeDaysDirective {
+
+    @Input() 'colorcodeDays': number;
 
     constructor(private el: ElementRef) {
     }
 
     ngOnInit() {
-        if (this.con < 7) {
+        if (this.colorcodeDays < 7) {
             this.el.nativeElement.className = 'text-success-light';
-        }
-        else if (this.con < 14) {
+        } else if (this.colorcodeDays < 14) {
             this.el.nativeElement.className = 'text-warning-light';
-        }
-        else {
+        } else {
             this.el.nativeElement.className = 'text-danger-light';
         }
+
     }
 
 }

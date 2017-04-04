@@ -1,23 +1,22 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 
 @Directive({ selector: '[colorcodeClia]' })
-export class colorCodeClia {
+export class ColorCodeCliaDirective {
 
-    @Input('colorcodeClia') con: string;
+    @Input() 'colorcodeClia': string;
 
     constructor(private el: ElementRef) {
     }
 
     ngOnInit() {
-        if (this.con === 'PASSED') {
+        if (this.colorcodeClia === 'PASSED') {
             this.el.nativeElement.className = 'text-success-light';
-        }
-        else if (this.con === 'FAILED') {
+        } else if (this.colorcodeClia === 'FAILED') {
             this.el.nativeElement.className = 'text-danger-light';
-        }
-        else if (this.con === 'PENDING') {
+        } else if (this.colorcodeClia === 'PENDING') {
             this.el.nativeElement.className = 'text-purple-light';
         }
+
     }
 
 }
