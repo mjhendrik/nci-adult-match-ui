@@ -242,7 +242,7 @@
                     <div class="row">
                       <!-- table exdr -->
                       <div class="table-responsive col-lg-6">
-                        <table *ngIf="tableRulesData.exclusionDrugs.length == 0" class="table table-td-valign-middle table-striped">
+                        <table *ngIf="tableRulesData.exclusionDrugs.length == 0" class="table table-td-valign-middle table-striped table-col-width">
                           <thead>
                             <tr class="success-light">
                               <th>
@@ -259,7 +259,7 @@
                             </tr>
                           </tbody>
                         </table>
-                        <table *ngIf="tableRulesData.exclusionDrugs.length!=0" class="table table-td-valign-middle table-striped" [mfData]="tableRulesData.exclusionDrugs | filterByText: searchtermExdr"
+                        <table *ngIf="tableRulesData.exclusionDrugs.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="tableRulesData.exclusionDrugs | filterByText: searchtermExdr"
                           #mftableExdr="mfDataTable" [(mfSortBy)]="tableExdrDefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPageExdr">
                           <thead>
                             <tr class="success-light">
@@ -291,7 +291,7 @@
                       </div>
                       <!-- table exdz -->
                       <div class="table-responsive col-lg-6">
-                        <table *ngIf="tableRulesData.exclusionDiseases.length == 0" class="table table-td-valign-middle table-striped">
+                        <table *ngIf="tableRulesData.exclusionDiseases.length == 0" class="table table-td-valign-middle table-striped table-col-width">
                           <thead>
                             <tr class="success-light">
                               <th>
@@ -311,7 +311,7 @@
                             </tr>
                           </tbody>
                         </table>
-                        <table *ngIf="tableRulesData.exclusionDiseases.length!=0" class="table table-td-valign-middle table-striped" [mfData]="tableRulesData.exclusionDiseases | filterByText: searchtermExdz"
+                        <table *ngIf="tableRulesData.exclusionDiseases.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="tableRulesData.exclusionDiseases | filterByText: searchtermExdz"
                           #mftableExdz="mfDataTable" [(mfSortBy)]="tableExdzDefaultSort" [mfRowsOnPage]="recordsPerPageExdz">
                           <thead>
                             <tr class="success-light">
@@ -381,7 +381,7 @@
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table *ngIf="snvIn.length == 0" class="table table-td-valign-middle table-striped">
+                        <table *ngIf="snvIn.length == 0" class="table table-td-valign-middle table-striped table-col-width">
                           <thead>
                             <tr class="success-light">
                               <th>
@@ -413,7 +413,7 @@
                             </tr>
                           </tbody>
                         </table>
-                        <table *ngIf="snvIn.length!=0" class="table table-td-valign-middle table-striped" [mfData]="snvIn | filterByText: searchtermSnvIn"
+                        <table *ngIf="snvIn.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="snvIn | filterByText: searchtermSnvIn"
                           #mftableSnvIn="mfDataTable" [(mfSortBy)]="tableSnvInDefaultSort" [mfRowsOnPage]="recordsPerPageSnvIn">
                           <thead>
                             <tr class="success-light">
@@ -503,7 +503,7 @@
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table *ngIf="snvEx.length == 0" class="table table-td-valign-middle table-striped">
+                        <table *ngIf="snvEx.length == 0" class="table table-td-valign-middle table-striped table-col-width">
                           <thead>
                             <tr class="success-light">
                               <th>
@@ -535,7 +535,7 @@
                             </tr>
                           </tbody>
                         </table>
-                        <table *ngIf="snvEx.length!=0" class="table table-td-valign-middle table-striped" [mfData]="snvEx | filterByText: searchtermSnvEx"
+                        <table *ngIf="snvEx.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="snvEx | filterByText: searchtermSnvEx"
                           #mftableSnvEx="mfDataTable" [(mfSortBy)]="tableSnvExDefaultSort" [mfRowsOnPage]="recordsPerPageSnvEx">
                           <thead>
                             <tr class="success-light">
@@ -632,7 +632,7 @@
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table *ngIf="indelIn.length == 0" class="table table-td-valign-middle table-striped">
+                        <table *ngIf="indelIn.length == 0" class="table table-td-valign-middle table-striped table-col-width">
                           <thead>
                             <tr class="success-light">
                               <th>
@@ -664,7 +664,7 @@
                             </tr>
                           </tbody>
                         </table>
-                        <table *ngIf="indelIn.length!=0" class="table table-td-valign-middle table-striped" [mfData]="indelIn | filterByText: searchtermIndelIn"
+                        <table *ngIf="indelIn.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="indelIn | filterByText: searchtermIndelIn"
                           #mftableIndelIn="mfDataTable" [(mfSortBy)]="tableIndelExDefaultSort" [mfRowsOnPage]="recordsPerPageIndelIn">
                           <thead>
                             <tr class="success-light">
@@ -754,7 +754,7 @@
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table *ngIf="indelEx.length == 0" class="table table-td-valign-middle table-striped">
+                        <table *ngIf="indelEx.length == 0" class="table table-td-valign-middle table-striped table-col-width">
                           <thead>
                             <tr class="success-light">
                               <th>
@@ -786,7 +786,7 @@
                             </tr>
                           </tbody>
                         </table>
-                        <table *ngIf="indelEx.length!=0" class="table table-td-valign-middle table-striped" [mfData]="indelEx | filterByText: searchtermIndelEx"
+                        <table *ngIf="indelEx.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="indelEx | filterByText: searchtermIndelEx"
                           #mftableIndelEx="mfDataTable" [(mfSortBy)]="tableIndelInDefaultSort" [mfRowsOnPage]="recordsPerPageIndelEx">
                           <thead>
                             <tr class="success-light">
@@ -883,7 +883,7 @@
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table *ngIf="cnvIn.length == 0" class="table table-td-valign-middle table-striped">
+                        <table *ngIf="cnvIn.length == 0" class="table table-td-valign-middle table-striped table-col-width">
                           <thead>
                             <tr class="success-light">
                               <th>
@@ -909,7 +909,7 @@
                             </tr>
                           </tbody>
                         </table>
-                        <table *ngIf="cnvIn.length!=0" class="table table-td-valign-middle table-striped" [mfData]="cnvIn | filterByText: searchtermCnvIn"
+                        <table *ngIf="cnvIn.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="cnvIn | filterByText: searchtermCnvIn"
                           #mftableCnvIn="mfDataTable" [(mfSortBy)]="tableCnvInDefaultSort" [mfRowsOnPage]="recordsPerPageCnvIn">
                           <thead>
                             <tr class="success-light">
@@ -991,7 +991,7 @@
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table *ngIf="cnvEx.length == 0" class="table table-td-valign-middle table-striped">
+                        <table *ngIf="cnvEx.length == 0" class="table table-td-valign-middle table-striped table-col-width">
                           <thead>
                             <tr class="success-light">
                               <th>
@@ -1017,7 +1017,7 @@
                             </tr>
                           </tbody>
                         </table>
-                        <table *ngIf="cnvEx.length!=0" class="table table-td-valign-middle table-striped" [mfData]="cnvEx | filterByText: searchtermCnvEx"
+                        <table *ngIf="cnvEx.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="cnvEx | filterByText: searchtermCnvEx"
                           #mftableCnvEx="mfDataTable" [(mfSortBy)]="tableCnvExDefaultSort" [mfRowsOnPage]="recordsPerPageCnvEx">
                           <thead>
                             <tr class="success-light">
@@ -1107,7 +1107,7 @@
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table *ngIf="geneIn.length == 0" class="table table-td-valign-middle table-striped">
+                        <table *ngIf="geneIn.length == 0" class="table table-td-valign-middle table-striped table-col-width">
                           <thead>
                             <tr class="success-light">
                               <th>
@@ -1127,7 +1127,7 @@
                             </tr>
                           </tbody>
                         </table>
-                        <table *ngIf="geneIn.length!=0" class="table table-td-valign-middle table-striped" [mfData]="geneIn | filterByText: searchtermGeneIn"
+                        <table *ngIf="geneIn.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="geneIn | filterByText: searchtermGeneIn"
                           #mftableGeneIn="mfDataTable" [(mfSortBy)]="tableGeneInDefaultSort" [mfRowsOnPage]="recordsPerPageGeneIn">
                           <thead>
                             <tr class="success-light">
@@ -1201,7 +1201,7 @@
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table *ngIf="geneEx.length == 0" class="table table-td-valign-middle table-striped">
+                        <table *ngIf="geneEx.length == 0" class="table table-td-valign-middle table-striped table-col-width">
                           <thead>
                             <tr class="success-light">
                               <th>
@@ -1221,7 +1221,7 @@
                             </tr>
                           </tbody>
                         </table>
-                        <table *ngIf="geneEx.length!=0" class="table table-td-valign-middle table-striped" [mfData]="geneEx | filterByText: searchtermGeneEx"
+                        <table *ngIf="geneEx.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="geneEx | filterByText: searchtermGeneEx"
                           #mftableGeneEx="mfDataTable" [(mfSortBy)]="tableGeneExDefaultSort" [mfRowsOnPage]="recordsPerPageGeneEx">
                           <thead>
                             <tr class="success-light">
@@ -1302,7 +1302,7 @@
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table *ngIf="ruleIn.length == 0" class="table table-td-valign-middle table-striped">
+                        <table *ngIf="ruleIn.length == 0" class="table table-td-valign-middle table-striped table-col-width">
                           <thead>
                             <tr class="success-light">
                               <th>
@@ -1331,7 +1331,7 @@
                             </tr>
                           </tbody>
                         </table>
-                        <table *ngIf="ruleIn.length!=0" class="table table-td-valign-middle table-striped" [mfData]="ruleIn | filterByText: searchtermRuleIn"
+                        <table *ngIf="ruleIn.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="ruleIn | filterByText: searchtermRuleIn"
                           #mftableRuleIn="mfDataTable" [(mfSortBy)]="tableRuleInDefaultSort" [mfRowsOnPage]="recordsPerPageRuleIn">
                           <thead>
                             <tr class="success-light">
@@ -1416,7 +1416,7 @@
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table *ngIf="ruleEx.length == 0" class="table table-td-valign-middle table-striped">
+                        <table *ngIf="ruleEx.length == 0" class="table table-td-valign-middle table-striped table-col-width">
                           <thead>
                             <tr class="success-light">
                               <th>
@@ -1445,7 +1445,7 @@
                             </tr>
                           </tbody>
                         </table>
-                        <table *ngIf="ruleEx.length!=0" class="table table-td-valign-middle table-striped" [mfData]="ruleEx | filterByText: searchtermRuleEx"
+                        <table *ngIf="ruleEx.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="ruleEx | filterByText: searchtermRuleEx"
                           #mftableRuleEx="mfDataTable" [(mfSortBy)]="tableRuleExDefaultSort" [mfRowsOnPage]="recordsPerPageRuleEx">
                           <thead>
                             <tr class="success-light">
@@ -1534,7 +1534,7 @@
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table *ngIf="tableRulesData.assayResults.length == 0" class="table table-td-valign-middle table-striped">
+                        <table *ngIf="tableRulesData.assayResults.length == 0" class="table table-td-valign-middle table-striped table-col-width">
                           <thead>
                             <tr class="success-light">
                               <th>
@@ -1557,7 +1557,7 @@
                             </tr>
                           </tbody>
                         </table>
-                        <table *ngIf="tableRulesData.assayResults.length!=0" class="table table-td-valign-middle table-striped" [mfData]="tableRulesData.assayResults | filterByText: searchtermAssay"
+                        <table *ngIf="tableRulesData.assayResults.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="tableRulesData.assayResults | filterByText: searchtermAssay"
                           #mftableAssay="mfDataTable" [(mfSortBy)]="tableAssayDefaultSort" [mfRowsOnPage]="recordsPerPageAssay">
                           <thead>
                             <tr class="success-light">
