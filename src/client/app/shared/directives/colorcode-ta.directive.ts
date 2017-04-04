@@ -1,12 +1,11 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 
 @Directive({ selector: '[colorcodeTa]' })
-export class ColorCodeTaDirective {
+export class ColorCodeTaDirective implements OnInit {
 
     @Input() 'colorcodeTa': string;
 
-    constructor(private el: ElementRef) {
-    }
+    constructor(private el: ElementRef) { }
 
     ngOnInit() {
         if (this.colorcodeTa === 'OPEN' || this.colorcodeTa === 'REACTIVATED') {
