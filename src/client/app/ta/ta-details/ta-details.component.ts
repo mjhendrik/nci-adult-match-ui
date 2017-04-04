@@ -144,16 +144,16 @@ export class TaDetailsComponent implements OnInit {
   ngOnInit() {
     this.recordsPerPageExdr = 10;
     this.recordsPerPageExdz = 10;
-    this.recordsPerPageSnvIn = 5;
-    this.recordsPerPageSnvEx = 5;
-    this.recordsPerPageIndelIn = 5;
-    this.recordsPerPageIndelEx = 5;
-    this.recordsPerPageCnvIn = 5;
-    this.recordsPerPageCnvEx = 5;
-    this.recordsPerPageGeneIn = 5;
-    this.recordsPerPageGeneEx = 5;
-    this.recordsPerPageRuleIn = 5;
-    this.recordsPerPageRuleEx = 5;
+    this.recordsPerPageSnvIn = 10;
+    this.recordsPerPageSnvEx = 10;
+    this.recordsPerPageIndelIn = 10;
+    this.recordsPerPageIndelEx = 10;
+    this.recordsPerPageCnvIn = 10;
+    this.recordsPerPageCnvEx = 10;
+    this.recordsPerPageGeneIn = 10;
+    this.recordsPerPageGeneEx = 10;
+    this.recordsPerPageRuleIn = 10;
+    this.recordsPerPageRuleEx = 10;
     this.recordsPerPageAssay = 10;
     this.recordsPerPagePatient = 10;
 
