@@ -1,6 +1,6 @@
 [{
     "siteName": "MoCha",
-    "siteIpAddress": "10.133.130.53",
+    "siteIpAddress": "129.43.39.182",
     "sampleControls": [{
         "id": "MoCha_21",
         "molecularSequenceNumber": "SampleControl_MoCha_21",
@@ -1413,12 +1413,12 @@
         "id": "MDACC_14",
         "molecularSequenceNumber": "SampleControl_MDACC_14",
         "dateCreated": 1464804910808,
-        "dateReceived": null,
+        "dateReceived": 1491335522538,
         "site": "MDACC",
         "siteIpAddress": "10.110.130.21",
-        "positiveControlVersion": 0,
-        "positiveControlDateLoaded": null,
-        "status": null,
+        "positiveControlVersion": 4,
+        "positiveControlDateLoaded": 1472833474832,
+        "status": "FAILED",
         "comment": null,
         "passed": false,
         "nextGenerationSequence": null
@@ -1641,11 +1641,111 @@
   {
     "siteName": "Dartmouth",
     "siteIpAddress": "129.43.39.192",
-    "sampleControls": [
-
+    "sampleControls": [{
+        "id": "Dartmouth_1",
+        "molecularSequenceNumber": "SampleControl_Dartmouth_1",
+        "dateCreated": 1491329102131,
+        "dateReceived": null,
+        "site": "Dartmouth",
+        "siteIpAddress": "129.43.39.192",
+        "positiveControlVersion": 0,
+        "positiveControlDateLoaded": null,
+        "status": null,
+        "comment": null,
+        "passed": false,
+        "nextGenerationSequence": null
+      },
+      {
+        "id": "Dartmouth_2",
+        "molecularSequenceNumber": "SampleControl_Dartmouth_2",
+        "dateCreated": 1491329109999,
+        "dateReceived": null,
+        "site": "Dartmouth",
+        "siteIpAddress": "129.43.39.192",
+        "positiveControlVersion": 0,
+        "positiveControlDateLoaded": null,
+        "status": null,
+        "comment": null,
+        "passed": false,
+        "nextGenerationSequence": null
+      },
+      {
+        "id": "Dartmouth_3",
+        "molecularSequenceNumber": "SampleControl_Dartmouth_3",
+        "dateCreated": 1491329112873,
+        "dateReceived": null,
+        "site": "Dartmouth",
+        "siteIpAddress": "129.43.39.192",
+        "positiveControlVersion": 0,
+        "positiveControlDateLoaded": null,
+        "status": null,
+        "comment": null,
+        "passed": false,
+        "nextGenerationSequence": null
+      },
+      {
+        "id": "Dartmouth_4",
+        "molecularSequenceNumber": "SampleControl_Dartmouth_4",
+        "dateCreated": 1491329310696,
+        "dateReceived": null,
+        "site": "Dartmouth",
+        "siteIpAddress": "129.43.39.192",
+        "positiveControlVersion": 0,
+        "positiveControlDateLoaded": null,
+        "status": null,
+        "comment": null,
+        "passed": false,
+        "nextGenerationSequence": null
+      }
     ],
-    "ntcControls": [
-
+    "ntcControls": [{
+        "id": "Dartmouth_1",
+        "molecularSequenceNumber": "NtcControl_Dartmouth_1",
+        "dateCreated": 1491329106245,
+        "dateReceived": null,
+        "site": "Dartmouth",
+        "siteIpAddress": "129.43.39.192",
+        "status": null,
+        "comment": null,
+        "passed": false,
+        "nextGenerationSequence": null
+      },
+      {
+        "id": "Dartmouth_2",
+        "molecularSequenceNumber": "NtcControl_Dartmouth_2",
+        "dateCreated": 1491329116463,
+        "dateReceived": null,
+        "site": "Dartmouth",
+        "siteIpAddress": "129.43.39.192",
+        "status": null,
+        "comment": null,
+        "passed": false,
+        "nextGenerationSequence": null
+      },
+      {
+        "id": "Dartmouth_3",
+        "molecularSequenceNumber": "NtcControl_Dartmouth_3",
+        "dateCreated": 1491329119584,
+        "dateReceived": null,
+        "site": "Dartmouth",
+        "siteIpAddress": "129.43.39.192",
+        "status": null,
+        "comment": null,
+        "passed": false,
+        "nextGenerationSequence": null
+      },
+      {
+        "id": "Dartmouth_4",
+        "molecularSequenceNumber": "NtcControl_Dartmouth_4",
+        "dateCreated": 1491329316146,
+        "dateReceived": null,
+        "site": "Dartmouth",
+        "siteIpAddress": "129.43.39.192",
+        "status": null,
+        "comment": null,
+        "passed": false,
+        "nextGenerationSequence": null
+      }
     ],
     "proficiencyCompetencyControls": [{
         "id": "Dartmouth_1",
