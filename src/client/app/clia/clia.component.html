@@ -1,44 +1,13 @@
-<div class="clia-nav bg-white">
-  <ul>
-    <!--<li routerLinkActive="active" activeClass [routerLinkActiveOptions]="{exact: true}" *ngFor="let item of cliaLabData; let last = last; let first = first;"
-      [class.active-class]="first" class="active" style="display: inline;"><a class="link-none" href="javascript:void(0)" [routerLink]="['/clia']">{{item}}</a><span *ngIf="!last"> | </span></li>-->
-    <li class="active">
-      <a class="link-none" href="#panel-MoCha" (click)="clickedTab('MoCha')" data-toggle="tab" aria-expanded="true">
-        <span class="panel-title first">MoCha</span>
-      </a>
-    </li>
-    <li class="">
-      <a class="link-none" href="#panel-Yale" (click)="clickedTab('Yale')" data-toggle="tab" aria-expanded="false">
-        <span class="panel-title">Yale</span>
-      </a>
-    </li>
-    <li class="">
-      <a class="link-none" href="#panel-MGH" (click)="clickedTab('MGH')" data-toggle="tab" aria-expanded="false">
-        <span class="panel-title">MGH</span>
-      </a>
-    </li>
-    <li class="">
-      <a class="link-none" href="#panel-MDACC" data-toggle="tab" (click)="clickedTab('MDACC')" aria-expanded="false">
-        <span class="panel-title">MD Anderson</span>
-      </a>
-    </li>
-    <li class="">
-      <a class="link-none" href="#panel-Dartmouth" (click)="clickedTab('Dartmouth')" data-toggle="tab" aria-expanded="false">
-        <span class="panel-title">Dartmouth</span>
-      </a>
-    </li>
-  </ul>
-</div>
 <div id="content" class="content">
   <ul class="breadcrumb pull-right">
     <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
-    <li *ngIf="tabtype=='MoCha'">CLIA Labs: MoCha</li>
-    <li *ngIf="tabtype=='Yale'">CLIA Labs: Yale</li>
-    <li *ngIf="tabtype=='MGH'">CLIA Labs: MGH</li>
-    <li *ngIf="tabtype=='MD Anderson'">CLIA Labs: MD Anderson</li>
-    <li *ngIf="tabtype=='Dartmouth'">CLIA Labs: Dartmouth</li>
+    <li *ngIf="tabtype=='MoCha'">CLIA Lab: MoCha</li>
+    <li *ngIf="tabtype=='Yale'">CLIA Lab: Yale</li>
+    <li *ngIf="tabtype=='MGH'">CLIA Lab: MGH</li>
+    <li *ngIf="tabtype=='MD Anderson'">CLIA Lab: MD Anderson</li>
+    <li *ngIf="tabtype=='Dartmouth'">CLIA Lab: Dartmouth</li>
   </ul>
-  <h1 class="page-header">CLIA Labs: {{tabtype}}</h1>
+  <h1 class="page-header">CLIA Lab: {{tabtype}}</h1>
   <div class="row tab-pane fade active in" id="panel-MoCha" *ngIf="tabtype=='MoCha'">
     <!--matchHeight=-->
     <div class="col-md-8">
