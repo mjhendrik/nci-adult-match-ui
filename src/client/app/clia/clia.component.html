@@ -32,13 +32,13 @@
 <div id="content" class="content">
   <ul class="breadcrumb pull-right">
     <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
-    <li *ngIf="tabtype=='MoCha'" id="panel-MoCha">CLIA Labs: MoCha</li>
-    <li id="panel-Yale" *ngIf="tabtype=='Yale'">CLIA Labs: Yale</li>
-    <li id="panel-MGH" *ngIf="tabtype=='MGH'">CLIA Labs: MGH</li>
-    <li id="panel-MDACC" *ngIf="tabtype=='MD Anderson'">CLIA Labs: MD Anderson</li>
-    <li id="panel-Dartmouth" *ngIf="tabtype=='Dartmouth'">CLIA Labs: Dartmouth</li>
+    <li *ngIf="tabtype=='MoCha'">CLIA Labs: MoCha</li>
+    <li *ngIf="tabtype=='Yale'">CLIA Labs: Yale</li>
+    <li *ngIf="tabtype=='MGH'">CLIA Labs: MGH</li>
+    <li *ngIf="tabtype=='MD Anderson'">CLIA Labs: MD Anderson</li>
+    <li *ngIf="tabtype=='Dartmouth'">CLIA Labs: Dartmouth</li>
   </ul>
-  <h1 class="page-header tab-pane fade active in" id="panel-MoCha">CLIA Labs: {{tabtype}}</h1>
+  <h1 class="page-header">CLIA Labs: {{tabtype}}</h1>
   <div class="row tab-pane fade active in" id="panel-MoCha" *ngIf="tabtype=='MoCha'">
     <!--matchHeight=-->
     <div class="col-md-8">
@@ -48,7 +48,7 @@
             <!--panel-orangeshade-->
             <ul class="nav nav-tabs nav-tabs-orangeshade p-l-0">
               <li class="active">
-                <a class="p-0" href="#tab-PC" data-toggle="tab" aria-expanded="true">
+                <a class="p-0" href="#tab-MoCha-PC" data-toggle="tab" aria-expanded="true">
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
@@ -57,7 +57,7 @@
                 </a>
               </li>
               <li class="">
-                <a class="p-0" href="#tab-NTC" data-toggle="tab" aria-expanded="false">
+                <a class="p-0" href="#tab-MoCha-NTC" data-toggle="tab" aria-expanded="false">
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
@@ -66,7 +66,7 @@
                 </a>
               </li>
               <li class="">
-                <a class="p-0" href="#tab-PACC" data-toggle="tab" aria-expanded="false">
+                <a class="p-0" href="#tab-MoCha-PACC" data-toggle="tab" aria-expanded="false">
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
@@ -76,7 +76,7 @@
               </li>
             </ul>
             <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
-              <div class="tab-pane fade active in" id="tab-PC">
+              <div class="tab-pane fade active in" id="tab-MoCha-PC">
                 <!-- table 1 -->
                 <div class="row">
                   <!-- begin panel -->
@@ -179,7 +179,7 @@
                   <!-- end panel -->
                 </div>
               </div>
-              <div class="tab-pane fade" id="tab-NTC">
+              <div class="tab-pane fade" id="tab-MoCha-NTC">
                 <!-- table 1 -->
                 <div class="row">
                   <!-- begin panel -->
@@ -282,7 +282,7 @@
                   <!-- end panel -->
                 </div>
               </div>
-              <div class="tab-pane fade" id="tab-PACC">
+              <div class="tab-pane fade" id="tab-MoCha-PACC">
                 <!-- table 1 -->
                 <div class="row">
                   <!-- begin panel -->
@@ -506,7 +506,7 @@
             <!--panel-orangeshade-->
             <ul class="nav nav-tabs nav-tabs-orangeshade p-l-0">
               <li class="active">
-                <a class="p-0" href="#tab-PC" data-toggle="tab" aria-expanded="true">
+                <a class="p-0" href="#tab-Yale-PC" data-toggle="tab" aria-expanded="true">
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
@@ -515,7 +515,7 @@
                 </a>
               </li>
               <li class="">
-                <a class="p-0" href="#tab-NTC" data-toggle="tab" aria-expanded="false">
+                <a class="p-0" href="#tab-Yale-NTC" data-toggle="tab" aria-expanded="false">
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
@@ -524,7 +524,7 @@
                 </a>
               </li>
               <li class="">
-                <a class="p-0" href="#tab-PACC" data-toggle="tab" aria-expanded="false">
+                <a class="p-0" href="#tab-Yale-PACC" data-toggle="tab" aria-expanded="false">
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
@@ -534,7 +534,7 @@
               </li>
             </ul>
             <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
-              <div class="tab-pane fade active in" id="tab-PC">
+              <div class="tab-pane fade active in" id="tab-Yale-PC">
                 <!-- table 1 -->
                 <div class="row">
                   <!-- begin panel -->
@@ -637,7 +637,7 @@
                   <!-- end panel -->
                 </div>
               </div>
-              <div class="tab-pane fade" id="tab-NTC">
+              <div class="tab-pane fade" id="tab-Yale-NTC">
                 <!-- table 1 -->
                 <div class="row">
                   <!-- begin panel -->
@@ -740,7 +740,7 @@
                   <!-- end panel -->
                 </div>
               </div>
-              <div class="tab-pane fade" id="tab-PACC">
+              <div class="tab-pane fade" id="tab-Yale-PACC">
                 <!-- table 1 -->
                 <div class="row">
                   <!-- begin panel -->
@@ -964,7 +964,7 @@
             <!--panel-orangeshade-->
             <ul class="nav nav-tabs nav-tabs-orangeshade p-l-0">
               <li class="active">
-                <a class="p-0" href="#tab-PC" data-toggle="tab" aria-expanded="true">
+                <a class="p-0" href="#tab-MGH-PC" data-toggle="tab" aria-expanded="true">
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
@@ -973,7 +973,7 @@
                 </a>
               </li>
               <li class="">
-                <a class="p-0" href="#tab-NTC" data-toggle="tab" aria-expanded="false">
+                <a class="p-0" href="#tab-MGH-NTC" data-toggle="tab" aria-expanded="false">
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
@@ -982,7 +982,7 @@
                 </a>
               </li>
               <li class="">
-                <a class="p-0" href="#tab-PACC" data-toggle="tab" aria-expanded="false">
+                <a class="p-0" href="#tab-MGH-PACC" data-toggle="tab" aria-expanded="false">
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
@@ -992,7 +992,7 @@
               </li>
             </ul>
             <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
-              <div class="tab-pane fade active in" id="tab-PC">
+              <div class="tab-pane fade active in" id="tab-MGH-PC">
                 <!-- table 1 -->
                 <div class="row">
                   <!-- begin panel -->
@@ -1095,7 +1095,7 @@
                   <!-- end panel -->
                 </div>
               </div>
-              <div class="tab-pane fade" id="tab-NTC">
+              <div class="tab-pane fade" id="tab-MGH-NTC">
                 <!-- table 1 -->
                 <div class="row">
                   <!-- begin panel -->
@@ -1198,7 +1198,7 @@
                   <!-- end panel -->
                 </div>
               </div>
-              <div class="tab-pane fade" id="tab-PACC">
+              <div class="tab-pane fade" id="tab-MGH-PACC">
                 <!-- table 1 -->
                 <div class="row">
                   <!-- begin panel -->
@@ -1422,7 +1422,7 @@
             <!--panel-orangeshade-->
             <ul class="nav nav-tabs nav-tabs-orangeshade p-l-0">
               <li class="active">
-                <a class="p-0" href="#tab-PC" data-toggle="tab" aria-expanded="true">
+                <a class="p-0" href="#tab-MDACC-PC" data-toggle="tab" aria-expanded="true">
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
@@ -1431,7 +1431,7 @@
                 </a>
               </li>
               <li class="">
-                <a class="p-0" href="#tab-NTC" data-toggle="tab" aria-expanded="false">
+                <a class="p-0" href="#tab-MDACC-NTC" data-toggle="tab" aria-expanded="false">
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
@@ -1440,7 +1440,7 @@
                 </a>
               </li>
               <li class="">
-                <a class="p-0" href="#tab-PACC" data-toggle="tab" aria-expanded="false">
+                <a class="p-0" href="#tab-MDACC-PACC" data-toggle="tab" aria-expanded="false">
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
@@ -1450,7 +1450,7 @@
               </li>
             </ul>
             <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
-              <div class="tab-pane fade active in" id="tab-PC">
+              <div class="tab-pane fade active in" id="tab-MDACC-PC">
                 <!-- table 1 -->
                 <div class="row">
                   <!-- begin panel -->
@@ -1553,7 +1553,7 @@
                   <!-- end panel -->
                 </div>
               </div>
-              <div class="tab-pane fade" id="tab-NTC">
+              <div class="tab-pane fade" id="tab-MDACC-NTC">
                 <!-- table 1 -->
                 <div class="row">
                   <!-- begin panel -->
@@ -1656,7 +1656,7 @@
                   <!-- end panel -->
                 </div>
               </div>
-              <div class="tab-pane fade" id="tab-PACC">
+              <div class="tab-pane fade" id="tab-MDACC-PACC">
                 <!-- table 1 -->
                 <div class="row">
                   <!-- begin panel -->
@@ -1880,7 +1880,7 @@
             <!--panel-orangeshade-->
             <ul class="nav nav-tabs nav-tabs-orangeshade p-l-0">
               <li class="active">
-                <a class="p-0" href="#tab-PC" data-toggle="tab" aria-expanded="true">
+                <a class="p-0" href="#tab-Dartmouth-PC" data-toggle="tab" aria-expanded="true">
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
@@ -1889,7 +1889,7 @@
                 </a>
               </li>
               <li class="">
-                <a class="p-0" href="#tab-NTC" data-toggle="tab" aria-expanded="false">
+                <a class="p-0" href="#tab-Dartmouth-NTC" data-toggle="tab" aria-expanded="false">
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
@@ -1898,7 +1898,7 @@
                 </a>
               </li>
               <li class="">
-                <a class="p-0" href="#tab-PACC" data-toggle="tab" aria-expanded="false">
+                <a class="p-0" href="#tab-Dartmouth-PACC" data-toggle="tab" aria-expanded="false">
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
@@ -1908,7 +1908,7 @@
               </li>
             </ul>
             <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
-              <div class="tab-pane fade active in" id="tab-PC">
+              <div class="tab-pane fade active in" id="tab-Dartmouth-PC">
                 <!-- table 1 -->
                 <div class="row">
                   <!-- begin panel -->
@@ -2011,7 +2011,7 @@
                   <!-- end panel -->
                 </div>
               </div>
-              <div class="tab-pane fade" id="tab-NTC">
+              <div class="tab-pane fade" id="tab-Dartmouth-NTC">
                 <!-- table 1 -->
                 <div class="row">
                   <!-- begin panel -->
@@ -2114,7 +2114,7 @@
                   <!-- end panel -->
                 </div>
               </div>
-              <div class="tab-pane fade" id="tab-PACC">
+              <div class="tab-pane fade" id="tab-Dartmouth-PACC">
                 <!-- table 1 -->
                 <div class="row">
                   <!-- begin panel -->
