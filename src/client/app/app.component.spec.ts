@@ -17,6 +17,11 @@ import { PatientVariantReportComponent } from './patient/patient-variant-report/
 import { TaDetailsComponent } from './ta/ta-details/ta-details.component';
 import { BtComponent } from './bt/bt.component';
 import { CliaComponent } from './clia/clia.component';
+import { CliaDartmouthComponent } from './clia/clia-dartmouth/clia-dartmouth.component';
+import { CliaMdaccComponent } from './clia/clia-mdacc/clia-mdacc.component';
+import { CliaMghComponent } from './clia/clia-mgh/clia-mgh.component';
+import { CliaMochaComponent } from './clia/clia-mocha/clia-mocha.component';
+import { CliaYaleComponent } from './clia/clia-yale/clia-yale.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 
 export function main() {
@@ -32,7 +37,12 @@ export function main() {
       { path: 'treatments', component: TaComponent },
       { path: 'treatments/details', component: TaDetailsComponent },
       { path: 'bt', component: BtComponent },
-      { path: 'clia', component: CliaComponent }
+      { path: 'clia', component: CliaComponent },
+      { path: 'clia_dartmouth', component: CliaDartmouthComponent },
+      { path: 'clia_mdacc', component: CliaMdaccComponent },
+      { path: 'clia_mgh', component: CliaMghComponent },
+      { path: 'clia_mocha', component: CliaMochaComponent },
+      { path: 'clia_yale', component: CliaYaleComponent }
     ];
     beforeEach(() => {
       TestBed.configureTestingModule({
@@ -48,6 +58,11 @@ export function main() {
           TaDetailsComponent,
           BtComponent,
           CliaComponent,
+          CliaDartmouthComponent,
+          CliaMdaccComponent,
+          CliaMghComponent,
+          CliaMochaComponent,
+          CliaYaleComponent,
           PatientDetailsComponent,
           PatientVariantReportComponent],
         providers: [
