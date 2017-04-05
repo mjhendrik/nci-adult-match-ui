@@ -40,8 +40,10 @@ export class CliaComponent {
 
   sortByAsc: string;
   sortByDesc: string;
+  tabtype: string;
 
   ngOnInit() {
+    this.tabtype = 'MoCha';
     this.recordsPerPageVR = 10;
     this.recordsPerPageAR = 10;
     this.recordsPerPageAR2 = 10;
@@ -65,6 +67,24 @@ export class CliaComponent {
 
     for (let i = 0; i < this.tableARData.assignment_reports.length; i++) {
       this.tableARData.assignment_reports[i].dateAssigned = gmt.transform(this.tableARData.assignment_reports[i].dateAssigned);
+    }
+
+  }
+
+  clickedTab(type: string): void {
+    this.tabtype = type;
+    switch (type) {
+      case 'MoCha':
+        break;
+      case 'Yale':
+        break;
+      case 'MGH':
+        break;
+      case 'MDACC':
+        this.tabtype = "MD Anderson";
+        break;
+      case 'Dartmouth':
+        break;
     }
 
   }

@@ -1,52 +1,45 @@
 <div class="clia-nav bg-white">
   <ul>
-
     <!--<li routerLinkActive="active" activeClass [routerLinkActiveOptions]="{exact: true}" *ngFor="let item of cliaLabData; let last = last; let first = first;"
       [class.active-class]="first" class="active" style="display: inline;"><a class="link-none" href="javascript:void(0)" [routerLink]="['/clia']">{{item}}</a><span *ngIf="!last"> | </span></li>-->
-
     <li class="active">
-      <a class="link-none" href="#panel-MoCha" data-toggle="tab" aria-expanded="true">
+      <a class="link-none" href="#panel-MoCha" (click)="clickedTab('MoCha')" data-toggle="tab" aria-expanded="true">
         <span class="panel-title first">MoCha</span>
       </a>
     </li>
     <li class="">
-      <a class="link-none" href="#panel-Yale" data-toggle="tab" aria-expanded="false">
+      <a class="link-none" href="#panel-Yale" (click)="clickedTab('Yale')" data-toggle="tab" aria-expanded="false">
         <span class="panel-title">Yale</span>
       </a>
     </li>
     <li class="">
-      <a class="link-none" href="#panel-MGH" data-toggle="tab" aria-expanded="false">
+      <a class="link-none" href="#panel-MGH" (click)="clickedTab('MGH')" data-toggle="tab" aria-expanded="false">
         <span class="panel-title">MGH</span>
       </a>
     </li>
     <li class="">
-      <a class="link-none" href="#panel-MDACC" data-toggle="tab" aria-expanded="false">
+      <a class="link-none" href="#panel-MDACC" data-toggle="tab" (click)="clickedTab('MDACC')" aria-expanded="false">
         <span class="panel-title">MD Anderson</span>
       </a>
     </li>
     <li class="">
-      <a class="link-none" href="#panel-Dartmouth" data-toggle="tab" aria-expanded="false">
+      <a class="link-none" href="#panel-Dartmouth" (click)="clickedTab('Dartmouth')" data-toggle="tab" aria-expanded="false">
         <span class="panel-title">Dartmouth</span>
       </a>
     </li>
-
   </ul>
 </div>
 <div id="content" class="content">
   <ul class="breadcrumb pull-right">
     <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
-    <li class="tab-pane fade active in" id="panel-MoCha">CLIA Labs: MoCha</li>
-    <li class="tab-pane fade" id="panel-Yale">CLIA Labs: Yale</li>
-    <li class="tab-pane fade" id="panel-MGH">CLIA Labs: MGH</li>
-    <li class="tab-pane fade" id="panel-MDACC">CLIA Labs: MD Anderson</li>
-    <li class="tab-pane fade" id="panel-Dartmouth">CLIA Labs: Dartmouth</li>
+    <li *ngIf="tabtype=='MoCha'" id="panel-MoCha">CLIA Labs: MoCha</li>
+    <li id="panel-Yale" *ngIf="tabtype=='Yale'">CLIA Labs: Yale</li>
+    <li id="panel-MGH" *ngIf="tabtype=='MGH'">CLIA Labs: MGH</li>
+    <li id="panel-MDACC" *ngIf="tabtype=='MD Anderson'">CLIA Labs: MD Anderson</li>
+    <li id="panel-Dartmouth" *ngIf="tabtype=='Dartmouth'">CLIA Labs: Dartmouth</li>
   </ul>
-  <h1 class="page-header tab-pane fade active in" id="panel-MoCha">CLIA Labs: MoCha</h1>
-  <h1 class="page-header tab-pane fade" id="panel-Yale">CLIA Labs: Yale</h1>
-  <h1 class="page-header tab-pane fade" id="panel-MGH">CLIA Labs: MGH</h1>
-  <h1 class="page-header tab-pane fade" id="panel-MDACC">CLIA Labs: MD Anderson</h1>
-  <h1 class="page-header tab-pane fade" id="panel-Dartmouth">CLIA Labs: Dartmouth</h1>
-  <div class="row tab-pane fade active in" id="panel-MoCha">
+  <h1 class="page-header tab-pane fade active in" id="panel-MoCha">CLIA Labs: {{tabtype}}</h1>
+  <div class="row tab-pane fade active in" id="panel-MoCha" *ngIf="tabtype=='MoCha'">
     <!--matchHeight=-->
     <div class="col-md-8">
       <div class="panel">
@@ -504,7 +497,7 @@
       </div>
     </div>
   </div>
-  <div class="row tab-pane fade" id="panel-Yale">
+  <div class="row tab-pane fade active in" id="panel-Yale" *ngIf="tabtype=='Yale'">
     <!--matchHeight=-->
     <div class="col-md-8">
       <div class="panel">
@@ -513,7 +506,7 @@
             <!--panel-orangeshade-->
             <ul class="nav nav-tabs nav-tabs-orangeshade p-l-0">
               <li class="active">
-                <a class="p-0" href="#tab-VR" data-toggle="tab" aria-expanded="true">
+                <a class="p-0" href="#tab-PC" data-toggle="tab" aria-expanded="true">
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
@@ -522,7 +515,7 @@
                 </a>
               </li>
               <li class="">
-                <a class="p-0" href="#tab-AR" data-toggle="tab" aria-expanded="false">
+                <a class="p-0" href="#tab-NTC" data-toggle="tab" aria-expanded="false">
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
@@ -531,7 +524,7 @@
                 </a>
               </li>
               <li class="">
-                <a class="p-0" href="#tab-AR2" data-toggle="tab" aria-expanded="false">
+                <a class="p-0" href="#tab-PACC" data-toggle="tab" aria-expanded="false">
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
@@ -541,7 +534,7 @@
               </li>
             </ul>
             <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
-              <div class="tab-pane fade active in" id="tab-VR">
+              <div class="tab-pane fade active in" id="tab-PC">
                 <!-- table 1 -->
                 <div class="row">
                   <!-- begin panel -->
@@ -644,7 +637,7 @@
                   <!-- end panel -->
                 </div>
               </div>
-              <div class="tab-pane fade active in" id="tab-AR">
+              <div class="tab-pane fade" id="tab-NTC">
                 <!-- table 1 -->
                 <div class="row">
                   <!-- begin panel -->
@@ -747,7 +740,7 @@
                   <!-- end panel -->
                 </div>
               </div>
-              <div class="tab-pane fade active in" id="tab-AR2">
+              <div class="tab-pane fade" id="tab-PACC">
                 <!-- table 1 -->
                 <div class="row">
                   <!-- begin panel -->
@@ -962,7 +955,7 @@
       </div>
     </div>
   </div>
-  <div class="row tab-pane fade" id="panel-MGH">
+  <div class="row tab-pane fade active in" id="panel-MGH" *ngIf="tabtype=='MGH'">
     <!--matchHeight=-->
     <div class="col-md-8">
       <div class="panel">
@@ -971,7 +964,7 @@
             <!--panel-orangeshade-->
             <ul class="nav nav-tabs nav-tabs-orangeshade p-l-0">
               <li class="active">
-                <a class="p-0" href="#tab-VR" data-toggle="tab" aria-expanded="true">
+                <a class="p-0" href="#tab-PC" data-toggle="tab" aria-expanded="true">
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
@@ -980,7 +973,7 @@
                 </a>
               </li>
               <li class="">
-                <a class="p-0" href="#tab-AR" data-toggle="tab" aria-expanded="false">
+                <a class="p-0" href="#tab-NTC" data-toggle="tab" aria-expanded="false">
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
@@ -989,7 +982,7 @@
                 </a>
               </li>
               <li class="">
-                <a class="p-0" href="#tab-AR2" data-toggle="tab" aria-expanded="false">
+                <a class="p-0" href="#tab-PACC" data-toggle="tab" aria-expanded="false">
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
@@ -999,7 +992,7 @@
               </li>
             </ul>
             <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
-              <div class="tab-pane fade active in" id="tab-VR">
+              <div class="tab-pane fade active in" id="tab-PC">
                 <!-- table 1 -->
                 <div class="row">
                   <!-- begin panel -->
@@ -1102,7 +1095,7 @@
                   <!-- end panel -->
                 </div>
               </div>
-              <div class="tab-pane fade active in" id="tab-AR">
+              <div class="tab-pane fade" id="tab-NTC">
                 <!-- table 1 -->
                 <div class="row">
                   <!-- begin panel -->
@@ -1205,7 +1198,7 @@
                   <!-- end panel -->
                 </div>
               </div>
-              <div class="tab-pane fade active in" id="tab-AR2">
+              <div class="tab-pane fade" id="tab-PACC">
                 <!-- table 1 -->
                 <div class="row">
                   <!-- begin panel -->
@@ -1420,7 +1413,7 @@
       </div>
     </div>
   </div>
-  <div class="row tab-pane fade" id="panel-MDACC">
+  <div class="row tab-pane fade active in" id="panel-MDACC" *ngIf="tabtype=='MD Anderson'">
     <!--matchHeight=-->
     <div class="col-md-8">
       <div class="panel">
@@ -1429,7 +1422,7 @@
             <!--panel-orangeshade-->
             <ul class="nav nav-tabs nav-tabs-orangeshade p-l-0">
               <li class="active">
-                <a class="p-0" href="#tab-VR" data-toggle="tab" aria-expanded="true">
+                <a class="p-0" href="#tab-PC" data-toggle="tab" aria-expanded="true">
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
@@ -1438,7 +1431,7 @@
                 </a>
               </li>
               <li class="">
-                <a class="p-0" href="#tab-AR" data-toggle="tab" aria-expanded="false">
+                <a class="p-0" href="#tab-NTC" data-toggle="tab" aria-expanded="false">
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
@@ -1447,7 +1440,7 @@
                 </a>
               </li>
               <li class="">
-                <a class="p-0" href="#tab-AR2" data-toggle="tab" aria-expanded="false">
+                <a class="p-0" href="#tab-PACC" data-toggle="tab" aria-expanded="false">
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
@@ -1457,7 +1450,7 @@
               </li>
             </ul>
             <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
-              <div class="tab-pane fade active in" id="tab-VR">
+              <div class="tab-pane fade active in" id="tab-PC">
                 <!-- table 1 -->
                 <div class="row">
                   <!-- begin panel -->
@@ -1560,7 +1553,7 @@
                   <!-- end panel -->
                 </div>
               </div>
-              <div class="tab-pane fade active in" id="tab-AR">
+              <div class="tab-pane fade" id="tab-NTC">
                 <!-- table 1 -->
                 <div class="row">
                   <!-- begin panel -->
@@ -1663,7 +1656,7 @@
                   <!-- end panel -->
                 </div>
               </div>
-              <div class="tab-pane fade active in" id="tab-AR2">
+              <div class="tab-pane fade" id="tab-PACC">
                 <!-- table 1 -->
                 <div class="row">
                   <!-- begin panel -->
@@ -1878,7 +1871,7 @@
       </div>
     </div>
   </div>
-  <div class="row tab-pane fade" id="panel-Dartmouth">
+  <div class="row tab-pane fade active in" id="panel-Dartmouth" *ngIf="tabtype=='Dartmouth'">
     <!--matchHeight=-->
     <div class="col-md-8">
       <div class="panel">
@@ -1887,7 +1880,7 @@
             <!--panel-orangeshade-->
             <ul class="nav nav-tabs nav-tabs-orangeshade p-l-0">
               <li class="active">
-                <a class="p-0" href="#tab-VR" data-toggle="tab" aria-expanded="true">
+                <a class="p-0" href="#tab-PC" data-toggle="tab" aria-expanded="true">
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
@@ -1896,7 +1889,7 @@
                 </a>
               </li>
               <li class="">
-                <a class="p-0" href="#tab-AR" data-toggle="tab" aria-expanded="false">
+                <a class="p-0" href="#tab-NTC" data-toggle="tab" aria-expanded="false">
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
@@ -1905,7 +1898,7 @@
                 </a>
               </li>
               <li class="">
-                <a class="p-0" href="#tab-AR2" data-toggle="tab" aria-expanded="false">
+                <a class="p-0" href="#tab-PACC" data-toggle="tab" aria-expanded="false">
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
@@ -1915,7 +1908,7 @@
               </li>
             </ul>
             <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
-              <div class="tab-pane fade active in" id="tab-VR">
+              <div class="tab-pane fade active in" id="tab-PC">
                 <!-- table 1 -->
                 <div class="row">
                   <!-- begin panel -->
@@ -2018,7 +2011,7 @@
                   <!-- end panel -->
                 </div>
               </div>
-              <div class="tab-pane fade active in" id="tab-AR">
+              <div class="tab-pane fade" id="tab-NTC">
                 <!-- table 1 -->
                 <div class="row">
                   <!-- begin panel -->
@@ -2121,7 +2114,7 @@
                   <!-- end panel -->
                 </div>
               </div>
-              <div class="tab-pane fade active in" id="tab-AR2">
+              <div class="tab-pane fade" id="tab-PACC">
                 <!-- table 1 -->
                 <div class="row">
                   <!-- begin panel -->
