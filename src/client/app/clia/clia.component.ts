@@ -81,7 +81,7 @@ export class CliaComponent {
       case 'MGH':
         break;
       case 'MDACC':
-        this.tabtype = "MD Anderson";
+        this.tabtype = 'MD Anderson';
         break;
       case 'Dartmouth':
         break;
