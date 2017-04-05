@@ -4,17 +4,17 @@ import {
   TestBed
 } from '@angular/core/testing';
 
-import { CliaModule } from './clia.module';
+import { CliaMghModule } from './clia-mgh.module';
 
 export function main() {
-  describe('clia component', () => {
+  describe('clia mgh component', () => {
     // Setting module for testing
     // Disable old forms
 
     beforeEach(() => {
       TestBed.configureTestingModule({
         declarations: [TestComponent],
-        imports: [CliaModule]
+        imports: [CliaMghModule]
       });
     });
 
@@ -33,6 +33,6 @@ export function main() {
 
 @Component({
   selector: 'test-cmp',
-  template: '<sd-clia></sd-clia>'
+  template: '<sd-clia-mgh></sd-clia-mgh>'
 })
 class TestComponent { }

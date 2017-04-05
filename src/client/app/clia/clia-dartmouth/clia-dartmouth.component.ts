@@ -5,18 +5,18 @@ import { GMTFilter } from './../../shared/pipes/gmt';
 
 
 /**
- * This class represents the lazy loaded CLIAComponent.
+ * This class represents the lazy loaded CliaDartmouthComponent.
  */
 @Component({
   moduleId: module.id,
-  selector: 'sd-clia',
-  templateUrl: 'clia.component.html',
-  styleUrls: ['clia.component.css'],
+  selector: 'sd-clia-dartmouth',
+  templateUrl: 'clia-dartmouth.component.html',
+  styleUrls: ['clia-dartmouth.component.css'],
   animations: [routerTransition()],
   host: { '[@routerTransition]': '' },
   providers: [GMTFilter]
 })
-export class CliaComponent {
+export class CliaDartmouthComponent {
 
   cliaLabData: any = [
     "MoCha",

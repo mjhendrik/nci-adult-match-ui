@@ -4,17 +4,17 @@ import {
   TestBed
 } from '@angular/core/testing';
 
-import { CliaModule } from './clia.module';
+import { CliaDartmouthModule } from './clia-dartmouth.module';
 
 export function main() {
-  describe('clia component', () => {
+  describe('clia dartmouth component', () => {
     // Setting module for testing
     // Disable old forms
 
     beforeEach(() => {
       TestBed.configureTestingModule({
         declarations: [TestComponent],
-        imports: [CliaModule]
+        imports: [CliaDartmouthModule]
       });
     });
 
@@ -33,6 +33,6 @@ export function main() {
 
 @Component({
   selector: 'test-cmp',
-  template: '<sd-clia></sd-clia>'
+  template: '<sd-clia-dartmouth></sd-clia-dartmouth>'
 })
 class TestComponent { }
