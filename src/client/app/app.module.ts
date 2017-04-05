@@ -9,6 +9,11 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginModule } from './login/login.module';
 import { CliaModule } from './clia/clia.module';
+import { CliaDartmouthModule } from './clia/clia-dartmouth/clia-dartmouth.module';
+import { CliaMdaccModule } from './clia/clia-mdacc/clia-mdacc.module';
+import { CliaMghModule } from './clia/clia-mgh/clia-mgh.module';
+import { CliaMochaModule } from './clia/clia-mocha/clia-mocha.module';
+import { CliaYaleModule } from './clia/clia-yale/clia-yale.module';
 import { BtModule } from './bt/bt.module';
 import { TaModule } from './ta/ta.module';
 import { TaDetailsModule } from './ta/ta-details/ta-details.module';
@@ -27,6 +32,11 @@ import { LoginGuard } from './shared/auth/login.guard.service';
     AppRoutingModule,
     LoginModule,
     CliaModule,
+    CliaDartmouthModule,
+    CliaMdaccModule,
+    CliaMghModule,
+    CliaMochaModule,
+    CliaYaleModule,
     BtModule,
     TaModule,
     TaDetailsModule,
