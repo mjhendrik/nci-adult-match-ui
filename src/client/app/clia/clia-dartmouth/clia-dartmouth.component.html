@@ -50,7 +50,7 @@
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select [disabled]="tableVRData.variant_reports.length == 0" name="data-table_length" [(ngModel)]="recordsPerPageVR" aria-controls="data-table" class="form-control form-control-orangeshade input-sm">
+                        <select [disabled]="tablePCData.length == 0" name="data-table_length" [(ngModel)]="recordsPerPagePC" aria-controls="data-table" class="form-control form-control-orangeshade input-sm">
                           <option [ngValue]=10>10</option>
                           <option [ngValue]=25>25</option>
                           <option [ngValue]=50>50</option>
@@ -62,14 +62,14 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input [disabled]="tableVRData.variant_reports.length == 0" type="text" [(ngModel)]="searchtermVR" class="form-control form-control-orangeshade input-sm" placeholder="" aria-controls="data-table">                      
+                        <input [disabled]="tablePCData.length == 0" type="text" [(ngModel)]="searchtermPC" class="form-control form-control-orangeshade input-sm" placeholder="" aria-controls="data-table">                      
                         </label>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table *ngIf="tableVRData.variant_reports.length == 0" class="table table-td-valign-middle table-striped table-col-width">
+                        <table *ngIf="tablePCData.length == 0" class="table table-td-valign-middle table-striped table-col-width">
                           <thead>
                             <tr class="orangeshade-light">
                               <th>
@@ -95,8 +95,8 @@
                             </tr>
                           </tbody>
                         </table>
-                        <table *ngIf="tableVRData.variant_reports!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="tableVRData.variant_reports | filterByText: searchtermVR"
-                          #mftableVR="mfDataTable" [(mfSortBy)]="tableVRDefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPageVR">
+                        <table *ngIf="tablePCData!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="tablePCData | filterByText: searchtermPC"
+                          #mftableVR="mfDataTable" [(mfSortBy)]="tablePCDefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPagePC">
                           <thead>
                             <tr class="orangeshade-light">
                               <th>
@@ -127,13 +127,13 @@
                               <td [colorcodeDays]="item.daysPending">{{item.daysPending | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftableVR.data.length == 0">
-                              <td class="f-s-15" colspan="5">No matching search results found for "{{searchtermVR}}"</td>
+                              <td class="f-s-15" colspan="5">No matching search results found for "{{searchtermPC}}"</td>
                             </tr>
                           </tbody>
                           <tfoot>
                             <tr>
                               <td class="tfoot-padding" colspan="5">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermVR" [totallength]="tableVRData.variant_reports.length"></mfBootstrapPaginator>
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermPC" [totallength]="tablePCData.length"></mfBootstrapPaginator>
                               </td>
                             </tr>
                           </tfoot>
@@ -153,7 +153,7 @@
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select [disabled]="tableVRData.variant_reports.length == 0" name="data-table_length" [(ngModel)]="recordsPerPageVR" aria-controls="data-table" class="form-control form-control-orangeshade input-sm">
+                        <select [disabled]="tableNTCData.length == 0" name="data-table_length" [(ngModel)]="recordsPerPageNTC" aria-controls="data-table" class="form-control form-control-orangeshade input-sm">
                           <option [ngValue]=10>10</option>
                           <option [ngValue]=25>25</option>
                           <option [ngValue]=50>50</option>
@@ -165,14 +165,14 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input [disabled]="tableVRData.variant_reports.length == 0" type="text" [(ngModel)]="searchtermVR" class="form-control form-control-orangeshade input-sm" placeholder="" aria-controls="data-table">                      
+                        <input [disabled]="tableNTCData.length == 0" type="text" [(ngModel)]="searchtermNTC" class="form-control form-control-orangeshade input-sm" placeholder="" aria-controls="data-table">                      
                         </label>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table *ngIf="tableVRData.variant_reports.length == 0" class="table table-td-valign-middle table-striped table-col-width">
+                        <table *ngIf="tableNTCData.length == 0" class="table table-td-valign-middle table-striped table-col-width">
                           <thead>
                             <tr class="orangeshade-light">
                               <th>
@@ -198,8 +198,8 @@
                             </tr>
                           </tbody>
                         </table>
-                        <table *ngIf="tableVRData.variant_reports!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="tableVRData.variant_reports | filterByText: searchtermVR"
-                          #mftableVR="mfDataTable" [(mfSortBy)]="tableVRDefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPageVR">
+                        <table *ngIf="tableNTCData!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="tableNTCData | filterByText: searchtermNTC"
+                          #mftableVR="mfDataTable" [(mfSortBy)]="tableNTCDefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPageNTC">
                           <thead>
                             <tr class="orangeshade-light">
                               <th>
@@ -230,13 +230,13 @@
                               <td [colorcodeDays]="item.daysPending">{{item.daysPending | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftableVR.data.length == 0">
-                              <td class="f-s-15" colspan="5">No matching search results found for "{{searchtermVR}}"</td>
+                              <td class="f-s-15" colspan="5">No matching search results found for "{{searchtermNTC}}"</td>
                             </tr>
                           </tbody>
                           <tfoot>
                             <tr>
                               <td class="tfoot-padding" colspan="5">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermVR" [totallength]="tableVRData.variant_reports.length"></mfBootstrapPaginator>
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermNTC" [totallength]="tableNTCData.length"></mfBootstrapPaginator>
                               </td>
                             </tr>
                           </tfoot>
@@ -256,7 +256,7 @@
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select [disabled]="tableVRData.variant_reports.length == 0" name="data-table_length" [(ngModel)]="recordsPerPageVR" aria-controls="data-table" class="form-control form-control-orangeshade input-sm">
+                        <select [disabled]="tablePACCData.length == 0" name="data-table_length" [(ngModel)]="recordsPerPagePACC" aria-controls="data-table" class="form-control form-control-orangeshade input-sm">
                           <option [ngValue]=10>10</option>
                           <option [ngValue]=25>25</option>
                           <option [ngValue]=50>50</option>
@@ -268,14 +268,14 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input [disabled]="tableVRData.variant_reports.length == 0" type="text" [(ngModel)]="searchtermVR" class="form-control form-control-orangeshade input-sm" placeholder="" aria-controls="data-table">                      
+                        <input [disabled]="tablePACCData.length == 0" type="text" [(ngModel)]="searchtermPACC" class="form-control form-control-orangeshade input-sm" placeholder="" aria-controls="data-table">                      
                         </label>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table *ngIf="tableVRData.variant_reports.length == 0" class="table table-td-valign-middle table-striped table-col-width">
+                        <table *ngIf="tablePACCData.length == 0" class="table table-td-valign-middle table-striped table-col-width">
                           <thead>
                             <tr class="orangeshade-light">
                               <th>
@@ -301,8 +301,8 @@
                             </tr>
                           </tbody>
                         </table>
-                        <table *ngIf="tableVRData.variant_reports!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="tableVRData.variant_reports | filterByText: searchtermVR"
-                          #mftableVR="mfDataTable" [(mfSortBy)]="tableVRDefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPageVR">
+                        <table *ngIf="tablePACCData!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="tablePACCData | filterByText: searchtermPACC"
+                          #mftableVR="mfDataTable" [(mfSortBy)]="tablePACCDefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPagePACC">
                           <thead>
                             <tr class="orangeshade-light">
                               <th>
@@ -333,13 +333,13 @@
                               <td [colorcodeDays]="item.daysPending">{{item.daysPending | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftableVR.data.length == 0">
-                              <td class="f-s-15" colspan="5">No matching search results found for "{{searchtermVR}}"</td>
+                              <td class="f-s-15" colspan="5">No matching search results found for "{{searchtermPACC}}"</td>
                             </tr>
                           </tbody>
                           <tfoot>
                             <tr>
                               <td class="tfoot-padding" colspan="5">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermVR" [totallength]="tableVRData.variant_reports.length"></mfBootstrapPaginator>
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermPACC" [totallength]="tablePACCData.length"></mfBootstrapPaginator>
                               </td>
                             </tr>
                           </tfoot>
