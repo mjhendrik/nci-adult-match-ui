@@ -1,0 +1,25 @@
+[{
+    "molecularSequenceNumber": "ProficiencyCompetencyControl_Yale_1",
+    "dateCreated": 1471543039017,
+    "dateReceived": 1471544972327,
+    "status": "PASSED"
+  },
+  {
+    "molecularSequenceNumber": "ProficiencyCompetencyControl_Yale_2",
+    "dateCreated": 1471543042997,
+    "dateReceived": 1471545093614,
+    "status": "REJECTED"
+  },
+  {
+    "molecularSequenceNumber": "ProficiencyCompetencyControl_Yale_3",
+    "dateCreated": 1471543046990,
+    "dateReceived": 1471545065707,
+    "status": "PENDING"
+  },
+  {
+    "molecularSequenceNumber": "ProficiencyCompetencyControl_Yale_4",
+    "dateCreated": 1491254929626,
+    "dateReceived": null,
+    "status": null
+  }
+]

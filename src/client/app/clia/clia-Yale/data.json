@@ -1,219 +1,37 @@
-{
-  "siteName": "Yale",
-  "siteIpAddress": "10.84.20.162",
-  "sampleControls": [{
-      "id": "Yale_1",
-      "molecularSequenceNumber": "SampleControl_Yale_1",
-      "dateCreated": 1446820770383,
-      "dateReceived": 1454610348866,
-      "site": "Yale",
-      "siteIpAddress": "10.84.20.162",
-      "positiveControlVersion": 1,
-      "positiveControlDateLoaded": 1438358256124,
-      "status": "FAILED",
-      "comment": null,
-      "passed": false,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "Yale_2",
-      "molecularSequenceNumber": "SampleControl_Yale_2",
-      "dateCreated": 1454609818768,
-      "dateReceived": 1454610867459,
-      "site": "Yale",
-      "siteIpAddress": "10.84.20.162",
-      "positiveControlVersion": 1,
-      "positiveControlDateLoaded": 1438358256124,
-      "status": "REJECTED",
-      "comment": "asfasfasfa",
-      "passed": false,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "Yale_3",
-      "molecularSequenceNumber": "SampleControl_Yale_3",
-      "dateCreated": 1456156465733,
-      "dateReceived": 1456157104784,
-      "site": "Yale",
-      "siteIpAddress": "10.84.20.162",
-      "positiveControlVersion": 1,
-      "positiveControlDateLoaded": 1438358256124,
-      "status": "REJECTED",
-      "comment": "sfaetateatatatareaea",
-      "passed": false,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "Yale_4",
-      "molecularSequenceNumber": "SampleControl_Yale_4",
-      "dateCreated": 1456158997284,
-      "dateReceived": 1456160505028,
-      "site": "Yale",
-      "siteIpAddress": "10.84.20.162",
-      "positiveControlVersion": 1,
-      "positiveControlDateLoaded": 1438358256124,
-      "status": "REJECTED",
-      "comment": "Manual rejection",
-      "passed": false,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "Yale_5",
-      "molecularSequenceNumber": "SampleControl_Yale_5",
-      "dateCreated": 1456159006206,
-      "dateReceived": 1456160838470,
-      "site": "Yale",
-      "siteIpAddress": "10.84.20.162",
-      "positiveControlVersion": 1,
-      "positiveControlDateLoaded": 1438358256124,
-      "status": "FAILED",
-      "comment": null,
-      "passed": false,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "Yale_6",
-      "molecularSequenceNumber": "SampleControl_Yale_6",
-      "dateCreated": 1491254923348,
-      "dateReceived": null,
-      "site": "Yale",
-      "siteIpAddress": "10.84.20.162",
-      "positiveControlVersion": 0,
-      "positiveControlDateLoaded": null,
-      "status": null,
-      "comment": null,
-      "passed": false,
-      "nextGenerationSequence": null
-    }
-  ],
-  "ntcControls": [{
-      "id": "Yale_4",
-      "molecularSequenceNumber": "NtcControl_Yale_4",
-      "dateCreated": 1456156472611,
-      "dateReceived": 1456157767343,
-      "site": "Yale",
-      "siteIpAddress": "10.84.20.162",
-      "status": null,
-      "comment": null,
-      "passed": true,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "Yale_1",
-      "molecularSequenceNumber": "NtcControl_Yale_1",
-      "dateCreated": 1446820780440,
-      "dateReceived": 1454611045821,
-      "site": "Yale",
-      "siteIpAddress": "10.84.20.162",
-      "status": null,
-      "comment": "Testing accepting",
-      "passed": true,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "Yale_5",
-      "molecularSequenceNumber": "NtcControl_Yale_5",
-      "dateCreated": 1456160756802,
-      "dateReceived": 1456163682942,
-      "site": "Yale",
-      "siteIpAddress": "10.84.20.162",
-      "status": null,
-      "comment": null,
-      "passed": true,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "Yale_2",
-      "molecularSequenceNumber": "NtcControl_Yale_2",
-      "dateCreated": 1454609828636,
-      "dateReceived": 1454611676551,
-      "site": "Yale",
-      "siteIpAddress": "10.84.20.162",
-      "status": null,
-      "comment": null,
-      "passed": false,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "Yale_3",
-      "molecularSequenceNumber": "NtcControl_Yale_3",
-      "dateCreated": 1454609835273,
-      "dateReceived": 1456157445458,
-      "site": "Yale",
-      "siteIpAddress": "10.84.20.162",
-      "status": null,
-      "comment": null,
-      "passed": false,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "Yale_6",
-      "molecularSequenceNumber": "NtcControl_Yale_6",
-      "dateCreated": 1456160766085,
-      "dateReceived": 1456164054518,
-      "site": "Yale",
-      "siteIpAddress": "10.84.20.162",
-      "status": null,
-      "comment": "Manually accepted",
-      "passed": true,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "Yale_7",
-      "molecularSequenceNumber": "NtcControl_Yale_7",
-      "dateCreated": 1491254926936,
-      "dateReceived": null,
-      "site": "Yale",
-      "siteIpAddress": "10.84.20.162",
-      "status": null,
-      "comment": null,
-      "passed": false,
-      "nextGenerationSequence": null
-    }
-  ],
-  "proficiencyCompetencyControls": [{
-      "id": "Yale_1",
-      "molecularSequenceNumber": "ProficiencyCompetencyControl_Yale_1",
-      "dateCreated": 1471543039017,
-      "dateReceived": 1471544972327,
-      "site": "Yale",
-      "siteIpAddress": "10.84.20.162",
-      "status": "PASSED",
-      "comment": null,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "Yale_2",
-      "molecularSequenceNumber": "ProficiencyCompetencyControl_Yale_2",
-      "dateCreated": 1471543042997,
-      "dateReceived": 1471545093614,
-      "site": "Yale",
-      "siteIpAddress": "10.84.20.162",
-      "status": "REJECTED",
-      "comment": "This is a test comment.",
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "Yale_3",
-      "molecularSequenceNumber": "ProficiencyCompetencyControl_Yale_3",
-      "dateCreated": 1471543046990,
-      "dateReceived": 1471545065707,
-      "site": "Yale",
-      "siteIpAddress": "10.84.20.162",
-      "status": "PENDING",
-      "comment": null,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "Yale_4",
-      "molecularSequenceNumber": "ProficiencyCompetencyControl_Yale_4",
-      "dateCreated": 1491254929626,
-      "dateReceived": null,
-      "site": "Yale",
-      "siteIpAddress": "10.84.20.162",
-      "status": null,
-      "comment": null,
-      "nextGenerationSequence": null
-    }
-  ]
-}
+[{
+    "molecularSequenceNumber": "SampleControl_Yale_1",
+    "dateCreated": 1446820770383,
+    "dateReceived": 1454610348866,
+    "status": "FAILED"
+  },
+  {
+    "molecularSequenceNumber": "SampleControl_Yale_2",
+    "dateCreated": 1454609818768,
+    "dateReceived": 1454610867459,
+    "status": "REJECTED"
+  },
+  {
+    "molecularSequenceNumber": "SampleControl_Yale_3",
+    "dateCreated": 1456156465733,
+    "dateReceived": 1456157104784,
+    "status": "REJECTED"
+  },
+  {
+    "molecularSequenceNumber": "SampleControl_Yale_4",
+    "dateCreated": 1456158997284,
+    "dateReceived": 1456160505028,
+    "status": "REJECTED"
+  },
+  {
+    "molecularSequenceNumber": "SampleControl_Yale_5",
+    "dateCreated": 1456159006206,
+    "dateReceived": 1456160838470,
+    "status": "FAILED"
+  },
+  {
+    "molecularSequenceNumber": "SampleControl_Yale_6",
+    "dateCreated": 1491254923348,
+    "dateReceived": null,
+    "status": null
+  }
+]
