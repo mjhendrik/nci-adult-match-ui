@@ -16,7 +16,6 @@ import { PatientDetailsComponent } from './patient/patient-details/patient-detai
 import { PatientVariantReportComponent } from './patient/patient-variant-report/patient-variant-report.component';
 import { TaDetailsComponent } from './ta/ta-details/ta-details.component';
 import { BtComponent } from './bt/bt.component';
-import { CliaComponent } from './clia/clia.component';
 import { CliaDartmouthComponent } from './clia/clia-dartmouth/clia-dartmouth.component';
 import { CliaMdaccComponent } from './clia/clia-mdacc/clia-mdacc.component';
 import { CliaMghComponent } from './clia/clia-mgh/clia-mgh.component';
@@ -37,7 +36,6 @@ export function main() {
       { path: 'treatments', component: TaComponent },
       { path: 'treatments/details', component: TaDetailsComponent },
       { path: 'bt', component: BtComponent },
-      { path: 'clia', component: CliaComponent },
       { path: 'clia_dartmouth', component: CliaDartmouthComponent },
       { path: 'clia_mdacc', component: CliaMdaccComponent },
       { path: 'clia_mgh', component: CliaMghComponent },
@@ -57,7 +55,6 @@ export function main() {
           TaComponent,
           TaDetailsComponent,
           BtComponent,
-          CliaComponent,
           CliaDartmouthComponent,
           CliaMdaccComponent,
           CliaMghComponent,
