@@ -179,4 +179,7 @@ export class CliaMghComponent {
     }
   ];
 
+  ionReportersData: any = [
+  ];
+
 }

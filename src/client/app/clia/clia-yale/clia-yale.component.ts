@@ -227,4 +227,17 @@ export class CliaYaleComponent {
     }
   ];
 
+  ionReportersData: any = [
+    {
+      "ionReporterId": "IR_F6ZZM",
+      "ionReporterVersion": "5.2",
+      "hostName": "NCIAS-D1356",
+      "ipAddress": "10.133.130.53",
+      "status": "Contacted 4 minutes ago",
+      "lastContactDate": 1491507005457,
+      "externalIpAddress": "10.133.210.11",
+      "lastNotificationDate": null
+    }
+  ];
+
 }

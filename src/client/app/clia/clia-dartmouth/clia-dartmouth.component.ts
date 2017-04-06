@@ -155,4 +155,17 @@ export class CliaDartmouthComponent {
     }
   ];
 
+  ionReportersData: any = [
+    {
+      "ionReporterId": "IR_KTBOF",
+      "ionReporterVersion": "5.2",
+      "hostName": "DRT-MATCH-IR",
+      "ipAddress": "129.43.39.192",
+      "status": "Contacted 4 minutes ago",
+      "lastContactDate": 1491507004943,
+      "externalIpAddress": "10.133.210.11",
+      "lastNotificationDate": 1490911049320
+    }
+  ];
+
 }
