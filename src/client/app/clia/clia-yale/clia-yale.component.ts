@@ -76,26 +76,38 @@ export class CliaYaleComponent {
 
   tablePCData: any = [
     {
-      "molecularSequenceNumber": "SampleControl_Dartmouth_1",
-      "dateCreated": 1491329102131,
-      "dateReceived": null,
-      "status": null
+      "molecularSequenceNumber": "SampleControl_Yale_1",
+      "dateCreated": 1446820770383,
+      "dateReceived": 1454610348866,
+      "status": "FAILED"
     },
     {
-      "molecularSequenceNumber": "SampleControl_Dartmouth_2",
-      "dateCreated": 1491329109999,
-      "dateReceived": null,
-      "status": null
+      "molecularSequenceNumber": "SampleControl_Yale_2",
+      "dateCreated": 1454609818768,
+      "dateReceived": 1454610867459,
+      "status": "REJECTED"
     },
     {
-      "molecularSequenceNumber": "SampleControl_Dartmouth_3",
-      "dateCreated": 1491329112873,
-      "dateReceived": null,
-      "status": null
+      "molecularSequenceNumber": "SampleControl_Yale_3",
+      "dateCreated": 1456156465733,
+      "dateReceived": 1456157104784,
+      "status": "REJECTED"
     },
     {
-      "molecularSequenceNumber": "SampleControl_Dartmouth_4",
-      "dateCreated": 1491329310696,
+      "molecularSequenceNumber": "SampleControl_Yale_4",
+      "dateCreated": 1456158997284,
+      "dateReceived": 1456160505028,
+      "status": "REJECTED"
+    },
+    {
+      "molecularSequenceNumber": "SampleControl_Yale_5",
+      "dateCreated": 1456159006206,
+      "dateReceived": 1456160838470,
+      "status": "FAILED"
+    },
+    {
+      "molecularSequenceNumber": "SampleControl_Yale_6",
+      "dateCreated": 1491254923348,
       "dateReceived": null,
       "status": null
     }
@@ -103,53 +115,113 @@ export class CliaYaleComponent {
 
   tableNTCData: any = [
     {
-      "molecularSequenceNumber": "ProficiencyCompetencyControl_dartmouth_1",
-      "dateCreated": 1491255648237,
-      "dateReceived": null,
-      "status": null
+      "id": "Yale_4",
+      "molecularSequenceNumber": "NtcControl_Yale_4",
+      "dateCreated": 1456156472611,
+      "dateReceived": 1456157767343,
+      "site": "Yale",
+      "siteIpAddress": "10.84.20.162",
+      "status": null,
+      "comment": null,
+      "passed": true,
+      "nextGenerationSequence": null
     },
     {
-      "molecularSequenceNumber": "ProficiencyCompetencyControl_Dartmouth_2",
-      "dateCreated": 1491256161789,
-      "dateReceived": null,
-      "status": null
+      "id": "Yale_1",
+      "molecularSequenceNumber": "NtcControl_Yale_1",
+      "dateCreated": 1446820780440,
+      "dateReceived": 1454611045821,
+      "site": "Yale",
+      "siteIpAddress": "10.84.20.162",
+      "status": null,
+      "comment": "Testing accepting",
+      "passed": true,
+      "nextGenerationSequence": null
     },
     {
-      "molecularSequenceNumber": "ProficiencyCompetencyControl_Dartmouth_3",
-      "dateCreated": 1491313516066,
-      "dateReceived": null,
-      "status": null
+      "id": "Yale_5",
+      "molecularSequenceNumber": "NtcControl_Yale_5",
+      "dateCreated": 1456160756802,
+      "dateReceived": 1456163682942,
+      "site": "Yale",
+      "siteIpAddress": "10.84.20.162",
+      "status": null,
+      "comment": null,
+      "passed": true,
+      "nextGenerationSequence": null
     },
     {
-      "molecularSequenceNumber": "ProficiencyCompetencyControl_Dartmouth_4",
-      "dateCreated": 1491324674356,
+      "id": "Yale_2",
+      "molecularSequenceNumber": "NtcControl_Yale_2",
+      "dateCreated": 1454609828636,
+      "dateReceived": 1454611676551,
+      "site": "Yale",
+      "siteIpAddress": "10.84.20.162",
+      "status": null,
+      "comment": null,
+      "passed": false,
+      "nextGenerationSequence": null
+    },
+    {
+      "id": "Yale_3",
+      "molecularSequenceNumber": "NtcControl_Yale_3",
+      "dateCreated": 1454609835273,
+      "dateReceived": 1456157445458,
+      "site": "Yale",
+      "siteIpAddress": "10.84.20.162",
+      "status": null,
+      "comment": null,
+      "passed": false,
+      "nextGenerationSequence": null
+    },
+    {
+      "id": "Yale_6",
+      "molecularSequenceNumber": "NtcControl_Yale_6",
+      "dateCreated": 1456160766085,
+      "dateReceived": 1456164054518,
+      "site": "Yale",
+      "siteIpAddress": "10.84.20.162",
+      "status": null,
+      "comment": "Manually accepted",
+      "passed": true,
+      "nextGenerationSequence": null
+    },
+    {
+      "id": "Yale_7",
+      "molecularSequenceNumber": "NtcControl_Yale_7",
+      "dateCreated": 1491254926936,
       "dateReceived": null,
-      "status": null
+      "site": "Yale",
+      "siteIpAddress": "10.84.20.162",
+      "status": null,
+      "comment": null,
+      "passed": false,
+      "nextGenerationSequence": null
     }
   ];
 
   tablePACCData: any = [
     {
-      "molecularSequenceNumber": "NtcControl_Dartmouth_1",
-      "dateCreated": 1491329106245,
-      "dateReceived": null,
-      "status": null
+      "molecularSequenceNumber": "ProficiencyCompetencyControl_Yale_1",
+      "dateCreated": 1471543039017,
+      "dateReceived": 1471544972327,
+      "status": "PASSED"
     },
     {
-      "molecularSequenceNumber": "NtcControl_Dartmouth_2",
-      "dateCreated": 1491329116463,
-      "dateReceived": null,
-      "status": null
+      "molecularSequenceNumber": "ProficiencyCompetencyControl_Yale_2",
+      "dateCreated": 1471543042997,
+      "dateReceived": 1471545093614,
+      "status": "REJECTED"
     },
     {
-      "molecularSequenceNumber": "NtcControl_Dartmouth_3",
-      "dateCreated": 1491329119584,
-      "dateReceived": null,
-      "status": null
+      "molecularSequenceNumber": "ProficiencyCompetencyControl_Yale_3",
+      "dateCreated": 1471543046990,
+      "dateReceived": 1471545065707,
+      "status": "PENDING"
     },
     {
-      "molecularSequenceNumber": "NtcControl_Dartmouth_4",
-      "dateCreated": 1491329316146,
+      "molecularSequenceNumber": "ProficiencyCompetencyControl_Yale_4",
+      "dateCreated": 1491254929626,
       "dateReceived": null,
       "status": null
     }
