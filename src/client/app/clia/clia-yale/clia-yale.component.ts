@@ -18,14 +18,6 @@ import { GMTFilter } from './../../shared/pipes/gmt';
 })
 export class CliaYaleComponent {
 
-  cliaLabData: any = [
-    "MoCha",
-    "Yale",
-    "MGH",
-    "MD Anderson",
-    "Dartmouth"
-  ];
-
   searchtermVR: string = '';
   searchtermAR: string = '';
   searchtermAR2: string = '';

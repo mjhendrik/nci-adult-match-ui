@@ -14,14 +14,6 @@ import { Auth } from './../auth/auth.service';
 })
 export class NavbarComponent {
 
-  cliaLabData: any = [
-    "MoCha",
-    "Yale",
-    "MGH",
-    "MD Anderson",
-    "Dartmouth"
-  ];
-
   location: Location;
   constructor(location: Location, private auth: Auth) {
     this.location = location;
