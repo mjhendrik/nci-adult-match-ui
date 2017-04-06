@@ -76,80 +76,104 @@ export class CliaMghComponent {
 
   tablePCData: any = [
     {
-      "molecularSequenceNumber": "SampleControl_Dartmouth_1",
-      "dateCreated": 1491329102131,
+      "molecularSequenceNumber": "SampleControl_MGH_1",
+      "dateCreated": 1446820738762,
       "dateReceived": null,
       "status": null
     },
     {
-      "molecularSequenceNumber": "SampleControl_Dartmouth_2",
-      "dateCreated": 1491329109999,
+      "molecularSequenceNumber": "SampleControl_MGH_6",
+      "dateCreated": 1458062481552,
       "dateReceived": null,
       "status": null
     },
     {
-      "molecularSequenceNumber": "SampleControl_Dartmouth_3",
-      "dateCreated": 1491329112873,
-      "dateReceived": null,
-      "status": null
+      "molecularSequenceNumber": "SampleControl_MGH_2",
+      "dateCreated": 1450450851544,
+      "dateReceived": 1450451186492,
+      "status": "FAILED"
     },
     {
-      "molecularSequenceNumber": "SampleControl_Dartmouth_4",
-      "dateCreated": 1491329310696,
-      "dateReceived": null,
-      "status": null
+      "molecularSequenceNumber": "SampleControl_MGH_3",
+      "dateCreated": 1450450858522,
+      "dateReceived": 1450454802749,
+      "status": "REJECTED"
+    },
+    {
+      "molecularSequenceNumber": "SampleControl_MGH_4",
+      "dateCreated": 1456161336045,
+      "dateReceived": 1458062971467,
+      "status": "REJECTED"
+    },
+    {
+      "molecularSequenceNumber": "SampleControl_MGH_5",
+      "dateCreated": 1458062471730,
+      "dateReceived": 1458063552293,
+      "status": "FAILED"
     }
   ];
 
   tableNTCData: any = [
     {
-      "molecularSequenceNumber": "ProficiencyCompetencyControl_dartmouth_1",
-      "dateCreated": 1491255648237,
-      "dateReceived": null,
+      "molecularSequenceNumber": "NtcControl_MGH_5",
+      "dateCreated": 1458062492626,
+      "dateReceived": 1458064149765,
       "status": null
     },
     {
-      "molecularSequenceNumber": "ProficiencyCompetencyControl_Dartmouth_2",
-      "dateCreated": 1491256161789,
-      "dateReceived": null,
+      "molecularSequenceNumber": "NtcControl_MGH_1",
+      "dateCreated": 1446820762319,
+      "dateReceived": 1446821112493,
       "status": null
     },
     {
-      "molecularSequenceNumber": "ProficiencyCompetencyControl_Dartmouth_3",
-      "dateCreated": 1491313516066,
-      "dateReceived": null,
+      "molecularSequenceNumber": "NtcControl_MGH_2",
+      "dateCreated": 1450450866096,
+      "dateReceived": 1450456634387,
       "status": null
     },
     {
-      "molecularSequenceNumber": "ProficiencyCompetencyControl_Dartmouth_4",
-      "dateCreated": 1491324674356,
-      "dateReceived": null,
+      "molecularSequenceNumber": "NtcControl_MGH_3",
+      "dateCreated": 1450450874140,
+      "dateReceived": 1450456959205,
+      "status": null
+    },
+    {
+      "molecularSequenceNumber": "NtcControl_MGH_4",
+      "dateCreated": 1456161346821,
+      "dateReceived": 1456161456537,
+      "status": null
+    },
+    {
+      "molecularSequenceNumber": "NtcControl_MGH_6",
+      "dateCreated": 1458062502161,
+      "dateReceived": 1458064906548,
       "status": null
     }
   ];
 
   tablePACCData: any = [
     {
-      "molecularSequenceNumber": "NtcControl_Dartmouth_1",
-      "dateCreated": 1491329106245,
-      "dateReceived": null,
-      "status": null
+      "molecularSequenceNumber": "ProficiencyCompetencyControl_MGH_1",
+      "dateCreated": 1471543061582,
+      "dateReceived": 1471545130321,
+      "status": "PENDING"
     },
     {
-      "molecularSequenceNumber": "NtcControl_Dartmouth_2",
-      "dateCreated": 1491329116463,
-      "dateReceived": null,
-      "status": null
+      "molecularSequenceNumber": "ProficiencyCompetencyControl_MGH_2",
+      "dateCreated": 1471543065790,
+      "dateReceived": 1471545143796,
+      "status": "PENDING"
     },
     {
-      "molecularSequenceNumber": "NtcControl_Dartmouth_3",
-      "dateCreated": 1491329119584,
-      "dateReceived": null,
-      "status": null
+      "molecularSequenceNumber": "ProficiencyCompetencyControl_MGH_3",
+      "dateCreated": 1471543069898,
+      "dateReceived": 1471545219989,
+      "status": "PENDING"
     },
     {
-      "molecularSequenceNumber": "NtcControl_Dartmouth_4",
-      "dateCreated": 1491329316146,
+      "molecularSequenceNumber": "ProficiencyCompetencyControl_MGH_4",
+      "dateCreated": 1491254934869,
       "dateReceived": null,
       "status": null
     }
