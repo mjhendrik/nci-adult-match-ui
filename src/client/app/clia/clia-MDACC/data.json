@@ -1,358 +1,97 @@
-{
-  "siteName": "MDACC",
-  "siteIpAddress": "10.110.130.21",
-  "sampleControls": [{
-      "id": "MDACC_1",
-      "molecularSequenceNumber": "SampleControl_MDACC_1",
-      "dateCreated": 1446820790381,
-      "dateReceived": 1446820902400,
-      "site": "MDACC",
-      "siteIpAddress": "10.110.130.21",
-      "positiveControlVersion": 1,
-      "positiveControlDateLoaded": 1438358256124,
-      "status": "REJECTED",
-      "comment": "Something's not right",
-      "passed": false,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "MDACC_2",
-      "molecularSequenceNumber": "SampleControl_MDACC_2",
-      "dateCreated": 1450102192630,
-      "dateReceived": 1450102439001,
-      "site": "MDACC",
-      "siteIpAddress": "10.110.130.21",
-      "positiveControlVersion": 1,
-      "positiveControlDateLoaded": 1438358256124,
-      "status": "FAILED",
-      "comment": null,
-      "passed": false,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "MDACC_3",
-      "molecularSequenceNumber": "SampleControl_MDACC_3",
-      "dateCreated": 1450102215376,
-      "dateReceived": 1450102597712,
-      "site": "MDACC",
-      "siteIpAddress": "10.110.130.21",
-      "positiveControlVersion": 1,
-      "positiveControlDateLoaded": 1438358256124,
-      "status": "REJECTED",
-      "comment": "This is a test",
-      "passed": false,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "MDACC_4",
-      "molecularSequenceNumber": "SampleControl_MDACC_4",
-      "dateCreated": 1458243895005,
-      "dateReceived": 1458244153904,
-      "site": "MDACC",
-      "siteIpAddress": "10.110.130.21",
-      "positiveControlVersion": 1,
-      "positiveControlDateLoaded": 1438358256124,
-      "status": "REJECTED",
-      "comment": "Testing",
-      "passed": false,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "MDACC_5",
-      "molecularSequenceNumber": "SampleControl_MDACC_5",
-      "dateCreated": 1458243902954,
-      "dateReceived": 1458244204624,
-      "site": "MDACC",
-      "siteIpAddress": "10.110.130.21",
-      "positiveControlVersion": 1,
-      "positiveControlDateLoaded": 1438358256124,
-      "status": "FAILED",
-      "comment": null,
-      "passed": false,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "MDACC_6",
-      "molecularSequenceNumber": "SampleControl_MDACC_6",
-      "dateCreated": 1463513958871,
-      "dateReceived": 1463515053999,
-      "site": "MDACC",
-      "siteIpAddress": "10.110.130.21",
-      "positiveControlVersion": 1,
-      "positiveControlDateLoaded": 1438358256124,
-      "status": "FAILED",
-      "comment": null,
-      "passed": false,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "MDACC_11",
-      "molecularSequenceNumber": "SampleControl_MDACC_11",
-      "dateCreated": 1464804885832,
-      "dateReceived": null,
-      "site": "MDACC",
-      "siteIpAddress": "10.110.130.21",
-      "positiveControlVersion": 0,
-      "positiveControlDateLoaded": null,
-      "status": null,
-      "comment": null,
-      "passed": false,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "MDACC_12",
-      "molecularSequenceNumber": "SampleControl_MDACC_12",
-      "dateCreated": 1464804892244,
-      "dateReceived": null,
-      "site": "MDACC",
-      "siteIpAddress": "10.110.130.21",
-      "positiveControlVersion": 0,
-      "positiveControlDateLoaded": null,
-      "status": null,
-      "comment": null,
-      "passed": false,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "MDACC_13",
-      "molecularSequenceNumber": "SampleControl_MDACC_13",
-      "dateCreated": 1464804898193,
-      "dateReceived": null,
-      "site": "MDACC",
-      "siteIpAddress": "10.110.130.21",
-      "positiveControlVersion": 0,
-      "positiveControlDateLoaded": null,
-      "status": null,
-      "comment": null,
-      "passed": false,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "MDACC_14",
-      "molecularSequenceNumber": "SampleControl_MDACC_14",
-      "dateCreated": 1464804910808,
-      "dateReceived": 1491335522538,
-      "site": "MDACC",
-      "siteIpAddress": "10.110.130.21",
-      "positiveControlVersion": 4,
-      "positiveControlDateLoaded": 1472833474832,
-      "status": "FAILED",
-      "comment": null,
-      "passed": false,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "MDACC_7",
-      "molecularSequenceNumber": "SampleControl_MDACC_7",
-      "dateCreated": 1464804860415,
-      "dateReceived": 1464805122595,
-      "site": "MDACC",
-      "siteIpAddress": "10.110.130.21",
-      "positiveControlVersion": 2,
-      "positiveControlDateLoaded": 1464706967317,
-      "status": "FAILED",
-      "comment": null,
-      "passed": false,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "MDACC_8",
-      "molecularSequenceNumber": "SampleControl_MDACC_8",
-      "dateCreated": 1464804866443,
-      "dateReceived": 1464805230480,
-      "site": "MDACC",
-      "siteIpAddress": "10.110.130.21",
-      "positiveControlVersion": 2,
-      "positiveControlDateLoaded": 1464706967317,
-      "status": "FAILED",
-      "comment": null,
-      "passed": false,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "MDACC_10",
-      "molecularSequenceNumber": "SampleControl_MDACC_10",
-      "dateCreated": 1464804879094,
-      "dateReceived": 1464805762557,
-      "site": "MDACC",
-      "siteIpAddress": "10.110.130.21",
-      "positiveControlVersion": 2,
-      "positiveControlDateLoaded": 1464706967317,
-      "status": "FAILED",
-      "comment": null,
-      "passed": false,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "MDACC_9",
-      "molecularSequenceNumber": "SampleControl_MDACC_9",
-      "dateCreated": 1464804873046,
-      "dateReceived": 1464805888370,
-      "site": "MDACC",
-      "siteIpAddress": "10.110.130.21",
-      "positiveControlVersion": 2,
-      "positiveControlDateLoaded": 1464706967317,
-      "status": "FAILED",
-      "comment": null,
-      "passed": false,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "MDACC_15",
-      "molecularSequenceNumber": "SampleControl_MDACC_15",
-      "dateCreated": 1491256052996,
-      "dateReceived": null,
-      "site": "MDACC",
-      "siteIpAddress": "10.110.130.21",
-      "positiveControlVersion": 0,
-      "positiveControlDateLoaded": null,
-      "status": null,
-      "comment": null,
-      "passed": false,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "MDACC_16",
-      "molecularSequenceNumber": "SampleControl_MDACC_16",
-      "dateCreated": 1491256075193,
-      "dateReceived": null,
-      "site": "MDACC",
-      "siteIpAddress": "10.110.130.21",
-      "positiveControlVersion": 0,
-      "positiveControlDateLoaded": null,
-      "status": null,
-      "comment": null,
-      "passed": false,
-      "nextGenerationSequence": null
-    }
-  ],
-  "ntcControls": [{
-      "id": "MDACC_3",
-      "molecularSequenceNumber": "NtcControl_MDACC_3",
-      "dateCreated": 1450102235509,
-      "dateReceived": 1458244204984,
-      "site": "MDACC",
-      "siteIpAddress": "10.110.130.21",
-      "status": null,
-      "comment": null,
-      "passed": true,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "MDACC_1",
-      "molecularSequenceNumber": "NtcControl_MDACC_1",
-      "dateCreated": 1446820801842,
-      "dateReceived": 1450102801132,
-      "site": "MDACC",
-      "siteIpAddress": "10.110.130.21",
-      "status": null,
-      "comment": "Test",
-      "passed": true,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "MDACC_2",
-      "molecularSequenceNumber": "NtcControl_MDACC_2",
-      "dateCreated": 1450102226404,
-      "dateReceived": 1450102968577,
-      "site": "MDACC",
-      "siteIpAddress": "10.110.130.21",
-      "status": null,
-      "comment": null,
-      "passed": false,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "MDACC_4",
-      "molecularSequenceNumber": "NtcControl_MDACC_4",
-      "dateCreated": 1458243910505,
-      "dateReceived": 1458244223579,
-      "site": "MDACC",
-      "siteIpAddress": "10.110.130.21",
-      "status": null,
-      "comment": null,
-      "passed": false,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "MDACC_5",
-      "molecularSequenceNumber": "NtcControl_MDACC_5",
-      "dateCreated": 1491256060808,
-      "dateReceived": null,
-      "site": "MDACC",
-      "siteIpAddress": "10.110.130.21",
-      "status": null,
-      "comment": null,
-      "passed": false,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "MDACC_6",
-      "molecularSequenceNumber": "NtcControl_MDACC_6",
-      "dateCreated": 1491256081929,
-      "dateReceived": null,
-      "site": "MDACC",
-      "siteIpAddress": "10.110.130.21",
-      "status": null,
-      "comment": null,
-      "passed": false,
-      "nextGenerationSequence": null
-    }
-  ],
-  "proficiencyCompetencyControls": [{
-      "id": "MDACC_1",
-      "molecularSequenceNumber": "ProficiencyCompetencyControl_MDACC_1",
-      "dateCreated": 1471543083447,
-      "dateReceived": 1471545246603,
-      "site": "MDACC",
-      "siteIpAddress": "10.110.130.21",
-      "status": "PENDING",
-      "comment": null,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "MDACC_2",
-      "molecularSequenceNumber": "ProficiencyCompetencyControl_MDACC_2",
-      "dateCreated": 1471543087043,
-      "dateReceived": 1471545260967,
-      "site": "MDACC",
-      "siteIpAddress": "10.110.130.21",
-      "status": "PENDING",
-      "comment": null,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "MDACC_3",
-      "molecularSequenceNumber": "ProficiencyCompetencyControl_MDACC_3",
-      "dateCreated": 1471543091101,
-      "dateReceived": 1471545341592,
-      "site": "MDACC",
-      "siteIpAddress": "10.110.130.21",
-      "status": "PENDING",
-      "comment": null,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "MDACC_4",
-      "molecularSequenceNumber": "ProficiencyCompetencyControl_MDACC_4",
-      "dateCreated": 1491256064474,
-      "dateReceived": null,
-      "site": "MDACC",
-      "siteIpAddress": "10.110.130.21",
-      "status": null,
-      "comment": null,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "MDACC_5",
-      "molecularSequenceNumber": "ProficiencyCompetencyControl_MDACC_5",
-      "dateCreated": 1491256118711,
-      "dateReceived": null,
-      "site": "MDACC",
-      "siteIpAddress": "10.110.130.21",
-      "status": null,
-      "comment": null,
-      "nextGenerationSequence": null
-    }
-  ]
-}
+[{
+    "molecularSequenceNumber": "SampleControl_MDACC_1",
+    "dateCreated": 1446820790381,
+    "dateReceived": 1446820902400,
+    "status": "REJECTED"
+  },
+  {
+    "molecularSequenceNumber": "SampleControl_MDACC_2",
+    "dateCreated": 1450102192630,
+    "dateReceived": 1450102439001,
+    "status": "FAILED"
+  },
+  {
+    "molecularSequenceNumber": "SampleControl_MDACC_3",
+    "dateCreated": 1450102215376,
+    "dateReceived": 1450102597712,
+    "status": "REJECTED"
+  },
+  {
+    "molecularSequenceNumber": "SampleControl_MDACC_4",
+    "dateCreated": 1458243895005,
+    "dateReceived": 1458244153904,
+    "status": "REJECTED"
+  },
+  {
+    "molecularSequenceNumber": "SampleControl_MDACC_5",
+    "dateCreated": 1458243902954,
+    "dateReceived": 1458244204624,
+    "status": "FAILED"
+  },
+  {
+    "molecularSequenceNumber": "SampleControl_MDACC_6",
+    "dateCreated": 1463513958871,
+    "dateReceived": 1463515053999,
+    "status": "FAILED"
+  },
+  {
+    "molecularSequenceNumber": "SampleControl_MDACC_11",
+    "dateCreated": 1464804885832,
+    "dateReceived": null,
+    "status": null
+  },
+  {
+    "molecularSequenceNumber": "SampleControl_MDACC_12",
+    "dateCreated": 1464804892244,
+    "dateReceived": null,
+    "status": null
+  },
+  {
+    "molecularSequenceNumber": "SampleControl_MDACC_13",
+    "dateCreated": 1464804898193,
+    "dateReceived": null,
+    "status": null
+  },
+  {
+    "molecularSequenceNumber": "SampleControl_MDACC_14",
+    "dateCreated": 1464804910808,
+    "dateReceived": 1491335522538,
+    "status": "FAILED"
+  },
+  {
+    "molecularSequenceNumber": "SampleControl_MDACC_7",
+    "dateCreated": 1464804860415,
+    "dateReceived": 1464805122595,
+    "status": "FAILED"
+  },
+  {
+    "molecularSequenceNumber": "SampleControl_MDACC_8",
+    "dateCreated": 1464804866443,
+    "dateReceived": 1464805230480,
+    "status": "FAILED"
+  },
+  {
+    "molecularSequenceNumber": "SampleControl_MDACC_10",
+    "dateCreated": 1464804879094,
+    "dateReceived": 1464805762557,
+    "status": "FAILED"
+  },
+  {
+    "molecularSequenceNumber": "SampleControl_MDACC_9",
+    "dateCreated": 1464804873046,
+    "dateReceived": 1464805888370,
+    "status": "FAILED"
+  },
+  {
+    "molecularSequenceNumber": "SampleControl_MDACC_15",
+    "dateCreated": 1491256052996,
+    "dateReceived": null,
+    "status": null
+  },
+  {
+    "molecularSequenceNumber": "SampleControl_MDACC_16",
+    "dateCreated": 1491256075193,
+    "dateReceived": null,
+    "status": null
+  }
+]
