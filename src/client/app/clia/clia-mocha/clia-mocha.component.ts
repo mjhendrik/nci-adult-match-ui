@@ -481,8 +481,7 @@ export class CliaMochaComponent {
       "ipAddress": "129.43.39.182",
       "status": "Lost contact! Last heartbeat was sent 1506 minutes ago",
       "lastContactDate": 1491416891266,
-      "externalIpAddress": "10.133.210.11",
-      "lastNotificationDate": 1491500185731
+      "externalIpAddress": "10.133.210.11"
     },
     {
       "ionReporterId": "IR_1CHGP",
@@ -491,8 +490,7 @@ export class CliaMochaComponent {
       "ipAddress": "129.43.39.182",
       "status": "Lost contact! Last heartbeat was sent 374 minutes ago",
       "lastContactDate": 1491484802979,
-      "externalIpAddress": "10.133.210.11",
-      "lastNotificationDate": 1491487584801
+      "externalIpAddress": "10.133.210.11"
     }
   ];
 

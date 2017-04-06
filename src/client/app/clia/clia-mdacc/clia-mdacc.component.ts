@@ -253,8 +253,7 @@ export class CliaMdaccComponent {
       "ipAddress": "10.133.130.32",
       "status": "Contacted 4 minutes ago",
       "lastContactDate": 1491507004846,
-      "externalIpAddress": "10.133.210.11",
-      "lastNotificationDate": null
+      "externalIpAddress": "10.133.210.11"
     }
   ];
 
