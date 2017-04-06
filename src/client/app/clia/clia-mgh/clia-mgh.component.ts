@@ -97,13 +97,13 @@ export class CliaMghComponent {
       "molecularSequenceNumber": "SampleControl_MGH_3",
       "dateCreated": 1450450858522,
       "dateReceived": 1450454802749,
-      "status": "REJECTED"
+      "status": "FAILED"
     },
     {
       "molecularSequenceNumber": "SampleControl_MGH_4",
       "dateCreated": 1456161336045,
       "dateReceived": 1458062971467,
-      "status": "REJECTED"
+      "status": "FAILED"
     },
     {
       "molecularSequenceNumber": "SampleControl_MGH_5",
