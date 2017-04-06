@@ -79,7 +79,7 @@ export class CliaMdaccComponent {
       "molecularSequenceNumber": "SampleControl_MDACC_1",
       "dateCreated": 1446820790381,
       "dateReceived": 1446820902400,
-      "status": "REJECTED"
+      "status": "FAILED"
     },
     {
       "molecularSequenceNumber": "SampleControl_MDACC_2",
@@ -91,13 +91,13 @@ export class CliaMdaccComponent {
       "molecularSequenceNumber": "SampleControl_MDACC_3",
       "dateCreated": 1450102215376,
       "dateReceived": 1450102597712,
-      "status": "REJECTED"
+      "status": "FAILED"
     },
     {
       "molecularSequenceNumber": "SampleControl_MDACC_4",
       "dateCreated": 1458243895005,
       "dateReceived": 1458244153904,
-      "status": "REJECTED"
+      "status": "FAILED"
     },
     {
       "molecularSequenceNumber": "SampleControl_MDACC_5",

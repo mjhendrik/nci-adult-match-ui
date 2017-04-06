@@ -10,7 +10,7 @@ export class ColorCodeCliaDirective implements OnInit {
     ngOnInit() {
         if (this.colorcodeClia === 'PASSED') {
             this.el.nativeElement.className = 'text-success-light';
-        } else if (this.colorcodeClia === 'FAILED' || this.colorcodeClia === 'REJECTED') {
+        } else if (this.colorcodeClia === 'FAILED') {
             this.el.nativeElement.className = 'text-danger-light';
         } else if (this.colorcodeClia === 'PENDING') {
             this.el.nativeElement.className = 'text-purple-light';

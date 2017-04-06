@@ -85,19 +85,19 @@ export class CliaYaleComponent {
       "molecularSequenceNumber": "SampleControl_Yale_2",
       "dateCreated": 1454609818768,
       "dateReceived": 1454610867459,
-      "status": "REJECTED"
+      "status": "FAILED"
     },
     {
       "molecularSequenceNumber": "SampleControl_Yale_3",
       "dateCreated": 1456156465733,
       "dateReceived": 1456157104784,
-      "status": "REJECTED"
+      "status": "FAILED"
     },
     {
       "molecularSequenceNumber": "SampleControl_Yale_4",
       "dateCreated": 1456158997284,
       "dateReceived": 1456160505028,
-      "status": "REJECTED"
+      "status": "FAILED"
     },
     {
       "molecularSequenceNumber": "SampleControl_Yale_5",
@@ -211,7 +211,7 @@ export class CliaYaleComponent {
       "molecularSequenceNumber": "ProficiencyCompetencyControl_Yale_2",
       "dateCreated": 1471543042997,
       "dateReceived": 1471545093614,
-      "status": "REJECTED"
+      "status": "FAILED"
     },
     {
       "molecularSequenceNumber": "ProficiencyCompetencyControl_Yale_3",

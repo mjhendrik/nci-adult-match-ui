@@ -109,7 +109,7 @@ export class CliaMochaComponent {
       "molecularSequenceNumber": "SampleControl_MoCha_11",
       "dateCreated": 1442589567947,
       "dateReceived": 1442589791366,
-      "status": "REJECTED"
+      "status": "FAILED"
     },
     {
       "molecularSequenceNumber": "SampleControl_MoCha_12",
@@ -229,13 +229,13 @@ export class CliaMochaComponent {
       "molecularSequenceNumber": "SampleControl_MoCha_6",
       "dateCreated": 1438881580165,
       "dateReceived": 1438881806153,
-      "status": "REJECTED"
+      "status": "FAILED"
     },
     {
       "molecularSequenceNumber": "SampleControl_MoCha_7",
       "dateCreated": 1441827414900,
       "dateReceived": 1441827988864,
-      "status": "REJECTED"
+      "status": "FAILED"
     },
     {
       "molecularSequenceNumber": "SampleControl_MoCha_8",
@@ -427,7 +427,7 @@ export class CliaMochaComponent {
       "molecularSequenceNumber": "ProficiencyCompetencyControl_MoCha_2",
       "dateCreated": 1471543018636,
       "dateReceived": 1471544525000,
-      "status": "REJECTED"
+      "status": "FAILED"
     },
     {
       "molecularSequenceNumber": "ProficiencyCompetencyControl_MoCha_3",
