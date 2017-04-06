@@ -1,0 +1,49 @@
+[{
+    "id": "Dartmouth_1",
+    "molecularSequenceNumber": "NtcControl_Dartmouth_1",
+    "dateCreated": 1491329106245,
+    "dateReceived": null,
+    "site": "Dartmouth",
+    "siteIpAddress": "129.43.39.192",
+    "status": null,
+    "comment": null,
+    "passed": false,
+    "nextGenerationSequence": null
+  },
+  {
+    "id": "Dartmouth_2",
+    "molecularSequenceNumber": "NtcControl_Dartmouth_2",
+    "dateCreated": 1491329116463,
+    "dateReceived": null,
+    "site": "Dartmouth",
+    "siteIpAddress": "129.43.39.192",
+    "status": null,
+    "comment": null,
+    "passed": false,
+    "nextGenerationSequence": null
+  },
+  {
+    "id": "Dartmouth_3",
+    "molecularSequenceNumber": "NtcControl_Dartmouth_3",
+    "dateCreated": 1491329119584,
+    "dateReceived": null,
+    "site": "Dartmouth",
+    "siteIpAddress": "129.43.39.192",
+    "status": null,
+    "comment": null,
+    "passed": false,
+    "nextGenerationSequence": null
+  },
+  {
+    "id": "Dartmouth_4",
+    "molecularSequenceNumber": "NtcControl_Dartmouth_4",
+    "dateCreated": 1491329316146,
+    "dateReceived": null,
+    "site": "Dartmouth",
+    "siteIpAddress": "129.43.39.192",
+    "status": null,
+    "comment": null,
+    "passed": false,
+    "nextGenerationSequence": null
+  }
+]
