@@ -1,45 +1,25 @@
 [{
-    "id": "Dartmouth_1",
     "molecularSequenceNumber": "ProficiencyCompetencyControl_dartmouth_1",
     "dateCreated": 1491255648237,
     "dateReceived": null,
-    "site": "Dartmouth",
-    "siteIpAddress": "129.43.39.192",
-    "status": null,
-    "comment": null,
-    "nextGenerationSequence": null
+    "status": null
   },
   {
-    "id": "Dartmouth_2",
     "molecularSequenceNumber": "ProficiencyCompetencyControl_Dartmouth_2",
     "dateCreated": 1491256161789,
     "dateReceived": null,
-    "site": "Dartmouth",
-    "siteIpAddress": "129.43.39.192",
-    "status": null,
-    "comment": null,
-    "nextGenerationSequence": null
+    "status": null
   },
   {
-    "id": "Dartmouth_3",
     "molecularSequenceNumber": "ProficiencyCompetencyControl_Dartmouth_3",
     "dateCreated": 1491313516066,
     "dateReceived": null,
-    "site": "Dartmouth",
-    "siteIpAddress": "129.43.39.192",
-    "status": null,
-    "comment": null,
-    "nextGenerationSequence": null
+    "status": null
   },
   {
-    "id": "Dartmouth_4",
     "molecularSequenceNumber": "ProficiencyCompetencyControl_Dartmouth_4",
     "dateCreated": 1491324674356,
     "dateReceived": null,
-    "site": "Dartmouth",
-    "siteIpAddress": "129.43.39.192",
-    "status": null,
-    "comment": null,
-    "nextGenerationSequence": null
+    "status": null
   }
 ]
