@@ -76,26 +76,98 @@ export class CliaMdaccComponent {
 
   tablePCData: any = [
     {
-      "molecularSequenceNumber": "SampleControl_Dartmouth_1",
-      "dateCreated": 1491329102131,
+      "molecularSequenceNumber": "SampleControl_MDACC_1",
+      "dateCreated": 1446820790381,
+      "dateReceived": 1446820902400,
+      "status": "REJECTED"
+    },
+    {
+      "molecularSequenceNumber": "SampleControl_MDACC_2",
+      "dateCreated": 1450102192630,
+      "dateReceived": 1450102439001,
+      "status": "FAILED"
+    },
+    {
+      "molecularSequenceNumber": "SampleControl_MDACC_3",
+      "dateCreated": 1450102215376,
+      "dateReceived": 1450102597712,
+      "status": "REJECTED"
+    },
+    {
+      "molecularSequenceNumber": "SampleControl_MDACC_4",
+      "dateCreated": 1458243895005,
+      "dateReceived": 1458244153904,
+      "status": "REJECTED"
+    },
+    {
+      "molecularSequenceNumber": "SampleControl_MDACC_5",
+      "dateCreated": 1458243902954,
+      "dateReceived": 1458244204624,
+      "status": "FAILED"
+    },
+    {
+      "molecularSequenceNumber": "SampleControl_MDACC_6",
+      "dateCreated": 1463513958871,
+      "dateReceived": 1463515053999,
+      "status": "FAILED"
+    },
+    {
+      "molecularSequenceNumber": "SampleControl_MDACC_11",
+      "dateCreated": 1464804885832,
       "dateReceived": null,
       "status": null
     },
     {
-      "molecularSequenceNumber": "SampleControl_Dartmouth_2",
-      "dateCreated": 1491329109999,
+      "molecularSequenceNumber": "SampleControl_MDACC_12",
+      "dateCreated": 1464804892244,
       "dateReceived": null,
       "status": null
     },
     {
-      "molecularSequenceNumber": "SampleControl_Dartmouth_3",
-      "dateCreated": 1491329112873,
+      "molecularSequenceNumber": "SampleControl_MDACC_13",
+      "dateCreated": 1464804898193,
       "dateReceived": null,
       "status": null
     },
     {
-      "molecularSequenceNumber": "SampleControl_Dartmouth_4",
-      "dateCreated": 1491329310696,
+      "molecularSequenceNumber": "SampleControl_MDACC_14",
+      "dateCreated": 1464804910808,
+      "dateReceived": 1491335522538,
+      "status": "FAILED"
+    },
+    {
+      "molecularSequenceNumber": "SampleControl_MDACC_7",
+      "dateCreated": 1464804860415,
+      "dateReceived": 1464805122595,
+      "status": "FAILED"
+    },
+    {
+      "molecularSequenceNumber": "SampleControl_MDACC_8",
+      "dateCreated": 1464804866443,
+      "dateReceived": 1464805230480,
+      "status": "FAILED"
+    },
+    {
+      "molecularSequenceNumber": "SampleControl_MDACC_10",
+      "dateCreated": 1464804879094,
+      "dateReceived": 1464805762557,
+      "status": "FAILED"
+    },
+    {
+      "molecularSequenceNumber": "SampleControl_MDACC_9",
+      "dateCreated": 1464804873046,
+      "dateReceived": 1464805888370,
+      "status": "FAILED"
+    },
+    {
+      "molecularSequenceNumber": "SampleControl_MDACC_15",
+      "dateCreated": 1491256052996,
+      "dateReceived": null,
+      "status": null
+    },
+    {
+      "molecularSequenceNumber": "SampleControl_MDACC_16",
+      "dateCreated": 1491256075193,
       "dateReceived": null,
       "status": null
     }
@@ -103,26 +175,38 @@ export class CliaMdaccComponent {
 
   tableNTCData: any = [
     {
-      "molecularSequenceNumber": "ProficiencyCompetencyControl_dartmouth_1",
-      "dateCreated": 1491255648237,
+      "molecularSequenceNumber": "NtcControl_MDACC_3",
+      "dateCreated": 1450102235509,
+      "dateReceived": 1458244204984,
+      "status": null
+    },
+    {
+      "molecularSequenceNumber": "NtcControl_MDACC_1",
+      "dateCreated": 1446820801842,
+      "dateReceived": 1450102801132,
+      "status": null
+    },
+    {
+      "molecularSequenceNumber": "NtcControl_MDACC_2",
+      "dateCreated": 1450102226404,
+      "dateReceived": 1450102968577,
+      "status": null
+    },
+    {
+      "molecularSequenceNumber": "NtcControl_MDACC_4",
+      "dateCreated": 1458243910505,
+      "dateReceived": 1458244223579,
+      "status": null
+    },
+    {
+      "molecularSequenceNumber": "NtcControl_MDACC_5",
+      "dateCreated": 1491256060808,
       "dateReceived": null,
       "status": null
     },
     {
-      "molecularSequenceNumber": "ProficiencyCompetencyControl_Dartmouth_2",
-      "dateCreated": 1491256161789,
-      "dateReceived": null,
-      "status": null
-    },
-    {
-      "molecularSequenceNumber": "ProficiencyCompetencyControl_Dartmouth_3",
-      "dateCreated": 1491313516066,
-      "dateReceived": null,
-      "status": null
-    },
-    {
-      "molecularSequenceNumber": "ProficiencyCompetencyControl_Dartmouth_4",
-      "dateCreated": 1491324674356,
+      "molecularSequenceNumber": "NtcControl_MDACC_6",
+      "dateCreated": 1491256081929,
       "dateReceived": null,
       "status": null
     }
@@ -130,26 +214,32 @@ export class CliaMdaccComponent {
 
   tablePACCData: any = [
     {
-      "molecularSequenceNumber": "NtcControl_Dartmouth_1",
-      "dateCreated": 1491329106245,
+      "molecularSequenceNumber": "ProficiencyCompetencyControl_MDACC_1",
+      "dateCreated": 1471543083447,
+      "dateReceived": 1471545246603,
+      "status": "PENDING"
+    },
+    {
+      "molecularSequenceNumber": "ProficiencyCompetencyControl_MDACC_2",
+      "dateCreated": 1471543087043,
+      "dateReceived": 1471545260967,
+      "status": "PENDING"
+    },
+    {
+      "molecularSequenceNumber": "ProficiencyCompetencyControl_MDACC_3",
+      "dateCreated": 1471543091101,
+      "dateReceived": 1471545341592,
+      "status": "PENDING"
+    },
+    {
+      "molecularSequenceNumber": "ProficiencyCompetencyControl_MDACC_4",
+      "dateCreated": 1491256064474,
       "dateReceived": null,
       "status": null
     },
     {
-      "molecularSequenceNumber": "NtcControl_Dartmouth_2",
-      "dateCreated": 1491329116463,
-      "dateReceived": null,
-      "status": null
-    },
-    {
-      "molecularSequenceNumber": "NtcControl_Dartmouth_3",
-      "dateCreated": 1491329119584,
-      "dateReceived": null,
-      "status": null
-    },
-    {
-      "molecularSequenceNumber": "NtcControl_Dartmouth_4",
-      "dateCreated": 1491329316146,
+      "molecularSequenceNumber": "ProficiencyCompetencyControl_MDACC_5",
+      "dateCreated": 1491256118711,
       "dateReceived": null,
       "status": null
     }
