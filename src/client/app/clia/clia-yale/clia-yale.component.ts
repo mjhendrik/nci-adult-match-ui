@@ -235,8 +235,7 @@ export class CliaYaleComponent {
       "ipAddress": "10.133.130.53",
       "status": "Contacted 4 minutes ago",
       "lastContactDate": 1491507005457,
-      "externalIpAddress": "10.133.210.11",
-      "lastNotificationDate": null
+      "externalIpAddress": "10.133.210.11"
     }
   ];
 

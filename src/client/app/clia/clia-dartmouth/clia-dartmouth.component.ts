@@ -72,7 +72,11 @@ export class CliaDartmouthComponent {
       this.tablePACCData[i].dateReceived = gmt.transform(this.tablePACCData[i].dateReceived);
     }
 
+    this.timestamp = gmt.transform(this.timestamp);
+
   }
+
+  timestamp: any = 1491507004943;
 
   tablePCData: any = [
     {
@@ -163,8 +167,7 @@ export class CliaDartmouthComponent {
       "ipAddress": "129.43.39.192",
       "status": "Contacted 4 minutes ago",
       "lastContactDate": 1491507004943,
-      "externalIpAddress": "10.133.210.11",
-      "lastNotificationDate": 1490911049320
+      "externalIpAddress": "10.133.210.11"
     }
   ];
 
