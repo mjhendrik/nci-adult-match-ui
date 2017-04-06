@@ -4,7 +4,7 @@
     <li>CLIA Lab: Yale</li>
   </ul>
   <h1 class="page-header">CLIA Lab: Yale</h1>
-  <div class="row tab-pane fade active in" id="panel-Yale">
+  <div class="row tab-pane fade active in">
     <!--matchHeight=-->
     <div class="col-md-8">
       <div class="panel">
@@ -13,7 +13,7 @@
             <!--panel-orangeshade-->
             <ul class="nav nav-tabs nav-tabs-orangeshade p-l-0">
               <li class="active">
-                <a class="p-0" href="#tab-Yale-PC" data-toggle="tab" aria-expanded="true">
+                <a class="p-0" href="#tab-PC" data-toggle="tab" aria-expanded="true">
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
@@ -22,7 +22,7 @@
                 </a>
               </li>
               <li class="">
-                <a class="p-0" href="#tab-Yale-NTC" data-toggle="tab" aria-expanded="false">
+                <a class="p-0" href="#tab-NTC" data-toggle="tab" aria-expanded="false">
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
@@ -31,7 +31,7 @@
                 </a>
               </li>
               <li class="">
-                <a class="p-0" href="#tab-Yale-PACC" data-toggle="tab" aria-expanded="false">
+                <a class="p-0" href="#tab-PACC" data-toggle="tab" aria-expanded="false">
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
@@ -41,7 +41,7 @@
               </li>
             </ul>
             <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
-              <div class="tab-pane fade active in" id="tab-Yale-PC">
+              <div class="tab-pane fade active in" id="tab-PC">
                 <!-- table 1 -->
                 <div class="row">
                   <!-- begin panel -->
@@ -50,7 +50,7 @@
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select [disabled]="tableVRData.variant_reports.length == 0" name="data-table_length" [(ngModel)]="recordsPerPageVR" aria-controls="data-table" class="form-control form-control-orangeshade input-sm">
+                        <select name="data-table_length" [(ngModel)]="recordsPerPagePC" aria-controls="data-table" class="form-control form-control-orangeshade input-sm">
                           <option [ngValue]=10>10</option>
                           <option [ngValue]=25>25</option>
                           <option [ngValue]=50>50</option>
@@ -62,78 +62,53 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input [disabled]="tableVRData.variant_reports.length == 0" type="text" [(ngModel)]="searchtermVR" class="form-control form-control-orangeshade input-sm" placeholder="" aria-controls="data-table">                      
+                        <input type="text" [(ngModel)]="searchtermPC" class="form-control form-control-orangeshade input-sm" placeholder="" aria-controls="data-table">                      
                         </label>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table *ngIf="tableVRData.variant_reports.length == 0" class="table table-td-valign-middle table-striped table-col-width">
+                        <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="tablePCData | filterByText: searchtermPC"
+                          #mftablePC="mfDataTable" [(mfSortBy)]="tablePCDefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPagePC">
                           <thead>
                             <tr class="orangeshade-light">
                               <th>
-                                Molecular Sequence Number
+                                <mfDefaultSorter by="molecularSequenceNumber"><span class="table-header">Molecular Sequence Number</span></mfDefaultSorter>
                               </th>
                               <th>
-                                Created Date
+                                <mfDefaultSorter by="dateCreated"><span class="table-header">Created Date</span></mfDefaultSorter>
                               </th>
                               <th>
-                                Received Date
+                                <mfDefaultSorter by="dateReceived"><span class="table-header">Received Date</span></mfDefaultSorter>
                               </th>
-                              <th>
+                              <th class="text-center">
                                 Variant Reports
                               </th>
                               <th>
-                                Status
+                                <mfDefaultSorter by="status"><span class="table-header">Status</span></mfDefaultSorter>
                               </th>
                             </tr>
                           </thead>
                           <tbody>
-                            <tr>
-                              <td class="f-s-15" colspan="5">ABC</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                        <table *ngIf="tableVRData.variant_reports!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="tableVRData.variant_reports | filterByText: searchtermVR"
-                          #mftableVR="mfDataTable" [(mfSortBy)]="tableVRDefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPageVR">
-                          <thead>
-                            <tr class="orangeshade-light">
-                              <th>
-                                <mfDefaultSorter by="patientSequenceNumber"><span class="table-header">Molecular Sequence Number</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <mfDefaultSorter by="molecularSequenceNumber"><span class="table-header">Created Date</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <mfDefaultSorter by="location"><span class="table-header">Received Date</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <mfDefaultSorter by="specimenReceivedDate"><span class="table-header">Variant Reports</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <mfDefaultSorter by="ngsDateReceived"><span class="table-header">Status</span></mfDefaultSorter>
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr *ngFor="let item of mftableVR.data">
-                              <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                                <a href [routerLink]="['/patients/details']" class="link-none"><i class="fa fa-user"></i> {{item.patientSequenceNumber | dashify}}</a>
+                            <tr *ngFor="let item of mftablePC.data">
+                              <td><i class="fa fa-share-alt"></i> {{item.molecularSequenceNumber | dashify}}</td>
+                              <td>{{item.dateCreated | dashify}}</td>
+                              <td>{{item.dateReceived | dashify}}</td>
+                              <td class="text-center">
+                                <span *ngIf="item.status!==null"><a href [routerLink]="['/clia_yale/pc_variant_reports']" class="link-none"><i class="fa fa-file-text-o"></i></a></span>
+                                <span *ngIf="item.status===null">-</span>
                               </td>
-                              <td><a href="javascript:;" class="link-none"><i class="fa fa-share-alt"></i> {{item.molecularSequenceNumber | dashify}}</a></td>
-                              <td>{{item.location | dashify}}</td>
-                              <td>{{item.specimenReceivedDate | dashify}}</td>
-                              <td [colorcodeDays]="item.daysPending">{{item.daysPending | dashify}}</td>
+                              <td [colorcodeClia]="item.status">{{item.status | dashify}}</td>
                             </tr>
-                            <tr *ngIf="mftableVR.data.length == 0">
-                              <td class="f-s-15" colspan="5">No matching search results found for "{{searchtermVR}}"</td>
+                            <tr *ngIf="mftablePC.data.length == 0">
+                              <td class="f-s-15" colspan="5">No matching search results found for "{{searchtermPC}}"</td>
                             </tr>
                           </tbody>
                           <tfoot>
                             <tr>
                               <td class="tfoot-padding" colspan="5">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermVR" [totallength]="tableVRData.variant_reports.length"></mfBootstrapPaginator>
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermPC" [totallength]="tablePCData.length"></mfBootstrapPaginator>
                               </td>
                             </tr>
                           </tfoot>
@@ -144,7 +119,7 @@
                   <!-- end panel -->
                 </div>
               </div>
-              <div class="tab-pane fade" id="tab-Yale-NTC">
+              <div class="tab-pane fade" id="tab-NTC">
                 <!-- table 1 -->
                 <div class="row">
                   <!-- begin panel -->
@@ -153,7 +128,7 @@
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select [disabled]="tableVRData.variant_reports.length == 0" name="data-table_length" [(ngModel)]="recordsPerPageVR" aria-controls="data-table" class="form-control form-control-orangeshade input-sm">
+                        <select name="data-table_length" [(ngModel)]="recordsPerPageNTC" aria-controls="data-table" class="form-control form-control-orangeshade input-sm">
                           <option [ngValue]=10>10</option>
                           <option [ngValue]=25>25</option>
                           <option [ngValue]=50>50</option>
@@ -165,78 +140,53 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input [disabled]="tableVRData.variant_reports.length == 0" type="text" [(ngModel)]="searchtermVR" class="form-control form-control-orangeshade input-sm" placeholder="" aria-controls="data-table">                      
+                        <input type="text" [(ngModel)]="searchtermNTC" class="form-control form-control-orangeshade input-sm" placeholder="" aria-controls="data-table">                      
                         </label>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table *ngIf="tableVRData.variant_reports.length == 0" class="table table-td-valign-middle table-striped table-col-width">
+                        <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="tableNTCData | filterByText: searchtermNTC"
+                          #mftableNTC="mfDataTable" [(mfSortBy)]="tableNTCDefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPageNTC">
                           <thead>
                             <tr class="orangeshade-light">
                               <th>
-                                Molecular Sequence Number
+                                <mfDefaultSorter by="molecularSequenceNumber"><span class="table-header">Molecular Sequence Number</span></mfDefaultSorter>
                               </th>
                               <th>
-                                Created Date
+                                <mfDefaultSorter by="dateCreated"><span class="table-header">Created Date</span></mfDefaultSorter>
                               </th>
                               <th>
-                                Received Date
+                                <mfDefaultSorter by="dateReceived"><span class="table-header">Received Date</span></mfDefaultSorter>
                               </th>
-                              <th>
+                              <th class="text-center">
                                 Variant Reports
                               </th>
                               <th>
-                                Status
+                                <mfDefaultSorter by="status"><span class="table-header">Status</span></mfDefaultSorter>
                               </th>
                             </tr>
                           </thead>
                           <tbody>
-                            <tr>
-                              <td class="f-s-15" colspan="5">ABC</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                        <table *ngIf="tableVRData.variant_reports!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="tableVRData.variant_reports | filterByText: searchtermVR"
-                          #mftableVR="mfDataTable" [(mfSortBy)]="tableVRDefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPageVR">
-                          <thead>
-                            <tr class="orangeshade-light">
-                              <th>
-                                <mfDefaultSorter by="patientSequenceNumber"><span class="table-header">Molecular Sequence Number</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <mfDefaultSorter by="molecularSequenceNumber"><span class="table-header">Created Date</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <mfDefaultSorter by="location"><span class="table-header">Received Date</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <mfDefaultSorter by="specimenReceivedDate"><span class="table-header">Variant Reports</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <mfDefaultSorter by="ngsDateReceived"><span class="table-header">Status</span></mfDefaultSorter>
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr *ngFor="let item of mftableVR.data">
-                              <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                                <a href [routerLink]="['/patients/details']" class="link-none"><i class="fa fa-user"></i> {{item.patientSequenceNumber | dashify}}</a>
+                            <tr *ngFor="let item of mftableNTC.data">
+                              <td><i class="fa fa-share-alt"></i> {{item.molecularSequenceNumber | dashify}}</td>
+                              <td>{{item.dateCreated | dashify}}</td>
+                              <td>{{item.dateReceived | dashify}}</td>
+                              <td class="text-center">
+                                <span *ngIf="item.status!==null"><a href [routerLink]="['/clia_yale/ntc_variant_reports']" class="link-none"><i class="fa fa-file-text-o"></i></a></span>
+                                <span *ngIf="item.status===null">-</span>
                               </td>
-                              <td><a href="javascript:;" class="link-none"><i class="fa fa-share-alt"></i> {{item.molecularSequenceNumber | dashify}}</a></td>
-                              <td>{{item.location | dashify}}</td>
-                              <td>{{item.specimenReceivedDate | dashify}}</td>
-                              <td [colorcodeDays]="item.daysPending">{{item.daysPending | dashify}}</td>
+                              <td [colorcodeClia]="item.status">{{item.status | dashify}}</td>
                             </tr>
-                            <tr *ngIf="mftableVR.data.length == 0">
-                              <td class="f-s-15" colspan="5">No matching search results found for "{{searchtermVR}}"</td>
+                            <tr *ngIf="mftableNTC.data.length == 0">
+                              <td class="f-s-15" colspan="5">No matching search results found for "{{searchtermNTC}}"</td>
                             </tr>
                           </tbody>
                           <tfoot>
                             <tr>
                               <td class="tfoot-padding" colspan="5">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermVR" [totallength]="tableVRData.variant_reports.length"></mfBootstrapPaginator>
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermNTC" [totallength]="tableNTCData.length"></mfBootstrapPaginator>
                               </td>
                             </tr>
                           </tfoot>
@@ -247,7 +197,7 @@
                   <!-- end panel -->
                 </div>
               </div>
-              <div class="tab-pane fade" id="tab-Yale-PACC">
+              <div class="tab-pane fade" id="tab-PACC">
                 <!-- table 1 -->
                 <div class="row">
                   <!-- begin panel -->
@@ -256,7 +206,7 @@
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select [disabled]="tableVRData.variant_reports.length == 0" name="data-table_length" [(ngModel)]="recordsPerPageVR" aria-controls="data-table" class="form-control form-control-orangeshade input-sm">
+                        <select name="data-table_length" [(ngModel)]="recordsPerPagePACC" aria-controls="data-table" class="form-control form-control-orangeshade input-sm">
                           <option [ngValue]=10>10</option>
                           <option [ngValue]=25>25</option>
                           <option [ngValue]=50>50</option>
@@ -268,78 +218,53 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input [disabled]="tableVRData.variant_reports.length == 0" type="text" [(ngModel)]="searchtermVR" class="form-control form-control-orangeshade input-sm" placeholder="" aria-controls="data-table">                      
+                        <input type="text" [(ngModel)]="searchtermPACC" class="form-control form-control-orangeshade input-sm" placeholder="" aria-controls="data-table">                      
                         </label>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table *ngIf="tableVRData.variant_reports.length == 0" class="table table-td-valign-middle table-striped table-col-width">
+                        <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="tablePACCData | filterByText: searchtermPACC"
+                          #mftablePACC="mfDataTable" [(mfSortBy)]="tablePACCDefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPagePACC">
                           <thead>
                             <tr class="orangeshade-light">
                               <th>
-                                Molecular Sequence Number
+                                <mfDefaultSorter by="molecularSequenceNumber"><span class="table-header">Molecular Sequence Number</span></mfDefaultSorter>
                               </th>
                               <th>
-                                Created Date
+                                <mfDefaultSorter by="dateCreated"><span class="table-header">Created Date</span></mfDefaultSorter>
                               </th>
                               <th>
-                                Received Date
+                                <mfDefaultSorter by="dateReceived"><span class="table-header">Received Date</span></mfDefaultSorter>
                               </th>
-                              <th>
+                              <th class="text-center">
                                 Variant Reports
                               </th>
                               <th>
-                                Status
+                                <mfDefaultSorter by="status"><span class="table-header">Status</span></mfDefaultSorter>
                               </th>
                             </tr>
                           </thead>
                           <tbody>
-                            <tr>
-                              <td class="f-s-15" colspan="5">ABC</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                        <table *ngIf="tableVRData.variant_reports!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="tableVRData.variant_reports | filterByText: searchtermVR"
-                          #mftableVR="mfDataTable" [(mfSortBy)]="tableVRDefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPageVR">
-                          <thead>
-                            <tr class="orangeshade-light">
-                              <th>
-                                <mfDefaultSorter by="patientSequenceNumber"><span class="table-header">Molecular Sequence Number</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <mfDefaultSorter by="molecularSequenceNumber"><span class="table-header">Created Date</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <mfDefaultSorter by="location"><span class="table-header">Received Date</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <mfDefaultSorter by="specimenReceivedDate"><span class="table-header">Variant Reports</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <mfDefaultSorter by="ngsDateReceived"><span class="table-header">Status</span></mfDefaultSorter>
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr *ngFor="let item of mftableVR.data">
-                              <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                                <a href [routerLink]="['/patients/details']" class="link-none"><i class="fa fa-user"></i> {{item.patientSequenceNumber | dashify}}</a>
+                            <tr *ngFor="let item of mftablePACC.data">
+                              <td><i class="fa fa-share-alt"></i> {{item.molecularSequenceNumber | dashify}}</td>
+                              <td>{{item.dateCreated | dashify}}</td>
+                              <td>{{item.dateReceived | dashify}}</td>
+                              <td class="text-center">
+                                <span *ngIf="item.status!==null"><a href [routerLink]="['/clia_yale/pacc_variant_reports']" class="link-none"><i class="fa fa-file-text-o"></i></a></span>
+                                <span *ngIf="item.status===null">-</span>
                               </td>
-                              <td><a href="javascript:;" class="link-none"><i class="fa fa-share-alt"></i> {{item.molecularSequenceNumber | dashify}}</a></td>
-                              <td>{{item.location | dashify}}</td>
-                              <td>{{item.specimenReceivedDate | dashify}}</td>
-                              <td [colorcodeDays]="item.daysPending">{{item.daysPending | dashify}}</td>
+                              <td [colorcodeClia]="item.status">{{item.status | dashify}}</td>
                             </tr>
-                            <tr *ngIf="mftableVR.data.length == 0">
-                              <td class="f-s-15" colspan="5">No matching search results found for "{{searchtermVR}}"</td>
+                            <tr *ngIf="mftablePACC.data.length == 0">
+                              <td class="f-s-15" colspan="5">No matching search results found for "{{searchtermPACC}}"</td>
                             </tr>
                           </tbody>
                           <tfoot>
                             <tr>
                               <td class="tfoot-padding" colspan="5">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermVR" [totallength]="tableVRData.variant_reports.length"></mfBootstrapPaginator>
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermPACC" [totallength]="tablePACCData.length"></mfBootstrapPaginator>
                               </td>
                             </tr>
                           </tfoot>
