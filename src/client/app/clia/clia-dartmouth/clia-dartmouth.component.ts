@@ -103,33 +103,6 @@ export class CliaDartmouthComponent {
 
   tableNTCData: any = [
     {
-      "molecularSequenceNumber": "ProficiencyCompetencyControl_dartmouth_1",
-      "dateCreated": 1491255648237,
-      "dateReceived": null,
-      "status": null
-    },
-    {
-      "molecularSequenceNumber": "ProficiencyCompetencyControl_Dartmouth_2",
-      "dateCreated": 1491256161789,
-      "dateReceived": null,
-      "status": null
-    },
-    {
-      "molecularSequenceNumber": "ProficiencyCompetencyControl_Dartmouth_3",
-      "dateCreated": 1491313516066,
-      "dateReceived": null,
-      "status": null
-    },
-    {
-      "molecularSequenceNumber": "ProficiencyCompetencyControl_Dartmouth_4",
-      "dateCreated": 1491324674356,
-      "dateReceived": null,
-      "status": null
-    }
-  ];
-
-  tablePACCData: any = [
-    {
       "molecularSequenceNumber": "NtcControl_Dartmouth_1",
       "dateCreated": 1491329106245,
       "dateReceived": null,
@@ -150,6 +123,33 @@ export class CliaDartmouthComponent {
     {
       "molecularSequenceNumber": "NtcControl_Dartmouth_4",
       "dateCreated": 1491329316146,
+      "dateReceived": null,
+      "status": null
+    }
+  ];
+
+  tablePACCData: any = [
+    {
+      "molecularSequenceNumber": "ProficiencyCompetencyControl_dartmouth_1",
+      "dateCreated": 1491255648237,
+      "dateReceived": null,
+      "status": null
+    },
+    {
+      "molecularSequenceNumber": "ProficiencyCompetencyControl_Dartmouth_2",
+      "dateCreated": 1491256161789,
+      "dateReceived": null,
+      "status": null
+    },
+    {
+      "molecularSequenceNumber": "ProficiencyCompetencyControl_Dartmouth_3",
+      "dateCreated": 1491313516066,
+      "dateReceived": null,
+      "status": null
+    },
+    {
+      "molecularSequenceNumber": "ProficiencyCompetencyControl_Dartmouth_4",
+      "dateCreated": 1491324674356,
       "dateReceived": null,
       "status": null
     }
