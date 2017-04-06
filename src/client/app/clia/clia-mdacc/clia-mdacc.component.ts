@@ -245,4 +245,17 @@ export class CliaMdaccComponent {
     }
   ];
 
+  ionReportersData: any = [
+    {
+      "ionReporterId": "IR_9TQW9",
+      "ionReporterVersion": "5.0",
+      "hostName": "NCIAS-D1227",
+      "ipAddress": "10.133.130.32",
+      "status": "Contacted 4 minutes ago",
+      "lastContactDate": 1491507004846,
+      "externalIpAddress": "10.133.210.11",
+      "lastNotificationDate": null
+    }
+  ];
+
 }
