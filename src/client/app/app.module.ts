@@ -13,6 +13,9 @@ import { CliaMdaccModule } from './clia/clia-mdacc/clia-mdacc.module';
 import { CliaMghModule } from './clia/clia-mgh/clia-mgh.module';
 import { CliaMochaModule } from './clia/clia-mocha/clia-mocha.module';
 import { CliaYaleModule } from './clia/clia-yale/clia-yale.module';
+import { CliaVariantReportsNtcModule } from './clia/clia-variant-reports-ntc/clia-variant-reports-ntc.module';
+import { CliaVariantReportsPaccModule } from './clia/clia-variant-reports-pacc/clia-variant-reports-pacc.module';
+import { CliaVariantReportsPcModule } from './clia/clia-variant-reports-pc/clia-variant-reports-pc.module';
 import { BtModule } from './bt/bt.module';
 import { TaModule } from './ta/ta.module';
 import { TaDetailsModule } from './ta/ta-details/ta-details.module';
@@ -35,6 +38,9 @@ import { LoginGuard } from './shared/auth/login.guard.service';
     CliaMghModule,
     CliaMochaModule,
     CliaYaleModule,
+    CliaVariantReportsNtcModule,
+    CliaVariantReportsPaccModule,
+    CliaVariantReportsPcModule,
     BtModule,
     TaModule,
     TaDetailsModule,
