@@ -147,6 +147,14 @@ body {
   border-top-width: 1px !important;
 }
 
+.btn.btn-orangeshade-light {
+  padding: 5px 12px;
+  color: #fff;
+  background: $light-orangeshade-color;
+  -webkit-box-shadow: 0 1px $dark-orangeshade-color;
+  box-shadow: 0 1px $dark-orangeshade-color;
+}
+
 
 /* Widget - Timeline */
 
