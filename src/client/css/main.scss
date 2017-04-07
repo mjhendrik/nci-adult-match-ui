@@ -155,6 +155,11 @@ body {
   box-shadow: 0 1px $dark-orangeshade-color;
 }
 
+.panel-accent-sides-orangeshade {
+  border-left: 2px solid $light-orangeshade-color;
+  border-right: 2px solid $light-orangeshade-color;
+}
+
 
 /* Widget - Timeline */
 
