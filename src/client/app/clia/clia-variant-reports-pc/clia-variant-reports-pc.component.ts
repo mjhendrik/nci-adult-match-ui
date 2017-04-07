@@ -5,18 +5,18 @@ import { GMTFilter } from './../../shared/pipes/gmt';
 
 
 /**
- * This class represents the lazy loaded CLIAYaleComponent.
+ * This class represents the lazy loaded CLIAVariantReportsPcComponent.
  */
 @Component({
   moduleId: module.id,
-  selector: 'sd-clia-yale',
-  templateUrl: 'clia-yale.component.html',
-  styleUrls: ['clia-yale.component.css'],
+  selector: 'sd-clia-variant-reports-pc',
+  templateUrl: 'clia-variant-reports-pc.component.html',
+  styleUrls: ['clia-variant-reports-pc.component.css'],
   animations: [routerTransition()],
   host: { '[@routerTransition]': '' },
   providers: [GMTFilter]
 })
-export class CliaYaleComponent {
+export class CliaVariantReportsPcComponent {
 
   searchtermPC: string = '';
   searchtermNTC: string = '';

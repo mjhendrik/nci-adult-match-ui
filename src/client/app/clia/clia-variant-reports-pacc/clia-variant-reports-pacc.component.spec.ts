@@ -4,17 +4,17 @@ import {
   TestBed
 } from '@angular/core/testing';
 
-import { CliaYaleModule } from './clia-variant-reports-pacc.module';
+import { CliaVariantReportsPaccModule } from './clia-variant-reports-pacc.module';
 
 export function main() {
-  describe('clia yale component', () => {
+  describe('clia variant reports pacc component', () => {
     // Setting module for testing
     // Disable old forms
 
     beforeEach(() => {
       TestBed.configureTestingModule({
         declarations: [TestComponent],
-        imports: [CliaYaleModule]
+        imports: [CliaVariantReportsPaccModule]
       });
     });
 
@@ -33,6 +33,6 @@ export function main() {
 
 @Component({
   selector: 'test-cmp',
-  template: '<sd-clia-yale></sd-clia-yale>'
+  template: '<sd-clia-variant-reports-pacc></sd-clia-variant-reports-pacc>'
 })
 class TestComponent { }
