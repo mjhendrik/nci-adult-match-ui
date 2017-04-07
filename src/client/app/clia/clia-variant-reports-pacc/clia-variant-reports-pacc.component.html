@@ -96,7 +96,7 @@
                               <td>{{item.dateCreated | dashify}}</td>
                               <td>{{item.dateReceived | dashify}}</td>
                               <td class="text-center">
-                                <span *ngIf="item.status!==null"><a href [routerLink]="['/clia_yale/pc_variant_reports']" class="link-none"><i class="fa fa-file-text-o"></i></a></span>
+                                <span *ngIf="item.status!==null"><a href [routerLink]="['/clia_variant_reports_pc']" class="link-none"><i class="fa fa-file-text-o"></i></a></span>
                                 <span *ngIf="item.status===null">-</span>
                               </td>
                               <td [colorcodeClia]="item.status">{{item.status | dashify}}</td>
@@ -174,7 +174,7 @@
                               <td>{{item.dateCreated | dashify}}</td>
                               <td>{{item.dateReceived | dashify}}</td>
                               <td class="text-center">
-                                <span *ngIf="item.status!==null"><a href [routerLink]="['/clia_yale/ntc_variant_reports']" class="link-none"><i class="fa fa-file-text-o"></i></a></span>
+                                <span *ngIf="item.status!==null"><a href [routerLink]="['/variant_reports_ntc']" class="link-none"><i class="fa fa-file-text-o"></i></a></span>
                                 <span *ngIf="item.status===null">-</span>
                               </td>
                               <td [colorcodeClia]="item.status">{{item.status | dashify}}</td>
@@ -252,7 +252,7 @@
                               <td>{{item.dateCreated | dashify}}</td>
                               <td>{{item.dateReceived | dashify}}</td>
                               <td class="text-center">
-                                <span *ngIf="item.status!==null"><a href [routerLink]="['/clia_yale/pacc_variant_reports']" class="link-none"><i class="fa fa-file-text-o"></i></a></span>
+                                <span *ngIf="item.status!==null"><a href [routerLink]="['/variant_reports_pacc']" class="link-none"><i class="fa fa-file-text-o"></i></a></span>
                                 <span *ngIf="item.status===null">-</span>
                               </td>
                               <td [colorcodeClia]="item.status">{{item.status | dashify}}</td>
