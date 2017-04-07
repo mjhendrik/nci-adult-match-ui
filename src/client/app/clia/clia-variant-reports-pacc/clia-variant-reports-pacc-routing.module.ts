@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { CliaYaleComponent } from './clia-variant-reports-pacc.component';
+import { CliaVariantReportsPaccComponent } from './clia-variant-reports-pacc.component';
 import { AuthGuard } from './../../shared/auth/auth.guard.service';
 
 @NgModule({
   imports: [
     RouterModule.forChild([
-      { path: 'clia_yale', component: CliaYaleComponent, canActivate: [AuthGuard] }
+      { path: 'clia_variant_reports_pacc', component: CliaVariantReportsPaccComponent, canActivate: [AuthGuard] }
     ])
   ],
   exports: [RouterModule]
 })
-export class CliaYaleRoutingModule { }
+export class CliaVariantReportsPaccRoutingModule { }
