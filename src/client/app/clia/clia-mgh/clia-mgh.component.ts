@@ -118,37 +118,37 @@ export class CliaMghComponent {
       "molecularSequenceNumber": "NtcControl_MGH_5",
       "dateCreated": 1458062492626,
       "dateReceived": 1458064149765,
-      "status": null
+      "status": "PASSED"
     },
     {
       "molecularSequenceNumber": "NtcControl_MGH_1",
       "dateCreated": 1446820762319,
       "dateReceived": 1446821112493,
-      "status": null
+      "status": "PASSED"
     },
     {
       "molecularSequenceNumber": "NtcControl_MGH_2",
       "dateCreated": 1450450866096,
       "dateReceived": 1450456634387,
-      "status": null
+      "status": "PASSED"
     },
     {
       "molecularSequenceNumber": "NtcControl_MGH_3",
       "dateCreated": 1450450874140,
       "dateReceived": 1450456959205,
-      "status": null
+      "status": "FAILED"
     },
     {
       "molecularSequenceNumber": "NtcControl_MGH_4",
       "dateCreated": 1456161346821,
       "dateReceived": 1456161456537,
-      "status": null
+      "status": "PASSED"
     },
     {
       "molecularSequenceNumber": "NtcControl_MGH_6",
       "dateCreated": 1458062502161,
       "dateReceived": 1458064906548,
-      "status": null
+      "status": "PASSED"
     }
   ];
 

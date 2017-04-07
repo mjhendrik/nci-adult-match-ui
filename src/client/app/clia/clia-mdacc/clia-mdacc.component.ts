@@ -178,25 +178,25 @@ export class CliaMdaccComponent {
       "molecularSequenceNumber": "NtcControl_MDACC_3",
       "dateCreated": 1450102235509,
       "dateReceived": 1458244204984,
-      "status": null
+      "status": "PASSED"
     },
     {
       "molecularSequenceNumber": "NtcControl_MDACC_1",
       "dateCreated": 1446820801842,
       "dateReceived": 1450102801132,
-      "status": null
+      "status": "PASSED"
     },
     {
       "molecularSequenceNumber": "NtcControl_MDACC_2",
       "dateCreated": 1450102226404,
       "dateReceived": 1450102968577,
-      "status": null
+      "status": "FAILED"
     },
     {
       "molecularSequenceNumber": "NtcControl_MDACC_4",
       "dateCreated": 1458243910505,
       "dateReceived": 1458244223579,
-      "status": null
+      "status": "FAILED"
     },
     {
       "molecularSequenceNumber": "NtcControl_MDACC_5",
