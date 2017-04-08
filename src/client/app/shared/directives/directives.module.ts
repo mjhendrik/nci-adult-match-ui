@@ -6,6 +6,7 @@ import { ColorCodePatientsDirective } from './colorcode-patients.directive';
 import { ColorCodeDaysDirective } from './colorcode-days.directive';
 import { ColorCodeHoursDirective } from './colorcode-hours.directive';
 import { ColorCodeCliaDirective } from './colorcode-clia.directive';
+import { ColorCodeCliaIonDirective } from './colorcode-clia-ion.directive';
 import { MatchHeightDirective } from './match-height.directive';
 import { ExternalLinksComponent } from './external-links.component';
 import { ColorCodeAssignmentDirective } from './colorcode-assignment.directive';
@@ -20,6 +21,7 @@ import { ActiveClassDirective } from './active-class.directive';
     ColorCodeDaysDirective,
     ColorCodeHoursDirective,
     ColorCodeCliaDirective,
+    ColorCodeCliaIonDirective,
     MatchHeightDirective,
     ExternalLinksComponent,
     ColorCodeAssignmentDirective,
@@ -32,6 +34,7 @@ import { ActiveClassDirective } from './active-class.directive';
     ColorCodeDaysDirective,
     ColorCodeHoursDirective,
     ColorCodeCliaDirective,
+    ColorCodeCliaIonDirective,
     MatchHeightDirective,
     ExternalLinksComponent,
     ColorCodeAssignmentDirective,

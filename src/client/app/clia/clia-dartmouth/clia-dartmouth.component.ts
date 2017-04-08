@@ -33,6 +33,11 @@ export class CliaDartmouthComponent {
   sortByAsc: string;
   sortByDesc: string;
 
+  countContacted: number;
+  countLost: number;
+
+  timestamp: any = new Date();
+
   ngOnInit() {
 
     this.recordsPerPagePC = 10;
@@ -45,6 +50,9 @@ export class CliaDartmouthComponent {
 
     this.sortByAsc = 'asc';
     this.sortByDesc = 'desc';
+
+    this.countContacted = 0;
+    this.countLost = 0;
 
     let gmt = new GMTFilter();
 
@@ -72,11 +80,20 @@ export class CliaDartmouthComponent {
       this.tablePACCData[i].dateReceived = gmt.transform(this.tablePACCData[i].dateReceived);
     }
 
-    this.timestamp = gmt.transform(this.timestamp);
+    for (let i = 0; i < this.ionReportersData.length; i++) {
+      this.ionReportersData[i].lastContactDate = gmt.transform(this.ionReportersData[i].lastContactDate);
+    }
+
+    this.countIonReporters();
 
   }
 
-  timestamp: any = 1491513070862;
+  countIonReporters(): any {
+    for (let i = 0; i < this.ionReportersData.length; i++) {
+      if (this.ionReportersData[i].status.indexOf('Contacted') !== -1) this.countContacted++;
+      else this.countLost++;
+    }
+  }
 
   tablePCData: any = [
     {

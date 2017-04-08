@@ -9,18 +9,18 @@ export class ColorCodePatientsDirective implements OnInit {
 
     ngOnInit() {
         if (this.colorcodePatients === 'ON_TREATMENT_ARM') {
-            this.el.nativeElement.className = 'text-success-light';
+            this.el.nativeElement.classList.add('text-success-light');
         } else if (this.colorcodePatients === 'REGISTRATION') {
-            this.el.nativeElement.className = 'text-info-light';
+            this.el.nativeElement.classList.add('text-info-light');
         } else if (this.colorcodePatients === 'COMPASSIONATE_CARE' || this.colorcodePatients === 'PENDING_APPROVAL'
             || this.colorcodePatients === 'PENDING_colorcodePatientsFIRMATION' || this.colorcodePatients === 'REJOIN_REQUESTED'
             || this.colorcodePatients === 'NOT_ELIGIBLE') {
-            this.el.nativeElement.className = 'text-purple-light';
+            this.el.nativeElement.classList.add('text-purple-light');
         } else if (this.colorcodePatients === 'OFF_TRIAL_DECEASED' || this.colorcodePatients === 'OFF_TRIAL_NO_TA_AVAILABLE'
             || this.colorcodePatients === 'OFF_TRIAL_NOT_colorcodePatientsSENTED') {
-            this.el.nativeElement.className = 'text-danger-light';
+            this.el.nativeElement.classList.add('text-danger-light');
         } else if (this.colorcodePatients === 'FORMERLY_ON_ARM_OFF_TRIAL') {
-            this.el.nativeElement.className = 'text-warning-light';
+            this.el.nativeElement.classList.add('text-warning-light');
         }
 
     }

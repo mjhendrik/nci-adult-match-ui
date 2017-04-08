@@ -286,97 +286,92 @@
         <div class="m-0 p-0">
           <div>
             <ul class="nav nav-tabs nav-tabs-orangeshade p-l-0">
-              <li class="active">
-                <a class="p-0" href="#tab-VR2" data-toggle="tab" aria-expanded="true">
+              <li *ngFor="let item of ionReportersData; let index = index; let first = first" [class.active]="first">
+                <a class="p-0" href="#tab-{{index}}" data-toggle="tab" aria-expanded="true">
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
-                    <h4 class="panel-title">Ion Reporters</h4>
+                    <h4 class="panel-title">
+                      {{item.ionReporterId}}
+                    </h4>
                   </div>
                 </a>
               </li>
             </ul>
             <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
-              <div class="tab-pane fade active in" id="tab-VR2">
+              <div *ngFor="let item of ionReportersData; let index = index; let first = first" [class.active]="first" class="tab-pane fade in"
+                id="tab-{{index}}">
                 <div class="row">
                   <div>
                     <div class="row">
                       <div class="col-lg-12">
-
-
-
                         <div>
                           <div>
-                            <div>
-                              <span class="pull-right no-data-message">No HeartBeat Data</span>
-                              <span class="pull-right no-data-message">No HeartBeat Data</span>
-                              <ul class="list-group">
-                                <li class="list-group-item" style="border: none">
-                                  <span> IP Address:
-                                    <span class="pull-right">{{item | dashify}}</span>
-                                  </span>
-                                </li>
-                                <li class="list-group-item" style="border: none">
-                                  <span> Internal IP Address:
-                                    <span class="pull-right">{{item | dashify}}</span>
-                                  </span>
-                                </li>
-                                <li class="list-group-item" style="border: none">
-                                  <span> External IP Address:
-                                    <span class="pull-right">{{item | dashify}}</span>
-                                  </span>
-                                </li>
-                                <li class="list-group-item" style="border: none">
-                                  <span> Host Name:
-                                    <span class="pull-right">{{item | dashify}}</span>
-                                  </span>
-                                </li>
-                                <li class="list-group-item" style="border: none">
-                                  <span> Status:
+                            <ul class="list-group">
+                              <li class="list-group-item" style="border: none">
+                                <span>IP Address:
                                     <span class="pull-right">
-                                      {{item | dashify}}
+                                      {{item.externalIpAddress | dashify}}
                                     </span>
-                                  </span>
-                                </li>
-                                <li class="list-group-item" style="border: none">
-                                  <span> Ion Reporter Version:
-                                    <span class="pull-right"> {{item | dashify}} </span>
-                                  </span>
-                                </li>
-                                <li class="list-group-item" style="border: none">
-                                  <span> Last Contact:
-                                    <span class="pull-right">{{item | dashify}}</span>
-                                  </span>
-                                </li>
-                                <li class="list-group-item" style="border: none">
-                                  <div class="row">
-                                    <div class="col-md-12 text-left">
-                                      <a target="_blank" class="btn btn-success-light btn-xs btn-outline file-button-xs">DB Report
-                                      </a>
-                                      <span>
-                                        <span class="pull-right text text-danger-light"> No DB Report available </span>
-                                      </span>
-                                    </div>
-                                  </div>
-                                </li>
-                              </ul>
-                            </div>
-                            <small>
-                              Loaded at {{heartbeat}}
-                            </small>
-                            <span class="pull-right">
-                              <dl class="dl-horizontal dl-horizontal-expanded-label">
-                                <dt>Ion Reporters online</dt>
-                                <dd><span class="label label-success pull-right"> {{countOk}} </span></dd>
-                            <dt>Ion Reporters offline</dt>
-                            <dd><span class="label label-danger pull-right"> {{countLost}}</span></dd>
-                            </dl>
-                            </span>
+                                </span>
+                              </li>
+                              <li class="list-group-item" style="border: none">
+                                <span>Internal IP Address:
+                                    <span class="pull-right">
+                                      {{item.ipAddress | dashify}}
+                                    </span>
+                                </span>
+                              </li>
+                              <li class="list-group-item" style="border: none">
+                                <span>Host Name:
+                                    <span class="pull-right">
+                                      {{item.hostName | dashify}}
+                                    </span>
+                                </span>
+                              </li>
+                              <li class="list-group-item" style="border: none">
+                                <span>Status:
+                                    <span class="pull-right" [colorcodeCliaIon]="item.status">
+                                      {{item.status | dashify}}
+                                    </span>
+                                </span>
+                              </li>
+                              <li class="list-group-item" style="border: none">
+                                <span>Ion Reporter Version:
+                                    <span class="pull-right">
+                                      {{item.ionReporterVersion | dashify}}
+                                    </span>
+                                </span>
+                              </li>
+                              <li class="list-group-item" style="border: none">
+                                <span>Last Contact:
+                                    <span class="pull-right">
+                                      {{item.lastContactDate | dashify}}
+                                    </span>
+                                </span>
+                              </li>
+                            </ul>
                           </div>
+                          <small class="p-l-15">
+                              Loaded at {{timestamp | date: 'mediumTime'}}
+                          </small>
+                          <span class="pull-right">
+                            <dl class="dl-horizontal dl-horizontal-expanded-label p-r-15">
+                              <dt>Ion Reporters online</dt>
+                              <dd>
+                                <span class="label label-success pull-right">
+                                  {{countContacted}}
+                                </span>
+                          </dd>
+                          <dt>Ion Reporters offline</dt>
+                          <dd>
+                            <span class="label label-danger pull-right">
+                                  {{countLost}}
+                                </span>
+                          </dd>
+                          </dl>
+                          </span>
                         </div>
-
-
-
                       </div>
                     </div>
                   </div>

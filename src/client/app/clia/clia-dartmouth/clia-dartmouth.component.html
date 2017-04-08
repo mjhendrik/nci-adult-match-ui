@@ -21,7 +21,7 @@
                   </div>
                 </a>
               </li>
-              <li class="">
+              <li>
                 <a class="p-0" href="#tab-NTC" data-toggle="tab" aria-expanded="false">
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
@@ -30,7 +30,7 @@
                   </div>
                 </a>
               </li>
-              <li class="">
+              <li>
                 <a class="p-0" href="#tab-PACC" data-toggle="tab" aria-expanded="false">
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
@@ -286,21 +286,21 @@
         <div class="m-0 p-0">
           <div>
             <ul class="nav nav-tabs nav-tabs-orangeshade p-l-0">
-              <!--*ngFor="let item of ionReportersData.data" -->
-              <li class="active">
-                <a class="p-0" href="#tab-IR" data-toggle="tab" aria-expanded="true">
+              <li *ngFor="let item of ionReportersData; let index = index; let first = first" [class.active]="first">
+                <a class="p-0" href="#tab-{{index}}" data-toggle="tab" aria-expanded="true">
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
                     <h4 class="panel-title">
-                      <!--{{item.ionReporterId | dashify}}-->
+                      {{item.ionReporterId}}
                     </h4>
                   </div>
                 </a>
               </li>
             </ul>
             <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
-              <div class="tab-pane fade active in" id="tab-IR">
+              <div *ngFor="let item of ionReportersData; let index = index; let first = first" [class.active]="first" class="tab-pane fade in"
+                id="tab-{{index}}">
                 <div class="row">
                   <div>
                     <div class="row">
@@ -308,68 +308,65 @@
                         <div>
                           <div>
                             <ul class="list-group">
-                              <!--*ngFor="let item of ionReportersData.data" -->
                               <li class="list-group-item" style="border: none">
                                 <span>IP Address:
                                     <span class="pull-right">
-                                      <!--{{item.externalIpAddress | dashify}}-->
+                                      {{item.externalIpAddress | dashify}}
                                     </span>
                                 </span>
                               </li>
                               <li class="list-group-item" style="border: none">
                                 <span>Internal IP Address:
                                     <span class="pull-right">
-                                      <!--{{item.ipAddress | dashify}}-->
+                                      {{item.ipAddress | dashify}}
                                     </span>
                                 </span>
                               </li>
                               <li class="list-group-item" style="border: none">
                                 <span>Host Name:
                                     <span class="pull-right">
-                                      <!--{{item.hostName | dashify}}-->
+                                      {{item.hostName | dashify}}
                                     </span>
                                 </span>
                               </li>
                               <li class="list-group-item" style="border: none">
                                 <span>Status:
-                                    <span class="pull-right">
-                                      <!--{{item.status | dashify}}-->
+                                    <span class="pull-right" [colorcodeCliaIon]="item.status">
+                                      {{item.status | dashify}}
                                     </span>
                                 </span>
                               </li>
                               <li class="list-group-item" style="border: none">
                                 <span>Ion Reporter Version:
                                     <span class="pull-right">
-                                      <!--{{item.ionReporterVersion | dashify}}-->
+                                      {{item.ionReporterVersion | dashify}}
                                     </span>
                                 </span>
                               </li>
                               <li class="list-group-item" style="border: none">
                                 <span>Last Contact:
                                     <span class="pull-right">
-                                      <!--{{item.lastContactDate | dashify}}-->
+                                      {{item.lastContactDate | dashify}}
                                     </span>
                                 </span>
                               </li>
                             </ul>
                           </div>
                           <small class="p-l-15">
-                              Loaded at {{timestamp}}
+                              Loaded at {{timestamp | date: 'mediumTime'}}
                           </small>
                           <span class="pull-right">
                             <dl class="dl-horizontal dl-horizontal-expanded-label p-r-15">
                               <dt>Ion Reporters online</dt>
                               <dd>
                                 <span class="label label-success pull-right">
-                                  10
-                                  <!--{{countContacted}}-->
+                                  {{countContacted}}
                                 </span>
                           </dd>
                           <dt>Ion Reporters offline</dt>
                           <dd>
                             <span class="label label-danger pull-right">
-                                  23
-                                  <!--{{countLost}}-->
+                                  {{countLost}}
                                 </span>
                           </dd>
                           </dl>

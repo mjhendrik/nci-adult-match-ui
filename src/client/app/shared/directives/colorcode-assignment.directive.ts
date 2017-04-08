@@ -9,11 +9,11 @@ export class ColorCodeAssignmentDirective implements OnInit {
 
     ngOnInit() {
         if (this.colorcodeAssignment === 'CONFIRMED') {
-            this.el.nativeElement.className = 'text-success-light';
+            this.el.nativeElement.classList.add('text-success-light');
         } else if (this.colorcodeAssignment === 'PENDING_CONFIMATION') {
-            this.el.nativeElement.className = 'text-info-light';
+            this.el.nativeElement.classList.add('text-info-light');
         } else if (this.colorcodeAssignment === 'REJECTED') {
-            this.el.nativeElement.className = 'text-danger-light';
+            this.el.nativeElement.classList.add('text-danger-light');
         }
     }
 }
