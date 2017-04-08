@@ -9,13 +9,13 @@ export class ColorCodeTaDirective implements OnInit {
 
     ngOnInit() {
         if (this.colorcodeTa === 'OPEN' || this.colorcodeTa === 'REACTIVATED') {
-            this.el.nativeElement.className = 'text-success-light';
+            this.el.nativeElement.classList.add('text-success-light');
         } else if (this.colorcodeTa === 'SUSPENDED') {
-            this.el.nativeElement.className = 'text-warning-light';
+            this.el.nativeElement.classList.add('text-warning-light');
         } else if (this.colorcodeTa === 'CLOSED' || this.colorcodeTa === 'AMENDED') {
-            this.el.nativeElement.className = 'text-danger-light';
+            this.el.nativeElement.classList.add('text-danger-light');
         } else if (this.colorcodeTa === 'PENDING' || this.colorcodeTa === 'READY') {
-            this.el.nativeElement.className = 'text-info-light';
+            this.el.nativeElement.classList.add('text-info-light');
         }
 
     }

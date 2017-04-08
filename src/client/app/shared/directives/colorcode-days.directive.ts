@@ -9,11 +9,11 @@ export class ColorCodeDaysDirective implements OnInit {
 
     ngOnInit() {
         if (this.colorcodeDays < 7) {
-            this.el.nativeElement.className = 'text-success-light';
+            this.el.nativeElement.classList.add('text-success-light');
         } else if (this.colorcodeDays < 14) {
-            this.el.nativeElement.className = 'text-warning-light';
+            this.el.nativeElement.classList.add('text-warning-light');
         } else {
-            this.el.nativeElement.className = 'text-danger-light';
+            this.el.nativeElement.classList.add('text-danger-light');
         }
 
     }

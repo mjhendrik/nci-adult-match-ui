@@ -9,11 +9,11 @@ export class ColorCodeVariantReportDirective implements OnInit {
 
     ngOnInit() {
         if (this.colorcodeVariantReport === 'CONFIRMED') {
-            this.el.nativeElement.className = 'text-success-light';
+            this.el.nativeElement.classList.add('text-success-light');
         } else if (this.colorcodeVariantReport === 'PENDING') {
-            this.el.nativeElement.className = 'text-info-light';
+            this.el.nativeElement.classList.add('text-info-light');
         } else if (this.colorcodeVariantReport === 'REJECTED') {
-            this.el.nativeElement.className = 'text-danger-light';
+            this.el.nativeElement.classList.add('text-danger-light');
         }
     }
 }
