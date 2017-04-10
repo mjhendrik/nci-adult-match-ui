@@ -1,10 +1,5 @@
 import {
   Component,
-  trigger,
-  state,
-  style,
-  transition,
-  animate,
   OnInit
 } from '@angular/core';
 
@@ -27,34 +22,32 @@ import { PatientApiService } from '../patient-api.service';
 export class PatientListComponent implements OnInit {
 
   searchTerm: string = '';
-  recordsPerPagePatients: number;
-  tablePatientsDefaultSort: string;
-  items: any[] = [];
+  recordsPerPagePatients: number = 100;
+  tablePatientsDefaultSort: string = 'patientSequenceNumber';
+  itemList: any[] = [];
   errorMessage: string;
 
   constructor(private patientApi: PatientApiService) {}
 
   ngOnInit() {
-    this.getData();
-
-    this.recordsPerPagePatients = 100;
-    this.tablePatientsDefaultSort = 'patientSequenceNumber';
-
-    let gmt = new GMTFilter();
-
-    for (let i = 0; i < this.items.length; i++) {
-      this.items[i].registrationDate = gmt.transform(this.items[i].registrationDate);
-    }
-
-    for (let i = 0; i < this.items.length; i++) {
-      this.items[i].offTrialDate = gmt.transform(this.items[i].offTrialDate);
-    }
+    //this.getData();
   }
 
   getData() {
     this.patientApi.getPatientList()
       .subscribe(
-        items => this.items = items,
+        itemList => {
+          this.itemList = itemList;
+          // let gmt = new GMTFilter();
+
+          // for (let i = 0; i < this.itemList.length; i++) {
+          //   this.itemList[i].registrationDate = gmt.transform(this.itemList[i].registrationDate);
+          // }
+
+          // for (let i = 0; i < this.itemList.length; i++) {
+          //   this.itemList[i].offTrialDate = gmt.transform(this.itemList[i].offTrialDate);
+          // }          
+        },
         error => this.errorMessage = <any>error
       );
   }
