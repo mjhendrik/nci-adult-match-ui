@@ -82,7 +82,10 @@
                               <td>{{item.offTrialDate | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftablePatients.data.length == 0">
-                              <td class="f-s-15 text-muted" colspan="7"><span *ngIf="searchTerm"></span> No matching search results found for "{{searchTerm}}"</td>
+                              <td class="f-s-15 text-muted" colspan="7">
+                                <span *ngIf="searchTerm"> No matching search results found for "{{searchTerm}}"</span>
+                                <span *ngIf="!searchTerm">No patient data</span>
+                              </td>
                             </tr>
                           </tbody>
                           <tfoot>
