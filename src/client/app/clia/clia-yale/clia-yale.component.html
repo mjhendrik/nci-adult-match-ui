@@ -100,7 +100,7 @@
                                 <span *ngIf="item.status!==null"><a href [routerLink]="['/clia_variant_reports_pc']" class="link-none"><i class="fa fa-file-text-o"></i></a></span>
                                 <span *ngIf="item.status===null">-</span>
                               </td>
-                              <td [colorcodeClia]="item.status">{{item.status | dashify}}</td>
+                              <td [colorCodeClia]="item.status">{{item.status | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftablePC.data.length == 0">
                               <td class="f-s-15" colspan="5">No matching search results found for "{{searchtermPC}}"</td>
@@ -178,7 +178,7 @@
                                 <span *ngIf="item.status!==null"><a href [routerLink]="['/clia_variant_reports_ntc']" class="link-none"><i class="fa fa-file-text-o"></i></a></span>
                                 <span *ngIf="item.status===null">-</span>
                               </td>
-                              <td [colorcodeClia]="item.status">{{item.status | dashify}}</td>
+                              <td [colorCodeClia]="item.status">{{item.status | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftableNTC.data.length == 0">
                               <td class="f-s-15" colspan="5">No matching search results found for "{{searchtermNTC}}"</td>
@@ -256,7 +256,7 @@
                                 <span *ngIf="item.status!==null"><a href [routerLink]="['/clia_variant_reports_pacc']" class="link-none"><i class="fa fa-file-text-o"></i></a></span>
                                 <span *ngIf="item.status===null">-</span>
                               </td>
-                              <td [colorcodeClia]="item.status">{{item.status | dashify}}</td>
+                              <td [colorCodeClia]="item.status">{{item.status | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftablePACC.data.length == 0">
                               <td class="f-s-15" colspan="5">No matching search results found for "{{searchtermPACC}}"</td>
@@ -331,7 +331,7 @@
                               </li>
                               <li class="list-group-item" style="border: none">
                                 <span>Status:
-                                    <span class="pull-right" [colorcodeCliaIon]="item.status">
+                                    <span class="pull-right" [colorCodeCliaIon]="item.status">
                                       {{item.status | dashify}}
                                     </span>
                                 </span>

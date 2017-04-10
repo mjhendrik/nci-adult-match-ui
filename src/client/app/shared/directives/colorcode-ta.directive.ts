@@ -1,20 +1,20 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 
-@Directive({ selector: '[colorcodeTa]' })
+@Directive({ selector: '[colorCodeTa]' })
 export class ColorCodeTaDirective implements OnInit {
 
-    @Input() 'colorcodeTa': string;
+    @Input() 'colorCodeTa': string;
 
     constructor(private el: ElementRef) { }
 
     ngOnInit() {
-        if (this.colorcodeTa === 'OPEN' || this.colorcodeTa === 'REACTIVATED') {
+        if (this.colorCodeTa === 'OPEN' || this.colorCodeTa === 'REACTIVATED') {
             this.el.nativeElement.classList.add('text-success-light');
-        } else if (this.colorcodeTa === 'SUSPENDED') {
+        } else if (this.colorCodeTa === 'SUSPENDED') {
             this.el.nativeElement.classList.add('text-warning-light');
-        } else if (this.colorcodeTa === 'CLOSED' || this.colorcodeTa === 'AMENDED') {
+        } else if (this.colorCodeTa === 'CLOSED' || this.colorCodeTa === 'AMENDED') {
             this.el.nativeElement.classList.add('text-danger-light');
-        } else if (this.colorcodeTa === 'PENDING' || this.colorcodeTa === 'READY') {
+        } else if (this.colorCodeTa === 'PENDING' || this.colorCodeTa === 'READY') {
             this.el.nativeElement.classList.add('text-info-light');
         }
 
