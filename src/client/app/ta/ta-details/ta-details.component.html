@@ -94,8 +94,8 @@
                       <div class="table-responsive col-lg-12">
                         <div class="panel-heading">
                           <h5 class="m-t-5">Disease Representation of Patients</h5>
-                          <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [colors]="lineChartColors"
-                            [chartType]="barChartType"></canvas>
+                          <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend"
+                            [colors]="lineChartColors" [chartType]="barChartType"></canvas>
                         </div>
                       </div>
                     </div>
@@ -259,8 +259,9 @@
                             </tr>
                           </tbody>
                         </table>
-                        <table *ngIf="tableRulesData.exclusionDrugs.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="tableRulesData.exclusionDrugs | filterByText: searchtermExdr"
-                          #mftableExdr="mfDataTable" [(mfSortBy)]="tableExdrDefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPageExdr">
+                        <table *ngIf="tableRulesData.exclusionDrugs.length!=0" class="table table-td-valign-middle table-striped table-col-width"
+                          [mfData]="tableRulesData.exclusionDrugs | filterByText: searchtermExdr" #mftableExdr="mfDataTable"
+                          [(mfSortBy)]="tableExdrDefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPageExdr">
                           <thead>
                             <tr class="success-light">
                               <th>
@@ -311,8 +312,9 @@
                             </tr>
                           </tbody>
                         </table>
-                        <table *ngIf="tableRulesData.exclusionDiseases.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="tableRulesData.exclusionDiseases | filterByText: searchtermExdz"
-                          #mftableExdz="mfDataTable" [(mfSortBy)]="tableExdzDefaultSort" [mfRowsOnPage]="recordsPerPageExdz">
+                        <table *ngIf="tableRulesData.exclusionDiseases.length!=0" class="table table-td-valign-middle table-striped table-col-width"
+                          [mfData]="tableRulesData.exclusionDiseases | filterByText: searchtermExdz" #mftableExdz="mfDataTable"
+                          [(mfSortBy)]="tableExdzDefaultSort" [mfRowsOnPage]="recordsPerPageExdz">
                           <thead>
                             <tr class="success-light">
                               <th>
@@ -934,7 +936,7 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableCnvIn.data">
-                              <td><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln={{item.geneName | dashify}}" class="link-none"
+                              <td><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln={{item.geneName}}" class="link-none"
                                   target="_blank">{{item.geneName | dashify}}</a></td>
                               <td>{{item.chromosome | dashify}}</td>
                               <td>{{item.position | dashify}}</td>
@@ -1042,7 +1044,7 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableCnvEx.data">
-                              <td><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln={{item.geneName | dashify}}" class="link-none"
+                              <td><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln={{item.geneName}}" class="link-none"
                                   target="_blank">{{item.geneName | dashify}}</a></td>
                               <!--same as id-->
                               <td>{{item.chromosome | dashify}}</td>
