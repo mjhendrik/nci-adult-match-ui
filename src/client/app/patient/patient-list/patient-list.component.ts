@@ -21,21 +21,22 @@ export class PatientListComponent implements OnInit {
   searchTerm: string = '';
   recordsPerPagePatients: number = 100;
   tablePatientsDefaultSort: string = 'patientSequenceNumber';
-  itemList: any[] = [];
+  tablePatientsData: any[];
   errorMessage: string;
 
   constructor(private patientApi: PatientApiService) {}
 
   ngOnInit() {
-    this.itemList = [];
     //this.getData();
+    this.recordsPerPagePatients = 100;
+    this.tablePatientsDefaultSort = 'patientSequenceNumber';
   }
 
   getData() {
     this.patientApi.getPatientList()
       .subscribe(
         itemList => {
-          this.itemList = itemList;
+          this.tablePatientsData = itemList;
           // let gmt = new GMTFilter();
 
           // for (let i = 0; i < this.itemList.length; i++) {

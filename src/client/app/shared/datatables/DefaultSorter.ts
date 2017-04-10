@@ -1,17 +1,17 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { DataTable, SortEvent } from "./DataTable";
+import { Component, Input, OnInit } from '@angular/core';
+import { DataTable, SortEvent } from './DataTable';
 
 @Component({
-    selector: "mfDefaultSorter",
+    selector: 'mfDefaultSorter',
     template: `
-        <a style="cursor: pointer; color: #ffffff; text-decoration: none;" (click)="sort()" class="text-nowrap">
+        <a style='cursor: pointer; color: #ffffff; text-decoration: none;' (click)='sort()' class='text-nowrap'>
             <ng-content></ng-content>&nbsp;
-            <span *ngIf="isSortedByMeAsc" class="fa fa-sort-amount-asc" aria-hidden="true"></span>
-            <span *ngIf="isSortedByMeDesc" class="fa fa-sort-amount-desc" aria-hidden="true"></span>
+            <span *ngIf='isSortedByMeAsc' class='fa fa-sort-amount-asc' aria-hidden='true'></span>
+            <span *ngIf='isSortedByMeDesc' class='fa fa-sort-amount-desc' aria-hidden='true'></span>
         </a>`
 })
 export class DefaultSorter implements OnInit {
-    @Input("by") sortBy: string;
+    @Input('by') sortBy: string;
 
     isSortedByMeAsc: boolean = false;
     isSortedByMeDesc: boolean = false;
@@ -21,16 +21,16 @@ export class DefaultSorter implements OnInit {
 
     public ngOnInit(): void {
         this.mfTable.onSortChange.subscribe((event: SortEvent) => {
-            this.isSortedByMeAsc = (event.sortBy == this.sortBy && event.sortOrder == "asc");
-            this.isSortedByMeDesc = (event.sortBy == this.sortBy && event.sortOrder == "desc");
+            this.isSortedByMeAsc = (event.sortBy === this.sortBy && event.sortOrder === 'asc');
+            this.isSortedByMeDesc = (event.sortBy === this.sortBy && event.sortOrder === 'desc');
         });
     }
 
     sort() {
         if (this.isSortedByMeAsc) {
-            this.mfTable.setSort(this.sortBy, "desc");
+            this.mfTable.setSort(this.sortBy, 'desc');
         } else {
-            this.mfTable.setSort(this.sortBy, "asc");
+            this.mfTable.setSort(this.sortBy, 'asc');
         }
     }
 }
