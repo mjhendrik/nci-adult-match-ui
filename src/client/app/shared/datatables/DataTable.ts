@@ -1,13 +1,13 @@
 import {
     Directive, Input, EventEmitter, SimpleChange, OnChanges, DoCheck, IterableDiffers,
     IterableDiffer, Output
-} from "@angular/core";
-import * as _ from "lodash";
-import { ReplaySubject } from "rxjs/Rx";
+} from '@angular/core';
+import * as _ from 'lodash';
+import { ReplaySubject } from 'rxjs/Rx';
 
 export interface SortEvent {
     sortBy: string | string[];
-    sortOrder: string
+    sortOrder: string;
 }
 
 export interface PageEvent {
@@ -26,23 +26,22 @@ export interface DataEvent {
 })
 export class DataTable implements OnChanges, DoCheck {
 
-    private diff: IterableDiffer;
-    @Input("mfData") public inputData: any[] = [];
+    @Input('mfData') public inputData: any[] = [];
 
-    @Input("mfSortBy") public sortBy: string | string[] = "";
-    @Input("mfSortOrder") public sortOrder = "asc";
-    @Output("mfSortByChange") public sortByChange = new EventEmitter<string | string[]>();
-    @Output("mfSortOrderChange") public sortOrderChange = new EventEmitter<string>();
+    @Input('mfSortBy') public sortBy: string | string[] = '';
+    @Input('mfSortOrder') public sortOrder = 'asc';
+    @Output('mfSortByChange') public sortByChange = new EventEmitter<string | string[]>();
+    @Output('mfSortOrderChange') public sortOrderChange = new EventEmitter<string>();
 
-    @Input("mfRowsOnPage") public rowsOnPage = 1000;
-    @Input("mfActivePage") public activePage = 1;
-
-    private mustRecalculateData = false;
+    @Input('mfRowsOnPage') public rowsOnPage = 1000;
+    @Input('mfActivePage') public activePage = 1;
 
     public data: any[];
-
     public onSortChange = new ReplaySubject<SortEvent>(1);
     public onPageChange = new EventEmitter<PageEvent>();
+
+    private mustRecalculateData = false;
+    private diff: IterableDiffer;
 
     public constructor(private differs: IterableDiffers) {
         this.diff = differs.find([]).create(null);
@@ -55,7 +54,7 @@ export class DataTable implements OnChanges, DoCheck {
     public setSort(sortBy: string | string[], sortOrder: string): void {
         if (this.sortBy !== sortBy || this.sortOrder !== sortOrder) {
             this.sortBy = sortBy;
-            this.sortOrder = _.includes(["asc", "desc"], sortOrder) ? sortOrder : "asc";
+            this.sortOrder = _.includes(['asc', 'desc'], sortOrder) ? sortOrder : 'asc';
             this.mustRecalculateData = true;
             this.onSortChange.next({ sortBy: sortBy, sortOrder: sortOrder });
             this.sortByChange.emit(this.sortBy);
@@ -64,7 +63,7 @@ export class DataTable implements OnChanges, DoCheck {
     }
 
     public getPage(): PageEvent {
-        return { activePage: this.activePage, rowsOnPage: this.rowsOnPage, dataLength: this.inputData.length };
+        return { activePage: this.activePage, rowsOnPage: this.rowsOnPage, dataLength: this.inputData ? this.inputData.length : 0 };
     }
 
     public setPage(activePage: number, rowsOnPage: number): void {
@@ -77,6 +76,42 @@ export class DataTable implements OnChanges, DoCheck {
                 rowsOnPage: this.rowsOnPage,
                 dataLength: this.inputData ? this.inputData.length : 0
             });
+        }
+    }
+
+    public ngOnChanges(changes: { [key: string]: SimpleChange }): any {
+        if (changes['rowsOnPage']) {
+            this.rowsOnPage = changes['rowsOnPage'].previousValue;
+            this.setPage(this.activePage, changes['rowsOnPage'].currentValue);
+            this.mustRecalculateData = true;
+        }
+        if (changes['sortBy'] || changes['sortOrder']) {
+            if (!_.includes(['asc', 'desc'], this.sortOrder)) {
+                // tslint:disable-next-line:quotemark
+                console.warn("angular2-datatable: value for input mfSortOrder must be one of ['asc', 'desc'], but is:", this.sortOrder);
+                this.sortOrder = 'asc';
+            }
+            if (this.sortBy) {
+                this.onSortChange.next({ sortBy: this.sortBy, sortOrder: this.sortOrder });
+            }
+            this.mustRecalculateData = true;
+        }
+        if (changes['inputData']) {
+            this.inputData = changes['inputData'].currentValue || [];
+            this.recalculatePage();
+            this.mustRecalculateData = true;
+        }
+    }
+
+    public ngDoCheck(): any {
+        let changes = this.diff.diff(this.inputData);
+        if (changes) {
+            this.recalculatePage();
+            this.mustRecalculateData = true;
+        }
+        if (this.mustRecalculateData) {
+            this.fillData();
+            this.mustRecalculateData = false;
         }
     }
 
@@ -96,41 +131,6 @@ export class DataTable implements OnChanges, DoCheck {
             rowsOnPage: this.rowsOnPage,
             dataLength: this.inputData.length
         });
-    }
-
-    public ngOnChanges(changes: { [key: string]: SimpleChange }): any {
-        if (changes["rowsOnPage"]) {
-            this.rowsOnPage = changes["rowsOnPage"].previousValue;
-            this.setPage(this.activePage, changes["rowsOnPage"].currentValue);
-            this.mustRecalculateData = true;
-        }
-        if (changes["sortBy"] || changes["sortOrder"]) {
-            if (!_.includes(["asc", "desc"], this.sortOrder)) {
-                console.warn("angular2-datatable: value for input mfSortOrder must be one of ['asc', 'desc'], but is:", this.sortOrder);
-                this.sortOrder = "asc";
-            }
-            if (this.sortBy) {
-                this.onSortChange.next({ sortBy: this.sortBy, sortOrder: this.sortOrder });
-            }
-            this.mustRecalculateData = true;
-        }
-        if (changes["inputData"]) {
-            this.inputData = changes["inputData"].currentValue || [];
-            this.recalculatePage();
-            this.mustRecalculateData = true;
-        }
-    }
-
-    public ngDoCheck(): any {
-        let changes = this.diff.diff(this.inputData);
-        if (changes) {
-            this.recalculatePage();
-            this.mustRecalculateData = true;
-        }
-        if (this.mustRecalculateData) {
-            this.fillData();
-            this.mustRecalculateData = false;
-        }
     }
 
     private fillData(): void {

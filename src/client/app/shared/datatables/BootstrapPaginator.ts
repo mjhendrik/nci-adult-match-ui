@@ -1,9 +1,9 @@
-import { Component, Input, OnChanges, OnInit } from "@angular/core";
-import { DataTable } from "./DataTable";
-import * as _ from "lodash";
+import { Component, Input, OnChanges } from '@angular/core';
+import { DataTable } from './DataTable';
+import * as _ from 'lodash';
 
 @Component({
-    selector: "mfBootstrapPaginator",
+    selector: 'mfBootstrapPaginator',
     template: `
     <style>
         li.disabled a, li.disabled {
@@ -67,25 +67,21 @@ import * as _ from "lodash";
     </mfPaginator>
     `
 })
-export class BootstrapPaginator implements OnChanges, OnInit {
-    @Input("rowsOnPageSet") rowsOnPageSet: any[] = [];
-    @Input("mfTable") mfTable: DataTable;
-    @Input("search") searchTerm: string;
-    @Input("totallength") totallength: string;
+export class BootstrapPaginator implements OnChanges {
+    @Input('rowsOnPageSet') rowsOnPageSet: any[] = [];
+    @Input('mfTable') mfTable: DataTable;
+    @Input('search') searchTerm: string;
+    @Input('totallength') totallength: string;
 
     minRowsOnPage = 0;
 
     ngOnChanges(changes: any): any {
         if (changes.rowsOnPageSet) {
-            this.minRowsOnPage = _.min(this.rowsOnPageSet)
+            this.minRowsOnPage = _.min(this.rowsOnPageSet);
         }
     }
 
     paginationParse(value: string): number {
         return parseInt(value);
     }
-
-    ngOnInit(): void {
-    }
-
 }

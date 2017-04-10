@@ -39,7 +39,7 @@
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="itemList | filterByText: searchTerm"
+                        <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="tablePatientsData | filterByText: searchTerm"
                           #mftablePatients="mfDataTable" [(mfSortBy)]="tablePatientsDefaultSort" [mfRowsOnPage]="recordsPerPagePatients">
                           <thead>
                             <tr class="purple-light">
@@ -82,13 +82,13 @@
                               <td>{{item.offTrialDate | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftablePatients.data.length == 0">
-                              <td class="f-s-15" colspan="7">No matching search results found for "{{searchTerm}}"</td>
+                              <td class="f-s-15 text-muted" colspan="7"><span *ngIf="searchTerm"></span> No matching search results found for "{{searchTerm}}"</td>
                             </tr>
                           </tbody>
                           <tfoot>
                             <tr>
                               <td class="tfoot-padding" colspan="7">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchTerm" [totallength]="itemList.length"></mfBootstrapPaginator>
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchTerm" [totallength]="tablePatientsData ? tablePatientsData.length : 0"></mfBootstrapPaginator>
                               </td>
                             </tr>
                           </tfoot>

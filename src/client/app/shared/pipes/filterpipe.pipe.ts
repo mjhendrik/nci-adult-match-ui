@@ -7,6 +7,8 @@ import {
 })
 export class filterByText implements PipeTransform {
     transform(items: any[], filterText: string): any[] {
+        if (!items)
+          return items;
         var keys = Object.keys(items[0]);
         var pattern = keys.join('|');
         pattern = pattern + '"|{|}';
