@@ -88,7 +88,7 @@
                           <tfoot>
                             <tr>
                               <td class="tfoot-padding" colspan="7">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchTerm" [totallength]="tablePatientsData.length"></mfBootstrapPaginator>
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchTerm" [totallength]="tablePatientsData ? tablePatientsData.length : 0"></mfBootstrapPaginator>
                               </td>
                             </tr>
                           </tfoot>
