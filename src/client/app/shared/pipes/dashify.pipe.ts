@@ -1,4 +1,7 @@
-import { Pipe, PipeTransform, Injectable } from '@angular/core';
+import {
+    Pipe,
+    PipeTransform
+} from '@angular/core';
 @Pipe({
     name: 'dashify'
 })
