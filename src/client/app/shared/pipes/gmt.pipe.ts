@@ -1,4 +1,8 @@
-import { Pipe, PipeTransform, Injectable } from '@angular/core';
+import {
+    Pipe,
+    PipeTransform,
+    Injectable
+} from '@angular/core';
 import * as moment from 'moment/moment';
 @Pipe({
     name: 'gmt'
