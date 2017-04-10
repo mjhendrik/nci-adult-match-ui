@@ -39,7 +39,7 @@
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="items | filterByText: searchTerm"
+                        <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="itemList | filterByText: searchTerm"
                           #mftablePatients="mfDataTable" [(mfSortBy)]="tablePatientsDefaultSort" [mfRowsOnPage]="recordsPerPagePatients">
                           <thead>
                             <tr class="purple-light">
@@ -88,7 +88,7 @@
                           <tfoot>
                             <tr>
                               <td class="tfoot-padding" colspan="7">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchTerm" [totallength]="items.length"></mfBootstrapPaginator>
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchTerm" [totallength]="itemList.length"></mfBootstrapPaginator>
                               </td>
                             </tr>
                           </tfoot>
