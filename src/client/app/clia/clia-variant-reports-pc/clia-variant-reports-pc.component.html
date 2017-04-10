@@ -82,7 +82,7 @@
           <table class="table table-condensed">
             <thead>
               <tr>
-                <th>Present</th>
+                <th class="text-center">Present</th>
                 <th>ID</th>
                 <th>Chromosome</th>
                 <th>Position</th>
@@ -96,18 +96,23 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Present</td>
-                <td>ID</td>
-                <td>Chromosome</td>
-                <td>Position</td>
-                <td>Gene</td>
-                <td>Variant Type</td>
-                <td>Reference</td>
-                <td>Alternative</td>
-                <td>HGVS</td>
-                <td>Protein</td>
-                <td>Function</td>
+              <tr *ngFor="let item of tablePCsData">
+                <td class="text-center">
+                  <span *ngIf="item.hasMatchingVariant===true"><i class="fa fa-check-circle text-success-light"></i></span>
+                  <span *ngIf="item.hasMatchingVariant===false"><i class="fa fa-times-circle text-danger-light"></i></span>
+                </td>
+                <td>
+                  <external-link [externalLink]="'cosmicId'" [linkId]="item.identifier"></external-link>
+                </td>
+                <td>{{item.chromosome | dashify}}</td>
+                <td>{{item.position | dashify}}</td>
+                <td><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln={{item.geneName}}" class="link-none" target="_blank">{{item.geneName | dashify}}</a></td>
+                <td>{{item.variantType | dashify}}</td>
+                <td>{{item.reference | dashify}}</td>
+                <td>{{item.alternative | dashify}}</td>
+                <td>{{item.dna | dashify}}</td>
+                <td>{{item.protein | dashify}}</td>
+                <td>{{item.function | dashify}}</td>
               </tr>
             </tbody>
           </table>
