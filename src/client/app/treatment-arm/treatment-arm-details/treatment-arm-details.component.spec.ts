@@ -4,17 +4,17 @@ import {
   TestBed
 } from '@angular/core/testing';
 
-import { TaDetailsModule } from './treatment-arm-details.module';
+import { TreatmentArmDetailsModule } from './treatment-arm-details.module';
 
 export function main() {
-  describe('ta-details component', () => {
+  describe('treatment arm details component', () => {
     // Setting module for testing
     // Disable old forms
 
     beforeEach(() => {
       TestBed.configureTestingModule({
         declarations: [TestComponent],
-        imports: [TaDetailsModule]
+        imports: [TreatmentArmDetailsModule]
       });
     });
 
@@ -33,6 +33,6 @@ export function main() {
 
 @Component({
   selector: 'test-cmp',
-  template: '<sd-ta-details></sd-ta-details>'
+  template: '<sd-treatment-arm-details></sd-treatment-arm-details>'
 })
 class TestComponent { }

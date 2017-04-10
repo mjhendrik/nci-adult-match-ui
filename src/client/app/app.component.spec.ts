@@ -14,7 +14,7 @@ import { PatientListComponent } from './patient/patient-list/patient-list.compon
 import { TreatmentArmListComponent } from './treatment-arm/treatment-arm-list/treatment-arm-list.component';
 import { PatientDetailsComponent } from './patient/patient-details/patient-details.component';
 import { PatientVariantReportComponent } from './patient/patient-variant-report/patient-variant-report.component';
-import { TaDetailsComponent } from './treatment-arm/treatment-arm-details/treatment-arm-details.component';
+import { TreatmentArmDetailsComponent } from './treatment-arm/treatment-arm-details/treatment-arm-details.component';
 import { BiopsyTrackingListComponent } from './biopsy-tracking/biopsy-tracking.component';
 import { CliaDartmouthComponent } from './clia/clia-dartmouth/clia-dartmouth.component';
 import { CliaMdaccComponent } from './clia/clia-mdacc/clia-mdacc.component';
@@ -37,7 +37,7 @@ export function main() {
       { path: 'patients/details', component: PatientDetailsComponent },
       { path: 'patients/variant_report', component: PatientVariantReportComponent },
       { path: 'treatments', component: TreatmentArmListComponent },
-      { path: 'treatments/details', component: TaDetailsComponent },
+      { path: 'treatments/details', component: TreatmentArmDetailsComponent },
       { path: 'tracking', component: BiopsyTrackingListComponent },
       { path: 'clia_dartmouth', component: CliaDartmouthComponent },
       { path: 'clia_mdacc', component: CliaMdaccComponent },
@@ -59,7 +59,7 @@ export function main() {
           DashboardComponent,
           PatientListComponent,
           TreatmentArmListComponent,
-          TaDetailsComponent,
+          TreatmentArmDetailsComponent,
           BiopsyTrackingListComponent,
           CliaDartmouthComponent,
           CliaMdaccComponent,
