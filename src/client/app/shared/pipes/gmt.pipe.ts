@@ -6,7 +6,7 @@ import * as moment from 'moment/moment';
 @Pipe({
     name: 'gmt'
 })
-export class GMTFilter implements PipeTransform {
+export class GmtPipe implements PipeTransform {
     transform(inputdate: string): string {
         let date: number;
         if (inputdate !== undefined && inputdate !== null) {

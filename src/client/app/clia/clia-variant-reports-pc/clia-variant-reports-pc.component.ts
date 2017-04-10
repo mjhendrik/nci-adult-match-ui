@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { routerTransition } from './../../shared/router.animations';
-import { GMTFilter } from './../../shared/pipes/gmt.pipe';
+import { GmtPipe } from './../../shared/pipes/gmt.pipe';
 
 
 /**
@@ -14,7 +14,7 @@ import { GMTFilter } from './../../shared/pipes/gmt.pipe';
   styleUrls: ['clia-variant-reports-pc.component.css'],
   animations: [routerTransition()],
   host: { '[@routerTransition]': '' },
-  providers: [GMTFilter]
+  providers: [GmtPipe]
 })
 export class CliaVariantReportsPcComponent {
 
@@ -46,7 +46,7 @@ export class CliaVariantReportsPcComponent {
     this.sortByAsc = 'asc';
     this.sortByDesc = 'desc';
 
-    let gmt = new GMTFilter();
+    let gmt = new GmtPipe();
 
     for (let i = 0; i < this.tablePCData.length; i++) {
       this.tablePCData[i].dateCreated = gmt.transform(this.tablePCData[i].dateCreated);

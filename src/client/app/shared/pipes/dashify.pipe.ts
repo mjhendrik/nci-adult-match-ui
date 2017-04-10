@@ -5,7 +5,7 @@ import {
 @Pipe({
     name: 'dashify'
 })
-export class dashify implements PipeTransform {
+export class DashifyPipe implements PipeTransform {
     transform(text: string): string {
         return text ? text : '-';
     }

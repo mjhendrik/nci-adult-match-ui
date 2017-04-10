@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { routerTransition } from './../../shared/router.animations';
-import { GMTFilter } from './../../shared/pipes/gmt.pipe';
+import { GmtPipe } from './../../shared/pipes/gmt.pipe';
 import { PatientApiService } from '../patient-api.service';
 
 /**
@@ -14,7 +14,7 @@ import { PatientApiService } from '../patient-api.service';
   styleUrls: ['patient-list.component.css'],
   animations: [routerTransition()],
   host: { '[@routerTransition]': '' },
-  providers: [GMTFilter]
+  providers: [GmtPipe]
 })
 export class PatientListComponent implements OnInit {
 
@@ -31,7 +31,7 @@ export class PatientListComponent implements OnInit {
   }
 
   getData() {
-    let gmt = new GMTFilter();
+    let gmt = new GmtPipe();
     this.patientApi.getPatientList()
       .subscribe(itemList => {
           this.tablePatientsData = itemList.map(x => {

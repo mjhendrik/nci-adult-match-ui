@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { routerTransition } from './../../shared/router.animations';
-import { GMTFilter } from './../../shared/pipes/gmt.pipe';
+import { GmtPipe } from './../../shared/pipes/gmt.pipe';
 
 
 /**
@@ -14,7 +14,7 @@ import { GMTFilter } from './../../shared/pipes/gmt.pipe';
   styleUrls: ['treatment-arm-details.component.css'],
   animations: [routerTransition()],
   host: { '[@routerTransition]': '' },
-  providers: [GMTFilter]
+  providers: [GmtPipe]
 })
 export class TreatmentArmDetailsComponent implements OnInit {
 
@@ -196,7 +196,7 @@ export class TreatmentArmDetailsComponent implements OnInit {
     this.ruleIn = itemsRule.filter(item => item.inclusion == true);
     this.ruleEx = itemsRule.filter(item => item.inclusion == false);
 
-    let gmt = new GMTFilter();
+    let gmt = new GmtPipe();
 
     for (let i = 0; i < this.tablePatientData.length; i++) {
       this.tablePatientData[i].dateSelected = gmt.transform(this.tablePatientData[i].dateSelected);
