@@ -24,28 +24,21 @@ export class PatientListComponent implements OnInit {
   tablePatientsData: any[];
   errorMessage: string;
 
-  constructor(private patientApi: PatientApiService) {}
+  constructor(private patientApi: PatientApiService) { }
 
   ngOnInit() {
-    //this.getData();
-    this.recordsPerPagePatients = 100;
-    this.tablePatientsDefaultSort = 'patientSequenceNumber';
+    this.getData();
   }
 
   getData() {
+    let gmt = new GMTFilter();
     this.patientApi.getPatientList()
-      .subscribe(
-        itemList => {
-          this.tablePatientsData = itemList;
-          // let gmt = new GMTFilter();
-
-          // for (let i = 0; i < this.itemList.length; i++) {
-          //   this.itemList[i].registrationDate = gmt.transform(this.itemList[i].registrationDate);
-          // }
-
-          // for (let i = 0; i < this.itemList.length; i++) {
-          //   this.itemList[i].offTrialDate = gmt.transform(this.itemList[i].offTrialDate);
-          // }          
+      .subscribe(itemList => {
+          this.tablePatientsData = itemList.map(x => {
+            x.registrationDate = gmt.transform(x.registrationDate);
+            x.offTrialDate = gmt.transform(x.offTrialDate);
+            return x;
+          });
         },
         error => this.errorMessage = <any>error
       );
