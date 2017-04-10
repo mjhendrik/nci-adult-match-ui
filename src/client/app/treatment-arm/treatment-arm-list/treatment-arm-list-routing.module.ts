@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { TaDetailsComponent } from './ta-details.component';
+import { TaComponent } from './treatment-arm-list.component';
 import { AuthGuard } from './../../shared/auth/auth.guard.service';
 
 @NgModule({
   imports: [
     RouterModule.forChild([
-      { path: 'treatments/details', component: TaDetailsComponent, canActivate: [AuthGuard] }
+      { path: 'treatments', component: TaComponent, canActivate: [AuthGuard] }
     ])
   ],
   exports: [RouterModule]
 })
-export class TaDetailsRoutingModule { }
+export class TaRoutingModule { }
