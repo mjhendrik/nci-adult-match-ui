@@ -4,7 +4,7 @@ import {
 } from '@angular/core';
 
 import { routerTransition } from './../shared/router.animations';
-import { GMTFilter } from './../shared/pipes/gmt';
+import { GMTFilter } from './../shared/pipes/gmt.pipe';
 
 
 /**

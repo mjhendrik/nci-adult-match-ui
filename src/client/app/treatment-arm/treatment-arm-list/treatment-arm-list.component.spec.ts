@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { async, TestBed } from '@angular/core/testing';
 
-import { TaModule } from './ta.module';
+import { TaModule } from './treatment-arm-list.module';
 
 export function main() {
   describe('ta component', () => {

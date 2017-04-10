@@ -4,7 +4,7 @@ import {
   TestBed
 } from '@angular/core/testing';
 
-import { TaDetailsModule } from './ta-details.module';
+import { TaDetailsModule } from './treatment-arm-details.module';
 
 export function main() {
   describe('ta-details component', () => {
