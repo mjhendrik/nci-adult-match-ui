@@ -5,7 +5,7 @@ import {
 @Pipe({
     name: 'filterByText'
 })
-export class filterByText implements PipeTransform {
+export class FilterByTextPipe implements PipeTransform {
     transform(items: any[], filterText: string): any[] {
         if (!items)
           return items;

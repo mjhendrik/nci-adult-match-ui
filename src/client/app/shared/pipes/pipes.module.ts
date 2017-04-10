@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { filterByText } from './filterpipe.pipe';
-import { dashify } from './dashify.pipe';
-import { GMTFilter } from './gmt.pipe';
+import { FilterByTextPipe } from './filterpipe.pipe';
+import { DashifyPipe } from './dashify.pipe';
+import { GmtPipe } from './gmt.pipe';
 
 @NgModule({
   imports: [CommonModule],
-  declarations: [filterByText, dashify, GMTFilter],
-  exports: [filterByText, dashify, GMTFilter],
+  declarations: [FilterByTextPipe, DashifyPipe, GmtPipe],
+  exports: [FilterByTextPipe, DashifyPipe, GmtPipe],
 })
 export class PipesModule { }

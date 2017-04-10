@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from './../shared/router.animations';
-import { GMTFilter } from './../shared/pipes/gmt.pipe';
+import { GmtPipe } from './../shared/pipes/gmt.pipe';
 
 
 /**
@@ -13,7 +13,7 @@ import { GMTFilter } from './../shared/pipes/gmt.pipe';
   styleUrls: ['dashboard.component.css'],
   animations: [routerTransition()],
   host: { '[@routerTransition]': '' },
-  providers: [GMTFilter]
+  providers: [GmtPipe]
 })
 export class DashboardComponent implements OnInit {
 
@@ -47,7 +47,7 @@ export class DashboardComponent implements OnInit {
     this.sortByAsc = 'asc';
     this.sortByDesc = 'desc';
 
-    let gmt = new GMTFilter();
+    let gmt = new GmtPipe();
 
     for (let i = 0; i < this.tableVRData.length; i++) {
       this.tableVRData[i].specimenReceivedDate = gmt.transform(this.tableVRData[i].specimenReceivedDate);

@@ -4,7 +4,7 @@ import {
 } from '@angular/core';
 
 import { routerTransition } from './../shared/router.animations';
-import { GMTFilter } from './../shared/pipes/gmt.pipe';
+import { GmtPipe } from './../shared/pipes/gmt.pipe';
 
 
 /**
@@ -32,7 +32,7 @@ export class BiopsyTrackingListComponent implements OnInit {
     this.recordsPerPageBiopsyTrackingList = 100;
     this.tableBiopsyTrackingListDefaultSort = 'biopsySequenceNumber';
 
-    let gmt = new GMTFilter();
+    let gmt = new GmtPipe();
 
     for (let i = 0; i < this.tableBiopsyTrackingListData.length; i++) {
       this.tableBiopsyTrackingListData[i].specimenReceivedDate = gmt.transform(this.tableBiopsyTrackingListData[i].specimenReceivedDate);
