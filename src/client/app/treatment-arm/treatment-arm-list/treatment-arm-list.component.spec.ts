@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
 import { async, TestBed } from '@angular/core/testing';
 
-import { TaModule } from './treatment-arm-list.module';
+import { TreatmentArmListModule } from './treatment-arm-list.module';
 
 export function main() {
-  describe('ta component', () => {
+  describe('treatment arm list component', () => {
     // Setting module for testing
     // Disable old forms
 
     beforeEach(() => {
       TestBed.configureTestingModule({
         declarations: [TestComponent],
-        imports: [TaModule]
+        imports: [TreatmentArmListModule]
       });
     });
 
@@ -30,6 +30,6 @@ export function main() {
 
 @Component({
   selector: 'test-cmp',
-  template: '<sd-ta></sd-ta>'
+  template: '<sd-treatment-arm-list></sd-treatment-arm-list>'
 })
 class TestComponent { }
