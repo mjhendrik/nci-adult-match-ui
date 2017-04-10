@@ -17,8 +17,8 @@ import { CliaVariantReportsNtcModule } from './clia/clia-variant-reports-ntc/cli
 import { CliaVariantReportsPaccModule } from './clia/clia-variant-reports-pacc/clia-variant-reports-pacc.module';
 import { CliaVariantReportsPcModule } from './clia/clia-variant-reports-pc/clia-variant-reports-pc.module';
 import { BiopsyTrackingListModule } from './biopsy-tracking/biopsy-tracking.module';
-import { TaModule } from './ta/ta.module';
-import { TaDetailsModule } from './ta/ta-details/ta-details.module';
+import { TreatmentArmListModule } from './treatment-arm/treatment-arm-list/treatment-arm-list.module';
+import { TaDetailsModule } from './treatment-arm/treatment-arm-details/treatment-arm-details.module';
 import { PatientListModule } from './patient/patient-list/patient-list.module';
 import { PatientDetailsModule } from './patient/patient-details/patient-details.module';
 import { PatientVariantReportModule } from './patient/patient-variant-report/patient-variant-report.module';
@@ -42,7 +42,7 @@ import { LoginGuard } from './shared/auth/login.guard.service';
     CliaVariantReportsPaccModule,
     CliaVariantReportsPcModule,
     BiopsyTrackingListModule,
-    TaModule,
+    TreatmentArmListModule,
     TaDetailsModule,
     PatientListModule,
     PatientDetailsModule,
