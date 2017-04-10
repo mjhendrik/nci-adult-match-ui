@@ -8,51 +8,51 @@ import { GMTFilter } from './../shared/pipes/gmt';
 
 
 /**
- * This class represents the lazy loaded BTComponent.
+ * This class represents the lazy loaded BiopsyTrackingListComponent.
  */
 @Component({
   moduleId: module.id,
-  selector: 'sd-bt',
-  templateUrl: 'bt.component.html',
-  styleUrls: ['bt.component.css'],
+  selector: 'sd-biopsy-tracking',
+  templateUrl: 'biopsy-tracking.component.html',
+  styleUrls: ['biopsy-tracking.component.css'],
   animations: [routerTransition()],
   host: { '[@routerTransition]': '' }
 })
-export class BtComponent implements OnInit {
+export class BiopsyTrackingListComponent implements OnInit {
 
-  searchtermBT: string = '';
-  recordsPerPageBT: number;
-  tableBTDefaultSort: string;
+  searchtermBiopsyTrackingList: string = '';
+  recordsPerPageBiopsyTrackingList: number;
+  tableBiopsyTrackingListDefaultSort: string;
 
   constructor() {
 
   }
 
   ngOnInit() {
-    this.recordsPerPageBT = 100;
-    this.tableBTDefaultSort = 'biopsySequenceNumber';
+    this.recordsPerPageBiopsyTrackingList = 100;
+    this.tableBiopsyTrackingListDefaultSort = 'biopsySequenceNumber';
 
     let gmt = new GMTFilter();
 
-    for (let i = 0; i < this.tableBTData.length; i++) {
-      this.tableBTData[i].specimenReceivedDate = gmt.transform(this.tableBTData[i].specimenReceivedDate);
+    for (let i = 0; i < this.tableBiopsyTrackingListData.length; i++) {
+      this.tableBiopsyTrackingListData[i].specimenReceivedDate = gmt.transform(this.tableBiopsyTrackingListData[i].specimenReceivedDate);
     }
 
-    for (let i = 0; i < this.tableBTData.length; i++) {
-      this.tableBTData[i].specimenFailureDate = gmt.transform(this.tableBTData[i].specimenFailureDate);
+    for (let i = 0; i < this.tableBiopsyTrackingListData.length; i++) {
+      this.tableBiopsyTrackingListData[i].specimenFailureDate = gmt.transform(this.tableBiopsyTrackingListData[i].specimenFailureDate);
     }
 
-    for (let i = 0; i < this.tableBTData.length; i++) {
-      this.tableBTData[i].pathologyReviewdate = gmt.transform(this.tableBTData[i].pathologyReviewdate);
+    for (let i = 0; i < this.tableBiopsyTrackingListData.length; i++) {
+      this.tableBiopsyTrackingListData[i].pathologyReviewdate = gmt.transform(this.tableBiopsyTrackingListData[i].pathologyReviewdate);
     }
 
-    for (let i = 0; i < this.tableBTData.length; i++) {
-      this.tableBTData[i].dnaShippedDate = gmt.transform(this.tableBTData[i].dnaShippedDate);
+    for (let i = 0; i < this.tableBiopsyTrackingListData.length; i++) {
+      this.tableBiopsyTrackingListData[i].dnaShippedDate = gmt.transform(this.tableBiopsyTrackingListData[i].dnaShippedDate);
     }
 
   }
 
-  tableBTData: any = [
+  tableBiopsyTrackingListData: any = [
     {
       "biopsySequenceNumber": "T-16-000008",
       "specimenReceivedDate": 1462468345727,

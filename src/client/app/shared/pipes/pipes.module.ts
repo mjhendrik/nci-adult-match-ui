@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { filterByText } from './filterpipe';
-import { dashify } from './dashify';
-import { GMTFilter } from './gmt';
+import { filterByText } from './filterpipe.pipe';
+import { dashify } from './dashify.pipe';
+import { GMTFilter } from './gmt.pipe';
 
 @NgModule({
   imports: [CommonModule],

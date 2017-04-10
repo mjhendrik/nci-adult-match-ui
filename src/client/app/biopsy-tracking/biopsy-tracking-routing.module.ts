@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { BtComponent } from './bt.component';
+import { BiopsyTrackingListComponent } from './biopsy-tracking.component';
 import { AuthGuard } from './../shared/auth/auth.guard.service';
 
 @NgModule({
   imports: [
     RouterModule.forChild([
-      { path: 'tracking', component: BtComponent, canActivate: [AuthGuard] }
+      { path: 'tracking', component: BiopsyTrackingListComponent, canActivate: [AuthGuard] }
     ])
   ],
   exports: [RouterModule]
 })
-export class BtRoutingModule { }
+export class BiopsyTrackingListRoutingModule { }
