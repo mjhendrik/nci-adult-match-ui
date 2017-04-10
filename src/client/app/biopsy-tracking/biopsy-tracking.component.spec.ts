@@ -4,17 +4,17 @@ import {
   TestBed
 } from '@angular/core/testing';
 
-import { BtModule } from './bt.module';
+import { BiopsyTrackingListModule } from './biopsy-tracking.module';
 
 export function main() {
-  describe('bt component', () => {
+  describe('biopsy tracking component', () => {
     // Setting module for testing
     // Disable old forms
 
     beforeEach(() => {
       TestBed.configureTestingModule({
         declarations: [TestComponent],
-        imports: [BtModule]
+        imports: [BiopsyTrackingListModule]
       });
     });
 
@@ -33,6 +33,6 @@ export function main() {
 
 @Component({
   selector: 'test-cmp',
-  template: '<sd-bt></sd-bt>'
+  template: '<sd-biopsy-tracking></sd-biopsy-tracking>'
 })
 class TestComponent { }
