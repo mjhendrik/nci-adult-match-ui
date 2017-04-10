@@ -5,18 +5,18 @@ import { GMTFilter } from './../../shared/pipes/gmt.pipe';
 
 
 /**
- * This class represents the lazy loaded TADetailsComponent.
+ * This class represents the lazy loaded TreatmentArmDetailsComponent.
  */
 @Component({
   moduleId: module.id,
-  selector: 'sd-ta-details',
-  templateUrl: 'ta-details.component.html',
-  styleUrls: ['ta-details.component.css'],
+  selector: 'sd-treatment-arm-details',
+  templateUrl: 'treatment-arm-details.component.html',
+  styleUrls: ['treatment-arm-details.component.css'],
   animations: [routerTransition()],
   host: { '[@routerTransition]': '' },
   providers: [GMTFilter]
 })
-export class TaDetailsComponent implements OnInit {
+export class TreatmentArmDetailsComponent implements OnInit {
 
   searchtermExdr: string = '';
   searchtermExdz: string = '';
