@@ -1,10 +1,10 @@
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
-import { DataTable } from "./DataTable";
-import { DefaultSorter } from "./DefaultSorter";
-import { Paginator } from "./Paginator";
-import { BootstrapPaginator } from "./BootstrapPaginator";
+import { DataTable } from './DataTable';
+import { DefaultSorter } from './DefaultSorter';
+import { Paginator } from './Paginator';
+import { BootstrapPaginator } from './BootstrapPaginator';
 
 @NgModule({
     imports: [
@@ -24,5 +24,4 @@ import { BootstrapPaginator } from "./BootstrapPaginator";
     ]
 })
 export class DataTableModule {
-
 }
