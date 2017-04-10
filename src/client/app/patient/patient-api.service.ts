@@ -21,7 +21,7 @@ export class PatientApiService {
    * Returns an Observable for the HTTP GET request for the JSON resource.
    * @return {string[]} The Observable for the HTTP request.
    */
-  getPatientList(): Observable<string[]> {
+  getPatientList(): Observable<any[]> {
     return this.http.get('assets/mock-data/patient-list.json')
                     .map((res: Response) => res.json())
     //              .do(data => console.log('server data:', data))  // debug
