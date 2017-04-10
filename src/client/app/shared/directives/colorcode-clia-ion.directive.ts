@@ -1,14 +1,14 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 
-@Directive({ selector: '[colorcodeCliaIon]' })
+@Directive({ selector: '[colorCodeCliaIon]' })
 export class ColorCodeCliaIonDirective implements OnInit {
 
-    @Input() 'colorcodeCliaIon': string;
+    @Input() 'colorCodeCliaIon': string;
 
     constructor(private el: ElementRef) { }
 
     ngOnInit() {
-        if (this.colorcodeCliaIon.indexOf('Contacted') !== -1) this.el.nativeElement.classList.add('text-success-light');
+        if (this.colorCodeCliaIon.indexOf('Contacted') !== -1) this.el.nativeElement.classList.add('text-success-light');
         else this.el.nativeElement.classList.add('text-danger-light');
     }
 
