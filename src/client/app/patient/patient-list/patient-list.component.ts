@@ -1,14 +1,11 @@
-import {
-  Component,
-  OnInit
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { routerTransition } from './../../shared/router.animations';
 import { GMTFilter } from './../../shared/pipes/gmt';
 import { PatientApiService } from '../patient-api.service';
 
 /**
- * This class represents the lazy loaded PatientListComponent.
+ * Lazy loaded PatientListComponent.
  */
 @Component({
   moduleId: module.id,
@@ -30,6 +27,7 @@ export class PatientListComponent implements OnInit {
   constructor(private patientApi: PatientApiService) {}
 
   ngOnInit() {
+    this.itemList = [];
     //this.getData();
   }
 
