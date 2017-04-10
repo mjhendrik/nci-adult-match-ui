@@ -1,7 +1,6 @@
 import {
     Pipe,
-    PipeTransform,
-    Injectable
+    PipeTransform
 } from '@angular/core';
 @Pipe({
     name: 'filterByText'
