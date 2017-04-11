@@ -32,14 +32,14 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input type="text" [(ngModel)]="searchTerm" class="form-control form-control-purple input-sm" placeholder="" aria-controls="data-table">                      
+                        <input type="text" [(ngModel)]="searchTermP" class="form-control form-control-purple input-sm" placeholder="" aria-controls="data-table">                      
                         </label>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="tablePatientsData | filterByText: searchTerm"
+                        <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="tablePatientsData | filterByText: searchTermP"
                           #mftablePatients="mfDataTable" [(mfSortBy)]="tablePatientsDefaultSort" [mfRowsOnPage]="recordsPerPagePatients">
                           <thead>
                             <tr class="purple-light">
@@ -83,15 +83,15 @@
                             </tr>
                             <tr *ngIf="mftablePatients.data.length == 0">
                               <td class="f-s-15 text-muted" colspan="7">
-                                <span *ngIf="searchTerm"> No matching search results found for "{{searchTerm}}"</span>
-                                <span *ngIf="!searchTerm">No patient data</span>
+                                <span *ngIf="searchTermP"> No matching search results found for "{{searchTermP}}"</span>
+                                <span *ngIf="!searchTermP">No patient data</span>
                               </td>
                             </tr>
                           </tbody>
                           <tfoot>
                             <tr>
                               <td class="tfoot-padding" colspan="7">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchTerm" [totallength]="tablePatientsData ? tablePatientsData.length : 0"></mfBootstrapPaginator>
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchTermP" [totallength]="tablePatientsData ? tablePatientsData.length : 0"></mfBootstrapPaginator>
                               </td>
                             </tr>
                           </tfoot>

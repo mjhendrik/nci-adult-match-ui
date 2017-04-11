@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
 
 import { routerTransition } from './../../shared/router.animations';
 import { GmtPipe } from './../../shared/pipes/gmt.pipe';
@@ -18,7 +21,7 @@ import { PatientApiService } from '../patient-api.service';
 })
 export class PatientListComponent implements OnInit {
 
-  searchTerm: string = '';
+  searchTermP: string = '';
   recordsPerPagePatients: number = 100;
   tablePatientsDefaultSort: string = 'patientSequenceNumber';
   tablePatientsData: any[];
@@ -34,13 +37,14 @@ export class PatientListComponent implements OnInit {
     let gmt = new GmtPipe();
     this.patientApi.getPatientList()
       .subscribe(itemList => {
-          this.tablePatientsData = itemList.map(x => {
-            x.registrationDate = gmt.transform(x.registrationDate);
-            x.offTrialDate = gmt.transform(x.offTrialDate);
-            return x;
-          });
-        },
-        error => this.errorMessage = <any>error
+        this.tablePatientsData = itemList.map(x => {
+          x.registrationDate = gmt.transform(x.registrationDate);
+          x.offTrialDate = gmt.transform(x.offTrialDate);
+          return x;
+        });
+      },
+      error => this.errorMessage = <any>error
       );
   }
+
 }
