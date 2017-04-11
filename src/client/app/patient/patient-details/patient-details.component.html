@@ -1,13 +1,10 @@
 <div id="content" class="content">
-  
   <ul class="breadcrumb pull-right">
     <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
     <li><a href [routerLink]="['/patients']" class="link-none">Patients</a></li>
     <li class="active">Patient 10069</li>
   </ul>
-  
   <h1 class="page-header">Patient 10069</h1>
-
   <div class="row" matchHeight="panel-height">
     <div class="col-md-6">
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height">
@@ -15,77 +12,59 @@
           <dl class="dl-horizontal">
             <dt>Patient Sequence Number</dt>
             <dd>10069</dd>
-
             <dt>Patient</dt>
             <dd>MALE, WHITE</dd>
-
             <dt>Status</dt>
             <dd><span [colorCodePatients]="'ON_TREATMENT_ARM'">ON_TREATMENT_ARM</span></dd>
-
             <dt>Assignment Reason</dt>
-            <dd class="widget-stat-text">The patient and treatment arm match on non-hotspot variant [(ID: .,GENE: NF1,OVA: Deleterious,EXON: 35,FUNC: nonsense,PROTEIN:p.Arg1534Ter)].</dd>
-
+            <dd class="widget-stat-text">The patient and treatment arm match on non-hotspot variant [(ID: .,GENE: NF1,OVA: Deleterious,EXON: 35,FUNC:
+              nonsense,PROTEIN:p.Arg1534Ter)].
+            </dd>
             <dt>Current Step</dt>
             <dd>1</dd>
-
             <dt>Treatment Arm</dt>
             <dd>EAY131-S1</dd>
-
             <dt>Registration Date</dt>
             <dd>September 4, 2015 7:00 PM GMT</dd>
-
             <dt>Last Rejoin Scan Date</dt>
             <dd>February 29, 2016 5:04 PM GMT</dd>
-
           </dl>
         </div>
       </div>
     </div>
-
     <div class="col-md-6">
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height">
         <div class="panel-heading">
           <dl class="dl-horizontal">
             <dt>Concordance</dt>
             <dd>YES</dd>
-
             <dt>Disease(s)</dt>
             <dd>-</dd>
-
             <dt>Short Name</dt>
             <dd>Glioblastoma multiforme</dd>
-
             <dt>CTEP Category</dt>
             <dd>CNS Neoplasm (Primary Tumor)</dd>
-
             <dt>CTEP Sub Category</dt>
             <dd>Astrocytoma, High Grade</dd>
-
             <dt>CTEP Term</dt>
             <dd>Glioblastoma multiforme</dd>
-
             <dt>MedDRA Code</dt>
             <dd>10018337</dd>
-
           </dl>
         </div>
       </div>
     </div>
   </div>
-
   <div class="row">
     <div class="col-md-12">
       <div class="panel">
-
         <ul class="nav nav-tabs nav-tabs-purple">
           <li class="active"><a href="#tab-summary" data-toggle="tab">Summary</a></li>
           <li class=""><a href="#tab-biopsy-t-16-000762" data-toggle="tab">Biopsy T-16-000762</a></li>
           <li class=""><a href="#tab-biopsy-t-16-000789" data-toggle="tab">Biopsy T-16-000789</a></li>
           <li class=""><a href="#tab-documents" data-toggle="tab">Documents</a></li>
         </ul>
-
         <div class="tab-content m-b-0">
-
           <div class="tab-pane active fade in" id="tab-summary">
             <div class="row">
               <div class="col-md-3">
@@ -99,7 +78,6 @@
                   </a>
                 </div>
               </div>
-
               <div class="col-md-3">
                 <div class="widget widget-stat bg-warning">
                   <a href [routerLink]="['/patients/variant_report']">
@@ -111,354 +89,314 @@
                   </a>
                 </div>
               </div>
-
             </div>
-
             <div class="row">
               <div class="col-md-6">
-
                 <div class="widget match-timeline panel-accent-bottom-purple">
                   <div class="widget-header bg-light-purple">
                     <h4 class="text-white f-s-18">Patient Timeline</h4>
                   </div>
-
                   <div class="widget-body">
                     <ul class="match-timeline-list">
-
                       <li class="timeline-item">
-                          <div class="timeline-info">
-                            <div class="timeline-image">
-                              <i class="fa fa-bar-chart fa-2x"></i>
-                            </div>
-                            
-                            <h4>REJOIN_REQUESTED</h4>
-                            <p>
-                              EAY131-Q ( 2016-01-20 )
-                              <a href>Variant Report</a>
-                              February 25, 2016 6:27 PM GMT
-                            </p>
-                            <span class="timeline-time">08:41 AM</span>
+                        <div class="timeline-info">
+                          <div class="timeline-image">
+                            <i class="fa fa-bar-chart fa-2x"></i>
                           </div>
+                          <h4>REJOIN_REQUESTED</h4>
+                          <p>
+                            EAY131-Q ( 2016-01-20 )
+                            <a href>Variant Report</a> February 25, 2016 6:27 PM GMT
+                          </p>
+                          <span class="timeline-time">08:41 AM</span>
+                        </div>
                       </li>
-
                       <li class="timeline-item">
-                          <div class="timeline-info">
-                            <div class="timeline-image">
-                              <i class="fa fa-user fa-2x"></i>
-                            </div>
-                            
-                            <h4>OFF_TRIAL_NO_TA_AVAILABLE</h4>
-                            <p>
-                              November 6, 2015 5:39 PM GMT
-                              No candidate arm is available for this patient, notified the site
-                            </p>
-                            <span class="timeline-time">06:30 AM</span>
+                        <div class="timeline-info">
+                          <div class="timeline-image">
+                            <i class="fa fa-user fa-2x"></i>
                           </div>
+                          <h4>OFF_TRIAL_NO_TA_AVAILABLE</h4>
+                          <p>
+                            November 6, 2015 5:39 PM GMT No candidate arm is available for this patient, notified the site
+                          </p>
+                          <span class="timeline-time">06:30 AM</span>
+                        </div>
                       </li>
-
                       <li class="timeline-item">
-                          <div class="timeline-info">
-                            <div class="timeline-image">
-                              <i class="fa fa-user fa-2x"></i>
-                            </div>
-                            
-                            <h4>PENDING_OFF_STUDY</h4>
-                            <p>
-                              <a href>Assignment Report</a>
-                              <a href>Variant Report</a>
-                              November 6, 2015 5:39 PM GMT
-                            </p>
-                            <span class="timeline-time">03:11 AM</span>
+                        <div class="timeline-info">
+                          <div class="timeline-image">
+                            <i class="fa fa-user fa-2x"></i>
                           </div>
+                          <h4>PENDING_OFF_STUDY</h4>
+                          <p>
+                            <a href>Assignment Report</a>
+                            <a href>Variant Report</a> November 6, 2015 5:39 PM GMT
+                          </p>
+                          <span class="timeline-time">03:11 AM</span>
+                        </div>
                       </li>
-
                       <li class="timeline-item">
-                          <div class="timeline-info">
-                            <div class="timeline-image">
-                              <i class="fa fa-medkit fa-2x"></i>
-                            </div>
-                            
-                            <h4>PENDING_CONFIRMATION</h4>
-                            <p>
-                              <a href>Assignment Report</a>
-                              <a href>Variant Report</a>
-                              November 5, 2015 2:11 PM GMT
-                            </p>
-                            <span class="timeline-time">Yesterday</span>
+                        <div class="timeline-info">
+                          <div class="timeline-image">
+                            <i class="fa fa-medkit fa-2x"></i>
                           </div>
+                          <h4>PENDING_CONFIRMATION</h4>
+                          <p>
+                            <a href>Assignment Report</a>
+                            <a href>Variant Report</a> November 5, 2015 2:11 PM GMT
+                          </p>
+                          <span class="timeline-time">Yesterday</span>
+                        </div>
                       </li>
-
                       <li class="timeline-item">
-                          <div class="timeline-info">
-                            <div class="timeline-image">
-                              <i class="fa fa-user fa-2x"></i>
-                            </div>
-                            
-                            <h4>NOT_ELIGIBLE</h4>
-                            <p>
-                              EAY131-Q ( 2015-08-06 )
-                              <a href>Assignment Report</a>
-                              <a href>Variant Report</a>
-                              November 5, 2015 2:11 PM GMT
-                              Treatment evaluation process completed, patient was ineligible.
-                            </p>
-                            <span class="timeline-time">Yesterday</span>
+                        <div class="timeline-info">
+                          <div class="timeline-image">
+                            <i class="fa fa-user fa-2x"></i>
                           </div>
+                          <h4>NOT_ELIGIBLE</h4>
+                          <p>
+                            EAY131-Q ( 2015-08-06 )
+                            <a href>Assignment Report</a>
+                            <a href>Variant Report</a> November 5, 2015 2:11 PM GMT Treatment evaluation process completed,
+                            patient was ineligible.
+                          </p>
+                          <span class="timeline-time">Yesterday</span>
+                        </div>
                       </li>
-
                       <li class="timeline-item">
-                          <div class="timeline-info">
-                            <div class="timeline-image">
-                              <i class="fa fa-medkit fa-2x"></i>
-                            </div>
-                            
-                            <h4>PENDING_APPROVAL</h4>
-                            <p>
-                              EAY131-Q ( 2015-08-06 )
-                              <a href>Assignment Report</a>
-                              <a href>Variant Report</a>
-                              November 4, 2015 6:01 PM GMT
-                            </p>
-                            <span class="timeline-time">2 days ago</span>
+                        <div class="timeline-info">
+                          <div class="timeline-image">
+                            <i class="fa fa-medkit fa-2x"></i>
                           </div>
+                          <h4>PENDING_APPROVAL</h4>
+                          <p>
+                            EAY131-Q ( 2015-08-06 )
+                            <a href>Assignment Report</a>
+                            <a href>Variant Report</a> November 4, 2015 6:01 PM GMT
+                          </p>
+                          <span class="timeline-time">2 days ago</span>
+                        </div>
                       </li>
-
                       <li class="timeline-item">
-                          <div class="timeline-info">
-                            <div class="timeline-image">
-                              <i class="fa fa-medkit fa-2x"></i>
-                            </div>
-                            
-                            <h4>PENDING_CONFIRMATION</h4>
-                            <p>
-                              EAY131-Q ( 2015-08-06 )
-                              <a href>Assignment Report</a>
-                              <a href>Variant Report</a>
-                              November 4, 2015 5:30 PM GMT
-                            </p>
-                            <span class="timeline-time">2 days ago</span>
+                        <div class="timeline-info">
+                          <div class="timeline-image">
+                            <i class="fa fa-medkit fa-2x"></i>
                           </div>
+                          <h4>PENDING_CONFIRMATION</h4>
+                          <p>
+                            EAY131-Q ( 2015-08-06 )
+                            <a href>Assignment Report</a>
+                            <a href>Variant Report</a> November 4, 2015 5:30 PM GMT
+                          </p>
+                          <span class="timeline-time">2 days ago</span>
+                        </div>
                       </li>
-
                       <li class="timeline-item">
-                          <div class="timeline-info">
-                            <div class="timeline-image">
-                              <i class="fa fa-bar-chart fa-2x"></i>
-                            </div>
-                            
-                            <h4>PENDING_VARIANT_REPORT</h4>
-                            <p>
-                              <a href>Variant Report</a>
-                              November 4, 2015 5:30 PM GMT
-                            </p>
-                            <span class="timeline-time">2 days ago</span>
+                        <div class="timeline-info">
+                          <div class="timeline-image">
+                            <i class="fa fa-bar-chart fa-2x"></i>
                           </div>
+                          <h4>PENDING_VARIANT_REPORT</h4>
+                          <p>
+                            <a href>Variant Report</a> November 4, 2015 5:30 PM GMT
+                          </p>
+                          <span class="timeline-time">2 days ago</span>
+                        </div>
                       </li>
-
                     </ul>
-
                   </div>
                 </div>
-
               </div>
             </div>
           </div>
-
           <div class="tab-pane fade" id="tab-biopsy-t-16-000762">
-            
             <div class="row">
-
               <div class="col-md-6">
                 <div class="panel panel-white overflow-hidden biopsy-panel-height panel-accent-bottom-purple">
-
                   <div class="panel-heading">
                     <dl class="dl-horizontal">
-
                       <dt>Specimen Collection Date</dt>
                       <dd>August 12, 2016 5:40 PM GMT</dd>
-
                       <dt>Specimen Received Date</dt>
                       <dd>August 13, 2016 5:26 PM GMT</dd>
-
                       <dt>Specimen Failure Date</dt>
                       <dd>-</dd>
-
                     </dl>
                   </div>
                 </div>
               </div>
-
               <div class="col-md-6">
                 <div class="panel panel-white overflow-hidden biopsy-panel-height panel-accent-bottom-purple">
-
                   <div class="panel-heading">
                     <dl class="dl-horizontal">
-
                       <dt>Pathology Status</dt>
                       <dd>-</dd>
-
                       <dt>Pathology Received Date</dt>
                       <dd>-</dd>
-
                       <dt>Concordance</dt>
                       <dd>YES</dd>
-
                       <dt>Comment</dt>
                       <dd>-</dd>
-
                     </dl>
                   </div>
                 </div>
               </div>
-
             </div>
-
             <div class="row">
               <div class="col-md-12">
                 <div class="panel panel-accent-bottom-purple">
                   <div class="panel-heading">
-                      <h4 class="panel-title f-s-18">Assay History</h4>
+                    <h4 class="panel-title f-s-18">Assay History</h4>
                   </div>
                   <div class="table-responsive">
-                      <table class="table table-td-valign-middle">
-                          <thead>
-                              <tr>
-                                <th>IHC</th>
-                                <th>Assay Order Date</th>
-                                <th>Assay Result Date</th>
-                                <th>Result</th>
-                                <th>Comment</th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                            <tr><td>RB</td><td>Not Applicable</td><td>Not Applicable</td><td>Not Applicable</td><td>Patient does not have CCND1, CDK4 or CDK6 gene amplification to require RB assay.</td></tr>
-                            <tr><td>MSH2</td><td>August 15, 2016 1:59 PM GMT</td><td>August 17, 2016 3:11 AM GMT</td><td>POSITIVE</td><td>-</td></tr>
-                            <tr><td>MLH1</td><td>August 15, 2016 1:59 PM GMT</td><td>August 17, 2016 3:11 AM GMT</td><td>NEGATIVE</td><td>-</td></tr>
-                            <tr><td>PTEN</td><td>August 15, 2016 1:59 PM GMT</td><td>August 17, 2016 3:11 AM GMT</td><td>POSITIVE</td><td>-</td></tr>
-                          </tbody>
-                      </table>
+                    <table class="table table-td-valign-middle">
+                      <thead>
+                        <tr>
+                          <th>IHC</th>
+                          <th>Assay Order Date</th>
+                          <th>Assay Result Date</th>
+                          <th>Result</th>
+                          <th>Comment</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>RB</td>
+                          <td>Not Applicable</td>
+                          <td>Not Applicable</td>
+                          <td>Not Applicable</td>
+                          <td>Patient does not have CCND1, CDK4 or CDK6 gene amplification to require RB assay.</td>
+                        </tr>
+                        <tr>
+                          <td>MSH2</td>
+                          <td>August 15, 2016 1:59 PM GMT</td>
+                          <td>August 17, 2016 3:11 AM GMT</td>
+                          <td>POSITIVE</td>
+                          <td>-</td>
+                        </tr>
+                        <tr>
+                          <td>MLH1</td>
+                          <td>August 15, 2016 1:59 PM GMT</td>
+                          <td>August 17, 2016 3:11 AM GMT</td>
+                          <td>NEGATIVE</td>
+                          <td>-</td>
+                        </tr>
+                        <tr>
+                          <td>PTEN</td>
+                          <td>August 15, 2016 1:59 PM GMT</td>
+                          <td>August 17, 2016 3:11 AM GMT</td>
+                          <td>POSITIVE</td>
+                          <td>-</td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>
             </div>
-
             <div class="row">
               <div class="col-md-12">
                 <div class="panel panel-accent-bottom-purple">
                   <div class="panel-heading">
-                      <h4 class="panel-title f-s-18">Nucleic Acid Sendout</h4>
+                    <h4 class="panel-title f-s-18">Nucleic Acid Sendout</h4>
                   </div>
                   <div class="table-responsive">
-                      <table class="table table-td-valign-middle">
-                          <thead>
-                              <tr>
-                                  <th>Molecular Sequence Number</th>
-                                  <th>Destination Site</th>
-                                  <th>Tracking Number</th>
-                                  <th>DNA Conc</th>
-                                  <th>DNA Vol</th>
-                                  <th>Reported Date</th>
-                                  <th>Comment</th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>MSN17772</td>
-                              <td>MoCha</td>
-                              <td><a href="javascript:alert('Opens the tracking page')">783854296970</a></td>
-                              <td>51</td>
-                              <td>10</td>
-                              <td>August 17, 2016 11:58 PM GMT</td>
-                              <td>-</td>
-                            </tr>
-                            <tr>
-                              <td colspan="7" class="bg-body">
-
-                                <div class="panel panel-with-tabs panel-accent-sides-purple panel-details-row">
-                                  <div class="panel-heading">
-                                    <ul id="panel-tab" class="nav nav-tabs pull-right nav-tabs-purple">
-                                      <li class="active"><a href="#panel-tab-info" data-toggle="tab" aria-expanded="true"><i class="fa fa-align-left"></i> <span class="hidden-xs">Info</span></a></li>
-                                      <li class=""><a href="#panel-tab-files" data-toggle="tab" aria-expanded="false"><i class="fa fa-file-archive-o"></i> <span class="hidden-xs">Files</span></a></li>
-                                    </ul>
-                                    <h4 class="panel-title f-s-18">Analysis ID: MSN17772_v1_92ad9833-e79a-4807-b1f3-6be88a0ab824</h4>
-                                  </div>
-                                  <div id="panel-tab-content" class="tab-content">
-                                    <div class="tab-pane fade active in" id="panel-tab-info">
-                                      <div class="row">
-                                        <div class="col-md-6">
-                                          <dl class="dl-horizontal">
-                                              <dt>Variant Report</dt>
-                                              <dd><a href [routerLink]="['/patients/variant_report']"><i class="fa fa-file-text-o"></i></a></dd>
-
-                                              <dt>Status</dt>
-                                              <dd>CONFIRMED	</dd>
-
-                                              <dt>File Received Date</dt>
-                                              <dd>August 25, 2016 10:13 PM GMT</dd>
-
-                                              <dt>Rejected/Confirmed Date</dt>
-                                              <dd>August 26, 2016 3:28 PM GMT</dd>
-                                          </dl>                                      
-                                        </div>
-                                        <div class="col-md-6">
-                                          <dl class="dl-horizontal">
-                                              <dt>Assignment Report</dt>
-                                              <dd><a href><i class="fa fa-file-text-o"></i></a></dd>
-
-                                              <dt>Status</dt>
-                                              <dd>CONFIRMED	</dd>
-
-                                              <dt>Generation Date</dt>
-                                              <dd>August 1, 2016 9:48 PM GMT</dd>
-
-                                              <dt>Received from ECOG Date</dt>
-                                              <dd>August 2, 2016 4:31 PM GMT</dd>
-
-                                              <dt>Assignment Logic</dt>
-                                              <dd>The patient and treatment arm match on variant identifier [COSM569].</dd>
-                                          </dl>                                      
-                                        </div>
-                                      </div>
+                    <table class="table table-td-valign-middle">
+                      <thead>
+                        <tr>
+                          <th>Molecular Sequence Number</th>
+                          <th>Destination Site</th>
+                          <th>Tracking Number</th>
+                          <th>DNA Conc</th>
+                          <th>DNA Vol</th>
+                          <th>Reported Date</th>
+                          <th>Comment</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>MSN17772</td>
+                          <td>MoCha</td>
+                          <td><a href="javascript:alert('Opens the tracking page')">783854296970</a></td>
+                          <td>51</td>
+                          <td>10</td>
+                          <td>August 17, 2016 11:58 PM GMT</td>
+                          <td>-</td>
+                        </tr>
+                        <tr>
+                          <td colspan="7" class="bg-body">
+                            <div class="panel panel-with-tabs panel-accent-sides-purple panel-details-row">
+                              <div class="panel-heading">
+                                <ul id="panel-tab" class="nav nav-tabs pull-right nav-tabs-purple">
+                                  <li class="active"><a href="#panel-tab-info" data-toggle="tab" aria-expanded="true"><i class="fa fa-align-left"></i> <span class="hidden-xs">Info</span></a></li>
+                                  <li class=""><a href="#panel-tab-files" data-toggle="tab" aria-expanded="false"><i class="fa fa-file-archive-o"></i> <span class="hidden-xs">Files</span></a></li>
+                                </ul>
+                                <h4 class="panel-title f-s-18">Analysis ID: MSN17772_v1_92ad9833-e79a-4807-b1f3-6be88a0ab824</h4>
+                              </div>
+                              <div id="panel-tab-content" class="tab-content">
+                                <div class="tab-pane fade active in" id="panel-tab-info">
+                                  <div class="row">
+                                    <div class="col-md-6">
+                                      <dl class="dl-horizontal">
+                                        <dt>Variant Report</dt>
+                                        <dd><a href [routerLink]="['/patients/variant_report']"><i class="fa fa-file-text-o"></i></a></dd>
+                                        <dt>Status</dt>
+                                        <dd>CONFIRMED </dd>
+                                        <dt>File Received Date</dt>
+                                        <dd>August 25, 2016 10:13 PM GMT</dd>
+                                        <dt>Rejected/Confirmed Date</dt>
+                                        <dd>August 26, 2016 3:28 PM GMT</dd>
+                                      </dl>
                                     </div>
-                                    <div class="tab-pane fade" id="panel-tab-files">
-                                      <p>
-                                        <button type="button" class="btn btn-purple-light btn-rounded">DNA BAM</button>
-                                        <button type="button" class="btn btn-purple-light btn-rounded">DNA BAI</button>
-                                        <button type="button" class="btn btn-purple-light btn-rounded">RNA BAM</button>
-                                        <button type="button" class="btn btn-purple-light btn-rounded">RNA BAI</button>
-                                        <button type="button" class="btn btn-purple-light btn-rounded">VCF</button>
-                                      </p>
+                                    <div class="col-md-6">
+                                      <dl class="dl-horizontal">
+                                        <dt>Assignment Report</dt>
+                                        <dd><a href><i class="fa fa-file-text-o"></i></a></dd>
+                                        <dt>Status</dt>
+                                        <dd>CONFIRMED </dd>
+                                        <dt>Generation Date</dt>
+                                        <dd>August 1, 2016 9:48 PM GMT</dd>
+                                        <dt>Received from ECOG Date</dt>
+                                        <dd>August 2, 2016 4:31 PM GMT</dd>
+                                        <dt>Assignment Logic</dt>
+                                        <dd>The patient and treatment arm match on variant identifier [COSM569].</dd>
+                                      </dl>
                                     </div>
                                   </div>
                                 </div>
-
-                              </td>
-                            </tr>
-                          </tbody>
-                      </table>
+                                <div class="tab-pane fade" id="panel-tab-files">
+                                  <p>
+                                    <button type="button" class="btn btn-purple-light btn-rounded">DNA BAM</button>
+                                    <button type="button" class="btn btn-purple-light btn-rounded">DNA BAI</button>
+                                    <button type="button" class="btn btn-purple-light btn-rounded">RNA BAM</button>
+                                    <button type="button" class="btn btn-purple-light btn-rounded">RNA BAI</button>
+                                    <button type="button" class="btn btn-purple-light btn-rounded">VCF</button>
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>
             </div>
-
           </div>
-
           <div class="tab-pane fade" id="tab-biopsy-t-16-000789">
             <p class="text-muted">
               Another Biopsy goes here
             </p>
           </div>
-
           <div class="tab-pane fade" id="tab-documents">
             <p class="text-muted">
               Patient Documents
             </p>
           </div>
-
         </div>
       </div>
     </div>
   </div>
-
 </div>
-
