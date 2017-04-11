@@ -209,7 +209,7 @@ export class PatientDetailsComponent implements OnInit {
     "analysisId": "MSN17772_v1_92ad9833-e79a-4807-b1f3-6be88a0ab824",
     "variantStatus": "CONFIRMED ",
     "variantFileReceivedDate": "August 25, 2016 10:13 PM GMT",
-    "variantRejected/ConfirmedDate": "August 26, 2016 3:28 PM GMT",
+    "variantRejectedOrConfirmedDate": "August 26, 2016 3:28 PM GMT",
     "assignmentStatus": "CONFIRMED ",
     "assignmentGenerationDate": "August 1, 2016 9:48 PM GMT",
     "assignmentReceivedDate": "August 2, 2016 4:31 PM GMT",
