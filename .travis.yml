@@ -4,7 +4,8 @@ node_js: stable
 sudo: false
 
 install: true  # yarn bug
-
+services:
+  - docker
 addons:
   firefox: "45.0"
 
