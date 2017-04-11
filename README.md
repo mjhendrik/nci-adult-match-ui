@@ -18,6 +18,9 @@ $ npm start
 # api document for the app
 # npm run build.docs
 
+# if you see an error like 'Node Sass could not find a binding for your current environment'
+$ npm rebuild node-sass --force
+
 # generate api documentation
 $ npm run compodoc
 $ npm run serve.compodoc
