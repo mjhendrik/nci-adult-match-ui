@@ -259,6 +259,10 @@ body {
   background: $orangeshade-color;
 }
 
+.bg-orangeshade {
+  background: $orangeshade-color !important;
+}
+
 .bg-orangeshade-light {
   background: $light-orangeshade-color !important;
 }
