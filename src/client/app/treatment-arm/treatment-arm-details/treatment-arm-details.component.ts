@@ -110,13 +110,44 @@ export class TreatmentArmDetailsComponent implements OnInit {
     }
   ];
 
-  public barChartLabels: string[] = ['Adenocarcinoma - pancreas', 'Adenocarcinoma, NOS', 'Bone cancer, NOS', 'Carcinoma, NOS', 'Cholangiocar.- intra/extrahepatic', 'CNS primary tumor, NOS', 'Female reprod. system cancer, NOS', 'Lung adenocarcinoma', 'Neuroendocrine cancer, NOS', 'Ovarian epithelial cancer', 'Pancreatic neuroendocrine tumor', 'Thyroid cancer, NOS'];
+  // 12 BARS (actual data)
+
+  // public barChartLabels: string[] = ['Adenocarcinoma - pancreas', 'Adenocarcinoma, NOS', 'Bone cancer, NOS', 'Carcinoma, NOS', 'Cholangiocar.- intra/extrahepatic', 'CNS primary tumor, NOS', 'Female reprod. system cancer, NOS', 'Lung adenocarcinoma', 'Neuroendocrine cancer, NOS', 'Ovarian epithelial cancer', 'Pancreatic neuroendocrine tumor', 'Thyroid cancer, NOS'];
+  // public barChartType: string = 'bar';
+  // public barChartLegend: boolean = false;
+
+  // public barChartData: any[] = [
+  //   {
+  //     data: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
+  //     label: 'Max',
+  //     type: 'line',
+  //     fill: false,
+  //     pointRadius: 0,
+  //     pointHoverRadius: 0
+  //   },
+  //   {
+  //     data: [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0],
+  //     label: 'Off Trial'
+  //   },
+  //   {
+  //     data: [1, 1, 1, 2, 2, 0, 1, 3, 1, 2, 0, 0],
+  //     label: 'On Treatment Arm'
+  //   },
+  //   {
+  //     data: [0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1],
+  //     label: 'Pending'
+  //   }
+  // ];
+
+  // MAX 35 BARS (mock data)
+
+  public barChartLabels: string[] = ['Adenocarcinoma - pancreas', 'Adenocarcinoma, NOS', 'Bone cancer, NOS', 'Carcinoma, NOS', 'Cholangiocar.- intra/extrahepatic', 'CNS primary tumor, NOS', 'Female reprod. system cancer, NOS', 'Lung adenocarcinoma', 'Neuroendocrine cancer, NOS', 'Ovarian epithelial cancer', 'Pancreatic neuroendocrine tumor', 'Thyroid cancer, NOS', 'Adenocarcinoma - pancreas', 'Adenocarcinoma, NOS', 'Bone cancer, NOS', 'Carcinoma, NOS', 'Cholangiocar.- intra/extrahepatic', 'CNS primary tumor, NOS', 'Female reprod. system cancer, NOS', 'Lung adenocarcinoma', 'Neuroendocrine cancer, NOS', 'Ovarian epithelial cancer', 'Pancreatic neuroendocrine tumor', 'Thyroid cancer, NOS', 'Adenocarcinoma - pancreas', 'Adenocarcinoma, NOS', 'Bone cancer, NOS', 'Carcinoma, NOS', 'Cholangiocar.- intra/extrahepatic', 'CNS primary tumor, NOS', 'Female reprod. system cancer, NOS', 'Lung adenocarcinoma', 'Neuroendocrine cancer, NOS', 'Ovarian epithelial cancer', 'Pancreatic neuroendocrine tumor'];
   public barChartType: string = 'bar';
   public barChartLegend: boolean = false;
 
   public barChartData: any[] = [
     {
-      data: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
+      data: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
       label: 'Max',
       type: 'line',
       fill: false,
@@ -124,15 +155,15 @@ export class TreatmentArmDetailsComponent implements OnInit {
       pointHoverRadius: 0
     },
     {
-      data: [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0],
+      data: [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1],
       label: 'Off Trial'
     },
     {
-      data: [1, 1, 1, 2, 2, 0, 1, 3, 1, 2, 0, 0],
+      data: [1, 1, 1, 2, 2, 0, 1, 3, 1, 2, 0, 0, 1, 1, 1, 2, 2, 0, 1, 3, 1, 2, 0, 0, 1, 1, 1, 2, 2, 0, 1, 3, 1, 2, 0],
       label: 'On Treatment Arm'
     },
     {
-      data: [0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1],
+      data: [0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0],
       label: 'Pending'
     }
   ];
