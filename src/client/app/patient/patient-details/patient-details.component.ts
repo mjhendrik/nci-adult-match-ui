@@ -155,4 +155,57 @@ export class PatientDetailsComponent implements OnInit {
     ]
   };
 
+  // TO_DO: should be made into an array of objects
+  biopsyData: any = {
+    "id": "T-16-000762",
+    "specimenCollectionDate": 1471023653456,
+    "specimenReceivedDate": 1471109213852,
+    "specimenFailureDate": null,
+    "pathologyStatus": null,
+    "pathologyReceivedDate": null,
+    "concordance": "YES",
+    "comment": null,
+    "assayHistory": [
+      {
+        "ihc": "RB",
+        "orderDate": "Not Applicable",
+        "resultDate": "Not Applicable",
+        "result": "Not Applicable",
+        "comment": "Patient does not have CCND1, CDK4 or CDK6 gene amplification to require RB assay."
+      },
+      {
+        "ihc": "MSH2",
+        "orderDate": "August 15, 2016 1:59 PM GMT",
+        "resultDate": "August 17, 2016 3:11 AM GMT",
+        "result": "POSITIVE",
+        "comment": null
+      },
+      {
+        "ihc": "MLH1",
+        "orderDate": "August 15, 2016 1:59 PM GMT",
+        "resultDate": "August 17, 2016 3:11 AM GMT",
+        "result": "NEGATIVE",
+        "comment": null
+      },
+      {
+        "ihc": "PTEN",
+        "orderDate": "August 15, 2016 1:59 PM GMT",
+        "resultDate": "August 17, 2016 3:11 AM GMT",
+        "result": "POSITIVE",
+        "comment": null
+      }
+    ],
+    "nucleicAcidSendout": [
+      {
+        "molecularSequenceNumber": "MSN17772",
+        "destinationSite": "MoCha",
+        "trackingNumber": "783854296970",
+        "dnaConc": "51",
+        "dnaVol": "10",
+        "reportedDate": "August 17, 2016 11:58 PM GMT",
+        "comment": null
+      }
+    ]
+  };
+
 }
