@@ -5,7 +5,7 @@ services:
   nci-adult-match-ui:
     build:
       context: .
-      dockerfile: ./.docker/nci-adult-match-ui.development.dockerfile
+      dockerfile: ./.docker/dockerfile.development
     command: npm start
     container_name: nci-adult-match-ui-start
     image: nci-adult-match-ui
