@@ -47,4 +47,6 @@ export class PatientDetailsComponent implements OnInit {
       );
   }
 
+
+
 }
