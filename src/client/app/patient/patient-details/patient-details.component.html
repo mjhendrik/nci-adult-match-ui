@@ -2,20 +2,20 @@
   <ul class="breadcrumb pull-right">
     <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
     <li><a href [routerLink]="['/patients']" class="link-none">Patients</a></li>
-    <li class="active">Patient 10069</li>
+    <li class="active">Patient {{data2.patientSequenceNumber | dashify}}</li>
   </ul>
-  <h1 class="page-header">Patient 10069</h1>
+  <h1 class="page-header">Patient {{data2.patientSequenceNumber | dashify}}</h1>
   <div class="row" matchHeight="panel-height">
     <div class="col-md-6">
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height">
         <div class="panel-heading">
           <dl class="dl-horizontal">
             <dt>Patient Sequence Number</dt>
-            <dd>10069</dd>
+            <dd>{{data2.patientSequenceNumber | dashify}}</dd>
             <dt>Patient</dt>
-            <dd>MALE, WHITE</dd>
+            <dd>{{data2.gender | dashify}}, {{data2.ethnicity | dashify}}</dd>
             <dt>Status</dt>
-            <dd><span [colorCodePatients]="'ON_TREATMENT_ARM'">ON_TREATMENT_ARM</span></dd>
+            <dd><span [colorCodePatients]="data2.currentPatientStatus">{{data2.currentPatientStatus | dashify}}</span></dd>
             <dt>Assignment Reason</dt>
             <dd class="widget-stat-text">The patient and treatment arm match on non-hotspot variant [(ID: .,GENE: NF1,OVA: Deleterious,EXON: 35,FUNC:
               nonsense,PROTEIN:p.Arg1534Ter)].
