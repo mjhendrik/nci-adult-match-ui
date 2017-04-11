@@ -1,6 +1,10 @@
 # compiled output
-dist
 tmp
+
+# Docker files
+.docker*
+.Docker*
+Docker*
 
 # dependencies
 node_modules

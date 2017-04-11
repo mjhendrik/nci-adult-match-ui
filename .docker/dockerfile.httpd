@@ -1,29 +1,16 @@
 # Base image 
 FROM httpd:2.4
-ARG buildnum=1
 MAINTAINER jeremy.pumphrey@nih.gov
 
-RUN apt-get update -y 
-  && apt-get install -y 
-  && rm -rf /var/lib/apt/lists/*
-  && mkdir -p /usr/local/apache2/match
+RUN apt-get update && apt-get install -y && rm -rf /var/lib/apt/lists/*
 
-ADD envconfig/httpd.conf /usr/local/apache2/conf/
-ADD nci-match-ui.tgz /usr/local/apache2/match/
+ENV HOME=/usr/local/apache2
+WORKDIR $HOME
 
-RUN ls /usr/local/apache2/match/
-# RUN echo Build#: $buildnum     Build Time:  > /usr/local/apache2/match/app/views/build_number.html
-# RUN TZ=America/New_York date >> /usr/local/apache2/match/app/views/build_number.html
+ENV APP_NAME=nci-adult-match-ui
 
-RUN mv /usr/local/apache2/match/bower_components/ /usr/local/apache2/match/app/
-#RUN chmod -R 600 /usr/local/apache2/match/app/bower_components
+RUN mkdir $HOME/$APP_NAME/
 
-ADD envconfig/setenv.sh /usr/local/apache2/match/
-RUN chmod +x /usr/local/apache2/match/setenv.sh
-ADD envconfig/login_config.js.* /usr/local/apache2/match/
+COPY ./dist/prod $HOME/$APP_NAME/
 
-# #Insert script to change localhost to docker-compose names
-# ADD https://raw.githubusercontent.com/CBIIT/match-docker/master/docker-compose-env.ui.sh .
-# RUN chmod 755 docker-compose-env.ui.sh && ls -alt .
-
-CMD /usr/local/apache2/match/setenv.sh && sleep 3 && httpd-foreground -C 'DocumentRoot /usr/local/apache2/match/app/'
+CMD httpd-foreground -C 'DocumentRoot $HOME/$APP_NAME/'
