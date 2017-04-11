@@ -27,6 +27,18 @@
   background-color: #445350;
 }
 
+.has-sub>ul {
+  background-color: #445350;
+}
+
+.has-sub>ul>li>a:hover {
+  background-color: #5f7471;
+}
+
+.has-sub>ul>li.active>a {
+  background-color: #374342;
+}
+
 .footer-format {
   background-color: #ffffff;
   position: fixed;
