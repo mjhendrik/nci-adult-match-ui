@@ -82,7 +82,7 @@ The application provides full Docker support. You can use it for both developmen
 The Dockerization infrastructure is described in the `docker-compose.yml` (respectively `docker-compose.production.yml`.
 The application consists of two containers:
 - `nci-adult-match-ui` - In development mode, this container serves the angular app. In production mode it builds the angular app, with the build artifacts being served by the Nginx container
-- `nci-adult-match-ui-nginx` - This container is used only production mode. It serves the built angular app with Nginx.
+- `nci-adult-match-ui-nginx-prod` - This container is used only production mode. It serves the built angular app with Nginx.
 
 ### Development build and deployment
 
