@@ -79,12 +79,7 @@ The application provides full Docker support. You can use it for both developmen
 
 ### How to build and start the dockerized version of the application 
 
-The Dockerization infrastructure is described in the `docker-compose.yml` (respectively `docker-compose.production.yml`.
-The application consists of two containers:
-- `nci-adult-match-ui` - In development mode, this container serves the angular app. In production mode it builds the angular app, with the build artifacts being served by the Nginx container
-- `nci-adult-match-ui-nginx-prod` - This container is used only production mode. It serves the built angular app with Nginx.
-
-### Development build and deployment
+### Local development build and deployment
 
 Run the following:
 
@@ -95,12 +90,19 @@ $ docker-compose up -d
 
 Now open your browser at http://localhost:5555
 
-### Production build and deployment
+### Test or Production build and deployment
 
-Run the following:
+To build the production image based on Apache run the following:
 
 ```bash
-$ docker-compose -f docker-compose.production.yml build
-$ docker-compose -f docker-compose.production.yml up nci-adult-match-ui   # Wait until this container has finished building, as the nginx container is dependent on the production build artifacts
-$ docker-compose -f docker-compose.production.yml up -d nci-adult-match-ui-nginx  # Start the nginx container in detached mode
+$ docker build -f .docker/dockerfile.httpd . -t "matchbox/nci-adult-match-ui:latest"
+```
+
+To deploy the image to AWS, Integration Test environment:
+
+```bash
+ $ docker run -it --rm -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY 
+   -e AWS_DEFAULT_REGION=us-east-1 silintl/ecs-deploy 
+   --cluster AdultMatch-IntTest-Backend --service-name AdultMatch-nci-match-ui-INTTEST 
+   -i $DOCKER_IMAGE:$DATE
 ```
