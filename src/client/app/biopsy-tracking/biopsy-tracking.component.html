@@ -88,7 +88,7 @@
                               <td>{{item.lab | dashify}}</td>
                               <td>
                                 <span *ngIf="item.trackingNumber!==null && item.trackingNumber!=='Local'">
-                                  <a href="https://www.fedex.com/apps/fedextrack/?tracknumbers={{item.trackingNumber | dashify}}" class="link-none" target="_blank"><i class="fa fa-truck"></i> {{item.trackingNumber | dashify}}</a>
+                                  <a href="https://www.fedex.com/apps/fedextrack/?tracknumbers={{item.trackingNumber}}" class="link-none" target="_blank"><i class="fa fa-truck"></i> {{item.trackingNumber | dashify}}</a>
                                 </span>
                                 <span *ngIf="item.trackingNumber===null || item.trackingNumber==='Local'">{{item.trackingNumber | dashify}}</span>
                               </td>
