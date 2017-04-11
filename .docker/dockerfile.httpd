@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR $INSTALL_PATH
 
-COPY ./dist/prod /usr/local/apache2/match
+COPY ./dist/dev /usr/local/apache2/match
 
 # This is a debug list
 # RUN ls -alth /usr/local/apache2/match
