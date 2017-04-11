@@ -67,7 +67,7 @@
             <div class="row">
               <div class="col-md-3" *ngIf="summaryData.pendingVariant">
                 <div class="widget widget-stat bg-danger">
-                  <a href [routerLink]="['/patients/variant_report']">
+                  <a class="link-none" href [routerLink]="['/patients/variant_report']">
                     <div class="widget-stat-icon"><i class="fa fa-file"></i></div>
                     <div class="widget-stat-info">
                       <div class="widget-stat-title">Pending Variant Report</div>
@@ -78,7 +78,7 @@
               </div>
               <div class="col-md-3" *ngIf="summaryData.pendingAssignment">
                 <div class="widget widget-stat bg-warning">
-                  <a href [routerLink]="['/patients/variant_report']">
+                  <a class="link-none" href [routerLink]="['/patients/variant_report']">
                     <div class="widget-stat-icon"><i class="fa fa-file"></i></div>
                     <div class="widget-stat-info">
                       <div class="widget-stat-title">Pending Assignment Report</div>
@@ -104,8 +104,8 @@
                           <h4>{{item.status}}</h4>
                           <p>
                             {{item.details}}
-                            <a href *ngIf="item.variantReport">Variant Report</a> {{item.variantReportDetails}}
-                            <a href *ngIf="item.assignmentReport">Assignment Report</a> {{item.assignmentReportDetails}}
+                            <a class="link-none" [routerLink]="['/patients/variant_report']" href *ngIf="item.variantReport">Variant Report</a>                            {{item.variantReportDetails}}
+                            <a class="link-none" [routerLink]="['/patients/variant_report']" href *ngIf="item.assignmentReport">Assignment Report</a>                            {{item.assignmentReportDetails}}
                           </p>
                           <span class="timeline-time">{{item.time}}</span>
                         </div>
@@ -201,9 +201,14 @@
                       </thead>
                       <tbody>
                         <tr *ngFor="let item of biopsyData.nucleicAcidSendout">
-                          <td>{{item.molecularSequenceNumber | dashify}}</td>
+                          <td><i class="fa fa-share-alt"></i> {{item.molecularSequenceNumber | dashify}}</td>
                           <td>{{item.destinationSite | dashify}}</td>
-                          <td>{{item.trackingNumber | dashify}}</td>
+                          <td>
+                            <span *ngIf="item.trackingNumber!==null && item.trackingNumber!=='Local'">
+                                  <a href="https://www.fedex.com/apps/fedextrack/?tracknumbers={{item.trackingNumber}}" class="link-none" target="_blank"><i class="fa fa-truck"></i> {{item.trackingNumber | dashify}}</a>
+                                </span>
+                            <span *ngIf="item.trackingNumber===null || item.trackingNumber==='Local'">{{item.trackingNumber | dashify}}</span>
+                          </td>
                           <td>{{item.dnaConc | dashify}}</td>
                           <td>{{item.dnaVol | dashify}}</td>
                           <td>{{item.reportedDate | dashify}}</td>
@@ -225,7 +230,7 @@
                                     <div class="col-md-6">
                                       <dl class="dl-horizontal">
                                         <dt>Variant Report</dt>
-                                        <dd><a href [routerLink]="['/patients/variant_report']"><i class="fa fa-file-text-o"></i></a></dd>
+                                        <dd><a class="link-none" href [routerLink]="['/patients/variant_report']"><i class="fa fa-file-text-o"></i></a></dd>
                                         <dt>Status</dt>
                                         <dd>{{biopsyData.variantStatus}}</dd>
                                         <dt>File Received Date</dt>
@@ -237,7 +242,7 @@
                                     <div class="col-md-6">
                                       <dl class="dl-horizontal">
                                         <dt>Assignment Report</dt>
-                                        <dd><a href><i class="fa fa-file-text-o"></i></a></dd>
+                                        <dd><a href [routerLink]="['/patients/variant_report']"><i class="fa fa-file-text-o"></i></a></dd>
                                         <dt>Status</dt>
                                         <dd>{{biopsyData.assignmentStatus}}</dd>
                                         <dt>Generation Date</dt>
