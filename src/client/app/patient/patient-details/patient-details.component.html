@@ -23,9 +23,9 @@
             <dt>Treatment Arm</dt>
             <dd>{{patientData.treatmentArm | dashify}}</dd>
             <dt>Registration Date</dt>
-            <dd>{{patientData.registrationDate | dashify | gmt}}</dd>
+            <dd>{{patientData.registrationDate | gmt | dashify}}</dd>
             <dt>Last Rejoin Scan Date</dt>
-            <dd>{{patientData.lastRejoinScanDate | dashify | gmt}}</dd>
+            <dd>{{patientData.lastRejoinScanDate | gmt | dashify}}</dd>
           </dl>
         </div>
       </div>
@@ -123,11 +123,11 @@
                   <div class="panel-heading">
                     <dl class="dl-horizontal">
                       <dt>Specimen Collection Date</dt>
-                      <dd>August 12, 2016 5:40 PM GMT</dd>
+                      <dd>{{biopsyData.specimenCollectionDate | gmt | dashify}}</dd>
                       <dt>Specimen Received Date</dt>
-                      <dd>August 13, 2016 5:26 PM GMT</dd>
+                      <dd>{{biopsyData.specimenReceivedDate | gmt | dashify}}</dd>
                       <dt>Specimen Failure Date</dt>
-                      <dd>-</dd>
+                      <dd>{{biopsyData.specimenFailureDate | gmt | dashify}}</dd>
                     </dl>
                   </div>
                 </div>
@@ -137,13 +137,13 @@
                   <div class="panel-heading">
                     <dl class="dl-horizontal">
                       <dt>Pathology Status</dt>
-                      <dd>-</dd>
+                      <dd>{{biopsyData.pathologyStatus | dashify}}</dd>
                       <dt>Pathology Received Date</dt>
-                      <dd>-</dd>
+                      <dd>{{biopsyData.pathologyReceivedDate | gmt | dashify}}</dd>
                       <dt>Concordance</dt>
-                      <dd>YES</dd>
+                      <dd>{{biopsyData.concordance | dashify}}</dd>
                       <dt>Comment</dt>
-                      <dd>-</dd>
+                      <dd>{{biopsyData.comment | dashify}}</dd>
                     </dl>
                   </div>
                 </div>
@@ -167,33 +167,12 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>RB</td>
-                          <td>Not Applicable</td>
-                          <td>Not Applicable</td>
-                          <td>Not Applicable</td>
-                          <td>Patient does not have CCND1, CDK4 or CDK6 gene amplification to require RB assay.</td>
-                        </tr>
-                        <tr>
-                          <td>MSH2</td>
-                          <td>August 15, 2016 1:59 PM GMT</td>
-                          <td>August 17, 2016 3:11 AM GMT</td>
-                          <td>POSITIVE</td>
-                          <td>-</td>
-                        </tr>
-                        <tr>
-                          <td>MLH1</td>
-                          <td>August 15, 2016 1:59 PM GMT</td>
-                          <td>August 17, 2016 3:11 AM GMT</td>
-                          <td>NEGATIVE</td>
-                          <td>-</td>
-                        </tr>
-                        <tr>
-                          <td>PTEN</td>
-                          <td>August 15, 2016 1:59 PM GMT</td>
-                          <td>August 17, 2016 3:11 AM GMT</td>
-                          <td>POSITIVE</td>
-                          <td>-</td>
+                        <tr *ngFor="let item of biopsyData.assayHistory">
+                          <td>{{item.ihc | dashify}}</td>
+                          <td>{{item.orderDate | dashify}}</td>
+                          <td>{{item.resultDate | dashify}}</td>
+                          <td>{{item.result | dashify}}</td>
+                          <td>{{item.comment | dashify}}</td>
                         </tr>
                       </tbody>
                     </table>
@@ -221,14 +200,14 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>MSN17772</td>
-                          <td>MoCha</td>
-                          <td><a href="javascript:alert('Opens the tracking page')">783854296970</a></td>
-                          <td>51</td>
-                          <td>10</td>
-                          <td>August 17, 2016 11:58 PM GMT</td>
-                          <td>-</td>
+                        <tr *ngFor="let item of biopsyData.nucleicAcidSendout">
+                          <td>{{item.molecularSequenceNumber | dashify}}</td>
+                          <td>{{item.destinationSite | dashify}}</td>
+                          <td>{{item.trackingNumber | dashify}}</td>
+                          <td>{{item.dnaConc | dashify}}</td>
+                          <td>{{item.dnaVol | dashify}}</td>
+                          <td>{{item.reportedDate | dashify}}</td>
+                          <td>{{item.comment | dashify}}</td>
                         </tr>
                         <tr>
                           <td colspan="7" class="bg-body">
