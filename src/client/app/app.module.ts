@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { APP_BASE_HREF } from '@angular/common';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
@@ -30,6 +31,7 @@ import { LoginGuard } from './shared/auth/login.guard.service';
 
 @NgModule({
   imports: [BrowserModule,
+    BrowserAnimationsModule,
     HttpModule,
     AppRoutingModule,
     LoginModule,

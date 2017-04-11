@@ -27,21 +27,20 @@ export interface DataEvent {
 export class DataTable implements OnChanges, DoCheck {
 
     @Input('mfData') public inputData: any[] = [];
-
     @Input('mfSortBy') public sortBy: string | string[] = '';
     @Input('mfSortOrder') public sortOrder = 'asc';
-    @Output('mfSortByChange') public sortByChange = new EventEmitter<string | string[]>();
-    @Output('mfSortOrderChange') public sortOrderChange = new EventEmitter<string>();
-
     @Input('mfRowsOnPage') public rowsOnPage = 1000;
     @Input('mfActivePage') public activePage = 1;
+
+    @Output('mfSortByChange') public sortByChange = new EventEmitter<string | string[]>();
+    @Output('mfSortOrderChange') public sortOrderChange = new EventEmitter<string>();
 
     public data: any[];
     public onSortChange = new ReplaySubject<SortEvent>(1);
     public onPageChange = new EventEmitter<PageEvent>();
 
     private mustRecalculateData = false;
-    private diff: IterableDiffer;
+    private diff: IterableDiffer<any>;
 
     public constructor(private differs: IterableDiffers) {
         this.diff = differs.find([]).create(null);
