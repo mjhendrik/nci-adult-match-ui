@@ -7,7 +7,7 @@ services:
       context: .
       dockerfile: ./.docker/dockerfile.production
     command: npm run build.prod
-    container_name: nci-adult-match-ui-build-prod
+    container_name: nci-adult-match-ui-prod
     image: nci-adult-match-ui
     networks:
       - prod-network
