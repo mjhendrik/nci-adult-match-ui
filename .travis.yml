@@ -64,8 +64,8 @@ cache:
   directories: node_modules
 
 script:
-  - npm run tests.all && npm run build.dev
-  # - npm run build.dev
+  # - npm run test && npm run build.dev
+  - npm run build.dev
   #Build Docker image
   - docker build -f .docker/dockerfile.httpd -t $DOCKER_IMAGE:$DATE -t $DOCKER_IMAGE:latest .
   # - docker build -f ./.docker/dockerfile.httpd --build-arg buildnum=$TRAVIS_BUILD_ID -t $DOCKER_IMAGE:$DATE -t $DOCKER_IMAGE:latest .

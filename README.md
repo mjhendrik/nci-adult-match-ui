@@ -98,6 +98,12 @@ To build the production image based on Apache run the following:
 $ docker build -f .docker/dockerfile.httpd . -t "matchbox/nci-adult-match-ui:latest"
 ```
 
+To run the docker locally use port 5555 because Auth0 is configured to use it
+
+```bash
+$ docker run -it -p 5555:80  "matchbox/nci-adult-match-ui"
+```
+
 To deploy the image to AWS, Integration Test environment:
 
 ```bash
