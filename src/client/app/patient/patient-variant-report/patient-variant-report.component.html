@@ -13,26 +13,27 @@
           <dl class="dl-horizontal">
             <h4>Variant Report</h4>
             <dt>Patient</dt>
-            <dd><a href [routerLink]="['/patients/details']" class="link-none">{{variantReport.patientSequenceNumber}}</a>,
-              <span [colorCodePatients]="variantReport.patientStatus">{{variantReport.patientStatus}}</span>, at Step {{variantReport.step}}</dd>
+            <dd><a href [routerLink]="['/patients/details']" class="link-none">{{variantReport.patientSequenceNumber | dashify}}</a>,
+              <span [colorCodePatients]="variantReport.patientStatus">{{variantReport.patientStatus | dashify}}</span>, at
+              Step {{variantReport.step | dashify}}</dd>
             <dt>Patient Concordance</dt>
-            <dd>{{variantReport.concordance}}</dd>
+            <dd>{{variantReport.concordance | dashify}}</dd>
             <dt>Status</dt>
-            <dd><span [colorCodeVariantReport]="variantReport.variantReportStatus">{{variantReport.variantReportStatus}}</span>              on {{variantReport.variantReportDate}}</dd>
+            <dd><span [colorCodeVariantReport]="variantReport.variantReportStatus">{{variantReport.variantReportStatus | dashify}}</span>              on {{variantReport.variantReportDate | dashify}}</dd>
             <dt>Biopsy Sequence Number</dt>
-            <dd>{{variantReport.biopsySequenceNumber}}</dd>
+            <dd>{{variantReport.biopsySequenceNumber | dashify}}</dd>
             <dt>Molecular Sequence Number</dt>
-            <dd>{{variantReport.molecularSequenceNumber}}</dd>
+            <dd>{{variantReport.molecularSequenceNumber | dashify}}</dd>
             <dt>Analysis ID</dt>
-            <dd>{{variantReport.analysisId}}</dd>
+            <dd>{{variantReport.analysisId | dashify}}</dd>
             <dt>MAPD</dt>
-            <dd>{{variantReport.mapd}}</dd>
+            <dd>{{variantReport.mapd | dashify}}</dd>
             <dt>Cellularity</dt>
-            <dd>{{variantReport.cellularity}}</dd>
+            <dd>{{variantReport.cellularity | dashify}}</dd>
             <dt>File Received Date</dt>
-            <dd>{{variantReport.fileReceivedDate}}</dd>
+            <dd>{{variantReport.fileReceivedDate | dashify}}</dd>
             <dt>Torrent Variant Caller Version</dt>
-            <dd>{{variantReport.torrentVariantCallerVersion}}</dd>
+            <dd>{{variantReport.torrentVariantCallerVersion | dashify}}</dd>
           </dl>
         </div>
         <div class="panel-heading">
@@ -47,21 +48,21 @@
           <dl class="dl-horizontal">
             <h4>Assignment</h4>
             <dt>Status</dt>
-            <dd [colorCodeAssignment]="assignmentReport.status">{{assignmentReport.status}}</dd>
+            <dd [colorCodeAssignment]="assignmentReport.status">{{assignmentReport.status | dashify}}</dd>
             <dt>Generation Date</dt>
-            <dd>{{assignmentReport.generationDate}}</dd>
+            <dd>{{assignmentReport.generationDate | dashify}}</dd>
             <dt>Confirmation Date</dt>
-            <dd>{{assignmentReport.confirmationDate}}</dd>
+            <dd>{{assignmentReport.confirmationDate | dashify}}</dd>
             <dt>Sent to ECOG Date</dt>
-            <dd>{{assignmentReport.senttoECOGDate}}</dd>
+            <dd>{{assignmentReport.senttoECOGDate | dashify}}</dd>
             <dt>Received from ECOG Date</dt>
-            <dd>{{assignmentReport.receivedfromECOGDate}}</dd>
+            <dd>{{assignmentReport.receivedfromECOGDate | dashify}}</dd>
           </dl>
-          <h4>Selected Treatment Arm: <span class="text-success-light">{{assignmentReport.selectedTreatmentArm}}</span></h4>
+          <h4>Selected Treatment Arm: <span class="text-success-light">{{assignmentReport.selectedTreatmentArm | dashify}}</span></h4>
           <div class="panel panel-success overflow-hidden">
             <div class="panel-heading">
               <p>
-                {{assignmentReport.assignmentReason}}
+                {{assignmentReport.assignmentReason | dashify}}
                 <a href="javascript:alert('Scrolls to details at the bottom')" class="text-white"><br>Details...</a>
               </p>
             </div>
@@ -77,15 +78,15 @@
           <dl class="dl-horizontal">
             <h4>MOI/aMOI Summary</h4>
             <dt>Variant Report aMOI</dt>
-            <dd>p.L755S (COSM14060)</dd>
+            <dd>{{moiSummary.variantReportaMOI | dashify}}</dd>
             <dt>Total aMOIs</dt>
-            <dd>1</dd>
+            <dd>{{moiSummary.totalaMOIs | dashify}}</dd>
             <dt>Total MOIs</dt>
-            <dd>2</dd>
+            <dd>{{moiSummary.totalMOIs | dashify}}</dd>
             <dt>Total Confirmed aMOIs</dt>
-            <dd>1</dd>
+            <dd>{{moiSummary.totalConfirmedaMOIs | dashify}}</dd>
             <dt>Total Confirmed MOIs</dt>
-            <dd>2</dd>
+            <dd>{{moiSummary.totalConfirmedMOIs | dashify}}</dd>
           </dl>
         </div>
       </div>
@@ -104,20 +105,10 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>PTEN</td>
-                  <td>POSITIVE</td>
-                  <td>-</td>
-                </tr>
-                <tr>
-                  <td>MLH1</td>
-                  <td>NEGATIVE</td>
-                  <td>-</td>
-                </tr>
-                <tr>
-                  <td>MSH2</td>
-                  <td>POSITIVE</td>
-                  <td>-</td>
+                <tr *ngFor="let item of assay">
+                  <td>{{item.ihc | dashify}}</td>
+                  <td>{{item.result | dashify}}</td>
+                  <td>{{item.comment | dashify}}</td>
                 </tr>
               </tbody>
             </table>
@@ -160,23 +151,23 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr *ngFor="let item of snv">
                 <td><input type="checkbox" name="chr" value="checked" checked disabled></td>
-                <td>COSM14060 </td>
-                <td>CURRENT(I)</td>
-                <td>chr17</td>
-                <td>37880220</td>
-                <td>T</td>
-                <td>C</td>
-                <td>0.3195</td>
-                <td>ERBB2</td>
-                <td>Hotspot</td>
-                <td>19</td>
-                <td>missense</td>
-                <td>c.2264T&gt&C</td>
-                <td>942</td>
-                <td>NM_004448.3</td>
-                <td>p.Leu755Ser</td>
+                <td>{{item.id | dashify}}</td>
+                <td>{{item.aMoi | dashify}}</td>
+                <td>{{item.chrom | dashify}}</td>
+                <td>{{item.position | dashify}}</td>
+                <td>{{item.reference | dashify}}</td>
+                <td>{{item.alternative | dashify}}</td>
+                <td>{{item.alleleFreq | dashify}}</td>
+                <td>{{item.funcGene | dashify}}</td>
+                <td>{{item.oncomineVariantClass | dashify}}</td>
+                <td>{{item.exon | dashify}}</td>
+                <td>{{item.function | dashify}}</td>
+                <td>{{item.hgvs | dashify}}</td>
+                <td>{{item.readDepth | dashify}}</td>
+                <td>{{item.transcript | dashify}}</td>
+                <td>{{item.protein | dashify}}</td>
               </tr>
             </tbody>
           </table>
@@ -207,23 +198,23 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr *ngFor="let item of indels">
                 <td><input type="checkbox" name="chr" value="checked" checked disabled></td>
-                <td>.</td>
-                <td>-</td>
-                <td>chr10</td>
-                <td>8115840 </td>
-                <td>CT</td>
-                <td>-</td>
-                <td>0.3720</td>
-                <td>GATA3</td>
-                <td>Deleterious</td>
-                <td>6</td>
-                <td>frameshiftDeletion</td>
-                <td>c.1189_1190delCT</td>
-                <td>1946</td>
-                <td>NM_001002295.1</td>
-                <td>p.Ser398fs</td>
+                <td>{{item.id | dashify}}</td>
+                <td>{{item.aMoi | dashify}}</td>
+                <td>{{item.chrom | dashify}}</td>
+                <td>{{item.position | dashify}}</td>
+                <td>{{item.reference | dashify}}</td>
+                <td>{{item.alternative | dashify}}</td>
+                <td>{{item.alleleFreq | dashify}}</td>
+                <td>{{item.funcGene | dashify}}</td>
+                <td>{{item.oncomineVariantClass | dashify}}</td>
+                <td>{{item.exon | dashify}}</td>
+                <td>{{item.function | dashify}}</td>
+                <td>{{item.hgvs | dashify}}</td>
+                <td>{{item.readDepth | dashify}}</td>
+                <td>{{item.transcript | dashify}}</td>
+                <td>{{item.protein | dashify}}</td>
               </tr>
             </tbody>
           </table>
@@ -299,78 +290,6 @@
                 </td>
               </tr>
               <tr>
-                <td>EAY131-U ( 2016-05-31 )</td>
-                <td>The patient contains no matching variant.</td>
-              </tr>
-              <tr>
-                <td>EAY131-F ( 2016-05-31 )</td>
-                <td>The patient contains no matching variant.</td>
-              </tr>
-              <tr>
-                <td>EAY131-H ( 2016-05-31 )</td>
-                <td>The patient contains no matching variant.</td>
-              </tr>
-              <tr>
-                <td>EAY131-R ( 2016-05-31 )</td>
-                <td>The patient contains no matching variant.</td>
-              </tr>
-              <tr>
-                <td>EAY131-E ( 2016-05-31 )</td>
-                <td>The patient contains no matching variant.</td>
-              </tr>
-              <tr>
-                <td>EAY131-A ( 2016-05-31 )</td>
-                <td>The patient contains no matching variant.</td>
-              </tr>
-              <tr>
-                <td>EAY131-V ( 2016-05-31 )</td>
-                <td>The patient contains no matching variant.</td>
-              </tr>
-              <tr>
-                <td>EAY131-S1 ( 2016-05-31 )</td>
-                <td>The patient contains no matching variant.</td>
-              </tr>
-              <tr>
-                <td>EAY131-N ( 2016-05-31 )</td>
-                <td>The patient contains no matching variant.</td>
-              </tr>
-              <tr>
-                <td>EAY131-T ( 2016-05-31 )</td>
-                <td>The patient contains no matching variant.</td>
-              </tr>
-              <tr>
-                <td>EAY131-X ( 2016-01-20 )</td>
-                <td>The patient contains no matching variant.</td>
-              </tr>
-              <tr>
-                <td>EAY131-S2 ( 2016-05-31 )</td>
-                <td>The patient contains no matching variant.</td>
-              </tr>
-              <tr>
-                <td>EAY131-C2 ( 2016-05-31 )</td>
-                <td>The patient contains no matching variant.</td>
-              </tr>
-              <tr>
-                <td>EAY131-Z1A ( 2016-05-31 )</td>
-                <td>The patient contains no matching variant.</td>
-              </tr>
-              <tr>
-                <td>EAY131-P ( 2016-01-20 )</td>
-                <td>The patient contains no matching variant.</td>
-              </tr>
-              <tr>
-                <td>EAY131-C1 ( 2016-05-31 )</td>
-                <td>The patient contains no matching variant.</td>
-              </tr>
-              <tr>
-                <td>EAY131-W ( 2016-05-31 )</td>
-                <td>The patient contains no matching variant.</td>
-              </tr>
-              <tr>
-                <td>EAY131-G ( 2016-05-31 )</td>
-                <td>The patient contains no matching variant.</td>
-              </tr>
-              <tr>
                 <td>EAY131-Y ( 2016-05-31 )</td>
                 <td>The patient contains no matching variant.</td>
               </tr>
@@ -381,14 +300,6 @@
               </tr>
               <tr>
                 <td>EAY131-Q ( 2016-05-31 )</td>
-                <td>The patient is excluded from this treatment arm because the patient has disease(s) Invasive breast carcinoma.</td>
-              </tr>
-              <tr>
-                <td>EAY131-Z1B ( 2016-05-31 )</td>
-                <td>The patient is excluded from this treatment arm because the patient has disease(s) Invasive breast carcinoma.</td>
-              </tr>
-              <tr>
-                <td>EAY131-I ( 2016-05-31 )</td>
                 <td>The patient is excluded from this treatment arm because the patient has disease(s) Invasive breast carcinoma.</td>
               </tr>
               <tr>
