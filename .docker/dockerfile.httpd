@@ -10,8 +10,10 @@ RUN apt-get update && apt-get install -y \
     && chmod 777 $INSTALL_PATH
 
 WORKDIR $INSTALL_PATH
+
 COPY .docker/httpd.conf /usr/local/apache2/conf/
 COPY ./dist/dev /usr/local/apache2/match
+COPY ./node_modules /usr/local/apache2/match
 
 # This is a debug list
 # RUN ls -alth /usr/local/apache2/match
