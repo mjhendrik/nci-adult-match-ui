@@ -47,23 +47,21 @@
           <dl class="dl-horizontal">
             <h4>Assignment</h4>
             <dt>Status</dt>
-            <dd [colorCodeAssignment]="'CONFIRMED'">CONFIRMED</dd>
+            <dd [colorCodeAssignment]="assignmentReport.status">{{assignmentReport.status}}</dd>
             <dt>Generation Date</dt>
-            <dd>August 26, 2016 3:28 PM GMT</dd>
+            <dd>{{assignmentReport.generationDate}}</dd>
             <dt>Confirmation Date</dt>
-            <dd>August 26, 2016 4:36 PM GMT</dd>
+            <dd>{{assignmentReport.confirmationDate}}</dd>
             <dt>Sent to ECOG Date</dt>
-            <dd>August 26, 2016 4:36 PM GMT</dd>
+            <dd>{{assignmentReport.senttoECOGDate}}</dd>
             <dt>Received from ECOG Date</dt>
-            <dd>August 26, 2016 4:36 PM GMT</dd>
+            <dd>{{assignmentReport.receivedfromECOGDate}}</dd>
           </dl>
-          <h4>Selected Treatment Arm: <span class="text-success-light">EAY131-Z1D (2016-05-31)</span></h4>
+          <h4>Selected Treatment Arm: <span class="text-success-light">{{assignmentReport.selectedTreatmentArm}}</span></h4>
           <div class="panel panel-success overflow-hidden">
             <div class="panel-heading">
               <p>
-                The patient contains no matching variant. The patient's IHC MLH1 result match the IHC MLH1 rule for the treatment arm [RES:NEGATIVE,
-                VAR:EMPTY]. The variant's level of evidence for the treatment arm is 0.9. The patient was selected for this
-                treatment arm because it has the highest level of evidence of 0.9.
+                {{assignmentReport.assignmentReason}}
                 <a href="javascript:alert('Scrolls to details at the bottom')" class="text-white"><br>Details...</a>
               </p>
             </div>

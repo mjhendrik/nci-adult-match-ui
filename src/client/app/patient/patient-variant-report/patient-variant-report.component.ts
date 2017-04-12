@@ -35,4 +35,14 @@ export class PatientVariantReportComponent {
     "torrentVariantCallerVersion": "5.0-9"
   };
 
+  assignmentReport: any = {
+    "status": "CONFIRMED",
+    "generationDate": "August 26, 2016 3:28 PM GMT",
+    "confirmationDate": "August 26, 2016 4:36 PM GMT",
+    "senttoECOGDate": "August 26, 2016 4:36 PM GMT",
+    "receivedfromECOGDate": "August 26, 2016 4:36 PM GMT",
+    "selectedTreatmentArm": "EAY131-Z1D (2016-05-31)",
+    "assignmentReason": "The patient contains no matching variant. The patient's IHC MLH1 result match the IHC MLH1 rule for the treatment arm [RES:NEGATIVE, VAR:EMPTY]. The variant's level of evidence for the treatment arm is 0.9. The patient was selected for this treatment arm because it has the highest level of evidence of 0.9."
+  };
+
 }
