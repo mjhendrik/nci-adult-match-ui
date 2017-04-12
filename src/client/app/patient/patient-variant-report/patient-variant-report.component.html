@@ -289,40 +289,36 @@
                   <h4>1 - NO VARIANT MATCH</h4>
                 </td>
               </tr>
-              <tr>
-                <td>EAY131-Y ( 2016-05-31 )</td>
-                <td>The patient contains no matching variant.</td>
+              <tr *ngFor="let item of assignmentReason.noVariantMatch">
+                <td>{{item.treatmentArm}}</td>
+                <td>{{item.reason}}</td>
               </tr>
               <tr>
                 <td colspan="2">
                   <h4>2 - RECORD BASED EXCLUSION</h4>
                 </td>
               </tr>
-              <tr>
-                <td>EAY131-Q ( 2016-05-31 )</td>
-                <td>The patient is excluded from this treatment arm because the patient has disease(s) Invasive breast carcinoma.</td>
+              <tr *ngFor="let item of assignmentReason.recordBasedExclusion">
+                <td>{{item.treatmentArm}}</td>
+                <td>{{item.reason}}</td>
               </tr>
               <tr>
                 <td colspan="2">
                   <h4>3 - LEVEL OF EVIDENCE TIE BREAKER</h4>
                 </td>
               </tr>
-              <tr>
-                <td>EAY131-B ( 2016-05-31 )</td>
-                <td>The patient and treatment arm match on variant identifier [COSM14060]. The variant's level of evidence for
-                  the treatment arm is 2.0. The patient was not selected for this treatment arm because its level of evidence
-                  is 2.0 and is lower than the one chosen.</td>
+              <tr *ngFor="let item of assignmentReason.levelOfEvidenceTieBreaker">
+                <td>{{item.treatmentArm}}</td>
+                <td>{{item.reason}}</td>
               </tr>
               <tr>
                 <td colspan="2">
                   <h4>4 - SELECTED</h4>
                 </td>
               </tr>
-              <tr>
-                <td>EAY131-Z1D ( 2016-05-31 )</td>
-                <td>The patient contains no matching variant. The patient's IHC MLH1 result match the IHC MLH1 rule for the treatment
-                  arm [RES:NEGATIVE, VAR:EMPTY]. The variant's level of evidence for the treatment arm is 0.9. The patient
-                  was selected for this treatment arm because it has the highest level of evidence of 0.9.</td>
+              <tr *ngFor="let item of assignmentReason.selected">
+                <td>{{item.treatmentArm}}</td>
+                <td>{{item.reason}}</td>
               </tr>
             </tbody>
           </table>
@@ -346,12 +342,12 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td [colorCodeAssignment]="'REJECTED'"><a href="javascript:alert('Opens old assignment full screen')">REJECTED</a></td>
-                <td>August 26, 2016 3:28 PM GMT</td>
-                <td>August 26, 2016 4:36 PM GMT</td>
-                <td>August 26, 2016 4:36 PM GMT</td>
-                <td>August 26, 2016 4:36 PM GMT</td>
+              <tr *ngFor="let item of assignmentHistory">
+                <td [colorCodeAssignment]="item.status"><a href="javascript:alert('Opens old assignment full screen')">{{item.status}}</a></td>
+                <td>{{item.generationDate}}</td>
+                <td>{{item.confirmationDate}}</td>
+                <td>{{item.sentToEcogDate}}</td>
+                <td>{{item.receivedFromEcogDate}}</td>
               </tr>
             </tbody>
           </table>
