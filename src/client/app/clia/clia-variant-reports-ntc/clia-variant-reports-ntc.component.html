@@ -11,23 +11,23 @@
         <div class="panel-heading">
           <dl class="dl-horizontal">
             <dt>Molecular Sequence Number</dt>
-            <dd>NtcControl_MoCha_8</dd>
+            <dd>{{variantReportNTC.molecularSequenceNumber | dashify}}</dd>
             <dt>Analysis Id</dt>
-            <dd>Curl-3</dd>
+            <dd>{{variantReportNTC.analysisId | dashify}}</dd>
             <dt>Total Variants</dt>
-            <dd>8</dd>
+            <dd>{{variantReportNTC.totalVariants | dashify}}</dd>
             <dt>MAPD</dt>
-            <dd>0.317</dd>
+            <dd>{{variantReportNTC.mapd | dashify}}</dd>
             <dt>Cellularity</dt>
-            <dd>1.000000</dd>
+            <dd>{{variantReportNTC.cellularity | dashify}}</dd>
             <dt>File Received Date</dt>
-            <dd>October 21, 2015 1:51 PM GMT</dd>
+            <dd>{{variantReportNTC.fileReceivedDate | dashify}}</dd>
             <dt>Torrent Variant Caller Version</dt>
-            <dd>tvc 4.4-8</dd>
+            <dd>{{variantReportNTC.torrentVariantCallerVersion | dashify}}</dd>
             <dt>Status</dt>
-            <dd [colorCodeClia]="'PASSED'">PASSED</dd>
+            <dd [colorCodeClia]="variantReportNTC.status">{{variantReportNTC.status | dashify}}</dd>
             <dt>Comment</dt>
-            <dd>Accepted!</dd>
+            <dd>{{variantReportNTC.comment | dashify}}</dd>
           </dl>
         </div>
         <div class="panel-heading p-t-0">
@@ -61,20 +61,20 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>COSM14060</td>
-                <td>chr17</td>
-                <td>37880220</td>
-                <td>T</td>
-                <td>C</td>
-                <td>0.3195</td>
-                <td>ERBB2</td>
-                <td>Hotspot</td>
-                <td>missense</td>
-                <td>c.2264T&gt&C</td>
-                <td>942</td>
-                <td>NM_004448.3</td>
-                <td>p.Leu755Ser</td>
+              <tr *ngFor="let item of snv">
+                <td>{{item.id | dashify}}</td>
+                <td>{{item.chrom | dashify}}</td>
+                <td>{{item.position | dashify}}</td>
+                <td>{{item.reference | dashify}}</td>
+                <td>{{item.alternative | dashify}}</td>
+                <td>{{item.alleleFreq | dashify}}</td>
+                <td>{{item.funcGene | dashify}}</td>
+                <td>{{item.oncomineVariantClass | dashify}}</td>
+                <td>{{item.function | dashify}}</td>
+                <td>{{item.hgvs | dashify}}</td>
+                <td>{{item.readDepth | dashify}}</td>
+                <td>{{item.transcript | dashify}}</td>
+                <td>{{item.protein | dashify}}</td>
               </tr>
             </tbody>
           </table>
@@ -102,20 +102,20 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>-</td>
-                <td>chr10</td>
-                <td>8115840</td>
-                <td>CT</td>
-                <td>-</td>
-                <td>0.3720</td>
-                <td>GATA3</td>
-                <td>Deleterious</td>
-                <td>frameshiftDeletion</td>
-                <td>c.1189_1190delCT</td>
-                <td>1946</td>
-                <td>NM_001002295.1</td>
-                <td>p.Ser398fs</td>
+              <tr *ngFor="let item of indels">
+                <td>{{item.id | dashify}}</td>
+                <td>{{item.chrom | dashify}}</td>
+                <td>{{item.position | dashify}}</td>
+                <td>{{item.reference | dashify}}</td>
+                <td>{{item.alternative | dashify}}</td>
+                <td>{{item.alleleFreq | dashify}}</td>
+                <td>{{item.funcGene | dashify}}</td>
+                <td>{{item.oncomineVariantClass | dashify}}</td>
+                <td>{{item.function | dashify}}</td>
+                <td>{{item.hgvs | dashify}}</td>
+                <td>{{item.readDepth | dashify}}</td>
+                <td>{{item.transcript | dashify}}</td>
+                <td>{{item.protein | dashify}}</td>
               </tr>
             </tbody>
           </table>

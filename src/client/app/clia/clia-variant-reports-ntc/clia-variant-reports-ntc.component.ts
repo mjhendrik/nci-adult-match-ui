@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 
 import { routerTransition } from './../../shared/router.animations';
-import { GmtPipe } from './../../shared/pipes/gmt.pipe';
 
 
 /**
@@ -13,229 +12,55 @@ import { GmtPipe } from './../../shared/pipes/gmt.pipe';
   templateUrl: 'clia-variant-reports-ntc.component.html',
   styleUrls: ['clia-variant-reports-ntc.component.css'],
   animations: [routerTransition()],
-  host: { '[@routerTransition]': '' },
-  providers: [GmtPipe]
+  host: { '[@routerTransition]': '' }
 })
 export class CliaVariantReportsNtcComponent {
 
-  searchtermPC: string = '';
-  searchtermNTC: string = '';
-  searchtermPACC: string = '';
+  variantReportNTC: any = {
+    "molecularSequenceNumber": "NtcControl_MoCha_8",
+    "analysisId": "Curl-3",
+    "totalVariants": 8,
+    "mapd": "0.317",
+    "cellularity": "1.000000",
+    "fileReceivedDate": 1445435466985,
+    "torrentVariantCallerVersion": "tvc 4.4-8",
+    "status": "PASSED",
+    "comment": "Accepted!"
+  };
 
-  recordsPerPagePC: number;
-  recordsPerPageNTC: number;
-  recordsPerPagePACC: number;
-
-  tablePCDefaultSort: string;
-  tableNTCDefaultSort: string;
-  tablePACCDefaultSort: string;
-
-  sortByAsc: string;
-  sortByDesc: string;
-
-  ngOnInit() {
-
-    this.recordsPerPagePC = 10;
-    this.recordsPerPageNTC = 10;
-    this.recordsPerPagePACC = 10;
-
-    this.tablePCDefaultSort = 'dateCreated';
-    this.tableNTCDefaultSort = 'dateCreated';
-    this.tablePACCDefaultSort = 'dateCreated';
-
-    this.sortByAsc = 'asc';
-    this.sortByDesc = 'desc';
-
-    let gmt = new GmtPipe();
-
-    for (let i = 0; i < this.tablePCData.length; i++) {
-      this.tablePCData[i].dateCreated = gmt.transform(this.tablePCData[i].dateCreated);
-    }
-
-    for (let i = 0; i < this.tablePCData.length; i++) {
-      this.tablePCData[i].dateReceived = gmt.transform(this.tablePCData[i].dateReceived);
-    }
-
-    for (let i = 0; i < this.tableNTCData.length; i++) {
-      this.tableNTCData[i].dateCreated = gmt.transform(this.tableNTCData[i].dateCreated);
-    }
-
-    for (let i = 0; i < this.tableNTCData.length; i++) {
-      this.tableNTCData[i].dateReceived = gmt.transform(this.tableNTCData[i].dateReceived);
-    }
-
-    for (let i = 0; i < this.tablePACCData.length; i++) {
-      this.tablePACCData[i].dateCreated = gmt.transform(this.tablePACCData[i].dateCreated);
-    }
-
-    for (let i = 0; i < this.tablePACCData.length; i++) {
-      this.tablePACCData[i].dateReceived = gmt.transform(this.tablePACCData[i].dateReceived);
-    }
-
-  }
-
-  tablePCData: any = [
+  snv: any = [
     {
-      "molecularSequenceNumber": "SampleControl_Yale_1",
-      "dateCreated": 1446820770383,
-      "dateReceived": 1454610348866,
-      "status": "FAILED"
-    },
-    {
-      "molecularSequenceNumber": "SampleControl_Yale_2",
-      "dateCreated": 1454609818768,
-      "dateReceived": 1454610867459,
-      "status": "FAILED"
-    },
-    {
-      "molecularSequenceNumber": "SampleControl_Yale_3",
-      "dateCreated": 1456156465733,
-      "dateReceived": 1456157104784,
-      "status": "FAILED"
-    },
-    {
-      "molecularSequenceNumber": "SampleControl_Yale_4",
-      "dateCreated": 1456158997284,
-      "dateReceived": 1456160505028,
-      "status": "FAILED"
-    },
-    {
-      "molecularSequenceNumber": "SampleControl_Yale_5",
-      "dateCreated": 1456159006206,
-      "dateReceived": 1456160838470,
-      "status": "FAILED"
-    },
-    {
-      "molecularSequenceNumber": "SampleControl_Yale_6",
-      "dateCreated": 1491254923348,
-      "dateReceived": null,
-      "status": null
+      "id": "COSM14060",
+      "chrom": "chr17",
+      "position": "37880220",
+      "reference": "T",
+      "alternative": "C",
+      "alleleFreq": "0.3195",
+      "funcGene": "ERBB2",
+      "oncomineVariantClass": "Hotspot",
+      "function": "missense",
+      "hgvs": "c.2264T&gt&C",
+      "readDepth": "942",
+      "transcript": "NM_004448.3",
+      "protein": "p.Leu755Ser"
     }
   ];
 
-  tableNTCData: any = [
+  indels: any = [
     {
-      "id": "Yale_4",
-      "molecularSequenceNumber": "NtcControl_Yale_4",
-      "dateCreated": 1456156472611,
-      "dateReceived": 1456157767343,
-      "site": "Yale",
-      "siteIpAddress": "10.84.20.162",
-      "status": null,
-      "comment": null,
-      "passed": true,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "Yale_1",
-      "molecularSequenceNumber": "NtcControl_Yale_1",
-      "dateCreated": 1446820780440,
-      "dateReceived": 1454611045821,
-      "site": "Yale",
-      "siteIpAddress": "10.84.20.162",
-      "status": null,
-      "comment": "Testing accepting",
-      "passed": true,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "Yale_5",
-      "molecularSequenceNumber": "NtcControl_Yale_5",
-      "dateCreated": 1456160756802,
-      "dateReceived": 1456163682942,
-      "site": "Yale",
-      "siteIpAddress": "10.84.20.162",
-      "status": null,
-      "comment": null,
-      "passed": true,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "Yale_2",
-      "molecularSequenceNumber": "NtcControl_Yale_2",
-      "dateCreated": 1454609828636,
-      "dateReceived": 1454611676551,
-      "site": "Yale",
-      "siteIpAddress": "10.84.20.162",
-      "status": null,
-      "comment": null,
-      "passed": false,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "Yale_3",
-      "molecularSequenceNumber": "NtcControl_Yale_3",
-      "dateCreated": 1454609835273,
-      "dateReceived": 1456157445458,
-      "site": "Yale",
-      "siteIpAddress": "10.84.20.162",
-      "status": null,
-      "comment": null,
-      "passed": false,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "Yale_6",
-      "molecularSequenceNumber": "NtcControl_Yale_6",
-      "dateCreated": 1456160766085,
-      "dateReceived": 1456164054518,
-      "site": "Yale",
-      "siteIpAddress": "10.84.20.162",
-      "status": null,
-      "comment": "Manually accepted",
-      "passed": true,
-      "nextGenerationSequence": null
-    },
-    {
-      "id": "Yale_7",
-      "molecularSequenceNumber": "NtcControl_Yale_7",
-      "dateCreated": 1491254926936,
-      "dateReceived": null,
-      "site": "Yale",
-      "siteIpAddress": "10.84.20.162",
-      "status": null,
-      "comment": null,
-      "passed": false,
-      "nextGenerationSequence": null
-    }
-  ];
-
-  tablePACCData: any = [
-    {
-      "molecularSequenceNumber": "ProficiencyCompetencyControl_Yale_1",
-      "dateCreated": 1471543039017,
-      "dateReceived": 1471544972327,
-      "status": "PASSED"
-    },
-    {
-      "molecularSequenceNumber": "ProficiencyCompetencyControl_Yale_2",
-      "dateCreated": 1471543042997,
-      "dateReceived": 1471545093614,
-      "status": "FAILED"
-    },
-    {
-      "molecularSequenceNumber": "ProficiencyCompetencyControl_Yale_3",
-      "dateCreated": 1471543046990,
-      "dateReceived": 1471545065707,
-      "status": "PENDING"
-    },
-    {
-      "molecularSequenceNumber": "ProficiencyCompetencyControl_Yale_4",
-      "dateCreated": 1491254929626,
-      "dateReceived": null,
-      "status": null
-    }
-  ];
-
-  ionReportersData: any = [
-    {
-      "ionReporterId": "IR_F6ZZM",
-      "ionReporterVersion": "5.2",
-      "hostName": "NCIAS-D1356",
-      "ipAddress": "10.133.130.53",
-      "status": "Contacted 4 minutes ago",
-      "lastContactDate": 1491507005457,
-      "externalIpAddress": "10.133.210.11"
+      "id": null,
+      "chrom": "chr10",
+      "position": "8115840 ",
+      "reference": "CT",
+      "alternative": null,
+      "alleleFreq": "0.3720",
+      "funcGene": "GATA3",
+      "oncomineVariantClass": "Deleterious",
+      "function": "frameshiftDeletion",
+      "hgvs": "c.1189_1190delCT",
+      "readDepth": "1946",
+      "transcript": "NM_001002295.1",
+      "protein": "p.Ser398fs"
     }
   ];
 
