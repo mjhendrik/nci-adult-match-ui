@@ -55,6 +55,12 @@ module.exports = function (config) {
       // suppress annoying 404 warnings for resources, images, etc.
       { pattern: 'dist/dev/assets/**/*', watched: false, included: false, served: true },
 
+      // Additional project-specific libraries
+      { pattern: 'node_modules/angular2-jwt/angular2-jwt.js', included: false, watched: true },
+      { pattern: 'node_modules/lodash/lodash.js', included: false, watched: true },
+      { pattern: 'node_modules/moment/moment.js', included: false, watched: true },
+      { pattern: 'node_modules/ng2-charts/**/*.js', included: false, watched: true },
+
       'test-config.js',
       'dist/dev/app/system-config.js',
       'test-main.js'
