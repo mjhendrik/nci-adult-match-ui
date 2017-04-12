@@ -220,4 +220,14 @@ export class PatientVariantReportComponent {
     ]
   };
 
+  assignmentHistory: any = [
+    {
+      "status": "REJECTED",
+      "generationDate": "August 26, 2016 3:28 PM GMT",
+      "confirmationDate": "August 26, 2016 4:36 PM GMT",
+      "sentToEcogDate": "August 26, 2016 4:36 PM GMT",
+      "receivedFromEcogDate": "August 26, 2016 4:36 PM GMT"
+    }
+  ];
+
 }
