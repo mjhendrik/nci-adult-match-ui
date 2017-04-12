@@ -11,25 +11,25 @@
         <div class="panel-heading">
           <dl class="dl-horizontal">
             <dt>Molecular Sequence Number</dt>
-            <dd>NtcControl_MoCha_8</dd>
+            <dd>{{variantReportPC.molecularSequenceNumber | dashify}}</dd>
             <dt>Analysis Id</dt>
-            <dd>Curl-3</dd>
+            <dd>{{variantReportPC.analysisId | dashify}}</dd>
             <dt>Total Variants</dt>
-            <dd>8</dd>
+            <dd>{{variantReportPC.totalVariants | dashify}}</dd>
             <dt>MAPD</dt>
-            <dd>0.317</dd>
+            <dd>{{variantReportPC.mapd | dashify}}</dd>
             <dt>Cellularity</dt>
-            <dd>1.000000</dd>
+            <dd>{{variantReportPC.cellularity | dashify}}</dd>
             <dt>Positive Control Version</dt>
-            <dd>2</dd>
+            <dd>{{variantReportPC.positiveControlVersion | dashify}}</dd>
             <dt>Positive Control Loaded Date</dt>
-            <dd>May 31, 2016 3:02 PM GMT</dd>
+            <dd>{{variantReportPC.positiveControlLoadedDate | dashify}}</dd>
             <dt>File Received Date</dt>
-            <dd>October 21, 2015 1:51 PM GMT</dd>
+            <dd>{{variantReportPC.fileReceivedDate | dashify}}</dd>
             <dt>Torrent Variant Caller Version</dt>
-            <dd>tvc 4.4-8</dd>
+            <dd>{{variantReportPC.torrentVariantCallerVersion | dashify}}</dd>
             <dt>Status</dt>
-            <dd [colorCodeClia]="'PASSED'">PASSED</dd>
+            <dd [colorCodeClia]="variantReportPC.status">{{variantReportPC.status | dashify}}</dd>
           </dl>
         </div>
         <div class="panel-heading p-t-0">
@@ -51,21 +51,9 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Indel</td>
-                  <td>Chromosone, Position, Reference and Alternative.</td>
-                </tr>
-                <tr>
-                  <td>SNV</td>
-                  <td>Chromosone, Position, Reference and Alternative.</td>
-                </tr>
-                <tr>
-                  <td>CNV</td>
-                  <td>Gene</td>
-                </tr>
-                <tr>
-                  <td>Fusion</td>
-                  <td>HGVS</td>
+                <tr *ngFor="let item of lengendPCs">
+                  <td>{{item.variantType | dashify}}</td>
+                  <td>{{item.matchingCriteria | dashify}}</td>
                 </tr>
               </tbody>
             </table>

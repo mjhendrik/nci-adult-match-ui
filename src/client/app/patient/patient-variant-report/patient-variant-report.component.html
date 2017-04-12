@@ -290,8 +290,8 @@
                 </td>
               </tr>
               <tr *ngFor="let item of assignmentReason.noVariantMatch">
-                <td>{{item.treatmentArm}}</td>
-                <td>{{item.reason}}</td>
+                <td>{{item.treatmentArm | dashify}}</td>
+                <td>{{item.reason | dashify}}</td>
               </tr>
               <tr>
                 <td colspan="2">
@@ -299,8 +299,8 @@
                 </td>
               </tr>
               <tr *ngFor="let item of assignmentReason.recordBasedExclusion">
-                <td>{{item.treatmentArm}}</td>
-                <td>{{item.reason}}</td>
+                <td>{{item.treatmentArm | dashify}}</td>
+                <td>{{item.reason | dashify}}</td>
               </tr>
               <tr>
                 <td colspan="2">
@@ -308,8 +308,8 @@
                 </td>
               </tr>
               <tr *ngFor="let item of assignmentReason.levelOfEvidenceTieBreaker">
-                <td>{{item.treatmentArm}}</td>
-                <td>{{item.reason}}</td>
+                <td>{{item.treatmentArm | dashify}}</td>
+                <td>{{item.reason | dashify}}</td>
               </tr>
               <tr>
                 <td colspan="2">
@@ -317,8 +317,8 @@
                 </td>
               </tr>
               <tr *ngFor="let item of assignmentReason.selected">
-                <td>{{item.treatmentArm}}</td>
-                <td>{{item.reason}}</td>
+                <td>{{item.treatmentArm | dashify}}</td>
+                <td>{{item.reason | dashify}}</td>
               </tr>
             </tbody>
           </table>
@@ -343,11 +343,11 @@
             </thead>
             <tbody>
               <tr *ngFor="let item of assignmentHistory">
-                <td [colorCodeAssignment]="item.status"><a href="javascript:alert('Opens old assignment full screen')">{{item.status}}</a></td>
-                <td>{{item.generationDate}}</td>
-                <td>{{item.confirmationDate}}</td>
-                <td>{{item.sentToEcogDate}}</td>
-                <td>{{item.receivedFromEcogDate}}</td>
+                <td [colorCodeAssignment]="item.status"><a href="javascript:alert('Opens old assignment full screen')">{{item.status | dashify}}</a></td>
+                <td>{{item.generationDate | dashify}}</td>
+                <td>{{item.confirmationDate | dashify}}</td>
+                <td>{{item.sentToEcogDate | dashify}}</td>
+                <td>{{item.receivedFromEcogDate | dashify}}</td>
               </tr>
             </tbody>
           </table>
