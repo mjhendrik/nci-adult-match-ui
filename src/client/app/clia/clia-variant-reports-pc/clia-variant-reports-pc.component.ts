@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 
 import { routerTransition } from './../../shared/router.animations';
-import { GmtPipe } from './../../shared/pipes/gmt.pipe';
 
 
 /**
@@ -13,8 +12,7 @@ import { GmtPipe } from './../../shared/pipes/gmt.pipe';
   templateUrl: 'clia-variant-reports-pc.component.html',
   styleUrls: ['clia-variant-reports-pc.component.css'],
   animations: [routerTransition()],
-  host: { '[@routerTransition]': '' },
-  providers: [GmtPipe]
+  host: { '[@routerTransition]': '' }
 })
 export class CliaVariantReportsPcComponent {
 
