@@ -13,7 +13,7 @@ WORKDIR $INSTALL_PATH
 
 COPY .docker/httpd.conf /usr/local/apache2/conf/
 COPY ./dist/dev /usr/local/apache2/match
-COPY ./node_modules /usr/local/apache2/match
+COPY ./node_modules /usr/local/apache2/match/node_modules
 
 # This is a debug list
 # RUN ls -alth /usr/local/apache2/match
