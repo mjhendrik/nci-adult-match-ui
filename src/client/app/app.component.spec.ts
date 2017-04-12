@@ -77,7 +77,7 @@ export function main() {
       });
     });
 
-    fit('should build without a problem',
+    it('should build without a problem',
       async(() => {
         TestBed
           .compileComponents()
