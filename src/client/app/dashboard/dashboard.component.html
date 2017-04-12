@@ -145,7 +145,7 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td class="f-s-15" colspan="7">There are no pending assignment reports that need review</td>
+                              <td class="f-s-15 text-muted" colspan="7">There are no pending assignment reports that need review</td>
                             </tr>
                           </tbody>
                         </table>
@@ -196,7 +196,7 @@
                               <td [colorCodeHours]="item.hoursPending">{{item.hoursPending | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftableAR.data.length == 0">
-                              <td class="f-s-15" colspan="7">No matching search results found for "{{searchtermAR}}"</td>
+                              <td class="f-s-15 text-muted" colspan="7">No matching search results found for "{{searchtermAR}}"</td>
                             </tr>
                           </tbody>
                           <tfoot>
@@ -272,7 +272,7 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td class="f-s-15" colspan="8">There are no pending variant reports that need review</td>
+                              <td class="f-s-15 text-muted" colspan="8">There are no pending variant reports that need review</td>
                             </tr>
                           </tbody>
                         </table>
@@ -320,7 +320,7 @@
                               <td [colorCodeDays]="item.daysPending">{{item.daysPending | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftableVR.data.length == 0">
-                              <td class="f-s-15" colspan="8">No matching search results found for "{{searchtermVR}}"</td>
+                              <td class="f-s-15 text-muted" colspan="8">No matching search results found for "{{searchtermVR}}"</td>
                             </tr>
                           </tbody>
                           <tfoot>
@@ -399,7 +399,7 @@
               </thead>
               <tbody>
                 <tr>
-                  <td class="f-s-15" colspan="7">There are no patients awaiting further action or information</td>
+                  <td class="f-s-15 text-muted" colspan="7">There are no patients awaiting further action or information</td>
                 </tr>
               </tbody>
             </table>
@@ -447,7 +447,7 @@
                   <td>{{item.date_verified | dashify}}</td>
                 </tr>
                 <tr *ngIf="mftablePatientsAwaiting.data.length == 0">
-                  <td class="f-s-15" colspan="7">No matching search results found for "{{searchtermPatientsAwaiting}}"</td>
+                  <td class="f-s-15 text-muted" colspan="7">No matching search results found for "{{searchtermPatientsAwaiting}}"</td>
                 </tr>
               </tbody>
               <tfoot>
