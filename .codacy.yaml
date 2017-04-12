@@ -30,3 +30,5 @@ exclude_paths:
 - "Gulpfile.js"
 - "tools/**/*"
 - "src/client/assets/**/*"
+- "src/client/css/style.css"
+- "misc/bootstrap/bootstrap-theme.css"
