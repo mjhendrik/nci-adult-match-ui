@@ -21,7 +21,7 @@ import { PatientApiService } from '../patient-api.service';
 })
 export class PatientListComponent implements OnInit {
 
-  searchTermP: string = '';
+  searchTermPatients: string = '';
   recordsPerPagePatients: number = 100;
   tablePatientsDefaultSort: string = 'patientSequenceNumber';
   tablePatientsData: any[];
