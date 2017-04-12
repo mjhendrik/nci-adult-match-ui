@@ -99,7 +99,7 @@
                       <li *ngFor="let item of summaryData.activity" class="timeline-item">
                         <div class="timeline-info">
                           <div class="timeline-image">
-                            <i class="fa fa-bar-chart fa-2x"></i>
+                            <i [faIcon]="item.icon" class="fa fa-2x"></i>
                           </div>
                           <h4>{{item.status}}</h4>
                           <p>

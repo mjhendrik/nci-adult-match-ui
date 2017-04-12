@@ -12,6 +12,8 @@ import { ExternalLinksComponent } from './external-links.component';
 import { ColorCodeAssignmentDirective } from './colorcode-assignment.directive';
 import { ColorCodeVariantReportDirective } from './colorcode-variant-report.directive';
 import { ActiveClassDirective } from './active-class.directive';
+import { MatchHeightTabClickDirective } from './match-height-tab.directive';
+import { FaIconDirective } from './fa-icon.directive';
 
 @NgModule({
   imports: [CommonModule],
@@ -26,7 +28,9 @@ import { ActiveClassDirective } from './active-class.directive';
     ExternalLinksComponent,
     ColorCodeAssignmentDirective,
     ColorCodeVariantReportDirective,
-    ActiveClassDirective
+    ActiveClassDirective,
+    MatchHeightTabClickDirective,
+    FaIconDirective
   ],
   exports: [
     ColorCodeTaDirective,
@@ -39,7 +43,9 @@ import { ActiveClassDirective } from './active-class.directive';
     ExternalLinksComponent,
     ColorCodeAssignmentDirective,
     ColorCodeVariantReportDirective,
-    ActiveClassDirective
+    ActiveClassDirective,
+    MatchHeightTabClickDirective,
+    FaIconDirective
   ],
 })
 export class DirectivesModule {
