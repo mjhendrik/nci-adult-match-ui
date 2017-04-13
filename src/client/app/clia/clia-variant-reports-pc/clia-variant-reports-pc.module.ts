@@ -7,10 +7,12 @@ import { DirectivesModule } from '../../shared/directives/directives.module';
 import { FormsModule } from '@angular/forms';
 import { DataTableModule } from '../../shared/datatables/index';
 import { PipesModule } from '../../shared/pipes/pipes.module';
+import { CliaApiService } from './../clia-api.service';
 
 @NgModule({
   imports: [CommonModule, CliaVariantReportsPcRoutingModule, SharedModule, FormsModule, DataTableModule, PipesModule, DirectivesModule],
   declarations: [CliaVariantReportsPcComponent],
-  exports: [CliaVariantReportsPcComponent]
+  exports: [CliaVariantReportsPcComponent],
+  providers: [CliaApiService]
 })
 export class CliaVariantReportsPcModule { }

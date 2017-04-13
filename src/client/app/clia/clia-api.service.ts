@@ -20,15 +20,15 @@ export interface CliaVariantReportsNTCInterface {
 }
 
 export interface CliaVariantReportsPACCInterface {
-  variantReportNTC: {};
+  variantReportPACC: {};
   snv: any[];
   indels: any[];
 }
 
 export interface CliaVariantReportsPCInterface {
-  variantReportNTC: {};
-  snv: any[];
-  indels: any[];
+  variantReportPC: {};
+  lengendPCs: any[];
+  tablePCsData: any[];
 }
 
 // import 'rxjs/add/operator/do';  // for debugging

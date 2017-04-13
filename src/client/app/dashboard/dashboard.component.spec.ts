@@ -45,7 +45,7 @@ export function main() {
 
             dashboardInstance.ngOnInit();
             expect(dashboardInstance.recordsPerPageVR).toEqual(30);
-            console.log(dashboardInstance.recordsPerPageVR);
+            // console.log(dashboardInstance.recordsPerPageVR);
             alert(dashboardInstance.recordsPerPageVR);
           });
       });
