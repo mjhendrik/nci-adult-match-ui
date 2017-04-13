@@ -31,13 +31,6 @@ export class PatientApiService {
       .catch(this.handleError);
   }
 
-  getPatientDetails(): Observable<any[]> {
-    return this.http.get('assets/mock-data/patient-details.json')
-      .map((res: Response) => res.json())
-      //              .do(data => console.log('server data:', data))  // debug
-      .catch(this.handleError);
-  }
-
   /**
     * Handle HTTP error
     */

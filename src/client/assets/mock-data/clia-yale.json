@@ -1,0 +1,116 @@
+{
+  "tablePCData": [{
+      "molecularSequenceNumber": "SampleControl_Yale_1",
+      "dateCreated": 1446820770383,
+      "dateReceived": 1454610348866,
+      "status": "FAILED"
+    },
+    {
+      "molecularSequenceNumber": "SampleControl_Yale_2",
+      "dateCreated": 1454609818768,
+      "dateReceived": 1454610867459,
+      "status": "FAILED"
+    },
+    {
+      "molecularSequenceNumber": "SampleControl_Yale_3",
+      "dateCreated": 1456156465733,
+      "dateReceived": 1456157104784,
+      "status": "FAILED"
+    },
+    {
+      "molecularSequenceNumber": "SampleControl_Yale_4",
+      "dateCreated": 1456158997284,
+      "dateReceived": 1456160505028,
+      "status": "FAILED"
+    },
+    {
+      "molecularSequenceNumber": "SampleControl_Yale_5",
+      "dateCreated": 1456159006206,
+      "dateReceived": 1456160838470,
+      "status": "FAILED"
+    },
+    {
+      "molecularSequenceNumber": "SampleControl_Yale_6",
+      "dateCreated": 1491254923348,
+      "dateReceived": null,
+      "status": null
+    }
+  ],
+  "tableNTCData": [{
+      "molecularSequenceNumber": "NtcControl_Yale_4",
+      "dateCreated": 1456156472611,
+      "dateReceived": 1456157767343,
+      "status": "PASSED"
+    },
+    {
+      "molecularSequenceNumber": "NtcControl_Yale_1",
+      "dateCreated": 1446820780440,
+      "dateReceived": 1454611045821,
+      "status": "PASSED"
+    },
+    {
+      "molecularSequenceNumber": "NtcControl_Yale_5",
+      "dateCreated": 1456160756802,
+      "dateReceived": 1456163682942,
+      "status": "PASSED"
+    },
+    {
+      "molecularSequenceNumber": "NtcControl_Yale_2",
+      "dateCreated": 1454609828636,
+      "dateReceived": 1454611676551,
+      "status": "FAILED"
+    },
+    {
+      "molecularSequenceNumber": "NtcControl_Yale_3",
+      "dateCreated": 1454609835273,
+      "dateReceived": 1456157445458,
+      "status": "FAILED"
+    },
+    {
+      "molecularSequenceNumber": "NtcControl_Yale_6",
+      "dateCreated": 1456160766085,
+      "dateReceived": 1456164054518,
+      "status": "PASSED"
+    },
+    {
+      "molecularSequenceNumber": "NtcControl_Yale_7",
+      "dateCreated": 1491254926936,
+      "dateReceived": null,
+      "status": null
+    }
+  ],
+  "tablePACCData": [{
+      "molecularSequenceNumber": "ProficiencyCompetencyControl_Yale_1",
+      "dateCreated": 1471543039017,
+      "dateReceived": 1471544972327,
+      "status": "PASSED"
+    },
+    {
+      "molecularSequenceNumber": "ProficiencyCompetencyControl_Yale_2",
+      "dateCreated": 1471543042997,
+      "dateReceived": 1471545093614,
+      "status": "FAILED"
+    },
+    {
+      "molecularSequenceNumber": "ProficiencyCompetencyControl_Yale_3",
+      "dateCreated": 1471543046990,
+      "dateReceived": 1471545065707,
+      "status": "PENDING"
+    },
+    {
+      "molecularSequenceNumber": "ProficiencyCompetencyControl_Yale_4",
+      "dateCreated": 1491254929626,
+      "dateReceived": null,
+      "status": null
+    }
+  ],
+  "ionReportersData": [{
+    "ionReporterId": "IR_F6ZZM",
+    "ionReporterVersion": "5.2",
+    "hostName": "NCIAS-D1356",
+    "ipAddress": "10.133.130.53",
+    "status": "Contacted 4 minutes ago",
+    "lastContactDate": 1491507005457,
+    "externalIpAddress": "10.133.210.11"
+  }]
+}
