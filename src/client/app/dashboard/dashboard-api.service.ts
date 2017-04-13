@@ -7,14 +7,21 @@ import { Observable } from 'rxjs/Observable';
 
 // import 'rxjs/add/operator/do';  // for debugging
 
+export interface DashboardApiResponse {
+  overviewData: {};
+  tableARData: any[];
+  tableVRData: any[];
+  tablePatientsAwaitingData: any[];
+}
+
 /**
  * This class provides the NameList service with methods to read names and add names.
  */
 @Injectable()
-export class PatientApiService {
+export class DashboardApiService {
 
   /**
-   * Creates a new PatientApiService with the injected Http.
+   * Creates a new DashboardApiService with the injected Http.
    * @param {Http} http - The injected Http.
    * @constructor
    */
@@ -24,8 +31,8 @@ export class PatientApiService {
    * Returns an Observable for the HTTP GET request for the JSON resource.
    * @return {string[]} The Observable for the HTTP request.
    */
-  getPatientList(): Observable<any[]> {
-    return this.http.get('assets/mock-data/patient-list.json')
+  getDashboard(): Observable<DashboardApiResponse> {
+    return this.http.get('assets/mock-data/dashboard.json')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
