@@ -8,7 +8,6 @@ export class FaIconDirective implements OnInit {
     constructor(private el: ElementRef) { }
 
     ngOnInit() {
-        console.log(this.faIcon);
         if (this.faIcon === 'bar-chart') {
             this.el.nativeElement.classList.add('fa-bar-chart');
         } else if (this.faIcon === 'user') {
