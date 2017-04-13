@@ -12,6 +12,12 @@
         <div class="panel-heading">
           <dl class="dl-horizontal">
             <h4>Variant Report</h4>
+            <dt>Molecular Sequence Number</dt>
+            <dd>{{variantReport.molecularSequenceNumber | dashify}}</dd>
+            <dt>Biopsy Sequence Number</dt>
+            <dd>{{variantReport.biopsySequenceNumber | dashify}}</dd>
+            <dt>Analysis ID</dt>
+            <dd>{{variantReport.analysisId | dashify}}</dd>
             <dt>Patient</dt>
             <dd><a href [routerLink]="['/patients/details']" class="link-none">{{variantReport.patientSequenceNumber | dashify}}</a>,
               <span [colorCodePatients]="variantReport.patientStatus">{{variantReport.patientStatus | dashify}}</span>, at
@@ -20,12 +26,6 @@
             <dd>{{variantReport.concordance | dashify}}</dd>
             <dt>Status</dt>
             <dd><span [colorCodeVariantReport]="variantReport.variantReportStatus">{{variantReport.variantReportStatus | dashify}}</span>              on {{variantReport.variantReportDate | dashify}}</dd>
-            <dt>Biopsy Sequence Number</dt>
-            <dd>{{variantReport.biopsySequenceNumber | dashify}}</dd>
-            <dt>Molecular Sequence Number</dt>
-            <dd>{{variantReport.molecularSequenceNumber | dashify}}</dd>
-            <dt>Analysis ID</dt>
-            <dd>{{variantReport.analysisId | dashify}}</dd>
             <dt>MAPD</dt>
             <dd>{{variantReport.mapd | dashify}}</dd>
             <dt>Cellularity</dt>
@@ -63,7 +63,7 @@
             <div class="panel-heading">
               <p>
                 {{assignmentReport.assignmentReason | dashify}}
-                <a href="javascript:alert('Scrolls to details at the bottom')" class="text-white"><br>Details...</a>
+                <a href="javascript:alert('Scrolls to details at the bottom')" class="text-white text-underlined"><br><br><i class="fa fa-arrow-down" aria-hidden="true"></i> Click for details...</a>
               </p>
             </div>
           </div>
