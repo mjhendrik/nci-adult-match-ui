@@ -7,6 +7,12 @@ import { Observable } from 'rxjs/Observable';
 
 // import 'rxjs/add/operator/do';  // for debugging
 
+export interface PatientDetailsInterface {
+  patientData: {};
+  summaryData: {};
+  biopsyData: {};
+}
+
 /**
  * This class provides the NameList service with methods to read names and add names.
  */
@@ -31,7 +37,7 @@ export class PatientApiService {
       .catch(this.handleError);
   }
 
-  getPatientDetails(): Observable<any[]> {
+  getPatientDetails(): Observable<PatientDetailsInterface> {
     return this.http.get('assets/mock-data/patient-details.json')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug

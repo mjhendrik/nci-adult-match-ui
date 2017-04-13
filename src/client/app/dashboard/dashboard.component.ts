@@ -6,7 +6,7 @@ import { routerTransition } from './../shared/router.animations';
 import { GmtPipe } from './../shared/pipes/gmt.pipe';
 import {
   DashboardApiService,
-  DashboardApiResponse
+  DashboardInterface
 } from './dashboard-api.service';
 
 
@@ -58,7 +58,7 @@ export class DashboardComponent implements OnInit {
   getData() {
     let gmt = new GmtPipe();
     this.dashboardApi.getDashboard()
-      .subscribe((itemList: DashboardApiResponse) => {
+      .subscribe((itemList: DashboardInterface) => {
 
         this.overviewData = itemList.overviewData;
 

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Observable';
 
 // import 'rxjs/add/operator/do';  // for debugging
 
-export interface DashboardApiResponse {
+export interface DashboardInterface {
   overviewData: {};
   tableARData: any[];
   tableVRData: any[];
@@ -31,7 +31,7 @@ export class DashboardApiService {
    * Returns an Observable for the HTTP GET request for the JSON resource.
    * @return {string[]} The Observable for the HTTP request.
    */
-  getDashboard(): Observable<DashboardApiResponse> {
+  getDashboard(): Observable<DashboardInterface> {
     return this.http.get('assets/mock-data/dashboard.json')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
