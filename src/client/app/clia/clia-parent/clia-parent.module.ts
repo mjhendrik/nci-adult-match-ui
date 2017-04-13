@@ -7,9 +7,10 @@ import { FormsModule } from '@angular/forms';
 import { DataTableModule } from '../../shared/datatables/index';
 import { PipesModule } from '../../shared/pipes/pipes.module';
 import { CliaApiService } from './../clia-api.service';
+import { CliaParentRoutingModule } from './clia-parent-routing.module';
 
 @NgModule({
-  imports: [CommonModule, SharedModule, FormsModule, DataTableModule, PipesModule, DirectivesModule],
+  imports: [CommonModule, SharedModule, CliaParentRoutingModule, FormsModule, DataTableModule, PipesModule, DirectivesModule],
   declarations: [CliaParentComponent],
   exports: [CliaParentComponent],
   providers: [CliaApiService]

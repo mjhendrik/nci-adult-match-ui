@@ -3,6 +3,7 @@ import {
   Input,
   OnInit
 } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { routerTransition } from './../../shared/router.animations';
 import { GmtPipe } from './../../shared/pipes/gmt.pipe';
@@ -54,11 +55,13 @@ export class CliaParentComponent implements OnInit {
 
   cliaTypeName: string;
 
-  constructor(private cliaApi: CliaApiService) {
+  constructor(private cliaApi: CliaApiService, private route: ActivatedRoute) {
 
   }
 
   ngOnInit() {
+
+    this.cliaType = this.route.snapshot.data['cliatype'];
 
     this.recordsPerPagePC = 10;
     this.recordsPerPageNTC = 10;
