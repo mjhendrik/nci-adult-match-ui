@@ -38,6 +38,13 @@ export class PatientApiService {
       .catch(this.handleError);
   }
 
+  getPatientVariantReport(): Observable<any[]> {
+    return this.http.get('assets/mock-data/patient-variant-report.json')
+      .map((res: Response) => res.json())
+      //              .do(data => console.log('server data:', data))  // debug
+      .catch(this.handleError);
+  }
+
   /**
     * Handle HTTP error
     */
