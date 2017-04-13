@@ -6,10 +6,12 @@ import { DirectivesModule } from '../../shared/directives/directives.module';
 import { FormsModule } from '@angular/forms';
 import { DataTableModule } from '../../shared/datatables/index';
 import { PipesModule } from '../../shared/pipes/pipes.module';
+import { CliaApiService } from './../clia-api.service';
 
 @NgModule({
   imports: [CommonModule, SharedModule, FormsModule, DataTableModule, PipesModule, DirectivesModule],
   declarations: [CliaParentComponent],
-  exports: [CliaParentComponent]
+  exports: [CliaParentComponent],
+  providers: [CliaApiService]
 })
 export class CliaParentModule { }

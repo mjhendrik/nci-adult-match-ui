@@ -7,14 +7,13 @@ import {
 })
 export class FilterByTextPipe implements PipeTransform {
     transform(items: any[], filterText: string): any[] {
-        if (!items)
-          return items;
+        if (!items || items.length === 0)
+            return items;
         var keys = Object.keys(items[0]);
         var pattern = keys.join('|');
         pattern = pattern + '"|{|}';
         var regex: RegExp = new RegExp(pattern, 'gi');
         return items.filter(item => {
-            // console.log(JSON.stringify(item).replace(regex, ''));
             return JSON.stringify(item).replace(regex, '').toLocaleLowerCase()
                 .indexOf(filterText.toLocaleLowerCase()) !== -1 ? true : false;
         }
