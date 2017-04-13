@@ -51,6 +51,8 @@
             <dd><span [colorCodeAssignment]="assignmentReport.status"> {{assignmentReport.status | dashify}}</span>  on {{assignmentReport.confirmationDate | dashify}} by {{assignmentReport.user | dashify}}</dd>
             <dt>Generation Date</dt>
             <dd>{{assignmentReport.generationDate | dashify}}</dd>
+            <dt>Treatment Arm Sent to ECOG Date</dt>
+            <dd>{{assignmentReport.taSentToECOGDate | dashify}}</dd>
             <dt>Sent to ECOG Date</dt>
             <dd>{{assignmentReport.senttoECOGDate | dashify}}</dd>
             <dt>Received from ECOG Date</dt>
@@ -274,48 +276,58 @@
       <div class="row">
         <div class="col-md-12">
           <h4 id="assignment-details">Assignment Reason</h4>
-          <table class="table table-condensed">
+          <table class="table table-condensed table-th-valign-top">
             <thead>
               <tr>
                 <th style="width:20%">Treatment Arm</th>
-                <th>Reason</th>
+                <th style="width:20%">Treatment Arm Name</th>
+                <th style="width:30%">Inclusion/Exclusion Drugs</th>
+                <th style="width:30%">Reason</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td colspan="2">
+                <td colspan="4">
                   <h4>1 - NO VARIANT MATCH</h4>
                 </td>
               </tr>
               <tr *ngFor="let item of assignmentReason.noVariantMatch">
                 <td>{{item.treatmentArm | dashify}}</td>
+                <td>{{item.treatmentArmName | dashify}}</td>
+                <td>{{item.treatmentArmInclusionExclusionDrugs | dashify}}</td>
                 <td>{{item.reason | dashify}}</td>
               </tr>
               <tr>
-                <td colspan="2">
+                <td colspan="4">
                   <h4>2 - RECORD BASED EXCLUSION</h4>
                 </td>
               </tr>
               <tr *ngFor="let item of assignmentReason.recordBasedExclusion">
                 <td>{{item.treatmentArm | dashify}}</td>
+                <td>{{item.treatmentArmName | dashify}}</td>
+                <td>{{item.treatmentArmInclusionExclusionDrugs | dashify}}</td>
                 <td>{{item.reason | dashify}}</td>
               </tr>
               <tr>
-                <td colspan="2">
+                <td colspan="4">
                   <h4>3 - LEVEL OF EVIDENCE TIE BREAKER</h4>
                 </td>
               </tr>
               <tr *ngFor="let item of assignmentReason.levelOfEvidenceTieBreaker">
                 <td>{{item.treatmentArm | dashify}}</td>
+                <td>{{item.treatmentArmName | dashify}}</td>
+                <td>{{item.treatmentArmInclusionExclusionDrugs | dashify}}</td>
                 <td>{{item.reason | dashify}}</td>
               </tr>
               <tr>
-                <td colspan="2">
+                <td colspan="4">
                   <h4>4 - SELECTED</h4>
                 </td>
               </tr>
               <tr *ngFor="let item of assignmentReason.selected">
                 <td>{{item.treatmentArm | dashify}}</td>
+                <td>{{item.treatmentArmName | dashify}}</td>
+                <td>{{item.treatmentArmInclusionExclusionDrugs | dashify}}</td>
                 <td>{{item.reason | dashify}}</td>
               </tr>
             </tbody>
