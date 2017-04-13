@@ -32,26 +32,26 @@ export class CliaParentComponent implements OnInit {
   searchtermNTC: string = '';
   searchtermPACC: string = '';
 
-  recordsPerPagePC: number;
-  recordsPerPageNTC: number;
-  recordsPerPagePACC: number;
+  recordsPerPagePC: number = 10;
+  recordsPerPageNTC: number = 10;
+  recordsPerPagePACC: number = 10;
 
-  tablePCDefaultSort: string;
-  tableNTCDefaultSort: string;
-  tablePACCDefaultSort: string;
+  tablePCDefaultSort: string = 'dateCreated';
+  tableNTCDefaultSort: string = 'dateCreated';
+  tablePACCDefaultSort: string = 'dateCreated';
 
-  sortByAsc: string;
-  sortByDesc: string;
+  sortByAsc: string = 'asc';
+  sortByDesc: string = 'desc';
 
-  countContacted: number;
-  countLost: number;
+  countContacted: number = 0;
+  countLost: number = 0;
 
   timestamp: any = new Date();
 
-  tablePCData: any[];
-  tableNTCData: any[];
-  tablePACCData: any[];
-  ionReportersData: any[];
+  tablePCData: any[] = [];
+  tableNTCData: any[] = [];
+  tablePACCData: any[] = [];
+  ionReportersData: any[] = [];
 
   cliaTypeName: string;
 
@@ -62,25 +62,6 @@ export class CliaParentComponent implements OnInit {
   ngOnInit() {
 
     this.cliaType = this.route.snapshot.data['cliatype'];
-
-    this.recordsPerPagePC = 10;
-    this.recordsPerPageNTC = 10;
-    this.recordsPerPagePACC = 10;
-
-    this.tablePCDefaultSort = 'dateCreated';
-    this.tableNTCDefaultSort = 'dateCreated';
-    this.tablePACCDefaultSort = 'dateCreated';
-
-    this.sortByAsc = 'asc';
-    this.sortByDesc = 'desc';
-
-    this.countContacted = 0;
-    this.countLost = 0;
-
-    this.tablePCData = [];
-    this.tableNTCData = [];
-    this.tablePACCData = [];
-    this.ionReportersData = [];
 
     let gmt = new GmtPipe();
 

@@ -5,11 +5,14 @@ import { BiopsyTrackingListRoutingModule } from './biopsy-tracking-routing.modul
 import { FormsModule } from '@angular/forms';
 import { DataTableModule } from '../shared/datatables/index';
 import { PipesModule } from '../shared/pipes/pipes.module';
+import { BiopsyTrackingApiService } from './biopsy-tracking-api.service';
+
 
 
 @NgModule({
   imports: [CommonModule, BiopsyTrackingListRoutingModule, FormsModule, DataTableModule, PipesModule],
   declarations: [BiopsyTrackingListComponent],
-  exports: [BiopsyTrackingListComponent]
+  exports: [BiopsyTrackingListComponent],
+  providers: [BiopsyTrackingApiService]
 })
 export class BiopsyTrackingListModule { }
