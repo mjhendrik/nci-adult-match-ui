@@ -58,8 +58,8 @@
       <div class="panel">
         <ul class="nav nav-tabs nav-tabs-purple">
           <li class="active"><a href="#tab-summary" data-toggle="tab">Summary</a></li>
-          <li class=""><a href="#tab-biopsy-t-16-000762" data-toggle="tab">Biopsy T-16-000762</a></li>
-          <li class=""><a href="#tab-biopsy-t-16-000789" data-toggle="tab">Biopsy T-16-000789</a></li>
+          <li class=""><a href="#tab-biopsy-t-16-000762" data-toggle="tab">1. Biopsy T-16-000762</a></li>
+          <li class=""><a href="#tab-biopsy-t-16-000789" data-toggle="tab">2. Biopsy T-16-000789</a></li>
           <li class=""><a href="#tab-documents" data-toggle="tab">Documents</a></li>
         </ul>
         <div class="tab-content m-b-0">
@@ -104,8 +104,8 @@
                           <h4>{{item.status}}</h4>
                           <p>
                             {{item.details}}
-                            <a class="link-none" [routerLink]="['/patients/variant_report']" href *ngIf="item.variantReport">Variant Report</a>                            {{item.variantReportDetails}}
-                            <a class="link-none" [routerLink]="['/patients/variant_report']" href *ngIf="item.assignmentReport">Assignment Report</a>                            {{item.assignmentReportDetails}}
+                            <a class="link-none" [routerLink]="['/patients/variant_report']" href *ngIf="item.variantReport">Variant Report</a> {{item.variantReportDetails}}
+                            <a class="link-none" [routerLink]="['/patients/variant_report']" href *ngIf="item.assignmentReport">Assignment Report</a> {{item.assignmentReportDetails}}
                           </p>
                           <span class="timeline-time">{{item.time}}</span>
                         </div>
