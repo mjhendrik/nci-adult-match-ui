@@ -1,102 +1,5 @@
-import { Component } from '@angular/core';
-
-import { routerTransition } from './../../shared/router.animations';
-import { GmtPipe } from './../../shared/pipes/gmt.pipe';
-
-
-/**
- * This class represents the lazy loaded CLIAMochaComponent.
- */
-@Component({
-  moduleId: module.id,
-  selector: 'sd-clia-mocha',
-  templateUrl: 'clia-mocha.component.html',
-  styleUrls: ['clia-mocha.component.css'],
-  animations: [routerTransition()],
-  host: { '[@routerTransition]': '' },
-  providers: [GmtPipe]
-})
-export class CliaMochaComponent {
-
-  searchtermPC: string = '';
-  searchtermNTC: string = '';
-  searchtermPACC: string = '';
-
-  recordsPerPagePC: number;
-  recordsPerPageNTC: number;
-  recordsPerPagePACC: number;
-
-  tablePCDefaultSort: string;
-  tableNTCDefaultSort: string;
-  tablePACCDefaultSort: string;
-
-  sortByAsc: string;
-  sortByDesc: string;
-
-  countContacted: number;
-  countLost: number;
-
-  timestamp: any = new Date();
-
-  ngOnInit() {
-
-    this.recordsPerPagePC = 10;
-    this.recordsPerPageNTC = 10;
-    this.recordsPerPagePACC = 10;
-
-    this.tablePCDefaultSort = 'dateCreated';
-    this.tableNTCDefaultSort = 'dateCreated';
-    this.tablePACCDefaultSort = 'dateCreated';
-
-    this.sortByAsc = 'asc';
-    this.sortByDesc = 'desc';
-
-    this.countContacted = 0;
-    this.countLost = 0;
-
-    let gmt = new GmtPipe();
-
-    for (let i = 0; i < this.tablePCData.length; i++) {
-      this.tablePCData[i].dateCreated = gmt.transform(this.tablePCData[i].dateCreated);
-    }
-
-    for (let i = 0; i < this.tablePCData.length; i++) {
-      this.tablePCData[i].dateReceived = gmt.transform(this.tablePCData[i].dateReceived);
-    }
-
-    for (let i = 0; i < this.tableNTCData.length; i++) {
-      this.tableNTCData[i].dateCreated = gmt.transform(this.tableNTCData[i].dateCreated);
-    }
-
-    for (let i = 0; i < this.tableNTCData.length; i++) {
-      this.tableNTCData[i].dateReceived = gmt.transform(this.tableNTCData[i].dateReceived);
-    }
-
-    for (let i = 0; i < this.tablePACCData.length; i++) {
-      this.tablePACCData[i].dateCreated = gmt.transform(this.tablePACCData[i].dateCreated);
-    }
-
-    for (let i = 0; i < this.tablePACCData.length; i++) {
-      this.tablePACCData[i].dateReceived = gmt.transform(this.tablePACCData[i].dateReceived);
-    }
-
-    for (let i = 0; i < this.ionReportersData.length; i++) {
-      this.ionReportersData[i].lastContactDate = gmt.transform(this.ionReportersData[i].lastContactDate);
-    }
-
-    this.countIonReporters();
-
-  }
-
-  countIonReporters(): any {
-    for (let i = 0; i < this.ionReportersData.length; i++) {
-      if (this.ionReportersData[i].status.indexOf('Contacted') !== -1) this.countContacted++;
-      else this.countLost++;
-    }
-  }
-
-  tablePCData: any = [
-    {
+{
+  "tablePCData": [{
       "molecularSequenceNumber": "SampleControl_MoCha_21",
       "dateCreated": 1455828416610,
       "dateReceived": 1455914224800,
@@ -330,10 +233,8 @@ export class CliaMochaComponent {
       "dateReceived": null,
       "status": null
     }
-  ];
-
-  tableNTCData: any = [
-    {
+  ],
+  "tableNTCData": [{
       "molecularSequenceNumber": "NtcControl_MoCha_1",
       "dateCreated": 1441827420568,
       "dateReceived": 1441900031807,
@@ -435,10 +336,8 @@ export class CliaMochaComponent {
       "dateReceived": null,
       "status": null
     }
-  ];
-
-  tablePACCData: any = [
-    {
+  ],
+  "tablePACCData": [{
       "molecularSequenceNumber": "ProficiencyCompetencyControl_MoCha_1",
       "dateCreated": 1471543012397,
       "dateReceived": 1471544473188,
@@ -492,10 +391,8 @@ export class CliaMochaComponent {
       "dateReceived": null,
       "status": null
     }
-  ];
-
-  ionReportersData: any = [
-    {
+  ],
+  "ionReportersData": [{
       "ionReporterId": "IR_ICHGP",
       "ionReporterVersion": "5.0",
       "hostName": "NCI-MATCH-IR",
@@ -513,6 +410,5 @@ export class CliaMochaComponent {
       "lastContactDate": 1491484802979,
       "externalIpAddress": "10.133.210.11"
     }
-  ];
-
+  ]
 }
