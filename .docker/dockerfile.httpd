@@ -18,4 +18,4 @@ COPY ./node_modules /usr/local/apache2/match/node_modules
 # This is a debug list
 # RUN ls -alth /usr/local/apache2/match
 
-CMD sleep 3 && httpd-foreground -C 'DocumentRoot /usr/local/apache2/match/'
+CMD httpd-foreground -C 'DocumentRoot /usr/local/apache2/match/'
