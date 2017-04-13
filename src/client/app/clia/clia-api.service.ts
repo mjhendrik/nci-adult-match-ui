@@ -19,6 +19,18 @@ export interface CliaVariantReportsNTCInterface {
   indels: any[];
 }
 
+export interface CliaVariantReportsPACCInterface {
+  variantReportNTC: {};
+  snv: any[];
+  indels: any[];
+}
+
+export interface CliaVariantReportsPCInterface {
+  variantReportNTC: {};
+  snv: any[];
+  indels: any[];
+}
+
 // import 'rxjs/add/operator/do';  // for debugging
 
 /**
@@ -45,22 +57,22 @@ export class CliaApiService {
       .catch(this.handleError);
   }
 
-  getCliaVariantReportsNTC(type: string): Observable<CliaVariantReportsNTCInterface> {
+  getCliaVariantReportsNTC(): Observable<CliaVariantReportsNTCInterface> {
     return this.http.get('assets/mock-data/clia-variant-reports-ntc.json')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
   }
 
-  getCliaVariantReportsPC(type: string): Observable<CliaInterface> {
-    return this.http.get('assets/mock-data/clia-variant-reports-pc.json')
+  getCliaVariantReportsPACC(): Observable<CliaVariantReportsPACCInterface> {
+    return this.http.get('assets/mock-data/clia-variant-reports-pacc.json')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
   }
 
-  getCliaVariantReportsPACC(type: string): Observable<CliaInterface> {
-    return this.http.get('assets/mock-data/clia-variant-reports-pacc.json')
+  getCliaVariantReportsPC(): Observable<CliaVariantReportsPCInterface> {
+    return this.http.get('assets/mock-data/clia-variant-reports-pc.json')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
