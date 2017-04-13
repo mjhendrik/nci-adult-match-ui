@@ -6,10 +6,12 @@ import { FormsModule } from '@angular/forms';
 import { DataTableModule } from '../../shared/datatables/index';
 import { PipesModule } from '../../shared/pipes/pipes.module';
 import { DirectivesModule } from '../../shared/directives/directives.module';
+import { PatientApiService } from '../patient-api.service';
 
 @NgModule({
   imports: [CommonModule, PatientVariantReportRoutingModule, FormsModule, DataTableModule, PipesModule, DirectivesModule],
   declarations: [PatientVariantReportComponent],
-  exports: [PatientVariantReportComponent]
+  exports: [PatientVariantReportComponent],
+  providers: [PatientApiService]
 })
 export class PatientVariantReportModule { }
