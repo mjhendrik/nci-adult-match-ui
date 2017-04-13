@@ -9,11 +9,12 @@ import { AUTH_PROVIDERS } from 'angular2-jwt';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginModule } from './login/login.module';
-import { CliaDartmouthModule } from './clia/clia-dartmouth/clia-dartmouth.module';
-import { CliaMdaccModule } from './clia/clia-mdacc/clia-mdacc.module';
-import { CliaMghModule } from './clia/clia-mgh/clia-mgh.module';
-import { CliaMochaModule } from './clia/clia-mocha/clia-mocha.module';
-import { CliaYaleModule } from './clia/clia-yale/clia-yale.module';
+import { CliaParentModule } from './clia/clia-parent/clia-parent.module';
+// import { CliaDartmouthModule } from './clia/clia-dartmouth/clia-dartmouth.module';
+// import { CliaMdaccModule } from './clia/clia-mdacc/clia-mdacc.module';
+// import { CliaMghModule } from './clia/clia-mgh/clia-mgh.module';
+// import { CliaMochaModule } from './clia/clia-mocha/clia-mocha.module';
+// import { CliaYaleModule } from './clia/clia-yale/clia-yale.module';
 import { CliaVariantReportsNtcModule } from './clia/clia-variant-reports-ntc/clia-variant-reports-ntc.module';
 import { CliaVariantReportsPaccModule } from './clia/clia-variant-reports-pacc/clia-variant-reports-pacc.module';
 import { CliaVariantReportsPcModule } from './clia/clia-variant-reports-pc/clia-variant-reports-pc.module';
@@ -35,11 +36,12 @@ import { LoginGuard } from './shared/auth/login.guard.service';
     HttpModule,
     AppRoutingModule,
     LoginModule,
-    CliaDartmouthModule,
-    CliaMdaccModule,
-    CliaMghModule,
-    CliaMochaModule,
-    CliaYaleModule,
+    CliaParentModule,
+    // CliaDartmouthModule,
+    // CliaMdaccModule,
+    // CliaMghModule,
+    // CliaMochaModule,
+    // CliaYaleModule,
     CliaVariantReportsNtcModule,
     CliaVariantReportsPaccModule,
     CliaVariantReportsPcModule,
