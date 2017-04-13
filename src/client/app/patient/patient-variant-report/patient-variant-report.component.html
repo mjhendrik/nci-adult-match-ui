@@ -25,7 +25,7 @@
             <dt>Patient Concordance</dt>
             <dd>{{variantReport.concordance | dashify}}</dd>
             <dt>Status</dt>
-            <dd><span [colorCodeVariantReport]="variantReport.variantReportStatus">{{variantReport.variantReportStatus | dashify}}</span>              on {{variantReport.variantReportDate | dashify}}</dd>
+            <dd><span [colorCodeVariantReport]="variantReport.variantReportStatus">{{variantReport.variantReportStatus | dashify}}</span> on {{variantReport.variantReportDate | dashify}} by {{variantReport.user | dashify}}</dd>
             <dt>MAPD</dt>
             <dd>{{variantReport.mapd | dashify}}</dd>
             <dt>Cellularity</dt>
@@ -48,11 +48,9 @@
           <dl class="dl-horizontal">
             <h4>Latest Assignment</h4>
             <dt>Status</dt>
-            <dd [colorCodeAssignment]="assignmentReport.status">{{assignmentReport.status | dashify}}</dd>
+            <dd><span [colorCodeAssignment]="assignmentReport.status"> {{assignmentReport.status | dashify}}</span>  on {{assignmentReport.confirmationDate | dashify}} by {{assignmentReport.user | dashify}}</dd>
             <dt>Generation Date</dt>
             <dd>{{assignmentReport.generationDate | dashify}}</dd>
-            <dt>Confirmation Date</dt>
-            <dd>{{assignmentReport.confirmationDate | dashify}}</dd>
             <dt>Sent to ECOG Date</dt>
             <dd>{{assignmentReport.senttoECOGDate | dashify}}</dd>
             <dt>Received from ECOG Date</dt>
