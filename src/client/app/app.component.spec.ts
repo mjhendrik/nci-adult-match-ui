@@ -16,11 +16,7 @@ import { PatientDetailsComponent } from './patient/patient-details/patient-detai
 import { PatientVariantReportComponent } from './patient/patient-variant-report/patient-variant-report.component';
 import { TreatmentArmDetailsComponent } from './treatment-arm/treatment-arm-details/treatment-arm-details.component';
 import { BiopsyTrackingListComponent } from './biopsy-tracking/biopsy-tracking.component';
-import { CliaDartmouthComponent } from './clia/clia-dartmouth/clia-dartmouth.component';
-import { CliaMdaccComponent } from './clia/clia-mdacc/clia-mdacc.component';
-import { CliaMghComponent } from './clia/clia-mgh/clia-mgh.component';
-import { CliaMochaComponent } from './clia/clia-mocha/clia-mocha.component';
-import { CliaYaleComponent } from './clia/clia-yale/clia-yale.component';
+import { CliaParentComponent } from './clia/clia-parent/clia-parent.component';
 import { CliaVariantReportsNtcComponent } from './clia/clia-variant-reports-ntc/clia-variant-reports-ntc.component';
 import { CliaVariantReportsPaccComponent } from './clia/clia-variant-reports-pacc/clia-variant-reports-pacc.component';
 import { CliaVariantReportsPcComponent } from './clia/clia-variant-reports-pc/clia-variant-reports-pc.component';
@@ -39,11 +35,11 @@ export function main() {
       { path: 'treatments', component: TreatmentArmListComponent },
       { path: 'treatments/details', component: TreatmentArmDetailsComponent },
       { path: 'tracking', component: BiopsyTrackingListComponent },
-      { path: 'clia_dartmouth', component: CliaDartmouthComponent },
-      { path: 'clia_mdacc', component: CliaMdaccComponent },
-      { path: 'clia_mgh', component: CliaMghComponent },
-      { path: 'clia_mocha', component: CliaMochaComponent },
-      { path: 'clia_yale', component: CliaYaleComponent },
+      { path: 'clia_dartmouth', component: CliaParentComponent },
+      { path: 'clia_yale', component: CliaParentComponent },
+      { path: 'clia_mocha', component: CliaParentComponent },
+      { path: 'clia_mgh', component: CliaParentComponent },
+      { path: 'clia_mdacc', component: CliaParentComponent },
       { path: 'clia_variant_reports_ntc', component: CliaVariantReportsNtcComponent },
       { path: 'clia_variant_reports_pacc', component: CliaVariantReportsPaccComponent },
       { path: 'clia_variant_reports_pc', component: CliaVariantReportsPcComponent }
@@ -61,11 +57,7 @@ export function main() {
           TreatmentArmListComponent,
           TreatmentArmDetailsComponent,
           BiopsyTrackingListComponent,
-          CliaDartmouthComponent,
-          CliaMdaccComponent,
-          CliaMghComponent,
-          CliaMochaComponent,
-          CliaYaleComponent,
+          CliaParentComponent,
           CliaVariantReportsNtcComponent,
           CliaVariantReportsPaccComponent,
           CliaVariantReportsPcComponent,
