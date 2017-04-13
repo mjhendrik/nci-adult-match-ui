@@ -8,7 +8,6 @@ import { PipesModule } from '../shared/pipes/pipes.module';
 import { BiopsyTrackingApiService } from './biopsy-tracking-api.service';
 
 
-
 @NgModule({
   imports: [CommonModule, BiopsyTrackingListRoutingModule, FormsModule, DataTableModule, PipesModule],
   declarations: [BiopsyTrackingListComponent],

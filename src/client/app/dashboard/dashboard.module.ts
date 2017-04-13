@@ -7,10 +7,13 @@ import { DirectivesModule } from '../shared/directives/directives.module';
 import { FormsModule } from '@angular/forms';
 import { DataTableModule } from '../shared/datatables/index';
 import { PipesModule } from '../shared/pipes/pipes.module';
+import { DashboardApiService } from './dashboard-api.service';
+
 
 @NgModule({
   imports: [CommonModule, DashboardRoutingModule, SharedModule, FormsModule, DataTableModule, PipesModule, DirectivesModule],
   declarations: [DashboardComponent],
-  exports: [DashboardComponent]
+  exports: [DashboardComponent],
+  providers: [DashboardApiService]
 })
 export class DashboardModule { }
