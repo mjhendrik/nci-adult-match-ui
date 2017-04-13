@@ -7,8 +7,8 @@ import { async } from '@angular/core/testing';
 import { Route } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { LoginComponent } from './login/login.component';
 import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PatientListComponent } from './patient/patient-list/patient-list.component';
 import { TreatmentArmListComponent } from './treatment-arm/treatment-arm-list/treatment-arm-list.component';
@@ -49,8 +49,8 @@ export function main() {
         imports: [FormsModule, RouterTestingModule.withRoutes(config)],
         declarations: [
           TestComponent,
-          NavbarComponent,
           AppComponent,
+          NavbarComponent,
           LoginComponent,
           DashboardComponent,
           PatientListComponent,
@@ -62,7 +62,8 @@ export function main() {
           CliaVariantReportsPaccComponent,
           CliaVariantReportsPcComponent,
           PatientDetailsComponent,
-          PatientVariantReportComponent],
+          PatientVariantReportComponent,
+        ],
         providers: [
           { provide: APP_BASE_HREF, useValue: '' }
         ]
@@ -89,6 +90,3 @@ export function main() {
 })
 class TestComponent {
 }
-
-
-
