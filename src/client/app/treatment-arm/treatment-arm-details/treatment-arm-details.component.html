@@ -1,4 +1,4 @@
-<div id="content" class="content">
+<div id="content" class="content" *ngIf="dataAvailable">
   <ul class="breadcrumb pull-right">
     <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
     <li><a href [routerLink]="['/treatments']" class="link-none">Treatment Arms</a></li>

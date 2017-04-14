@@ -428,5 +428,6 @@ export class TreatmentArmListComponent implements OnInit {
       "dateClosed": null,
       "dateSuspended": null
     }
-  ]
+  ];
+  
 }
