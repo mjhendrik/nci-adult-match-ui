@@ -95,20 +95,11 @@ Now open your browser at http://localhost:5555
 To build the production image based on Apache run the following:
 
 ```bash
-$ docker build -f .docker/dockerfile.httpd . -t "matchbox/nci-adult-match-ui:latest"
+$ docker build -f .docker/dockerfile.httpd -t "fnlcr/nci-adult-match-ui:latest" .
 ```
 
 To run the docker locally use port 5555 because Auth0 is configured to use it
 
 ```bash
 $ docker run -it -p 5555:80  "matchbox/nci-adult-match-ui"
-```
-
-To deploy the image to AWS, Integration Test environment:
-
-```bash
- $ docker run -it --rm -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY 
-   -e AWS_DEFAULT_REGION=us-east-1 silintl/ecs-deploy 
-   --cluster AdultMatch-IntTest-Backend --service-name AdultMatch-nci-match-ui-INTTEST 
-   -i $DOCKER_IMAGE:$DATE
 ```

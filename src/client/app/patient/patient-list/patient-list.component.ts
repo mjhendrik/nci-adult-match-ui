@@ -16,8 +16,7 @@ import { PatientApiService } from '../patient-api.service';
   templateUrl: 'patient-list.component.html',
   styleUrls: ['patient-list.component.css'],
   animations: [routerTransition()],
-  host: { '[@routerTransition]': '' },
-  providers: [GmtPipe]
+  host: { '[@routerTransition]': '' }
 })
 export class PatientListComponent implements OnInit {
 

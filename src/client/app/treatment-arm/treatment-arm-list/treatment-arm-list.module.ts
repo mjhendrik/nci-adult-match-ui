@@ -6,11 +6,13 @@ import { FormsModule } from '@angular/forms';
 import { DataTableModule } from '../../shared/datatables/index';
 import { PipesModule } from '../../shared/pipes/pipes.module';
 import { DirectivesModule } from '../../shared/directives/directives.module';
+import { TreatmentArmApiService } from '../treatment-arm-api.service';
 
 
 @NgModule({
   imports: [CommonModule, TreatmentArmListRoutingModule, FormsModule, DataTableModule, PipesModule, DirectivesModule],
   declarations: [TreatmentArmListComponent],
-  exports: [TreatmentArmListComponent]
+  exports: [TreatmentArmListComponent],
+  providers: [TreatmentArmApiService]
 })
 export class TreatmentArmListModule { }
