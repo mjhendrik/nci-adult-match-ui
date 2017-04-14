@@ -29,9 +29,8 @@ before_install:
   - export AUTHOR=`git --no-pager show -s --format='%an <%ae>'`
   - export DATE=`TZ=America/New_York date "+%m-%d-%y-%H%M"`
   - export DOCKER_IMAGE="fnlcr/nci-adult-match-ui"
-  - echo "/"MATCH UI Build# $TRAVIS_BUILD_NUMBER/"" > build_number.html &&
-        echo "Build Time $DATE_TM" >> build_number.html
-  - cat build_number.html
+  - echo -e "{\"buildNumber\":\""$TRAVIS_BUILD_NUMBER"\", \"buildTime\":\""$DATE_TM"\", \"buildId\":\""$TRAVIS_BUILD_ID"\", \"docker\":\""$$DOCKER_IMAGE:$DATE"\"}" > app/assets/build_info.json
+  - cat ./app/assets/build_info.json
 
 before_script:
   - npm install
