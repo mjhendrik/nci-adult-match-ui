@@ -19,14 +19,6 @@
             <dd>{{variantReport.biopsySequenceNumber | dashify}}</dd>
             <dt>Analysis ID</dt>
             <dd>{{variantReport.analysisId | dashify}}</dd>
-            <dt>Patient</dt>
-            <dd><a href [routerLink]="['/patients/details']" class="link-none">{{variantReport.patientSequenceNumber | dashify}}</a>,
-              <span [colorCodePatients]="variantReport.patientStatus">{{variantReport.patientStatus | dashify}}</span>, at
-              Step {{variantReport.step | dashify}}</dd>
-            <dt>Patient Concordance</dt>
-            <dd>{{variantReport.concordance | dashify}}</dd>
-            <dt>Status</dt>
-            <dd><span [colorCodeVariantReport]="variantReport.variantReportStatus">{{variantReport.variantReportStatus | dashify}}</span> on {{variantReport.variantReportDate | dashify}} by {{variantReport.user | dashify}}</dd>
             <dt>MAPD</dt>
             <dd>{{variantReport.mapd | dashify}}</dd>
             <dt>Cellularity</dt>
@@ -36,89 +28,35 @@
             <dt>Torrent Variant Caller Version</dt>
             <dd>{{variantReport.torrentVariantCallerVersion | dashify}}</dd>
           </dl>
+          <dl class="dl-horizontal">
+            <h4>Oncomine Control Panel Summary</h4>
+
+            <dt>LRP1</dt>
+            <dd>{{"62456" | dashify}}</dd>
+
+            <dt>TBP</dt>
+            <dd>{{"244869" | dashify}}</dd>
+
+            <dt>MYC</dt>
+            <dd>{{"3148" | dashify}}</dd>
+
+            <dt>HMBS</dt>
+            <dd>{{"5876" | dashify}}</dd>
+
+            <dt>ITGB7</dt>
+            <dd>{{"18530" | dashify}}</dd>
+
+            <dt>SUM</dt>
+            <dd>{{"334879" | dashify}}</dd>
+          </dl>
         </div>
         <div class="panel-heading">
           <button type="button" class="btn btn-purple-light">Files</button>
-          <button type="button" class="btn btn-purple-light">QC Report</button>
         </div>
       </div>
     </div>
     <div class="col-md-6">
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-top">
-        <div class="panel-heading">
-          <dl class="dl-horizontal wider-dt">
-            <h4>Latest Assignment</h4>
-            <dt>Status</dt>
-            <dd><span [colorCodeAssignment]="assignmentReport.status"> {{assignmentReport.status | dashify}}</span>  on {{assignmentReport.confirmationDate | dashify}} by {{assignmentReport.user | dashify}}</dd>
-            <dt>Generation Date</dt>
-            <dd>{{assignmentReport.generationDate | dashify}}</dd>
-            <dt>Treatment Arm Sent to ECOG Date</dt>
-            <dd>{{assignmentReport.taSentToECOGDate | dashify}}</dd>
-            <dt>Assignment Sent to ECOG Date</dt>
-            <dd>{{assignmentReport.senttoECOGDate | dashify}}</dd>
-            <dt>Received from ECOG Date</dt>
-            <dd>{{assignmentReport.receivedfromECOGDate | dashify}}</dd>
-          </dl>
-          <h4>Selected Treatment Arm: <span class="text-success-light">{{assignmentReport.selectedTreatmentArm | dashify}}</span></h4>
-          <div class="panel panel-success overflow-hidden">
-            <div class="panel-heading">
-              <p>
-                {{assignmentReport.assignmentReason | dashify}}
-                <a href="javascript:alert('Scrolls to details at the bottom')" class="text-white text-underlined"><br><br><i class="fa fa-arrow-down" aria-hidden="true"></i> Click for details...</a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row" matchHeight="panel-height-middle">
-    <div class="col-md-3">
-      <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-middle">
-        <div class="panel-heading">
-          <dl class="dl-horizontal">
-            <h4>MOI/aMOI Summary</h4>
-            <dt>Variant Report aMOI</dt>
-            <dd>{{moiSummary.variantReportaMOI | dashify}}</dd>
-            <dt>Total aMOIs</dt>
-            <dd>{{moiSummary.totalaMOIs | dashify}}</dd>
-            <dt>Total MOIs</dt>
-            <dd>{{moiSummary.totalMOIs | dashify}}</dd>
-            <dt>Total Confirmed aMOIs</dt>
-            <dd>{{moiSummary.totalConfirmedaMOIs | dashify}}</dd>
-            <dt>Total Confirmed MOIs</dt>
-            <dd>{{moiSummary.totalConfirmedMOIs | dashify}}</dd>
-          </dl>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-middle">
-        <div class="panel-heading">
-          <dl class="dl-horizontal">
-            <h4>Assay</h4>
-            <table class="table table-condensed white-header">
-              <thead>
-                <tr>
-                  <th>IHC</th>
-                  <th>Result</th>
-                  <th>Comment</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let item of assay">
-                  <td>{{item.ihc | dashify}}</td>
-                  <td>{{item.result | dashify}}</td>
-                  <td>{{item.comment | dashify}}</td>
-                </tr>
-              </tbody>
-            </table>
-          </dl>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-middle">
         <div class="panel-heading">
           <a href="javascript:alert('Opens CNV chart full screen')"><img src="/assets/mock-data/cnv_chart.png" alt="CNV Chart" style="width:100%"></a>
         </div>
@@ -265,95 +203,6 @@
             <tbody>
               <tr>
                 <td colspan="8" class="text-muted">There are no gene fusions.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="panel panel-white panel-accent-sides-purple overflow-hidden">
-    <div class="panel-heading">
-      <div class="row">
-        <div class="col-md-12">
-          <h4 id="assignment-details">Assignment Reason</h4>
-          <table class="table table-condensed table-th-valign-top">
-            <thead>
-              <tr>
-                <th style="width:20%">Treatment Arm</th>
-                <th style="width:20%">Treatment Arm Name</th>
-                <th style="width:60%">Inclusion/Exclusion Drugs</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td colspan="4">
-                  <h4>1 - NO VARIANT MATCH</h4>
-                </td>
-              </tr>
-              <tr *ngFor="let item of assignmentReason.noVariantMatch">
-                <td>{{item.treatmentArm | dashify}}</td>
-                <td>{{item.treatmentArmName | dashify}}</td>
-                <td class="overflow-x-hidden">{{item.treatmentArmInclusionExclusionDrugs | dashify}}</td>
-              </tr>
-              <tr>
-                <td colspan="4">
-                  <h4>2 - RECORD BASED EXCLUSION</h4>
-                </td>
-              </tr>
-              <tr *ngFor="let item of assignmentReason.recordBasedExclusion">
-                <td>{{item.treatmentArm | dashify}}</td>
-                <td>{{item.treatmentArmName | dashify}}</td>
-                <td>{{item.treatmentArmInclusionExclusionDrugs | dashify}}</td>
-              </tr>
-              <tr>
-                <td colspan="4">
-                  <h4>3 - LEVEL OF EVIDENCE TIE BREAKER</h4>
-                </td>
-              </tr>
-              <tr *ngFor="let item of assignmentReason.levelOfEvidenceTieBreaker">
-                <td>{{item.treatmentArm | dashify}}</td>
-                <td>{{item.treatmentArmName | dashify}}</td>
-                <td>{{item.treatmentArmInclusionExclusionDrugs | dashify}}</td>
-              </tr>
-              <tr>
-                <td colspan="4">
-                  <h4>4 - SELECTED</h4>
-                </td>
-              </tr>
-              <tr *ngFor="let item of assignmentReason.selected">
-                <td>{{item.treatmentArm | dashify}}</td>
-                <td>{{item.treatmentArmName | dashify}}</td>
-                <td>{{item.treatmentArmInclusionExclusionDrugs | dashify}}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="panel panel-white panel-accent-sides-purple overflow-hidden">
-    <div class="panel-heading">
-      <div class="row">
-        <div class="col-md-12">
-          <h4>Assignment History</h4>
-          <table class="table table-condensed">
-            <thead>
-              <tr>
-                <th>Status</th>
-                <th>Generation Date</th>
-                <th>Confirmation Date</th>
-                <th>Sent to ECOG Date</th>
-                <th>Received from ECOG Date</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let item of assignmentHistory">
-                <td [colorCodeAssignment]="item.status"><a href="javascript:alert('Opens old assignment full screen')">{{item.status | dashify}}</a></td>
-                <td>{{item.generationDate | dashify}}</td>
-                <td>{{item.confirmationDate | dashify}}</td>
-                <td>{{item.sentToEcogDate | dashify}}</td>
-                <td>{{item.receivedFromEcogDate | dashify}}</td>
               </tr>
             </tbody>
           </table>
