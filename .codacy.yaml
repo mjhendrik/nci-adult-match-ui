@@ -35,4 +35,4 @@ exclude_paths:
 - "tools/**/*"
 - "src/client/assets/**/*"
 - "src/client/css/style.css"
-- "misc/bootstrap/bootstrap-theme.css"
+- "misc/**/*"
