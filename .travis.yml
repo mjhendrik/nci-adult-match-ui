@@ -44,7 +44,7 @@ before_script:
 
 script:
   # - npm run test && npm run build.dev
-  - npm run build.dev
+  - npm run build.inttest
   #Build Docker image
   - docker build -f .docker/dockerfile.httpd -t $DOCKER_IMAGE:$DATE -t $DOCKER_IMAGE:latest .
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
