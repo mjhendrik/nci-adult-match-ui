@@ -29,7 +29,7 @@ before_install:
   - export DATE=`TZ=America/New_York date "+%m-%d-%y-%H%M"`
   - export DATE_TM=`TZ=America/New_York date "+%m-%d-%y %H:%M"`  
   - export DOCKER_IMAGE="fnlcr/nci-adult-match-ui"
-  - echo "{\"buildNumber\":\""$TRAVIS_BUILD_NUMBER"\", \"buildTime\":\""$DATE_TM"\", \"buildId\":\""$TRAVIS_BUILD_ID"\", \"docker\":\""$$DOCKER_IMAGE:$DATE"\"}" > src/client/assets/build-info.json
+  - echo "{\"buildNumber\":\"#"$TRAVIS_BUILD_NUMBER"\", \"buildTime\":\""$DATE_TM"\", \"buildId\":\""$TRAVIS_BUILD_ID"\", \"docker\":\""$$DOCKER_IMAGE:$DATE"\"}" > src/client/assets/build-info.json
   - cat ./src/client/assets/build-info.json
 
 before_script:
