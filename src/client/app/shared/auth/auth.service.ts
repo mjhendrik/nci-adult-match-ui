@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { tokenNotExpired } from 'angular2-jwt';
 import { Router } from '@angular/router';
+import { Config } from '../config/env.config';
 
 // Avoid name not found warnings
 declare var Auth0Lock: any;
@@ -8,7 +9,7 @@ declare var Auth0Lock: any;
 @Injectable()
 export class Auth {
   // Configure Auth0
-  lock = new Auth0Lock('RjoYZXUDEzQxMJw04C6B5dsQKqUAEYzA', 'ncimatch.auth0.com', {});
+  lock = new Auth0Lock(Config.CLIENT_ID, Config.AUTH_DOMAIN, {});
 
   private userProfile: any;
 
