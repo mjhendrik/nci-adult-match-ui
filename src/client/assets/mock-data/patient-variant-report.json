@@ -21,6 +21,7 @@
     "confirmationDate": "August 26, 2016 4:36 PM GMT",
     "user": "TA Committee",
     "senttoECOGDate": "August 26, 2016 4:36 PM GMT",
+    "taSentToECOGDate": "August 26, 2016 4:36 PM GMT", 
     "receivedfromECOGDate": "August 26, 2016 4:36 PM GMT",
     "selectedTreatmentArm": "EAY131-Z1D (2016-05-31)",
     "assignmentReason": "The patient contains no matching variant. The patient's IHC MLH1 result match the IHC MLH1 rule for the treatment arm [RES:NEGATIVE, VAR:EMPTY]. The variant's level of evidence for the treatment arm is 0.9. The patient was selected for this treatment arm because it has the highest level of evidence of 0.9."
@@ -87,100 +88,148 @@
   "assignmentReason": {
     "noVariantMatch": [{
         "treatmentArm": "EAY131-U (2016-05-31)",
+        "treatmentArmName": "GSK-236771 in tumor with PTEN mutation and PTEN IHC+",
+        "treatmentArmInclusionExclusionDrugs": "A very, very long list of all inclusion, exlusion drugs that we have listed on the treatment arm details page",
         "reason": "The patient contains no matching variant."
       },
       {
         "treatmentArm": "EAY131-F (2016-05-31)",
+        "treatmentArmName": "GSK-236771 in tumor with PTEN mutation and PTEN IHC+",
+        "treatmentArmInclusionExclusionDrugs": "A very, very long list of all inclusion, exlusion drugs that we have listed on the treatment arm details page",
         "reason": "The patient contains no matching variant."
       },
       {
         "treatmentArm": "EAY131-H (2016-05-31)",
+        "treatmentArmName": "GSK-236771 in tumor with PTEN mutation and PTEN IHC+",
+        "treatmentArmInclusionExclusionDrugs": "A very, very long list of all inclusion, exlusion drugs that we have listed on the treatment arm details page",
         "reason": "The patient contains no matching variant."
       },
       {
         "treatmentArm": "EAY131-R (2016-05-31)",
+        "treatmentArmName": "GSK-236771 in tumor with PTEN mutation and PTEN IHC+",
+        "treatmentArmInclusionExclusionDrugs": "A very, very long list of all inclusion, exlusion drugs that we have listed on the treatment arm details page",
         "reason": "The patient contains no matching variant."
       },
       {
         "treatmentArm": "EAY131-E (2016-05-31)",
+        "treatmentArmName": "GSK-236771 in tumor with PTEN mutation and PTEN IHC+",
+        "treatmentArmInclusionExclusionDrugs": "A very, very long list of all inclusion, exlusion drugs that we have listed on the treatment arm details page",
         "reason": "The patient contains no matching variant."
       },
       {
         "treatmentArm": "EAY131-A (2016-05-31)",
+        "treatmentArmName": "GSK-236771 in tumor with PTEN mutation and PTEN IHC+",
+        "treatmentArmInclusionExclusionDrugs": "A very, very long list of all inclusion, exlusion drugs that we have listed on the treatment arm details page",
         "reason": "The patient contains no matching variant."
       },
       {
         "treatmentArm": "EAY131-V (2016-05-31)",
+        "treatmentArmName": "GSK-236771 in tumor with PTEN mutation and PTEN IHC+",
+        "treatmentArmInclusionExclusionDrugs": "A very, very long list of all inclusion, exlusion drugs that we have listed on the treatment arm details page",
         "reason": "The patient contains no matching variant."
       },
       {
         "treatmentArm": "EAY131-S1 (2016-05-31)",
+        "treatmentArmName": "GSK-236771 in tumor with PTEN mutation and PTEN IHC+",
+        "treatmentArmInclusionExclusionDrugs": "A very, very long list of all inclusion, exlusion drugs that we have listed on the treatment arm details page",
         "reason": "The patient contains no matching variant."
       },
       {
         "treatmentArm": "EAY131-N (2016-05-31)",
+        "treatmentArmName": "GSK-236771 in tumor with PTEN mutation and PTEN IHC+",
+        "treatmentArmInclusionExclusionDrugs": "A very, very long list of all inclusion, exlusion drugs that we have listed on the treatment arm details page",
         "reason": "The patient contains no matching variant."
       },
       {
         "treatmentArm": "EAY131-T (2016-05-31)",
+        "treatmentArmName": "GSK-236771 in tumor with PTEN mutation and PTEN IHC+",
+        "treatmentArmInclusionExclusionDrugs": "A very, very long list of all inclusion, exlusion drugs that we have listed on the treatment arm details page",
         "reason": "The patient contains no matching variant."
       },
       {
         "treatmentArm": "EAY131-X (2016-01-20)",
+        "treatmentArmName": "GSK-236771 in tumor with PTEN mutation and PTEN IHC+",
+        "treatmentArmInclusionExclusionDrugs": "A very, very long list of all inclusion, exlusion drugs that we have listed on the treatment arm details page",
         "reason": "The patient contains no matching variant."
       },
       {
         "treatmentArm": "EAY131-S2 (2016-05-31)",
+        "treatmentArmName": "GSK-236771 in tumor with PTEN mutation and PTEN IHC+",
+        "treatmentArmInclusionExclusionDrugs": "A very, very long list of all inclusion, exlusion drugs that we have listed on the treatment arm details page",
         "reason": "The patient contains no matching variant."
       },
       {
         "treatmentArm": "EAY131-C2 (2016-05-31)",
+        "treatmentArmName": "GSK-236771 in tumor with PTEN mutation and PTEN IHC+",
+        "treatmentArmInclusionExclusionDrugs": "A very, very long list of all inclusion, exlusion drugs that we have listed on the treatment arm details page",
         "reason": "The patient contains no matching variant."
       },
       {
         "treatmentArm": "EAY131-Z1A (2016-05-31)",
+        "treatmentArmName": "GSK-236771 in tumor with PTEN mutation and PTEN IHC+",
+        "treatmentArmInclusionExclusionDrugs": "A very, very long list of all inclusion, exlusion drugs that we have listed on the treatment arm details page",
         "reason": "The patient contains no matching variant."
       },
       {
         "treatmentArm": "EAY131-P (2016-01-20)",
+        "treatmentArmName": "GSK-236771 in tumor with PTEN mutation and PTEN IHC+",
+        "treatmentArmInclusionExclusionDrugs": "A very, very long list of all inclusion, exlusion drugs that we have listed on the treatment arm details page",
         "reason": "The patient contains no matching variant."
       },
       {
         "treatmentArm": "EAY131-C1 (2016-05-31)",
+        "treatmentArmName": "GSK-236771 in tumor with PTEN mutation and PTEN IHC+",
+        "treatmentArmInclusionExclusionDrugs": "A very, very long list of all inclusion, exlusion drugs that we have listed on the treatment arm details page",
         "reason": "The patient contains no matching variant."
       },
       {
         "treatmentArm": "EAY131-W (2016-05-31)",
+        "treatmentArmName": "GSK-236771 in tumor with PTEN mutation and PTEN IHC+",
+        "treatmentArmInclusionExclusionDrugs": "A very, very long list of all inclusion, exlusion drugs that we have listed on the treatment arm details page",
         "reason": "The patient contains no matching variant."
       },
       {
         "treatmentArm": "EAY131-G (2016-05-31)",
+        "treatmentArmName": "GSK-236771 in tumor with PTEN mutation and PTEN IHC+",
+        "treatmentArmInclusionExclusionDrugs": "A very, very long list of all inclusion, exlusion drugs that we have listed on the treatment arm details page",
         "reason": "The patient contains no matching variant."
       },
       {
         "treatmentArm": "EAY131-Y (2016-05-31)",
+        "treatmentArmName": "GSK-236771 in tumor with PTEN mutation and PTEN IHC+",
+        "treatmentArmInclusionExclusionDrugs": "A very, very long list of all inclusion, exlusion drugs that we have listed on the treatment arm details page",
         "reason": "The patient contains no matching variant."
       }
     ],
     "recordBasedExclusion": [{
         "treatmentArm": "EAY131-Q (2016-05-31)",
+        "treatmentArmName": "GSK-236771 in tumor with PTEN mutation and PTEN IHC+",
+        "treatmentArmInclusionExclusionDrugs": "A very, very long list of all inclusion, exlusion drugs that we have listed on the treatment arm details page",
         "reason": "The patient is excluded from this treatment arm because the patient has disease(s) Invasive breast carcinoma."
       },
       {
         "treatmentArm": "EAY131-Z1B (2016-05-31)",
+        "treatmentArmName": "GSK-236771 in tumor with PTEN mutation and PTEN IHC+",
+        "treatmentArmInclusionExclusionDrugs": "A very, very long list of all inclusion, exlusion drugs that we have listed on the treatment arm details page",
         "reason": "The patient is excluded from this treatment arm because the patient has disease(s) Invasive breast carcinoma."
       },
       {
         "treatmentArm": "EAY131-I (2016-05-31)",
+        "treatmentArmName": "GSK-236771 in tumor with PTEN mutation and PTEN IHC+",
+        "treatmentArmInclusionExclusionDrugs": "A very, very long list of all inclusion, exlusion drugs that we have listed on the treatment arm details page",
         "reason": "The patient is excluded from this treatment arm because the patient has disease(s) Invasive breast carcinoma."
       }
     ],
     "levelOfEvidenceTieBreaker": [{
       "treatmentArm": "EAY131-B (2016-05-31)",
+      "treatmentArmName": "GSK-236771 in tumor with PTEN mutation and PTEN IHC+",
+      "treatmentArmInclusionExclusionDrugs": "A very, very long list of all inclusion, exlusion drugs that we have listed on the treatment arm details page",
       "reason": "The patient and treatment arm match on variant identifier [COSM14060]. The variant's level of evidence for the treatment arm is 2.0. The patient was not selected for this treatment arm because its level of evidence is 2.0 and is lower than the one chosen."
     }],
     "selected": [{
       "treatmentArm": "EAY131-Z1D (2016-05-31)",
+      "treatmentArmName": "GSK-236771 in tumor with PTEN mutation and PTEN IHC+",
+      "treatmentArmInclusionExclusionDrugs": "A very, very long list of all inclusion, exlusion drugs that we have listed on the treatment arm details page",
       "reason": "The patient and treatment arm match on variant identifier [COSM14060]. The variant's level of evidence for the treatment arm is 2.0. The patient was not selected for this treatment arm because its level of evidence is 2.0 and is lower than the one chosen. The patient contains no matching variant. The patient's IHC MLH1 result match the IHC MLH1 rule for the treatment arm [RES:NEGATIVE, VAR:EMPTY]. The variant's level of evidence for the treatment arm is 0.9. The patient was selected for this treatment arm because it has the highest level of evidence of 0.9."
     }]
   },

@@ -56,15 +56,15 @@ after_success:
   - cat test/coverage/report-lcov/lcov.info | ./node_modules/.bin/codacy-coverage		
   - docker images
   - docker push $DOCKER_IMAGE # Pushes both date and latest
-  #Deploy to AWS IntTest
-  - docker run -it --rm -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY 
-    -e AWS_DEFAULT_REGION=us-east-1 silintl/ecs-deploy 
-    --cluster AdultMatch-IntTest-Backend --service-name AdultMATCH-nci-adult-match-ui-INTTEST 
-    -i $DOCKER_IMAGE:$DATE
-  #Trigger Travis bdd tests
+  ##Deploy to AWS IntTest
+  # - docker run -it --rm -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY 
+  #   -e AWS_DEFAULT_REGION=us-east-1 silintl/ecs-deploy 
+  #   --cluster AdultMatch-IntTest-Backend --service-name AdultMatch-nci-match-ui-INTTEST 
+  #   -i $DOCKER_IMAGE:$DATE
+  ##Trigger Travis bdd tests
   # - curl -s -X POST -H "Content-Type:application/json" -H "Accept:application/json" 
   #   -H "Travis-API-Version:3" -H "Authorization:token $TRAVIS_TOKEN" 
-  #   -d "{\"request\":{\"message\":\"Triggered by nci-adult-match-ui $TRAVIS_COMMIT\", \"branch\":\"master\", \"config\":{\"env\":{\"matrix\":[\"TRIGGER_REPO=nci-adult-match-ui;TRIGGER_VER=$DATE;CUC_TAG=@ui;AUTHOR=$AUTHOR\"]}}}}" 
+  #   -d "{\"request\":{\"message\":\"Triggered by nci-adult-match-ui $TRAVIS_COMMIT\", \"branch\":\"master\", \"config\":{\"env\":{\"matrix\":[\"TRIGGER_REPO=nci-match-ui;TRIGGER_VER=$DATE;CUC_TAG=@ui;AUTHOR=$AUTHOR\"]}}}}" 
   #   https://api.travis-ci.org/repo/CBIIT%2Fnci-adult-match-bddtests/requests
 
 notifications:
