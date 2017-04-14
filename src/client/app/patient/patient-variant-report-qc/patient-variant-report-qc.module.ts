@@ -21,4 +21,4 @@ import { PatientApiService } from '../patient-api.service';
   exports: [PatientVariantReportQcComponent],
   providers: [PatientApiService]
 })
-export class PatientVariantReportQcModuleModule { }
+export class PatientVariantReportQcModule { }

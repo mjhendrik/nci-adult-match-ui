@@ -187,7 +187,6 @@ export class TreatmentArmDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.getData();
-    this.dataAvailable = false;
   }
 
   getData() {
