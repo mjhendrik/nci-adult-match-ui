@@ -29,14 +29,14 @@ before_install:
   - export AUTHOR=`git --no-pager show -s --format='%an <%ae>'`
   - export DATE=`TZ=America/New_York date "+%m-%d-%y-%H%M"`
   - export DOCKER_IMAGE="fnlcr/nci-adult-match-ui"
-  - echo `{` > source/app/assets/build_info.json
-        && echo `'buildNumber': '"$TRAVIS_BUILD_NUMBER"',` >> source/app/assets/build_info.json
-        && echo `'commit': ''"$TRAVIS_COMMIT"'` >> source/app/assets/build_info.json
-        && echo `'travisBuildID': '"$TRAVIS_BUILD_ID"'` >> source/app/assets/build_info.json
-        && echo `'author': '"$AUTHOR"'` >> source/app/assets/build_info.json
-        && echo `'buildTime': '"$DATE"'` >> source/app/assets/build_info.json
-        && echo `'dockerImage': '"$DOCKER_IMAGE:$DATE"'` >> source/app/assets/build_info.json
-        && echo `}` >> source/app/assets/build_info.json
+  - echo `{` > source/app/assets/build_info.json &&
+        echo `'buildNumber': '"$TRAVIS_BUILD_NUMBER"',` >> source/app/assets/build_info.json && 
+        echo `'commit': ''"$TRAVIS_COMMIT"'` >> source/app/assets/build_info.json && 
+        echo `'travisBuildID': '"$TRAVIS_BUILD_ID"'` >> source/app/assets/build_info.json && 
+        echo `'author': '"$AUTHOR"'` >> source/app/assets/build_info.json && 
+        echo `'buildTime': '"$DATE"'` >> source/app/assets/build_info.json && 
+        echo `'dockerImage': '"$DOCKER_IMAGE:$DATE"'` >> source/app/assets/build_info.json && 
+        echo `}` >> source/app/assets/build_info.json
   - cat ./source/app/assets/build_info.json
 
 before_script:
