@@ -1,4 +1,4 @@
-<div id="content" class="content">
+<div id="content" class="content" *ngIf="dataAvailable">
   <ul class="breadcrumb pull-right">
     <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
     <li><a href [routerLink]="['/patients']" class="link-none">Patients</a></li>
@@ -281,8 +281,7 @@
               <tr>
                 <th style="width:20%">Treatment Arm</th>
                 <th style="width:20%">Treatment Arm Name</th>
-                <th style="width:30%">Inclusion/Exclusion Drugs</th>
-                <th style="width:30%">Reason</th>
+                <th style="width:60%">Inclusion/Exclusion Drugs</th>
               </tr>
             </thead>
             <tbody>
@@ -294,8 +293,7 @@
               <tr *ngFor="let item of assignmentReason.noVariantMatch">
                 <td>{{item.treatmentArm | dashify}}</td>
                 <td>{{item.treatmentArmName | dashify}}</td>
-                <td>{{item.treatmentArmInclusionExclusionDrugs | dashify}}</td>
-                <td>{{item.reason | dashify}}</td>
+                <td class="overflow-x-hidden">{{item.treatmentArmInclusionExclusionDrugs | dashify}}</td>
               </tr>
               <tr>
                 <td colspan="4">
@@ -306,7 +304,6 @@
                 <td>{{item.treatmentArm | dashify}}</td>
                 <td>{{item.treatmentArmName | dashify}}</td>
                 <td>{{item.treatmentArmInclusionExclusionDrugs | dashify}}</td>
-                <td>{{item.reason | dashify}}</td>
               </tr>
               <tr>
                 <td colspan="4">
@@ -317,7 +314,6 @@
                 <td>{{item.treatmentArm | dashify}}</td>
                 <td>{{item.treatmentArmName | dashify}}</td>
                 <td>{{item.treatmentArmInclusionExclusionDrugs | dashify}}</td>
-                <td>{{item.reason | dashify}}</td>
               </tr>
               <tr>
                 <td colspan="4">
@@ -328,7 +324,6 @@
                 <td>{{item.treatmentArm | dashify}}</td>
                 <td>{{item.treatmentArmName | dashify}}</td>
                 <td>{{item.treatmentArmInclusionExclusionDrugs | dashify}}</td>
-                <td>{{item.reason | dashify}}</td>
               </tr>
             </tbody>
           </table>

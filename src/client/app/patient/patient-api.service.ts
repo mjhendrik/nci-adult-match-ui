@@ -13,6 +13,17 @@ export interface PatientDetailsInterface {
   biopsyData: {};
 }
 
+export interface PatientVariantReportInterface {
+  variantReport: {};
+  assignmentReport: {};
+  moiSummary: {};
+  assay: any[];
+  snv: any[];
+  indels: any[];
+  assignmentReason: {};
+  assignmentHistory: any[];
+}
+
 /**
  * This class provides the NameList service with methods to read names and add names.
  */
@@ -44,7 +55,7 @@ export class PatientApiService {
       .catch(this.handleError);
   }
 
-  getPatientVariantReport(): Observable<any[]> {
+  getPatientVariantReport(): Observable<PatientVariantReportInterface> {
     return this.http.get('assets/mock-data/patient-variant-report.json')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
