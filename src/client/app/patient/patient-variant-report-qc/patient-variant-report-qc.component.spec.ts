@@ -4,7 +4,7 @@ import {
   TestBed
 } from '@angular/core/testing';
 
-import { PatientVariantReportQcModuleModule } from './patient-variant-report-qc.module';
+import { PatientVariantReportQcModule } from './patient-variant-report-qc.module';
 
 export function main() {
   describe('patient-details component', () => {
@@ -14,7 +14,7 @@ export function main() {
     beforeEach(() => {
       TestBed.configureTestingModule({
         declarations: [TestComponent],
-        imports: [PatientVariantReportQcModuleModule]
+        imports: [PatientVariantReportQcModule]
       });
     });
 
@@ -33,6 +33,6 @@ export function main() {
 
 @Component({
   selector: 'test-cmp',
-  template: '<sd-patient-variant-report></sd-patient-variant-report>'
+  template: '<sd-patient-variant-report-qc></sd-patient-variant-report-qc>'
 })
 class TestComponent { }

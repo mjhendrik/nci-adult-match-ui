@@ -31,14 +31,13 @@ export class PatientVariantReportComponent implements OnInit {
   assignmentReason: any;
   assignmentHistory: any[];
 
-  dataAvailable: boolean;
+  dataAvailable: boolean = false;
   errorMessage: string;
 
   constructor(private patientApi: PatientApiService) { }
 
   ngOnInit() {
     this.getData();
-    this.dataAvailable = false;
   }
 
   getData() {

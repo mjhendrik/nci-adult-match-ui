@@ -24,6 +24,7 @@ import { TreatmentArmDetailsModule } from './treatment-arm/treatment-arm-details
 import { PatientListModule } from './patient/patient-list/patient-list.module';
 import { PatientDetailsModule } from './patient/patient-details/patient-details.module';
 import { PatientVariantReportModule } from './patient/patient-variant-report/patient-variant-report.module';
+import { PatientVariantReportQcModule } from './patient/patient-variant-report-qc/patient-variant-report-qc.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { SharedModule } from './shared/shared.module';
 import { Auth } from './shared/auth/auth.service';
@@ -51,6 +52,7 @@ import { LoginGuard } from './shared/auth/login.guard.service';
     PatientListModule,
     PatientDetailsModule,
     PatientVariantReportModule,
+    PatientVariantReportQcModule,
     DashboardModule,
     SharedModule.forRoot(),
     FormsModule

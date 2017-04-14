@@ -52,7 +52,6 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.getData();
-    this.dataAvailable = false;
   }
 
   getData() {

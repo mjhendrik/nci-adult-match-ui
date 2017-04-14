@@ -5,7 +5,8 @@ import {
 
 import { routerTransition } from './../../shared/router.animations';
 import {
-  PatientApiService
+  PatientApiService,
+  PatientVariantReportInterface
 } from '../patient-api.service';
 
 /**
@@ -20,7 +21,6 @@ import {
   host: { '[@routerTransition]': '' }
 })
 export class PatientVariantReportQcComponent implements OnInit {
-
   variantReport: any;
   assignmentReport: any;
   moiSummary: any;
@@ -37,12 +37,11 @@ export class PatientVariantReportQcComponent implements OnInit {
 
   ngOnInit() {
     this.getData();
-    this.dataAvailable = false;
   }
 
   getData() {
-    this.patientApi.getPatientVariantReportQcModule()
-      .subscribe((itemList: PatientVariantReportQcModuleInterface) => {
+    this.patientApi.getPatientVariantReport()
+      .subscribe((itemList: PatientVariantReportInterface) => {
         this.variantReport = itemList.variantReport;
         this.assignmentReport = itemList.assignmentReport;
         this.moiSummary = itemList.moiSummary;
@@ -56,9 +55,4 @@ export class PatientVariantReportQcComponent implements OnInit {
       error => this.errorMessage = <any>error
       );
   }
-
-  scrollToAssignmentDetails(): void {
-    setTimeout(() => window.scrollTo('assignment-details'), 1);
-  }
-
 }

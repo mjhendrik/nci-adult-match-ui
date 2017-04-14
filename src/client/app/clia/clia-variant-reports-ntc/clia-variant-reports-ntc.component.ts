@@ -35,7 +35,6 @@ export class CliaVariantReportsNtcComponent implements OnInit {
 
   ngOnInit() {
     this.getData();
-    this.dataAvailable = false;
   }
 
   getData() {
