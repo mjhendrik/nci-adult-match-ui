@@ -1,10 +1,21 @@
 @media (min-width: 768px) {
-  .dl-horizontal dt {
-    width: 190px;
-  }
-  .dl-horizontal dd {
-    margin-left: 205px;
-  }
+  .dl-horizontal{
+    dt {
+      width: 190px;
+    }
+    dd {
+      margin-left: 205px;
+    }
+  } 
+
+  .dl-horizontal.wider-dt {
+    dt {
+      width: 215px;
+    }
+    dd {
+      margin-left: 230px;
+    }
+  } 
 }
 
 .table>thead>tr>th {

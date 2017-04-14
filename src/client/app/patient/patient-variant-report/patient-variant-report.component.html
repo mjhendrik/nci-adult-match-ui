@@ -45,15 +45,15 @@
     <div class="col-md-6">
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-top">
         <div class="panel-heading">
-          <dl class="dl-horizontal">
+          <dl class="dl-horizontal wider-dt">
             <h4>Latest Assignment</h4>
             <dt>Status</dt>
             <dd><span [colorCodeAssignment]="assignmentReport.status"> {{assignmentReport.status | dashify}}</span>  on {{assignmentReport.confirmationDate | dashify}} by {{assignmentReport.user | dashify}}</dd>
             <dt>Generation Date</dt>
             <dd>{{assignmentReport.generationDate | dashify}}</dd>
-            <dt>TA Sent to ECOG Date</dt>
+            <dt>Treatment Arm Sent to ECOG Date</dt>
             <dd>{{assignmentReport.taSentToECOGDate | dashify}}</dd>
-            <dt>Sent to ECOG Date</dt>
+            <dt>Assignment Sent to ECOG Date</dt>
             <dd>{{assignmentReport.senttoECOGDate | dashify}}</dd>
             <dt>Received from ECOG Date</dt>
             <dd>{{assignmentReport.receivedfromECOGDate | dashify}}</dd>
