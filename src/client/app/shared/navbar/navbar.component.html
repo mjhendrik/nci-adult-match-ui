@@ -90,5 +90,6 @@
   </a>
   </span>
   <strong>National Cancer Institute</strong> at the National Institutes of Health
+  <span *ngIf="buildInfo" class="build-info text-muted">MATCH UI: {{buildInfo.buildNumber}}, {{buildInfo.buildTime}}</span>
 </div>
 <!-- end #footer -->
