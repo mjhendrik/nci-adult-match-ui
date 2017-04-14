@@ -294,3 +294,10 @@ body {
 .text-underlined {
   text-decoration: underline;
 }
+
+.footer {
+  .build-info {
+    margin-left: 4px;
+    font-size: xx-small;
+  }
+}

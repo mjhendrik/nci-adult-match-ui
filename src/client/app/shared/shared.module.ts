@@ -2,8 +2,9 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-
 import { NavbarComponent } from './navbar/navbar.component';
+import { ConfigApiService } from './config/config-api.service';
+
 
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.
@@ -13,7 +14,9 @@ import { NavbarComponent } from './navbar/navbar.component';
   imports: [CommonModule, RouterModule],
   declarations: [NavbarComponent],
   exports: [NavbarComponent,
-    CommonModule, FormsModule, RouterModule]
+    CommonModule, FormsModule, RouterModule
+  ],
+  providers: [ConfigApiService]
 })
 export class SharedModule {
   static forRoot(): ModuleWithProviders {
