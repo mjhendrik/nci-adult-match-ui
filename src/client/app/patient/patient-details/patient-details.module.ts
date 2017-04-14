@@ -8,6 +8,7 @@ import { PipesModule } from '../../shared/pipes/pipes.module';
 import { DirectivesModule } from '../../shared/directives/directives.module';
 import { PatientApiService } from '../patient-api.service';
 
+
 @NgModule({
   imports: [CommonModule, PatientDetailsRoutingModule, FormsModule, DataTableModule, PipesModule, DirectivesModule],
   declarations: [PatientDetailsComponent],
