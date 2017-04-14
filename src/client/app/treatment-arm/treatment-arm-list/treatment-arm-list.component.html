@@ -1,4 +1,4 @@
-<div id="content" class="content" *ngIf="dataAvailable">
+<div id="content" class="content">
   <ul class="breadcrumb pull-right">
     <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
     <li class="active">Treatment Arms</li>
@@ -97,7 +97,7 @@
                           <tfoot>
                             <tr>
                               <td class="tfoot-padding" colspan="10">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermTA" [totallength]="tableTAData.length"></mfBootstrapPaginator>
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermTA" [totallength]="tableTAData ? tableTAData.length : 0"></mfBootstrapPaginator>
                               </td>
                             </tr>
                           </tfoot>
