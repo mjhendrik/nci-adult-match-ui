@@ -13,17 +13,6 @@ export interface TreatmentArmDetailsInterface {
   tablePatientData: any[];
 }
 
-export interface TreatmentArmListInterface {
-  variantReport: {};
-  assignmentReport: {};
-  moiSummary: {};
-  assay: any[];
-  snv: any[];
-  indels: any[];
-  assignmentReason: {};
-  assignmentHistory: any[];
-}
-
 /**
  * This class provides the NameList service with methods to read names and add names.
  */
@@ -48,7 +37,7 @@ export class TreatmentArmApiService {
       .catch(this.handleError);
   }
 
-  getTreatmentArmList(): Observable<TreatmentArmListInterface> {
+  getTreatmentArmList(): Observable<any[]> {
     return this.http.get('assets/mock-data/treatment-arm-list.json')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
