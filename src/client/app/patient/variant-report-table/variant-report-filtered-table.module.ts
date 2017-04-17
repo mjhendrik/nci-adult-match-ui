@@ -6,6 +6,7 @@ import { PipesModule } from '../../shared/pipes/pipes.module';
 import { DirectivesModule } from '../../shared/directives/directives.module';
 import { PatientApiService } from '../patient-api.service';
 import { VariantReportFilteredTableSnvComponent } from './variant-report-filtered-table-snv.component';
+import { VariantReportFilteredTableIndelsComponent } from './variant-report-filtered-table-indels.component';
 
 @NgModule({
   imports: [
@@ -15,8 +16,14 @@ import { VariantReportFilteredTableSnvComponent } from './variant-report-filtere
     PipesModule,
     DirectivesModule
   ],
-  declarations: [VariantReportFilteredTableSnvComponent],
-  exports: [VariantReportFilteredTableSnvComponent],
+  declarations: [
+    VariantReportFilteredTableSnvComponent,
+    VariantReportFilteredTableIndelsComponent
+  ],
+  exports: [
+    VariantReportFilteredTableSnvComponent,
+    VariantReportFilteredTableIndelsComponent
+  ],
   providers: [PatientApiService]
 })
 export class VariantReportFilteredTableModule { }
