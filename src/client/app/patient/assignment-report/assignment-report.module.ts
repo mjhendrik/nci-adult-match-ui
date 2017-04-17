@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PatientVariantReportComponent } from './patient-variant-report.component';
-import { PatientVariantReportRoutingModule } from './patient-variant-report-routing.module';
+import { AssignmentReportComponent } from './assignment-report.component';
+import { AssignmentReportRoutingModule } from './assignment-report-routing.module';
 import { FormsModule } from '@angular/forms';
 import { DataTableModule } from '../../shared/datatables/index';
 import { PipesModule } from '../../shared/pipes/pipes.module';
@@ -11,14 +11,14 @@ import { PatientApiService } from '../patient-api.service';
 @NgModule({
   imports: [
     CommonModule,
-    PatientVariantReportRoutingModule,
+    AssignmentReportRoutingModule,
     FormsModule,
     DataTableModule,
     PipesModule,
     DirectivesModule
   ],
-  declarations: [PatientVariantReportComponent],
-  exports: [PatientVariantReportComponent],
+  declarations: [AssignmentReportComponent],
+  exports: [AssignmentReportComponent],
   providers: [PatientApiService]
 })
-export class PatientVariantReportModule { }
+export class AssignmentReportModule { }

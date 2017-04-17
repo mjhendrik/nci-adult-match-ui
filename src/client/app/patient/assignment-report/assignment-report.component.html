@@ -1,0 +1,151 @@
+<div id="content" class="content" *ngIf="dataAvailable">
+  <ul class="breadcrumb pull-right">
+    <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
+    <li><a href [routerLink]="['/patients']" class="link-none">Patients</a></li>
+    <li><a href [routerLink]="['/patients/details']" class="link-none">Patient 10069</a></li>
+    <li><a href [routerLink]="['/patients/variant_report']" class="link-none">Variant Report</a></li>
+    <li class="active">Historical Assignment Report</li>
+  </ul>
+  <h1 class="page-header">Historical Assignment Report</h1>
+  <div class="row" matchHeight="panel-height-top">
+    <div class="col-md-6">
+      <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-top">
+        <div class="panel-heading">
+            <dl class="dl-horizontal">
+              <dt>Molecular Sequence Number</dt>
+              <dd>{{variantReport.molecularSequenceNumber | dashify}}</dd>
+              <dt>Biopsy Sequence Number</dt>
+              <dd>{{variantReport.biopsySequenceNumber | dashify}}</dd>
+              <dt>Analysis ID</dt>
+              <dd>{{variantReport.analysisId | dashify}}</dd>
+              <dt>Status</dt>
+              <dd><span [colorCodeAssignment]="assignmentReport.status"> {{assignmentReport.status | dashify}}</span>  on {{assignmentReport.confirmationDate | dashify}} by {{assignmentReport.user | dashify}}</dd>
+            </dl>            
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-top">
+        <div class="panel-heading">
+          <dl class="dl-horizontal wider-dt">
+            <dt>Generation Date</dt>
+            <dd>{{assignmentReport.generationDate | dashify}}</dd>
+            <dt>Treatment Arm Sent to ECOG Date</dt>
+            <dd>{{assignmentReport.taSentToECOGDate | dashify}}</dd>
+            <dt>Assignment Sent to ECOG Date</dt>
+            <dd>{{assignmentReport.senttoECOGDate | dashify}}</dd>
+            <dt>Received from ECOG Date</dt>
+            <dd>{{assignmentReport.receivedfromECOGDate | dashify}}</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-white panel-accent-sides-purple overflow-hidden">
+    <div class="panel-heading">
+      <div class="row">
+        <div class="col-md-12">
+          <h4>Selected Treatment Arm: <span class="text-success-light">{{assignmentReport.selectedTreatmentArm | dashify}}</span></h4>
+          <div class="panel panel-success overflow-hidden">
+            <div class="panel-heading">
+              <p>
+                {{assignmentReport.assignmentReason | dashify}}
+              </p>
+            </div>
+          </div>              
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-white panel-accent-sides-purple overflow-hidden">
+    <div class="panel-heading">
+      <div class="row">
+        <div class="col-md-12">
+          <h4 id="assignment-details">Assignment Reason</h4>
+          <table class="table table-condensed table-th-valign-top">
+            <thead>
+              <tr>
+                <th style="width:20%">Treatment Arm</th>
+                <th style="width:20%">Treatment Arm Name</th>
+                <th style="width:60%">Inclusion/Exclusion Drugs</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colspan="4">
+                  <h4>1 - NO VARIANT MATCH</h4>
+                </td>
+              </tr>
+              <tr *ngFor="let item of assignmentReason.noVariantMatch">
+                <td>{{item.treatmentArm | dashify}}</td>
+                <td>{{item.treatmentArmName | dashify}}</td>
+                <td class="overflow-x-hidden">{{item.treatmentArmInclusionExclusionDrugs | dashify}}</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <h4>2 - RECORD BASED EXCLUSION</h4>
+                </td>
+              </tr>
+              <tr *ngFor="let item of assignmentReason.recordBasedExclusion">
+                <td>{{item.treatmentArm | dashify}}</td>
+                <td>{{item.treatmentArmName | dashify}}</td>
+                <td>{{item.treatmentArmInclusionExclusionDrugs | dashify}}</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <h4>3 - LEVEL OF EVIDENCE TIE BREAKER</h4>
+                </td>
+              </tr>
+              <tr *ngFor="let item of assignmentReason.levelOfEvidenceTieBreaker">
+                <td>{{item.treatmentArm | dashify}}</td>
+                <td>{{item.treatmentArmName | dashify}}</td>
+                <td>{{item.treatmentArmInclusionExclusionDrugs | dashify}}</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <h4>4 - SELECTED</h4>
+                </td>
+              </tr>
+              <tr *ngFor="let item of assignmentReason.selected">
+                <td>{{item.treatmentArm | dashify}}</td>
+                <td>{{item.treatmentArmName | dashify}}</td>
+                <td>{{item.treatmentArmInclusionExclusionDrugs | dashify}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-white panel-accent-sides-purple overflow-hidden">
+    <div class="panel-heading">
+      <div class="row">
+        <div class="col-md-12">
+          <h4>Assignment History</h4>
+          <table class="table table-condensed">
+            <thead>
+              <tr>
+                <th>Status</th>
+                <th>Generation Date</th>
+                <th>Confirmation Date</th>
+                <th>Sent to ECOG Date</th>
+                <th>Received from ECOG Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of assignmentHistory">
+                <td [colorCodeAssignment]="item.status"><a href [routerLink]="['/patients/variant_report/assignment']">{{item.status | dashify}}</a></td>
+                <td>{{item.generationDate | dashify}}</td>
+                <td>{{item.confirmationDate | dashify}}</td>
+                <td>{{item.sentToEcogDate | dashify}}</td>
+                <td>{{item.receivedFromEcogDate | dashify}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
