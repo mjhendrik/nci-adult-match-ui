@@ -9,26 +9,27 @@
       <!-- begin panel -->
       <div class="panel">
         <div class="m-0 p-0">
-          <div>
+          
             <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
               <div class="tab-pane active">
                 <!-- table 5 -->
                 <div class="row">
                   <!-- begin panel -->
-                  <div>
+                  
                     <div class="col-md-12 bg-purple-light">
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select name="data-table_length" [(ngModel)]="recordsPerPagePatients" aria-controls="data-table" class="form-control form-control-purple input-sm">
-                          <option [ngValue]=10>10</option>
-                          <option [ngValue]=25>25</option>
-                          <option [ngValue]=50>50</option>
-                          <option [ngValue]=100>100</option>
-                        </select>
-                      entries</label>
+                          <select name="data-table_length" [(ngModel)]="recordsPerPagePatients" aria-controls="data-table" class="form-control form-control-purple input-sm">
+                            <option [ngValue]=10>10</option>
+                            <option [ngValue]=25>25</option>
+                            <option [ngValue]=50>50</option>
+                            <option [ngValue]=100>100</option>
+                          </select>
+                          entries</label>
                         </div>
                       </div>
+
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
@@ -41,6 +42,7 @@
                       <div class="table-responsive col-lg-12">
                         <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="tablePatientsData | filterByText: searchTermPatients"
                           #mftablePatients="mfDataTable" [(mfSortBy)]="tablePatientsDefaultSort" [mfRowsOnPage]="recordsPerPagePatients">
+                          
                           <thead>
                             <tr class="purple-light">
                               <th>
@@ -66,6 +68,7 @@
                               </th>
                             </tr>
                           </thead>
+                          
                           <tbody>
                             <tr *ngFor="let item of mftablePatients.data">
                               <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
@@ -88,6 +91,7 @@
                               </td>
                             </tr>
                           </tbody>
+                          
                           <tfoot>
                             <tr>
                               <td class="tfoot-padding" colspan="7">
@@ -98,12 +102,12 @@
                         </table>
                       </div>
                     </div>
-                  </div>
+                  
                   <!-- end panel -->
                 </div>
               </div>
             </div>
-          </div>
+          
         </div>
       </div>
       <!-- end panel -->
