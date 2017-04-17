@@ -104,8 +104,8 @@
                           <h4>{{item.status}}</h4>
                           <p>
                             {{item.details}}
-                            <a class="link-none" [routerLink]="['/patients/variant_report']" href *ngIf="item.variantReport">Variant Report</a> {{item.variantReportDetails}}
-                            <a class="link-none" [routerLink]="['/patients/variant_report']" href *ngIf="item.assignmentReport">Assignment Report</a> {{item.assignmentReportDetails}}
+                            <a class="link-none" [routerLink]="['/patients/variant_report']" href *ngIf="item.variantReport">Variant Report</a>                            {{item.variantReportDetails}}
+                            <a class="link-none" [routerLink]="['/patients/variant_report']" href *ngIf="item.assignmentReport">Assignment Report</a>                            {{item.assignmentReportDetails}}
                           </p>
                           <span class="timeline-time">{{item.time}}</span>
                         </div>
@@ -118,9 +118,10 @@
           </div>
           <div class="tab-pane fade" id="tab-biopsy-t-16-000762">
             <div class="panel-heading">
-              <h4 class="panel-title f-s-18">Biopsy: {{biopsyData.id}}</h4>
+              <h4 class="panel-title f-s-18">Biopsy: {{biopsyData.id}}
+                <!--<a href="javascript:;" class="btn btn-purple-light pull-right" style="margin-top: -6px;"><i class="fa fa-upload"></i> Upload File</a>-->
+              </h4>
             </div>
-
             <div class="row">
               <div class="col-md-6">
                 <div class="panel panel-white overflow-hidden biopsy-panel-height panel-accent-bottom-purple">
@@ -188,7 +189,9 @@
               <div class="col-md-12">
                 <div class="panel panel-accent-bottom-purple">
                   <div class="panel-heading">
-                    <h4 class="panel-title f-s-18">Nucleic Acid Sendout</h4>
+                    <h4 class="panel-title f-s-18">Nucleic Acid Sendout
+                      <a href="#modal-dialog" class="btn btn-purple-light pull-right" style="margin-top: -6px;" data-toggle="modal"><i class="fa fa-upload"></i> Upload File</a>
+                    </h4>
                   </div>
                   <div class="table-responsive">
                     <table class="table table-td-valign-middle">
@@ -285,11 +288,47 @@
             </p>
           </div>
           <div class="tab-pane fade" id="tab-documents">
-            <p class="text-muted">
-              Patient Documents
-            </p>
+            <div class="panel-heading">
+              <h4 class="panel-title f-s-18">Patient Documents</h4>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-td-valign-middle">
+                <thead>
+                  <tr>
+                    <th>Document</th>
+                    <th>Comment</th>
+                    <th>Uploaded Date</th>
+                    <th>User</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td colspan="4" class="text-muted">No Documents Available</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            LAYOUT
+            <!--TO_DO: DROPZONE-->
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="modal-dialog" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-close"></i></button>
+        <h4 class="modal-title">Drag And Drop Files Here</h4>
+      </div>
+      <div class="modal-body">
+        LAYOUT
+        <!--TO_DO: DROPZONE-->
+      </div>
+      <div class="modal-footer">
+        <a href="javascript:;" class="btn width-100 btn-purple-light" data-dismiss="modal" aria-hidden="true">Done</a>
       </div>
     </div>
   </div>
