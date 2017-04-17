@@ -190,7 +190,7 @@
                 <div class="panel panel-accent-bottom-purple">
                   <div class="panel-heading">
                     <h4 class="panel-title f-s-18">Nucleic Acid Sendout
-                      <a href="javascript:;" class="btn btn-purple-light pull-right" style="margin-top: -6px;"><i class="fa fa-upload"></i> Upload File</a>
+                      <a href="#modal-dialog" class="btn btn-purple-light pull-right" style="margin-top: -6px;" data-toggle="modal"><i class="fa fa-upload"></i> Upload File</a>
                     </h4>
                   </div>
                   <div class="table-responsive">
@@ -308,10 +308,27 @@
                 </tbody>
               </table>
             </div>
-            <!--<a href="javascript:;" class="btn btn-purple-light"><i class="fa fa-upload"></i> Upload Additional Patient Documentation</a>-->
-            <!--<input type="file" style="display: none;">-->
+            LAYOUT
+            <!--TO_DO: DROPZONE-->
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="modal-dialog" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-close"></i></button>
+        <h4 class="modal-title">Drag And Drop Files Here</h4>
+      </div>
+      <div class="modal-body">
+        LAYOUT
+        <!--TO_DO: DROPZONE-->
+      </div>
+      <div class="modal-footer">
+        <a href="javascript:;" class="btn width-100 btn-purple-light" data-dismiss="modal" aria-hidden="true">Done</a>
       </div>
     </div>
   </div>
