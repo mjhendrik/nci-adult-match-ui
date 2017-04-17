@@ -104,8 +104,8 @@
                           <h4>{{item.status}}</h4>
                           <p>
                             {{item.details}}
-                            <a class="link-none" [routerLink]="['/patients/variant_report']" href *ngIf="item.variantReport">Variant Report</a> {{item.variantReportDetails}}
-                            <a class="link-none" [routerLink]="['/patients/variant_report']" href *ngIf="item.assignmentReport">Assignment Report</a> {{item.assignmentReportDetails}}
+                            <a class="link-none" [routerLink]="['/patients/variant_report']" href *ngIf="item.variantReport">Variant Report</a>                            {{item.variantReportDetails}}
+                            <a class="link-none" [routerLink]="['/patients/variant_report']" href *ngIf="item.assignmentReport">Assignment Report</a>                            {{item.assignmentReportDetails}}
                           </p>
                           <span class="timeline-time">{{item.time}}</span>
                         </div>
@@ -118,9 +118,10 @@
           </div>
           <div class="tab-pane fade" id="tab-biopsy-t-16-000762">
             <div class="panel-heading">
-              <h4 class="panel-title f-s-18">Biopsy: {{biopsyData.id}}</h4>
+              <h4 class="panel-title f-s-18">Biopsy: {{biopsyData.id}}
+                <!--<a href="javascript:;" class="btn btn-purple-light pull-right" style="margin-top: -6px;"><i class="fa fa-upload"></i> Upload File</a>-->
+              </h4>
             </div>
-
             <div class="row">
               <div class="col-md-6">
                 <div class="panel panel-white overflow-hidden biopsy-panel-height panel-accent-bottom-purple">
@@ -188,7 +189,9 @@
               <div class="col-md-12">
                 <div class="panel panel-accent-bottom-purple">
                   <div class="panel-heading">
-                    <h4 class="panel-title f-s-18">Nucleic Acid Sendout</h4>
+                    <h4 class="panel-title f-s-18">Nucleic Acid Sendout
+                      <a href="javascript:;" class="btn btn-purple-light pull-right" style="margin-top: -6px;"><i class="fa fa-upload"></i> Upload File</a>
+                    </h4>
                   </div>
                   <div class="table-responsive">
                     <table class="table table-td-valign-middle">
@@ -285,9 +288,11 @@
             </p>
           </div>
           <div class="tab-pane fade" id="tab-documents">
-            <p class="text-muted">
+            <a href="javascript:;" class="btn btn-purple-light"><i class="fa fa-upload"></i> Upload Additional Patient Documentation</a>
+            <!--<input type="file" style="display: none;">-->
+            <!--<p class="text-muted">
               Patient Documents
-            </p>
+            </p>-->
           </div>
         </div>
       </div>
