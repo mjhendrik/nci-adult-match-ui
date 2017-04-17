@@ -10,37 +10,56 @@
     <div class="col-md-6">
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-top">
         <div class="panel-heading">
-          <dl class="dl-horizontal">
+          <ul id="panel-tab" class="nav nav-tabs pull-right nav-tabs-purple">
+            <li class="active"><a href="#panel-tab-info" data-toggle="tab" aria-expanded="true"><i class="fa fa-align-left"></i> <span class="hidden-xs">Info</span></a></li>
+            <li class=""><a href="#panel-tab-files" data-toggle="tab" aria-expanded="false"><i class="fa fa-file-archive-o"></i> <span class="hidden-xs">Files</span></a></li>
+          </ul>
             <h4>Variant Report</h4>
-            <dt>Molecular Sequence Number</dt>
-            <dd>{{variantReport.molecularSequenceNumber | dashify}}</dd>
-            <dt>Biopsy Sequence Number</dt>
-            <dd>{{variantReport.biopsySequenceNumber | dashify}}</dd>
-            <dt>Analysis ID</dt>
-            <dd>{{variantReport.analysisId | dashify}}</dd>
-            <dt>Patient</dt>
-            <dd><a href [routerLink]="['/patients/details']" class="link-none">{{variantReport.patientSequenceNumber | dashify}}</a>,
-              <span [colorCodePatients]="variantReport.patientStatus">{{variantReport.patientStatus | dashify}}</span>, at
-              Step {{variantReport.step | dashify}}</dd>
-            <dt>Patient Concordance</dt>
-            <dd>{{variantReport.concordance | dashify}}</dd>
-            <dt>Status</dt>
-            <dd><span [colorCodeVariantReport]="variantReport.variantReportStatus">{{variantReport.variantReportStatus | dashify}}</span> on {{variantReport.variantReportDate | dashify}} by {{variantReport.user | dashify}}</dd>
-            <dt>MAPD</dt>
-            <dd>{{variantReport.mapd | dashify}}</dd>
-            <dt>Cellularity</dt>
-            <dd>{{variantReport.cellularity | dashify}}</dd>
-            <dt>File Received Date</dt>
-            <dd>{{variantReport.fileReceivedDate | dashify}}</dd>
-            <dt>Torrent Variant Caller Version</dt>
-            <dd>{{variantReport.torrentVariantCallerVersion | dashify}}</dd>
-          </dl>
         </div>
-        <div class="panel-heading">
-          <button type="button" class="btn btn-purple-light">Files</button>
-          <a class="btn btn-purple-light link-none" role="button" href [routerLink]="['/patients/variant_report/qc']">QC Report</a>
-          <a href class="btn btn-purple-light link-none"><i class="fa fa-file-excel-o"></i> Excel</a>          
-        </div>
+        <div id="panel-tab-content" class="tab-content m-b-0">
+          <div class="tab-pane fade active in" id="panel-tab-info">
+             <dl class="dl-horizontal">
+              <h4>Variant Report</h4>
+              <dt>Molecular Sequence Number</dt>
+              <dd>{{variantReport.molecularSequenceNumber | dashify}}</dd>
+              <dt>Biopsy Sequence Number</dt>
+              <dd>{{variantReport.biopsySequenceNumber | dashify}}</dd>
+              <dt>Analysis ID</dt>
+              <dd>{{variantReport.analysisId | dashify}}</dd>
+              <dt>Patient</dt>
+              <dd><a href [routerLink]="['/patients/details']" class="link-none">{{variantReport.patientSequenceNumber | dashify}}</a>,
+                <span [colorCodePatients]="variantReport.patientStatus">{{variantReport.patientStatus | dashify}}</span>, at
+                Step {{variantReport.step | dashify}}</dd>
+              <dt>Patient Concordance</dt>
+              <dd>{{variantReport.concordance | dashify}}</dd>
+              <dt>Status</dt>
+              <dd><span [colorCodeVariantReport]="variantReport.variantReportStatus">{{variantReport.variantReportStatus | dashify}}</span> on {{variantReport.variantReportDate | dashify}} by {{variantReport.user | dashify}}</dd>
+              <dt>MAPD</dt>
+              <dd>{{variantReport.mapd | dashify}}</dd>
+              <dt>Cellularity</dt>
+              <dd>{{variantReport.cellularity | dashify}}</dd>
+              <dt>File Received Date</dt>
+              <dd>{{variantReport.fileReceivedDate | dashify}}</dd>
+              <dt>Torrent Variant Caller Version</dt>
+              <dd>{{variantReport.torrentVariantCallerVersion | dashify}}</dd>
+            </dl>
+
+            <div class="panel-heading">
+              <a class="btn btn-purple-light link-none" role="button" href [routerLink]="['/patients/variant_report/qc']">QC Report</a>
+              <a href class="btn btn-purple-light link-none"><i class="fa fa-file-excel-o"></i> Excel</a>          
+            </div>                
+          </div>
+
+          <div class="tab-pane fade" id="panel-tab-files">
+            <p class="m-t-30">
+              <button type="button" class="btn btn-purple-light">DNA BAM</button>
+              <button type="button" class="btn btn-purple-light">DNA BAI</button>
+              <button type="button" class="btn btn-purple-light">RNA BAM</button>
+              <button type="button" class="btn btn-purple-light">RNA BAI</button>
+              <button type="button" class="btn btn-purple-light">VCF</button>                      
+            </p>
+          </div>          
+        </div>    
       </div>
     </div>
     <div class="col-md-6">
