@@ -306,52 +306,22 @@
                       <div class="col-lg-12">
                         <div>
                           <div>
-                            <ul class="list-group">
-                              <li class="list-group-item" style="border: none">
-                                <span>IP Address:
-                                    <span class="pull-right">
-                                      {{item.externalIpAddress | dashify}}
-                                    </span>
-                                </span>
-                              </li>
-                              <li class="list-group-item" style="border: none">
-                                <span>Internal IP Address:
-                                    <span class="pull-right">
-                                      {{item.ipAddress | dashify}}
-                                    </span>
-                                </span>
-                              </li>
-                              <li class="list-group-item" style="border: none">
-                                <span>Host Name:
-                                    <span class="pull-right">
-                                      {{item.hostName | dashify}}
-                                    </span>
-                                </span>
-                              </li>
-                              <li class="list-group-item" style="border: none">
-                                <span>Status:
-                                    <span class="pull-right" [colorCodeCliaIon]="item.status">
-                                      {{item.status | dashify}}
-                                    </span>
-                                </span>
-                              </li>
-                              <li class="list-group-item" style="border: none">
-                                <span>Ion Reporter Version:
-                                    <span class="pull-right">
-                                      {{item.ionReporterVersion | dashify}}
-                                    </span>
-                                </span>
-                              </li>
-                              <li class="list-group-item" style="border: none">
-                                <span>Last Contact:
-                                    <span class="pull-right">
-                                      {{item.lastContactDate | dashify}}
-                                    </span>
-                                </span>
-                              </li>
-                            </ul>
+                            <dl class="dl-horizontal m-t-20">
+                              <dt>IP Address</dt>
+                              <dd>{{item.externalIpAddress | dashify}}</dd>
+                              <dt>Internal IP Address</dt>
+                              <dd>{{item.ipAddress | dashify}}</dd>
+                              <dt>Host Name</dt>
+                              <dd>{{item.hostName | dashify}}</dd>
+                              <dt>Status</dt>
+                              <dd [colorCodeCliaIon]="item.status">{{item.status | dashify}}</dd>
+                              <dt>Ion Reporter Version</dt>
+                              <dd>{{item.ionReporterVersion | dashify}}</dd>
+                              <dt>Last Contact</dt>
+                              <dd>{{item.lastContactDate | dashify}}</dd>
+                            </dl>
                           </div>
-                          <small class="p-l-15">
+                          <small class="p-l-15 text-muted">
                               Loaded at {{timestamp | date: 'mediumTime'}}
                           </small>
                           <span class="pull-right">
