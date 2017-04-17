@@ -16,7 +16,6 @@ import {
   moduleId: module.id,
   selector: 'sd-patient-variant-report-qc',
   templateUrl: 'patient-variant-report-qc.component.html',
-  styleUrls: ['patient-variant-report-qc.component.css'],
   animations: [routerTransition()],
   host: { '[@routerTransition]': '' }
 })

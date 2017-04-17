@@ -7,7 +7,7 @@ import { DataTableModule } from '../../shared/datatables/index';
 import { PipesModule } from '../../shared/pipes/pipes.module';
 import { DirectivesModule } from '../../shared/directives/directives.module';
 import { PatientApiService } from '../patient-api.service';
-
+import { VariantReportFilteredTableModule } from './variant-report-filtered-table.module'
 @NgModule({
   imports: [
     CommonModule,
@@ -15,7 +15,8 @@ import { PatientApiService } from '../patient-api.service';
     FormsModule,
     DataTableModule,
     PipesModule,
-    DirectivesModule
+    DirectivesModule,
+    VariantReportFilteredTableModule
   ],
   declarations: [PatientVariantReportQcComponent],
   exports: [PatientVariantReportQcComponent],
