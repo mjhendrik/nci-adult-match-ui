@@ -50,7 +50,7 @@
                     <td>{{item.ci95Percent | dashify}}</td>
                 </tr>
                 <tr *ngIf="!items || mfTable.data.length == 0">
-                    <td class="f-s-15 text-muted" colspan="7">
+                    <td class="text-muted" colspan="7">
                         <span *ngIf="searchTerm"> No matching search results found for "{{searchTerm}}"</span>
                         <span *ngIf="!searchTerm">No Copy Number Variant data</span>
                     </td>
