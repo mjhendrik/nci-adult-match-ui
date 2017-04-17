@@ -16,6 +16,6 @@ export class VariantReportFilteredTableSnvComponent {
 
   searchTerm: string = '';
   recordsPerPage: number = 100;
-  defaultSort: string = 'patientSequenceNumber';
+  defaultSort: string = 'id';
   errorMessage: string;
 }
