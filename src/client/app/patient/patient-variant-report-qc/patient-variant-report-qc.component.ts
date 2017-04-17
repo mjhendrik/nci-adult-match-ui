@@ -29,6 +29,7 @@ export class PatientVariantReportQcComponent implements OnInit {
   indels: any[];
   assignmentReason: any;
   assignmentHistory: any[];
+  ocpSummary: any;
 
   dataAvailable: boolean;
   errorMessage: string;
@@ -40,7 +41,7 @@ export class PatientVariantReportQcComponent implements OnInit {
   }
 
   getData() {
-    this.patientApi.getPatientVariantReport()
+    this.patientApi.getPatientVariantReportQc()
       .subscribe((itemList: PatientVariantReportInterface) => {
         this.variantReport = itemList.variantReport;
         this.assignmentReport = itemList.assignmentReport;
@@ -50,6 +51,7 @@ export class PatientVariantReportQcComponent implements OnInit {
         this.indels = itemList.indels;
         this.assignmentReason = itemList.assignmentReason;
         this.assignmentHistory = itemList.assignmentHistory;
+        this.ocpSummary = itemList.ocpSummary;
         this.dataAvailable = true;
       },
       error => this.errorMessage = <any>error

@@ -22,6 +22,7 @@ export interface PatientVariantReportInterface {
   indels: any[];
   assignmentReason: {};
   assignmentHistory: any[];
+  ocpSummary: any;
 }
 
 /**
@@ -57,6 +58,13 @@ export class PatientApiService {
 
   getPatientVariantReport(): Observable<PatientVariantReportInterface> {
     return this.http.get('assets/mock-data/patient-variant-report.json')
+      .map((res: Response) => res.json())
+      //              .do(data => console.log('server data:', data))  // debug
+      .catch(this.handleError);
+  }
+
+  getPatientVariantReportQc(): Observable<PatientVariantReportInterface> {
+    return this.http.get('assets/mock-data/patient-variant-report-qc.json')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
