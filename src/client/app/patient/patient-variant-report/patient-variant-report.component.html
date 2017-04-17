@@ -367,7 +367,7 @@
             </thead>
             <tbody>
               <tr *ngFor="let item of assignmentHistory">
-                <td [colorCodeAssignment]="item.status"><a href="javascript:alert('Opens old assignment full screen')">{{item.status | dashify}}</a></td>
+                <td [colorCodeAssignment]="item.status"><a href [routerLink]="['/patients/variant_report/assignment']">{{item.status | dashify}}</a></td>
                 <td>{{item.generationDate | dashify}}</td>
                 <td>{{item.confirmationDate | dashify}}</td>
                 <td>{{item.sentToEcogDate | dashify}}</td>
