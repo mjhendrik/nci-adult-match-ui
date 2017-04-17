@@ -7,6 +7,8 @@ import { DirectivesModule } from '../../shared/directives/directives.module';
 import { PatientApiService } from '../patient-api.service';
 import { VariantReportFilteredTableSnvComponent } from './variant-report-filtered-table-snv.component';
 import { VariantReportFilteredTableIndelsComponent } from './variant-report-filtered-table-indels.component';
+import { VariantReportFilteredTableCnvComponent } from './variant-report-filtered-table-cnv.component';
+import { VariantReportFilteredTableGeneFusionComponent } from './variant-report-filtered-table-gf.component';
 
 @NgModule({
   imports: [
@@ -18,11 +20,15 @@ import { VariantReportFilteredTableIndelsComponent } from './variant-report-filt
   ],
   declarations: [
     VariantReportFilteredTableSnvComponent,
-    VariantReportFilteredTableIndelsComponent
+    VariantReportFilteredTableIndelsComponent,
+    VariantReportFilteredTableCnvComponent,
+    VariantReportFilteredTableGeneFusionComponent
   ],
   exports: [
     VariantReportFilteredTableSnvComponent,
-    VariantReportFilteredTableIndelsComponent
+    VariantReportFilteredTableIndelsComponent,
+    VariantReportFilteredTableCnvComponent,
+    VariantReportFilteredTableGeneFusionComponent
   ],
   providers: [PatientApiService]
 })

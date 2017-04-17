@@ -19,6 +19,8 @@ export interface PatientVariantReportInterface {
   moiSummary: {};
   assay: any[];
   snv: any[];
+  cnv: any[];
+  geneFusions: any[];
   indels: any[];
   assignmentReason: {};
   assignmentHistory: any[];
