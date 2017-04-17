@@ -43,14 +43,19 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>{{"62456" | dashify}}</td>
-                  <td>{{"244869" | dashify}}</td>
-                  <td>{{"3148" | dashify}}</td>
-                  <td>{{"5876" | dashify}}</td>
-                  <td>{{"18530" | dashify}}</td>
-                  <td>{{"334879" | dashify}}</td>
+                <tr *ngIf="ocpSummary; else emptyRow">
+                  <td>{{ocpSummary.LRP1 | dashify}}</td>
+                  <td>{{ocpSummary.TBP | dashify}}</td>
+                  <td>{{ocpSummary.MYC | dashify}}</td>
+                  <td>{{ocpSummary.HMBS | dashify}}</td>
+                  <td>{{ocpSummary.ITGB7 | dashify}}</td>
+                  <td>{{ocpSummary.SUM | dashify}}</td>
                 </tr>
+                <ng-template #emptyRow>
+                  <tr>
+                    <td colspan="6" class="text-muted">No Oncomine Control Panel data</td>
+                  </tr>
+                </ng-template>
               </tbody>
             </table>
           </dl>
