@@ -47,8 +47,11 @@ module.exports = function (config) {
       { pattern: 'node_modules/@angular/**/*.js', included: false, watched: true },
       { pattern: 'node_modules/@angular/**/*.js.map', included: false, watched: false },
 
-      // { pattern: 'dist/dev/**/*.js', included: false, watched: true },
-      { pattern: 'dist/dev/app/app.component.spec.js', included: false, watched: true }, // For now test just one file to get the configuration working
+      { pattern: 'dist/dev/**/*.js', included: false, watched: true },
+
+      // { pattern: 'dist/dev/app/patient/variant-report-table/variant-report-filtered-table-cnv.component.spec.js', included: false, watched: true }, // For now test just one file to get the configuration working
+
+      // { pattern: 'dist/dev/app/app.component.spec.js', included: false, watched: true }, // For now test just one file to get the configuration working
       { pattern: 'dist/dev/**/*.html', included: false, watched: true, served: true },
       { pattern: 'dist/dev/**/*.css', included: false, watched: true, served: true },
       { pattern: 'node_modules/systemjs/dist/system-polyfills.js', included: false, watched: false }, // PhantomJS2 (and possibly others) might require it
@@ -56,11 +59,16 @@ module.exports = function (config) {
       // suppress annoying 404 warnings for resources, images, etc.
       { pattern: 'dist/dev/assets/**/*', watched: false, included: false, served: true },
 
+      // Externally loaded
+      { pattern: 'https://cdn.auth0.com/js/lock/10.7/lock.js', watched: false, included: false },
+      { pattern: 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.3/Chart.bundle.min.js', watched: false, included: false },
+      
       // Additional project-specific libraries
       { pattern: 'node_modules/angular2-jwt/angular2-jwt.js', included: false, watched: true },
       { pattern: 'node_modules/lodash/lodash.js', included: false, watched: true },
       { pattern: 'node_modules/moment/moment.js', included: false, watched: true },
       { pattern: 'node_modules/ng2-charts/**/*.js', included: false, watched: true },
+      { pattern: 'node_modules/ngx-dropzone-wrapper/bundles/ngx-dropzone-wrapper.umd.js', included: false, watched: true },
 
       'test-config.js',
       'dist/dev/app/system-config.js',
@@ -69,7 +77,7 @@ module.exports = function (config) {
 
     // must go along with above, suppress annoying 404 warnings.
     proxies: {
-      '/assets/': '/base/dist/dev/assets/'
+      '/assets/': '/dist/dev/assets/'
     },
 
     // list of files to exclude
