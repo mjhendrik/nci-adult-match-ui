@@ -17,6 +17,7 @@ bower_components
 .sass-cache
 connect.lock
 coverage/*
+coverag_js/*
 libpeerconnection.log
 npm-debug.log
 testem.log
