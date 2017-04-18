@@ -88,6 +88,7 @@ export class SeedConfig {
   */
   COVERAGE_DIR = 'coverage_js';
   COVERAGE_TS_DIR = 'coverage';
+  COVERAGE_LCOV = 'coverage_lcov';
 
   /**
    * The path for the base of the application at runtime.
