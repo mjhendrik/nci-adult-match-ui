@@ -12,7 +12,6 @@ export function main() {
     // let mockBackend: MockBackend;
 
     beforeEach(() => {
-
       TestBed.configureTestingModule({
         providers: [
           PatientApiService,
@@ -27,7 +26,7 @@ export function main() {
       });
     });
 
-    fit('should return an Observable when get called', async(() => {
+    it('should return an Observable when get called', async(() => {
       expect(TestBed.get(PatientApiService).getPatientList()).toEqual(jasmine.any(Observable));
     }));
 
