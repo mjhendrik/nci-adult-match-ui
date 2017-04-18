@@ -27,7 +27,7 @@ import { PatientVariantReportQcModule } from './patient/patient-variant-report-q
 import { CliaVariantReportQcModule } from './clia/clia-variant-report-qc/clia-variant-report-qc.module';
 import { AssignmentReportModule } from './patient/assignment-report/assignment-report.module';
 import { DashboardModule } from './dashboard/dashboard.module';
-import { VariantReportFilteredTableModule } from './patient/variant-report-table/variant-report-filtered-table.module';
+import { VariantReportFilteredTableModule } from './shared/variant-report-table/variant-report-filtered-table.module';
 
 @NgModule({
   imports: [
@@ -52,7 +52,7 @@ import { VariantReportFilteredTableModule } from './patient/variant-report-table
     PatientVariantReportQcModule,
     CliaVariantReportQcModule,
     AssignmentReportModule,
-    VariantReportFilteredTableModule,
+    VariantReportFilteredTableModule
   ],
   declarations: [AppComponent],
   providers: [
