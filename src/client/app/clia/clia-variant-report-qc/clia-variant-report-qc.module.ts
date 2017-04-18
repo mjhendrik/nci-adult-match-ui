@@ -7,7 +7,7 @@ import { DataTableModule } from '../../shared/datatables/index';
 import { PipesModule } from '../../shared/pipes/pipes.module';
 import { DirectivesModule } from '../../shared/directives/directives.module';
 import { CliaApiService } from '../clia-api.service';
-import { VariantReportFilteredTableModule } from './../variant-report-table/variant-report-filtered-table.module';
+import { VariantReportFilteredTableModule } from '../../shared/variant-report-table/variant-report-filtered-table.module';
 
 @NgModule({
   imports: [
@@ -17,8 +17,7 @@ import { VariantReportFilteredTableModule } from './../variant-report-table/vari
     DataTableModule,
     PipesModule,
     DirectivesModule,
-    VariantReportFilteredTableModule,
-    // AssignmentReportModule
+    VariantReportFilteredTableModule
   ],
   declarations: [CliaVariantReportQcComponent],
   exports: [CliaVariantReportQcComponent],
