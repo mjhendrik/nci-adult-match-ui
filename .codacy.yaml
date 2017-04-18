@@ -29,9 +29,9 @@ ratings:
 exclude_paths:
 - "Gulpfile.js"
 - "karma.conf.js"
-- "test.conf.js"
-- "test.main.js"
 - "protractor.conf.js"
+- "test-config.js"
+- "test-main.js"
 - "tools/**/*"
 - "src/client/assets/**/*"
 - "src/client/css/style.css"
