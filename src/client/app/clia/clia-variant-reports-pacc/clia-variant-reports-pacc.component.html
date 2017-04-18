@@ -9,30 +9,45 @@
     <div class="col-md-6">
       <div class="panel panel-white panel-accent-sides-orangeshade overflow-hidden pacc">
         <div class="panel-heading">
-          <dl class="dl-horizontal">
-            <dt>Molecular Sequence Number</dt>
-            <dd>{{variantReportPACC.molecularSequenceNumber | dashify}}</dd>
-            <dt>Analysis Id</dt>
-            <dd>{{variantReportPACC.analysisId | dashify}}</dd>
-            <dt>Total Variants</dt>
-            <dd>{{variantReportPACC.totalVariants | dashify}}</dd>
-            <dt>MAPD</dt>
-            <dd>{{variantReportPACC.mapd | dashify}}</dd>
-            <dt>Cellularity</dt>
-            <dd>{{variantReportPACC.cellularity | dashify}}</dd>
-            <dt>File Received Date</dt>
-            <dd>{{variantReportPACC.fileReceivedDate | dashify}}</dd>
-            <dt>Torrent Variant Caller Version</dt>
-            <dd>{{variantReportPACC.torrentVariantCallerVersion | dashify}}</dd>
-            <dt>Status</dt>
-            <dd [colorCodeClia]="variantReportPACC.status">{{variantReportPACC.status | dashify}}</dd>
-            <dt>Comment</dt>
-            <dd>{{variantReportPACC.comment | dashify}}</dd>
-          </dl>
+          <ul id="panel-tab" class="nav nav-tabs pull-right nav-tabs-orangeshade">
+            <li class="active"><a href="#panel-tab-info" data-toggle="tab" aria-expanded="true"><i class="fa fa-align-left"></i><span class="hidden-xs"> Info</span></a></li>
+            <li class=""><a href="#panel-tab-files" data-toggle="tab" aria-expanded="false"><i class="fa fa-file-archive-o"></i><span class="hidden-xs"> Files</span></a></li>
+          </ul>
+          <h4>Proficiency And Competency Control Variant Report</h4>
         </div>
-        <div class="panel-heading p-t-0">
-          <button type="button" class="btn btn-orangeshade-light">FILES</button>
-          <a class="btn btn-orangeshade-light link-none" role="button" href [routerLink]="['/clia_variant_reports_qc_ntc']">QC Report</a>
+        <div id="panel-tab-content" class="tab-content m-b-0">
+          <div class="tab-pane fade active in" id="panel-tab-info">
+            <dl class="dl-horizontal">
+              <dt>Molecular Sequence Number</dt>
+              <dd>{{variantReportPACC.molecularSequenceNumber | dashify}}</dd>
+              <dt>Analysis Id</dt>
+              <dd>{{variantReportPACC.analysisId | dashify}}</dd>
+              <dt>Total Variants</dt>
+              <dd>{{variantReportPACC.totalVariants | dashify}}</dd>
+              <dt>MAPD</dt>
+              <dd>{{variantReportPACC.mapd | dashify}}</dd>
+              <dt>Cellularity</dt>
+              <dd>{{variantReportPACC.cellularity | dashify}}</dd>
+              <dt>File Received Date</dt>
+              <dd>{{variantReportPACC.fileReceivedDate | dashify}}</dd>
+              <dt>Torrent Variant Caller Version</dt>
+              <dd>{{variantReportPACC.torrentVariantCallerVersion | dashify}}</dd>
+              <dt>Status</dt>
+              <dd [colorCodeClia]="variantReportPACC.status">{{variantReportPACC.status | dashify}}</dd>
+              <dt>Comment</dt>
+              <dd>{{variantReportPACC.comment | dashify}}</dd>
+            </dl>
+            <div class="panel-heading">
+              <a class="btn btn-orangeshade-light link-none" role="button" href [routerLink]="['/clia_variant_reports_qc_ntc']">QC Report</a>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="panel-tab-files">
+            <p class="m-t-30">
+              <button type="button" class="btn btn-orangeshade-light">DNA BAM</button>
+              <button type="button" class="btn btn-orangeshade-light">RNA BAM</button>
+              <button type="button" class="btn btn-orangeshade-light">VCF</button>
+            </p>
+          </div>
         </div>
       </div>
     </div>
