@@ -24,7 +24,7 @@ export function main() {
           .compileComponents()
           .then(() => {
 
-  console.log('HERE!!!');
+            console.log('HERE!!!');
             let fixture = TestBed.createComponent(TestComponent);
             let aboutDOMEl = fixture.debugElement.children[0].nativeElement;
             expect(aboutDOMEl).toBeTruthy();
