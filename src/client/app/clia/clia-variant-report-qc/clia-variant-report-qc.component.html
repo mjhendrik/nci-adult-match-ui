@@ -23,6 +23,8 @@
               <dd>{{variantReport.molecularSequenceNumber | dashify}}</dd>
               <dt>Analysis ID</dt>
               <dd>{{variantReport.analysisId | dashify}}</dd>
+              <dt>Total Variants</dt>
+              <dd>{{variantReport.totalVariants | dashify}}</dd>
               <dt>MAPD</dt>
               <dd>{{variantReport.mapd | dashify}}</dd>
               <dt>Cellularity</dt>
@@ -34,11 +36,12 @@
             </dl>
             <dl class="dl-horizontal">
               <h4>Oncomine Control Panel Summary</h4>
-
               <table class="table table-condensed white-header">
                 <thead>
                   <tr>
                     <th>LRP1</th>
+                    <!--<th>LMNA</th>-->
+                    <!--TO_DO: ngIf-->
                     <th>TBP</th>
                     <th>MYC</th>
                     <th>HMBS</th>
@@ -63,14 +66,15 @@
                 </tbody>
               </table>
             </dl>
-
           </div>
           <div class="tab-pane fade" id="panel-tab-files">
             <p class="m-t-30">
               <button type="button" class="btn btn-orangeshade-light">DNA BAM</button>
-              <button type="button" class="btn btn-orangeshade-light">DNA BAI</button>
+              <!--<button type="button" class="btn btn-orangeshade-light">DNA BAI</button>-->
+              <!--TO_DO: ngIf-->
               <button type="button" class="btn btn-orangeshade-light">RNA BAM</button>
-              <button type="button" class="btn btn-orangeshade-light">RNA BAI</button>
+              <!--<button type="button" class="btn btn-orangeshade-light">RNA BAI</button>-->
+              <!--TO_DO: ngIf-->
               <button type="button" class="btn btn-orangeshade-light">VCF</button>
             </p>
           </div>
@@ -92,19 +96,16 @@
           <sd-variant-report-filtered-table-snv [items]="snv"></sd-variant-report-filtered-table-snv>
         </div>
       </div>
-
       <div class="row">
         <div class="col-md-12">
           <sd-variant-report-filtered-table-indels [items]="indels"></sd-variant-report-filtered-table-indels>
         </div>
       </div>
-
       <div class="row">
         <div class="col-md-12">
           <sd-variant-report-filtered-table-cnv [items]="cnv"></sd-variant-report-filtered-table-cnv>
         </div>
       </div>
-
       <div class="row">
         <div class="col-md-12">
           <sd-variant-report-filtered-table-gf [items]="geneFusions"></sd-variant-report-filtered-table-gf>
