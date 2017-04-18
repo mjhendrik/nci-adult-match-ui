@@ -1,9 +1,11 @@
-if (!Object.hasOwnProperty('name')) {
-  Object.defineProperty(Function.prototype, 'name', {
+if (!Object.hasOwnProperty("name")) {
+  Object.defineProperty(Function.prototype, "name", {
     get: function () {
       var matches = this.toString().match(/^\s*function\s*(\S*)\s*\(/);
       var name = matches && matches.length > 1 ? matches[1] : "";
-      Object.defineProperty(this, 'name', { value: name });
+      Object.defineProperty(this, "name", {
+        value: name
+      });
       return name;
     }
   });
@@ -16,38 +18,38 @@ jasmine.DEFAULT_TIMEOUT_INTERVAL = 1000;
 
 // Cancel Karma's synchronous start,
 // we will call `__karma__.start()` later, once all the specs are loaded.
-__karma__.loaded = function () { };
+__karma__.loaded = function () {};
 
 Promise.all([
-  System.import('@angular/core/testing'),
-  System.import('@angular/platform-browser-dynamic/testing')
-]).then(function (providers) {
-  var testing = providers[0];
-  var testingBrowser = providers[1];
+    System.import("@angular/core/testing"),
+    System.import("@angular/platform-browser-dynamic/testing")
+  ]).then(function (providers) {
+    var testing = providers[0];
+    var testingBrowser = providers[1];
 
-  testing.TestBed.initTestEnvironment(
-    testingBrowser.BrowserDynamicTestingModule,
-    testingBrowser.platformBrowserDynamicTesting()
-  );
-}).then(function () {
-  return Promise.all(
-    Object.keys(window.__karma__.files) // All files served by Karma.
+    testing.TestBed.initTestEnvironment(
+      testingBrowser.BrowserDynamicTestingModule,
+      testingBrowser.platformBrowserDynamicTesting()
+    );
+  }).then(function () {
+    return Promise.all(
+      Object.keys(window.__karma__.files) // All files served by Karma.
       .filter(onlySpecFiles)
       .map(file2moduleName)
       .map(function (path) {
         return System.import(path).then(function (module) {
-          if (module.hasOwnProperty('main')) {
+          if (module.hasOwnProperty("main")) {
             module.main();
           } else {
-            throw new Error('Module ' + path + ' does not implement main() method.');
+            throw new Error("Module " + path + " does not implement main() method.");
           }
         });
       }));
-})
+  })
   .then(function () {
     __karma__.start();
   }, function (error) {
-    console.error(error.stack || error);
+    // console.error(error.stack || error);
     __karma__.start();
   });
 
@@ -61,8 +63,7 @@ function onlySpecFiles(path) {
 
 // Normalize paths to module names.
 function file2moduleName(filePath) {
-  return filePath.replace(/\\/g, '/')
-    .replace(/^\/base\//, '')
-    .replace(/\.js$/, '');
+  return filePath.replace(/\\/g, "/")
+    .replace(/^\/base\//, "")
+    .replace(/\.js$/, "");
 }
-

@@ -14,11 +14,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 import { LoginModule } from './login/login.module';
 import { CliaParentModule } from './clia/clia-parent/clia-parent.module';
-// import { CliaDartmouthModule } from './clia/clia-dartmouth/clia-dartmouth.module';
-// import { CliaMdaccModule } from './clia/clia-mdacc/clia-mdacc.module';
-// import { CliaMghModule } from './clia/clia-mgh/clia-mgh.module';
-// import { CliaMochaModule } from './clia/clia-mocha/clia-mocha.module';
-// import { CliaYaleModule } from './clia/clia-yale/clia-yale.module';
 import { CliaVariantReportsNtcModule } from './clia/clia-variant-reports-ntc/clia-variant-reports-ntc.module';
 import { CliaVariantReportsPaccModule } from './clia/clia-variant-reports-pacc/clia-variant-reports-pacc.module';
 import { CliaVariantReportsPcModule } from './clia/clia-variant-reports-pc/clia-variant-reports-pc.module';
@@ -29,12 +24,14 @@ import { PatientListModule } from './patient/patient-list/patient-list.module';
 import { PatientDetailsModule } from './patient/patient-details/patient-details.module';
 import { PatientVariantReportModule } from './patient/patient-variant-report/patient-variant-report.module';
 import { PatientVariantReportQcModule } from './patient/patient-variant-report-qc/patient-variant-report-qc.module';
+import { CliaVariantReportQcModule } from './clia/clia-variant-report-qc/clia-variant-report-qc.module';
 import { AssignmentReportModule } from './patient/assignment-report/assignment-report.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { VariantReportFilteredTableModule } from './patient/variant-report-table/variant-report-filtered-table.module';
 
 @NgModule({
-  imports: [BrowserModule,
+  imports: [
+    BrowserModule,
     BrowserAnimationsModule,
     HttpModule,
     FormsModule,
@@ -43,11 +40,6 @@ import { VariantReportFilteredTableModule } from './patient/variant-report-table
     LoginModule,
     DashboardModule,
     CliaParentModule,
-    // CliaDartmouthModule,
-    // CliaMdaccModule,
-    // CliaMghModule,
-    // CliaMochaModule,
-    // CliaYaleModule,
     CliaVariantReportsNtcModule,
     CliaVariantReportsPaccModule,
     CliaVariantReportsPcModule,
@@ -58,6 +50,7 @@ import { VariantReportFilteredTableModule } from './patient/variant-report-table
     PatientDetailsModule,
     PatientVariantReportModule,
     PatientVariantReportQcModule,
+    CliaVariantReportQcModule,
     AssignmentReportModule,
     VariantReportFilteredTableModule,
   ],

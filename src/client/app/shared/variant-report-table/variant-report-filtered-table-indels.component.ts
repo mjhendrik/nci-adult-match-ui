@@ -15,7 +15,7 @@ export class VariantReportFilteredTableIndelsComponent {
   @Input() items: any[];
 
   searchTerm: string = '';
-  recordsPerPage: number = 100;
+  recordsPerPage: number = 25;
   defaultSort: string = 'id';
   errorMessage: string;
 }
