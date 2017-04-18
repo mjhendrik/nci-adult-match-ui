@@ -23,26 +23,26 @@ export class MatchHeightTabClickDirective implements AfterViewChecked {
     }
 
     @HostListener('click')
-    onResize() {
+    onTabClick() {
         this.adjustHeight(this.el.nativeElement, this.matchHeightTab);
     }
 
     adjustHeight(parent: HTMLElement, className: string) {
         // match height logic here
-
         if (!parent) return;
         const children = parent.getElementsByClassName(className);
 
         if (!children) return;
+
+        const maxHeight = parent.closest('.' + className).getBoundingClientRect().height;
 
         // reset all children height
         Array.from(children).forEach((x: HTMLElement) => {
             x.style.height = 'initial';
         });
 
-        const maxHeight = parent.getBoundingClientRect().height;
+        console.log(parent.closest('.' + className));
 
-        // apply max height
         Array.from(children)
             .forEach((x: HTMLElement) => x.style.height = `${maxHeight}px`);
     }
