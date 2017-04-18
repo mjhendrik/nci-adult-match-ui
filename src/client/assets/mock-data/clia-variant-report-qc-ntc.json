@@ -1,8 +1,8 @@
 {
   "variantReport": {
-    "patientSequenceNumber": "11276",
     "patientStatus": "PENDING_CONFIRMATION",
     "step": 0,
+    "totalVariants": 4683,
     "concordance": "YES",
     "variantReportStatus": "CONFIRMED",
     "variantReportDate": "August 26, 2016 3:28 PM GMT",

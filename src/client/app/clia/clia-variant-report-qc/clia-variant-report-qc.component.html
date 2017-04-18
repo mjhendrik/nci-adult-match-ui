@@ -1,0 +1,116 @@
+<div id="content" class="content" *ngIf="dataAvailable">
+  <ul class="breadcrumb pull-right">
+    <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
+    <li><a href [routerLink]="['/clia_yale']" class="link-none">CLIA Lab: Yale</a></li>
+    <li><a href [routerLink]="['/clia_variant_reports_ntc']" class="link-none">No Template Control Variant Report</a></li>
+    <li class="active">No Template Quality Control Variant Report</li>
+  </ul>
+  <h1 class="page-header">No Template Quality Control Variant Report</h1>
+  <div class="row" matchHeight="panel-height-top">
+    <div class="col-md-6">
+      <div class="panel panel-white panel-accent-sides-orangeshade overflow-hidden panel-height-top">
+        <div class="panel-heading">
+          <ul id="panel-tab" class="nav nav-tabs pull-right nav-tabs-orangeshade">
+            <li class="active"><a href="#panel-tab-info" data-toggle="tab" aria-expanded="true"><i class="fa fa-align-left"></i> <span class="hidden-xs">Info</span></a></li>
+            <li class=""><a href="#panel-tab-files" data-toggle="tab" aria-expanded="false"><i class="fa fa-file-archive-o"></i> <span class="hidden-xs">Files</span></a></li>
+          </ul>
+          <h4>Variant Report</h4>
+        </div>
+        <div id="panel-tab-content" class="tab-content">
+          <div class="tab-pane fade active in" id="panel-tab-info">
+            <dl class="dl-horizontal">
+              <dt>Molecular Sequence Number</dt>
+              <dd>{{variantReport.molecularSequenceNumber | dashify}}</dd>
+              <dt>Analysis ID</dt>
+              <dd>{{variantReport.analysisId | dashify}}</dd>
+              <dt>Total Variants</dt>
+              <dd>{{variantReport.totalVariants | dashify}}</dd>
+              <dt>MAPD</dt>
+              <dd>{{variantReport.mapd | dashify}}</dd>
+              <dt>Cellularity</dt>
+              <dd>{{variantReport.cellularity | dashify}}</dd>
+              <dt>File Received Date</dt>
+              <dd>{{variantReport.fileReceivedDate | dashify}}</dd>
+              <dt>Torrent Variant Caller Version</dt>
+              <dd>{{variantReport.torrentVariantCallerVersion | dashify}}</dd>
+            </dl>
+            <dl class="dl-horizontal">
+              <h4>Oncomine Control Panel Summary</h4>
+              <table class="table table-condensed white-header">
+                <thead>
+                  <tr>
+                    <th>LRP1</th>
+                    <!--<th>LMNA</th>-->
+                    <!--TO_DO: ngIf-->
+                    <th>TBP</th>
+                    <th>MYC</th>
+                    <th>HMBS</th>
+                    <th>ITGB7</th>
+                    <th>SUM</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngIf="ocpSummary; else emptyRow">
+                    <td>{{ocpSummary.LRP1 | dashify}}</td>
+                    <td>{{ocpSummary.TBP | dashify}}</td>
+                    <td>{{ocpSummary.MYC | dashify}}</td>
+                    <td>{{ocpSummary.HMBS | dashify}}</td>
+                    <td>{{ocpSummary.ITGB7 | dashify}}</td>
+                    <td>{{ocpSummary.SUM | dashify}}</td>
+                  </tr>
+                  <ng-template #emptyRow>
+                    <tr>
+                      <td colspan="6" class="text-muted">No Oncomine Control Panel data</td>
+                    </tr>
+                  </ng-template>
+                </tbody>
+              </table>
+            </dl>
+          </div>
+          <div class="tab-pane fade" id="panel-tab-files">
+            <p class="m-t-30">
+              <button type="button" class="btn btn-orangeshade-light">DNA BAM</button>
+              <!--<button type="button" class="btn btn-orangeshade-light">DNA BAI</button>-->
+              <!--TO_DO: ngIf-->
+              <button type="button" class="btn btn-orangeshade-light">RNA BAM</button>
+              <!--<button type="button" class="btn btn-orangeshade-light">RNA BAI</button>-->
+              <!--TO_DO: ngIf-->
+              <button type="button" class="btn btn-orangeshade-light">VCF</button>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="panel panel-white panel-accent-sides-orangeshade overflow-hidden panel-height-top">
+        <div class="panel-heading">
+          <a href="javascript:alert('Opens CNV chart full screen')"><img src="/assets/mock-data/cnv_chart.png" alt="CNV Chart" style="width:100%"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-white panel-accent-sides-orangeshade overflow-hidden">
+    <div class="panel-heading">
+      <div class="row">
+        <div class="col-md-12">
+          <sd-variant-report-filtered-table-snv [items]="snv"></sd-variant-report-filtered-table-snv>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <sd-variant-report-filtered-table-indels [items]="indels"></sd-variant-report-filtered-table-indels>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <sd-variant-report-filtered-table-cnv [items]="cnv"></sd-variant-report-filtered-table-cnv>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <sd-variant-report-filtered-table-gf [items]="geneFusions"></sd-variant-report-filtered-table-gf>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

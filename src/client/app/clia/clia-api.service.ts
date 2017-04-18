@@ -31,6 +31,20 @@ export interface CliaVariantReportsPCInterface {
   tablePCsData: any[];
 }
 
+export interface CliaVariantReportsQCInterface {
+  variantReport: {};
+  assignmentReport: {};
+  moiSummary: {};
+  assay: any[];
+  snv: any[];
+  cnv: any[];
+  geneFusions: any[];
+  indels: any[];
+  assignmentReason: {};
+  assignmentHistory: any[];
+  ocpSummary: any;
+}
+
 // import 'rxjs/add/operator/do';  // for debugging
 
 /**
@@ -73,6 +87,15 @@ export class CliaApiService {
 
   getCliaVariantReportsPC(): Observable<CliaVariantReportsPCInterface> {
     return this.http.get('assets/mock-data/clia-variant-reports-pc.json')
+      .map((res: Response) => res.json())
+      //              .do(data => console.log('server data:', data))  // debug
+      .catch(this.handleError);
+  }
+
+  getCliaVariantReportQC(): Observable<CliaVariantReportsQCInterface> {
+    // getCliaVariantReportQC(type: string): Observable<CliaVariantReportsQCInterface> {
+    // return this.http.get('assets/mock-data/clia-variant-report-qc-' + type + '.json')
+    return this.http.get('assets/mock-data/clia-variant-report-qc-ntc.json')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
