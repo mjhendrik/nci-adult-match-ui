@@ -5,6 +5,7 @@ import { DataTableModule } from '../../shared/datatables/index';
 import { PipesModule } from '../../shared/pipes/pipes.module';
 import { DirectivesModule } from '../../shared/directives/directives.module';
 import { PatientApiService } from '../../patient/patient-api.service';
+import { CliaApiService } from '../../clia/clia-api.service';
 import { VariantReportFilteredTableSnvComponent } from './variant-report-filtered-table-snv.component';
 import { VariantReportFilteredTableIndelsComponent } from './variant-report-filtered-table-indels.component';
 import { VariantReportFilteredTableCnvComponent } from './variant-report-filtered-table-cnv.component';
@@ -30,6 +31,9 @@ import { VariantReportFilteredTableGeneFusionComponent } from './variant-report-
     VariantReportFilteredTableCnvComponent,
     VariantReportFilteredTableGeneFusionComponent
   ],
-  providers: [PatientApiService]
+  providers: [
+    PatientApiService,
+    CliaApiService
+  ]
 })
 export class VariantReportFilteredTableModule { }

@@ -17,8 +17,7 @@ import { VariantReportFilteredTableModule } from '../../shared/variant-report-ta
     DataTableModule,
     PipesModule,
     DirectivesModule,
-    VariantReportFilteredTableModule,
-    // AssignmentReportModule
+    VariantReportFilteredTableModule
   ],
   declarations: [PatientVariantReportQcComponent],
   exports: [PatientVariantReportQcComponent],
