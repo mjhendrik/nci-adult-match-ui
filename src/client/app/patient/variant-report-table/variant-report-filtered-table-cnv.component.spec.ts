@@ -13,12 +13,12 @@ export function main() {
 
     beforeEach(() => {
       TestBed.configureTestingModule({
-        declarations: [TestComponent],
-        imports: [VariantReportFilteredTableCnvComponent]
+        declarations: [TestComponent, VariantReportFilteredTableCnvComponent],
+        imports: []
       });
     });
 
-    fit('should work',
+    it('should work',
       async(() => {
         TestBed
           .compileComponents()
@@ -35,6 +35,6 @@ export function main() {
 
 @Component({
   selector: 'test-cmp',
-  template: '<sd-patient-variant-report-qc></sd-patient-variant-report-qc>'
+  template: '<sd-variant-report-filtered-table-cnv></sd-variant-report-filtered-table-cnv>'
 })
 class TestComponent { }

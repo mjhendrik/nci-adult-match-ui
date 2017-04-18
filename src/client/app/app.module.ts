@@ -7,7 +7,11 @@ import { FormsModule } from '@angular/forms';
 import { AUTH_PROVIDERS } from 'angular2-jwt';
 
 import { AppComponent } from './app.component';
+import { Auth } from './shared/auth/auth.service';
+import { AuthGuard } from './shared/auth/auth.guard.service';
+import { LoginGuard } from './shared/auth/login.guard.service';
 import { AppRoutingModule } from './app-routing.module';
+import { SharedModule } from './shared/shared.module';
 import { LoginModule } from './login/login.module';
 import { CliaParentModule } from './clia/clia-parent/clia-parent.module';
 // import { CliaDartmouthModule } from './clia/clia-dartmouth/clia-dartmouth.module';
@@ -27,17 +31,17 @@ import { PatientVariantReportModule } from './patient/patient-variant-report/pat
 import { PatientVariantReportQcModule } from './patient/patient-variant-report-qc/patient-variant-report-qc.module';
 import { AssignmentReportModule } from './patient/assignment-report/assignment-report.module';
 import { DashboardModule } from './dashboard/dashboard.module';
-import { SharedModule } from './shared/shared.module';
-import { Auth } from './shared/auth/auth.service';
-import { AuthGuard } from './shared/auth/auth.guard.service';
-import { LoginGuard } from './shared/auth/login.guard.service';
+import { VariantReportFilteredTableModule } from './patient/variant-report-table/variant-report-filtered-table.module';
 
 @NgModule({
   imports: [BrowserModule,
     BrowserAnimationsModule,
     HttpModule,
+    FormsModule,
+    SharedModule.forRoot(),
     AppRoutingModule,
     LoginModule,
+    DashboardModule,
     CliaParentModule,
     // CliaDartmouthModule,
     // CliaMdaccModule,
@@ -55,9 +59,7 @@ import { LoginGuard } from './shared/auth/login.guard.service';
     PatientVariantReportModule,
     PatientVariantReportQcModule,
     AssignmentReportModule,
-    DashboardModule,
-    SharedModule.forRoot(),
-    FormsModule
+    VariantReportFilteredTableModule,
   ],
   declarations: [AppComponent],
   providers: [
