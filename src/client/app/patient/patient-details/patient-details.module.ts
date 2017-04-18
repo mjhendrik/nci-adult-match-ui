@@ -8,9 +8,24 @@ import { PipesModule } from '../../shared/pipes/pipes.module';
 import { DirectivesModule } from '../../shared/directives/directives.module';
 import { PatientApiService } from '../patient-api.service';
 
+import { DropzoneModule } from 'ngx-dropzone-wrapper';
+import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
+
+const DROPZONE_CONFIG: DropzoneConfigInterface = {
+  // Change this to your upload POST address:
+  server: 'https://httpbin.org/post'
+  // maxFilesize: 50,
+  // acceptedFiles: 'image/*'
+};
 
 @NgModule({
-  imports: [CommonModule, PatientDetailsRoutingModule, FormsModule, DataTableModule, PipesModule, DirectivesModule],
+  imports: [CommonModule,
+    PatientDetailsRoutingModule,
+    FormsModule,
+    DataTableModule,
+    PipesModule,
+    DirectivesModule,
+    DropzoneModule.forRoot(DROPZONE_CONFIG)],
   declarations: [PatientDetailsComponent],
   exports: [PatientDetailsComponent],
   providers: [PatientApiService]

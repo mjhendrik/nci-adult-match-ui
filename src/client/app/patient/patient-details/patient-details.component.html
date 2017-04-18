@@ -119,7 +119,6 @@
           <div class="tab-pane fade" id="tab-biopsy-t-16-000762">
             <div class="panel-heading">
               <h4 class="panel-title f-s-18">Biopsy: {{biopsyData.id}}
-                <!--<a href="javascript:;" class="btn btn-purple-light pull-right" style="margin-top: -6px;"><i class="fa fa-upload"></i> Upload File</a>-->
               </h4>
             </div>
             <div class="row">
@@ -190,7 +189,7 @@
                 <div class="panel panel-accent-bottom-purple">
                   <div class="panel-heading">
                     <h4 class="panel-title f-s-18">Nucleic Acid Sendout
-                      <a href="#modal-dialog" class="btn btn-purple-light pull-right" style="margin-top: -6px;" data-toggle="modal"><i class="fa fa-upload"></i> Upload File</a>
+                      <a href="#file-upload" class="btn btn-purple-light pull-right" style="margin-top: -6px;" data-toggle="modal"><i class="fa fa-upload"></i> Upload File</a>
                     </h4>
                   </div>
                   <div class="table-responsive">
@@ -308,15 +307,15 @@
                 </tbody>
               </table>
             </div>
-            LAYOUT
-            <!--TO_DO: DROPZONE-->
+            <dropzone [config]="config" [message]="'Click or drag files here to upload'" (error)="onUploadError($event)" (success)="onUploadSuccess($event)"></dropzone>
+            <!--<div [dropzone]="config" (error)="onUploadError($event)" (success)="onUploadSuccess($event)"></div>-->
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-<div class="modal fade" id="modal-dialog" style="display: none;">
+<div class="modal fade" id="file-upload" style="display: none;">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -324,8 +323,8 @@
         <h4 class="modal-title">Drag And Drop Files Here</h4>
       </div>
       <div class="modal-body">
-        LAYOUT
-        <!--TO_DO: DROPZONE-->
+        <dropzone [config]="config" [message]="'Click or drag files here to upload'" (error)="onUploadError($event)" (success)="onUploadSuccess($event)"></dropzone>
+        <!--<div [dropzone]="config" (error)="onUploadError($event)" (success)="onUploadSuccess($event)"></div>-->
       </div>
       <div class="modal-footer">
         <a href="javascript:;" class="btn width-100 btn-purple-light" data-dismiss="modal" aria-hidden="true">Done</a>
