@@ -23,7 +23,7 @@ export class ProjectConfig extends SeedConfig {
 
     super();
 
-    this.APP_TITLE = 'Welcome to nci-adult-match-ui!';
+    this.APP_TITLE = 'NCI Adult MATCH';
     // this.GOOGLE_ANALYTICS_ID = 'Your site's ID';
 
     /* Enable typeless compiler runs (faster) between typed compiler runs. */
