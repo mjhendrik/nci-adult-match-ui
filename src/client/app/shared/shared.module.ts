@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ConfigApiService } from './config/config-api.service';
 
-
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.
  */

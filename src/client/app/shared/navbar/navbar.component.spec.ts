@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { APP_BASE_HREF } from '@angular/common';
+import { RouterModule, Router } from '@angular/router';
+import { APP_BASE_HREF, Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import {
   async,
   TestBed
@@ -22,6 +22,9 @@ export function main() {
         declarations: [TestComponent, NavbarComponent],
         imports: [RouterModule],
         providers: [
+          Location,
+          Router,
+          { provide: LocationStrategy, useClass: PathLocationStrategy },
           { provide: APP_BASE_HREF, useValue: '' },
           { provide: Auth, useClass: AuthMock },
           { provide: ConfigApiService, useClass: ConfigApiServiceMock }
@@ -29,8 +32,7 @@ export function main() {
       });
     });
 
-
-    fit('should work',
+    it('should work',
       async(() => {
         TestBed
           .compileComponents()
