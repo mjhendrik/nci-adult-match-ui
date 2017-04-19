@@ -296,6 +296,10 @@ body {
   text-decoration: underline;
 }
 
+.text-muted-dark {
+  color: $dark-text-muted-color;
+}
+
 .footer {
   .build-info {
     margin-left: 4px;
@@ -310,4 +314,8 @@ body {
   color: #000000;
   font-weight: bold;
   cursor: default;
+}
+
+.dashboard-loaded-at {
+  margin-top: -15px;
 }

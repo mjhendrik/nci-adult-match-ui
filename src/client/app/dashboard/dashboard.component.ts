@@ -38,6 +38,8 @@ export class DashboardComponent implements OnInit {
   sortByAsc: string = 'asc';
   sortByDesc: string = 'desc';
 
+  timestamp: any = new Date();
+
   overviewData: any;
   tableARData: any[];
   tableVRData: any[];
