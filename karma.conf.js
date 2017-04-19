@@ -49,9 +49,6 @@ module.exports = function (config) {
 
       { pattern: 'dist/dev/**/*.js', included: false, watched: true },
 
-      // { pattern: 'dist/dev/app/patient/variant-report-table/variant-report-filtered-table-cnv.component.spec.js', included: false, watched: true }, // For now test just one file to get the configuration working
-
-      // { pattern: 'dist/dev/app/app.component.spec.js', included: false, watched: true }, // For now test just one file to get the configuration working
       { pattern: 'dist/dev/**/*.html', included: false, watched: true, served: true },
       { pattern: 'dist/dev/**/*.css', included: false, watched: true, served: true },
       { pattern: 'node_modules/systemjs/dist/system-polyfills.js', included: false, watched: false }, // PhantomJS2 (and possibly others) might require it
