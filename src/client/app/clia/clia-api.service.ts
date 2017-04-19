@@ -78,15 +78,15 @@ export class CliaApiService {
       .catch(this.handleError);
   }
 
-  getCliaVariantReportsPACC(): Observable<CliaVariantReportsPACCInterface> {
-    return this.http.get('assets/mock-data/clia-variant-reports-pacc.json')
+  getCliaVariantReportsPACC(paccType: string): Observable<CliaVariantReportsPACCInterface> {
+    return this.http.get('assets/mock-data/clia-variant-reports-pacc-' + paccType + '.json')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
   }
 
-  getCliaVariantReportsPC(): Observable<CliaVariantReportsPCInterface> {
-    return this.http.get('assets/mock-data/clia-variant-reports-pc.json')
+  getCliaVariantReportsPC(pcType: string): Observable<CliaVariantReportsPCInterface> {
+    return this.http.get('assets/mock-data/clia-variant-reports-pc-' + pcType + '.json')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
