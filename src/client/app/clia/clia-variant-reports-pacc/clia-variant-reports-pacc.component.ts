@@ -2,6 +2,7 @@ import {
   Component,
   OnInit
 } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { routerTransition } from './../../shared/router.animations';
 import {
@@ -28,17 +29,20 @@ export class CliaVariantReportsPaccComponent implements OnInit {
   indels: any[];
   dataAvailable: boolean;
   errorMessage: string;
+  paccType: string;
 
-  constructor(private cliaApi: CliaApiService) {
+
+  constructor(private cliaApi: CliaApiService, private route: ActivatedRoute) {
 
   }
 
   ngOnInit() {
+    this.paccType = this.route.snapshot.params.id;
     this.getData();
   }
 
   getData() {
-    this.cliaApi.getCliaVariantReportsPACC()
+    this.cliaApi.getCliaVariantReportsPACC(this.paccType)
       .subscribe((itemList: CliaVariantReportsPACCInterface) => {
         this.variantReportPACC = itemList.variantReportPACC;
         this.dataAvailable = true;

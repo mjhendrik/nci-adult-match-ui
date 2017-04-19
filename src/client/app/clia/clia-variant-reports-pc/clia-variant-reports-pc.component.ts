@@ -2,6 +2,7 @@ import {
   Component,
   OnInit
 } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { routerTransition } from './../../shared/router.animations';
 import {
@@ -28,17 +29,19 @@ export class CliaVariantReportsPcComponent implements OnInit {
   tablePCsData: any[];
   dataAvailable: boolean;
   errorMessage: string;
+  pcType: string;
 
-  constructor(private cliaApi: CliaApiService) {
+  constructor(private cliaApi: CliaApiService, private route: ActivatedRoute) {
 
   }
 
   ngOnInit() {
+    this.pcType = this.route.snapshot.params.id;
     this.getData();
   }
 
   getData() {
-    this.cliaApi.getCliaVariantReportsPC()
+    this.cliaApi.getCliaVariantReportsPC(this.pcType)
       .subscribe((itemList: CliaVariantReportsPCInterface) => {
         this.variantReportPC = itemList.variantReportPC;
         this.dataAvailable = true;
