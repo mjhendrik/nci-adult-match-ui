@@ -296,6 +296,11 @@
                   </div>
                 </a>
               </li>
+              <li class="pull-right ir-status">
+                <span>Ion Reporters online <span class="label label-success">{{countContacted}}</span></span>
+                <br />
+                <span>Ion Reporters offline <span class="label label-danger">{{countLost}}</span></span>
+              </li>
             </ul>
             <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
               <div *ngFor="let item of ionReportersData; let index = index; let first = first" [class.active]="first" class="tab-pane fade in"
@@ -315,12 +320,6 @@
                       <dd>{{item.ionReporterVersion | dashify}}</dd>
                       <dt>Last Contact</dt>
                       <dd>{{item.lastContactDate | dashify}}</dd>
-                    </dl>
-                    <dl class="dl-horizontal dl-horizontal-expanded-label p-r-15">
-                      <dt>Ion Reporters online</dt>
-                      <dd><span class="label label-success">{{countContacted}}</span></dd>
-                      <dt>Ion Reporters offline</dt>
-                      <dd><span class="label label-danger">{{countLost}}</span></dd>
                     </dl>
                     <small class="p-l-15 f-s-10 text-muted">
                         Loaded at {{timestamp | date: 'mediumTime'}}
