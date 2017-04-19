@@ -1,5 +1,6 @@
 # NCI MATCH Adult Study Angular Front-End
 
+[![Build Status](https://travis-ci.org/CBIIT/nci-adult-match-ui.svg?branch=master)](https://travis-ci.org/CBIIT/nci-adult-match-ui)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/3e7f2d4a60ae400e8f01b1246729ee1e)](https://www.codacy.com/app/sgvallala/nci-adult-match-ui?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=CBIIT/nci-adult-match-ui&amp;utm_campaign=Badge_Grade)
 
 ## How to start
