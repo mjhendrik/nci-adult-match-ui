@@ -9,7 +9,7 @@ describe('GmtPipe', () => {
         pipe = new GmtPipe();
     });
 
-    it('test', () => {
+    it('dummy test', () => {
         expect(true).toEqual(true);
     });
 
