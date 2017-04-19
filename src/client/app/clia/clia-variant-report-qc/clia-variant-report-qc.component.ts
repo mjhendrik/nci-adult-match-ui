@@ -2,6 +2,7 @@ import {
   Component,
   OnInit
 } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { routerTransition } from './../../shared/router.animations';
 import {
@@ -33,14 +34,20 @@ export class CliaVariantReportQcComponent implements OnInit {
   dataAvailable: boolean;
   errorMessage: string;
 
-  constructor(private cliaApi: CliaApiService) { }
+  cliaType: string;
+  tabType: string;
+
+
+  constructor(private cliaApi: CliaApiService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.tabType = this.route.snapshot.params.tabType;
+    this.cliaType = this.route.snapshot.params.cliaType;
     this.getData();
   }
 
   getData() {
-    this.cliaApi.getCliaVariantReportQC()
+    this.cliaApi.getCliaVariantReportQC(this.tabType, this.cliaType)
       .subscribe((itemList: CliaVariantReportsQCInterface) => {
         this.variantReport = itemList.variantReport;
         this.assignmentReport = itemList.assignmentReport;

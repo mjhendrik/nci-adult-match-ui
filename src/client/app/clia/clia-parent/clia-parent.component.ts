@@ -61,7 +61,7 @@ export class CliaParentComponent implements OnInit {
 
   ngOnInit() {
 
-    this.cliaType = this.route.snapshot.data['cliatype'];
+    this.cliaType = this.route.snapshot.data['cliaType'];
 
     let gmt = new GmtPipe();
 
