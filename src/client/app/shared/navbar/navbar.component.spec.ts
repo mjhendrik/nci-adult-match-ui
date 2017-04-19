@@ -13,7 +13,7 @@ import { ConfigApiService } from './../config/config-api.service';
 import { NavbarComponent } from './navbar.component';
 
 export function main() {
-  describe('sd-navbar component', () => {
+  xdescribe('sd-navbar component', () => {
     // Setting module for testing
     // Disable old forms
 
@@ -37,9 +37,6 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-
-            console.log('HERE!!!');
-
             let fixture = TestBed.createComponent(TestComponent);
             let aboutDOMEl = fixture.debugElement.children[0].nativeElement;
             expect(aboutDOMEl).toBeTruthy();

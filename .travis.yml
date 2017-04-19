@@ -47,8 +47,8 @@ after_failure:
   - cat /home/travis/build/nci-adult-match-ui/npm-debug.log
 
 after_success:
-  - echo $CODACY_PROJECT_TOKEN
-  - cat coverage_js/lcov.info | ./node_modules/.bin/codacy-coverage
+  - cat node_modules/.bin/codacy-coverage
+  - cat coverage_js/lcov.info | ./node_modules/.bin/codacy-coverage		
   - docker images
   - docker push $DOCKER_IMAGE # Pushes both date and latest
   ##Deploy to AWS IntTest
