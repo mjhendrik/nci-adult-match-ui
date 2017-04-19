@@ -72,10 +72,12 @@ module.exports = function (config) {
       'test-main.js'
     ],
 
+
     // must go along with above, suppress annoying 404 warnings.
     proxies: {
       '/assets/': '/dist/dev/assets/'
     },
+
 
     // list of files to exclude
     exclude: [
