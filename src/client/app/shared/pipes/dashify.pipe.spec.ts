@@ -1,5 +1,3 @@
-import { Pipe, PipeTransform } from '@angular/core';
-
 import { DashifyPipe } from './dashify.pipe';
 
 fdescribe('DashifyPipe', () => {
@@ -17,6 +15,16 @@ fdescribe('DashifyPipe', () => {
     it('transforms "" to "-"', () => {
         let value: string = '';
         expect(pipe.transform(value)).toEqual('-');
+    });
+
+    it('transforms 0 to 0', () => {
+        let value: any = 0;
+        expect(pipe.transform(value)).toEqual(0);
+    });
+
+    it('transforms 1 to 1', () => {
+        let value: any = 1;
+        expect(pipe.transform(value)).toEqual(1);
     });
 
     it('transforms null to "-"', () => {

@@ -6,7 +6,7 @@ import {
     name: 'dashify'
 })
 export class DashifyPipe implements PipeTransform {
-    transform(text: string): string {
-        return text ? text : '-';
+    transform(text: any): string {
+        return (text || text === 0) ? text : '-';
     }
 }
