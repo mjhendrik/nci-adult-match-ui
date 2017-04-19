@@ -1,6 +1,6 @@
 {
-  "variantReportNTC": {
-    "molecularSequenceNumber": "NtcControl_MoCha_8",
+  "variantReportPACC": {
+    "molecularSequenceNumber": "ProficiencyCompetencyControl_MoCha_6",
     "analysisId": "Curl-3",
     "totalVariants": 8,
     "mapd": "0.317",
@@ -11,6 +11,7 @@
     "comment": "Accepted!"
   },
   "snv": [{
+    "confirm": true,
     "id": "COSM14060",
     "chrom": "chr17",
     "position": "37880220",
@@ -19,6 +20,7 @@
     "alleleFreq": "0.3195",
     "funcGene": "ERBB2",
     "oncomineVariantClass": "Hotspot",
+    "exon": "19",
     "function": "missense",
     "hgvs": "c.2264T&gt&C",
     "readDepth": "942",
@@ -26,6 +28,7 @@
     "protein": "p.Leu755Ser"
   }],
   "indels": [{
+    "confirm": true,
     "id": null,
     "chrom": "chr10",
     "position": "8115840 ",
@@ -34,6 +37,7 @@
     "alleleFreq": "0.3720",
     "funcGene": "GATA3",
     "oncomineVariantClass": "Deleterious",
+    "exon": "6",
     "function": "frameshiftDeletion",
     "hgvs": "c.1189_1190delCT",
     "readDepth": "1946",
