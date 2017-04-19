@@ -62,9 +62,7 @@ after_success:
   #   https://api.travis-ci.org/repo/CBIIT%2Fnci-adult-match-bddtests/requests
 
 notifications:
-  slack: clinicalbiomed:gRp5LqKElNOjUUMPLlq4qC1j
+  slack: clinicalbiomed:k1HFjdqTwI4yvSyQWPulUEK4
 
 cache:
   directories: node_modules
-
-
