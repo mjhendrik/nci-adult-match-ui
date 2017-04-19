@@ -92,10 +92,10 @@ export class CliaApiService {
       .catch(this.handleError);
   }
 
-  getCliaVariantReportQC(): Observable<CliaVariantReportsQCInterface> {
+  getCliaVariantReportQC(tabType: string, cliaType: string): Observable<CliaVariantReportsQCInterface> {
     // getCliaVariantReportQC(type: string): Observable<CliaVariantReportsQCInterface> {
     // return this.http.get('assets/mock-data/clia-variant-report-qc-' + type + '.json')
-    return this.http.get('assets/mock-data/clia-variant-report-qc-ntc.json')
+    return this.http.get('assets/mock-data/clia-variant-report-qc-' + tabType + '-' + cliaType + '.json')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
