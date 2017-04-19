@@ -2,6 +2,7 @@ import {
   Component,
   OnInit
 } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { routerTransition } from './../../shared/router.animations';
 import {
@@ -28,17 +29,19 @@ export class CliaVariantReportsNtcComponent implements OnInit {
   indels: any[];
   dataAvailable: boolean;
   errorMessage: string;
+  ntcType: string;
 
-  constructor(private cliaApi: CliaApiService) {
+  constructor(private cliaApi: CliaApiService, private route: ActivatedRoute) {
 
   }
 
   ngOnInit() {
+    this.ntcType = this.route.snapshot.params.id;
     this.getData();
   }
 
   getData() {
-    this.cliaApi.getCliaVariantReportsNTC()
+    this.cliaApi.getCliaVariantReportsNTC(this.ntcType)
       .subscribe((itemList: CliaVariantReportsNTCInterface) => {
         this.variantReportNTC = itemList.variantReportNTC;
         this.dataAvailable = true;
