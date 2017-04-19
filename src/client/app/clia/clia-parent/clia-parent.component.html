@@ -291,16 +291,16 @@
                     <div class="panel-heading-btn">
                     </div>
                     <h4 class="panel-title">
-                      {{item.ionReporterId}}
+                      <i [colorCodeCliaIon]="item.status" class="fa fa-heartbeat"></i> {{item.ionReporterId}}
                     </h4>
                   </div>
                 </a>
               </li>
-              <li class="pull-right ir-status">
+              <!--<li class="pull-right ir-status">
                 <span>Ion Reporters online <span class="label label-success">{{countContacted}}</span></span>
                 <br />
                 <span>Ion Reporters offline <span class="label label-danger">{{countLost}}</span></span>
-              </li>
+              </li>-->
             </ul>
             <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
               <div *ngFor="let item of ionReportersData; let index = index; let first = first" [class.active]="first" class="tab-pane fade in"
