@@ -1,5 +1,7 @@
 # NCI MATCH Adult Study Angular Front-End
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/3e7f2d4a60ae400e8f01b1246729ee1e)](https://www.codacy.com/app/sgvallala/nci-adult-match-ui?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=CBIIT/nci-adult-match-ui&amp;utm_campaign=Badge_Grade)
+
 ## How to start
 
 **Note** that this project requires node v4.x.x or higher and npm 2.14.7 but in order to be able to take advantage of the complete functionality we **strongly recommend node >=v6.5.0 and npm >=3.10.3**.
