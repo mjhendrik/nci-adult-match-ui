@@ -7,14 +7,14 @@ import * as moment from 'moment/moment';
     name: 'gmt'
 })
 export class GmtPipe implements PipeTransform {
-    transform(inputdate: string): string {
+    transform(value: string): string {
         let date: number;
-        if (inputdate !== undefined && inputdate !== null) {
-            inputdate = inputdate.toString();
-            if (inputdate.indexOf('-') === -1) {
-                date = parseInt(inputdate);
+        if (value !== undefined && value !== null) {
+            value = value.toString();
+            if (value.indexOf('-') === -1) {
+                date = parseInt(value);
             } else {
-                date = new Date(inputdate).getTime();
+                date = new Date(value).getTime();
             }
             return moment.unix(date / 1000).utc().format('LLL') + ' GMT';
         } else {
