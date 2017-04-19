@@ -1,7 +1,9 @@
 # NCI MATCH Adult Study Angular Front-End
 
 [![Build Status](https://travis-ci.org/CBIIT/nci-adult-match-ui.svg?branch=master)](https://travis-ci.org/CBIIT/nci-adult-match-ui)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/3e7f2d4a60ae400e8f01b1246729ee1e)](https://www.codacy.com/app/sgvallala/nci-adult-match-ui?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=CBIIT/nci-adult-match-ui&amp;utm_campaign=Badge_Grade)
+<!--[![Codacy Badge](https://api.codacy.com/project/badge/Grade/3e7f2d4a60ae400e8f01b1246729ee1e)](https://www.codacy.com/app/sgvallala/nci-adult-match-ui?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=CBIIT/nci-adult-match-ui&amp;utm_campaign=Badge_Grade)-->
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d0059ed74fc241c3adc2da283aa0b7a9)](https://www.codacy.com/app/FNLCR/nci-adult-match-ui?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=CBIIT/nci-adult-match-ui&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Coverage/d0059ed74fc241c3adc2da283aa0b7a9)](https://www.codacy.com/app/FNLCR/nci-adult-match-ui?utm_source=github.com&utm_medium=referral&utm_content=CBIIT/nci-adult-match-ui&utm_campaign=Badge_Coverage)
 
 ## How to start
 
