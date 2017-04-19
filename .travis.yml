@@ -38,8 +38,8 @@ before_script:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then nohup bash -c "webdriver-manager start 2>&1 &"; fi  # Protractor CI
 
 script:
-  -  npm run build.inttest && npm test
-  #Build Docker image
+  - npm run build.inttest
+  # - npm run build.inttest && npm test
   - docker build -f .docker/dockerfile.httpd -t $DOCKER_IMAGE:$DATE -t $DOCKER_IMAGE:latest .
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
 
