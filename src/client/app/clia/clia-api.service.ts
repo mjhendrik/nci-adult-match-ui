@@ -71,8 +71,8 @@ export class CliaApiService {
       .catch(this.handleError);
   }
 
-  getCliaVariantReportsNTC(): Observable<CliaVariantReportsNTCInterface> {
-    return this.http.get('assets/mock-data/clia-variant-reports-ntc.json')
+  getCliaVariantReportsNTC(ntcType: string): Observable<CliaVariantReportsNTCInterface> {
+    return this.http.get('assets/mock-data/clia-variant-reports-ntc-' + ntcType + '.json')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
