@@ -62,7 +62,7 @@
     <div class="col-md-6">
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-top">
         <div class="panel-heading">
-          <dl class="dl-horizontal wider-dt">
+          <dl class="dl-horizontal widest-dt">
             <h4>Latest Assignment</h4>
             <dt>Status</dt>
             <dd><span [colorCodeAssignment]="assignmentReport.status"> {{assignmentReport.status | dashify}}</span> on {{assignmentReport.confirmationDate
@@ -73,7 +73,7 @@
             <dd>{{assignmentReport.taSentToECOGDate | dashify}}</dd>
             <dt>Assignment Sent to ECOG Date</dt>
             <dd>{{assignmentReport.senttoECOGDate | dashify}}</dd>
-            <dt>Received from ECOG Date</dt>
+           <dt>Assignment Received by ECOG Date</dt>
             <dd>{{assignmentReport.receivedfromECOGDate | dashify}}</dd>
           </dl>
           <h4>Selected Treatment Arm: <span class="text-success-light">{{assignmentReport.selectedTreatmentArm | dashify}}</span></h4>

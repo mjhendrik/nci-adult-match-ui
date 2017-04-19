@@ -16,6 +16,15 @@
       margin-left: 230px;
     }
   } 
+
+  .dl-horizontal.widest-dt {
+    dt {
+      width: 230px;
+    }
+    dd {
+      margin-left: 245px;
+    }
+  } 
 }
 
 .table>thead>tr>th {
