@@ -1,8 +1,7 @@
-version: '2'
+version: '3'
 
 services:
-
-  nci-adult-match-ui:
+  ui:
     build:
       context: .
       dockerfile: ./.docker/dockerfile.development
