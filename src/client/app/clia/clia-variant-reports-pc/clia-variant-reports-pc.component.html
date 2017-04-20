@@ -1,7 +1,7 @@
 <div id="content" class="content" *ngIf="dataAvailable">
   <ul class="breadcrumb pull-right">
     <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
-    <li><a href [routerLink]="['/clia_yale']" class="link-none">CLIA Lab: Yale</a></li>
+    <li><a href [routerLink]="['/clia_'+pcType]" class="link-none">CLIA Lab: {{cliaTypeName}}</a></li>
     <li>Positive Control Variant Report</li>
   </ul>
   <h1 class="page-header">Positive Control Variant Report</h1>
