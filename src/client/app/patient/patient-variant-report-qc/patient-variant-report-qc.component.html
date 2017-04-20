@@ -15,7 +15,7 @@
             <li class="active"><a href="#panel-tab-info" data-toggle="tab" aria-expanded="true"><i class="fa fa-align-left"></i><span class="hidden-xs"> Info</span></a></li>
             <li class=""><a href="#panel-tab-files" data-toggle="tab" aria-expanded="false"><i class="fa fa-file-archive-o"></i><span class="hidden-xs"> Files</span></a></li>
           </ul>
-            <h4>Variant Report</h4>
+          <h4>Variant Report</h4>
         </div>
         <div id="panel-tab-content" class="tab-content">
           <div class="tab-pane fade active in" id="panel-tab-info">
@@ -37,7 +37,7 @@
             </dl>
             <dl class="dl-horizontal">
               <h4>Oncomine Control Panel Summary</h4>
-              
+
               <table class="table table-condensed white-header">
                 <thead>
                   <tr>
@@ -76,7 +76,7 @@
               <button type="button" class="btn btn-purple-light"><i class="fa fa-download"></i> RNA BAI</button>
               <button type="button" class="btn btn-purple-light"><i class="fa fa-download"></i> VCF</button>
             </p>
-          </div>          
+          </div>
         </div>
       </div>
     </div>
@@ -92,25 +92,25 @@
     <div class="panel-heading">
       <div class="row">
         <div class="col-md-12">
-          <sd-variant-report-filtered-table-snv [items]="snv"></sd-variant-report-filtered-table-snv>
+          <sd-variant-report-filtered-table-snv [items]="snv" [type]="'patient'"></sd-variant-report-filtered-table-snv>
         </div>
       </div>
 
       <div class="row">
         <div class="col-md-12">
-          <sd-variant-report-filtered-table-indels [items]="indels"></sd-variant-report-filtered-table-indels>
+          <sd-variant-report-filtered-table-indels [items]="indels" [type]="'patient'"></sd-variant-report-filtered-table-indels>
         </div>
       </div>
 
       <div class="row">
         <div class="col-md-12">
-          <sd-variant-report-filtered-table-cnv [items]="cnv"></sd-variant-report-filtered-table-cnv>
+          <sd-variant-report-filtered-table-cnv [items]="cnv" [type]="'patient'"></sd-variant-report-filtered-table-cnv>
         </div>
       </div>
 
       <div class="row">
         <div class="col-md-12">
-          <sd-variant-report-filtered-table-gf [items]="geneFusions"></sd-variant-report-filtered-table-gf>
+          <sd-variant-report-filtered-table-gf [items]="geneFusions" [type]="'patient'"></sd-variant-report-filtered-table-gf>
         </div>
       </div>
     </div>

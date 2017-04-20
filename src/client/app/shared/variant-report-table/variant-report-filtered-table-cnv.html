@@ -25,7 +25,7 @@
     <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="items | filterByText: searchTerm" #mfTable="mfDataTable"
       [(mfSortBy)]="defaultSort" [mfRowsOnPage]="recordsPerPage">
       <thead>
-        <tr class="purple-light">
+        <tr [ngClass]="{true:'purple-light',false:'orangeshade-light'}[type=='patient']">
           <th>
             <mfDefaultSorter by="id"><span class="table-header">ID</span></mfDefaultSorter>
           </th>
