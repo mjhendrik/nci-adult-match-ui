@@ -30,6 +30,7 @@ export class CliaVariantReportsNtcComponent implements OnInit {
   dataAvailable: boolean;
   errorMessage: string;
   ntcType: string;
+  cliaTypeName: string;
 
   constructor(private cliaApi: CliaApiService, private route: ActivatedRoute) {
 
@@ -37,6 +38,13 @@ export class CliaVariantReportsNtcComponent implements OnInit {
 
   ngOnInit() {
     this.ntcType = this.route.snapshot.params.id;
+
+    if (this.ntcType === 'mocha') this.cliaTypeName = 'MoCha';
+    if (this.ntcType === 'dartmouth') this.cliaTypeName = 'Dartmouth';
+    if (this.ntcType === 'yale') this.cliaTypeName = 'Yale';
+    if (this.ntcType === 'mgh') this.cliaTypeName = 'MGH';
+    if (this.ntcType === 'mdacc') this.cliaTypeName = 'MD Anderson';
+
     this.getData();
   }
 

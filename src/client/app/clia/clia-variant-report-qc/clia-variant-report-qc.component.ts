@@ -36,6 +36,9 @@ export class CliaVariantReportQcComponent implements OnInit {
 
   cliaType: string;
   tabType: string;
+  cliaTypeName: string;
+  tabTypeName: string;
+  tabTypeHeaderName: string;
 
 
   constructor(private cliaApi: CliaApiService, private route: ActivatedRoute) { }
@@ -43,6 +46,28 @@ export class CliaVariantReportQcComponent implements OnInit {
   ngOnInit() {
     this.tabType = this.route.snapshot.params.tabType;
     this.cliaType = this.route.snapshot.params.cliaType;
+
+    if (this.cliaType === 'mocha') this.cliaTypeName = 'MoCha';
+    if (this.cliaType === 'dartmouth') this.cliaTypeName = 'Dartmouth';
+    if (this.cliaType === 'yale') this.cliaTypeName = 'Yale';
+    if (this.cliaType === 'mgh') this.cliaTypeName = 'MGH';
+    if (this.cliaType === 'mdacc') this.cliaTypeName = 'MD Anderson';
+
+    if (this.tabType === 'ntc') {
+      this.tabTypeHeaderName = 'No Template Quality Control Variant Report';
+      this.tabTypeName = 'No Template Control Variant Report';
+    }
+
+    if (this.tabType === 'pacc') {
+      this.tabTypeHeaderName = 'Proficiency And Competency Quality Control Variant Report';
+      this.tabTypeName = 'Proficiency And Competency Control Variant Report';
+    }
+
+    if (this.tabType === 'pc') {
+      this.tabTypeHeaderName = 'Positive Quality Control Variant Report';
+      this.tabTypeName = 'Positive Control Variant Report';
+    }
+
     this.getData();
   }
 
