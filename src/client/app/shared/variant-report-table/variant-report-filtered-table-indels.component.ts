@@ -13,6 +13,7 @@ import {
 })
 export class VariantReportFilteredTableIndelsComponent {
   @Input() items: any[];
+  @Input() type: string;
 
   searchTerm: string = '';
   recordsPerPage: number = 25;
