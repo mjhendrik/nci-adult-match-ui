@@ -54,17 +54,17 @@ export class CliaVariantReportQcComponent implements OnInit {
     if (this.cliaType === 'mdacc') this.cliaTypeName = 'MD Anderson';
 
     if (this.tabType === 'ntc') {
-      this.tabTypeHeaderName = 'No Template Quality Control Variant Report';
+      this.tabTypeHeaderName = 'No Template Quality Control Report';
       this.tabTypeName = 'No Template Control Variant Report';
     }
 
     if (this.tabType === 'pacc') {
-      this.tabTypeHeaderName = 'Proficiency And Competency Quality Control Variant Report';
+      this.tabTypeHeaderName = 'Proficiency And Competency Quality Control Report';
       this.tabTypeName = 'Proficiency And Competency Control Variant Report';
     }
 
     if (this.tabType === 'pc') {
-      this.tabTypeHeaderName = 'Positive Quality Control Variant Report';
+      this.tabTypeHeaderName = 'Positive Quality Control Report';
       this.tabTypeName = 'Positive Control Variant Report';
     }
 
