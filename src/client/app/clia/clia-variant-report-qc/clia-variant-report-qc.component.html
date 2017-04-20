@@ -39,9 +39,8 @@
               <table class="table table-condensed white-header">
                 <thead>
                   <tr>
-                    <th>LRP1</th>
-                    <!--<th>LMNA</th>-->
-                    <!--TO_DO: ngIf-->
+                    <th *ngIf="tabType=='pc'">LRP1</th>
+                    <th *ngIf="tabType!='pc'">LMNA</th>
                     <th>TBP</th>
                     <th>MYC</th>
                     <th>HMBS</th>
@@ -51,7 +50,8 @@
                 </thead>
                 <tbody>
                   <tr *ngIf="ocpSummary; else emptyRow">
-                    <td>{{ocpSummary.LRP1 | dashify}}</td>
+                    <td *ngIf="tabType=='pc'">{{ocpSummary.LRP1 | dashify}}</td>
+                    <td *ngIf="tabType!='pc'">{{ocpSummary.LMNA | dashify}}</td>
                     <td>{{ocpSummary.TBP | dashify}}</td>
                     <td>{{ocpSummary.MYC | dashify}}</td>
                     <td>{{ocpSummary.HMBS | dashify}}</td>
@@ -70,11 +70,9 @@
           <div class="tab-pane fade" id="panel-tab-files">
             <p class="m-t-30">
               <button type="button" class="btn btn-orangeshade-light"><i class="fa fa-download"></i> DNA BAM</button>
-              <!--<button type="button" class="btn btn-orangeshade-light"><i class="fa fa-download"></i> DNA BAI</button>-->
-              <!--TO_DO: ngIf-->
+              <button *ngIf="tabType=='ntc'" type="button" class="btn btn-orangeshade-light"><i class="fa fa-download"></i> DNA BAI</button>
               <button type="button" class="btn btn-orangeshade-light"><i class="fa fa-download"></i> RNA BAM</button>
-              <!--<button type="button" class="btn btn-orangeshade-light"><i class="fa fa-download"></i> RNA BAI</button>-->
-              <!--TO_DO: ngIf-->
+              <button *ngIf="tabType=='ntc'" type="button" class="btn btn-orangeshade-light"><i class="fa fa-download"></i> RNA BAI</button>
               <button type="button" class="btn btn-orangeshade-light"><i class="fa fa-download"></i> VCF</button>
             </p>
           </div>
