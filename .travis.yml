@@ -18,8 +18,8 @@ os:
   - linux
 
 before_install:
-  - export CHROME_BIN=chromium-browser; fi  # Karma CI
-  - export DISPLAY=:99.0; fi
+  - export CHROME_BIN=chromium-browser  # Karma CI
+  - export DISPLAY=:99.0
   #Set up Docker exports
   - export AUTHOR=`git --no-pager show -s --format='%an <%ae>'`
   - export DATE=`TZ=America/New_York date "+%m-%d-%y-%H%M"`
@@ -30,8 +30,8 @@ before_install:
 
 before_script:
   - npm install
-  - sh -e /etc/init.d/xvfb start; fi
-  - nohup bash -c "webdriver-manager start 2>&1 &"; fi  # Protractor CI
+  - sh -e /etc/init.d/xvfb start
+  - nohup bash -c "webdriver-manager start 2>&1 &"  # Protractor CI
 
 script:
   - npm run build.inttest
