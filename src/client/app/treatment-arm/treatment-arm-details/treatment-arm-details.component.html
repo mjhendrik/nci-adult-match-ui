@@ -1739,8 +1739,8 @@
                                 <span *ngIf="item.treatmentArmVersion == tableRulesData.version"><i class="fa fa-medkit"></i> {{item.treatmentArmVersion | dashify}}</span>
                               </td>
                               <td [colorCodePatients]="item.formattedPatientStatus">{{item.formattedPatientStatus | dashify}}</td>
-                              <td class="text-center"><a href [routerLink]="['/patients/variant_report']" class="link-none"><i class="fa fa-file-text-o"></i></a></td>
-                              <td class="text-center"><a href [routerLink]="['/patients/variant_report']" class="link-none"><i class="fa fa-file-text-o"></i></a></td>
+                              <td class="text-center"><a href [routerLink]="['/patients/details/variant_report']" class="link-none"><i class="fa fa-file-text-o"></i></a></td>
+                              <td class="text-center"><a href [routerLink]="['/patients/details/variant_report']" class="link-none"><i class="fa fa-file-text-o"></i></a></td>
                               <td>{{item.dateSelected | dashify}}</td>
                               <td>{{item.dateOnArm | dashify}}</td>
                               <td>{{item.dateOffArm | dashify}}</td>
