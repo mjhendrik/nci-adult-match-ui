@@ -322,9 +322,13 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-close"></i></button>
-        <h4 class="modal-title">Drag And Drop Files Here</h4>
+        <h4 class="modal-title">Upload BAM files and Variant ZIP files</h4>
       </div>
       <div class="modal-body">
+        <div class="form-group">
+          <label>Analysis ID</label>
+          <input type="text" class="form-control" placeholder="Enter Analysis ID">
+        </div>
         <!--<dropzone [config]="config" [message]="'Click or drag files here to upload'" (error)="onUploadError($event)" (success)="onUploadSuccess($event)"></dropzone>-->
         <div [dropzone]="config" (error)="onUploadError($event)" (success)="onUploadSuccess($event)"></div>
       </div>
