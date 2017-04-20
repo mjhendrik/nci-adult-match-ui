@@ -236,7 +236,9 @@
                                     <div class="col-md-6">
                                       <dl class="dl-horizontal">
                                         <dt>Variant Report</dt>
-                                        <dd><a class="link-none" href [routerLink]="['/patients/details/variant_report']"><i class="fa fa-file-text-o"></i></a></dd>
+                                        <dd>
+                                          <a class="link-none" href [routerLink]="['/patients/details/variant_report']"><i class="fa fa-file-text-o"></i></a>
+                                        </dd>
                                         <dt>Status</dt>
                                         <dd>{{biopsyData.variantStatus}}</dd>
                                         <dt>File Received Date</dt>
@@ -323,8 +325,8 @@
         <h4 class="modal-title">Drag And Drop Files Here</h4>
       </div>
       <div class="modal-body">
-        <dropzone [config]="config" [message]="'Click or drag files here to upload'" (error)="onUploadError($event)" (success)="onUploadSuccess($event)"></dropzone>
-        <!--<div [dropzone]="config" (error)="onUploadError($event)" (success)="onUploadSuccess($event)"></div>-->
+        <!--<dropzone [config]="config" [message]="'Click or drag files here to upload'" (error)="onUploadError($event)" (success)="onUploadSuccess($event)"></dropzone>-->
+        <div [dropzone]="config" (error)="onUploadError($event)" (success)="onUploadSuccess($event)"></div>
       </div>
       <div class="modal-footer">
         <a href="javascript:;" class="btn width-100 btn-purple-light" data-dismiss="modal" aria-hidden="true">Done</a>

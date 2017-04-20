@@ -14,7 +14,9 @@ import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 const DROPZONE_CONFIG: DropzoneConfigInterface = {
   // Change this to your upload POST address:
   server: 'https://httpbin.org/post',
-  maxFilesize: 5000, // size in MB
+  maxFiles: 3,
+  maxFilesize: 20000, // size in MB
+  addRemoveLinks: true,
   acceptedFiles: '.zip,.bam'
 };
 
