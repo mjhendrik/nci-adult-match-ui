@@ -12,10 +12,18 @@ ul {
   }  
 }
 
-a, u {
+a {
   cursor: pointer;
 }
 
 .popover {
     font-family: inherit;
+}
+
+.btn {
+  padding-top: 3px;
+  padding-right: 0px;
+  padding-bottom: 3px;
+  padding-left: 0px;
+  font-weight: normal;
 }
