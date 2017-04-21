@@ -4,17 +4,17 @@ import {
   TestBed
 } from '@angular/core/testing';
 
-import { AssignmentReportTableModule } from './assignment-report-table.module';
+import { AssignmentReasonTableModule } from './assignment-reason-table.module';
 
 export function main() {
-  describe('assignment-report-table component', () => {
+  describe('assignment-reason-table component', () => {
     // Setting module for testing
     // Disable old forms
 
     beforeEach(() => {
       TestBed.configureTestingModule({
         declarations: [TestComponent],
-        imports: [AssignmentReportTableModule]
+        imports: [AssignmentReasonTableModule]
       });
     });
 
@@ -33,6 +33,6 @@ export function main() {
 
 @Component({
   selector: 'test-cmp',
-  template: '<sd-assignment-report-table></sd-assignment-report-table>'
+  template: '<sd-assignment-reason-table></sd-assignment-reason-table>'
 })
 class TestComponent { }

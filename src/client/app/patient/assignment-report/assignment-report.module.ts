@@ -7,11 +7,13 @@ import { DataTableModule } from '../../shared/datatables/index';
 import { PipesModule } from '../../shared/pipes/pipes.module';
 import { DirectivesModule } from '../../shared/directives/directives.module';
 import { PatientApiService } from '../patient-api.service';
+import { AssignmentReasonTableModule } from './../assignment-reason-table/assignment-reason-table.module';
 
 @NgModule({
   imports: [
     CommonModule,
     AssignmentReportRoutingModule,
+    AssignmentReasonTableModule,
     FormsModule,
     DataTableModule,
     PipesModule,
