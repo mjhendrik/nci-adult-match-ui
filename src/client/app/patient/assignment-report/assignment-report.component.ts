@@ -10,7 +10,7 @@ import {
 } from '../patient-api.service';
 
 /**
- * This class represents the lazy loaded AssignmentReportComponent.
+ * AssignmentReportComponent.
  */
 @Component({
   moduleId: module.id,

@@ -9,7 +9,7 @@ import { TreatmentArmApiService } from '../treatment-arm-api.service';
 
 
 /**
- * This class represents the lazy loaded TreatmentArmListComponent.
+ * TreatmentArmListComponent.
  */
 @Component({
   moduleId: module.id,

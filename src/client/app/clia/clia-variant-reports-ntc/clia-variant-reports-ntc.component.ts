@@ -12,7 +12,7 @@ import {
 
 
 /**
- * This class represents the lazy loaded CLIAVariantReportsNtcComponent.
+ * CLIAVariantReportsNtcComponent.
  */
 @Component({
   moduleId: module.id,
