@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { AssignmentReasonTableComponent } from './assignment-reason-table.component';
+import { LongListComponent } from './long-list.component';
 import { FormsModule } from '@angular/forms';
 import { DataTableModule } from '../../shared/datatables/index';
 import { PipesModule } from '../../shared/pipes/pipes.module';
 import { DirectivesModule } from '../../shared/directives/directives.module';
-import { LongListModule } from '../../shared/long-list/long-list.module';
 
 @NgModule({
   imports: [
@@ -15,10 +14,9 @@ import { LongListModule } from '../../shared/long-list/long-list.module';
     FormsModule,
     DataTableModule,
     PipesModule,
-    DirectivesModule,
-    LongListModule
+    DirectivesModule
   ],
-  declarations: [AssignmentReasonTableComponent],
-  exports: [AssignmentReasonTableComponent]
+  declarations: [LongListComponent],
+  exports: [LongListComponent]
 })
-export class AssignmentReasonTableModule { }
+export class LongListModule { }
