@@ -9,7 +9,7 @@ import { BiopsyTrackingApiService } from './biopsy-tracking-api.service';
 
 
 /**
- * This class represents the lazy loaded BiopsyTrackingListComponent.
+ * BiopsyTrackingListComponent.
  */
 @Component({
   moduleId: module.id,

@@ -11,7 +11,7 @@ import {
 } from '../clia-api.service';
 
 /**
- * This class represents the lazy loaded CliaVariantReportQcComponent.
+ * CliaVariantReportQcComponent.
  */
 @Component({
   moduleId: module.id,

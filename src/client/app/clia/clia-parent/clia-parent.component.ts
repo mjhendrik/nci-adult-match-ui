@@ -14,7 +14,7 @@ import {
 
 
 /**
- * This class represents the lazy loaded CliaParentComponent.
+ * CliaParentComponent.
  */
 @Component({
   moduleId: module.id,

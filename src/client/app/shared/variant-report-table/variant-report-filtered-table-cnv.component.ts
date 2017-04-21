@@ -4,7 +4,7 @@ import {
 } from '@angular/core';
 
 /**
- * This class represents the lazy loaded VariantReportFilteredTableCnvComponent.
+ * VariantReportFilteredTableCnvComponent.
  */
 @Component({
   moduleId: module.id,

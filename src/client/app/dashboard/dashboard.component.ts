@@ -11,7 +11,7 @@ import {
 
 
 /**
- * This class represents the lazy loaded DashboardComponent.
+ * DashboardComponent.
  */
 @Component({
   moduleId: module.id,

@@ -12,7 +12,7 @@ import {
 
 
 /**
- * This class represents the lazy loaded TreatmentArmDetailsComponent.
+ * TreatmentArmDetailsComponent.
  */
 @Component({
   moduleId: module.id,

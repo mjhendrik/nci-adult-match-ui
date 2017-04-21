@@ -4,7 +4,7 @@ import {
 } from '@angular/core';
 
 /**
- * This class represents the lazy loaded VariantReportFilteredTableIndelsComponent.
+ * VariantReportFilteredTableIndelsComponent.
  */
 @Component({
   moduleId: module.id,

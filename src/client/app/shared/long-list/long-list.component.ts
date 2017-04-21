@@ -4,7 +4,7 @@ import {
 } from '@angular/core';
 
 /**
- * This class represents the lazy loaded LongListComponent.
+ * LongListComponent.
  */
 @Component({
   moduleId: module.id,
@@ -13,6 +13,35 @@ import {
   styleUrls: ['long-list.component.css'],
 })
 export class LongListComponent {
-  @Input() items: string;
-  @Input() displayItems: number;
+  displayItems: string[] = [];
+
+  private _items: string[];
+  // tslint:disable-next-line:member-ordering
+  @Input()
+  set items(value: string[]) {
+    // tslint:disable-next-line:triple-equals
+    this._items = (value !== null) ? value : [];
+    this.update();
+  }
+
+  get items(): string[] { return this._items; }
+
+  private _maxDisaplayItems: number = 5;
+  // tslint:disable-next-line:member-ordering
+  @Input()
+  set maxDisaplayItems(value: number) {
+    // tslint:disable-next-line:triple-equals
+    this._maxDisaplayItems = (value !== null) ? value : 0;
+    this.update();
+  }
+
+  get maxDisaplayItems(): number { return this._maxDisaplayItems; }
+
+  private update(): void {
+    if (this._items && this._items.length) {
+      this.displayItems = this._items.slice(0, this._maxDisaplayItems);
+    } else {
+      this.displayItems = [];
+    }
+  }
 }
