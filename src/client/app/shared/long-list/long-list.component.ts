@@ -10,10 +10,12 @@ import {
   moduleId: module.id,
   selector: 'sd-long-list',
   templateUrl: 'long-list.component.html',
-  styleUrls: ['long-list.component.css'],
+  styleUrls: ['long-list.component.css']
 })
 export class LongListComponent {
   displayItems: string[] = [];
+
+  @Input() title: string;
 
   private _items: string[];
   // tslint:disable-next-line:member-ordering
