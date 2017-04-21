@@ -7,8 +7,8 @@
       <li *ngFor="let item of items">{{item}}</li>
     </ul>
 
-    <u (click)="detailsPopover.hide()">Close</u>.
+    <a class="text-right" (click)="detailsPopover.hide()">Close</a>
   </popover-content>
 
-  <a [popover]="detailsPopover">{{items.length - displayItems.length}} more ...</a>
+  <button [popover]="detailsPopover" type="button" class="btn btn-link m-b-5" btn-xs>{{items.length - displayItems.length}} more ...</button>  
 </div>
