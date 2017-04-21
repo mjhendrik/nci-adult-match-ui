@@ -28,6 +28,7 @@ import { CliaVariantReportQcModule } from './clia/clia-variant-report-qc/clia-va
 import { AssignmentReportModule } from './patient/assignment-report/assignment-report.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { VariantReportFilteredTableModule } from './shared/variant-report-table/variant-report-filtered-table.module';
+import { PopoverModule } from 'ngx-popover';
 
 @NgModule({
   imports: [
@@ -52,7 +53,8 @@ import { VariantReportFilteredTableModule } from './shared/variant-report-table/
     PatientVariantReportQcModule,
     CliaVariantReportQcModule,
     AssignmentReportModule,
-    VariantReportFilteredTableModule
+    VariantReportFilteredTableModule,
+    PopoverModule
   ],
   declarations: [AppComponent],
   providers: [

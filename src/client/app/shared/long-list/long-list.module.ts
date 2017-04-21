@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { DataTableModule } from '../../shared/datatables/index';
 import { PipesModule } from '../../shared/pipes/pipes.module';
 import { DirectivesModule } from '../../shared/directives/directives.module';
+import { PopoverModule } from 'ngx-popover';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { DirectivesModule } from '../../shared/directives/directives.module';
     FormsModule,
     DataTableModule,
     PipesModule,
-    DirectivesModule
+    DirectivesModule,
+    PopoverModule
   ],
   declarations: [LongListComponent],
   exports: [LongListComponent]

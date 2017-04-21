@@ -6,4 +6,12 @@ ul {
   li {
     list-style-type: none;
   }
+
+  li.inline {
+    display: inline;
+  }  
+}
+
+a, u {
+  cursor: pointer;
 }

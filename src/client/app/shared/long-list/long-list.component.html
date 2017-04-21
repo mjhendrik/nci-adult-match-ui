@@ -1,6 +1,14 @@
 <ul>
   <li *ngFor="let item of displayItems">{{item}}</li>
 </ul>
-<div *ngIf="displayItems.length > 0 && displayItems.length < items.length">
-  ...
+<div class="m-b-10" *ngIf="displayItems.length > 0 && displayItems.length < items.length">
+  <popover-content #detailsPopover [title]="title" placement="bottom" [closeOnClickOutside]="true">
+    <ul class="m-10">
+      <li *ngFor="let item of items">{{item}}</li>
+    </ul>
+
+    <u (click)="detailsPopover.hide()">Close</u>.
+  </popover-content>
+
+  <a [popover]="detailsPopover">{{items.length - displayItems.length}} more ...</a>
 </div>
