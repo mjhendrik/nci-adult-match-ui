@@ -1,0 +1,105 @@
+<h4 id="assignment-details">Assignment Reason</h4>
+
+<table class="table table-condensed table-th-valign-top">
+  <thead>
+    <tr>
+      <th style="width:20%">Treatment Arm</th>
+      <th style="width:20%">Treatment Arm Name</th>
+      <th style="width:60%">Inclusion/Exclusion Drugs</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="4">
+        <h4>1 - NO VARIANT MATCH</h4>
+      </td>
+    </tr>
+    <tr *ngFor="let item of assignmentReason.noVariantMatch">
+      <td>{{item.treatmentArm | dashify}}</td>
+      <td>{{item.treatmentArmName | dashify}}</td>
+      <td class="overflow-x-hidden">{{item.treatmentArmInclusionExclusionDrugs | dashify}}</td>
+    </tr>
+    <tr>
+      <td colspan="4">
+        <h4>2 - RECORD BASED EXCLUSION</h4>
+      </td>
+    </tr>
+    <tr *ngFor="let item of assignmentReason.recordBasedExclusion">
+      <td>{{item.treatmentArm | dashify}}</td>
+      <td>{{item.treatmentArmName | dashify}}</td>
+      <td>{{item.treatmentArmInclusionExclusionDrugs | dashify}}</td>
+    </tr>
+    <tr>
+      <td colspan="4">
+        <h4>3 - LEVEL OF EVIDENCE TIE BREAKER</h4>
+      </td>
+    </tr>
+    <tr *ngFor="let item of assignmentReason.levelOfEvidenceTieBreaker">
+      <td>{{item.treatmentArm | dashify}}</td>
+      <td>{{item.treatmentArmName | dashify}}</td>
+      <td>{{item.treatmentArmInclusionExclusionDrugs | dashify}}</td>
+    </tr>
+    <tr>
+      <td colspan="4">
+        <h4>4 - SELECTED</h4>
+      </td>
+    </tr>
+    <tr *ngFor="let item of assignmentReason.selected">
+      <td>{{item.treatmentArm | dashify}}</td>
+      <td>{{item.treatmentArmName | dashify}}</td>
+      <td>{{item.treatmentArmInclusionExclusionDrugs | dashify}}</td>
+    </tr>
+  </tbody>
+</table>
+<h4 id="assignment-details">Assignment Reason</h4>
+<table class="table table-condensed table-th-valign-top">
+  <thead>
+    <tr>
+      <th style="width:20%">Treatment Arm</th>
+      <th style="width:20%">Treatment Arm Name</th>
+      <th style="width:60%">Inclusion/Exclusion Drugs</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="4">
+        <h4>1 - NO VARIANT MATCH</h4>
+      </td>
+    </tr>
+    <tr *ngFor="let item of assignmentReason.noVariantMatch">
+      <td>{{item.treatmentArm | dashify}}</td>
+      <td>{{item.treatmentArmName | dashify}}</td>
+      <td class="overflow-x-hidden">{{item.treatmentArmInclusionExclusionDrugs | dashify}}</td>
+    </tr>
+    <tr>
+      <td colspan="4">
+        <h4>2 - RECORD BASED EXCLUSION</h4>
+      </td>
+    </tr>
+    <tr *ngFor="let item of assignmentReason.recordBasedExclusion">
+      <td>{{item.treatmentArm | dashify}}</td>
+      <td>{{item.treatmentArmName | dashify}}</td>
+      <td>{{item.treatmentArmInclusionExclusionDrugs | dashify}}</td>
+    </tr>
+    <tr>
+      <td colspan="4">
+        <h4>3 - LEVEL OF EVIDENCE TIE BREAKER</h4>
+      </td>
+    </tr>
+    <tr *ngFor="let item of assignmentReason.levelOfEvidenceTieBreaker">
+      <td>{{item.treatmentArm | dashify}}</td>
+      <td>{{item.treatmentArmName | dashify}}</td>
+      <td>{{item.treatmentArmInclusionExclusionDrugs | dashify}}</td>
+    </tr>
+    <tr>
+      <td colspan="4">
+        <h4>4 - SELECTED</h4>
+      </td>
+    </tr>
+    <tr *ngFor="let item of assignmentReason.selected">
+      <td>{{item.treatmentArm | dashify}}</td>
+      <td>{{item.treatmentArmName | dashify}}</td>
+      <td>{{item.treatmentArmInclusionExclusionDrugs | dashify}}</td>
+    </tr>
+  </tbody>
+</table>
