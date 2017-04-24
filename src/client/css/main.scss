@@ -1,7 +1,9 @@
 @import "style.css";
 // replace for production: @import "style.min.css";
 @import "../scss/index";
-@import 'https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.min.css';
+// @import url("https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.css");
+@import "dropzone.css";
+// replace for production: @import "dropzone.min.css";
 body {
   background-color: $body-back-color;
 }
