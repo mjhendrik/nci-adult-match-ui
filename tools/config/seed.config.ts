@@ -625,6 +625,7 @@ export class SeedConfig {
       },
       remapIstanbulReporter: {
         reports: {
+          lcovonly: this.COVERAGE_TS_DIR + '/lcov.info',
           html: this.COVERAGE_TS_DIR
         }
       }
