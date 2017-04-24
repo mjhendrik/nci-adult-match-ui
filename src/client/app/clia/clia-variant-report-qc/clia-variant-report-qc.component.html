@@ -2,7 +2,7 @@
   <ul class="breadcrumb pull-right">
     <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
     <li><a href [routerLink]="['/clia_'+cliaType]" class="link-none">CLIA Lab: {{cliaTypeName}}</a></li>
-    <li><a href [routerLink]="['/clia_variant_reports_'+tabType,cliaType]" class="link-none">{{tabTypeName}}</a></li>
+    <li><a href [routerLink]="['/clia_'+cliaType+'/variant_reports_'+tabType+'/'+cliaType]" class="link-none">{{tabTypeName}}</a></li>
     <li class="active">{{tabTypeHeaderName}}</li>
   </ul>
   <h1 class="page-header">{{tabTypeHeaderName}}</h1>
