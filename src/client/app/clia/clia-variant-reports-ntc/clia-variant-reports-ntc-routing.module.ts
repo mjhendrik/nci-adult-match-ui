@@ -7,7 +7,11 @@ import { AuthGuard } from './../../shared/auth/auth.guard.service';
 @NgModule({
   imports: [
     RouterModule.forChild([
-      { path: 'clia_variant_reports_ntc/:id', component: CliaVariantReportsNtcComponent, canActivate: [AuthGuard] }
+      { path: 'clia_mgh/variant_reports_ntc/:id', component: CliaVariantReportsNtcComponent, canActivate: [AuthGuard] },
+      { path: 'clia_dartmount/variant_reports_ntc/:id', component: CliaVariantReportsNtcComponent, canActivate: [AuthGuard] },
+      { path: 'clia_mocha/variant_reports_ntc/:id', component: CliaVariantReportsNtcComponent, canActivate: [AuthGuard] },
+      { path: 'clia_yale/variant_reports_ntc/:id', component: CliaVariantReportsNtcComponent, canActivate: [AuthGuard] },
+      { path: 'clia_mdacc/variant_reports_ntc/:id', component: CliaVariantReportsNtcComponent, canActivate: [AuthGuard] }
     ])
   ],
   exports: [RouterModule]
