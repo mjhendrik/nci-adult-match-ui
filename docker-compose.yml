@@ -1,5 +1,4 @@
-version: '3'
-
+version: "3"
 services:
   ui:
     build:
@@ -8,11 +7,19 @@ services:
     command: npm start
     container_name: nci-adult-match-ui-dev
     image: nci-adult-match-ui
-    networks:
-      - dev-network
     ports:
       - '5555:5555'
-
-networks:
-  dev-network:
-    driver: bridge
+  patient-api:
+    build: .
+    command: python app.py
+    image: "fnlcr/nci-adult-match-patient-api"
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo:3.4.0
+    volumes:
+      - ./data_setup/match:/backup
+    ports:
+      - "27017:27017"
