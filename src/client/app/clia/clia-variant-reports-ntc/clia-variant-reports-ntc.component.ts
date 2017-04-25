@@ -37,7 +37,8 @@ export class CliaVariantReportsNtcComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.ntcType = this.route.snapshot.params.id;
+    this.ntcType = this.route.snapshot.url[0].path;
+    this.ntcType = this.ntcType.substring(this.ntcType.indexOf('_') + 1).trim();
 
     if (this.ntcType === 'mocha') this.cliaTypeName = 'MoCha';
     if (this.ntcType === 'dartmouth') this.cliaTypeName = 'Dartmouth';

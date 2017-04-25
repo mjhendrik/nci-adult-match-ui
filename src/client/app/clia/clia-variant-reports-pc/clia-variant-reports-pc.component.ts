@@ -12,7 +12,7 @@ import {
 
 
 /**
- * CLIAVariantReportsPcComponent.
+ * This class represents the lazy loaded CLIAVariantReportsPcComponent.
  */
 @Component({
   moduleId: module.id,
@@ -37,8 +37,8 @@ export class CliaVariantReportsPcComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.pcType = this.route.snapshot.params.id;
-
+    this.pcType = this.route.snapshot.url[0].path;
+    this.pcType = this.pcType.substring(this.pcType.indexOf('_') + 1).trim();
     if (this.pcType === 'mocha') this.cliaTypeName = 'MoCha';
     if (this.pcType === 'dartmouth') this.cliaTypeName = 'Dartmouth';
     if (this.pcType === 'yale') this.cliaTypeName = 'Yale';
