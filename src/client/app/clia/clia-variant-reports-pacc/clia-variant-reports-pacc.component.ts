@@ -38,7 +38,8 @@ export class CliaVariantReportsPaccComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.paccType = this.route.snapshot.params.id;
+    this.paccType = this.route.snapshot.url[0].path;
+    this.paccType = this.paccType.substring(this.paccType.indexOf('_') + 1).trim();
 
     if (this.paccType === 'mocha') this.cliaTypeName = 'MoCha';
     if (this.paccType === 'dartmouth') this.cliaTypeName = 'Dartmouth';
