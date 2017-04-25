@@ -51,6 +51,7 @@ export class CliaParentComponent implements OnInit {
   tablePCData: any[] = [];
   tableNTCData: any[] = [];
   tablePACCData: any[] = [];
+
   ionReportersData: any[] = [];
 
   cliaTypeName: string;
@@ -77,7 +78,6 @@ export class CliaParentComponent implements OnInit {
         this.tablePCData = details.tablePCData;
         this.tableNTCData = details.tableNTCData;
         this.tablePACCData = details.tablePACCData;
-        this.ionReportersData = details.ionReportersData;
 
         this.tablePCData = this.tablePCData.map(x => {
           x.dateCreated = gmt.transform(x.dateCreated);
@@ -97,22 +97,16 @@ export class CliaParentComponent implements OnInit {
           return x;
         });
 
-        this.ionReportersData = this.ionReportersData.map(x => {
+      });
+
+    this.cliaApi.getCliaIon(this.cliaType)
+      .subscribe(details => {
+        this.ionReportersData = details.map(x => {
           x.lastContactDate = gmt.transform(x.lastContactDate);
           return x;
         });
-
-        this.countIonReporters();
-
       });
 
-  }
-
-  countIonReporters(): any {
-    for (let i = 0; i < this.ionReportersData.length; i++) {
-      if (this.ionReportersData[i].status.indexOf('Contacted') !== -1) this.countContacted++;
-      else this.countLost++;
-    }
   }
 
 }

@@ -10,7 +10,6 @@ export interface CliaInterface {
   tablePCData: any[];
   tableNTCData: any[];
   tablePACCData: any[];
-  ionReportersData: any[];
 }
 
 export interface CliaVariantReportsNTCInterface {
@@ -66,6 +65,13 @@ export class CliaApiService {
    */
   getCliaDetails(type: string): Observable<CliaInterface> {
     return this.http.get('assets/mock-data/clia-' + type + '.json')
+      .map((res: Response) => res.json())
+      //              .do(data => console.log('server data:', data))  // debug
+      .catch(this.handleError);
+  }
+
+  getCliaIon(type: string): Observable<any[]> {
+    return this.http.get('assets/mock-data/clia-' + type + '-ion.json')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
