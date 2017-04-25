@@ -10,7 +10,7 @@ import { CliaParentComponent } from './clia-parent.component';
       { path: 'clia_mocha', component: CliaParentComponent, canActivate: [AuthGuard], data: { cliaType: 'mocha' } },
       { path: 'clia_yale', component: CliaParentComponent, canActivate: [AuthGuard], data: { cliaType: 'yale' } },
       { path: 'clia_mgh', component: CliaParentComponent, canActivate: [AuthGuard], data: { cliaType: 'mgh' } },
-      { path: 'clia_mdacc', component: CliaParentComponent, canActivate: [AuthGuard], data: { cliaType: 'mdacc' } }
+      { path: 'clia_mda', component: CliaParentComponent, canActivate: [AuthGuard], data: { cliaType: 'mda' } }
     ])
   ],
   exports: [RouterModule]

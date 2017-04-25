@@ -45,7 +45,7 @@ export class CliaVariantReportsPaccComponent implements OnInit {
     if (this.paccType === 'dartmouth') this.cliaTypeName = 'Dartmouth';
     if (this.paccType === 'yale') this.cliaTypeName = 'Yale';
     if (this.paccType === 'mgh') this.cliaTypeName = 'MGH';
-    if (this.paccType === 'mdacc') this.cliaTypeName = 'MD Anderson';
+    if (this.paccType === 'mda') this.cliaTypeName = 'MD Anderson';
 
     this.getData();
   }

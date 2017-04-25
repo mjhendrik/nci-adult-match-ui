@@ -72,6 +72,8 @@ export class CliaApiService {
 
   getCliaIon(type: string): Observable<any[]> {
     return this.http.get('assets/mock-data/clia-' + type + '-ion.json')
+      // https://pedmatch-int.nci.nih.gov/api/v1/ion_reporters/healthcheck?site=mda
+      // https://***REMOVED***/api/v1/ion_reporters/healthcheck?site=mda
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);

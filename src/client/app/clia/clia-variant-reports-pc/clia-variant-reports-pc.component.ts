@@ -43,7 +43,7 @@ export class CliaVariantReportsPcComponent implements OnInit {
     if (this.pcType === 'dartmouth') this.cliaTypeName = 'Dartmouth';
     if (this.pcType === 'yale') this.cliaTypeName = 'Yale';
     if (this.pcType === 'mgh') this.cliaTypeName = 'MGH';
-    if (this.pcType === 'mdacc') this.cliaTypeName = 'MD Anderson';
+    if (this.pcType === 'mda') this.cliaTypeName = 'MD Anderson';
 
     this.getData();
   }
