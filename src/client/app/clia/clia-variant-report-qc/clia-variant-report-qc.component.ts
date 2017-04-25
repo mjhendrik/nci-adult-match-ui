@@ -44,8 +44,11 @@ export class CliaVariantReportQcComponent implements OnInit {
   constructor(private cliaApi: CliaApiService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.tabType = this.route.snapshot.params.tabType;
-    this.cliaType = this.route.snapshot.params.cliaType;
+    this.cliaType = this.route.snapshot.url[0].path;
+    this.cliaType = this.cliaType.substring(this.cliaType.indexOf('_') + 1).trim();
+
+    this.tabType = this.route.snapshot.url[1].path;
+    this.tabType = this.tabType.substring(this.tabType.lastIndexOf('_') + 1).trim();
 
     if (this.cliaType === 'mocha') this.cliaTypeName = 'MoCha';
     if (this.cliaType === 'dartmouth') this.cliaTypeName = 'Dartmouth';
