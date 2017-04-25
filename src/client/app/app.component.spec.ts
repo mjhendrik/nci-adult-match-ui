@@ -39,7 +39,7 @@ export function main() {
       { path: 'clia_yale', component: CliaParentComponent },
       { path: 'clia_mocha', component: CliaParentComponent },
       { path: 'clia_mgh', component: CliaParentComponent },
-      { path: 'clia_mdacc', component: CliaParentComponent },
+      { path: 'clia_mda', component: CliaParentComponent },
       { path: 'clia_variant_reports_ntc', component: CliaVariantReportsNtcComponent },
       { path: 'clia_variant_reports_pacc', component: CliaVariantReportsPaccComponent },
       { path: 'clia_variant_reports_pc', component: CliaVariantReportsPcComponent }

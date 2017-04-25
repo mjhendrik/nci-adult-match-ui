@@ -44,7 +44,7 @@ export class CliaVariantReportsNtcComponent implements OnInit {
     if (this.ntcType === 'dartmouth') this.cliaTypeName = 'Dartmouth';
     if (this.ntcType === 'yale') this.cliaTypeName = 'Yale';
     if (this.ntcType === 'mgh') this.cliaTypeName = 'MGH';
-    if (this.ntcType === 'mdacc') this.cliaTypeName = 'MD Anderson';
+    if (this.ntcType === 'mda') this.cliaTypeName = 'MD Anderson';
 
     this.getData();
   }

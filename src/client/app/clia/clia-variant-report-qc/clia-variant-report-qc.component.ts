@@ -54,7 +54,7 @@ export class CliaVariantReportQcComponent implements OnInit {
     if (this.cliaType === 'dartmouth') this.cliaTypeName = 'Dartmouth';
     if (this.cliaType === 'yale') this.cliaTypeName = 'Yale';
     if (this.cliaType === 'mgh') this.cliaTypeName = 'MGH';
-    if (this.cliaType === 'mdacc') this.cliaTypeName = 'MD Anderson';
+    if (this.cliaType === 'mda') this.cliaTypeName = 'MD Anderson';
 
     if (this.tabType === 'ntc') {
       this.tabTypeHeaderName = 'No Template Quality Control Report';

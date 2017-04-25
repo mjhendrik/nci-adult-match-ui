@@ -11,17 +11,17 @@ import { AuthGuard } from './../../shared/auth/auth.guard.service';
       { path: 'clia_mgh/variant_reports_pc/qc', component: CliaVariantReportQcComponent, canActivate: [AuthGuard] },
       { path: 'clia_dartmount/variant_reports_pc/qc', component: CliaVariantReportQcComponent, canActivate: [AuthGuard] },
       { path: 'clia_yale/variant_reports_pc/qc', component: CliaVariantReportQcComponent, canActivate: [AuthGuard] },
-      { path: 'clia_mdacc/variant_reports_pc/qc', component: CliaVariantReportQcComponent, canActivate: [AuthGuard] },
+      { path: 'clia_mda/variant_reports_pc/qc', component: CliaVariantReportQcComponent, canActivate: [AuthGuard] },
       { path: 'clia_mocha/variant_reports_ntc/qc', component: CliaVariantReportQcComponent, canActivate: [AuthGuard] },
       { path: 'clia_mgh/variant_reports_ntc/qc', component: CliaVariantReportQcComponent, canActivate: [AuthGuard] },
       { path: 'clia_dartmount/variant_reports_ntc/qc', component: CliaVariantReportQcComponent, canActivate: [AuthGuard] },
       { path: 'clia_yale/variant_reports_ntc/qc', component: CliaVariantReportQcComponent, canActivate: [AuthGuard] },
-      { path: 'clia_mdacc/variant_reports_ntc/qc', component: CliaVariantReportQcComponent, canActivate: [AuthGuard] },
+      { path: 'clia_mda/variant_reports_ntc/qc', component: CliaVariantReportQcComponent, canActivate: [AuthGuard] },
       { path: 'clia_mocha/variant_reports_pacc/qc', component: CliaVariantReportQcComponent, canActivate: [AuthGuard] },
       { path: 'clia_mgh/variant_reports_pacc/qc', component: CliaVariantReportQcComponent, canActivate: [AuthGuard] },
       { path: 'clia_dartmount/variant_reports_pacc/qc', component: CliaVariantReportQcComponent, canActivate: [AuthGuard] },
       { path: 'clia_yale/variant_reports_pacc/qc', component: CliaVariantReportQcComponent, canActivate: [AuthGuard] },
-      { path: 'clia_mdacc/variant_reports_pacc/qc', component: CliaVariantReportQcComponent, canActivate: [AuthGuard] }
+      { path: 'clia_mda/variant_reports_pacc/qc', component: CliaVariantReportQcComponent, canActivate: [AuthGuard] }
     ])
   ],
   exports: [RouterModule]
