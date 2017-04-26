@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { AUTH_PROVIDERS } from 'angular2-jwt';
 
 import { AppComponent } from './app.component';
-import { SignInComponent } from './sign-in/sign-in.component';
+import { SignInModule } from './login/login.module';
 import { Auth } from './shared/auth/auth.service';
 import { AuthGuard } from './shared/auth/auth.guard.service';
 import { LoginGuard } from './shared/auth/login.guard.service';
@@ -39,6 +39,7 @@ import { PopoverModule } from 'ngx-popover';
     FormsModule,
     SharedModule.forRoot(),
     AppRoutingModule,
+    SignInModule,
     HomeModule,
     DashboardModule,
     CliaParentModule,
@@ -57,7 +58,7 @@ import { PopoverModule } from 'ngx-popover';
     VariantReportFilteredTableModule,
     PopoverModule
   ],
-  declarations: [AppComponent, SignInComponent],
+  declarations: [AppComponent],
   providers: [
     {
       provide: APP_BASE_HREF,
