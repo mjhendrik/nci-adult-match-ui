@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { AUTH_PROVIDERS } from 'angular2-jwt';
 
 import { AppComponent } from './app.component';
+import { SignInComponent } from './sign-in/sign-in.component';
 import { Auth } from './shared/auth/auth.service';
 import { AuthGuard } from './shared/auth/auth.guard.service';
 import { LoginGuard } from './shared/auth/login.guard.service';
@@ -37,6 +38,7 @@ import { PopoverModule } from 'ngx-popover';
     HttpModule,
     FormsModule,
     SharedModule.forRoot(),
+    SignInComponent,
     AppRoutingModule,
     LoginModule,
     DashboardModule,
