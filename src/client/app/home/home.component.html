@@ -34,19 +34,20 @@
         purpose.
       </p>
 
+      <p>
+        <a href="http://www.cancer.gov/about-cancer/treatment/clinical-trials/nci-supported/nci-match" target="_blank">Read more about NCI-MATCH Trial</a>
+      </p>
+
       <br/>
 
-      <p>
-        <!--<button href type="submit" class="btn btn-success btn-block">ACCESS NCI-MATCHBox</button>-->
-        <button class="btn btn-primary btn-margin" [routerLink]="['/login']" *ngIf="!auth.isAuthenticated()">Log In</button>
-        <button class="btn btn-primary btn-margin" (click)="auth.logout()" *ngIf="auth.isAuthenticated()">Log Out</button>
-      </p>
-
-      <hr/>
+      <br/>
 
       <p class="text-center">
-        <a href="http://www.cancer.gov/about-cancer/treatment/clinical-trials/nci-supported/nci-match" target="_blank">About NCI-MATCH Trial</a>
+        <!--<button href type="submit" class="btn btn-success btn-block">ACCESS NCI-MATCHBox</button>-->
+        <button class="btn btn-primary btn-lg" [routerLink]="['/login']" *ngIf="!auth.isAuthenticated()">Log In</button>
+        <button class="btn btn-primary btn-lg" (click)="auth.logout()" *ngIf="auth.isAuthenticated()">Log Out</button>
       </p>
+
     </div>
     <div class="col-md-3">
     </div>
