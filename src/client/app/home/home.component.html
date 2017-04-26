@@ -38,8 +38,7 @@
 
       <p>
         <!--<button href type="submit" class="btn btn-success btn-block">ACCESS NCI-MATCHBox</button>-->
-        <button class="btn btn-primary btn-margin" [routerLink]="['']">Home</button>
-        <button class="btn btn-primary btn-margin" [routerLink]="['signin']" *ngIf="!auth.isAuthenticated()">Log In</button>
+        <button class="btn btn-primary btn-margin" [routerLink]="['login']" *ngIf="!auth.isAuthenticated()">Log In</button>
         <button class="btn btn-primary btn-margin" (click)="auth.logout()" *ngIf="auth.isAuthenticated()">Log Out</button>
       </p>
 
