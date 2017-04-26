@@ -23,12 +23,12 @@ export class Auth {
   public handleAuthentication(): void {
     this.auth0.parseHash({ _idTokenVerification: false }, (err: any, authResult: any) => {
       if (err) {
-        alert(`Error: ${err.errorDescription}`);
+        alert(`Error: ${err}`);
+        console.error(err);
       }
       if (authResult && authResult.accessToken && authResult.idToken) {
         window.location.hash = '';
-        localStorage.setItem('access_token', authResult.accessToken);
-        localStorage.setItem('id_token', authResult.idToken);
+        this.setUser(authResult);
         this.router.navigate(['/dashboard']);
       }
     });
@@ -36,11 +36,11 @@ export class Auth {
 
   public login(username: string, password: string): void {
     this.auth0.redirect.loginWithCredentials({
-      connection: 'Username-Password-Authentication',
+      connection: 'Adult-MATCH-Development',
       username,
       password
     }, (err: any) => {
-      if (err) return alert(err.description);
+      if (err) return console.error(err);
     });
   }
 
