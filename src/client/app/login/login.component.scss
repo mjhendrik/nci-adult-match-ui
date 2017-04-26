@@ -1,3 +1,10 @@
 .bg-image {
+height: 120%;
+  width: 110%;
+  top: -14px;
+  left: -15px;
+  position: absolute;
+  filter: blur(6px) brightness(50%);
+  opacity: 0.5;  
   background-image: url('assets/img/dna_bg.jpg')
 }
