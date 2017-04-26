@@ -4,16 +4,15 @@ import { routerTransition } from './../shared/router.animations';
 import { Auth } from './../shared/auth/auth.service';
 
 /**
- * LoginComponent.
+ * SignInComponent.
  */
 @Component({
   moduleId: module.id,
   selector: 'sd-login',
   templateUrl: 'login.component.html',
-  styleUrls: ['login.component.css'],
   animations: [routerTransition()],
   host: { '[@routerTransition]': '' }
 })
-export class LoginComponent {
+export class SignInComponent {
   constructor(private auth: Auth) { }
 }
