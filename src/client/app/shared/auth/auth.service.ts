@@ -1,53 +1,61 @@
-import { Injectable } from '@angular/core';
+import { Injectable }      from '@angular/core';
 import { tokenNotExpired } from 'angular2-jwt';
-import { Router } from '@angular/router';
+import { Router }          from '@angular/router';
 import { Config } from '../config/env.config';
 
 // Avoid name not found warnings
-declare var Auth0Lock: any;
+declare var auth0: any;
 
 @Injectable()
 export class Auth {
-  // Configure Auth0
-  lock = new Auth0Lock(Config.CLIENT_ID, Config.AUTH_DOMAIN, {});
 
-  private userProfile: any;
+  // Configure Auth0
+  auth0 = new auth0.WebAuth({
+    domain: Config.AUTH_DOMAIN,
+    clientID: Config.CLIENT_ID,
+    redirectUri: Config.REDIRECT_URL,
+    responseType: 'token id_token'
+  });
 
   constructor(private router: Router) {
-    // Add callback for lock `authenticated` event
-    this.lock.on('authenticated', (authResult: any) => {
-      localStorage.setItem('id_token', authResult.idToken);
+  }
 
-      this.lock.getProfile(authResult.idToken, (error: any, profile: any) => {
-        if (error) {
-          // Handle error
-          alert(error);
-          return;
-        }
-
-        localStorage.setItem('profile', JSON.stringify(profile));
-        this.userProfile = profile;
-      });
-
-      this.router.navigate(['dashboard']);
+  public handleAuthentication(): void {
+    this.auth0.parseHash({ _idTokenVerification: false }, (err: any, authResult: any) => {
+      if (err) {
+        alert(`Error: ${err.errorDescription}`);
+      }
+      if (authResult && authResult.accessToken && authResult.idToken) {
+        window.location.hash = '';
+        localStorage.setItem('access_token', authResult.accessToken);
+        localStorage.setItem('id_token', authResult.idToken);
+        this.router.navigate(['/dashboard']);
+      }
     });
   }
 
-  public login() {
-    // Call the show method to display the widget.
-    this.lock.show();
-  };
+  public login(username: string, password: string): void {
+    this.auth0.redirect.loginWithCredentials({
+      connection: 'Username-Password-Authentication',
+      username,
+      password
+    }, (err: any) => {
+      if (err) return alert(err.description);
+    });
+  }
 
-  public authenticated() {
-    // Check if there's an unexpired JWT
-    // It searches for an item in localStorage with key == 'id_token'
-    return tokenNotExpired();
-  };
+  public isAuthenticated(): boolean {
+    return tokenNotExpired('id_token');
+  }
 
-  public logout() {
+  public logout(): void {
     // Remove token from localStorage
+    localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
-    localStorage.removeItem('profile');
-    this.userProfile = null;
-  };
+  }
+
+  private setUser(authResult: any): void {
+    localStorage.setItem('access_token', authResult.accessToken);
+    localStorage.setItem('id_token', authResult.idToken);
+  }
 }

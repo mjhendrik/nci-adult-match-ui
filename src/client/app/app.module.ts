@@ -13,7 +13,7 @@ import { AuthGuard } from './shared/auth/auth.guard.service';
 import { LoginGuard } from './shared/auth/login.guard.service';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
-import { LoginModule } from './login/login.module';
+import { HomeModule } from './home/home.module';
 import { CliaParentModule } from './clia/clia-parent/clia-parent.module';
 import { CliaVariantReportsNtcModule } from './clia/clia-variant-reports-ntc/clia-variant-reports-ntc.module';
 import { CliaVariantReportsPaccModule } from './clia/clia-variant-reports-pacc/clia-variant-reports-pacc.module';
@@ -38,9 +38,8 @@ import { PopoverModule } from 'ngx-popover';
     HttpModule,
     FormsModule,
     SharedModule.forRoot(),
-    SignInComponent,
     AppRoutingModule,
-    LoginModule,
+    HomeModule,
     DashboardModule,
     CliaParentModule,
     CliaVariantReportsNtcModule,
@@ -58,7 +57,7 @@ import { PopoverModule } from 'ngx-popover';
     VariantReportFilteredTableModule,
     PopoverModule
   ],
-  declarations: [AppComponent],
+  declarations: [AppComponent, SignInComponent],
   providers: [
     {
       provide: APP_BASE_HREF,
