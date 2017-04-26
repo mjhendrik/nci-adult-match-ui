@@ -16,8 +16,8 @@ const DROPZONE_CONFIG: DropzoneConfigInterface = {
   server: 'https://httpbin.org/post',
   // maxFiles: 3,
   maxFilesize: 20000, // size in MB
+  // acceptedFiles: '.zip,.bam',
   addRemoveLinks: true
-  // acceptedFiles: '.zip,.bam'
 };
 
 @NgModule({

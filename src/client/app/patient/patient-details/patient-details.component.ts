@@ -44,8 +44,8 @@ export class PatientDetailsComponent implements OnInit {
       server: 'https://httpbin.org/post',
       maxFiles: 3,
       maxFilesize: 20000, // size in MB
-      addRemoveLinks: true,
-      acceptedFiles: '.zip,.bam'
+      acceptedFiles: '.zip,.bam',
+      addRemoveLinks: true
     };
 
     this.config1 = DROPZONE_CONFIG1;
@@ -54,8 +54,8 @@ export class PatientDetailsComponent implements OnInit {
       // Change this to your upload POST address:
       server: 'https://httpbin.org/post',
       maxFilesize: 20000, // size in MB
+      // acceptedFiles: '.zip,.bam',
       addRemoveLinks: true
-      // acceptedFiles: '.zip,.bam'
     };
 
     this.config2 = DROPZONE_CONFIG2;
