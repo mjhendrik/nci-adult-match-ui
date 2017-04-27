@@ -79,24 +79,59 @@ Your project will be compiled ahead of time (AOT), and then the resulting bundle
 
 ## Dockerization
 
-The application provides full Docker support. You can use it for both development as well as production builds and deployments.
-
 ### How to build and start the dockerized version of the application 
 
 ### Local development build and deployment
 
-Run the following:
+To build latest UI:
 
 ```bash
 $ docker-compose build
-$ docker-compose up -d
 ```
 
-Now open your browser at http://localhost:5555
+To update all dependent images:
+
+```bash
+$ docker-compose pull
+```
+
+To start the front-end and services locally:
+
+```bash
+$ docker-compose up
+```
+
+Now open your browser at [http://localhost:5555](http://localhost:5555)
+
+To start only Monbgo DB, for example to develop your services locally:
+
+```bash
+$ docker-compose up mongo
+```
+
+To restore MongoDB data:
+
+```bash
+$ docker exec -it nciadultmatchui_mongo bash
+$ mongorestore --db match ./backup
+```
+
+After you've restored the backup you may check the restored data (while still attached to the mongo container, as above):
+
+```bash
+$ mongo shell
+$ show dbs
+$ use match
+$ show collections
+$ db.patient.count()
+```
+
+Exit from MongoDB shell by pressing `Ctrl+C`
+
 
 ### Test or Production build and deployment
 
-To build the production image based on Apache run the following:
+To build the image based on Apache run the following:
 
 ```bash
 $ docker build -f .docker/dockerfile.httpd -t "fnlcr/nci-adult-match-ui:latest" .

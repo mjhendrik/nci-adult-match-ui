@@ -5,14 +5,13 @@ services:
       context: .
       dockerfile: ./.docker/dockerfile.development
     command: npm start
-    container_name: nci-adult-match-ui-dev
-    image: nci-adult-match-ui
+    container_name: nci-adult-match-ui
+    image: "match/nci-adult-match-ui:latest"
     ports:
       - '5555:5555'
   patient-api:
-    build: .
+    image: "match/nci-adult-match-patient-api"
     command: python app.py
-    image: "fnlcr/nci-adult-match-patient-api"
     ports:
       - "5000:5000"
     depends_on:
