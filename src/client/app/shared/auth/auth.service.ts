@@ -8,8 +8,18 @@ declare var Auth0Lock: any;
 
 @Injectable()
 export class Auth {
+  lockOptions: any = {
+    theme: {
+      logo: 'assets/svg/nci-logo-full.svg',
+      primaryColor: '#2d8ca9' // dark-info-color of the theme
+    },
+    languageDictionary: {
+      title: 'NCI-MATCH'
+    }
+  };
+
   // Configure Auth0
-  lock = new Auth0Lock(Config.CLIENT_ID, Config.AUTH_DOMAIN, {});
+  lock = new Auth0Lock(Config.CLIENT_ID, Config.AUTH_DOMAIN, this.lockOptions);
 
   private userProfile: any;
 
