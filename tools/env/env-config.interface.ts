@@ -3,7 +3,6 @@
 export interface EnvConfig {
   CLIENT_ID: string;
   AUTH_DOMAIN: string;
-  REDIRECT_URL: string;
   API?: string;
   ENV?: string;
 }

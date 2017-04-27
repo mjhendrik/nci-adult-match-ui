@@ -7,13 +7,12 @@ import { FormsModule } from '@angular/forms';
 import { AUTH_PROVIDERS } from 'angular2-jwt';
 
 import { AppComponent } from './app.component';
-import { SignInModule } from './login/login.module';
 import { Auth } from './shared/auth/auth.service';
 import { AuthGuard } from './shared/auth/auth.guard.service';
 import { LoginGuard } from './shared/auth/login.guard.service';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
-import { HomeModule } from './home/home.module';
+import { LoginModule } from './login/login.module';
 import { CliaParentModule } from './clia/clia-parent/clia-parent.module';
 import { CliaVariantReportsNtcModule } from './clia/clia-variant-reports-ntc/clia-variant-reports-ntc.module';
 import { CliaVariantReportsPaccModule } from './clia/clia-variant-reports-pacc/clia-variant-reports-pacc.module';
@@ -39,8 +38,7 @@ import { PopoverModule } from 'ngx-popover';
     FormsModule,
     SharedModule.forRoot(),
     AppRoutingModule,
-    SignInModule,
-    HomeModule,
+    LoginModule,
     DashboardModule,
     CliaParentModule,
     CliaVariantReportsNtcModule,

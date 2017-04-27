@@ -1,10 +1,15 @@
-.bg-image {
-  height: 120%;
-  width: 120%;
-  top: -15px;
-  left: -15px;
-  position: absolute;
-  filter: blur(6px) brightness(50%);
-  opacity: 0.5;  
-  background-image: url('assets/img/dna_bg.jpg')
+.warning-text {
+  p {
+    text-align: justify;
+    margin-bottom: 20px;
+    font-size: larger;
+  }
+}
+
+.content {
+  margin-top: -60px;
+}
+
+/deep/ .page-container {
+  background-color: white;
 }
