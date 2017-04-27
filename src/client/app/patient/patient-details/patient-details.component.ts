@@ -45,7 +45,7 @@ export class PatientDetailsComponent implements OnInit {
       // Change this to your upload POST address:
       server: 'https://httpbin.org/post',
       maxFiles: 1,
-      maxFilesize: 20000, // size in MB
+      maxFilesize: 50000, // size in MB
       acceptedFiles: '.zip',
       addRemoveLinks: true
     };
@@ -56,7 +56,7 @@ export class PatientDetailsComponent implements OnInit {
       // Change this to your upload POST address:
       server: 'https://httpbin.org/post',
       maxFiles: 1,
-      maxFilesize: 20000, // size in MB
+      maxFilesize: 50000, // size in MB
       acceptedFiles: '.bam',
       addRemoveLinks: true
     };
@@ -67,7 +67,7 @@ export class PatientDetailsComponent implements OnInit {
       // Change this to your upload POST address:
       server: 'https://httpbin.org/post',
       maxFiles: 1,
-      maxFilesize: 20000, // size in MB
+      maxFilesize: 50000, // size in MB
       acceptedFiles: '.bam',
       addRemoveLinks: true
     };
@@ -78,7 +78,7 @@ export class PatientDetailsComponent implements OnInit {
       // Change this to your upload POST address:
       server: 'https://httpbin.org/post',
       // maxFiles: 3,
-      maxFilesize: 20000, // size in MB
+      maxFilesize: 50000, // size in MB
       // acceptedFiles: '.zip,.bam',
       addRemoveLinks: true
     };
