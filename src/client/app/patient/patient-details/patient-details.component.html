@@ -309,7 +309,6 @@
                 </tbody>
               </table>
             </div>
-            <!--<dropzone [config]="config" [message]="'Click or drag files here to upload'" (error)="onUploadError($event)" (success)="onUploadSuccess($event)"></dropzone>-->
             <div [dropzone]="config2" (error)="onUploadError($event)" (success)="onUploadSuccess($event)"></div>
           </div>
         </div>
@@ -330,11 +329,24 @@
           <input type="text" class="form-control" placeholder="Enter Analysis ID" [(ngModel)]="analysisId">
           <span class="fa form-control-feedback" [ngClass]="{true:'fa-times',false:'fa-check'}[analysisId.length == 0]"></span>
         </div>
-        <!--<dropzone [config]="config" [message]="'Click or drag files here to upload'" (error)="onUploadError($event)" (success)="onUploadSuccess($event)"></dropzone>-->
-        <!--<div [disabled]="analysisId.length == 0" [ngClass]="{true:'has-error',false:'has-success'}[analysisId.length == 0]" [dropzone]="config1"
-          (error)="onUploadError($event)" (success)="onUploadSuccess($event)"></div>-->
-        <div *ngIf="analysisId.length!=0" [dropzone]="config1" (error)="onUploadError($event)" (success)="onUploadSuccess($event)"></div>
-        <div *ngIf="analysisId.length == 0" [disabled]="true" [dropzone]="config1" (error)="onUploadError($event)" (success)="onUploadSuccess($event)"></div>
+        <div class="row">
+          <!--Click or drag file here to upload-->
+          <div class="col-md-4 form-group has-feedback" [ngClass]="{true:'has-error',false:'has-success'}[true]">
+            <label class="control-label">Variant ZIP File</label>
+            <div *ngIf="analysisId.length!=0" [dropzone]="config1" (error)="onUploadError($event)" (success)="onUploadSuccess($event)"></div>
+            <div *ngIf="analysisId.length == 0" [disabled]="true" [dropzone]="config1" (error)="onUploadError($event)" (success)="onUploadSuccess($event)"></div>
+          </div>
+          <div class="col-md-4 form-group has-feedback" [ngClass]="{true:'has-error',false:'has-success'}[true]">
+            <label class="control-label">DNA BAM File</label>
+            <div *ngIf="analysisId.length!=0" [dropzone]="config1" (error)="onUploadError($event)" (success)="onUploadSuccess($event)"></div>
+            <div *ngIf="analysisId.length == 0" [disabled]="true" [dropzone]="config1" (error)="onUploadError($event)" (success)="onUploadSuccess($event)"></div>
+          </div>
+          <div class="col-md-4 form-group has-feedback" [ngClass]="{true:'has-error',false:'has-success'}[true]">
+            <label class="control-label">cDNA BAM File</label>
+            <div *ngIf="analysisId.length!=0" [dropzone]="config1" (error)="onUploadError($event)" (success)="onUploadSuccess($event)"></div>
+            <div *ngIf="analysisId.length == 0" [disabled]="true" [dropzone]="config1" (error)="onUploadError($event)" (success)="onUploadSuccess($event)"></div>
+          </div>
+        </div>
       </div>
       <div class="modal-footer">
         <a href="javascript:;" class="btn width-100 btn-purple-light" data-dismiss="modal" aria-hidden="true">Done</a>
