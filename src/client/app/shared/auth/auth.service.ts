@@ -36,7 +36,7 @@ export class Auth {
 
   public login(username: string, password: string): void {
     this.auth0.redirect.loginWithCredentials({
-      connection: 'Adult-MATCH-Development',
+      connection: 'usernamepassword',
       username,
       password
     }, (err: any) => {
