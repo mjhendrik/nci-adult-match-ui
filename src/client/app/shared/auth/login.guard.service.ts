@@ -9,7 +9,7 @@ export class LoginGuard implements CanActivate {
   constructor(private auth: Auth, private router: Router) { }
 
   canActivate() {
-    if (this.auth.isAuthenticated()) {
+    if (this.auth.authenticated()) {
       this.router.navigate(['dashboard']);
       return false;
     }

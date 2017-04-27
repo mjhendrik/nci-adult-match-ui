@@ -58,6 +58,7 @@ export class ProjectConfig extends SeedConfig {
     // Add packages (e.g. ng2-translate)
     let additionalPackages: ExtendPackages[] = [{
       name: 'angular2-jwt',
+      // Path to the package's bundle
       path: 'node_modules/angular2-jwt/angular2-jwt.js'
     },
     {

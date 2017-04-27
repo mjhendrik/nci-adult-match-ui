@@ -1,15 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { SignInComponent } from './login.component';
+import { LoginComponent } from './login.component';
+import { LoginGuard } from './../shared/auth/login.guard.service';
 
 @NgModule({
   imports: [
-    RouterModule.forRoot([
-      { path: 'signin', redirectTo: '/login' },
-      { path: 'login', component: SignInComponent }
+    RouterModule.forChild([
+      { path: 'signin', redirectTo: 'login' },
+      { path: '', redirectTo: 'login', pathMatch: 'full' },
+      { path: 'login', component: LoginComponent, canActivate: [LoginGuard] }
     ])
   ],
   exports: [RouterModule]
 })
-export class SignInRoutingModule { }
+export class LoginRoutingModule { }

@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
 import { async, TestBed } from '@angular/core/testing';
 
-import { HomeModule } from './home.module';
+import { LoginModule } from './login.module';
 
 export function main() {
-  describe('home component', () => {
+  describe('login component', () => {
     // Setting module for testing
     // Disable old forms
 
     beforeEach(() => {
       TestBed.configureTestingModule({
         declarations: [TestComponent],
-        imports: [HomeModule]
+        imports: [LoginModule]
       });
     });
 
@@ -30,6 +30,6 @@ export function main() {
 
 @Component({
   selector: 'test-cmp',
-  template: '<sd-home></sd-home>'
+  template: '<sd-login></sd-login>'
 })
 class TestComponent { }
