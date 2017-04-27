@@ -6,7 +6,8 @@ import { routerTransition } from './../shared/router.animations';
 import { GmtPipe } from './../shared/pipes/gmt.pipe';
 import {
   DashboardApiService,
-  DashboardInterface
+  DashboardInterface,
+  DashboardOverviewInterface
 } from './dashboard-api.service';
 
 
@@ -40,7 +41,10 @@ export class DashboardComponent implements OnInit {
 
   timestamp: any = new Date();
 
-  overviewData: any;
+  patients: any;
+  treatmentArms: any;
+  biopsyTracking: any;
+
   tableARData: any[];
   tableVRData: any[];
   tablePatientsAwaitingData: any[];
@@ -53,6 +57,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getOverviewData();
     this.getData();
   }
 
@@ -60,8 +65,6 @@ export class DashboardComponent implements OnInit {
     let gmt = new GmtPipe();
     this.dashboardApi.getDashboard()
       .subscribe((itemList: DashboardInterface) => {
-
-        this.overviewData = itemList.overviewData;
 
         this.dataAvailable = true;
 
@@ -81,6 +84,17 @@ export class DashboardComponent implements OnInit {
           return x;
         });
 
+      },
+      error => this.errorMessage = <any>error
+      );
+  }
+
+  getOverviewData() {
+    this.dashboardApi.getDashboardOverview()
+      .subscribe((itemList: DashboardOverviewInterface) => {
+        this.patients = itemList.patients;
+        this.treatmentArms = itemList.treatmentArms;
+        this.biopsyTracking = itemList.biopsyTracking;
       },
       error => this.errorMessage = <any>error
       );
