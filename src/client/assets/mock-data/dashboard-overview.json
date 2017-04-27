@@ -1,0 +1,18 @@
+{
+  "patients": {
+    "total": 253,
+    "onTreatmentArm": 22,
+    "offTrial": 5
+  },
+  "treatmentArms": {
+    "total": 29,
+    "open": 19,
+    "suspended": 3,
+    "closed": 2
+  },
+  "biopsyTracking": {
+    "total": 110,
+    "biopsySequences": 90,
+    "molecularSequences": 85
+  }
+}
