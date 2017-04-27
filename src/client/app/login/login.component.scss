@@ -4,7 +4,7 @@
     display: block;
     position: absolute;
     left: 50%;
-    margin-left: -210px;
+    margin-left: -300px;
     z-index: 1020;
 
     .usage-warning-brand {
@@ -42,12 +42,11 @@
 }
 
 .bg-image {
-  height: 120%;
-  width: 120%;
-  top: -15px;
-  left: -15px;
+  height: 100%;
+  width: 100%;
+  top: 0px;
+  left: 0px;
   position: absolute;
-  filter: blur(6px) brightness(50%);
-  opacity: 0.5;  
+  filter: brightness(50%);
   background-image: url('assets/img/dna_bg.jpg')
 }
