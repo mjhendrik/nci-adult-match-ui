@@ -8,10 +8,15 @@ import { Observable } from 'rxjs/Observable';
 // import 'rxjs/add/operator/do';  // for debugging
 
 export interface DashboardInterface {
-  overviewData: {};
   tableARData: any[];
   tableVRData: any[];
   tablePatientsAwaitingData: any[];
+}
+
+export interface DashboardOverviewInterface {
+  patients: {};
+  treatmentArms: {};
+  biopsyTracking: {};
 }
 
 /**
@@ -33,6 +38,13 @@ export class DashboardApiService {
    */
   getDashboard(): Observable<DashboardInterface> {
     return this.http.get('assets/mock-data/dashboard.json')
+      .map((res: Response) => res.json())
+      //              .do(data => console.log('server data:', data))  // debug
+      .catch(this.handleError);
+  }
+
+  getDashboardOverview(): Observable<DashboardOverviewInterface> {
+    return this.http.get('assets/mock-data/dashboard-overview.json')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
