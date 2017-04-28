@@ -3,7 +3,7 @@ services:
   ui:
     build:
       context: .
-      dockerfile: ./.docker/dockerfile.development
+      dockerfile: ./.docker/dockerfile.httpd
     command: npm start
     container_name: nci-adult-match-ui
     image: "match/nci-adult-match-ui:latest"
