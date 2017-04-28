@@ -125,7 +125,7 @@ To restore MongoDB data:
 
 ```bash
 $ docker exec -it nciadultmatchui_mongo_1 bash
-$ mongorestore --nsInclude 'match.*' --drop ./backup
+$ mongorestore --db match ./backup
 ```
 
 After you've restored the backup you may check the restored data (while still attached to the mongo container, as above):
