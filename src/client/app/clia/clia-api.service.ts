@@ -76,10 +76,10 @@ export class CliaApiService {
     let header = new Headers();
     header.append('Authorization', localStorage.getItem('id_token'));
 
-    // return this.http.get('https://***REMOVED***/api/v1/ion_reporters/healthcheck?site=' + type, { headers: header })
-    // return this.http.get('http://localhost:5555/api/v1/ion_reporters/healthcheck?site=' + type, { headers: header })
+    return this.http.get('https://***REMOVED***/api/v1/ion_reporters/healthcheck?site=' + type, { headers: header })
+      // return this.http.get('http://localhost:5555/api/v1/ion_reporters/healthcheck?site=' + type, { headers: header })
 
-    return this.http.get('assets/mock-data/clia-' + type + '-ion.json')
+      // return this.http.get('assets/mock-data/clia-' + type + '-ion.json')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
