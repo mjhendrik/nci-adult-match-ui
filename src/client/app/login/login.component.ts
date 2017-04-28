@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-import { routerTransition } from './../shared/router.animations';
 import { Auth } from './../shared/auth/auth.service';
 
 /**
@@ -10,9 +9,7 @@ import { Auth } from './../shared/auth/auth.service';
   moduleId: module.id,
   selector: 'sd-login',
   templateUrl: 'login.component.html',
-  styleUrls: ['login.component.css'],
-  animations: [routerTransition()],
-  host: { '[@routerTransition]': '' }
+  styleUrls: ['login.component.css']
 })
 export class LoginComponent {
   constructor(private auth: Auth) { }

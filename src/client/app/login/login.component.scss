@@ -1,12 +1,52 @@
-:host {
-  display: block;
-  // padding: 0 16px;
+.usage-warning {
+    top: 50px;
+    width: 600px;
+    display: block;
+    position: absolute;
+    left: 50%;
+    margin-left: -300px;
+    z-index: 1020;
+
+    .usage-warning-brand {
+        font-size: 18px;
+        font-weight: bold;
+        padding: 15px 30px;
+        line-height: 36px;
+        border-radius: 8px 8px 0 0;
+    }
+
+    .usage-warning-content {
+        padding: 25px 30px;
+        border-radius: 0 0 8px 8px;
+        background: #fff;
+        box-shadow: 0 2px 0 rgba(0,0,0,0.07);
+    }
+
+    p {
+      text-align: justify;
+      margin-bottom: 20px;
+    }
 }
 
-h2 {
-  font-size: 20px;
-  font-weight: 500;
-  letter-spacing: 0.005em;
-  margin-bottom: 0;
-  margin-top: 0.83em;
+.content {
+  margin-top: -60px;
+}
+
+/deep/ .page-container {
+  background-color: white;
+}
+
+/deep/ .auth0-lock.auth0-lock .auth0-lock-header-logo {
+    width: 77%;
+    height: audio;
+}
+
+.bg-image {
+  height: 100%;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  position: absolute;
+  filter: brightness(50%);
+  background-image: url('assets/img/dna_bg.jpg')
 }
