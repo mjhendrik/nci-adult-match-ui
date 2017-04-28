@@ -22,6 +22,12 @@ $ npm start
 # api document for the app
 # npm run build.docs
 
+# Run using mock JSONs instead of back-end services
+$ npm run start.dev-mock
+
+# Run for using from inside docker-compose
+$ npm run start.dev-docker
+
 # if you see an error like 'Node Sass could not find a binding for your current environment'
 $ npm rebuild node-sass --force
 
@@ -38,6 +44,12 @@ $ npm run build.dev
 # prod build, will output the production application in `dist/prod`
 # the produced code can be deployed (rsynced) to a remote server
 $ npm run build.prod
+
+# Build using mock JSONs instead of back-end services
+$ npm run build.dev-mock
+
+# Build for using from inside docker-compose
+$ npm run build.dev-docker
 
 # dev build of multiple applications (by default the value of --app is "app")
 $ npm start -- --app baz
@@ -134,11 +146,11 @@ Exit from MongoDB shell by pressing `Ctrl+C`
 To build the image based on Apache run the following:
 
 ```bash
-$ docker build -f .docker/dockerfile.httpd -t "matchbox/nci-adult-match-ui:latest" .
+$ docker build -f .docker/dockerfile.httpd -t "fnlcr/nci-adult-match-ui:latest" .
 ```
 
 To run the docker locally use port 5555 because Auth0 is configured to use it. Please make sure the UI has been built as `dev`, run `npm run build.dev` if necessary.
 
 ```bash
-$ docker run --name "nci-adult-match-ui" -it -p 5555:80  "matchbox/nci-adult-match-ui:latest"
+$ docker run --name "nci-adult-match-ui" -it -p 5555:80  "fnlcr/nci-adult-match-ui:latest"
 ```

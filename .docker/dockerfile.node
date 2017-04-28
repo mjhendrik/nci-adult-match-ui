@@ -1,0 +1,9 @@
+FROM node:6
+
+ENV HOME=/usr/src/app
+RUN mkdir $HOME
+WORKDIR $HOME
+
+RUN npm install && npm rebuild node-sass --force
+
+EXPOSE 5555

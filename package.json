@@ -8,6 +8,8 @@
   "scripts": {
     "build.dev": "gulp build.dev --color --env-config dev",
     "build.inttest": "gulp build.inttest --color --env-config test",
+    "build.dev-docker": "gulp build.dev --color --env-config dev-docker",
+    "build.dev-mock": "gulp build.dev --color --env-config dev-mock",
     "build.dev.watch": "gulp build.dev.watch --color",
     "build.e2e": "gulp build.e2e --color",
     "build.prod": "gulp build.prod --color --env-config prod --build-type prod",
@@ -34,6 +36,8 @@
     "serve.prod.exp": "gulp serve.prod.aot --color --env-config prod --build-type prod",
     "serve.prod.rollup.aot": "gulp serve.prod.rollup.aot --color --env-config prod --build-type prod",
     "start": "gulp serve.dev --color",
+    "start.dev-docker": "gulp serve.dev --color --env-config dev-docker",
+    "start.dev-mock": "gulp serve.dev --color --env-config dev-mock",
     "start.deving": "gulp start.deving --color",
     "tasks.list": "gulp --tasks-simple --color",
     "test": "gulp test --color",
