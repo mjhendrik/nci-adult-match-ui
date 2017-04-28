@@ -1,0 +1,50 @@
+.logo {
+  width: 320px
+}
+
+.header-height {
+  height: 75px;
+}
+
+.top-menu-position {
+  top: 75px;
+  z-index: 1025;
+}
+
+.header-position {
+  padding-right: 10px;
+}
+
+.top-menu .nav>li.active>a {
+  background-color: #374342;
+}
+
+.top-menu .nav>li>a:hover {
+  background-color: #5f7471;
+}
+
+.top-menu>div {
+  background-color: #445350;
+}
+
+.has-sub>ul {
+  background-color: #445350;
+}
+
+.has-sub>ul>li>a:hover {
+  background-color: #5f7471;
+}
+
+.has-sub>ul>li.active>a {
+  background-color: #374342;
+}
+
+.footer-format {
+  background-color: #ffffff;
+  position: fixed;
+  z-index: 2000;
+}
+
+.navbar-right {
+  padding-top: 10px;
+}

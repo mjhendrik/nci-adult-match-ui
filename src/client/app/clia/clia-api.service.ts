@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import {
   Http,
-  Response
+  Response,
+  Headers
 } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
@@ -71,9 +72,14 @@ export class CliaApiService {
   }
 
   getCliaIon(type: string): Observable<any[]> {
-    return this.http.get('assets/mock-data/clia-' + type + '-ion.json')
-      // https://pedmatch-int.nci.nih.gov/api/v1/ion_reporters/healthcheck?site=mda
-      // https://***REMOVED***/api/v1/ion_reporters/healthcheck?site=mda
+
+    let header = new Headers();
+    header.append('Authorization', localStorage.getItem('id_token'));
+
+    return this.http.get('https://***REMOVED***/api/v1/ion_reporters/healthcheck?site=' + type, { headers: header })
+      // return this.http.get('http://localhost:5555/api/v1/ion_reporters/healthcheck?site=' + type, { headers: header })
+
+      // return this.http.get('assets/mock-data/clia-' + type + '-ion.json')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
@@ -101,8 +107,6 @@ export class CliaApiService {
   }
 
   getCliaVariantReportQC(tabType: string, cliaType: string): Observable<CliaVariantReportsQCInterface> {
-    // getCliaVariantReportQC(type: string): Observable<CliaVariantReportsQCInterface> {
-    // return this.http.get('assets/mock-data/clia-variant-report-qc-' + type + '.json')
     return this.http.get('assets/mock-data/clia-variant-report-qc-' + tabType + '-' + cliaType + '.json')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug

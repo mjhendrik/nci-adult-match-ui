@@ -31,34 +31,59 @@ export class PatientDetailsComponent implements OnInit {
 
   analysisId: string = '';
 
-  config1: DropzoneConfigInterface;
-  config2: DropzoneConfigInterface;
+  configVariantZip: DropzoneConfigInterface;
+  configDnaBam: DropzoneConfigInterface;
+  configCdnaBam: DropzoneConfigInterface;
+  configDocuments: DropzoneConfigInterface;
 
   constructor(private patientApi: PatientApiService) { }
 
   ngOnInit() {
     this.getData();
 
-    const DROPZONE_CONFIG1: DropzoneConfigInterface = {
+    const DROPZONE_CONFIG_VARIANT_ZIP: DropzoneConfigInterface = {
       // Change this to your upload POST address:
       server: 'https://httpbin.org/post',
-      maxFiles: 3,
-      maxFilesize: 20000, // size in MB
-      addRemoveLinks: true,
-      acceptedFiles: '.zip,.bam'
-    };
-
-    this.config1 = DROPZONE_CONFIG1;
-
-    const DROPZONE_CONFIG2: DropzoneConfigInterface = {
-      // Change this to your upload POST address:
-      server: 'https://httpbin.org/post',
-      maxFilesize: 20000, // size in MB
+      maxFiles: 1,
+      maxFilesize: 50000, // size in MB
+      acceptedFiles: '.zip',
       addRemoveLinks: true
-      // acceptedFiles: '.zip,.bam'
     };
 
-    this.config2 = DROPZONE_CONFIG2;
+    this.configVariantZip = DROPZONE_CONFIG_VARIANT_ZIP;
+
+    const DROPZONE_CONFIG_DNA_BAM: DropzoneConfigInterface = {
+      // Change this to your upload POST address:
+      server: 'https://httpbin.org/post',
+      maxFiles: 1,
+      maxFilesize: 50000, // size in MB
+      acceptedFiles: '.bam',
+      addRemoveLinks: true
+    };
+
+    this.configDnaBam = DROPZONE_CONFIG_DNA_BAM;
+
+    const DROPZONE_CONFIG_CDNA_BAM: DropzoneConfigInterface = {
+      // Change this to your upload POST address:
+      server: 'https://httpbin.org/post',
+      maxFiles: 1,
+      maxFilesize: 50000, // size in MB
+      acceptedFiles: '.bam',
+      addRemoveLinks: true
+    };
+
+    this.configCdnaBam = DROPZONE_CONFIG_CDNA_BAM;
+
+    const DROPZONE_CONFIG_DOCUMENTS: DropzoneConfigInterface = {
+      // Change this to your upload POST address:
+      server: 'https://httpbin.org/post',
+      // maxFiles: 3,
+      maxFilesize: 50000, // size in MB
+      // acceptedFiles: '.zip,.bam',
+      addRemoveLinks: true
+    };
+
+    this.configDocuments = DROPZONE_CONFIG_DOCUMENTS;
 
   }
 
