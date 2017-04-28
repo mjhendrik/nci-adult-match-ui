@@ -3,7 +3,7 @@ import { EnvConfig } from './env-config.interface';
 const DevConfig: EnvConfig = {
   // Empty URL will force the cervices to use mock jsons instead of calling the real backend services
   API: {
-    PATIENT: 'http://localhost/5000',
+    PATIENT: '',
     TREATMENT_ARM: '',
     ION_REPORTER: ''
   },

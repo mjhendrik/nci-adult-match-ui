@@ -3,13 +3,15 @@ services:
   ui:
     build:
       context: .
-      dockerfile: ./.docker/dockerfile.httpd
-    command: httpd-foreground -C 'DocumentRoot /usr/local/apache2/match/'
-    image: "matchbox/nci-adult-match-ui:latest"
+      dockerfile: ./.docker/dockerfile.node
+    command: npm run start.dev-docker
+    image: "fnlcr/nci-adult-match-ui-dev"
     ports:
-      - '5555:80'
+      - '5555:5555'
+    volumes:
+      - .:/usr/src/app
   patient-api:
-    image: "matchbox/nci-adult-match-patient-api"
+    image: "fnlcr/nci-adult-match-patient-api"
     command: python app.py
     ports:
       - "5000:5000"

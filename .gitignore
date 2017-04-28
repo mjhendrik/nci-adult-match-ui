@@ -29,6 +29,10 @@ build/Release
 node_modules
 typings
 ts-node
+ts-node-*
+.node-gyp
+.npm
+.v8flags.*.json
 
 # Users Environment Variables
 .lock-wscript
