@@ -109,4 +109,24 @@ export class CliaParentComponent implements OnInit {
 
   }
 
+  // setInterval(() => {
+  //   this.cliaApi.getCliaIon(this.cliaType)
+  //     .subscribe(details => {
+  //       this.ionReportersData = details.map(x => {
+  //         x.lastContactDate = gmt.transform(x.lastContactDate);
+  //         return x;
+  //       });
+  //     });
+  // }, 1000 * 30);
+
+  // setInterval(function () {
+  //   this.cliaApi.getCliaIon(this.cliaType)
+  //     .subscribe(details => {
+  //       this.ionReportersData = details.map(x => {
+  //         x.lastContactDate = gmt.transform(x.lastContactDate);
+  //         return x;
+  //       });
+  //     });
+  // }, 30000;);
+
 }
