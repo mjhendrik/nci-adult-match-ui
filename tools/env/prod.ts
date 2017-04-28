@@ -1,7 +1,11 @@
 import { EnvConfig } from './env-config.interface';
 
 const ProdConfig: EnvConfig = {
-  ENV: 'PROD',
+  API: {
+    PATIENT: '[TBD]',
+    TREATMENT_ARM: '[TBD]',
+    ION_REPORTER: '[TBD]'
+  },
   CLIENT_ID: '[TBD]',
   AUTH_DOMAIN: 'ncimatch.auth0.com'
 };

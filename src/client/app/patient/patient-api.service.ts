@@ -7,6 +7,8 @@ import { Observable } from 'rxjs/Observable';
 
 // import 'rxjs/add/operator/do';  // for debugging
 
+import { Config, CommonConstants } from '../shared/config/env.config';
+
 export interface PatientDetailsInterface {
   patientData: {};
   summaryData: {};
@@ -45,7 +47,7 @@ export class PatientApiService {
    * @return {string[]} The Observable for the HTTP request.
    */
   getPatientList(): Observable<any[]> {
-    return this.http.get('assets/mock-data/patient-list.json')
+    return this.http.get(this.url('assets/mock-data/patient-list.json'))
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
@@ -82,5 +84,9 @@ export class PatientApiService {
       error.status ? `${error.status} - ${error.statusText}` : 'Server error';
     console.error(errMsg); // log to console instead
     return Observable.throw(errMsg);
+  }
+
+  private url(defaultUrl: string): string {
+    return Config.API.PATIENT && Config.API.PATIENT !== CommonConstants.TBD ? Config.API.PATIENT : defaultUrl;
   }
 }
