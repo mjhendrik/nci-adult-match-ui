@@ -4,13 +4,12 @@ services:
     build:
       context: .
       dockerfile: ./.docker/dockerfile.httpd
-    command: npm start
-    container_name: nci-adult-match-ui
-    image: "match/nci-adult-match-ui:latest"
+    command: httpd-foreground -C 'DocumentRoot /usr/local/apache2/match/'
+    image: "matchbox/nci-adult-match-ui:latest"
     ports:
-      - '5555:5555'
+      - '5555:80'
   patient-api:
-    image: "match/nci-adult-match-patient-api"
+    image: "matchbox/nci-adult-match-patient-api"
     command: python app.py
     ports:
       - "5000:5000"
@@ -19,6 +18,6 @@ services:
   mongo:
     image: mongo:3.4.0
     volumes:
-      - ./data_setup/match:/backup
+      - ./misc/data_setup/match:/backup
     ports:
       - "27017:27017"

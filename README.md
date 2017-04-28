@@ -1,8 +1,8 @@
 # NCI MATCH Adult Study Angular Front-End
 
 [![Build Status](https://travis-ci.org/CBIIT/nci-adult-match-ui.svg?branch=master)](https://travis-ci.org/CBIIT/nci-adult-match-ui)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d0059ed74fc241c3adc2da283aa0b7a9)](https://www.codacy.com/app/FNLCR/nci-adult-match-ui?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=CBIIT/nci-adult-match-ui&amp;utm_campaign=Badge_Grade)
-[![Codacy Badge](https://api.codacy.com/project/badge/Coverage/d0059ed74fc241c3adc2da283aa0b7a9)](https://www.codacy.com/app/FNLCR/nci-adult-match-ui?utm_source=github.com&utm_medium=referral&utm_content=CBIIT/nci-adult-match-ui&utm_campaign=Badge_Coverage)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d0059ed74fc241c3adc2da283aa0b7a9)](https://www.codacy.com/app/matchbox/nci-adult-match-ui?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=CBIIT/nci-adult-match-ui&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Coverage/d0059ed74fc241c3adc2da283aa0b7a9)](https://www.codacy.com/app/matchbox/nci-adult-match-ui?utm_source=github.com&utm_medium=referral&utm_content=CBIIT/nci-adult-match-ui&utm_campaign=Badge_Coverage)
 
 ## How to start
 
@@ -83,7 +83,7 @@ Your project will be compiled ahead of time (AOT), and then the resulting bundle
 
 ### Local development build and deployment
 
-To build latest UI:
+To build latest UI image (otherwise tha previous image is used). Please make sure the UI has been built as `dev`, run `npm run build.dev` if necessary.
 
 ```bash
 $ docker-compose build
@@ -112,8 +112,8 @@ $ docker-compose up mongo
 To restore MongoDB data:
 
 ```bash
-$ docker exec -it nciadultmatchui_mongo bash
-$ mongorestore --db match ./backup
+$ docker exec -it nciadultmatchui_mongo_1 bash
+$ mongorestore --nsInclude 'match.*' --drop ./backup
 ```
 
 After you've restored the backup you may check the restored data (while still attached to the mongo container, as above):
@@ -134,11 +134,11 @@ Exit from MongoDB shell by pressing `Ctrl+C`
 To build the image based on Apache run the following:
 
 ```bash
-$ docker build -f .docker/dockerfile.httpd -t "fnlcr/nci-adult-match-ui:latest" .
+$ docker build -f .docker/dockerfile.httpd -t "matchbox/nci-adult-match-ui:latest" .
 ```
 
-To run the docker locally use port 5555 because Auth0 is configured to use it
+To run the docker locally use port 5555 because Auth0 is configured to use it. Please make sure the UI has been built as `dev`, run `npm run build.dev` if necessary.
 
 ```bash
-$ docker run --name "nci-adult-match-ui" -it -p 5555:80  "fnlcr/nci-adult-match-ui:latest"
+$ docker run --name "nci-adult-match-ui" -it -p 5555:80  "matchbox/nci-adult-match-ui:latest"
 ```
