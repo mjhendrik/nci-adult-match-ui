@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Observable';
 
 // import 'rxjs/add/operator/do';  // for debugging
 
-import { Config, CommonConstants } from '../shared/config/env.config';
+import { Config } from '../shared/config/env.config';
 
 export interface PatientDetailsInterface {
   patientData: {};
@@ -87,6 +87,6 @@ export class PatientApiService {
   }
 
   private url(defaultUrl: string): string {
-    return Config.API.PATIENT && Config.API.PATIENT !== CommonConstants.TBD ? Config.API.PATIENT : defaultUrl;
+    return Config.API.PATIENT && Config.API.PATIENT !== '[TBD]' ? Config.API.PATIENT : defaultUrl;
   }
 }
