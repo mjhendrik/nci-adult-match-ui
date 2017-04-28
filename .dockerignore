@@ -7,7 +7,6 @@ bower_components
 
 # IDEs and editors
 .idea
-.vscode
 .project
 .classpath
 *.launch
@@ -28,6 +27,12 @@ misc
 e2e/*.js
 e2e/*.map
 
-#System Files
+# System Files
 .DS_Store
 Thumbs.db
+
+# Node/TS files
+ts-node-*
+.node-gyp
+.npm
+.v8flags.*.json
