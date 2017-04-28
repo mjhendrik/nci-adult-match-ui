@@ -2,7 +2,7 @@ import { EnvConfig } from './env-config.interface';
 
 const DevConfig: EnvConfig = {
   API: {
-    PATIENT: 'http:\\localhost\5000',
+    PATIENT: 'http://localhost/5000',
     TREATMENT_ARM: '[TBD]',
     ION_REPORTER: '[TBD]'
   },
