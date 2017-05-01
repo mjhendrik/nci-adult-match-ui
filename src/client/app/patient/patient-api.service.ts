@@ -47,7 +47,7 @@ export class PatientApiService {
    * @return {string[]} The Observable for the HTTP request.
    */
   getPatientList(): Observable<any[]> {
-    return this.http.get(this.url('assets/mock-data/patient-list.json'))
+    return this.http.get(this.url('/patients', 'assets/mock-data/patient-list.json'))
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
@@ -86,7 +86,7 @@ export class PatientApiService {
     return Observable.throw(errMsg);
   }
 
-  private url(defaultUrl: string): string {
-    return Config.API.PATIENT && Config.API.PATIENT !== '[TBD]' ? Config.API.PATIENT : defaultUrl;
+  private url(endpoint: string, defaultUrl: string): string {
+    return Config.API.PATIENT && Config.API.PATIENT !== '[TBD]' ? Config.API.PATIENT + endpoint : defaultUrl;
   }
 }

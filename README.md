@@ -134,6 +134,8 @@ $ db.patient.count()
 
 Exit from MongoDB shell by pressing `Ctrl+C`
 
+Please note each time you run `docker-compose down` the data volumes for the docker containers are removed and you'll have to import the backups again.
+
 
 ### Test or Production build and deployment
 
