@@ -32,7 +32,7 @@ e2e/*.map
 Thumbs.db
 
 # Node/TS files
-ts-node-*
-.node-gyp
-.npm
-.v8flags.*.json
+#ts-node-*
+#.node-gyp
+#.npm
+#.v8flags.*.json
