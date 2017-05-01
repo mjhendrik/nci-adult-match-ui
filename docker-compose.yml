@@ -10,6 +10,7 @@ services:
       - '5555:5555'
     volumes:
       - .:/usr/src/app
+      - node_modules:/usr/src/app/node_modules
   patient-api:
     image: "fnlcr/nci-adult-match-patient-api"
     command: python app.py
@@ -26,3 +27,5 @@ services:
       - ./misc/data_setup/match:/backup
     ports:
       - "27017:27017"
+volumes: 
+  node_modules:
