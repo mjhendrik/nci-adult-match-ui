@@ -7,7 +7,7 @@ export interface EnvConfig {
   ENV?: string;
 }
 
-interface EnvApiConfig  {
+interface EnvApiConfig {
   PATIENT: string;
   TREATMENT_ARM: string;
   ION_REPORTER: string;
