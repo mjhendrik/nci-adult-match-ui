@@ -98,8 +98,6 @@ Your project will be compiled ahead of time (AOT), and then the resulting bundle
 To build latest UI image (otherwise tha previous image is used). Please make sure the UI has been built as `dev`, run `npm run build.dev` if necessary.
 
 ```bash
-$ npm install
-$ npm rebuild node-sass --force
 $ docker-compose build
 ```
 
