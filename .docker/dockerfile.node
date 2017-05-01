@@ -6,6 +6,8 @@ WORKDIR $HOME
 
 COPY . .
 
-RUN npm install -g gulp && npm install && npm rebuild node-sass --force
+RUN npm install -g gulp \
+    && npm install \
+    && npm rebuild node-sass  
 
 EXPOSE 5555
