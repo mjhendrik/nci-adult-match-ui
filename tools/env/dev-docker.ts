@@ -5,7 +5,7 @@ const DevConfig: EnvConfig = {
   API: {
     PATIENT: 'http://patient-api/5000',
     TREATMENT_ARM: '',
-    ION_REPORTER: ''
+    ION_REPORTER: 'http://localhost:5555/api/v1/ion_reporters/healthcheck?site='
   },
   CLIENT_ID: 'RjoYZXUDEzQxMJw04C6B5dsQKqUAEYzA',
   AUTH_DOMAIN: 'ncimatch.auth0.com'
