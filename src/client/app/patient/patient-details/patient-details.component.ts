@@ -8,8 +8,7 @@ import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 
 import { routerTransition } from './../../shared/router.animations';
 import {
-  PatientApiService,
-  PatientDetailsInterface
+  PatientApiService
 } from '../patient-api.service';
 
 /**
@@ -25,10 +24,11 @@ import {
 })
 export class PatientDetailsComponent implements OnInit {
 
-  patientData: any;
-  summaryData: any;
-  biopsyData: any;
-  dataAvailable: boolean;
+  summaryData: any = {};
+  biopsyData: any = {};
+
+  patient: any;
+  isLoaded: boolean;
   errorMessage: string;
 
   analysisId: string = '';
@@ -150,11 +150,12 @@ export class PatientDetailsComponent implements OnInit {
 
   getData(psn: string) {
     this.patientApi.getPatientDetails(psn)
-      .subscribe((itemList: PatientDetailsInterface) => {
-        this.patientData = itemList.patientData;
-        this.summaryData = itemList.summaryData;
-        this.biopsyData = itemList.biopsyData;
-        this.dataAvailable = true;
+      .subscribe((response: any) => {
+        this.patient = response;
+        this.currentTreatmentArm = response.patientAssignments
+          && response.patientAssignments.length ? response.patientAssignments[0].treatmentArm : null;
+        this.disease = response.diseases && response.diseases.length ? response.diseases[0] : null;
+        this.isLoaded = true;
       },
       error => this.errorMessage = <any>error
       );

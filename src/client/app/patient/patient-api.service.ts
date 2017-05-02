@@ -53,7 +53,7 @@ export class PatientApiService {
       .catch(this.handleError);
   }
 
-  getPatientDetails(psn: string): Observable<PatientDetailsInterface> {
+  getPatientDetails(psn: string): Observable<any> {
     return this.http.get(this.url('/patients/' + psn, 'assets/mock-data/patient.1067.json'))
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug

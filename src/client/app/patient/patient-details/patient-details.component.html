@@ -1,31 +1,31 @@
-<div id="content" class="content" *ngIf="dataAvailable">
+<div id="content" class="content" *ngIf="isLoaded">
   <ul class="breadcrumb pull-right">
     <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
     <li><a href [routerLink]="['/patients']" class="link-none">Patients</a></li>
-    <li class="active">Patient {{patientData.patientSequenceNumber | dashify}}</li>
+    <li class="active">Patient {{patient.patientSequenceNumber | dashify}}</li>
   </ul>
-  <h1 class="page-header">Patient {{patientData.patientSequenceNumber | dashify}}</h1>
+  <h1 class="page-header">Patient {{patient.patientSequenceNumber | dashify}}</h1>
   <div class="row" matchHeight="panel-height">
     <div class="col-md-6">
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height">
         <div class="panel-heading">
           <dl class="dl-horizontal">
             <dt>Patient Sequence Number</dt>
-            <dd>{{patientData.patientSequenceNumber | dashify}}</dd>
+            <dd>{{patient.patientSequenceNumber | dashify}}</dd>
             <dt>Patient</dt>
-            <dd>{{patientData.gender | dashify}}, {{patientData.ethnicity | dashify}}</dd>
+            <dd>{{patient.gender | dashify}}, {{patient.ethnicity | dashify}}</dd>
             <dt>Status</dt>
-            <dd><span [colorCodePatients]="patientData.currentPatientStatus">{{patientData.currentPatientStatus | dashify}}</span></dd>
+            <dd><span [colorCodePatients]="patient.currentPatientStatus">{{patient.currentPatientStatus | dashify}}</span></dd>
             <dt>Assignment Reason</dt>
-            <dd class="widget-stat-text">{{patientData.assignmentReason | dashify}}</dd>
+            <dd class="widget-stat-text">{{patient.assignmentReason | dashify}}</dd>
             <dt>Current Step</dt>
-            <dd>{{patientData.currentStep | dashify}}</dd>
+            <dd>{{patient.currentStepNumber | dashify}}</dd>
             <dt>Treatment Arm</dt>
-            <dd>{{patientData.treatmentArm | dashify}}</dd>
+            <dd>{{(currentTreatmentArm ? currentTreatmentArm.name + ' (' + currentTreatmentArm.version + ')' : '') | dashify}}</dd>
             <dt>Registration Date</dt>
-            <dd>{{patientData.registrationDate | gmt | dashify}}</dd>
+            <dd>{{patient.registrationDate | gmt | dashify}}</dd>
             <dt>Last Rejoin Scan Date</dt>
-            <dd>{{patientData.lastRejoinScanDate | gmt | dashify}}</dd>
+            <dd>{{patient.lastRejoinScanDate | gmt | dashify}}</dd>
           </dl>
         </div>
       </div>
@@ -35,19 +35,19 @@
         <div class="panel-heading">
           <dl class="dl-horizontal">
             <dt>Concordance</dt>
-            <dd>{{patientData.concordance | dashify}}</dd>
-            <dt>Disease(s)</dt>
-            <dd>{{patientData.Diseases | dashify}}</dd>
+            <dd>{{patient.concordance | dashify}}</dd>
+            <dt>Disease</dt>
+            <dd>{{disease.name | dashify}}</dd>
             <dt>Short Name</dt>
-            <dd>{{patientData.shortName | dashify}}</dd>
+            <dd>{{disease.shortName | dashify}}</dd>
             <dt>CTEP Category</dt>
-            <dd>{{patientData.ctepCategory | dashify}}</dd>
+            <dd>{{disease.ctepCategory | dashify}}</dd>
             <dt>CTEP Sub Category</dt>
-            <dd>{{patientData.ctepSubCategory | dashify}}</dd>
+            <dd>{{disease.ctepSubCategory | dashify}}</dd>
             <dt>CTEP Term</dt>
-            <dd>{{patientData.ctepTerm | dashify}}</dd>
+            <dd>{{disease.ctepTerm | dashify}}</dd>
             <dt>MedDRA Code</dt>
-            <dd>{{patientData.medDRACode | dashify}}</dd>
+            <dd>{{disease.medDRACode | dashify}}</dd>
           </dl>
         </div>
       </div>
@@ -111,6 +111,7 @@
                         </div>
                       </li>
                     </ul>
+                    <p *ngIf="!summaryData.activity" class="text-muted m-t-10 m-l-0">No Patient timeline data yet<p>
                   </div>
                 </div>
               </div>
