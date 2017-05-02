@@ -1,6 +1,7 @@
 import {
   Component,
-  OnInit
+  OnInit,
+  ChangeDetectorRef
 } from '@angular/core';
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 
@@ -31,21 +32,25 @@ export class PatientDetailsComponent implements OnInit {
 
   analysisId: string = '';
 
+  uploadedFiles: any[];
+  filecount: number = 0;
+
   variantZip: boolean = false;
   dnaBam: boolean = false;;
   cdnaBam: boolean = false;;
 
+  changeDetector: ChangeDetectorRef;
   configVariantZip: DropzoneConfigInterface;
   configDnaBam: DropzoneConfigInterface;
   configCdnaBam: DropzoneConfigInterface;
   configDocuments: DropzoneConfigInterface;
 
-  constructor(private patientApi: PatientApiService) { }
+  constructor(private patientApi: PatientApiService, private ref: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.getData();
 
-    let that = this;
+    this.changeDetector = this.ref;
 
     const DROPZONE_CONFIG_VARIANT_ZIP: DropzoneConfigInterface = {
 
@@ -65,8 +70,6 @@ export class PatientDetailsComponent implements OnInit {
       accept: function (file: any, done: any) {
         // console.log(file);
         // console.log(done);
-        that.variantZip = true;
-        // console.log(that.variantZip);
         // var _id = count++;
         // file._id = _id;
         // addedFilesHash[_id] = done;
@@ -82,7 +85,7 @@ export class PatientDetailsComponent implements OnInit {
       server: 'https://httpbin.org/post',
       maxFiles: 1,
       maxFilesize: 50000, // size in MB
-      acceptedFiles: '.bam',
+      // acceptedFiles: '.bam',
       addRemoveLinks: true,
       autoProcessQueue: false,
       init: function () {
@@ -92,7 +95,9 @@ export class PatientDetailsComponent implements OnInit {
         });
       },
       accept: function (file: any, done: any) {
-        that.dnaBam = true;
+        // var _id = count++;
+        // file._id = _id;
+        // addedFilesHash[_id] = done;
       }
 
     };
@@ -105,7 +110,7 @@ export class PatientDetailsComponent implements OnInit {
       server: 'https://httpbin.org/post',
       maxFiles: 1,
       maxFilesize: 50000, // size in MB
-      acceptedFiles: '.bam',
+      // acceptedFiles: '.bam',
       addRemoveLinks: true,
       autoProcessQueue: false,
       init: function () {
@@ -115,7 +120,9 @@ export class PatientDetailsComponent implements OnInit {
         });
       },
       accept: function (file: any, done: any) {
-        that.cdnaBam = true;
+        // var _id = count++;
+        // file._id = _id;
+        // addedFilesHash[_id] = done;
       }
 
     };
@@ -148,12 +155,52 @@ export class PatientDetailsComponent implements OnInit {
   }
 
   onUploadSuccess(evt: any): void {
-    console.log(evt);
+    // console.log(evt);
   }
 
   onUploadError(evt: any): void {
-    console.log(evt);
+    // console.log(evt);
   }
 
+  uploadfiles(): void {
+    this.configVariantZip.autoProcessQueue = true;
+    this.configDnaBam.autoProcessQueue = true;
+    this.configCdnaBam.autoProcessQueue = true;
+  }
+
+  addedFileVariantZip(evt: any): void {
+    this.variantZip = true;
+    this.ref.detectChanges();
+    // console.log(evt);
+  }
+
+  removedFileVariantZip(): void {
+    this.variantZip = false;
+    this.ref.detectChanges();
+  }
+
+  addedFileDnaBam(evt: any): void {
+    this.dnaBam = true;
+    this.ref.detectChanges();
+  }
+
+  removedFileDnaBam(): void {
+    this.dnaBam = false;
+    this.ref.detectChanges();
+  }
+
+  addedFileCdnaBam(evt: any): void {
+    this.cdnaBam = true;
+    this.ref.detectChanges();
+  }
+
+  removedFileCdnaBam(): void {
+    this.cdnaBam = false;
+    this.ref.detectChanges();
+  }
+
+  detectChanges(): void {
+    this.ref.detectChanges();
+  }
 
 }

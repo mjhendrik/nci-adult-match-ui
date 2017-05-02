@@ -332,17 +332,13 @@
         <div class="row">
           <div class="col-md-4 form-group has-feedback" [ngClass]="{true:'has-success',false:'has-error'}[variantZip]">
             <label class="control-label">Variant ZIP File</label>
-            <div class="form-control" *ngIf="analysisId.length!=0" [dropzone]="configVariantZip" (error)="onUploadError($event)" (success)="onUploadSuccess($event)">
+            <div class="form-control" [ngClass]="{true:'disable-div'}[analysisId.length==0]" [dropzone]="configVariantZip" (addedfile)="addedFileVariantZip($event)"
+              (removedfile)="removedFile()" (error)="onUploadError($event)" (success)="onUploadSuccess($event)">
               <div class="dz-message" data-dz-message>
-                <span>
+                <span *ngIf="analysisId.length!=0">
                   Click or drag Variant ZIP file here
                 </span>
-              </div>
-            </div>
-            <div class="form-control" *ngIf="analysisId.length == 0" [disabled]="true" [dropzone]="configVariantZip" (error)="onUploadError($event)"
-              (success)="onUploadSuccess($event)">
-              <div class="dz-message" data-dz-message>
-                <span>
+                <span *ngIf="analysisId.length == 0">
                   Enter Analysis ID to add Variant ZIP file
                 </span>
               </div>
@@ -350,17 +346,13 @@
           </div>
           <div class="col-md-4 form-group has-feedback" [ngClass]="{true:'has-success',false:'has-error'}[dnaBam]">
             <label class="control-label">DNA BAM File</label>
-            <div class="form-control" *ngIf="analysisId.length!=0" [dropzone]="configDnaBam" (error)="onUploadError($event)" (success)="onUploadSuccess($event)">
+            <div class="form-control" [ngClass]="{true:'disable-div'}[analysisId.length==0]" [dropzone]="configDnaBam" (addedfile)="addedFileDnaBam($event)"
+              (removedfile)="removedFileDnaBam()" (error)="onUploadError($event)" (success)="onUploadSuccess($event)">
               <div class="dz-message" data-dz-message>
-                <span>
+                <span *ngIf="analysisId.length!=0">
                   Click or drag DNA BAM file here
                 </span>
-              </div>
-            </div>
-            <div class="form-control" *ngIf="analysisId.length == 0" [disabled]="true" [dropzone]="configDnaBam" (error)="onUploadError($event)"
-              (success)="onUploadSuccess($event)">
-              <div class="dz-message" data-dz-message>
-                <span>
+                <span *ngIf="analysisId.length == 0">
                   Enter Analysis ID to add DNA BAM file
                 </span>
               </div>
@@ -368,17 +360,13 @@
           </div>
           <div class="col-md-4 form-group has-feedback" [ngClass]="{true:'has-success',false:'has-error'}[cdnaBam]">
             <label class="control-label">cDNA BAM File</label>
-            <div class="form-control" *ngIf="analysisId.length!=0" [dropzone]="configCdnaBam" (error)="onUploadError($event)" (success)="onUploadSuccess($event)">
+            <div class="form-control" [ngClass]="{true:'disable-div'}[analysisId.length==0]" [dropzone]="configCdnaBam" (addedfile)="addedFileCdnaBam($event)"
+              (removedfile)="removedFileCdnaBam()" (error)="onUploadError($event)" (success)="onUploadSuccess($event)">
               <div class="dz-message" data-dz-message>
-                <span>
+                <span *ngIf="analysisId.length!=0">
                   Click or drag cDNA BAM file here
                 </span>
-              </div>
-            </div>
-            <div class="form-control" *ngIf="analysisId.length == 0" [disabled]="true" [dropzone]="configCdnaBam" (error)="onUploadError($event)"
-              (success)="onUploadSuccess($event)">
-              <div class="dz-message" data-dz-message>
-                <span>
+                <span *ngIf="analysisId.length == 0">
                   Enter Analysis ID to add cDNA BAM file
                 </span>
               </div>
