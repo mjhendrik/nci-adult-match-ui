@@ -7,7 +7,12 @@ import * as moment from 'moment/moment';
     name: 'gmt'
 })
 export class GmtPipe implements PipeTransform {
-    transform(value: string): string {
+    transform(value: any): string {
+        // Check if it's the Mongo DB date
+        if (typeof value === 'object' && '$date' in value) {
+            value = value['$date'];
+        }
+
         let date: number;
         if (value !== undefined && value !== null) {
             value = value.toString();
