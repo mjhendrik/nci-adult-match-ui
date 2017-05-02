@@ -2,7 +2,7 @@
   <ul class="breadcrumb pull-right">
     <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
     <li><a href [routerLink]="['/patients']" class="link-none">Patients</a></li>
-    <li><a href [routerLink]="['/patients/details']" class="link-none">Patient 10069</a></li>
+    <li><a href [routerLink]="['/patients/details', '10069']" class="link-none">Patient 10069</a></li>
     <li class="active">Variant Report</li>
   </ul>
   <h1 class="page-header">Variant and Assignment Report</h1>
@@ -26,7 +26,7 @@
               <dt>Analysis ID</dt>
               <dd>{{variantReport.analysisId | dashify}}</dd>
               <dt>Patient</dt>
-              <dd><a href [routerLink]="['/patients/details']" class="link-none">{{variantReport.patientSequenceNumber | dashify}}</a>,
+              <dd><a href [routerLink]="['/patients', item.patientSequenceNumber]" class="link-none">{{variantReport.patientSequenceNumber | dashify}}</a>,
                 <span [colorCodePatients]="variantReport.patientStatus">{{variantReport.patientStatus | dashify}}</span>,
                 at Step {{variantReport.step | dashify}}</dd>
               <dt>Patient Concordance</dt>
