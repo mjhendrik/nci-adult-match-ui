@@ -31,6 +31,10 @@ export class PatientDetailsComponent implements OnInit {
 
   analysisId: string = '';
 
+  variantZip: boolean = false;
+  dnaBam: boolean = false;;
+  cdnaBam: boolean = false;;
+
   configVariantZip: DropzoneConfigInterface;
   configDnaBam: DropzoneConfigInterface;
   configCdnaBam: DropzoneConfigInterface;
@@ -41,35 +45,79 @@ export class PatientDetailsComponent implements OnInit {
   ngOnInit() {
     this.getData();
 
+    let that = this;
+
     const DROPZONE_CONFIG_VARIANT_ZIP: DropzoneConfigInterface = {
+
       // Change this to your upload POST address:
       server: 'https://httpbin.org/post',
       maxFiles: 1,
       maxFilesize: 50000, // size in MB
       acceptedFiles: '.zip',
-      addRemoveLinks: true
+      addRemoveLinks: true,
+      autoProcessQueue: false,
+      init: function () {
+        this.on('removedfile', function (file: any) {
+          // delete from our dict removed file
+          //delete addedFilesHash[file];
+        });
+      },
+      accept: function (file: any, done: any) {
+        // console.log(file);
+        // console.log(done);
+        that.variantZip = true;
+        // console.log(that.variantZip);
+        // var _id = count++;
+        // file._id = _id;
+        // addedFilesHash[_id] = done;
+      }
+
     };
 
     this.configVariantZip = DROPZONE_CONFIG_VARIANT_ZIP;
 
     const DROPZONE_CONFIG_DNA_BAM: DropzoneConfigInterface = {
+
       // Change this to your upload POST address:
       server: 'https://httpbin.org/post',
       maxFiles: 1,
       maxFilesize: 50000, // size in MB
       acceptedFiles: '.bam',
-      addRemoveLinks: true
+      addRemoveLinks: true,
+      autoProcessQueue: false,
+      init: function () {
+        this.on('removedfile', function (file: any) {
+          // delete from our dict removed file
+          //delete addedFilesHash[file];
+        });
+      },
+      accept: function (file: any, done: any) {
+        that.dnaBam = true;
+      }
+
     };
 
     this.configDnaBam = DROPZONE_CONFIG_DNA_BAM;
 
     const DROPZONE_CONFIG_CDNA_BAM: DropzoneConfigInterface = {
+
       // Change this to your upload POST address:
       server: 'https://httpbin.org/post',
       maxFiles: 1,
       maxFilesize: 50000, // size in MB
       acceptedFiles: '.bam',
-      addRemoveLinks: true
+      addRemoveLinks: true,
+      autoProcessQueue: false,
+      init: function () {
+        this.on('removedfile', function (file: any) {
+          // delete from our dict removed file
+          //delete addedFilesHash[file];
+        });
+      },
+      accept: function (file: any, done: any) {
+        that.cdnaBam = true;
+      }
+
     };
 
     this.configCdnaBam = DROPZONE_CONFIG_CDNA_BAM;
