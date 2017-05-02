@@ -20,6 +20,7 @@ import { CliaParentComponent } from './clia/clia-parent/clia-parent.component';
 import { CliaVariantReportsNtcComponent } from './clia/clia-variant-reports-ntc/clia-variant-reports-ntc.component';
 import { CliaVariantReportsPaccComponent } from './clia/clia-variant-reports-pacc/clia-variant-reports-pacc.component';
 import { CliaVariantReportsPcComponent } from './clia/clia-variant-reports-pc/clia-variant-reports-pc.component';
+import { CliaVariantReportQcComponent } from './clia/clia-variant-report-qc/clia-variant-report-qc.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 
 export function main() {
@@ -42,7 +43,8 @@ export function main() {
       { path: 'clia_mda', component: CliaParentComponent },
       { path: 'clia_variant_reports_ntc', component: CliaVariantReportsNtcComponent },
       { path: 'clia_variant_reports_pacc', component: CliaVariantReportsPaccComponent },
-      { path: 'clia_variant_reports_pc', component: CliaVariantReportsPcComponent }
+      { path: 'clia_variant_reports_pc', component: CliaVariantReportsPcComponent },
+      { path: 'clia_variant_reports_qc', component: CliaVariantReportQcComponent }
     ];
     beforeEach(() => {
       TestBed.configureTestingModule({
@@ -61,6 +63,7 @@ export function main() {
           CliaVariantReportsNtcComponent,
           CliaVariantReportsPaccComponent,
           CliaVariantReportsPcComponent,
+          CliaVariantReportQcComponent,
           PatientDetailsComponent,
           PatientVariantReportComponent,
         ],
