@@ -30,33 +30,49 @@
             <mfDefaultSorter by="id"><span class="table-header">ID</span></mfDefaultSorter>
           </th>
           <th>
-            <mfDefaultSorter by="gene2"><span class="table-header">Gene 2</span></mfDefaultSorter>
+            <mfDefaultSorter by="chrom"><span class="table-header">Chrom</span></mfDefaultSorter>
           </th>
           <th>
-            <mfDefaultSorter by="gene2count"><span class="table-header">Gene 2 Count</span></mfDefaultSorter>
+            <mfDefaultSorter by="position"><span class="table-header">Position </span></mfDefaultSorter>
           </th>
           <th>
-            <mfDefaultSorter by="gene1"><span class="table-header">Gene 1</span></mfDefaultSorter>
+            <mfDefaultSorter by="reference"><span class="table-header">Reference</span></mfDefaultSorter>
           </th>
           <th>
-            <mfDefaultSorter by="gene1count"><span class="table-header">Gene 1 Count</span></mfDefaultSorter>
+            <mfDefaultSorter by="alternative"><span class="table-header">Alternative</span></mfDefaultSorter>
           </th>
           <th>
-            <mfDefaultSorter by="annotation"><span class="table-header">Annotation</span></mfDefaultSorter>
+            <mfDefaultSorter by="funcGene"><span class="table-header">Func Gene</span></mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="oncomineVariantClass"><span class="table-header">Oncomine Variant Class</span></mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="exon"><span class="table-header">Exon</span></mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="function"><span class="table-header">Function</span></mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="readCount"><span class="table-header">Read Count</span></mfDefaultSorter>
           </th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let item of mfTable.data">
           <td>{{item.id | dashify}}</td>
-          <td>{{item.gene2 | dashify}}</td>
-          <td>{{item.gene2count | dashify}}</td>
-          <td>{{item.gene1 | dashify}}</td>
-          <td>{{item.gene1count | dashify}}</td>
-          <td>{{item.annotation | dashify}}</td>
+          <td>{{item.chrom | dashify}}</td>
+          <td>{{item.position | dashify}}</td>
+          <td>{{item.reference | dashify}}</td>
+          <td>{{item.alternative | dashify}}</td>
+          <td>{{item.funcGene | dashify}}</td>
+          <td>{{item.oncomineVariantClass | dashify}}</td>
+          <td>{{item.exon | dashify}}</td>
+          <td>{{item.function | dashify}}</td>
+          <td>{{item.readCount | dashify}}</td>
         </tr>
         <tr *ngIf="!items || mfTable.data.length == 0">
-          <td class="text-muted" colspan="6">
+          <td class="text-muted" colspan="14">
             <span *ngIf="searchTerm"> No matching search results found for "{{searchTerm}}"</span>
             <span *ngIf="!searchTerm">No Gene Fusion Variant data</span>
           </td>
@@ -64,7 +80,7 @@
       </tbody>
       <tfoot>
         <tr>
-          <td class="tfoot-padding" colspan="6">
+          <td class="tfoot-padding" colspan="14">
             <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchTerm" [totallength]="items ? items.length : 0"></mfBootstrapPaginator>
           </td>
         </tr>
