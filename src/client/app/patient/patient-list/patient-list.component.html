@@ -49,16 +49,16 @@
                                 <mfDefaultSorter by="patientSequenceNumber"><span class="table-header">Patient Sequence Number</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="currentStatus"><span class="table-header">Status</span></mfDefaultSorter>
+                                <mfDefaultSorter by="currentPatientStatus"><span class="table-header">Status</span></mfDefaultSorter>
                               </th>
                               <th>
                                 <mfDefaultSorter by="currentStepNumber"><span class="table-header">Step Number</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="diseases"><span class="table-header">Diseases</span></mfDefaultSorter>
+                                <mfDefaultSorter by="diseaseList"><span class="table-header">Diseases</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="assignedTreatmentArm"><span class="table-header">Treatment Arm</span></mfDefaultSorter>
+                                <mfDefaultSorter by="currentTreatmentArm"><span class="table-header">Treatment Arm</span></mfDefaultSorter>
                               </th>
                               <th>
                                 <mfDefaultSorter by="registrationDate"><span class="table-header">Registration Date</span></mfDefaultSorter>
@@ -72,14 +72,14 @@
                           <tbody>
                             <tr *ngFor="let item of mftablePatients.data">
                               <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                                <a href [routerLink]="['/patients/details']" class="link-none"><i class="fa fa-user"></i> {{item.patientSequenceNumber | dashify}}</a>
+                                <a href [routerLink]="['/patients/details', item.patientSequenceNumber]" class="link-none"><i class="fa fa-user"></i> {{item.patientSequenceNumber | dashify}}</a>
                               </td>
-                              <td [colorCodePatients]="item.currentStatus">{{item.currentStatus | dashify}}</td>
+                              <td [colorCodePatients]="item.currentPatientStatus">{{item.currentPatientStatus | dashify}}</td>
                               <td>{{item.currentStepNumber | dashify}}</td>
-                              <td>{{item.diseases | dashify}}</td>
+                              <td>{{item.diseaseList | dashify}}</td>
                               <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                                <span *ngIf="item.assignedTreatmentArm!==null"><a href [routerLink]="['/treatments/details']" class="link-none"><i class="fa fa-medkit"></i> {{item.assignedTreatmentArm | dashify}} ({{item.assignedTreatmentArmVersion | dashify}})</a></span>
-                                <span *ngIf="item.assignedTreatmentArm===null">-</span>
+                                <span *ngIf="item.currentTreatmentArm"><a href [routerLink]="['/treatments/details']" class="link-none"><i class="fa fa-medkit"></i> {{item.currentTreatmentArm.name | dashify}} ({{item.currentTreatmentArm.version | dashify}})</a></span>
+                                <span *ngIf="!item.currentTreatmentArm">-</span>
                               </td>
                               <td>{{item.registrationDate | dashify}}</td>
                               <td>{{item.offTrialDate | dashify}}</td>
