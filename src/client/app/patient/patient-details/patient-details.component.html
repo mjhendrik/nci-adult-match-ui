@@ -58,8 +58,9 @@
       <div class="panel">
         <ul class="nav nav-tabs nav-tabs-purple">
           <li class="active"><a href="#tab-summary" data-toggle="tab">Summary</a></li>
-          <li class=""><a href="#tab-biopsy-t-16-000762" data-toggle="tab"><i class="fa fa-bell-o" aria-hidden="true"></i> 2. Biopsy T-16-000762, 08-12-2016</a></li>
-          <li class=""><a href="#tab-biopsy-t-16-000789" data-toggle="tab">1. Biopsy T-16-000789, 07-06-2016</a></li>
+          <li class="" *ngFor="let biopsy of patient.biopsies; first as isFirst">
+            <a href="#tab-biopsy-t-{{biopsy.biopsySequenceNumber}}" data-toggle="tab"> <i  *ngIf="isFirst" class="fa fa-bell-o" aria-hidden="true"></i> {{biopsy.biopsySequenceNumber}}, {{biopsy.dateCreated | gmt | date:"MM/dd/yyyy"}}</a>
+          </li>
           <li class=""><a href="#tab-documents" data-toggle="tab">Documents</a></li>
         </ul>
         <div class="tab-content m-b-0">
@@ -117,9 +118,9 @@
               </div>
             </div>
           </div>
-          <div class="tab-pane fade" id="tab-biopsy-t-16-000762">
+          <div *ngFor="let biopsy of patient.biopsies" class="tab-pane fade" id="tab-biopsy-t-{{biopsy.biopsySequenceNumber}}">
             <div class="panel-heading">
-              <h4 class="panel-title f-s-18">Biopsy: {{biopsyData.id}}
+              <h4 class="panel-title f-s-18">Biopsy: {{biopsy.biopsySequenceNumber}}
               </h4>
             </div>
             <div class="row">
@@ -128,11 +129,11 @@
                   <div class="panel-heading">
                     <dl class="dl-horizontal">
                       <dt>Specimen Collection Date</dt>
-                      <dd>{{biopsyData.specimenCollectionDate | gmt | dashify}}</dd>
+                      <dd>{{biopsy.specimenCollectionDate | gmt | dashify}}</dd>
                       <dt>Specimen Received Date</dt>
-                      <dd>{{biopsyData.specimenReceivedDate | gmt | dashify}}</dd>
+                      <dd>{{biopsy.specimenReceivedDate | gmt | dashify}}</dd>
                       <dt>Specimen Failure Date</dt>
-                      <dd>{{biopsyData.specimenFailureDate | gmt | dashify}}</dd>
+                      <dd>{{biopsy.specimenFailureDate | gmt | dashify}}</dd>
                     </dl>
                   </div>
                 </div>
@@ -142,13 +143,13 @@
                   <div class="panel-heading">
                     <dl class="dl-horizontal">
                       <dt>Pathology Status</dt>
-                      <dd>{{biopsyData.pathologyStatus | dashify}}</dd>
+                      <dd>{{biopsy.pathologyStatus | dashify}}</dd>
                       <dt>Pathology Received Date</dt>
-                      <dd>{{biopsyData.pathologyReceivedDate | gmt | dashify}}</dd>
+                      <dd>{{biopsy.pathologyReceivedDate | gmt | dashify}}</dd>
                       <dt>Concordance</dt>
-                      <dd>{{biopsyData.concordance | dashify}}</dd>
+                      <dd>{{biopsy.concordance | dashify}}</dd>
                       <dt>Comment</dt>
-                      <dd>{{biopsyData.comment | dashify}}</dd>
+                      <dd>{{biopsy.comment | dashify}}</dd>
                     </dl>
                   </div>
                 </div>
@@ -172,7 +173,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let item of biopsyData.assayHistory">
+                        <tr *ngFor="let item of biopsy.assayHistory">
                           <td>{{item.ihc | dashify}}</td>
                           <td>{{item.orderDate | dashify}}</td>
                           <td>{{item.resultDate | dashify}}</td>
@@ -206,7 +207,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let item of biopsyData.nucleicAcidSendout">
+                        <tr *ngFor="let item of biopsy.nucleicAcidSendout">
                           <td><i class="fa fa-share-alt"></i> {{item.molecularSequenceNumber | dashify}}</td>
                           <td>{{item.destinationSite | dashify}}</td>
                           <td>
@@ -228,7 +229,7 @@
                                   <li class="active"><a href="#panel-tab-info" data-toggle="tab" aria-expanded="true"><i class="fa fa-align-left"></i><span class="hidden-xs"> Info</span></a></li>
                                   <li class=""><a href="#panel-tab-files" data-toggle="tab" aria-expanded="false"><i class="fa fa-file-archive-o"></i><span class="hidden-xs"> Files</span></a></li>
                                 </ul>
-                                <h4 class="panel-title f-s-18">Analysis ID: {{biopsyData.analysisId}}</h4>
+                                <h4 class="panel-title f-s-18">Analysis ID: {{biopsy.analysisId}}</h4>
                               </div>
                               <div id="panel-tab-content" class="tab-content">
                                 <div class="tab-pane fade active in" id="panel-tab-info">
@@ -240,11 +241,11 @@
                                           <a class="link-none" href [routerLink]="['/patients/details/variant_report']"><i class="fa fa-file-text-o"></i></a>
                                         </dd>
                                         <dt>Status</dt>
-                                        <dd>{{biopsyData.variantStatus}}</dd>
+                                        <dd>{{biopsy.variantStatus}}</dd>
                                         <dt>File Received Date</dt>
-                                        <dd>{{biopsyData.variantFileReceivedDate}}</dd>
+                                        <dd>{{biopsy.variantFileReceivedDate}}</dd>
                                         <dt>Rejected/Confirmed Date</dt>
-                                        <dd>{{biopsyData.variantRejectedOrConfirmedDate}}</dd>
+                                        <dd>{{biopsy.variantRejectedOrConfirmedDate}}</dd>
                                       </dl>
                                     </div>
                                     <div class="col-md-6">
@@ -252,13 +253,13 @@
                                         <dt>Assignment Report</dt>
                                         <dd><a href [routerLink]="['/patients/details/variant_report']"><i class="fa fa-file-text-o"></i></a></dd>
                                         <dt>Status</dt>
-                                        <dd>{{biopsyData.assignmentStatus}}</dd>
+                                        <dd>{{biopsy.assignmentStatus}}</dd>
                                         <dt>Generation Date</dt>
-                                        <dd>{{biopsyData.assignmentGenerationDate}}</dd>
+                                        <dd>{{biopsy.assignmentGenerationDate}}</dd>
                                         <dt>Received from ECOG Date</dt>
-                                        <dd>{{biopsyData.assignmentReceivedDate}}</dd>
+                                        <dd>{{biopsy.assignmentReceivedDate}}</dd>
                                         <dt>Assignment Logic</dt>
-                                        <dd>{{biopsyData.assignmentLogic}}</dd>
+                                        <dd>{{biopsy.assignmentLogic}}</dd>
                                       </dl>
                                     </div>
                                   </div>
@@ -283,11 +284,6 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div class="tab-pane fade" id="tab-biopsy-t-16-000789">
-            <p class="text-muted">
-              Another Biopsy goes here
-            </p>
           </div>
           <div class="tab-pane fade" id="tab-documents">
             <div class="panel-heading">
