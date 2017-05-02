@@ -3,6 +3,7 @@ import {
   OnInit,
   ChangeDetectorRef
 } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 
 import { routerTransition } from './../../shared/router.animations';
@@ -45,10 +46,15 @@ export class PatientDetailsComponent implements OnInit {
   configCdnaBam: DropzoneConfigInterface;
   configDocuments: DropzoneConfigInterface;
 
-  constructor(private patientApi: PatientApiService, private ref: ChangeDetectorRef) { }
+  constructor(private router: Router,
+    private route: ActivatedRoute,
+    private patientApi: PatientApiService,
+    private ref: ChangeDetectorRef) { }
 
   ngOnInit() {
-    this.getData();
+    let psn = this.route.snapshot.params['patientSequenceNumber'];
+
+    this.getData(psn);
 
     this.changeDetector = this.ref;
 
@@ -142,8 +148,8 @@ export class PatientDetailsComponent implements OnInit {
 
   }
 
-  getData() {
-    this.patientApi.getPatientDetails()
+  getData(psn: string) {
+    this.patientApi.getPatientDetails(psn)
       .subscribe((itemList: PatientDetailsInterface) => {
         this.patientData = itemList.patientData;
         this.summaryData = itemList.summaryData;
