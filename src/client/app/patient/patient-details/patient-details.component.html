@@ -330,7 +330,7 @@
           <span class="fa form-control-feedback" [ngClass]="{true:'fa-times',false:'fa-check'}[analysisId.length==0]"></span>
         </div>
         <div class="row">
-          <div class="col-md-4 form-group has-feedback" [ngClass]="{true:'has-error',false:'has-success'}[true]">
+          <div class="col-md-4 form-group has-feedback" [ngClass]="{true:'has-success',false:'has-error'}[variantZip]">
             <label class="control-label">Variant ZIP File</label>
             <div class="form-control" *ngIf="analysisId.length!=0" [dropzone]="configVariantZip" (error)="onUploadError($event)" (success)="onUploadSuccess($event)">
               <div class="dz-message" data-dz-message>
@@ -348,7 +348,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-4 form-group has-feedback" [ngClass]="{true:'has-error',false:'has-success'}[true]">
+          <div class="col-md-4 form-group has-feedback" [ngClass]="{true:'has-success',false:'has-error'}[dnaBam]">
             <label class="control-label">DNA BAM File</label>
             <div class="form-control" *ngIf="analysisId.length!=0" [dropzone]="configDnaBam" (error)="onUploadError($event)" (success)="onUploadSuccess($event)">
               <div class="dz-message" data-dz-message>
@@ -366,7 +366,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-4 form-group has-feedback" [ngClass]="{true:'has-error',false:'has-success'}[true]">
+          <div class="col-md-4 form-group has-feedback" [ngClass]="{true:'has-success',false:'has-error'}[cdnaBam]">
             <label class="control-label">cDNA BAM File</label>
             <div class="form-control" *ngIf="analysisId.length!=0" [dropzone]="configCdnaBam" (error)="onUploadError($event)" (success)="onUploadSuccess($event)">
               <div class="dz-message" data-dz-message>
@@ -387,7 +387,8 @@
         </div>
       </div>
       <div class="modal-footer">
-        <a href="javascript:;" class="btn width-100 btn-purple-light" data-dismiss="modal" aria-hidden="true"><i class="fa fa-cloud-upload"></i> Upload</a>
+        <a [ngClass]="{false:'disabled'}[variantZip && dnaBam && cdnaBam]" href="javascript:;" class="btn width-100 btn-purple-light"
+          data-dismiss="modal" aria-hidden="true"><i class="fa fa-cloud-upload"></i> Upload</a>
       </div>
     </div>
   </div>

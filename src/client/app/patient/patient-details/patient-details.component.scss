@@ -1,0 +1,18 @@
+.modal-body .dz-message {
+  margin-top: 32px;
+  margin-left: 20px;
+}
+
+.modal-body .dropzone .form-clickble,
+.modal-body .dz-clickable {
+  height: 190px;
+}
+
+.modal-body .dropzone .dz-preview {
+  margin: 6px;
+}
+
+a.disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+}
