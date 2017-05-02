@@ -1,4 +1,4 @@
-<div id="content" class="content" *ngIf="dataAvailable">
+<div id="content" class="content" *ngIf="dataAvailable && overviewDataAvailable">
   <div class="row">
     <div class="p-l-15 f-s-10 text-muted-dark pull-right dashboard-loaded-at">
       Loaded at {{timestamp | date: 'mediumTime'}}
@@ -11,8 +11,7 @@
           <div class="widget-stat-info">
             <div class="widget-stat-title text-right">Patients</div>
             <div class="widget-stat-number text-right">{{patients.total}}</div>
-            <div class="widget-stat-text text-right">{{patients.onTreatmentArm}} On Treatment Arm&nbsp;&nbsp;|&nbsp;&nbsp;{{patients.offTrial}}
-              Off Trial</div>
+            <div class="widget-stat-text text-right">{{patients.onTreatmentArm}} On Treatment Arm&nbsp;&nbsp;|&nbsp;&nbsp;{{patients.offTrial}} Off Trial</div>
           </div>
         </div>
       </a>
