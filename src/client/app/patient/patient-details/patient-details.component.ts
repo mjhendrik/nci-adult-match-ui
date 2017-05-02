@@ -7,9 +7,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 
 import { routerTransition } from './../../shared/router.animations';
-import {
-  PatientApiService
-} from '../patient-api.service';
+import { PatientApiService } from '../patient-api.service';
+import { GmtPipe } from './../../shared/pipes/gmt.pipe';
 
 /**
  * PatientDetailsComponent.
@@ -149,12 +148,17 @@ export class PatientDetailsComponent implements OnInit {
   }
 
   getData(psn: string) {
+    let gmtPipe = new GmtPipe();
+    
     this.patientApi.getPatientDetails(psn)
       .subscribe((response: any) => {
         this.patient = response;
         this.currentTreatmentArm = response.patientAssignments
           && response.patientAssignments.length ? response.patientAssignments[0].treatmentArm : null;
         this.disease = response.diseases && response.diseases.length ? response.diseases[0] : null;
+        if (this.patient.biopsies && this.patient.biopsies.length) {
+          this.patient.biopsies = this.patient.biopsies.reverse();
+        }
         this.isLoaded = true;
       },
       error => this.errorMessage = <any>error
