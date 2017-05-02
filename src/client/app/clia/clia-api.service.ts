@@ -79,7 +79,7 @@ export class CliaApiService {
 
     return this.http.get(Config.API.ION_REPORTER + type, { headers: header })
 
-    // return this.http.get('assets/mock-data/clia-' + type + '-ion.json')
+      // return this.http.get('assets/mock-data/clia-' + type + '-ion.json')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
