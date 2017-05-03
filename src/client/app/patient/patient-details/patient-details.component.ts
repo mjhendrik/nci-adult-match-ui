@@ -35,7 +35,7 @@ export class PatientDetailsComponent implements OnInit {
   analysisId: string = '';
 
   uploadedFiles: any[];
-  filecount: number = 0;
+  fileCount: number = 0;
 
   variantZip: boolean = false;
   dnaBam: boolean = false;;
@@ -173,7 +173,7 @@ export class PatientDetailsComponent implements OnInit {
     // console.log(evt);
   }
 
-  uploadfiles(): void {
+  uploadFiles(): void {
     this.configVariantZip.autoProcessQueue = true;
     this.configDnaBam.autoProcessQueue = true;
     this.configCdnaBam.autoProcessQueue = true;
