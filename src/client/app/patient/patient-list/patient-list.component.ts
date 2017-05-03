@@ -39,7 +39,7 @@ export class PatientListComponent implements OnInit {
         this.tablePatientsData = itemList.map(x => {
           x.registrationDate = gmt.transform(x.registrationDate);
           x.offTrialDate = gmt.transform(x.offTrialDate);
-          x.diseaseList = x.diseases && x.diseases.length ? x.diseases.map(y => y.shortName).join(', ') : '';
+          x.diseaseList = x.diseases && x.diseases.length ? x.diseases.map((y: any) => y.shortName).join(', ') : '';
           x.currentTreatmentArm = x.patientAssignments && x.patientAssignments.length ? x.patientAssignments[0].treatmentArm : null;
           return x;
         });
@@ -47,5 +47,4 @@ export class PatientListComponent implements OnInit {
       error => this.errorMessage = <any>error
       );
   }
-
 }
