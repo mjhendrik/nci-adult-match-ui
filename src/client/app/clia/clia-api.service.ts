@@ -73,11 +73,7 @@ export class CliaApiService {
   }
 
   getCliaIon(type: string): Observable<any[]> {
-
-    let header = new Headers();
-    header.append('Authorization', localStorage.getItem('id_token'));
-
-    return this.http.get(Config.API.ION_REPORTER + '/ion_reporters/healthcheck?site=' + type, { headers: header })
+    return this.http.get(Config.API.ION_REPORTER + '/ion_reporters/healthcheck?site=' + type)
 
       // return this.http.get('assets/mock-data/clia-' + type + '-ion.json')
       .map((res: Response) => res.json())
