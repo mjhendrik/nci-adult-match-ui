@@ -107,6 +107,12 @@ To start the front-end and services locally:
 $ docker-compose up
 ```
 
+To pull the latest front-end and services locally:
+
+```bash
+$ docker-compose pull
+```
+
 Now open your browser at [http://localhost:5555](http://localhost:5555)
 
 To start only Monbgo DB, for example to develop your services locally:
