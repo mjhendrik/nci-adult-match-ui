@@ -25,6 +25,8 @@ export class PatientDetailsComponent implements OnInit {
 
   summaryData: any = {};
   biopsyData: any = {};
+  currentTreatmentArm: any = {};
+  disease: any = {};
 
   patient: any;
   isLoaded: boolean;
@@ -148,8 +150,6 @@ export class PatientDetailsComponent implements OnInit {
   }
 
   getData(psn: string) {
-    let gmtPipe = new GmtPipe();
-    
     this.patientApi.getPatientDetails(psn)
       .subscribe((response: any) => {
         this.patient = response;
