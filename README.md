@@ -95,11 +95,6 @@ Your project will be compiled ahead of time (AOT), and then the resulting bundle
 
 ### Local development build and deployment
 
-To build latest UI image (otherwise tha previous image is used). Please make sure the UI has been built as `dev`, run `npm run build.dev` if necessary.
-
-```bash
-$ docker-compose build
-```
 
 To start the front-end and services locally:
 
@@ -118,8 +113,9 @@ $ docker-compose up mongo
 To restore MongoDB data:
 
 ```bash
-$ docker exec -it nciadultmatchui_mongo_1 bash
-$ mongorestore --db match ./backup
+$ docker exec -it nciadultmatchui_mongo_1 bash # to attach to the mongo service of your docker-compose
+$ mongorestore --db match ./backup             # to restore the mongo dump
+$ exit                                         #to exit out of the mongo container into your terminal
 ```
 
 After you've restored the backup you may check the restored data (while still attached to the mongo container, as above):
