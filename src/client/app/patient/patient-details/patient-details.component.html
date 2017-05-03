@@ -59,7 +59,9 @@
         <ul class="nav nav-tabs nav-tabs-purple">
           <li class="active"><a href="#tab-summary" data-toggle="tab">Summary</a></li>
           <li class="" *ngFor="let biopsy of patient.biopsies; first as isFirst">
-            <a href="#tab-biopsy-t-{{biopsy.biopsySequenceNumber}}" data-toggle="tab"> <i  *ngIf="isFirst" class="fa fa-bell-o" aria-hidden="true"></i> {{biopsy.biopsySequenceNumber}}, {{biopsy.dateCreated | gmt | date:"MM/dd/yyyy"}}</a>
+            <a href="#tab-biopsy-t-{{biopsy.biopsySequenceNumber}}" data-toggle="tab"> 
+              <i *ngIf="isFirst" class="fa fa-bell-o" aria-hidden="true"></i> {{biopsy.biopsySequenceNumber}}, {{biopsy.dateCreated | gmt: 'YYYY-MM-DD'}}
+            </a>
           </li>
           <li class=""><a href="#tab-documents" data-toggle="tab">Documents</a></li>
         </ul>
