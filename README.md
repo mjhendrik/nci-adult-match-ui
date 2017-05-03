@@ -151,7 +151,7 @@ To run the docker locally use port 5555 because Auth0 is configured to use it. P
 $ docker run --name "nci-adult-match-ui" -it -p 5555:80  "fnlcr/nci-adult-match-ui:latest"
 ```
 
-# Running tests
+## Running tests
 
 ```bash
 $ npm test
