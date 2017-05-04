@@ -1,12 +1,8 @@
 import { Injectable } from '@angular/core';
-import {
-  Http,
-  Response,
-  Headers
-} from '@angular/http';
+import { Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Config } from '../shared/config/env.config';
-
+import { AuthHttp } from 'angular2-jwt';
 
 export interface CliaInterface {
   tablePCData: any[];
@@ -55,11 +51,11 @@ export interface CliaVariantReportsQCInterface {
 export class CliaApiService {
 
   /**
-   * Creates a new CliaApiService with the injected Http.
-   * @param {Http} http - The injected Http.
+   * Creates a new CliaApiService with the injected AuthHttp.
+   * @param {AuthHttp} http - The injected AuthHttp.
    * @constructor
    */
-  constructor(private http: Http) { }
+  constructor(private http: AuthHttp) { }
 
   /**
    * Returns an Observable for the HTTP GET request for the JSON resource.
