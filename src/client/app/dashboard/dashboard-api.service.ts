@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import {
-  Http,
-  Response
-} from '@angular/http';
+import { Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { AuthHttp } from 'angular2-jwt';
 
 // import 'rxjs/add/operator/do';  // for debugging
 
@@ -26,11 +24,11 @@ export interface DashboardOverviewInterface {
 export class DashboardApiService {
 
   /**
-   * Creates a new DashboardApiService with the injected Http.
-   * @param {Http} http - The injected Http.
+   * Creates a new DashboardApiService with the injected AuthHttp.
+   * @param {AuthHttp} http - The injected AuthHttp.
    * @constructor
    */
-  constructor(private http: Http) { }
+  constructor(private http: AuthHttp) { }
 
   /**
    * Returns an Observable for the HTTP GET request for the JSON resource.
