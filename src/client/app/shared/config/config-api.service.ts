@@ -5,9 +5,6 @@ import {
 } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
-/**
- * This class provides the NameList service with methods to read names and add names.
- */
 @Injectable()
 export class ConfigApiService {
 

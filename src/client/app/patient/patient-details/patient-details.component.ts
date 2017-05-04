@@ -8,11 +8,8 @@ import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 
 import { routerTransition } from './../../shared/router.animations';
 import { PatientApiService } from '../patient-api.service';
-import { GmtPipe } from './../../shared/pipes/gmt.pipe';
+import { ViewDataTransformer } from './view-data-transformer.service';
 
-/**
- * PatientDetailsComponent.
- */
 @Component({
   moduleId: module.id,
   selector: 'sd-patient-details',
@@ -49,7 +46,8 @@ export class PatientDetailsComponent implements OnInit {
   constructor(private router: Router,
     private route: ActivatedRoute,
     private patientApi: PatientApiService,
-    private ref: ChangeDetectorRef) { }
+    private ref: ChangeDetectorRef
+    private viewDataTransformer: ViewDataTransformer) { }
 
   ngOnInit() {
     let psn = this.route.snapshot.params['patientSequenceNumber'];
@@ -150,17 +148,13 @@ export class PatientDetailsComponent implements OnInit {
   getData(psn: string) {
     this.patientApi.getPatientDetails(psn)
       .subscribe((response: any) => {
-        this.patient = response;
-        this.disease = response.diseases && response.diseases.length ? response.diseases[0] : null;
-        if (this.patient.biopsies && this.patient.biopsies.length) {
-          this.patient.biopsies = this.patient.biopsies.reverse();
-        }
-        if (this.patient.races && this.patient.races.length) {
-          this.patient.raceList = this.patient.races.join(', ');
-        }
+        this.transformData(response);
         this.isLoaded = true;
       },
-      error => this.errorMessage = <any>error
+      (error) => {
+        this.errorMessage = <any>error;
+        console.error(error);
+      }
       );
   }
 
@@ -213,4 +207,22 @@ export class PatientDetailsComponent implements OnInit {
     this.ref.detectChanges();
   }
 
+  private transformData(response: any): void {
+    this.patient = response;
+    this.disease = response.diseases && response.diseases.length ? response.diseases[0] : null;
+    if (this.patient.biopsies && this.patient.biopsies.length) {
+      this.patient.biopsies = this.patient.biopsies.reverse().map(x => this.transformBiopsy(x));
+    }
+    if (this.patient.races && this.patient.races.length) {
+      this.patient.raceList = this.patient.races.join(', ');
+    }
+  }
+
+  private transformBiopsy(source: any): any {
+    let transformed = source;
+
+    // transformed.
+
+    return transformed;
+  }
 }
