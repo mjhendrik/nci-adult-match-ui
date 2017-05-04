@@ -70,7 +70,6 @@ export class CliaApiService {
 
   getCliaIon(type: string): Observable<any[]> {
     return this.http.get(Config.API.ION_REPORTER + '/ion_reporters/healthcheck?site=' + type)
-
       // return this.http.get('assets/mock-data/clia-' + type + '-ion.json')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
