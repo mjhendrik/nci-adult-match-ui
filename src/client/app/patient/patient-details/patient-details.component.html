@@ -13,15 +13,19 @@
             <dt>Patient Sequence Number</dt>
             <dd>{{patient.patientSequenceNumber | dashify}}</dd>
             <dt>Patient</dt>
-            <dd>{{patient.gender | dashify}}, {{patient.ethnicity | dashify}}</dd>
+            <dd>
+              <span *ngIf="patient.gender && patient.gender!=='PATIENT_REFUSAL'"> {{patient.gender}}</span>
+              <span *ngIf="patient.ethnicity && patient.ethnicity!=='PATIENT_REFUSAL'"> {{patient.ethnicity}}</span>
+              <span *ngIf="patient.raceList && patient.raceList!=='PATIENT_REFUSAL'"> {{patient.raceList}}</span>
+            </dd>
             <dt>Status</dt>
             <dd><span [colorCodePatients]="patient.currentPatientStatus">{{patient.currentPatientStatus | dashify}}</span></dd>
             <dt>Assignment Reason</dt>
-            <dd class="widget-stat-text">{{patient.assignmentReason | dashify}}</dd>
+            <dd>{{(patient.currentPatientAssignmentLogic ? patient.currentPatientAssignmentLogic.reason : '') | dashify}}</dd>
             <dt>Current Step</dt>
             <dd>{{patient.currentStepNumber | dashify}}</dd>
             <dt>Treatment Arm</dt>
-            <dd>{{(currentTreatmentArm ? currentTreatmentArm.name + ' (' + currentTreatmentArm.version + ')' : '') | dashify}}</dd>
+            <dd>{{(patient.currentPatientAssignmentLogic ? patient.currentPatientAssignmentLogic.treatmentArmId + ' (' + patient.currentPatientAssignmentLogic.treatmentArmVersion + ')' : '') | dashify}}</dd>
             <dt>Registration Date</dt>
             <dd>{{patient.registrationDate | gmt | dashify}}</dd>
             <dt>Last Rejoin Scan Date</dt>
@@ -175,10 +179,10 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let item of biopsy.assayHistory">
-                          <td>{{item.ihc | dashify}}</td>
-                          <td>{{item.orderDate | dashify}}</td>
-                          <td>{{item.resultDate | dashify}}</td>
+                        <tr *ngFor="let item of biopsy.assayMessages">
+                          <td>{{item.biomarker | dashify}}</td>
+                          <td>{{item.orderedDate | gmt}}</td>
+                          <td>{{item.reportedDate | gmt}}</td>
                           <td>{{item.result | dashify}}</td>
                           <td>{{item.comment | dashify}}</td>
                         </tr>

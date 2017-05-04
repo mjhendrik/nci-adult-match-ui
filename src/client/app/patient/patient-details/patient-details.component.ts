@@ -25,7 +25,6 @@ export class PatientDetailsComponent implements OnInit {
 
   summaryData: any = {};
   biopsyData: any = {};
-  currentTreatmentArm: any = {};
   disease: any = {};
 
   patient: any;
@@ -131,7 +130,6 @@ export class PatientDetailsComponent implements OnInit {
         // file._id = _id;
         // addedFilesHash[_id] = done;
       }
-
     };
 
     this.configCdnaBam = DROPZONE_CONFIG_CDNA_BAM;
@@ -153,11 +151,12 @@ export class PatientDetailsComponent implements OnInit {
     this.patientApi.getPatientDetails(psn)
       .subscribe((response: any) => {
         this.patient = response;
-        this.currentTreatmentArm = response.patientAssignments
-          && response.patientAssignments.length ? response.patientAssignments[0].treatmentArm : null;
         this.disease = response.diseases && response.diseases.length ? response.diseases[0] : null;
         if (this.patient.biopsies && this.patient.biopsies.length) {
           this.patient.biopsies = this.patient.biopsies.reverse();
+        }
+        if (this.patient.races && this.patient.races.length) {
+          this.patient.raceList = this.patient.races.join(', ');
         }
         this.isLoaded = true;
       },
