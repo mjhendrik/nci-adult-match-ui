@@ -15,6 +15,11 @@ export class Auth {
     },
     languageDictionary: {
       title: 'NCI-MATCH'
+    },
+    auth: {
+      params: {
+        scope: 'openid name email roles'
+      }
     }
   };
 
