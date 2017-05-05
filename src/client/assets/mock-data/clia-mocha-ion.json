@@ -1,19 +1,8 @@
 [{
-    "ionReporterId": "IR_ICHGP",
-    "ionReporterVersion": "5.0",
-    "hostName": "NCI-MATCH-IR",
-    "ipAddress": "129.43.39.182",
-    "status": "Lost contact! Last heartbeat was sent 1506 minutes ago",
-    "lastContactDate": 1491416891266,
-    "externalIpAddress": "10.133.210.11"
-  },
-  {
-    "ionReporterId": "IR_1CHGP",
-    "ionReporterVersion": "5.0",
-    "hostName": "NCI-MATCH-IR",
-    "ipAddress": "129.43.39.182",
-    "status": "Lost contact! Last heartbeat was sent 374 minutes ago",
-    "lastContactDate": 1491484802979,
-    "externalIpAddress": "10.133.210.11"
-  }
-]
+  "date_ion_reporter_id_created": "2016-10-12 21:19:36.514328",
+  "ion_reporter_id": "IR_IGXAW",
+  "ir_status": "Lost contact! Last heartbeat was received 3 months, 2 days, 22 hours, 56 minutes, 48 seconds ago.",
+  "last_contact": "2017-02-01 15:08:26.446499",
+  "site": "mocha",
+  "study_id": "EAY131"
+}]
