@@ -213,7 +213,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let item of biopsy.nucleicAcidSendout">
+                        <tr *ngFor="let item of biopsy.nucleicAcidSendouts">
                           <td><i class="fa fa-share-alt"></i> {{item.molecularSequenceNumber | dashify}}</td>
                           <td>{{item.destinationSite | dashify}}</td>
                           <td>
@@ -222,9 +222,9 @@
                                 </span>
                             <span *ngIf="item.trackingNumber===null || item.trackingNumber==='Local'">{{item.trackingNumber | dashify}}</span>
                           </td>
-                          <td>{{item.dnaConc | dashify}}</td>
-                          <td>{{item.dnaVol | dashify}}</td>
-                          <td>{{item.reportedDate | dashify}}</td>
+                          <td>{{item.dnaConcentration | dashify}}</td>
+                          <td>{{item.dnaVolume | dashify}}</td>
+                          <td>{{item.reportedDate | gmt}}</td>
                           <td>{{item.comment | dashify}}</td>
                         </tr>
                         <tr>
