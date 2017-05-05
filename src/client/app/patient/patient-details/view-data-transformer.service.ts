@@ -45,12 +45,31 @@ export class ViewDataTransformer {
 
           case 'PATHOLOGY_CONFIRMATION':
           case 'PATHOLOGY_FAILURE':
+            {
+              transformed.pathologyReceivedDate = message.reportedDate;
+              if (message.status === 'Y') {
+                transformed.pathologyStatus = 'Agreement on pathology';
+              } else if (message.status === 'N') {
+                transformed.pathologyStatus = 'Do not agree on pathology';
+              } else if (message.status === 'U') {
+                transformed.pathologyStatus = 'Pathology status is unknown at this time';
+              }
+            }
             break;
 
           case 'SPECIMEN_RECEIVED':
+            {
+              transformed.specimenCollectionDate = message.collectedDate ? message.collectedDate : message.reportedDate;
+              transformed.specimenReceivedDate = message.reportedDate ? message.reportedDate : null;
+              transformed.comment = message.comment;
+            }
             break;
 
           case 'SPECIMEN_FAILURE':
+            {
+              transformed.specimenFailureDate = message.reportedDate ? message.reportedDate : null;
+              transformed.comment = message.comment;
+            }
             break;
         }
       }
