@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class ViewDataTransformer {
+
   transformPatient(source: any): any {
     const transformed: any = { ...source }; // Deep-copy the source
 
@@ -17,6 +18,8 @@ export class ViewDataTransformer {
     if (transformed.races && transformed.races.length) {
       transformed.raceList = transformed.races.join(', ');
     }
+
+    this.transformAssignments(transformed);
 
     return transformed;
   }
@@ -121,6 +124,22 @@ export class ViewDataTransformer {
         ? message.ionReporterResults.variantReport.createdDate : null;
       analysis.variantReporterFileReceivedDate = message.dateReceived;
       analysis.variantReporterRejectedOrConfirmedDate = message.dateVerified;
+    }
+  }
+
+  private transformAssignments(transformed: any): void {
+    if (!('patientAssignments' in transformed)
+        || !Array.isArray(transformed.patientAssignments)
+        || !transformed.patientAssignments.length) {
+      return;
+    }
+
+    for (let assignment of transformed.patientAssignments) {
+      let bsn = assignment.biopsySequenceNumber;
+      let biopsy = transformed.biopsies.find((x: any) => x.biopsySequenceNumber === bsn);
+      if (!biopsy) {
+        continue;
+      }
     }
   }
 }
