@@ -213,77 +213,77 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let item of biopsy.nucleicAcidSendouts">
-                          <td><i class="fa fa-share-alt"></i> {{item.molecularSequenceNumber | dashify}}</td>
-                          <td>{{item.destinationSite | dashify}}</td>
-                          <td>
-                            <span *ngIf="item.trackingNumber!==null && item.trackingNumber!=='Local'">
-                                  <a href="https://www.fedex.com/apps/fedextrack/?tracknumbers={{item.trackingNumber}}" class="link-none" target="_blank"><i class="fa fa-truck"></i> {{item.trackingNumber | dashify}}</a>
-                                </span>
-                            <span *ngIf="item.trackingNumber===null || item.trackingNumber==='Local'">{{item.trackingNumber | dashify}}</span>
-                          </td>
-                          <td>{{item.dnaConcentration | dashify}}</td>
-                          <td>{{item.dnaVolume | dashify}}</td>
-                          <td>{{item.reportedDate | gmt}}</td>
-                          <td>{{item.comment | dashify}}</td>
-                        </tr>
-                        <tr>
-                          <td colspan="7" class="bg-body">
-                            <div class="panel panel-with-tabs panel-accent-sides-purple panel-details-row">
-                              <div class="panel-heading">
-                                <ul id="panel-tab" class="nav nav-tabs pull-right nav-tabs-purple">
-                                  <li class="active"><a href="#panel-tab-info" data-toggle="tab" aria-expanded="true"><i class="fa fa-align-left"></i><span class="hidden-xs"> Info</span></a></li>
-                                  <li class=""><a href="#panel-tab-files" data-toggle="tab" aria-expanded="false"><i class="fa fa-file-archive-o"></i><span class="hidden-xs"> Files</span></a></li>
-                                </ul>
-                                <h4 class="panel-title f-s-18">Analysis ID: {{biopsy.analysisId}}</h4>
-                              </div>
-                              <div id="panel-tab-content" class="tab-content">
-                                <div class="tab-pane fade active in" id="panel-tab-info">
-                                  <div class="row">
-                                    <div class="col-md-6">
-                                      <dl class="dl-horizontal">
-                                        <dt>Variant Report</dt>
-                                        <dd>
-                                          <a class="link-none" href [routerLink]="['/patients/details/variant_report']"><i class="fa fa-file-text-o"></i></a>
-                                        </dd>
-                                        <dt>Status</dt>
-                                        <dd>{{biopsy.variantStatus}}</dd>
-                                        <dt>File Received Date</dt>
-                                        <dd>{{biopsy.variantFileReceivedDate}}</dd>
-                                        <dt>Rejected/Confirmed Date</dt>
-                                        <dd>{{biopsy.variantRejectedOrConfirmedDate}}</dd>
-                                      </dl>
-                                    </div>
-                                    <div class="col-md-6">
-                                      <dl class="dl-horizontal">
-                                        <dt>Assignment Report</dt>
-                                        <dd><a href [routerLink]="['/patients/details/variant_report']"><i class="fa fa-file-text-o"></i></a></dd>
-                                        <dt>Status</dt>
-                                        <dd>{{biopsy.assignmentStatus}}</dd>
-                                        <dt>Generation Date</dt>
-                                        <dd>{{biopsy.assignmentGenerationDate}}</dd>
-                                        <dt>Received from ECOG Date</dt>
-                                        <dd>{{biopsy.assignmentReceivedDate}}</dd>
-                                        <dt>Assignment Logic</dt>
-                                        <dd>{{biopsy.assignmentLogic}}</dd>
-                                      </dl>
+                        <ng-template ngFor let-sendout [ngForOf]="biopsy.nucleicAcidSendouts">
+
+                          <tr>
+                            <td><i class="fa fa-share-alt"></i> {{sendout.molecularSequenceNumber | dashify}}</td>
+                            <td>{{sendout.destinationSite | dashify}}</td>
+                            <td>
+                              <span *ngIf="sendout.trackingNumber!==null && sendout.trackingNumber!=='Local'">
+                                    <a href="https://www.fedex.com/apps/fedextrack/?tracknumbers={{sendout.trackingNumber}}" class="link-none" target="_blank"><i class="fa fa-truck"></i> {{sendout.trackingNumber | dashify}}</a>
+                                  </span>
+                              <span *ngIf="sendout.trackingNumber===null || sendout.trackingNumber==='Local'">{{sendout.trackingNumber | dashify}}</span>
+                            </td>
+                            <td>{{sendout.dnaConcentration | dashify}}</td>
+                            <td>{{sendout.dnaVolume | dashify}}</td>
+                            <td>{{sendout.reportedDate | gmt}}</td>
+                            <td>{{sendout.comment | dashify}}</td>
+                          </tr>
+                          
+                          <tr *ngFor="let analysis of sendout.analyses">
+                            <td colspan="7" class="bg-body">
+                              <div class="panel panel-with-tabs panel-accent-sides-purple panel-details-row">
+                                <div class="panel-heading">
+                                  <ul id="panel-tab" class="nav nav-tabs pull-right nav-tabs-purple">
+                                    <li class="active"><a href="#panel-tab-info" data-toggle="tab" aria-expanded="true"><i class="fa fa-align-left"></i><span class="hidden-xs"> Info</span></a></li>
+                                    <li class=""><a href="#panel-tab-files" data-toggle="tab" aria-expanded="false"><i class="fa fa-file-archive-o"></i><span class="hidden-xs"> Files</span></a></li>
+                                  </ul>
+                                  <h4 class="panel-title f-s-18">Analysis ID: {{analysis.analysisId}}</h4>
+                                  <h5><a href [routerLink]="['/patients/details/variant_report']">Report <i class="fa fa-file-text-o"></i></a></h5>
+                                </div>
+                                <div id="panel-tab-content" class="tab-content">
+                                  <div class="tab-pane fade active in" id="panel-tab-info">
+                                    <div class="row">
+                                      <div class="col-md-6">
+                                        <dl class="dl-horizontal">
+                                          <dt>Variant Report Status</dt>
+                                          <dd>{{analysis.variantReportStatus}}</dd>
+                                          <dt>File Received Date</dt>
+                                          <dd>{{analysis.variantReporterFileReceivedDate | gmt}}</dd>
+                                          <dt>Rejected/Confirmed Date</dt>
+                                          <dd>{{analysis.variantReporterRejectedOrConfirmedDate | gmt}}</dd>
+                                        </dl>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <dl class="dl-horizontal">
+                                          <dt>Assignment Report Status</dt>
+                                          <dd>{{analysis.assignmentStatus}}</dd>
+                                          <dt>Generation Date</dt>
+                                          <dd>{{analysis.assignmentGenerationDate | gmt}}</dd>
+                                          <dt>Received from ECOG Date</dt>
+                                          <dd>{{analysis.assignmentReceivedDate | gmt}}</dd>
+                                          <dt>Assignment Logic</dt>
+                                          <dd>{{analysis.assignmentLogic}}</dd>
+                                        </dl>
+                                      </div>
                                     </div>
                                   </div>
-                                </div>
-                                <div class="tab-pane fade" id="panel-tab-files">
-                                  <p>
-                                    <button type="button" class="btn btn-purple-light"><i class="fa fa-download"></i> DNA BAM</button>
-                                    <button type="button" class="btn btn-purple-light"><i class="fa fa-download"></i> DNA BAI</button>
-                                    <button type="button" class="btn btn-purple-light"><i class="fa fa-download"></i> RNA BAM</button>
-                                    <button type="button" class="btn btn-purple-light"><i class="fa fa-download"></i> RNA BAI</button>
-                                    <button type="button" class="btn btn-purple-light"><i class="fa fa-download"></i> VCF</button>
-                                  </p>
+                                  <div class="tab-pane fade" id="panel-tab-files">
+                                    <p>
+                                      <button type="button" class="btn btn-purple-light"><i class="fa fa-download"></i> DNA BAM</button>
+                                      <button type="button" class="btn btn-purple-light"><i class="fa fa-download"></i> DNA BAI</button>
+                                      <button type="button" class="btn btn-purple-light"><i class="fa fa-download"></i> RNA BAM</button>
+                                      <button type="button" class="btn btn-purple-light"><i class="fa fa-download"></i> RNA BAI</button>
+                                      <button type="button" class="btn btn-purple-light"><i class="fa fa-download"></i> VCF</button>
+                                    </p>
+                                  </div>
                                 </div>
                               </div>
-                            </div>
-                            <a href="#file-upload" class="btn btn-purple-light pull-right" style="margin-top: -6px;" data-toggle="modal"><i class="fa fa-upload"></i> Upload Files</a>
-                          </td>
-                        </tr>
+                              <a href="#file-upload" class="btn btn-purple-light pull-right" style="margin-top: -6px;" data-toggle="modal"><i class="fa fa-upload"></i> Upload Files</a>
+                            </td>
+                          </tr>
+
+                        </ng-template>                        
                       </tbody>
                     </table>
                   </div>
