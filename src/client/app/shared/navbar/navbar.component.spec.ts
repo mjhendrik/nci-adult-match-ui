@@ -13,7 +13,7 @@ import { ConfigApiService } from './../config/config-api.service';
 import { NavbarComponent } from './navbar.component';
 
 export function main() {
-  xdescribe('sd-navbar component', () => {
+  describe('sd-navbar component', () => {
     // Setting module for testing
     // Disable old forms
 
@@ -32,16 +32,17 @@ export function main() {
       });
     });
 
-    it('should work',
-      async(() => {
-        TestBed
-          .compileComponents()
-          .then(() => {
-            let fixture = TestBed.createComponent(TestComponent);
-            let aboutDOMEl = fixture.debugElement.children[0].nativeElement;
-            expect(aboutDOMEl).toBeTruthy();
-          });
-      }));
+    // it('should work',
+    //   async(() => {
+    //     TestBed
+    //       .compileComponents()
+    //       .then(() => {
+    //         let fixture = TestBed.createComponent(TestComponent);
+    //         let aboutDOMEl = fixture.debugElement.children[0].nativeElement;
+    //         expect(aboutDOMEl).toBeTruthy();
+    //       });
+    //   }));
+
   });
 }
 
