@@ -128,6 +128,17 @@ export class ViewDataTransformer {
   }
 
   private transformAssignments(transformed: any): void {
+    /*
+    * The view data model structure:
+    * bliopsy {
+    *    nucleicAcidSendouts: [
+    *        analyses: [
+    *           {variantReport: . . ., assignmentReport: . . .}
+    *        ]
+    *    ]
+    * }
+    */
+
     if (!('patientAssignments' in transformed)
         || !Array.isArray(transformed.patientAssignments)
         || !transformed.patientAssignments.length) {
@@ -137,9 +148,26 @@ export class ViewDataTransformer {
     for (let assignment of transformed.patientAssignments) {
       let bsn = assignment.biopsySequenceNumber;
       let biopsy = transformed.biopsies.find((x: any) => x.biopsySequenceNumber === bsn);
-      if (!biopsy) {
+      if (!biopsy || !biopsy.nucleicAcidSendouts) {
         continue;
       }
+
+      // Flatteb the biopsies' analyses into one array, and look for confirmed ones
+      let confirmedVariantReports = biopsy.nucleicAcidSendouts
+        .map((x: any) => x.analyses)
+        .reduce((acc: Array<any>, val: Array<any>) => acc.concat(val))
+        .filter((x: any) => x.variantReportStatus === 'CONFIRMED');
+
+      if (confirmedVariantReports && confirmedVariantReports.length) {
+        let lastVariantReport = confirmedVariantReports[confirmedVariantReports.length - 1];
+
+        lastVariantReport.hasAssignment = true;
+        lastVariantReport.assignmentStatus = assignment.patientAssignmentStatus;
+        lastVariantReport.assignmentStatusMessage = assignment.patientAssignmentStatusMessage;
+        lastVariantReport.assignmentDateAssigned = assignment.dateAssigned;
+        lastVariantReport.assignmentDateConfirmed = assignment.dateConfirmed;
+        lastVariantReport.assignmentDateSentToECOG = assignment.dateSentToECOG;
+        lastVariantReport.assignmentDateReceivedByECOG = assignment.dateReceivedByECOG;
     }
   }
 }

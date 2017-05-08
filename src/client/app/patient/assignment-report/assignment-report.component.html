@@ -19,7 +19,7 @@
               <dt>Analysis ID</dt>
               <dd>{{variantReport.analysisId | dashify}}</dd>
               <dt>Status</dt>
-              <dd><span [colorCodeAssignment]="assignmentReport.status"> {{assignmentReport.status | dashify}}</span>  on {{assignmentReport.confirmationDate | dashify}} by {{assignmentReport.user | dashify}}</dd>
+              <dd><span [colorCodeAssignment]="assignmentReport.status"> {{assignmentReport.status | dashify}}</span>  on {{assignmentReport.confirmationDate | gmt}} by {{assignmentReport.user | dashify}}</dd>
             </dl>            
         </div>
       </div>
@@ -28,14 +28,16 @@
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-top">
         <div class="panel-heading">
           <dl class="dl-horizontal widest-dt">
-            <dt>Generation Date</dt>
-            <dd>{{assignmentReport.generationDate | dashify}}</dd>
-            <dt>Treatment Arm Sent to ECOG Date</dt>
-            <dd>{{assignmentReport.taSentToECOGDate | dashify}}</dd>
+            <dt>Assignment Report Status</dt>
+            <dd>{{assignmentReport.assignmentStatus | dashify}}</dd>
+            <dt>Assignment Report Generation Date</dt>
+            <dd>{{assignmentReport.generationDate | gmt }}</dd>
+            <dt>Assignment Report Confirmed Date</dt>
+            <dd>{{assignmentReport.dateConfirmed | dashify}}</dd>
             <dt>Assignment Sent to ECOG Date</dt>
-            <dd>{{assignmentReport.senttoECOGDate | dashify}}</dd>
+            <dd>{{assignmentReport.senttoECOGDate | gmt}}</dd>
             <dt>Assignment Received by ECOG Date</dt>
-            <dd>{{assignmentReport.receivedfromECOGDate | dashify}}</dd>
+            <dd>{{assignmentReport.receivedfromECOGDate | gmt}}</dd>
           </dl>
         </div>
       </div>
