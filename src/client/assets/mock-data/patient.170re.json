@@ -1,0 +1,1700 @@
+{
+    "_class": "gov.match.model.Patient",
+    "_id": {
+        "$oid": "58be13ffd4c62e5a15a6aa6e"
+    },
+    "biopsies": [
+        {
+            "assayMessages": [
+                {
+                    "biomarker": "ICCPTENs",
+                    "biopsySequenceNumber": "N-14-000005-3",
+                    "orderedDate": {
+                        "$date": 1488851968486
+                    },
+                    "patientSequenceNumber": "170re"
+                },
+                {
+                    "biomarker": "ICCPTENs",
+                    "biopsySequenceNumber": "N-14-000005-3",
+                    "orderedDate": {
+                        "$date": 1488851968486
+                    },
+                    "patientSequenceNumber": "170re",
+                    "reportedDate": {
+                        "$date": 1488851968571
+                    },
+                    "result": "NEGATIVE"
+                }
+            ],
+            "associatedPatientStatus": "REGISTRATION",
+            "biopsySequenceNumber": "N-14-000005-3",
+            "dateCreated": {
+                "$date": 1488851967948
+            },
+            "failure": false,
+            "mdAndersonMessages": [
+                {
+                    "biopsySequenceNumber": "N-14-000005-3",
+                    "message": "SPECIMEN_RECEIVED",
+                    "patientSequenceNumber": "170re",
+                    "reportedDate": {
+                        "$date": 1488851967935
+                    }
+                },
+                {
+                    "_class": "gov.match.model.message.NucleicAcidsShippingMessage",
+                    "biopsySequenceNumber": "N-14-000005-3",
+                    "cDnaConcentration": "",
+                    "cDnaVolume": "",
+                    "destinationSite": "Boston",
+                    "dnaConcentration": "",
+                    "dnaVolume": "",
+                    "message": "NUCLEIC_ACID_SENDOUT",
+                    "molecularSequenceNumber": "MSN-170re",
+                    "patientSequenceNumber": "170re",
+                    "reportedDate": {
+                        "$date": 1488851967974
+                    },
+                    "trackingNumber": "TN-1"
+                }
+            ],
+            "nextGenerationSequences": [
+                {
+                    "dateReceived": {
+                        "$date": 1488851968678
+                    },
+                    "dateVerified": {
+                        "$date": 1488851969175
+                    },
+                    "ionReporterResults": {
+                        "dnaBamFilePath": "/tmp/patient-170re/biopsy-N-14-000005-3/ngs-JOB-14-000005/sample1.bam",
+                        "jobName": "JOB-14-000005",
+                        "molecularSequenceNumber": "MSN-170re",
+                        "rnaBamFilePath": "/tmp/patient-170re/biopsy-N-14-000005-3/ngs-JOB-14-000005/sample2.bam",
+                        "variantReport": {
+                            "copyNumberVariants": [],
+                            "createdDate": {
+                                "$date": 1488851968676
+                            },
+                            "geneFusions": [
+                                {
+                                    "alternative": "G]chr2:29446462]",
+                                    "armSpecific": false,
+                                    "chromosome": "chr2",
+                                    "confirmed": false,
+                                    "exon": "13",
+                                    "filter": "PASS",
+                                    "gene": "EML4",
+                                    "geneName": "EML4",
+                                    "identifier": "EML4-ALK.E13A20.COSF1062_1",
+                                    "inclusion": true,
+                                    "metadata": {
+                                        "_id": "72651568-405c-4ad5-b681-a056d2e90125"
+                                    },
+                                    "oncominevariantclass": "Fusion",
+                                    "position": "42522631",
+                                    "rare": false,
+                                    "readDepth": 1217,
+                                    "reference": "G"
+                                },
+                                {
+                                    "alternative": "]chr2:42522631]T",
+                                    "armSpecific": false,
+                                    "chromosome": "chr2",
+                                    "confirmed": false,
+                                    "exon": "20",
+                                    "filter": "PASS",
+                                    "gene": "ALK",
+                                    "geneName": "ALK",
+                                    "identifier": "EML4-ALK.E13A20.COSF1062_2",
+                                    "inclusion": true,
+                                    "metadata": {
+                                        "_id": "2178bb5d-1713-41b6-a2dc-972aa3517367"
+                                    },
+                                    "oncominevariantclass": "Fusion",
+                                    "position": "29446462",
+                                    "rare": false,
+                                    "readDepth": 1217,
+                                    "reference": "T"
+                                }
+                            ],
+                            "indels": [],
+                            "nonHotspotRules": [],
+                            "singleNucleotideVariants": [],
+                            "unifiedGeneFusions": [
+                                {
+                                    "annotation": "COSF1062",
+                                    "armSpecific": false,
+                                    "confirmed": true,
+                                    "driverGene": "ALK",
+                                    "driverReadCount": 1217,
+                                    "identifier": "EML4-ALK.E13A20.COSF1062",
+                                    "inclusion": true,
+                                    "metadata": {
+                                        "_id": "828d4bce-7491-4ee9-93a0-7327c2618f36"
+                                    },
+                                    "partnerGene": "EML4",
+                                    "partnerReadCount": 1217,
+                                    "rare": false
+                                }
+                            ]
+                        },
+                        "vcfFilePath": "/tmp/patient-170re/biopsy-N-14-000005-3/ngs-JOB-14-000005/gene_fusion.vcf"
+                    },
+                    "ngsRunNumber": "1",
+                    "oncomineVariantAnnotationToolVersion": "1.0.5",
+                    "status": "CONFIRMED",
+                    "tvcVersion": "4.2-13"
+                }
+            ],
+            "pathologyReportMessages": []
+        },
+        {
+            "assayMessages": [],
+            "associatedPatientStatus": "PROGRESSION_REBIOPSY",
+            "biopsySequenceNumber": "N-14-000005-4",
+            "dateCreated": {
+                "$date": 1488851996631
+            },
+            "failure": false,
+            "mdAndersonMessages": [
+                {
+                    "biopsySequenceNumber": "N-14-000005-4",
+                    "message": "SPECIMEN_RECEIVED",
+                    "patientSequenceNumber": "170re",
+                    "reportedDate": {
+                        "$date": 1488851996617
+                    }
+                },
+                {
+                    "_class": "gov.match.model.message.NucleicAcidsShippingMessage",
+                    "biopsySequenceNumber": "N-14-000005-4",
+                    "cDnaConcentration": "",
+                    "cDnaVolume": "",
+                    "destinationSite": "Boston",
+                    "dnaConcentration": "",
+                    "dnaVolume": "",
+                    "message": "NUCLEIC_ACID_SENDOUT",
+                    "molecularSequenceNumber": "MSN-170re-1",
+                    "patientSequenceNumber": "170re",
+                    "reportedDate": {
+                        "$date": 1488851996659
+                    },
+                    "trackingNumber": "TN-1"
+                }
+            ],
+            "nextGenerationSequences": [],
+            "pathologyReportMessages": []
+        }
+    ],
+    "concordance": "Y",
+    "currentPatientStatus": "PROGRESSION_REBIOPSY",
+    "currentStepNumber": "2",
+    "diseases": [
+        {
+            "_id": "10040811",
+            "ctepCategory": "Skin Neoplasm",
+            "ctepSubCategory": "Skin Neoplasm, Miscellaneous",
+            "ctepTerm": "Skin cancer, NOS",
+            "shortName": "Skin cancer, NOS"
+        }
+    ],
+    "ethnicity": "PATIENT_REFUSAL",
+    "exclusionCriterias": [],
+    "gender": "MALE",
+    "patientAssignments": [
+        {
+            "assayMessages": [
+                {
+                    "biomarker": "ICCPTENs",
+                    "biopsySequenceNumber": "N-14-000005-3",
+                    "orderedDate": {
+                        "$date": 1488851968486
+                    },
+                    "patientSequenceNumber": "170re",
+                    "reportedDate": {
+                        "$date": 1488851968571
+                    },
+                    "result": "NEGATIVE"
+                }
+            ],
+            "assignmentType": "STANDARD",
+            "biopsySequenceNumber": "N-14-000005-3",
+            "dateAssigned": {
+                "$date": 1488851989741
+            },
+            "dateConfirmed": {
+                "$date": 1488851994395
+            },
+            "dateReceivedByECOG": {
+                "$date": 1488851994500
+            },
+            "dateSentToECOG": {
+                "$date": 1488851994395
+            },
+            "patientAssignmentLogic": [
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-1034",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-1035",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-1035-1",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-1048",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-1049",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-1049-1",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-1050",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-1050-1",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-1051",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-1052",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-1053",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-1054",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-1055",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-1056",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-1057",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-1058",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-1064",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-1065",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-1066",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-1067",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-1078",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-113",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-115",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-117",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-118",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-122",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-122-1",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "ARM_NOT_OPEN",
+                    "reason": "The patient is excluded from this treatment arm because the status is [PENDING].",
+                    "treatmentArmId": "CukeTest-122-1-PENDING",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-128",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-129",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-130",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-131",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-132",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-133",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-133-1",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-171",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-172",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-173",
+                    "treatmentArmVersion": "2016-01-01"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-177",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "ARM_NOT_OPEN",
+                    "reason": "The patient is excluded from this treatment arm because the status is [PENDING].",
+                    "treatmentArmId": "CukeTest-178",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "ARM_NOT_OPEN",
+                    "reason": "The patient is excluded from this treatment arm because the status is [PENDING].",
+                    "treatmentArmId": "CukeTest-179",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-185",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-186",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-187",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-188",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-623-1",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "ARM_NOT_OPEN",
+                    "reason": "The patient is excluded from this treatment arm because the status is [READY].",
+                    "treatmentArmId": "CukeTest-623-1-1",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-623-2",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-636-1",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-636-2",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-770-1",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-770-2",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-770-3",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-770-4",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-770-5",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-78",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-995",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "ARM_NOT_OPEN",
+                    "reason": "The patient is excluded from this treatment arm because the status is [PENDING].",
+                    "treatmentArmId": "CukeTest-PEN-NHR",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "ARM_NOT_OPEN",
+                    "reason": "The patient is excluded from this treatment arm because the status is [CLOSED].",
+                    "treatmentArmId": "CukeTest-PEN-NHR-CLOSED",
+                    "treatmentArmVersion": "2015-01-01"
+                },
+                {
+                    "patientAssignmentReasonCategory": "ARM_NOT_OPEN",
+                    "reason": "The patient is excluded from this treatment arm because the status is [PENDING].",
+                    "treatmentArmId": "CukeTest-PEN-NHR-PENDING",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-PEN-NHR-READY",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "CukeTest-PEN-NHR-SUSPENDED",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "ARM_NOT_OPEN",
+                    "reason": "The patient is excluded from this treatment arm because the status is [PENDING].",
+                    "treatmentArmId": "CukeTest-PEN-NoVar",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "EAY131-A",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "EAY131-B",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "EAY131-C",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "EAY131-D",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "EAY131-E",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "SELECTED",
+                    "reason": "The patient and treatment arm match on variant identifier [EML4-ALK.E13A20.COSF1062].",
+                    "treatmentArmId": "EAY131-F",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "EAY131-F_2015_11_23",
+                    "treatmentArmVersion": "2015-11-23"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "EAY131-F_2015_12_23",
+                    "treatmentArmVersion": "2015-12-23"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "EAY131-F_2016_01_13",
+                    "treatmentArmVersion": "2016-01-13"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "EAY131-G",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "EAY131-H",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "RECORD_BASED_EXCLUSION",
+                    "reason": "The patient is excluded from this treatment arm because the patient has IHC PTEN result of NEGATIVE.",
+                    "treatmentArmId": "EAY131-I",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "EAY131-J",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "EAY131-K",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "EAY131-L",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "ARM_NOT_OPEN",
+                    "reason": "The patient is excluded from this treatment arm because the status is [PENDING].",
+                    "treatmentArmId": "EAY131-O",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "EAY131-Q",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "EAY131-R",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "EAY131-S1",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "EAY131-S2",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "EAY131-T",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "EAY131-U",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "EAY131-V",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "ARM_NOT_OPEN",
+                    "reason": "The patient is excluded from this treatment arm because the status is [PENDING].",
+                    "treatmentArmId": "EAY131_S3_TRAMET_GNA",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "ARM_NOT_OPEN",
+                    "reason": "The patient is excluded from this treatment arm because the status is [PENDING].",
+                    "treatmentArmId": "match129.3",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "rejoinTest10_2016_02_01",
+                    "treatmentArmVersion": "2016-02-01"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "rejoinTest11_2016_03_01",
+                    "treatmentArmVersion": "2016-03-01"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "rejoinTest12_2016_03_01",
+                    "treatmentArmVersion": "2016-03-01"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "rejoinTest13_2016_03_01",
+                    "treatmentArmVersion": "2016-03-01"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "rejoinTest14_2016_03_01",
+                    "treatmentArmVersion": "2016-03-01"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "rejoinTest15_2016_03_01",
+                    "treatmentArmVersion": "2016-03-01"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "rejoinTest17",
+                    "treatmentArmVersion": "2015-04-01"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "rejoinTest1_2016_02_01",
+                    "treatmentArmVersion": "2016-02-01"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "rejoinTest2_2016_02_01",
+                    "treatmentArmVersion": "2016-02-01"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "rejoinTest3_2016_01_01",
+                    "treatmentArmVersion": "2016-01-01"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "rejoinTest4_2016_02_01",
+                    "treatmentArmVersion": "2016-02-01"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "rejoinTest6",
+                    "treatmentArmVersion": "2016-02-01"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "rejoinTest7_2016_02_01",
+                    "treatmentArmVersion": "2016-02-01"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "rejoinTest8_2016_02_01",
+                    "treatmentArmVersion": "2016-02-01"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "rejoinTest_2015_11_25",
+                    "treatmentArmVersion": "2015-11-25"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "rejoinTest_cc",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "EAY131-N",
+                    "treatmentArmVersion": "2016-05-31"
+                }
+            ],
+            "patientAssignmentMessages": [
+                {
+                    "ineligibleReason": {
+                        "eligCritVersion": "1.0",
+                        "eligDeath": "",
+                        "eligEligible": "",
+                        "eligInelig": "yes",
+                        "eligQuestions": [
+                            {
+                                "eligCrit": "Patients must fulfill all eligibility criteria outlined in Section 3.1 of MATCH Master Protocol(excluding Section 3.1 .6) at the time of registration to treatment step(Step 1, 3, 5, 7).",
+                                "eligCritKey": "2643",
+                                "eligYn": "Patient is NOT eligible based on this criterion"
+                            },
+                            {
+                                "eligCrit": "Patients must have deleterious inactivating mutations of NF - 1 by the MATCH NGS assay.See Appendix III for a description of the included NF1 mutations and corresponding Levels of Evidence.",
+                                "eligCritKey": "2644",
+                                "eligYn": "Patient is NOT eligible based on this criterion"
+                            },
+                            {
+                                "eligCrit": "Patients must have an electrocardiogram (ECG) within 8 weeks prior to treatment assignment and must have NONE of the following cardiac criteria=> * Clinically important abnormalities in rhythm, conduction or morphology of resting ECG(e.g.complete left bundle branch block, third degree heart block).*Treatment - refractory hypertension defined as a blood pressure of systolic > 140 mmHg and / or diastolic > 90 mmHg which cannot be controlled by anti - hypertensive therapy.",
+                                "eligCritKey": "2645",
+                                "eligYn": "Patient is eligible based on this criterion"
+                            },
+                            {
+                                "eligCrit": "Patients with a history of interstitial lung disease or pneumonitis are excluded.",
+                                "eligCritKey": "2646",
+                                "eligYn": "Criterion not evaluated"
+                            },
+                            {
+                                "eligCrit": "Patients must have an ECHO or a nuclear study (MUGA or First Pass) within 4 weeks prior to registration to treatment  and must not have a left ventricular ejection fraction(LVEF) < the institutional lower limit of normal(LLN).If the LLN is not defined at a site, the LVEF must be > 50 % for the patient to be eligible.",
+                                "eligCritKey": "2647",
+                                "eligYn": "Criterion not evaluated"
+                            },
+                            {
+                                "eligCrit": "Patients must not have known hypersensitivity to trametinib or compounds of similar chemical or biologic composition or to dimethyl sulfoxide(DMSO). ",
+                                "eligCritKey": "2648",
+                                "eligYn": "Criterion not evaluated"
+                            },
+                            {
+                                "eligCrit": "Patients must not have a history or current evidence / risk of retinal vein occlusion(RVO).An eye exam is required at baseline.See Appendix II for the Trametinib Ophthalmic Exam Form.",
+                                "eligCritKey": "2649",
+                                "eligYn": "Criterion not evaluated"
+                            },
+                            {
+                                "eligCrit": "Patients who previously received MEK inhibitors (including, but not limited to, trametinib, binimetinib, cobimetinib, selumetinib, RO4987655(CH4987655), GDC - 0623 and pimarsertib) will be excluded.",
+                                "eligCritKey": "2650",
+                                "eligYn": "Patient is NOT eligible based on this criterion"
+                            },
+                            {
+                                "eligCrit": "Patients who previously received monoclonal antibody therapy(eg.ipilimumab, nivolumab, pembrolizumab and others) must have stopped the prior therapy for 8 or more weeks before starting on trametinib.",
+                                "eligCritKey": "2651",
+                                "eligYn": "Criterion not evaluated"
+                            },
+                            {
+                                "eligCrit": "Patients with glioblastoma must have histologically or radiographically confirmed recurrent or progressive WHO Grade 4 glioma(glioblastoma).NOTE=> All baseline and post - baseline disease assessments must be performed using contrast - enhanced cranial MRI or contrast - enhanced CT for subjects who cannot have MRI performed.",
+                                "eligCritKey": "2652",
+                                "eligYn": "Criterion not evaluated"
+                            }
+                        ],
+                        "formOid": "ELIG_CRIT",
+                        "patientId": "170re",
+                        "protTxArmAssTxt": "Trametinib in NF1 Mutations",
+                        "ps": "1",
+                        "ptVtStat": "Alive",
+                        "reasMatchIneligible": "",
+                        "stepNum": "",
+                        "treatmentArm": "EAY131-F"
+                    },
+                    "message": "Treatment evaluation process completed.",
+                    "patientSequenceNumber": "170re",
+                    "status": "ON_TREATMENT_ARM",
+                    "stepNumber": "1",
+                    "treatmentArmId": "EAY131-F"
+                }
+            ],
+            "patientAssignmentStatus": "AVAILABLE",
+            "patientAssignmentStatusMessage": "Treatment evaluation process completed.",
+            "stepNumber": "0",
+            "treatmentArm": {
+                "_id": "EAY131-F",
+                "assayResults": [],
+                "dateCreated": {
+                    "$date": 1488461518072
+                },
+                "description": "Crizotinib in ALK translocation",
+                "exclusionCriterias": [],
+                "exclusionDiseases": [
+                    {
+                        "_id": "10058354",
+                        "ctepCategory": "Non-Small Cell Lung Cancer",
+                        "shortName": "Bronchioloalveolar carcinoma"
+                    },
+                    {
+                        "_id": "10025032",
+                        "ctepCategory": "Non-Small Cell Lung Cancer",
+                        "shortName": "Lung adenocarcinoma"
+                    },
+                    {
+                        "_id": "90600324",
+                        "ctepCategory": "Non-Small Cell Lung Cancer",
+                        "shortName": "Lung adenocar. w/ bronch. feat."
+                    },
+                    {
+                        "_id": "10029514",
+                        "ctepCategory": "Non-Small Cell Lung Cancer",
+                        "shortName": "Non-small cell lung cancer, NOS"
+                    },
+                    {
+                        "_id": "10025125",
+                        "ctepCategory": "Non-Small Cell Lung Cancer",
+                        "shortName": "Squamous cell lung carcinoma"
+                    }
+                ],
+                "exclusionDrugs": [
+                    {
+                        "drugs": [
+                            {
+                                "drugClass": "ALK inhibitor",
+                                "drugId": "",
+                                "name": "Crizotinib",
+                                "target": "ALK"
+                            }
+                        ]
+                    },
+                    {
+                        "drugs": [
+                            {
+                                "drugId": "",
+                                "name": "Ceritinib"
+                            }
+                        ]
+                    },
+                    {
+                        "drugs": [
+                            {
+                                "drugId": "",
+                                "name": "Alectinib"
+                            }
+                        ]
+                    },
+                    {
+                        "drugs": [
+                            {
+                                "drugId": "",
+                                "name": "AP26113"
+                            }
+                        ]
+                    },
+                    {
+                        "drugs": [
+                            {
+                                "drugId": "",
+                                "name": "TSR-011"
+                            }
+                        ]
+                    },
+                    {
+                        "drugs": [
+                            {
+                                "drugId": "",
+                                "name": "PF-06463922"
+                            }
+                        ]
+                    },
+                    {
+                        "drugs": [
+                            {
+                                "drugId": "",
+                                "name": "X-396"
+                            }
+                        ]
+                    },
+                    {
+                        "drugs": [
+                            {
+                                "drugId": "",
+                                "name": "RXDX-101"
+                            }
+                        ]
+                    },
+                    {
+                        "drugs": [
+                            {
+                                "drugId": "",
+                                "name": "CEP-37440"
+                            }
+                        ]
+                    }
+                ],
+                "gene": "ALK",
+                "maxPatientsAllowed": 35,
+                "name": "Crizotinib in ALK translocation",
+                "numPatientsAssigned": 0,
+                "statusLog": {
+                    "1488461518072": "PENDING",
+                    "1488461589": "OPEN",
+                    "1488461589752": "READY"
+                },
+                "targetId": "Crizotinib-EAY131_F",
+                "targetName": "Crizotinib",
+                "treatmentArmDrugs": [
+                    {
+                        "drugId": "Crizotinib-EAY131_F",
+                        "name": "Crizotinib",
+                        "pathway": "ALK"
+                    }
+                ],
+                "treatmentArmStatus": "OPEN",
+                "variantReport": {
+                    "copyNumberVariants": [],
+                    "geneFusions": [
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "ACTG2-ALK.A2A18",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "publicMedIds": [
+                                "23724913"
+                            ],
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "C2orf44-ALK.C4A20.COSF1264",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "publicMedIds": [
+                                "23724913"
+                            ],
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "CLIP4-ALK.C11A23_1",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "publicMedIds": [
+                                "23724913"
+                            ],
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "EML4-ALK.E13A20.AB462411",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "publicMedIds": [
+                                "23724913"
+                            ],
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "EML4-ALK.E13A20.COSF1062",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "publicMedIds": [
+                                "23724913"
+                            ],
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "EML4-ALK.E13A20.COSF408",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "publicMedIds": [
+                                "23724913"
+                            ],
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "EML4-ALK.E14A20.COSF1064",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "publicMedIds": [
+                                "23724913"
+                            ],
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "EML4-ALK.E14A20.COSF477",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "publicMedIds": [
+                                "23724913"
+                            ],
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "EML4-ALK.E15A20.COSF413",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "publicMedIds": [
+                                "23724913"
+                            ],
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "EML4-ALK.E17A20.COSF1366",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "publicMedIds": [
+                                "23724913"
+                            ],
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "EML4-ALK.E17A20.COSF1367",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "publicMedIds": [
+                                "23724913"
+                            ],
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "EML4-ALK.E18A20.COSF487",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "publicMedIds": [
+                                "23724913"
+                            ],
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "EML4-ALK.E18A20.COSF487.1",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "publicMedIds": [
+                                "23724913"
+                            ],
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "EML4-ALK.E20A20.COSF409",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "publicMedIds": [
+                                "23724913"
+                            ],
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "EML4-ALK.E20A20.COSF730",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "publicMedIds": [
+                                "23724913"
+                            ],
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "EML4-ALK.E2A20.COSF478",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "publicMedIds": [
+                                "23724913"
+                            ],
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "EML4-ALK.E2A20.COSF479",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "publicMedIds": [
+                                "23724913"
+                            ],
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "EML4-ALK.E6A17",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "publicMedIds": [
+                                "23724913"
+                            ],
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "EML4-ALK.E6A18",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "publicMedIds": [
+                                "23724913"
+                            ],
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "EML4-ALK.E6A19.COSF1296",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "publicMedIds": [
+                                "23724913"
+                            ],
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "EML4-ALK.E6aA20.AB374361",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "publicMedIds": [
+                                "23724913"
+                            ],
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "EML4-ALK.E6aA20.COSF411",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "publicMedIds": [
+                                "23724913"
+                            ],
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "EML4-ALK.E6bA20.AB374362",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "publicMedIds": [
+                                "23724913"
+                            ],
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "EML4-ALK.E6bA20.COSF412",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "publicMedIds": [
+                                "23724913"
+                            ],
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "EML4-ALK.E7A20.NGS",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "publicMedIds": [
+                                "23724913"
+                            ],
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "GTF2IRD-ALK.G7A20",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "HIP1-ALK.H21A20",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "HIP1-ALK.H28A20",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "KIF5B-ALK.K15A20.COSF1060",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "KIF5B-ALK.K15A20.COSF1381",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "KIF5B-ALK.K17A20.COSF1257",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "KIF5B-ALK.K24A20.COSF1058",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "KLC1-ALK.K9A20.COSF1276",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "MEMO1-ALK.M2A7",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "NCOA1-ALK.N21A1.NGS",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "PRKAR1A-ALK.P2A20.NGS",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "PTPN3-ALK.P2A10",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "STRN-ALK.S3A20.COSF1430",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "TFG-ALK.T4A20.COSF424",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "TFG-ALK.T5A20.COSF426",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "TFG-ALK.T6A20.COSF428",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "TPM1-ALK.T8A20.NGS",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "TPM3-ALK.T7A20_2",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "TPM4-ALK.T6A20",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "TPR-ALK.T15A20",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "rare": false
+                        },
+                        {
+                            "armSpecific": false,
+                            "confirmed": false,
+                            "description": "ALK translocation",
+                            "geneName": "ALK",
+                            "identifier": "VCL-ALK.V16A20.COSF1057",
+                            "inclusion": true,
+                            "levelOfEvidence": 2.0,
+                            "rare": false
+                        }
+                    ],
+                    "indels": [],
+                    "nonHotspotRules": [],
+                    "singleNucleotideVariants": [],
+                    "unifiedGeneFusions": []
+                },
+                "version": "2015-08-06"
+            }
+        }
+    ],
+    "patientRejoinTriggers": [],
+    "patientSequenceNumber": "170re",
+    "patientTriggers": [
+        {
+            "accrualGroupId": "22334a2sr",
+            "auditDate": {
+                "$date": 1488851967897
+            },
+            "dateCreated": {
+                "$date": 1488851967886
+            },
+            "message": "Patient trigger",
+            "patientSequenceNumber": "170re",
+            "patientStatus": "REGISTRATION",
+            "stepNumber": "0",
+            "studyId": "EAY131"
+        },
+        {
+            "auditDate": {
+                "$date": 1488851989751
+            },
+            "dateCreated": {
+                "$date": 1488851989751
+            },
+            "patientSequenceNumber": "170re",
+            "patientStatus": "PENDING_CONFIRMATION",
+            "stepNumber": "0",
+            "studyId": "EAY131"
+        },
+        {
+            "auditDate": {
+                "$date": 1488851994500
+            },
+            "dateCreated": {
+                "$date": 1488851994500
+            },
+            "patientSequenceNumber": "170re",
+            "patientStatus": "PENDING_APPROVAL",
+            "stepNumber": "0",
+            "studyId": "EAY131"
+        },
+        {
+            "auditDate": {
+                "$date": 1488851996515
+            },
+            "dateCreated": {
+                "$date": 1488851996515
+            },
+            "message": "Treatment evaluation process completed.",
+            "patientSequenceNumber": "170re",
+            "patientStatus": "ON_TREATMENT_ARM",
+            "stepNumber": "1",
+            "studyId": "EAY131"
+        },
+        {
+            "accrualGroupId": "22334a2sr",
+            "auditDate": {
+                "$date": 1488851996579
+            },
+            "dateCreated": {
+                "$date": 1488851996570
+            },
+            "message": "Patient progressed within 6 months",
+            "patientSequenceNumber": "170re",
+            "patientStatus": "PROGRESSION_REBIOPSY",
+            "stepNumber": "2",
+            "studyId": "EAY131"
+        }
+    ],
+    "priorDrugs": [],
+    "races": [
+        "WHITE"
+    ],
+    "registrationDate": {
+        "$date": 1488851967886
+    }
+}
