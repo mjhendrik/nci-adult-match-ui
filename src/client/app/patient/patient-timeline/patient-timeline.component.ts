@@ -13,4 +13,8 @@ import {
 })
 export class PatientTimelineComponent {
   @Input() items: any;
+
+  getIcon(status: string): string {
+    return 'fa-user-o';
+  }
 }
