@@ -97,30 +97,7 @@
             </div>
             <div class="row">
               <div class="col-md-6">
-                <div class="widget match-timeline panel-accent-bottom-purple">
-                  <div class="widget-header bg-purple-light">
-                    <h4 class="text-white m-b-10">Patient Timeline</h4>
-                  </div>
-                  <div class="widget-body">
-                    <ul class="match-timeline-list">
-                      <li *ngFor="let item of summaryData.activity" class="timeline-item">
-                        <div class="timeline-info">
-                          <div class="timeline-image">
-                            <i [faIcon]="item.icon" class="fa fa-2x"></i>
-                          </div>
-                          <h4>{{item.status}}</h4>
-                          <p>
-                            {{item.details}}
-                            <a class="link-none" [routerLink]="['/patients/details/variant_report']" href *ngIf="item.variantReport">Variant Report</a>                            {{item.variantReportDetails}}
-                            <a class="link-none" [routerLink]="['/patients/details/variant_report']" href *ngIf="item.assignmentReport">Assignment Report</a>                            {{item.assignmentReportDetails}}
-                          </p>
-                          <span class="timeline-time">{{item.time}}</span>
-                        </div>
-                      </li>
-                    </ul>
-                    <p *ngIf="!summaryData.activity" class="text-muted m-t-10 m-l-0">No Patient timeline data yet<p>
-                  </div>
-                </div>
+                <sd-patient-timeline [items]="timeline"></sd-patient-timeline>
               </div>
             </div>
           </div>
