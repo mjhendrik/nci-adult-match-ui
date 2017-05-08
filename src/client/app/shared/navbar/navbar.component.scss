@@ -52,3 +52,16 @@
 .contact {
   display: block;
 }
+
+.link-email {
+  color: #2184DA;
+}
+
+.link-email:focus {
+  outline: none;
+}
+
+.link-email:hover,
+.link-email:focus {
+  color: #1e77c5;
+}
