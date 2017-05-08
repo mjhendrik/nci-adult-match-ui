@@ -140,8 +140,8 @@ export class ViewDataTransformer {
     */
 
     if (!('patientAssignments' in transformed)
-        || !Array.isArray(transformed.patientAssignments)
-        || !transformed.patientAssignments.length) {
+      || !Array.isArray(transformed.patientAssignments)
+      || !transformed.patientAssignments.length) {
       return;
     }
 
@@ -168,6 +168,7 @@ export class ViewDataTransformer {
         lastVariantReport.assignmentDateConfirmed = assignment.dateConfirmed;
         lastVariantReport.assignmentDateSentToECOG = assignment.dateSentToECOG;
         lastVariantReport.assignmentDateReceivedByECOG = assignment.dateReceivedByECOG;
+      }
     }
   }
 }
