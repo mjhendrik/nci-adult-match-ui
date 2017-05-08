@@ -7,7 +7,7 @@ import {
 import { VariantReportFilteredTableCnvComponent } from './variant-report-filtered-table-cnv.component';
 
 export function main() {
-  xdescribe('variant-report-filtered-table-cnv component', () => {
+  describe('variant-report-filtered-table-cnv component', () => {
     // Setting module for testing
     // Disable old forms
 
@@ -18,16 +18,17 @@ export function main() {
       });
     });
 
-    it('should work',
-      async(() => {
-        TestBed
-          .compileComponents()
-          .then(() => {
-            let fixture = TestBed.createComponent(TestComponent);
-            let aboutDOMEl = fixture.debugElement.children[0].nativeElement;
-            expect(aboutDOMEl).toBeTruthy();
-          });
-      }));
+    // it('should work',
+    //   async(() => {
+    //     TestBed
+    //       .compileComponents()
+    //       .then(() => {
+    //         let fixture = TestBed.createComponent(TestComponent);
+    //         let aboutDOMEl = fixture.debugElement.children[0].nativeElement;
+    //         expect(aboutDOMEl).toBeTruthy();
+    //       });
+    //   }));
+
   });
 }
 
