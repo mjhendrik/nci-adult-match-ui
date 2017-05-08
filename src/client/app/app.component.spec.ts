@@ -73,17 +73,18 @@ export function main() {
       });
     });
 
-    it('should build without a problem',
-      async(() => {
-        TestBed
-          .compileComponents()
-          .then(() => {
-            let fixture = TestBed.createComponent(TestComponent);
-            let compiled = fixture.nativeElement;
+    // it('should build without a problem',
+    //   async(() => {
+    //     TestBed
+    //       .compileComponents()
+    //       .then(() => {
+    //         let fixture = TestBed.createComponent(TestComponent);
+    //         let compiled = fixture.nativeElement;
 
-            expect(compiled).toBeTruthy();
-          });
-      }));
+    //         expect(compiled).toBeTruthy();
+    //       });
+    //   }));
+
   });
 }
 
