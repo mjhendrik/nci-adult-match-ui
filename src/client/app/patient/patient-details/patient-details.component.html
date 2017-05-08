@@ -239,15 +239,17 @@
                                     <li class=""><a href="#panel-tab-files" data-toggle="tab" aria-expanded="false"><i class="fa fa-file-archive-o"></i><span class="hidden-xs"> Files</span></a></li>
                                   </ul>
                                   <h4 class="panel-title f-s-18">Analysis ID: {{analysis.analysisId}}</h4>
-                                  <h5><a href [routerLink]="['/patients/details/variant_report']">Report <i class="fa fa-file-text-o"></i></a></h5>
+                                  <h5><a href [routerLink]="['/patients/details/variant_report']"><i class="fa fa-file-text-o"></i> Variant and Assignment Reports</a></h5>
                                 </div>
                                 <div id="panel-tab-content" class="tab-content">
                                   <div class="tab-pane fade active in" id="panel-tab-info">
                                     <div class="row">
                                       <div class="col-md-6">
+                                        <h5>Variant Report</h5>
+                                        
                                         <dl class="dl-horizontal">
                                           <dt>Variant Report Status</dt>
-                                          <dd>{{analysis.variantReportStatus}}</dd>
+                                          <dd>{{analysis.variantReportStatus | dashify}}</dd>
                                           <dt>File Received Date</dt>
                                           <dd>{{analysis.variantReporterFileReceivedDate | gmt}}</dd>
                                           <dt>Rejected/Confirmed Date</dt>
@@ -255,15 +257,31 @@
                                         </dl>
                                       </div>
                                       <div class="col-md-6">
-                                        <dl class="dl-horizontal">
-                                          <dt>Assignment Report Status</dt>
+                                        <h5>Assignment Report</h5>
+                                        
+                                        <dl *ngIf="analysis.hasAssignment" class="dl-horizontal">
+                                          <dt>Assignment Status</dt>
                                           <dd>{{analysis.assignmentStatus}}</dd>
+
                                           <dt>Generation Date</dt>
-                                          <dd>{{analysis.assignmentGenerationDate | gmt}}</dd>
-                                          <dt>Received from ECOG Date</dt>
-                                          <dd>{{analysis.assignmentReceivedDate | gmt}}</dd>
+                                          <dd>{{analysis.assignmentDateAssigned | gmt}}</dd>
+
+                                          <dt>Confirmed Date</dt>
+                                          <dd>{{analysis.assignmentDateConfirmed | gmt}}</dd>
+
+                                          <dt>Sent to ECOG Date</dt>
+                                          <dd>{{analysis.assignmentDateSentToECOG | gmt}}</dd>
+
+                                          <dt>Received by ECOG Date</dt>
+                                          <dd>{{analysis.assignmentDateReceivedByECOG | gmt}}</dd>
+
                                           <dt>Assignment Logic</dt>
-                                          <dd>{{analysis.assignmentLogic}}</dd>
+                                          <dd>{{analysis.assignmentStatusMessage | dashify}}</dd>
+                                        </dl>
+
+                                        <dl *ngIf="!analysis.hasAssignment" class="dl-horizontal">
+                                          <dt>No Assignment data yet</dt>
+                                          <dd class="text-muted"></dd>
                                         </dl>
                                       </div>
                                     </div>
