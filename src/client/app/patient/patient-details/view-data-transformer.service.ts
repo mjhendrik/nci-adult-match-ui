@@ -11,6 +11,10 @@ export class ViewDataTransformer {
 
     transformed.disease = source.diseases && source.diseases.length ? source.diseases[0] : null;
 
+    if (transformed.patientTriggers && transformed.patientTriggers.length) {
+      transformed.patientTriggers = transformed.patientTriggers.reverse();
+    }
+
     if (transformed.biopsies && transformed.biopsies.length) {
       transformed.biopsies = transformed.biopsies.reverse().map((x: any) => this.transformBiopsy(x));
     }
@@ -124,24 +128,34 @@ export class ViewDataTransformer {
         ? message.ionReporterResults.variantReport.createdDate : null;
       analysis.variantReporterFileReceivedDate = message.dateReceived;
       analysis.variantReporterRejectedOrConfirmedDate = message.dateVerified;
+
+      const variantTables: Array<string> = [
+        'geneFusions',
+        'copyNumberVariants',
+        'indels',
+        'nonHotspotRules',
+        'singleNucleotideVariants',
+        'unifiedGeneFusions'
+      ];
+
     }
   }
 
   private transformAssignments(transformed: any): void {
     /*
-    * The view data model structure:
-    * bliopsy {
-    *    nucleicAcidSendouts: [
+    * The view data-model structure:
+    * biopsy {
+    *    nucleicAcidSendouts: [{
     *        analyses: [
     *           {variantReport: . . ., assignmentReport: . . .}
     *        ]
-    *    ]
+    *    }]
     * }
     */
 
     if (!('patientAssignments' in transformed)
-        || !Array.isArray(transformed.patientAssignments)
-        || !transformed.patientAssignments.length) {
+      || !Array.isArray(transformed.patientAssignments)
+      || !transformed.patientAssignments.length) {
       return;
     }
 
@@ -152,7 +166,7 @@ export class ViewDataTransformer {
         continue;
       }
 
-      // Flatteb the biopsies' analyses into one array, and look for confirmed ones
+      // Flatten the biopsies' analyses into one array, and look for confirmed ones
       let confirmedVariantReports = biopsy.nucleicAcidSendouts
         .map((x: any) => x.analyses)
         .reduce((acc: Array<any>, val: Array<any>) => acc.concat(val))
@@ -168,6 +182,8 @@ export class ViewDataTransformer {
         lastVariantReport.assignmentDateConfirmed = assignment.dateConfirmed;
         lastVariantReport.assignmentDateSentToECOG = assignment.dateSentToECOG;
         lastVariantReport.assignmentDateReceivedByECOG = assignment.dateReceivedByECOG;
+      }
     }
   }
+
 }
