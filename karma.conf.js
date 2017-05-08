@@ -66,7 +66,9 @@ module.exports = function (config) {
       { pattern: 'node_modules/moment/moment.js', included: false, watched: true },
       { pattern: 'node_modules/ng2-charts/**/*.js', included: false, watched: true },
       { pattern: 'node_modules/ngx-dropzone-wrapper/bundles/ngx-dropzone-wrapper.umd.js', included: false, watched: true },
-
+      { pattern: 'node_modules/ngx-popover/index.js', included: false, watched: true },
+      { pattern: 'node_modules/ngx-popover/*.js', included: false, watched: true },
+      
       'test-config.js',
       'dist/dev/app/system-config.js',
       'test-main.js'
