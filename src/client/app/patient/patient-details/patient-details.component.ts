@@ -3,9 +3,8 @@ import {
   OnInit,
   ChangeDetectorRef
 } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
-
 import { routerTransition } from './../../shared/router.animations';
 import { PatientApiService } from '../patient-api.service';
 import { ViewDataTransformer } from './view-data-transformer.service';
@@ -43,8 +42,7 @@ export class PatientDetailsComponent implements OnInit {
   configCdnaBam: DropzoneConfigInterface;
   configDocuments: DropzoneConfigInterface;
 
-  constructor(private router: Router,
-    private route: ActivatedRoute,
+  constructor(private route: ActivatedRoute,
     private patientApi: PatientApiService,
     private ref: ChangeDetectorRef,
     private transformer: ViewDataTransformer) { }
