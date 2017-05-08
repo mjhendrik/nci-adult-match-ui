@@ -241,26 +241,42 @@
                                   <h4 class="panel-title f-s-18">Analysis ID: {{analysis.analysisId}}</h4>
                                   <h5><a href [routerLink]="['/patients/details/variant_report']"><i class="fa fa-file-text-o"></i> Variant and Assignment Reports</a></h5>
                                 </div>
-                                <div id="panel-tab-content" class="tab-content">
+                                <div id="panel-tab-content" class="tab-content p-t-0">
                                   <div class="tab-pane fade active in" id="panel-tab-info">
                                     <div class="row">
                                       <div class="col-md-6">
-                                        <h5>Variant Report</h5>
+                                        <dl class="dl-horizontal m-b-4">
+                                          <dt><h4>Variant Report</h4></dt>
+                                          <dd></dd>
+                                        </dl>
                                         
                                         <dl class="dl-horizontal">
-                                          <dt>Variant Report Status</dt>
+                                          <dt>Status</dt>
                                           <dd>{{analysis.variantReportStatus | dashify}}</dd>
+
                                           <dt>File Received Date</dt>
                                           <dd>{{analysis.variantReporterFileReceivedDate | gmt}}</dd>
+
                                           <dt>Rejected/Confirmed Date</dt>
                                           <dd>{{analysis.variantReporterRejectedOrConfirmedDate | gmt}}</dd>
+
+                                          <dt>MOIs (Confirmed/Total)</dt>
+                                          <dd>{{analysis.confirmedMOIs | dashify}} / {{analysis.totalMOIs | dashify}}</dd>
+
+                                          <dt>aMOIs (Confirmed/Total)</dt>
+                                          <dd>{{analysis.confirmedaMOIs | dashify}} / {{analysis.totalaMOIs | dashify}}</dd>
                                         </dl>
                                       </div>
+
                                       <div class="col-md-6">
-                                        <h5>Assignment Report</h5>
+
+                                        <dl class="dl-horizontal m-b-4">
+                                          <dt><h4>Assignment Report</h4></dt>
+                                          <dd></dd>
+                                        </dl>
                                         
                                         <dl *ngIf="analysis.hasAssignment" class="dl-horizontal">
-                                          <dt>Assignment Status</dt>
+                                          <dt>Status</dt>
                                           <dd>{{analysis.assignmentStatus}}</dd>
 
                                           <dt>Generation Date</dt>
@@ -280,8 +296,8 @@
                                         </dl>
 
                                         <dl *ngIf="!analysis.hasAssignment" class="dl-horizontal">
-                                          <dt>No Assignment data yet</dt>
-                                          <dd class="text-muted"></dd>
+                                          <dt class="text-muted f-w-400">No Assignment data yet</dt>
+                                          <dd></dd>
                                         </dl>
                                       </div>
                                     </div>
