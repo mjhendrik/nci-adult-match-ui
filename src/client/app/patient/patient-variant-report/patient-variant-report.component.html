@@ -43,7 +43,7 @@
               <dd>{{variantReport.torrentVariantCallerVersion | dashify}}</dd>
             </dl>
             <div class="panel-heading">
-              <a class="btn btn-purple-light link-none" role="button" href [routerLink]="['/patients/details/variant_report/qc']"><i class="fa fa-file-text-o"></i> QC Report</a>
+              <a class="btn btn-purple-light link-none" role="button" href [routerLink]="['/patients/details/variant_reports/qc']"><i class="fa fa-file-text-o"></i> QC Report</a>
               <a href="javascript:;" class="btn btn-purple-light link-none"><i class="fa fa-file-excel-o"></i> Excel</a>
             </div>
           </div>
@@ -317,7 +317,7 @@
             </thead>
             <tbody>
               <tr *ngFor="let item of assignmentHistory">
-                <td [colorCodeAssignment]="item.status"><a href [routerLink]="['/patients/details/variant_report/assignment']">{{item.status | dashify}}</a></td>
+                <td [colorCodeAssignment]="item.status"><a href [routerLink]="['/patients/details/variant_reports/assignment']">{{item.status | dashify}}</a></td>
                 <td>{{item.generationDate | dashify}}</td>
                 <td>{{item.confirmationDate | dashify}}</td>
                 <td>{{item.sentToEcogDate | dashify}}</td>
