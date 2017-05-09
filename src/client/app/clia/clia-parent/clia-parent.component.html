@@ -96,8 +96,8 @@
                               <td>{{item.date_molecular_id_created | dashify}}</td>
                               <td>{{item.date_variant_received | dashify}}</td>
                               <td class="text-center">
-                                <span *ngIf="item.report_status!==null"><a href [routerLink]="['/clia_'+cliaType+'/variant_reports_pc']" class="link-none"><i class="fa fa-file-text-o"></i></a></span>
-                                <span *ngIf="item.report_status===null">-</span>
+                                <span *ngIf="item.report_status!==undefined"><a href [routerLink]="['/clia_'+cliaType+'/variant_reports_pc']" class="link-none"><i class="fa fa-file-text-o"></i></a></span>
+                                <span *ngIf="item.report_status===undefined">-</span>
                               </td>
                               <td [colorCodeClia]="item.report_status">{{item.report_status | dashify}}</td>
                             </tr>
@@ -177,8 +177,8 @@
                               <td>{{item.date_molecular_id_created | dashify}}</td>
                               <td>{{item.date_variant_received | dashify}}</td>
                               <td class="text-center">
-                                <span *ngIf="item.report_status!==null"><a href [routerLink]="['/clia_'+cliaType+'/variant_reports_ntc']" class="link-none"><i class="fa fa-file-text-o"></i></a></span>
-                                <span *ngIf="item.report_status===null">-</span>
+                                <span *ngIf="item.report_status!==undefined"><a href [routerLink]="['/clia_'+cliaType+'/variant_reports_ntc']" class="link-none"><i class="fa fa-file-text-o"></i></a></span>
+                                <span *ngIf="item.report_status===undefined">-</span>
                               </td>
                               <td [colorCodeClia]="item.report_status">{{item.report_status | dashify}}</td>
                             </tr>
@@ -258,8 +258,8 @@
                               <td>{{item.date_molecular_id_created | dashify}}</td>
                               <td>{{item.date_variant_received | dashify}}</td>
                               <td class="text-center">
-                                <span *ngIf="item.report_status!==null"><a href [routerLink]="['/clia_'+cliaType+'/variant_reports_pacc']" class="link-none"><i class="fa fa-file-text-o"></i></a></span>
-                                <span *ngIf="item.report_status===null">-</span>
+                                <span *ngIf="item.report_status!==undefined"><a href [routerLink]="['/clia_'+cliaType+'/variant_reports_pacc']" class="link-none"><i class="fa fa-file-text-o"></i></a></span>
+                                <span *ngIf="item.report_status===undefined">-</span>
                               </td>
                               <td [colorCodeClia]="item.report_status">{{item.report_status | dashify}}</td>
                             </tr>
