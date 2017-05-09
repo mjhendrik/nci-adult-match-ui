@@ -24,7 +24,9 @@
       "jasmine",
       "node",
       "protractor",
-      "systemjs"
+      "systemjs",
+      "selenium-webdriver",
+      "cucumber"
     ]
   },
   "exclude": [

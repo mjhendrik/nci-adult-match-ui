@@ -1,14 +1,36 @@
 const config = {
   baseUrl: 'http://localhost:5555/',
 
+  // These are possibly needed for the cucumber? Try to remove later!
+  seleniumAddress: 'http://127.0.0.1:4444/wd/hub',
+  getPageTimeout: 60000,
+  allScriptsTimeout: 500000,
+
   specs: [
-    './dist/e2e/**/*.e2e-spec.js'
+    // './dist/e2e/**/*.e2e-spec.js'
+    'src/e2e/features/*.feature'
   ],
 
   exclude: [],
 
   // 'jasmine' by default will use the latest jasmine framework
-  framework: 'jasmine',
+  // framework: 'jasmine',
+  
+  // 'custom' framework so that cucumber can work
+  framework: 'custom',
+  // path relative to the current config file
+  frameworkPath: require.resolve('protractor-cucumber-framework'),
+
+
+  cucumberOpts: {
+    compiler: "ts:ts-node/register",
+    require: [
+      'src/e2e/step-definitions/**/*.ts',
+      'src/e2e/support/**/*.ts'
+    ],
+    format: 'pretty'
+  },
+
 
   // allScriptsTimeout: 110000,
 
@@ -19,6 +41,7 @@ const config = {
     includeStackTrace: false,
     // defaultTimeoutInterval: 400000
   },
+
 
   directConnect: true,
 

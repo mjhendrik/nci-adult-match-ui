@@ -14,6 +14,9 @@
 $ git clone https://github.com/CBIIT/nci-adult-match-ui.git
 $ cd nci-adult-match-ui
 
+# install global dependencies
+$ npm install -g cucumber
+
 # install the project's dependencies
 $ npm install
 
