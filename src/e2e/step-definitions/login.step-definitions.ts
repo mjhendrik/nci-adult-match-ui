@@ -1,10 +1,12 @@
 import { browser } from 'protractor';
-import { LoginPageObject } from '../pages/login.page';
+
 let chai = require('chai').use(require('chai-as-promised'));
 let expect = chai.expect;
 
 import { binding, given, when, then } from 'cucumber-tsflow';
 import { CallbackStepDefinition } from 'cucumber';
+
+import { LoginPageObject } from '../pages/login.page';
 
 @binding()
 class LoginSteps {
@@ -12,6 +14,7 @@ class LoginSteps {
   
   @given(/^I am on login page with title '(.*)'$/)
   private given(title: string, callback: CallbackStepDefinition) {
+    this.page.navigate();
     expect(browser.getTitle()).to.eventually.be.equal(title).and.notify(callback);
   }
  

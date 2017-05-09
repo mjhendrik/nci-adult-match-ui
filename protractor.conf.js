@@ -23,11 +23,12 @@ const config = {
 
 
   cucumberOpts: {
-    require: 'src/e2e/step-definitions/**/*.step-definitions.js',
-    tags: false,
-    format: 'pretty',
-    profile: false,
-    'no-source': true
+    compiler: "ts:ts-node/register",
+    require: [
+      'src/e2e/step-definitions/**/*.ts',
+      'src/e2e/hooks/**/*.ts'
+    ],
+    format: 'pretty'
   },
 
 
