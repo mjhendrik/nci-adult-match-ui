@@ -1,31 +1,24 @@
 import { browser } from 'protractor';
 
+import { defineSupportCode } from 'cucumber';
 let chai = require('chai').use(require('chai-as-promised'));
 let expect = chai.expect;
 
-import { binding, given, when, then } from 'cucumber-tsflow';
-import { CallbackStepDefinition } from 'cucumber';
-
 import { LoginPageObject } from '../pages/login.page';
 
-@binding()
-class LoginSteps {
-  private page = new LoginPageObject();
-  
-  @given(/^I am on login page with title '(.*)'$/)
-  private given(title: string, callback: CallbackStepDefinition) {
-    this.page.navigate();
-    expect(browser.getTitle()).to.eventually.be.equal(title).and.notify(callback);
-  }
- 
-  @when(/^I click Acknowledge and Continue button$/)
-  private when(callback: CallbackStepDefinition) {
-    this.page.continueButton.click();
-    callback();
-  }
+defineSupportCode(({Given, When, Then}) => {
+  let page: LoginPageObject = new LoginPageObject();
 
-  @then(/^I should see login popup$/)
-  private then(callback: CallbackStepDefinition) {
-    expect(this.page.loginPopup).to.eventually.be.present().and.notify(callback);
-  }
-}
+  Given(/^I am on login page with title "(.*?)"$/, (title: string) => {
+    this.page.navigate();
+    return expect(browser.getTitle()).to.eventually.be.equal(title);
+  });
+
+  When(/^I click Acknowledge and Continue button$/, () => {
+    return page.continueButton.click();
+  });
+
+  Then(/^I should see login popup$/, (result: string) => {
+    return expect(page.loginPopup).to.eventually.be.present();
+  });
+})
