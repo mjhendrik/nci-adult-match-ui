@@ -74,32 +74,32 @@
                           <thead>
                             <tr class="orangeshade-light">
                               <th>
-                                <mfDefaultSorter by="molecularSequenceNumber"><span class="table-header">Molecular Sequence Number</span></mfDefaultSorter>
+                                <mfDefaultSorter by="molecular_id"><span class="table-header">Molecular Sequence Number</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="dateCreated"><span class="table-header">Created Date</span></mfDefaultSorter>
+                                <mfDefaultSorter by="date_molecular_id_created"><span class="table-header">Created Date</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="dateReceived"><span class="table-header">Received Date</span></mfDefaultSorter>
+                                <mfDefaultSorter by="date_variant_received"><span class="table-header">Received Date</span></mfDefaultSorter>
                               </th>
                               <th class="text-center">
                                 Variant Reports
                               </th>
                               <th>
-                                <mfDefaultSorter by="status"><span class="table-header">Status</span></mfDefaultSorter>
+                                <mfDefaultSorter by="report_status"><span class="table-header">report_status</span></mfDefaultSorter>
                               </th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftablePC.data">
-                              <td><i class="fa fa-share-alt"></i> {{item.molecularSequenceNumber | dashify}}</td>
-                              <td>{{item.dateCreated | dashify}}</td>
-                              <td>{{item.dateReceived | dashify}}</td>
+                              <td><i class="fa fa-share-alt"></i> {{item.molecular_id | dashify}}</td>
+                              <td>{{item.date_molecular_id_created | dashify}}</td>
+                              <td>{{item.date_variant_received | dashify}}</td>
                               <td class="text-center">
-                                <span *ngIf="item.status!==null"><a href [routerLink]="['/clia_'+cliaType+'/variant_reports_pc']" class="link-none"><i class="fa fa-file-text-o"></i></a></span>
-                                <span *ngIf="item.status===null">-</span>
+                                <span *ngIf="item.report_status!==null"><a href [routerLink]="['/clia_'+cliaType+'/variant_reports_pc']" class="link-none"><i class="fa fa-file-text-o"></i></a></span>
+                                <span *ngIf="item.report_status===null">-</span>
                               </td>
-                              <td [colorCodeClia]="item.status">{{item.status | dashify}}</td>
+                              <td [colorCodeClia]="item.report_status">{{item.report_status | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftablePC.data.length == 0">
                               <td class="text-muted" colspan="5">No matching search results found for "{{searchtermPC}}"</td>
@@ -152,32 +152,32 @@
                           <thead>
                             <tr class="orangeshade-light">
                               <th>
-                                <mfDefaultSorter by="molecularSequenceNumber"><span class="table-header">Molecular Sequence Number</span></mfDefaultSorter>
+                                <mfDefaultSorter by="molecular_id"><span class="table-header">Molecular Sequence Number</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="dateCreated"><span class="table-header">Created Date</span></mfDefaultSorter>
+                                <mfDefaultSorter by="date_molecular_id_created"><span class="table-header">Created Date</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="dateReceived"><span class="table-header">Received Date</span></mfDefaultSorter>
+                                <mfDefaultSorter by="date_variant_received"><span class="table-header">Received Date</span></mfDefaultSorter>
                               </th>
                               <th class="text-center">
                                 Variant Reports
                               </th>
                               <th>
-                                <mfDefaultSorter by="status"><span class="table-header">Status</span></mfDefaultSorter>
+                                <mfDefaultSorter by="report_status"><span class="table-header">report_status</span></mfDefaultSorter>
                               </th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableNTC.data">
-                              <td><i class="fa fa-share-alt"></i> {{item.molecularSequenceNumber | dashify}}</td>
-                              <td>{{item.dateCreated | dashify}}</td>
-                              <td>{{item.dateReceived | dashify}}</td>
+                              <td><i class="fa fa-share-alt"></i> {{item.molecular_id | dashify}}</td>
+                              <td>{{item.date_molecular_id_created | dashify}}</td>
+                              <td>{{item.date_variant_received | dashify}}</td>
                               <td class="text-center">
-                                <span *ngIf="item.status!==null"><a href [routerLink]="['/clia_'+cliaType+'/variant_reports_ntc']" class="link-none"><i class="fa fa-file-text-o"></i></a></span>
-                                <span *ngIf="item.status===null">-</span>
+                                <span *ngIf="item.report_status!==null"><a href [routerLink]="['/clia_'+cliaType+'/variant_reports_ntc']" class="link-none"><i class="fa fa-file-text-o"></i></a></span>
+                                <span *ngIf="item.report_status===null">-</span>
                               </td>
-                              <td [colorCodeClia]="item.status">{{item.status | dashify}}</td>
+                              <td [colorCodeClia]="item.report_status">{{item.report_status | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftableNTC.data.length == 0">
                               <td class="text-muted" colspan="5">No matching search results found for "{{searchtermNTC}}"</td>
@@ -230,32 +230,32 @@
                           <thead>
                             <tr class="orangeshade-light">
                               <th style="min-width:23em">
-                                <mfDefaultSorter by="molecularSequenceNumber"><span class="table-header">Molecular Sequence Number</span></mfDefaultSorter>
+                                <mfDefaultSorter by="molecular_id"><span class="table-header">Molecular Sequence Number</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="dateCreated"><span class="table-header">Created Date</span></mfDefaultSorter>
+                                <mfDefaultSorter by="date_molecular_id_created"><span class="table-header">Created Date</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="dateReceived"><span class="table-header">Received Date</span></mfDefaultSorter>
+                                <mfDefaultSorter by="date_variant_received"><span class="table-header">Received Date</span></mfDefaultSorter>
                               </th>
                               <th class="text-center">
                                 Variant Reports
                               </th>
                               <th>
-                                <mfDefaultSorter by="status"><span class="table-header">Status</span></mfDefaultSorter>
+                                <mfDefaultSorter by="report_status"><span class="table-header">report_status</span></mfDefaultSorter>
                               </th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftablePACC.data">
-                              <td><i class="fa fa-share-alt"></i> {{item.molecularSequenceNumber | dashify}}</td>
-                              <td>{{item.dateCreated | dashify}}</td>
-                              <td>{{item.dateReceived | dashify}}</td>
+                              <td><i class="fa fa-share-alt"></i> {{item.molecular_id | dashify}}</td>
+                              <td>{{item.date_molecular_id_created | dashify}}</td>
+                              <td>{{item.date_variant_received | dashify}}</td>
                               <td class="text-center">
-                                <span *ngIf="item.status!==null"><a href [routerLink]="['/clia_'+cliaType+'/variant_reports_pacc']" class="link-none"><i class="fa fa-file-text-o"></i></a></span>
-                                <span *ngIf="item.status===null">-</span>
+                                <span *ngIf="item.report_status!==null"><a href [routerLink]="['/clia_'+cliaType+'/variant_reports_pacc']" class="link-none"><i class="fa fa-file-text-o"></i></a></span>
+                                <span *ngIf="item.report_status===null">-</span>
                               </td>
-                              <td [colorCodeClia]="item.status">{{item.status | dashify}}</td>
+                              <td [colorCodeClia]="item.report_status">{{item.report_status | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftablePACC.data.length == 0">
                               <td class="text-muted" colspan="5">No matching search results found for "{{searchtermPACC}}"</td>
