@@ -7,10 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { routerTransition } from './../../shared/router.animations';
 import { GmtPipe } from './../../shared/pipes/gmt.pipe';
-import {
-  CliaApiService,
-  CliaInterface
-} from './../clia-api.service';
+import { CliaApiService } from './../clia-api.service';
 
 
 /**
@@ -36,9 +33,9 @@ export class CliaParentComponent implements OnInit {
   recordsPerPageNTC: number = 10;
   recordsPerPagePACC: number = 10;
 
-  tablePCDefaultSort: string = 'dateCreated';
-  tableNTCDefaultSort: string = 'dateCreated';
-  tablePACCDefaultSort: string = 'dateCreated';
+  tablePCDefaultSort: string = 'date_molecular_id_created';
+  tableNTCDefaultSort: string = 'date_molecular_id_created';
+  tablePACCDefaultSort: string = 'date_molecular_id_created';
 
   sortByAsc: string = 'asc';
   sortByDesc: string = 'desc';
@@ -72,31 +69,31 @@ export class CliaParentComponent implements OnInit {
     if (this.cliaType === 'mgh') this.cliaTypeName = 'MGH';
     if (this.cliaType === 'mda') this.cliaTypeName = 'MD Anderson';
 
-    this.cliaApi.getCliaDetails(this.cliaType)
-      .subscribe((details: CliaInterface) => {
-
-        this.tablePCData = details.tablePCData;
-        this.tableNTCData = details.tableNTCData;
-        this.tablePACCData = details.tablePACCData;
-
-        this.tablePCData = this.tablePCData.map(x => {
-          x.dateCreated = gmt.transform(x.dateCreated);
-          x.dateReceived = gmt.transform(x.dateReceived);
+    this.cliaApi.getCliaDetailsPC(this.cliaType)
+      .subscribe(details => {
+        this.tablePCData = details.map(x => {
+          x.date_molecular_id_created = gmt.transform(x.date_molecular_id_created);
+          x.date_variant_received = gmt.transform(x.date_variant_received);
           return x;
         });
+      });
 
-        this.tableNTCData = this.tableNTCData.map(x => {
-          x.dateCreated = gmt.transform(x.dateCreated);
-          x.dateReceived = gmt.transform(x.dateReceived);
+    this.cliaApi.getCliaDetailsNTC(this.cliaType)
+      .subscribe(details => {
+        this.tableNTCData = details.map(x => {
+          x.date_molecular_id_created = gmt.transform(x.date_molecular_id_created);
+          x.date_variant_received = gmt.transform(x.date_variant_received);
           return x;
         });
+      });
 
-        this.tablePACCData = this.tablePACCData.map(x => {
-          x.dateCreated = gmt.transform(x.dateCreated);
-          x.dateReceived = gmt.transform(x.dateReceived);
+    this.cliaApi.getCliaDetailsPACC(this.cliaType)
+      .subscribe(details => {
+        this.tablePACCData = details.map(x => {
+          x.date_molecular_id_created = gmt.transform(x.date_molecular_id_created);
+          x.date_variant_received = gmt.transform(x.date_variant_received);
           return x;
         });
-
       });
 
     this.cliaApi.getCliaIon(this.cliaType)
