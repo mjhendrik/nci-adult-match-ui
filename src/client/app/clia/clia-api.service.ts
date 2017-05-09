@@ -4,12 +4,6 @@ import { Observable } from 'rxjs/Observable';
 import { Config } from '../shared/config/env.config';
 import { AuthHttp } from 'angular2-jwt';
 
-export interface CliaInterface {
-  tablePCData: any[];
-  tableNTCData: any[];
-  tablePACCData: any[];
-}
-
 export interface CliaVariantReportsNTCInterface {
   variantReportNTC: {};
   snv: any[];
@@ -61,16 +55,41 @@ export class CliaApiService {
    * Returns an Observable for the HTTP GET request for the JSON resource.
    * @return {string[]} The Observable for the HTTP request.
    */
-  getCliaDetails(type: string): Observable<CliaInterface> {
-    return this.http.get('assets/mock-data/clia-' + type + '.json')
+  getCliaDetailsNTC(type: string): Observable<any[]> {
+
+    // return this.http.get('assets/mock-data/clia-' + type + '-ntc.json')
+
+    return this.http.get(Config.API.ION_REPORTER + '/sample_controls?site=' + type + '&control_type=no_template')
+      .map((res: Response) => res.json())
+      //              .do(data => console.log('server data:', data))  // debug
+      .catch(this.handleError);
+  }
+
+  getCliaDetailsPACC(type: string): Observable<any[]> {
+
+    // return this.http.get('assets/mock-data/clia-' + type + '-pacc.json')
+
+    return this.http.get(Config.API.ION_REPORTER + '/sample_controls?site=' + type + '&control_type=proficiency_competency')
+      .map((res: Response) => res.json())
+      //              .do(data => console.log('server data:', data))  // debug
+      .catch(this.handleError);
+  }
+
+  getCliaDetailsPC(type: string): Observable<any[]> {
+
+    // return this.http.get('assets/mock-data/clia-' + type + '-pc.json')
+
+    return this.http.get(Config.API.ION_REPORTER + '/sample_controls?site=' + type + '&control_type=positive')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
   }
 
   getCliaIon(type: string): Observable<any[]> {
+
+    // return this.http.get('assets/mock-data/clia-' + type + '-ion.json')
+
     return this.http.get(Config.API.ION_REPORTER + '/ion_reporters/healthcheck?site=' + type)
-      // return this.http.get('assets/mock-data/clia-' + type + '-ion.json')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
