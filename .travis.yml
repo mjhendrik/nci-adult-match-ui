@@ -42,7 +42,7 @@ script:
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
 
 after_failure:
-  - cat /home/travis/build/nci-adult-match-ui/npm-debug.log
+  - cat /home/travis/build/CBIIT/nci-adult-match-ui/npm-debug.log
 
 after_success:
   - docker images
