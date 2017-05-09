@@ -10,7 +10,7 @@ defineSupportCode(({Given, When, Then}) => {
   let page: LoginPageObject = new LoginPageObject();
 
   Given(/^I am on login page with title "(.*?)"$/, (title: string) => {
-    this.page.navigate();
+    page.navigate();
     return expect(browser.getTitle()).to.eventually.be.equal(title);
   });
 
@@ -18,7 +18,7 @@ defineSupportCode(({Given, When, Then}) => {
     return page.continueButton.click();
   });
 
-  Then(/^I should see login popup$/, (result: string) => {
-    return expect(page.loginPopup).to.eventually.be.present();
+  Then(/^I should see login popup$/, () => {
+    return expect(page.loginPopup.isPresent()).to.eventually.be.true;
   });
 })

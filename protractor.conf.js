@@ -26,7 +26,7 @@ const config = {
     compiler: "ts:ts-node/register",
     require: [
       'src/e2e/step-definitions/**/*.ts',
-      'src/e2e/hooks/**/*.ts'
+      'src/e2e/support/**/*.ts'
     ],
     format: 'pretty'
   },
