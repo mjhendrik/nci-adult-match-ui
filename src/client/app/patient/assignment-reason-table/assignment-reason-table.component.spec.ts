@@ -18,16 +18,16 @@ export function main() {
       });
     });
 
-    it('should work',
-      async(() => {
-        TestBed
-          .compileComponents()
-          .then(() => {
-            let fixture = TestBed.createComponent(TestComponent);
-            let aboutDOMEl = fixture.debugElement.children[0].nativeElement;
+    // it('should work',
+    //   async(() => {
+    //     TestBed
+    //       .compileComponents()
+    //       .then(() => {
+    //         let fixture = TestBed.createComponent(TestComponent);
+    //         let aboutDOMEl = fixture.debugElement.children[0].nativeElement;
 
-          });
-      }));
+    //       });
+    //   }));
 
   });
 }
