@@ -12,6 +12,7 @@
 		"christian-kohler.path-intellisense",
 		"obertohuertasm.vscode-icons",
 		"xabikos.JasmineSnippets",
-		"eg2.tslint"
+		"eg2.tslint",
+		"stevejpurves.cucumber"
 	]
 }
