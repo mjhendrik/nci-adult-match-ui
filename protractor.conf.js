@@ -23,7 +23,7 @@ const config = {
 
 
   cucumberOpts: {
-    require: 'src/e2e/features/step_definitions/stepDefinitions.js',
+    require: 'src/e2e/step-definitions/**/*.step-definitions.js',
     tags: false,
     format: 'pretty',
     profile: false,
