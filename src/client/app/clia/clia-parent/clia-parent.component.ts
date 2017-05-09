@@ -71,29 +71,41 @@ export class CliaParentComponent implements OnInit {
 
     this.cliaApi.getCliaDetailsPC(this.cliaType)
       .subscribe(details => {
+
         this.tablePCData = details.map(x => {
           x.date_molecular_id_created = gmt.transform(x.date_molecular_id_created);
           x.date_variant_received = gmt.transform(x.date_variant_received);
           return x;
         });
+
+        this.tablePCData.splice(-1, 1);
+
       });
 
     this.cliaApi.getCliaDetailsNTC(this.cliaType)
       .subscribe(details => {
+
         this.tableNTCData = details.map(x => {
           x.date_molecular_id_created = gmt.transform(x.date_molecular_id_created);
           x.date_variant_received = gmt.transform(x.date_variant_received);
           return x;
         });
+
+        this.tableNTCData.splice(-1, 1);
+
       });
 
     this.cliaApi.getCliaDetailsPACC(this.cliaType)
       .subscribe(details => {
+
         this.tablePACCData = details.map(x => {
           x.date_molecular_id_created = gmt.transform(x.date_molecular_id_created);
           x.date_variant_received = gmt.transform(x.date_variant_received);
           return x;
         });
+
+        this.tablePACCData.splice(-1, 1);
+
       });
 
     this.cliaApi.getCliaIon(this.cliaType)
