@@ -102,7 +102,10 @@
                               <td [colorCodeClia]="item.report_status">{{item.report_status | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftablePC.data.length == 0">
-                              <td class="text-muted" colspan="5">No matching search results found for "{{searchtermPC}}"</td>
+                              <td class="text-muted" colspan="5">
+                                <span *ngIf="searchtermPC">No matching search results found for "{{searchtermPC}}"</span>
+                                <span *ngIf="!searchtermPC">No positive control data</span>
+                              </td>
                             </tr>
                           </tbody>
                           <tfoot>
@@ -180,7 +183,10 @@
                               <td [colorCodeClia]="item.report_status">{{item.report_status | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftableNTC.data.length == 0">
-                              <td class="text-muted" colspan="5">No matching search results found for "{{searchtermNTC}}"</td>
+                              <td class="text-muted" colspan="5">
+                                <span *ngIf="searchtermNTC">No matching search results found for "{{searchtermNTC}}"</span>
+                                <span *ngIf="!searchtermNTC">No no template control data</span>
+                              </td>
                             </tr>
                           </tbody>
                           <tfoot>
@@ -258,7 +264,10 @@
                               <td [colorCodeClia]="item.report_status">{{item.report_status | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftablePACC.data.length == 0">
-                              <td class="text-muted" colspan="5">No matching search results found for "{{searchtermPACC}}"</td>
+                              <td class="text-muted" colspan="5">
+                                <span *ngIf="searchtermPACC">No matching search results found for "{{searchtermPACC}}"</span>
+                                <span *ngIf="!searchtermPACC">No proficiency and competency control data</span>
+                              </td>
                             </tr>
                           </tbody>
                           <tfoot>
