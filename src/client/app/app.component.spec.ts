@@ -32,7 +32,7 @@ export function main() {
       { path: 'dashboard', component: DashboardComponent },
       { path: 'patients', component: PatientListComponent },
       { path: 'patients/details', component: PatientDetailsComponent },
-      { path: 'patients/details/variant_report', component: PatientVariantReportComponent },
+      { path: 'patients/details/variant_reports', component: PatientVariantReportComponent },
       { path: 'treatments', component: TreatmentArmListComponent },
       { path: 'treatments/details', component: TreatmentArmDetailsComponent },
       { path: 'tracking', component: BiopsyTrackingListComponent },
