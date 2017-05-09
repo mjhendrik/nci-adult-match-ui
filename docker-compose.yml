@@ -11,6 +11,8 @@ services:
     volumes:
       - .:/usr/src/app
       - node_modules:/usr/src/app/node_modules
+    networks:
+      - adult-match-net
   patient-api:
     image: "fnlcr/nci-adult-match-patient-api"
     command: python app.py
@@ -21,6 +23,8 @@ services:
     environment:
       - MONGO_HOST=mongo
       - MONGO_PORT=27017
+    networks:
+      - adult-match-net
   treatment-arm-api:
     image: "fnlcr/nci-adult-match-treatment-arm-api"
     command: python app.py
@@ -31,11 +35,18 @@ services:
     environment:
       - MONGO_HOST=mongo
       - MONGO_PORT=27017
+    networks:
+      - adult-match-net
   mongo:
     image: mongo:3.4.0
     volumes:
       - ./misc/data_setup/match:/backup
     ports:
-      - "27017:27017"
+      - "27018:27017"
+    networks:
+      - adult-match-net
 volumes: 
   node_modules:
+networks:
+  adult-match-net:
+    driver: bridge
