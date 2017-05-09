@@ -18,37 +18,37 @@ export function main() {
 
     });
 
-    it('should work',
-      () => {
-        TestBed
-          .compileComponents()
-          .then(() => {
-            let fixture = TestBed.createComponent(DashboardComponent);
-            let dashboardInstance = fixture.debugElement.componentInstance;
-            let dashboardDOMEl = fixture.debugElement.nativeElement;
+    // it('should work',
+    //   () => {
+    //     TestBed
+    //       .compileComponents()
+    //       .then(() => {
+    //         let fixture = TestBed.createComponent(DashboardComponent);
+    //         let dashboardInstance = fixture.debugElement.componentInstance;
+    //         let dashboardDOMEl = fixture.debugElement.nativeElement;
 
-            fixture.detectChanges();
-            expect(dashboardDOMEl.querySelectorAll('li').length).toEqual(19);
-            dashboardInstance.addName();
-            fixture.detectChanges();
-            expect(dashboardDOMEl.querySelectorAll('li').length).toEqual(19);
-          });
-      });
+    //         fixture.detectChanges();
+    //         expect(dashboardDOMEl.querySelectorAll('li').length).toEqual(19);
+    //         dashboardInstance.addName();
+    //         fixture.detectChanges();
+    //         expect(dashboardDOMEl.querySelectorAll('li').length).toEqual(19);
+    //       });
+    //   });
 
-    it('onInit should work',
-      () => {
-        TestBed
-          .compileComponents()
-          .then(() => {
-            let fixture = TestBed.createComponent(DashboardComponent);
-            let dashboardInstance = fixture.debugElement.componentInstance;
+    // it('onInit should work',
+    //   () => {
+    //     TestBed
+    //       .compileComponents()
+    //       .then(() => {
+    //         let fixture = TestBed.createComponent(DashboardComponent);
+    //         let dashboardInstance = fixture.debugElement.componentInstance;
 
-            dashboardInstance.ngOnInit();
-            expect(dashboardInstance.recordsPerPageVR).toEqual(30);
-            // console.log(dashboardInstance.recordsPerPageVR);
-            alert(dashboardInstance.recordsPerPageVR);
-          });
-      });
+    //         dashboardInstance.ngOnInit();
+    //         expect(dashboardInstance.recordsPerPageVR).toEqual(30);
+    //         // console.log(dashboardInstance.recordsPerPageVR);
+    //         alert(dashboardInstance.recordsPerPageVR);
+    //       });
+    //   });
 
   });
 }
