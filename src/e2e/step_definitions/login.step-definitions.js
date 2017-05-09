@@ -4,7 +4,7 @@ var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 var expect = chai.expect;
 
-var loginPage = require('../pages/login_page.js');
+var loginPage = require('../pages/login.page.js');
 
 module.exports = function() {
   this.Given(/^I go to "([^"]*)"$/, function(site) {
