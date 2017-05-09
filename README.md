@@ -4,7 +4,7 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/d0059ed74fc241c3adc2da283aa0b7a9)](https://www.codacy.com/app/matchbox/nci-adult-match-ui?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=CBIIT/nci-adult-match-ui&amp;utm_campaign=Badge_Grade)
 [![Codacy Badge](https://api.codacy.com/project/badge/Coverage/d0059ed74fc241c3adc2da283aa0b7a9)](https://www.codacy.com/app/matchbox/nci-adult-match-ui?utm_source=github.com&utm_medium=referral&utm_content=CBIIT/nci-adult-match-ui&utm_campaign=Badge_Coverage)
 
-## How to start
+## For developers
 
 **Note** that this project requires node v4.x.x or higher and npm 2.14.7 but in order to be able to take advantage of the complete functionality we **strongly recommend node >=v6.5.0 and npm >=3.10.3**.
 
@@ -156,7 +156,7 @@ To run the docker locally use port 5555 because Auth0 is configured to use it. P
 $ docker run --name "nci-adult-match-ui" -it -p 5555:80  "fnlcr/nci-adult-match-ui:latest"
 ```
 
-## Running tests
+## For testers
 
 ```bash
 $ npm test
@@ -170,24 +170,6 @@ $ npm run test.watch
 # You can raise the maximum of file descriptors by running the command below:
 $ ulimit -n 10480
 
-
-# code coverage (istanbul)
-# auto-generated at the end of `npm test`
-# view coverage report:
-$ npm run serve.coverage
-
-# e2e (aka. end-to-end, integration) - In three different shell windows
-# Make sure you don't have a global instance of Protractor
-# Make sure you do have Java in your PATH (required for webdriver)
-
-# npm install webdriver-manager <- Install this first for e2e testing
-# npm run webdriver-update <- You will need to run this the first time
-$ npm run webdriver-start
-$ npm run serve.e2e
-$ npm run e2e
-
-# e2e live mode - Protractor interactive mode
-# Instead of last command above, you can use:
-$ npm run e2e.live
+# Run Cucumber tests
+$ npm run build.e2e && npm run e2e
 ```
-You can learn more about [Protractor Interactive Mode here](https://github.com/angular/protractor/blob/master/docs/debugging.md#testing-out-protractor-interactively)
