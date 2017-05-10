@@ -1,8 +1,7 @@
 {
   "analysis_id": "SC_KGPVI_analysis_1",
   "cellularity": "1.000000",
-  "copy_number_variant_genes": [
-    {
+  "copy_number_variant_genes": [{
       "chromosome": "chr1",
       "confidence_intervals": [
         "0.05:0",
@@ -1803,8 +1802,7 @@
       ]
     }
   ],
-  "copy_number_variants": [
-    {
+  "copy_number_variants": [{
       "amois": [],
       "confidence_interval_5_percent": null,
       "confidence_interval_95_percent": null,
@@ -2706,8 +2704,7 @@
     }
   ],
   "filename": "SC_KGPVI_MoCha_12_notemplate_passed",
-  "gene_fusions": [
-    {
+  "gene_fusions": [{
       "amois": [],
       "annotation": null,
       "driver_gene": null,
@@ -7764,8 +7761,7 @@
     "sum": 0,
     "tbp": 0
   },
-  "snv_indels": [
-    {
+  "snv_indels": [{
       "allele_frequency": 0,
       "alternative_allele_observation_count": 0,
       "aminoAcidPosition": null,

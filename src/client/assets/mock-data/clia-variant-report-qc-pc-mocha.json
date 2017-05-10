@@ -1,8 +1,7 @@
 {
   "analysis_id": "SC_A2PD6_ANI",
   "cellularity": "1.000000",
-  "copy_number_variant_genes": [
-    {
+  "copy_number_variant_genes": [{
       "chromosome": "chr1",
       "confidence_intervals": [
         "0.05:1.53045",
@@ -1849,8 +1848,7 @@
       ]
     }
   ],
-  "copy_number_variants": [
-    {
+  "copy_number_variants": [{
       "amois": [],
       "confidence_interval_5_percent": 1.39899,
       "confidence_interval_95_percent": 3.27351,
@@ -3282,8 +3280,7 @@
     }
   ],
   "filename": "test1",
-  "gene_fusions": [
-    {
+  "gene_fusions": [{
       "amois": [],
       "annotation": null,
       "driver_gene": null,
@@ -9823,8 +9820,7 @@
     "myc": 3846,
     "tbp": 174189
   },
-  "snv_indels": [
-    {
+  "snv_indels": [{
       "allele_frequency": 0,
       "alternative_allele_observation_count": 0,
       "amois": [],

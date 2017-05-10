@@ -1,8 +1,7 @@
 {
   "analysis_id": "SC_FDK09_analysis_1",
   "cellularity": "1.000000",
-  "copy_number_variant_genes": [
-    {
+  "copy_number_variant_genes": [{
       "chromosome": "chr1",
       "confidence_intervals": [
         "0.05:1.88039",
@@ -1827,8 +1826,7 @@
       ]
     }
   ],
-  "copy_number_variants": [
-    {
+  "copy_number_variants": [{
       "amois": [],
       "confidence_interval_5_percent": 1.88039,
       "confidence_interval_95_percent": 2.14074,
@@ -2742,8 +2740,7 @@
     }
   ],
   "filename": "SC_FDK09_analysis_1",
-  "gene_fusions": [
-    {
+  "gene_fusions": [{
       "amois": [],
       "annotation": null,
       "driver_gene": null,
@@ -7800,8 +7797,7 @@
     "sum": 912058,
     "tbp": 300666
   },
-  "snv_indels": [
-    {
+  "snv_indels": [{
       "allele_frequency": 0,
       "alternative_allele_observation_count": 5,
       "aminoAcidPosition": null,
