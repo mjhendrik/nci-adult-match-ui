@@ -112,23 +112,25 @@
             </thead>
             <tbody>
               <tr *ngFor="let item of positive_variants">
-                <td *ngIf="positive_variants.length!==0" class="text-center">
+                <td class="text-center">
                   <span *ngIf="item.match===true"><i class="fa fa-check-circle text-success-light"></i></span>
                   <span *ngIf="item.match===false"><i class="fa fa-times-circle text-danger-light"></i></span>
                 </td>
-                <td *ngIf="positive_variants.length!==0">
+                <td>
                   <external-link [externalLink]="'cosmicId'" [linkId]="item.identifier"></external-link>
                 </td>
-                <td *ngIf="positive_variants.length!==0">{{item.chromosome | dashify}}</td>
-                <td *ngIf="positive_variants.length!==0">{{item.position | dashify}}</td>
-                <td *ngIf="positive_variants.length!==0"><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln={{item.gene}}" class="link-none" target="_blank">{{item.gene | dashify}}</a></td>
-                <td *ngIf="positive_variants.length!==0">{{item.variant_type | dashify}}</td>
-                <td *ngIf="positive_variants.length!==0">{{item.ocp_reference | dashify}}</td>
-                <td *ngIf="positive_variants.length!==0">{{item.ocp_alternative | dashify}}</td>
-                <td *ngIf="positive_variants.length!==0">{{item.hgvs | dashify}}</td>
-                <td *ngIf="positive_variants.length!==0">{{item.protein | dashify}}</td>
-                <td *ngIf="positive_variants.length!==0">{{item.function | dashify}}</td>
-                <td *ngIf="positive_variants.length===0" colspan="11" class="text-muted">No false positive variants were detected.</td>
+                <td>{{item.chromosome | dashify}}</td>
+                <td>{{item.position | dashify}}</td>
+                <td><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln={{item.gene}}" class="link-none" target="_blank">{{item.gene | dashify}}</a></td>
+                <td>{{item.variant_type | dashify}}</td>
+                <td>{{item.ocp_reference | dashify}}</td>
+                <td>{{item.ocp_alternative | dashify}}</td>
+                <td>{{item.hgvs | dashify}}</td>
+                <td>{{item.protein | dashify}}</td>
+                <td>{{item.function | dashify}}</td>
+              </tr>
+              <tr *ngIf="positive_variants.length===0">
+                <td colspan="11" class="text-muted">No false positive variants were detected.</td>
               </tr>
             </tbody>
           </table>
@@ -154,19 +156,21 @@
             </thead>
             <tbody>
               <tr *ngFor="let item of false_positive_variants">
-                <td *ngIf="false_positive_variants.length!==0">
+                <td>
                   <external-link [externalLink]="'cosmicId'" [linkId]="item.identifier"></external-link>
                 </td>
-                <td *ngIf="false_positive_variants.length!==0">{{item.chromosome | dashify}}</td>
-                <td *ngIf="false_positive_variants.length!==0">{{item.position | dashify}}</td>
-                <td *ngIf="false_positive_variants.length!==0"><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln={{item.gene}}" class="link-none" target="_blank">{{item.gene | dashify}}</a></td>
-                <td *ngIf="false_positive_variants.length!==0">{{item.variant_type | dashify}}</td>
-                <td *ngIf="false_positive_variants.length!==0">{{item.ocp_reference | dashify}}</td>
-                <td *ngIf="false_positive_variants.length!==0">{{item.ocp_alternative | dashify}}</td>
-                <td *ngIf="false_positive_variants.length!==0">{{item.hgvs | dashify}}</td>
-                <td *ngIf="false_positive_variants.length!==0">{{item.protein | dashify}}</td>
-                <td *ngIf="false_positive_variants.length!==0">{{item.function | dashify}}</td>
-                <td *ngIf="false_positive_variants.length===0" colspan="10" class="text-muted">No false positive variants were detected.</td>
+                <td>{{item.chromosome | dashify}}</td>
+                <td>{{item.position | dashify}}</td>
+                <td><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln={{item.gene}}" class="link-none" target="_blank">{{item.gene | dashify}}</a></td>
+                <td>{{item.variant_type | dashify}}</td>
+                <td>{{item.ocp_reference | dashify}}</td>
+                <td>{{item.ocp_alternative | dashify}}</td>
+                <td>{{item.hgvs | dashify}}</td>
+                <td>{{item.protein | dashify}}</td>
+                <td>{{item.function | dashify}}</td>
+              </tr>
+              <tr *ngIf="false_positive_variants.length===0">
+                <td colspan="10" class="text-muted">No false positive variants were detected.</td>
               </tr>
             </tbody>
           </table>

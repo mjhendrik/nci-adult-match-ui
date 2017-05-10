@@ -90,7 +90,24 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr *ngFor="let item of snv_indels">
+                <td>
+                  <external-link [externalLink]="'cosmicId'" [linkId]="item.identifier"></external-link>
+                </td>
+                <td>{{item.chromosome | dashify}}</td>
+                <td>{{item.position | dashify}}</td>
+                <td>{{item.ocp_reference | dashify}}</td>
+                <td>{{item.ocp_alternative | dashify}}</td>
+                <td>{{item.allele_frequency | dashify}}</td>
+                <td><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln={{item.func_gene}}" class="link-none" target="_blank">{{item.func_gene | dashify}}</a></td>
+                <td>{{item.oncomine_variant_class | dashify}}</td>
+                <td>{{item.function | dashify}}</td>
+                <td>{{item.hgvs | dashify}}</td>
+                <td>{{item.read_depth | dashify}}</td>
+                <td>{{item.transcript | dashify}}</td>
+                <td>{{item.protein | dashify}}</td>
+              </tr>
+              <tr *ngIf="snv_indels.length===0">
                 <td colspan="13" class="text-muted">There are no single nucleotide variants or indels.</td>
               </tr>
             </tbody>
