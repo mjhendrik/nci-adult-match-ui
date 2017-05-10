@@ -5,15 +5,31 @@ import { Config } from '../shared/config/env.config';
 import { AuthHttp } from 'angular2-jwt';
 
 export interface CliaVariantReportsNTCInterface {
-  variantReportNTC: {};
-  snv: any[];
-  indels: any[];
+  molecular_id: {};
+  analysis_id: {};
+  total_variants: {};
+  mapd: {};
+  cellularity: {};
+  date_variant_received: {};
+  torrent_variant_caller_version: {};
+  report_status: {};
+  copy_number_variants: any[];
+  gene_fusions: any[];
+  snv_indels: any[];
 }
 
 export interface CliaVariantReportsPACCInterface {
-  variantReportPACC: {};
-  snv: any[];
-  indels: any[];
+  molecular_id: {};
+  analysis_id: {};
+  total_variants: {};
+  mapd: {};
+  cellularity: {};
+  date_variant_received: {};
+  torrent_variant_caller_version: {};
+  report_status: {};
+  copy_number_variants: any[];
+  gene_fusions: any[];
+  snv_indels: any[];
 }
 
 export interface CliaVariantReportsPCInterface {
@@ -105,7 +121,12 @@ export class CliaApiService {
   }
 
   getCliaVariantReportsNTC(ntcType: string): Observable<CliaVariantReportsNTCInterface> {
-    return this.http.get('assets/mock-data/clia-variant-reports-ntc-' + ntcType + '.json')
+
+    return this.http.get('assets/mock-data/clia-variant-reports-ntc-' + ntcType + '.json') // works only for mocha
+
+      // molecular_id --> NTC_MOCHA_KGPVI
+
+      // return this.http.get(Config.API.ION_REPORTER + '/aliquot/' + molecular_id)
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
