@@ -57,7 +57,7 @@ export class CliaApiService {
    */
   getCliaDetailsNTC(type: string): Observable<any[]> {
 
-    // return this.http.get('assets/mock-data/clia-' + type + '-ntc.json')
+    // return this.http.get('assets/mock-data/clia-' + type + '-ntc.json') // works only for mocha
 
     return this.http.get(Config.API.ION_REPORTER + '/sample_controls?site=' + type + '&control_type=no_template')
       .map((res: Response) => res.json())
@@ -67,7 +67,7 @@ export class CliaApiService {
 
   getCliaDetailsPACC(type: string): Observable<any[]> {
 
-    // return this.http.get('assets/mock-data/clia-' + type + '-pacc.json')
+    // return this.http.get('assets/mock-data/clia-' + type + '-pacc.json') // works only for mocha
 
     return this.http.get(Config.API.ION_REPORTER + '/sample_controls?site=' + type + '&control_type=proficiency_competency')
       .map((res: Response) => res.json())
@@ -77,7 +77,7 @@ export class CliaApiService {
 
   getCliaDetailsPC(type: string): Observable<any[]> {
 
-    // return this.http.get('assets/mock-data/clia-' + type + '-pc.json')
+    // return this.http.get('assets/mock-data/clia-' + type + '-pc.json') // works only for mocha
 
     return this.http.get(Config.API.ION_REPORTER + '/sample_controls?site=' + type + '&control_type=positive')
       .map((res: Response) => res.json())

@@ -44,7 +44,7 @@ export function main() {
                 templateUrl: ''
               }
             }).createComponent(CliaVariantReportsPcComponent);
-            console.log(fixture);
+            // console.log(fixture);
             fixture.componentInstance.ngOnInit();
           });
       }));
