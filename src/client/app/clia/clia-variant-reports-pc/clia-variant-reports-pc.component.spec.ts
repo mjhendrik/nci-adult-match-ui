@@ -17,7 +17,7 @@ import { DirectivesModule } from './../../shared/directives/directives.module';
 
 
 export function main() {
-  fdescribe('clia variant reports pc component', () => {
+  describe('clia variant reports pc component', () => {
     // Setting module for testing
     // Disable old forms
     let config: any[] = [
@@ -34,7 +34,7 @@ export function main() {
       });
     });
 
-    fit('should work',
+    it('should work',
       async(() => {
         TestBed
           .compileComponents()
