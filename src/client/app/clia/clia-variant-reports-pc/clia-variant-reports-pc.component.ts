@@ -24,9 +24,18 @@ import {
 })
 export class CliaVariantReportsPcComponent implements OnInit {
 
-  variantReportPC: any;
-  lengendPCs: any[];
-  tablePCsData: any[];
+  molecular_id: any;
+  analysis_id: any;
+  total_variants: any;
+  mapd: any;
+  cellularity: any;
+  positive_control_version: any;
+  date_molecular_id_created: any;
+  date_variant_received: any;
+  torrent_variant_caller_version: any;
+  report_status: any;
+  false_positive_variants: any[];
+  positive_variants: any[];
   dataAvailable: boolean;
   errorMessage: string;
   pcType: string;
@@ -51,10 +60,19 @@ export class CliaVariantReportsPcComponent implements OnInit {
   getData() {
     this.cliaApi.getCliaVariantReportsPC(this.pcType)
       .subscribe((itemList: CliaVariantReportsPCInterface) => {
-        this.variantReportPC = itemList.variantReportPC;
+        this.molecular_id = itemList.molecular_id;
+        this.analysis_id = itemList.analysis_id;
+        this.total_variants = itemList.total_variants;
+        this.mapd = itemList.mapd;
+        this.cellularity = itemList.cellularity;
+        this.positive_control_version = itemList.positive_control_version;
+        this.date_molecular_id_created = itemList.date_molecular_id_created;
+        this.date_variant_received = itemList.date_variant_received;
+        this.torrent_variant_caller_version = itemList.torrent_variant_caller_version;
+        this.report_status = itemList.report_status;
         this.dataAvailable = true;
-        this.lengendPCs = itemList.lengendPCs;
-        this.tablePCsData = itemList.tablePCsData;
+        this.false_positive_variants = itemList.false_positive_variants;
+        this.positive_variants = itemList.positive_variants;
       },
       error => this.errorMessage = <any>error
       );

@@ -19,25 +19,25 @@
           <div class="tab-pane fade active in" id="panel-tab-info">
             <dl class="dl-horizontal">
               <dt>Molecular Sequence Number</dt>
-              <dd>{{variantReportPC.molecularSequenceNumber | dashify}}</dd>
+              <dd>{{molecular_id | dashify}}</dd>
               <dt>Analysis Id</dt>
-              <dd>{{variantReportPC.analysisId | dashify}}</dd>
+              <dd>{{analysis_id | dashify}}</dd>
               <dt>Total Variants</dt>
-              <dd>{{variantReportPC.totalVariants | dashify}}</dd>
+              <dd>{{total_variants | dashify}}</dd>
               <dt>MAPD</dt>
-              <dd>{{variantReportPC.mapd | dashify}}</dd>
+              <dd>{{mapd | dashify}}</dd>
               <dt>Cellularity</dt>
-              <dd>{{variantReportPC.cellularity | dashify}}</dd>
+              <dd>{{cellularity | dashify}}</dd>
               <dt>Positive Control Version</dt>
-              <dd>{{variantReportPC.positiveControlVersion | dashify}}</dd>
+              <dd>{{positive_control_version | dashify}}</dd>
               <dt>Positive Control Loaded Date</dt>
-              <dd>{{variantReportPC.positiveControlLoadedDate | gmt | dashify}}</dd>
+              <dd>{{date_molecular_id_created | gmt | dashify}}</dd>
               <dt>File Received Date</dt>
-              <dd>{{variantReportPC.fileReceivedDate | gmt | dashify}}</dd>
+              <dd>{{date_variant_received | gmt | dashify}}</dd>
               <dt>Torrent Variant Caller Version</dt>
-              <dd>{{variantReportPC.torrentVariantCallerVersion | dashify}}</dd>
+              <dd>{{torrent_variant_caller_version | dashify}}</dd>
               <dt>Status</dt>
-              <dd [colorCodeClia]="variantReportPC.status">{{variantReportPC.status | dashify}}</dd>
+              <dd [colorCodeClia]="report_status">{{report_status | dashify}}</dd>
             </dl>
             <div class="panel-heading">
               <a class="btn btn-orangeshade-light link-none" role="button" href [routerLink]="['/clia_'+pcType+'/variant_reports_pc/qc']"><i class="fa fa-file-text-o"></i> QC Report</a>
@@ -99,21 +99,21 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let item of tablePCsData">
+              <tr *ngFor="let item of positive_variants">
                 <td class="text-center">
-                  <span *ngIf="item.hasMatchingVariant===true"><i class="fa fa-check-circle text-success-light"></i></span>
-                  <span *ngIf="item.hasMatchingVariant===false"><i class="fa fa-times-circle text-danger-light"></i></span>
+                  <span *ngIf="item.match===true"><i class="fa fa-check-circle text-success-light"></i></span>
+                  <span *ngIf="item.match===false"><i class="fa fa-times-circle text-danger-light"></i></span>
                 </td>
                 <td>
                   <external-link [externalLink]="'cosmicId'" [linkId]="item.identifier"></external-link>
                 </td>
                 <td>{{item.chromosome | dashify}}</td>
                 <td>{{item.position | dashify}}</td>
-                <td><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln={{item.geneName}}" class="link-none" target="_blank">{{item.geneName | dashify}}</a></td>
-                <td>{{item.variantType | dashify}}</td>
-                <td>{{item.reference | dashify}}</td>
-                <td>{{item.alternative | dashify}}</td>
-                <td>{{item.dna | dashify}}</td>
+                <td><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln={{item.gene}}" class="link-none" target="_blank">{{item.gene | dashify}}</a></td>
+                <td>{{item.variant_type | dashify}}</td>
+                <td>{{item.ocp_reference | dashify}}</td>
+                <td>{{item.ocp_alternative | dashify}}</td>
+                <td>{{item.hgvs | dashify}}</td>
                 <td>{{item.protein | dashify}}</td>
                 <td>{{item.function | dashify}}</td>
               </tr>
@@ -127,7 +127,6 @@
           <table class="table table-condensed">
             <thead>
               <tr>
-                <th>Present</th>
                 <th>ID</th>
                 <th>Chromosome</th>
                 <th>Position</th>
@@ -141,9 +140,23 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td colspan="10" class="text-muted">No false positive variants were detected.</td>
+              <tr *ngFor="let item of false_positive_variants">
+                <td>
+                  <external-link [externalLink]="'cosmicId'" [linkId]="item.identifier"></external-link>
+                </td>
+                <td>{{item.chromosome | dashify}}</td>
+                <td>{{item.position | dashify}}</td>
+                <td><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln={{item.gene}}" class="link-none" target="_blank">{{item.gene | dashify}}</a></td>
+                <td>{{item.variant_type | dashify}}</td>
+                <td>{{item.ocp_reference | dashify}}</td>
+                <td>{{item.ocp_alternative | dashify}}</td>
+                <td>{{item.hgvs | dashify}}</td>
+                <td>{{item.protein | dashify}}</td>
+                <td>{{item.function | dashify}}</td>
               </tr>
+              <!--<tr>
+                <td colspan="9" class="text-muted">No false positive variants were detected.</td>
+              </tr>-->
             </tbody>
           </table>
         </div>

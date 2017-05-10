@@ -17,9 +17,18 @@ export interface CliaVariantReportsPACCInterface {
 }
 
 export interface CliaVariantReportsPCInterface {
-  variantReportPC: {};
-  lengendPCs: any[];
-  tablePCsData: any[];
+  molecular_id: {};
+  analysis_id: {};
+  total_variants: {};
+  mapd: {};
+  cellularity: {};
+  positive_control_version: {};
+  date_molecular_id_created: {};
+  date_variant_received: {};
+  torrent_variant_caller_version: {};
+  report_status: {};
+  false_positive_variants: any[];
+  positive_variants: any[];
 }
 
 export interface CliaVariantReportsQCInterface {
@@ -110,7 +119,12 @@ export class CliaApiService {
   }
 
   getCliaVariantReportsPC(pcType: string): Observable<CliaVariantReportsPCInterface> {
-    return this.http.get('assets/mock-data/clia-variant-reports-pc-' + pcType + '.json')
+
+    return this.http.get('assets/mock-data/clia-variant-reports-pc-' + pcType + '.json') // works only for mocha
+
+      // molecular_id --> SC_MOCHA_A2PD6
+
+      // return this.http.get(Config.API.ION_REPORTER + '/aliquot/' + molecular_id)
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
