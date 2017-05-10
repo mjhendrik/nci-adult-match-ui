@@ -56,7 +56,7 @@ export function main() {
 class MockCliaApiService {
   getCliaVariantReportsPC(): Observable<CliaVariantReportsPCInterface> {
     let testData: CliaVariantReportsPCInterface;
-    testData = { lengendPCs: ["test"], tablePCsData: ["test"], variantReportPC: { "test": "test" } };
+    testData = { lengendPCs: ['test'], tablePCsData: ['test'], variantReportPC: { 'test': 'test' } };
     return Observable.of(testData);
   }
 }
