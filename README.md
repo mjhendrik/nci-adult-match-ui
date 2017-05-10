@@ -4,6 +4,69 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/d0059ed74fc241c3adc2da283aa0b7a9)](https://www.codacy.com/app/matchbox/nci-adult-match-ui?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=CBIIT/nci-adult-match-ui&amp;utm_campaign=Badge_Grade)
 [![Codacy Badge](https://api.codacy.com/project/badge/Coverage/d0059ed74fc241c3adc2da283aa0b7a9)](https://www.codacy.com/app/matchbox/nci-adult-match-ui?utm_source=github.com&utm_medium=referral&utm_content=CBIIT/nci-adult-match-ui&utm_campaign=Badge_Coverage)
 
+## Local development build and deployment
+
+To start the front-end and services locally:
+
+```bash
+$ docker-compose up
+```
+
+To pull the latest front-end and services locally:
+
+```bash
+$ docker-compose pull
+```
+
+Now open your browser at [http://localhost:5555](http://localhost:5555)
+
+To start only Monbgo DB, for example to develop your services locally:
+
+```bash
+$ docker-compose up mongo
+```
+
+To restore MongoDB data:
+
+```bash
+$ docker exec -it nciadultmatchui_mongo_1 bash # to attach to the mongo service of your docker-compose
+$ mongorestore --db match ./backup             # to restore the mongo dump
+$ exit                                         # to exit out of the mongo container into your terminal
+```
+
+After you've restored the backup you may check the restored data (while still attached to the mongo container, as above):
+
+```bash
+$ mongo shell
+$ show dbs
+$ use match
+$ show collections
+$ db.patient.count()
+```
+
+Exit from MongoDB shell by pressing `Ctrl+C`
+
+Please note each time you run `docker-compose down` the data volumes for the docker containers are removed and you'll have to import the backups again.
+
+## For testers
+
+```bash
+# Run unit tests
+$ npm test
+
+# Development. Your app will be watched by karma
+# on each change all your specs will be executed.
+$ npm run test.watch
+# NB: The command above might fail with a "EMFILE: too many open files" error.
+# Some OS have a small limit of opened file descriptors (256) by default
+# and will result in the EMFILE error.
+# You can raise the maximum of file descriptors by running the command below:
+$ ulimit -n 10480
+
+# Run Cucumber tests
+$ npm run build.e2e && npm run e2e
+```
+
 ## For developers
 
 **Note** that this project requires node v4.x.x or higher and npm 2.14.7 but in order to be able to take advantage of the complete functionality we **strongly recommend node >=v6.5.0 and npm >=3.10.3**.
@@ -94,54 +157,6 @@ Your project will be compiled ahead of time (AOT), and then the resulting bundle
 
 ## Dockerization
 
-### How to build and start the dockerized version of the application 
-
-### Local development build and deployment
-
-
-To start the front-end and services locally:
-
-```bash
-$ docker-compose up
-```
-
-To pull the latest front-end and services locally:
-
-```bash
-$ docker-compose pull
-```
-
-Now open your browser at [http://localhost:5555](http://localhost:5555)
-
-To start only Monbgo DB, for example to develop your services locally:
-
-```bash
-$ docker-compose up mongo
-```
-
-To restore MongoDB data:
-
-```bash
-$ docker exec -it nciadultmatchui_mongo_1 bash # to attach to the mongo service of your docker-compose
-$ mongorestore --db match ./backup             # to restore the mongo dump
-$ exit                                         # to exit out of the mongo container into your terminal
-```
-
-After you've restored the backup you may check the restored data (while still attached to the mongo container, as above):
-
-```bash
-$ mongo shell
-$ show dbs
-$ use match
-$ show collections
-$ db.patient.count()
-```
-
-Exit from MongoDB shell by pressing `Ctrl+C`
-
-Please note each time you run `docker-compose down` the data volumes for the docker containers are removed and you'll have to import the backups again.
-
-
 ### Test or Production build and deployment
 
 To build the image based on Apache run the following:
@@ -154,22 +169,4 @@ To run the docker locally use port 5555 because Auth0 is configured to use it. P
 
 ```bash
 $ docker run --name "nci-adult-match-ui" -it -p 5555:80  "fnlcr/nci-adult-match-ui:latest"
-```
-
-## For testers
-
-```bash
-$ npm test
-
-# Development. Your app will be watched by karma
-# on each change all your specs will be executed.
-$ npm run test.watch
-# NB: The command above might fail with a "EMFILE: too many open files" error.
-# Some OS have a small limit of opened file descriptors (256) by default
-# and will result in the EMFILE error.
-# You can raise the maximum of file descriptors by running the command below:
-$ ulimit -n 10480
-
-# Run Cucumber tests
-$ npm run build.e2e && npm run e2e
 ```
