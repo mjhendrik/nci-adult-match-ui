@@ -56,7 +56,20 @@ export function main() {
 class MockCliaApiService {
   getCliaVariantReportsPC(): Observable<CliaVariantReportsPCInterface> {
     let testData: CliaVariantReportsPCInterface;
-    testData = { lengendPCs: ['test'], tablePCsData: ['test'], variantReportPC: { 'test': 'test' } };
+    testData = {
+      false_positive_variants: ['test'],
+      positive_variants: ['test'],
+      molecular_id: { 'test': 'test' },
+      analysis_id: { 'test': 'test' },
+      total_variants: { 'test': 'test' },
+      mapd: { 'test': 'test' },
+      cellularity: { 'test': 'test' },
+      positive_control_version: { 'test': 'test' },
+      date_molecular_id_created: { 'test': 'test' },
+      date_variant_received: { 'test': 'test' },
+      torrent_variant_caller_version: { 'test': 'test' },
+      report_status: { 'test': 'test' }
+    };
     return Observable.of(testData);
   }
 }
