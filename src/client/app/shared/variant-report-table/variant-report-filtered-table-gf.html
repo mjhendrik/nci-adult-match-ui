@@ -30,46 +30,46 @@
             <mfDefaultSorter by="id"><span class="table-header">ID</span></mfDefaultSorter>
           </th>
           <th>
-            <mfDefaultSorter by="chrom"><span class="table-header">Chrom</span></mfDefaultSorter>
+            <mfDefaultSorter by="0"><span class="table-header">Chrom</span></mfDefaultSorter>
           </th>
           <th>
-            <mfDefaultSorter by="position"><span class="table-header">Position </span></mfDefaultSorter>
+            <mfDefaultSorter by="1"><span class="table-header">Position </span></mfDefaultSorter>
           </th>
           <th>
-            <mfDefaultSorter by="reference"><span class="table-header">Reference</span></mfDefaultSorter>
+            <mfDefaultSorter by="2"><span class="table-header">Reference</span></mfDefaultSorter>
           </th>
           <th>
-            <mfDefaultSorter by="alternative"><span class="table-header">Alternative</span></mfDefaultSorter>
+            <mfDefaultSorter by="3"><span class="table-header">Alternative</span></mfDefaultSorter>
           </th>
           <th>
-            <mfDefaultSorter by="funcGene"><span class="table-header">Func Gene</span></mfDefaultSorter>
+            <mfDefaultSorter by="4"><span class="table-header">Func Gene</span></mfDefaultSorter>
           </th>
           <th>
-            <mfDefaultSorter by="oncomineVariantClass"><span class="table-header">Oncomine Variant Class</span></mfDefaultSorter>
+            <mfDefaultSorter by="5"><span class="table-header">Oncomine Variant Class</span></mfDefaultSorter>
           </th>
           <th>
-            <mfDefaultSorter by="exon"><span class="table-header">Exon</span></mfDefaultSorter>
+            <mfDefaultSorter by="6"><span class="table-header">Exon</span></mfDefaultSorter>
           </th>
           <th>
-            <mfDefaultSorter by="function"><span class="table-header">Function</span></mfDefaultSorter>
+            <mfDefaultSorter by="7"><span class="table-header">Function</span></mfDefaultSorter>
           </th>
           <th>
-            <mfDefaultSorter by="readCount"><span class="table-header">Read Count</span></mfDefaultSorter>
+            <mfDefaultSorter by="partner_read_count"><span class="table-header">Read Count</span></mfDefaultSorter>
           </th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let item of mfTable.data">
-          <td>{{item.id | dashify}}</td>
-          <td>{{item.chrom | dashify}}</td>
-          <td>{{item.position | dashify}}</td>
-          <td>{{item.reference | dashify}}</td>
-          <td>{{item.alternative | dashify}}</td>
-          <td>{{item.funcGene | dashify}}</td>
-          <td>{{item.oncomineVariantClass | dashify}}</td>
-          <td>{{item.exon | dashify}}</td>
-          <td>{{item.function | dashify}}</td>
-          <td>{{item.readCount | dashify}}</td>
+          <td>{{item.identifier | dashify}}</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+          <td>{{item.partner_read_count | dashify}}</td>
         </tr>
         <tr *ngIf="!items || mfTable.data.length == 0">
           <td class="text-muted" colspan="14">

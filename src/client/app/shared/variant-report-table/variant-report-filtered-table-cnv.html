@@ -27,37 +27,37 @@
       <thead>
         <tr [ngClass]="{true:'purple-light',false:'orangeshade-light'}[type=='patient']">
           <th>
-            <mfDefaultSorter by="id"><span class="table-header">ID</span></mfDefaultSorter>
+            <mfDefaultSorter by="identifier"><span class="table-header">ID</span></mfDefaultSorter>
           </th>
           <th>
-            <mfDefaultSorter by="chrom"><span class="table-header">Chrom</span></mfDefaultSorter>
+            <mfDefaultSorter by="0"><span class="table-header">Chrom</span></mfDefaultSorter>
           </th>
           <th>
-            <mfDefaultSorter by="position"><span class="table-header">Position </span></mfDefaultSorter>
+            <mfDefaultSorter by="1"><span class="table-header">Position </span></mfDefaultSorter>
           </th>
           <th>
-            <mfDefaultSorter by="rawCn"><span class="table-header">Raw CN</span></mfDefaultSorter>
+            <mfDefaultSorter by="raw_copy_number"><span class="table-header">Raw CN</span></mfDefaultSorter>
           </th>
           <th>
-            <mfDefaultSorter by="cn"><span class="table-header">CN</span></mfDefaultSorter>
+            <mfDefaultSorter by="copy_number"><span class="table-header">CN</span></mfDefaultSorter>
           </th>
           <th>
-            <mfDefaultSorter by="ci5Percent"><span class="table-header">CI 5%</span></mfDefaultSorter>
+            <mfDefaultSorter by="confidence_interval_5_percent"><span class="table-header">CI 5%</span></mfDefaultSorter>
           </th>
           <th>
-            <mfDefaultSorter by="ci95Percent"><span class="table-header">CI 95%</span></mfDefaultSorter>
+            <mfDefaultSorter by="confidence_interval_95_percent"><span class="table-header">CI 95%</span></mfDefaultSorter>
           </th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let item of mfTable.data">
-          <td>{{item.id | dashify}}</td>
-          <td>{{item.chrom | dashify}}</td>
-          <td>{{item.position | dashify}}</td>
-          <td>{{item.rawCn | dashify}}</td>
-          <td>{{item.cn | dashify}}</td>
-          <td>{{item.ci5Percent | dashify}}</td>
-          <td>{{item.ci95Percent | dashify}}</td>
+          <td>{{item.identifier | dashify}}</td>
+          <td>-</td>
+          <td>-</td>
+          <td>{{item.raw_copy_number | dashify}}</td>
+          <td>{{item.copy_number | dashify}}</td>
+          <td>{{item.confidence_interval_5_percent | dashify}}</td>
+          <td>{{item.confidence_interval_95_percent | dashify}}</td>
         </tr>
         <tr *ngIf="!items || mfTable.data.length == 0">
           <td class="text-muted" colspan="7">

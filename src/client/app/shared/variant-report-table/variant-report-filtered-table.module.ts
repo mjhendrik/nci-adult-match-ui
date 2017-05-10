@@ -10,6 +10,7 @@ import { VariantReportFilteredTableSnvComponent } from './variant-report-filtere
 import { VariantReportFilteredTableIndelsComponent } from './variant-report-filtered-table-indels.component';
 import { VariantReportFilteredTableCnvComponent } from './variant-report-filtered-table-cnv.component';
 import { VariantReportFilteredTableGeneFusionComponent } from './variant-report-filtered-table-gf.component';
+import { VariantReportFilteredTableSnvIndelsComponent } from './variant-report-filtered-table-snv-indels.component';
 
 @NgModule({
   imports: [
@@ -23,13 +24,15 @@ import { VariantReportFilteredTableGeneFusionComponent } from './variant-report-
     VariantReportFilteredTableSnvComponent,
     VariantReportFilteredTableIndelsComponent,
     VariantReportFilteredTableCnvComponent,
-    VariantReportFilteredTableGeneFusionComponent
+    VariantReportFilteredTableGeneFusionComponent,
+    VariantReportFilteredTableSnvIndelsComponent
   ],
   exports: [
     VariantReportFilteredTableSnvComponent,
     VariantReportFilteredTableIndelsComponent,
     VariantReportFilteredTableCnvComponent,
-    VariantReportFilteredTableGeneFusionComponent
+    VariantReportFilteredTableGeneFusionComponent,
+    VariantReportFilteredTableSnvIndelsComponent
   ],
   providers: [
     PatientApiService,

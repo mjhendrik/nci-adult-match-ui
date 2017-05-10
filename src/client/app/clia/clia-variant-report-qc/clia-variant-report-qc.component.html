@@ -91,22 +91,17 @@
     <div class="panel-heading">
       <div class="row">
         <div class="col-md-12">
-          <sd-variant-report-filtered-table-snv [items]="snv"></sd-variant-report-filtered-table-snv>
+          <sd-variant-report-filtered-table-snv-indels [items]="snv_indels"></sd-variant-report-filtered-table-snv-indels>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
-          <sd-variant-report-filtered-table-indels [items]="indels"></sd-variant-report-filtered-table-indels>
+          <sd-variant-report-filtered-table-cnv [items]="copy_number_variants"></sd-variant-report-filtered-table-cnv>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
-          <sd-variant-report-filtered-table-cnv [items]="cnv"></sd-variant-report-filtered-table-cnv>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <sd-variant-report-filtered-table-gf [items]="geneFusions"></sd-variant-report-filtered-table-gf>
+          <sd-variant-report-filtered-table-gf [items]="gene_fusions"></sd-variant-report-filtered-table-gf>
         </div>
       </div>
     </div>
