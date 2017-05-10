@@ -20,43 +20,43 @@
           <div class="tab-pane fade active in" id="panel-tab-info">
             <dl class="dl-horizontal">
               <dt>Molecular Sequence Number</dt>
-              <dd>{{variantReport.molecularSequenceNumber | dashify}}</dd>
+              <dd>{{molecular_id | dashify}}</dd>
               <dt>Analysis ID</dt>
-              <dd>{{variantReport.analysisId | dashify}}</dd>
+              <dd>{{analysis_id | dashify}}</dd>
               <dt>Total Variants</dt>
-              <dd>{{variantReport.totalVariants | dashify}}</dd>
+              <dd>{{total_variants | dashify}}</dd>
               <dt>MAPD</dt>
-              <dd>{{variantReport.mapd | dashify}}</dd>
+              <dd>{{mapd | dashify}}</dd>
               <dt>Cellularity</dt>
-              <dd>{{variantReport.cellularity | dashify}}</dd>
+              <dd>{{cellularity | dashify}}</dd>
               <dt>File Received Date</dt>
-              <dd>{{variantReport.fileReceivedDate | dashify}}</dd>
+              <dd>-</dd>
               <dt>Torrent Variant Caller Version</dt>
-              <dd>{{variantReport.torrentVariantCallerVersion | dashify}}</dd>
+              <dd>{{torrent_variant_caller_version | dashify}}</dd>
             </dl>
             <dl class="dl-horizontal">
               <h4>Oncomine Control Panel Summary</h4>
               <table class="table table-condensed white-header">
                 <thead>
                   <tr>
-                    <th *ngIf="tabType=='pc'">LRP1</th>
-                    <th *ngIf="tabType!='pc'">LMNA</th>
-                    <th>TBP</th>
-                    <th>MYC</th>
-                    <th>HMBS</th>
-                    <th>ITGB7</th>
+                    <th *ngIf="tabType=='pc'"><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln=lrp1" class="link-none" target="_blank">LRP1</a></th>
+                    <th *ngIf="tabType!='pc'"><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln=lmna" class="link-none" target="_blank">LMNA</a></th>
+                    <th><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln=tbp" class="link-none" target="_blank">TBP</a></th>
+                    <th><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln=myc" class="link-none" target="_blank">MYC</a></th>
+                    <th><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln=hmbs" class="link-none" target="_blank">HMBS</a></th>
+                    <th><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln=itgb7" class="link-none" target="_blank">ITGB7</a></th>
                     <th>SUM</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngIf="ocpSummary; else emptyRow">
-                    <td *ngIf="tabType=='pc'">{{ocpSummary.LRP1 | dashify}}</td>
-                    <td *ngIf="tabType!='pc'">{{ocpSummary.LMNA | dashify}}</td>
-                    <td>{{ocpSummary.TBP | dashify}}</td>
-                    <td>{{ocpSummary.MYC | dashify}}</td>
-                    <td>{{ocpSummary.HMBS | dashify}}</td>
-                    <td>{{ocpSummary.ITGB7 | dashify}}</td>
-                    <td>{{ocpSummary.SUM | dashify}}</td>
+                  <tr *ngIf="oncomine_control_panel_summary; else emptyRow">
+                    <td *ngIf="tabType=='pc'">{{oncomine_control_panel_summary.lrp1 | dashify}}</td>
+                    <td *ngIf="tabType!='pc'">{{oncomine_control_panel_summary.lmna | dashify}}</td>
+                    <td>{{oncomine_control_panel_summary.tbp | dashify}}</td>
+                    <td>{{oncomine_control_panel_summary.myc | dashify}}</td>
+                    <td>{{oncomine_control_panel_summary.hmbs | dashify}}</td>
+                    <td>{{oncomine_control_panel_summary.itgb7 | dashify}}</td>
+                    <td>-</td>
                   </tr>
                   <ng-template #emptyRow>
                     <tr>

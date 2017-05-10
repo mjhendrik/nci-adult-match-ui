@@ -48,17 +48,16 @@ export interface CliaVariantReportsPCInterface {
 }
 
 export interface CliaVariantReportsQCInterface {
-  variantReport: {};
-  assignmentReport: {};
-  moiSummary: {};
-  assay: any[];
-  snv: any[];
-  cnv: any[];
-  geneFusions: any[];
-  indels: any[];
-  assignmentReason: {};
-  assignmentHistory: any[];
-  ocpSummary: any;
+  molecular_id: {};
+  analysis_id: {};
+  total_variants: {};
+  mapd: {};
+  cellularity: {};
+  torrent_variant_caller_version: {};
+  oncomine_control_panel_summary: any[];
+  copy_number_variants: any[];
+  gene_fusions: any[];
+  snv_indels: any[];
 }
 
 // import 'rxjs/add/operator/do';  // for debugging
@@ -157,7 +156,12 @@ export class CliaApiService {
   }
 
   getCliaVariantReportQC(tabType: string, cliaType: string): Observable<CliaVariantReportsQCInterface> {
-    return this.http.get('assets/mock-data/clia-variant-report-qc-' + tabType + '-' + cliaType + '.json')
+
+    return this.http.get('assets/mock-data/clia-variant-report-qc-' + tabType + '-' + cliaType + '.json') // works only for mocha
+
+      // molecular_id --> PCC_MOCHA_FDK09, NTC_MOCHA_KGPVI, SC_MOCHA_A2PD6
+
+      // return this.http.get(Config.API.ION_REPORTER + '/sample_controls/quality_control/' + molecular_id)
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);

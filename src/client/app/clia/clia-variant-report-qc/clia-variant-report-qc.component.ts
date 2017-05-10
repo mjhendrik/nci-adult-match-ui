@@ -21,15 +21,17 @@ import {
   host: { '[@routerTransition]': '' }
 })
 export class CliaVariantReportQcComponent implements OnInit {
-  variantReport: any;
-  assignmentReport: any;
-  moiSummary: any;
-  assay: any[];
-  snv: any[];
-  indels: any[];
-  assignmentReason: any;
-  assignmentHistory: any[];
-  ocpSummary: any;
+
+  molecular_id: any;
+  analysis_id: any;
+  total_variants: any;
+  mapd: any;
+  cellularity: any;
+  torrent_variant_caller_version: any;
+  oncomine_control_panel_summary: any[];
+  copy_number_variants: any[];
+  gene_fusions: any[];
+  snv_indels: any[];
 
   dataAvailable: boolean;
   errorMessage: string;
@@ -39,7 +41,6 @@ export class CliaVariantReportQcComponent implements OnInit {
   cliaTypeName: string;
   tabTypeName: string;
   tabTypeHeaderName: string;
-
 
   constructor(private cliaApi: CliaApiService, private route: ActivatedRoute) { }
 
@@ -77,16 +78,17 @@ export class CliaVariantReportQcComponent implements OnInit {
   getData() {
     this.cliaApi.getCliaVariantReportQC(this.tabType, this.cliaType)
       .subscribe((itemList: CliaVariantReportsQCInterface) => {
-        this.variantReport = itemList.variantReport;
-        this.assignmentReport = itemList.assignmentReport;
-        this.moiSummary = itemList.moiSummary;
-        this.assay = itemList.assay;
-        this.snv = itemList.snv;
-        this.indels = itemList.indels;
-        this.assignmentReason = itemList.assignmentReason;
-        this.assignmentHistory = itemList.assignmentHistory;
-        this.ocpSummary = itemList.ocpSummary;
+        this.molecular_id = itemList.molecular_id;
+        this.analysis_id = itemList.analysis_id;
+        this.total_variants = itemList.total_variants;
+        this.mapd = itemList.mapd;
+        this.cellularity = itemList.cellularity;
+        this.torrent_variant_caller_version = itemList.torrent_variant_caller_version;
         this.dataAvailable = true;
+        this.oncomine_control_panel_summary = itemList.oncomine_control_panel_summary;
+        this.copy_number_variants = itemList.copy_number_variants;
+        this.gene_fusions = itemList.gene_fusions;
+        this.snv_indels = itemList.snv_indels;
       },
       error => this.errorMessage = <any>error
       );
