@@ -19,23 +19,23 @@
           <div class="tab-pane fade active in" id="panel-tab-info">
             <dl class="dl-horizontal">
               <dt>Molecular Sequence Number</dt>
-              <dd>{{variantReportPACC.molecularSequenceNumber | dashify}}</dd>
+              <dd>{{molecular_id | dashify}}</dd>
               <dt>Analysis Id</dt>
-              <dd>{{variantReportPACC.analysisId | dashify}}</dd>
+              <dd>{{analysis_id | dashify}}</dd>
               <dt>Total Variants</dt>
-              <dd>{{variantReportPACC.totalVariants | dashify}}</dd>
+              <dd>{{total_variants | dashify}}</dd>
               <dt>MAPD</dt>
-              <dd>{{variantReportPACC.mapd | dashify}}</dd>
+              <dd>{{mapd | dashify}}</dd>
               <dt>Cellularity</dt>
-              <dd>{{variantReportPACC.cellularity | dashify}}</dd>
+              <dd>{{cellularity | dashify}}</dd>
               <dt>File Received Date</dt>
-              <dd>{{variantReportPACC.fileReceivedDate | dashify}}</dd>
+              <dd>{{date_variant_received | gmt | dashify}}</dd>
               <dt>Torrent Variant Caller Version</dt>
-              <dd>{{variantReportPACC.torrentVariantCallerVersion | dashify}}</dd>
+              <dd>{{torrent_variant_caller_version | dashify}}</dd>
               <dt>Status</dt>
-              <dd [colorCodeClia]="variantReportPACC.status">{{variantReportPACC.status | dashify}}</dd>
+              <dd [colorCodeClia]="report_status">{{report_status | dashify}}</dd>
               <dt>Comment</dt>
-              <dd>{{variantReportPACC.comment | dashify}}</dd>
+              <dd>-</dd>
             </dl>
             <div class="panel-heading">
               <a class="btn btn-orangeshade-light link-none" role="button" href [routerLink]="['/clia_'+paccType+'/variant_reports_pacc/qc']"><i class="fa fa-file-text-o"></i> QC Report</a>
@@ -63,11 +63,10 @@
     <div class="panel-heading">
       <div class="row">
         <div class="col-md-12">
-          <h4>Single Nucleotide Variants</h4>
+          <h4>Single Nucleotide Variants & Indels</h4>
           <table class="table table-condensed">
             <thead>
               <tr>
-                <th>Confirm</th>
                 <th>ID</th>
                 <th>Chrom</th>
                 <th>Position</th>
@@ -76,7 +75,6 @@
                 <th>Allele Freq</th>
                 <th>Func Gene</th>
                 <th>Oncomine Variant Class</th>
-                <th>Exon</th>
                 <th>Function</th>
                 <th>HGVS</th>
                 <th>Read Depth</th>
@@ -85,67 +83,8 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let item of snv">
-                <td><input type="checkbox" name="chr" value="checked" checked disabled></td>
-                <td>{{item.id | dashify}}</td>
-                <td>{{item.chrom | dashify}}</td>
-                <td>{{item.position | dashify}}</td>
-                <td>{{item.reference | dashify}}</td>
-                <td>{{item.alternative | dashify}}</td>
-                <td>{{item.alleleFreq | dashify}}</td>
-                <td>{{item.funcGene | dashify}}</td>
-                <td>{{item.oncomineVariantClass | dashify}}</td>
-                <td>{{item.exon | dashify}}</td>
-                <td>{{item.function | dashify}}</td>
-                <td>{{item.hgvs | dashify}}</td>
-                <td>{{item.readDepth | dashify}}</td>
-                <td>{{item.transcript | dashify}}</td>
-                <td>{{item.protein | dashify}}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <h4>Indels</h4>
-          <table class="table table-condensed">
-            <thead>
               <tr>
-                <th>Confirm</th>
-                <th>ID</th>
-                <th>Chrom</th>
-                <th>Position</th>
-                <th>Reference</th>
-                <th>Alternative</th>
-                <th>Allele Freq</th>
-                <th>Func Gene</th>
-                <th>Oncomine Variant Class</th>
-                <th>Exon</th>
-                <th>Function</th>
-                <th>HGVS</th>
-                <th>Read Depth</th>
-                <th>Transcript</th>
-                <th>Protein</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let item of indels">
-                <td><input type="checkbox" name="chr" value="checked" checked disabled></td>
-                <td>{{item.id | dashify}}</td>
-                <td>{{item.chrom | dashify}}</td>
-                <td>{{item.position | dashify}}</td>
-                <td>{{item.reference | dashify}}</td>
-                <td>{{item.alternative | dashify}}</td>
-                <td>{{item.alleleFreq | dashify}}</td>
-                <td>{{item.funcGene | dashify}}</td>
-                <td>{{item.oncomineVariantClass | dashify}}</td>
-                <td>{{item.exon | dashify}}</td>
-                <td>{{item.function | dashify}}</td>
-                <td>{{item.hgvs | dashify}}</td>
-                <td>{{item.readDepth | dashify}}</td>
-                <td>{{item.transcript | dashify}}</td>
-                <td>{{item.protein | dashify}}</td>
+                <td colspan="13" class="text-muted">There are no single nucleotide variants or indels.</td>
               </tr>
             </tbody>
           </table>
@@ -157,7 +96,6 @@
           <table class="table table-condensed">
             <thead>
               <tr>
-                <th>Confirm</th>
                 <th>ID</th>
                 <th>Chrom</th>
                 <th>Position</th>
@@ -169,7 +107,7 @@
             </thead>
             <tbody>
               <tr>
-                <td colspan="8" class="text-muted">There are no copy number variants.</td>
+                <td colspan="7" class="text-muted">There are no copy number variants.</td>
               </tr>
             </tbody>
           </table>
@@ -181,18 +119,17 @@
           <table class="table table-condensed">
             <thead>
               <tr>
-                <th>Confirm</th>
                 <th>ID</th>
-                <th>Gene 2</th>
-                <th>Gene 2 Count</th>
-                <th>Gene 1</th>
-                <th>Gene 1 Count</th>
+                <th>Driver Gene</th>
+                <th>Driver Count</th>
+                <th>Partner Gene</th>
+                <th>Partner Count</th>
                 <th>Annotation</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td colspan="7" class="text-muted">There are no gene fusions.</td>
+                <td colspan="6" class="text-muted">There are no gene fusions.</td>
               </tr>
             </tbody>
           </table>

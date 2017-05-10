@@ -133,7 +133,12 @@ export class CliaApiService {
   }
 
   getCliaVariantReportsPACC(paccType: string): Observable<CliaVariantReportsPACCInterface> {
-    return this.http.get('assets/mock-data/clia-variant-reports-pacc-' + paccType + '.json')
+
+    return this.http.get('assets/mock-data/clia-variant-reports-pacc-' + paccType + '.json') // works only for mocha
+
+      // molecular_id --> PCC_MOCHA_FDK09
+
+      // return this.http.get(Config.API.ION_REPORTER + '/aliquot/' + molecular_id)
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
