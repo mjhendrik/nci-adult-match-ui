@@ -66,9 +66,21 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let item of lengendPCs">
-                  <td>{{item.variantType | dashify}}</td>
-                  <td>{{item.matchingCriteria | dashify}}</td>
+                <tr>
+                  <td>Indel</td>
+                  <td>Chromosone, Position, Reference and Alternative.</td>
+                </tr>
+                <tr>
+                  <td>SNV</td>
+                  <td>Chromosone, Position, Reference and Alternative.</td>
+                </tr>
+                <tr>
+                  <td>CNV</td>
+                  <td>Gene</td>
+                </tr>
+                <tr>
+                  <td>Fusion</td>
+                  <td>HGVS</td>
                 </tr>
               </tbody>
             </table>
