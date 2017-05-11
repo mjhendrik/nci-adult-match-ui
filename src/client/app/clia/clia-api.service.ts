@@ -198,6 +198,14 @@ export class CliaApiService {
       .catch(this.handleError);
   }
 
+  generateMsn(site: string, control_type: string): Observable<any> {
+    // api/v1/sample_controls?site=mocha&control_type=positive
+    return this.http.get(Config.API.ION_REPORTER + '/sample_controls?site=' + site + '&control_type=' + control_type) // TO_DO: POST
+      .map((res: Response) => res.json())
+      //              .do(data => console.log('server data:', data))  // debug
+      .catch(this.handleError);
+  }
+
   /**
     * Handle HTTP error
     */

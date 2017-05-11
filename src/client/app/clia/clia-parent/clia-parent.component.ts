@@ -52,6 +52,7 @@ export class CliaParentComponent implements OnInit {
   ionReportersData: any[] = [];
 
   cliaTypeName: string;
+  control_type: string;
 
   constructor(private cliaApi: CliaApiService, private route: ActivatedRoute) {
 
@@ -61,16 +62,25 @@ export class CliaParentComponent implements OnInit {
 
     this.cliaType = this.route.snapshot.data['cliaType'];
 
-    let gmt = new GmtPipe();
-
     if (this.cliaType === 'mocha') this.cliaTypeName = 'MoCha';
     if (this.cliaType === 'dartmouth') this.cliaTypeName = 'Dartmouth';
     if (this.cliaType === 'yale') this.cliaTypeName = 'Yale';
     if (this.cliaType === 'mgh') this.cliaTypeName = 'MGH';
     if (this.cliaType === 'mda') this.cliaTypeName = 'MD Anderson';
 
+    this.getDataPC();
+    this.getDataNTC();
+    this.getDataPACC();
+    this.getDataIon();
+    this.autoLoadDataIon();
+
+  }
+
+  getDataPC() {
     this.cliaApi.getCliaDetailsPC(this.cliaType)
       .subscribe(details => {
+
+        let gmt = new GmtPipe();
 
         this.tablePCData = details.map(x => {
           x.date_molecular_id_created = gmt.transform(x.date_molecular_id_created);
@@ -81,9 +91,13 @@ export class CliaParentComponent implements OnInit {
         this.tablePCData.splice(-1, 1);
 
       });
+  };
 
+  getDataNTC() {
     this.cliaApi.getCliaDetailsNTC(this.cliaType)
       .subscribe(details => {
+
+        let gmt = new GmtPipe();
 
         this.tableNTCData = details.map(x => {
           x.date_molecular_id_created = gmt.transform(x.date_molecular_id_created);
@@ -94,9 +108,13 @@ export class CliaParentComponent implements OnInit {
         this.tableNTCData.splice(-1, 1);
 
       });
+  };
 
+  getDataPACC() {
     this.cliaApi.getCliaDetailsPACC(this.cliaType)
       .subscribe(details => {
+
+        let gmt = new GmtPipe();
 
         this.tablePACCData = details.map(x => {
           x.date_molecular_id_created = gmt.transform(x.date_molecular_id_created);
@@ -107,29 +125,45 @@ export class CliaParentComponent implements OnInit {
         this.tablePACCData.splice(-1, 1);
 
       });
+  };
 
+  getDataIon() {
     this.cliaApi.getCliaIon(this.cliaType)
       .subscribe(details => {
+
+        let gmt = new GmtPipe();
+
         this.ionReportersData = details.map(x => {
           x.lastContactDate = gmt.transform(x.lastContactDate);
           return x;
         });
-      });
 
+      });
+  };
+
+  autoLoadDataIon() {
     setInterval(() => {
 
       this.cliaApi.getCliaIon(this.cliaType)
         .subscribe(details => {
+
+          let gmt = new GmtPipe();
+
           this.ionReportersData = details.map(x => {
             x.lastContactDate = gmt.transform(x.lastContactDate);
             return x;
           });
+
         });
 
       this.timestamp = new Date();
 
     }, 1000 * 30);
+  };
 
-  }
+  generateMsn(): void {
+    this.cliaApi.generateMsn(this.cliaType, this.control_type);
+    // TO_DO: control_type
+  };
 
 }
