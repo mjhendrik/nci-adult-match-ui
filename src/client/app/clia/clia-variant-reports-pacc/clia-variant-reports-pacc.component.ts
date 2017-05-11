@@ -55,11 +55,13 @@ export class CliaVariantReportsPaccComponent implements OnInit {
     if (this.paccType === 'mgh') this.cliaTypeName = 'MGH';
     if (this.paccType === 'mda') this.cliaTypeName = 'MD Anderson';
 
+    this.molecular_id = this.route.snapshot.params['id'];
+
     this.getData();
   }
 
   getData() {
-    this.cliaApi.getCliaVariantReportsPACC(this.paccType)
+    this.cliaApi.getCliaVariantReportsPACC(this.molecular_id)
       .subscribe((itemList: CliaVariantReportsPACCInterface) => {
         this.molecular_id = itemList.molecular_id;
         this.analysis_id = itemList.analysis_id;

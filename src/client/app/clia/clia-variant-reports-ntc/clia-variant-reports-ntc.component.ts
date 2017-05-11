@@ -54,11 +54,13 @@ export class CliaVariantReportsNtcComponent implements OnInit {
     if (this.ntcType === 'mgh') this.cliaTypeName = 'MGH';
     if (this.ntcType === 'mda') this.cliaTypeName = 'MD Anderson';
 
+    this.molecular_id = this.route.snapshot.params['id'];
+
     this.getData();
   }
 
   getData() {
-    this.cliaApi.getCliaVariantReportsNTC(this.ntcType)
+    this.cliaApi.getCliaVariantReportsNTC(this.molecular_id)
       .subscribe((itemList: CliaVariantReportsNTCInterface) => {
         this.molecular_id = itemList.molecular_id;
         this.analysis_id = itemList.analysis_id;

@@ -119,37 +119,34 @@ export class CliaApiService {
       .catch(this.handleError);
   }
 
-  getCliaVariantReportsNTC(ntcType: string): Observable<CliaVariantReportsNTCInterface> {
+  getCliaVariantReportsNTC(molecular_id: string): Observable<CliaVariantReportsNTCInterface> {
 
-    return this.http.get('assets/mock-data/clia-variant-reports-ntc-' + ntcType + '.json') // works only for mocha
+    // getCliaVariantReportsNTC(ntcType: string): Observable<CliaVariantReportsNTCInterface> {
+    //   return this.http.get('assets/mock-data/clia-variant-reports-ntc-' + ntcType + '.json') // works only for mocha
 
-      // molecular_id --> NTC_MOCHA_KGPVI
-
-      // return this.http.get(Config.API.ION_REPORTER + '/aliquot/' + molecular_id)
+    return this.http.get(Config.API.ION_REPORTER + '/aliquot/' + molecular_id)
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
   }
 
-  getCliaVariantReportsPACC(paccType: string): Observable<CliaVariantReportsPACCInterface> {
+  getCliaVariantReportsPACC(molecular_id: string): Observable<CliaVariantReportsPACCInterface> {
 
-    return this.http.get('assets/mock-data/clia-variant-reports-pacc-' + paccType + '.json') // works only for mocha
+    // getCliaVariantReportsPACC(paccType: string): Observable<CliaVariantReportsPACCInterface> {
+    //   return this.http.get('assets/mock-data/clia-variant-reports-pacc-' + paccType + '.json') // works only for mocha
 
-      // molecular_id --> PCC_MOCHA_FDK09
-
-      // return this.http.get(Config.API.ION_REPORTER + '/aliquot/' + molecular_id)
+    return this.http.get(Config.API.ION_REPORTER + '/aliquot/' + molecular_id)
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
   }
 
-  getCliaVariantReportsPC(pcType: string): Observable<CliaVariantReportsPCInterface> {
+  getCliaVariantReportsPC(molecular_id: string): Observable<CliaVariantReportsPCInterface> {
 
-    return this.http.get('assets/mock-data/clia-variant-reports-pc-' + pcType + '.json') // works only for mocha
+    // getCliaVariantReportsPC(pcType: string): Observable<CliaVariantReportsPCInterface> {
+    //   return this.http.get('assets/mock-data/clia-variant-reports-pc-' + pcType + '.json') // works only for mocha
 
-      // molecular_id --> SC_MOCHA_A2PD6
-
-      // return this.http.get(Config.API.ION_REPORTER + '/aliquot/' + molecular_id)
+    return this.http.get(Config.API.ION_REPORTER + '/aliquot/' + molecular_id)
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);

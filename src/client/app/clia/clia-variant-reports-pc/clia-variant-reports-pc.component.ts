@@ -54,11 +54,13 @@ export class CliaVariantReportsPcComponent implements OnInit {
     if (this.pcType === 'mgh') this.cliaTypeName = 'MGH';
     if (this.pcType === 'mda') this.cliaTypeName = 'MD Anderson';
 
+    this.molecular_id = this.route.snapshot.params['id'];
+
     this.getData();
   }
 
   getData() {
-    this.cliaApi.getCliaVariantReportsPC(this.pcType)
+    this.cliaApi.getCliaVariantReportsPC(this.molecular_id)
       .subscribe((itemList: CliaVariantReportsPCInterface) => {
         this.molecular_id = itemList.molecular_id;
         this.analysis_id = itemList.analysis_id;
