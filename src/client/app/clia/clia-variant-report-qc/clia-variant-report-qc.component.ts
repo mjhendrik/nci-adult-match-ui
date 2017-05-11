@@ -74,11 +74,13 @@ export class CliaVariantReportQcComponent implements OnInit {
       this.tabTypeName = 'Positive Control Variant Report';
     }
 
+    this.molecular_id = this.route.snapshot.params['id'];
+
     this.getData();
   }
 
   getData() {
-    this.cliaApi.getCliaVariantReportQC(this.tabType, this.cliaType)
+    this.cliaApi.getCliaVariantReportQC(this.molecular_id)
       .subscribe((itemList: CliaVariantReportsQCInterface) => {
         this.molecular_id = itemList.molecular_id;
         this.analysis_id = itemList.analysis_id;
@@ -87,7 +89,7 @@ export class CliaVariantReportQcComponent implements OnInit {
         this.cellularity = itemList.cellularity;
         this.torrent_variant_caller_version = itemList.torrent_variant_caller_version;
         this.dataAvailable = true;
-        
+
         this.oncomine_control_panel_summary = itemList.oncomine_control_panel_summary;
         Object.keys(itemList.oncomine_control_panel_summary).forEach((key: any, i: number) => {
           console.log(itemList.oncomine_control_panel_summary[key]);

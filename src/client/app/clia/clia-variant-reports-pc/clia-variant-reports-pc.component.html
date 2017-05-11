@@ -40,7 +40,7 @@
               <dd [colorCodeClia]="report_status">{{report_status | dashify}}</dd>
             </dl>
             <div class="panel-heading">
-              <a class="btn btn-orangeshade-light link-none" role="button" href [routerLink]="['/clia_'+pcType+'/variant_reports_pc/qc']"><i class="fa fa-file-text-o"></i> QC Report</a>
+              <a class="btn btn-orangeshade-light link-none" role="button" href [routerLink]="['/clia_'+pcType+'/variant_reports_pc/qc',item.molecular_id]"><i class="fa fa-file-text-o"></i> QC Report</a>
             </div>
           </div>
           <div class="tab-pane fade" id="panel-tab-files">

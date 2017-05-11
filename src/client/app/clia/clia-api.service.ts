@@ -152,13 +152,12 @@ export class CliaApiService {
       .catch(this.handleError);
   }
 
-  getCliaVariantReportQC(tabType: string, cliaType: string): Observable<CliaVariantReportsQCInterface> {
+  getCliaVariantReportQC(molecular_id: string): Observable<CliaVariantReportsQCInterface> {
 
-    return this.http.get('assets/mock-data/clia-variant-report-qc-' + tabType + '-' + cliaType + '.json') // works only for mocha
+    // getCliaVariantReportQC(tabType: string, cliaType: string): Observable<CliaVariantReportsQCInterface> {
+    //   return this.http.get('assets/mock-data/clia-variant-report-qc-' + tabType + '-' + cliaType + '.json') // works only for mocha
 
-      // molecular_id --> PCC_MOCHA_FDK09, NTC_MOCHA_KGPVI, SC_MOCHA_A2PD6
-
-      // return this.http.get(Config.API.ION_REPORTER + '/sample_controls/quality_control/' + molecular_id)
+    return this.http.get(Config.API.ION_REPORTER + '/sample_controls/quality_control/' + molecular_id)
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
