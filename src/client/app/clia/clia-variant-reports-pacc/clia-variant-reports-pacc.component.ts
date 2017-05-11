@@ -40,7 +40,6 @@ export class CliaVariantReportsPaccComponent implements OnInit {
   paccType: string;
   cliaTypeName: string;
 
-
   constructor(private cliaApi: CliaApiService, private route: ActivatedRoute) {
 
   }
