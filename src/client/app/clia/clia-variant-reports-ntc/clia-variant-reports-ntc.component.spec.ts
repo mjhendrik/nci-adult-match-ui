@@ -34,20 +34,20 @@ export function main() {
       });
     });
 
-    it('should work',
-      async(() => {
-        TestBed
-          .compileComponents()
-          .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportsNtcComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportsNtcComponent);
-            // console.log(fixture);
-            fixture.componentInstance.ngOnInit();
-          });
-      }));
+    // it('should work',
+    //   async(() => {
+    //     TestBed
+    //       .compileComponents()
+    //       .then(() => {
+    //         let fixture = TestBed.overrideComponent(CliaVariantReportsNtcComponent, {
+    //           set: {
+    //             templateUrl: ''
+    //           }
+    //         }).createComponent(CliaVariantReportsNtcComponent);
+    //         // console.log(fixture);
+    //         fixture.componentInstance.ngOnInit();
+    //       });
+    //   }));
 
   });
 }
