@@ -327,7 +327,7 @@
                       <!--<dd>{{item.ionReporterVersion | dashify}}</dd>-->
                       <dd>-</dd>
                       <dt>Last Contact</dt>
-                      <dd>{{item.last_contact | dashify}}</dd>
+                      <dd>{{item.last_contact | gmt | dashify}}</dd>
                     </dl>
                     <small class="p-l-15 f-s-10 text-muted">
                         Loaded at {{timestamp | date: 'mediumTime'}}
