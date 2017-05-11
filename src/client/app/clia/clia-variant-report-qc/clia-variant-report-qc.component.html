@@ -69,11 +69,11 @@
           </div>
           <div class="tab-pane fade" id="panel-tab-files">
             <p class="m-t-30">
-              <button type="button" class="btn btn-orangeshade-light"><i class="fa fa-download"></i> DNA BAM</button>
-              <button *ngIf="tabType=='ntc'" type="button" class="btn btn-orangeshade-light"><i class="fa fa-download"></i> DNA BAI</button>
-              <button type="button" class="btn btn-orangeshade-light"><i class="fa fa-download"></i> RNA BAM</button>
-              <button *ngIf="tabType=='ntc'" type="button" class="btn btn-orangeshade-light"><i class="fa fa-download"></i> RNA BAI</button>
-              <button type="button" class="btn btn-orangeshade-light"><i class="fa fa-download"></i> VCF</button>
+              <button type="button" class="btn btn-orangeshade-light" (click)="downloadDnaBam()"><i class="fa fa-download"></i> DNA BAM</button>
+              <button *ngIf="tabType=='ntc'" type="button" class="btn btn-orangeshade-light" (click)="downloadDnaBai()"><i class="fa fa-download"></i> DNA BAI</button>
+              <button type="button" class="btn btn-orangeshade-light" (click)="downloadRnaBam()"><i class="fa fa-download"></i> RNA BAM</button>
+              <button *ngIf="tabType=='ntc'" type="button" class="btn btn-orangeshade-light" (click)="downloadRnaBai()"><i class="fa fa-download"></i> RNA BAI</button>
+              <button type="button" class="btn btn-orangeshade-light" (click)="downloadVcf()"><i class="fa fa-download"></i> VCF</button>
             </p>
           </div>
         </div>

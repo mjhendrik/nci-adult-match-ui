@@ -102,5 +102,26 @@ export class CliaVariantReportQcComponent implements OnInit {
       },
       error => this.errorMessage = <any>error
       );
-  }
+  };
+
+  downloadDnaBam(): void {
+    this.cliaApi.downloadCliaDnaBam(this.molecular_id);
+  };
+
+  downloadDnaBai(): void {
+    this.cliaApi.downloadCliaDnaBai(this.molecular_id);
+  };
+
+  downloadRnaBam(): void {
+    this.cliaApi.downloadCliaRnaBam(this.molecular_id);
+  };
+
+  downloadRnaBai(): void {
+    this.cliaApi.downloadCliaRnaBai(this.molecular_id);
+  };
+
+  downloadVcf(): void {
+    this.cliaApi.downloadCliaVcf(this.molecular_id);
+  };
+
 }

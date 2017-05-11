@@ -79,6 +79,18 @@ export class CliaVariantReportsPcComponent implements OnInit {
       },
       error => this.errorMessage = <any>error
       );
-  }
+  };
+
+  downloadDnaBam(): void {
+    this.cliaApi.downloadCliaDnaBam(this.molecular_id);
+  };
+
+  downloadRnaBam(): void {
+    this.cliaApi.downloadCliaRnaBam(this.molecular_id);
+  };
+
+  downloadVcf(): void {
+    this.cliaApi.downloadCliaVcf(this.molecular_id);
+  };
 
 }

@@ -163,6 +163,46 @@ export class CliaApiService {
       .catch(this.handleError);
   }
 
+  downloadCliaDnaBam(molecular_id: string): Observable<any> {
+    //  api/v1/sample_controls/files/SC_MOCHA_A2PD6/dna_bam_name
+    return this.http.get(Config.API.ION_REPORTER + '/sample_controls/files/' + molecular_id + '/dna_bam_name')
+      .map((res: Response) => res.json())
+      //              .do(data => console.log('server data:', data))  // debug
+      .catch(this.handleError);
+  }
+
+  downloadCliaDnaBai(molecular_id: string): Observable<any> {
+    //  api/v1/sample_controls/files/SC_MOCHA_A2PD6/dna_bam_name
+    return this.http.get(Config.API.ION_REPORTER + '/sample_controls/files/' + molecular_id + '/dna_bai_name')
+      .map((res: Response) => res.json())
+      //              .do(data => console.log('server data:', data))  // debug
+      .catch(this.handleError);
+  }
+
+  downloadCliaRnaBam(molecular_id: string): Observable<any> {
+    //  api/v1/sample_controls/files/SC_MOCHA_A2PD6/dna_bam_name
+    return this.http.get(Config.API.ION_REPORTER + '/sample_controls/files/' + molecular_id + '/cdna_bam_name')
+      .map((res: Response) => res.json())
+      //              .do(data => console.log('server data:', data))  // debug
+      .catch(this.handleError);
+  }
+
+  downloadCliaRnaBai(molecular_id: string): Observable<any> {
+    //  api/v1/sample_controls/files/SC_MOCHA_A2PD6/dna_bam_name
+    return this.http.get(Config.API.ION_REPORTER + '/sample_controls/files/' + molecular_id + '/cdna_bai_name')
+      .map((res: Response) => res.json())
+      //              .do(data => console.log('server data:', data))  // debug
+      .catch(this.handleError);
+  }
+
+  downloadCliaVcf(molecular_id: string): Observable<any> {
+    //  api/v1/sample_controls/files/SC_MOCHA_A2PD6/dna_bam_name
+    return this.http.get(Config.API.ION_REPORTER + '/sample_controls/files/' + molecular_id + '/vcf_name')
+      .map((res: Response) => res.json())
+      //              .do(data => console.log('server data:', data))  // debug
+      .catch(this.handleError);
+  }
+
   /**
     * Handle HTTP error
     */
