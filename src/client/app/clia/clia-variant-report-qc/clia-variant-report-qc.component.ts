@@ -33,6 +33,8 @@ export class CliaVariantReportQcComponent implements OnInit {
   gene_fusions: any[];
   snv_indels: any[];
 
+  sum: number = 0;
+
   dataAvailable: boolean;
   errorMessage: string;
 
@@ -85,7 +87,13 @@ export class CliaVariantReportQcComponent implements OnInit {
         this.cellularity = itemList.cellularity;
         this.torrent_variant_caller_version = itemList.torrent_variant_caller_version;
         this.dataAvailable = true;
+        
         this.oncomine_control_panel_summary = itemList.oncomine_control_panel_summary;
+        Object.keys(itemList.oncomine_control_panel_summary).forEach((key: any, i: number) => {
+          console.log(itemList.oncomine_control_panel_summary[key]);
+          this.sum += itemList.oncomine_control_panel_summary[key];
+        });
+
         this.copy_number_variants = itemList.copy_number_variants;
         this.gene_fusions = itemList.gene_fusions;
         this.snv_indels = itemList.snv_indels;
