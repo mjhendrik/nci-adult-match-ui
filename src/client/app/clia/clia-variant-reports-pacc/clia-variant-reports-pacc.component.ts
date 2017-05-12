@@ -80,15 +80,39 @@ export class CliaVariantReportsPaccComponent implements OnInit {
   };
 
   downloadDnaBam(): void {
-    this.cliaApi.downloadCliaDnaBam(this.molecular_id);
+    this.cliaApi.downloadCliaDnaBam(this.molecular_id)
+      .subscribe((itemList: any) => {
+        let link = document.createElement('a');
+        // link.download = name;
+        link.href = itemList.s3_url; // TO_DO: get key
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      });
   };
 
   downloadRnaBam(): void {
-    this.cliaApi.downloadCliaRnaBam(this.molecular_id);
+    this.cliaApi.downloadCliaRnaBam(this.molecular_id)
+      .subscribe((itemList: any) => {
+        let link = document.createElement('a');
+        // link.download = name;
+        link.href = itemList.s3_url; // TO_DO: get key
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      });
   };
 
   downloadVcf(): void {
-    this.cliaApi.downloadCliaVcf(this.molecular_id);
+    this.cliaApi.downloadCliaVcf(this.molecular_id)
+      .subscribe((itemList: any) => {
+        let link = document.createElement('a');
+        // link.download = name;
+        link.href = itemList.s3_url; // TO_DO: get key
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      });
   };
 
 }
