@@ -109,7 +109,7 @@ export class CliaVariantReportQcComponent implements OnInit {
       .subscribe((itemList: any) => {
         let link = document.createElement('a');
         // link.download = name;
-        link.href = itemList.s3_url; // TO_DO: get key
+        link.href = itemList.s3_download_file_url;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -121,7 +121,7 @@ export class CliaVariantReportQcComponent implements OnInit {
       .subscribe((itemList: any) => {
         let link = document.createElement('a');
         // link.download = name;
-        link.href = itemList.s3_url; // TO_DO: get key
+        link.href = itemList.s3_download_file_url;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -133,7 +133,7 @@ export class CliaVariantReportQcComponent implements OnInit {
       .subscribe((itemList: any) => {
         let link = document.createElement('a');
         // link.download = name;
-        link.href = itemList.s3_url; // TO_DO: get key
+        link.href = itemList.s3_download_file_url;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -145,7 +145,7 @@ export class CliaVariantReportQcComponent implements OnInit {
       .subscribe((itemList: any) => {
         let link = document.createElement('a');
         // link.download = name;
-        link.href = itemList.s3_url; // TO_DO: get key
+        link.href = itemList.s3_download_file_url;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -157,7 +157,7 @@ export class CliaVariantReportQcComponent implements OnInit {
       .subscribe((itemList: any) => {
         let link = document.createElement('a');
         // link.download = name;
-        link.href = itemList.s3_url; // TO_DO: get key
+        link.href = itemList.s3_download_file_url;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
