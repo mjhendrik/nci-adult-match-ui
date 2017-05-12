@@ -52,7 +52,7 @@ export class CliaParentComponent implements OnInit {
   ionReportersData: any[] = [];
 
   cliaTypeName: string;
-  control_type: string;
+  control_type: string = 'positive';
 
   constructor(private cliaApi: CliaApiService, private route: ActivatedRoute) {
 
@@ -161,9 +161,17 @@ export class CliaParentComponent implements OnInit {
     }, 1000 * 60);
   };
 
+  setControlType(type: string): void {
+    this.control_type = type;
+  }
+
   generateMsn(): void {
-    this.cliaApi.generateMsn(this.cliaType, this.control_type);
-    // TO_DO: control_type
+    this.cliaApi.generateMsn(this.cliaType, this.control_type)
+      .subscribe((itemList: any) => {
+        if (this.control_type === 'positive') this.getDataPC();
+        if (this.control_type === 'no_template') this.getDataNTC();
+        if (this.control_type === 'proficiency_competency') this.getDataPACC();
+      });
   };
 
 }

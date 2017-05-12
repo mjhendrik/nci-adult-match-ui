@@ -12,7 +12,7 @@
             <!--panel-orangeshade-->
             <ul class="nav nav-tabs nav-tabs-orangeshade p-l-0">
               <li class="active">
-                <a class="p-0" href="#tab-PC" data-toggle="tab" aria-expanded="true" matchHeightTab="clia-tab">
+                <a class="p-0" href="#tab-PC" data-toggle="tab" (click)="setControlType('positive')" aria-expanded="true" matchHeightTab="clia-tab">
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
@@ -21,7 +21,7 @@
                 </a>
               </li>
               <li class="">
-                <a class="p-0" href="#tab-NTC" data-toggle="tab" aria-expanded="false" matchHeightTab="clia-tab">
+                <a class="p-0" href="#tab-NTC" data-toggle="tab" (click)="setControlType('no_template')" aria-expanded="false" matchHeightTab="clia-tab">
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
@@ -30,7 +30,8 @@
                 </a>
               </li>
               <li class="">
-                <a class="p-0" href="#tab-PACC" data-toggle="tab" aria-expanded="false" matchHeightTab="clia-tab">
+                <a class="p-0" href="#tab-PACC" data-toggle="tab" (click)="setControlType('proficiency_competency')" aria-expanded="false"
+                  matchHeightTab="clia-tab">
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
@@ -38,7 +39,7 @@
                   </div>
                 </a>
               </li>
-              <a href="javascript:;" class="btn btn-orangeshade-light pull-right m-t-10 m-r-10" (click)="generateMsn()"><i class="fa fa-cogs"></i> Generate MSN</a>
+              <a href="javascript:void(0);" class="btn btn-orangeshade-light pull-right m-t-10 m-r-10" (click)="generateMsn()"><i class="fa fa-cogs"></i> Generate MSN</a>
             </ul>
             <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
               <div class="tab-pane fade active in" id="tab-PC">
