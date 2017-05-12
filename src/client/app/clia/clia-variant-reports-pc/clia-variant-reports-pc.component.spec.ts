@@ -29,25 +29,28 @@ export function main() {
         declarations: [CliaVariantReportsPcComponent],
         providers: [
           { provide: CliaApiService, useClass: MockCliaApiService },
-          { provide: ActivatedRoute, useValue: { snapshot: { url: [{ path: 'vc_mocha' }] } } }
+          { provide: ActivatedRoute, useValue: { snapshot: { url: [{ path: 'vc_mocha' }], params: { id: 1234 } } } }
         ]
       });
     });
 
-    // it('should work',
-    //   async(() => {
-    //     TestBed
-    //       .compileComponents()
-    //       .then(() => {
-    //         let fixture = TestBed.overrideComponent(CliaVariantReportsPcComponent, {
-    //           set: {
-    //             templateUrl: ''
-    //           }
-    //         }).createComponent(CliaVariantReportsPcComponent);
-    //         // console.log(fixture);
-    //         fixture.componentInstance.ngOnInit();
-    //       });
-    //   }));
+    it('should work',
+      async(() => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(CliaVariantReportsPcComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(CliaVariantReportsPcComponent);
+            // console.log(fixture);
+            fixture.componentInstance.ngOnInit();
+            fixture.componentInstance.downloadDnaBam();
+            fixture.componentInstance.downloadRnaBam();
+            fixture.componentInstance.downloadVcf();
+          });
+      }));
 
   });
 }
@@ -71,5 +74,14 @@ class MockCliaApiService {
       report_status: { 'test': 'test' }
     };
     return Observable.of(testData);
+  }
+  downloadCliaDnaBam(): Observable<any> {
+    return Observable.of('');
+  }
+  downloadCliaRnaBam(): Observable<any> {
+    return Observable.of('');
+  }
+  downloadCliaVcf(): Observable<any> {
+    return Observable.of('');
   }
 }

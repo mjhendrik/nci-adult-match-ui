@@ -13,6 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { PipesModule } from './../../shared/pipes/pipes.module';
 import { DirectivesModule } from './../../shared/directives/directives.module';
+import { VariantReportFilteredTableModule } from '../../shared/variant-report-table/variant-report-filtered-table.module';
 
 
 
@@ -21,37 +22,51 @@ export function main() {
     // Setting module for testing
     // Disable old forms
     let config: any[] = [
-      { path: 'clia_variant_report_qc', component: 'CliaVariantReportqcComponent' }
+      { path: 'clia_mocha/variant_reports_pc/qc/:id', component: CliaVariantReportQcComponent },
+      { path: 'clia_mgh/variant_reports_pc/qc/:id', component: CliaVariantReportQcComponent },
+      { path: 'clia_dartmount/variant_reports_pc/qc/:id', component: CliaVariantReportQcComponent },
+      { path: 'clia_yale/variant_reports_pc/qc/:id', component: CliaVariantReportQcComponent },
+      { path: 'clia_mda/variant_reports_pc/qc/:id', component: CliaVariantReportQcComponent },
+      { path: 'clia_mocha/variant_reports_ntc/qc/:id', component: CliaVariantReportQcComponent },
+      { path: 'clia_mgh/variant_reports_ntc/qc/:id', component: CliaVariantReportQcComponent },
+      { path: 'clia_dartmount/variant_reports_ntc/qc/:id', component: CliaVariantReportQcComponent },
+      { path: 'clia_yale/variant_reports_ntc/qc/:id', component: CliaVariantReportQcComponent },
+      { path: 'clia_mda/variant_reports_ntc/qc/:id', component: CliaVariantReportQcComponent },
+      { path: 'clia_mocha/variant_reports_pacc/qc/:id', component: CliaVariantReportQcComponent },
+      { path: 'clia_mgh/variant_reports_pacc/qc/:id', component: CliaVariantReportQcComponent },
+      { path: 'clia_dartmount/variant_reports_pacc/qc/:id', component: CliaVariantReportQcComponent },
+      { path: 'clia_yale/variant_reports_pacc/qc/:id', component: CliaVariantReportQcComponent },
+      { path: 'clia_mda/variant_reports_pacc/qc/:id', component: CliaVariantReportQcComponent }
     ];
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [RouterTestingModule.withRoutes(config), DirectivesModule, PipesModule],
+        imports: [RouterTestingModule.withRoutes(config), DirectivesModule, PipesModule, VariantReportFilteredTableModule],
         declarations: [CliaVariantReportQcComponent],
         providers: [
           { provide: CliaApiService, useClass: MockCliaApiService },
-          { provide: ActivatedRoute, useValue: { snapshot: { url: [{ path: 'vc_mocha' }] } } }
+          { provide: ActivatedRoute, useValue: { snapshot: { url: [{ path: 'vc_mocha' }, { path: 'pc' }], params: { id: 1234 } } } }
         ]
       });
     });
 
-    it('dummy test', () => {
-      expect(true).toEqual(true);
-    });
-
-    // it('should work',
-    //   async(() => {
-    //     TestBed
-    //       .compileComponents()
-    //       .then(() => {
-    //         let fixture = TestBed.overrideComponent(CliaVariantReportQcComponent, {
-    //           set: {
-    //             templateUrl: ''
-    //           }
-    //         }).createComponent(CliaVariantReportQcComponent);
-    //         // console.log(fixture);
-    //         fixture.componentInstance.ngOnInit();
-    //       });
-    //   }));
+    it('should work',
+      async(() => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(CliaVariantReportQcComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(CliaVariantReportQcComponent);
+            fixture.componentInstance.ngOnInit();
+            fixture.componentInstance.downloadDnaBam();
+            fixture.componentInstance.downloadDnaBai();
+            fixture.componentInstance.downloadRnaBam();
+            fixture.componentInstance.downloadRnaBai();
+            fixture.componentInstance.downloadVcf();
+          });
+      }));
 
   });
 }
@@ -73,5 +88,21 @@ class MockCliaApiService {
       snv_indels: ['test']
     };
     return Observable.of(testData);
+  }
+
+  downloadCliaDnaBam(): Observable<any> {
+    return Observable.of('');
+  }
+  downloadCliaDnaBai(): Observable<any> {
+    return Observable.of('');
+  }
+  downloadCliaRnaBam(): Observable<any> {
+    return Observable.of('');
+  }
+  downloadCliaRnaBai(): Observable<any> {
+    return Observable.of('');
+  }
+  downloadCliaVcf(): Observable<any> {
+    return Observable.of('');
   }
 }
