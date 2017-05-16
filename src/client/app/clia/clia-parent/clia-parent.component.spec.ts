@@ -4,11 +4,12 @@ import {
   TestBed
 } from '@angular/core/testing';
 import { Observable } from 'rxjs/Observable';
-
+import { FormsModule } from '@angular/forms';
+import { DataTableModule } from '../../shared/datatables/index';
 // import { CliaVariantReportsNtcModule } from './clia-variant-reports-ntc.module';
-import { CliaVariantReportsNtcComponent } from './clia-variant-reports-ntc.component';
+import { CliaParentComponent } from './clia-parent.component';
 // import { CliaVariantReportsNtcRoutingModule } from './clia-variant-reports-ntc-routing.module';
-import { CliaApiService, CliaVariantReportsNTCInterface } from './../clia-api.service';
+import { CliaApiService } from './../clia-api.service';
 import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { PipesModule } from './../../shared/pipes/pipes.module';
@@ -21,15 +22,15 @@ export function main() {
     // Setting module for testing
     // Disable old forms
     let config: any[] = [
-      { path: 'clia_variant_reports_ntc', component: 'CliaVariantReportsNtcComponent' }
+      { path: 'clia_variant_reports_ntc', component: 'CliaParentComponent' }
     ];
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [RouterTestingModule.withRoutes(config), DirectivesModule, PipesModule],
-        declarations: [CliaVariantReportsNtcComponent],
+        imports: [RouterTestingModule.withRoutes(config), DirectivesModule, PipesModule, FormsModule, DataTableModule],
+        declarations: [CliaParentComponent],
         providers: [
           { provide: CliaApiService, useClass: MockCliaApiService },
-          { provide: ActivatedRoute, useValue: { snapshot: { url: [{ path: 'clia_mocha' }], params: { id: 1234 } } } }
+          { provide: ActivatedRoute, useValue: { snapshot: { url: [{ path: 'clia_mocha' }], data: { cliaType: 'mocha' } } } }
         ]
       });
     });
@@ -39,18 +40,13 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportsNtcComponent, {
+            let fixture = TestBed.overrideComponent(CliaParentComponent, {
               set: {
                 templateUrl: ''
               }
-            }).createComponent(CliaVariantReportsNtcComponent);
+            }).createComponent(CliaParentComponent);
             // console.log(fixture);
             fixture.componentInstance.ngOnInit();
-            fixture.componentInstance.downloadDnaBam();
-            fixture.componentInstance.downloadDnaBai();
-            fixture.componentInstance.downloadRnaBam();
-            fixture.componentInstance.downloadRnaBai();
-            fixture.componentInstance.downloadVcf();
           });
       }));
 
@@ -59,9 +55,9 @@ export function main() {
 
 
 class MockCliaApiService {
-  getCliaVariantReportsNTC(type: any): Observable<CliaVariantReportsNTCInterface> {
-    let testData: CliaVariantReportsNTCInterface;
-    testData = {
+  getCliaDetailsPC(): Observable<any> {
+    let testData;
+    testData = [{
       copy_number_variants: ['test'],
       gene_fusions: ['test'],
       snv_indels: ['test'],
@@ -70,41 +66,47 @@ class MockCliaApiService {
       total_variants: { 'test': 'test' },
       mapd: { 'test': 'test' },
       cellularity: { 'test': 'test' },
-      date_variant_received: { 'test': 'test' },
       torrent_variant_caller_version: { 'test': 'test' },
-      report_status: { 'test': 'test' }
-    };
+      report_status: { 'test': 'test' },
+      date_molecular_id_created: "2-12-2015",
+      date_variant_received: "2-12-2015"
+    }];
     return Observable.of(testData);
   }
+  getCliaDetailsNTC(): Observable<any> {
+    let testdata = [{
+      date_molecular_id_created: '2-12-2016',
+      date_variant_received: '2-12-2016',
+    }];
+    return Observable.of(testdata);
+  }
+  getCliaDetailsPACC(): Observable<any> {
+    let testdata = [{
+      date_molecular_id_created: '2-12-2016',
+      date_variant_received: '2-12-2016',
+    }];
+    return Observable.of(testdata);
+  }
 
-  downloadCliaDnaBam(): Observable<any> {
-    let testdata = {
-      s3_download_file_url: 'javascript:void(0)'
-    };
+  getDataIon(): Observable<any> {
+    let testdata = [{
+      date_molecular_id_created: '2-12-2016',
+      date_variant_received: '2-12-2016',
+    }];
     return Observable.of(testdata);
   }
-  downloadCliaDnaBai(): Observable<any> {
-    let testdata = {
-      s3_download_file_url: 'javascript:void(0)'
-    };
+  getCliaIon(): Observable<any> {
+    let testdata = [{
+      date_molecular_id_created: '2-12-2016',
+      date_variant_received: '2-12-2016',
+    }];
     return Observable.of(testdata);
   }
-  downloadCliaRnaBam(): Observable<any> {
-    let testdata = {
-      s3_download_file_url: 'javascript:void(0)'
-    };
-    return Observable.of(testdata);
-  }
-  downloadCliaRnaBai(): Observable<any> {
-    let testdata = {
-      s3_download_file_url: 'javascript:void(0)'
-    };
-    return Observable.of(testdata);
-  }
-  downloadCliaVcf(): Observable<any> {
-    let testdata = {
-      s3_download_file_url: 'javascript:void(0)'
-    };
+  generateMsn(): Observable<any> {
+    let testdata = [{
+      date_molecular_id_created: '2-12-2016',
+      date_variant_received: '2-12-2016',
+    }];
     return Observable.of(testdata);
   }
 }

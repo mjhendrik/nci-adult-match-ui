@@ -29,25 +29,28 @@ export function main() {
         declarations: [CliaVariantReportsPaccComponent],
         providers: [
           { provide: CliaApiService, useClass: MockCliaApiService },
-          { provide: ActivatedRoute, useValue: { snapshot: { url: [{ path: 'vc_mocha' }] } } }
+          { provide: ActivatedRoute, useValue: { snapshot: { url: [{ path: 'clia_mocha' }], params: { id: 1234 } } } }
         ]
       });
     });
 
-    // it('should work',
-    //   async(() => {
-    //     TestBed
-    //       .compileComponents()
-    //       .then(() => {
-    //         let fixture = TestBed.overrideComponent(CliaVariantReportsPaccComponent, {
-    //           set: {
-    //             templateUrl: ''
-    //           }
-    //         }).createComponent(CliaVariantReportsPaccComponent);
-    //         // console.log(fixture);
-    //         fixture.componentInstance.ngOnInit();
-    //       });
-    //   }));
+    it('should work',
+      async(() => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(CliaVariantReportsPaccComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(CliaVariantReportsPaccComponent);
+            // console.log(fixture);
+            fixture.componentInstance.ngOnInit();
+            fixture.componentInstance.downloadDnaBam();
+            fixture.componentInstance.downloadRnaBam();
+            fixture.componentInstance.downloadVcf();
+          });
+      }));
 
   });
 }
@@ -70,5 +73,24 @@ class MockCliaApiService {
       report_status: { 'test': 'test' }
     };
     return Observable.of(testData);
+  }
+
+  downloadCliaDnaBam(): Observable<any> {
+    let testdata = {
+      s3_download_file_url: 'javascript:void(0)'
+    };
+    return Observable.of(testdata);
+  }
+  downloadCliaRnaBam(): Observable<any> {
+    let testdata = {
+      s3_download_file_url: 'javascript:void(0)'
+    };
+    return Observable.of(testdata);
+  }
+  downloadCliaVcf(): Observable<any> {
+    let testdata = {
+      s3_download_file_url: 'javascript:void(0)'
+    };
+    return Observable.of(testdata);
   }
 }
