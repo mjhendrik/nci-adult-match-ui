@@ -27,7 +27,6 @@ export class HttpInterceptor extends Http {
         return (response: Response) => {
             if (response.status === 404) {
                 this.router.navigate(['/error']);
-                // console.log(response);
             }
             return Observable.throw(response);
         };

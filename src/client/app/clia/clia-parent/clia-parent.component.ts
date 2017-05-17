@@ -80,12 +80,14 @@ export class CliaParentComponent implements OnInit {
     this.roles = JSON.parse(localStorage.getItem('profile')).roles;
     console.log(JSON.parse(localStorage.getItem('profile')).roles);
 
+    console.log(this.generateMsnBtn);
+
     if (this.roles === 'ADMIN' || this.roles === 'MOCHA_VARIANT_REPORT_REVIEWER'
       || this.roles === 'MOCHA_VARIANT_REPORT_SENDER' || this.roles === 'MDA_VARIANT_REPORT_REVIEWER'
       || this.roles === 'MDA_VARIANT_REPORT_SENDER' || this.roles === 'Yale_VARIANT_REPORT_REVIEWER'
       || this.roles === 'Yale_VARIANT_REPORT_SENDER' || this.roles === 'MGH_VARIANT_REPORT_REVIEWER'
       || this.roles === 'MGH_VARIANT_REPORT_SENDER' || this.roles === 'DARTMOUTH_VARIANT_REPORT_REVIEWER'
-      || this.roles === 'DARTMOUTH_VARIANT_REPORT_SENDER') this.generateMsnBtn = true;
+      || this.roles === 'DARTMOUTH_VARIANT_REPORT_SENDER') { this.generateMsnBtn = true; console.log(this.generateMsnBtn); }
 
   }
 
