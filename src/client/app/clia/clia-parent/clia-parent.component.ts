@@ -78,16 +78,13 @@ export class CliaParentComponent implements OnInit {
     this.autoLoadDataIon();
 
     this.roles = JSON.parse(localStorage.getItem('profile')).roles;
-    console.log(this.roles[0]);
-
-    console.log(this.generateMsnBtn);
 
     if (this.roles.indexOf('ADMIN') !== -1 || this.roles.indexOf('MOCHA_VARIANT_REPORT_REVIEWER') !== -1
       || this.roles.indexOf('MOCHA_VARIANT_REPORT_SENDER') !== -1 || this.roles.indexOf('MDA_VARIANT_REPORT_REVIEWERADMIN') !== -1
       || this.roles.indexOf('MDA_VARIANT_REPORT_SENDER') !== -1 || this.roles.indexOf('YALE_VARIANT_REPORT_REVIEWER') !== -1
       || this.roles.indexOf('YALE_VARIANT_REPORT_SENDER') !== -1 || this.roles.indexOf('MGH_VARIANT_REPORT_REVIEWER') !== -1
       || this.roles.indexOf('MGH_VARIANT_REPORT_SENDER') !== -1 || this.roles.indexOf('DARTMOUTH_VARIANT_REPORT_REVIEWER') !== -1
-      || this.roles.indexOf('DARTMOUTH_VARIANT_REPORT_SENDER') !== -1) { this.generateMsnBtn = true; console.log(this.generateMsnBtn); }
+      || this.roles.indexOf('DARTMOUTH_VARIANT_REPORT_SENDER') !== -1) this.generateMsnBtn = true;
 
   }
 

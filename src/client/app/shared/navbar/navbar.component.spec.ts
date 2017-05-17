@@ -53,7 +53,9 @@ export function main() {
 class TestComponent { }
 
 class AuthMock {
-  logout(): void { console.log('Mock logout called'); }
+  logout(): void {
+    // console.log('Mock logout called');
+  }
 }
 
 class ConfigApiServiceMock {

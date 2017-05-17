@@ -92,7 +92,6 @@ export class CliaVariantReportQcComponent implements OnInit {
 
         this.oncomine_control_panel_summary = itemList.oncomine_control_panel_summary;
         Object.keys(itemList.oncomine_control_panel_summary).forEach((key: any, i: number) => {
-          console.log(itemList.oncomine_control_panel_summary[key]);
           this.sum += itemList.oncomine_control_panel_summary[key];
         });
 

@@ -49,11 +49,9 @@ export class ExternalLinksComponent implements OnInit {
             if (id) {
                 return this.urls[options.linkType].url.replace(/{id}/g, this.getLinkId(options));
             } else {
-                // console.log('Invalid link ' + id);
                 return '#';
             }
         } else {
-            // console.log('Invalid link type ' + options.linkType);
             return '#';
         }
     }
@@ -72,7 +70,6 @@ export class ExternalLinksComponent implements OnInit {
                 if (matches && matches[1] !== '') {
                     return matches[1];
                 } else {
-                    // console.log('Invalid value for type COSMIC ID ' + options.linkId);
                     return '';
                 }
 
@@ -81,12 +78,10 @@ export class ExternalLinksComponent implements OnInit {
                 if (matches && matches[1] !== '') {
                     return matches[1];
                 } else {
-                    // console.log('Invalid value for type COSMIC Fusion ID ' + options.linkId);
                     return '';
                 }
 
             default:
-                // console.log('Invalid link type ' + options.linkType);
                 return '';
         }
     }
