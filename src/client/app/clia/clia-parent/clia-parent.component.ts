@@ -54,6 +54,9 @@ export class CliaParentComponent implements OnInit {
   cliaTypeName: string;
   control_type: string = 'positive';
 
+  roles: string;
+  generateMsnBtn: boolean = false;
+
   constructor(private cliaApi: CliaApiService, private route: ActivatedRoute) {
 
   }
@@ -72,9 +75,17 @@ export class CliaParentComponent implements OnInit {
     this.getDataNTC();
     this.getDataPACC();
     this.getDataIon();
-    // this.autoLoadDataIon();
+    this.autoLoadDataIon();
 
-    // console.log(JSON.parse(localStorage.getItem('profile')).roles);
+    this.roles = JSON.parse(localStorage.getItem('profile')).roles;
+    console.log(JSON.parse(localStorage.getItem('profile')).roles);
+
+    if (this.roles === 'ADMIN' || this.roles === 'MOCHA_VARIANT_REPORT_REVIEWER'
+      || this.roles === 'MOCHA_VARIANT_REPORT_SENDER' || this.roles === 'MDA_VARIANT_REPORT_REVIEWER'
+      || this.roles === 'MDA_VARIANT_REPORT_SENDER' || this.roles === 'Yale_VARIANT_REPORT_REVIEWER'
+      || this.roles === 'Yale_VARIANT_REPORT_SENDER' || this.roles === 'MGH_VARIANT_REPORT_REVIEWER'
+      || this.roles === 'MGH_VARIANT_REPORT_SENDER' || this.roles === 'DARTMOUTH_VARIANT_REPORT_REVIEWER'
+      || this.roles === 'DARTMOUTH_VARIANT_REPORT_SENDER') this.generateMsnBtn = true;
 
   }
 
