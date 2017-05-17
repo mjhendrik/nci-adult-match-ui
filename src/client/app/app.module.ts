@@ -2,7 +2,12 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { APP_BASE_HREF } from '@angular/common';
-import { HttpModule } from '@angular/http';
+import {
+  HttpModule,
+  Http,
+  RequestOptions,
+  XHRBackend
+} from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { AUTH_PROVIDERS } from 'angular2-jwt';
 
@@ -29,6 +34,8 @@ import { AssignmentReportModule } from './patient/assignment-report/assignment-r
 import { DashboardModule } from './dashboard/dashboard.module';
 import { VariantReportFilteredTableModule } from './shared/variant-report-table/variant-report-filtered-table.module';
 import { PopoverModule } from 'ngx-popover';
+import { HttpInterceptor } from './shared/http.interceptor';
+import { Router } from '@angular/router';
 
 @NgModule({
   imports: [
@@ -61,6 +68,13 @@ import { PopoverModule } from 'ngx-popover';
     {
       provide: APP_BASE_HREF,
       useValue: '<%= APP_BASE %>'
+    },
+    {
+      provide: Http,
+      useFactory: (backend: XHRBackend, options: RequestOptions, router: Router) => {
+        return new HttpInterceptor(backend, options, router);
+      },
+      deps: [XHRBackend, RequestOptions, Router]
     },
     AUTH_PROVIDERS,
     Auth,
