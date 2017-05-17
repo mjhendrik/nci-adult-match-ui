@@ -72,7 +72,9 @@ export class CliaParentComponent implements OnInit {
     this.getDataNTC();
     this.getDataPACC();
     this.getDataIon();
-    this.autoLoadDataIon();
+    // this.autoLoadDataIon();
+
+    // console.log(JSON.parse(localStorage.getItem('profile')).roles);
 
   }
 

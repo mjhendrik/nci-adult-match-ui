@@ -18,7 +18,7 @@ import { DirectivesModule } from './../../shared/directives/directives.module';
 
 
 export function main() {
-  describe('clia variant reports ntc component', () => {
+  describe('clia parent component', () => {
     // Setting module for testing
     // Disable old forms
     let config: any[] = [
