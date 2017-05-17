@@ -18,6 +18,7 @@ import { LoginGuard } from './shared/auth/login.guard.service';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 import { LoginModule } from './login/login.module';
+import { ErrorModule } from './error/error.module';
 import { CliaParentModule } from './clia/clia-parent/clia-parent.module';
 import { CliaVariantReportsNtcModule } from './clia/clia-variant-reports-ntc/clia-variant-reports-ntc.module';
 import { CliaVariantReportsPaccModule } from './clia/clia-variant-reports-pacc/clia-variant-reports-pacc.module';
@@ -46,6 +47,7 @@ import { Router } from '@angular/router';
     SharedModule.forRoot(),
     AppRoutingModule,
     LoginModule,
+    ErrorModule,
     DashboardModule,
     CliaParentModule,
     CliaVariantReportsNtcModule,

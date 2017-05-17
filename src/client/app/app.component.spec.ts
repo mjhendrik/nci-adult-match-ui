@@ -9,6 +9,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
+import { ErrorComponent } from './error/error.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PatientListComponent } from './patient/patient-list/patient-list.component';
 import { TreatmentArmListComponent } from './treatment-arm/treatment-arm-list/treatment-arm-list.component';
@@ -29,6 +30,7 @@ export function main() {
 
     let config: Route[] = [
       { path: '', component: LoginComponent },
+      { path: '', component: ErrorComponent },
       { path: 'dashboard', component: DashboardComponent },
       { path: 'patients', component: PatientListComponent },
       { path: 'patients/details', component: PatientDetailsComponent },
@@ -54,6 +56,7 @@ export function main() {
           AppComponent,
           NavbarComponent,
           LoginComponent,
+          ErrorComponent,
           DashboardComponent,
           PatientListComponent,
           TreatmentArmListComponent,
