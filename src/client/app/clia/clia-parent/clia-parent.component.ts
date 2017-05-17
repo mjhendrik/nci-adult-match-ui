@@ -80,7 +80,7 @@ export class CliaParentComponent implements OnInit {
     this.roles = JSON.parse(localStorage.getItem('profile')).roles;
     console.log(JSON.parse(localStorage.getItem('profile')).roles);
 
-    if (this.roles === 'SYSTEM' || this.roles === 'ADMIN' || this.roles === 'MOCHA_VARIANT_REPORT_REVIEWER'
+    if (this.roles === 'ADMIN' || this.roles === 'MOCHA_VARIANT_REPORT_REVIEWER'
       || this.roles === 'MOCHA_VARIANT_REPORT_SENDER' || this.roles === 'MDA_VARIANT_REPORT_REVIEWER'
       || this.roles === 'MDA_VARIANT_REPORT_SENDER' || this.roles === 'Yale_VARIANT_REPORT_REVIEWER'
       || this.roles === 'Yale_VARIANT_REPORT_SENDER' || this.roles === 'MGH_VARIANT_REPORT_REVIEWER'
