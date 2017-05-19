@@ -5,42 +5,40 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class ViewDataTransformer {
-
   transformPatient(source: any): any {
-    const transformed: any = { ...source }; // Deep-copy the source
+    const transformedPatient: any = { ...source }; // Deep-copy the source
 
-    transformed.disease = source.diseases && source.diseases.length ? source.diseases[0] : null;
+    transformedPatient.disease = source.diseases && source.diseases.length ? source.diseases[0] : null;
 
-    if (transformed.patientTriggers && transformed.patientTriggers.length) {
-      transformed.patientTriggers = transformed.patientTriggers.reverse();
+    if (transformedPatient.patientTriggers && transformedPatient.patientTriggers.length) {
+      transformedPatient.patientTriggers = transformedPatient.patientTriggers.reverse();
     }
 
-    if (transformed.biopsies && transformed.biopsies.length) {
-      transformed.biopsies = transformed.biopsies.reverse().map((x: any) => this.transformBiopsy(x));
+    if (transformedPatient.biopsies && transformedPatient.biopsies.length) {
+      transformedPatient.biopsies = transformedPatient.biopsies.reverse().map((x: any) => this.transformBiopsy(transformedPatient, x));
     } else {
-      transformed.biopsies = [];
+      transformedPatient.biopsies = [];
     }
 
-    if (transformed.races && transformed.races.length) {
-      transformed.raceList = transformed.races.join(', ');
+    if (transformedPatient.races && transformedPatient.races.length) {
+      transformedPatient.raceList = transformedPatient.races.join(', ');
     }
 
-    this.transformAssignments(transformed);
-    this.transformVariantReports(transformed);
+    this.transformAssignments(transformedPatient);
 
-    return transformed;
+    return transformedPatient;
   }
 
-  private transformBiopsy(source: any): any {
+  private transformBiopsy(transformedPatient: any, source: any): any {
     let transformed = source;
 
-    this.transformMdaMessages(transformed);
-    this.transformNgsMessages(transformed);
+    this.transformMdaMessages(transformedPatient, transformed);
+    this.transformNgsMessages(transformedPatient, transformed);
 
     return transformed;
   }
 
-  private transformMdaMessages(transformed: any): void {
+  private transformMdaMessages(transformedPatient: any, transformed: any): void {
     if (!('mdAndersonMessages' in transformed)) {
       return;
     }
@@ -95,18 +93,29 @@ export class ViewDataTransformer {
     }
   }
 
-  private transformNgsMessages(transformed: any): void {
-    if (!('nextGenerationSequences' in transformed)) {
+  private transformNgsMessages(transformedPatient: any, transformedBiopsy: any): void {
+    /*
+    * The view data-model structure:
+    * biopsy {
+    *    nucleicAcidSendouts: [{
+    *        analyses: [
+    *           {variantReport: . . ., assignmentReport: . . .}
+    *        ]
+    *    }]
+    * }
+    */
+
+    if (!('nextGenerationSequences' in transformedBiopsy)) {
       return;
     }
 
-    for (let message of transformed.nextGenerationSequences) {
+    for (let message of transformedBiopsy.nextGenerationSequences) {
       if (!message.ionReporterResults) {
         continue;
       }
 
       let msn: string = message.ionReporterResults.molecularSequenceNumber;
-      let sendout = transformed.nucleicAcidSendouts.find((x: any) => x.molecularSequenceNumber === msn);
+      let sendout = transformedBiopsy.nucleicAcidSendouts.find((x: any) => x.molecularSequenceNumber === msn);
       if (!sendout) {
         continue;
       }
@@ -132,6 +141,14 @@ export class ViewDataTransformer {
       analysis.variantReporterFileReceivedDate = message.dateReceived;
       analysis.variantReporterRejectedOrConfirmedDate = message.dateVerified;
 
+      if (!message.ionReporterResults.variantReport)
+          continue;
+
+      transformedPatient.variantReports = transformedPatient.variantReports || {};
+
+      let variantReport = message.ionReporterResults.variantReport;
+      analysis.variantReport = variantReport;
+      
       const variantTables: Array<string> = [
         'geneFusions',
         'copyNumberVariants',
@@ -141,6 +158,44 @@ export class ViewDataTransformer {
         'unifiedGeneFusions'
       ];
 
+      variantReport.moiSummary = {
+        totalaMOIs: 0,
+        totalMOIs: 0,
+        confirmedaMOIs: 0,
+        confirmedMOIs: 0
+      };
+
+      for (let table of variantTables) {
+        this.calculateMoiSummary(variantReport[table], variantReport.moiSummary);
+      }
+
+      transformedPatient.variantReports[message.ionReporterResults.jobName] = variantReport;
+
+      variantReport.variantReportStatus = analysis.variantReportStatus;
+      variantReport.variantReportCreatedDate = analysis.variantReportCreatedDate;
+      variantReport.variantReporterFileReceivedDate = analysis.variantReporterFileReceivedDate;
+      variantReport.variantReporterRejectedOrConfirmedDate = analysis.variantReporterRejectedOrConfirmedDate;
+
+      variantReport.biopsySequenceNumber = transformedBiopsy.biopsySequenceNumber;
+      variantReport.analysisId = message.ionReporterResults.jobName;
+      variantReport.patientSequenceNumber = transformedBiopsy.patientSequenceNumber;
+      variantReport.molecularSequenceNumber = message.ionReporterResults.molecularSequenceNumber;
+      variantReport.torrentVariantCallerVersion = message.oncomineVariantAnnotationToolVersion;
+    }
+  }
+  
+  private calculateMoiSummary(table: any[], moiSummary: any): void {
+    for (let item of table) {
+      moiSummary.totalMOIs += 1;
+
+      if (item.isAMoi) {
+        moiSummary.totalaMOIs += 1;
+        if (item.confirmed) {
+          moiSummary.confirmedaMOIs += 1;
+        }
+      } else if (item.confirmed) {
+        moiSummary.confirmedMOIs += 1;
+      }
     }
   }
 
@@ -185,61 +240,6 @@ export class ViewDataTransformer {
         lastVariantReport.assignmentDateConfirmed = assignment.dateConfirmed;
         lastVariantReport.assignmentDateSentToECOG = assignment.dateSentToECOG;
         lastVariantReport.assignmentDateReceivedByECOG = assignment.dateReceivedByECOG;
-      }
-    }
-  }
-
-  private transformVariantReports(transformed: any): void {
-    // Store the variant reports into a "dictionary" with job id as the key
-    transformed.variantReports = {};
-    for (let biopsy of transformed.biopsies) {
-      for (let ngs of biopsy.nextGenerationSequences) {
-        if (!ngs.ionReporterResults || !ngs.ionReporterResults.variantReport)
-          continue;
-
-        let variantReport = ngs.ionReporterResults.variantReport;
-        transformed.variantReports[ngs.ionReporterResults.jobName] = variantReport;
-
-        variantReport.biopsySequenceNumber = biopsy.biopsySequenceNumber;
-        variantReport.analysisId = ngs.ionReporterResults.jobName;
-        variantReport.patientSequenceNumber = transformed.patientSequenceNumber;
-        variantReport.status = ngs.ionReporterResults.status;
-
-
-// analysisId
-// :
-// "JOB-14-000005"
-// biopsySequenceNumber
-// :
-// "N-14-000005-3"
-// copyNumberVariants
-// :
-// Array(0)
-// createdDate
-// :
-// Object
-// geneFusions
-// :
-// Array(2)
-// indels
-// :
-// Array(0)
-// nonHotspotRules
-// :
-// Array(0)
-// patientSequenceNumber
-// :
-// "170re"
-// singleNucleotideVariants
-// :
-// Array(0)
-// unifiedGeneFusions
-// :
-// Array(1)
-// __proto__
-// :
-// Object
-
       }
     }
   }

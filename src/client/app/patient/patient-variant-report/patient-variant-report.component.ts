@@ -28,7 +28,6 @@ export class PatientVariantReportComponent implements OnInit {
   patient: any;
   variantReport: any;
   assignmentReport: any;
-  moiSummary: any;
   assay: any[];
   snv: any[];
   indels: any[];
@@ -53,8 +52,7 @@ export class PatientVariantReportComponent implements OnInit {
       .subscribe((response: any) => {
         this.patient = this.transformer.transformPatient(response);
         this.variantReport = this.patient.variantReports[analysisId];
-        this.assignmentReport = {};
-        this.moiSummary = {};
+        this.assignmentReport = null;
         this.isLoaded = true;
       },
       (error) => {

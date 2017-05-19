@@ -238,10 +238,12 @@
                                           <dd>{{analysis.variantReporterRejectedOrConfirmedDate | gmt}}</dd>
 
                                           <dt>MOIs (Confirmed/Total)</dt>
-                                          <dd>{{analysis.confirmedMOIs | dashify}} / {{analysis.totalMOIs | dashify}}</dd>
+                                          <dd *ngIf="analysis.variantReport && analysis.variantReport.moiSummary">{{analysis.variantReport.moiSummary.confirmedMOIs | dashify}} / {{analysis.variantReport.moiSummary.totalMOIs | dashify}}</dd>
+                                          <dd *ngIf="!analysis.variantReport || !analysis.variantReport.moiSummary">-</dd>
 
                                           <dt>aMOIs (Confirmed/Total)</dt>
-                                          <dd>{{analysis.confirmedaMOIs | dashify}} / {{analysis.totalaMOIs | dashify}}</dd>
+                                          <dd *ngIf="analysis.variantReport && analysis.variantReport.moiSummary">{{analysis.variantReport.moiSummary.confirmedaMOIs | dashify}} / {{analysis.variantReport.moiSummary.totalaMOIs | dashify}}</dd>
+                                          <dd *ngIf="!analysis.variantReport || !analysis.variantReport.moiSummary">-</dd>
                                         </dl>
                                       </div>
 
