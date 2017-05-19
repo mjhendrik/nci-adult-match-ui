@@ -32,13 +32,13 @@
               <dt>Patient Concordance</dt>
               <dd>{{variantReport.concordance | dashify}}</dd>
               <dt>Status</dt>
-              <dd><span [colorCodeVariantReport]="variantReport.variantReportStatus">{{variantReport.variantReportStatus | dashify}}</span>                on {{variantReport.variantReportDate | dashify}} by {{variantReport.user | dashify}}</dd>
+              <dd><span [colorCodeVariantReport]="variantReport.variantReportStatus">{{variantReport.variantReportStatus | dashify}}</span>                on {{variantReport.variantReportDate | gmt}} by {{variantReport.user | dashify}}</dd>
               <dt>MAPD</dt>
               <dd>{{variantReport.mapd | dashify}}</dd>
               <dt>Cellularity</dt>
               <dd>{{variantReport.cellularity | dashify}}</dd>
               <dt>File Received Date</dt>
-              <dd>{{variantReport.fileReceivedDate | dashify}}</dd>
+              <dd>{{variantReport.fileReceivedDate | gmt}}</dd>
               <dt>Torrent Variant Caller Version</dt>
               <dd>{{variantReport.torrentVariantCallerVersion | dashify}}</dd>
             </dl>
@@ -68,13 +68,13 @@
             <dd><span [colorCodeAssignment]="assignmentReport.status"> {{assignmentReport.status | dashify}}</span> on {{assignmentReport.confirmationDate
               | dashify}} by {{assignmentReport.user | dashify}}</dd>
             <dt>Generation Date</dt>
-            <dd>{{assignmentReport.generationDate | dashify}}</dd>
+            <dd>{{assignmentReport.generationDate | gmt}}</dd>
             <dt>Treatment Arm Sent to ECOG Date</dt>
-            <dd>{{assignmentReport.taSentToECOGDate | dashify}}</dd>
+            <dd>{{assignmentReport.taSentToECOGDate | gmt}}</dd>
             <dt>Assignment Sent to ECOG Date</dt>
-            <dd>{{assignmentReport.senttoECOGDate | dashify}}</dd>
+            <dd>{{assignmentReport.senttoECOGDate | gmt}}</dd>
            <dt>Assignment Received by ECOG Date</dt>
-            <dd>{{assignmentReport.receivedfromECOGDate | dashify}}</dd>
+            <dd>{{assignmentReport.receivedfromECOGDate | gmt}}</dd>
           </dl>
           <h4>Selected Treatment Arm: <span class="text-success-light">{{assignmentReport.selectedTreatmentArm | dashify}}</span></h4>
           <div class="panel panel-success overflow-hidden">
@@ -318,10 +318,10 @@
             <tbody>
               <tr *ngFor="let item of assignmentHistory">
                 <td [colorCodeAssignment]="item.status"><a href [routerLink]="['/patients/details/variant_reports/assignment']">{{item.status | dashify}}</a></td>
-                <td>{{item.generationDate | dashify}}</td>
-                <td>{{item.confirmationDate | dashify}}</td>
-                <td>{{item.sentToEcogDate | dashify}}</td>
-                <td>{{item.receivedFromEcogDate | dashify}}</td>
+                <td>{{item.generationDate | gmt}}</td>
+                <td>{{item.confirmationDate | gmt}}</td>
+                <td>{{item.sentToEcogDate | gmt}}</td>
+                <td>{{item.receivedFromEcogDate | gmt}}</td>
               </tr>
             </tbody>
           </table>
