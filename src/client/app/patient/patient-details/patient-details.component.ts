@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 import { routerTransition } from './../../shared/router.animations';
 import { PatientApiService } from '../patient-api.service';
-import { ViewDataTransformer } from './view-data-transformer.service';
+import { ViewDataTransformer } from './../view-data-transformer.service';
 
 @Component({
   moduleId: module.id,
@@ -19,12 +19,12 @@ import { ViewDataTransformer } from './view-data-transformer.service';
 })
 export class PatientDetailsComponent implements OnInit {
 
+  isLoaded: boolean;
   summaryData: any = {};
   biopsyData: any = {};
   disease: any = {};
 
   patient: any;
-  isLoaded: boolean;
   errorMessage: string;
 
   analysisId: string = '';

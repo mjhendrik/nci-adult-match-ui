@@ -9,6 +9,8 @@ import {
   PatientVariantReportInterface
 } from '../patient-api.service';
 
+import { ViewDataTransformer } from './../view-data-transformer.service';
+
 /**
  * PatientVariantReportComponent.
  */
@@ -22,6 +24,7 @@ import {
 })
 export class PatientVariantReportComponent implements OnInit {
 
+  isLoaded: boolean;
   variantReport: any;
   assignmentReport: any;
   moiSummary: any;
@@ -31,10 +34,12 @@ export class PatientVariantReportComponent implements OnInit {
   assignmentReason: any;
   assignmentHistory: any[];
 
-  dataAvailable: boolean = false;
   errorMessage: string;
 
-  constructor(private route: ActivatedRoute, private patientApi: PatientApiService) { }
+  constructor(
+    private route: ActivatedRoute, 
+    private patientApi: PatientApiService, 
+    private transformer: ViewDataTransformer) { }
 
   ngOnInit() {
     let psn = this.route.snapshot.params['patientSequenceNumber'];
@@ -43,19 +48,15 @@ export class PatientVariantReportComponent implements OnInit {
   }
 
   getData(psn: string, analysisId: string) {
-    this.patientApi.getPatientVariantReport()
-      .subscribe((itemList: PatientVariantReportInterface) => {
-        this.variantReport = itemList.variantReport;
-        this.assignmentReport = itemList.assignmentReport;
-        this.moiSummary = itemList.moiSummary;
-        this.assay = itemList.assay;
-        this.snv = itemList.snv;
-        this.indels = itemList.indels;
-        this.assignmentReason = itemList.assignmentReason;
-        this.assignmentHistory = itemList.assignmentHistory;
-        this.dataAvailable = true;
+    this.patientApi.getPatientDetails(psn)
+      .subscribe((response: any) => {
+        this.variantReport = this.transformer.transformPatient(response);
+        this.isLoaded = true;
       },
-      error => this.errorMessage = <any>error
+      (error) => {
+        this.errorMessage = <any>error;
+        console.error(error);
+      }
       );
   }
 

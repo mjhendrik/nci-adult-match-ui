@@ -8,6 +8,7 @@ import { PipesModule } from '../../shared/pipes/pipes.module';
 import { DirectivesModule } from '../../shared/directives/directives.module';
 import { PatientApiService } from '../patient-api.service';
 import { AssignmentReasonTableModule } from './../assignment-reason-table/assignment-reason-table.module';
+import { ViewDataTransformer } from './../view-data-transformer.service';
 
 @NgModule({
   imports: [
@@ -21,6 +22,6 @@ import { AssignmentReasonTableModule } from './../assignment-reason-table/assign
   ],
   declarations: [PatientVariantReportComponent],
   exports: [PatientVariantReportComponent],
-  providers: [PatientApiService]
+  providers: [PatientApiService, ViewDataTransformer]
 })
 export class PatientVariantReportModule { }
