@@ -25,6 +25,7 @@ import { ViewDataTransformer } from './../view-data-transformer.service';
 export class PatientVariantReportComponent implements OnInit {
 
   isLoaded: boolean;
+  patient: any;
   variantReport: any;
   assignmentReport: any;
   moiSummary: any;
@@ -50,7 +51,10 @@ export class PatientVariantReportComponent implements OnInit {
   getData(psn: string, analysisId: string) {
     this.patientApi.getPatientDetails(psn)
       .subscribe((response: any) => {
-        this.variantReport = this.transformer.transformPatient(response);
+        this.patient = this.transformer.transformPatient(response);
+        this.variantReport = this.patient.variantReports[analysisId];
+        this.assignmentReport = {};
+        this.moiSummary = {};
         this.isLoaded = true;
       },
       (error) => {

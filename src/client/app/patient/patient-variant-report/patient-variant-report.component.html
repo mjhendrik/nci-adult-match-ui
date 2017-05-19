@@ -2,10 +2,11 @@
   <ul class="breadcrumb pull-right">
     <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
     <li><a href [routerLink]="['/patients']" class="link-none">Patients</a></li>
-    <li><a href [routerLink]="['/patients/details', '10069']" class="link-none">Patient 10069</a></li>
+    <li><a href [routerLink]="['/patients/details', patient.patientSequenceNumber]" class="link-none">Patient {{patient.patientSequenceNumber}}</a></li>
     <li class="active">Variant Report</li>
   </ul>
   <h1 class="page-header">Variant and Assignment Report</h1>
+
   <div class="row" matchHeight="panel-height-top">
     <div class="col-md-6">
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-top">
@@ -26,13 +27,12 @@
               <dt>Analysis ID</dt>
               <dd>{{variantReport.analysisId | dashify}}</dd>
               <dt>Patient</dt>
-              <dd><a href [routerLink]="['/patients', item.patientSequenceNumber]" class="link-none">{{variantReport.patientSequenceNumber | dashify}}</a>,
-                <span [colorCodePatients]="variantReport.patientStatus">{{variantReport.patientStatus | dashify}}</span>,
-                at Step {{variantReport.step | dashify}}</dd>
+              <dd><a href [routerLink]="['/patients/details', patient.patientSequenceNumber]" class="link-none">{{patient.patientSequenceNumber | dashify}}</a>,
+                <span [colorCodePatients]="patient.patientStatus">{{patient.currentPatientStatus | dashify}}</span>, Step {{patient.currentStepNumber | dashify}}</dd>
               <dt>Patient Concordance</dt>
-              <dd>{{variantReport.concordance | dashify}}</dd>
+              <dd>{{patient.concordance | dashify}}</dd>
               <dt>Status</dt>
-              <dd><span [colorCodeVariantReport]="variantReport.variantReportStatus">{{variantReport.variantReportStatus | dashify}}</span>                on {{variantReport.variantReportDate | gmt}} by {{variantReport.user | dashify}}</dd>
+              <dd><span [colorCodeVariantReport]="variantReport.status">{{variantReport.status | dashify}}</span> on {{variantReport.variantReportDate | gmt}} by {{variantReport.user | dashify}}</dd>
               <dt>MAPD</dt>
               <dd>{{variantReport.mapd | dashify}}</dd>
               <dt>Cellularity</dt>
@@ -89,6 +89,7 @@
       </div>
     </div>
   </div>
+
   <div class="row" matchHeight="panel-height-middle">
     <div class="col-md-3">
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-middle">
@@ -123,7 +124,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let item of assay">
+                <tr *ngFor="let item of assignmentReport.assay">
                   <td>{{item.ihc | dashify}}</td>
                   <td>{{item.result | dashify}}</td>
                   <td>{{item.comment | dashify}}</td>
@@ -142,7 +143,8 @@
       </div>
     </div>
   </div>
-  <div class="panel panel-white panel-accent-sides-purple overflow-hidden">
+
+  <!--<div class="panel panel-white panel-accent-sides-purple overflow-hidden">
     <div class="panel-heading">
       <div class="row">
         <div class="col-md-12">
@@ -169,7 +171,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let item of snv">
+              <tr *ngFor="let item of variantReport.singleNucleotideVariants">
                 <td><input type="checkbox" name="chr" value="checked" checked disabled></td>
                 <td>{{item.id | dashify}}</td>
                 <td>{{item.aMoi | dashify}}</td>
@@ -216,7 +218,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let item of indels">
+              <tr *ngFor="let item of variantReport.indels">
                 <td><input type="checkbox" name="chr" value="checked" checked disabled></td>
                 <td>{{item.id | dashify}}</td>
                 <td>{{item.aMoi | dashify}}</td>
@@ -328,5 +330,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </div>-->
 </div>

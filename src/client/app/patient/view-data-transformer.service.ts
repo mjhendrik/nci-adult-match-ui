@@ -17,6 +17,8 @@ export class ViewDataTransformer {
 
     if (transformed.biopsies && transformed.biopsies.length) {
       transformed.biopsies = transformed.biopsies.reverse().map((x: any) => this.transformBiopsy(x));
+    } else {
+      transformed.biopsies = [];
     }
 
     if (transformed.races && transformed.races.length) {
@@ -188,35 +190,56 @@ export class ViewDataTransformer {
   }
 
   private transformVariantReports(transformed: any): void {
-    if (!('patientAssignments' in transformed)
-      || !Array.isArray(transformed.patientAssignments)
-      || !transformed.patientAssignments.length) {
-      return;
-    }
+    // Store the variant reports into a "dictionary" with job id as the key
+    transformed.variantReports = {};
+    for (let biopsy of transformed.biopsies) {
+      for (let ngs of biopsy.nextGenerationSequences) {
+        if (!ngs.ionReporterResults || !ngs.ionReporterResults.variantReport)
+          continue;
 
-    for (let assignment of transformed.patientAssignments) {
-      let bsn = assignment.biopsySequenceNumber;
-      let biopsy = transformed.biopsies.find((x: any) => x.biopsySequenceNumber === bsn);
-      if (!biopsy || !biopsy.nucleicAcidSendouts) {
-        continue;
-      }
+        let variantReport = ngs.ionReporterResults.variantReport;
+        transformed.variantReports[ngs.ionReporterResults.jobName] = variantReport;
 
-      // Flatten the biopsies' analyses into one array, and look for confirmed ones
-      let confirmedVariantReports = biopsy.nucleicAcidSendouts
-        .map((x: any) => x.analyses)
-        .reduce((acc: Array<any>, val: Array<any>) => acc.concat(val))
-        .filter((x: any) => x.variantReportStatus === 'CONFIRMED');
+        variantReport.biopsySequenceNumber = biopsy.biopsySequenceNumber;
+        variantReport.analysisId = ngs.ionReporterResults.jobName;
+        variantReport.patientSequenceNumber = transformed.patientSequenceNumber;
+        variantReport.status = ngs.ionReporterResults.status;
 
-      if (confirmedVariantReports && confirmedVariantReports.length) {
-        let lastVariantReport = confirmedVariantReports[confirmedVariantReports.length - 1];
 
-        lastVariantReport.hasAssignment = true;
-        lastVariantReport.assignmentStatus = assignment.patientAssignmentStatus;
-        lastVariantReport.assignmentStatusMessage = assignment.patientAssignmentStatusMessage;
-        lastVariantReport.assignmentDateAssigned = assignment.dateAssigned;
-        lastVariantReport.assignmentDateConfirmed = assignment.dateConfirmed;
-        lastVariantReport.assignmentDateSentToECOG = assignment.dateSentToECOG;
-        lastVariantReport.assignmentDateReceivedByECOG = assignment.dateReceivedByECOG;
+// analysisId
+// :
+// "JOB-14-000005"
+// biopsySequenceNumber
+// :
+// "N-14-000005-3"
+// copyNumberVariants
+// :
+// Array(0)
+// createdDate
+// :
+// Object
+// geneFusions
+// :
+// Array(2)
+// indels
+// :
+// Array(0)
+// nonHotspotRules
+// :
+// Array(0)
+// patientSequenceNumber
+// :
+// "170re"
+// singleNucleotideVariants
+// :
+// Array(0)
+// unifiedGeneFusions
+// :
+// Array(1)
+// __proto__
+// :
+// Object
+
       }
     }
   }
