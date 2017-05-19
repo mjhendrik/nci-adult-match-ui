@@ -33,12 +33,9 @@ export class PatientListComponent implements OnInit {
   }
 
   getData() {
-    let gmt = new GmtPipe();
     this.patientApi.getPatientList()
       .subscribe(itemList => {
         this.tablePatientsData = itemList.map(x => {
-          x.registrationDate = gmt.transform(x.registrationDate);
-          x.offTrialDate = gmt.transform(x.offTrialDate);
           x.diseaseList = x.diseases && x.diseases.length ? x.diseases.map((y: any) => y.shortName).join(', ') : '';
           x.currentTreatmentArm = x.patientAssignments && x.patientAssignments.length ? x.patientAssignments[0].treatmentArm : null;
           return x;

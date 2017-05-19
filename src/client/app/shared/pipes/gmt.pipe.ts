@@ -23,11 +23,15 @@ export class GmtPipe implements PipeTransform {
             } else {
                 date = new Date(value).getTime();
             }
+            var val = null;
             if (format) {
-                return moment.unix(date / 1000).utc().format(format);
+                val = moment.unix(date / 1000).utc().format(format);
             } else {
-                return moment.unix(date / 1000).utc().format('LLL') + ' GMT';
+                val = moment.unix(date / 1000).utc().format('LLL') + ' GMT';
             }
+            console.log('Original: ' + value);
+            console.log('Converted: ' + val);
+            return val;
         } else {
             return '-';
         }
