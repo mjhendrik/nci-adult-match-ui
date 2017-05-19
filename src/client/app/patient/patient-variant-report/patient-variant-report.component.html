@@ -129,8 +129,8 @@
                 </tr>
               </thead>
               <tbody *ngIf="assignmentReport">
-                <tr *ngFor="let item of assignmentReport.assay">
-                  <td>{{item.ihc | dashify}}</td>
+                <tr *ngFor="let item of assignmentReport.assayMessages">
+                  <td>{{item.biomarker | dashify}}</td>
                   <td>{{item.result | dashify}}</td>
                   <td>{{item.comment | dashify}}</td>
                 </tr>
@@ -332,17 +332,18 @@
     </div>
   </div>
 
-  <!--<div class="panel panel-white panel-accent-sides-purple overflow-hidden">
+  <div *ngIf="assignmentReport" class="panel panel-white panel-accent-sides-purple overflow-hidden">
     <div class="panel-heading">
       <div class="row">
         <div class="col-md-12">
-          <sd-assignment-reason-table [assignmentReason]="assignmentReason"></sd-assignment-reason-table>
+          <sd-assignment-reason-table></sd-assignment-reason-table>
+          <!--<sd-assignment-reason-table [assignmentReason]="assignmentReason"></sd-assignment-reason-table>-->
         </div>
       </div>
     </div>
   </div>
 
-  <div class="panel panel-white panel-accent-sides-purple overflow-hidden">
+  <div *ngIf="assignmentHistory && assignmentHistory.length" class="panel panel-white panel-accent-sides-purple overflow-hidden">
     <div class="panel-heading">
       <div class="row">
         <div class="col-md-12">
@@ -359,16 +360,16 @@
             </thead>
             <tbody>
               <tr *ngFor="let item of assignmentHistory">
-                <td [colorCodeAssignment]="item.status"><a href [routerLink]="['/patients/details/variant_reports/assignment']">{{item.status | dashify}}</a></td>
-                <td>{{item.generationDate | gmt}}</td>
-                <td>{{item.confirmationDate | gmt}}</td>
-                <td>{{item.sentToEcogDate | gmt}}</td>
-                <td>{{item.receivedFromEcogDate | gmt}}</td>
+                <td [colorCodeAssignment]="item.status"><a href [routerLink]="['/patients/details/variant_reports/assignment']">{{item.patientAssignmentStatus | dashify}}</a></td>
+                <td>{{item.dateAssigned | gmt}}</td>
+                <td>{{item.dateConfirmed | gmt}}</td>
+                <td>{{item.dateSentToECOG | gmt}}</td>
+                <td>{{item.dateReceivedByECOG | gmt}}</td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
     </div>
-  </div>-->
+  </div>
 </div>

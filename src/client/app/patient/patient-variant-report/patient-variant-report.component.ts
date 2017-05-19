@@ -51,8 +51,10 @@ export class PatientVariantReportComponent implements OnInit {
     this.patientApi.getPatientDetails(psn)
       .subscribe((response: any) => {
         this.patient = this.transformer.transformPatient(response);
-        this.variantReport = this.patient.variantReports[analysisId];
-        this.assignmentReport = null;
+        let analysis = this.patient.analyses[analysisId];
+        this.variantReport = analysis.variantReport;
+        this.assignmentReport = analysis.assignmentReport;
+        this.assignmentHistory = this.patient.patientAssignments;
         this.isLoaded = true;
       },
       (error) => {

@@ -9,7 +9,7 @@
       <th style="width:30%">Exclusion Drugs</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody *ngIf="assignmentReason">
     <tr>
       <td colspan="4">
         <h4>1 - NO VARIANT MATCH</h4>
@@ -53,6 +53,11 @@
       <td>{{item.treatmentArmName | dashify}}</td>
       <td class="overflow-x-hidden"><sd-long-list [items]="item.exclusionaryDiseases" title="Exclusion Diseases"></sd-long-list></td>
       <td class="overflow-x-hidden"><sd-long-list [items]="item.exclusionaryDrugs" title="Exclusion Drugs"></sd-long-list></td>
+    </tr>
+  </tbody>
+  <tbody *ngIf="!assignmentReason">
+    <tr>
+      <td colspan="4" class="text-muted">No Assignment data</td>
     </tr>
   </tbody>
 </table>

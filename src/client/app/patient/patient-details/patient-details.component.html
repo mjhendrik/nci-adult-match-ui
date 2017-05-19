@@ -254,27 +254,27 @@
                                           <dd></dd>
                                         </dl>
                                         
-                                        <dl *ngIf="analysis.hasAssignment" class="dl-horizontal">
+                                        <dl *ngIf="analysis.assignmentReport" class="dl-horizontal">
                                           <dt>Status</dt>
-                                          <dd>{{analysis.assignmentStatus}}</dd>
+                                          <dd>{{analysis.assignmentReport.patientAssignmentStatus}}</dd>
 
                                           <dt>Generation Date</dt>
-                                          <dd>{{analysis.assignmentDateAssigned | gmt}}</dd>
+                                          <dd>{{analysis.assignmentReport.dateAssigned | gmt}}</dd>
 
                                           <dt>Confirmed Date</dt>
-                                          <dd>{{analysis.assignmentDateConfirmed | gmt}}</dd>
+                                          <dd>{{analysis.assignmentReport.dateConfirmed | gmt}}</dd>
 
                                           <dt>Sent to ECOG Date</dt>
-                                          <dd>{{analysis.assignmentDateSentToECOG | gmt}}</dd>
+                                          <dd>{{analysis.assignmentReport.dateSentToECOG | gmt}}</dd>
 
                                           <dt>Received by ECOG Date</dt>
-                                          <dd>{{analysis.assignmentDateReceivedByECOG | gmt}}</dd>
+                                          <dd>{{analysis.assignmentReport.dateReceivedByECOG | gmt}}</dd>
 
                                           <dt>Assignment Logic</dt>
-                                          <dd>{{analysis.assignmentStatusMessage | dashify}}</dd>
+                                          <dd>{{analysis.assignmentReport.patientAssignmentStatusMessage | dashify}}</dd>
                                         </dl>
 
-                                        <dl *ngIf="!analysis.hasAssignment" class="dl-horizontal">
+                                        <dl *ngIf="!analysis.assignmentReport" class="dl-horizontal">
                                           <dt class="text-muted f-w-400">No Assignment data yet</dt>
                                           <dd></dd>
                                         </dl>

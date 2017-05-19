@@ -144,7 +144,7 @@ export class ViewDataTransformer {
       if (!message.ionReporterResults.variantReport)
           continue;
 
-      transformedPatient.variantReports = transformedPatient.variantReports || {};
+      transformedPatient.analyses = transformedPatient.analyses || {};
 
       let variantReport = message.ionReporterResults.variantReport;
       analysis.variantReport = variantReport;
@@ -169,7 +169,7 @@ export class ViewDataTransformer {
         this.calculateMoiSummary(variantReport[table], variantReport.moiSummary);
       }
 
-      transformedPatient.variantReports[message.ionReporterResults.jobName] = variantReport;
+      transformedPatient.analyses[message.ionReporterResults.jobName] = analysis;
 
       variantReport.variantReportStatus = analysis.variantReportStatus;
       variantReport.variantReportCreatedDate = analysis.variantReportCreatedDate;
@@ -199,7 +199,7 @@ export class ViewDataTransformer {
     }
   }
 
-  private transformAssignments(transformed: any): void {
+  private transformAssignments(transformedPatient: any): void {
     /*
     * The view data-model structure:
     * biopsy {
@@ -211,15 +211,15 @@ export class ViewDataTransformer {
     * }
     */
 
-    if (!('patientAssignments' in transformed)
-      || !Array.isArray(transformed.patientAssignments)
-      || !transformed.patientAssignments.length) {
+    if (!('patientAssignments' in transformedPatient)
+      || !Array.isArray(transformedPatient.patientAssignments)
+      || !transformedPatient.patientAssignments.length) {
       return;
     }
 
-    for (let assignment of transformed.patientAssignments) {
+    for (let assignment of transformedPatient.patientAssignments) {
       let bsn = assignment.biopsySequenceNumber;
-      let biopsy = transformed.biopsies.find((x: any) => x.biopsySequenceNumber === bsn);
+      let biopsy = transformedPatient.biopsies.find((x: any) => x.biopsySequenceNumber === bsn);
       if (!biopsy || !biopsy.nucleicAcidSendouts) {
         continue;
       }
@@ -231,15 +231,8 @@ export class ViewDataTransformer {
         .filter((x: any) => x.variantReportStatus === 'CONFIRMED');
 
       if (confirmedVariantReports && confirmedVariantReports.length) {
-        let lastVariantReport = confirmedVariantReports[confirmedVariantReports.length - 1];
-
-        lastVariantReport.hasAssignment = true;
-        lastVariantReport.assignmentStatus = assignment.patientAssignmentStatus;
-        lastVariantReport.assignmentStatusMessage = assignment.patientAssignmentStatusMessage;
-        lastVariantReport.assignmentDateAssigned = assignment.dateAssigned;
-        lastVariantReport.assignmentDateConfirmed = assignment.dateConfirmed;
-        lastVariantReport.assignmentDateSentToECOG = assignment.dateSentToECOG;
-        lastVariantReport.assignmentDateReceivedByECOG = assignment.dateReceivedByECOG;
+        let lastVariantReportAnalys = confirmedVariantReports[confirmedVariantReports.length - 1];
+        lastVariantReportAnalys.assignmentReport = assignment;
       }
     }
   }
