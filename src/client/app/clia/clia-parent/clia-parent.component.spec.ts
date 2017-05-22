@@ -1,7 +1,10 @@
 // import { Component } from '@angular/core';
 import {
   async,
-  TestBed
+  TestBed,
+  tick,
+  fakeAsync,
+  inject
 } from '@angular/core/testing';
 import { Observable } from 'rxjs/Observable';
 import { FormsModule } from '@angular/forms';
@@ -14,6 +17,15 @@ import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { PipesModule } from './../../shared/pipes/pipes.module';
 import { DirectivesModule } from './../../shared/directives/directives.module';
+import {
+  HttpModule,
+  Http,
+  Response,
+  ResponseOptions,
+  XHRBackend,
+  BaseRequestOptions
+} from '@angular/http';
+import { MockBackend, MockConnection } from '@angular/http/testing';
 
 
 
@@ -24,31 +36,62 @@ export function main() {
     let config: any[] = [
       { path: 'clia_variant_reports_ntc', component: 'CliaParentComponent' }
     ];
+    // inject([MockBackend], (mockBackend: MockBackend)
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [RouterTestingModule.withRoutes(config), DirectivesModule, PipesModule, FormsModule, DataTableModule],
         declarations: [CliaParentComponent],
         providers: [
           { provide: CliaApiService, useClass: MockCliaApiService },
-          { provide: ActivatedRoute, useValue: { snapshot: { url: [{ path: 'clia_mocha' }], data: { cliaType: 'mocha' } } } }
+          { provide: ActivatedRoute, useValue: { snapshot: { url: [{ path: 'clia_mocha' }], data: { cliaType: 'mocha' } } } },
+          // MockBackend,
+          // BaseRequestOptions,
+          // { provide: XHRBackend, useClass: MockBackend },
+          // {
+          //   provide: Http,
+          //   useFactory: (backend: MockBackend, options: BaseRequestOptions) => new Http(backend, options),
+          //   deps: [MockBackend, BaseRequestOptions]
+          // },
         ]
       });
+
+      // mockBackend.connections.subscribe((connection: MockConnection) => {
+      //   connection.mockRespond(new Response(new ResponseOptions(this.spyConnection({
+      //     body: connection.request.text(),
+      //     method: connection.request.method,
+      //     url: connection.request.url
+      //   }))));
+      // });
+
+
+      spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': 'MOCHA_VARIANT_REPORT_REVIEWER' }));
     });
 
-    // it('should work',
-    //   async(() => {
-    //     TestBed
-    //       .compileComponents()
-    //       .then(() => {
-    //         let fixture = TestBed.overrideComponent(CliaParentComponent, {
-    //           set: {
-    //             templateUrl: ''
-    //           }
-    //         }).createComponent(CliaParentComponent);
-    //         // console.log(fixture);
-    //         fixture.componentInstance.ngOnInit();
-    //       });
-    //   }));
+    it('should work',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(CliaParentComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(CliaParentComponent);
+            // console.log(fixture);
+            fixture.componentInstance.ngOnInit();
+            // let interval = setInterval(() => {
+            //   // expect(1).toBe(1);
+            //   // done();
+            //   // fixture.detectChanges();
+            // }, 1000 * 60);
+            // clearInterval(interval);
+
+            // Observable.interval(1000 * 60).subscribe(() => {
+            //   fixture.detectChanges();
+            // });
+
+          });
+      }));
 
   });
 }
@@ -68,8 +111,8 @@ class MockCliaApiService {
       cellularity: { 'test': 'test' },
       torrent_variant_caller_version: { 'test': 'test' },
       report_status: { 'test': 'test' },
-      date_molecular_id_created: "2-12-2015",
-      date_variant_received: "2-12-2015"
+      date_molecular_id_created: '2-12-2015',
+      date_variant_received: '2-12-2015'
     }];
     return Observable.of(testData);
   }
@@ -110,3 +153,4 @@ class MockCliaApiService {
     return Observable.of(testdata);
   }
 }
+
