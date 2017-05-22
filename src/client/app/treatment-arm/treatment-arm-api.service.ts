@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { Config } from '../shared/config/env.config';
 import { AuthHttp } from 'angular2-jwt';
 
 // import 'rxjs/add/operator/do';  // for debugging
@@ -29,14 +30,20 @@ export class TreatmentArmApiService {
    * @return {string[]} The Observable for the HTTP request.
    */
   getTreatmentArmDetails(): Observable<TreatmentArmDetailsInterface> {
+
     return this.http.get('assets/mock-data/treatment-arm-details.json')
+
+      // return this.http.get(Config.API.ION_REPORTER + '/treatment_arms?id=' + )
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
   }
 
   getTreatmentArmList(): Observable<any[]> {
-    return this.http.get('assets/mock-data/treatment-arm-list.json')
+
+    // return this.http.get('assets/mock-data/treatment-arm-list.json')
+
+    return this.http.get(Config.API.ION_REPORTER + '/treatment_arms')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);

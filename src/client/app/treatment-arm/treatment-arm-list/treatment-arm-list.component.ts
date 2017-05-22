@@ -27,33 +27,42 @@ export class TreatmentArmListComponent implements OnInit {
   tableTAData: any[];
   errorMessage: string;
 
+  gmt: GmtPipe;
+
   constructor(private treatmentArmApi: TreatmentArmApiService) {
 
   }
 
   ngOnInit() {
+    this.gmt = new GmtPipe();
     this.getData();
   }
 
   getData() {
-    let gmt = new GmtPipe();
+
     this.treatmentArmApi.getTreatmentArmList()
       .subscribe(itemList => {
 
         this.tableTAData = itemList.map(x => {
-          x.dateCreated = gmt.transform(x.dateCreated);
-          x.dateOpened = gmt.transform(x.dateOpened);
-          x.dateSuspendedOrClosed = gmt.transform(x.dateSuspendedOrClosed);
+          x.dateCreated = this.gmt.transform(x.dateCreated);
           return x;
         });
-
-        for (let i = 0; i < this.tableTAData.length; i++) {
-          this.tableTAData[i].dateSuspendedOrClosed = this.tableTAData[i].dateClosed == null ? this.tableTAData[i].dateSuspended : this.tableTAData[i].dateClosed;
-        }
 
       },
       error => this.errorMessage = <any>error
       );
-  }
+  };
+
+  dateStatusLog(statusLog: any, type: string): string {
+
+    let key = Object.keys(statusLog).filter((dateStatusLog: string) => {
+      return dateStatusLog.length === 10 && type.indexOf(statusLog[dateStatusLog]) !== -1;
+    });
+
+    if (key.length === 0) return '-';
+
+    return this.gmt.transform(1000 * parseInt(key[0]));
+
+  };
 
 }
