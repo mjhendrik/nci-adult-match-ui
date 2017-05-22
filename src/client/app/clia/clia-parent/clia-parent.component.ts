@@ -154,25 +154,25 @@ export class CliaParentComponent implements OnInit {
       });
   };
 
-  autoLoadDataIon() {
-    setInterval(() => {
+  // autoLoadDataIon() {
+  //   setInterval(() => {
 
-      this.cliaApi.getCliaIon(this.cliaType)
-        .subscribe(details => {
+  //     this.cliaApi.getCliaIon(this.cliaType)
+  //       .subscribe(details => {
 
-          let gmt = new GmtPipe();
+  //         let gmt = new GmtPipe();
 
-          this.ionReportersData = details.map(x => {
-            x.lastContactDate = gmt.transform(x.lastContactDate);
-            return x;
-          });
+  //         this.ionReportersData = details.map(x => {
+  //           x.lastContactDate = gmt.transform(x.lastContactDate);
+  //           return x;
+  //         });
 
-        });
+  //       });
 
-      this.timestamp = new Date();
+  //     this.timestamp = new Date();
 
-    }, 1000 * 60);
-  };
+  //   }, 1000 * 60);
+  // };
 
   setControlType(type: string): void {
     this.control_type = type;

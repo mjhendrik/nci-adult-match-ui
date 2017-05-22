@@ -25,7 +25,10 @@ import {
   XHRBackend,
   BaseRequestOptions
 } from '@angular/http';
-import { MockBackend, MockConnection } from '@angular/http/testing';
+import {
+  MockBackend,
+  MockConnection
+} from '@angular/http/testing';
 
 
 
