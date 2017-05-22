@@ -95,7 +95,10 @@
                               <td>{{dateStatusLog(item.statusLog,'CLOSED,SUSPENDED') | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftableTA.data.length == 0">
-                              <td class="text-muted" colspan="10">No matching search results found for "{{searchtermTA}}"</td>
+                              <td class="text-muted" colspan="10">
+                                <span *ngIf="searchtermTA">No matching search results found for "{{searchtermTA}}"</span>
+                                <span *ngIf="!searchtermTA">No treatment arm data</span>
+                              </td>
                             </tr>
                           </tbody>
                           <tfoot>
