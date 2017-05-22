@@ -64,7 +64,7 @@ export function main() {
       // });
 
 
-      spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': 'MOCHA_VARIANT_REPORT_REVIEWER' }));
+      spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
     });
 
     it('should work',
