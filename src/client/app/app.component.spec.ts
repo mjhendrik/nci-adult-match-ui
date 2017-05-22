@@ -30,7 +30,7 @@ export function main() {
 
     let config: Route[] = [
       { path: '', component: LoginComponent },
-      { path: '', component: ErrorComponent },
+      { path: 'error', component: ErrorComponent },
       { path: 'dashboard', component: DashboardComponent },
       { path: 'patients', component: PatientListComponent },
       { path: 'patients/details', component: PatientDetailsComponent },

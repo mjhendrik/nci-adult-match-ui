@@ -82,7 +82,7 @@ export class CliaParentComponent implements OnInit {
     this.roles = JSON.parse(localStorage.getItem('profile')).roles;
 
     let roles = this.roles.filter(function (arrayElement) {
-      return arrayElement.indexOf('_SENDER') !== -1 || arrayElement.indexOf('_REVIEWER') !== -1;
+      return arrayElement.indexOf('_SENDER') !== -1 || arrayElement.indexOf('_REVIEWER') !== -1 || arrayElement === 'ADMIN';
     });
 
     if (roles.indexOf('ADMIN') !== -1 || roles.join().toLowerCase().indexOf(this.cliaType) !== -1) this.generateMsnBtn = true;
