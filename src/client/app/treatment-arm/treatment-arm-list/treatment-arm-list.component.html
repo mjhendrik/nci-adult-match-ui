@@ -81,14 +81,10 @@
                                 <a href [routerLink]="['/treatments/details']" class="link-none"><i class="fa fa-medkit"></i> {{item.treatmentId | dashify}}</a>
                               </td>
                               <td>{{item.name | dashify}}</td>
-                              <td>-</td>
-                              <!--<td>{{item.currentPatients | dashify}}</td>-->
-                              <td>-</td>
-                              <!--<td>{{item.formerPatients | dashify}}</td>-->
-                              <td>-</td>
-                              <!--<td>{{item.pendingPatients | dashify}}</td>-->
-                              <td>-</td>
-                              <!--<td>{{item.notEnrolledPatients | dashify}}</td>-->
+                              <td>{{item.summaryReport.numCurrentPatientsOnArm | dashify}}</td>
+                              <td>{{item.summaryReport.numFormerPatients | dashify}}</td>
+                              <td>{{item.summaryReport.numPendingArmApproval | dashify}}</td>
+                              <td>{{item.summaryReport.numNotEnrolledPatient | dashify}}</td>
                               <td [colorCodeTa]="item.treatmentArmStatus">{{item.treatmentArmStatus | dashify}}</td>
                               <td>{{item.dateCreated | dashify}}</td>
                               <td>{{dateStatusLog(item.statusLog,'OPEN') | dashify}}</td>
