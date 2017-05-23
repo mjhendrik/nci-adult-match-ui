@@ -33,7 +33,7 @@ import {
 
 
 export function main() {
-  describe('clia parent component', () => {
+  describe('clia parent component with clia type mocha', () => {
     // Setting module for testing
     // Disable old forms
     let config: any[] = [
@@ -96,6 +96,198 @@ export function main() {
           });
       }));
 
+    it('should test setControlType',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(CliaParentComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(CliaParentComponent);
+            // console.log(fixture);
+            fixture.componentInstance.setControlType('test');
+            expect(fixture.componentInstance.control_type).toBe('test');
+          });
+      }));
+
+    it('should test generateMsn with control type positive',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(CliaParentComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(CliaParentComponent);
+            fixture.componentInstance.control_type = 'positive';
+            fixture.componentInstance.generateMsn();
+          });
+      }));
+
+    it('should test generateMsn with control type no_template',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(CliaParentComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(CliaParentComponent);
+            fixture.componentInstance.control_type = 'no_template';
+            fixture.componentInstance.generateMsn();
+          });
+      }));
+
+    it('should test generateMsn with control type proficiency_competency',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(CliaParentComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(CliaParentComponent);
+            fixture.componentInstance.control_type = 'proficiency_competency';
+            fixture.componentInstance.generateMsn();
+          });
+      }));
+  });
+
+  describe('clia parent component with clia type dartmouth', () => {
+    // Setting module for testing
+    // Disable old forms
+    let config: any[] = [
+      { path: 'clia_variant_reports_ntc', component: 'CliaParentComponent' }
+    ];
+    beforeEach(() => {
+      TestBed.configureTestingModule({
+        imports: [RouterTestingModule.withRoutes(config), DirectivesModule, PipesModule, FormsModule, DataTableModule],
+        declarations: [CliaParentComponent],
+        providers: [
+          { provide: CliaApiService, useClass: MockCliaApiService },
+          { provide: ActivatedRoute, useValue: { snapshot: { url: [{ path: 'clia_dartmouth' }], data: { cliaType: 'dartmouth' } } } },
+        ]
+      });
+      spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
+    });
+
+    it('should work for clia_dartmouth',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(CliaParentComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(CliaParentComponent);
+            fixture.componentInstance.ngOnInit();
+          });
+      }));
+  });
+
+  describe('clia parent component with clia type yale', () => {
+    // Setting module for testing
+    // Disable old forms
+    let config: any[] = [
+      { path: 'clia_variant_reports_ntc', component: 'CliaParentComponent' }
+    ];
+    beforeEach(() => {
+      TestBed.configureTestingModule({
+        imports: [RouterTestingModule.withRoutes(config), DirectivesModule, PipesModule, FormsModule, DataTableModule],
+        declarations: [CliaParentComponent],
+        providers: [
+          { provide: CliaApiService, useClass: MockCliaApiService },
+          { provide: ActivatedRoute, useValue: { snapshot: { url: [{ path: 'clia_yale' }], data: { cliaType: 'yale' } } } },
+        ]
+      });
+      spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
+    });
+
+    it('should work for clia_yale',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(CliaParentComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(CliaParentComponent);
+            fixture.componentInstance.ngOnInit();
+          });
+      }));
+  });
+
+  describe('clia parent component with clia type mgh', () => {
+    // Setting module for testing
+    // Disable old forms
+    let config: any[] = [
+      { path: 'clia_variant_reports_ntc', component: 'CliaParentComponent' }
+    ];
+    beforeEach(() => {
+      TestBed.configureTestingModule({
+        imports: [RouterTestingModule.withRoutes(config), DirectivesModule, PipesModule, FormsModule, DataTableModule],
+        declarations: [CliaParentComponent],
+        providers: [
+          { provide: CliaApiService, useClass: MockCliaApiService },
+          { provide: ActivatedRoute, useValue: { snapshot: { url: [{ path: 'clia_mgh' }], data: { cliaType: 'mgh' } } } },
+        ]
+      });
+      spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
+    });
+
+    it('should work for clia_mgh',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(CliaParentComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(CliaParentComponent);
+            fixture.componentInstance.ngOnInit();
+          });
+      }));
+  });
+
+  describe('clia parent component with clia type mda', () => {
+    // Setting module for testing
+    // Disable old forms
+    let config: any[] = [
+      { path: 'clia_variant_reports_ntc', component: 'CliaParentComponent' }
+    ];
+    beforeEach(() => {
+      TestBed.configureTestingModule({
+        imports: [RouterTestingModule.withRoutes(config), DirectivesModule, PipesModule, FormsModule, DataTableModule],
+        declarations: [CliaParentComponent],
+        providers: [
+          { provide: CliaApiService, useClass: MockCliaApiService },
+          { provide: ActivatedRoute, useValue: { snapshot: { url: [{ path: 'clia_mda' }], data: { cliaType: 'mda' } } } },
+        ]
+      });
+      spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['ADMIN'] }));
+    });
+
+    it('should work for clia_mda',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(CliaParentComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(CliaParentComponent);
+            fixture.componentInstance.ngOnInit();
+          });
+      }));
   });
 }
 
