@@ -148,6 +148,7 @@ export class ViewDataTransformer {
 
       let variantReport = message.ionReporterResults.variantReport;
       analysis.variantReport = variantReport;
+      variantReport.variantReporterFileReceivedDate = analysis.variantReporterFileReceivedDate;
       
       const variantTables: Array<string> = [
         'geneFusions',

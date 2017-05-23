@@ -2,7 +2,7 @@
   <ul class="breadcrumb pull-right">
     <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
     <li><a href [routerLink]="['/patients']" class="link-none">Patients</a></li>
-    <li><a href [routerLink]="['/patients/details', patient.patientSequenceNumber]" class="link-none">Patient {{patient.patientSequenceNumber}}</a></li>
+    <li><a href [routerLink]="['/patients', patient.patientSequenceNumber]" class="link-none">Patient {{patient.patientSequenceNumber}}</a></li>
     <li class="active">Variant Report</li>
   </ul>
   <h1 class="page-header">Variant and Assignment Report</h1>
@@ -27,7 +27,7 @@
               <dt>Analysis ID</dt>
               <dd>{{variantReport.analysisId | dashify}}</dd>
               <dt>Patient</dt>
-              <dd><a href [routerLink]="['/patients/details', patient.patientSequenceNumber]" class="link-none">{{patient.patientSequenceNumber | dashify}}</a>,
+              <dd><a href [routerLink]="['/patients', patient.patientSequenceNumber]" class="link-none">{{patient.patientSequenceNumber | dashify}}</a>,
                 <span [colorCodePatients]="patient.patientStatus">{{patient.currentPatientStatus | dashify}}</span>, Step {{patient.currentStepNumber | dashify}}</dd>
               <dt>Patient Concordance</dt>
               <dd>{{patient.concordance | dashify}}</dd>
@@ -38,7 +38,7 @@
               <dt>Cellularity</dt>
               <dd>{{variantReport.cellularity | dashify}}</dd>
               <dt>File Received Date</dt>
-              <dd>{{variantReport.fileReceivedDate | gmt}}</dd>
+              <dd>{{variantReport.variantReporterFileReceivedDate | gmt}}</dd>
               <dt>Torrent Variant Caller Version</dt>
               <dd>{{variantReport.torrentVariantCallerVersion | dashify}}</dd>
             </dl>
@@ -72,16 +72,14 @@
           <dl class="dl-horizontal widest-dt">
             <h4>Latest Assignment</h4>
             <dt>Status</dt>
-            <dd><span [colorCodeAssignment]="assignmentReport.status"> {{assignmentReport.status | dashify}}</span> on {{assignmentReport.confirmationDate
-              | dashify}} by {{assignmentReport.user | dashify}}</dd>
+            <dd><span [colorCodeAssignment]="assignmentReport.status"> {{assignmentReport.patientAssignmentStatus | dashify}}</span> on {{assignmentReport.dateConfirmed
+              | gmt}} by {{(assignmentReport.user||'System User') | dashify}}</dd>
             <dt>Generation Date</dt>
-            <dd>{{assignmentReport.generationDate | gmt}}</dd>
-            <dt>Treatment Arm Sent to ECOG Date</dt>
-            <dd>{{assignmentReport.taSentToECOGDate | gmt}}</dd>
+            <dd>{{assignmentReport.dateAssigned | gmt}}</dd>
             <dt>Assignment Sent to ECOG Date</dt>
-            <dd>{{assignmentReport.senttoECOGDate | gmt}}</dd>
+            <dd>{{assignmentReport.dateSentToECOG | gmt}}</dd>
            <dt>Assignment Received by ECOG Date</dt>
-            <dd>{{assignmentReport.receivedfromECOGDate | gmt}}</dd>
+            <dd>{{assignmentReport.dateReceivedByECOG | gmt}}</dd>
           </dl>
           <h4>Selected Treatment Arm: <span class="text-success-light">{{assignmentReport.selectedTreatmentArm | dashify}}</span></h4>
           <div class="panel panel-success overflow-hidden">
