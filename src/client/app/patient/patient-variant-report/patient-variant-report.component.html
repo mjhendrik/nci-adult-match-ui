@@ -81,12 +81,12 @@
            <dt>Assignment Received by ECOG Date</dt>
             <dd>{{assignmentReport.dateReceivedByECOG | gmt}}</dd>
           </dl>
-          <h4 *ngIf="assignmentReport.hasSelectedTreatmentArm">Selected Treatment Arm: <span class="text-success-light">{{assignmentReport.treatmentArm._id | dashify}}</span></h4>
+          <h4 *ngIf="assignmentReport.hasSelectedTreatmentArm">Selected Treatment Arm: <span class="text-success-light">{{assignmentReport.treatmentArm._id | dashify}} ({{assignmentReport.treatmentArm.version | dashify}})</span></h4>
           <div *ngIf="assignmentReport.hasSelectedTreatmentArm" class="panel panel-success overflow-hidden">
             <div class="panel-heading">
               <p>
-                {{assignmentReport.assignmentReason | dashify}}
-                <a href="javascript:alert('Scrolls to details at the bottom')" class="text-white text-underlined"><br><br><i class="fa fa-arrow-down" aria-hidden="true"></i> Click for details...</a>
+                {{assignmentReport.patientAssignmentStatusMessage | dashify}}
+                <a (click)="scrollTo($event)" class="text-white text-underlined"><br><br><i class="fa fa-arrow-down" aria-hidden="true"></i> Click for details...</a>
               </p>
             </div>
           </div>
@@ -330,7 +330,7 @@
     </div>
   </div>
 
-  <div *ngIf="assignmentReport" class="panel panel-white panel-accent-sides-purple overflow-hidden">
+  <div *ngIf="assignmentReport.hasSelectedTreatmentArm" id="assignment-details" class="panel panel-white panel-accent-sides-purple overflow-hidden">
     <div class="panel-heading">
       <div class="row">
         <div class="col-md-12">

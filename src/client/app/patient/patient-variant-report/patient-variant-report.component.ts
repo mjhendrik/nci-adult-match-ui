@@ -10,6 +10,7 @@ import {
 } from '../patient-api.service';
 
 import { ViewDataTransformer } from './../view-data-transformer.service';
+import { scrollTo } from '../../shared/utils/utils';
 
 /**
  * PatientVariantReportComponent.
@@ -65,7 +66,14 @@ export class PatientVariantReportComponent implements OnInit {
   }
 
   scrollToAssignmentDetails(): void {
+    console.debug('here');
     setTimeout(() => window.scrollTo('assignment-details'), 1);
   }
 
+  scrollTo(ev: any){
+    ev.preventDefault();
+    let dest = document.getElementById('assignment-details');
+    console.debug(dest.offsetTop);
+    scrollTo(dest.offsetTop, 500);
+  }
 }
