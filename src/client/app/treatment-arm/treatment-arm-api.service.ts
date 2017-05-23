@@ -33,7 +33,7 @@ export class TreatmentArmApiService {
 
     return this.http.get('assets/mock-data/treatment-arm-details.json')
 
-      // return this.http.get(Config.API.ION_REPORTER + '/treatment_arms?id=' + )
+      // return this.http.get(Config.API.TREATMENT_ARM + '/treatment_arms?id=' + )
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
@@ -43,7 +43,7 @@ export class TreatmentArmApiService {
 
     // return this.http.get('assets/mock-data/treatment-arm-list.json')
 
-    return this.http.get(Config.API.ION_REPORTER + '/treatment_arms')
+    return this.http.get(Config.API.TREATMENT_ARM + '/treatment_arms')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
