@@ -234,6 +234,11 @@ export class ViewDataTransformer {
       if (confirmedVariantReports && confirmedVariantReports.length) {
         let lastVariantReportAnalys = confirmedVariantReports[confirmedVariantReports.length - 1];
         lastVariantReportAnalys.assignmentReport = assignment;
+
+        if (assignment.treatmentArm && assignment.patientAssignmentLogic) {
+          let selected = assignment.patientAssignmentLogic.find((x: any) => x.patientAssignmentReasonCategory === 'SELECTED');
+          assignment.hasSelectedTreatmentArm = !!selected;
+        }
       }
     }
   }
