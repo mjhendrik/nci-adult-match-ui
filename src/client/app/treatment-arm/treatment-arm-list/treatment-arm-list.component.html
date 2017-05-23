@@ -50,16 +50,16 @@
                                 <mfDefaultSorter by="name"><span class="table-header">Name</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="currentPatients"><span class="table-header">Current Patients</span></mfDefaultSorter>
+                                <mfDefaultSorter by="summaryReport.numCurrentPatientsOnArm"><span class="table-header">Current Patients</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="formerPatients"><span class="table-header">Former Patient</span></mfDefaultSorter>
+                                <mfDefaultSorter by="summaryReport.numFormerPatients"><span class="table-header">Former Patient</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="pendingPatients"><span class="table-header">Pending Arm Approval</span></mfDefaultSorter>
+                                <mfDefaultSorter by="summaryReport.numPendingArmApproval"><span class="table-header">Pending Arm Approval</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="notEnrolledPatients"><span class="table-header">Not Enrolled Patients</span></mfDefaultSorter>
+                                <mfDefaultSorter by="summaryReport.numNotEnrolledPatient"><span class="table-header">Not Enrolled Patients</span></mfDefaultSorter>
                               </th>
                               <th>
                                 <mfDefaultSorter by="treatmentArmStatus"><span class="table-header">Status</span></mfDefaultSorter>
@@ -81,14 +81,10 @@
                                 <a href [routerLink]="['/treatments/details']" class="link-none"><i class="fa fa-medkit"></i> {{item.treatmentId | dashify}}</a>
                               </td>
                               <td>{{item.name | dashify}}</td>
-                              <td>-</td>
-                              <!--<td>{{item.currentPatients | dashify}}</td>-->
-                              <td>-</td>
-                              <!--<td>{{item.formerPatients | dashify}}</td>-->
-                              <td>-</td>
-                              <!--<td>{{item.pendingPatients | dashify}}</td>-->
-                              <td>-</td>
-                              <!--<td>{{item.notEnrolledPatients | dashify}}</td>-->
+                              <td>{{item.summaryReport.numCurrentPatientsOnArm | dashify}}</td>
+                              <td>{{item.summaryReport.numFormerPatients | dashify}}</td>
+                              <td>{{item.summaryReport.numPendingArmApproval | dashify}}</td>
+                              <td>{{item.summaryReport.numNotEnrolledPatient | dashify}}</td>
                               <td [colorCodeTa]="item.treatmentArmStatus">{{item.treatmentArmStatus | dashify}}</td>
                               <td>{{item.dateCreated | dashify}}</td>
                               <td>{{dateStatusLog(item.statusLog,'OPEN') | dashify}}</td>
