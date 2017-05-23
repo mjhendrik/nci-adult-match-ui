@@ -1,0 +1,2041 @@
+[{
+    "dateCreated": {
+      "$date": 1488461537494
+    },
+    "name": "CukeTest-1034",
+    "statusLog": {
+      "1488461581": "OPEN",
+      "1488461537494": "PENDING",
+      "1488461581910": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-1034"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461538329
+    },
+    "name": "CukeTest-1035",
+    "statusLog": {
+      "1488461582": "OPEN",
+      "1488461538329": "PENDING",
+      "1488461582089": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-1035"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461539227
+    },
+    "name": "CukeTest-1035-1",
+    "statusLog": {
+      "1488461582": "OPEN",
+      "1488461539227": "PENDING",
+      "1488461582250": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-1035-1"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461540011
+    },
+    "name": "CukeTest-1048",
+    "statusLog": {
+      "1488461592": "OPEN",
+      "1488461540011": "PENDING",
+      "1488461592155": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-1048"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461540851
+    },
+    "name": "CukeTest-1049",
+    "statusLog": {
+      "1488461592": "OPEN",
+      "1488461540851": "PENDING",
+      "1488461592323": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-1049"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461541576
+    },
+    "name": "CukeTest-1049-1",
+    "statusLog": {
+      "1488461592": "OPEN",
+      "1488461541576": "PENDING",
+      "1488461592490": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-1049-1"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461542352
+    },
+    "name": "CukeTest-1050",
+    "statusLog": {
+      "1488461592": "OPEN",
+      "1488461542352": "PENDING",
+      "1488461592643": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-1050"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461543162
+    },
+    "name": "CukeTest-1050-1",
+    "statusLog": {
+      "1488461592": "OPEN",
+      "1488461543162": "PENDING",
+      "1488461592799": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-1050-1"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461543966
+    },
+    "name": "CukeTest-1051",
+    "statusLog": {
+      "1488461592": "OPEN",
+      "1488461543966": "PENDING",
+      "1488461592967": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-1051"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461544750
+    },
+    "name": "CukeTest-1052",
+    "statusLog": {
+      "1488461593": "OPEN",
+      "1488461544750": "PENDING",
+      "1488461593129": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-1052"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461546428
+    },
+    "name": "CukeTest-1053",
+    "statusLog": {
+      "1488461593": "OPEN",
+      "1488461546428": "PENDING",
+      "1488461593288": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-1053"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461547237
+    },
+    "name": "CukeTest-1054",
+    "statusLog": {
+      "1488461593": "OPEN",
+      "1488461547237": "PENDING",
+      "1488461593462": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-1054"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461547296
+    },
+    "name": "CukeTest-1055",
+    "statusLog": {
+      "1488461593": "OPEN",
+      "1488461547296": "PENDING",
+      "1488461593633": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-1055"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461547368
+    },
+    "name": "CukeTest-1056",
+    "statusLog": {
+      "1488461593": "OPEN",
+      "1488461547368": "PENDING",
+      "1488461593800": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-1056"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461547543
+    },
+    "name": "CukeTest-1057",
+    "statusLog": {
+      "1488461593": "OPEN",
+      "1488461547543": "PENDING",
+      "1488461593950": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-1057"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461547635
+    },
+    "name": "CukeTest-1058",
+    "statusLog": {
+      "1488461594": "OPEN",
+      "1488461547635": "PENDING",
+      "1488461594104": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-1058"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461547711
+    },
+    "name": "CukeTest-1064",
+    "statusLog": {
+      "1488461594": "OPEN",
+      "1488461547711": "PENDING",
+      "1488461594255": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-1064"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461547790
+    },
+    "name": "CukeTest-1065",
+    "statusLog": {
+      "1488461594": "OPEN",
+      "1488461547790": "PENDING",
+      "1488461594417": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-1065"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461547861
+    },
+    "name": "CukeTest-1066",
+    "statusLog": {
+      "1488461594": "OPEN",
+      "1488461547861": "PENDING",
+      "1488461594550": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-1066"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461547940
+    },
+    "name": "CukeTest-1067",
+    "statusLog": {
+      "1488461594": "OPEN",
+      "1488461547940": "PENDING",
+      "1488461594717": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-1067"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461548031
+    },
+    "name": "CukeTest-1078",
+    "statusLog": {
+      "1488461594": "OPEN",
+      "1488461548031": "PENDING",
+      "1488461594872": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-1078"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461499519
+    },
+    "name": "CukeTest113",
+    "statusLog": {
+      "1488461581": "OPEN",
+      "1488461499519": "PENDING",
+      "1488461581759": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-113"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461500180
+    },
+    "name": "CukeTest115",
+    "statusLog": {
+      "1488461582": "OPEN",
+      "1488461500180": "PENDING",
+      "1488461582383": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-115"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461501351
+    },
+    "name": "CukeTest117",
+    "statusLog": {
+      "1488461582": "OPEN",
+      "1488461501351": "PENDING",
+      "1488461582525": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-117"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461501464
+    },
+    "name": "CukeTest118",
+    "statusLog": {
+      "1488461582": "OPEN",
+      "1488461501464": "PENDING",
+      "1488461582742": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-118"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461502190
+    },
+    "name": "CukeTest122",
+    "statusLog": {
+      "1488461582": "OPEN",
+      "1488461502190": "PENDING",
+      "1488461582933": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-122"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461503023
+    },
+    "name": "CukeTest122-1",
+    "statusLog": {
+      "1488461583": "OPEN",
+      "1488461503023": "PENDING",
+      "1488461583156": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-122-1"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461503896
+    },
+    "name": "CukeTest122-1-PENDING",
+    "statusLog": {
+      "1488461503896": "PENDING"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "PENDING",
+    "treatmentId": "CukeTest-122-1-PENDING"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461504833
+    },
+    "name": "CukeTest128",
+    "statusLog": {
+      "1488461583": "OPEN",
+      "1488461504833": "PENDING",
+      "1488461583305": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-128"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461505836
+    },
+    "name": "CukeTest129",
+    "statusLog": {
+      "1488461583": "OPEN",
+      "1488461505836": "PENDING",
+      "1488461583514": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-129"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461507038
+    },
+    "name": "CukeTest130",
+    "statusLog": {
+      "1488461583": "OPEN",
+      "1488461507038": "PENDING",
+      "1488461583672": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-130"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461507881
+    },
+    "name": "CukeTest131",
+    "statusLog": {
+      "1488461583": "OPEN",
+      "1488461507881": "PENDING",
+      "1488461583866": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-131"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461509115
+    },
+    "name": "CukeTest132",
+    "statusLog": {
+      "1488461584": "OPEN",
+      "1488461509115": "PENDING",
+      "1488461584684": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-132"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461510124
+    },
+    "name": "CukeTest133",
+    "statusLog": {
+      "1488461584": "OPEN",
+      "1488461510124": "PENDING",
+      "1488461584836": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-133"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461511048
+    },
+    "name": "CukeTest133-1",
+    "statusLog": {
+      "1488461585": "OPEN",
+      "1488461511048": "PENDING",
+      "1488461585049": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-133-1"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461520003
+    },
+    "name": "CukeTest171",
+    "statusLog": {
+      "1488461585": "OPEN",
+      "1488461520003": "PENDING",
+      "1488461585182": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-171"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461520164
+    },
+    "name": "CukeTest172",
+    "statusLog": {
+      "1488461585": "OPEN",
+      "1488461520164": "PENDING",
+      "1488461585360": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-172"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461520295
+    },
+    "name": "CukeTest173",
+    "statusLog": {
+      "1488461585": "OPEN",
+      "1488461520295": "PENDING",
+      "1488461585525": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-173"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461520381
+    },
+    "name": "CukeTest177",
+    "statusLog": {
+      "1488461585": "OPEN",
+      "1488461520381": "PENDING",
+      "1488461585738": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-177"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461520448
+    },
+    "name": "CukeTest178",
+    "statusLog": {
+      "1488461520448": "PENDING"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "PENDING",
+    "treatmentId": "CukeTest-178"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461520520
+    },
+    "name": "CukeTest179",
+    "statusLog": {
+      "1488461520520": "PENDING"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "PENDING",
+    "treatmentId": "CukeTest-179"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461529750
+    },
+    "name": "CukeTest-185",
+    "statusLog": {
+      "1488461585": "OPEN",
+      "1488461529750": "PENDING",
+      "1488461585894": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-185"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461529816
+    },
+    "name": "CukeTest-186",
+    "statusLog": {
+      "1488461586": "OPEN",
+      "1488461529816": "PENDING",
+      "1488461586026": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-186"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461531277
+    },
+    "name": "CukeTest-187",
+    "statusLog": {
+      "1488461586": "OPEN",
+      "1488461531277": "PENDING",
+      "1488461586175": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-187"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461534956
+    },
+    "name": "CukeTest-188",
+    "statusLog": {
+      "1488461586": "OPEN",
+      "1488461534956": "PENDING",
+      "1488461586359": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-188"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461521206
+    },
+    "name": "CukeTest-623-1",
+    "statusLog": {
+      "1488461586": "OPEN",
+      "1488461521206": "PENDING",
+      "1488461586522": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-623-1"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461524846
+    },
+    "name": "CukeTest-623-1-1",
+    "statusLog": {
+      "1488461524846": "PENDING",
+      "1488461586719": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "READY",
+    "treatmentId": "CukeTest-623-1-1"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461522042
+    },
+    "name": "CukeTest-623-2",
+    "statusLog": {
+      "1488461586": "OPEN",
+      "1488461522042": "PENDING",
+      "1488461586881": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-623-2"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461522821
+    },
+    "name": "CukeTest-636-1",
+    "statusLog": {
+      "1488461587": "OPEN",
+      "1488461522821": "PENDING",
+      "1488461587043": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-636-1"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461524115
+    },
+    "name": "CukeTest-636-2",
+    "statusLog": {
+      "1488461587": "OPEN",
+      "1488461524115": "PENDING",
+      "1488461587202": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-636-2"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461525612
+    },
+    "name": "CukeTest770-1",
+    "statusLog": {
+      "1488461587": "OPEN",
+      "1488461525612": "PENDING",
+      "1488461587345": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-770-1"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461526392
+    },
+    "name": "CukeTest770-2",
+    "statusLog": {
+      "1488461587": "OPEN",
+      "1488461526392": "PENDING",
+      "1488461587481": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-770-2"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461527235
+    },
+    "name": "CukeTest770-3",
+    "statusLog": {
+      "1488461587": "OPEN",
+      "1488461527235": "PENDING",
+      "1488461587670": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-770-3"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461527945
+    },
+    "name": "CukeTest770-4",
+    "statusLog": {
+      "1488461587": "OPEN",
+      "1488461527945": "PENDING",
+      "1488461587835": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-770-4"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461528797
+    },
+    "name": "CukeTest770-5",
+    "statusLog": {
+      "1488461587": "OPEN",
+      "1488461528797": "PENDING",
+      "1488461587997": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-770-5"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461571575
+    },
+    "name": "CukeTest-78",
+    "statusLog": {
+      "1488461588": "OPEN",
+      "1488461571575": "PENDING",
+      "1488461588143": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-78"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461536148
+    },
+    "name": "CukeTest995",
+    "statusLog": {
+      "1488461588": "OPEN",
+      "1488461536148": "PENDING",
+      "1488461588267": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-995"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461511822
+    },
+    "name": "CukeTest-PEN-NHR",
+    "statusLog": {
+      "1488461511822": "PENDING"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "PENDING",
+    "treatmentId": "CukeTest-PEN-NHR"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461512656
+    },
+    "name": "CukeTest-PEN-NHR-CLOSED",
+    "statusLog": {
+      "1488461588": "CLOSED",
+      "1488461512656": "PENDING",
+      "1488461588641": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "CLOSED",
+    "treatmentId": "CukeTest-PEN-NHR-CLOSED"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461513825
+    },
+    "name": "CukeTest-PEN-NHR-PENDING",
+    "statusLog": {
+      "1488461513825": "PENDING"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "PENDING",
+    "treatmentId": "CukeTest-PEN-NHR-PENDING"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461514616
+    },
+    "name": "CukeTest-PEN-NHR-READY",
+    "statusLog": {
+      "1488461588": "OPEN",
+      "1488461514616": "PENDING",
+      "1488461588818": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-PEN-NHR-READY"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461515415
+    },
+    "name": "CukeTest-PEN-NHR-SUSPENDED",
+    "statusLog": {
+      "1488461588": "OPEN",
+      "1488461515415": "PENDING",
+      "1488461588459": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "CukeTest-PEN-NHR-SUSPENDED"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461516170
+    },
+    "name": "CukeTest-PEN-NoVar",
+    "statusLog": {
+      "1488461516170": "PENDING"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "PENDING",
+    "treatmentId": "CukeTest-PEN-NoVar"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461516329
+    },
+    "name": "Afatinib in EGFR activating",
+    "statusLog": {
+      "1488461588": "OPEN",
+      "1488461516329": "PENDING",
+      "1488461588962": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "EAY131-A"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461517057
+    },
+    "name": "Afatinib-Her2 activating mutation",
+    "statusLog": {
+      "1488461589": "OPEN",
+      "1488461517057": "PENDING",
+      "1488461589098": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "EAY131-B"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461517119
+    },
+    "name": "AMG-337 in Met Amplification",
+    "statusLog": {
+      "1488461589": "OPEN",
+      "1488461517119": "PENDING",
+      "1488461589285": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "EAY131-C"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461517190
+    },
+    "name": "AMG-595 in EGFR VIII mutation",
+    "statusLog": {
+      "1488461589": "OPEN",
+      "1488461517190": "PENDING",
+      "1488461589460": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "EAY131-D"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461517270
+    },
+    "name": "AZD in TKI resistance EGFR T790M mutation",
+    "statusLog": {
+      "1488461589": "OPEN",
+      "1488461517270": "PENDING",
+      "1488461589610": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "EAY131-E"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461518072
+    },
+    "name": "Crizotinib in ALK translocation",
+    "statusLog": {
+      "1488461589": "OPEN",
+      "1488461518072": "PENDING",
+      "1488461589752": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "EAY131-F"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488463147875
+    },
+    "name": "EAY131-F_2015_11_23",
+    "statusLog": {
+      "1488463152": "OPEN",
+      "1488463147875": "PENDING",
+      "1488463152932": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "EAY131-F_2015_11_23"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488463153042
+    },
+    "name": "EAY131-F_2015_12_23",
+    "statusLog": {
+      "1488463158": "OPEN",
+      "1488463153042": "PENDING",
+      "1488463158090": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "EAY131-F_2015_12_23"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488463163375
+    },
+    "name": "EAY131-F_2016_01_13",
+    "statusLog": {
+      "1488463168": "OPEN",
+      "1488463163375": "PENDING",
+      "1488463168424": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "EAY131-F_2016_01_13"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461518865
+    },
+    "name": "Trametinib/Dabrafenib in BRAF V600E/K",
+    "statusLog": {
+      "1488461590": "OPEN",
+      "1488461518865": "PENDING",
+      "1488461590075": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "EAY131-H"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461518922
+    },
+    "name": "GDC-0032 in PIK3CA mutation or amplification",
+    "statusLog": {
+      "1488461590": "OPEN",
+      "1488461518922": "PENDING",
+      "1488461590243": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "EAY131-I"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461519036
+    },
+    "name": "Traz+ Pertuz ( HP) in Her 2 amplification",
+    "statusLog": {
+      "1488461590": "OPEN",
+      "1488461519036": "PENDING",
+      "1488461590390": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "EAY131-J"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461519119
+    },
+    "name": "JNJ-42756493 in FGFR amplification, mutation or translocation",
+    "statusLog": {
+      "1488461590": "OPEN",
+      "1488461519119": "PENDING",
+      "1488461590550": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "EAY131-K"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461519192
+    },
+    "name": "MLN-0128 in mTOR mutation",
+    "statusLog": {
+      "1488461590": "OPEN",
+      "1488461519192": "PENDING",
+      "1488461590680": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "EAY131-L"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461576632
+    },
+    "name": "GSK-236771 in tumor with PTEN mutation and PTEN IHC+",
+    "statusLog": {
+      "1488461590": "OPEN",
+      "1488461590884": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "EAY131-N"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461519331
+    },
+    "name": "GSK-2636771 in tumor with PTEN mutation and PTEN IHC-",
+    "statusLog": {
+      "1488461519331": "PENDING"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "PENDING",
+    "treatmentId": "EAY131-O"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461519410
+    },
+    "name": "TDM1 in HER2 Amplification",
+    "statusLog": {
+      "1488461591": "OPEN",
+      "1488461519410": "PENDING",
+      "1488461591038": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "EAY131-Q"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461519492
+    },
+    "name": "Trametinib B-RAF other than V600K/E",
+    "statusLog": {
+      "1488461591": "OPEN",
+      "1488461519492": "PENDING",
+      "1488461591187": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "EAY131-R"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461519555
+    },
+    "name": "Trametinib in  NF1 mutation",
+    "statusLog": {
+      "1488461591": "OPEN",
+      "1488461519555": "PENDING",
+      "1488461591825": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "EAY131-S1"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461519633
+    },
+    "name": "Trametinib in  GNAQ or GNA11 mutation",
+    "statusLog": {
+      "1488461592": "OPEN",
+      "1488461519633": "PENDING",
+      "1488461592004": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "EAY131-S2"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461519708
+    },
+    "name": "Vismodegib in Smoothened or Patched I mutations",
+    "statusLog": {
+      "1488461591": "OPEN",
+      "1488461519708": "PENDING",
+      "1488461591336": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "EAY131-T"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461519780
+    },
+    "name": "VS-6063( defactinib) in tumor with NF2 loss",
+    "statusLog": {
+      "1488461591": "OPEN",
+      "1488461519780": "PENDING",
+      "1488461591490": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "EAY131-U"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461519861
+    },
+    "name": "Sunitinib in cKIT mutation",
+    "statusLog": {
+      "1488461591": "OPEN",
+      "1488461519861": "PENDING",
+      "1488461591679": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "EAY131-V"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461519926
+    },
+    "name": "Trametinib in  GNAQ or GNA11 mutation",
+    "statusLog": {
+      "1488461519926": "PENDING"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "PENDING",
+    "treatmentId": "EAY131_S3_TRAMET_GNA"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461758159
+    },
+    "name": "match129.3",
+    "statusLog": {
+      "1488461758159": "PENDING"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "PENDING",
+    "treatmentId": "match129.3"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488463199577
+    },
+    "name": "rejoinTest10_2016_02_01",
+    "statusLog": {
+      "1488463204": "OPEN",
+      "1488463199577": "PENDING",
+      "1488463204628": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "rejoinTest10_2016_02_01"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488463204752
+    },
+    "name": "rejoinTest11_2016_03_01",
+    "statusLog": {
+      "1488463209": "OPEN",
+      "1488463204752": "PENDING",
+      "1488463209799": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "rejoinTest11_2016_03_01"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488463209910
+    },
+    "name": "rejoinTest12_2016_03_01",
+    "statusLog": {
+      "1488463214": "OPEN",
+      "1488463209910": "PENDING",
+      "1488463214955": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "rejoinTest12_2016_03_01"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488463215056
+    },
+    "name": "rejoinTest13_2016_03_01",
+    "statusLog": {
+      "1488463220": "OPEN",
+      "1488463215056": "PENDING",
+      "1488463220102": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "rejoinTest13_2016_03_01"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488463220208
+    },
+    "name": "rejoinTest14_2016_03_01",
+    "statusLog": {
+      "1488463225": "OPEN",
+      "1488463220208": "PENDING",
+      "1488463225255": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "rejoinTest14_2016_03_01"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488463225392
+    },
+    "name": "rejoinTest15_2016_03_01",
+    "statusLog": {
+      "1488463230": "OPEN",
+      "1488463225392": "PENDING",
+      "1488463230439": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "rejoinTest15_2016_03_01"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488463076800
+    },
+    "name": "Crizotinib in ALK translocation",
+    "statusLog": {
+      "1488463081": "OPEN",
+      "1488463076800": "PENDING",
+      "1488463081913": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "rejoinTest17"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488463168540
+    },
+    "name": "rejoinTest1_2016_02_01",
+    "statusLog": {
+      "1488463173": "OPEN",
+      "1488463168540": "PENDING",
+      "1488463173590": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "rejoinTest1_2016_02_01"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488463173699
+    },
+    "name": "rejoinTest2_2016_02_01",
+    "statusLog": {
+      "1488463178": "OPEN",
+      "1488463173699": "PENDING",
+      "1488463178749": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "rejoinTest2_2016_02_01"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488463178868
+    },
+    "name": "rejoinTest3_2016_01_01",
+    "statusLog": {
+      "1488463183": "OPEN",
+      "1488463178868": "PENDING",
+      "1488463183917": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "rejoinTest3_2016_01_01"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488463184054
+    },
+    "name": "rejoinTest4_2016_02_01",
+    "statusLog": {
+      "1488463189": "OPEN",
+      "1488463184054": "PENDING",
+      "1488463189101": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "rejoinTest4_2016_02_01"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488461800618
+    },
+    "name": "Test TA for rejoin scenario",
+    "statusLog": {
+      "1488461805": "OPEN",
+      "1488461800618": "PENDING",
+      "1488461805686": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "rejoinTest6"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488463189230
+    },
+    "name": "rejoinTest7_2016_02_01",
+    "statusLog": {
+      "1488463194": "OPEN",
+      "1488463189230": "PENDING",
+      "1488463194280": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "rejoinTest7_2016_02_01"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488463194405
+    },
+    "name": "rejoinTest8_2016_02_01",
+    "statusLog": {
+      "1488463199": "OPEN",
+      "1488463194405": "PENDING",
+      "1488463199445": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "rejoinTest8_2016_02_01"
+  },
+  {
+    "dateCreated": {
+      "$date": 1488463158203
+    },
+    "name": "rejoinTest_2015_11_25",
+    "statusLog": {
+      "1488463163": "OPEN",
+      "1488463158203": "PENDING",
+      "1488463163249": "READY"
+    },
+    "summaryReport": {
+      "assignmentRecords": [],
+      "numCurrentPatientsOnArm": 0,
+      "numFormerPatients": 0,
+      "numNotEnrolledPatient": 0,
+      "numPendingArmApproval": 0
+    },
+    "treatmentArmStatus": "OPEN",
+    "treatmentId": "rejoinTest_2015_11_25"
+  }
+]

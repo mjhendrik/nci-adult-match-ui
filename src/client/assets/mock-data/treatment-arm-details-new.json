@@ -1,0 +1,75 @@
+[{
+  "_class": "gov.match.model.TreatmentArm",
+  "_id": {
+    "$oid": "5924670551fa87707f6226a5"
+  },
+  "assayResults": [],
+  "dateArchived": null,
+  "dateCreated": {
+    "$date": 1488461537494
+  },
+  "description": "Non-hotspot Function only",
+  "exclusionDiseases": [{
+    "_id": "103077",
+    "ctepCategory": "Salivary Gland Cancer",
+    "shortName": "Salivary Gland Cancer"
+  }],
+  "exclusionDrugs": [{
+    "drugs": [{
+      "drugClass": "ALK inhibitor",
+      "drugId": "820112",
+      "name": "Pazopanib",
+      "target": "ALK"
+    }]
+  }],
+  "gene": "SMARCB1",
+  "maxPatientsAllowed": 35,
+  "name": "CukeTest-1034",
+  "numPatientsAssigned": 0,
+  "stateToken": {
+    "$uuid": "461b8ef32f7d42b1b1111d297a1965e5"
+  },
+  "statusLog": {
+    "1488461581": "OPEN",
+    "1488461537494": "PENDING",
+    "1488461581910": "READY"
+  },
+  "summaryReport": {
+    "assignmentRecords": [],
+    "numCurrentPatientsOnArm": 0,
+    "numFormerPatients": 0,
+    "numNotEnrolledPatient": 0,
+    "numPendingArmApproval": 0
+  },
+  "targetId": "Nutlin-3a",
+  "targetName": "Nutlin-3a",
+  "treatmentArmDrugs": [{
+    "drugId": "Nutlin-3a",
+    "name": "Nutlin-3a",
+    "pathway": "HOT"
+  }],
+  "treatmentArmStatus": "OPEN",
+  "treatmentId": "CukeTest-1034",
+  "variantReport": {
+    "copyNumberVariants": [],
+    "geneFusions": [],
+    "indels": [],
+    "nonHotspotRules": [],
+    "singleNucleotideVariants": [{
+      "alternative": "CCT",
+      "armSpecific": false,
+      "chromosome": "chr7",
+      "confirmed": false,
+      "description": "V600E, V600K, V600D, V600R",
+      "geneName": "MTOR",
+      "identifier": "COSM1034",
+      "inclusion": true,
+      "levelOfEvidence": 2,
+      "position": "71184573",
+      "rare": false,
+      "reference": "CAC"
+    }],
+    "unifiedGeneFusions": []
+  },
+  "version": "2015-08-06"
+}]
