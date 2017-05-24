@@ -56,12 +56,12 @@ export class TreatmentArmListComponent implements OnInit {
   dateStatusLog(statusLog: any, type: string): string {
 
     let key = Object.keys(statusLog).filter((dateStatusLog: string) => {
-      return dateStatusLog.length === 10 && type.indexOf(statusLog[dateStatusLog]) !== -1;
+      return Math.max(parseInt(dateStatusLog)) && type.indexOf(statusLog[dateStatusLog]) !== -1;
     });
 
     if (key.length === 0) return '-';
 
-    return this.gmt.transform(1000 * parseInt(key[0]));
+    return this.gmt.transform(parseInt(key[0]));
 
   };
 
