@@ -1,5 +1,6 @@
 [{
     "assayResults": [],
+    "dateArchived": null,
     "exclusionDiseases": [{
         "_id": "10021980",
         "ctepCategory": "Breast Cancer - Invasive",
@@ -120,6 +121,9 @@
   },
   {
     "assayResults": [],
+    "dateArchived": {
+      "$date": 1456246261666
+    },
     "exclusionDiseases": [{
         "_id": "10021980",
         "ctepCategory": "Breast Cancer - Invasive",
@@ -237,6 +241,9 @@
   },
   {
     "assayResults": [],
+    "dateArchived": {
+      "$date": 1465225012773
+    },
     "exclusionDiseases": [{
         "_id": "10021980",
         "ctepCategory": "Breast Cancer - Invasive",

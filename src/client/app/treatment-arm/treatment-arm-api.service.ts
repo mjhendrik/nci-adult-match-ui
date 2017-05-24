@@ -34,7 +34,8 @@ export class TreatmentArmApiService {
     return this.http.get('assets/mock-data/treatment-arm-details-all.json')
 
       // return this.http.get(Config.API.TREATMENT_ARM + '/treatment_arms/' + treatmentId
-      //   + '?active=true&projection=treatmentId,name,version,targetId,targetName,gene,numPatientsAssigned,treatmentArmStatus,statusLog,assayResults,exclusionDiseases,exclusionDrugs,variantReport')
+      //   + `?active=true&projection=treatmentId,name,version,targetId,targetName,gene,numPatientsAssigned,treatmentArmStatus,statusLog,
+      //     assayResults,exclusionDiseases,exclusionDrugs,variantReport`)
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
@@ -46,7 +47,8 @@ export class TreatmentArmApiService {
     return this.http.get('assets/mock-data/treatment-arm-details-all-previous.json')
 
       // return this.http.get(Config.API.TREATMENT_ARM + '/treatment_arms/' + treatmentId
-      //   + '?projection=treatmentId,name,version,targetId,targetName,gene,numPatientsAssigned,treatmentArmStatus,statusLog,assayResults,exclusionDiseases,exclusionDrugs,variantReport')
+      //   + `?projection=treatmentId,name,version,targetId,targetName,gene,numPatientsAssigned,treatmentArmStatus,statusLog,assayResults,
+      //     exclusionDiseases,exclusionDrugs,variantReport,dateArchived`)
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
