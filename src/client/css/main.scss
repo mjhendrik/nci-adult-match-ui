@@ -325,3 +325,10 @@ body {
 .m-b-45 {
   margin-bottom: 45px;
 }
+
+.white-link {
+  cursor: pointer;
+}
+.white-link:hover {
+  color: white;
+}

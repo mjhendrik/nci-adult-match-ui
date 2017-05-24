@@ -81,12 +81,14 @@
            <dt>Assignment Received by ECOG Date</dt>
             <dd>{{assignmentReport.dateReceivedByECOG | gmt}}</dd>
           </dl>
-          <h4 *ngIf="assignmentReport.hasSelectedTreatmentArm">Selected Treatment Arm: <span class="text-success-light">{{assignmentReport.treatmentArm._id | dashify}} ({{assignmentReport.treatmentArm.version | dashify}})</span></h4>
+          <h4 *ngIf="assignmentReport.hasSelectedTreatmentArm">Selected Treatment Arm: <span class="text-success-light">
+            <a href [routerLink]="['/treatments/details']" class="link-none"><i class="fa fa-medkit"></i> {{assignmentReport.treatmentArm._id | dashify}} ({{assignmentReport.treatmentArm.version}})</a></span>
+          </h4>
           <div *ngIf="assignmentReport.hasSelectedTreatmentArm" class="panel panel-success overflow-hidden">
             <div class="panel-heading">
               <p>
                 {{assignmentReport.patientAssignmentStatusMessage | dashify}}
-                <a (click)="scrollTo('assignment-details')" class="text-white text-underlined"><br><br><i class="fa fa-arrow-down" aria-hidden="true"></i> Click for details...</a>
+                <a (click)="scrollTo('assignment-details')" class="text-white text-underlined white-link"><br><br><i class="fa fa-arrow-down" aria-hidden="true"></i> Click for details...</a>
               </p>
             </div>
           </div>
@@ -330,11 +332,11 @@
     </div>
   </div>
 
-  <div *ngIf="assignmentReport.hasSelectedTreatmentArm" id="assignment-details" class="panel panel-white panel-accent-sides-purple overflow-hidden">
+  <div *ngIf="assignmentReport.reasons" id="assignment-details" class="panel panel-white panel-accent-sides-purple overflow-hidden">
     <div class="panel-heading">
       <div class="row">
         <div class="col-md-12">
-          <sd-assignment-reason-table></sd-assignment-reason-table>
+          <sd-assignment-reason-table  [reasons]="assignmentReport.reasons"></sd-assignment-reason-table>
           <!--<sd-assignment-reason-table [assignmentReason]="assignmentReason"></sd-assignment-reason-table>-->
         </div>
       </div>

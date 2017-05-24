@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 
+import { AssignmentReasonSection } from './assignment-reason-table/assignment-reason-table.component';
+
 /*
 *  View transformation service
 */
@@ -142,14 +144,14 @@ export class ViewDataTransformer {
       analysis.variantReporterRejectedOrConfirmedDate = message.dateVerified;
 
       if (!message.ionReporterResults.variantReport)
-          continue;
+        continue;
 
       transformedPatient.analyses = transformedPatient.analyses || {};
 
       let variantReport = message.ionReporterResults.variantReport;
       analysis.variantReport = variantReport;
       variantReport.variantReporterFileReceivedDate = analysis.variantReporterFileReceivedDate;
-      
+
       const variantTables: Array<string> = [
         'geneFusions',
         'copyNumberVariants',
@@ -184,7 +186,7 @@ export class ViewDataTransformer {
       variantReport.torrentVariantCallerVersion = message.oncomineVariantAnnotationToolVersion;
     }
   }
-  
+
   private calculateMoiSummary(table: any[], moiSummary: any): void {
     for (let item of table) {
       moiSummary.totalMOIs += 1;
@@ -238,8 +240,32 @@ export class ViewDataTransformer {
         if (assignment.treatmentArm && assignment.patientAssignmentLogic) {
           let selected = assignment.patientAssignmentLogic.find((x: any) => x.patientAssignmentReasonCategory === 'SELECTED');
           assignment.hasSelectedTreatmentArm = !!selected;
+          assignment.reasons = this.transformAssignmentReason(assignment.patientAssignmentLogic);
         }
       }
     }
+  }
+
+  private transformAssignmentReason(patientAssignmentLogic: any): any {
+    if (!patientAssignmentLogic)
+      return null;
+
+    let sections: AssignmentReasonSection[] = [];
+    let map: { [key: string]: AssignmentReasonSection } = {};
+
+    for (let item of patientAssignmentLogic) {
+      let section: AssignmentReasonSection;
+      if (!(item.patientAssignmentReasonCategory in map)) {
+        section = new AssignmentReasonSection();
+        section.name = item.patientAssignmentReasonCategory;
+        sections.push(section);
+        map[item.patientAssignmentReasonCategory] = section;
+      } else {
+        section = map[item.patientAssignmentReasonCategory];
+      }
+      section.items.push(item);
+    }
+
+    return sections;
   }
 }

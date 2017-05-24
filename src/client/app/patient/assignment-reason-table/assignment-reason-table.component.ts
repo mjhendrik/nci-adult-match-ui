@@ -3,6 +3,12 @@ import {
   Input
 } from '@angular/core';
 
+export class AssignmentReasonSection {
+  name: string;
+  items: any[] = [];
+}
+
+
 /**
  * AssignmentReasonTableComponent.
  */
@@ -12,5 +18,5 @@ import {
   templateUrl: 'assignment-reason-table.component.html'
 })
 export class AssignmentReasonTableComponent {
-  @Input() assignmentReason: any;
+  @Input() reasons: AssignmentReasonSection[];
 }
