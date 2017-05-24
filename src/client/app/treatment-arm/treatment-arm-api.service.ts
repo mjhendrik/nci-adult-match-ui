@@ -7,9 +7,10 @@ import { AuthHttp } from 'angular2-jwt';
 // import 'rxjs/add/operator/do';  // for debugging
 
 export interface TreatmentArmDetailsInterface {
-  versionData: any[];
-  tableRulesData: {};
-  tablePatientData: any[];
+  // versionData: any[];
+  // tableRulesData: {};
+  // tablePatientData: any[];
+  tableData: any[];
 }
 
 /**
@@ -29,11 +30,13 @@ export class TreatmentArmApiService {
    * Returns an Observable for the HTTP GET request for the JSON resource.
    * @return {string[]} The Observable for the HTTP request.
    */
-  getTreatmentArmDetails(): Observable<TreatmentArmDetailsInterface> {
+  getTreatmentArmDetails(): Observable<any[]> {
 
-    return this.http.get('assets/mock-data/treatment-arm-details.json')
+    // return this.http.get('assets/mock-data/treatment-arm-details-new.json')
+    return this.http.get('assets/mock-data/treatment-arm-details-all.json')
 
-      // return this.http.get(Config.API.TREATMENT_ARM + '/treatment_arms?id=' + )
+      // return this.http.get(Config.API.TREATMENT_ARM + '/treatment_arms/' + treatmentId
+      //   + '?active=true&projection=treatmentId,name,version,targetId,targetName,gene,numPatientsAssigned,treatmentArmStatus,statusLog,assayResults,exclusionDiseases,exclusionDrugs,variantReport')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);

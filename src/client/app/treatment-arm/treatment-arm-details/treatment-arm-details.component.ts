@@ -84,9 +84,10 @@ export class TreatmentArmDetailsComponent implements OnInit {
   ruleIn: any[];
   ruleEx: any[];
 
-  versionData: any[];
-  tableRulesData: any;
-  tablePatientData: any[];
+  // versionData: any[];
+  // tableRulesData: any;
+  // tablePatientData: any[];
+  tableData: any[];
   dataAvailable: boolean;
 
   errorMessage: string;
@@ -192,36 +193,45 @@ export class TreatmentArmDetailsComponent implements OnInit {
   getData() {
     let gmt = new GmtPipe();
     this.treatmentArmApi.getTreatmentArmDetails()
-      .subscribe((itemList: TreatmentArmDetailsInterface) => {
+      .subscribe(itemList => {
 
-        this.versionData = itemList.versionData;
-        this.tableRulesData = itemList.tableRulesData;
+        // this.versionData = itemList.versionData;
+        // this.tableRulesData = itemList.tableRulesData;
+
+        this.tableData = itemList;
         this.dataAvailable = true;
 
-        this.tablePatientData = itemList.tablePatientData.map(x => {
-          x.dateSelected = gmt.transform(x.dateSelected);
-          x.dateOnArm = gmt.transform(x.dateOnArm);
-          x.dateOffArm = gmt.transform(x.dateOffArm);
-          return x;
-        });
+        // this.tableData = itemList.map(x => {
+        //   x.tablePatientData.dateSelected = gmt.transform(x.tablePatientData.dateSelected);
+        //   x.tablePatientData.dateOnArm = gmt.transform(x.tablePatientData.dateOnArm);
+        //   x.tablePatientData.dateOffArm = gmt.transform(x.tablePatientData.dateOffArm);
+        //   return x;
+        // });
 
-        let itemsSnv: any[] = this.tableRulesData.variantReport.singleNucleotideVariants;
+        // this.tablePatientData = itemList.tablePatientData.map(x => {
+        //   x.dateSelected = gmt.transform(x.dateSelected);
+        //   x.dateOnArm = gmt.transform(x.dateOnArm);
+        //   x.dateOffArm = gmt.transform(x.dateOffArm);
+        //   return x;
+        // });
+
+        let itemsSnv: any[] = this.tableData[0].variantReport.singleNucleotideVariants;
         this.snvIn = itemsSnv.filter(item => item.inclusion === true);
         this.snvEx = itemsSnv.filter(item => item.inclusion === false);
 
-        let itemsIndel: any[] = this.tableRulesData.variantReport.indels;
+        let itemsIndel: any[] = this.tableData[0].variantReport.indels;
         this.indelIn = itemsIndel.filter(item => item.inclusion === true);
         this.indelEx = itemsIndel.filter(item => item.inclusion === false);
 
-        let itemsCnv: any[] = this.tableRulesData.variantReport.copyNumberVariants;
+        let itemsCnv: any[] = this.tableData[0].variantReport.copyNumberVariants;
         this.cnvIn = itemsCnv.filter(item => item.inclusion === true);
         this.cnvEx = itemsCnv.filter(item => item.inclusion === false);
 
-        let itemsGene: any[] = this.tableRulesData.variantReport.geneFusions;
+        let itemsGene: any[] = this.tableData[0].variantReport.geneFusions;
         this.geneIn = itemsGene.filter(item => item.inclusion === true);
         this.geneEx = itemsGene.filter(item => item.inclusion === false);
 
-        let itemsRule: any[] = this.tableRulesData.variantReport.nonHotspotRules;
+        let itemsRule: any[] = this.tableData[0].variantReport.nonHotspotRules;
         this.ruleIn = itemsRule.filter(item => item.inclusion === true);
         this.ruleEx = itemsRule.filter(item => item.inclusion === false);
 

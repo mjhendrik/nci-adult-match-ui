@@ -1,0 +1,386 @@
+[{
+  "assayResults": [],
+  "exclusionDiseases": [{
+    "_id": "103077",
+    "ctepCategory": "Salivary Gland Cancer",
+    "shortName": "Salivary Gland Cancer"
+  }],
+  "exclusionDrugs": [{
+    "drugs": [{
+      "drugClass": "ALK inhibitor",
+      "drugId": "820112",
+      "name": "Pazopanib",
+      "target": "ALK"
+    }]
+  }],
+  "gene": "SMARCB1",
+  "name": "CukeTest-1034",
+  "numPatientsAssigned": 0,
+  "statusLog": {
+    "1488461581": "OPEN",
+    "1488461537494": "PENDING",
+    "1488461581910": "READY"
+  },
+  "targetId": "Nutlin-3a",
+  "targetName": "Nutlin-3a",
+  "treatmentArmStatus": "OPEN",
+  "treatmentId": "CukeTest-1034",
+  "variantReport": {
+    "copyNumberVariants": [],
+    "geneFusions": [],
+    "indels": [],
+    "nonHotspotRules": [],
+    "singleNucleotideVariants": [{
+      "alternative": "CCT",
+      "armSpecific": false,
+      "chromosome": "chr7",
+      "confirmed": false,
+      "description": "V600E, V600K, V600D, V600R",
+      "geneName": "MTOR",
+      "identifier": "COSM1034",
+      "inclusion": true,
+      "levelOfEvidence": 2,
+      "position": "71184573",
+      "rare": false,
+      "reference": "CAC"
+    }],
+    "unifiedGeneFusions": []
+  },
+  "version": "2015-08-06",
+  "versionData": [
+    "2017-08-06*",
+    "2016-11-18",
+    "2016-11-19"
+  ],
+  "tablePatientData": [{
+      "slot": null,
+      "patientSequenceNumber": "10361",
+      "formattedPatientStatus": "OFF_TRIAL_NOT_CONSENTED",
+      "treatmentArmVersion": "2017-08-06*",
+      "dateSelected": 1448046697678,
+      "dateOnArm": null,
+      "dateOffArm": null,
+      "formattedDiseaseNames": "Lung adenocarcinoma",
+      "stepNumber": "0"
+    },
+    {
+      "slot": null,
+      "patientSequenceNumber": "10545",
+      "formattedPatientStatus": "OFF_TRIAL_NOT_CONSENTED",
+      "treatmentArmVersion": "2017-08-06*",
+      "dateSelected": 1448459559651,
+      "dateOnArm": null,
+      "dateOffArm": null,
+      "formattedDiseaseNames": "Lung adenocar. w/ bronch. feat.",
+      "stepNumber": "0"
+    },
+    {
+      "slot": 1,
+      "patientSequenceNumber": "10612",
+      "formattedPatientStatus": "FORMERLY_ON_ARM_OFF_TRIAL",
+      "treatmentArmVersion": "2017-08-06*",
+      "dateSelected": 1450128145904,
+      "dateOnArm": 1451919617018,
+      "dateOffArm": 1475155338408,
+      "formattedDiseaseNames": "Neuroendocrine cancer, NOS",
+      "stepNumber": "1"
+    },
+    {
+      "slot": null,
+      "patientSequenceNumber": "10700",
+      "formattedPatientStatus": "NOT_ELIGIBLE",
+      "treatmentArmVersion": "2017-08-06*",
+      "dateSelected": 1450389274395,
+      "dateOnArm": null,
+      "dateOffArm": null,
+      "formattedDiseaseNames": "Lung adenocarcinoma",
+      "stepNumber": "0"
+    },
+    {
+      "slot": 2,
+      "patientSequenceNumber": "10768",
+      "formattedPatientStatus": "ON_TREATMENT_ARM",
+      "treatmentArmVersion": "2017-08-06*",
+      "dateSelected": 1450733203822,
+      "dateOnArm": 1452202216958,
+      "dateOffArm": null,
+      "formattedDiseaseNames": "Lung adenocarcinoma",
+      "stepNumber": "1"
+    },
+    {
+      "slot": 2,
+      "patientSequenceNumber": "10886",
+      "formattedPatientStatus": "ON_TREATMENT_ARM",
+      "treatmentArmVersion": "2016-05-31",
+      "dateSelected": 1467311077223,
+      "dateOnArm": 1468935018558,
+      "dateOffArm": null,
+      "formattedDiseaseNames": "Neuroendocrine cancer, NOS",
+      "stepNumber": "1"
+    },
+    {
+      "slot": 1,
+      "patientSequenceNumber": "10828",
+      "formattedPatientStatus": "ON_TREATMENT_ARM",
+      "treatmentArmVersion": "2016-05-31",
+      "dateSelected": 1467752389171,
+      "dateOnArm": 1469203218627,
+      "dateOffArm": null,
+      "formattedDiseaseNames": "Bone cancer, NOS",
+      "stepNumber": "1"
+    },
+    {
+      "slot": null,
+      "patientSequenceNumber": "11094",
+      "formattedPatientStatus": "NOT_ELIGIBLE",
+      "treatmentArmVersion": "2016-05-31",
+      "dateSelected": 1469546906956,
+      "dateOnArm": null,
+      "dateOffArm": null,
+      "formattedDiseaseNames": "Neuroendocrine cancer, NOS",
+      "stepNumber": "0"
+    },
+    {
+      "slot": 3,
+      "patientSequenceNumber": "11055",
+      "formattedPatientStatus": "ON_TREATMENT_ARM",
+      "treatmentArmVersion": "2016-05-31",
+      "dateSelected": 1470238425707,
+      "dateOnArm": 1472140822893,
+      "dateOffArm": null,
+      "formattedDiseaseNames": "Lung adenocarcinoma",
+      "stepNumber": "1"
+    },
+    {
+      "slot": 4,
+      "patientSequenceNumber": "11315",
+      "formattedPatientStatus": "ON_TREATMENT_ARM",
+      "treatmentArmVersion": "2016-05-31",
+      "dateSelected": 1471033659302,
+      "dateOnArm": 1473195623287,
+      "dateOffArm": null,
+      "formattedDiseaseNames": "Adenocarcinoma, NOS",
+      "stepNumber": "1"
+    },
+    {
+      "slot": null,
+      "patientSequenceNumber": "11763",
+      "formattedPatientStatus": "OFF_TRIAL_DECEASED",
+      "treatmentArmVersion": "2016-05-31",
+      "dateSelected": 1472841163541,
+      "dateOnArm": null,
+      "dateOffArm": null,
+      "formattedDiseaseNames": "Pancreatic neuroendocrine tumor",
+      "stepNumber": "0"
+    },
+    {
+      "slot": null,
+      "patientSequenceNumber": "11929",
+      "formattedPatientStatus": "NOT_ELIGIBLE",
+      "treatmentArmVersion": "2016-05-31",
+      "dateSelected": 1474551564492,
+      "dateOnArm": null,
+      "dateOffArm": null,
+      "formattedDiseaseNames": "Non-small cell lung cancer, NOS",
+      "stepNumber": "0"
+    },
+    {
+      "slot": null,
+      "patientSequenceNumber": "12531",
+      "formattedPatientStatus": "OFF_TRIAL_NOT_CONSENTED",
+      "treatmentArmVersion": "2016-05-31",
+      "dateSelected": 1478028349249,
+      "dateOnArm": null,
+      "dateOffArm": null,
+      "formattedDiseaseNames": "Ovarian epithelial cancer",
+      "stepNumber": "0"
+    },
+    {
+      "slot": 5,
+      "patientSequenceNumber": "12633",
+      "formattedPatientStatus": "ON_TREATMENT_ARM",
+      "treatmentArmVersion": "2016-05-31",
+      "dateSelected": 1478094729009,
+      "dateOnArm": 1478710824998,
+      "dateOffArm": null,
+      "formattedDiseaseNames": "Lung adenocarcinoma",
+      "stepNumber": "1"
+    },
+    {
+      "slot": 6,
+      "patientSequenceNumber": "13070",
+      "formattedPatientStatus": "ON_TREATMENT_ARM",
+      "treatmentArmVersion": "2016-05-31",
+      "dateSelected": 1479820042728,
+      "dateOnArm": 1481662819201,
+      "dateOffArm": null,
+      "formattedDiseaseNames": "Cholangiocar.- intra/extrahepatic",
+      "stepNumber": "1"
+    },
+    {
+      "slot": null,
+      "patientSequenceNumber": "13073",
+      "formattedPatientStatus": "OFF_TRIAL_NOT_CONSENTED",
+      "treatmentArmVersion": "2016-05-31",
+      "dateSelected": 1479835746460,
+      "dateOnArm": null,
+      "dateOffArm": null,
+      "formattedDiseaseNames": "Ovarian epithelial cancer",
+      "stepNumber": "0"
+    },
+    {
+      "slot": null,
+      "patientSequenceNumber": "13019",
+      "formattedPatientStatus": "NOT_ELIGIBLE",
+      "treatmentArmVersion": "2016-05-31",
+      "dateSelected": 1480714290688,
+      "dateOnArm": null,
+      "dateOffArm": null,
+      "formattedDiseaseNames": "Adenocarcinoma, NOS",
+      "stepNumber": "0"
+    },
+    {
+      "slot": 8,
+      "patientSequenceNumber": "13365",
+      "formattedPatientStatus": "ON_TREATMENT_ARM",
+      "treatmentArmVersion": "2016-05-31",
+      "dateSelected": 1481228829092,
+      "dateOnArm": 1482262219341,
+      "dateOffArm": null,
+      "formattedDiseaseNames": "Ovarian epithelial cancer",
+      "stepNumber": "1"
+    },
+    {
+      "slot": 7,
+      "patientSequenceNumber": "13249",
+      "formattedPatientStatus": "ON_TREATMENT_ARM",
+      "treatmentArmVersion": "2016-05-31",
+      "dateSelected": 1481662058578,
+      "dateOnArm": 1483135219417,
+      "dateOffArm": null,
+      "formattedDiseaseNames": "Ovarian epithelial cancer",
+      "stepNumber": "1"
+    },
+    {
+      "slot": 9,
+      "patientSequenceNumber": "13623",
+      "formattedPatientStatus": "ON_TREATMENT_ARM",
+      "treatmentArmVersion": "2016-05-31",
+      "dateSelected": 1482171494202,
+      "dateOnArm": 1483734618635,
+      "dateOffArm": null,
+      "formattedDiseaseNames": "Cholangiocar.- intra/extrahepatic",
+      "stepNumber": "1"
+    },
+    {
+      "slot": null,
+      "patientSequenceNumber": "13640",
+      "formattedPatientStatus": "OFF_TRIAL_NOT_CONSENTED",
+      "treatmentArmVersion": "2016-05-31",
+      "dateSelected": 1484248936830,
+      "dateOnArm": null,
+      "dateOffArm": null,
+      "formattedDiseaseNames": "Adenocarcinoma, NOS",
+      "stepNumber": "0"
+    },
+    {
+      "slot": null,
+      "patientSequenceNumber": "13958",
+      "formattedPatientStatus": "NOT_ELIGIBLE",
+      "treatmentArmVersion": "2016-05-31",
+      "dateSelected": 1484340831177,
+      "dateOnArm": null,
+      "dateOffArm": null,
+      "formattedDiseaseNames": "Adenocarcinoma, NOS",
+      "stepNumber": "0"
+    },
+    {
+      "slot": 12,
+      "patientSequenceNumber": "13875",
+      "formattedPatientStatus": "ON_TREATMENT_ARM",
+      "treatmentArmVersion": "2016-05-31",
+      "dateSelected": 1484760624108,
+      "dateOnArm": 1486495816399,
+      "dateOffArm": null,
+      "formattedDiseaseNames": "Carcinoma, NOS",
+      "stepNumber": "1"
+    },
+    {
+      "slot": 10,
+      "patientSequenceNumber": "13782",
+      "formattedPatientStatus": "ON_TREATMENT_ARM",
+      "treatmentArmVersion": "2016-05-31",
+      "dateSelected": 1485792340963,
+      "dateOnArm": 1487694621424,
+      "dateOffArm": null,
+      "formattedDiseaseNames": "Carcinoma, NOS",
+      "stepNumber": "1"
+    },
+    {
+      "slot": 11,
+      "patientSequenceNumber": "13835",
+      "formattedPatientStatus": "ON_TREATMENT_ARM",
+      "treatmentArmVersion": "2016-05-31",
+      "dateSelected": 1485964598653,
+      "dateOnArm": 1487788224089,
+      "dateOffArm": null,
+      "formattedDiseaseNames": "Adenocarcinoma - pancreas",
+      "stepNumber": "1"
+    },
+    {
+      "slot": 13,
+      "patientSequenceNumber": "14473",
+      "formattedPatientStatus": "ON_TREATMENT_ARM",
+      "treatmentArmVersion": "2016-05-31",
+      "dateSelected": 1486680300691,
+      "dateOnArm": 1488409218705,
+      "dateOffArm": null,
+      "formattedDiseaseNames": "Female reprod. system cancer, NOS",
+      "stepNumber": "1"
+    },
+    {
+      "slot": 14,
+      "patientSequenceNumber": "14499",
+      "formattedPatientStatus": "PENDING_APPROVAL",
+      "treatmentArmVersion": "2016-05-31",
+      "dateSelected": 1487091166932,
+      "dateOnArm": null,
+      "dateOffArm": null,
+      "formattedDiseaseNames": "Adenocarcinoma, NOS",
+      "stepNumber": "0"
+    },
+    {
+      "slot": 16,
+      "patientSequenceNumber": "14687",
+      "formattedPatientStatus": "PENDING_APPROVAL",
+      "treatmentArmVersion": "2016-05-31",
+      "dateSelected": 1487640652455,
+      "dateOnArm": null,
+      "dateOffArm": null,
+      "formattedDiseaseNames": "Lung adenocarcinoma",
+      "stepNumber": "0"
+    },
+    {
+      "slot": 15,
+      "patientSequenceNumber": "14644",
+      "formattedPatientStatus": "PENDING_APPROVAL",
+      "treatmentArmVersion": "2016-05-31",
+      "dateSelected": 1487715656408,
+      "dateOnArm": null,
+      "dateOffArm": null,
+      "formattedDiseaseNames": "CNS primary tumor, NOS",
+      "stepNumber": "0"
+    },
+    {
+      "slot": 17,
+      "patientSequenceNumber": "14788",
+      "formattedPatientStatus": "PENDING_CONFIRMATION",
+      "treatmentArmVersion": "2016-05-31",
+      "dateSelected": 1488495870588,
+      "dateOnArm": null,
+      "dateOffArm": null,
+      "formattedDiseaseNames": "Thyroid cancer, NOS",
+      "stepNumber": "0"
+    }
+  ]
+}]

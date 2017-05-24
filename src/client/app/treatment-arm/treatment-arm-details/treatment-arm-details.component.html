@@ -2,9 +2,9 @@
   <ul class="breadcrumb pull-right">
     <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
     <li><a href [routerLink]="['/treatments']" class="link-none">Treatment Arms</a></li>
-    <li class="active">Treatment Arm {{tableRulesData.id | dashify}}</li>
+    <li class="active">Treatment Arm {{tableData[0].treatmentId | dashify}}</li>
   </ul>
-  <h1 class="page-header">Treatment Arm {{tableRulesData.id | dashify}}</h1>
+  <h1 class="page-header">Treatment Arm {{tableData[0].treatmentId | dashify}}</h1>
   <div class="row" matchHeight="panel-height-ta-details">
     <div class="col-md-4">
       <!-- begin panel -->
@@ -21,28 +21,28 @@
                       <div class="table-responsive col-lg-12">
                         <dl class="dl-horizontal m-t-20">
                           <dt>ID</dt>
-                          <dd>{{tableRulesData.id | dashify}}</dd>
+                          <dd>{{tableData[0].treatmentId | dashify}}</dd>
                           <dt>Description</dt>
-                          <dd>{{tableRulesData.name | dashify}}</dd>
+                          <dd>{{tableData[0].name | dashify}}</dd>
                           <dt>Treatment Arm Approval Date</dt>
                           <dd>
                             <div class="btn-group m-b-5 m-r-5">
-                              <a href="javascript:;" data-toggle="dropdown" class="btn btn-success-light dropdown-toggle" aria-expanded="false">{{tableRulesData.version | dashify}}&nbsp;&nbsp;<span class="caret"></span></a>
+                              <a href="javascript:;" data-toggle="dropdown" class="btn btn-success-light dropdown-toggle" aria-expanded="false">{{tableData[0].version | dashify}}&nbsp;&nbsp;<span class="caret"></span></a>
                               <ul class="dropdown-menu">
-                                <li *ngFor="let item of versionData"><a href="javascript:;" *ngIf="item!=tableRulesData.version">{{item | dashify}}</a></li>
+                                <li *ngFor="let item of tableData[0].versionData"><a href="javascript:;" *ngIf="item!=version">{{item | dashify}}</a></li>
                               </ul>
                             </div>
                           </dd>
                           <dt>Drug ID</dt>
-                          <dd>{{tableRulesData.targetId | dashify}}</dd>
+                          <dd>{{tableData[0].targetId | dashify}}</dd>
                           <dt>Drug Name</dt>
-                          <dd>{{tableRulesData.targetName | dashify}}</dd>
+                          <dd>{{tableData[0].targetName | dashify}}</dd>
                           <dt>Genes</dt>
-                          <dd>{{tableRulesData.gene | dashify}}</dd>
+                          <dd>{{tableData[0].gene | dashify}}</dd>
                           <dt>Patients Assigned</dt>
-                          <dd>{{tableRulesData.numPatientsAssigned | dashify}} of {{tableRulesData.maxPatientsAllowed | dashify}}</dd>
+                          <dd>{{tableData[0].numPatientsAssigned | dashify}} of {{tableData[0].maxPatientsAllowed | dashify}}</dd>
                           <dt>Current Status</dt>
-                          <dd [colorCodeTa]="tableRulesData.treatmentArmStatus">{{tableRulesData.treatmentArmStatus | dashify}}</dd>
+                          <dd [colorCodeTa]="tableData[0].treatmentArmStatus">{{tableData[0].treatmentArmStatus | dashify}}</dd>
                         </dl>
                       </div>
                     </div>
@@ -69,7 +69,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let item of tableRulesData.statusLog">
+                <tr *ngFor="let item of statusLog">
                   <td [colorCodeTa]="item.status" class="col-xs-4">{{item.status | dashify}}</td>
                   <td class="col-xs-8">{{item.date | gmt | dashify}}</td>
                 </tr>
@@ -197,7 +197,7 @@
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10 p-l-5" id="data-table_length">
                           <label>
                             Show
-                            <select [disabled]="tableRulesData.exclusionDrugs.length == 0" name="data-table_length" [(ngModel)]="recordsPerPageExdr"  aria-controls="data-table" class="form-control form-control-success input-sm">
+                            <select [disabled]="tableData[0].exclusionDrugs[0].drugs.length == 0" name="data-table_length" [(ngModel)]="recordsPerPageExdr"  aria-controls="data-table" class="form-control form-control-success input-sm">
                               <option value=10>10</option>
                               <option value=25>25</option>
                               <option value=50>50</option>
@@ -210,7 +210,7 @@
                       <div class="col-md-6 bg-success-light">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10 p-r-5">
                           <label>Search:
-                            <input [disabled]="tableRulesData.exclusionDrugs.length == 0" type="text" [(ngModel)]="searchtermExdr" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">
+                            <input [disabled]="tableData[0].exclusionDrugs[0].drugs.length == 0" type="text" [(ngModel)]="searchtermExdr" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">
                           </label>
                         </div>
                       </div>
@@ -222,7 +222,7 @@
                       <div class="col-md-6 bg-success-light">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10 p-l-5" id="data-table_length">
                           <label>Show
-                        <select [disabled]="tableRulesData.exclusionDiseases.length == 0" name="data-table_length" [(ngModel)]="recordsPerPageExdz"  aria-controls="data-table" class="form-control form-control-success input-sm">
+                        <select [disabled]="tableData[0].exclusionDiseases.length == 0" name="data-table_length" [(ngModel)]="recordsPerPageExdz"  aria-controls="data-table" class="form-control form-control-success input-sm">
                           <option value=10>10</option>
                           <option value=25>25</option>
                           <option value=50>50</option>
@@ -234,7 +234,7 @@
                       <div class="col-md-6 bg-success-light">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10 p-r-5">
                           <label>Search:
-                        <input [disabled]="tableRulesData.exclusionDiseases.length == 0" type="text" [(ngModel)]="searchtermExdz" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">
+                        <input [disabled]="tableData[0].exclusionDiseases.length == 0" type="text" [(ngModel)]="searchtermExdz" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">
                       </label>
                         </div>
                       </div>
@@ -242,7 +242,7 @@
                     <div class="row">
                       <!-- table exdr -->
                       <div class="table-responsive col-lg-6">
-                        <table *ngIf="tableRulesData.exclusionDrugs.length == 0" class="table table-td-valign-middle table-striped table-col-width">
+                        <table *ngIf="tableData[0].exclusionDrugs[0].drugs.length == 0" class="table table-td-valign-middle table-striped table-col-width">
                           <thead>
                             <tr class="success-light">
                               <th>
@@ -255,12 +255,12 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td class="text-muted" colspan="2">There are no exclusionary drugs for treatment arm "{{tableRulesData.id | dashify}}"</td>
+                              <td class="text-muted" colspan="2">There are no exclusionary drugs for treatment arm "{{treatmentId | dashify}}"</td>
                             </tr>
                           </tbody>
                         </table>
-                        <table *ngIf="tableRulesData.exclusionDrugs.length!=0" class="table table-td-valign-middle table-striped table-col-width"
-                          [mfData]="tableRulesData.exclusionDrugs | filterByText: searchtermExdr" #mftableExdr="mfDataTable"
+                        <table *ngIf="tableData[0].exclusionDrugs[0].drugs.length!=0" class="table table-td-valign-middle table-striped table-col-width"
+                          [mfData]="tableData[0].exclusionDrugs[0].drugs | filterByText: searchtermExdr" #mftableExdr="mfDataTable"
                           [(mfSortBy)]="tableExdrDefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPageExdr">
                           <thead>
                             <tr class="success-light">
@@ -284,7 +284,7 @@
                           <tfoot>
                             <tr>
                               <td class="tfoot-padding" colspan="2">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermExdr" [totallength]="tableRulesData.exclusionDrugs.length"></mfBootstrapPaginator>
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermExdr" [totallength]="tableData[0].exclusionDrugs[0].drugs.length"></mfBootstrapPaginator>
                               </td>
                             </tr>
                           </tfoot>
@@ -292,7 +292,7 @@
                       </div>
                       <!-- table exdz -->
                       <div class="table-responsive col-lg-6">
-                        <table *ngIf="tableRulesData.exclusionDiseases.length == 0" class="table table-td-valign-middle table-striped table-col-width">
+                        <table *ngIf="tableData[0].exclusionDiseases.length == 0" class="table table-td-valign-middle table-striped table-col-width">
                           <thead>
                             <tr class="success-light">
                               <th>
@@ -308,12 +308,12 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td class="text-muted" colspan="3">There are no exclusionary diseases for treatment arm "{{tableRulesData.id | dashify}}"</td>
+                              <td class="text-muted" colspan="3">There are no exclusionary diseases for treatment arm "{{treatmentId | dashify}}"</td>
                             </tr>
                           </tbody>
                         </table>
-                        <table *ngIf="tableRulesData.exclusionDiseases.length!=0" class="table table-td-valign-middle table-striped table-col-width"
-                          [mfData]="tableRulesData.exclusionDiseases | filterByText: searchtermExdz" #mftableExdz="mfDataTable"
+                        <table *ngIf="tableData[0].exclusionDiseases.length!=0" class="table table-td-valign-middle table-striped table-col-width"
+                          [mfData]="tableData[0].exclusionDiseases | filterByText: searchtermExdz" #mftableExdz="mfDataTable"
                           [(mfSortBy)]="tableExdzDefaultSort" [mfRowsOnPage]="recordsPerPageExdz">
                           <thead>
                             <tr class="success-light">
@@ -341,7 +341,7 @@
                           <tfoot>
                             <tr>
                               <td class="tfoot-padding" colspan="3">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermExdz" [totallength]="tableRulesData.exclusionDiseases.length"></mfBootstrapPaginator>
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermExdz" [totallength]="tableData[0].exclusionDiseases.length"></mfBootstrapPaginator>
                               </td>
                             </tr>
                           </tfoot>
@@ -411,7 +411,7 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td class="text-muted" colspan="7">There are no included single nucleotide variants for treatment arm "{{tableRulesData.id | dashify}}"</td>
+                              <td class="text-muted" colspan="7">There are no included single nucleotide variants for treatment arm "{{treatmentId | dashify}}"</td>
                             </tr>
                           </tbody>
                         </table>
@@ -533,7 +533,7 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td class="text-muted" colspan="7">There are no excluded single nucleotide variants for treatment arm "{{tableRulesData.id | dashify}}"</td>
+                              <td class="text-muted" colspan="7">There are no excluded single nucleotide variants for treatment arm "{{treatmentId | dashify}}"</td>
                             </tr>
                           </tbody>
                         </table>
@@ -662,7 +662,7 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td class="text-muted" colspan="7">There are no included indels for treatment arm "{{tableRulesData.id | dashify}}"</td>
+                              <td class="text-muted" colspan="7">There are no included indels for treatment arm "{{treatmentId | dashify}}"</td>
                             </tr>
                           </tbody>
                         </table>
@@ -784,7 +784,7 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td class="text-muted" colspan="7">There are no excluded indels for treatment arm "{{tableRulesData.id | dashify}}"</td>
+                              <td class="text-muted" colspan="7">There are no excluded indels for treatment arm "{{treatmentId | dashify}}"</td>
                             </tr>
                           </tbody>
                         </table>
@@ -907,7 +907,7 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td class="text-muted" colspan="5">There are no included copy number variants for treatment arm "{{tableRulesData.id | dashify}}"</td>
+                              <td class="text-muted" colspan="5">There are no included copy number variants for treatment arm "{{treatmentId | dashify}}"</td>
                             </tr>
                           </tbody>
                         </table>
@@ -1015,7 +1015,7 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td class="text-muted" colspan="5">There are no excluded copy number variants for treatment arm "{{tableRulesData.id | dashify}}"</td>
+                              <td class="text-muted" colspan="5">There are no excluded copy number variants for treatment arm "{{treatmentId | dashify}}"</td>
                             </tr>
                           </tbody>
                         </table>
@@ -1125,7 +1125,7 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td class="text-muted" colspan="3">There are no included gene fusions for treatment arm "{{tableRulesData.id | dashify}}"</td>
+                              <td class="text-muted" colspan="3">There are no included gene fusions for treatment arm "{{treatmentId | dashify}}"</td>
                             </tr>
                           </tbody>
                         </table>
@@ -1219,7 +1219,7 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td class="text-muted" colspan="3">There are no excluded gene fusions for treatment arm "{{tableRulesData.id | dashify}}"</td>
+                              <td class="text-muted" colspan="3">There are no excluded gene fusions for treatment arm "{{treatmentId | dashify}}"</td>
                             </tr>
                           </tbody>
                         </table>
@@ -1329,7 +1329,7 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td class="text-muted" colspan="6">There are no included non-hotspot rules for treatment arm "{{tableRulesData.id | dashify}}"</td>
+                              <td class="text-muted" colspan="6">There are no included non-hotspot rules for treatment arm "{{treatmentId | dashify}}"</td>
                             </tr>
                           </tbody>
                         </table>
@@ -1443,7 +1443,7 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td class="text-muted" colspan="6">There are no excluded non-hotspot rules for treatment arm "{{tableRulesData.id | dashify}}"</td>
+                              <td class="text-muted" colspan="6">There are no excluded non-hotspot rules for treatment arm "{{treatmentId | dashify}}"</td>
                             </tr>
                           </tbody>
                         </table>
@@ -1517,7 +1517,7 @@
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select [disabled]="tableRulesData.assayResults.length == 0" name="data-table_length" [(ngModel)]="recordsPerPageAssay"  aria-controls="data-table" class="form-control form-control-success input-sm">
+                        <select [disabled]="tableData[0].assayResults.length == 0" name="data-table_length" [(ngModel)]="recordsPerPageAssay"  aria-controls="data-table" class="form-control form-control-success input-sm">
                           <option value=10>10</option>
                           <option value=25>25</option>
                           <option value=50>50</option>
@@ -1529,14 +1529,14 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input [disabled]="tableRulesData.assayResults.length == 0" type="text" [(ngModel)]="searchtermAssay" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">
+                        <input [disabled]="tableData[0].assayResults.length == 0" type="text" [(ngModel)]="searchtermAssay" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">
                       </label>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table *ngIf="tableRulesData.assayResults.length == 0" class="table table-td-valign-middle table-striped table-col-width">
+                        <table *ngIf="tableData[0].assayResults.length == 0" class="table table-td-valign-middle table-striped table-col-width">
                           <thead>
                             <tr class="success-light">
                               <th>
@@ -1555,11 +1555,11 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td class="text-muted" colspan="4">There are no assay results for treatment arm "{{tableRulesData.id | dashify}}"</td>
+                              <td class="text-muted" colspan="4">There are no assay results for treatment arm "{{treatmentId | dashify}}"</td>
                             </tr>
                           </tbody>
                         </table>
-                        <table *ngIf="tableRulesData.assayResults.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="tableRulesData.assayResults | filterByText: searchtermAssay"
+                        <table *ngIf="tableData[0].assayResults.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="tableData[0].assayResults | filterByText: searchtermAssay"
                           #mftableAssay="mfDataTable" [(mfSortBy)]="tableAssayDefaultSort" [mfRowsOnPage]="recordsPerPageAssay">
                           <thead>
                             <tr class="success-light">
@@ -1591,7 +1591,7 @@
                           <tfoot>
                             <tr>
                               <td class="tfoot-padding" colspan="4">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermAssay" [totallength]="tableRulesData.assayResults.length"></mfBootstrapPaginator>
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermAssay" [totallength]="tableData[0].assayResults.length"></mfBootstrapPaginator>
                               </td>
                             </tr>
                           </tfoot>
@@ -1626,7 +1626,7 @@
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select [disabled]="tablePatientData.length == 0" name="data-table_length" [(ngModel)]="recordsPerPagePatient"  aria-controls="data-table" class="form-control form-control-success input-sm">
+                        <select [disabled]="tableData[0].tablePatientData.length == 0" name="data-table_length" [(ngModel)]="recordsPerPagePatient"  aria-controls="data-table" class="form-control form-control-success input-sm">
                           <option value=10>10</option>
                           <option value=25>25</option>
                           <option value=50>50</option>
@@ -1638,14 +1638,14 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input [disabled]="tablePatientData.length == 0" type="text" [(ngModel)]="searchtermPatient" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">
+                        <input [disabled]="tableData[0].tablePatientData.length == 0" type="text" [(ngModel)]="searchtermPatient" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">
                       </label>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table *ngIf="tablePatientData.length == 0" class="table table-td-valign-middle table-striped table-col-width">
+                        <table *ngIf="tableData[0].tablePatientData.length == 0" class="table table-td-valign-middle table-striped table-col-width">
                           <thead>
                             <tr class="success-light">
                               <th>
@@ -1685,12 +1685,13 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td class="text-muted" colspan="11">There have never been any patients assigned to treatment arm "{{tableRulesData.id | dashify}}"</td>
+                              <td class="text-muted" colspan="11">There have never been any patients assigned to treatment arm "{{treatmentId | dashify}}"</td>
                             </tr>
                           </tbody>
                         </table>
-                        <table *ngIf="tablePatientData.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="tablePatientData | filterByText: searchtermPatient"
-                          #mftablePatient="mfDataTable" [(mfSortBy)]="tablePatientDefaultSort" [mfRowsOnPage]="recordsPerPagePatient">
+                        <table *ngIf="tableData[0].tablePatientData.length!=0" class="table table-td-valign-middle table-striped table-col-width"
+                          [mfData]="tableData[0].tablePatientData | filterByText: searchtermPatient" #mftablePatient="mfDataTable"
+                          [(mfSortBy)]="tablePatientDefaultSort" [mfRowsOnPage]="recordsPerPagePatient">
                           <thead>
                             <tr class="success-light">
                               <th>
@@ -1735,8 +1736,8 @@
                                 <a href [routerLink]="['/patients', item.patientSequenceNumber]" class="link-none"><i class="fa fa-user"></i> {{item.patientSequenceNumber | dashify}}</a>
                               </td>
                               <td>
-                                <span *ngIf="item.treatmentArmVersion!=tableRulesData.version"><a href="javascript:;" class="link-none"><i class="fa fa-medkit"></i> {{item.treatmentArmVersion | dashify}}</a></span>
-                                <span *ngIf="item.treatmentArmVersion == tableRulesData.version"><i class="fa fa-medkit"></i> {{item.treatmentArmVersion | dashify}}</span>
+                                <span *ngIf="item.treatmentArmVersion!=version"><a href="javascript:;" class="link-none"><i class="fa fa-medkit"></i> {{item.treatmentArmVersion | dashify}}</a></span>
+                                <span *ngIf="item.treatmentArmVersion == version"><i class="fa fa-medkit"></i> {{item.treatmentArmVersion | dashify}}</span>
                               </td>
                               <td [colorCodePatients]="item.formattedPatientStatus">{{item.formattedPatientStatus | dashify}}</td>
                               <td class="text-center"><a href [routerLink]="['/patients/details/variant_reports']" class="link-none"><i class="fa fa-file-text-o"></i></a></td>
@@ -1754,7 +1755,7 @@
                           <tfoot>
                             <tr>
                               <td class="tfoot-padding" colspan="11">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermPatient" [totallength]="tablePatientData.length"></mfBootstrapPaginator>
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermPatient" [totallength]="tableData[0].tablePatientData.length"></mfBootstrapPaginator>
                               </td>
                             </tr>
                           </tfoot>
