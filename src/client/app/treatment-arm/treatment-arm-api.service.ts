@@ -47,7 +47,7 @@ export class TreatmentArmApiService {
     // return this.http.get('assets/mock-data/treatment-arm-list.json')
 
     return this.http.get(Config.API.TREATMENT_ARM
-      + '/treatment_arms?projection=treatmentId,name,treatmentArmStatus,dateCreated,statusLog,summaryReport')
+      + '/treatment_arms?active=true&projection=treatmentId,name,treatmentArmStatus,dateCreated,statusLog,summaryReport')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
