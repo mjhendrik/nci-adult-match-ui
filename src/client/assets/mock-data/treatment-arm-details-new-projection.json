@@ -1,50 +1,145 @@
 [{
-  "assayResults": [],
-  "exclusionDiseases": [{
-    "_id": "103077",
-    "ctepCategory": "Salivary Gland Cancer",
-    "shortName": "Salivary Gland Cancer"
-  }],
-  "exclusionDrugs": [{
-    "drugs": [{
-      "drugClass": "ALK inhibitor",
-      "drugId": "820112",
-      "name": "Pazopanib",
-      "target": "ALK"
-    }]
-  }],
-  "gene": "SMARCB1",
-  "name": "CukeTest-1034",
-  "numPatientsAssigned": 0,
-  "statusLog": {
-    "1488461581": "OPEN",
-    "1488461537494": "PENDING",
-    "1488461581910": "READY"
+  "_class": "gov.match.model.TreatmentArm",
+  "_id": {
+    "$oid": "5925b1e751fa87a5c729d017"
   },
-  "targetId": "Nutlin-3a",
-  "targetName": "Nutlin-3a",
-  "treatmentArmStatus": "OPEN",
-  "treatmentId": "CukeTest-1034",
+  "assayResults": [],
+  "dateArchived": null,
+  "dateCreated": {
+    "$date": 1465225012704
+  },
+  "description": "TDM1 in HER2 amplification",
+  "exclusionDiseases": [{
+      "_id": "10021980",
+      "ctepCategory": "Breast Cancer - Invasive",
+      "shortName": "Inflammatory breast carcinoma"
+    },
+    {
+      "_id": "10006190",
+      "ctepCategory": "Breast Cancer - Invasive",
+      "shortName": "Invasive breast carcinoma"
+    },
+    {
+      "_id": "10066354",
+      "ctepCategory": "Gastroesophageal Cancer",
+      "shortName": "Adenocarcinoma - GEJ"
+    },
+    {
+      "_id": "10053130",
+      "ctepCategory": "Breast Cancer - Invasive",
+      "shortName": "Cystosarcoma phylloides - breast"
+    },
+    {
+      "_id": "10006285",
+      "ctepCategory": "Breast Neoplasm - Misc",
+      "shortName": "Breast cancer, NOS"
+    },
+    {
+      "_id": "10001150",
+      "ctepCategory": "Gastroesophageal Cancer",
+      "shortName": "Adenocarcinoma - stomach"
+    }
+  ],
+  "exclusionDrugs": [{
+      "drugs": [{
+        "drugId": "780263",
+        "name": "TDM1 (Ado-trastuzumab emtansine)"
+      }]
+    },
+    {
+      "drugs": [{
+        "drugId": "",
+        "name": "Trastuzumab"
+      }]
+    },
+    {
+      "drugs": [{
+        "drugId": "",
+        "name": "Pertuzumab"
+      }]
+    },
+    {
+      "drugs": [{
+        "drugId": "",
+        "name": "Margetuximab"
+      }]
+    },
+    {
+      "drugs": [{
+        "drugId": "",
+        "name": "PF-05280014 (Pfizer, Trastuzumab Biosimilar)"
+      }]
+    },
+    {
+      "drugs": [{
+        "drugId": "",
+        "name": "CT-P6 (Celltrion, Trastuzumab Biosimilar)"
+      }]
+    },
+    {
+      "drugs": [{
+        "drugId": "",
+        "name": "ABP-980 (Amgen, Trastuzumab Biosimilar)"
+      }]
+    }
+  ],
+  "gene": "HER2",
+  "maxPatientsAllowed": 35,
+  "name": "TDM1 in HER2 Amplification",
+  "numPatientsAssigned": 35,
+  "stateToken": {
+    "$uuid": "a52329ec664a4d1e98341f19aefd120c"
+  },
+  "statusLog": {
+    "1438968834628": "PENDING",
+    "1439210391639": "READY",
+    "1439352000000": "OPEN",
+    "1456246261701": "AMENDED",
+    "1465225012890": "AMENDED",
+    "1489035600000": "CLOSED"
+  },
+  "summaryReport": {
+    "assignmentRecords": [],
+    "numCurrentPatientsOnArm": 0,
+    "numFormerPatients": 0,
+    "numNotEnrolledPatient": 0,
+    "numPendingArmApproval": 0
+  },
+  "targetId": "#REF!",
+  "targetName": "Ado-trastuzumab Emtansine",
+  "treatmentArmDrugs": [{
+    "drugId": "780263",
+    "name": "Ado-trastuzumab Emtansine",
+    "pathway": "HER2"
+  }],
+  "treatmentArmStatus": "CLOSED",
+  "treatmentId": "EAY131-Q",
   "variantReport": {
-    "copyNumberVariants": [],
+    "copyNumberVariants": [{
+      "armSpecific": false,
+      "chromosome": "chr17",
+      "confidenceInterval5percent": 0,
+      "confidenceInterval95percent": 0,
+      "confirmed": false,
+      "copyNumber": 0,
+      "description": "ERBB2 Amplification",
+      "geneName": "ERBB2",
+      "identifier": "ERBB2",
+      "inclusion": true,
+      "levelOfEvidence": 1,
+      "position": "37856492",
+      "publicMedIds": [
+        "3798106"
+      ],
+      "rare": false,
+      "rawCopyNumber": 0,
+      "refCopyNumber": 0
+    }],
     "geneFusions": [],
     "indels": [],
     "nonHotspotRules": [],
-    "singleNucleotideVariants": [{
-      "alternative": "CCT",
-      "armSpecific": false,
-      "chromosome": "chr7",
-      "confirmed": false,
-      "description": "V600E, V600K, V600D, V600R",
-      "geneName": "MTOR",
-      "identifier": "COSM1034",
-      "inclusion": true,
-      "levelOfEvidence": 2,
-      "position": "71184573",
-      "rare": false,
-      "reference": "CAC"
-    }],
+    "singleNucleotideVariants": [],
     "unifiedGeneFusions": []
   },
-  "version": "2015-08-06"
+  "version": "2016-05-31"
 }]
