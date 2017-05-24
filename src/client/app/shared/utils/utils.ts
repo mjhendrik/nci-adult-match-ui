@@ -1,5 +1,5 @@
-import { scrollTo } from './ScrollTo';
+import { scrollToElement } from './ScrollTo';
 
 export {
-  scrollTo
+  scrollToElement
 };
