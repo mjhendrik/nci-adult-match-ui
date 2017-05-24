@@ -7,7 +7,7 @@ import { routerTransition } from './../../shared/router.animations';
 import { GmtPipe } from './../../shared/pipes/gmt.pipe';
 import {
   TreatmentArmApiService,
-  TreatmentArmDetailsInterface
+  // TreatmentArmDetailsInterface
 } from '../treatment-arm-api.service';
 
 
@@ -84,7 +84,7 @@ export class TreatmentArmDetailsComponent implements OnInit {
   ruleIn: any[];
   ruleEx: any[];
 
-  // versionData: any[];
+  versionData: any[];
   // tableRulesData: any;
   // tablePatientData: any[];
   tableData: any[];
@@ -187,10 +187,11 @@ export class TreatmentArmDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getData();
+    this.getDetailsData();
+    this.getVersionsData();
   }
 
-  getData() {
+  getDetailsData() {
     let gmt = new GmtPipe();
     this.treatmentArmApi.getTreatmentArmDetails()
       .subscribe(itemList => {
@@ -235,6 +236,16 @@ export class TreatmentArmDetailsComponent implements OnInit {
         this.ruleIn = itemsRule.filter(item => item.inclusion === true);
         this.ruleEx = itemsRule.filter(item => item.inclusion === false);
 
+      },
+      error => this.errorMessage = <any>error
+      );
+  }
+
+  getVersionsData() {
+    this.treatmentArmApi.getTreatmentArmVersions()
+      .subscribe(itemList => {
+        this.versionData = itemList;
+        this.dataAvailable = true;
       },
       error => this.errorMessage = <any>error
       );

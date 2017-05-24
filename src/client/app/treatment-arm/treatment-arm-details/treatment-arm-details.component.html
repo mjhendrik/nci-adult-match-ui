@@ -27,9 +27,9 @@
                           <dt>Treatment Arm Approval Date</dt>
                           <dd>
                             <div class="btn-group m-b-5 m-r-5">
-                              <a href="javascript:;" data-toggle="dropdown" class="btn btn-success-light dropdown-toggle" aria-expanded="false">{{tableData[0].version | dashify}}&nbsp;&nbsp;<span class="caret"></span></a>
+                              <a href="javascript:;" data-toggle="dropdown" class="btn btn-success-light dropdown-toggle" aria-expanded="false">{{tableData[0].version | dashify}}<span *ngIf="tableData[0].dateArchived===null">*</span>&nbsp;&nbsp;<span class="caret"></span></a>
                               <ul class="dropdown-menu">
-                                <li *ngFor="let item of tableData[0].versionData"><a href="javascript:;" *ngIf="item!=version">{{item | dashify}}</a></li>
+                                <li *ngFor="let item of versionData"><a href="javascript:;" *ngIf="item.version!=tableData[0].version">{{item.version | dashify}}<span *ngIf="item.dateArchived===null">*</span></a></li>
                               </ul>
                             </div>
                           </dd>
@@ -411,7 +411,8 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td class="text-muted" colspan="7">There are no included single nucleotide variants for treatment arm "{{tableData[0].treatmentId | dashify}}"</td>
+                              <td class="text-muted" colspan="7">There are no included single nucleotide variants for treatment arm "{{tableData[0].treatmentId
+                                | dashify}}"</td>
                             </tr>
                           </tbody>
                         </table>
@@ -533,7 +534,8 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td class="text-muted" colspan="7">There are no excluded single nucleotide variants for treatment arm "{{tableData[0].treatmentId | dashify}}"</td>
+                              <td class="text-muted" colspan="7">There are no excluded single nucleotide variants for treatment arm "{{tableData[0].treatmentId
+                                | dashify}}"</td>
                             </tr>
                           </tbody>
                         </table>
@@ -907,7 +909,9 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td class="text-muted" colspan="5">There are no included copy number variants for treatment arm "{{tableData[0].treatmentId | dashify}}"</td>
+                              <td class="text-muted" colspan="5">There are no included copy number variants for treatment arm "{{tableData[0].treatmentId |
+                                dashify}}"
+                              </td>
                             </tr>
                           </tbody>
                         </table>
@@ -1015,7 +1019,9 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td class="text-muted" colspan="5">There are no excluded copy number variants for treatment arm "{{tableData[0].treatmentId | dashify}}"</td>
+                              <td class="text-muted" colspan="5">There are no excluded copy number variants for treatment arm "{{tableData[0].treatmentId |
+                                dashify}}"
+                              </td>
                             </tr>
                           </tbody>
                         </table>
@@ -1685,7 +1691,9 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td class="text-muted" colspan="11">There have never been any patients assigned to treatment arm "{{tableData[0].treatmentId | dashify}}"</td>
+                              <td class="text-muted" colspan="11">There have never been any patients assigned to treatment arm "{{tableData[0].treatmentId |
+                                dashify}}"
+                              </td>
                             </tr>
                           </tbody>
                         </table>

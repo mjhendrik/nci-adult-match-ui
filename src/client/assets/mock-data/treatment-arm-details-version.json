@@ -1,0 +1,17 @@
+[{
+    "dateArchived": null,
+    "version": "2016-05-31"
+  },
+  {
+    "dateArchived": {
+      "$date": 1456246261666
+    },
+    "version": "2015-08-06"
+  },
+  {
+    "dateArchived": {
+      "$date": 1465225012773
+    },
+    "version": "2016-01-20"
+  }
+]

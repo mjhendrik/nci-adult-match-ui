@@ -42,6 +42,16 @@ export class TreatmentArmApiService {
       .catch(this.handleError);
   }
 
+  getTreatmentArmVersions(): Observable<any[]> {
+
+    return this.http.get('assets/mock-data/treatment-arm-details-version.json')
+
+      // return this.http.get(Config.API.TREATMENT_ARM + '/treatment_arms/' + treatmentId + '?projection=dateArchived,version')
+      .map((res: Response) => res.json())
+      //              .do(data => console.log('server data:', data))  // debug
+      .catch(this.handleError);
+  }
+
   getTreatmentArmList(): Observable<any[]> {
 
     // return this.http.get('assets/mock-data/treatment-arm-list.json')

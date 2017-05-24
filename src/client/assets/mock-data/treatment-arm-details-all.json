@@ -142,11 +142,6 @@
     "unifiedGeneFusions": []
   },
   "version": "2016-05-31",
-  "versionData": [
-    "2017-08-06*",
-    "2016-11-18",
-    "2016-11-19"
-  ],
   "tablePatientData": [{
       "slot": null,
       "patientSequenceNumber": "10361",
