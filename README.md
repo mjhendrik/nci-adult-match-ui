@@ -30,7 +30,7 @@ To restore MongoDB data:
 
 ```bash
 $ docker exec -it nciadultmatchui_mongo_1 bash # to attach to the mongo service of your docker-compose
-$ mongorestore --db match ./backup             # to restore the mongo dump
+$ mongorestore --db Match ./backup             # to restore the mongo dump
 $ exit                                         # to exit out of the mongo container into your terminal
 ```
 
