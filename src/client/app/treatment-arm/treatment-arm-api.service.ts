@@ -6,12 +6,10 @@ import { AuthHttp } from 'angular2-jwt';
 
 // import 'rxjs/add/operator/do';  // for debugging
 
-export interface TreatmentArmDetailsInterface {
-  // versionData: any[];
-  // tableRulesData: {};
-  // tablePatientData: any[];
-  tableData: any[];
-}
+// export interface TreatmentArmDetailsInterface {
+//   // tablePatientData: any[];
+//   tableData: any[];
+// }
 
 /**
  * This class provides the NameList service with methods to read names and add names.
@@ -37,6 +35,18 @@ export class TreatmentArmApiService {
 
       // return this.http.get(Config.API.TREATMENT_ARM + '/treatment_arms/' + treatmentId
       //   + '?active=true&projection=treatmentId,name,version,targetId,targetName,gene,numPatientsAssigned,treatmentArmStatus,statusLog,assayResults,exclusionDiseases,exclusionDrugs,variantReport')
+      .map((res: Response) => res.json())
+      //              .do(data => console.log('server data:', data))  // debug
+      .catch(this.handleError);
+  }
+
+  getPreviousTreatmentArmDetails(): Observable<any[]> {
+
+    // return this.http.get('assets/mock-data/treatment-arm-details-new-previous.json')
+    return this.http.get('assets/mock-data/treatment-arm-details-all-previous.json')
+
+      // return this.http.get(Config.API.TREATMENT_ARM + '/treatment_arms/' + treatmentId
+      //   + '?projection=treatmentId,name,version,targetId,targetName,gene,numPatientsAssigned,treatmentArmStatus,statusLog,assayResults,exclusionDiseases,exclusionDrugs,variantReport')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
