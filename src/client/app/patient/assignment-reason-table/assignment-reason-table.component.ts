@@ -15,6 +15,7 @@ export class AssignmentReasonSection {
 @Component({
   moduleId: module.id,
   selector: 'sd-assignment-reason-table',
+  styleUrls: ['assignment-reason-table.component.css'],
   templateUrl: 'assignment-reason-table.component.html'
 })
 export class AssignmentReasonTableComponent {

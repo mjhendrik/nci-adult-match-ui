@@ -78,12 +78,15 @@
             <dd>{{assignmentReport.dateAssigned | gmt}}</dd>
             <dt>Assignment Sent to ECOG Date</dt>
             <dd>{{assignmentReport.dateSentToECOG | gmt}}</dd>
-           <dt>Assignment Received by ECOG Date</dt>
+            <dt>Assignment Received by ECOG Date</dt>
             <dd>{{assignmentReport.dateReceivedByECOG | gmt}}</dd>
           </dl>
-          <h4 *ngIf="assignmentReport.hasSelectedTreatmentArm">Selected Treatment Arm: <span class="text-success-light">
-            <a href [routerLink]="['/treatments/details']" class="link-none"><i class="fa fa-medkit"></i> {{assignmentReport.treatmentArm._id | dashify}} ({{assignmentReport.treatmentArm.version}})</a></span>
-          </h4>
+
+          <dl *ngIf="assignmentReport.hasSelectedTreatmentArm" class="dl-horizontal widest-dt">
+            <dt>Selected Treatment Arm</dt>
+            <dd><a href [routerLink]="['/treatments/details']" class="link-none"><i class="fa fa-medkit"></i> {{assignmentReport.treatmentArm._id | dashify}} ({{assignmentReport.treatmentArm.version}})</a></dd>
+          </dl>
+
           <div *ngIf="assignmentReport.hasSelectedTreatmentArm" class="panel panel-success overflow-hidden">
             <div class="panel-heading">
               <p>
@@ -337,13 +340,12 @@
       <div class="row">
         <div class="col-md-12">
           <sd-assignment-reason-table  [reasons]="assignmentReport.reasons"></sd-assignment-reason-table>
-          <!--<sd-assignment-reason-table [assignmentReason]="assignmentReason"></sd-assignment-reason-table>-->
         </div>
       </div>
     </div>
   </div>
 
-  <div *ngIf="assignmentHistory && assignmentHistory.length" class="panel panel-white panel-accent-sides-purple overflow-hidden">
+  <div *ngIf="assignmentHistory && assignmentHistory.length > 1" class="panel panel-white panel-accent-sides-purple overflow-hidden">
     <div class="panel-heading">
       <div class="row">
         <div class="col-md-12">
