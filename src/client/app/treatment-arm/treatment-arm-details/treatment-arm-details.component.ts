@@ -4,7 +4,7 @@ import {
 } from '@angular/core';
 
 import { routerTransition } from './../../shared/router.animations';
-import { GmtPipe } from './../../shared/pipes/gmt.pipe';
+// import { GmtPipe } from './../../shared/pipes/gmt.pipe';
 import {
   TreatmentArmApiService,
   // TreatmentArmDetailsInterface
@@ -127,8 +127,10 @@ export class TreatmentArmDetailsComponent implements OnInit {
 
   // 12 BARS (actual data)
 
-  // public barChartLabels: string[] = ['Adenocarcinoma - pancreas', 'Adenocarcinoma, NOS', 'Bone cancer, NOS', 'Carcinoma, NOS', 'Cholangiocar.- intra/extrahepatic', 'CNS primary tumor, NOS', 'Female reprod. system cancer, NOS', 'Lung adenocarcinoma', 'Neuroendocrine cancer, NOS', 'Ovarian epithelial cancer', 'Pancreatic neuroendocrine tumor', 'Thyroid cancer, NOS'];
-  // public barChartType: string = 'bar';
+  // public barChartLabels: string[] = ['Adenocarcinoma - pancreas', 'Adenocarcinoma, NOS', 'Bone cancer, NOS', 'Carcinoma, NOS',
+  //   'Cholangiocar.- intra/extrahepatic', 'CNS primary tumor, NOS', 'Female reprod. system cancer, NOS', 'Lung adenocarcinoma',
+  //   'Neuroendocrine cancer, NOS', 'Ovarian epithelial cancer', 'Pancreatic neuroendocrine tumor', 'Thyroid cancer, NOS'];
+  // // public barChartType: string = 'bar';
   // public barChartLegend: boolean = false;
 
   // public barChartData: any[] = [
@@ -156,13 +158,25 @@ export class TreatmentArmDetailsComponent implements OnInit {
 
   // MAX 35 BARS (mock data)
 
-  public barChartLabels: string[] = ['Adenocarcinoma - pancreas (10053130)', 'Adenocarcinoma, NOS (10021980)', 'Bone cancer, NOS (10006190)', 'Carcinoma, NOS (10006285)', 'Cholangiocar.- intra/extrahepatic (10025126)', 'CNS primary tumor, NOS (10009951)', 'Female reprod. system cancer, NOS (10038045)', 'Lung adenocarcinoma (10053130)', 'Neuroendocrine cancer, NOS (10021980)', 'Ovarian epithelial cancer (10006190)', 'Pancreatic neuroendocrine tumor (10006285)', 'Thyroid cancer, NOS (10025126)', 'Adenocarcinoma - pancreas (10009951)', 'Adenocarcinoma, NOS (10038045)', 'Bone cancer, NOS (10053130)', 'Carcinoma, NOS (10021980)', 'Cholangiocar.- intra/extrahepatic (10006190)', 'CNS primary tumor, NOS (10006285)', 'Female reprod. system cancer, NOS (10025126)', 'Lung adenocarcinoma (10009951)', 'Neuroendocrine cancer, NOS (10038045)', 'Ovarian epithelial cancer (10053130)', 'Pancreatic neuroendocrine tumor (10021980)', 'Thyroid cancer, NOS (10006190)', 'Adenocarcinoma - pancreas (10006285)', 'Adenocarcinoma, NOS (10025126)', 'Bone cancer, NOS (10009951)', 'Carcinoma, NOS (10038045)', 'Cholangiocar.- intra/extrahepatic (10053130)', 'CNS primary tumor, NOS (10021980)', 'Female reprod. system cancer, NOS (10006190)', 'Lung adenocarcinoma (10006285)', 'Neuroendocrine cancer, NOS (10025126)', 'Ovarian epithelial cancer (10009951)', 'Pancreatic neuroendocrine tumor (10038045)'];
+  public barChartLabels: string[] = ['Adenocarcinoma - pancreas (10053130)', 'Adenocarcinoma, NOS (10021980)',
+    'Bone cancer, NOS (10006190)', 'Carcinoma, NOS (10006285)', 'Cholangiocar.- intra/extrahepatic (10025126)',
+    'CNS primary tumor, NOS (10009951)', 'Female reprod. system cancer, NOS (10038045)', 'Lung adenocarcinoma (10053130)',
+    'Neuroendocrine cancer, NOS (10021980)', 'Ovarian epithelial cancer (10006190)', 'Pancreatic neuroendocrine tumor (10006285)',
+    'Thyroid cancer, NOS (10025126)', 'Adenocarcinoma - pancreas (10009951)', 'Adenocarcinoma, NOS (10038045)',
+    'Bone cancer, NOS (10053130)', 'Carcinoma, NOS (10021980)', 'Cholangiocar.- intra/extrahepatic (10006190)',
+    'CNS primary tumor, NOS (10006285)', 'Female reprod. system cancer, NOS (10025126)', 'Lung adenocarcinoma (10009951)',
+    'Neuroendocrine cancer, NOS (10038045)', 'Ovarian epithelial cancer (10053130)', 'Pancreatic neuroendocrine tumor (10021980)',
+    'Thyroid cancer, NOS (10006190)', 'Adenocarcinoma - pancreas (10006285)', 'Adenocarcinoma, NOS (10025126)',
+    'Bone cancer, NOS (10009951)', 'Carcinoma, NOS (10038045)', 'Cholangiocar.- intra/extrahepatic (10053130)',
+    'CNS primary tumor, NOS (10021980)', 'Female reprod. system cancer, NOS (10006190)', 'Lung adenocarcinoma (10006285)',
+    'Neuroendocrine cancer, NOS (10025126)', 'Ovarian epithelial cancer (10009951)', 'Pancreatic neuroendocrine tumor (10038045)'];
   public barChartType: string = 'bar';
   public barChartLegend: boolean = false;
 
   public barChartData: any[] = [
     {
-      data: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
+      data: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+        10, 10, 10],
       label: 'Max',
       type: 'line',
       fill: false,
@@ -193,12 +207,9 @@ export class TreatmentArmDetailsComponent implements OnInit {
   }
 
   getDetailsData() {
-    let gmt = new GmtPipe();
+    // let gmt = new GmtPipe();
     this.treatmentArmApi.getTreatmentArmDetails()
       .subscribe(itemList => {
-
-        // this.versionData = itemList.versionData;
-        // this.tableRulesData = itemList.tableRulesData;
 
         this.tableData = itemList;
         this.dataAvailable = true;
@@ -243,12 +254,9 @@ export class TreatmentArmDetailsComponent implements OnInit {
   }
 
   getPreviousDetailsData() {
-    let gmt = new GmtPipe();
+    // let gmt = new GmtPipe();
     this.treatmentArmApi.getPreviousTreatmentArmDetails()
       .subscribe(itemList => {
-
-        // this.versionData = itemList.versionData;
-        // this.tableRulesData = itemList.tableRulesData;
 
         this.tableData = itemList;
         this.dataAvailable = true;
@@ -290,6 +298,12 @@ export class TreatmentArmDetailsComponent implements OnInit {
       },
       error => this.errorMessage = <any>error
       );
+  }
+
+  setVersionIndex(i: number): void {
+    this.versionIndex = i;
+    console.log(this.versionIndex);
+    this.getPreviousDetailsData();
   }
 
   getVersionsData() {
