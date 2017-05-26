@@ -1,0 +1,106 @@
+<h4>Indels</h4>
+<div class="row">
+  <div class="col-md-6">
+    <div class="dataTables_length form-inline p-t-15 p-b-10" id="data-table_length">
+      <label>Show
+        <select name="data-table_length" [(ngModel)]="recordsPerPage" aria-controls="data-table" class="form-control input-sm">
+        <option [ngValue]=10>10</option>
+        <option [ngValue]=25>25</option>
+        <option [ngValue]=50>50</option>
+        <option [ngValue]=100>100</option>
+        </select> entries
+      </label>
+    </div>
+  </div>
+  <div class="col-md-6 p-r-5">
+    <div id="data-table_filter" class="dataTables_filter pull-right form-inline p-t-15 p-b-10">
+      <label>Search:
+        <input type="text" [(ngModel)]="searchTerm" class="form-control input-sm" placeholder="" aria-controls="data-table">                      
+      </label>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="table-responsive col-lg-12">
+    <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="items | filterByText: searchTerm" #mfTable="mfDataTable"
+      [(mfSortBy)]="defaultSort" [mfRowsOnPage]="recordsPerPage">
+      <thead>
+        <tr [ngClass]="{true:'purple-light',false:'orangeshade-light'}[type=='patient']">
+          <th>
+            <mfDefaultSorter by="id"><span class="table-header">ID</span></mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="chrom"><span class="table-header">Chrom</span></mfDefaultSorter>
+          </th>
+          <th style="min-width:8em">
+            <mfDefaultSorter by="position"><span class="table-header">Position </span></mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="reference"><span class="table-header">Reference</span></mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="alternative"><span class="table-header">Alternative</span></mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="alleleFreq"><span class="table-header">Allele Freq </span></mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="funcGene"><span class="table-header">Func Gene</span></mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="oncomineVariantClass"><span class="table-header">Oncomine Variant Class</span></mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="exon"><span class="table-header">Exon</span></mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="function"><span class="table-header">Function</span></mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="hgvs"><span class="table-header">HGVS</span></mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="readDepth"><span class="table-header">Read Depth</span></mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="transcript"><span class="table-header">Transcript</span></mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="protein"><span class="table-header">Protein</span></mfDefaultSorter>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of mfTable.data">
+          <td>{{item.id | dashify}}</td>
+          <td>{{item.chrom | dashify}}</td>
+          <td>{{item.position | dashify}}</td>
+          <td>{{item.reference | dashify}}</td>
+          <td>{{item.alternative | dashify}}</td>
+          <td>{{item.alleleFreq | dashify}}</td>
+          <td>{{item.funcGene | dashify}}</td>
+          <td>{{item.oncomineVariantClass | dashify}}</td>
+          <td>{{item.exon | dashify}}</td>
+          <td>{{item.function | dashify}}</td>
+          <td>{{item.hgvs | dashify}}</td>
+          <td>{{item.readDepth | dashify}}</td>
+          <td>{{item.transcript | dashify}}</td>
+          <td>{{item.protein | dashify}}</td>
+        </tr>
+        <tr *ngIf="!items || mfTable.data.length == 0">
+          <td class="text-muted" colspan="14">
+            <span *ngIf="searchTerm">No matching search results found for "{{searchTerm}}"</span>
+            <span *ngIf="!searchTerm">No Indels Variants data</span>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td class="tfoot-padding" colspan="14">
+            <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchTerm" [totallength]="items ? items.length : 0"></mfBootstrapPaginator>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>

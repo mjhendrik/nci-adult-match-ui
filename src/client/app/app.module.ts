@@ -33,6 +33,7 @@ import { PatientVariantReportQcModule } from './patient/patient-variant-report-q
 import { CliaVariantReportQcModule } from './clia/clia-variant-report-qc/clia-variant-report-qc.module';
 import { AssignmentReportModule } from './patient/assignment-report/assignment-report.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { VariantReportSimpleTableModule } from './shared/variant-report-simple-table/variant-report-simple-table.module';
 import { VariantReportFilteredTableModule } from './shared/variant-report-filtered-table/variant-report-filtered-table.module';
 import { PopoverModule } from 'ngx-popover';
 import { HttpInterceptor } from './shared/http.interceptor';
@@ -63,6 +64,7 @@ import { Router } from '@angular/router';
     CliaVariantReportQcModule,
     AssignmentReportModule,
     VariantReportFilteredTableModule,
+    VariantReportSimpleTableModule,
     PopoverModule
   ],
   declarations: [AppComponent],

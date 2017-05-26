@@ -9,6 +9,7 @@ import { DirectivesModule } from '../../shared/directives/directives.module';
 import { PatientApiService } from '../patient-api.service';
 import { AssignmentReasonTableModule } from './../assignment-reason-table/assignment-reason-table.module';
 import { ViewDataTransformer } from './../view-data-transformer.service';
+import { VariantReportSimpleTableModule } from '../../shared/variant-report-simple-table/variant-report-simple-table.module';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { ViewDataTransformer } from './../view-data-transformer.service';
     FormsModule,
     DataTableModule,
     PipesModule,
-    DirectivesModule
+    DirectivesModule,
+    VariantReportSimpleTableModule
   ],
   declarations: [PatientVariantReportComponent],
   exports: [PatientVariantReportComponent],
