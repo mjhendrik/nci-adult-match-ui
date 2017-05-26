@@ -18,6 +18,7 @@
       <td>{{item.identifier | dashify}}</td>
       <td>{{item.aMoi | dashify}}</td>
       <td>{{item.driverGene | dashify}}</td>
+      <td><external-link [linkType]="'geneId'" [linkId]="item.identifier"></external-link></td>
       <td>{{item.driverReadCount | dashify}}</td>
       <td>{{item.partnerGene | dashify}}</td>
       <td>{{item.partnerReadCount | dashify}}</td>
