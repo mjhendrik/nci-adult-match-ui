@@ -6,8 +6,6 @@ import { PipesModule } from '../../shared/pipes/pipes.module';
 import { DirectivesModule } from '../../shared/directives/directives.module';
 import { PatientApiService } from '../../patient/patient-api.service';
 import { CliaApiService } from '../../clia/clia-api.service';
-import { VariantReportSimpleTableSnvComponent } from './variant-report-simple-table-snv.component';
-import { VariantReportSimpleTableIndelsComponent } from './variant-report-simple-table-indels.component';
 import { VariantReportSimpleTableCnvComponent } from './variant-report-simple-table-cnv.component';
 import { VariantReportSimpleTableGeneFusionComponent } from './variant-report-simple-table-gf.component';
 import { VariantReportSimpleTableSnvIndelsComponent } from './variant-report-simple-table-snv-indels.component';
@@ -21,15 +19,11 @@ import { VariantReportSimpleTableSnvIndelsComponent } from './variant-report-sim
     DirectivesModule
   ],
   declarations: [
-    VariantReportSimpleTableSnvComponent,
-    VariantReportSimpleTableIndelsComponent,
     VariantReportSimpleTableCnvComponent,
     VariantReportSimpleTableGeneFusionComponent,
     VariantReportSimpleTableSnvIndelsComponent
   ],
   exports: [
-    VariantReportSimpleTableSnvComponent,
-    VariantReportSimpleTableIndelsComponent,
     VariantReportSimpleTableCnvComponent,
     VariantReportSimpleTableGeneFusionComponent,
     VariantReportSimpleTableSnvIndelsComponent

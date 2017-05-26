@@ -1,70 +1,30 @@
-<h4>Gene Fusions</h4>
-<div class="row">
-  <div class="col-md-6">
-    <div class="dataTables_length form-inline p-t-15 p-b-10" id="data-table_length">
-      <label>Show
-        <select name="data-table_length" [(ngModel)]="recordsPerPage" aria-controls="data-table" class="form-control input-sm">
-        <option [ngValue]=10>10</option>
-        <option [ngValue]=25>25</option>
-        <option [ngValue]=50>50</option>
-        <option [ngValue]=100>100</option>
-        </select> entries
-      </label>
-    </div>
-  </div>
-  <div class="col-md-6 p-r-5">
-    <div id="data-table_filter" class="dataTables_filter pull-right form-inline p-t-15 p-b-10">
-      <label>Search:
-        <input type="text" [(ngModel)]="searchTerm" class="form-control input-sm" placeholder="" aria-controls="data-table">
-      </label>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="table-responsive col-lg-12">
-    <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="items | filterByText: searchTerm" #mfTable="mfDataTable"
-      [(mfSortBy)]="defaultSort" [mfRowsOnPage]="recordsPerPage">
-      <thead>
-        <tr [ngClass]="{true:'purple-light',false:'orangeshade-light'}[type=='patient']">
-          <th><mfDefaultSorter by="id"><span class="table-header">ID</span></mfDefaultSorter></th>
-          <th><mfDefaultSorter by="0"><span class="table-header">Chrom</span></mfDefaultSorter></th>
-          <th><mfDefaultSorter by="1"><span class="table-header">Position </span></mfDefaultSorter></th>
-          <th><mfDefaultSorter by="2"><span class="table-header">Reference</span></mfDefaultSorter></th>
-          <th><mfDefaultSorter by="3"><span class="table-header">Alternative</span></mfDefaultSorter></th>
-          <th><mfDefaultSorter by="4"><span class="table-header">Func Gene</span></mfDefaultSorter></th>
-          <th><mfDefaultSorter by="5"><span class="table-header">Oncomine Variant Class</span></mfDefaultSorter></th>
-          <th><mfDefaultSorter by="6"><span class="table-header">Exon</span></mfDefaultSorter></th>
-          <th><mfDefaultSorter by="7"><span class="table-header">Function</span></mfDefaultSorter></th>
-          <th><mfDefaultSorter by="partner_read_count"><span class="table-header">Read Count</span></mfDefaultSorter></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of mfTable.data">
-          <td>{{item.identifier | dashify}}</td>
-          <td>-</td>
-          <td>-</td>
-          <td>-</td>
-          <td>-</td>
-          <td>-</td>
-          <td>-</td>
-          <td>-</td>
-          <td>-</td>
-          <td>{{item.partner_read_count | dashify}}</td>
-        </tr>
-        <tr *ngIf="!items || mfTable.data.length == 0">
-          <td class="text-muted" colspan="14">
-            <span *ngIf="searchTerm">No matching search results found for "{{searchTerm}}"</span>
-            <span *ngIf="!searchTerm">No Gene Fusion Variant data</span>
-          </td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <td class="tfoot-padding" colspan="14">
-            <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchTerm" [totallength]="items ? items.length : 0"></mfBootstrapPaginator>
-          </td>
-        </tr>
-      </tfoot>
-    </table>
-  </div>
-</div>
+<h4>{{title}}</h4>
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th>Confirm</th>
+      <th>ID</th>
+      <th>aMOI</th>
+      <th>Gene 2</th>
+      <th>Gene 2 Count</th>
+      <th>Gene 1</th>
+      <th>Gene 1 Count</th>
+      <th>Annotation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of items">
+      <td><input type="checkbox" name="chr" value="checked" checked disabled></td>
+      <td>{{item.identifier | dashify}}</td>
+      <td>{{item.aMoi | dashify}}</td>
+      <td>{{item.driverGene | dashify}}</td>
+      <td>{{item.driverReadCount | dashify}}</td>
+      <td>{{item.partnerGene | dashify}}</td>
+      <td>{{item.partnerReadCount | dashify}}</td>
+      <td>{{item.annotation | dashify}}</td>
+    </tr>
+    <tr *ngIf="!items || !items.length">
+      <td colspan="8" class="text-muted">No {{title}} data</td>
+    </tr>
+  </tbody>
+</table>

@@ -164,93 +164,17 @@
     <div class="panel-heading">
       <div class="row">
         <div class="col-md-12">
-          <sd-variant-report-simple-table-snv-indels [items]="variantReport.singleNucleotideVariant"></sd-variant-report-simple-table-snv-indels>
+          <sd-variant-report-simple-table-snv-indels [items]="variantReport.singleNucleotideVariant" [title]="'Single Nucleotide Variants'"></sd-variant-report-simple-table-snv-indels>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
-          <h4>Indels</h4>
-          <table class="table table-condensed">
-            <thead>
-              <tr>
-                <th>Confirm</th>
-                <th>ID</th>
-                <th>aMOI</th>
-                <th>Chrom</th>
-                <th>Position </th>
-                <th>Reference</th>
-                <th>Alternative</th>
-                <th>Allele Freq </th>
-                <th>Func Gene</th>
-                <th>Oncomine Variant Class</th>
-                <th>Exon</th>
-                <th>Function</th>
-                <th>HGVS</th>
-                <th>Read Depth</th>
-                <th>Transcript</th>
-                <th>Protein</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let item of variantReport.indels">
-                <td><input type="checkbox" name="chr" value="checked" checked disabled></td>
-                <td>{{item.identifier | dashify}}</td>
-                <td>{{item.aMoi | dashify}}</td>
-                <td>{{item.chromosome | dashify}}</td>
-                <td>{{item.position | dashify}}</td>
-                <td>{{item.reference | dashify}}</td>
-                <td>{{item.alternative | dashify}}</td>
-                <td>{{item.alleleFreq | dashify}}</td>
-                <td>{{item.funcGene | dashify}}</td>
-                <td>{{item.oncomineVariantClass | dashify}}</td>
-                <td>{{item.exon | dashify}}</td>
-                <td>{{item.function | dashify}}</td>
-                <td>{{item.hgvs | dashify}}</td>
-                <td>{{item.readDepth | dashify}}</td>
-                <td>{{item.transcript | dashify}}</td>
-                <td>{{item.protein | dashify}}</td>
-              </tr>
-              <tr *ngIf="!variantReport.indels || !variantReport.indels.length">
-                <td colspan="17" class="text-muted">No Indels data</td>
-              </tr>
-            </tbody>
-          </table>
+          <sd-variant-report-simple-table-snv-indels [items]="variantReport.indels" [title]="'Indels'"></sd-variant-report-simple-table-snv-indels>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
-          <h4>Copy Number Variants</h4>
-          <table class="table table-condensed">
-            <thead>
-              <tr>
-                <th>Confirm</th>
-                <th>ID</th>
-                <th>aMOI</th>
-                <th>Chrom</th>
-                <th>Position </th>
-                <th>Raw CN</th>
-                <th>CN</th>
-                <th>CI 5%</th>
-                <th>CI 95%</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let item of variantReport.copyNumberVariants">
-                <td><input type="checkbox" name="chr" value="checked" checked disabled></td>
-                <td>{{item.identifier | dashify}}</td>
-                <td>{{item.aMoi | dashify}}</td>
-                <td>{{item.chromosome | dashify}}</td>
-                <td>{{item.position  | dashify}}</td>
-                <td>{{item.rawCn | dashify}}</td>
-                <td>{{item.cn | dashify}}</td>
-                <td>{{item.ci5Percent | dashify}}</td>
-                <td>{{item.ci95Percent | dashify}}</td>
-              </tr>
-              <tr *ngIf="!variantReport.copyNumberVariants || !variantReport.copyNumberVariants.length">
-                <td colspan="9" class="text-muted">No Copy Number Variants data</td>
-              </tr>
-            </tbody>
-          </table>
+          <sd-variant-report-simple-table-cnv [items]="variantReport.indels"></sd-variant-report-simple-table-cnv>
         </div>
       </div>
       <div class="row">
@@ -290,7 +214,7 @@
     </div>
   </div>
 
-  <div *ngIf="assignmentReport.reasons" id="assignment-details" class="panel panel-white panel-accent-sides-purple overflow-hidden">
+  <div *ngIf="assignmentReport && assignmentReport.reasons" id="assignment-details" class="panel panel-white panel-accent-sides-purple overflow-hidden">
     <div class="panel-heading">
       <div class="row">
         <div class="col-md-12">

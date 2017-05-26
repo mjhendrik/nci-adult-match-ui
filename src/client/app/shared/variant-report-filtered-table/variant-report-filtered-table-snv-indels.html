@@ -1,4 +1,4 @@
-<h4>Single Nucleotide Variants & Indels</h4>
+<h4>{{title}}</h4>
 <div class="row">
   <div class="col-md-6">
     <div class="dataTables_length form-inline p-t-15 p-b-10" id="data-table_length">
@@ -90,7 +90,7 @@
         <tr *ngIf="!items || mfTable.data.length == 0">
           <td class="text-muted" colspan="14">
             <span *ngIf="searchTerm">No matching search results found for "{{searchTerm}}"</span>
-            <span *ngIf="!searchTerm">No Single Nucleotide Variants data</span>
+            <span *ngIf="!searchTerm">No {{title}} data</span>
           </td>
         </tr>
       </tbody>

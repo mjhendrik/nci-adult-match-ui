@@ -13,4 +13,5 @@ import {
 })
 export class VariantReportSimpleTableSnvIndelsComponent {
   @Input() items: any[];
+  @Input() title: string;
 }

@@ -14,6 +14,7 @@ import {
 export class VariantReportFilteredTableSnvIndelsComponent {
   @Input() items: any[];
   @Input() type: string;
+  @Input() title: string;
 
   searchTerm: string = '';
   recordsPerPage: number = 25;

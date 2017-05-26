@@ -1,4 +1,4 @@
-<h4>Single Nucleotide Variants</h4>
+<h4>{{title}}</h4>
 <table class="table table-condensed">
   <thead>
     <tr>
@@ -40,7 +40,7 @@
       <td>{{item.protein | dashify}}</td>
     </tr>
     <tr *ngIf="!items || !items.length">
-      <td colspan="17" class="text-muted">No Single Nucleotide Variants data</td>
+      <td colspan="17" class="text-muted">No {{title}} data</td>
     </tr>
   </tbody>
 </table>

@@ -13,10 +13,5 @@ import {
 })
 export class VariantReportSimpleTableGeneFusionComponent {
   @Input() items: any[];
-  @Input() type: string;
-
-  searchTerm: string = '';
-  recordsPerPage: number = 25;
-  defaultSort: string = 'id';
-  errorMessage: string;
+  @Input() title: string = 'Gene Fusions';
 }
