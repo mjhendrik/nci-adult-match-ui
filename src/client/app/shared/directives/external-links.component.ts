@@ -1,57 +1,58 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
+
+export enum LinkType {
+    geneId = 1,
+    cosmicId = 2,
+    cosmicFusionId = 3
+}
+
+interface StringToStringMap {
+    [key: string]: string;
+}
 
 @Component({
     moduleId: module.id,
     selector: 'external-link',
     template: `
-    <a *ngIf="isValidLink()" style="text-decoration: none;" href="{{getLinkUrl()}}" target="_blank">{{ text }}</a>
+    <a *ngIf="isValidLink()" style="text-decoration: none;" href="{{getLinkUrl()}}" target="_blank" rel="noopener noreferrer">{{ text }}</a>
     <span *ngIf="!isValidLink()">{{ text }}</span>
   `,
 })
-export class ExternalLinksComponent implements OnInit {
+export class ExternalLinksComponent {
 
     text: string;
-    @Input('linkType') linkType: string;
-    @Input('linkId') linkId: string;
 
+    @Input('linkType') linkType?: LinkType;
 
-    patterns: any = {
-        cosmicFusionId: 'COSF([0-9]+)',
-        cosmicId: 'COSM([0-9]+)'
-    };
-
-    urls: any = {
-        cosmicId: {
-            url: 'http://cancer.sanger.ac.uk/cosmic/mutation/overview?id={id}'
-        },
-        cosmicFusionId: {
-            url: 'http://cancer.sanger.ac.uk/cosmic/fusion/summary?id={id}'
-        },
-        geneId: {
-            url: 'http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln={id}'
-        }
-    };
-
-    options: any = {};
-
-    ngOnInit() {
-        this.text = this.linkId === null ? '-' : this.linkId;
-        this.options = {
-            linkId: this.linkId,
-            linkType: this.linkType
-        };
+    private linkIdValue: string;
+    @Input()
+    set linkId(value: string) {
+        this.linkIdValue = value;
+        this.text = (value && value.trim()) || '-';
     }
+    get linkId(): string { return this.linkIdValue; }
+
+    private urls: StringToStringMap = {
+        'cosmicId': 'http://cancer.sanger.ac.uk/cosmic/mutation/overview?id={id}',
+        'cosmicFusionId': 'http://cancer.sanger.ac.uk/cosmic/fusion/summary?id={id}',
+        'geneId': 'http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln={id}',
+    };
+
+    private patterns: StringToStringMap = {
+        'cosmicId': 'COSM([0-9]+)',
+        'cosmicFusionId': 'COSF([0-9]+)',
+    };
 
     getLinkUrl(): string {
-        var options = this.options;
-        if (!options) {
+        if (!this.linkType || !this.linkId) {
             return '#';
         }
 
-        if (options.linkType in this.urls) {
-            var id = this.getLinkId(options);
+        if (this.linkType in this.urls) {
+            var id = this.getLinkId();
             if (id) {
-                return this.urls[options.linkType].url.replace(/{id}/g, this.getLinkId(options));
+                return this.urls[this.linkType].replace(/{id}/g, this.getLinkId());
             } else {
                 return '#';
             }
@@ -60,65 +61,63 @@ export class ExternalLinksComponent implements OnInit {
         }
     }
 
-    getLinkId(options: any): string {
-        if (!options || !options.linkId || options.linkId === 0 || options.linkId === '.' || options.linkId === '-') {
-            return '';
-        }
-
-        let matches: any = null;
-        var patterns = options.patterns || this.patterns;
-
-        switch (options.linkType) {
-            case 'cosmicId':
-                matches = options.linkId.match(new RegExp(patterns.cosmicId));
-                if (matches && matches[1] !== '') {
-                    return matches[1];
-                } else {
-                    return '';
-                }
-
-            case 'cosmicFusionId':
-                matches = options.linkId.match(new RegExp(patterns.cosmicFusionId));
-                if (matches && matches[1] !== '') {
-                    return matches[1];
-                } else {
-                    return '';
-                }
-
-            default:
-                return '';
-        }
-    }
-
     isValidLink(): boolean {
-        var options = this.options;
-        if (!options || !options.linkId || options.linkId === 0) {
+        if (!this.linkType || !this.linkId) {
             return false;
         }
 
         var matches: any = null;
-        var patterns = this.patterns;
 
-        switch (options.linkType) {
-
-            case 'cosmicId':
-                matches = options.linkId.match(new RegExp(patterns.cosmicId));
+        switch (this.linkType) {
+            case LinkType.cosmicId:
+                matches = this.linkId.match(new RegExp(this.patterns['cosmicId']));
                 if (matches && matches[1] !== '') {
                     return !!matches[1];
                 } else {
                     return false;
                 }
 
-            case 'cosmicFusionId':
-                matches = options.linkId.match(new RegExp(patterns.cosmicFusionId));
+            case LinkType.cosmicFusionId:
+                matches = this.linkId.match(new RegExp(this.patterns['cosmicFusionId']));
                 if (matches && matches[1] !== '') {
                     return !!matches[1];
                 } else {
                     return false;
                 }
+
+            case LinkType.geneId:
+                return true;
 
             default:
                 return false;
         }
     }
+
+    private getLinkId(): string {
+        let matches: any = null;
+
+        switch (this.linkType) {
+            case LinkType.cosmicId:
+                matches = this.linkId.match(new RegExp(this.patterns['cosmicId']));
+                if (matches && matches[1] !== '') {
+                    return matches[1];
+                } else {
+                    return '';
+                }
+
+            case LinkType.cosmicFusionId:
+                matches = this.linkId.match(new RegExp(this.patterns['cosmicFusionId']));
+                if (matches && matches[1] !== '') {
+                    return matches[1];
+                } else {
+                    return '';
+                }
+
+            case LinkType.geneId:
+                return this.linkId;
+
+            default:
+                return '';
+        }
+    }    
 }

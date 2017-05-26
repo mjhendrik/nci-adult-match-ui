@@ -7,7 +7,7 @@ import { DataTableModule } from '../../shared/datatables/index';
 import { PipesModule } from '../../shared/pipes/pipes.module';
 import { DirectivesModule } from '../../shared/directives/directives.module';
 import { PatientApiService } from '../patient-api.service';
-import { VariantReportFilteredTableModule } from '../../shared/variant-report-table/variant-report-filtered-table.module';
+import { VariantReportFilteredTableModule } from '../../shared/variant-report-filtered-table/variant-report-filtered-table.module';
 
 @NgModule({
   imports: [

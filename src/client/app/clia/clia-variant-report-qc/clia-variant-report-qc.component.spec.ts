@@ -13,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { PipesModule } from './../../shared/pipes/pipes.module';
 import { DirectivesModule } from './../../shared/directives/directives.module';
-import { VariantReportFilteredTableModule } from '../../shared/variant-report-table/variant-report-filtered-table.module';
+import { VariantReportFilteredTableModule } from '../../shared/variant-report-filtered-table/variant-report-filtered-table.module';
 
 
 export function main() {
