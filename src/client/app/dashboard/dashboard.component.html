@@ -4,7 +4,7 @@
       Loaded at {{timestamp | date: 'mediumTime'}}
     </div>
     <!-- begin col-4 -->
-    <div class="col-md-4" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+    <div class="col-md-4" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" id="patient_summary">
       <a class="link-none" href="javascript:void(0)" [routerLink]="['/patients']">
         <div class="widget widget-stat bg-purple-light text-white">
           <div class="widget-stat-icon"><i class="fa fa-users fa-lg"></i></div>
@@ -18,7 +18,7 @@
     </div>
     <!-- end col-4 -->
     <!-- begin col-4 -->
-    <div class="col-md-4" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+    <div class="col-md-4" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" id="treatment_arm_summary">
       <a class="link-none" href="javascript:void(0)" [routerLink]="['/treatments']">
         <div class="widget widget-stat bg-success-light text-white">
           <div class="widget-stat-icon"><i class="fa fa-medkit fa-lg"></i></div>
@@ -34,7 +34,7 @@
     </div>
     <!-- end col-4 -->
     <!-- begin col-4 -->
-    <div class="col-md-4" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+    <div class="col-md-4" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" id="biopsy_summary">
       <a class="link-none" href="javascript:void(0)" [routerLink]="['/tracking']">
         <div class="widget widget-stat bg-info-light text-white">
           <div class="widget-stat-icon"><i class="fa fa-truck fa-lg"></i></div>
@@ -105,7 +105,7 @@
                           <option value=25>25</option>
                           <option value=50>50</option>
                           <option value=100>100</option>
-                        </select> 
+                        </select>
                       entries</label>
                         </div>
                       </div>
@@ -236,7 +236,7 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input [disabled]="tableVRData.length == 0" type="text" [(ngModel)]="searchtermVR" class="form-control form-control-purple input-sm" placeholder="" aria-controls="data-table">                      
+                        <input [disabled]="tableVRData.length == 0" type="text" [(ngModel)]="searchtermVR" class="form-control form-control-purple input-sm" placeholder="" aria-controls="data-table">
                         </label>
                         </div>
                       </div>
@@ -349,7 +349,7 @@
     <div class="col-md-12">
       <!-- begin panel -->
       <h1 class="page-header">Patients Awaiting Further Action Or Information</h1>
-      <div class="panel">
+      <div class="panel" id="limbo_panel">
         <div class="col-md-12 bg-purple-light">
           <div class="col-md-6 p-l-5">
             <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
@@ -359,7 +359,7 @@
                           <option value=25>25</option>
                           <option value=50>50</option>
                           <option value=100>100</option>
-                        </select> 
+                        </select>
                       entries</label>
             </div>
           </div>
