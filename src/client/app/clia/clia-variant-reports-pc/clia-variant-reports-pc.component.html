@@ -117,7 +117,7 @@
                   <span *ngIf="item.match===false"><i class="fa fa-times-circle text-danger-light"></i></span>
                 </td>
                 <td>
-                  <external-link [externalLink]="'cosmicId'" [linkId]="item.identifier"></external-link>
+                  <external-link [linkType]="'cosmicId'" [linkId]="item.identifier"></external-link>
                 </td>
                 <td>{{item.chromosome | dashify}}</td>
                 <td>{{item.position | dashify}}</td>
@@ -157,7 +157,7 @@
             <tbody>
               <tr *ngFor="let item of false_positive_variants">
                 <td>
-                  <external-link [externalLink]="'cosmicId'" [linkId]="item.identifier"></external-link>
+                  <external-link [linkType]="'cosmicId'" [linkId]="item.identifier"></external-link>
                 </td>
                 <td>{{item.chromosome | dashify}}</td>
                 <td>{{item.position | dashify}}</td>

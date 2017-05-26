@@ -92,7 +92,7 @@
             <tbody>
               <tr *ngFor="let item of snv_indels">
                 <td>
-                  <external-link [externalLink]="'cosmicId'" [linkId]="item.identifier"></external-link>
+                  <external-link [linkType]="'cosmicId'" [linkId]="item.identifier"></external-link>
                 </td>
                 <td>{{item.chromosome | dashify}}</td>
                 <td>{{item.position | dashify}}</td>

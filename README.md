@@ -6,6 +6,8 @@
 
 ## Local development build and deployment
 
+*Note: you need to have access to FNLCR private docker repository. Please contact systems team if you need the access.*
+
 To start the front-end and services locally:
 
 ```bash

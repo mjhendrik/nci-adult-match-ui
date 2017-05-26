@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+
 @Component({
     moduleId: module.id,
     selector: 'external-link',
@@ -7,12 +8,12 @@ import { Component, OnInit, Input } from '@angular/core';
     <span *ngIf="!isValidLink()">{{ text }}</span>
   `,
 })
-
 export class ExternalLinksComponent implements OnInit {
 
     text: string;
-    @Input('externalLink') externalLink: string;
+    @Input('linkType') linkType: string;
     @Input('linkId') linkId: string;
+
 
     patterns: any = {
         cosmicFusionId: 'COSF([0-9]+)',
@@ -25,6 +26,9 @@ export class ExternalLinksComponent implements OnInit {
         },
         cosmicFusionId: {
             url: 'http://cancer.sanger.ac.uk/cosmic/fusion/summary?id={id}'
+        },
+        geneId: {
+            url: 'http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln={id}'
         }
     };
 
@@ -34,7 +38,7 @@ export class ExternalLinksComponent implements OnInit {
         this.text = this.linkId === null ? '-' : this.linkId;
         this.options = {
             linkId: this.linkId,
-            linkType: this.externalLink
+            linkType: this.linkType
         };
     }
 
