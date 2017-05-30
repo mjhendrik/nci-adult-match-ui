@@ -53,13 +53,25 @@ export class TreatmentArmListComponent implements OnInit {
       );
   };
 
-  dateStatusLog(statusLog: any, type: string): string {
+  dateStatusLog(statusLog: any, type: string, item: any): string {
+
+    let keys = Object.keys(statusLog).map(x => {
+      return parseInt(x);
+    });
+
+    const maxValue = keys.reduce((prev, curr) => {
+      return curr > prev ? curr : prev;
+    }, 0);
 
     let key = Object.keys(statusLog).filter((dateStatusLog: string) => {
-      return Math.max(parseInt(dateStatusLog)) && type.indexOf(statusLog[dateStatusLog]) !== -1;
+      if (type === 'OPEN') return type.indexOf(statusLog[dateStatusLog]) !== -1;
+      else return maxValue === parseInt(dateStatusLog) && type.indexOf(statusLog[dateStatusLog]) !== -1;
     });
 
     if (key.length === 0) return '-';
+
+    if (type.indexOf(',') !== -1) item.dateClosedOrSuspended = this.gmt.transform(parseInt(key[0]));
+    else item.dateOpen = this.gmt.transform(parseInt(key[0]));
 
     return this.gmt.transform(parseInt(key[0]));
 

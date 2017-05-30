@@ -68,10 +68,10 @@
                                 <mfDefaultSorter by="dateCreated"><span class="table-header">Created Date</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="dateStatusLog0"><span class="table-header">Open Date</span></mfDefaultSorter>
+                                <mfDefaultSorter by="dateOpen"><span class="table-header">Open Date</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="dateStatusLog1"><span class="table-header">Suspended/Closed Date</span></mfDefaultSorter>
+                                <mfDefaultSorter by="dateClosedOrSuspended"><span class="table-header">Suspended/Closed Date</span></mfDefaultSorter>
                               </th>
                             </tr>
                           </thead>
@@ -87,8 +87,8 @@
                               <td>{{item.summaryReport.numNotEnrolledPatient | dashify}}</td>
                               <td [colorCodeTa]="item.treatmentArmStatus">{{item.treatmentArmStatus | dashify}}</td>
                               <td>{{item.dateCreated | dashify}}</td>
-                              <td>{{dateStatusLog(item.statusLog,'OPEN') | dashify}}</td>
-                              <td>{{dateStatusLog(item.statusLog,'CLOSED,SUSPENDED') | dashify}}</td>
+                              <td>{{dateStatusLog(item.statusLog,'OPEN',item) | dashify}}</td>
+                              <td>{{dateStatusLog(item.statusLog,'CLOSED,SUSPENDED',item) | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftableTA.data.length == 0">
                               <td class="text-muted" colspan="10">
