@@ -257,7 +257,8 @@
                           <tbody>
                             <tr>
                               <td class="text-muted" colspan="2">There are no exclusionary drugs for treatment arm "{{tableData[versionIndex].treatmentId |
-                                dashify}}"</td>
+                                dashify}}"
+                              </td>
                             </tr>
                           </tbody>
                         </table>
@@ -1640,7 +1641,7 @@
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select [disabled]="tableData[versionIndex].tablePatientData.length == 0" name="data-table_length" [(ngModel)]="recordsPerPagePatient"  aria-controls="data-table" class="form-control form-control-success input-sm">
+                        <select [disabled]="tableData[0].summaryReport.assignmentRecords.length == 0" name="data-table_length" [(ngModel)]="recordsPerPagePatient"  aria-controls="data-table" class="form-control form-control-success input-sm">
                           <option value=10>10</option>
                           <option value=25>25</option>
                           <option value=50>50</option>
@@ -1652,14 +1653,14 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input [disabled]="tableData[versionIndex].tablePatientData.length == 0" type="text" [(ngModel)]="searchtermPatient" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">
+                        <input [disabled]="tableData[0].summaryReport.assignmentRecords.length == 0" type="text" [(ngModel)]="searchtermPatient" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">
                       </label>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table *ngIf="tableData[versionIndex].tablePatientData.length == 0" class="table table-td-valign-middle table-striped table-col-width">
+                        <table *ngIf="tableData[0].summaryReport.assignmentRecords.length == 0" class="table table-td-valign-middle table-striped table-col-width">
                           <thead>
                             <tr class="success-light">
                               <th>
@@ -1705,8 +1706,8 @@
                             </tr>
                           </tbody>
                         </table>
-                        <table *ngIf="tableData[versionIndex].tablePatientData.length!=0" class="table table-td-valign-middle table-striped table-col-width"
-                          [mfData]="tableData[versionIndex].tablePatientData | filterByText: searchtermPatient" #mftablePatient="mfDataTable"
+                        <table *ngIf="tableData[0].summaryReport.assignmentRecords.length!=0" class="table table-td-valign-middle table-striped table-col-width"
+                          [mfData]="tableData[0].summaryReport.assignmentRecords | filterByText: searchtermPatient" #mftablePatient="mfDataTable"
                           [(mfSortBy)]="tablePatientDefaultSort" [mfRowsOnPage]="recordsPerPagePatient">
                           <thead>
                             <tr class="success-light">
@@ -1747,7 +1748,8 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftablePatient.data">
-                              <td>{{item.slot | dashify}}</td>
+                              <!--<td>{{item.slot | dashify}}</td>-->
+                              <td>-</td>
                               <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                                 <a href [routerLink]="['/patients', item.patientSequenceNumber]" class="link-none"><i class="fa fa-user"></i> {{item.patientSequenceNumber | dashify}}</a>
                               </td>
@@ -1755,14 +1757,15 @@
                                 <span *ngIf="item.treatmentArmVersion!=version"><a href="javascript:;" class="link-none"><i class="fa fa-medkit"></i> {{item.treatmentArmVersion | dashify}}</a></span>
                                 <span *ngIf="item.treatmentArmVersion == version"><i class="fa fa-medkit"></i> {{item.treatmentArmVersion | dashify}}</span>
                               </td>
-                              <td [colorCodePatients]="item.formattedPatientStatus">{{item.formattedPatientStatus | dashify}}</td>
-                              <td class="text-center"><a href [routerLink]="['/patients/details/variant_reports']" class="link-none"><i class="fa fa-file-text-o"></i></a></td>
-                              <td class="text-center"><a href [routerLink]="['/patients/details/variant_reports']" class="link-none"><i class="fa fa-file-text-o"></i></a></td>
+                              <td [colorCodePatients]="item.assignmentStatusOutcome">{{item.assignmentStatusOutcome | dashify}}</td>
+                              <td class="text-center"><a href [routerLink]="['/patients/' + item.patientSequenceNumber + '/variant_reports']" class="link-none"><i class="fa fa-file-text-o"></i></a></td>
+                              <td class="text-center"><a href [routerLink]="['/patients/' + item.patientSequenceNumber + '/variant_reports']" class="link-none"><i class="fa fa-file-text-o"></i></a></td>
+                              <!--/patients/10003/variant_reports/MSN3061_v1_61b14b2e-6da7-40d6-a540-2ae084b6febc-->
                               <td>{{item.dateSelected | dashify}}</td>
                               <td>{{item.dateOnArm | dashify}}</td>
                               <td>{{item.dateOffArm | dashify}}</td>
                               <td>{{item.stepNumber | dashify}}</td>
-                              <td>{{item.formattedDiseaseNames | dashify}}</td>
+                              <td>{{item.disease.shortName | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftablePatient.data.length == 0">
                               <td class="text-muted" colspan="11">No matching search results found for "{{searchtermPatient}}"</td>
@@ -1771,7 +1774,7 @@
                           <tfoot>
                             <tr>
                               <td class="tfoot-padding" colspan="11">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermPatient" [totallength]="tableData[versionIndex].tablePatientData.length"></mfBootstrapPaginator>
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermPatient" [totallength]="tableData[0].summaryReport.assignmentRecords.length"></mfBootstrapPaginator>
                               </td>
                             </tr>
                           </tfoot>

@@ -5,10 +5,7 @@ import {
 
 import { routerTransition } from './../../shared/router.animations';
 import { GmtPipe } from './../../shared/pipes/gmt.pipe';
-import {
-  TreatmentArmApiService,
-  // TreatmentArmDetailsInterface
-} from '../treatment-arm-api.service';
+import { TreatmentArmApiService } from '../treatment-arm-api.service';
 
 
 /**
@@ -214,7 +211,7 @@ export class TreatmentArmDetailsComponent implements OnInit {
         this.tableData = itemList;
         this.dataAvailable = true;
 
-        this.tableData[this.versionIndex].tablePatientData = itemList[this.versionIndex].tablePatientData.map(x => {
+        this.tableData[0].summaryReport.assignmentRecords = itemList[0].summaryReport.assignmentRecords.map(x => {
           x.dateSelected = gmt.transform(x.dateSelected);
           x.dateOnArm = gmt.transform(x.dateOnArm);
           x.dateOffArm = gmt.transform(x.dateOffArm);
@@ -254,7 +251,7 @@ export class TreatmentArmDetailsComponent implements OnInit {
         this.tableData = itemList;
         this.dataAvailable = false;
 
-        this.tableData[this.versionIndex].tablePatientData = itemList[this.versionIndex].tablePatientData.map(x => {
+        this.tableData[0].summaryReport.assignmentRecords = itemList[0].summaryReport.assignmentRecords.map(x => {
           x.dateSelected = gmt.transform(x.dateSelected);
           x.dateOnArm = gmt.transform(x.dateOnArm);
           x.dateOffArm = gmt.transform(x.dateOffArm);

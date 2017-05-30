@@ -99,11 +99,30 @@
     "1489035600000": "CLOSED"
   },
   "summaryReport": {
-    "assignmentRecords": [],
-    "numCurrentPatientsOnArm": 0,
+    "numCurrentPatientOnArm": 1,
     "numFormerPatients": 0,
+    "numPendingArmApproval": 0,
     "numNotEnrolledPatient": 0,
-    "numPendingArmApproval": 0
+    "assignmentRecords": [{
+      "patientSequenceNumber": "1234",
+      "treatmentArmVersion": "2017-03-12",
+      "assignmentStatusOutcome": "ON_TREATMENT_ARM",
+      "analysisId": "MSN3061_v1_61b14b2e-6da7-40d6-a540-2ae084b6febc",
+      "assignmentReportId": 0,
+      "dateSelected": "2017-06-12 18:54:48.608332",
+      "dateOnArm": "2017-07-12 18:54:48.608332",
+      "dateOffArm": null,
+      "timeOnArm": 314235,
+      "stepNumber": "1",
+      "disease": {
+        "meddraCode": "90600236",
+        "ctepCategory": "Reproductive System Neoplasm, Male",
+        "ctepSubCategory": "Penile Cancer",
+        "ctepTerm": "Penile adenocarcinoma",
+        "shortName": "Penile adenocarcinoma"
+      },
+      "assignmentReason": "The patient was selected for this because it matched identifier COSM12345."
+    }]
   },
   "targetId": "#REF!",
   "targetName": "Ado-trastuzumab Emtansine",
