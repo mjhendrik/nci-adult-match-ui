@@ -8,7 +8,7 @@ import { AuthGuard } from './../shared/auth/auth.guard.service';
   imports: [
     RouterModule.forChild([
       { path: 'error', component: ErrorComponent, canActivate: [AuthGuard] },
-      // { path: '**', component: ErrorComponent, canActivate: [AuthGuard] }
+      { path: '**', component: ErrorComponent }
     ])
   ],
   exports: [RouterModule]

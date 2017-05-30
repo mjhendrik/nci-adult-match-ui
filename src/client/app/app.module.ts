@@ -48,7 +48,6 @@ import { Router } from '@angular/router';
     SharedModule.forRoot(),
     AppRoutingModule,
     LoginModule,
-    ErrorModule,
     DashboardModule,
     CliaParentModule,
     CliaVariantReportsNtcModule,
@@ -65,7 +64,8 @@ import { Router } from '@angular/router';
     AssignmentReportModule,
     VariantReportFilteredTableModule,
     VariantReportSimpleTableModule,
-    PopoverModule
+    PopoverModule,
+    ErrorModule // This needs to be at the bottom of the list for ErrorComponent to work properly
   ],
   declarations: [AppComponent],
   providers: [
