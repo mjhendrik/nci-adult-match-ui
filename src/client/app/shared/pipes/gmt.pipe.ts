@@ -22,6 +22,7 @@ export class GmtPipe implements PipeTransform {
                 date = parseInt(value);
             } else {
                 date = new Date(value).getTime();
+                return moment.unix(date / 1000).format('LLL') + ' GMT';
             }
             if (format) {
                 return moment.unix(date / 1000).utc().format(format);
