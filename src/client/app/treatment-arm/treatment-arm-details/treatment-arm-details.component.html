@@ -1759,12 +1759,11 @@
                               </td>
                               <td [colorCodePatients]="item.assignmentStatusOutcome">{{item.assignmentStatusOutcome | dashify}}</td>
                               <td class="text-center">
-                                <a href [routerLink]="['/patients/' + item.patientSequenceNumber + '/variant_reports']" class="link-none"><i class="fa fa-file-text-o"></i></a>
+                                <a href [routerLink]="['/patients/' + item.patientSequenceNumber + '/variant_reports/' + item.analysisId]" class="link-none"><i class="fa fa-file-text-o"></i></a>
                               </td>
                               <td class="text-center">
-                                <a href [routerLink]="['/patients/' + item.patientSequenceNumber + '/variant_reports']" class="link-none"><i class="fa fa-file-text-o"></i></a>
+                                <a href [routerLink]="['/patients/' + item.patientSequenceNumber + '/variant_reports/' + item.analysisId]" class="link-none"><i class="fa fa-file-text-o"></i></a>
                               </td>
-                              <!--/patients/10003/variant_reports/MSN3061_v1_61b14b2e-6da7-40d6-a540-2ae084b6febc-->
                               <td>{{item.dateSelected | dashify}}</td>
                               <td>{{item.dateOnArm | dashify}}</td>
                               <td>{{item.dateOffArm | dashify}}</td>
