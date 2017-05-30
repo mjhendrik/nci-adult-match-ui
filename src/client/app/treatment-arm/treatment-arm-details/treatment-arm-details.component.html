@@ -34,9 +34,9 @@
                             </div>
                           </dd>
                           <dt>Drug ID</dt>
-                          <dd>{{tableData[versionIndex].targetId | dashify}}</dd>
+                          <dd>{{tableData[versionIndex].treatmentArmDrugs[0].drugId | dashify}}</dd>
                           <dt>Drug Name</dt>
-                          <dd>{{tableData[versionIndex].targetName | dashify}}</dd>
+                          <dd>{{tableData[versionIndex].treatmentArmDrugs[0].name | dashify}}</dd>
                           <dt>Genes</dt>
                           <dd>{{tableData[versionIndex].gene | dashify}}</dd>
                           <dt>Patients Assigned</dt>
@@ -198,7 +198,7 @@
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10 p-l-5" id="data-table_length">
                           <label>
                             Show
-                            <select [disabled]="tableData[versionIndex].exclusionDrugs[0].drugs.length == 0" name="data-table_length" [(ngModel)]="recordsPerPageExdr"  aria-controls="data-table" class="form-control form-control-success input-sm">
+                            <select [disabled]="tableData[versionIndex].exclusionDrugs.length == 0" name="data-table_length" [(ngModel)]="recordsPerPageExdr"  aria-controls="data-table" class="form-control form-control-success input-sm">
                               <option value=10>10</option>
                               <option value=25>25</option>
                               <option value=50>50</option>
@@ -211,7 +211,7 @@
                       <div class="col-md-6 bg-success-light">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10 p-r-5">
                           <label>Search:
-                            <input [disabled]="tableData[versionIndex].exclusionDrugs[0].drugs.length == 0" type="text" [(ngModel)]="searchtermExdr" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">
+                            <input [disabled]="tableData[versionIndex].exclusionDrugs.length == 0" type="text" [(ngModel)]="searchtermExdr" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">
                           </label>
                         </div>
                       </div>
@@ -243,7 +243,7 @@
                     <div class="row">
                       <!-- table exdr -->
                       <div class="table-responsive col-lg-6">
-                        <table *ngIf="tableData[versionIndex].exclusionDrugs[0].drugs.length == 0" class="table table-td-valign-middle table-striped table-col-width">
+                        <table *ngIf="tableData[versionIndex].exclusionDrugs.length == 0" class="table table-td-valign-middle table-striped table-col-width">
                           <thead>
                             <tr class="success-light">
                               <th>
@@ -262,23 +262,23 @@
                             </tr>
                           </tbody>
                         </table>
-                        <table *ngIf="tableData[versionIndex].exclusionDrugs[0].drugs.length!=0" class="table table-td-valign-middle table-striped table-col-width"
-                          [mfData]="tableData[versionIndex].exclusionDrugs[0].drugs | filterByText: searchtermExdr" #mftableExdr="mfDataTable"
+                        <table *ngIf="tableData[versionIndex].exclusionDrugs.length!=0" class="table table-td-valign-middle table-striped table-col-width"
+                          [mfData]="tableData[versionIndex].exclusionDrugs | filterByText: searchtermExdr" #mftableExdr="mfDataTable"
                           [(mfSortBy)]="tableExdrDefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPageExdr">
                           <thead>
                             <tr class="success-light">
                               <th>
-                                <mfDefaultSorter by="drugId"><span class="table-header">ID</span></mfDefaultSorter>
+                                <mfDefaultSorter by="drugs[0].drugId"><span class="table-header">ID</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="name"><span class="table-header">Name</span></mfDefaultSorter>
+                                <mfDefaultSorter by="drugs[0].name"><span class="table-header">Name</span></mfDefaultSorter>
                               </th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableExdr.data">
-                              <td>{{item.drugId | dashify}}</td>
-                              <td>{{item.name | dashify}}</td>
+                              <td>{{item.drugs[0].drugId | dashify}}</td>
+                              <td>{{item.drugs[0].name | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftableExdr.data.length == 0">
                               <td class="text-muted" colspan="2">No matching search results found for "{{searchtermExdr}}"</td>
@@ -287,7 +287,7 @@
                           <tfoot>
                             <tr>
                               <td class="tfoot-padding" colspan="2">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermExdr" [totallength]="tableData[versionIndex].exclusionDrugs[0].drugs.length"></mfBootstrapPaginator>
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermExdr" [totallength]="tableData[versionIndex].exclusionDrugs.length"></mfBootstrapPaginator>
                               </td>
                             </tr>
                           </tfoot>
@@ -328,7 +328,7 @@
                                 <mfDefaultSorter by="shortName"><span class="table-header">CTEP Term</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="medraCode"><span class="table-header">MedDRA Code</span></mfDefaultSorter>
+                                <mfDefaultSorter by="_id"><span class="table-header">MedDRA Code</span></mfDefaultSorter>
                               </th>
                             </tr>
                           </thead>
@@ -336,7 +336,7 @@
                             <tr *ngFor="let item of mftableExdz.data">
                               <td>{{item.ctepCategory | dashify}}</td>
                               <td>{{item.shortName | dashify}}</td>
-                              <td>{{item.medraCode | dashify}}</td>
+                              <td>{{item._id | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftableExdz.data.length == 0">
                               <td class="text-muted" colspan="3">No matching search results found for "{{searchtermExdz}}"</td>
@@ -1758,8 +1758,12 @@
                                 <span *ngIf="item.treatmentArmVersion == version"><i class="fa fa-medkit"></i> {{item.treatmentArmVersion | dashify}}</span>
                               </td>
                               <td [colorCodePatients]="item.assignmentStatusOutcome">{{item.assignmentStatusOutcome | dashify}}</td>
-                              <td class="text-center"><a href [routerLink]="['/patients/' + item.patientSequenceNumber + '/variant_reports']" class="link-none"><i class="fa fa-file-text-o"></i></a></td>
-                              <td class="text-center"><a href [routerLink]="['/patients/' + item.patientSequenceNumber + '/variant_reports']" class="link-none"><i class="fa fa-file-text-o"></i></a></td>
+                              <td class="text-center">
+                                <a href [routerLink]="['/patients/' + item.patientSequenceNumber + '/variant_reports']" class="link-none"><i class="fa fa-file-text-o"></i></a>
+                              </td>
+                              <td class="text-center">
+                                <a href [routerLink]="['/patients/' + item.patientSequenceNumber + '/variant_reports']" class="link-none"><i class="fa fa-file-text-o"></i></a>
+                              </td>
                               <!--/patients/10003/variant_reports/MSN3061_v1_61b14b2e-6da7-40d6-a540-2ae084b6febc-->
                               <td>{{item.dateSelected | dashify}}</td>
                               <td>{{item.dateOnArm | dashify}}</td>
