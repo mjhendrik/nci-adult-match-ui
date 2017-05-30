@@ -16,8 +16,7 @@ export class ColorCodePatientsDirective implements OnInit {
             || this.colorCodePatients === 'PENDING_CONFIRMATION' || this.colorCodePatients === 'REJOIN_REQUESTED'
             || this.colorCodePatients === 'NOT_ELIGIBLE') {
             this.el.nativeElement.classList.add('text-purple-light');
-        } else if (this.colorCodePatients === 'OFF_TRIAL_DECEASED' || this.colorCodePatients === 'OFF_TRIAL_NO_TA_AVAILABLE'
-            || this.colorCodePatients === 'OFF_TRIAL_NOT_CONSENTED') {
+        } else if (this.colorCodePatients.indexOf('OFF_TRIAL_') !== -1 || this.colorCodePatients === 'OFF_TRIAL') {
             this.el.nativeElement.classList.add('text-danger-light');
         } else if (this.colorCodePatients === 'FORMERLY_ON_ARM_OFF_TRIAL') {
             this.el.nativeElement.classList.add('text-warning-light');
