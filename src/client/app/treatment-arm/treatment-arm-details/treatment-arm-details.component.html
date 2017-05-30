@@ -40,7 +40,8 @@
                           <dt>Genes</dt>
                           <dd>{{tableData[versionIndex].gene | dashify}}</dd>
                           <dt>Patients Assigned</dt>
-                          <dd>{{tableData[versionIndex].numPatientsAssigned | dashify}} of {{tableData[versionIndex].maxPatientsAllowed | dashify}}</dd>
+                          <dd>{{tableData[versionIndex].numPatientsAssigned | dashify}} of {{tableData[versionIndex].maxPatientsAllowed
+                            | dashify}}</dd>
                           <dt>Current Status</dt>
                           <dd [colorCodeTa]="tableData[versionIndex].treatmentArmStatus">{{tableData[versionIndex].treatmentArmStatus | dashify}}</dd>
                         </dl>
@@ -69,9 +70,9 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let item of statusLog">
-                  <td [colorCodeTa]="item.status" class="col-xs-4">{{item.status | dashify}}</td>
-                  <td class="col-xs-8">{{item.date | gmt | dashify}}</td>
+                <tr *ngFor="let item of tableData[versionIndex].statusLog | keys">
+                  <td [colorCodeTa]="item.value" class="col-xs-4">{{item.value | dashify}}</td>
+                  <td class="col-xs-8">{{item.key | gmt | dashify}}</td>
                 </tr>
               </tbody>
             </table>
@@ -255,7 +256,8 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td class="text-muted" colspan="2">There are no exclusionary drugs for treatment arm "{{tableData[versionIndex].treatmentId | dashify}}"</td>
+                              <td class="text-muted" colspan="2">There are no exclusionary drugs for treatment arm "{{tableData[versionIndex].treatmentId |
+                                dashify}}"</td>
                             </tr>
                           </tbody>
                         </table>
@@ -308,7 +310,8 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td class="text-muted" colspan="3">There are no exclusionary diseases for treatment arm "{{tableData[versionIndex].treatmentId | dashify}}"</td>
+                              <td class="text-muted" colspan="3">There are no exclusionary diseases for treatment arm "{{tableData[versionIndex].treatmentId
+                                | dashify}}"</td>
                             </tr>
                           </tbody>
                         </table>
@@ -909,8 +912,8 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td class="text-muted" colspan="5">There are no included copy number variants for treatment arm "{{tableData[versionIndex].treatmentId |
-                                dashify}}"
+                              <td class="text-muted" colspan="5">There are no included copy number variants for treatment arm "{{tableData[versionIndex].treatmentId
+                                | dashify}}"
                               </td>
                             </tr>
                           </tbody>
@@ -1019,8 +1022,8 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td class="text-muted" colspan="5">There are no excluded copy number variants for treatment arm "{{tableData[versionIndex].treatmentId |
-                                dashify}}"
+                              <td class="text-muted" colspan="5">There are no excluded copy number variants for treatment arm "{{tableData[versionIndex].treatmentId
+                                | dashify}}"
                               </td>
                             </tr>
                           </tbody>
@@ -1131,7 +1134,8 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td class="text-muted" colspan="3">There are no included gene fusions for treatment arm "{{tableData[versionIndex].treatmentId | dashify}}"</td>
+                              <td class="text-muted" colspan="3">There are no included gene fusions for treatment arm "{{tableData[versionIndex].treatmentId
+                                | dashify}}"</td>
                             </tr>
                           </tbody>
                         </table>
@@ -1225,7 +1229,8 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td class="text-muted" colspan="3">There are no excluded gene fusions for treatment arm "{{tableData[versionIndex].treatmentId | dashify}}"</td>
+                              <td class="text-muted" colspan="3">There are no excluded gene fusions for treatment arm "{{tableData[versionIndex].treatmentId
+                                | dashify}}"</td>
                             </tr>
                           </tbody>
                         </table>
@@ -1335,7 +1340,8 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td class="text-muted" colspan="6">There are no included non-hotspot rules for treatment arm "{{tableData[versionIndex].treatmentId | dashify}}"</td>
+                              <td class="text-muted" colspan="6">There are no included non-hotspot rules for treatment arm "{{tableData[versionIndex].treatmentId
+                                | dashify}}"</td>
                             </tr>
                           </tbody>
                         </table>
@@ -1449,7 +1455,8 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td class="text-muted" colspan="6">There are no excluded non-hotspot rules for treatment arm "{{tableData[versionIndex].treatmentId | dashify}}"</td>
+                              <td class="text-muted" colspan="6">There are no excluded non-hotspot rules for treatment arm "{{tableData[versionIndex].treatmentId
+                                | dashify}}"</td>
                             </tr>
                           </tbody>
                         </table>
@@ -1565,8 +1572,9 @@
                             </tr>
                           </tbody>
                         </table>
-                        <table *ngIf="tableData[versionIndex].assayResults.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="tableData[versionIndex].assayResults | filterByText: searchtermAssay"
-                          #mftableAssay="mfDataTable" [(mfSortBy)]="tableAssayDefaultSort" [mfRowsOnPage]="recordsPerPageAssay">
+                        <table *ngIf="tableData[versionIndex].assayResults.length!=0" class="table table-td-valign-middle table-striped table-col-width"
+                          [mfData]="tableData[versionIndex].assayResults | filterByText: searchtermAssay" #mftableAssay="mfDataTable"
+                          [(mfSortBy)]="tableAssayDefaultSort" [mfRowsOnPage]="recordsPerPageAssay">
                           <thead>
                             <tr class="success-light">
                               <th>
@@ -1691,8 +1699,8 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td class="text-muted" colspan="11">There have never been any patients assigned to treatment arm "{{tableData[versionIndex].treatmentId |
-                                dashify}}"
+                              <td class="text-muted" colspan="11">There have never been any patients assigned to treatment arm "{{tableData[versionIndex].treatmentId
+                                | dashify}}"
                               </td>
                             </tr>
                           </tbody>

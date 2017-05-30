@@ -4,7 +4,7 @@ import {
 } from '@angular/core';
 
 import { routerTransition } from './../../shared/router.animations';
-// import { GmtPipe } from './../../shared/pipes/gmt.pipe';
+import { GmtPipe } from './../../shared/pipes/gmt.pipe';
 import {
   TreatmentArmApiService,
   // TreatmentArmDetailsInterface
@@ -207,26 +207,19 @@ export class TreatmentArmDetailsComponent implements OnInit {
   }
 
   getDetailsData() {
-    // let gmt = new GmtPipe();
+    let gmt = new GmtPipe();
     this.treatmentArmApi.getTreatmentArmDetails()
       .subscribe(itemList => {
 
         this.tableData = itemList;
         this.dataAvailable = true;
 
-        // this.tableData = itemList.map(x => {
-        //   x.tablePatientData.dateSelected = gmt.transform(x.tablePatientData.dateSelected);
-        //   x.tablePatientData.dateOnArm = gmt.transform(x.tablePatientData.dateOnArm);
-        //   x.tablePatientData.dateOffArm = gmt.transform(x.tablePatientData.dateOffArm);
-        //   return x;
-        // });
-
-        // this.tablePatientData = itemList.tablePatientData.map(x => {
-        //   x.dateSelected = gmt.transform(x.dateSelected);
-        //   x.dateOnArm = gmt.transform(x.dateOnArm);
-        //   x.dateOffArm = gmt.transform(x.dateOffArm);
-        //   return x;
-        // });
+        this.tableData[this.versionIndex].tablePatientData = itemList[this.versionIndex].tablePatientData.map(x => {
+          x.dateSelected = gmt.transform(x.dateSelected);
+          x.dateOnArm = gmt.transform(x.dateOnArm);
+          x.dateOffArm = gmt.transform(x.dateOffArm);
+          return x;
+        });
 
         let itemsSnv: any[] = this.tableData[this.versionIndex].variantReport.singleNucleotideVariants;
         this.snvIn = itemsSnv.filter(item => item.inclusion === true);
@@ -254,26 +247,19 @@ export class TreatmentArmDetailsComponent implements OnInit {
   }
 
   getPreviousDetailsData() {
-    // let gmt = new GmtPipe();
+    let gmt = new GmtPipe();
     this.treatmentArmApi.getPreviousTreatmentArmDetails()
       .subscribe(itemList => {
 
         this.tableData = itemList;
-        this.dataAvailable = true;
+        this.dataAvailable = false;
 
-        // this.tableData = itemList.map(x => {
-        //   x.tablePatientData.dateSelected = gmt.transform(x.tablePatientData.dateSelected);
-        //   x.tablePatientData.dateOnArm = gmt.transform(x.tablePatientData.dateOnArm);
-        //   x.tablePatientData.dateOffArm = gmt.transform(x.tablePatientData.dateOffArm);
-        //   return x;
-        // });
-
-        // this.tablePatientData = itemList.tablePatientData.map(x => {
-        //   x.dateSelected = gmt.transform(x.dateSelected);
-        //   x.dateOnArm = gmt.transform(x.dateOnArm);
-        //   x.dateOffArm = gmt.transform(x.dateOffArm);
-        //   return x;
-        // });
+        this.tableData[this.versionIndex].tablePatientData = itemList[this.versionIndex].tablePatientData.map(x => {
+          x.dateSelected = gmt.transform(x.dateSelected);
+          x.dateOnArm = gmt.transform(x.dateOnArm);
+          x.dateOffArm = gmt.transform(x.dateOffArm);
+          return x;
+        });
 
         let itemsSnv: any[] = this.tableData[this.versionIndex].variantReport.singleNucleotideVariants;
         this.snvIn = itemsSnv.filter(item => item.inclusion === true);
@@ -304,6 +290,7 @@ export class TreatmentArmDetailsComponent implements OnInit {
     this.versionIndex = i;
     console.log(this.versionIndex);
     this.getPreviousDetailsData();
+    this.dataAvailable = true;
   }
 
   getVersionsData() {
