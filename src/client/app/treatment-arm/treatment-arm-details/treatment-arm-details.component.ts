@@ -211,7 +211,7 @@ export class TreatmentArmDetailsComponent implements OnInit {
         this.tableData = itemList;
         this.dataAvailable = true;
 
-        this.tableData[0].summaryReport.assignmentRecords = itemList[0].summaryReport.assignmentRecords.map(x => {
+        this.tableData[0].summaryReport.assignmentRecords = itemList[0].summaryReport.assignmentRecords.map((x: any) => {
           x.dateSelected = gmt.transform(x.dateSelected);
           x.dateOnArm = gmt.transform(x.dateOnArm);
           x.dateOffArm = gmt.transform(x.dateOffArm);
@@ -251,7 +251,7 @@ export class TreatmentArmDetailsComponent implements OnInit {
         this.tableData = itemList;
         this.dataAvailable = false;
 
-        this.tableData[0].summaryReport.assignmentRecords = itemList[0].summaryReport.assignmentRecords.map(x => {
+        this.tableData[0].summaryReport.assignmentRecords = itemList[0].summaryReport.assignmentRecords.map((x: any) => {
           x.dateSelected = gmt.transform(x.dateSelected);
           x.dateOnArm = gmt.transform(x.dateOnArm);
           x.dateOffArm = gmt.transform(x.dateOffArm);

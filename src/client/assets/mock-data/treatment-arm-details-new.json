@@ -104,7 +104,7 @@
     "numPendingArmApproval": 0,
     "numNotEnrolledPatient": 0,
     "assignmentRecords": [{
-      "patientSequenceNumber": "1234",
+      "patientSequenceNumber": "12340",
       "treatmentArmVersion": "2017-03-12",
       "assignmentStatusOutcome": "ON_TREATMENT_ARM",
       "analysisId": "MSN3061_v1_61b14b2e-6da7-40d6-a540-2ae084b6febc",
