@@ -8,7 +8,7 @@
   <div class="row" matchHeight="panel-height">
     <div class="col-md-6">
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height">
-        <div class="panel-heading">
+        <div class="panel-heading" id="patient_detail_left">
           <dl class="dl-horizontal">
             <dt>Patient Sequence Number</dt>
             <dd>{{patient.patientSequenceNumber | dashify}}</dd>
@@ -36,7 +36,7 @@
     </div>
     <div class="col-md-6">
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height">
-        <div class="panel-heading">
+        <div class="panel-heading" id="patient_detail_right">
           <dl class="dl-horizontal">
             <dt>Concordance</dt>
             <dd>{{patient.concordance | dashify}}</dd>
@@ -63,7 +63,7 @@
         <ul class="nav nav-tabs nav-tabs-purple">
           <li class="active"><a href="#tab-summary" data-toggle="tab">Summary</a></li>
           <li class="" *ngFor="let biopsy of patient.biopsies; first as isFirst">
-            <a href="#tab-biopsy-t-{{biopsy.biopsySequenceNumber}}" data-toggle="tab"> 
+            <a href="#tab-biopsy-t-{{biopsy.biopsySequenceNumber}}" data-toggle="tab">
               <i *ngIf="isFirst" class="fa fa-bell-o" aria-hidden="true"></i> {{biopsy.biopsySequenceNumber}}, {{biopsy.dateCreated | gmt: 'YYYY-MM-DD'}}
             </a>
           </li>
@@ -206,7 +206,7 @@
                             <td>{{sendout.reportedDate | gmt}}</td>
                             <td>{{sendout.comment | dashify}}</td>
                           </tr>
-                          
+
                           <tr *ngFor="let analysis of sendout.analyses">
                             <td colspan="7" class="bg-body">
                               <div class="panel panel-with-tabs panel-accent-sides-purple panel-details-row">
@@ -226,7 +226,7 @@
                                           <dt><h4>Variant Report</h4></dt>
                                           <dd></dd>
                                         </dl>
-                                        
+
                                         <dl class="dl-horizontal">
                                           <dt>Status</dt>
                                           <dd>{{analysis.variantReportStatus | dashify}}</dd>
@@ -253,7 +253,7 @@
                                           <dt><h4>Assignment Report</h4></dt>
                                           <dd></dd>
                                         </dl>
-                                        
+
                                         <dl *ngIf="analysis.assignmentReport" class="dl-horizontal">
                                           <dt>Status</dt>
                                           <dd>{{analysis.assignmentReport.patientAssignmentStatus}}</dd>
@@ -296,7 +296,7 @@
                             </td>
                           </tr>
 
-                        </ng-template>                        
+                        </ng-template>
                       </tbody>
                     </table>
                   </div>
