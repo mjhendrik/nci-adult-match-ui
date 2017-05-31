@@ -26,7 +26,6 @@ export class TreatmentArmApiService {
   getTreatmentArmDetails(): Observable<any[]> {
 
     return this.http.get('assets/mock-data/treatment-arm-details-new.json')
-    // return this.http.get('assets/mock-data/treatment-arm-details-all.json')
 
       // return this.http.get(Config.API.TREATMENT_ARM + '/treatment_arms/' + treatmentId
       //   + `?active=true&projection=treatmentId,name,version,treatmentArmDrugs,gene,numPatientsAssigned,treatmentArmStatus,statusLog,
@@ -38,8 +37,7 @@ export class TreatmentArmApiService {
 
   getPreviousTreatmentArmDetails(): Observable<any[]> {
 
-    // return this.http.get('assets/mock-data/treatment-arm-details-new-previous.json')
-    return this.http.get('assets/mock-data/treatment-arm-details-all-previous.json')
+    return this.http.get('assets/mock-data/treatment-arm-details-new-previous.json')
 
       // return this.http.get(Config.API.TREATMENT_ARM + '/treatment_arms/' + treatmentId
       //   + `?projection=treatmentId,name,version,treatmentArmDrugs,gene,numPatientsAssigned,treatmentArmStatus,statusLog,assayResults,

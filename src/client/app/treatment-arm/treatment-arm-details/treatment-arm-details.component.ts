@@ -207,7 +207,6 @@ export class TreatmentArmDetailsComponent implements OnInit {
     let gmt = new GmtPipe();
     this.treatmentArmApi.getTreatmentArmDetails()
       .subscribe(itemList => {
-
         this.tableData = itemList;
         this.dataAvailable = true;
 
@@ -245,11 +244,10 @@ export class TreatmentArmDetailsComponent implements OnInit {
 
   getPreviousDetailsData() {
     let gmt = new GmtPipe();
+    this.dataAvailable = false;
     this.treatmentArmApi.getPreviousTreatmentArmDetails()
       .subscribe(itemList => {
-
         this.tableData = itemList;
-        this.dataAvailable = false;
 
         this.tableData[0].summaryReport.assignmentRecords = itemList[0].summaryReport.assignmentRecords.map((x: any) => {
           x.dateSelected = gmt.transform(x.dateSelected);
@@ -277,6 +275,7 @@ export class TreatmentArmDetailsComponent implements OnInit {
         let itemsRule: any[] = this.tableData[this.versionIndex].variantReport.nonHotspotRules;
         this.ruleIn = itemsRule.filter(item => item.inclusion === true);
         this.ruleEx = itemsRule.filter(item => item.inclusion === false);
+        this.dataAvailable = true;
 
       },
       error => this.errorMessage = <any>error
@@ -285,9 +284,7 @@ export class TreatmentArmDetailsComponent implements OnInit {
 
   setVersionIndex(i: number): void {
     this.versionIndex = i;
-    console.log(this.versionIndex);
     this.getPreviousDetailsData();
-    this.dataAvailable = true;
   }
 
   getVersionsData() {
