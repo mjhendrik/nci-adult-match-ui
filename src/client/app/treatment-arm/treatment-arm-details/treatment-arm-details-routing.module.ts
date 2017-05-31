@@ -7,7 +7,7 @@ import { AuthGuard } from './../../shared/auth/auth.guard.service';
 @NgModule({
   imports: [
     RouterModule.forChild([
-      { path: 'treatments/details', component: TreatmentArmDetailsComponent, canActivate: [AuthGuard] }
+      { path: 'treatments/details/:id', component: TreatmentArmDetailsComponent, canActivate: [AuthGuard] }
     ])
   ],
   exports: [RouterModule]

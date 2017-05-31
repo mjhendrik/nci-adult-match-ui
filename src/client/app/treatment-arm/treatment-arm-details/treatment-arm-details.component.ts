@@ -2,6 +2,7 @@ import {
   Component,
   OnInit
 } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { routerTransition } from './../../shared/router.animations';
 import { GmtPipe } from './../../shared/pipes/gmt.pipe';
@@ -83,10 +84,8 @@ export class TreatmentArmDetailsComponent implements OnInit {
   versionIndex: number = 0;
 
   versionData: any[];
-  // tableRulesData: any;
-  // tablePatientData: any[];
   tableData: any[];
-  dataAvailable: boolean;
+  dataAvailable: boolean = false;
 
   errorMessage: string;
 
@@ -194,21 +193,20 @@ export class TreatmentArmDetailsComponent implements OnInit {
     }
   ];
 
-  constructor(private treatmentArmApi: TreatmentArmApiService) {
+  constructor(private treatmentArmApi: TreatmentArmApiService, private route: ActivatedRoute) {
 
   }
 
   ngOnInit() {
-    this.getDetailsData();
     this.getVersionsData();
+    this.getDetailsData();
   }
 
   getDetailsData() {
     let gmt = new GmtPipe();
-    this.treatmentArmApi.getTreatmentArmDetails()
+    this.treatmentArmApi.getTreatmentArmDetails(this.route.snapshot.params['id'])
       .subscribe(itemList => {
         this.tableData = itemList;
-        this.dataAvailable = true;
 
         this.tableData[0].summaryReport.assignmentRecords = itemList[0].summaryReport.assignmentRecords.map((x: any) => {
           x.dateSelected = gmt.transform(x.dateSelected);
@@ -236,6 +234,8 @@ export class TreatmentArmDetailsComponent implements OnInit {
         let itemsRule: any[] = this.tableData[this.versionIndex].variantReport.nonHotspotRules;
         this.ruleIn = itemsRule.filter(item => item.inclusion === true);
         this.ruleEx = itemsRule.filter(item => item.inclusion === false);
+
+        this.dataAvailable = true;
 
       },
       error => this.errorMessage = <any>error
@@ -245,7 +245,7 @@ export class TreatmentArmDetailsComponent implements OnInit {
   getPreviousDetailsData() {
     let gmt = new GmtPipe();
     this.dataAvailable = false;
-    this.treatmentArmApi.getPreviousTreatmentArmDetails()
+    this.treatmentArmApi.getPreviousTreatmentArmDetails(this.route.snapshot.params['id'])
       .subscribe(itemList => {
         this.tableData = itemList;
 
@@ -275,6 +275,7 @@ export class TreatmentArmDetailsComponent implements OnInit {
         let itemsRule: any[] = this.tableData[this.versionIndex].variantReport.nonHotspotRules;
         this.ruleIn = itemsRule.filter(item => item.inclusion === true);
         this.ruleEx = itemsRule.filter(item => item.inclusion === false);
+
         this.dataAvailable = true;
 
       },
@@ -288,10 +289,9 @@ export class TreatmentArmDetailsComponent implements OnInit {
   }
 
   getVersionsData() {
-    this.treatmentArmApi.getTreatmentArmVersions()
+    this.treatmentArmApi.getTreatmentArmVersions(this.route.snapshot.params['id'])
       .subscribe(itemList => {
         this.versionData = itemList;
-        this.dataAvailable = true;
       },
       error => this.errorMessage = <any>error
       );

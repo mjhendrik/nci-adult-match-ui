@@ -23,35 +23,36 @@ export class TreatmentArmApiService {
    * Returns an Observable for the HTTP GET request for the JSON resource.
    * @return {string[]} The Observable for the HTTP request.
    */
-  getTreatmentArmDetails(): Observable<any[]> {
+  getTreatmentArmDetails(treatmentId: string): Observable<any[]> {
 
-    return this.http.get('assets/mock-data/treatment-arm-details-new.json')
+    // return this.http.get('assets/mock-data/treatment-arm-details-new.json')
 
-      // return this.http.get(Config.API.TREATMENT_ARM + '/treatment_arms/' + treatmentId
-      //   + `?active=true&projection=treatmentId,name,version,treatmentArmDrugs,gene,numPatientsAssigned,treatmentArmStatus,statusLog,
-      //     assayResults,exclusionDiseases,exclusionDrugs,variantReport,summaryReport`)
+    return this.http.get(Config.API.TREATMENT_ARM + '/treatment_arms/' + treatmentId
+      + `?active=true`)
+      // &projection=treatmentId,name,version,treatmentArmDrugs,gene,numPatientsAssigned,treatmentArmStatus,statusLog,
+      //     assayResults,exclusionDiseases,exclusionDrugs,variantReport,summaryReport
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
   }
 
-  getPreviousTreatmentArmDetails(): Observable<any[]> {
+  getPreviousTreatmentArmDetails(treatmentId: string): Observable<any[]> {
 
-    return this.http.get('assets/mock-data/treatment-arm-details-new-previous.json')
+    // return this.http.get('assets/mock-data/treatment-arm-details-new-previous.json')
 
-      // return this.http.get(Config.API.TREATMENT_ARM + '/treatment_arms/' + treatmentId
-      //   + `?projection=treatmentId,name,version,treatmentArmDrugs,gene,numPatientsAssigned,treatmentArmStatus,statusLog,assayResults,
-      //     exclusionDiseases,exclusionDrugs,variantReport,dateArchived,summaryReport`)
+    return this.http.get(Config.API.TREATMENT_ARM + '/treatment_arms/' + treatmentId)
+      // + `?projection=treatmentId,name,version,treatmentArmDrugs,gene,numPatientsAssigned,treatmentArmStatus,statusLog,assayResults,
+      //     exclusionDiseases,exclusionDrugs,variantReport,dateArchived,summaryReport`
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
   }
 
-  getTreatmentArmVersions(): Observable<any[]> {
+  getTreatmentArmVersions(treatmentId: string): Observable<any[]> {
 
-    return this.http.get('assets/mock-data/treatment-arm-details-version.json')
+    // return this.http.get('assets/mock-data/treatment-arm-details-version.json')
 
-      // return this.http.get(Config.API.TREATMENT_ARM + '/treatment_arms/' + treatmentId + '?projection=dateArchived,version')
+    return this.http.get(Config.API.TREATMENT_ARM + '/treatment_arms/' + treatmentId + '?projection=dateArchived,version')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
