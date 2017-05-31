@@ -182,16 +182,20 @@ export class TreatmentArmDetailsComponent implements OnInit {
     {
       data: [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
       label: 'Off Trial'
+      // FORMERLY_ON_ARM_OFF_TRIAL, FORMERLY_ON_ARM_PROGRESSED, OFF_TRIAL_DECEASED, OFF_TRIAL
     },
     {
       data: [1, 1, 1, 2, 2, 0, 1, 3, 1, 2, 0, 0, 1, 1, 1, 2, 2, 7, 0, 1, 3, 1, 2, 0, 0, 1, 1, 1, 2, 2, 0, 1, 3, 1, 3],
       label: 'On Treatment Arm'
+      // ON_TREATMENT_ARM
     },
     {
       data: [0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 2, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0],
       label: 'Pending'
+      // PENDING_APPROVAL, PENDING_CONFIRMATION
     }
   ];
+  // NOT_ELIGIBLE, OFF_TRIAL_NOT_CONSENTED
 
   constructor(private treatmentArmApi: TreatmentArmApiService, private route: ActivatedRoute) {
 
