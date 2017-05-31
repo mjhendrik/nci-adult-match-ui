@@ -29,7 +29,7 @@ export class TreatmentArmApiService {
 
     return this.http.get(Config.API.TREATMENT_ARM + '/treatment_arms/' + treatmentId
       + `?active=true&projection=treatmentId,name,version,treatmentArmDrugs,gene,numPatientsAssigned,treatmentArmStatus,statusLog,
-assayResults,exclusionDiseases,exclusionDrugs,variantReport,summaryReport`)
+assayResults,exclusionDiseases,exclusionDrugs,variantReport,summaryReport,maxPatientsAllowed`)
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
@@ -41,7 +41,7 @@ assayResults,exclusionDiseases,exclusionDrugs,variantReport,summaryReport`)
 
     return this.http.get(Config.API.TREATMENT_ARM + '/treatment_arms/' + treatmentId
       + `?projection=treatmentId,name,version,treatmentArmDrugs,gene,numPatientsAssigned,treatmentArmStatus,statusLog,assayResults,
-exclusionDiseases,exclusionDrugs,variantReport,dateArchived,summaryReport`)
+exclusionDiseases,exclusionDrugs,variantReport,dateArchived,summaryReport,maxPatientsAllowed`)
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
