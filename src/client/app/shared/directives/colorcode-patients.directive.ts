@@ -8,6 +8,10 @@ export class ColorCodePatientsDirective implements OnInit {
     constructor(private el: ElementRef) { }
 
     ngOnInit() {
+        if (!this.colorCodePatients) {
+            return;
+        }
+
         if (this.colorCodePatients === 'ON_TREATMENT_ARM') {
             this.el.nativeElement.classList.add('text-success-light');
         } else if (this.colorCodePatients === 'REGISTRATION') {

@@ -8,8 +8,10 @@ export class ColorCodeCliaIonDirective implements OnInit {
     constructor(private el: ElementRef) { }
 
     ngOnInit() {
-        if (this.colorCodeCliaIon.indexOf('Contacted') !== -1) this.el.nativeElement.classList.add('text-success-light');
-        else this.el.nativeElement.classList.add('text-danger-light');
+        if (this.colorCodeCliaIon && this.colorCodeCliaIon.indexOf('Contacted') !== -1) 
+            this.el.nativeElement.classList.add('text-success-light');
+        else 
+            this.el.nativeElement.classList.add('text-danger-light');
     }
 
 }

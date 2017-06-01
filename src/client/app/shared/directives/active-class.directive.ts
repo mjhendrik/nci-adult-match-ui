@@ -11,7 +11,6 @@ import {
 export class ActiveClassDirective {
 
     constructor(private el: ElementRef) {
-
     }
 
     @HostListener('click', ['$event'])
