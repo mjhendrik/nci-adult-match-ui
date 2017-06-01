@@ -190,7 +190,7 @@
                                 <a href [routerLink]="['/patients', item.patientSequenceNumber]" class="link-none"><i class="fa fa-share-alt"></i> {{item.molecularSequenceNumber | dashify}}</a>
                               </td>
                               <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                                <span *ngIf="item.treatmentArm.id!==null"><a href [routerLink]="['/treatments/details']" class="link-none"><i class="fa fa-medkit"></i> {{item.treatmentArm.id | dashify}} ({{item.treatmentArm.version | dashify}})</a></span>
+                                <span *ngIf="item.treatmentArm.id!==null"><a href [routerLink]="['/treatments/details',item.treatmentArm.id]" class="link-none"><i class="fa fa-medkit"></i> {{item.treatmentArm.id | dashify}} ({{item.treatmentArm.version | dashify}})</a></span>
                                 <span *ngIf="item.treatmentArm.id===null">No available treatment arm</span>
                               </td>
                               <td class="text-center"><a href [routerLink]="['/patients/details/variant_reports']" class="link-none"><i class="fa fa-file-text-o"></i></a></td>

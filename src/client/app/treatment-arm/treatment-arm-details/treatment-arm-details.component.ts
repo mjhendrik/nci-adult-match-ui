@@ -121,39 +121,6 @@ export class TreatmentArmDetailsComponent implements OnInit {
     }
   ];
 
-  // 12 BARS (actual data)
-
-  // public barChartLabels: string[] = ['Adenocarcinoma - pancreas', 'Adenocarcinoma, NOS', 'Bone cancer, NOS', 'Carcinoma, NOS',
-  //   'Cholangiocar.- intra/extrahepatic', 'CNS primary tumor, NOS', 'Female reprod. system cancer, NOS', 'Lung adenocarcinoma',
-  //   'Neuroendocrine cancer, NOS', 'Ovarian epithelial cancer', 'Pancreatic neuroendocrine tumor', 'Thyroid cancer, NOS'];
-  // // public barChartType: string = 'bar';
-  // public barChartLegend: boolean = false;
-
-  // public barChartData: any[] = [
-  //   {
-  //     data: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
-  //     label: 'Max',
-  //     type: 'line',
-  //     fill: false,
-  //     pointRadius: 0,
-  //     pointHoverRadius: 0
-  //   },
-  //   {
-  //     data: [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0],
-  //     label: 'Off Trial'
-  //   },
-  //   {
-  //     data: [1, 1, 1, 2, 2, 0, 1, 3, 1, 2, 0, 0],
-  //     label: 'On Treatment Arm'
-  //   },
-  //   {
-  //     data: [0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1],
-  //     label: 'Pending'
-  //   }
-  // ];
-
-  // MAX 35 BARS (mock data)
-
   public barChartLabels: string[] = ['Adenocarcinoma - pancreas (10053130)', 'Adenocarcinoma, NOS (10021980)',
     'Bone cancer, NOS (10006190)', 'Carcinoma, NOS (10006285)', 'Cholangiocar.- intra/extrahepatic (10025126)',
     'CNS primary tumor, NOS (10009951)', 'Female reprod. system cancer, NOS (10038045)', 'Lung adenocarcinoma (10053130)',
