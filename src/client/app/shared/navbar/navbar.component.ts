@@ -33,7 +33,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     this.getData();
-    this.userName = JSON.parse(localStorage.getItem('profile')).user_metadata.firstName;
+    // this.userName = JSON.parse(localStorage.getItem('profile')).user_metadata.firstName;
   }
 
   backToTop(): void {
