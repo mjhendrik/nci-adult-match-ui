@@ -1,5 +1,12 @@
-import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import {
+  Location,
+  LocationStrategy,
+  PathLocationStrategy
+} from '@angular/common';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
 import { Auth } from './../auth/auth.service';
 import { ConfigApiService } from './../config/config-api.service';
 
@@ -15,16 +22,18 @@ import { ConfigApiService } from './../config/config-api.service';
 })
 export class NavbarComponent implements OnInit {
   buildInfo: any;
+  userName: string;
 
   location: Location;
   constructor(location: Location,
-      private auth: Auth,
-      private configApi: ConfigApiService) {
+    private auth: Auth,
+    private configApi: ConfigApiService) {
     this.location = location;
   }
 
   ngOnInit() {
     this.getData();
+    this.userName = JSON.parse(localStorage.getItem('profile')).user_metadata.firstName;
   }
 
   backToTop(): void {
