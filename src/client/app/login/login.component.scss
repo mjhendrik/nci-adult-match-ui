@@ -9,6 +9,7 @@
 
     .logo {
       margin-top: 14px;
+      width: 540px; // Safari doesnt know how to resize svg properly
     }
 
     .usage-warning-brand {
