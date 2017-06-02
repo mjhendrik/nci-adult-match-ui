@@ -30,8 +30,8 @@
                               <a href="javascript:;" data-toggle="dropdown" class="btn btn-success-light dropdown-toggle" aria-expanded="false">{{tableData[versionIndex].version | dashify}}<span *ngIf="tableData[versionIndex].dateArchived===null">*</span>&nbsp;&nbsp;<span class="caret"></span></a>
                               <ul class="dropdown-menu">
                                 <li *ngFor="let item of versionData;let ndx=index">
-                                  <a *ngIf="item.version!=tableData[versionIndex].version" [routerLink]="['/treatments/details',tableData[versionIndex].treatmentId,item.version]">{{item.version | dashify}}<span *ngIf="item.dateArchived===null">*</span></a>
-                                  <!--(click)="setVersionIndex(ndx)"-->
+                                  <a *ngIf="item.version!=tableData[versionIndex].version" (click)="setVersionIndex(ndx)">{{item.version | dashify}}<span *ngIf="item.dateArchived===null">*</span></a>
+                                  <!--[routerLink]="['/treatments/details',tableData[versionIndex].treatmentId,item.version]"-->
                                 </li>
                               </ul>
                             </div>
