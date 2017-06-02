@@ -26,6 +26,8 @@ export class Auth {
     }
   };
 
+  public loggedIn: EventEmitter<string>;
+
   // Configure Auth0
   lock = new Auth0Lock(Config.CLIENT_ID, Config.AUTH_DOMAIN, this.lockOptions);
 
@@ -54,8 +56,6 @@ export class Auth {
       this.router.navigate(['dashboard']);
     });
   }
-
-  public loggedIn: EventEmitter<string>;
 
   public login() {
     // Call the show method to display the widget.
