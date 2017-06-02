@@ -170,7 +170,7 @@ export class TreatmentArmDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.getVersionsData();
-    this.getDetailsData();
+    // this.getDetailsData();
   }
 
   getDetailsData() {
@@ -263,6 +263,17 @@ export class TreatmentArmDetailsComponent implements OnInit {
     this.treatmentArmApi.getTreatmentArmVersions(this.route.snapshot.params['id'])
       .subscribe(itemList => {
         this.versionData = itemList;
+
+        console.log(this.route.snapshot.params['version']);
+        console.log(this.versionIndex);
+
+        let i;
+        for (i = 0; i < this.versionData.length; i++) {
+          if (this.versionData[i].version === this.route.snapshot.params['version']) this.versionIndex = i;
+        }
+
+        this.getPreviousDetailsData();
+
       },
       error => this.errorMessage = <any>error
       );
