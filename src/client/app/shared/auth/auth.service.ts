@@ -1,4 +1,7 @@
-import { Injectable } from '@angular/core';
+import {
+  Injectable,
+  EventEmitter
+} from '@angular/core';
 import { tokenNotExpired } from 'angular2-jwt';
 import { Router } from '@angular/router';
 import { Config } from '../config/env.config';
@@ -29,6 +32,8 @@ export class Auth {
   private userProfile: any;
 
   constructor(private router: Router) {
+    this.loggedIn = new EventEmitter();
+
     // Add callback for lock `authenticated` event
     this.lock.on('authenticated', (authResult: any) => {
       localStorage.setItem('id_token', authResult.idToken);
@@ -42,11 +47,15 @@ export class Auth {
 
         localStorage.setItem('profile', JSON.stringify(profile));
         this.userProfile = profile;
+
+        this.loggedIn.emit();
       });
 
       this.router.navigate(['dashboard']);
     });
   }
+
+  public loggedIn: EventEmitter<string>;
 
   public login() {
     // Call the show method to display the widget.
