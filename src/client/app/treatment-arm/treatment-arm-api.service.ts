@@ -29,7 +29,7 @@ export class TreatmentArmApiService {
 
     return this.http.get(Config.API.TREATMENT_ARM + '/treatment_arms/' + treatmentId
       + `?active=true&projection=treatmentId,name,version,treatmentArmDrugs,gene,numPatientsAssigned,treatmentArmStatus,statusLog,
-assayResults,exclusionDiseases,exclusionDrugs,variantReport,summaryReport,maxPatientsAllowed`)
+assayResults,exclusionDiseases,exclusionDrugs,variantReport,summaryReport,maxPatientsAllowed,dateArchived`)
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
