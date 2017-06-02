@@ -89,6 +89,42 @@ export class TreatmentArmDetailsComponent implements OnInit {
 
   errorMessage: string;
 
+  // barChartLabelsData = this.tableData[this.versionIndex].summaryReport.assignmentRecords.map((x: any) => {
+  //   if (x.assignmentStatusOutcome == 'ON_TREATMENT_ARM') {
+  //     s1 = s1 + 1;
+  //     console.log(parseInt(status1.substr(status1.length - 1)));
+  //     status1 = status1 + parseInt(status1.substr(status1.length - 1, 1)) + 1 + ',';
+  //     if (s1 < 2) {
+  //       status2 = status1 + parseInt(status2.substr(status2.length - 1, 1)) + 0 + ',';
+  //       status3 = status1 + parseInt(status3.substr(status3.length - 1, 1)) + 0 + ',';
+  //     } else {
+  //       s1 = 0;
+  //     }
+  //   } else if ('PENDING_APPROVAL,PENDING_CONFIRMATION'.indexOf(x.assignmentStatusOutcome) != -1) {
+  //     status2 = status1 + parseInt(status2.substr(status2.length - 1, 1)) + 1 + ',';
+  //     if (s2 < 2) {
+  //       status1 = status1 + parseInt(status1.substr(status1.length - 1, 1)) + 0 + ',';
+  //       status3 = status1 + parseInt(status3.substr(status3.length - 1, 1)) + 0 + ',';
+  //     } else {
+  //       s2 = 0;
+  //     }
+  //   } else if ('FORMERLY_ON_ARM_OFF_TRIAL, FORMERLY_ON_ARM_PROGRESSED, OFF_TRIAL_DECEASED, OFF_TRIAL'.indexOf(x.assignmentStatusOutcome) != -1) {
+  //     status3 = status1 + parseInt(status3.substr(status3.length - 1, 1)) + 1 + ',';
+  //     if (s3 < 2) {
+  //       status1 = status1 + parseInt(status1.substr(status1.length - 1, 1)) + 0 + ',';
+  //       status2 = status1 + parseInt(status2.substr(status2.length - 1, 1)) + 0 + ',';
+  //     } else {
+  //       s3 = 0;
+  //     }
+  //   }
+  //   return x.disease.shortName + '(' + x.disease.meddraCode + ')';
+  // });
+
+  // console.log(barChartLabelsData);
+  // console.log(status1);
+  // console.log(status2);
+  // console.log(status3);
+
   public barChartOptions: any = {
     scaleShowVerticalLines: false,
     responsive: true,
@@ -121,25 +157,14 @@ export class TreatmentArmDetailsComponent implements OnInit {
     }
   ];
 
-  public barChartLabels: string[] = ['Adenocarcinoma - pancreas (10053130)', 'Adenocarcinoma, NOS (10021980)',
-    'Bone cancer, NOS (10006190)', 'Carcinoma, NOS (10006285)', 'Cholangiocar.- intra/extrahepatic (10025126)',
-    'CNS primary tumor, NOS (10009951)', 'Female reprod. system cancer, NOS (10038045)', 'Lung adenocarcinoma (10053130)',
-    'Neuroendocrine cancer, NOS (10021980)', 'Ovarian epithelial cancer (10006190)', 'Pancreatic neuroendocrine tumor (10006285)',
-    'Thyroid cancer, NOS (10025126)', 'Adenocarcinoma - pancreas (10009951)', 'Adenocarcinoma, NOS (10038045)',
-    'Bone cancer, NOS (10053130)', 'Carcinoma, NOS (10021980)', 'Cholangiocar.- intra/extrahepatic (10006190)',
-    'CNS primary tumor, NOS (10006285)', 'Female reprod. system cancer, NOS (10025126)', 'Lung adenocarcinoma (10009951)',
-    'Neuroendocrine cancer, NOS (10038045)', 'Ovarian epithelial cancer (10053130)', 'Pancreatic neuroendocrine tumor (10021980)',
-    'Thyroid cancer, NOS (10006190)', 'Adenocarcinoma - pancreas (10006285)', 'Adenocarcinoma, NOS (10025126)',
-    'Bone cancer, NOS (10009951)', 'Carcinoma, NOS (10038045)', 'Cholangiocar.- intra/extrahepatic (10053130)',
-    'CNS primary tumor, NOS (10021980)', 'Female reprod. system cancer, NOS (10006190)', 'Lung adenocarcinoma (10006285)',
-    'Neuroendocrine cancer, NOS (10025126)', 'Ovarian epithelial cancer (10009951)', 'Pancreatic neuroendocrine tumor (10038045)'];
+  public barChartLabels: string[] = ['Penile adenocarcinoma (90600236)', 'Neuroendocrine cancer, NOS (10021980)',
+    'Lung adenocarcinoma (10053130)'];
   public barChartType: string = 'bar';
   public barChartLegend: boolean = false;
 
   public barChartData: any[] = [
     {
-      data: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
-        10, 10, 10],
+      data: [10, 10, 10],
       label: 'Max',
       type: 'line',
       fill: false,
@@ -147,17 +172,17 @@ export class TreatmentArmDetailsComponent implements OnInit {
       pointHoverRadius: 0
     },
     {
-      data: [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+      data: [0, 2, 0],
       label: 'Off Trial'
       // FORMERLY_ON_ARM_OFF_TRIAL, FORMERLY_ON_ARM_PROGRESSED, OFF_TRIAL_DECEASED, OFF_TRIAL
     },
     {
-      data: [1, 1, 1, 2, 2, 0, 1, 3, 1, 2, 0, 0, 1, 1, 1, 2, 2, 7, 0, 1, 3, 1, 2, 0, 0, 1, 1, 1, 2, 2, 0, 1, 3, 1, 3],
+      data: [1, 1, 1],
       label: 'On Treatment Arm'
       // ON_TREATMENT_ARM
     },
     {
-      data: [0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 2, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0],
+      data: [1, 0, 0],
       label: 'Pending'
       // PENDING_APPROVAL, PENDING_CONFIRMATION
     }

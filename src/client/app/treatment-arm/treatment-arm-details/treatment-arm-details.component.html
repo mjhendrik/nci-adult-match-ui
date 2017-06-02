@@ -98,8 +98,13 @@
                       <div class="table-responsive col-lg-12">
                         <div class="panel-heading">
                           <h5 class="m-t-5">Disease Representation of Patients</h5>
-                          <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend"
-                            [colors]="lineChartColors" [chartType]="barChartType"></canvas>
+                          <span *ngIf="tableData[0].summaryReport.assignmentRecords.length===0">
+                            <i class="fa fa-bar-chart text-muted" style="font-size:154px; padding-left: 39px;"></i>
+                            <br />
+                            <span class="text-muted">There have never been any patients assigned to treatment arm "{{tableData[versionIndex].treatmentId | dashify}}"</span>
+                          </span>
+                          <canvas *ngIf="tableData[0].summaryReport.assignmentRecords.length!==0" baseChart [datasets]="barChartData" [labels]="barChartLabels"
+                            [options]="barChartOptions" [legend]="barChartLegend" [colors]="lineChartColors" [chartType]="barChartType"></canvas>
                         </div>
                       </div>
                     </div>
@@ -1724,7 +1729,7 @@
                                 <mfDefaultSorter by="treatmentArmVersion"><span class="table-header">Treatment Arm Version</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="formattedPatientStatus"><span class="table-header">Patient Assignment Status Outcome</span></mfDefaultSorter>
+                                <mfDefaultSorter by="assignmentStatusOutcome"><span class="table-header">Patient Assignment Status Outcome</span></mfDefaultSorter>
                               </th>
                               <th class="text-center">
                                 Assignment Report
@@ -1745,7 +1750,7 @@
                                 <mfDefaultSorter by="stepNumber"><span class="table-header">Step</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="formattedDiseaseNames"><span class="table-header">Disease</span></mfDefaultSorter>
+                                <mfDefaultSorter by="disease.shortName"><span class="table-header">Disease</span></mfDefaultSorter>
                               </th>
                             </tr>
                           </thead>
