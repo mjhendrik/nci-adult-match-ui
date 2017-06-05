@@ -83,18 +83,18 @@ export function main() {
       }));
 
     // it('should test setVersionIndex',
-    // async((done: any) => {
-    //   TestBed
-    //     .compileComponents()
-    //     .then(() => {
-    //       let fixture = TestBed.overrideComponent(TreatmentArmDetailsComponent, {
-    //         set: {
-    //           templateUrl: ''
-    //         }
-    //       }).createComponent(TreatmentArmDetailsComponent);
-    //       fixture.componentInstance.setVersionIndex(2);
-    //     });
-    // }));
+    //   async((done: any) => {
+    //     TestBed
+    //       .compileComponents()
+    //       .then(() => {
+    //         let fixture = TestBed.overrideComponent(TreatmentArmDetailsComponent, {
+    //           set: {
+    //             templateUrl: ''
+    //           }
+    //         }).createComponent(TreatmentArmDetailsComponent);
+    //         fixture.componentInstance.setVersionIndex(2);
+    //       });
+    //   }));
 
   });
 }
@@ -107,8 +107,10 @@ class MockCliaApiService {
       "_id": {
         "$oid": "5925b1e751fa87a5c729d017"
       },
-      "assayResults": [],
-      "dateArchived": null,
+      "assayResults": ["test"],
+      "dateArchived": {
+        "test": "test"
+      },
       "dateCreated": {
         "$date": 1465225012704
       },
@@ -215,7 +217,7 @@ class MockCliaApiService {
           "assignmentReportId": 0,
           "dateSelected": "2017-06-12 18:54:48.608332",
           "dateOnArm": "2017-07-12 18:54:48.608332",
-          "dateOffArm": null,
+          "dateOffArm": "test",
           "timeOnArm": 314235,
           "stepNumber": "1",
           "disease": {
@@ -378,11 +380,11 @@ class MockCliaApiService {
           "rawCopyNumber": 0,
           "refCopyNumber": 0
         }],
-        "geneFusions": [],
-        "indels": [],
-        "nonHotspotRules": [],
-        "singleNucleotideVariants": [],
-        "unifiedGeneFusions": []
+        "geneFusions": ["test"],
+        "indels": ["test"],
+        "nonHotspotRules": ["test"],
+        "singleNucleotideVariants": ["test"],
+        "unifiedGeneFusions": ["test"]
       },
       "version": "2016-05-31"
     }]
@@ -395,8 +397,8 @@ class MockCliaApiService {
       "_id": {
         "$oid": "5925b1e751fa87a5c729d017"
       },
-      'assayResults': [],
-      "dateArchived": null,
+      'assayResults': ["test"],
+      "dateArchived": "test",
       "dateCreated": {
         "$date": 1465225012704
       },
@@ -503,7 +505,7 @@ class MockCliaApiService {
           "assignmentReportId": 0,
           "dateSelected": "2017-06-12 18:54:48.608332",
           "dateOnArm": "2017-07-12 18:54:48.608332",
-          "dateOffArm": null,
+          "dateOffArm": "test",
           "timeOnArm": 314235,
           "stepNumber": "1",
           "disease": {
@@ -666,11 +668,11 @@ class MockCliaApiService {
           "rawCopyNumber": 0,
           "refCopyNumber": 0
         }],
-        "geneFusions": [],
-        "indels": [],
-        "nonHotspotRules": [],
-        "singleNucleotideVariants": [],
-        "unifiedGeneFusions": []
+        "geneFusions": ["test"],
+        "indels": ["test"],
+        "nonHotspotRules": ["test"],
+        "singleNucleotideVariants": ["test"],
+        "unifiedGeneFusions": ["test"]
       },
       "version": "2016-05-31"
     }]
