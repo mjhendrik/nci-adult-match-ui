@@ -89,42 +89,6 @@ export class TreatmentArmDetailsComponent implements OnInit {
 
   errorMessage: string;
 
-  // barChartLabelsData = this.tableData[this.versionIndex].summaryReport.assignmentRecords.map((x: any) => {
-  //   if (x.assignmentStatusOutcome == 'ON_TREATMENT_ARM') {
-  //     s1 = s1 + 1;
-  //     console.log(parseInt(status1.substr(status1.length - 1)));
-  //     status1 = status1 + parseInt(status1.substr(status1.length - 1, 1)) + 1 + ',';
-  //     if (s1 < 2) {
-  //       status2 = status1 + parseInt(status2.substr(status2.length - 1, 1)) + 0 + ',';
-  //       status3 = status1 + parseInt(status3.substr(status3.length - 1, 1)) + 0 + ',';
-  //     } else {
-  //       s1 = 0;
-  //     }
-  //   } else if ('PENDING_APPROVAL,PENDING_CONFIRMATION'.indexOf(x.assignmentStatusOutcome) != -1) {
-  //     status2 = status1 + parseInt(status2.substr(status2.length - 1, 1)) + 1 + ',';
-  //     if (s2 < 2) {
-  //       status1 = status1 + parseInt(status1.substr(status1.length - 1, 1)) + 0 + ',';
-  //       status3 = status1 + parseInt(status3.substr(status3.length - 1, 1)) + 0 + ',';
-  //     } else {
-  //       s2 = 0;
-  //     }
-  //   } else if ('FORMERLY_ON_ARM_OFF_TRIAL, FORMERLY_ON_ARM_PROGRESSED, OFF_TRIAL_DECEASED, OFF_TRIAL'.indexOf(x.assignmentStatusOutcome) != -1) {
-  //     status3 = status1 + parseInt(status3.substr(status3.length - 1, 1)) + 1 + ',';
-  //     if (s3 < 2) {
-  //       status1 = status1 + parseInt(status1.substr(status1.length - 1, 1)) + 0 + ',';
-  //       status2 = status1 + parseInt(status2.substr(status2.length - 1, 1)) + 0 + ',';
-  //     } else {
-  //       s3 = 0;
-  //     }
-  //   }
-  //   return x.disease.shortName + '(' + x.disease.meddraCode + ')';
-  // });
-
-  // console.log(barChartLabelsData);
-  // console.log(status1);
-  // console.log(status2);
-  // console.log(status3);
-
   public barChartOptions: any = {
     scaleShowVerticalLines: false,
     responsive: true,
@@ -157,14 +121,13 @@ export class TreatmentArmDetailsComponent implements OnInit {
     }
   ];
 
-  public barChartLabels: string[] = ['Penile adenocarcinoma (90600236)', 'Neuroendocrine cancer, NOS (10021980)',
-    'Lung adenocarcinoma (10053130)'];
+  public barChartLabels: string[] = [];
   public barChartType: string = 'bar';
   public barChartLegend: boolean = false;
 
   public barChartData: any[] = [
     {
-      data: [10, 10, 10],
+      data: [],
       label: 'Max',
       type: 'line',
       fill: false,
@@ -172,22 +135,24 @@ export class TreatmentArmDetailsComponent implements OnInit {
       pointHoverRadius: 0
     },
     {
-      data: [0, 2, 0],
+      data: [],
       label: 'Off Trial'
       // FORMERLY_ON_ARM_OFF_TRIAL, FORMERLY_ON_ARM_PROGRESSED, OFF_TRIAL_DECEASED, OFF_TRIAL
     },
     {
-      data: [1, 1, 1],
+      data: [],
       label: 'On Treatment Arm'
       // ON_TREATMENT_ARM
     },
     {
-      data: [1, 0, 0],
+      data: [],
       label: 'Pending'
       // PENDING_APPROVAL, PENDING_CONFIRMATION
     }
   ];
   // NOT_ELIGIBLE, OFF_TRIAL_NOT_CONSENTED
+
+
 
   constructor(private treatmentArmApi: TreatmentArmApiService, private route: ActivatedRoute) {
 
@@ -210,32 +175,130 @@ export class TreatmentArmDetailsComponent implements OnInit {
           x.dateOffArm = gmt.transform(x.dateOffArm);
           return x;
         });
+        let status1: string = '0,';
+        let status2: string = '0,';
+        let status3: string = '0,';
+        let s1 = 0, s2 = 0, s3 = 0;
+        let sta1 = 0, sta2 = 0, sta3 = 0;
+        // console.log(this.tableData[this.versionIndex].summaryReport.assignmentRecords);
+        if (this.tableData[this.versionIndex] !== null) {
 
-        let itemsSnv: any[] = this.tableData[this.versionIndex].variantReport.singleNucleotideVariants;
-        this.snvIn = itemsSnv.filter(item => item.inclusion === true);
-        this.snvEx = itemsSnv.filter(item => item.inclusion === false);
+          // this.tableData[this.versionIndex].summaryReport.assignmentRecords.forEach((element: any, ndx: number) => {
+          //   if (element.assignmentStatusOutcome == 'ON_TREATMENT_ARM') {
+          //     console.log(element);
+          //     console.log(ndx);
+          //   }
+          // });
 
-        let itemsIndel: any[] = this.tableData[this.versionIndex].variantReport.indels;
-        this.indelIn = itemsIndel.filter(item => item.inclusion === true);
-        this.indelEx = itemsIndel.filter(item => item.inclusion === false);
+          // console.log(this.tableData[this.versionIndex].summaryReport.assignmentRecords);
 
-        let itemsCnv: any[] = this.tableData[this.versionIndex].variantReport.copyNumberVariants;
-        this.cnvIn = itemsCnv.filter(item => item.inclusion === true);
-        this.cnvEx = itemsCnv.filter(item => item.inclusion === false);
+          this.barChartLabels = this.tableData[this.versionIndex].summaryReport.assignmentRecords.map((x: any) => {
+            if (x.assignmentStatusOutcome === 'ON_TREATMENT_ARM') {
+              s2 = 0;
+              s3 = 0;
+              sta2 = 0;
+              sta3 = 0;
+              s1 = s1 + 1;
+              sta1 = sta1 + 1;
+              if (sta1 >= 2) {
+                status1 = status1.substr(0, status1.length - 2);
+                status1 = status1 + (sta1.toString()) + ',';
+              } else {
+                status1 = status1 + (sta1.toString()) + ',';
+              }
+              if (s1 < 2) {
+                status2 = status2 + 0 + ',';
+                status3 = status3 + 0 + ',';
+              }
+            } else if ('PENDING_APPROVAL,PENDING_CONFIRMATION'.indexOf(x.assignmentStatusOutcome) !== -1) {
+              s1 = 0;
+              s3 = 0;
+              sta1 = 0;
+              sta3 = 0;
+              s2 = s2 + 1;
+              sta2 = sta2 + 1;
+              if (sta2 >= 2) {
+                status2 = status2.substr(0, status2.length - 2);
+                status2 = status2 + (sta2.toString()) + ',';
+              } else {
+                status2 = status2 + (sta2.toString()) + ',';
+              }
 
-        let itemsGene: any[] = this.tableData[this.versionIndex].variantReport.geneFusions;
-        this.geneIn = itemsGene.filter(item => item.inclusion === true);
-        this.geneEx = itemsGene.filter(item => item.inclusion === false);
+              if (s2 < 2) {
+                status1 = status1 + 0 + ',';
+                status3 = status3 + 0 + ',';
+              }
+            } else if (`FORMERLY_ON_ARM_OFF_TRIAL, FORMERLY_ON_ARM_PROGRESSED, OFF_TRIAL_DECEASED, 
+OFF_TRIAL`.indexOf(x.assignmentStatusOutcome) !== -1) {
+              s1 = 0;
+              s2 = 0;
+              sta1 = 0;
+              sta2 = 0;
+              s3 = s3 + 1;
+              sta3 = sta3 + 1;
+              if (sta3 >= 2) {
+                status3 = status3.substr(0, status3.length - 2);
+                status3 = status3 + (sta3.toString()) + ',';
+              } else {
+                status3 = status3 + (sta3.toString()) + ',';
+              }
 
-        let itemsRule: any[] = this.tableData[this.versionIndex].variantReport.nonHotspotRules;
-        this.ruleIn = itemsRule.filter(item => item.inclusion === true);
-        this.ruleEx = itemsRule.filter(item => item.inclusion === false);
+              if (s3 < 2) {
+                status1 = status1 + 0 + ',';
+                status2 = status2 + 0 + ',';
+              }
+            }
+            return x.disease.shortName + '(' + x.disease.meddraCode + ')';
+          });
 
-        this.dataAvailable = true;
+          this.barChartLabels = Array.from(new Set(this.barChartLabels));
 
+          let itemsSnv: any[] = this.tableData[this.versionIndex].variantReport.singleNucleotideVariants;
+          this.snvIn = itemsSnv.filter(item => item.inclusion === true);
+          this.snvEx = itemsSnv.filter(item => item.inclusion === false);
+
+          let itemsIndel: any[] = this.tableData[this.versionIndex].variantReport.indels;
+          this.indelIn = itemsIndel.filter(item => item.inclusion === true);
+          this.indelEx = itemsIndel.filter(item => item.inclusion === false);
+
+          let itemsCnv: any[] = this.tableData[this.versionIndex].variantReport.copyNumberVariants;
+          this.cnvIn = itemsCnv.filter(item => item.inclusion === true);
+          this.cnvEx = itemsCnv.filter(item => item.inclusion === false);
+
+          let itemsGene: any[] = this.tableData[this.versionIndex].variantReport.geneFusions;
+          this.geneIn = itemsGene.filter(item => item.inclusion === true);
+          this.geneEx = itemsGene.filter(item => item.inclusion === false);
+
+          let itemsRule: any[] = this.tableData[this.versionIndex].variantReport.nonHotspotRules;
+          this.ruleIn = itemsRule.filter(item => item.inclusion === true);
+          this.ruleEx = itemsRule.filter(item => item.inclusion === false);
+
+          this.dataAvailable = true;
+
+          var strArr1: any[] = status1.split(',');
+          for (var i = 1; i < strArr1.length - 1; i++)
+            this.barChartData[2].data.push(parseInt(strArr1[i]));
+
+          var strArr3: any[] = status3.split(',');
+          for (var i = 1; i < strArr3.length - 1; i++)
+            this.barChartData[1].data.push(parseInt(strArr3[i]));
+
+          var strArr2: any[] = status2.split(',');
+          for (var i = 1; i < strArr3.length - 1; i++) {
+            this.barChartData[3].data.push(parseInt(strArr2[i]));
+            this.barChartData[0].data.push(10);
+          }
+          // console.log(this.barChartData);
+          // console.log(status1);
+          // console.log(strArr1);
+          // console.log(strArr2);
+          // console.log(strArr3);
+
+        }
       },
       error => this.errorMessage = <any>error
       );
+
   }
 
   getPreviousDetailsData() {
