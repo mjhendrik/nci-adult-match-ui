@@ -20,6 +20,7 @@ export class Auth {
       title: 'NCI-MATCH'
     },
     auth: {
+      // redirectUrl: 'http://localhost:5555/dashboard',
       params: {
         scope: 'openid name email roles'
       }
