@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import './operators';
+import 'd3';
+import 'nvd3';
+import 'ng2-nvd3';
+
+declare let d3: any;
 
 /**
  * This class represents the main application component.

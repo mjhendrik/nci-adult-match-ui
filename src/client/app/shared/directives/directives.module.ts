@@ -14,6 +14,10 @@ import { ColorCodeVariantReportDirective } from './colorcode-variant-report.dire
 import { ActiveClassDirective } from './active-class.directive';
 import { MatchHeightTabClickDirective } from './match-height-tab.directive';
 import { FaIconDirective } from './fa-icon.directive';
+import { CnvChartDirective } from './chart.directive';
+import {d3} from 'd3';
+import { nvd3 } from 'nvd3';
+import { nvD3 } from 'ng2-nvd3';
 
 @NgModule({
   imports: [CommonModule],
@@ -30,7 +34,10 @@ import { FaIconDirective } from './fa-icon.directive';
     ColorCodeVariantReportDirective,
     ActiveClassDirective,
     MatchHeightTabClickDirective,
-    FaIconDirective
+    FaIconDirective,
+    nvD3,
+    CnvChartDirective
+
   ],
   exports: [
     ColorCodeTaDirective,
@@ -45,7 +52,9 @@ import { FaIconDirective } from './fa-icon.directive';
     ColorCodeVariantReportDirective,
     ActiveClassDirective,
     MatchHeightTabClickDirective,
-    FaIconDirective
+    FaIconDirective,
+    nvD3,
+    CnvChartDirective,
   ],
 })
 export class DirectivesModule {
