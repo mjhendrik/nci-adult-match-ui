@@ -48,7 +48,7 @@ export function main() {
           DataTableModule, ChartsModule],
         declarations: [TreatmentArmListComponent],
         providers: [
-          { provide: TreatmentArmApiService, useClass: MockCliaApiService },
+          { provide: TreatmentArmApiService, useClass: MockTAListApiService },
           { provide: ActivatedRoute, useValue: { snapshot: { params: { id: 'EAY131-F', version: '2016-05-31' } } } },
         ]
       });
@@ -120,14 +120,116 @@ export function main() {
             }
             fixture.componentInstance.gmt = new GmtPipe();
             fixture.componentInstance.dateStatusLog(item.statusLog, 'OPEN', item);
+            fixture.componentInstance.dateStatusLog(item.statusLog, 'CLOSED,SUSPENDED', item);
+
+          });
+      }));
+
+    it('should test dateStatusLog with type closed',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(TreatmentArmListComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(TreatmentArmListComponent);
+            let item = {
+              "_class": "gov.match.model.TreatmentArm",
+              "_id": {
+                "$oid": "5924670551fa87707f6226b6"
+              },
+              "assayResults": [{
+                "assayResultStatus": "NEGATIVE",
+                "assayVariant": "PRESENT",
+                "gene": "MSH2",
+                "levelOfEvidence": 2
+              }],
+              "dateCreated": {
+                "$date": 1488461547790
+              },
+              "description": "TA used by Cuke test",
+              "gene": "cKIT",
+              "maxPatientsAllowed": 35,
+              "name": "CukeTest-1065",
+              "numPatientsAssigned": 1,
+              "stateToken": {
+                "$uuid": "c150da65b18847f8b9b68bc4904cdb01"
+              },
+              "statusLog": {
+                "1488461594500": "CLOSED",
+                "1488461547790": "PENDING",
+                "1488461594417": "READY"
+              },
+              "targetId": "1065",
+              "targetName": "Sunitinib",
+              "treatmentArmDrugs": [{
+                "drugId": "1065",
+                "name": "Sunitinib",
+                "pathway": "cKIT"
+              }],
+              "treatmentArmStatus": "CLOSED",
+              "treatmentId": "CukeTest-1065",
+              "version": "2015-08-06"
+            }
+            fixture.componentInstance.gmt = new GmtPipe();
+            fixture.componentInstance.dateStatusLog(item.statusLog, 'CLOSED,SUSPENDED', item);
           });
       }));
 
   });
+
+  describe('treatment arms list component', () => {
+    // Setting module for testing
+    // Disable old forms
+    let config: any[] = [
+      { path: 'treatments/details/:id/:version', component: TreatmentArmListComponent },
+      { path: 'treatmentsdetails/:id/:version', component: TreatmentArmListComponent }
+    ];
+    // inject([MockBackend], (mockBackend: MockBackend)
+    beforeEach(() => {
+      TestBed.configureTestingModule({
+        imports: [RouterTestingModule.withRoutes(config), DirectivesModule, PipesModule, FormsModule,
+          DataTableModule, ChartsModule],
+        declarations: [TreatmentArmListComponent],
+        providers: [
+          { provide: TreatmentArmApiService, useClass: MockTAListApiServiceError },
+          { provide: ActivatedRoute, useValue: { snapshot: { params: { id: 'EAY131-F', version: '2016-05-31' } } } },
+        ]
+      });
+
+      spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
+    });
+
+    it('should work by calling ngonInit',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(TreatmentArmListComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(TreatmentArmListComponent);
+            fixture.componentInstance.ngOnInit();
+          });
+      }));
+  });
+}
+
+class MockTAListApiServiceError {
+  getTreatmentArmList(): Observable<any> {
+    let testdata = [{
+      date_molecular_id_created: '2-12-2016',
+      date_variant_received: '2-12-2016',
+    }];
+    return Observable.throw(testdata);
+  }
 }
 
 
-class MockCliaApiService {
+class MockTAListApiService {
   getPreviousTreatmentArmDetails(): Observable<any> {
     let testdata = [{
       "_class": "gov.match.model.TreatmentArm",
