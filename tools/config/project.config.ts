@@ -36,6 +36,7 @@ export class ProjectConfig extends SeedConfig {
       { src: 'bootstrap/dist/js/bootstrap.min.js', inject: 'libs' },
       { src: 'font-awesome/css/font-awesome.min.css', inject: true },
       { src: 'bootstrap/dist/css/bootstrap.min.css', inject: true },
+      { src: 'nvd3/build/nv.d3.min.css', inject: true }
     ];
 
     // Add `local` third-party libraries to be injected/bundled.
@@ -68,6 +69,19 @@ export class ProjectConfig extends SeedConfig {
     {
       name: 'moment',
       path: 'node_modules/moment/moment.js'
+    },
+    {
+      name: 'd3',
+      path: 'node_modules/d3/d3.js'
+    },
+    {
+      name: 'nvd3',
+      path: 'node_modules/nvd3/build/nv.d3.min.js'
+    },
+    {
+      name: 'ng2-nvd3',
+      // path: 'node_modules/ng2-nvd3/build/lib/ng2-nvd3.d.ts'
+      path: 'node_modules/ng2-nvd3/build/lib/ng2-nvd3.js'
     },
     {
       name: 'ngx-dropzone-wrapper',
