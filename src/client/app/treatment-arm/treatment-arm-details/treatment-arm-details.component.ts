@@ -175,12 +175,7 @@ export class TreatmentArmDetailsComponent implements OnInit {
           x.dateOffArm = gmt.transform(x.dateOffArm);
           return x;
         });
-        // let status1: string = '0,';
-        // let status2: string = '0,';
-        // let status3: string = '0,';
-        // let s1 = 0, s2 = 0, s3 = 0;
-        // let sta1 = 0, sta2 = 0, sta3 = 0;
-        // console.log(this.tableData[this.versionIndex].summaryReport.assignmentRecords);
+
         if (this.tableData[this.versionIndex] !== null) {
           let assignmentRecords = this.tableData[this.versionIndex].summaryReport.assignmentRecords;
 
@@ -319,17 +314,6 @@ OFF_TRIAL`.indexOf(element.assignmentStatusOutcome) !== -1) {
     this.treatmentArmApi.getTreatmentArmVersions(this.route.snapshot.params['id'])
       .subscribe(itemList => {
         this.versionData = itemList;
-
-        // console.log(this.route.snapshot.params['version']);
-        // console.log(this.versionIndex);
-
-        // let i;
-        // for (i = 0; i < this.versionData.length; i++) {
-        //   if (this.versionData[i].version === this.route.snapshot.params['version']) this.versionIndex = i;
-        // }
-
-        // this.getPreviousDetailsData();
-
       },
       error => this.errorMessage = <any>error
       );
