@@ -5,10 +5,10 @@ import {Component, OnInit} from '@angular/core';
 import {bootstrap}  from '@angular/platform-browser-dynamic'
 import {nvD3} from 'ng2-nvd3'
 import { ActivatedRoute } from '@angular/router';
-import {
-  CliaApiService,
-  CliaVariantReportsQCInterface
-} from '../../clia/clia-api.service';
+// import {
+//   CliaApiService,
+//   CliaVariantReportsQCInterface
+// } from '../../clia/clia-api.service';
 
 declare let d3: any;
 
@@ -17,7 +17,6 @@ const color = d3.scale.category20();
 @Component({
   selector: 'cnv-chart',
   directives: [nvD3],
-  // template: '<div> *** </div>'
   template: '<div> <nvd3 [options]="options" [data]=data ></nvd3> </div>'
 })
 
@@ -29,8 +28,7 @@ export class CnvChartDirective {
   data;
   valueFormat;
 
-
-  constructor(private cliaApi: CliaApiService, private route: ActivatedRoute) { }
+  // constructor(private cliaApi: CliaApiService, private route: ActivatedRoute) { }
 
   ngOnInit(){
 

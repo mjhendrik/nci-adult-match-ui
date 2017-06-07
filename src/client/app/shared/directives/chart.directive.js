@@ -12,10 +12,9 @@ var core_1 = require('@angular/core');
 var ng2_nvd3_1 = require('ng2-nvd3');
 var color = d3.scale.category20();
 var CnvChartDirective = (function () {
-    function CnvChartDirective(cliaApi, route) {
-        this.cliaApi = cliaApi;
-        this.route = route;
+    function CnvChartDirective() {
     }
+    // constructor(private cliaApi: CliaApiService, private route: ActivatedRoute) { }
     CnvChartDirective.prototype.ngOnInit = function () {
         this.options = {
             chart: {
@@ -95,7 +94,6 @@ var CnvChartDirective = (function () {
         core_1.Component({
             selector: 'cnv-chart',
             directives: [ng2_nvd3_1.nvD3],
-            // template: '<div> *** </div>'
             template: '<div> <nvd3 [options]="options" [data]=data ></nvd3> </div>'
         })
     ], CnvChartDirective);
