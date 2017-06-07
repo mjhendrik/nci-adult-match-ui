@@ -115,18 +115,18 @@
       "timeOnArm": 314235,
       "stepNumber": "1",
       "disease": {
-        "meddraCode": "90600236",
+        "meddraCode": "90600239",
         "ctepCategory": "Reproductive System Neoplasm, Male",
         "ctepSubCategory": "Penile Cancer",
         "ctepTerm": "Penile adenocarcinoma",
-        "shortName": "Penile adenocarcinoma"
+        "shortName": "Penile NOS"
       },
       "assignmentReason": "The patient was selected for this because it matched identifier COSM12345."
     },
     {
       "patientSequenceNumber": "12340",
       "treatmentArmVersion": "2017-03-12",
-      "assignmentStatusOutcome": "OFF_TRIAL_NOT_CONSENTED",
+      "assignmentStatusOutcome": "FORMERLY_ON_ARM_OFF_TRIAL",
       "analysisId": "MSN25049_v2_91f2766b-dd32-471d-9e83-8eefbce3719d",
       "assignmentReportId": 0,
       "dateSelected": "2017-06-12 18:54:48.608332",
