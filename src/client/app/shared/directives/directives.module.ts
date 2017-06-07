@@ -8,15 +8,18 @@ import { ColorCodeHoursDirective } from './colorcode-hours.directive';
 import { ColorCodeCliaDirective } from './colorcode-clia.directive';
 import { ColorCodeCliaIonDirective } from './colorcode-clia-ion.directive';
 import { MatchHeightDirective } from './match-height.directive';
-import { ExternalLinksComponent, LinkType } from './external-links.component';
+import {
+  ExternalLinksComponent,
+  LinkType
+} from './external-links.component';
 import { ColorCodeAssignmentDirective } from './colorcode-assignment.directive';
 import { ColorCodeVariantReportDirective } from './colorcode-variant-report.directive';
 import { ActiveClassDirective } from './active-class.directive';
 import { MatchHeightTabClickDirective } from './match-height-tab.directive';
 import { FaIconDirective } from './fa-icon.directive';
 import { CnvChartDirective } from './chart.directive';
-import {d3} from 'd3';
-import { nvd3 } from 'nvd3';
+// import { d3 } from 'd3';
+// import { nvd3 } from 'nvd3';
 import { nvD3 } from 'ng2-nvd3';
 
 @NgModule({
