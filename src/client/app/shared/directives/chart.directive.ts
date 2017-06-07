@@ -2,7 +2,6 @@
  * Created by hendrikssonm on 6/6/17.
  */
 import {Component, OnInit} from '@angular/core';
-import {bootstrap}  from '@angular/platform-browser-dynamic'
 import {nvD3} from 'ng2-nvd3'
 import { ActivatedRoute } from '@angular/router';
 // import {
