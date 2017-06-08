@@ -32,7 +32,7 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 
 
 export function main() {
-  describe('treatment arms component', () => {
+  describe('treatment arms details component', () => {
     // Setting module for testing
     // Disable old forms
     let config: any[] = [
@@ -46,7 +46,7 @@ export function main() {
           DataTableModule, ChartsModule],
         declarations: [TreatmentArmDetailsComponent],
         providers: [
-          { provide: TreatmentArmApiService, useClass: MockCliaApiService },
+          { provide: TreatmentArmApiService, useClass: MockTADApiService },
           { provide: ActivatedRoute, useValue: { snapshot: { params: { id: 'EAY131-F', version: '2016-05-31' } } } },
         ]
       });
@@ -82,25 +82,77 @@ export function main() {
           });
       }));
 
-    // it('should test setVersionIndex',
-    //   async((done: any) => {
-    //     TestBed
-    //       .compileComponents()
-    //       .then(() => {
-    //         let fixture = TestBed.overrideComponent(TreatmentArmDetailsComponent, {
-    //           set: {
-    //             templateUrl: ''
-    //           }
-    //         }).createComponent(TreatmentArmDetailsComponent);
-    //         fixture.componentInstance.setVersionIndex(2);
-    //       });
-    //   }));
+    it('should test setVersionIndex',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(TreatmentArmDetailsComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(TreatmentArmDetailsComponent);
+            //          fixture.componentInstance.setVersionIndex(2);
+          });
+      }));
 
+  });
+
+  describe('treatment arms component with errors', () => {
+    // Setting module for testing
+    // Disable old forms
+    let config: any[] = [
+      { path: 'treatments/details/:id/:version', component: TreatmentArmDetailsComponent },
+      { path: 'treatmentsdetails/:id/:version', component: TreatmentArmDetailsComponent }
+    ];
+    // inject([MockBackend], (mockBackend: MockBackend)
+    beforeEach(() => {
+      TestBed.configureTestingModule({
+        imports: [RouterTestingModule.withRoutes(config), DirectivesModule, PipesModule, FormsModule,
+          DataTableModule, ChartsModule],
+        declarations: [TreatmentArmDetailsComponent],
+        providers: [
+          { provide: TreatmentArmApiService, useClass: MockTADApiServiceError },
+          { provide: ActivatedRoute, useValue: { snapshot: { params: { id: 'EAY131-F', version: '2016-05-31' } } } },
+        ]
+      });
+
+      spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
+    });
+
+    it('should work by calling ngonInit',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(TreatmentArmDetailsComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(TreatmentArmDetailsComponent);
+            fixture.componentInstance.ngOnInit();
+          });
+      }));
   });
 }
 
 
-class MockCliaApiService {
+class MockTADApiServiceError {
+  getPreviousTreatmentArmDetails(): Observable<any> {
+    return Observable.throw('error');
+  }
+  getTreatmentArmDetails(): Observable<any> {
+    return Observable.throw('error');
+  }
+  getTreatmentArmVersions(): Observable<any> {
+    return Observable.throw('error');
+  }
+  getTreatmentArmList(): Observable<any> {
+    return Observable.throw('error');
+  }
+}
+
+class MockTADApiService {
   getPreviousTreatmentArmDetails(): Observable<any> {
     let testdata = [{
       "_class": "gov.match.model.TreatmentArm",

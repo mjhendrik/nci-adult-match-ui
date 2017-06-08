@@ -16,7 +16,7 @@ module.exports = function (config) {
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['jasmine'],
-
+    failOnEmptyTestSuite: false,
 
     // list of files / patterns to load in the browser
     files: [
@@ -39,36 +39,126 @@ module.exports = function (config) {
       'node_modules/zone.js/dist/jasmine-patch.js',
 
       // RxJs.
-      { pattern: 'node_modules/rxjs/**/*.js', included: false, watched: false },
-      { pattern: 'node_modules/rxjs/**/*.js.map', included: false, watched: false },
+      {
+        pattern: 'node_modules/rxjs/**/*.js',
+        included: false,
+        watched: false
+      },
+      {
+        pattern: 'node_modules/rxjs/**/*.js.map',
+        included: false,
+        watched: false
+      },
 
       // paths loaded via module imports
       // Angular itself
-      { pattern: 'node_modules/@angular/**/*.js', included: false, watched: true },
-      { pattern: 'node_modules/@angular/**/*.js.map', included: false, watched: false },
+      {
+        pattern: 'node_modules/@angular/**/*.js',
+        included: false,
+        watched: true
+      },
+      {
+        pattern: 'node_modules/@angular/**/*.js.map',
+        included: false,
+        watched: false
+      },
 
-      { pattern: 'dist/dev/**/*.js', included: false, watched: true },
+      {
+        pattern: 'dist/dev/**/*.js',
+        included: false,
+        watched: true
+      },
 
-      { pattern: 'dist/dev/**/*.html', included: false, watched: true, served: true },
-      { pattern: 'dist/dev/**/*.css', included: false, watched: true, served: true },
-      { pattern: 'node_modules/systemjs/dist/system-polyfills.js', included: false, watched: false }, // PhantomJS2 (and possibly others) might require it
+      {
+        pattern: 'dist/dev/**/*.html',
+        included: false,
+        watched: true,
+        served: true
+      },
+      {
+        pattern: 'dist/dev/**/*.css',
+        included: false,
+        watched: true,
+        served: true
+      },
+      {
+        pattern: 'node_modules/systemjs/dist/system-polyfills.js',
+        included: false,
+        watched: false
+      }, // PhantomJS2 (and possibly others) might require it
 
       // suppress annoying 404 warnings for resources, images, etc.
-      { pattern: 'dist/dev/assets/**/*', watched: false, included: false, served: true },
+      {
+        pattern: 'dist/dev/assets/**/*',
+        watched: false,
+        included: false,
+        served: true
+      },
 
       // Externally loaded
-      { pattern: 'https://cdn.auth0.com/js/lock/10.7/lock.js', watched: false, included: false },
-      { pattern: 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.3/Chart.bundle.min.js', watched: false, included: false },
-      
+      {
+        pattern: 'https://cdn.auth0.com/js/lock/10.7/lock.js',
+        watched: false,
+        included: false
+      },
+      {
+        pattern: 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.3/Chart.bundle.min.js',
+        watched: false,
+        included: false
+      },
+
       // Additional project-specific libraries
-      { pattern: 'node_modules/angular2-jwt/angular2-jwt.js', included: false, watched: true },
-      { pattern: 'node_modules/lodash/lodash.js', included: false, watched: true },
-      { pattern: 'node_modules/moment/moment.js', included: false, watched: true },
-      { pattern: 'node_modules/ng2-charts/**/*.js', included: false, watched: true },
-      { pattern: 'node_modules/ngx-dropzone-wrapper/bundles/ngx-dropzone-wrapper.umd.js', included: false, watched: true },
-      { pattern: 'node_modules/ngx-popover/index.js', included: false, watched: true },
-      { pattern: 'node_modules/ngx-popover/*.js', included: false, watched: true },
-      
+      {
+        pattern: 'node_modules/angular2-jwt/angular2-jwt.js',
+        included: false,
+        watched: true
+      },
+      {
+        pattern: 'node_modules/lodash/lodash.js',
+        included: false,
+        watched: true
+      },
+      {
+        pattern: 'node_modules/moment/moment.js',
+        included: false,
+        watched: true
+      },
+      {
+        pattern: 'node_modules/d3/d3.js',
+        included: false,
+        watched: true
+      },
+      {
+        pattern: 'node_modules/nvd3/build/nv.d3.min.js',
+        included: false,
+        watched: true
+      },
+      {
+        pattern: 'node_modules/ng2-charts/**/*.js',
+        included: false,
+        watched: true
+      },
+      {
+        pattern: 'node_modules/ng2-nvd3/build/lib/ng2-nvd3.js',
+        included: false,
+        watched: true
+      },
+      {
+        pattern: 'node_modules/ngx-dropzone-wrapper/bundles/ngx-dropzone-wrapper.umd.js',
+        included: false,
+        watched: true
+      },
+      {
+        pattern: 'node_modules/ngx-popover/index.js',
+        included: false,
+        watched: true
+      },
+      {
+        pattern: 'node_modules/ngx-popover/*.js',
+        included: false,
+        watched: true
+      },
+
       'test-config.js',
       'dist/dev/app/system-config.js',
       'test-main.js'
@@ -133,7 +223,7 @@ module.exports = function (config) {
 
     // Passing command line arguments to tests
     client: {
-      files:  argv.files ? minimatch.makeRe(argv.files).source : null
+      files: argv.files ? minimatch.makeRe(argv.files).source : null
     }
   });
 
