@@ -18,7 +18,6 @@ const color = d3.scale.category20();
 
 @Component({
   selector: 'cnv-chart',
-  // directives: [nvD3],
   template: '<div> <nvd3 [options]="options" [data]=data ></nvd3> </div>'
 })
 
