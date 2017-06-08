@@ -7,17 +7,12 @@ import {
 } from '@angular/core';
 import { nvD3 } from 'ng2-nvd3';
 import { ActivatedRoute } from '@angular/router';
-// import {
-//   CliaApiService,
-//   CliaVariantReportsQCInterface
-// } from '../../clia/clia-api.service';
 
 declare let d3: any;
 
-const color = d3.scale.category20();
-
 @Component({
   selector: 'cnv-chart',
+  directives: [nvD3],
   template: '<div> <nvd3 [options]="options" [data]=data ></nvd3> </div>'
 })
 
@@ -28,8 +23,6 @@ export class CnvChartDirective {
   options: any;
   data: any;
   valueFormat: any;
-
-  // constructor(private cliaApi: CliaApiService, private route: ActivatedRoute) { }
 
   ngOnInit() {
 
@@ -64,7 +57,7 @@ export class CnvChartDirective {
           axisLabel: 'Dates',
           tickFormat: function (d: any) {
 
-            // return d3.time.format('%x')(new Date(new Date() - (20000 * 86400000) + (d * 86400000)));
+            return d3.time.format('%x')(new Date(new Date() - (20000 * 86400000) + (d * 86400000)));
           },
 
           showMaxMin: false
@@ -73,13 +66,12 @@ export class CnvChartDirective {
           axisLabel: 'Stock Price',
           tickFormat: function (d: any) {
             return '$' + d3.format(',.1f')(d);
-          },
-          showMaxMin: false
+          }
         },
         callback: function (chart: any) {
           // showLegend = 'true';
 
-          // chart = nv.models.lineChart()
+          chart = nv.models.lineChart();
           // .useInteractiveGuideline(true)
           // .showLegend(true)
           // .showMaxMin(true)
@@ -120,38 +112,7 @@ export class CnvChartDirective {
       ]
     }];
 
-    // this.patient_id = this.route.snapshot.params['patientSequenceNumber'];
-
-    // this.getData();
-
-
   }
-
-
-  // getData() {
-  //   this.cliaApi.getCliaVariantReportQC('msn-101re')
-  //     .subscribe((itemList: CliaVariantReportsQCInterface) => {
-  //         // this.patient_id = itemList.patient_id;
-  //         // this.analysis_id = itemList.analysis_id;
-  //         // this.total_variants = itemList.total_variants;
-  //         // this.mapd = itemList.mapd;
-  //         // this.cellularity = itemList.cellularity;
-  //         // this.torrent_variant_caller_version = itemList.torrent_variant_caller_version;
-  //         // this.dataAvailable = true;
-  //         //
-  //         // this.oncomine_control_panel_summary = itemList.oncomine_control_panel_summary;
-  //         // Object.keys(itemList.oncomine_control_panel_summary).forEach((key: any, i: number) => {
-  //         //   this.sum += itemList.oncomine_control_panel_summary[key];
-  //         // });
-  //         //
-  //         // this.copy_number_variants = itemList.copy_number_variants;
-  //         // this.gene_fusions = itemList.gene_fusions;
-  //         // this.snv_indels = itemList.snv_indels;
-  //       },
-  //       error => this.errorMessage = <any>error
-  //     );
-  // };
-
 
 }
 

@@ -9,7 +9,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
  * Created by hendrikssonm on 6/6/17.
  */
 var core_1 = require('@angular/core');
-var color = d3.scale.category20();
+var ng2_nvd3_1 = require('ng2-nvd3');
+// const color = d3.scale.category20();
 var CnvChartDirective = (function () {
     function CnvChartDirective() {
     }
@@ -38,7 +39,7 @@ var CnvChartDirective = (function () {
                 xAxis: {
                     axisLabel: 'Dates',
                     tickFormat: function (d) {
-                        // return d3.time.format('%x')(new Date(new Date() - (20000 * 86400000) + (d * 86400000)));
+                        return d3.time.format('%x')(new Date(new Date() - (20000 * 86400000) + (d * 86400000)));
                     },
                     showMaxMin: false
                 },
@@ -46,12 +47,11 @@ var CnvChartDirective = (function () {
                     axisLabel: 'Stock Price',
                     tickFormat: function (d) {
                         return '$' + d3.format(',.1f')(d);
-                    },
-                    showMaxMin: false
+                    }
                 },
                 callback: function (chart) {
                     // showLegend = 'true';
-                    // chart = nv.models.lineChart()
+                    chart = nv.models.lineChart();
                     // .useInteractiveGuideline(true)
                     // .showLegend(true)
                     // .showMaxMin(true)
@@ -94,6 +94,7 @@ var CnvChartDirective = (function () {
     CnvChartDirective = __decorate([
         core_1.Component({
             selector: 'cnv-chart',
+            directives: [ng2_nvd3_1.nvD3],
             template: '<div> <nvd3 [options]="options" [data]=data ></nvd3> </div>'
         })
     ], CnvChartDirective);
@@ -1948,4 +1949,4 @@ exports.CnvChartDirective = CnvChartDirective;
 //     ]
 //   }
 // ];
-//# sourceMappingURL=chart.directive.js.map
+//# sourceMappingURL=cnv-chart.directive.js.map
