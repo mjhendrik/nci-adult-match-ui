@@ -92,7 +92,7 @@ export function main() {
                 templateUrl: ''
               }
             }).createComponent(TreatmentArmDetailsComponent);
-            //          fixture.componentInstance.setVersionIndex(2);
+            fixture.componentInstance.setVersionIndex(0);
           });
       }));
 
