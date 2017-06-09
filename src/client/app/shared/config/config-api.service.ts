@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
+export interface CnvChartInterface {
+  data: [];
+}
+
 @Injectable()
 export class ConfigApiService {
 
@@ -20,6 +24,13 @@ export class ConfigApiService {
     return this.http.get('assets/build-info.json')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
+      .catch(this.handleError);
+  }
+
+  getCnvChart(): Observable<any> {
+    return this.http.get('assets/mock-data/patient.cnv-chart.json')
+    .map((res: Response) => res.json())
+    //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
   }
 
