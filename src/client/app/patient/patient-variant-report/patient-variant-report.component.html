@@ -11,14 +11,17 @@
     <div class="col-md-6">
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-top">
         <div class="panel-heading">
-          <ul id="panel-tab" class="nav nav-tabs pull-right nav-tabs-purple">
-            <li class="active"><a href="#panel-tab-info" data-toggle="tab" aria-expanded="true"><i class="fa fa-align-left"></i><span class="hidden-xs"> Info</span></a></li>
-            <li class=""><a href="#panel-tab-files" data-toggle="tab" aria-expanded="false"><i class="fa fa-file-archive-o"></i><span class="hidden-xs"> Files</span></a></li>
-          </ul>
-          <h4>Variant Report</h4>
+          <div class="row">
+            <div class="col-md-8">
+              <h4>Variant Report</h4>
+            </div>
+            <div class="col-md-4 text-right">
+              <a class="btn btn-sm btn-link" role="button" href [routerLink]="['/patients/details/variant_reports/qc']"><i class="fa fa-file-text-o"></i> QC Report</a>
+              <a href="javascript:;" class="btn btn-sm btn-link"><i class="fa fa-file-excel-o"></i> Excel</a>
+            </div>
+          </div>
         </div>
-        <div id="panel-tab-content" class="tab-content m-b-0">
-          <div class="tab-pane fade active in" id="panel-tab-info">
+        <div class="panel-heading">
             <dl class="dl-horizontal">
               <dt>Molecular Sequence Number</dt>
               <dd>{{variantReport.molecularSequenceNumber | dashify}}</dd>
@@ -42,35 +45,29 @@
               <dt>Torrent Variant Caller Version</dt>
               <dd>{{variantReport.torrentVariantCallerVersion | dashify}}</dd>
             </dl>
-            <div class="panel-heading">
-              <a class="btn btn-purple-light link-none" role="button" href [routerLink]="['/patients/details/variant_reports/qc']"><i class="fa fa-file-text-o"></i> QC Report</a>
-              <a href="javascript:;" class="btn btn-purple-light link-none"><i class="fa fa-file-excel-o"></i> Excel</a>
+            <div class="m-b-5">
+              <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10"><i class="fa fa-download"></i> DNA BAM</button>
+              <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10"><i class="fa fa-download"></i> DNA BAI</button>
+              <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10"><i class="fa fa-download"></i> RNA BAM</button>
+              <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10"><i class="fa fa-download"></i> RNA BAI</button>
+              <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10"><i class="fa fa-download"></i> VCF</button>
             </div>
-          </div>
-          <div class="tab-pane fade" id="panel-tab-files">
-            <p class="m-t-30">
-              <button type="button" class="btn btn-purple-light"><i class="fa fa-download"></i> DNA BAM</button>
-              <button type="button" class="btn btn-purple-light"><i class="fa fa-download"></i> DNA BAI</button>
-              <button type="button" class="btn btn-purple-light"><i class="fa fa-download"></i> RNA BAM</button>
-              <button type="button" class="btn btn-purple-light"><i class="fa fa-download"></i> RNA BAI</button>
-              <button type="button" class="btn btn-purple-light"><i class="fa fa-download"></i> VCF</button>
-            </p>
-          </div>
         </div>
       </div>
     </div>
+
     <div class="col-md-6">
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-top">
         <div class="panel-heading" *ngIf="!assignmentReport">
-          <dl class="dl-horizontal widest-dt">
-            <h4 class="m-b-45">Latest Assignment</h4>
-            <p class="text-muted">No Assignment data yet</p>
-          </dl>
+          <h4>Latest Assignment</h4>
+        </div>
+        <div class="panel-heading" *ngIf="!assignmentReport">
+          <p class="text-muted">No Assignment data yet</p>
         </div>
 
         <div class="panel-heading" *ngIf="assignmentReport">
           <dl class="dl-horizontal widest-dt">
-            <h4 class="m-b-45">Latest Assignment</h4>
+            <h4>Latest Assignment</h4>
             <dt>Status</dt>
             <dd><span [colorCodeAssignment]="assignmentReport.status"> {{assignmentReport.patientAssignmentStatus | dashify}}</span> on {{assignmentReport.dateConfirmed
               | gmt}} by {{(assignmentReport.user||'System User') | dashify}}</dd>
@@ -165,12 +162,7 @@
     <div class="panel-heading">
       <div class="row">
         <div class="col-md-12">
-          <sd-variant-report-simple-table-snv-indels [items]="variantReport.singleNucleotideVariant" [title]="'Single Nucleotide Variants'"></sd-variant-report-simple-table-snv-indels>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <sd-variant-report-simple-table-snv-indels [items]="variantReport.indels" [title]="'Indels'"></sd-variant-report-simple-table-snv-indels>
+          <sd-variant-report-simple-table-snv-indels [items]="variantReport.singleNucleotideVariantAndIndels" [title]="'Single Nucleotide Variants and Indels'"></sd-variant-report-simple-table-snv-indels>
         </div>
       </div>
       <div class="row">

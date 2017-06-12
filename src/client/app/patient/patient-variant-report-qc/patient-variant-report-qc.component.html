@@ -11,69 +11,62 @@
     <div class="col-md-6">
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-top">
         <div class="panel-heading">
-          <ul id="panel-tab" class="nav nav-tabs pull-right nav-tabs-purple">
-            <li class="active"><a href="#panel-tab-info" data-toggle="tab" aria-expanded="true"><i class="fa fa-align-left"></i><span class="hidden-xs"> Info</span></a></li>
-            <li class=""><a href="#panel-tab-files" data-toggle="tab" aria-expanded="false"><i class="fa fa-file-archive-o"></i><span class="hidden-xs"> Files</span></a></li>
-          </ul>
           <h4>Quality Control Report</h4>
         </div>
-        <div id="panel-tab-content" class="tab-content">
-          <div class="tab-pane fade active in" id="panel-tab-info">
-            <dl class="dl-horizontal">
-              <dt>Molecular Sequence Number</dt>
-              <dd>{{variantReport.molecularSequenceNumber | dashify}}</dd>
-              <dt>Biopsy Sequence Number</dt>
-              <dd>{{variantReport.biopsySequenceNumber | dashify}}</dd>
-              <dt>Analysis ID</dt>
-              <dd>{{variantReport.analysisId | dashify}}</dd>
-              <dt>MAPD</dt>
-              <dd>{{variantReport.mapd | dashify}}</dd>
-              <dt>Cellularity</dt>
-              <dd>{{variantReport.cellularity | dashify}}</dd>
-              <dt>File Received Date</dt>
-              <dd>{{variantReport.fileReceivedDate | dashify}}</dd>
-              <dt>Torrent Variant Caller Version</dt>
-              <dd>{{variantReport.torrentVariantCallerVersion | dashify}}</dd>
-            </dl>
-            <dl class="dl-horizontal">
-              <h4>Oncomine Control Panel Summary</h4>
-              <table class="table table-condensed white-header">
-                <thead>
+        <div class="panel-heading">
+          <dl class="dl-horizontal">
+            <dt>Molecular Sequence Number</dt>
+            <dd>{{variantReport.molecularSequenceNumber | dashify}}</dd>
+            <dt>Biopsy Sequence Number</dt>
+            <dd>{{variantReport.biopsySequenceNumber | dashify}}</dd>
+            <dt>Analysis ID</dt>
+            <dd>{{variantReport.analysisId | dashify}}</dd>
+            <dt>MAPD</dt>
+            <dd>{{variantReport.mapd | dashify}}</dd>
+            <dt>Cellularity</dt>
+            <dd>{{variantReport.cellularity | dashify}}</dd>
+            <dt>File Received Date</dt>
+            <dd>{{variantReport.fileReceivedDate | dashify}}</dd>
+            <dt>Torrent Variant Caller Version</dt>
+            <dd>{{variantReport.torrentVariantCallerVersion | dashify}}</dd>
+          </dl>
+          <dl class="dl-horizontal">
+            <h4>Oncomine Control Panel Summary</h4>
+            <table class="table table-condensed white-header">
+              <thead>
+                <tr>
+                  <th>LRP1</th>
+                  <th>TBP</th>
+                  <th>MYC</th>
+                  <th>HMBS</th>
+                  <th>ITGB7</th>
+                  <th>SUM</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngIf="ocpSummary; else emptyRow">
+                  <td>{{ocpSummary.LRP1 | dashify}}</td>
+                  <td>{{ocpSummary.TBP | dashify}}</td>
+                  <td>{{ocpSummary.MYC | dashify}}</td>
+                  <td>{{ocpSummary.HMBS | dashify}}</td>
+                  <td>{{ocpSummary.ITGB7 | dashify}}</td>
+                  <td>{{ocpSummary.SUM | dashify}}</td>
+                </tr>
+                <ng-template #emptyRow>
                   <tr>
-                    <th>LRP1</th>
-                    <th>TBP</th>
-                    <th>MYC</th>
-                    <th>HMBS</th>
-                    <th>ITGB7</th>
-                    <th>SUM</th>
+                    <td colspan="6" class="text-muted">No Oncomine Control Panel data</td>
                   </tr>
-                </thead>
-                <tbody>
-                  <tr *ngIf="ocpSummary; else emptyRow">
-                    <td>{{ocpSummary.LRP1 | dashify}}</td>
-                    <td>{{ocpSummary.TBP | dashify}}</td>
-                    <td>{{ocpSummary.MYC | dashify}}</td>
-                    <td>{{ocpSummary.HMBS | dashify}}</td>
-                    <td>{{ocpSummary.ITGB7 | dashify}}</td>
-                    <td>{{ocpSummary.SUM | dashify}}</td>
-                  </tr>
-                  <ng-template #emptyRow>
-                    <tr>
-                      <td colspan="6" class="text-muted">No Oncomine Control Panel data</td>
-                    </tr>
-                  </ng-template>
-                </tbody>
-              </table>
-            </dl>
-          </div>
-          <div class="tab-pane fade" id="panel-tab-files">
-            <p class="m-t-30">
-              <button type="button" class="btn btn-purple-light"><i class="fa fa-download"></i> DNA BAM</button>
-              <button type="button" class="btn btn-purple-light"><i class="fa fa-download"></i> DNA BAI</button>
-              <button type="button" class="btn btn-purple-light"><i class="fa fa-download"></i> RNA BAM</button>
-              <button type="button" class="btn btn-purple-light"><i class="fa fa-download"></i> RNA BAI</button>
-              <button type="button" class="btn btn-purple-light"><i class="fa fa-download"></i> VCF</button>
-            </p>
+                </ng-template>
+              </tbody>
+            </table>
+          </dl>
+
+          <div class="m-b-5">
+            <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10"><i class="fa fa-download"></i> DNA BAM</button>
+            <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10"><i class="fa fa-download"></i> DNA BAI</button>
+            <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10"><i class="fa fa-download"></i> RNA BAM</button>
+            <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10"><i class="fa fa-download"></i> RNA BAI</button>
+            <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10"><i class="fa fa-download"></i> VCF</button>
           </div>
         </div>
       </div>
@@ -90,12 +83,7 @@
     <div class="panel-heading">
       <div class="row">
         <div class="col-md-12">
-          <sd-variant-report-filtered-table-snv-indels [items]="snv" [type]="'patient'" [title]="'Single Nucleotide Variants'"></sd-variant-report-filtered-table-snv-indels>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <sd-variant-report-filtered-table-snv-indels [items]="indels" [type]="'patient'" [title]="'Indels'"></sd-variant-report-filtered-table-snv-indels>
+          <sd-variant-report-filtered-table-snv-indels [items]="snvAndIndels" [type]="'patient'" [title]="'Single Nucleotide Variants and Indels'"></sd-variant-report-filtered-table-snv-indels>
         </div>
       </div>
       <div class="row">
