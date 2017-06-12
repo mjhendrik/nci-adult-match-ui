@@ -28,7 +28,7 @@ export class ConfigApiService {
   }
 
   getCnvChart(): Observable<any> {
-    return this.http.get('assets/mock-data/patient.cnv-chart.json')
+    return this.http.get('assets/mock-data/patient.cnv-chart-v4.json')
     .map((res: Response) => res.json())
     //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
