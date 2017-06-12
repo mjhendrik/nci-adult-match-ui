@@ -32,26 +32,27 @@ export class ViewDataTransformer {
   }
 
   private transformBiopsy(transformedPatient: any, source: any): any {
-    let transformed = source;
+    let transformedBiopsy = source;
 
-    this.transformMdaMessages(transformedPatient, transformed);
-    this.transformNgsMessages(transformedPatient, transformed);
+    this.transformMdaMessages(transformedPatient, transformedBiopsy);
+    this.transformNgsMessages(transformedPatient, transformedBiopsy);
+    this.transformAssayMessages(transformedPatient, transformedBiopsy);
 
-    return transformed;
+    return transformedBiopsy;
   }
 
-  private transformMdaMessages(transformedPatient: any, transformed: any): void {
-    if (!('mdAndersonMessages' in transformed)) {
+  private transformMdaMessages(transformedPatient: any, transformedBiopsy: any): void {
+    if (!('mdAndersonMessages' in transformedBiopsy)) {
       return;
     }
 
-    transformed.nucleicAcidSendouts = transformed.nucleicAcidSendouts || [];
-    for (let message of transformed.mdAndersonMessages) {
+    transformedBiopsy.nucleicAcidSendouts = transformedBiopsy.nucleicAcidSendouts || [];
+    for (let message of transformedBiopsy.mdAndersonMessages) {
       switch (message.message) {
         case 'NUCLEIC_ACID_SENDOUT':
           {
             let sendout: any = {};
-            transformed.nucleicAcidSendouts.push(sendout);
+            transformedBiopsy.nucleicAcidSendouts.push(sendout);
 
             sendout.molecularSequenceNumber = message.molecularSequenceNumber;
             sendout.trackingNumber = message.trackingNumber;
@@ -66,29 +67,29 @@ export class ViewDataTransformer {
         case 'PATHOLOGY_CONFIRMATION':
         case 'PATHOLOGY_FAILURE':
           {
-            transformed.pathologyReceivedDate = message.reportedDate;
+            transformedBiopsy.pathologyReceivedDate = message.reportedDate;
             if (message.status === 'Y') {
-              transformed.pathologyStatus = 'Agreement on pathology';
+              transformedBiopsy.pathologyStatus = 'Agreement on pathology';
             } else if (message.status === 'N') {
-              transformed.pathologyStatus = 'Do not agree on pathology';
+              transformedBiopsy.pathologyStatus = 'Do not agree on pathology';
             } else if (message.status === 'U') {
-              transformed.pathologyStatus = 'Pathology status is unknown at this time';
+              transformedBiopsy.pathologyStatus = 'Pathology status is unknown at this time';
             }
           }
           break;
 
         case 'SPECIMEN_RECEIVED':
           {
-            transformed.specimenCollectionDate = message.collectedDate ? message.collectedDate : message.reportedDate;
-            transformed.specimenReceivedDate = message.reportedDate ? message.reportedDate : null;
-            transformed.comment = message.comment;
+            transformedBiopsy.specimenCollectionDate = message.collectedDate ? message.collectedDate : message.reportedDate;
+            transformedBiopsy.specimenReceivedDate = message.reportedDate ? message.reportedDate : null;
+            transformedBiopsy.comment = message.comment;
           }
           break;
 
         case 'SPECIMEN_FAILURE':
           {
-            transformed.specimenFailureDate = message.reportedDate ? message.reportedDate : null;
-            transformed.comment = message.comment;
+            transformedBiopsy.specimenFailureDate = message.reportedDate ? message.reportedDate : null;
+            transformedBiopsy.comment = message.comment;
           }
           break;
       }
@@ -187,6 +188,16 @@ export class ViewDataTransformer {
     }
   }
 
+  private transformAssayMessages(transformedPatient: any, transformedBiopsy: any): void {
+    if (!('assayMessages' in transformedBiopsy)) {
+      return;
+    }
+
+    for (let assay of transformedBiopsy.assayMessages) {
+      assay.gene = this.parseGeneFromAssay(assay.biomarker);
+    }
+  }
+
   private calculateMoiSummary(table: any[], moiSummary: any): void {
     for (let item of table) {
       moiSummary.totalMOIs += 1;
@@ -267,5 +278,20 @@ export class ViewDataTransformer {
     }
 
     return sections;
+  }
+
+  private parseGeneFromAssay(assay: string): string {
+    var replacer = function (match: any, p1: any, p2: any, p3: any, offset: any, string: any) {
+      return p2;
+    }
+
+    try {
+      var regExp = /^(ICC)([A-Za-z0-9_-]*)(s)$/; // Parse out 'ICC' at the start of the value and 's' at the end, all case-sensitive
+      if (!assay || (typeof assay !== 'string'))
+        return assay;
+      return assay.replace(regExp, replacer);
+    } catch (error) {
+      return assay;
+    }
   }
 }

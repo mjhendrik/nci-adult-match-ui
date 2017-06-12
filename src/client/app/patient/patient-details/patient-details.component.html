@@ -64,7 +64,7 @@
           <li class="active"><a href="#tab-summary" data-toggle="tab">Summary</a></li>
           <li class="" *ngFor="let biopsy of patient.biopsies; first as isFirst">
             <a href="#tab-biopsy-t-{{biopsy.biopsySequenceNumber}}" data-toggle="tab">
-              <i *ngIf="isFirst" class="fa fa-bell-o" aria-hidden="true"></i> {{biopsy.biopsySequenceNumber}}, {{biopsy.dateCreated | gmt: 'YYYY-MM-DD'}}
+              <i *ngIf="isFirst" class="fa fa-bell-o" aria-hidden="true"></i> Biopsy {{biopsy.biopsySequenceNumber}}, {{biopsy.dateCreated | gmt: 'YYYY-MM-DD'}}
             </a>
           </li>
           <li class=""><a href="#tab-documents" data-toggle="tab">Documents</a></li>
@@ -157,7 +157,7 @@
                       </thead>
                       <tbody>
                         <tr *ngFor="let item of biopsy.assayMessages">
-                          <td>{{item.biomarker | dashify}}</td>
+                          <td>{{item.gene | dashify}}</td>
                           <td>{{item.orderedDate | gmt}}</td>
                           <td>{{item.reportedDate | gmt}}</td>
                           <td>{{item.result | dashify}}</td>
