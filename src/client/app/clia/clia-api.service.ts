@@ -216,6 +216,10 @@ oncomine_control_panel_summary`)
       .catch(this.handleError);
   }
 
+  getCnvChart(): Observable<any[]> {
+    return this.http.get('assets/mock-data/patient.cnv-chart.json');
+  }
+
   /**
     * Handle HTTP error
     */

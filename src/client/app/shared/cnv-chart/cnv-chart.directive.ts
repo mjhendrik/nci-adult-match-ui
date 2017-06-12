@@ -8,8 +8,7 @@ import {
 import { nvD3 } from 'ng2-nvd3';
 import { ActivatedRoute } from '@angular/router';
 import {
-  ConfigApiService,
-  CnvChartInterface
+  ConfigApiService
 } from './../config/config-api.service';
 
 declare let d3: any;
@@ -21,23 +20,17 @@ declare let d3: any;
 })
 
 export class CnvChartDirective implements OnInit {
-  name: string;
-  molecular_id: any;
-
   options: any;
-  data: any[];
-  valueFormat: any;
+  data: any;
 
   constructor(private configApi: ConfigApiService) { }
 
   getData() {
     this.configApi.getCnvChart()
-      .subscribe((itemList: CnvChartInterface) => {
-        var val = [{values: []}];
-        var temp = [];
-
+        .subscribe((itemList: any) => {
         var array = itemList.parsed_vcf_genes;
         var count = 0;
+        var temp: any[] = [];
         Object.keys(array).forEach((key: any) => {
 
           count = count + 1;
@@ -45,8 +38,6 @@ export class CnvChartDirective implements OnInit {
           var values = array[key].values;
           var median = array[key].raw_copy_number;
           var position = array[key].position;
-          // var status = array[key].tsg_gene;
-          // console.log("status--" + status)
 
           var status = !array[key].tsg_gene ? 'Crimson' : 'Green';
 
@@ -93,12 +84,22 @@ export class CnvChartDirective implements OnInit {
                 bottom: 60,
                 left: 40
               },
+              // q1: function (d) {
+              //   return d.q1
+              // },
+              staggerLabels: function(){
+                return true;
+              },
               color: function(d){
                 return d.status;
               },
+              outlierLabel: function (d) {
+                if (d.text) { return d.data + ' ' + d.text }
+                return d.data;
+              },
               x: function(d){
-
                 return d.label;
+                // return "<a href id='d.label'>"+d.label+"</a>";
               },
               maxBoxWidth: 0.1,
               yDomain: [0, 3]
