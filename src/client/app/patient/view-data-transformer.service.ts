@@ -184,7 +184,7 @@ export class ViewDataTransformer {
       variantReport.analysisId = message.ionReporterResults.jobName;
       variantReport.patientSequenceNumber = transformedBiopsy.patientSequenceNumber;
       variantReport.molecularSequenceNumber = message.ionReporterResults.molecularSequenceNumber;
-      variantReport.torrentVariantCallerVersion = message.oncomineVariantAnnotationToolVersion;
+      variantReport.tvcVersion = message.tvcVersion;
     }
   }
 
