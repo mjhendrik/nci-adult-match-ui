@@ -38,7 +38,7 @@
       "gene": "VHL",
       "position": "10183523",
       "raw_copy_number": "2",
-      "tsg_gene": true,
+      "tsg_gene": false,
       "values": [
         "1.871590",
         "1.891665",
@@ -90,7 +90,7 @@
       "gene": "TET2",
       "position": "106155065",
       "raw_copy_number": "2.1",
-      "tsg_gene": true,
+      "tsg_gene": false,
       "values": [
         "2.049793",
         "2.057783",
@@ -116,7 +116,7 @@
       "gene": "FBXW7",
       "position": "153243998",
       "raw_copy_number": "2.1",
-      "tsg_gene": true,
+      "tsg_gene": false,
       "values": [
         "2.049793",
         "2.057783",
@@ -142,7 +142,7 @@
       "gene": "PIK3R1",
       "position": "67522497",
       "raw_copy_number": "1.5",
-      "tsg_gene": true,
+      "tsg_gene": false,
       "values": [
         "1.431242",
         "1.442080",
@@ -168,7 +168,7 @@
       "gene": "APC",
       "position": "112043350",
       "raw_copy_number": "2.7",
-      "tsg_gene": true,
+      "tsg_gene": false,
       "values": [
         "2.614375",
         "2.627956",
@@ -220,7 +220,7 @@
       "gene": "PTCH1",
       "position": "98209088",
       "raw_copy_number": "1.6",
-      "tsg_gene": true,
+      "tsg_gene": false,
       "values": [
         "1.539463",
         "1.549039",
@@ -376,7 +376,7 @@
       "gene": "ATM",
       "position": "108098340",
       "raw_copy_number": "1.7",
-      "tsg_gene": true,
+      "tsg_gene": false,
       "values": [
         "1.656651",
         "1.663545",
@@ -506,7 +506,7 @@
       "gene": "TP53",
       "position": "7572833",
       "raw_copy_number": "1.2",
-      "tsg_gene": true,
+      "tsg_gene": false,
       "values": [
         "1.121419",
         "1.133696",
@@ -532,7 +532,7 @@
       "gene": "NF1",
       "position": "29422232",
       "raw_copy_number": "2.3",
-      "tsg_gene": true,
+      "tsg_gene": false,
       "values": [
         "2.234034",
         "2.244510",
