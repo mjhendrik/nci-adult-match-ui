@@ -131,6 +131,7 @@ export function main() {
               }
             }).createComponent(TreatmentArmDetailsComponent);
             fixture.componentInstance.ngOnInit();
+            fixture.componentInstance.getPreviousDetailsData();
           });
       }));
   });
