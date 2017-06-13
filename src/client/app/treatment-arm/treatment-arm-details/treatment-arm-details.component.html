@@ -1142,10 +1142,10 @@
                                 <mfDefaultSorter by="identifier"><span class="table-header">ID</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="identifier"><span class="table-header">Gene 1</span></mfDefaultSorter>
+                                <mfDefaultSorter by="driverGene"><span class="table-header">Gene 1</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="identifier"><span class="table-header">Gene 2</span></mfDefaultSorter>
+                                <mfDefaultSorter by="partnerGene"><span class="table-header">Gene 2</span></mfDefaultSorter>
                               </th>
                               <th>
                                 <mfDefaultSorter by="levelOfEvidence"><span class="table-header">LOE</span></mfDefaultSorter>
@@ -1162,11 +1162,11 @@
                                 <external-link [linkType]="'cosmicFusionId'" [linkId]="item.identifier"></external-link>
                               </td>
                               <td>
-                                <!--<td>{{item.driverGene | dashify}}</td>-->
+                                <!--{{item.driverGene | dashify}}-->
                                 -
                               </td>
                               <td>
-                                <!--<td>{{item.partnerGene | dashify}}</td>-->
+                                <!--{{item.partnerGene | dashify}}-->
                                 -
                               </td>
                               <td>{{item.levelOfEvidence | dashify}}</td>
@@ -1254,10 +1254,10 @@
                                 <mfDefaultSorter by="identifier"><span class="table-header">ID</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="identifier"><span class="table-header">Gene 1</span></mfDefaultSorter>
+                                <mfDefaultSorter by="driverGene"><span class="table-header">Gene 1</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="identifier"><span class="table-header">Gene 2</span></mfDefaultSorter>
+                                <mfDefaultSorter by="partnerGene"><span class="table-header">Gene 2</span></mfDefaultSorter>
                               </th>
                               <th>
                                 <span class="table-header">Lit</span>
@@ -1271,11 +1271,11 @@
                                 <external-link [linkType]="'cosmicFusionId'" [linkId]="item.identifier"></external-link>
                               </td>
                               <td>
-                                <!--<td>{{item.driverGene | dashify}}</td>-->
+                                <!--{{item.driverGene | dashify}}-->
                                 -
                               </td>
                               <td>
-                                <!--<td>{{item.partnerGene | dashify}}</td>-->
+                                <!--{{item.partnerGene | dashify}}-->
                                 -
                               </td>
                               <td>
