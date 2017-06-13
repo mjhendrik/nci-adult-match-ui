@@ -25,6 +25,7 @@ export class PatientListComponent implements OnInit {
   tablePatientsDefaultSort: string = 'patientSequenceNumber';
   tablePatientsData: any[];
   errorMessage: string;
+  dataAvailable: boolean = false;
 
   constructor(private patientApi: PatientApiService) { }
 
@@ -43,6 +44,7 @@ export class PatientListComponent implements OnInit {
           x.currentTreatmentArm = x.patientAssignments && x.patientAssignments.length ? x.patientAssignments[0].treatmentArm : null;
           return x;
         });
+        this.dataAvailable = true;
       },
       error => this.errorMessage = <any>error
       );
