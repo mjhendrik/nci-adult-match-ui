@@ -72,7 +72,6 @@ export class CnvChartDirective implements OnInit {
           temp.push(Object);
         });
 
-        // this.data = [{values: temp}];
           this.data = temp;
 
           this.options = {
@@ -88,7 +87,6 @@ export class CnvChartDirective implements OnInit {
               },
               x: function(d){
                 return d.label;
-                // return "<a href id='d.label'>"+d.label+"</a>";
               },
               staggerLabels: function(){
                 return true;
@@ -111,20 +109,22 @@ export class CnvChartDirective implements OnInit {
                   var cl05;
                   var html;
                   var li;
+                  var color;
 
                     label = d.key;
                     position = "POS: " + d.data.values.position;
                     cn = "CN: " + d.data.values.cn;
+                    color = "color: white; background-color: " + d.data.status;
 
-                    cl95 = "Cl 5%: " + d.data.values.whisker_low;
-                    cl05 = "Cl 95%: " + d.data.values.whisker_high;
+                    cl95 = "Cl 5%: " + d.data.values.whisker_low.toFixed(4);
+                    cl05 = "Cl 95%: " + d.data.values.whisker_high.toFixed(4);
 
-                    html = "<h4>" + label + "</h4>";
+                    html = "<h4 class='text-center' style='" + color + "'><b>" + label + "</b></h4>";
                     li = "<li>" + position + "</li>";
                     li += "<li>" + cn + "</li>";
                     li += "<li>" + cl95 + "</li>";
                     li += "<li>" + cl05 + "</li>";
-                    html += "<ol>" + li + "</ol>";
+                    html += "<ul class='list-group'>" + li + "</ul>";
 
                   return html;
                 }
