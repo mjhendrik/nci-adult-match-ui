@@ -2,10 +2,6 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
-export interface CnvChartInterface {
-  data: [];
-}
-
 @Injectable()
 export class ConfigApiService {
 
@@ -28,7 +24,8 @@ export class ConfigApiService {
   }
 
   getCnvChart(): Observable<any> {
-    return this.http.get('assets/mock-data/patient.cnv-chart-v4.json')
+    // return this.http.get('assets/mock-data/patient.cnv-chart-v4.json')
+    return this.http.get('assets/mock-data/patient.cnv-chart-v5.json')
     .map((res: Response) => res.json())
     //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);

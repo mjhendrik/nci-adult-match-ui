@@ -11,7 +11,7 @@
       "gene": "MSH2",
       "position": "47630308",
       "raw_copy_number": "1.68",
-      "tsg_gene": true,
+      "tsg_gene": false,
       "values": [
         "1.486059",
         "1.515042",
@@ -67,7 +67,7 @@
       "gene": "BAP1",
       "position": "52436208",
       "raw_copy_number": "2",
-      "tsg_gene": true,
+      "tsg_gene": false,
       "values": [
         "1.741524",
         "1.779891",
@@ -123,7 +123,7 @@
       "gene": "FBXW7",
       "position": "153243998",
       "raw_copy_number": "3.75",
-      "tsg_gene": true,
+      "tsg_gene": false,
       "values": [
         "3.296281",
         "3.363903",
@@ -151,7 +151,7 @@
       "gene": "PIK3R1",
       "position": "67522497",
       "raw_copy_number": "2.56",
-      "tsg_gene": true,
+      "tsg_gene": false,
       "values": [
         "2.254009",
         "2.299646",
@@ -179,7 +179,7 @@
       "gene": "APC",
       "position": "112043350",
       "raw_copy_number": "1.42",
-      "tsg_gene": true,
+      "tsg_gene": false,
       "values": [
         "1.31938",
         "1.334738",
@@ -263,7 +263,7 @@
       "gene": "TSC1",
       "position": "135771565",
       "raw_copy_number": "2.37",
-      "tsg_gene": true,
+      "tsg_gene": false,
       "values": [
         "2.133137",
         "2.168801",
@@ -291,7 +291,7 @@
       "gene": "NOTCH1",
       "position": "139390440",
       "raw_copy_number": "2.27",
-      "tsg_gene": true,
+      "tsg_gene": false,
       "values": [
         "2.096529",
         "2.122938",
@@ -403,7 +403,7 @@
       "gene": "ATM",
       "position": "108098340",
       "raw_copy_number": "2.35",
-      "tsg_gene": true,
+      "tsg_gene": false,
       "values": [
         "2.202783",
         "2.225338",
@@ -459,7 +459,7 @@
       "gene": "RB1",
       "position": "48877958",
       "raw_copy_number": "2.79",
-      "tsg_gene": true,
+      "tsg_gene": false,
       "values": [
         "2.493322",
         "2.537855",

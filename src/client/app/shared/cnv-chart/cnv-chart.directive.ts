@@ -59,11 +59,13 @@ export class CnvChartDirective implements OnInit {
             label: gene,
             status: status,
             values: {
+              position: position,
+              cn: median,
               Q1: parseFloat(min),
               Q2: parseFloat(median),
               Q3: parseFloat(max),
-              whisker_low: parseFloat(min),
-              whisker_high: parseFloat(max),
+              whisker_low: parseFloat(0.95*min),
+              whisker_high: parseFloat(1.05*max),
               outliers: [parseFloat(0.95*min), parseFloat(median), parseFloat(1.05*max)]
             }
           };
@@ -84,25 +86,52 @@ export class CnvChartDirective implements OnInit {
                 bottom: 60,
                 left: 40
               },
-              // q1: function (d) {
-              //   return d.q1
-              // },
+              x: function(d){
+                return d.label;
+                // return "<a href id='d.label'>"+d.label+"</a>";
+              },
               staggerLabels: function(){
                 return true;
               },
               color: function(d){
                 return d.status;
               },
-              outlierLabel: function (d) {
-                if (d.text) { return d.data + ' ' + d.text }
-                return d.data;
+              position: function(d){
+                return d.position;
               },
-              x: function(d){
-                return d.label;
-                // return "<a href id='d.label'>"+d.label+"</a>";
+              cn: function(d){
+                return d.cn;
               },
+              tooltip: {
+                contentGenerator: function(d) {
+                  var label;
+                  var position;
+                  var cn;
+                  var cl95;
+                  var cl05;
+                  var html;
+                  var li;
+
+                    label = d.key;
+                    position = "POS: " + d.data.values.position;
+                    cn = "CN: " + d.data.values.cn;
+
+                    cl95 = "Cl 5%: " + d.data.values.whisker_low;
+                    cl05 = "Cl 95%: " + d.data.values.whisker_high;
+
+                    html = "<h4>" + label + "</h4>";
+                    li = "<li>" + position + "</li>";
+                    li += "<li>" + cn + "</li>";
+                    li += "<li>" + cl95 + "</li>";
+                    li += "<li>" + cl05 + "</li>";
+                    html += "<ol>" + li + "</ol>";
+
+                  return html;
+                }
+              },
+
               maxBoxWidth: 0.1,
-              yDomain: [0, 3]
+              yDomain: [0, 10]
             }
 
             // chart: {
