@@ -538,9 +538,6 @@
                                 OCP Alt
                               </th>
                               <th>
-                                LOE
-                              </th>
-                              <th>
                                 Lit
                               </th>
                             </tr>
@@ -572,9 +569,6 @@
                                 <mfDefaultSorter by="alternative"><span class="table-header">OCP Alt</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="levelOfEvidence"><span class="table-header">LOE</span></mfDefaultSorter>
-                              </th>
-                              <th>
                                 <span class="table-header">Lit</span>
                                 <!--<mfDefaultSorter by="publicMedIds"></mfDefaultSorter>-->
                               </th>
@@ -589,7 +583,6 @@
                               <td>{{item.position | dashify}}</td>
                               <td>{{item.reference | dashify}}</td>
                               <td>{{item.alternative | dashify}}</td>
-                              <td>{{item.levelOfEvidence | dashify}}</td>
                               <td>
                                 <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
                                 <span *ngFor="let items of item.publicMedIds; let last=last">
@@ -790,9 +783,6 @@
                                 OCP Alt
                               </th>
                               <th>
-                                LOE
-                              </th>
-                              <th>
                                 Lit
                               </th>
                             </tr>
@@ -823,9 +813,6 @@
                                 <mfDefaultSorter by="alternative"><span class="table-header">OCP Alt</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="levelOfEvidence"><span class="table-header">LOE</span></mfDefaultSorter>
-                              </th>
-                              <th>
                                 <span class="table-header">Lit</span>
                                 <!--<mfDefaultSorter by="publicMedIds"></mfDefaultSorter>-->
                               </th>
@@ -840,7 +827,6 @@
                               <td>{{item.position | dashify}}</td>
                               <td>{{item.reference | dashify}}</td>
                               <td>{{item.alternative | dashify}}</td>
-                              <td>{{item.levelOfEvidence | dashify}}</td>
                               <td>
                                 <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
                                 <span *ngFor="let items of item.publicMedIds; let last=last">
@@ -1023,9 +1009,6 @@
                                 Position
                               </th>
                               <th>
-                                LOE
-                              </th>
-                              <th>
                                 Lit
                               </th>
                             </tr>
@@ -1053,9 +1036,6 @@
                                 <mfDefaultSorter by="position"><span class="table-header">Position</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="levelOfEvidence"><span class="table-header">LOE</span></mfDefaultSorter>
-                              </th>
-                              <th>
                                 <span class="table-header">Lit</span>
                                 <!--<mfDefaultSorter by="publicMedIds"></mfDefaultSorter>-->
                               </th>
@@ -1068,7 +1048,6 @@
                               <!--same as id-->
                               <td>{{item.chromosome | dashify}}</td>
                               <td>{{item.position | dashify}}</td>
-                              <td>{{item.levelOfEvidence | dashify}}</td>
                               <td>
                                 <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
                                 <span *ngFor="let items of item.publicMedIds; let last=last">
@@ -1230,9 +1209,6 @@
                                 ID
                               </th>
                               <th>
-                                LOE
-                              </th>
-                              <th>
                                 Lit
                               </th>
                             </tr>
@@ -1252,9 +1228,6 @@
                                 <mfDefaultSorter by="identifier"><span class="table-header">ID</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="levelOfEvidence"><span class="table-header">LOE</span></mfDefaultSorter>
-                              </th>
-                              <th>
                                 <span class="table-header">Lit</span>
                                 <!--<mfDefaultSorter by="publicMedIds"></mfDefaultSorter>-->
                               </th>
@@ -1265,7 +1238,6 @@
                               <td>
                                 <external-link [linkType]="'cosmicFusionId'" [linkId]="item.identifier"></external-link>
                               </td>
-                              <td>{{item.levelOfEvidence | dashify}}</td>
                               <td>
                                 <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
                                 <span *ngFor="let items of item.publicMedIds; let last=last">
@@ -1456,9 +1428,6 @@
                                 Function
                               </th>
                               <th>
-                                LOE
-                              </th>
-                              <th>
                                 Lit
                               </th>
                             </tr>
@@ -1487,9 +1456,6 @@
                                 <mfDefaultSorter by="function"><span class="table-header">Function</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="levelOfEvidence"><span class="table-header">LOE</span></mfDefaultSorter>
-                              </th>
-                              <th>
                                 <span class="table-header">Lit</span>
                                 <!--<mfDefaultSorter by="publicMedIds"></mfDefaultSorter>-->
                               </th>
@@ -1502,7 +1468,6 @@
                               <td>{{item.exon | dashify}}</td>
                               <td>{{item.oncominevariantclass | dashify}}</td>
                               <td>{{item.function | dashify}}</td>
-                              <td>{{item.levelOfEvidence | dashify}}</td>
                               <td>
                                 <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
                                 <span *ngFor="let items of item.publicMedIds; let last=last">
