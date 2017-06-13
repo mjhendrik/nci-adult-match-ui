@@ -143,16 +143,7 @@
                   <div class="panel-heading">
                     <div class="panel-heading-btn">
                     </div>
-                    <h4 class="panel-title">SNVs</h4>
-                  </div>
-                </a>
-              </li>
-              <li class="">
-                <a class="p-0" href="#tab-indels" data-toggle="tab" aria-expanded="false">
-                  <div class="panel-heading">
-                    <div class="panel-heading-btn">
-                    </div>
-                    <h4 class="panel-title">Indels</h4>
+                    <h4 class="panel-title">SNVs and Indels</h4>
                   </div>
                 </a>
               </li>
@@ -424,7 +415,7 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td class="text-muted" colspan="7">There are no included single nucleotide variants for treatment arm "{{tableData[versionIndex].treatmentId
+                              <td class="text-muted" colspan="7">There are no included single nucleotide variants or indels for treatment arm "{{tableData[versionIndex].treatmentId
                                 | dashify}}"</td>
                             </tr>
                           </tbody>
@@ -544,7 +535,7 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td class="text-muted" colspan="7">There are no excluded single nucleotide variants for treatment arm "{{tableData[versionIndex].treatmentId
+                              <td class="text-muted" colspan="7">There are no excluded single nucleotide variants or indels for treatment arm "{{tableData[versionIndex].treatmentId
                                 | dashify}}"</td>
                             </tr>
                           </tbody>
@@ -601,250 +592,6 @@
                             <tr>
                               <td class="tfoot-padding" colspan="7">
                                 <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermSnvEx" [totallength]="snvEx.length"></mfBootstrapPaginator>
-                              </td>
-                            </tr>
-                          </tfoot>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- end panel -->
-                </div>
-              </div>
-              <div class="tab-pane fade" id="tab-indels">
-                <!-- table indel -->
-                <div class="row">
-                  <!-- begin panel -->
-                  <div>
-                    <div class="panel-heading">
-                      <h4 class="panel-title f-s-18">Inclusions</h4>
-                    </div>
-                    <div class="col-md-12 bg-success-light">
-                      <div class="col-md-6 p-l-5">
-                        <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
-                          <label>Show
-                        <select [disabled]="indelIn.length == 0" name="data-table_length" [(ngModel)]="recordsPerPageIndelIn"  aria-controls="data-table" class="form-control form-control-success input-sm">
-                          <option value=5>5</option>
-                          <option value=10>10</option>
-                          <option value=25>25</option>
-                          <option value=50>50</option>
-                        </select> 
-                      entries</label>
-                        </div>
-                      </div>
-                      <div class="col-md-6 p-r-5">
-                        <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
-                          <label>Search:
-                        <input [disabled]="indelIn.length == 0" type="text" [(ngModel)]="searchtermIndelIn" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">
-                      </label>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="table-responsive col-lg-12">
-                        <table *ngIf="indelIn.length == 0" class="table table-td-valign-middle table-striped table-col-width">
-                          <thead>
-                            <tr class="success-light">
-                              <th>
-                                ID
-                              </th>
-                              <th>
-                                Chorm
-                              </th>
-                              <th>
-                                Position
-                              </th>
-                              <th>
-                                OCP Ref
-                              </th>
-                              <th>
-                                OCP Alt
-                              </th>
-                              <th>
-                                LOE
-                              </th>
-                              <th>
-                                Lit
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td class="text-muted" colspan="7">There are no included indels for treatment arm "{{tableData[versionIndex].treatmentId | dashify}}"</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                        <table *ngIf="indelIn.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="indelIn | filterByText: searchtermIndelIn"
-                          #mftableIndelIn="mfDataTable" [(mfSortBy)]="tableIndelExDefaultSort" [mfRowsOnPage]="recordsPerPageIndelIn">
-                          <thead>
-                            <tr class="success-light">
-                              <th>
-                                <mfDefaultSorter by="identifier"><span class="table-header">ID</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <mfDefaultSorter by="chromosome"><span class="table-header">Chorm</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <mfDefaultSorter by="position"><span class="table-header">Position</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <mfDefaultSorter by="reference"><span class="table-header">OCP Ref</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <mfDefaultSorter by="alternative"><span class="table-header">OCP Alt</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <mfDefaultSorter by="levelOfEvidence"><span class="table-header">LOE</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <span class="table-header">Lit</span>
-                                <!--<mfDefaultSorter by="publicMedIds"></mfDefaultSorter>-->
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr *ngFor="let item of mftableIndelIn.data">
-                              <td>
-                                <external-link [linkType]="'cosmicId'" [linkId]="item.identifier"></external-link>
-                              </td>
-                              <td>{{item.chromosome | dashify}}</td>
-                              <td>{{item.position | dashify}}</td>
-                              <td>{{item.reference | dashify}}</td>
-                              <td>{{item.alternative | dashify}}</td>
-                              <td>{{item.levelOfEvidence | dashify}}</td>
-                              <td>
-                                <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
-                                <span *ngFor="let items of item.publicMedIds; let last=last">
-                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
-                                  <span *ngIf="!last">, </span>
-                                </span>
-                                </span>
-                                <span *ngIf="item.publicMedIds==null || item.publicMedIds==0">-</span>
-                              </td>
-                            </tr>
-                            <tr *ngIf="mftableIndelIn.data.length == 0">
-                              <td class="text-muted" colspan="7">No matching search results found for "{{searchtermIndelIn}}"</td>
-                            </tr>
-                          </tbody>
-                          <tfoot>
-                            <tr>
-                              <td class="tfoot-padding" colspan="7">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermIndelIn" [totallength]="indelIn.length"></mfBootstrapPaginator>
-                              </td>
-                            </tr>
-                          </tfoot>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="panel-heading">
-                      <h4 class="panel-title f-s-18">Exclusions</h4>
-                    </div>
-                    <div class="col-md-12 bg-success-light">
-                      <div class="col-md-6 p-l-5">
-                        <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
-                          <label>Show
-                        <select [disabled]="indelEx.length == 0" name="data-table_length" [(ngModel)]="recordsPerPageIndelEx"  aria-controls="data-table" class="form-control form-control-success input-sm">
-                          <option value=5>5</option>
-                          <option value=10>10</option>
-                          <option value=25>25</option>
-                          <option value=50>50</option>
-                        </select> 
-                      entries</label>
-                        </div>
-                      </div>
-                      <div class="col-md-6 p-r-5">
-                        <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
-                          <label>Search:
-                        <input [disabled]="indelEx.length == 0" type="text" [(ngModel)]="searchtermIndelEx" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">
-                      </label>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="table-responsive col-lg-12">
-                        <table *ngIf="indelEx.length == 0" class="table table-td-valign-middle table-striped table-col-width">
-                          <thead>
-                            <tr class="success-light">
-                              <th>
-                                ID
-                              </th>
-                              <th>
-                                Chorm
-                              </th>
-                              <th>
-                                Position
-                              </th>
-                              <th>
-                                OCP Ref
-                              </th>
-                              <th>
-                                OCP Alt
-                              </th>
-                              <th>
-                                Lit
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td class="text-muted" colspan="7">There are no excluded indels for treatment arm "{{tableData[versionIndex].treatmentId | dashify}}"</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                        <table *ngIf="indelEx.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="indelEx | filterByText: searchtermIndelEx"
-                          #mftableIndelEx="mfDataTable" [(mfSortBy)]="tableIndelInDefaultSort" [mfRowsOnPage]="recordsPerPageIndelEx">
-                          <thead>
-                            <tr class="success-light">
-                              <th>
-                                <mfDefaultSorter by="identifier"><span class="table-header">ID</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <mfDefaultSorter by="chromosome"><span class="table-header">Chorm</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <mfDefaultSorter by="position"><span class="table-header">Position</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <mfDefaultSorter by="reference"><span class="table-header">OCP Ref</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <mfDefaultSorter by="alternative"><span class="table-header">OCP Alt</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <span class="table-header">Lit</span>
-                                <!--<mfDefaultSorter by="publicMedIds"></mfDefaultSorter>-->
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr *ngFor="let item of mftableIndelEx.data">
-                              <td>
-                                <external-link [linkType]="'cosmicId'" [linkId]="item.identifier"></external-link>
-                              </td>
-                              <td>{{item.chromosome | dashify}}</td>
-                              <td>{{item.position | dashify}}</td>
-                              <td>{{item.reference | dashify}}</td>
-                              <td>{{item.alternative | dashify}}</td>
-                              <td>
-                                <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
-                                <span *ngFor="let items of item.publicMedIds; let last=last">
-                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
-                                  <span *ngIf="!last">, </span>
-                                </span>
-                                </span>
-                                <span *ngIf="item.publicMedIds==null || item.publicMedIds==0">-</span>
-                              </td>
-                            </tr>
-                            <tr *ngIf="mftableIndelEx.data.length == 0">
-                              <td class="text-muted" colspan="7">No matching search results found for "{{searchtermIndelEx}}"</td>
-                            </tr>
-                          </tbody>
-                          <tfoot>
-                            <tr>
-                              <td class="tfoot-padding" colspan="7">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermIndelEx" [totallength]="indelEx.length"></mfBootstrapPaginator>
                               </td>
                             </tr>
                           </tfoot>

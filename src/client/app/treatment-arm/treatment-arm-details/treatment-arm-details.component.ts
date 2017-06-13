@@ -241,8 +241,8 @@ OFF_TRIAL`.indexOf(element.assignmentStatusOutcome) !== -1) {
           this.snvEx = itemsSnv.filter(item => item.inclusion === false);
 
           let itemsIndel: any[] = this.tableData[this.versionIndex].variantReport.indels;
-          this.indelIn = itemsIndel.filter(item => item.inclusion === true);
-          this.indelEx = itemsIndel.filter(item => item.inclusion === false);
+          this.snvIn = this.snvIn.concat(itemsIndel.filter(item => item.inclusion === true));
+          this.snvEx = this.snvEx.concat(itemsIndel.filter(item => item.inclusion === false));
 
           let itemsCnv: any[] = this.tableData[this.versionIndex].variantReport.copyNumberVariants;
           this.cnvIn = itemsCnv.filter(item => item.inclusion === true);
