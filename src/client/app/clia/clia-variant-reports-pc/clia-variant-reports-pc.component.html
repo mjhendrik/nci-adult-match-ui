@@ -9,11 +9,14 @@
     <div class="col-md-6">
       <div class="panel panel-white panel-accent-sides-orangeshade overflow-hidden pc">
         <div class="panel-heading">
-          <ul id="panel-tab" class="nav nav-tabs pull-right nav-tabs-orangeshade">
-            <li class="active"><a href="#panel-tab-info" data-toggle="tab" aria-expanded="true"><i class="fa fa-align-left"></i><span class="hidden-xs"> Info</span></a></li>
-            <li class=""><a href="#panel-tab-files" data-toggle="tab" aria-expanded="false"><i class="fa fa-file-archive-o"></i><span class="hidden-xs"> Files</span></a></li>
-          </ul>
-          <h4>Positive Control Variant Report</h4>
+          <div class="row">
+            <div class="col-md-8">
+              <h4>Positive Control Variant Report</h4>
+            </div>
+            <div class="col-md-4 text-right">
+              <a class="btn btn-sm btn-link" role="button" href [routerLink]="['/clia_'+pcType+'/variant_reports_pc/qc',molecular_id]"><i class="fa fa-file-text-o"></i> QC Report</a>
+            </div>
+          </div>
         </div>
         <div id="panel-tab-content" class="tab-content m-b-0">
           <div class="tab-pane fade active in" id="panel-tab-info">
@@ -39,16 +42,11 @@
               <dt>Status</dt>
               <dd [colorCodeClia]="report_status">{{report_status | dashify}}</dd>
             </dl>
-            <div class="panel-heading">
-              <a class="btn btn-orangeshade-light link-none" role="button" href [routerLink]="['/clia_'+pcType+'/variant_reports_pc/qc',molecular_id]"><i class="fa fa-file-text-o"></i> QC Report</a>
-            </div>
           </div>
-          <div class="tab-pane fade" id="panel-tab-files">
-            <p class="m-t-30">
-              <button type="button" class="btn btn-orangeshade-light" (click)="downloadDnaBam()"><i class="fa fa-download"></i> DNA BAM</button>
-              <button type="button" class="btn btn-orangeshade-light" (click)="downloadRnaBam()"><i class="fa fa-download"></i> RNA BAM</button>
-              <button type="button" class="btn btn-orangeshade-light" (click)="downloadVcf()"><i class="fa fa-download"></i> VCF</button>
-            </p>
+          <div class="m-b-5">
+            <button type="button" class="btn btn-orangeshade-light" (click)="downloadDnaBam()"><i class="fa fa-download"></i> DNA BAM</button>
+            <button type="button" class="btn btn-orangeshade-light" (click)="downloadRnaBam()"><i class="fa fa-download"></i> RNA BAM</button>
+            <button type="button" class="btn btn-orangeshade-light" (click)="downloadVcf()"><i class="fa fa-download"></i> VCF</button>
           </div>
         </div>
       </div>
