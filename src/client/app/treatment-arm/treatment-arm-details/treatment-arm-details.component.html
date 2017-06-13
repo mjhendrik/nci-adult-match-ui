@@ -1114,6 +1114,12 @@
                                 ID
                               </th>
                               <th>
+                                Gene 1
+                              </th>
+                              <th>
+                                Gene 2
+                              </th>
+                              <th>
                                 LOE
                               </th>
                               <th>
@@ -1136,6 +1142,12 @@
                                 <mfDefaultSorter by="identifier"><span class="table-header">ID</span></mfDefaultSorter>
                               </th>
                               <th>
+                                <mfDefaultSorter by="identifier"><span class="table-header">Gene 1</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="identifier"><span class="table-header">Gene 2</span></mfDefaultSorter>
+                              </th>
+                              <th>
                                 <mfDefaultSorter by="levelOfEvidence"><span class="table-header">LOE</span></mfDefaultSorter>
                               </th>
                               <th>
@@ -1148,6 +1160,14 @@
                             <tr *ngFor="let item of mftableGeneIn.data">
                               <td>
                                 <external-link [linkType]="'cosmicFusionId'" [linkId]="item.identifier"></external-link>
+                              </td>
+                              <td>
+                                <!--<td>{{item.driverGene | dashify}}</td>-->
+                                -
+                              </td>
+                              <td>
+                                <!--<td>{{item.partnerGene | dashify}}</td>-->
+                                -
                               </td>
                               <td>{{item.levelOfEvidence | dashify}}</td>
                               <td>
@@ -1209,6 +1229,12 @@
                                 ID
                               </th>
                               <th>
+                                Gene 1
+                              </th>
+                              <th>
+                                Gene 2
+                              </th>
+                              <th>
                                 Lit
                               </th>
                             </tr>
@@ -1228,6 +1254,12 @@
                                 <mfDefaultSorter by="identifier"><span class="table-header">ID</span></mfDefaultSorter>
                               </th>
                               <th>
+                                <mfDefaultSorter by="identifier"><span class="table-header">Gene 1</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="identifier"><span class="table-header">Gene 2</span></mfDefaultSorter>
+                              </th>
+                              <th>
                                 <span class="table-header">Lit</span>
                                 <!--<mfDefaultSorter by="publicMedIds"></mfDefaultSorter>-->
                               </th>
@@ -1237,6 +1269,14 @@
                             <tr *ngFor="let item of mftableGeneEx.data">
                               <td>
                                 <external-link [linkType]="'cosmicFusionId'" [linkId]="item.identifier"></external-link>
+                              </td>
+                              <td>
+                                <!--<td>{{item.driverGene | dashify}}</td>-->
+                                -
+                              </td>
+                              <td>
+                                <!--<td>{{item.partnerGene | dashify}}</td>-->
+                                -
                               </td>
                               <td>
                                 <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
