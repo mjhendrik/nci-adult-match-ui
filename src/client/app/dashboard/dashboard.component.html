@@ -1,3 +1,6 @@
+<div *ngIf="!dataAvailable && overviewDataAvailable">
+  <div id="page-loader" class="page-loader fade in"><span class="spinner">Loading...</span></div>
+</div>
 <div id="content" class="content" *ngIf="dataAvailable && overviewDataAvailable">
   <div class="row">
     <div class="p-l-15 f-s-10 text-muted-dark pull-right dashboard-loaded-at">

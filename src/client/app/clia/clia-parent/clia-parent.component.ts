@@ -56,6 +56,7 @@ export class CliaParentComponent implements OnInit {
 
   roles: any[] = [];
   generateMsnBtn: boolean = false;
+  dataAvailable: boolean = false;
 
   constructor(private cliaApi: CliaApiService, private route: ActivatedRoute) {
 
@@ -102,6 +103,8 @@ export class CliaParentComponent implements OnInit {
         });
 
         this.tablePCData.splice(-1, 1);
+
+        this.dataAvailable = true;
 
       });
   };

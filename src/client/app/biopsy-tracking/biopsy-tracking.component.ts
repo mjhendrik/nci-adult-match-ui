@@ -26,6 +26,7 @@ export class BiopsyTrackingListComponent implements OnInit {
   tableBiopsyTrackingListDefaultSort: string = 'biopsySequenceNumber';
   tableBiopsyTrackingListData: any[] = [];
   errorMessage: string;
+  dataAvailable: boolean = false;
 
   constructor(private biopsyTrackingApi: BiopsyTrackingApiService) {
 
@@ -39,6 +40,7 @@ export class BiopsyTrackingListComponent implements OnInit {
     let gmt = new GmtPipe();
     this.biopsyTrackingApi.getBiopsyTracking()
       .subscribe(itemList => {
+
         this.tableBiopsyTrackingListData = itemList.map(x => {
           x.specimenReceivedDate = gmt.transform(x.specimenReceivedDate);
           x.specimenFailureDate = gmt.transform(x.specimenFailureDate);
@@ -46,6 +48,9 @@ export class BiopsyTrackingListComponent implements OnInit {
           x.dnaShippedDate = gmt.transform(x.dnaShippedDate);
           return x;
         });
+
+        this.dataAvailable = true;
+
       },
       error => this.errorMessage = <any>error
       );

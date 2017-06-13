@@ -26,6 +26,7 @@ export class TreatmentArmListComponent implements OnInit {
   tableTADefaultSort: string = 'treatmentArmId';
   tableTAData: any[];
   errorMessage: string;
+  dataAvailable: boolean = false;
 
   gmt: GmtPipe;
 
@@ -47,6 +48,8 @@ export class TreatmentArmListComponent implements OnInit {
           x.dateCreated = this.gmt.transform(x.dateCreated);
           return x;
         });
+
+        this.dataAvailable = true;
 
       },
       error => this.errorMessage = <any>error
