@@ -85,9 +85,19 @@ export class CnvChartDirective implements OnInit {
                 bottom: 60,
                 left: 40
               },
+              // useInteractiveGuideline: function(){
+              //   return true;
+              // },
               x: function(d){
                 return d.label;
               },
+              // xAxis: {
+              //   tickFormat: function (d) {
+              //     console.log(d);
+              //     return d3.format(',f')(d);
+              //   }
+              // },
+
               staggerLabels: function(){
                 return true;
               },
@@ -129,7 +139,16 @@ export class CnvChartDirective implements OnInit {
                   return html;
                 }
               },
-
+              yAxis: {
+                tickFormat: function() {
+                  return d3.format('.04f');
+                }
+              },
+              yAxis: {
+                tickValues: function(){
+                  return [7]
+                }
+              },
               maxBoxWidth: 0.1,
               yDomain: [0, 10]
             }
