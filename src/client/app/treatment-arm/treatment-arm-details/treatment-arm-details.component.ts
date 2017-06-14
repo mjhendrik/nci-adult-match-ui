@@ -167,6 +167,7 @@ export class TreatmentArmDetailsComponent implements OnInit {
     let gmt = new GmtPipe();
     this.treatmentArmApi.getTreatmentArmDetails(this.route.snapshot.params['id'])
       .subscribe(itemList => {
+
         this.tableData = itemList;
 
         this.tableData[0].summaryReport.assignmentRecords = itemList[0].summaryReport.assignmentRecords.map((x: any) => {
@@ -256,7 +257,20 @@ OFF_TRIAL`.indexOf(element.assignmentStatusOutcome) !== -1) {
           this.ruleIn = itemsRule.filter(item => item.inclusion === true);
           this.ruleEx = itemsRule.filter(item => item.inclusion === false);
 
+          this.geneIn.forEach(element => {
+            let genes = element.identifier.split('-');
+            element.gene1 = genes[0];
+            element.gene2 = genes[1].split('.')[0];
+          });
+
+          this.geneEx.forEach(element => {
+            let genes = element.identifier.split('-');
+            element.gene1 = genes[0];
+            element.gene2 = genes[1].split('.')[0];
+          });
+
           this.dataAvailable = true;
+
         }
       },
       error => this.errorMessage = <any>error

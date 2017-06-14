@@ -879,7 +879,7 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td class="text-muted" colspan="3">There are no included gene fusions for treatment arm "{{tableData[versionIndex].treatmentId
+                              <td class="text-muted" colspan="5">There are no included gene fusions for treatment arm "{{tableData[versionIndex].treatmentId
                                 | dashify}}"</td>
                             </tr>
                           </tbody>
@@ -892,10 +892,10 @@
                                 <mfDefaultSorter by="identifier"><span class="table-header">ID</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="driverGene"><span class="table-header">Gene 1</span></mfDefaultSorter>
+                                <mfDefaultSorter by="gene1"><span class="table-header">Gene 1</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="partnerGene"><span class="table-header">Gene 2</span></mfDefaultSorter>
+                                <mfDefaultSorter by="gene2"><span class="table-header">Gene 2</span></mfDefaultSorter>
                               </th>
                               <th>
                                 <mfDefaultSorter by="levelOfEvidence"><span class="table-header">LOE</span></mfDefaultSorter>
@@ -912,12 +912,10 @@
                                 <external-link [linkType]="'cosmicFusionId'" [linkId]="item.identifier"></external-link>
                               </td>
                               <td>
-                                <!--{{item.driverGene | dashify}}-->
-                                -
+                                {{item.gene1 | dashify}}
                               </td>
                               <td>
-                                <!--{{item.partnerGene | dashify}}-->
-                                -
+                                {{item.gene2 | dashify}}
                               </td>
                               <td>{{item.levelOfEvidence | dashify}}</td>
                               <td>
@@ -931,12 +929,12 @@
                               </td>
                             </tr>
                             <tr *ngIf="mftableGeneIn.data.length == 0">
-                              <td class="text-muted" colspan="3">No matching search results found for "{{searchtermGeneIn}}"</td>
+                              <td class="text-muted" colspan="5">No matching search results found for "{{searchtermGeneIn}}"</td>
                             </tr>
                           </tbody>
                           <tfoot>
                             <tr>
-                              <td class="tfoot-padding" colspan="3">
+                              <td class="tfoot-padding" colspan="5">
                                 <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermGeneIn" [totallength]="geneIn.length"></mfBootstrapPaginator>
                               </td>
                             </tr>
@@ -991,7 +989,7 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td class="text-muted" colspan="3">There are no excluded gene fusions for treatment arm "{{tableData[versionIndex].treatmentId
+                              <td class="text-muted" colspan="5">There are no excluded gene fusions for treatment arm "{{tableData[versionIndex].treatmentId
                                 | dashify}}"</td>
                             </tr>
                           </tbody>
@@ -1004,10 +1002,10 @@
                                 <mfDefaultSorter by="identifier"><span class="table-header">ID</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="driverGene"><span class="table-header">Gene 1</span></mfDefaultSorter>
+                                <mfDefaultSorter by="gene1"><span class="table-header">Gene 1</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="partnerGene"><span class="table-header">Gene 2</span></mfDefaultSorter>
+                                <mfDefaultSorter by="gene2"><span class="table-header">Gene 2</span></mfDefaultSorter>
                               </th>
                               <th>
                                 <span class="table-header">Lit</span>
@@ -1021,12 +1019,10 @@
                                 <external-link [linkType]="'cosmicFusionId'" [linkId]="item.identifier"></external-link>
                               </td>
                               <td>
-                                <!--{{item.driverGene | dashify}}-->
-                                -
+                                {{item.gene1 | dashify}}
                               </td>
                               <td>
-                                <!--{{item.partnerGene | dashify}}-->
-                                -
+                                {{item.gene2 | dashify}}
                               </td>
                               <td>
                                 <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
@@ -1039,12 +1035,12 @@
                               </td>
                             </tr>
                             <tr *ngIf="mftableGeneEx.data.length == 0">
-                              <td class="text-muted" colspan="3">No matching search results found for "{{searchtermGeneEx}}"</td>
+                              <td class="text-muted" colspan="5">No matching search results found for "{{searchtermGeneEx}}"</td>
                             </tr>
                           </tbody>
                           <tfoot>
                             <tr>
-                              <td class="tfoot-padding" colspan="3">
+                              <td class="tfoot-padding" colspan="5">
                                 <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermGeneEx" [totallength]="geneEx.length"></mfBootstrapPaginator>
                               </td>
                             </tr>
