@@ -13,10 +13,10 @@
       <div class="panel panel-white panel-accent-sides-orangeshade overflow-hidden ntc">
         <div class="panel-heading">
           <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-10">
               <h4>No Template Control Variant Report</h4>
             </div>
-            <div class="col-md-4 text-right">
+            <div class="col-md-2 text-right">
               <a class="btn btn-sm btn-link" role="button" href [routerLink]="['/clia_'+ntcType+'/variant_reports_ntc/qc',molecular_id]"><i class="fa fa-file-text-o"></i> QC Report</a>
             </div>
           </div>
@@ -35,13 +35,6 @@
               <dt>Cellularity</dt>
               <dd>{{cellularity | dashify}}</dd>
             </dl>
-            <div class="m-b-5">
-              <button type="button" class="btn btn-orangeshade-light" (click)="downloadDnaBam()"><i class="fa fa-download"></i> DNA BAM</button>
-              <button type="button" class="btn btn-orangeshade-light" (click)="downloadDnaBai()"><i class="fa fa-download"></i> DNA BAI</button>
-              <button type="button" class="btn btn-orangeshade-light" (click)="downloadRnaBam()"><i class="fa fa-download"></i> RNA BAM</button>
-              <button type="button" class="btn btn-orangeshade-light" (click)="downloadRnaBai()"><i class="fa fa-download"></i> RNA BAI</button>
-              <button type="button" class="btn btn-orangeshade-light" (click)="downloadVcf()"><i class="fa fa-download"></i> VCF</button>
-            </div>
           </div>
         </div>
       </div>
@@ -61,6 +54,13 @@
                 <dt>Comment</dt>
                 <dd>-</dd>
               </dl>
+              <div class="m-b-5">
+                <button type="button" class="btn btn-orangeshade-light" (click)="downloadDnaBam()"><i class="fa fa-download"></i> DNA BAM</button>
+                <button type="button" class="btn btn-orangeshade-light" (click)="downloadDnaBai()"><i class="fa fa-download"></i> DNA BAI</button>
+                <button type="button" class="btn btn-orangeshade-light" (click)="downloadRnaBam()"><i class="fa fa-download"></i> RNA BAM</button>
+                <button type="button" class="btn btn-orangeshade-light" (click)="downloadRnaBai()"><i class="fa fa-download"></i> RNA BAI</button>
+                <button type="button" class="btn btn-orangeshade-light" (click)="downloadVcf()"><i class="fa fa-download"></i> VCF</button>
+              </div>
             </div>
           </div>
         </div>
