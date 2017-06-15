@@ -1,4 +1,4 @@
-<div *ngIf="!dataAvailable && overviewDataAvailable">
+<div class="load-content" *ngIf="!dataAvailable && overviewDataAvailable">
   <div id="page-loader" class="page-loader fade in"><span class="spinner">Loading...</span></div>
 </div>
 <div id="content" class="content" *ngIf="dataAvailable && overviewDataAvailable">

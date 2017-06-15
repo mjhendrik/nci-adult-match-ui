@@ -329,6 +329,16 @@ body {
 .white-link {
   cursor: pointer;
 }
+
 .white-link:hover {
   color: white;
+}
+
+.load-content .page-loader {
+  background: #fff;
+  position: relative;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  font-family: Arial;
 }
