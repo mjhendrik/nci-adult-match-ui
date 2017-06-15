@@ -10,7 +10,7 @@ export class ViewDataTransformer {
   transformPatient(source: any): any {
     const transformedPatient: any = { ...source }; // Deep-copy the source
 
-    transformedPatient.disease = source.diseases && source.diseases.length ? source.diseases[0] : null;
+    transformedPatient.disease = source.diseases && source.diseases.length ? source.diseases[0] : {};
 
     if (transformedPatient.patientTriggers && transformedPatient.patientTriggers.length) {
       transformedPatient.patientTriggers = transformedPatient.patientTriggers.reverse();
