@@ -32,31 +32,21 @@ export class CnvChartDirective implements OnInit {
         var temp: any[] = [];
         Object.keys(array).forEach((key: any) => {
 
-          count = count + 1;
           var gene = array[key].gene;
           var values = array[key].values;
           var median = array[key].raw_copy_number;
           var position = array[key].position;
-
+          var chromosome = array[key].chromosome;
           var status = !array[key].tsg_gene ? 'Crimson' : 'Green';
 
           var min = values[0];
           var max = values[10];
 
-          // var Object = {
-          //   'gene': parseInt(count),
-          //   'open': parseFloat(min),
-          //   'high': parseFloat(max),
-          //   'low': parseFloat(min),
-          //   'close': parseFloat(max),
-          //   'volume': parseInt(position),
-          //   'adjusted': parseFloat(median),
-          //   'status': status
-          // };
-
           var Object = {
+            x: key,
             label: gene,
             status: status,
+            chr: chromosome,
             values: {
               position: position,
               cn: median,
@@ -75,7 +65,10 @@ export class CnvChartDirective implements OnInit {
 
         this.options = {
 
+
+        //  ********
           chart: {
+            id: 'boxplotchart',
             type: 'boxPlotChart',
             height: 450,
             margin: {
@@ -84,19 +77,11 @@ export class CnvChartDirective implements OnInit {
               bottom: 60,
               left: 40
             },
-            // useInteractiveGuideline: function(){
-            //   return true;
-            // },
-            x: function (d: any) {
-              return d.label;
+            lines: { // for line chart
+              forceX: [100],
+              xDomain: [0,5],
+              xRange: [0,10]
             },
-            // xAxis: {
-            //   tickFormat: function (d) {
-            //     console.log(d);
-            //     return d3.format(',f')(d);
-            //   }
-            // },
-
             staggerLabels: function () {
               return true;
             },
@@ -138,70 +123,38 @@ export class CnvChartDirective implements OnInit {
                 return html;
               }
             },
+            x: function (d: any) {
+              return d.label;
+            },
             yAxis: {
               tickFormat: function () {
-                return d3.format('.04f');
+                return d3.format('d');
               }
             },
             yAxis: {
+              color: function () {
+                return "#2ca02c";
+              },
               tickValues: function () {
-                return [7];
+                return [2, 7];
+              },
+              axisLabelDistance: 30
+            },
+
+            y2Axis: {
+              axisLabel: 'Y2 Axis',
+              tickFormat: function(d) {
+                return d3.format(',.2f')(d.chr)
               }
             },
-            maxBoxWidth: 0.1,
-            yDomain: [0, 10]
-          }
 
-          // chart: {
-          //   type: 'candlestickBarChart',
-          //   height: 450,
-          //   margin: {
-          //     top: 20,
-          //     right: 20,
-          //     bottom: 40,
-          //     left: 60
-          //   },
-          //
-          //   // color: ['#2ca02c', 'darkred'],
-          //   color: function(d){
-          //     //     // console.log("color--> " + d.status)
-          //     d3.select('rect')
-          //         .style('fill', d.status);
-          //         // return d.status;
-          //   },
-          //   x: function (d) {
-          //
-          //
-          //     return d.gene;
-          //   },
-          //   y: function (d) {
-          //     return d.close;
-          //   },
-          //
-          //   showValues: true,
-          //   tickFormat: function(d){
-          //     return d3.format(',.4f')(d);
-          //   },
-          //   duration: 1,
-          //
-          //   xAxis: {
-          //     axisLabel: 'Gene',
-          //     tickFormat: function (d) {
-          //
-          //       // return d.gene;
-          //       return d3.format()(d.gene);
-          //     },
-          //     showMaxMin: false
-          //   },
-          //   yAxis: {
-          //     axisLabel: 'Median',
-          //     tickFormat: function (d: any) {
-          //
-          //       return d3.format(',.4f')(d);
-          //     }
-          //   }
-          // }
+            maxBoxWidth: 0.01,
+            yDomain: [0, 10],
 
+            // xDomain: [5],
+            // xRange: [0,100]
+        }
+        //  *******
         };
       },
       error => this.errorMessage = <any>error
