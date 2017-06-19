@@ -66,7 +66,7 @@ export class CnvChartDirective implements OnInit {
         this.options = {
 
 
-        //  ********
+          //  ********
           chart: {
             id: 'boxplotchart',
             type: 'boxPlotChart',
@@ -79,8 +79,8 @@ export class CnvChartDirective implements OnInit {
             },
             lines: { // for line chart
               forceX: [100],
-              xDomain: [0,5],
-              xRange: [0,10]
+              xDomain: [0, 5],
+              xRange: [0, 10]
             },
             staggerLabels: function () {
               return true;
@@ -133,7 +133,7 @@ export class CnvChartDirective implements OnInit {
             },
             yAxis: {
               color: function () {
-                return "#2ca02c";
+                return '#2ca02c';
               },
               tickValues: function () {
                 return [2, 7];
@@ -143,8 +143,8 @@ export class CnvChartDirective implements OnInit {
 
             y2Axis: {
               axisLabel: 'Y2 Axis',
-              tickFormat: function(d) {
-                return d3.format(',.2f')(d.chr)
+              tickFormat: function (d: any) {
+                return d3.format(',.2f')(d.chr);
               }
             },
 
@@ -153,8 +153,8 @@ export class CnvChartDirective implements OnInit {
 
             // xDomain: [5],
             // xRange: [0,100]
-        }
-        //  *******
+          }
+          //  *******
         };
       },
       error => this.errorMessage = <any>error
