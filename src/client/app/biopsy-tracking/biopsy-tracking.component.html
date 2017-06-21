@@ -43,8 +43,7 @@
                     <div class="row">
                       <div class="table-responsive col-lg-12">
                         <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="tableBiopsyTrackingListData | filterByText: searchtermBiopsyTrackingList"
-                          #mftableBiopsyTrackingList="mfDataTable" [(mfSortBy)]="tableBiopsyTrackingListDefaultSort"
-                          [mfRowsOnPage]="recordsPerPageBiopsyTrackingList">
+                          #mftableBiopsyTrackingList="mfDataTable" [(mfSortBy)]="tableBiopsyTrackingListDefaultSort" [mfRowsOnPage]="recordsPerPageBiopsyTrackingList">
                           <thead>
                             <tr class="info-light">
                               <th style="min-width:11em">
@@ -57,7 +56,7 @@
                                 <mfDefaultSorter by="molecularSequenceNumber"><span class="table-header">Molecular Sequence Number</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="lab"><span class="table-header">Location</span></mfDefaultSorter>
+                                <mfDefaultSorter by="destinationSite"><span class="table-header">Location</span></mfDefaultSorter>
                               </th>
                               <th style="min-width:12em">
                                 <mfDefaultSorter by="trackingNumber"><span class="table-header">Tracking Number</span></mfDefaultSorter>
@@ -83,17 +82,17 @@
                                 <a href [routerLink]="['/patients', item.biopsySequenceNumber]" class="link-none"><i class="fa fa-user"></i> {{item.patientSequenceNumber | dashify}}</a>
                               </td>
                               <td>
-                                <span *ngIf="item.molecularSequenceNumber!==null">
+                                <span *ngIf="item.molecularSequenceNumber!==undefined">
                                   <a href [routerLink]="['/patients', item.biopsySequenceNumber]" class="link-none"><i class="fa fa-share-alt"></i> {{item.molecularSequenceNumber | dashify}}</a>
                                 </span>
-                                <span *ngIf="item.molecularSequenceNumber===null">{{item.molecularSequenceNumber | dashify}}</span>
+                                <span *ngIf="item.molecularSequenceNumber===undefined">{{item.molecularSequenceNumber | dashify}}</span>
                               </td>
-                              <td>{{item.lab | dashify}}</td>
+                              <td>{{item.destinationSite | dashify}}</td>
                               <td>
-                                <span *ngIf="item.trackingNumber!==null && item.trackingNumber!=='Local'">
+                                <span *ngIf="item.trackingNumber!==undefined && item.trackingNumber!=='Local'">
                                   <a href="https://www.fedex.com/apps/fedextrack/?tracknumbers={{item.trackingNumber}}" class="link-none" target="_blank"><i class="fa fa-truck"></i> {{item.trackingNumber | dashify}}</a>
                                 </span>
-                                <span *ngIf="item.trackingNumber===null || item.trackingNumber==='Local'">{{item.trackingNumber | dashify}}</span>
+                                <span *ngIf="item.trackingNumber===undefined || item.trackingNumber==='Local'">{{item.trackingNumber | dashify}}</span>
                               </td>
                               <td>{{item.specimenReceivedDate | dashify}}</td>
                               <td>{{item.specimenFailureDate | dashify}}</td>
