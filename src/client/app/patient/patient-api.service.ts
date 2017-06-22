@@ -45,7 +45,16 @@ export class PatientApiService {
    * @return {string[]} The Observable for the HTTP request.
    */
   getPatientList(): Observable<any[]> {
-    return this.http.get(this.url('/patients?projection=DEFAULT', 'assets/mock-data/patient-list.json'))
+    return this.http.get(this.url(`/patients?projection=patientSequenceNumber,currentPatientStatus,currentStepNumber,diseases.shortName,
+registrationDate,patientAssignments.treatmentArm.name,patientAssignments.treatmentArm.version`,
+      'assets/mock-data/patient-list.json'))
+      .map((res: Response) => res.json())
+      //              .do(data => console.log('server data:', data))  // debug
+      .catch(this.handleError);
+  }
+
+  getPatientCount(): Observable<any[]> {
+    return this.http.get(Config.API.PATIENT + '/patients/healthcheck')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
