@@ -342,3 +342,28 @@ body {
   z-index: 9999;
   font-family: Arial;
 }
+
+.header-up {
+  top: -77px;
+}
+
+.top-menu-up {
+  position: relative;
+  top: -60px;
+}
+
+.header {
+  -webkit-transition: top 0.3s ease-in-out;
+  transition: top 0.3s ease-in-out;
+}
+
+.fixed-top {
+  position: fixed;
+  -webkit-transition: top 0.3s ease-in-out;
+  transition: top 0.3s ease-in-out;
+}
+
+.top-position {
+  top: 75px;
+  z-index: 1025;
+}

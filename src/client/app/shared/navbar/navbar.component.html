@@ -1,21 +1,22 @@
 <!-- begin #header -->
-<div *ngIf="auth.authenticated()" id="header" class="header navbar navbar-default navbar-fixed-top">
-  <!-- begin container-fluid -->
-  <div class="container-fluid header-height">
-    <!-- begin mobile sidebar expand / collapse button -->
-    <div class="navbar-header" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-      <!--<a *ngIf="!auth.authenticated()" class="navbar-brand f-s-15"><img src="assets/svg/nci-logo-full.svg" class="logo" alt="" /><span class="pull-right header-position">Molecular Analysis for Therapy Choice</span></a>-->
-      <a href="javascript:void(0)" [routerLink]="['/dashboard']" class="navbar-brand f-s-15"><img src="assets/svg/nci-logo-full.svg" class="logo" alt="" /><span class="pull-right header-position">Molecular Analysis for Therapy Choice</span></a>
-      <button type="button" class="navbar-toggle" data-click="sidebar-toggled">
+<div id="maindiv">
+  <div *ngIf="auth.authenticated()" id="header" class="header  navbar navbar-default navbar-fixed-top">
+    <!-- begin container-fluid -->
+    <div class="container-fluid header-height">
+      <!-- begin mobile sidebar expand / collapse button -->
+      <div class="navbar-header" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <a class="navbar-brand f-s-15"><img src="assets/svg/nci-logo-full.svg" class="logo" alt="" /><span class="pull-right header-position">Molecular Analysis for Therapy Choice</span></a>
+        <!--<a href="javascript:void(0)" [routerLink]="['/dashboard']" class="navbar-brand f-s-15"><img src="assets/svg/nci-logo-full.svg" class="logo" alt="" /><span class="pull-right header-position">Molecular Analysis for Therapy Choice</span></a>-->
+        <button type="button" class="navbar-toggle" data-click="sidebar-toggled">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-    </div>
-    <!-- end mobile sidebar expand / collapse button -->
-    <!-- begin navbar-right -->
-    <ul class="nav navbar-nav navbar-right">
-      <!--<li>
+      </div>
+      <!-- end mobile sidebar expand / collapse button -->
+      <!-- begin navbar-right -->
+      <ul class="nav navbar-nav navbar-right">
+        <!--<li>
         <form class="navbar-form form-input-flat">
           <div class="form-group">
             <input type="text" class="form-control" placeholder="Search..." (keypress)="stopReload($event.keyCode);" />
@@ -23,67 +24,66 @@
           </div>
         </form>
       </li>-->
-      <li>
-        <a style="cursor: default;">Welcome, {{userName}}</a>
-      </li>
-      <li>
-        <a href (click)="auth.logout()">Log Out&nbsp;&nbsp;<i class="fa fa-sign-out"></i></a>
-      </li>
-    </ul>
-    <!-- end navbar-right -->
+        <li>
+          <a style="cursor: default;">Welcome, {{userName}}</a>
+        </li>
+        <li>
+          <a href (click)="auth.logout()">Log Out&nbsp;&nbsp;<i class="fa fa-sign-out"></i></a>
+        </li>
+      </ul>
+      <!-- end navbar-right -->
+    </div>
+    <!-- end container-fluid -->
   </div>
-  <!-- end container-fluid -->
-</div>
-<!-- end #header -->
-
-<!-- begin #top-menu -->
-<div *ngIf="auth.authenticated()" id="top-menu" class="top-menu top-menu-position">
-  <div class="container-fluid">
-    <!-- begin top-menu nav -->
-    <ul class="nav">
-      <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-dashboard">
-        <a href="javascript:void(0)" [routerLink]="['/dashboard']">
+  <!-- end #header -->
+  <!-- begin #top-menu -->
+  <div *ngIf="auth.authenticated()" id="top-menu" class="top-menu top-position fixed-top">
+    <div class="container-fluid">
+      <!-- begin top-menu nav -->
+      <ul class="nav">
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-dashboard">
+          <a href="javascript:void(0)" [routerLink]="['/dashboard']">
           <i class="fa fa-home"></i>
           <span>Dashboard</span>
         </a>
-      </li>
-      <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-patient">
-        <a href="javascript:void(0)" [routerLink]="['/patients']">
+        </li>
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-patient">
+          <a href="javascript:void(0)" [routerLink]="['/patients']">
           <i class="fa fa-users"></i>
           <span>Patients</span>
         </a>
-      </li>
-      <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-treatments">
-        <a href="javascript:void(0)" [routerLink]="['/treatments']">
+        </li>
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-treatments">
+          <a href="javascript:void(0)" [routerLink]="['/treatments']">
           <i class="fa fa-medkit"></i>
           <span>Treatment Arms</span>
         </a>
-      </li>
-      <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-biopsy-tracking">
-        <a href="javascript:void(0)" [routerLink]="['/tracking']">
+        </li>
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-biopsy-tracking">
+          <a href="javascript:void(0)" [routerLink]="['/tracking']">
           <i class="fa fa-truck"></i>
           <span>Biopsy Tracking</span>
         </a>
-      </li>
-      <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-clia-lab has-sub">
-        <a href="javascript:void(0)">
+        </li>
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-clia-lab has-sub">
+          <a href="javascript:void(0)">
           <i class="fa fa-flask"></i>
           <span>CLIA Labs&nbsp;&nbsp;<b class="caret"></b></span>
         </a>
-        <ul class="sub-menu">
-          <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a href="javascript:void(0)" [routerLink]="['/clia_mocha']">MoCha</a></li>
-          <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a href="javascript:void(0)" [routerLink]="['/clia_yale']">Yale</a></li>
-          <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a href="javascript:void(0)" [routerLink]="['/clia_mgh']">MGH</a></li>
-          <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a href="javascript:void(0)" [routerLink]="['/clia_mda']">MD Anderson</a></li>
-          <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a href="javascript:void(0)" [routerLink]="['/clia_dartmouth']">Dartmouth</a></li>
-        </ul>
-      </li>
-    </ul>
-    <!-- end top-menu nav -->
+          <ul class="sub-menu">
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a href="javascript:void(0)" [routerLink]="['/clia_mocha']">MoCha</a></li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a href="javascript:void(0)" [routerLink]="['/clia_yale']">Yale</a></li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a href="javascript:void(0)" [routerLink]="['/clia_mgh']">MGH</a></li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a href="javascript:void(0)" [routerLink]="['/clia_mda']">MD Anderson</a></li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a href="javascript:void(0)" [routerLink]="['/clia_dartmouth']">Dartmouth</a></li>
+          </ul>
+        </li>
+      </ul>
+      <!-- end top-menu nav -->
+    </div>
   </div>
 </div>
 <!-- end #top-menu -->
-
 <!-- begin #footer -->
 <div *ngIf="auth.authenticated()" id="footer" class="footer text-center footer-format">
   <span>
