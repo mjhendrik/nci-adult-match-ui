@@ -1,4 +1,10 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import {
+    Component,
+    Input,
+    OnChanges,
+    Output,
+    EventEmitter
+} from '@angular/core';
 import { DataTable } from './DataTable';
 import * as _ from 'lodash';
 
@@ -11,7 +17,7 @@ import * as _ from 'lodash';
             cursor:default !important;
         }
     </style>    
-    <mfPaginator #p [mfTable]="mfTable">
+    <mfPaginator #p [mfTable]="mfTable" (CurrentlyActive)="currentlyActive($event)">
         <div>
             <div class="dataTables_info" id="data-table_info" style="margin: 30px 0 0 0;" *ngIf="p.dataLength!=0 && (searchTerm==undefined || searchTerm.length==0)">
                 Showing {{p.dataLength==0 ? 0 : (p.activePage-1)*(p.rowsOnPage)+1}} to 
@@ -72,10 +78,12 @@ export class BootstrapPaginator implements OnChanges {
     @Input('mfTable') mfTable: DataTable;
     @Input('search') searchTerm: string;
     @Input('totallength') totallength: string;
+    @Output('CurrentlyActive') currentActiveData = new EventEmitter<string>();
 
     minRowsOnPage = 0;
 
     ngOnChanges(changes: any): any {
+        // console.log(changes);
         if (changes.rowsOnPageSet) {
             this.minRowsOnPage = _.min(this.rowsOnPageSet);
         }
@@ -84,4 +92,10 @@ export class BootstrapPaginator implements OnChanges {
     paginationParse(value: string): number {
         return parseInt(value);
     }
+
+    currentlyActive(evt: any): void {
+        // console.log(evt);
+        this.currentActiveData.emit(evt);
+    }
+
 }

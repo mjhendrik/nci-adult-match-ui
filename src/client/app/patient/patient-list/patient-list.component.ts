@@ -26,16 +26,22 @@ export class PatientListComponent implements OnInit {
   tablePatientsData: any[];
   errorMessage: string;
   dataAvailable: boolean = false;
+  activePage: number = 1;
+  patientCount: any;
+  page: number = this.activePage;
+  size: number = this.recordsPerPagePatients;
+  sortOrder: string = 'asc';
+  sortBy: string = this.tablePatientsDefaultSort;
 
   constructor(private patientApi: PatientApiService) { }
 
   ngOnInit() {
-    this.getData();
+    this.getPatientCount();
   }
 
   getData() {
     let gmt = new GmtPipe();
-    this.patientApi.getPatientList()
+    this.patientApi.getPatientList(this.page, this.size, this.sortOrder, this.sortBy)
       .subscribe(itemList => {
         this.tablePatientsData = itemList.map(x => {
           x.registrationDate = gmt.transform(x.registrationDate);
@@ -49,4 +55,30 @@ export class PatientListComponent implements OnInit {
       error => this.errorMessage = <any>error
       );
   }
+
+  getPatientCount() {
+    this.patientApi.getPatientCount()
+      .subscribe(itemList => {
+        this.patientCount = itemList;
+        this.patientCount = this.patientCount['Total Patients Count'];
+        this.getData();
+      },
+      error => this.errorMessage = <any>error
+      );
+  }
+
+  currentPageActive(evt: any): void {
+    console.log(evt);
+    let params = evt.split(',');
+    this.page = params[0];
+    this.size = params[1];
+    this.sortOrder = params[2];
+    this.sortBy = params[3];
+    // console.log(this.page);
+    // console.log(this.size);
+    // console.log(this.sortOrder);
+    // console.log(this.sortBy);
+    console.log(this.searchTermPatients);
+  }
+
 }

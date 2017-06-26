@@ -1,4 +1,12 @@
-import { Component, Input, SimpleChange, OnChanges, Optional } from '@angular/core';
+import {
+    Component,
+    Input,
+    SimpleChange,
+    OnChanges,
+    Optional,
+    Output,
+    EventEmitter
+} from '@angular/core';
 import { DataTable, PageEvent } from './DataTable';
 
 @Component({
@@ -8,6 +16,7 @@ import { DataTable, PageEvent } from './DataTable';
 export class Paginator implements OnChanges {
 
     @Input('mfTable') inputMfTable: DataTable;
+    @Output('CurrentlyActive') currentlyActive = new EventEmitter<string>();
 
     public activePage: number;
     public rowsOnPage: number;
@@ -38,5 +47,7 @@ export class Paginator implements OnChanges {
         this.rowsOnPage = event.rowsOnPage;
         this.dataLength = event.dataLength;
         this.lastPage = Math.ceil(this.dataLength / this.rowsOnPage);
-    };
+        this.currentlyActive.emit(this.activePage + ',' + this.rowsOnPage + ',' + this.mfTable.sortOrder + ',' + this.mfTable.sortBy);
+    }
+
 }
