@@ -83,7 +83,6 @@ export class BootstrapPaginator implements OnChanges {
     minRowsOnPage = 0;
 
     ngOnChanges(changes: any): any {
-        // console.log(changes);
         if (changes.rowsOnPageSet) {
             this.minRowsOnPage = _.min(this.rowsOnPageSet);
         }
@@ -94,7 +93,6 @@ export class BootstrapPaginator implements OnChanges {
     }
 
     currentlyActive(evt: any): void {
-        // console.log(evt);
         this.currentActiveData.emit(evt);
     }
 
