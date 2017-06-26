@@ -27,7 +27,7 @@ export class PatientListComponent implements OnInit {
   errorMessage: string;
   dataAvailable: boolean = false;
   activePage: number = 1;
-  patientCount: any;
+  patientCount: number;
   page: number = this.activePage;
   size: number = this.recordsPerPagePatients;
   sortOrder: string = 'asc';
@@ -60,7 +60,6 @@ export class PatientListComponent implements OnInit {
     this.patientApi.getPatientCount()
       .subscribe(itemList => {
         this.patientCount = itemList;
-        this.patientCount = this.patientCount['Total Patients Count'];
         this.getData();
       },
       error => this.errorMessage = <any>error

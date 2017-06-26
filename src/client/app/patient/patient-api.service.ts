@@ -55,8 +55,8 @@ registrationDate,patientAssignments.treatmentArm.name,patientAssignments.treatme
       .catch(this.handleError);
   }
 
-  getPatientCount(): Observable<any[]> {
-    return this.http.get(Config.API.PATIENT + '/patients/healthcheck')
+  getPatientCount(): Observable<number> {
+    return this.http.get(Config.API.PATIENT + '/patients/count')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);

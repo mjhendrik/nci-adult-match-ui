@@ -31,6 +31,13 @@ export class BiopsyTrackingApiService {
       .catch(this.handleError);
   }
 
+  getBiopsyCount(): Observable<number> {
+    return this.http.get(Config.API.PATIENT + '/patients/tracking/count')
+      .map((res: Response) => res.json())
+      //              .do(data => console.log('server data:', data))  // debug
+      .catch(this.handleError);
+  }
+
   /**
     * Handle HTTP error
     */

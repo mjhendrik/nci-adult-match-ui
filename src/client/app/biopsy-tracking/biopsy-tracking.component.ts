@@ -27,13 +27,14 @@ export class BiopsyTrackingListComponent implements OnInit {
   tableBiopsyTrackingListData: any[] = [];
   errorMessage: string;
   dataAvailable: boolean = false;
+  biopsyCount: number;
 
   constructor(private biopsyTrackingApi: BiopsyTrackingApiService) {
 
   }
 
   ngOnInit() {
-    this.getData();
+    this.getBiopsyCount();
   }
 
   getData() {
@@ -92,6 +93,16 @@ export class BiopsyTrackingListComponent implements OnInit {
 
         this.dataAvailable = true;
 
+      },
+      error => this.errorMessage = <any>error
+      );
+  }
+
+  getBiopsyCount() {
+    this.biopsyTrackingApi.getBiopsyCount()
+      .subscribe(itemList => {
+        this.biopsyCount = itemList;
+        this.getData();
       },
       error => this.errorMessage = <any>error
       );
