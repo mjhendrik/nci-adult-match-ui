@@ -7,7 +7,10 @@ import {
     Output,
     EventEmitter
 } from '@angular/core';
-import { DataTable, PageEvent } from './DataTable';
+import {
+    DataTable,
+    PageEvent
+} from './DataTable';
 
 @Component({
     selector: 'mfPaginator',
