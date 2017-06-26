@@ -132,22 +132,22 @@ export class CnvChartDirective implements OnInit {
               rotateLabels: -45,
               fontSize: 10,
               tickValues: function (d: any) {
-                var xgrid = [];
-                var chr;
+                var xgrid: any[] = [];
+                var chr: any;
                 Object.keys(d).forEach((key: any) => {
-                  if(d[key].chr !== chr) {
+                  if (d[key].chr !== chr) {
                     chr = d[key].chr;
-                    xgrid.push(d[key].label)
+                    xgrid.push(d[key].label);
                   }
                 });
                 return xgrid;
               }
             },
-            yAxis: {
-              tickFormat: function () {
-                return d3.format('d');
-              }
-            },
+            // yAxis: {
+            //   tickFormat: function () {
+            //     return d3.format('d');
+            //   }
+            // },
             yAxis: {
               color: function () {
                 return '#2ca02c';
