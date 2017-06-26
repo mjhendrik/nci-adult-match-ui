@@ -106,7 +106,8 @@
                           <tfoot>
                             <tr>
                               <td class="tfoot-padding" colspan="10">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermBiopsyTrackingList" [totallength]="tableBiopsyTrackingListData.length"></mfBootstrapPaginator>
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermBiopsyTrackingList" [totallength]="tableBiopsyTrackingListData.length"
+                                  (CurrentlyActive)="currentPageActive($event)"></mfBootstrapPaginator>
                               </td>
                             </tr>
                           </tfoot>

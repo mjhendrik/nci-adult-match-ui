@@ -41,7 +41,7 @@ export class PatientListComponent implements OnInit {
 
   getData() {
     let gmt = new GmtPipe();
-    this.patientApi.getPatientList(this.page, this.size, this.sortOrder, this.sortBy)
+    this.patientApi.getPatientList(this.page, this.size, this.sortOrder, this.sortBy, this.searchTermPatients)
       .subscribe(itemList => {
         this.tablePatientsData = itemList.map(x => {
           x.registrationDate = gmt.transform(x.registrationDate);
@@ -67,17 +67,11 @@ export class PatientListComponent implements OnInit {
   }
 
   currentPageActive(evt: any): void {
-    console.log(evt);
     let params = evt.split(',');
     this.page = params[0];
     this.size = params[1];
     this.sortOrder = params[2];
     this.sortBy = params[3];
-    // console.log(this.page);
-    // console.log(this.size);
-    // console.log(this.sortOrder);
-    // console.log(this.sortBy);
-    console.log(this.searchTermPatients);
   }
 
 }

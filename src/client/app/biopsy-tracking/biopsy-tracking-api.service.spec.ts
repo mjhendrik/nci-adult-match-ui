@@ -56,7 +56,7 @@ export function main() {
             })));
           });
 
-          BiopsyTrackingApiService.getBiopsyTracking().subscribe((response: any) => { });
+          // BiopsyTrackingApiService.getBiopsyTracking(page, size, sortOrder, sortBy, filter).subscribe((response: any) => { });
         })
     );
 

@@ -28,6 +28,11 @@ export class BiopsyTrackingListComponent implements OnInit {
   errorMessage: string;
   dataAvailable: boolean = false;
   biopsyCount: number;
+  activePage: number = 1;
+  page: number = this.activePage;
+  size: number = this.recordsPerPageBiopsyTrackingList;
+  sortOrder: string = 'asc';
+  sortBy: string = this.tableBiopsyTrackingListDefaultSort;
 
   constructor(private biopsyTrackingApi: BiopsyTrackingApiService) {
 
@@ -39,7 +44,7 @@ export class BiopsyTrackingListComponent implements OnInit {
 
   getData() {
     let gmt = new GmtPipe();
-    this.biopsyTrackingApi.getBiopsyTracking()
+    this.biopsyTrackingApi.getBiopsyTracking(this.page, this.size, this.sortOrder, this.sortBy, this.searchtermBiopsyTrackingList)
       .subscribe(itemList => {
 
         for (let i = 0; i < itemList.length; i++) {
@@ -106,6 +111,14 @@ export class BiopsyTrackingListComponent implements OnInit {
       },
       error => this.errorMessage = <any>error
       );
+  }
+
+  currentPageActive(evt: any): void {
+    let params = evt.split(',');
+    this.page = params[0];
+    this.size = params[1];
+    this.sortOrder = params[2];
+    this.sortBy = params[3];
   }
 
 }

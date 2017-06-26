@@ -23,9 +23,10 @@ export class BiopsyTrackingApiService {
    * Returns an Observable for the HTTP GET request for the JSON resource.
    * @return {string[]} The Observable for the HTTP request.
    */
-  getBiopsyTracking(): Observable<any[]> {
+  getBiopsyTracking(page: number, size: number, sortOrder: string, sortBy: string, filter: string): Observable<any[]> {
     // return this.http.get('assets/mock-data/biopsy-tracking.json')
-    return this.http.get(Config.API.PATIENT + '/patients/tracking')
+    return this.http.get(Config.API.PATIENT + '/patients/tracking' + '?page=' + page + '&size=' + size + '&sort=' + sortBy + ':'
+      + sortOrder + '&projfilter=' + filter)
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
