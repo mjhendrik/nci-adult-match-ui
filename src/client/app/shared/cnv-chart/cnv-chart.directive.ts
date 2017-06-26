@@ -64,8 +64,6 @@ export class CnvChartDirective implements OnInit {
         this.data = temp;
 
         this.options = {
-
-
           //  ********
           chart: {
             id: 'boxplotchart',
@@ -82,9 +80,6 @@ export class CnvChartDirective implements OnInit {
               xDomain: [0, 5],
               xRange: [0, 10]
             },
-            staggerLabels: function () {
-              return true;
-            },
             color: function (d: any) {
               return d.status;
             },
@@ -93,6 +88,9 @@ export class CnvChartDirective implements OnInit {
             },
             cn: function (d: any) {
               return d.cn;
+            },
+            chr: function (d: any) {
+              return d.chr;
             },
             tooltip: {
               contentGenerator: function (d: any) {
@@ -126,6 +124,25 @@ export class CnvChartDirective implements OnInit {
             x: function (d: any) {
               return d.label;
             },
+            xAxis: {
+              color: 'red',
+              itemColor: function () {
+                return this.color;
+              },
+              rotateLabels: -45,
+              fontSize: 10,
+              tickValues: function (d: any) {
+                var xgrid = [];
+                var chr;
+                Object.keys(d).forEach((key: any) => {
+                  if(d[key].chr !== chr) {
+                    chr = d[key].chr;
+                    xgrid.push(d[key].label)
+                  }
+                });
+                return xgrid;
+              }
+            },
             yAxis: {
               tickFormat: function () {
                 return d3.format('d');
@@ -138,21 +155,19 @@ export class CnvChartDirective implements OnInit {
               tickValues: function () {
                 return [2, 7];
               },
+              tickFormat: function (d: any) {
+                return d3.format(',.0d')(d);
+              },
               axisLabelDistance: 30
             },
-
-            y2Axis: {
+            x2Axis: {
               axisLabel: 'Y2 Axis',
-              tickFormat: function (d: any) {
-                return d3.format(',.2f')(d.chr);
+              tickValues: function () {
+                return ['VHL'];
               }
             },
-
             maxBoxWidth: 0.01,
-            yDomain: [0, 10],
-
-            // xDomain: [5],
-            // xRange: [0,100]
+            yDomain: [0, 10]
           }
           //  *******
         };
