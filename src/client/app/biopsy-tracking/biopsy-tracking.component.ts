@@ -28,6 +28,7 @@ export class BiopsyTrackingListComponent implements OnInit {
   errorMessage: string;
   dataAvailable: boolean = false;
   biopsyCount: number;
+  previous: any;
   activePage: number = 1;
   page: number = this.activePage;
   size: number = this.recordsPerPageBiopsyTrackingList;
@@ -119,6 +120,9 @@ export class BiopsyTrackingListComponent implements OnInit {
     this.size = params[1];
     this.sortOrder = params[2];
     this.sortBy = params[3];
+    if (this.previous !== evt)
+      this.getData();
+    this.previous = evt;
   }
 
 }
