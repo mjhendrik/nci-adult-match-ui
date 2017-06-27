@@ -1,5 +1,14 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { DataTable, SortEvent } from './DataTable';
+import {
+    Component,
+    Input,
+    OnInit,
+    Output,
+    EventEmitter
+} from '@angular/core';
+import {
+    DataTable,
+    SortEvent
+} from './DataTable';
 
 @Component({
     selector: 'mfDefaultSorter',
@@ -12,6 +21,7 @@ import { DataTable, SortEvent } from './DataTable';
 })
 export class DefaultSorter implements OnInit {
     @Input('by') sortBy: string;
+    @Output('SortStatus') SortStatus = new EventEmitter<string>();
 
     isSortedByMeAsc: boolean = false;
     isSortedByMeDesc: boolean = false;
@@ -32,5 +42,7 @@ export class DefaultSorter implements OnInit {
         } else {
             this.mfTable.setSort(this.sortBy, 'asc');
         }
+        this.SortStatus.emit(this.mfTable.activePage + ',' + this.mfTable.rowsOnPage + ',' + this.mfTable.sortOrder + ','
+            + this.mfTable.sortBy);
     }
 }

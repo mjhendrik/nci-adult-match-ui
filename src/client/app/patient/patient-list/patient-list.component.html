@@ -33,7 +33,6 @@
                   <div class="col-md-6 p-r-5">
                     <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                       <label>Search:
-                        <!--{{activePage}}-->
                         <input type="text" [(ngModel)]="searchTermPatients" class="form-control form-control-purple input-sm" placeholder="" aria-controls="data-table">
                         </label>
                     </div>
@@ -47,25 +46,25 @@
                       <thead>
                         <tr class="purple-light">
                           <th>
-                            <mfDefaultSorter by="patientSequenceNumber"><span class="table-header">Patient Sequence Number</span></mfDefaultSorter>
+                            <mfDefaultSorter (SortStatus)="SortStatus($event)" by="patientSequenceNumber"><span class="table-header">Patient Sequence Number</span></mfDefaultSorter>
                           </th>
                           <th>
-                            <mfDefaultSorter by="currentPatientStatus"><span class="table-header">Status</span></mfDefaultSorter>
+                            <mfDefaultSorter (SortStatus)="SortStatus($event)" by="currentPatientStatus"><span class="table-header">Status</span></mfDefaultSorter>
                           </th>
                           <th>
-                            <mfDefaultSorter by="currentStepNumber"><span class="table-header">Step Number</span></mfDefaultSorter>
+                            <mfDefaultSorter (SortStatus)="SortStatus($event)" by="currentStepNumber"><span class="table-header">Step Number</span></mfDefaultSorter>
                           </th>
                           <th>
-                            <mfDefaultSorter by="diseaseList"><span class="table-header">Diseases</span></mfDefaultSorter>
+                            <mfDefaultSorter (SortStatus)="SortStatus($event)" by="diseaseList"><span class="table-header">Diseases</span></mfDefaultSorter>
                           </th>
                           <th>
-                            <mfDefaultSorter by="currentTreatmentArm"><span class="table-header">Treatment Arm</span></mfDefaultSorter>
+                            <mfDefaultSorter (SortStatus)="SortStatus($event)" by="currentTreatmentArm"><span class="table-header">Treatment Arm</span></mfDefaultSorter>
                           </th>
                           <th>
-                            <mfDefaultSorter by="registrationDate"><span class="table-header">Registration Date</span></mfDefaultSorter>
+                            <mfDefaultSorter (SortStatus)="SortStatus($event)" by="registrationDate"><span class="table-header">Registration Date</span></mfDefaultSorter>
                           </th>
                           <th>
-                            <mfDefaultSorter by="offTrialDate"><span class="table-header">Off Trial Date</span></mfDefaultSorter>
+                            <mfDefaultSorter (SortStatus)="SortStatus($event)" by="offTrialDate"><span class="table-header">Off Trial Date</span></mfDefaultSorter>
                           </th>
                         </tr>
                       </thead>

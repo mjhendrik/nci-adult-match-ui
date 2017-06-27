@@ -29,6 +29,7 @@ export class PatientListComponent implements OnInit {
   activePage: number = 1;
   patientCount: number;
   previous: any;
+  previousSort: any;
   page: number = this.activePage;
   size: number = this.recordsPerPagePatients;
   sortOrder: string = 'asc';
@@ -68,6 +69,7 @@ export class PatientListComponent implements OnInit {
   }
 
   currentPageActive(evt: any): void {
+    // console.log(evt);
     let params = evt.split(',');
     this.page = params[0];
     this.size = params[1];
@@ -76,6 +78,13 @@ export class PatientListComponent implements OnInit {
     if (this.previous !== evt)
       this.getData();
     this.previous = evt;
+  }
+
+  SortStatus(evt: any): void {
+    // console.log(evt);
+    if (this.previousSort !== evt)
+      this.getData();
+    this.previousSort = evt;
   }
 
 }
