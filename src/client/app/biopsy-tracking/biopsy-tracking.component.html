@@ -100,7 +100,10 @@
                               <td>{{item.dnaShippedDate | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftableBiopsyTrackingList.data.length == 0">
-                              <td class="text-muted" colspan="10">No matching search results found for "{{searchtermBiopsyTrackingList}}"</td>
+                              <td class="text-muted" colspan="10">
+                                <span *ngIf="searchtermBiopsyTrackingList">No matching search results found for "{{searchtermBiopsyTrackingList}}"</span>
+                                <span *ngIf="!searchtermBiopsyTrackingList">No biopsy tracking data</span>
+                              </td>
                             </tr>
                           </tbody>
                           <tfoot>
