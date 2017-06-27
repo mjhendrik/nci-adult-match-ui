@@ -29,6 +29,7 @@ export class BiopsyTrackingListComponent implements OnInit {
   dataAvailable: boolean = false;
   biopsyCount: number;
   previous: any;
+  previousSort: any;
   activePage: number = 1;
   page: number = this.activePage;
   size: number = this.recordsPerPageBiopsyTrackingList;
@@ -119,6 +120,13 @@ export class BiopsyTrackingListComponent implements OnInit {
     if (this.previous !== evt)
       this.getData();
     this.previous = evt;
+  }
+
+  SortStatus(evt: any): void {
+    // console.log(evt);
+    if (this.previousSort !== evt)
+      this.getData();
+    this.previousSort = evt;
   }
 
 }
