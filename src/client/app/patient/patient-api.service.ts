@@ -46,16 +46,16 @@ export class PatientApiService {
    */
   getPatientList(page: number, size: number, sortOrder: string, sortBy: string, filter: string): Observable<any[]> {
     return this.http.get(this.url(`/patients?projection=patientSequenceNumber,currentPatientStatus,currentStepNumber,diseases.shortName,
-registrationDate,patientAssignments.treatmentArm.name,patientAssignments.treatmentArm.version`
-      + '&page=' + page + '&size=' + size + '&sort=' + sortBy + ':' + sortOrder + '&projfilter=' + filter,
-      'assets/mock-data/patient-list.json'))
+registrationDate,patientAssignments.treatmentArm.name,patientAssignments.treatmentArm.version&page=` + page + '&size=' + size + '&sort='
+      + sortBy + ':' + sortOrder + '&projfilter=' + filter, 'assets/mock-data/patient-list.json'))
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
   }
 
-  getPatientCount(): Observable<number> {
-    return this.http.get(Config.API.PATIENT + '/patients/count')
+  getPatientCount(filter: string): Observable<number> {
+    return this.http.get(Config.API.PATIENT + `/patients/count?projection=patientSequenceNumber,currentPatientStatus,currentStepNumber,
+diseases.shortName,registrationDate,patientAssignments.treatmentArm.name,patientAssignments.treatmentArm.version&projfilter=` + filter)
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);

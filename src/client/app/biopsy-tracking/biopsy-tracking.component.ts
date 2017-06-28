@@ -102,7 +102,7 @@ export class BiopsyTrackingListComponent implements OnInit {
   }
 
   getBiopsyCount() {
-    this.biopsyTrackingApi.getBiopsyCount()
+    this.biopsyTrackingApi.getBiopsyCount(this.searchtermBiopsyTrackingList)
       .subscribe(itemList => {
         this.biopsyCount = itemList;
         this.getData();
@@ -114,18 +114,18 @@ export class BiopsyTrackingListComponent implements OnInit {
   currentPageActive(evt: any): void {
     evt += ',' + this.searchtermBiopsyTrackingList;
     let params = evt.split(',');
-    this.page = params[0];
-    this.size = params[1];
+    this.page = parseInt(params[0]);
+    this.size = parseInt(params[1]);
     this.sortOrder = params[2];
     this.sortBy = params[3];
     if (this.previous !== evt)
-      this.getData();
+      this.getBiopsyCount();
     this.previous = evt;
   }
 
   SortStatus(evt: any): void {
     if (this.previousSort !== evt)
-      this.getData();
+      this.getBiopsyCount();
     this.previousSort = evt;
   }
 

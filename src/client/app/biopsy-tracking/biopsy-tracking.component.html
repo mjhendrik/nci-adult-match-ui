@@ -43,7 +43,8 @@
                     <div class="row">
                       <div class="table-responsive col-lg-12">
                         <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="tableBiopsyTrackingListData | filterByText: searchtermBiopsyTrackingList"
-                          #mftableBiopsyTrackingList="mfDataTable" [(mfSortBy)]="tableBiopsyTrackingListDefaultSort" [mfRowsOnPage]="recordsPerPageBiopsyTrackingList">
+                          #mftableBiopsyTrackingList="mfDataTable" [(mfSortBy)]="tableBiopsyTrackingListDefaultSort" [mfRowsOnPage]="recordsPerPageBiopsyTrackingList"
+                          [(mfTotalLength)]="biopsyCount">
                           <thead>
                             <tr class="info-light">
                               <th style="min-width:11em">
@@ -109,7 +110,7 @@
                           <tfoot>
                             <tr>
                               <td class="tfoot-padding" colspan="10">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermBiopsyTrackingList" [totallength]="tableBiopsyTrackingListData.length"
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermBiopsyTrackingList" [totallength]="biopsyCount ? biopsyCount.length : 0"
                                   (CurrentlyActive)="currentPageActive($event)"></mfBootstrapPaginator>
                               </td>
                             </tr>

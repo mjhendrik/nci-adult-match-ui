@@ -25,15 +25,15 @@ export class BiopsyTrackingApiService {
    */
   getBiopsyTracking(page: number, size: number, sortOrder: string, sortBy: string, filter: string): Observable<any[]> {
     // return this.http.get('assets/mock-data/biopsy-tracking.json')
-    return this.http.get(Config.API.PATIENT + '/patients/tracking' + '?page=' + page + '&size=' + size + '&sort=' + sortBy + ':'
-      + sortOrder + '&projfilter=' + filter)
+    return this.http.get(Config.API.PATIENT + '/patients/tracking?page=' + page + '&size=' + size + '&sort=' + sortBy + ':' + sortOrder
+      + '&projfilter=' + filter)
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
   }
 
-  getBiopsyCount(): Observable<number> {
-    return this.http.get(Config.API.PATIENT + '/patients/tracking/count')
+  getBiopsyCount(filter: string): Observable<number> {
+    return this.http.get(Config.API.PATIENT + '/patients/tracking/count?projfilter=' + filter)
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
