@@ -64,12 +64,15 @@ export class DataTable implements OnChanges, DoCheck {
     }
 
     public getPage(): PageEvent {
-        return { activePage: this.activePage, rowsOnPage: this.rowsOnPage, dataLength: this.inputData ? this.inputData.length : 0, totalLength: this.totalLength };
+        return {
+            activePage: this.activePage, rowsOnPage: this.rowsOnPage, dataLength: this.inputData ? this.inputData.length : 0,
+            totalLength: this.totalLength
+        };
     }
 
     public setPage(activePage: number, rowsOnPage: number): void {
         if (this.rowsOnPage !== rowsOnPage || this.activePage !== activePage) {
-            if (this.totalLength == undefined) {
+            if (this.totalLength === undefined) {
                 this.totalLength = this.inputData.length;
             }
             this.activePage = this.activePage !== activePage ? activePage : this.calculateNewActivePage(this.rowsOnPage, rowsOnPage);
@@ -152,7 +155,7 @@ export class DataTable implements OnChanges, DoCheck {
         } else {
             data = _.orderBy(data, sortBy, [this.sortOrder]);
         }
-        if (this.totalLength == this.inputData.length)
+        if (this.totalLength === this.inputData.length)
             data = _.slice(data, offset, offset + this.rowsOnPage);
         this.data = data;
     }
