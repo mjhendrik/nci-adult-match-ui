@@ -14,6 +14,7 @@ export interface PageEvent {
     activePage: number;
     rowsOnPage: number;
     dataLength: number;
+    totalLength: number;
 }
 
 export interface DataEvent {
@@ -31,6 +32,7 @@ export class DataTable implements OnChanges, DoCheck {
     @Input('mfSortOrder') public sortOrder = 'asc';
     @Input('mfRowsOnPage') public rowsOnPage = 1000;
     @Input('mfActivePage') public activePage = 1;
+    @Input('mfTotalLength') public totalLength: number;
 
     @Output('mfSortByChange') public sortByChange = new EventEmitter<string | string[]>();
     @Output('mfSortOrderChange') public sortOrderChange = new EventEmitter<string>();
@@ -62,18 +64,23 @@ export class DataTable implements OnChanges, DoCheck {
     }
 
     public getPage(): PageEvent {
-        return { activePage: this.activePage, rowsOnPage: this.rowsOnPage, dataLength: this.inputData ? this.inputData.length : 0 };
+        return { activePage: this.activePage, rowsOnPage: this.rowsOnPage, dataLength: this.inputData ? this.inputData.length : 0, totalLength: this.totalLength };
     }
 
     public setPage(activePage: number, rowsOnPage: number): void {
         if (this.rowsOnPage !== rowsOnPage || this.activePage !== activePage) {
+            if (this.totalLength == undefined) {
+                this.totalLength = this.inputData.length;
+            }
             this.activePage = this.activePage !== activePage ? activePage : this.calculateNewActivePage(this.rowsOnPage, rowsOnPage);
             this.rowsOnPage = rowsOnPage;
             this.mustRecalculateData = true;
+
             this.onPageChange.emit({
                 activePage: this.activePage,
                 rowsOnPage: this.rowsOnPage,
-                dataLength: this.inputData ? this.inputData.length : 0
+                dataLength: this.inputData ? this.inputData.length : 0,
+                totalLength: this.totalLength
             });
         }
     }
@@ -121,14 +128,15 @@ export class DataTable implements OnChanges, DoCheck {
     }
 
     private recalculatePage() {
-        let lastPage = Math.ceil(this.inputData.length / this.rowsOnPage);
+        let lastPage = Math.ceil(this.totalLength / this.rowsOnPage);
         this.activePage = lastPage < this.activePage ? lastPage : this.activePage;
         this.activePage = this.activePage || 1;
 
         this.onPageChange.emit({
             activePage: this.activePage,
             rowsOnPage: this.rowsOnPage,
-            dataLength: this.inputData.length
+            dataLength: this.inputData.length,
+            totalLength: this.totalLength
         });
     }
 
@@ -144,7 +152,8 @@ export class DataTable implements OnChanges, DoCheck {
         } else {
             data = _.orderBy(data, sortBy, [this.sortOrder]);
         }
-        data = _.slice(data, offset, offset + this.rowsOnPage);
+        if (this.totalLength == this.inputData.length)
+            data = _.slice(data, offset, offset + this.rowsOnPage);
         this.data = data;
     }
 

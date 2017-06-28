@@ -25,7 +25,7 @@ export class Paginator implements OnChanges {
     public rowsOnPage: number;
     public dataLength: number = 0;
     public lastPage: number;
-
+    public totalLength: number;
     private mfTable: DataTable;
 
     public constructor( @Optional() private injectMfTable: DataTable) {
@@ -49,7 +49,8 @@ export class Paginator implements OnChanges {
         this.activePage = event.activePage;
         this.rowsOnPage = event.rowsOnPage;
         this.dataLength = event.dataLength;
-        this.lastPage = Math.ceil(this.dataLength / this.rowsOnPage);
+        this.totalLength = event.totalLength;
+        this.lastPage = Math.ceil(this.totalLength / this.rowsOnPage);
         this.currentlyActive.emit(this.activePage + ',' + this.rowsOnPage + ',' + this.mfTable.sortOrder + ',' + this.mfTable.sortBy);
     }
 

@@ -73,6 +73,8 @@ export class PatientListComponent implements OnInit {
     let params = evt.split(',');
     this.page = params[0];
     this.size = params[1];
+    // this.page = parseInt(params[0]);
+    // this.size = parseInt(params[1]);
     this.sortOrder = params[2];
     this.sortBy = params[3];
     if (this.previous !== evt)

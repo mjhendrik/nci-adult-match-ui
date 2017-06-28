@@ -42,7 +42,7 @@
                   <div class="table-responsive col-lg-12">
                     <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="tablePatientsData | filterByText: searchTermPatients"
                       #mftablePatients="mfDataTable" [(mfSortBy)]="tablePatientsDefaultSort" [mfRowsOnPage]="recordsPerPagePatients"
-                      [mfActivePage]="activePage">
+                      [mfActivePage]="activePage" [(mfTotalLength)]="patientCount">
                       <thead>
                         <tr class="purple-light">
                           <th>
@@ -93,7 +93,7 @@
                       <tfoot>
                         <tr>
                           <td class="tfoot-padding" colspan="7">
-                            <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchTermPatients" [totallength]="tablePatientsData ? tablePatientsData.length : 0"
+                            <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchTermPatients" [totallength]="patientCount ? patientCount.length : 0"
                               (CurrentlyActive)="currentPageActive($event)"></mfBootstrapPaginator>
                           </td>
                         </tr>
