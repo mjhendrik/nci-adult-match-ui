@@ -69,7 +69,7 @@ export class PatientListComponent implements OnInit {
   }
 
   currentPageActive(evt: any): void {
-    // console.log(evt);
+    evt += ',' + this.searchTermPatients;
     let params = evt.split(',');
     this.page = params[0];
     this.size = params[1];
@@ -81,7 +81,6 @@ export class PatientListComponent implements OnInit {
   }
 
   SortStatus(evt: any): void {
-    // console.log(evt);
     if (this.previousSort !== evt)
       this.getData();
     this.previousSort = evt;
