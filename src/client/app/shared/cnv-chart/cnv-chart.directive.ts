@@ -14,7 +14,7 @@ declare let d3: any;
 @Component({
   selector: 'cnv-chart',
   providers: [nvD3],
-  template: '<div> <nvd3 [options]="options" [data]=data ></nvd3> </div>'
+  template: '<div> <nvd3 id="boxplotchart" [options]="options" [data]=data ></nvd3> </div>'
 })
 
 export class CnvChartDirective implements OnInit {
@@ -28,7 +28,6 @@ export class CnvChartDirective implements OnInit {
     this.configApi.getCnvChart()
       .subscribe((itemList: any) => {
         var array = itemList.parsed_vcf_genes;
-        var count = 0;
         var temp: any[] = [];
         Object.keys(array).forEach((key: any) => {
 
@@ -89,9 +88,9 @@ export class CnvChartDirective implements OnInit {
             cn: function (d: any) {
               return d.cn;
             },
-            chr: function (d: any) {
-              return d.chr;
-            },
+            // chr: function (d: any) {
+            //   return d.chr;
+            // },
             tooltip: {
               contentGenerator: function (d: any) {
                 var label;
@@ -125,29 +124,103 @@ export class CnvChartDirective implements OnInit {
               return d.label;
             },
             xAxis: {
-              color: 'red',
+              // color: 'red',
               itemColor: function () {
                 return this.color;
               },
               rotateLabels: -45,
               fontSize: 10,
+              showMaxMin: true,
+              color: function () {
+                return ['#FF0000', '#0026FF']
+              },
+              // scale: function (n){
+              //   return (n);
+              // },
+              // forceX: [0, 100],
+              // lines: {
+              //   forceX: [0, 100]
+              // },
+              // tickFormat: function (d) {
+              //   return d3.format(",")(d);
+              //       // return d3.format('d');
+              // },
+
               tickValues: function (d: any) {
-                var xgrid: any[] = [];
+                var temp: any[] = [];
                 var chr: any;
+                var x: any;
+                var val: any;
                 Object.keys(d).forEach((key: any) => {
                   if (d[key].chr !== chr) {
                     chr = d[key].chr;
-                    xgrid.push(d[key].label);
+                    x = d[key].x;
+                    val = d[key].label;
+                    temp.push(val);
+
+                    var custLine = d3.select('#boxplotchart')
+                      .select('.nv-boxPlotWithAxes')
+                      .select('g')
+                      .append('g');
+
+                    var boxLine = d3.select('#boxplotchart')
+                      .select('.nv-boxPlotWithAxes')
+                      .select('g')
+                      .select('.nvd3-svg')
+                      .select('.nv-axis')
+                      .select('g')
+                      .select('g');
+
+
+                    custLine.append("text")
+                      .attr("class", "nv-zeroLine")
+                      .attr("x", x + 10)
+                      .attr("y", 370)
+                      .text(chr)
+                      .style("fill", "#c70505");
+
+                    // custLine.append("line")
+                    //   .attr("class", "tick zero")
+                    //   .attr("x1", x + 10)
+                    //   .attr("x2", x + 10)
+                    //   .attr("y1", 0)
+                    //   .attr("y2", 120)
+                    //   .style("stroke", "#c70505");
+
+
+
+                      // .text(chr);
+
+
+                    // d3.selectAll(boxLine)[0].forEach(function(r) {
+                    //   console.log("--> " + JSON.stringify(r))
+                    // });
+
+                    // this.scale(key);
+
+                    // custLine
+                    //   .selectAll('line')
+                    //   .data([val])
+                    //   .enter()
+                    //   // .append(d3.createTextNode('TEST'))
+                    //   .append('line')
+                    //   .attr({
+                    //     x1: function(){ return parseInt(x)},
+                    //     y1: function(){ return 0},
+                    //     x2: function(){ return parseInt(x)},
+                    //     y2: function(){ return 247 }
+                    //   })
+                    //   .style("stroke", "#c70505");
+
+                  }
+                  else{
+                    val = d[key].label;
+                    temp.push(val);
                   }
                 });
-                return xgrid;
+                return temp;
               }
             },
-            // yAxis: {
-            //   tickFormat: function () {
-            //     return d3.format('d');
-            //   }
-            // },
             yAxis: {
               color: function () {
                 return '#2ca02c';
@@ -160,14 +233,9 @@ export class CnvChartDirective implements OnInit {
               },
               axisLabelDistance: 30
             },
-            x2Axis: {
-              axisLabel: 'Y2 Axis',
-              tickValues: function () {
-                return ['VHL'];
-              }
-            },
             maxBoxWidth: 0.01,
             yDomain: [0, 10]
+            // xDomain: [0, 40]
           }
           //  *******
         };
@@ -178,6 +246,25 @@ export class CnvChartDirective implements OnInit {
 
   ngOnInit() {
     this.getData();
+    // this.getChroms();
   }
+
+  // getChroms(){
+  //
+  //   var temp = ['VHL', 'WT1', 'RB1'];  //'VHL', '10'];
+  //
+  //   var custLine = d3.select('#boxplotchart')
+  //     .select('.nv-boxPlotWithAxes')
+  //     .append('g');
+  //   custLine.selectAll('line')
+  //     .data(temp)
+  //     .enter()
+  //     .append('line')
+  //     .style("stroke", "#c70505");
+  //
+  // }
+
+
+
 }
 
