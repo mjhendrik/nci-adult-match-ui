@@ -49,6 +49,8 @@ export class BiopsyTrackingListComponent implements OnInit {
     this.biopsyTrackingApi.getBiopsyTracking(this.page, this.size, this.sortOrder, this.sortBy, this.searchtermBiopsyTrackingList)
       .subscribe(itemList => {
 
+        this.tableBiopsyTrackingListData = [];
+
         for (let i = 0; i < itemList.length; i++) {
 
           let obj: any = {};
