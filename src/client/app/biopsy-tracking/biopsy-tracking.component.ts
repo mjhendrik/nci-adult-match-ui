@@ -28,6 +28,7 @@ export class BiopsyTrackingListComponent implements OnInit {
   errorMessage: string;
   dataAvailable: boolean = false;
   biopsyCount: number;
+  biopsyTotal: number;
   previous: any;
   previousSort: any;
   activePage: number = 1;
@@ -108,6 +109,16 @@ export class BiopsyTrackingListComponent implements OnInit {
       .subscribe(itemList => {
         this.biopsyCount = itemList;
         this.getData();
+        this.getBiopsyTotal();
+      },
+      error => this.errorMessage = <any>error
+      );
+  }
+
+  getBiopsyTotal() {
+    this.biopsyTrackingApi.getBiopsyTotal()
+      .subscribe(itemList => {
+        this.biopsyTotal = itemList;
       },
       error => this.errorMessage = <any>error
       );

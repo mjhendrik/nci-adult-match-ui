@@ -28,6 +28,7 @@ export class PatientListComponent implements OnInit {
   dataAvailable: boolean = false;
   activePage: number = 1;
   patientCount: number;
+  patientTotal: number;
   previous: any;
   previousSort: any;
   page: number = this.activePage;
@@ -62,7 +63,18 @@ export class PatientListComponent implements OnInit {
     this.patientApi.getPatientCount(this.searchTermPatients)
       .subscribe(itemList => {
         this.patientCount = itemList;
+        // this.tablePatientsData = []; // add animation
         this.getData();
+        this.getPatientTotal();
+      },
+      error => this.errorMessage = <any>error
+      );
+  }
+
+  getPatientTotal() {
+    this.patientApi.getPatientTotal()
+      .subscribe(itemList => {
+        this.patientTotal = itemList;
       },
       error => this.errorMessage = <any>error
       );

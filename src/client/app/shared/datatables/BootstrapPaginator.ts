@@ -27,7 +27,7 @@ import * as _ from 'lodash';
             <div class="dataTables_info" id="data-table_info" style="margin: 30px 0 0 0;" *ngIf="p.totalLength!=0 && searchTerm!=undefined && searchTerm.length!=0">
                 Showing {{p.totalLength==0 ? 0 : (p.activePage-1)*(p.rowsOnPage)+1}} to 
                 {{ p.totalLength < (p.activePage-1)*(p.rowsOnPage)+p.rowsOnPage ? p.totalLength: (p.activePage-1)*(p.rowsOnPage)+paginationParse(p.rowsOnPage)}} of {{p.totalLength}}
-                          entries (filtered from {{totallength}} total entries)
+                          entries (filtered from {{totalPageCount === undefined ? p.totalLength : totalPageCount}} total entries)
             </div>
         </div>
         <ul style="margin-bottom: 0;" class="pagination pull-right" *ngIf="p.totalLength > p.rowsOnPage">
@@ -78,6 +78,7 @@ export class BootstrapPaginator implements OnChanges {
     @Input('mfTable') mfTable: DataTable;
     @Input('search') searchTerm: string;
     @Input('totallength') totallength: string;
+    @Input('totalPageCount') totalPageCount: string;
     @Output('CurrentlyActive') currentActiveData = new EventEmitter<string>();
 
     minRowsOnPage = 0;

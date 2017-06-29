@@ -111,7 +111,7 @@
                             <tr>
                               <td class="tfoot-padding" colspan="10">
                                 <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermBiopsyTrackingList" [totallength]="biopsyCount ? biopsyCount.length : 0"
-                                  (CurrentlyActive)="currentPageActive($event)"></mfBootstrapPaginator>
+                                  [totalPageCount]="biopsyTotal" (CurrentlyActive)="currentPageActive($event)"></mfBootstrapPaginator>
                               </td>
                             </tr>
                           </tfoot>

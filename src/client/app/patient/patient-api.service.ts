@@ -61,6 +61,14 @@ diseases.shortName,registrationDate,patientAssignments.treatmentArm.name,patient
       .catch(this.handleError);
   }
 
+  getPatientTotal(): Observable<number> {
+    return this.http.get(Config.API.PATIENT + `/patients/count?projection=patientSequenceNumber,currentPatientStatus,currentStepNumber,
+diseases.shortName,registrationDate,patientAssignments.treatmentArm.name,patientAssignments.treatmentArm.version`)
+      .map((res: Response) => res.json())
+      //              .do(data => console.log('server data:', data))  // debug
+      .catch(this.handleError);
+  }
+
   getPatientDetails(psn: string): Observable<any> {
     return this.http.get(this.url('/patients/' + psn, 'assets/mock-data/patient.1067.json'))
       .map((res: Response) => res.json())
