@@ -30,7 +30,6 @@ export class PatientListComponent implements OnInit {
   patientCount: number;
   patientTotal: number;
   previous: any;
-  previousSort: any;
   page: number = this.activePage;
   size: number = this.recordsPerPagePatients;
   sortOrder: string = 'asc';
@@ -87,15 +86,16 @@ export class PatientListComponent implements OnInit {
     this.size = parseInt(params[1]);
     this.sortOrder = params[2];
     this.sortBy = params[3];
-    if (this.previous !== evt)
+    if (this.previous !== evt && this.previous !== undefined)
       this.getPatientCount();
     this.previous = evt;
   }
 
   SortStatus(evt: any): void {
-    if (this.previousSort !== evt)
+    evt += ',' + this.searchTermPatients;
+    if (this.previous !== evt)
       this.getPatientCount();
-    this.previousSort = evt;
+    this.previous = evt;
   }
 
 }

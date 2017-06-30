@@ -24,13 +24,12 @@ export class BiopsyTrackingListComponent implements OnInit {
   searchtermBiopsyTrackingList: string = '';
   recordsPerPageBiopsyTrackingList: number = 100;
   tableBiopsyTrackingListDefaultSort: string = 'biopsySequenceNumber';
-  tableBiopsyTrackingListData: any[] = [];
+  tableBiopsyTrackingListData: any[];
   errorMessage: string;
   dataAvailable: boolean = false;
   biopsyCount: number;
   biopsyTotal: number;
   previous: any;
-  previousSort: any;
   activePage: number = 1;
   page: number = this.activePage;
   size: number = this.recordsPerPageBiopsyTrackingList;
@@ -131,15 +130,16 @@ export class BiopsyTrackingListComponent implements OnInit {
     this.size = parseInt(params[1]);
     this.sortOrder = params[2];
     this.sortBy = params[3];
-    if (this.previous !== evt)
+    if (this.previous !== evt && this.previous !== undefined)
       this.getBiopsyCount();
     this.previous = evt;
   }
 
   SortStatus(evt: any): void {
-    if (this.previousSort !== evt)
+    evt += ',' + this.searchtermBiopsyTrackingList;
+    if (this.previous !== evt)
       this.getBiopsyCount();
-    this.previousSort = evt;
+    this.previous = evt;
   }
 
 }
