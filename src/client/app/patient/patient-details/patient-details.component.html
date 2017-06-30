@@ -197,7 +197,7 @@
                       <tbody>
                         <ng-template ngFor let-sendout [ngForOf]="biopsy.nucleicAcidSendouts">
 
-                          <tr>
+                          <tr id="{{sendout.molecularSequenceNumber}}">
                             <td><i class="fa fa-share-alt"></i> {{sendout.molecularSequenceNumber | dashify}}</td>
                             <td>{{sendout.destinationSite | dashify}}</td>
                             <td>
@@ -212,7 +212,7 @@
                             <td>{{sendout.comment | dashify}}</td>
                           </tr>
 
-                          <tr *ngFor="let analysis of sendout.analyses">
+                          <tr *ngFor="let analysis of sendout.analyses" id="{{analysis.analysisId}}" >
                             <td colspan="7" class="bg-body">
                               <div class="panel panel-with-tabs panel-accent-sides-purple panel-details-row">
                                 <div class="panel-heading">
@@ -226,7 +226,7 @@
                                 <div id="panel-tab-content" class="tab-content p-t-0">
                                   <div class="tab-pane fade active in" id="panel-tab-info">
                                     <div class="row">
-                                      <div class="col-md-6">
+                                      <div class="col-md-6" id="variant-report-{{analysis.analysisId}}">
                                         <dl class="dl-horizontal m-b-4">
                                           <dt><h4>Variant Report</h4></dt>
                                           <dd></dd>
@@ -252,7 +252,7 @@
                                         </dl>
                                       </div>
 
-                                      <div class="col-md-6">
+                                      <div class="col-md-6" id="assignment-report-{{biopsy.biopsySequenceNumber}}">
 
                                         <dl class="dl-horizontal m-b-4">
                                           <dt><h4>Assignment Report</h4></dt>
