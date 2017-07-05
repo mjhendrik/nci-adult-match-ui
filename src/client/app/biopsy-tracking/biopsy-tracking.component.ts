@@ -123,6 +123,15 @@ export class BiopsyTrackingListComponent implements OnInit {
       );
   }
 
+  onSearchChanged(val: any) {
+    if (this.searchtermBiopsyTrackingList !== val) {
+      this.searchtermBiopsyTrackingList = val;
+      this.previous = this.page + ',' + this.size + ',' + this.sortOrder + ',' + this.sortBy + ',' + this.searchtermBiopsyTrackingList;
+      this.getBiopsyCount();
+    }
+    this.searchtermBiopsyTrackingList = val;
+  }
+
   currentPageActive(evt: any): void {
     evt += ',' + this.searchtermBiopsyTrackingList;
     let params = evt.split(',');

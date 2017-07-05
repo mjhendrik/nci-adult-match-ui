@@ -35,15 +35,15 @@
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input type="text" [(ngModel)]="searchtermBiopsyTrackingList" class="form-control form-control-info input-sm" placeholder="" aria-controls="data-table">
+                        <input type="text" [ngModel]="searchtermBiopsyTrackingList" (ngModelChange)="onSearchChanged($event)" class="form-control form-control-info input-sm" placeholder="" aria-controls="data-table">
                         </label>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="tableBiopsyTrackingListData | filterByText: searchtermBiopsyTrackingList"
-                          #mftableBiopsyTrackingList="mfDataTable" [(mfSortBy)]="tableBiopsyTrackingListDefaultSort" [mfRowsOnPage]="recordsPerPageBiopsyTrackingList"
+                        <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="tableBiopsyTrackingListData" #mftableBiopsyTrackingList="mfDataTable"
+                          [(mfSortBy)]="tableBiopsyTrackingListDefaultSort" [mfRowsOnPage]="recordsPerPageBiopsyTrackingList"
                           [(mfTotalLength)]="biopsyCount">
                           <thead>
                             <tr class="info-light">

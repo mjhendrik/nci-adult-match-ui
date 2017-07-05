@@ -79,6 +79,15 @@ export class PatientListComponent implements OnInit {
       );
   }
 
+  onSearchChanged(val: any) {
+    if (this.searchTermPatients !== val) {
+      this.searchTermPatients = val;
+      this.previous = this.page + ',' + this.size + ',' + this.sortOrder + ',' + this.sortBy + ',' + this.searchTermPatients;
+      this.getPatientCount();
+    }
+    this.searchTermPatients = val;
+  }
+
   currentPageActive(evt: any): void {
     evt += ',' + this.searchTermPatients;
     let params = evt.split(',');
