@@ -23,7 +23,7 @@ before_install:
   #Set up Docker exports
   - export AUTHOR=`git --no-pager show -s --format='%an <%ae>'`
   - export DATE=`TZ=America/New_York date "+%m-%d-%y-%H%M"`
-  - export DATE_TM=`TZ=America/New_York date "+%m-%d-%y %H:%M"`  
+  - export DATE_TM=`TZ=America/New_York date "+%m-%d-%y %H:%M"`
   - export DOCKER_IMAGE="fnlcr/nci-adult-match-ui"
   - echo "{\"buildNumber\":\""$TRAVIS_BUILD_NUMBER"\", \"buildTime\":\""$DATE_TM"\", \"buildId\":\""$TRAVIS_BUILD_ID"\", \"docker\":\""$DOCKER_IMAGE:$DATE"\"}" > src/client/assets/build-info.json
   - cat ./src/client/assets/build-info.json
@@ -47,15 +47,15 @@ after_success:
   - docker images
   - docker push $DOCKER_IMAGE # Pushes both date and latest
   ##Deploy to AWS IntTest
-  - docker run -it --rm -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY 
-    -e AWS_DEFAULT_REGION=us-east-1 silintl/ecs-deploy 
-    --cluster AdultMatch-IntTest-Backend --service-name AdultMATCH-nci-adult-match-ui-INTTEST 
+  - docker run -it --rm -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+    -e AWS_DEFAULT_REGION=us-east-1 silintl/ecs-deploy
+    --cluster AdultMatch-IntTest-Backend --service-name AdultMATCH-nci-adult-match-ui-INTTEST
     -i $DOCKER_IMAGE:$DATE
   ##Trigger Travis bdd tests
-  # - curl -s -X POST -H "Content-Type:application/json" -H "Accept:application/json" 
-  #   -H "Travis-API-Version:3" -H "Authorization:token $TRAVIS_TOKEN" 
-  #   -d "{\"request\":{\"message\":\"Triggered by nci-adult-match-ui $TRAVIS_COMMIT\", \"branch\":\"master\", \"config\":{\"env\":{\"matrix\":[\"TRIGGER_REPO=nci-match-ui;TRIGGER_VER=$DATE;CUC_TAG=@ui;AUTHOR=$AUTHOR\"]}}}}" 
-  #   https://api.travis-ci.org/repo/CBIIT%2Fnci-adult-match-bddtests/requests
+   - curl -s -X POST -H "Content-Type:application/json" -H "Accept:application/json"
+     -H "Travis-API-Version:3" -H "Authorization:token $TRAVIS_TOKEN"
+     -d "{\"request\":{\"message\":\"Triggered by nci-adult-match-ui $TRAVIS_COMMIT\", \"branch\":\"master\", \"config\":{\"env\":{\"matrix\":[\"TRIGGER_REPO=nci-match-ui;TRIGGER_VER=$DATE;CUC_TAG=@ui;AUTHOR=$AUTHOR\"]}}}}"
+     https://api.travis-ci.org/repo/CBIIT%2Fnci-adult-match-bdd-tests/requests
 
 notifications:
   slack: clinicalbiomed:k1HFjdqTwI4yvSyQWPulUEK4
