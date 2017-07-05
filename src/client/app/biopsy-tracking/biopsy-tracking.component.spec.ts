@@ -4,6 +4,12 @@ import {
   TestBed,
   ComponentFixture
 } from '@angular/core/testing';
+import { FormsModule } from "@angular/forms";
+import { Observable } from "rxjs/Observable";
+import { RouterTestingModule } from '@angular/router/testing';
+import { DirectivesModule } from "./../shared/directives/directives.module";
+import { PipesModule } from "./../shared/pipes/pipes.module";
+import { DataTableModule } from "./../shared/datatables/DataTableModule";
 
 import { BiopsyTrackingListModule } from './biopsy-tracking.module';
 import { BiopsyTrackingListComponent } from './biopsy-tracking.component';
@@ -17,49 +23,221 @@ export function main() {
     // Setting module for testing
     // Disable old forms
 
+    let config: any[] = [
+      { path: 'clia_variant_reports_ntc', component: 'CliaParentComponent' }
+    ];
+
     beforeEach(() => {
       TestBed.configureTestingModule({
-        declarations: [],
-        imports: [BiopsyTrackingListModule],
+        imports: [RouterTestingModule.withRoutes(config), DirectivesModule, PipesModule, FormsModule, DataTableModule],
+        declarations: [BiopsyTrackingListComponent],
         providers: [
-          {
-            provide: BiopsyTrackingApiService,
-            useClass: MockBiopsyService
-          }
+          { provide: BiopsyTrackingApiService, useClass: MockBiopsyService },
         ]
-      }).compileComponents();
+      });
+
+      spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
     });
+
+    it('should test ngoninit',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(BiopsyTrackingListComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(BiopsyTrackingListComponent);
+            // console.log(fixture);
+            fixture.componentInstance.ngOnInit();
+          });
+      }));
+
+    it('should test currentPageActive',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(BiopsyTrackingListComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(BiopsyTrackingListComponent);
+            fixture.componentInstance.previous = "1,100,asc,biopsySequenceNumber";
+            fixture.componentInstance.currentPageActive("1,10,asc,biopsySequenceNumber");
+          });
+      }));
+
+    it('should test SortStatus',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(BiopsyTrackingListComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(BiopsyTrackingListComponent);
+            fixture.componentInstance.previous = "1,100,asc,biopsySequenceNumber";
+            fixture.componentInstance.SortStatus("1,10,asc,biopsySequenceNumber");
+          });
+      }));
+
+  });
+
+  describe('biopsy tracking component', () => {
+
+    let component: BiopsyTrackingListComponent;
+    let fixture: ComponentFixture<BiopsyTrackingListComponent>;
+    // Setting module for testing
+    // Disable old forms
+
+    let config: any[] = [
+      { path: 'clia_variant_reports_ntc', component: 'CliaParentComponent' }
+    ];
 
     beforeEach(() => {
-      fixture = TestBed.createComponent(BiopsyTrackingListComponent);
-      component = fixture.componentInstance;
-      fixture.detectChanges();
+      TestBed.configureTestingModule({
+        imports: [RouterTestingModule.withRoutes(config), DirectivesModule, PipesModule, FormsModule, DataTableModule],
+        declarations: [BiopsyTrackingListComponent],
+        providers: [
+          { provide: BiopsyTrackingApiService, useClass: MockBiopsyServiceWithErrors },
+        ]
+      });
+
+      spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
     });
 
-    // it('should work',
-    //   async(() => {
-    //     // TestBed
-    //     //   .compileComponents()
-    //     //   .then(() => {
-    //     //     let fixture = TestBed.createComponent(TestComponent);
-    //     //     let aboutDOMEl = fixture.debugElement.children[0].nativeElement;
+    it('should test getData',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(BiopsyTrackingListComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(BiopsyTrackingListComponent);
+            // console.log(fixture);
+            fixture.componentInstance.getData();
+          });
+      }));
 
-    //     //   });
-    //   }));
+    it('should test getBiopsyCount',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(BiopsyTrackingListComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(BiopsyTrackingListComponent);
+            fixture.componentInstance.getBiopsyCount();
+          });
+      }));
 
-    // it('should create', () => {
-    //   expect(component).toBeTruthy();
-    // });
+    it('should test getBiopsyTotal',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(BiopsyTrackingListComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(BiopsyTrackingListComponent);
+            fixture.componentInstance.getBiopsyTotal();
+          });
+      }));
 
   });
 }
 
+
 class MockBiopsyService {
-  public mockName: string = 'Mocked Service';
+  getBiopsyCount(): Observable<any> {
+    return Observable.of(135);
+  }
+  getBiopsyTotal(): Observable<any> {
+    return Observable.of(100);
+  }
+  getBiopsyTracking(): Observable<any> {
+    let testdata = [{
+      'biopsies': {
+        mdAndersonMessages: [{
+          message: 'SPECIMEN_RECEIVED',
+          collectedDate: '1462468345727',
+          "biopsySequenceNumber": "T-16-000008",
+          "specimenReceivedDate": 1462468345727,
+          "specimenFailureDate": 1479760274770,
+          "patientSequenceNumber": "10402",
+          "molecularSequenceNumber": "MSN2105",
+          "lab": "MoCha",
+          "dnaShippedDate": 1462550578015,
+          "trackingNumber": "794692795960"
+        }, {
+          message: 'SPECIMEN_RECEIVED',
+          collectedDate: null,
+          "biopsySequenceNumber": "T-16-000008",
+          "specimenReceivedDate": 1462468345727,
+          "specimenFailureDate": 1479760274770,
+          "patientSequenceNumber": "10402",
+          "molecularSequenceNumber": "MSN2105",
+          "lab": "MoCha",
+          "dnaShippedDate": 1462550578015,
+          "trackingNumber": "794692795960"
+        }, {
+          message: 'NUCLEIC_ACID_SENDOUT',
+          collectedDate: '1462468345727',
+          "biopsySequenceNumber": "T-16-000008",
+          "specimenReceivedDate": 1462468345727,
+          "specimenFailureDate": 1479760274770,
+          "patientSequenceNumber": "10402",
+          "molecularSequenceNumber": "MSN2105",
+          "lab": "MoCha",
+          "dnaShippedDate": 1462550578015,
+          "trackingNumber": "794692795960"
+        },
+        {
+          message: 'SPECIMEN_FAILURE',
+          collectedDate: '1462468345727',
+          "biopsySequenceNumber": "T-16-000008",
+          "specimenReceivedDate": 1462468345727,
+          "specimenFailureDate": 1479760274770,
+          "patientSequenceNumber": "10402",
+          "molecularSequenceNumber": "MSN2105",
+          "lab": "MoCha",
+          "dnaShippedDate": 1462550578015,
+          "trackingNumber": "794692795960"
+        },
+        {
+          message: 'PATHOLOGY_CONFIRMATION',
+          collectedDate: '1462468345727',
+          "biopsySequenceNumber": "T-16-000008",
+          "specimenReceivedDate": 1462468345727,
+          "specimenFailureDate": 1479760274770,
+          "patientSequenceNumber": "10402",
+          "molecularSequenceNumber": "MSN2105",
+          "lab": "MoCha",
+          "dnaShippedDate": 1462550578015,
+          "trackingNumber": "794692795960"
+        }]
+      }
+    }];
+    return Observable.of(testdata);
+  }
 }
 
-// @Component({
-//   selector: 'test-cmp',
-//   template: '<sd-biopsy-tracking></sd-biopsy-tracking>'
-// })
-// class TestComponent { }
+class MockBiopsyServiceWithErrors {
+  getBiopsyCount(): Observable<any> {
+    return Observable.throw("135");
+  }
+  getBiopsyTotal(): Observable<any> {
+    return Observable.throw(100);
+  }
+  getBiopsyTracking(): Observable<any> {
+    return Observable.throw("errpr");
+  }
+}

@@ -4,7 +4,6 @@ import {
   TestBed,
   inject
 } from '@angular/core/testing';
-import { Observable } from 'rxjs/Observable';
 import { BiopsyTrackingApiService } from './biopsy-tracking-api.service';
 import {
   HttpModule,
@@ -56,7 +55,9 @@ export function main() {
             })));
           });
 
-          // BiopsyTrackingApiService.getBiopsyTracking(page, size, sortOrder, sortBy, filter).subscribe((response: any) => { });
+          BiopsyTrackingApiService.getBiopsyTracking(1,10,'asc','test','test');
+          BiopsyTrackingApiService.getBiopsyCount('test');
+          BiopsyTrackingApiService.getBiopsyTotal();
         })
     );
 
