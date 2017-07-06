@@ -62,8 +62,7 @@ diseases.shortName,registrationDate,patientAssignments.treatmentArm.name,patient
   }
 
   getPatientTotal(): Observable<number> {
-    return this.http.get(Config.API.PATIENT + `/patients/count?projection=patientSequenceNumber,currentPatientStatus,currentStepNumber,
-diseases.shortName,registrationDate,patientAssignments.treatmentArm.name,patientAssignments.treatmentArm.version`)
+    return this.http.get(Config.API.PATIENT + '/patients/count?projection=patientSequenceNumber')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
