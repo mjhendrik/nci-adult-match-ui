@@ -62,7 +62,7 @@ export class CnvChartDirective implements OnInit {
 
         this.data = temp;
 
-        var chrt = nv.models.boxPlotChart();
+        // var chrt = nv.models.boxPlotChart();
 
         this.options = {
 
