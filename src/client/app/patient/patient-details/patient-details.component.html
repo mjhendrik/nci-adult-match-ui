@@ -28,7 +28,8 @@
             <dt>Current Step</dt>
             <dd>{{patient.currentStepNumber | dashify}}</dd>
             <dt>Treatment Arm</dt>
-            <dd>{{(patient.currentPatientAssignmentLogic ? patient.currentPatientAssignmentLogic.treatmentArmId + ' (' + patient.currentPatientAssignmentLogic.treatmentArmVersion + ')' : '') | dashify}}</dd>
+            <dd>{{(patient.currentPatientAssignmentLogic ? patient.currentPatientAssignmentLogic.treatmentArmId + ' (' + patient.currentPatientAssignmentLogic.treatmentArmVersion
+              + ')' : '') | dashify}}</dd>
             <dt>Registration Date</dt>
             <dd>{{patient.registrationDate | gmt | dashify}}</dd>
             <dt>Last Rejoin Scan Date</dt>
@@ -196,7 +197,6 @@
                       </thead>
                       <tbody>
                         <ng-template ngFor let-sendout [ngForOf]="biopsy.nucleicAcidSendouts">
-
                           <tr id="{{sendout.molecularSequenceNumber}}">
                             <td><i class="fa fa-share-alt"></i> {{sendout.molecularSequenceNumber | dashify}}</td>
                             <td>{{sendout.destinationSite | dashify}}</td>
@@ -211,8 +211,7 @@
                             <td>{{sendout.reportedDate | gmt}}</td>
                             <td>{{sendout.comment | dashify}}</td>
                           </tr>
-
-                          <tr *ngFor="let analysis of sendout.analyses" id="{{analysis.analysisId}}" >
+                          <tr *ngFor="let analysis of sendout.analyses" id="{{analysis.analysisId}}">
                             <td colspan="7" class="bg-body">
                               <div class="panel panel-with-tabs panel-accent-sides-purple panel-details-row">
                                 <div class="panel-heading">
@@ -228,57 +227,49 @@
                                     <div class="row">
                                       <div class="col-md-6" id="variant-report-{{analysis.analysisId}}">
                                         <dl class="dl-horizontal m-b-4">
-                                          <dt><h4>Variant Report</h4></dt>
+                                          <dt>
+                                            <h4>Variant Report</h4>
+                                          </dt>
                                           <dd></dd>
                                         </dl>
-
                                         <dl class="dl-horizontal">
                                           <dt>Status</dt>
                                           <dd>{{analysis.variantReportStatus | dashify}}</dd>
-
                                           <dt>File Received Date</dt>
                                           <dd>{{analysis.variantReporterFileReceivedDate | gmt}}</dd>
-
                                           <dt>Rejected/Confirmed Date</dt>
                                           <dd>{{analysis.variantReporterRejectedOrConfirmedDate | gmt}}</dd>
-
                                           <dt>MOIs (Confirmed/Total)</dt>
-                                          <dd *ngIf="analysis.variantReport && analysis.variantReport.moiSummary">{{analysis.variantReport.moiSummary.confirmedMOIs | dashify}} / {{analysis.variantReport.moiSummary.totalMOIs | dashify}}</dd>
+                                          <dd *ngIf="analysis.variantReport && analysis.variantReport.moiSummary">{{analysis.variantReport.moiSummary.confirmedMOIs | dashify}} / {{analysis.variantReport.moiSummary.totalMOIs
+                                            | dashify}}</dd>
                                           <dd *ngIf="!analysis.variantReport || !analysis.variantReport.moiSummary">-</dd>
-
                                           <dt>aMOIs (Confirmed/Total)</dt>
-                                          <dd *ngIf="analysis.variantReport && analysis.variantReport.moiSummary">{{analysis.variantReport.moiSummary.confirmedaMOIs | dashify}} / {{analysis.variantReport.moiSummary.totalaMOIs | dashify}}</dd>
+                                          <dd *ngIf="analysis.variantReport && analysis.variantReport.moiSummary">{{analysis.variantReport.moiSummary.confirmedaMOIs | dashify}} / {{analysis.variantReport.moiSummary.totalaMOIs
+                                            | dashify}}</dd>
                                           <dd *ngIf="!analysis.variantReport || !analysis.variantReport.moiSummary">-</dd>
                                         </dl>
                                       </div>
-
                                       <div class="col-md-6" id="assignment-report-{{biopsy.biopsySequenceNumber}}">
-
                                         <dl class="dl-horizontal m-b-4">
-                                          <dt><h4>Assignment Report</h4></dt>
+                                          <dt>
+                                            <h4>Assignment Report</h4>
+                                          </dt>
                                           <dd></dd>
                                         </dl>
-
                                         <dl *ngIf="analysis.assignmentReport" class="dl-horizontal">
                                           <dt>Status</dt>
                                           <dd>{{analysis.assignmentReport.patientAssignmentStatus}}</dd>
-
                                           <dt>Generation Date</dt>
                                           <dd>{{analysis.assignmentReport.dateAssigned | gmt}}</dd>
-
                                           <dt>Confirmed Date</dt>
                                           <dd>{{analysis.assignmentReport.dateConfirmed | gmt}}</dd>
-
                                           <dt>Sent to ECOG Date</dt>
                                           <dd>{{analysis.assignmentReport.dateSentToECOG | gmt}}</dd>
-
                                           <dt>Received by ECOG Date</dt>
                                           <dd>{{analysis.assignmentReport.dateReceivedByECOG | gmt}}</dd>
-
                                           <dt>Assignment Logic</dt>
                                           <dd>{{analysis.assignmentReport.patientAssignmentStatusMessage | dashify}}</dd>
                                         </dl>
-
                                         <dl *ngIf="!analysis.assignmentReport" class="dl-horizontal">
                                           <dt class="text-muted f-w-400">No Assignment data yet</dt>
                                           <dd></dd>
@@ -300,7 +291,6 @@
                               <a href="#file-upload" class="btn btn-purple-light pull-right" style="margin-top: -6px;" data-toggle="modal"><i class="fa fa-upload"></i> Upload Files</a>
                             </td>
                           </tr>
-
                         </ng-template>
                       </tbody>
                     </table>

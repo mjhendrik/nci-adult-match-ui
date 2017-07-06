@@ -3,6 +3,8 @@
 [![Build Status](https://travis-ci.org/CBIIT/nci-adult-match-ui.svg?branch=master)](https://travis-ci.org/CBIIT/nci-adult-match-ui)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/d0059ed74fc241c3adc2da283aa0b7a9)](https://www.codacy.com/app/matchbox/nci-adult-match-ui?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=CBIIT/nci-adult-match-ui&amp;utm_campaign=Badge_Grade)
 [![Codacy Badge](https://api.codacy.com/project/badge/Coverage/d0059ed74fc241c3adc2da283aa0b7a9)](https://www.codacy.com/app/matchbox/nci-adult-match-ui?utm_source=github.com&utm_medium=referral&utm_content=CBIIT/nci-adult-match-ui&utm_campaign=Badge_Coverage)
+[![Dependency Status](https://david-dm.org/CBIIT/nci-adult-match-ui.svg)](https://david-dm.org/CBIIT/nci-adult-match-ui)
+[![devDependency Status](https://david-dm.org/CBIIT/nci-adult-match-ui/dev-status.svg)](https://david-dm.org/CBIIT/nci-adult-match-ui#info=devDependencies)
 
 ## Local development build and deployment
 

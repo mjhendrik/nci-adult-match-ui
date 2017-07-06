@@ -55,7 +55,7 @@ export function main() {
             })));
           });
 
-          BiopsyTrackingApiService.getBiopsyTracking(1,10,'asc','test','test');
+          BiopsyTrackingApiService.getBiopsyTracking(1, 10, 'asc', 'test', 'test');
           BiopsyTrackingApiService.getBiopsyCount('test');
           BiopsyTrackingApiService.getBiopsyTotal();
         })
