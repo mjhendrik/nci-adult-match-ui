@@ -62,7 +62,10 @@ export class CnvChartDirective implements OnInit {
 
         this.data = temp;
 
+        var chrt = nv.models.boxPlotChart();
+
         this.options = {
+
           //  ********
           chart: {
             id: 'boxplotchart',
@@ -88,19 +91,19 @@ export class CnvChartDirective implements OnInit {
             cn: function (d: any) {
               return d.cn;
             },
-            // chr: function (d: any) {
-            //   return d.chr;
-            // },
             tooltip: {
               contentGenerator: function (d: any) {
                 var label;
                 var position;
                 var cn;
+                var chr;
                 var cl95;
                 var cl05;
                 var html;
                 var li;
                 var color;
+
+                chr = 'CHR: ' + d.data.chr;
 
                 label = d.key;
                 position = 'POS: ' + d.data.values.position;
@@ -113,6 +116,7 @@ export class CnvChartDirective implements OnInit {
                 html = '<h4 class="text-center" style="' + color + '"><b>' + label + '</b></h4>';
                 li = '<li>' + position + '</li>';
                 li += '<li>' + cn + '</li>';
+                li += '<li>' + chr + '</li>';
                 li += '<li>' + cl95 + '</li>';
                 li += '<li>' + cl05 + '</li>';
                 html += '<ul class="list-group">' + li + '</ul>';
@@ -121,13 +125,16 @@ export class CnvChartDirective implements OnInit {
               }
             },
             x: function (d: any) {
+
+              var custLine = d3.select('#boxplotchart')
+                .select('.nv-boxPlotWithAxes')
+                .select('g')
+                .append('g');
+
               return d.label;
             },
             showXAxis: true,
             xAxis: {
-              // color: 'red',
-
-              // tickSize: 500,
               itemColor: function () {
                 return this.color;
               },
@@ -137,55 +144,101 @@ export class CnvChartDirective implements OnInit {
               color: function () {
                 return ['#FF0000', '#0026FF']
               },
+              // tickFormat: function (d, i) {
+              //   return d.label;
+              // }
               tickValues: function (d: any) {
                 var temp: any[] = [];
                 var chr: any;
-                var x: any;
+                var x: any = 0;
                 var val: any;
+                var x1: any = 0;
+                var x2: any = 0;
+
+                var custLine = d3.select('#boxplotchart')
+                  .select('.nv-boxPlotWithAxes')
+                  .select('g')
+                  .append('g');
+
+                var height = 370;
 
                 Object.keys(d).forEach((key: any) => {
 
-                  if (d[key].chr !== chr) {
+                  x = d[key].x;
+                  val = d[key].label;
+
+                  x1 = parseInt(x) + parseInt(x1) + 10;
+                  x2 = parseInt(x) + parseInt(x2) + 10;
+
+
+                  if (d[key].chr !== chr && typeof d[key].chr !== 'undefined') {
                     chr = d[key].chr;
-                    x = d[key].x;
-                    val = d[key].label;
-
                     temp.push(val);
-                    // temp.push(val);
-
-                    var x1 = 10;
-                    var x2 = 10;
                     var x3 = x + 20;
-                    var height = 370;
-
-                    var custLine = d3.select('#boxplotchart')
-                      .select('.nv-boxPlotWithAxes')
-                      .select('g')
-                      .append('g');
 
                     custLine.append('line')
-                      .attr('x1', x + x1)
-                      .attr('x2', x + x2)
+                      .attr('x1', x1)
+                      .attr('x2', x2)
                       .attr("y1", height)
                       .style('stroke', 'red')
-                      .style('stroke-width', 1);
+                      .style('stroke-width', 0.5);
 
                     custLine.append("text")
                       .attr("class", "nv-zeroLine")
-                      .attr("x", x + 12)
+                      .attr("x", parseInt(x1) + 5)
                       .attr("y", 365)
                       .text(chr)
                       .style("fill", "#c70505")
-                      .style("font-size", 15);
+                      .style("font-size", 10);
+
+
+                    // custLine.append('line')
+                    //   .attr('x1', x + x1)
+                    //   .attr('x2', x + x2)
+                    //   .attr("y1", height)
+                    //   .style('stroke', 'red')
+                    //   .style('stroke-width', 0.5);
+
+
+                    // custLine.append('line')
+                    //   .attr('x1', x + x1)
+                    //   .attr('x2', x + x2)
+                    //   .attr("y1", height)
+                    //   .style('stroke', 'red')
+                    //   .style('stroke-width', 0.5);
+
+                    // custLine.append('line')
+                    //   .attr('x1', 120)
+                    //   .attr("y1", 25)
+                    //   .attr("y2", 25)
+                    //   .style('stroke', 'blue')
+                    //   .style('stroke-width', 2);
+
+                    // custLine.append('line')
+                    //   .attr('x1', x1)
+                    //   .attr('x2', x2)
+                    //   .style('stroke', 'black')
+                    //   .style('stroke-width', 10);
+
+                    // custLine.append('rect')
+                    //   .attr('x', x)
+                    //   .attr('width', x3 - x1)
+                    //   .style('fill', 'steelblue')
+                    //   .style('opacity', 0.05)
+                    //   .attr('y', 0)
+                    //   .attr('height', height);
                   }
                   else{
-                    val = d[key].label;
-                    chr = d[key].chr;
                     temp.push(val);
+
+                    x1 = parseInt(x) + parseInt(x1) + 10;
+                    x2 = parseInt(x) + parseInt(x2) + 10;
+
                   }
                 });
                 return temp;
               },
+              tickArguments: function (d: any) { return [20] },
               reduceXTicks: false,
               ticks: function () { return 13},
               width: function () { return 4},
