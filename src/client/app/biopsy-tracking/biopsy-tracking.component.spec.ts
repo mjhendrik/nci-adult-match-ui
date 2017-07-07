@@ -16,7 +16,7 @@ import { BiopsyTrackingListComponent } from './biopsy-tracking.component';
 import { BiopsyTrackingApiService } from './biopsy-tracking-api.service';
 
 export function main() {
-  describe('biopsy tracking component', () => {
+ describe('biopsy tracking component', () => {
 
     let component: BiopsyTrackingListComponent;
     let fixture: ComponentFixture<BiopsyTrackingListComponent>;
@@ -69,6 +69,21 @@ export function main() {
           });
       }));
 
+      it('should test currentPageActive with else status',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(BiopsyTrackingListComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(BiopsyTrackingListComponent);
+            fixture.componentInstance.previous;
+            fixture.componentInstance.currentPageActive("1,10,asc,biopsySequenceNumber");
+          });
+      }));
+
     it('should test SortStatus',
       async((done: any) => {
         TestBed
@@ -81,6 +96,52 @@ export function main() {
             }).createComponent(BiopsyTrackingListComponent);
             fixture.componentInstance.previous = "1,100,asc,biopsySequenceNumber";
             fixture.componentInstance.SortStatus("1,10,asc,biopsySequenceNumber");
+          });
+      }));
+
+      it('should test SortStatus with else',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(BiopsyTrackingListComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(BiopsyTrackingListComponent);
+            fixture.componentInstance.searchtermBiopsyTrackingList="test";
+            fixture.componentInstance.previous = "1,100,asc,biopsySequenceNumber,test";
+            fixture.componentInstance.SortStatus("1,100,asc,biopsySequenceNumber");
+          });
+      }));
+
+      it('should test onSearchChanged',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(BiopsyTrackingListComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(BiopsyTrackingListComponent);
+            fixture.componentInstance.previous = "1,100,asc,biopsySequenceNumber";
+            fixture.componentInstance.onSearchChanged("test");
+          });
+      }));
+
+      it('should test onSearchChanged with else status',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(BiopsyTrackingListComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(BiopsyTrackingListComponent);
+            fixture.componentInstance.searchtermBiopsyTrackingList  = "test";
+            fixture.componentInstance.onSearchChanged("test");
           });
       }));
 
