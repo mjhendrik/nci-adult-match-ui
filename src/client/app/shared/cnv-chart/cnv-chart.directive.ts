@@ -62,10 +62,9 @@ export class CnvChartDirective implements OnInit {
 
         this.data = temp;
 
-        // var chrt = nv.models.boxPlotChart();
+        var genes: any[] = [];
 
         this.options = {
-
           //  ********
           chart: {
             id: 'boxplotchart',
@@ -125,12 +124,6 @@ export class CnvChartDirective implements OnInit {
               }
             },
             x: function (d: any) {
-
-              var custLine = d3.select('#boxplotchart')
-                .select('.nv-boxPlotWithAxes')
-                .select('g')
-                .append('g');
-
               return d.label;
             },
             showXAxis: true,
@@ -144,68 +137,83 @@ export class CnvChartDirective implements OnInit {
               color: function () {
                 return ['#FF0000', '#0026FF']
               },
-              // tickFormat: function (d, i) {
-              //   return d.label;
-              // }
               tickValues: function (d: any) {
                 var temp: any[] = [];
                 var chr: any;
                 var x: any = 0;
                 var val: any;
-                var x1: any = 0;
-                var x2: any = 0;
-
-                var custLine = d3.select('#boxplotchart')
-                  .select('.nv-boxPlotWithAxes')
-                  .select('g')
-                  .append('g');
-
-                var height = 370;
 
                 Object.keys(d).forEach((key: any) => {
-
                   x = d[key].x;
                   val = d[key].label;
+                  chr = d[key].chr;
+                  genes.push([val,chr,x]);
+                  temp.push(val);
+                });
 
-                  x1 = parseInt(x) + parseInt(x1) + 10;
-                  x2 = parseInt(x) + parseInt(x2) + 10;
+                return temp;
+              },
+              tickArguments: function () { return [20] },
+              reduceXTicks: false,
+              ticks: function () { return 13},
+              width: function () { return 4},
+              tickSize:  function () { return 2}
+            },
+            yAxis: {
+              color: function () {
+                return '#2ca02c';
+              },
+              tickValues: function () {
+                return [2, 7];
+              },
+              tickFormat: function (d: any) {
+                return d3.format(',.0d')(d);
+              },
+              axisLabelDistance: 30
+            },
+            callback: function(chart: any) {
+              var height = 370;
+              var chr: any;
 
+              var custLine = d3.select('#boxplotchart')
+                .select('.nv-boxPlotWithAxes')
+                .select('g')
+                .append('g');
 
-                  if (d[key].chr !== chr && typeof d[key].chr !== 'undefined') {
-                    chr = d[key].chr;
-                    temp.push(val);
-                    var x3 = x + 20;
+              Object.keys(genes).forEach((key: any) => {
+                var gene = genes[key][0];
+                var temp = genes[key][1];
+                var x = genes[key][2];
 
+                if (temp !== chr && typeof temp !== 'undefined') {
+                  var spot = chart.xScale()(gene) - 2;
+                  chr = temp;
+
+                  if(x > 0) {
                     custLine.append('line')
-                      .attr('x1', x1)
-                      .attr('x2', x2)
+                      .attr('x1', spot)
+                      .attr('x2', spot)
                       .attr("y1", height)
                       .style('stroke', 'red')
                       .style('stroke-width', 0.5);
 
                     custLine.append("text")
                       .attr("class", "nv-zeroLine")
-                      .attr("x", parseInt(x1) + 5)
+                      .attr("x", spot + 5)
                       .attr("y", 365)
                       .text(chr)
                       .style("fill", "#c70505")
                       .style("font-size", 10);
-
-
-                    // custLine.append('line')
-                    //   .attr('x1', x + x1)
-                    //   .attr('x2', x + x2)
-                    //   .attr("y1", height)
-                    //   .style('stroke', 'red')
-                    //   .style('stroke-width', 0.5);
-
-
-                    // custLine.append('line')
-                    //   .attr('x1', x + x1)
-                    //   .attr('x2', x + x2)
-                    //   .attr("y1", height)
-                    //   .style('stroke', 'red')
-                    //   .style('stroke-width', 0.5);
+                  }
+                  else {
+                    custLine.append("text")
+                      .attr("class", "nv-zeroLine")
+                      .attr("x", 5)
+                      .attr("y", 365)
+                      .text(chr)
+                      .style("fill", "#c70505")
+                      .style("font-size", 10);
+                  }
 
                     // custLine.append('line')
                     //   .attr('x1', 120)
@@ -227,41 +235,13 @@ export class CnvChartDirective implements OnInit {
                     //   .style('opacity', 0.05)
                     //   .attr('y', 0)
                     //   .attr('height', height);
-                  }
-                  else{
-                    temp.push(val);
 
-                    x1 = parseInt(x) + parseInt(x1) + 10;
-                    x2 = parseInt(x) + parseInt(x2) + 10;
-
-                  }
-                });
-                return temp;
-              },
-              tickArguments: function (d: any) { return [20] },
-              reduceXTicks: false,
-              ticks: function () { return 13},
-              width: function () { return 4},
-              tickSize:  function () { return 2}
-              // tickPadding: function () { return 10}
-            },
-            yAxis: {
-              color: function () {
-                return '#2ca02c';
-              },
-              tickValues: function () {
-                return [2, 7];
-              },
-              tickFormat: function (d: any) {
-                return d3.format(',.0d')(d);
-              },
-              axisLabelDistance: 30
+                }
+              });
             },
             maxBoxWidth: 0.01,
             yDomain: [0, 10]
-            // xDomain: [0, 40]
           }
-          //  *******
         };
       },
       error => this.errorMessage = <any>error
