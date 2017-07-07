@@ -38,6 +38,10 @@ export class CnvChartDirective implements OnInit {
           var chromosome = array[key].chromosome;
           var status = !array[key].tsg_gene ? 'Crimson' : 'Green';
 
+
+
+          // console.log( " - " + chrnum)
+
           var min = values[0];
           var max = values[10];
 
@@ -90,6 +94,9 @@ export class CnvChartDirective implements OnInit {
             cn: function (d: any) {
               return d.cn;
             },
+            // tick: function() {
+            //  return display: none;
+            // },
             tooltip: {
               contentGenerator: function (d: any) {
                 var label;
@@ -147,7 +154,9 @@ export class CnvChartDirective implements OnInit {
                   x = d[key].x;
                   val = d[key].label;
                   chr = d[key].chr;
-                  genes.push([val,chr,x]);
+                  var chrnum:any[] = chr.split('chr');
+
+                  genes.push([val,chr,x,chrnum[1]]);
                   temp.push(val);
                 });
 
@@ -174,6 +183,7 @@ export class CnvChartDirective implements OnInit {
             callback: function(chart: any) {
               var height = 370;
               var chr: any;
+              var prespot: any = 0;
 
               var custLine = d3.select('#boxplotchart')
                 .select('.nv-boxPlotWithAxes')
@@ -184,9 +194,10 @@ export class CnvChartDirective implements OnInit {
                 var gene = genes[key][0];
                 var temp = genes[key][1];
                 var x = genes[key][2];
+                var chrnum = genes[key][3];
 
                 if (temp !== chr && typeof temp !== 'undefined') {
-                  var spot = chart.xScale()(gene) - 2;
+                  var spot = (chart.xScale()(gene)).toFixed(2);
                   chr = temp;
 
                   if(x > 0) {
@@ -194,26 +205,36 @@ export class CnvChartDirective implements OnInit {
                       .attr('x1', spot)
                       .attr('x2', spot)
                       .attr("y1", height)
-                      .style('stroke', 'red')
-                      .style('stroke-width', 0.5);
+                      .style('fill', 'none')
+                      .style('stroke', 'gray')
+                      .style('stroke-width', 0.5)
+                      .style('stroke-linecap', 'line')
+                    ;
 
                     custLine.append("text")
                       .attr("class", "nv-zeroLine")
-                      .attr("x", spot + 5)
+                      // .attr("x", 0.5 * parseFloat(spot + prespot))
+                      .attr("x", parseFloat(spot) + 5)
                       .attr("y", 365)
-                      .text(chr)
+                      .text(chrnum)
                       .style("fill", "#c70505")
-                      .style("font-size", 10);
+                      .style("font-size", 12);
+
+                    prespot = spot;
                   }
                   else {
                     custLine.append("text")
                       .attr("class", "nv-zeroLine")
                       .attr("x", 5)
                       .attr("y", 365)
-                      .text(chr)
+                      .text(chrnum)
                       .style("fill", "#c70505")
-                      .style("font-size", 10);
+                      .style("font-size", 12);
+
+                    prespot = spot;
                   }
+
+
 
                     // custLine.append('line')
                     //   .attr('x1', 120)
