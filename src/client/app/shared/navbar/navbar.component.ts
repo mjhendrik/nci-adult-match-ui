@@ -67,12 +67,19 @@ export class NavbarComponent implements OnInit {
     this.navbarheight = document.getElementById('top-menu').offsetHeight;
     this.didScroll = true;
 
-    setTimeout(() => {
-      if (this.didScroll) {
-        this.hasScrolled();
-        this.didScroll = false;
-      }
-    }, 250);
+    if (document.body.scrollTop > 1) {
+      setTimeout(() => {
+        if (this.didScroll) {
+          this.hasScrolled();
+          this.didScroll = false;
+        }
+      }, 250);
+    } else {
+      document.getElementById('header').classList.remove('header-up');
+      document.getElementById('top-menu').classList.remove('top-menu-up');
+      document.getElementById('top-menu').classList.add('top-position');
+      document.getElementById('maindiv').classList.remove('header-up');
+    }
 
   }
 
