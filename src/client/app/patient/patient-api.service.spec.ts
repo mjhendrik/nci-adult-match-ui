@@ -1,47 +1,69 @@
-import { BaseRequestOptions, ConnectionBackend, Http, Response, ResponseOptions } from '@angular/http';
-import { TestBed, async } from '@angular/core/testing';
-import { MockBackend } from '@angular/http/testing';
-
+import { Component } from '@angular/core';
+import {
+  async,
+  TestBed,
+  inject
+} from '@angular/core/testing';
 import { Observable } from 'rxjs/Observable';
-
 import { PatientApiService } from './patient-api.service';
+import {
+  HttpModule,
+  Http,
+  Response,
+  ResponseOptions,
+  XHRBackend,
+  BaseRequestOptions
+} from '@angular/http';
+import { MockBackend } from '@angular/http/testing';
+import { AuthHttp } from 'angular2-jwt';
 
 export function main() {
-  describe('PatientApiService', () => {
-    let PatientApiService: PatientApiService;
-    // let mockBackend: MockBackend;
-
+  describe('treatment arm api service test', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
+        imports: [HttpModule],
         providers: [
-          PatientApiService,
           MockBackend,
           BaseRequestOptions,
+          { provide: XHRBackend, useClass: MockBackend },
           {
             provide: Http,
-            useFactory: (backend: ConnectionBackend, options: BaseRequestOptions) => new Http(backend, options),
+            useFactory: (backend: MockBackend, options: BaseRequestOptions) => new Http(backend, options),
             deps: [MockBackend, BaseRequestOptions]
-          }
+          },
+          { provide: AuthHttp, useExisting: Http },
+          PatientApiService
         ]
       });
     });
 
-    // it('should return an Observable when get called', async(() => {
-    //   expect(TestBed.get(PatientApiService).getPatientList()).toEqual(jasmine.any(Observable));
-    // }));
+    it('should return observable',
+      inject([PatientApiService, XHRBackend],
+        (PatientApiService: PatientApiService, mockBackend: MockBackend) => {
 
-    // it('should resolve to list of patients when get called', async(() => {
-    //   let patientApiService = TestBed.get(PatientApiService);
-    //   let mockBackend = TestBed.get(MockBackend);
+          const mockResponse = {
+            data: [
+              { id: 0, name: 'Data 0' },
+              { id: 1, name: 'Data 1' },
+              { id: 2, name: 'Data 2' },
+              { id: 3, name: 'Data 3' },
+            ]
+          };
 
-    //   mockBackend.connections.subscribe((c: any) => {
-    //     c.mockRespond(new Response(new ResponseOptions({ body: '[{"patientSequenceNumber": "10586"}]' })));
-    //   });
+          mockBackend.connections.subscribe((connection: any) => {
+            connection.mockRespond(new Response(new ResponseOptions({
+              body: mockResponse
+            })));
+          });
 
-    //   patientApiService.getPatientList().subscribe((data: any) => {
-    //     expect(data).toEqual(['patientSequenceNumber', '10586']);
-    //   });
-    // }));
+          PatientApiService.getPatientList(123, 789, 'sortOrder', 'sortBy', 'filter').subscribe((response: any) => { });
+          PatientApiService.getPatientCount('filter');
+          PatientApiService.getPatientTotal();
+          PatientApiService.getPatientDetails('psn');
+          PatientApiService.getPatientVariantReport();
+          PatientApiService.getPatientVariantReportQc();
+        })
+    );
 
   });
 }
