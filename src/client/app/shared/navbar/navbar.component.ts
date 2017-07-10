@@ -102,6 +102,10 @@ export class NavbarComponent implements OnInit {
       document.getElementById('top-menu').classList.add('top-menu-up');
       document.getElementById('maindiv').classList.add('header-up');
 
+      document.getElementById('mail-to').classList.remove('none');
+      document.getElementById('buildinfo').classList.remove('none');
+      document.getElementById('contact').classList.remove('display-inline');
+
     } else {
 
       // Scroll Up
@@ -111,6 +115,10 @@ export class NavbarComponent implements OnInit {
         document.getElementById('top-menu').classList.remove('top-menu-up');
         document.getElementById('top-menu').classList.add('top-position');
         document.getElementById('maindiv').classList.remove('header-up');
+
+        document.getElementById('mail-to').classList.add('none');
+        document.getElementById('buildinfo').classList.add('none');
+        document.getElementById('contact').classList.add('display-inline');
 
       }
 

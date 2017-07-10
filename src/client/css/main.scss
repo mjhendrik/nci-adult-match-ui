@@ -367,3 +367,14 @@ body {
   top: 75px;
   z-index: 1025;
 }
+
+.none {
+  display: none;
+  z-index: 1025;
+  -webkit-transition: top 0.3s ease-in-out;
+  transition: top 0.3s ease-in-out;
+}
+
+.display-inline {
+  display: inline !important;
+}
