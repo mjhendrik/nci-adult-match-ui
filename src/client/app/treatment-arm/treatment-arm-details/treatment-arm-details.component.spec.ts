@@ -433,7 +433,7 @@ class MockTADApiService {
           "rawCopyNumber": 0,
           "refCopyNumber": 0
         }],
-        "geneFusions": ["test"],
+        "geneFusions": [{ "identifier": "identifier-test", inclusion: true }, { "identifier": "identifier-test", inclusion: false }],
         "indels": ["test"],
         "nonHotspotRules": ["test"],
         "singleNucleotideVariants": ["test"],
@@ -721,7 +721,7 @@ class MockTADApiService {
           "rawCopyNumber": 0,
           "refCopyNumber": 0
         }],
-        "geneFusions": ["test"],
+        "geneFusions": [{ "identifier": "identifier-test", inclusion: true }, { "identifier": "identifier-test", inclusion: false }],
         "indels": ["test"],
         "nonHotspotRules": ["test"],
         "singleNucleotideVariants": ["test"],
