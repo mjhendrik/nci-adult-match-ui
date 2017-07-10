@@ -38,10 +38,6 @@ export class CnvChartDirective implements OnInit {
           var chromosome = array[key].chromosome;
           var status = !array[key].tsg_gene ? 'Crimson' : 'Green';
 
-
-
-          // console.log( " - " + chrnum)
-
           var min = values[0];
           var max = values[10];
 
@@ -94,9 +90,6 @@ export class CnvChartDirective implements OnInit {
             cn: function (d: any) {
               return d.cn;
             },
-            // tick: function() {
-            //  return display: none;
-            // },
             tooltip: {
               contentGenerator: function (d: any) {
                 var label;
@@ -147,6 +140,8 @@ export class CnvChartDirective implements OnInit {
               tickValues: function (d: any) {
                 var temp: any[] = [];
                 var chr: any;
+                var min: any;
+                var max: any;
                 var x: any = 0;
                 var val: any;
 
@@ -154,9 +149,11 @@ export class CnvChartDirective implements OnInit {
                   x = d[key].x;
                   val = d[key].label;
                   chr = d[key].chr;
+                  min = d[key].values.Q1;
+                  max = d[key].values.Q3;
                   var chrnum:any[] = chr.split('chr');
 
-                  genes.push([val,chr,x,chrnum[1]]);
+                  genes.push([val,chr,x,chrnum[1],min,max]);
                   temp.push(val);
                 });
 
@@ -169,12 +166,9 @@ export class CnvChartDirective implements OnInit {
               tickSize:  function () { return 2}
             },
             yAxis: {
-              color: function () {
-                return '#2ca02c';
-              },
-              tickValues: function () {
-                return [2, 7];
-              },
+              // tickValues: function () {
+              //   return [2, 4, 6, 8, 10];
+              // },
               tickFormat: function (d: any) {
                 return d3.format(',.0d')(d);
               },
@@ -184,34 +178,54 @@ export class CnvChartDirective implements OnInit {
               var height = 370;
               var chr: any;
               var prespot: any = 0;
+              var median: any = [];
+              var lowest: any = null;
+              var highest: any = null;
+              var spot: any = null;
+              var gene: any = null;
 
-              var custLine = d3.select('#boxplotchart')
+              var svg = d3.select('#boxplotchart')
                 .select('.nv-boxPlotWithAxes')
                 .select('g')
                 .append('g');
 
               Object.keys(genes).forEach((key: any) => {
-                var gene = genes[key][0];
+                gene = genes[key][0];
                 var temp = genes[key][1];
                 var x = genes[key][2];
                 var chrnum = genes[key][3];
 
+                if(lowest !== null) {
+                  lowest = genes[key][4] < lowest ? genes[key][4] : lowest;
+                  median[0] = lowest;
+                }
+                else{
+                  lowest = genes[key][4];
+                }
+
+                if(highest !== null) {
+                  highest = genes[key][5] > highest ? genes[key][5] : highest;
+                  median[1] = highest;
+                }
+                else{
+                  highest = genes[key][5];
+                }
+
                 if (temp !== chr && typeof temp !== 'undefined') {
-                  var spot = (chart.xScale()(gene)).toFixed(2);
+                  spot = (chart.xScale()(gene)).toFixed(2) - 1;
                   chr = temp;
 
                   if(x > 0) {
-                    custLine.append('line')
+                    svg.append('line')
                       .attr('x1', spot)
                       .attr('x2', spot)
                       .attr("y1", height)
                       .style('fill', 'none')
                       .style('stroke', 'gray')
                       .style('stroke-width', 0.5)
-                      .style('stroke-linecap', 'line')
-                    ;
+                      .style('stroke-linecap', 'line');
 
-                    custLine.append("text")
+                    svg.append("text")
                       .attr("class", "nv-zeroLine")
                       // .attr("x", 0.5 * parseFloat(spot + prespot))
                       .attr("x", parseFloat(spot) + 5)
@@ -223,7 +237,7 @@ export class CnvChartDirective implements OnInit {
                     prespot = spot;
                   }
                   else {
-                    custLine.append("text")
+                    svg.append("text")
                       .attr("class", "nv-zeroLine")
                       .attr("x", 5)
                       .attr("y", 365)
@@ -233,23 +247,13 @@ export class CnvChartDirective implements OnInit {
 
                     prespot = spot;
                   }
-
-
-
-                    // custLine.append('line')
-                    //   .attr('x1', 120)
-                    //   .attr("y1", 25)
-                    //   .attr("y2", 25)
-                    //   .style('stroke', 'blue')
-                    //   .style('stroke-width', 2);
-
-                    // custLine.append('line')
+                    // svg.append('line')
                     //   .attr('x1', x1)
                     //   .attr('x2', x2)
                     //   .style('stroke', 'black')
                     //   .style('stroke-width', 10);
 
-                    // custLine.append('rect')
+                    // svg.append('rect')
                     //   .attr('x', x)
                     //   .attr('width', x3 - x1)
                     //   .style('fill', 'steelblue')
@@ -259,6 +263,39 @@ export class CnvChartDirective implements OnInit {
 
                 }
               });
+              var max =  Math.round(highest / 10) * 3 + lowest;
+              // var line2 = (7 - parseFloat(((5 / max) * 2)));
+
+              var lastspot = chart.xScale()(gene)+35;
+
+              var y1 = chart.yScale()(max);
+              var y2 = chart.yScale()(7);
+
+              svg.append("line")
+                .attr("x1", 0)
+                .attr("y1", y2)
+                .attr("x2", lastspot)
+                .attr("y2", y2)
+                .style("stroke-opacity", 2)
+                .style("stroke", "red");
+
+              svg.append("line")
+                .attr("x1", 0)
+                .attr("y1", y1)
+                .attr("x2", lastspot)
+                .attr("y2", y1)
+                .style("stroke-dasharray", ("3, 3"))
+                .style("stroke-opacity", 2)
+                .style("stroke", "red");
+
+              svg.append('line')
+                .attr('x1', lastspot)
+                .attr('x2', lastspot)
+                .attr("y1", height)
+                .style('fill', 'none')
+                .style('stroke', 'gray')
+                .style('stroke-width', 0.5)
+                .style('stroke-linecap', 'line');
             },
             maxBoxWidth: 0.01,
             yDomain: [0, 10]
