@@ -117,7 +117,7 @@ export class DashboardComponent implements OnInit {
 
       this.timestamp = new Date();
 
-    }, 1000 * 60);
+    }, 1000 * 30);
   }
 
 }
