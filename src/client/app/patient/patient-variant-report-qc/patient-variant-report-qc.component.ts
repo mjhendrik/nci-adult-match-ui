@@ -2,7 +2,7 @@ import {
   Component,
   OnInit
 } from '@angular/core';
-
+import { ActivatedRoute } from '@angular/router';
 import { routerTransition } from './../../shared/router.animations';
 import {
   PatientApiService,
@@ -33,14 +33,18 @@ export class PatientVariantReportQcComponent implements OnInit {
   dataAvailable: boolean;
   errorMessage: string;
 
-  constructor(private patientApi: PatientApiService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private patientApi: PatientApiService) { }
 
   ngOnInit() {
-    this.getData();
+    let psn = this.route.snapshot.params['patientSequenceNumber'];
+    let analysisId = this.route.snapshot.params['analysisId'];
+    this.getData(psn, analysisId);
   }
 
-  getData() {
-    this.patientApi.getPatientVariantReportQc()
+  getData(psn: string, analysisId: string) {
+    this.patientApi.getPatientVariantReportQc(psn, analysisId)
       .subscribe((itemList: PatientVariantReportInterface) => {
         this.variantReport = itemList.variantReport;
         this.assignmentReport = itemList.assignmentReport;

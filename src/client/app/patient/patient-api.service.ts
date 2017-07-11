@@ -82,8 +82,9 @@ diseases.shortName,registrationDate,patientAssignments.treatmentArm.name,patient
       .catch(this.handleError);
   }
 
-  getPatientVariantReportQc(): Observable<PatientVariantReportInterface> {
-    return this.http.get('assets/mock-data/patient-variant-report-qc.json')
+  getPatientVariantReportQc(psn: string, analysisId: string): Observable<any> {
+    return this.http.get(this.url(`/patients/{$psn}/variant_reports/{$analysisId}/quality_control_report`
+      + psn, 'assets/mock-data/patient-variant-report-qc.json'))
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
