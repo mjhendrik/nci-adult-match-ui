@@ -17,7 +17,7 @@ import { ColorCodeVariantReportDirective } from './colorcode-variant-report.dire
 import { ActiveClassDirective } from './active-class.directive';
 import { MatchHeightTabClickDirective } from './match-height-tab.directive';
 import { FaIconDirective } from './fa-icon.directive';
-import { CnvChartDirective } from './../cnv-chart/cnv-chart.directive';
+import { CnvChartDirective } from './../cnv-chart/cnv-chart.directive.component';
 import { nvD3 } from 'ng2-nvd3';
 
 @NgModule({
