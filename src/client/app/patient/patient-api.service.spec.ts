@@ -61,7 +61,7 @@ export function main() {
           PatientApiService.getPatientTotal();
           PatientApiService.getPatientDetails('psn');
           PatientApiService.getPatientVariantReport();
-          PatientApiService.getPatientVariantReportQc();
+          PatientApiService.getPatientVariantReportQc('psn', 'analysisId');
         })
     );
 
