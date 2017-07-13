@@ -98,6 +98,14 @@ diseases.shortName,registrationDate,patientAssignments.treatmentArm.name,patient
       .catch(this.handleError);
   }
 
+  getPatientCopyNumberReport(psn: string, analysisId: string): Observable<any> {
+    return this.http.get(this.url('/patients/' + psn + '/variant_reports/' + analysisId + '/copy_number_report',
+      'assets/mock-data/copy-number-report.json'))
+      .map((res: Response) => res.json())
+      //              .do(data => console.log('server data:', data))  // debug
+      .catch(this.handleError);
+  }
+
   /**
     * Handle HTTP error
     */

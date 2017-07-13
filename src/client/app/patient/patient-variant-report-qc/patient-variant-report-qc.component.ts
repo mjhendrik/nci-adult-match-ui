@@ -68,7 +68,8 @@ export class PatientVariantReportQcComponent implements OnInit {
   getData(psn: string, analysisId: string) {
     Observable.forkJoin(
         this.patientApi.getPatientVariantReportQc(psn, analysisId),
-        this.patientApi.getPatientVariantReportOcp(psn, analysisId)
+        this.patientApi.getPatientVariantReportOcp(psn, analysisId),
+        this.patientApi.getPatientCopyNumberReport(psn, analysisId)
     ).subscribe(
       data => {
         this.molecularSequenceNumber = data[0].molecularSequenceNumber;
@@ -85,8 +86,8 @@ export class PatientVariantReportQcComponent implements OnInit {
         this.ocpSummary = data[1].genes;
         this.ocpSummary['SUM'] = this.calculateOcpSum(this.ocpSummary);
 
-        // this.mapd = data[2].mapd;
-        // this.cellularity = data[2].cellularity;
+        this.mapd = data[2].mapd;
+        this.cellularity = data[2].cellularity;
 
         this.isLoaded = true;
       },
