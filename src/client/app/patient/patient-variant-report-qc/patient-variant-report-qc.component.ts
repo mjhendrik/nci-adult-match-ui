@@ -45,16 +45,16 @@ export class PatientVariantReportQcComponent implements OnInit {
 
   getData(psn: string, analysisId: string) {
     this.patientApi.getPatientVariantReportQc(psn, analysisId)
-      .subscribe((itemList: PatientVariantReportInterface) => {
-        this.variantReport = itemList.variantReport;
-        this.assignmentReport = itemList.assignmentReport;
-        this.moiSummary = itemList.moiSummary;
-        this.assay = itemList.assay;
-        this.snv = itemList.snv;
-        this.indels = itemList.indels;
-        this.assignmentReason = itemList.assignmentReason;
-        this.assignmentHistory = itemList.assignmentHistory;
-        this.ocpSummary = itemList.ocpSummary;
+      .subscribe((response: any) => {
+        this.variantReport = response.variantReport;
+        this.assignmentReport = response.assignmentReport;
+        this.moiSummary = response.moiSummary;
+        this.assay = response.assay;
+        this.snv = response.snv || [];
+        this.indels = response.indels || [];
+        this.assignmentReason = response.assignmentReason;
+        this.assignmentHistory = response.assignmentHistory;
+        this.ocpSummary = response.ocpSummary;
         this.dataAvailable = true;
       },
       error => this.errorMessage = <any>error
