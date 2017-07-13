@@ -54,6 +54,10 @@ export class PatientVariantReportQcComponent implements OnInit {
 
   parsed_vcf_genes: any;
 
+  dnaBamFilePath: string;
+  rnaBamFilePath: string;
+  vcfFilePath: string;
+
   isLoaded: boolean;
   errorMessage: string;
 
@@ -71,7 +75,8 @@ export class PatientVariantReportQcComponent implements OnInit {
     Observable.forkJoin(
         this.patientApi.getPatientVariantReportQc(psn, analysisId),
         this.patientApi.getPatientVariantReportOcp(psn, analysisId),
-        this.patientApi.getPatientCopyNumberReport(psn, analysisId)
+        this.patientApi.getPatientCopyNumberReport(psn, analysisId),
+        this.patientApi.getPatientVariantReportFileInfo(psn, analysisId)
     ).subscribe(
       data => {
         this.molecularSequenceNumber = data[0].molecularSequenceNumber;
@@ -91,6 +96,10 @@ export class PatientVariantReportQcComponent implements OnInit {
         this.mapd = data[2].mapd;
         this.cellularity = data[2].cellularity;
         this.parsed_vcf_genes = data[2].parsed_vcf_genes;
+
+        this.dnaBamFilePath = data[3].dnaBamFilePath;
+        this.rnaBamFilePath = data[3].rnaBamFilePath;
+        this.vcfFilePath = data[3].vcfFilePath;
 
         this.isLoaded = true;
       },

@@ -1,0 +1,6 @@
+{
+    "biopsySequenceNumber": "T-15-000017",
+    "dnaBamFilePath": "/local/content/ncimatch/matchfiles/patient-10010/biopsy-T-15-000017/ngs-MSN3053_v1_e3d4df31-9785-40ff-8001-985297a3240e/IonXpress_012_rawlib.bam",
+    "rnaBamFilePath": "/local/content/ncimatch/matchfiles/patient-10010/biopsy-T-15-000017/ngs-MSN3053_v1_e3d4df31-9785-40ff-8001-985297a3240e/IonXpress_004_rawlib_fusions.bam",
+    "vcfFilePath": "s3://IR_WAO85/9000_1000_N-15-00005/job1/SampleControl_MoCha_22_v1_SampleControl_MoCha_22_RNA_v1.vcf"
+}

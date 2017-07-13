@@ -20,7 +20,7 @@ declare let d3: any;
 
 export class CnvChartDirective implements OnInit {
   @Input() data: any;
-  
+
   options: any;
   errorMessage: string;
 

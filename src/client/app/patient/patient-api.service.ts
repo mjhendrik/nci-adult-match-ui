@@ -106,6 +106,14 @@ diseases.shortName,registrationDate,patientAssignments.treatmentArm.name,patient
       .catch(this.handleError);
   }
 
+  getPatientVariantReportFileInfo(psn: string, analysisId: string): Observable<any> {
+    return this.http.get(this.url('/patients/' + psn + '/variant_reports/' + analysisId + '/file_info',
+      'assets/mock-data/variant-report-file-info.json'))
+      .map((res: Response) => res.json())
+      //              .do(data => console.log('server data:', data))  // debug
+      .catch(this.handleError);
+  }
+
   /**
     * Handle HTTP error
     */
