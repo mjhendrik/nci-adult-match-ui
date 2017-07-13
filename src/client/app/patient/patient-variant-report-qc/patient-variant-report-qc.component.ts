@@ -8,6 +8,7 @@ import {
   PatientApiService,
   PatientVariantReportInterface
 } from '../patient-api.service';
+import { Observable } from "rxjs/Observable";
 
 /**
  * PatientVariantReportQcComponent.
@@ -20,20 +21,26 @@ import {
   host: { '[@routerTransition]': '' }
 })
 export class PatientVariantReportQcComponent implements OnInit {
+  calculateOcpSum(ocpSummary: any): any {
+  }
+
   psn: string;
   analysisId: string;
   molecularSequenceNumber: string;
   dateReceived: any;
+  biopsySequenceNumber: string;
+  mapd: string;
+  tvc_version: string;
+  pool1: number;
+  pool2: number;
+  cellularity: string;
 
   variantReport: any;
   assignmentReport: any;
   moiSummary: any;
-  assay: any[];
   cnv: any[];
   snvAndIndels: any[];
   geneFusions: any[];
-  assignmentReason: any;
-  assignmentHistory: any[];
   ocpSummary: any;
 
   isLoaded: boolean;
@@ -50,17 +57,31 @@ export class PatientVariantReportQcComponent implements OnInit {
   }
 
   getData(psn: string, analysisId: string) {
-    this.patientApi.getPatientVariantReportQc(psn, analysisId)
-      .subscribe((response: any) => {
-        this.molecularSequenceNumber = response.molecularSequenceNumber;
-        this.dateReceived = response.dateReceived;
-        this.cnv = response.copy_number_variants || [];
-        this.geneFusions = response.gene_fusions || [];
-        this.snvAndIndels = response.indels || [];
-        this.snvAndIndels = this.snvAndIndels.concat(response.single_nucleotide_variants || [])
+    Observable.forkJoin(
+        this.patientApi.getPatientVariantReportQc(psn, analysisId),
+        this.patientApi.getPatientVariantReportOcp(psn, analysisId)
+    ).subscribe(
+      data => {
+        this.molecularSequenceNumber = data[0].molecularSequenceNumber;
+        this.dateReceived = data[0].dateReceived;
+        this.cnv = data[0].copy_number_variants || [];
+        this.geneFusions = data[0].gene_fusions || [];
+        this.snvAndIndels = data[0].indels || [];
+        this.snvAndIndels = this.snvAndIndels.concat(data[0].single_nucleotide_variants || [])
+        
+        this.tvc_version = data[1].tvc_version;
+        this.pool1 = data[1].pool1;
+        this.pool2 = data[1].pool2;
+        this.biopsySequenceNumber = data[1].biopsySequenceNumber;
+        this.ocpSummary = data[1].genes;
+        this.ocpSummary['SUM'] = this.calculateOcpSum(this.ocpSummary);
+
+        // this.mapd = data[2].mapd;
+        // this.cellularity = data[2].cellularity;
+
         this.isLoaded = true;
       },
-      error => this.errorMessage = <any>error
-      );
+      err => console.error(err)
+    );
   }
 }

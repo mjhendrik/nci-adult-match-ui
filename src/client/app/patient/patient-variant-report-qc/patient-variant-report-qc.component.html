@@ -20,18 +20,18 @@
           <dl class="dl-horizontal">
             <dt>Molecular Sequence Number</dt>
             <dd>{{molecularSequenceNumber | dashify}}</dd>
-            <!-- <dt>Biopsy Sequence Number</dt>
-            <dd>{{variantReport.biopsySequenceNumber | dashify}}</dd>
+             <dt>Biopsy Sequence Number</dt>
+            <dd>{{biopsySequenceNumber | dashify}}</dd>
             <dt>Analysis ID</dt>
-            <dd>{{variantReport.analysisId | dashify}}</dd>
+            <dd>{{analysisId | dashify}}</dd>
             <dt>MAPD</dt>
-            <dd>{{variantReport.mapd | dashify}}</dd>
+            <dd>{{mapd | dashify}}</dd>
             <dt>Cellularity</dt>
-            <dd>{{variantReport.cellularity | dashify}}</dd> -->
+            <dd>{{cellularity | dashify}}</dd> 
             <dt>File Received Date</dt>
             <dd>{{dateReceived | gmt | dashify}}</dd>
-            <!-- <dt>Torrent Variant Caller Version</dt>
-            <dd>{{variantReport.torrentVariantCallerVersion | dashify}}</dd> -->
+            <dt>Torrent Variant Caller Version</dt>
+            <dd>{{tvc_version | dashify}}</dd> 
           </dl>
           <dl class="dl-horizontal">
             <h4>Oncomine Control Panel Summary</h4>
@@ -48,12 +48,12 @@
               </thead>
               <tbody>
                 <tr *ngIf="ocpSummary; else emptyRow">
-                  <td>{{ocpSummary.LRP1 | dashify}}</td>
-                  <td>{{ocpSummary.TBP | dashify}}</td>
-                  <td>{{ocpSummary.MYC | dashify}}</td>
-                  <td>{{ocpSummary.HMBS | dashify}}</td>
-                  <td>{{ocpSummary.ITGB7 | dashify}}</td>
-                  <td>{{ocpSummary.SUM | dashify}}</td>
+                  <td>{{ocpSummary['LRP1'] | dashify}}</td>
+                  <td>{{ocpSummary['TBP'] | dashify}}</td>
+                  <td>{{ocpSummary['MYC'] | dashify}}</td>
+                  <td>{{ocpSummary['HMBS'] | dashify}}</td>
+                  <td>{{ocpSummary['ITGB7'] | dashify}}</td>
+                  <td>{{ocpSummary['SUM'] | dashify}}</td>
                 </tr>
                 <ng-template #emptyRow>
                   <tr>

@@ -1,0 +1,19 @@
+{
+    "biopsySequenceNumber": "T-15-000017",
+    "dateReceived": {
+        "$date": 1441092660571
+    },
+    "genes": {
+        "HMBS": "75641",
+        "ITGB7": "0",
+        "LRP1": "8970",
+        "MYC": "102736",
+        "TBP": "590098"
+    },
+    "molecularSequenceNumber": "MSN3053",
+    "pool1": 0,
+    "pool2": 0,
+    "sample_name": "SampleControl_MoCha_22_v1",
+    "total_mapped_fusion_panel_reads": "898993",
+    "tvc_version": "5.0"
+}
