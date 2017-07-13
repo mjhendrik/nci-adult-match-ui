@@ -16,7 +16,7 @@ export class VariantReportFilteredTableGeneFusionComponent {
   @Input() type: string;
 
   searchTerm: string = '';
-  recordsPerPage: number = 25;
+  recordsPerPage: number = 10;
   defaultSort: string = 'id';
   errorMessage: string;
 }
