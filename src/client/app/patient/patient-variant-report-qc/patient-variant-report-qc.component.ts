@@ -52,6 +52,8 @@ export class PatientVariantReportQcComponent implements OnInit {
   geneFusions: any[];
   ocpSummary: any;
 
+  parsed_vcf_genes: any;
+
   isLoaded: boolean;
   errorMessage: string;
 
@@ -88,6 +90,7 @@ export class PatientVariantReportQcComponent implements OnInit {
 
         this.mapd = data[2].mapd;
         this.cellularity = data[2].cellularity;
+        this.parsed_vcf_genes = data[2].parsed_vcf_genes;
 
         this.isLoaded = true;
       },

@@ -3,7 +3,8 @@
  */
 import {
   Component,
-  OnInit
+  OnInit,
+  Input
 } from '@angular/core';
 import { nvD3 } from 'ng2-nvd3';
 import { ActivatedRoute } from '@angular/router';
@@ -18,8 +19,9 @@ declare let d3: any;
 })
 
 export class CnvChartDirective implements OnInit {
+  @Input() data: any;
+  
   options: any;
-  data: any;
   errorMessage: string;
 
   constructor(private configApi: ConfigApiService) { }
