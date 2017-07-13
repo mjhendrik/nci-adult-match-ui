@@ -24,8 +24,9 @@ export class PatientVariantReportQcComponent implements OnInit {
   assignmentReport: any;
   moiSummary: any;
   assay: any[];
-  snv: any[];
-  indels: any[];
+  cnv: any[];
+  snvAndIndels: any[];
+  geneFusions: any[];
   assignmentReason: any;
   assignmentHistory: any[];
   ocpSummary: any;
@@ -46,16 +47,10 @@ export class PatientVariantReportQcComponent implements OnInit {
   getData(psn: string, analysisId: string) {
     this.patientApi.getPatientVariantReportQc(psn, analysisId)
       .subscribe((response: any) => {
-        this.variantReport = response.variantReport;
-        this.assignmentReport = response.assignmentReport;
-        this.moiSummary = response.moiSummary;
-        this.assay = response.assay;
-        this.snv = response.snv || [];
-        this.indels = response.indels || [];
-        this.assignmentReason = response.assignmentReason;
-        this.assignmentHistory = response.assignmentHistory;
-        this.ocpSummary = response.ocpSummary;
-        this.dataAvailable = true;
+        this.cnv = response.copy_number_variants || [];
+        this.geneFusions = response.gene_fusions || [];
+        this.snvAndIndels = response.indels || [];
+        this.snvAndIndels = this.snvAndIndels.concat(response.single_nucleotide_variants || [])
       },
       error => this.errorMessage = <any>error
       );
