@@ -22,6 +22,15 @@ import { Observable } from "rxjs/Observable";
 })
 export class PatientVariantReportQcComponent implements OnInit {
   calculateOcpSum(ocpSummary: any): any {
+    if (!ocpSummary)
+      return null;
+    
+    let sum: number = 0;
+    for (let key of Object.keys(ocpSummary)) {
+      sum += Number(ocpSummary[key]);
+    }
+
+    return sum;
   }
 
   psn: string;
