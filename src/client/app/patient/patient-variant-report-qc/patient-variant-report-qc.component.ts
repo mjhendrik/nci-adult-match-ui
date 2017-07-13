@@ -20,6 +20,11 @@ import {
   host: { '[@routerTransition]': '' }
 })
 export class PatientVariantReportQcComponent implements OnInit {
+  psn: string;
+  analysisId: string;
+  molecularSequenceNumber: string;
+  dateReceived: any;
+
   variantReport: any;
   assignmentReport: any;
   moiSummary: any;
@@ -39,14 +44,16 @@ export class PatientVariantReportQcComponent implements OnInit {
     private patientApi: PatientApiService) { }
 
   ngOnInit() {
-    let psn = this.route.snapshot.params['patientSequenceNumber'];
-    let analysisId = this.route.snapshot.params['analysisId'];
-    this.getData(psn, analysisId);
+    this.psn = this.route.snapshot.params['patientSequenceNumber'];
+    this.analysisId = this.route.snapshot.params['analysisId'];
+    this.getData(this.psn, this.analysisId);
   }
 
   getData(psn: string, analysisId: string) {
     this.patientApi.getPatientVariantReportQc(psn, analysisId)
       .subscribe((response: any) => {
+        this.molecularSequenceNumber = response.molecularSequenceNumber;
+        this.dateReceived = response.dateReceived;
         this.cnv = response.copy_number_variants || [];
         this.geneFusions = response.gene_fusions || [];
         this.snvAndIndels = response.indels || [];

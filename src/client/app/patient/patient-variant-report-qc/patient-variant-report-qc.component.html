@@ -5,8 +5,8 @@
   <ul class="breadcrumb pull-right">
     <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
     <li><a href [routerLink]="['/patients']" class="link-none">Patients</a></li>
-    <li><a href [routerLink]="['/patients/', '10069']" class="link-none">Patient 10069</a></li>
-    <li><a href [routerLink]="['/patients/10069/variant_reports']" class="link-none">Variant Report</a></li>
+    <li><a href [routerLink]="['/patients/', psn]" class="link-none">Patient {{psn}}</a></li>
+    <li><a href [routerLink]="['/patients/' + psn + '/variant_reports/' + analysisId]" class="link-none">Variant Report</a></li>
     <li class="active">Quality Control Report</li>
   </ul>
   <h1 class="page-header">Quality Control Report</h1>
@@ -18,19 +18,19 @@
         </div>
         <div class="panel-heading">
           <dl class="dl-horizontal">
-            <!-- <dt>Molecular Sequence Number</dt>
-            <dd>{{variantReport.molecularSequenceNumber | dashify}}</dd>
-            <dt>Biopsy Sequence Number</dt>
+            <dt>Molecular Sequence Number</dt>
+            <dd>{{molecularSequenceNumber | dashify}}</dd>
+            <!-- <dt>Biopsy Sequence Number</dt>
             <dd>{{variantReport.biopsySequenceNumber | dashify}}</dd>
             <dt>Analysis ID</dt>
             <dd>{{variantReport.analysisId | dashify}}</dd>
             <dt>MAPD</dt>
             <dd>{{variantReport.mapd | dashify}}</dd>
             <dt>Cellularity</dt>
-            <dd>{{variantReport.cellularity | dashify}}</dd>
+            <dd>{{variantReport.cellularity | dashify}}</dd> -->
             <dt>File Received Date</dt>
-            <dd>{{variantReport.fileReceivedDate | dashify}}</dd>
-            <dt>Torrent Variant Caller Version</dt>
+            <dd>{{dateReceived | gmt | dashify}}</dd>
+            <!-- <dt>Torrent Variant Caller Version</dt>
             <dd>{{variantReport.torrentVariantCallerVersion | dashify}}</dd> -->
           </dl>
           <dl class="dl-horizontal">
