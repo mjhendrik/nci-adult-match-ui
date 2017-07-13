@@ -31,7 +31,7 @@ export class PatientVariantReportQcComponent implements OnInit {
   assignmentHistory: any[];
   ocpSummary: any;
 
-  dataAvailable: boolean;
+  isLoaded: boolean;
   errorMessage: string;
 
   constructor(
@@ -51,6 +51,7 @@ export class PatientVariantReportQcComponent implements OnInit {
         this.geneFusions = response.gene_fusions || [];
         this.snvAndIndels = response.indels || [];
         this.snvAndIndels = this.snvAndIndels.concat(response.single_nucleotide_variants || [])
+        this.isLoaded = true;
       },
       error => this.errorMessage = <any>error
       );

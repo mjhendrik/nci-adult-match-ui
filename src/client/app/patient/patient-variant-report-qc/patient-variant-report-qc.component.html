@@ -1,7 +1,7 @@
-<div class="load-content" *ngIf="!dataAvailable">
+<div class="load-content" *ngIf="!isLoaded">
   <div id="page-loader" class="page-loader fade in"><span class="spinner">Loading...</span></div>
 </div>
-<div id="content" class="content" *ngIf="dataAvailable">
+<div id="content" class="content" *ngIf="isLoaded">
   <ul class="breadcrumb pull-right">
     <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
     <li><a href [routerLink]="['/patients']" class="link-none">Patients</a></li>
