@@ -70,6 +70,10 @@ export class PatientVariantReportQcComponent implements OnInit {
     this.getData(this.psn, this.analysisId);
   }
 
+  downloadFile(file: string) {
+    console.debug('downloading ' + file);
+  }
+
   getData(psn: string, analysisId: string) {
     Observable.forkJoin(
         this.patientApi.getPatientVariantReportQc(psn, analysisId),
