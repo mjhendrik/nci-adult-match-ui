@@ -120,7 +120,7 @@ export class CnvChartDirective implements OnInit {
                 li += '<li>' + chr + '</li>';
                 li += '<li>' + cl95 + '</li>';
                 li += '<li>' + cl05 + '</li>';
-                html += '<ul class="list-group">' + li + '</ul>';
+                html += '<ul class="list-group" style="list-style-type: none;">' + li + '</ul>';
 
                 return html;
               }
@@ -168,9 +168,6 @@ export class CnvChartDirective implements OnInit {
               tickSize:  function () { return 2}
             },
             yAxis: {
-              // tickValues: function () {
-              //   return [2, 4, 6, 8, 10];
-              // },
               tickFormat: function (d: any) {
                 return d3.format(',.0d')(d);
               },
