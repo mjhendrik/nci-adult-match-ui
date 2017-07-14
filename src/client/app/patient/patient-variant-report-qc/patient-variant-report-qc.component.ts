@@ -5,8 +5,7 @@ import {
 import { ActivatedRoute } from '@angular/router';
 import { routerTransition } from './../../shared/router.animations';
 import {
-  PatientApiService,
-  PatientVariantReportInterface
+  PatientApiService
 } from '../patient-api.service';
 import { Observable } from "rxjs/Observable";
 

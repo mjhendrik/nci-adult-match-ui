@@ -5,8 +5,7 @@ import {
 
 import { routerTransition } from './../../shared/router.animations';
 import {
-  PatientApiService,
-  PatientVariantReportInterface
+  PatientApiService
 } from '../patient-api.service';
 
 /**
@@ -41,7 +40,7 @@ export class AssignmentReportComponent implements OnInit {
 
   getData() {
     this.patientApi.getPatientVariantReport()
-      .subscribe((itemList: PatientVariantReportInterface) => {
+      .subscribe((itemList: any) => {
         this.variantReport = itemList.variantReport;
         this.assignmentReport = itemList.assignmentReport;
         this.moiSummary = itemList.moiSummary;

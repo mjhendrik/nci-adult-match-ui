@@ -7,26 +7,6 @@ import { AuthHttp } from 'angular2-jwt';
 
 import { Config } from '../shared/config/env.config';
 
-export interface PatientDetailsInterface {
-  patientData: {};
-  summaryData: {};
-  biopsyData: {};
-}
-
-export interface PatientVariantReportInterface {
-  variantReport: {};
-  assignmentReport: {};
-  moiSummary: {};
-  assay: any[];
-  snv: any[];
-  cnv: any[];
-  geneFusions: any[];
-  indels: any[];
-  assignmentReason: {};
-  assignmentHistory: any[];
-  ocpSummary: any;
-}
-
 /**
  * This class provides the NameList service with methods to read names and add names.
  */
@@ -75,7 +55,7 @@ diseases.shortName,registrationDate,patientAssignments.treatmentArm.name,patient
       .catch(this.handleError);
   }
 
-  getPatientVariantReport(): Observable<PatientVariantReportInterface> {
+  getPatientVariantReport(): Observable<any> {
     return this.http.get('assets/mock-data/patient-variant-report.json')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
