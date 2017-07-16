@@ -1,4 +1,7 @@
-import { Component, ChangeDetectorRef } from '@angular/core';
+import {
+  Component,
+  ChangeDetectorRef
+} from '@angular/core';
 import {
   async,
   TestBed,
