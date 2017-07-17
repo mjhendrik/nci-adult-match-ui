@@ -68,29 +68,32 @@ export function main() {
 
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [RouterTestingModule.withRoutes(config), DirectivesModule, PipesModule, FormsModule, DataTableModule],
+        imports: [RouterTestingModule.withRoutes(config), DirectivesModule,
+          PipesModule, FormsModule, DataTableModule, AssignmentReasonTableModule,
+          VariantReportSimpleTableModule],
         declarations: [PatientVariantReportComponent],
         providers: [
           { provide: PatientApiService, useClass: MockPatientApiServiceError },
+          { provide: ActivatedRoute, useValue: { snapshot: { params: { patientSequenceNumber: 1067, analysisId: 1234 } } } },
+          ViewDataTransformer
         ]
       });
     });
 
-    // it('should test getData',
-    //   async((done: any) => {
-    //     TestBed
-    //       .compileComponents()
-    //       .then(() => {
-    //         let fixture = TestBed.overrideComponent(PatientVariantReportComponent, {
-    //           set: {
-    //             templateUrl: ''
-    //           }
-    //         }).createComponent(PatientVariantReportComponent);
-    //         fixture.componentInstance.getData('1234', '1234');
-    //       });
+    it('should test getData',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(PatientVariantReportComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(PatientVariantReportComponent);
+            fixture.componentInstance.getData('1067', '1234');
+          });
 
-    //   }));
-
+      }));
   });
 
 }
@@ -98,7 +101,7 @@ export function main() {
 
 class MockPatientApiServiceError {
 
-  getPatientList(): Observable<any> {
+  getPatientDetails(psn: any): Observable<any> {
     return Observable.throw("error");
   }
 }
