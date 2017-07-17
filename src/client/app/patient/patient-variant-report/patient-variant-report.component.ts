@@ -32,6 +32,8 @@ export class PatientVariantReportComponent implements OnInit {
   indels: any[];
   assignmentReason: any;
   assignmentHistory: any[];
+  psn: string;
+  analysisId: string;
 
   errorMessage: string;
 
@@ -41,9 +43,13 @@ export class PatientVariantReportComponent implements OnInit {
     private transformer: ViewDataTransformer) { }
 
   ngOnInit() {
-    let psn = this.route.snapshot.params['patientSequenceNumber'];
-    let analysisId = this.route.snapshot.params['analysisId'];
-    this.getData(psn, analysisId);
+    this.psn = this.route.snapshot.params['patientSequenceNumber'];
+    this.analysisId = this.route.snapshot.params['analysisId'];
+    this.getData(this.psn, this.analysisId);
+  }
+
+  download(file: string) {
+    this.patientApi.downloadPatientFile(this.psn, file);
   }
 
   getData(psn: string, analysisId: string) {

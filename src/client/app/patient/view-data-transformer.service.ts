@@ -129,14 +129,6 @@ export class ViewDataTransformer {
       sendout.analyses.push(analysis);
 
       analysis.analysisId = message.ionReporterResults.jobName;
-      analysis.dnaBamFilePath = message.ionReporterResults.dnaBamFilePath;
-      analysis.rnaBamFilePath = message.ionReporterResults.rnaBamFilePath;
-
-      analysis.dnaBaiFilePath = message.ionReporterResults.dnaBaiFilePath;
-      analysis.rnaBaiFilePath = message.ionReporterResults.rnaBaiFilePath;
-
-      analysis.vcfFilePath = message.ionReporterResults.vcfFilePath;
-      analysis.qcFile = message.ionReporterResults.qcFile;
 
       analysis.variantReportStatus = message.status;
       analysis.variantReportCreatedDate = message.ionReporterResults.variantReport
@@ -185,6 +177,15 @@ export class ViewDataTransformer {
       variantReport.patientSequenceNumber = transformedBiopsy.patientSequenceNumber;
       variantReport.molecularSequenceNumber = message.ionReporterResults.molecularSequenceNumber;
       variantReport.tvcVersion = message.tvcVersion;
+
+      variantReport.dnaBamFilePath = message.ionReporterResults.dnaBamFilePath;
+      variantReport.rnaBamFilePath = message.ionReporterResults.rnaBamFilePath;
+
+      variantReport.dnaBaiFilePath = message.ionReporterResults.dnaBaiFilePath;
+      variantReport.rnaBaiFilePath = message.ionReporterResults.rnaBaiFilePath;
+
+      variantReport.vcfFilePath = message.ionReporterResults.vcfFilePath;
+      variantReport.qcFile = message.ionReporterResults.qcFile;      
     }
   }
 

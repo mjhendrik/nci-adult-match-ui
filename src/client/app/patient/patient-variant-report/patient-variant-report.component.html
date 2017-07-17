@@ -49,11 +49,16 @@
               <dd>{{variantReport.tvcVersion | dashify}}</dd>
             </dl>
             <div class="m-b-5">
-              <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10"><i class="fa fa-download"></i> DNA BAM</button>
-              <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10"><i class="fa fa-download"></i> DNA BAI</button>
-              <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10"><i class="fa fa-download"></i> RNA BAM</button>
-              <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10"><i class="fa fa-download"></i> RNA BAI</button>
-              <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10"><i class="fa fa-download"></i> VCF</button>
+              <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!variantReport.dnaBamFilePath" 
+                (click)="download(variantReport.dnaBamFilePath)"><i class="fa fa-download"></i> DNA BAM</button>
+              <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!variantReport.dnaBaiFilePath" 
+                (click)="download(variantReport.dnaBaiFilePath)"><i class="fa fa-download"></i> DNA BAI</button>
+              <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!variantReport.rnaBamFilePath" 
+                (click)="download(variantReport.rnaBamFilePath)"><i class="fa fa-download"></i> RNA BAM</button>
+              <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!variantReport.rnaBaiFilePath" 
+                (click)="download(variantReport.rnaBaiFilePath)"><i class="fa fa-download"></i> RNA BAI</button>
+              <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!variantReport.vcfFilePath" 
+                (click)="download(variantReport.vcfFilePath)"><i class="fa fa-download"></i> VCF</button>
             </div>
         </div>
       </div>
@@ -154,7 +159,7 @@
     <div class="col-md-6">
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-middle">
         <div class="panel-heading">
-          <cnv-chart></cnv-chart>
+          <!-- <cnv-chart></cnv-chart> -->
         </div>
       </div>
     </div>
