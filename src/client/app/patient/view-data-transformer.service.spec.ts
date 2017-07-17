@@ -133,13 +133,13 @@ export function main() {
                       "molecularSequenceNumber": "MSN3053",
                       "rnaBamFilePath": "/local/content/ncimatch/matchfiles/patient-10010/biopsy-T-15-000017/ngs-MSN3053_v1_e3d4df31-9785-40ff-8001-985297a3240e/IonXpress_004_rawlib_fusions.bam",
                       "variantReport": {
-                        "copyNumberVariants": [],
+                        "copyNumberVariants": [""],
                         "createdDate": {
                           "$date": 1441092639591
                         },
-                        "geneFusions": [],
-                        "indels": [],
-                        "nonHotspotRules": [],
+                        "geneFusions": [""],
+                        "indels": [""],
+                        "nonHotspotRules": [""],
                         "singleNucleotideVariants": [
                           {
                             "alleleFrequency": 0.178267,
@@ -172,7 +172,7 @@ export function main() {
                             "transcript": "NM_001122740.1"
                           }
                         ],
-                        "unifiedGeneFusions": []
+                        "unifiedGeneFusions": [""]
                       },
                       "vcfFilePath": "/local/content/ncimatch/matchfiles/patient-10010/biopsy-T-15-000017/ngs-MSN3053_v1_e3d4df31-9785-40ff-8001-985297a3240e/MSN3053_v1_MSN3053_RNA_v1.vcf"
                     },
@@ -254,7 +254,7 @@ export function main() {
               }
             ],
             "ethnicity": "NOT_HISPANIC_OR_LATINO",
-            "exclusionCriterias": [],
+            "exclusionCriterias": [""],
             "gender": "FEMALE",
             "patientAssignments": [
               {
@@ -346,7 +346,7 @@ export function main() {
                 "dateScanned": {
                   "$date": 1456419670400
                 },
-                "eligibleArms": []
+                "eligibleArms": [""]
               }
             ],
             "patientSequenceNumber": "10010",
@@ -402,7 +402,7 @@ export function main() {
                 "studyId": "EAY131"
               }
             ],
-            "priorDrugs": [],
+            "priorDrugs": [""],
             "races": [
               "WHITE"
             ],
