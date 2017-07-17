@@ -7,6 +7,8 @@ import { AuthHttp } from 'angular2-jwt';
 
 import { Config } from '../shared/config/env.config';
 
+import { downloadFile } from '../shared/utils/utils';
+
 /**
  * This class provides the NameList service with methods to read names and add names.
  */
@@ -92,6 +94,18 @@ diseases.shortName,registrationDate,patientAssignments.treatmentArm.name,patient
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
+  }
+
+  downloadPatientFile(psn: string, url: string): void {
+    this.http.post(Config.API.PATIENT + '/patients/' + psn + '/download_url', {s3_url: url})
+      .map((res: Response) => res)
+      .catch(this.handleError)
+      .subscribe((resp: Response) => { 
+        const data = resp.json();
+        if (data && data.download_url) {
+          downloadFile(data.download_url);
+        }
+      })
   }
 
   /**

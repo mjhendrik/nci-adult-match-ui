@@ -70,8 +70,8 @@ export class PatientVariantReportQcComponent implements OnInit {
     this.getData(this.psn, this.analysisId);
   }
 
-  downloadFile(file: string) {
-    console.debug('downloading ' + file);
+  download(file: string) {
+    this.patientApi.downloadPatientFile(this.psn, file);
   }
 
   getData(psn: string, analysisId: string) {
