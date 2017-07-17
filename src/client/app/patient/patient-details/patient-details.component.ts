@@ -24,6 +24,7 @@ export class PatientDetailsComponent implements OnInit {
   biopsyData: any = {};
   disease: any = {};
 
+  psn: string;
   patient: any;
   errorMessage: string;
 
@@ -47,10 +48,14 @@ export class PatientDetailsComponent implements OnInit {
     private ref: ChangeDetectorRef,
     private transformer: ViewDataTransformer) { }
 
-  ngOnInit() {
-    let psn = this.route.snapshot.params['patientSequenceNumber'];
+  download(file: string) {
+    this.patientApi.downloadPatientFile(this.psn, file);
+  }
 
-    this.getData(psn);
+  ngOnInit() {
+    this.psn = this.route.snapshot.params['patientSequenceNumber'];
+
+    this.getData(this.psn);
 
     this.changeDetector = this.ref;
 
