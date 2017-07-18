@@ -8,7 +8,7 @@ import { AuthGuard } from './../../shared/auth/auth.guard.service';
   imports: [
     RouterModule.forChild([
       {
-        path: 'patients/:patientSequenceNumber/variant_reports/:analysisId/assignment',
+        path: 'patients/:patientSequenceNumber/variant_reports/:analysisId/assignment/:dateAssigned',
         component: AssignmentReportComponent, canActivate: [AuthGuard]
       }
     ])
