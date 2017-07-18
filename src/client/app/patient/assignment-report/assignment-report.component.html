@@ -14,16 +14,17 @@
     <div class="col-md-6">
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-top">
         <div class="panel-heading">
-            <dl class="dl-horizontal">
-              <dt>Molecular Sequence Number</dt>
-              <dd>{{variantReport.molecularSequenceNumber | dashify}}</dd>
-              <dt>Biopsy Sequence Number</dt>
-              <dd>{{variantReport.biopsySequenceNumber | dashify}}</dd>
-              <dt>Analysis ID</dt>
-              <dd>{{variantReport.analysisId | dashify}}</dd>
-              <dt>Status</dt>
-              <dd><span [colorCodeAssignment]="assignmentReport.status"> {{assignmentReport.status | dashify}}</span>  on {{assignmentReport.confirmationDate | gmt}} by {{assignmentReport.user | dashify}}</dd>
-            </dl>            
+          <dl class="dl-horizontal">
+            <dt>Molecular Sequence Number</dt>
+            <dd>{{variantReport.molecularSequenceNumber | dashify}}</dd>
+            <dt>Biopsy Sequence Number</dt>
+            <dd>{{variantReport.biopsySequenceNumber | dashify}}</dd>
+            <dt>Analysis ID</dt>
+            <dd>{{variantReport.analysisId | dashify}}</dd>
+            <dt>Status</dt>
+            <dd><span [colorCodeAssignment]="assignmentReport.status"> {{assignmentReport.status | dashify}}</span> on {{assignmentReport.confirmationDate
+              | gmt}} by {{assignmentReport.user | dashify}}</dd>
+          </dl>
         </div>
       </div>
     </div>
@@ -46,7 +47,6 @@
       </div>
     </div>
   </div>
-
   <div class="panel panel-white panel-accent-sides-purple overflow-hidden">
     <div class="panel-heading">
       <div class="row">
@@ -58,12 +58,11 @@
                 {{assignmentReport.assignmentReason | dashify}}
               </p>
             </div>
-          </div>              
+          </div>
         </div>
       </div>
     </div>
   </div>
-
   <div class="panel panel-white panel-accent-sides-purple overflow-hidden">
     <div class="panel-heading">
       <div class="row">
