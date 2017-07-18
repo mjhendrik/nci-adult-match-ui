@@ -39,9 +39,11 @@ export class PatientVariantReportComponent implements OnInit {
 
   errorMessage: string;
 
+  scrollTo = scrollToElement;
+
   constructor(
-    private route: ActivatedRoute, 
-    private patientApi: PatientApiService, 
+    private route: ActivatedRoute,
+    private patientApi: PatientApiService,
     private transformer: ViewDataTransformer) { }
 
   ngOnInit() {
@@ -56,8 +58,8 @@ export class PatientVariantReportComponent implements OnInit {
 
   getData(psn: string, analysisId: string) {
     Observable.forkJoin(
-        this.patientApi.getPatientDetails(psn),
-        this.patientApi.getPatientCopyNumberReport(psn, analysisId)
+      this.patientApi.getPatientDetails(psn),
+      this.patientApi.getPatientCopyNumberReport(psn, analysisId)
     ).subscribe(
       data => {
         this.patient = this.transformer.transformPatient(data[0]);
@@ -71,8 +73,7 @@ export class PatientVariantReportComponent implements OnInit {
         this.isLoaded = true;
       },
       err => console.error(err)
-    );
+      );
   }
 
-  scrollTo = scrollToElement;
 }

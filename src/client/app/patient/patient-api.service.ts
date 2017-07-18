@@ -57,8 +57,8 @@ diseases.shortName,registrationDate,patientAssignments.treatmentArm.name,patient
       .catch(this.handleError);
   }
 
-  getPatientVariantReport(): Observable<any> {
-    return this.http.get('assets/mock-data/patient-variant-report.json')
+  getPatientVariantReport(psn: string): Observable<any> {
+    return this.http.get(Config.API.PATIENT + '/patients/' + psn)
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
@@ -97,10 +97,10 @@ diseases.shortName,registrationDate,patientAssignments.treatmentArm.name,patient
   }
 
   downloadPatientFile(psn: string, url: string): void {
-    this.http.post(Config.API.PATIENT + '/patients/' + psn + '/download_url', {s3_url: url})
+    this.http.post(Config.API.PATIENT + '/patients/' + psn + '/download_url', { s3_url: url })
       .map((res: Response) => res)
       .catch(this.handleError)
-      .subscribe((resp: Response) => { 
+      .subscribe((resp: Response) => {
         const data = resp.json();
         if (data && data.download_url) {
           downloadFile(data.download_url);
