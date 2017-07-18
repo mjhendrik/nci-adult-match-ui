@@ -10,6 +10,7 @@ import {
 
 import { ViewDataTransformer } from './../view-data-transformer.service';
 import { scrollToElement } from '../../shared/utils/utils';
+import { Observable } from "rxjs/Observable";
 /**
  * PatientVariantReportComponent.
  */
@@ -34,6 +35,7 @@ export class PatientVariantReportComponent implements OnInit {
   assignmentHistory: any[];
   psn: string;
   analysisId: string;
+  parsed_vcf_genes: any;
 
   errorMessage: string;
 
@@ -53,20 +55,23 @@ export class PatientVariantReportComponent implements OnInit {
   }
 
   getData(psn: string, analysisId: string) {
-    this.patientApi.getPatientDetails(psn)
-      .subscribe((response: any) => {
-        this.patient = this.transformer.transformPatient(response);
+    Observable.forkJoin(
+        this.patientApi.getPatientDetails(psn),
+        this.patientApi.getPatientCopyNumberReport(psn, analysisId)
+    ).subscribe(
+      data => {
+        this.patient = this.transformer.transformPatient(data[0]);
         let analysis = this.patient.analyses[analysisId];
         this.variantReport = analysis.variantReport;
         this.assignmentReport = analysis.assignmentReport;
         this.assignmentHistory = this.patient.patientAssignments;
+
+        this.parsed_vcf_genes = data[1].parsed_vcf_genes;
+
         this.isLoaded = true;
       },
-      (error) => {
-        this.errorMessage = <any>error;
-        console.error(error);
-      }
-      );
+      err => console.error(err)
+    );
   }
 
   scrollTo = scrollToElement;
