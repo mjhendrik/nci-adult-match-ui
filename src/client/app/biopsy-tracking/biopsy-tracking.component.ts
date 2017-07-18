@@ -22,7 +22,7 @@ import { BiopsyTrackingApiService } from './biopsy-tracking-api.service';
 export class BiopsyTrackingListComponent implements OnInit {
 
   searchtermBiopsyTrackingList: string = '';
-  recordsPerPageBiopsyTrackingList: number = 100;
+  recordsPerPageBiopsyTrackingList: number = 10;
   tableBiopsyTrackingListDefaultSort: string = 'biopsySequenceNumber';
   tableBiopsyTrackingListData: any[];
   errorMessage: string;

@@ -22,7 +22,7 @@ import { TreatmentArmApiService } from '../treatment-arm-api.service';
 export class TreatmentArmListComponent implements OnInit {
 
   searchtermTA: string = '';
-  recordsPerPageTA: number = 100;
+  recordsPerPageTA: number = 10;
   tableTADefaultSort: string = 'treatmentArmId';
   tableTAData: any[];
   errorMessage: string;

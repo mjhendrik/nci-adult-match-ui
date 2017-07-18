@@ -28,7 +28,7 @@ export class LongListComponent {
 
   get items(): string[] { return this._items; }
 
-  private _maxDisaplayItems: number = 5;
+  private _maxDisaplayItems: number = 10;
   // tslint:disable-next-line:member-ordering
   @Input()
   set maxDisaplayItems(value: number) {
