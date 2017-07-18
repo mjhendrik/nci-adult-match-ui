@@ -41,24 +41,24 @@ export function main() {
       });
     });
 
-    it('should test ngOnInit',
-      async((done: any) => {
-        TestBed
-          .compileComponents()
-          .then(() => {
-            let fixture = TestBed.overrideComponent(PatientVariantReportComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(PatientVariantReportComponent);
-            fixture.componentInstance.ngOnInit();
-          });
-      }));
+    // it('should test ngOnInit',
+    //   async((done: any) => {
+    //     TestBed
+    //       .compileComponents()
+    //       .then(() => {
+    //         let fixture = TestBed.overrideComponent(PatientVariantReportComponent, {
+    //           set: {
+    //             templateUrl: ''
+    //           }
+    //         }).createComponent(PatientVariantReportComponent);
+    //         fixture.componentInstance.ngOnInit();
+    //       });
+    //   }));
 
   });
 
 
-  describe('patients component', () => {
+  describe('patients variant report component', () => {
     // Setting module for testing
     // Disable old forms
 
@@ -80,20 +80,21 @@ export function main() {
       });
     });
 
-    it('should test getData',
-      async((done: any) => {
-        TestBed
-          .compileComponents()
-          .then(() => {
-            let fixture = TestBed.overrideComponent(PatientVariantReportComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(PatientVariantReportComponent);
-            fixture.componentInstance.getData('1067', '1234');
-          });
+    // it('should test getData',
+    //   async((done: any) => {
+    //     TestBed
+    //       .compileComponents()
+    //       .then(() => {
+    //         let fixture = TestBed.overrideComponent(PatientVariantReportComponent, {
+    //           set: {
+    //             templateUrl: ''
+    //           }
+    //         }).createComponent(PatientVariantReportComponent);
+    //         fixture.componentInstance.getData('1067', '1234');
+    //       });
 
-      }));
+    //   }));
+
   });
 
 }
