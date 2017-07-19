@@ -50,6 +50,7 @@ export class PatientVariantReportQcComponent implements OnInit {
   snvAndIndels: any[];
   geneFusions: any[];
   ocpSummary: any;
+  showPools: boolean;
 
   parsed_vcf_genes: any;
 
@@ -103,6 +104,8 @@ export class PatientVariantReportQcComponent implements OnInit {
         this.dnaBamFilePath = data[3].dnaBamFilePath;
         this.rnaBamFilePath = data[3].rnaBamFilePath;
         this.vcfFilePath = data[3].vcfFilePath;
+
+        this.showPools = this.tvc_version.startsWith("5.2")
 
         this.isLoaded = true;
       },

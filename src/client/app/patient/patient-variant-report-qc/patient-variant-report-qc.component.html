@@ -30,8 +30,12 @@
             <dd>{{cellularity | dashify}}</dd> 
             <dt>File Received Date</dt>
             <dd>{{dateReceived | gmt | dashify}}</dd>
-            <dt>Torrent Variant Caller Version</dt>
-            <dd>{{tvc_version | dashify}}</dd> 
+            <dt *ngIf="!showPools">Torrent Variant Caller Version</dt>
+            <dd *ngIf="!showPools">{{tvc_version | dashify}}</dd> 
+            <dt *ngIf="showPools">Pool 1</dt>
+            <dd *ngIf="showPools">{{pool1 | dashify}}</dd> 
+            <dt *ngIf="showPools">Pool 2</dt>
+            <dd *ngIf="showPools">{{pool2 | dashify}}</dd> 
           </dl>
           <dl class="dl-horizontal">
             <h4>Oncomine Control Panel Summary</h4>
