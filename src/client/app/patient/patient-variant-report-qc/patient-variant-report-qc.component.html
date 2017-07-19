@@ -27,7 +27,7 @@
             <dt>MAPD</dt>
             <dd>{{mapd | dashify}}</dd>
             <dt>Cellularity</dt>
-            <dd>{{cellularity | dashify}}</dd> 
+            <dd>{{cellularity | dashify}}</dd>
             <dt>File Received Date</dt>
             <dd>{{dateReceived | gmt | dashify}}</dd>
             <dt *ngIf="!showPools">Torrent Variant Caller Version</dt>
@@ -69,15 +69,15 @@
           </dl>
 
           <div class="m-b-5">
-            <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!dnaBamFilePath" 
+            <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!dnaBamFilePath"
               (click)="download(dnaBamFilePath)"><i class="fa fa-download"></i> DNA BAM</button>
-            <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!dnaBaiFilePath" 
+            <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!dnaBaiFilePath"
               (click)="download(dnaBaiFilePath)"><i class="fa fa-download"></i> DNA BAI</button>
-            <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!rnaBamFilePath" 
+            <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!rnaBamFilePath"
               (click)="download(rnaBamFilePath)"><i class="fa fa-download"></i> RNA BAM</button>
-            <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!rnaBaiFilePath" 
+            <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!rnaBaiFilePath"
               (click)="download(rnaBaiFilePath)"><i class="fa fa-download"></i> RNA BAI</button>
-            <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!vcfFilePath" 
+            <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!vcfFilePath"
               (click)="download(vcfFilePath)"><i class="fa fa-download"></i> VCF</button>
           </div>
         </div>
@@ -86,8 +86,7 @@
     <div class="col-md-6">
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-top">
         <div class="panel-heading">
-          <!-- <cnv-chart [data]="parsed_vcf_genes" ></cnv-chart> -->
-          <cnv-chart ></cnv-chart>
+           <cnv-chart [data]="parsed_vcf_genes" ></cnv-chart>
         </div>
       </div>
     </div>
