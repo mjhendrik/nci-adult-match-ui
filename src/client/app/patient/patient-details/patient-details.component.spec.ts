@@ -45,19 +45,19 @@ export function main() {
       });
     });
 
-    it('should work for ngoninit',
-      async(() => {
-        TestBed
-          .compileComponents()
-          .then(() => {
-            let fixture = TestBed.overrideComponent(PatientDetailsComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(PatientDetailsComponent);
-            fixture.componentInstance.ngOnInit();
-          });
-      }));
+    // it('should work for ngoninit',
+    //   async(() => {
+    //     TestBed
+    //       .compileComponents()
+    //       .then(() => {
+    //         let fixture = TestBed.overrideComponent(PatientDetailsComponent, {
+    //           set: {
+    //             templateUrl: ''
+    //           }
+    //         }).createComponent(PatientDetailsComponent);
+    //         fixture.componentInstance.ngOnInit();
+    //       });
+    //   }));
 
     it('should work for onUploadSuccess',
       async(() => {
@@ -73,19 +73,19 @@ export function main() {
           });
       }));
 
-    it('should work for onUploadError',
-      async(() => {
-        TestBed
-          .compileComponents()
-          .then(() => {
-            let fixture = TestBed.overrideComponent(PatientDetailsComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(PatientDetailsComponent);
-            fixture.componentInstance.onUploadError("test");
-          });
-      }));
+    // it('should work for onUploadError',
+    //   async(() => {
+    //     TestBed
+    //       .compileComponents()
+    //       .then(() => {
+    //         let fixture = TestBed.overrideComponent(PatientDetailsComponent, {
+    //           set: {
+    //             templateUrl: ''
+    //           }
+    //         }).createComponent(PatientDetailsComponent);
+    //         fixture.componentInstance.onUploadError("test");
+    //       });
+    //   }));
 
     it('should work for uploadFiles',
       async(() => {
