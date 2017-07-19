@@ -263,7 +263,7 @@ export class ViewDataTransformer {
       return null;
 
     let sections: AssignmentReasonSection[] = [];
-    let map: any = {
+    let map: {[key:string]: AssignmentReasonSection} = {
       'SELECTED': null,
       'RANDOMIZE_TIE_BREAKER': null,
       'SMALLEST_ACCRUED_NUMBER_TIE_BREAKER': null,
@@ -279,7 +279,6 @@ export class ViewDataTransformer {
       'ARM_NOT_OPEN': null
     };
 
-    
     for (let item of patientAssignmentLogic) {
       let section: AssignmentReasonSection;
       if (!(item.patientAssignmentReasonCategory in map)) {
@@ -291,6 +290,12 @@ export class ViewDataTransformer {
         console.log('item.patientAssignmentReasonCategory');
         console.log(item.patientAssignmentReasonCategory);
       }     
+    }
+
+    for (let item in map) {
+      if (map[item]) {
+        sections.push(map[item]);
+      }
     }
 
     return sections;
