@@ -37,20 +37,20 @@ export function main() {
       });
     });
 
-    it('should test ngOnInit',
-      async(() => {
-        TestBed
-          .compileComponents()
-          .then(() => {
-            let fixture = TestBed.overrideComponent(AssignmentReportComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(AssignmentReportComponent);
-            expect(fixture.componentInstance).toBeDefined();
-            fixture.componentInstance.ngOnInit();
-          });
-      }));
+    // it('should test ngOnInit',
+    //   async(() => {
+    //     TestBed
+    //       .compileComponents()
+    //       .then(() => {
+    //         let fixture = TestBed.overrideComponent(AssignmentReportComponent, {
+    //           set: {
+    //             templateUrl: ''
+    //           }
+    //         }).createComponent(AssignmentReportComponent);
+    //         expect(fixture.componentInstance).toBeDefined();
+    //         fixture.componentInstance.ngOnInit();
+    //       });
+    //   }));
 
   });
 
