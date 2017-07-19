@@ -3,7 +3,7 @@ import {
   OnInit,
   ChangeDetectorRef
 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 import { routerTransition } from './../../shared/router.animations';
 import { PatientApiService } from '../patient-api.service';
@@ -29,14 +29,13 @@ export class PatientDetailsComponent implements OnInit {
   errorMessage: string;
 
   analysisId: string = '';
-
   uploadedFiles: any[];
   fileCount: number = 0;
 
   variantZip: boolean = false;
   dnaBam: boolean = false;;
   cdnaBam: boolean = false;;
-
+  sequence: any;
   changeDetector: ChangeDetectorRef;
   configVariantZip: DropzoneConfigInterface;
   configDnaBam: DropzoneConfigInterface;
@@ -46,7 +45,10 @@ export class PatientDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private patientApi: PatientApiService,
     private ref: ChangeDetectorRef,
-    private transformer: ViewDataTransformer) { }
+    private transformer: ViewDataTransformer,
+    private router: Router) {
+    this.sequence = '';
+  }
 
   download(file: string) {
     this.patientApi.downloadPatientFile(this.psn, file);
@@ -54,7 +56,7 @@ export class PatientDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.psn = this.route.snapshot.params['patientSequenceNumber'];
-
+    this.sequence = this.route.snapshot.params['sequence'] ? this.route.snapshot.params['sequence'] : 'p';
     this.getData(this.psn);
 
     this.changeDetector = this.ref;
@@ -153,6 +155,9 @@ export class PatientDetailsComponent implements OnInit {
       .subscribe((response: any) => {
         this.patient = this.transformer.transformPatient(response);
         this.isLoaded = true;
+        setTimeout(() => {
+          document.getElementById(this.sequence).scrollIntoView();
+        }, 1000);
       },
       (error) => {
         this.errorMessage = <any>error;
