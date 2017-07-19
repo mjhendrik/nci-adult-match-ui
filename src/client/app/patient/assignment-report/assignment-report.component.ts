@@ -30,8 +30,10 @@ export class AssignmentReportComponent implements OnInit {
   snv: any[];
   indels: any[];
   assignmentReason: any;
+  assignmentData: any[];
   assignmentHistory: any[];
   ocpSummary: any;
+  dateAssigned: any;
 
   dataAvailable: boolean;
   errorMessage: string;
@@ -40,24 +42,23 @@ export class AssignmentReportComponent implements OnInit {
 
   ngOnInit() {
     this.psn = this.route.snapshot.params['patientSequenceNumber'];
+    this.dateAssigned = this.route.snapshot.params['dateAssigned'];
     this.getData(this.psn);
   }
 
   getData(psn: string) {
     this.patientApi.getPatientVariantReport(psn)
       .subscribe((itemList: any) => {
-        this.variantReport = itemList.variantReport;
-        this.assignmentReport = itemList.assignmentReport;
-        this.moiSummary = itemList.moiSummary;
-        this.assay = itemList.assay;
-        this.snv = itemList.snv;
-        this.indels = itemList.indels;
-        this.assignmentReason = itemList.assignmentReason;
-        this.assignmentHistory = itemList.assignmentHistory;
-        this.ocpSummary = itemList.ocpSummary;
+        let assignmentReport = itemList.patientAssignments;
+        assignmentReport.map((x: any) => {
+          if (x.dateAssigned.$date.toString() === this.dateAssigned)
+            this.assignmentData = x;
+        });
+        // console.log(itemList.biopsies[0].nextGenerationSequences[0].ionReporterResults.molecularSequenceNumber);
         this.dataAvailable = true;
       },
       error => this.errorMessage = <any>error
       );
   }
+
 }

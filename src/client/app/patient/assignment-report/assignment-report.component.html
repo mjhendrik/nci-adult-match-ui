@@ -5,8 +5,8 @@
   <ul class="breadcrumb pull-right">
     <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
     <li><a href [routerLink]="['/patients']" class="link-none">Patients</a></li>
-    <li><a href [routerLink]="['/patients', 'variantReport.patientSequenceNumber']" class="link-none">Patient {{variantReport.patientSequenceNumber}}</a></li>
-    <li><a href [routerLink]="['/patients/' + variantReport.patientSequenceNumber + '/variant_reports/' + variantReport.analysisId]"
+    <li><a href [routerLink]="['/patients', 'assignmentData.patientAssignmentMessages[0].patientSequenceNumber']" class="link-none">Patient {{assignmentData.patientAssignmentMessages[0].patientSequenceNumber}}</a></li>
+    <li><a href [routerLink]="['/patients/' + assignmentData.patientAssignmentMessages[0].patientSequenceNumber + '/variant_reports/' + assignmentData.patientAssignmentMessages[0].analysisId]"
         class="link-none">Variant Report</a></li>
     <li class="active">Historical Assignment Report</li>
   </ul>
@@ -17,14 +17,14 @@
         <div class="panel-heading">
           <dl class="dl-horizontal">
             <dt>Molecular Sequence Number</dt>
-            <dd>{{variantReport.molecularSequenceNumber | dashify}}</dd>
+            <dd>{{assignmentData.patientAssignmentMessages[0].molecularSequenceNumber | dashify}}</dd>
             <dt>Biopsy Sequence Number</dt>
-            <dd>{{variantReport.biopsySequenceNumber | dashify}}</dd>
+            <dd>{{assignmentData.patientAssignmentMessages[0].biopsySequenceNumber | dashify}}</dd>
             <dt>Analysis ID</dt>
-            <dd>{{variantReport.analysisId | dashify}}</dd>
+            <dd>{{assignmentData.patientAssignmentMessages[0].analysisId | dashify}}</dd>
             <dt>Status</dt>
-            <dd><span [colorCodeAssignment]="assignmentReport.status"> {{assignmentReport.status | dashify}}</span> on {{assignmentReport.confirmationDate
-              | gmt}} by {{assignmentReport.user | dashify}}</dd>
+            <dd><span [colorCodeAssignment]="assignmentData.patientAssignmentMessages[0].status"> {{assignmentData.patientAssignmentMessages[0].status | dashify}}</span> on {{assignmentData.patientAssignmentMessages[0].confirmationDate
+              | gmt}} by {{assignmentData.patientAssignmentMessages[0].user | dashify}}</dd>
           </dl>
         </div>
       </div>
@@ -34,15 +34,15 @@
         <div class="panel-heading">
           <dl class="dl-horizontal widest-dt">
             <dt>Assignment Report Status</dt>
-            <dd>{{assignmentReport.assignmentStatus | dashify}}</dd>
+            <dd>{{assignmentData.patientAssignmentMessages[0].assignmentStatus | dashify}}</dd>
             <dt>Assignment Report Generation Date</dt>
-            <dd>{{assignmentReport.generationDate | gmt }}</dd>
+            <dd>{{assignmentData.patientAssignmentMessages[0].generationDate | gmt }}</dd>
             <dt>Assignment Report Confirmed Date</dt>
-            <dd>{{assignmentReport.dateConfirmed | dashify}}</dd>
+            <dd>{{assignmentData.patientAssignmentMessages[0].dateConfirmed | dashify}}</dd>
             <dt>Assignment Sent to ECOG Date</dt>
-            <dd>{{assignmentReport.senttoECOGDate | gmt}}</dd>
+            <dd>{{assignmentData.patientAssignmentMessages[0].senttoECOGDate | gmt}}</dd>
             <dt>Assignment Received by ECOG Date</dt>
-            <dd>{{assignmentReport.receivedfromECOGDate | gmt}}</dd>
+            <dd>{{assignmentData.patientAssignmentMessages[0].receivedfromECOGDate | gmt}}</dd>
           </dl>
         </div>
       </div>
@@ -52,11 +52,11 @@
     <div class="panel-heading">
       <div class="row">
         <div class="col-md-12">
-          <h4>Selected Treatment Arm: <span class="text-success-light">{{assignmentReport.selectedTreatmentArm | dashify}}</span></h4>
+          <h4>Selected Treatment Arm: <span class="text-success-light">{{assignmentData.patientAssignmentMessages[0].selectedTreatmentArm | dashify}}</span></h4>
           <div class="panel panel-success overflow-hidden">
             <div class="panel-heading">
               <p>
-                {{assignmentReport.assignmentReason | dashify}}
+                {{assignmentData.patientAssignmentMessages[0].assignmentReason | dashify}}
               </p>
             </div>
           </div>
@@ -68,7 +68,7 @@
     <div class="panel-heading">
       <div class="row">
         <div class="col-md-12">
-          <sd-assignment-reason-table [reasons]="assignmentReport.reasons"></sd-assignment-reason-table>
+          <sd-assignment-reason-table [reasons]="assignmentData.patientAssignmentMessages[0].reasons"></sd-assignment-reason-table>
         </div>
       </div>
     </div>
