@@ -378,3 +378,8 @@ body {
 .display-inline {
   display: inline !important;
 }
+
+td.long-text-wrap {
+    max-width: 15em;
+    word-wrap: break-word;
+}
