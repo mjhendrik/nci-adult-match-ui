@@ -263,19 +263,34 @@ export class ViewDataTransformer {
       return null;
 
     let sections: AssignmentReasonSection[] = [];
-    let map: { [key: string]: AssignmentReasonSection } = {};
+    let map: any = {
+      'SELECTED': null,
+      'RANDOMIZE_TIE_BREAKER': null,
+      'SMALLEST_ACCRUED_NUMBER_TIE_BREAKER': null,
+      'ALLELE_FREQUENCY_TIE_BREAKER': null,
+      'LEVEL_OF_EVIDENCE_TIE_BREAKER': null,
+      'NO_CONCORDANCE': null,
+      'ARM_FULL': null,
+      'NOT_ELIGIBLE': null,
+      'COMMITTEE_REJECTED': null,
+      'PRIOR_ASSIGNMENT': null,
+      'RECORD_BASED_EXCLUSION': null,
+      'NO_VARIANT_MATCH': null,
+      'ARM_NOT_OPEN': null
+    };
 
+    
     for (let item of patientAssignmentLogic) {
       let section: AssignmentReasonSection;
       if (!(item.patientAssignmentReasonCategory in map)) {
         section = new AssignmentReasonSection();
         section.name = item.patientAssignmentReasonCategory;
-        sections.push(section);
         map[item.patientAssignmentReasonCategory] = section;
       } else {
         section = map[item.patientAssignmentReasonCategory];
-      }
-      section.items.push(item);
+        console.log('item.patientAssignmentReasonCategory');
+        console.log(item.patientAssignmentReasonCategory);
+      }     
     }
 
     return sections;
