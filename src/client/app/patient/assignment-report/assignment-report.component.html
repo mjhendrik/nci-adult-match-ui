@@ -5,8 +5,8 @@
   <ul class="breadcrumb pull-right">
     <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
     <li><a href [routerLink]="['/patients']" class="link-none">Patients</a></li>
-    <li><a href [routerLink]="['/patients', 'assignmentData.patientAssignmentMessages[0].patientSequenceNumber']" class="link-none">Patient {{assignmentData.patientAssignmentMessages[0].patientSequenceNumber}}</a></li>
-    <li><a href [routerLink]="['/patients/' + assignmentData.patientAssignmentMessages[0].patientSequenceNumber + '/variant_reports/' + assignmentData.patientAssignmentMessages[0].analysisId]"
+    <li><a href [routerLink]="['/patients/' + assignmentData.patientAssignmentMessages[0].patientSequenceNumber]" class="link-none">Patient {{assignmentData.patientAssignmentMessages[0].patientSequenceNumber}}</a></li>
+    <li><a href [routerLink]="['/patients/' + assignmentData.patientAssignmentMessages[0].patientSequenceNumber + '/variant_reports/' + analysisId]"
         class="link-none">Variant Report</a></li>
     <li class="active">Historical Assignment Report</li>
   </ul>
@@ -23,8 +23,8 @@
             <dt>Analysis ID</dt>
             <dd>{{assignmentData.patientAssignmentMessages[0].analysisId | dashify}}</dd>
             <dt>Status</dt>
-            <dd><span [colorCodeAssignment]="assignmentData.patientAssignmentMessages[0].status"> {{assignmentData.patientAssignmentMessages[0].status | dashify}}</span> on {{assignmentData.patientAssignmentMessages[0].confirmationDate
-              | gmt}} by {{assignmentData.patientAssignmentMessages[0].user | dashify}}</dd>
+            <dd><span [colorCodeAssignment]="assignmentData.patientAssignmentMessages[0].status"> {{assignmentData.patientAssignmentMessages[0].status | dashify}}</span>              on {{assignmentData.patientAssignmentMessages[0].confirmationDate | gmt}} by {{assignmentData.patientAssignmentMessages[0].user
+              | dashify}}</dd>
           </dl>
         </div>
       </div>
