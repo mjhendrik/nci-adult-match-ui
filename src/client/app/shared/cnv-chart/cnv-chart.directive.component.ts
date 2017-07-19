@@ -9,7 +9,6 @@ import {
 import { nvD3 } from 'ng2-nvd3';
 
 declare let d3: any;
-declare let data: any;
 
 @Component({
   selector: 'cnv-chart',
@@ -21,6 +20,7 @@ export class CnvChartDirective implements OnInit {
   @Input() data: any;
   options: any;
   errorMessage: string;
+  cnvdata: any;
 
   constructor() { }
 
@@ -185,6 +185,8 @@ export class CnvChartDirective implements OnInit {
                   .select('.nv-boxPlotWithAxes')
                   .select('g')
                   .append('g');
+
+                // svg(".nv-scatterWrap").remove();
 
                 Object.keys(genes).forEach((key: any) => {
                   gene = genes[key][0];
