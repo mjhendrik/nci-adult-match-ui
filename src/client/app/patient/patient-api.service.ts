@@ -27,17 +27,17 @@ export class PatientApiService {
    * @return {string[]} The Observable for the HTTP request.
    */
   getPatientList(page: number, size: number, sortOrder: string, sortBy: string, filter: string): Observable<any[]> {
-    return this.http.get(this.url(`/patients?projection=patientSequenceNumber,currentPatientStatus,currentStepNumber,diseases.shortName,
-registrationDate,patientAssignments.treatmentArm.name,patientAssignments.treatmentArm.version&page=` + page + '&size=' + size + '&sort='
-      + sortBy + ':' + sortOrder + '&projfilter=' + filter, 'assets/mock-data/patient-list.json'))
+    return this.http.get(this.url('/patients?projection=patientSequenceNumber,currentPatientStatus,currentStepNumber,diseases.shortName,registrationDate,patientAssignments.treatmentArm.name,patientAssignments.treatmentArm.version&page='
+      + page + '&size=' + size + '&sort=' + sortBy + ':' + sortOrder + '&projfilter=' + filter, 'assets/mock-data/patient-list.json'))
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
   }
 
   getPatientCount(filter: string): Observable<number> {
-    return this.http.get(Config.API.PATIENT + `/patients/count?projection=patientSequenceNumber,currentPatientStatus,currentStepNumber,
-diseases.shortName,registrationDate,patientAssignments.treatmentArm.name,patientAssignments.treatmentArm.version&projfilter=` + filter)
+    return this.http.get(Config.API.PATIENT
+      + '/patients/count?projection=patientSequenceNumber,currentPatientStatus,currentStepNumber,diseases.shortName,registrationDate,patientAssignments.treatmentArm.name,patientAssignments.treatmentArm.version&projfilter='
+      + filter)
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);

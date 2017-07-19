@@ -128,8 +128,7 @@ export class CliaApiService {
     //   return this.http.get('assets/mock-data/clia-variant-reports-ntc-' + ntcType + '.json') // works only for mocha
 
     return this.http.get(Config.API.ION_REPORTER + '/aliquot/' + molecular_id
-      + `?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,date_variant_received,torrent_variant_caller_version,
-report_status,snv_indels,copy_number_variants,gene_fusions`)
+      + '?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,date_variant_received,torrent_variant_caller_version,report_status,snv_indels,copy_number_variants,gene_fusions')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
@@ -141,8 +140,7 @@ report_status,snv_indels,copy_number_variants,gene_fusions`)
     //   return this.http.get('assets/mock-data/clia-variant-reports-pacc-' + paccType + '.json') // works only for mocha
 
     return this.http.get(Config.API.ION_REPORTER + '/aliquot/' + molecular_id
-      + `?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,date_variant_received,torrent_variant_caller_version,
-report_status,snv_indels,copy_number_variants,gene_fusions`)
+      + '?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,date_variant_received,torrent_variant_caller_version,report_status,snv_indels,copy_number_variants,gene_fusions')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
@@ -154,8 +152,7 @@ report_status,snv_indels,copy_number_variants,gene_fusions`)
     //   return this.http.get('assets/mock-data/clia-variant-reports-pc-' + pcType + '.json') // works only for mocha
 
     return this.http.get(Config.API.ION_REPORTER + '/aliquot/' + molecular_id
-      + `?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,positive_control_version,date_molecular_id_created,
-date_variant_received,torrent_variant_caller_version,report_status,positive_variants,false_positive_variants`)
+      + '?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,positive_control_version,date_molecular_id_created,date_variant_received,torrent_variant_caller_version,report_status,positive_variants,false_positive_variants')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
@@ -167,8 +164,7 @@ date_variant_received,torrent_variant_caller_version,report_status,positive_vari
     //   return this.http.get('assets/mock-data/clia-variant-report-qc-' + tabType + '-' + cliaType + '.json') // works only for mocha
 
     return this.http.get(Config.API.ION_REPORTER + '/sample_controls/quality_control/' + molecular_id
-      + `?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,torrent_variant_caller_version,
-oncomine_control_panel_summary`)
+      + '?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,torrent_variant_caller_version,oncomine_control_panel_summary')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
