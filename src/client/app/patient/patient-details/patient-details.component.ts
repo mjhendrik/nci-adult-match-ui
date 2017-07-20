@@ -157,7 +157,7 @@ export class PatientDetailsComponent implements OnInit {
         this.isLoaded = true;
         setTimeout(() => {
           document.getElementById(this.sequence).scrollIntoView();
-        }, 1000);
+        }, 175);
       },
       (error) => {
         this.errorMessage = <any>error;
