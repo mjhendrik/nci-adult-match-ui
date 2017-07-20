@@ -85,7 +85,7 @@ export class PatientApiService {
       'assets/mock-data/copy-number-report.json'))
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
-      .catch(this.handleError);
+      .catch(err => Observable.of({ hasError: true, error: err, parsed_vcf_genes: {} }));
   }
 
   getPatientVariantReportFileInfo(psn: string, analysisId: string): Observable<any> {
