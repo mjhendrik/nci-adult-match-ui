@@ -287,8 +287,6 @@ export class ViewDataTransformer {
         map[item.patientAssignmentReasonCategory] = section;
       } else {
         section = map[item.patientAssignmentReasonCategory];
-        console.log('item.patientAssignmentReasonCategory');
-        console.log(item.patientAssignmentReasonCategory);
       }     
     }
 

@@ -10,6 +10,17 @@ import { PatientApiService } from '../patient-api.service';
 import { AssignmentReasonTableModule } from './../assignment-reason-table/assignment-reason-table.module';
 import { ViewDataTransformer } from './../view-data-transformer.service';
 import { VariantReportSimpleTableModule } from '../../shared/variant-report-simple-table/variant-report-simple-table.module';
+import { Resolve } from "@angular/router/router";
+
+export interface VariantReportData {
+  psn: string,
+  analysisId: string,
+  patient: any,
+  variantReport: any,
+  assignmentReport: any,
+  assignmentHistory: any,
+  parsed_vcf_genes: any
+}
 
 @NgModule({
   imports: [
