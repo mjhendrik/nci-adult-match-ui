@@ -35,6 +35,7 @@ export class AssignmentReportComponent implements OnInit {
   ocpSummary: any;
   dateAssigned: any;
   analysisId: any;
+  molecularSequenceNumber: any;
 
   dataAvailable: boolean;
   errorMessage: string;
@@ -56,8 +57,9 @@ export class AssignmentReportComponent implements OnInit {
             this.assignmentData = x;
         });
         this.analysisId = itemList.biopsies[0].nextGenerationSequences[0].ionReporterResults.jobName;
+        this.molecularSequenceNumber = itemList.biopsies[0].nextGenerationSequences[0].ionReporterResults.molecularSequenceNumber;
         // console.log(this.assignmentData);
-        // console.log(itemList.biopsies[0].nextGenerationSequences[0].ionReporterResults.molecularSequenceNumber);
+        // console.log(itemList);
         this.dataAvailable = true;
       },
       error => this.errorMessage = <any>error
