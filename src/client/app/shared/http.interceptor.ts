@@ -14,8 +14,9 @@ import { Observable } from 'rxjs/Rx';
 import { Config } from './config/env.config';
 
 const anyParamRe = '([-a-zA-Z0-9:%_\+.~#?&//=]+)';
-const exlcudedFromHandlingUrlPatterns = [
-    RegExp(Config.API.PATIENT + '/patients/' + anyParamRe + '/variant_reports/' + anyParamRe + '/copy_number_report')
+const excludedFromHandlingUrlPatterns = [
+    RegExp(Config.API.PATIENT + '/patients/' + anyParamRe + '/variant_reports/' + anyParamRe + '/copy_number_report'),
+    RegExp(Config.API.PATIENT + '/patients/' + anyParamRe + '/variant_reports/' + anyParamRe + '/oncomine_control_panel')
 ];
 
 @Injectable()
@@ -25,7 +26,7 @@ export class HttpInterceptor extends Http {
             return false;
 
         try {
-            for (const re of exlcudedFromHandlingUrlPatterns) {
+            for (const re of excludedFromHandlingUrlPatterns) {
                 if (re.test(url)) {
                     return true;
                 }

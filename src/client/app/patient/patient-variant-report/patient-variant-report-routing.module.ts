@@ -5,11 +5,11 @@ import {
   ActivatedRouteSnapshot,
   RouterStateSnapshot
 } from '@angular/router';
+import { Observable } from "rxjs/Observable";
 
 import { PatientVariantReportComponent } from './patient-variant-report.component';
 import { AuthGuard } from './../../shared/auth/auth.guard.service';
 import { VariantReportSimpleTableModule } from '../../shared/variant-report-simple-table/variant-report-simple-table.module';
-import { Observable } from "rxjs/Observable";
 
 import { PatientApiService } from "../patient-api.service";
 import { ViewDataTransformer } from "../view-data-transformer.service";
@@ -41,7 +41,7 @@ class DataResolver implements Resolve<VariantReportData> {
           parsed_vcf_genes: data[1].parsed_vcf_genes
         }
       }
-    ).first();
+    );
   }
 }
 
