@@ -20,7 +20,7 @@ var colorcode_variant_report_directive_1 = require('./colorcode-variant-report.d
 var active_class_directive_1 = require('./active-class.directive');
 var match_height_tab_directive_1 = require('./match-height-tab.directive');
 var fa_icon_directive_1 = require('./fa-icon.directive');
-var cnv_chart_directive_1 = require('./../cnv-chart/cnv-chart.directive');
+var cnv_chart_directive_1 = require('./../cnv-chart/cnv-chart.directive.component');
 var ng2_nvd3_1 = require('ng2-nvd3');
 var DirectivesModule = (function () {
     function DirectivesModule() {
