@@ -185,7 +185,7 @@ export class ViewDataTransformer {
       variantReport.rnaBaiFilePath = message.ionReporterResults.rnaBaiFilePath;
 
       variantReport.vcfFilePath = message.ionReporterResults.vcfFilePath;
-      variantReport.qcFile = message.ionReporterResults.qcFile;      
+      variantReport.qcFile = message.ionReporterResults.qcFile;
     }
   }
 
@@ -263,7 +263,7 @@ export class ViewDataTransformer {
       return null;
 
     let sections: AssignmentReasonSection[] = [];
-    let map: {[key:string]: AssignmentReasonSection} = {
+    let map: { [key: string]: AssignmentReasonSection } = {
       'SELECTED': null,
       'RANDOMIZE_TIE_BREAKER': null,
       'SMALLEST_ACCRUED_NUMBER_TIE_BREAKER': null,
@@ -302,7 +302,7 @@ export class ViewDataTransformer {
   private parseGeneFromAssay(assay: string): string {
     var replacer = function (match: any, p1: any, p2: any, p3: any, offset: any, string: any) {
       return p2;
-    }
+    };
 
     try {
       var regExp = /^(ICC)([A-Za-z0-9_-]*)(s)$/; // Parse out 'ICC' at the start of the value and 's' at the end, all case-sensitive

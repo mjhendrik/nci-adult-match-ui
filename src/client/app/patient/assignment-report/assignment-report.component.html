@@ -17,14 +17,13 @@
         <div class="panel-heading">
           <dl class="dl-horizontal">
             <dt>Molecular Sequence Number</dt>
-            <dd>{{assignmentData.patientAssignmentMessages[0].molecularSequenceNumber | dashify}}</dd>
+            <dd>{{molecularSequenceNumber | dashify}}</dd>
             <dt>Biopsy Sequence Number</dt>
-            <dd>{{assignmentData.patientAssignmentMessages[0].biopsySequenceNumber | dashify}}</dd>
+            <dd>{{assignmentData.biopsySequenceNumber | dashify}}</dd>
             <dt>Analysis ID</dt>
-            <dd>{{assignmentData.patientAssignmentMessages[0].analysisId | dashify}}</dd>
+            <dd>{{analysisId | dashify}}</dd>
             <dt>Status</dt>
-            <dd><span [colorCodeAssignment]="assignmentData.patientAssignmentMessages[0].status"> {{assignmentData.patientAssignmentMessages[0].status | dashify}}</span>              on {{assignmentData.patientAssignmentMessages[0].confirmationDate | gmt}} by {{assignmentData.patientAssignmentMessages[0].user
-              | dashify}}</dd>
+            <dd><span [colorCodeAssignment]="assignmentData.patientAssignmentMessages[0].status"> {{assignmentData.patientAssignmentMessages[0].status | dashify}}</span>              on {{assignmentData.dateConfirmed | gmt}} by TA Committee</dd>
           </dl>
         </div>
       </div>
@@ -34,15 +33,15 @@
         <div class="panel-heading">
           <dl class="dl-horizontal widest-dt">
             <dt>Assignment Report Status</dt>
-            <dd>{{assignmentData.patientAssignmentMessages[0].assignmentStatus | dashify}}</dd>
+            <dd>{{assignmentData.patientAssignmentStatus | dashify}}</dd>
             <dt>Assignment Report Generation Date</dt>
-            <dd>{{assignmentData.patientAssignmentMessages[0].generationDate | gmt }}</dd>
+            <dd>{{assignmentData.dateAssigned | gmt }}</dd>
             <dt>Assignment Report Confirmed Date</dt>
-            <dd>{{assignmentData.patientAssignmentMessages[0].dateConfirmed | dashify}}</dd>
+            <dd>{{assignmentData.dateConfirmed | gmt}}</dd>
             <dt>Assignment Sent to ECOG Date</dt>
-            <dd>{{assignmentData.patientAssignmentMessages[0].senttoECOGDate | gmt}}</dd>
+            <dd>{{assignmentData.dateSentToECOG | gmt}}</dd>
             <dt>Assignment Received by ECOG Date</dt>
-            <dd>{{assignmentData.patientAssignmentMessages[0].receivedfromECOGDate | gmt}}</dd>
+            <dd>{{assignmentData.dateReceivedByECOG | gmt}}</dd>
           </dl>
         </div>
       </div>
@@ -52,11 +51,11 @@
     <div class="panel-heading">
       <div class="row">
         <div class="col-md-12">
-          <h4>Selected Treatment Arm: <span class="text-success-light">{{assignmentData.patientAssignmentMessages[0].selectedTreatmentArm | dashify}}</span></h4>
+          <h4>Selected Treatment Arm: <span class="text-success-light">{{assignmentData.patientAssignmentMessages[0].treatmentArmId | dashify}} ({{assignmentData.treatmentArm.version | dashify}})</span></h4>
           <div class="panel panel-success overflow-hidden">
             <div class="panel-heading">
               <p>
-                {{assignmentData.patientAssignmentMessages[0].assignmentReason | dashify}}
+                {{assignmentData.patientAssignmentMessages[0].message | dashify}}
               </p>
             </div>
           </div>
@@ -68,7 +67,7 @@
     <div class="panel-heading">
       <div class="row">
         <div class="col-md-12">
-          <sd-assignment-reason-table [reasons]="assignmentData.patientAssignmentMessages[0].reasons"></sd-assignment-reason-table>
+          <sd-assignment-reason-table [reasons]="assignmentData.patientAssignmentLogic"></sd-assignment-reason-table>
         </div>
       </div>
     </div>
