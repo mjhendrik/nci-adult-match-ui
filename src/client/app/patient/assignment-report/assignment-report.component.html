@@ -51,7 +51,7 @@
     <div class="panel-heading">
       <div class="row">
         <div class="col-md-12">
-          <h4>Selected Treatment Arm: <span class="text-success-light">{{assignmentData.patientAssignmentMessages[0].treatmentArmId | dashify}}</span></h4>
+          <h4>Selected Treatment Arm: <span class="text-success-light">{{assignmentData.patientAssignmentMessages[0].treatmentArmId | dashify}} ({{assignmentData.treatmentArm.version | dashify}})</span></h4>
           <div class="panel panel-success overflow-hidden">
             <div class="panel-heading">
               <p>
@@ -67,7 +67,7 @@
     <div class="panel-heading">
       <div class="row">
         <div class="col-md-12">
-          <sd-assignment-reason-table [reasons]="assignmentData.patientAssignmentMessages[0].reasons"></sd-assignment-reason-table>
+          <sd-assignment-reason-table [reasons]="assignmentData.patientAssignmentLogic"></sd-assignment-reason-table>
         </div>
       </div>
     </div>
