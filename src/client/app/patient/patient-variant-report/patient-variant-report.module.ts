@@ -19,7 +19,13 @@ export interface VariantReportData {
   variantReport: any,
   assignmentReport: any,
   assignmentHistory: any,
-  parsed_vcf_genes: any
+  parsed_vcf_genes: any,
+  tvc_version: string,
+  pool1: number,
+  pool2: number,
+  mapd: string,
+  cellularity: any,
+  showPools: boolean
 }
 
 @NgModule({

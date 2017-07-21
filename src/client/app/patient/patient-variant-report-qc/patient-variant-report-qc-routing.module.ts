@@ -44,6 +44,11 @@ class DataResolver implements Resolve<QcVariantReportData> {
       this.api.getPatientVariantReportFileInfo(psn, analysisId)
     ).map(
       data => {
+        // getPatientVariantReportQc => data[0]
+        // getPatientVariantReportOcp => data[1]
+        // getPatientCopyNumberReport => data[2]
+        // getPatientVariantReportFileInfo => data[3]
+
         let snvAndIndels: any[] = data[0].indels || [];
         snvAndIndels = snvAndIndels.concat(data[0].single_nucleotide_variants || [])
         let ocpSummary: {[key:string]: any} = data[1].genes;
@@ -58,7 +63,7 @@ class DataResolver implements Resolve<QcVariantReportData> {
           cnv: data[0].copy_number_variants || [],
           geneFusions: data[0].gene_fusions || [],
           snvAndIndels: snvAndIndels,
-          tvc_version: data[1].tvc_version,
+          tvc_version: tvc_version,
           pool1: data[1].pool1,
           pool2: data[1].pool2,
           biopsySequenceNumber: data[1].biopsySequenceNumber,

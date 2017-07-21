@@ -23,22 +23,40 @@ class DataResolver implements Resolve<VariantReportData> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<VariantReportData> | Promise<VariantReportData> | VariantReportData {
+    const psn: string = route.params.patientSequenceNumber;
+    const analysisId: string = route.params.analysisId;
+
     return Observable.forkJoin(
-      this.api.getPatientDetails(route.params.patientSequenceNumber),
-      this.api.getPatientCopyNumberReport(route.params.patientSequenceNumber, route.params.analysisId)
+      this.api.getPatientDetails(psn),
+      this.api.getPatientCopyNumberReport(psn, analysisId),
+      this.api.getPatientVariantReportOcp(psn, analysisId)
     ).map(
       data => {
+        // getPatientDetails => data[0]
+        // getPatientVariantReportOcp => data[1]
+        // getPatientCopyNumberReport => data[2]
+        
         const patient = this.transformer.transformPatient(data[0]) || {};
         const analysis = patient.analyses[route.params.analysisId] || {};
+
+        let tvc_version = data[1].tvc_version;
+        let showPools: boolean = tvc_version && tvc_version.startsWith("5.2")            
+
         return {
-          psn: route.params.patientSequenceNumber,
+          psn: psn,
           analysisId: route.params.analysisId,
           patient: patient,
           analysis: analysis,
           variantReport: analysis.variantReport,
           assignmentReport: analysis.assignmentReport,
           assignmentHistory: patient.patientAssignments,
-          parsed_vcf_genes: data[1].parsed_vcf_genes
+          parsed_vcf_genes: data[1].parsed_vcf_genes,
+          tvc_version: tvc_version,
+          pool1: data[1].pool1,
+          pool2: data[1].pool2,
+          mapd: data[2].mapd,
+          cellularity: data[1].cellularity,
+          showPools: showPools
         }
       }
     );
