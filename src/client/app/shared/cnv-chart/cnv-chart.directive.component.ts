@@ -4,16 +4,52 @@
 import {
   Component,
   OnInit,
-  Input
+  Input,
+  animate,
+  transition, style,
+  trigger
 } from '@angular/core';
 import { nvD3 } from 'ng2-nvd3';
+import {PopupModule} from 'ng2-opd-popup';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
+// import { animations } from './../shared/router.animations';
 
 declare let d3: any;
 
 @Component({
   selector: 'cnv-chart',
+  animations: [
+    trigger(
+      'expandChart',
+      [
+        transition(
+          ':enter', [
+            style({transform: 'translateX(100%)', 'opacity': 0}),
+            animate('500ms', style({transform: 'translateX(0)', 'opacity': 1}))
+          ]
+        ),
+        transition(
+          ':leave', [
+            style({transform: 'translateX(0)', 'opacity': 1}),
+            animate('500ms', style({transform: 'translateX(100%)', 'opacity': 0}))
+          ])])
+  ],
   providers: [nvD3],
-  template: '<div> <nvd3 id="boxplotchart" [options]="options" [data]="cnvdata" ></nvd3> </div>'
+  template: '<div>'
+    // + '<div *ngIf="show"  class="box">'
+    // + '<a class="btn btn-small btn-info" href="#" (click)="show = !show">({{show}})>'
+    // + '<a class="btn btn-small" href="#">'
+    // + '<i class="fa fa-search-plus"></i></a>'
+  + '<i class="fa fa-search-plus fa-2x" aria-hidden="true" *ngIf="!show" (click)="show = !show" style="cursor: pointer"></i>'
+  + '<i class="fa fa-search-minus fa-2x" aria-hidden="true" *ngIf="show" (click)="show = !show" style="cursor: pointer"></i>'
+  + '<div *ngIf="show" [@expandChart]>Expand</div>'
+  // + '<i class="fa fa-calendar fa-2x" aria-hidden="true" ng-if="show == true" ng-click="" style="cursor: pointer"></i>'
+  // + '<i class="fa fa-bar-chart fa-2x" aria-hidden="true" ng-if="show == false" ng-click="" style="cursor: pointer"></i>'
+
+    // '<button (click)="show = !show">({{show}})'
+    // + '<i class="fa fa-search-plus" aria-hidden="true"></i> </button>'
+    + '<nvd3 id="boxplotchart" [options]="options" [data]="cnvdata" ></nvd3>'
+    + '</div>'
 })
 
 export class CnvChartDirective implements OnInit {
@@ -38,7 +74,7 @@ export class CnvChartDirective implements OnInit {
             var median = array[key].raw_copy_number;
             var position = array[key].position;
             var chromosome = array[key].chromosome;
-            var status = !array[key].tsg_gene ? 'Crimson' : 'Green';
+            var status = !array[key].tsg_gene ? '#CD0000' : 'Green';
 
             var min = values[0];
             var max = values[10];
@@ -56,6 +92,7 @@ export class CnvChartDirective implements OnInit {
                 Q3: parseFloat(max),
                 whisker_low: 0.95 * parseFloat(min),
                 whisker_high: 1.05 * parseFloat(max),
+                // outliers: []
                 outliers: [0.95 * parseFloat(min), parseFloat(median), 1.05 * parseFloat(max)]
               }
             };
@@ -81,6 +118,15 @@ export class CnvChartDirective implements OnInit {
                 xDomain: [0, 5],
                 xRange: [0, 10]
               },
+              outliers: function (d: any) {
+                return d.values.outliers;
+              },
+              outlierLabel: function (d: any) {
+                return d;
+              },
+              // chr: function (d: any) {
+              //   return d.chr;
+              // },
               color: function (d: any) {
                 return d.status;
               },
@@ -95,16 +141,23 @@ export class CnvChartDirective implements OnInit {
                   var label;
                   var position;
                   var cn;
-                  var chr;
+                  var chr = '';
                   var cl95;
                   var cl05;
                   var html;
                   var li;
                   var color;
 
-                  chr = 'CHR: ' + d.data.chr;
-
                   label = d.key;
+
+                  if (typeof d.data.chr !== 'undefined') {
+                    chr = 'CHR: ' + d.data.chr;
+                  }
+                  else{
+                    chr = '';
+                  }
+                  // chr = 'CHR: ' + d.data.chr;
+
                   position = 'POS: ' + d.data.values.position;
                   cn = 'CN: ' + d.data.values.cn;
                   color = 'color: white; background-color: ' + d.data.status;
@@ -118,6 +171,7 @@ export class CnvChartDirective implements OnInit {
                   li += '<li>' + chr + '</li>';
                   li += '<li>' + cl95 + '</li>';
                   li += '<li>' + cl05 + '</li>';
+
                   html += '<ul class="list-group" style="list-style-type: none;">' + li + '</ul>';
 
                   return html;
@@ -169,8 +223,20 @@ export class CnvChartDirective implements OnInit {
                 tickFormat: function (d: any) {
                   return d3.format(',.0d')(d);
                 },
+                // showMaxMin : function (d: any) {
+                //   return false;
+                // },
                 axisLabelDistance: 30
               },
+              // title: {
+              //   enable: function () { return true },
+              //   text: function () { return "Write Your Title" }
+              //   // className: "h4"
+              //   // css: {
+              //   //   width: "nullpx",
+              //   //   textAlign: "center"
+              //   // }
+              // },
               callback: function(chart: any) {
                 var height = 370;
                 var chr: any;
@@ -227,7 +293,7 @@ export class CnvChartDirective implements OnInit {
                       svg.append("text")
                         .attr("class", "nv-zeroLine")
                         // .attr("x", 0.5 * parseFloat(spot + prespot))
-                        .attr("x", parseFloat(spot) + 3)
+                        .attr("x", parseFloat(spot) + 1)
                         .attr("y", 365)
                         .text(chrnum)
                         .style("fill", "#c70505")
