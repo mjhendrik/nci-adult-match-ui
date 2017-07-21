@@ -265,7 +265,6 @@ export function main() {
                 templateUrl: ''
               }
             }).createComponent(PatientDetailsComponent);
-            fixture.componentInstance.getData("123");
           });
       }));
 
