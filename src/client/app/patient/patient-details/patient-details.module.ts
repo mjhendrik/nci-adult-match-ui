@@ -18,23 +18,7 @@ export interface PatientData {
   psn: string,
   patient: any,
   summaryData: any,
-  biopsyData: any,
-  disease: any,
-
-  analysisId: string,
-  uploadedFiles: any[],
-  fileCount: number,
-
-  variantZip: boolean,
-  dnaBam: boolean,
-  cdnaBam: boolean,
-  sequence: any,
-  changeDetector: ChangeDetectorRef,
-  configVariantZip: DropzoneConfigInterface,
-  configDnaBam: DropzoneConfigInterface,
-  configCdnaBam: DropzoneConfigInterface,
-  configDocuments: DropzoneConfigInterface,
-
+  analysisId: string
 }
 
 const DROPZONE_CONFIG: DropzoneConfigInterface = {

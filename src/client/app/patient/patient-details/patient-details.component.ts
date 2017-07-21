@@ -8,6 +8,7 @@ import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 import { routerTransition } from './../../shared/router.animations';
 import { PatientApiService } from '../patient-api.service';
 import { ViewDataTransformer } from './../view-data-transformer.service';
+import { PatientData } from "./patient-details.module";
 
 @Component({
   moduleId: module.id,
@@ -17,12 +18,10 @@ import { ViewDataTransformer } from './../view-data-transformer.service';
   animations: [routerTransition()],
   host: { '[@routerTransition]': '' }
 })
-export class PatientDetailsComponent implements OnInit {
+export class PatientDetailsComponent implements OnInit, PatientData {
 
   isLoaded: boolean;
   summaryData: any = {};
-  biopsyData: any = {};
-  disease: any = {};
 
   psn: string;
   patient: any;
@@ -36,7 +35,6 @@ export class PatientDetailsComponent implements OnInit {
   dnaBam: boolean = false;;
   cdnaBam: boolean = false;;
   sequence: any;
-  changeDetector: ChangeDetectorRef;
   configVariantZip: DropzoneConfigInterface;
   configDnaBam: DropzoneConfigInterface;
   configCdnaBam: DropzoneConfigInterface;
