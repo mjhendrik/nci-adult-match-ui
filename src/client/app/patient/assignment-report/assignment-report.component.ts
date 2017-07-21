@@ -58,8 +58,6 @@ export class AssignmentReportComponent implements OnInit {
         });
         this.analysisId = itemList.biopsies[0].nextGenerationSequences[0].ionReporterResults.jobName;
         this.molecularSequenceNumber = itemList.biopsies[0].nextGenerationSequences[0].ionReporterResults.molecularSequenceNumber;
-        // console.log(this.assignmentData);
-        // console.log(itemList);
         this.dataAvailable = true;
       },
       error => this.errorMessage = <any>error

@@ -56,7 +56,7 @@ export class PatientDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.psn = this.route.snapshot.params['patientSequenceNumber'];
-    this.sequence = this.route.snapshot.params['sequence'] ? this.route.snapshot.params['sequence'] : 'p';
+    this.sequence = this.route.snapshot.params['sequence'] ? this.route.snapshot.params['sequence'] : 'psn';
     this.getData(this.psn);
 
     this.changeDetector = this.ref;

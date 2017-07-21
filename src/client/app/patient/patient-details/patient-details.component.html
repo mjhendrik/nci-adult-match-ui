@@ -65,8 +65,8 @@
     <div class="col-md-12">
       <div class="panel">
         <ul class="nav nav-tabs nav-tabs-purple">
-          <li id="p" [class.active]="this.sequence=='p'"><a href="#tab-summary" data-toggle="tab">Summary</a></li>
-          <li id="b" [class.active]="this.sequence=='b' || this.sequence=='m'" *ngFor="let biopsy of patient.biopsies; first as isFirst">
+          <li id="psn" [class.active]="this.sequence=='psn'"><a href="#tab-summary" data-toggle="tab">Summary</a></li>
+          <li id="bsn" [class.active]="this.sequence=='bsn' || this.sequence=='msn'" *ngFor="let biopsy of patient.biopsies; first as isFirst">
             <a href="#tab-biopsy-t-{{biopsy.biopsySequenceNumber}}" data-toggle="tab">
               <i *ngIf="isFirst" class="fa fa-bell-o" aria-hidden="true"></i> Biopsy {{biopsy.biopsySequenceNumber}}, {{biopsy.dateCreated | gmt: 'YYYY-MM-DD'}}
             </a>
@@ -74,7 +74,7 @@
           <li class=""><a href="#tab-documents" data-toggle="tab">Documents</a></li>
         </ul>
         <div class="tab-content m-b-0">
-          <div class="tab-pane fade in" id="tab-summary" [class.active]="this.sequence=='p'">
+          <div class="tab-pane fade in" id="tab-summary" [class.active]="this.sequence=='psn'">
             <div class="row">
               <div class="col-md-3" *ngIf="summaryData.pendingVariant">
                 <div class="widget widget-stat bg-danger">
@@ -105,7 +105,7 @@
               </div>
             </div>
           </div>
-          <div *ngFor="let biopsy of patient.biopsies" class="tab-pane fade in" [class.active]="this.sequence=='b' || this.sequence=='m'"
+          <div *ngFor="let biopsy of patient.biopsies" class="tab-pane fade in" [class.active]="this.sequence=='bsn' || this.sequence=='msn'"
             id="tab-biopsy-t-{{biopsy.biopsySequenceNumber}}">
             <div class="panel-heading">
               <h4 class="panel-title f-s-18">Biopsy: {{biopsy.biopsySequenceNumber}}
@@ -180,11 +180,11 @@
               <div class="col-md-12">
                 <div class="panel panel-accent-bottom-purple">
                   <div class="panel-heading">
-                    <h4 class="panel-title f-s-18" id='m'>Nucleic Acid Sendout
+                    <h4 class="panel-title f-s-18" id='msn'>Nucleic Acid Sendout
                     </h4>
                   </div>
                   <div class="table-responsive">
-                    <table class="table table-td-valign-middle" id="m">
+                    <table class="table table-td-valign-middle" id="msn">
                       <thead>
                         <tr>
                           <th>Molecular Sequence Number</th>
