@@ -1,4 +1,5 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ChangeDetectorRef } from '@angular/core';
+
 import { CommonModule } from '@angular/common';
 import { PatientDetailsComponent } from './patient-details.component';
 import { PatientDetailsRoutingModule } from './patient-details-routing.module';
@@ -12,6 +13,29 @@ import { ViewDataTransformer } from './../view-data-transformer.service';
 
 import { DropzoneModule } from 'ngx-dropzone-wrapper';
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
+
+export interface PatientData {
+  psn: string,
+  patient: any,
+  summaryData: any,
+  biopsyData: any,
+  disease: any,
+
+  analysisId: string,
+  uploadedFiles: any[],
+  fileCount: number,
+
+  variantZip: boolean,
+  dnaBam: boolean,
+  cdnaBam: boolean,
+  sequence: any,
+  changeDetector: ChangeDetectorRef,
+  configVariantZip: DropzoneConfigInterface,
+  configDnaBam: DropzoneConfigInterface,
+  configCdnaBam: DropzoneConfigInterface,
+  configDocuments: DropzoneConfigInterface,
+
+}
 
 const DROPZONE_CONFIG: DropzoneConfigInterface = {
   // Change this to your upload POST address:

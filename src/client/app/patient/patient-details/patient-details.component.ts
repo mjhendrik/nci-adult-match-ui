@@ -44,7 +44,7 @@ export class PatientDetailsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private patientApi: PatientApiService,
-    private ref: ChangeDetectorRef,
+    private changeDetector: ChangeDetectorRef,
     private transformer: ViewDataTransformer,
     private router: Router) {
     this.sequence = '';
@@ -59,7 +59,7 @@ export class PatientDetailsComponent implements OnInit {
     this.sequence = this.route.snapshot.params['sequence'] ? this.route.snapshot.params['sequence'] : 'psn';
     this.getData(this.psn);
 
-    this.changeDetector = this.ref;
+    this.changeDetector = this.changeDetector;
 
     const DROPZONE_CONFIG_VARIANT_ZIP: DropzoneConfigInterface = {
 
@@ -182,36 +182,36 @@ export class PatientDetailsComponent implements OnInit {
 
   addedFileVariantZip(evt: any): void {
     this.variantZip = true;
-    this.ref.detectChanges();
+    this.changeDetector.detectChanges();
     // console.log(evt);
   }
 
   removedFileVariantZip(): void {
     this.variantZip = false;
-    this.ref.detectChanges();
+    this.changeDetector.detectChanges();
   }
 
   addedFileDnaBam(evt: any): void {
     this.dnaBam = true;
-    this.ref.detectChanges();
+    this.changeDetector.detectChanges();
   }
 
   removedFileDnaBam(): void {
     this.dnaBam = false;
-    this.ref.detectChanges();
+    this.changeDetector.detectChanges();
   }
 
   addedFileCdnaBam(evt: any): void {
     this.cdnaBam = true;
-    this.ref.detectChanges();
+    this.changeDetector.detectChanges();
   }
 
   removedFileCdnaBam(): void {
     this.cdnaBam = false;
-    this.ref.detectChanges();
+    this.changeDetector.detectChanges();
   }
 
   detectChanges(): void {
-    this.ref.detectChanges();
+    this.changeDetector.detectChanges();
   }
 }
