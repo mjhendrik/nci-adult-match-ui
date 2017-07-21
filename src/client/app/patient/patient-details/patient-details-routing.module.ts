@@ -29,7 +29,7 @@ class DataResolver implements Resolve<PatientData> {
   }
 
   constructor(
-    private api: PatientApiService, 
+    private api: PatientApiService,
     private transformer: ViewDataTransformer) { }
 
   resolve(
@@ -49,7 +49,7 @@ class DataResolver implements Resolve<PatientData> {
             psn: psn,
             analysisId: analysisId,
             patient: patient,
-            summaryData: null
+            summaryData: {}
           };
         }
       );
@@ -62,12 +62,14 @@ class DataResolver implements Resolve<PatientData> {
       {
         path: 'patients/:patientSequenceNumber',
         component: PatientDetailsComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        resolve: { data: DataResolver }
       },
       {
         path: 'patients/:patientSequenceNumber/:sequence',
         component: PatientDetailsComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        resolve: { data: DataResolver }
       }
     ])
   ],
