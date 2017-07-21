@@ -20,21 +20,19 @@ import { PatientData } from "./patient-details.module";
 })
 export class PatientDetailsComponent implements OnInit, PatientData {
 
-  isLoaded: boolean;
-  summaryData: any = {};
-
   psn: string;
   patient: any;
-  errorMessage: string;
+  summaryData: any = {};
 
   analysisId: string = '';
+
+  sequence: string = '';
+
   uploadedFiles: any[];
   fileCount: number = 0;
-
   variantZip: boolean = false;
   dnaBam: boolean = false;;
   cdnaBam: boolean = false;;
-  sequence: any;
   configVariantZip: DropzoneConfigInterface;
   configDnaBam: DropzoneConfigInterface;
   configCdnaBam: DropzoneConfigInterface;
@@ -45,7 +43,6 @@ export class PatientDetailsComponent implements OnInit, PatientData {
     private changeDetector: ChangeDetectorRef,
     private transformer: ViewDataTransformer,
     private router: Router) {
-    this.sequence = '';
   }
 
   download(file: string) {
@@ -53,9 +50,11 @@ export class PatientDetailsComponent implements OnInit, PatientData {
   }
 
   ngOnInit() {
-    this.psn = this.route.snapshot.params['patientSequenceNumber'];
-    this.sequence = this.route.snapshot.params['sequence'] ? this.route.snapshot.params['sequence'] : 'psn';
-    this.getData(this.psn);
+    Object.assign(this, this.route.snapshot.data['data']);
+
+    setTimeout(() => {
+      document.getElementById(this.sequence).scrollIntoView();
+    }, 190);
 
     this.changeDetector = this.changeDetector;
 
@@ -81,7 +80,6 @@ export class PatientDetailsComponent implements OnInit, PatientData {
         // file._id = _id;
         // addedFilesHash[_id] = done;
       }
-
     };
 
     this.configVariantZip = DROPZONE_CONFIG_VARIANT_ZIP;
@@ -146,22 +144,6 @@ export class PatientDetailsComponent implements OnInit, PatientData {
 
     this.configDocuments = DROPZONE_CONFIG_DOCUMENTS;
 
-  }
-
-  getData(psn: string) {
-    this.patientApi.getPatientDetails(psn)
-      .subscribe((response: any) => {
-        this.patient = this.transformer.transformPatient(response);
-        this.isLoaded = true;
-        setTimeout(() => {
-          document.getElementById(this.sequence).scrollIntoView();
-        }, 190);
-      },
-      (error) => {
-        this.errorMessage = <any>error;
-        console.error(error);
-      }
-      );
   }
 
   onUploadSuccess(evt: any): void {

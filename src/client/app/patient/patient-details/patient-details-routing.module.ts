@@ -11,6 +11,7 @@ import { AuthGuard } from './../../shared/auth/auth.guard.service';
 import { PatientApiService } from "../patient-api.service";
 import { PatientData } from "./patient-details.module";
 import { Observable } from "rxjs/Observable";
+import { ViewDataTransformer } from "../view-data-transformer.service";
 
 
 @Injectable()
@@ -27,7 +28,9 @@ class DataResolver implements Resolve<PatientData> {
     return sum;
   }
 
-  constructor(private api: PatientApiService, private transformer: ViewDataTransformer) { }
+  constructor(
+    private api: PatientApiService, 
+    private transformer: ViewDataTransformer) { }
 
   resolve(
     route: ActivatedRouteSnapshot,
@@ -36,19 +39,19 @@ class DataResolver implements Resolve<PatientData> {
 
     const psn: string = route.params['patientSequenceNumber']
     const analysisId: string = route.params['analysisId']
-    const sequence = route.params['sequence'] ? this.route.snapshot.params['sequence'] : 'psn';
+    const sequence: string = route.params['sequence'] ? route.params['sequence'] : 'psn';
 
     return this.api.getPatientDetails(psn)
       .map(
-      data => {
-        const patient = this.transformer.transformPatient(response);
-        return {
-          psn: psn,
-          analysisId: analysisId,
-          patient: patient,
-          summaryData: null
-        };
-      }
+        data => {
+          const patient = this.transformer.transformPatient(data);
+          return {
+            psn: psn,
+            analysisId: analysisId,
+            patient: patient,
+            summaryData: null
+          };
+        }
       );
   }
 }
