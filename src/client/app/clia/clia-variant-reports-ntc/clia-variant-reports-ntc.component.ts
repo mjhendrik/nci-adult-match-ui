@@ -5,10 +5,7 @@ import {
 import { ActivatedRoute } from '@angular/router';
 
 import { routerTransition } from './../../shared/router.animations';
-import {
-  CliaApiService,
-  CliaVariantReportsNTCInterface
-} from './../clia-api.service';
+import { CliaApiService } from './../clia-api.service';
 
 
 /**
@@ -56,27 +53,22 @@ export class CliaVariantReportsNtcComponent implements OnInit {
 
     this.molecular_id = this.route.snapshot.params['id'];
 
-    this.getData();
+    this.getData(this.route.snapshot.data['data'].data);
   }
 
-  getData() {
-    this.cliaApi.getCliaVariantReportsNTC(this.molecular_id)
-      .subscribe((itemList: CliaVariantReportsNTCInterface) => {
-        this.molecular_id = itemList.molecular_id;
-        this.analysis_id = itemList.analysis_id;
-        this.total_variants = itemList.total_variants;
-        this.mapd = itemList.mapd;
-        this.cellularity = itemList.cellularity;
-        this.date_variant_received = itemList.date_variant_received;
-        this.torrent_variant_caller_version = itemList.torrent_variant_caller_version;
-        this.report_status = itemList.report_status;
-        this.dataAvailable = true;
-        this.copy_number_variants = itemList.copy_number_variants;
-        this.gene_fusions = itemList.gene_fusions;
-        this.snv_indels = itemList.snv_indels;
-      },
-      error => this.errorMessage = <any>error
-      );
+  getData(itemList: any) {
+    this.molecular_id = itemList.molecular_id;
+    this.analysis_id = itemList.analysis_id;
+    this.total_variants = itemList.total_variants;
+    this.mapd = itemList.mapd;
+    this.cellularity = itemList.cellularity;
+    this.date_variant_received = itemList.date_variant_received;
+    this.torrent_variant_caller_version = itemList.torrent_variant_caller_version;
+    this.report_status = itemList.report_status;
+    this.dataAvailable = true;
+    this.copy_number_variants = itemList.copy_number_variants;
+    this.gene_fusions = itemList.gene_fusions;
+    this.snv_indels = itemList.snv_indels;
   };
 
   downloadDnaBam(): void {

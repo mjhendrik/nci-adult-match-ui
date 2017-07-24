@@ -5,10 +5,7 @@ import {
 import { ActivatedRoute } from '@angular/router';
 
 import { routerTransition } from './../../shared/router.animations';
-import {
-  CliaApiService,
-  CliaVariantReportsQCInterface
-} from '../clia-api.service';
+import { CliaApiService } from '../clia-api.service';
 
 /**
  * CliaVariantReportQcComponent.
@@ -94,7 +91,7 @@ export class CliaVariantReportQcComponent implements OnInit {
     this.copy_number_variants = itemList.copy_number_variants;
     this.gene_fusions = itemList.gene_fusions;
     this.snv_indels = itemList.snv_indels;
-  }
+  };
 
   downloadDnaBam(): void {
     this.cliaApi.downloadCliaDnaBam(this.molecular_id)
