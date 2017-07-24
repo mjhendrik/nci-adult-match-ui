@@ -85,7 +85,7 @@ export class TreatmentArmDetailsComponent implements OnInit {
 
   versionData: any[];
   tableData: any[];
-  dataAvailable: boolean = false;
+  dataAvailable: boolean = true;
 
   errorMessage: string;
 
@@ -159,122 +159,115 @@ export class TreatmentArmDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getVersionsData();
-    this.getDetailsData();
+    this.getVersionsData(this.route.snapshot.data['data'].versionData);
+    this.getDetailsData(this.route.snapshot.data['data'].details);
   }
 
-  getDetailsData() {
+  getDetailsData(itemList: any) {
     let gmt = new GmtPipe();
-    this.treatmentArmApi.getTreatmentArmDetails(this.route.snapshot.params['id'])
-      .subscribe(itemList => {
 
-        this.tableData = itemList;
+    this.tableData = itemList;
 
-        this.tableData[0].summaryReport.assignmentRecords = itemList[0].summaryReport.assignmentRecords.map((x: any) => {
-          x.dateSelected = gmt.transform(x.dateSelected);
-          x.dateOnArm = gmt.transform(x.dateOnArm);
-          x.dateOffArm = gmt.transform(x.dateOffArm);
-          return x;
+    this.tableData[0].summaryReport.assignmentRecords = itemList[0].summaryReport.assignmentRecords.map((x: any) => {
+      x.dateSelected = gmt.transform(x.dateSelected);
+      x.dateOnArm = gmt.transform(x.dateOnArm);
+      x.dateOffArm = gmt.transform(x.dateOffArm);
+      return x;
+    });
+
+    if (this.tableData[this.versionIndex] !== null) {
+      let assignmentRecords = this.tableData[this.versionIndex].summaryReport.assignmentRecords;
+
+      this.barChartLabels = assignmentRecords.map((x: any) => {
+        return x.disease.shortName + '(' + x.disease.meddraCode + ')';
+      });
+      this.barChartLabels = Array.from(new Set(this.barChartLabels));
+
+      let statusArray: any = {};
+      let tastatus: number = 0;
+      let offtrailstatus: number = 0;
+      let pendingstatus: number = 0;
+
+      assignmentRecords.forEach((element: any) => {
+        this.barChartLabels.forEach((label: any) => {
+          if (label.indexOf(element.disease.shortName) !== -1) {
+            if (statusArray[element.disease.shortName] === undefined) {
+              statusArray[element.disease.shortName] = '';
+            }
+            statusArray[element.disease.shortName] = statusArray[element.disease.shortName] + JSON.stringify(element) + '|||';
+          }
         });
+      });
 
-        if (this.tableData[this.versionIndex] !== null) {
-          let assignmentRecords = this.tableData[this.versionIndex].summaryReport.assignmentRecords;
+      let result: any = {};
 
-          this.barChartLabels = assignmentRecords.map((x: any) => {
-            return x.disease.shortName + '(' + x.disease.meddraCode + ')';
-          });
-          this.barChartLabels = Array.from(new Set(this.barChartLabels));
-
-          let statusArray: any = {};
-          let tastatus: number = 0;
-          let offtrailstatus: number = 0;
-          let pendingstatus: number = 0;
-
-          assignmentRecords.forEach((element: any) => {
-            this.barChartLabels.forEach((label: any) => {
-              if (label.indexOf(element.disease.shortName) !== -1) {
-                if (statusArray[element.disease.shortName] === undefined) {
-                  statusArray[element.disease.shortName] = '';
-                }
-                statusArray[element.disease.shortName] = statusArray[element.disease.shortName] + JSON.stringify(element) + '|||';
-              }
-            });
-          });
-
-          let result: any = {};
-
-          Object.keys(statusArray).forEach((key: any) => {
-            let disease = statusArray[key].split('|||');
-            tastatus = 0;
-            pendingstatus = 0;
-            offtrailstatus = 0;
-            disease.forEach((elem: any) => {
-              let element;
-              if (elem !== '') {
-                element = JSON.parse(elem);
-                if (element.assignmentStatusOutcome === 'ON_TREATMENT_ARM') {
-                  tastatus++;
-                } else if ('PENDING_APPROVAL,PENDING_CONFIRMATION'.indexOf(element.assignmentStatusOutcome) !== -1) {
-                  pendingstatus++;
-                } else if (`FORMERLY_ON_ARM_OFF_TRIAL, FORMERLY_ON_ARM_PROGRESSED, OFF_TRIAL_DECEASED, 
+      Object.keys(statusArray).forEach((key: any) => {
+        let disease = statusArray[key].split('|||');
+        tastatus = 0;
+        pendingstatus = 0;
+        offtrailstatus = 0;
+        disease.forEach((elem: any) => {
+          let element;
+          if (elem !== '') {
+            element = JSON.parse(elem);
+            if (element.assignmentStatusOutcome === 'ON_TREATMENT_ARM') {
+              tastatus++;
+            } else if ('PENDING_APPROVAL,PENDING_CONFIRMATION'.indexOf(element.assignmentStatusOutcome) !== -1) {
+              pendingstatus++;
+            } else if (`FORMERLY_ON_ARM_OFF_TRIAL, FORMERLY_ON_ARM_PROGRESSED, OFF_TRIAL_DECEASED, 
 OFF_TRIAL`.indexOf(element.assignmentStatusOutcome) !== -1) {
-                  offtrailstatus++;
-                }
-                result[key] = {
-                  'offtrail': offtrailstatus,
-                  'pending': pendingstatus,
-                  'onta': tastatus
-                };
-              }
-            });
-          });
+              offtrailstatus++;
+            }
+            result[key] = {
+              'offtrail': offtrailstatus,
+              'pending': pendingstatus,
+              'onta': tastatus
+            };
+          }
+        });
+      });
 
-          Object.keys(result).forEach((key: any) => {
-            this.barChartData[0].data.push(10);
-            this.barChartData[1].data.push(result[key].offtrail);
-            this.barChartData[2].data.push(result[key].onta);
-            this.barChartData[3].data.push(result[key].pending);
-          });
+      Object.keys(result).forEach((key: any) => {
+        this.barChartData[0].data.push(10);
+        this.barChartData[1].data.push(result[key].offtrail);
+        this.barChartData[2].data.push(result[key].onta);
+        this.barChartData[3].data.push(result[key].pending);
+      });
 
 
-          let itemsSnv: any[] = this.tableData[this.versionIndex].variantReport.singleNucleotideVariants;
-          this.snvIn = itemsSnv.filter(item => item.inclusion === true);
-          this.snvEx = itemsSnv.filter(item => item.inclusion === false);
+      let itemsSnv: any[] = this.tableData[this.versionIndex].variantReport.singleNucleotideVariants;
+      this.snvIn = itemsSnv.filter(item => item.inclusion === true);
+      this.snvEx = itemsSnv.filter(item => item.inclusion === false);
 
-          let itemsIndel: any[] = this.tableData[this.versionIndex].variantReport.indels;
-          this.snvIn = this.snvIn.concat(itemsIndel.filter(item => item.inclusion === true));
-          this.snvEx = this.snvEx.concat(itemsIndel.filter(item => item.inclusion === false));
+      let itemsIndel: any[] = this.tableData[this.versionIndex].variantReport.indels;
+      this.snvIn = this.snvIn.concat(itemsIndel.filter(item => item.inclusion === true));
+      this.snvEx = this.snvEx.concat(itemsIndel.filter(item => item.inclusion === false));
 
-          let itemsCnv: any[] = this.tableData[this.versionIndex].variantReport.copyNumberVariants;
-          this.cnvIn = itemsCnv.filter(item => item.inclusion === true);
-          this.cnvEx = itemsCnv.filter(item => item.inclusion === false);
+      let itemsCnv: any[] = this.tableData[this.versionIndex].variantReport.copyNumberVariants;
+      this.cnvIn = itemsCnv.filter(item => item.inclusion === true);
+      this.cnvEx = itemsCnv.filter(item => item.inclusion === false);
 
-          let itemsGene: any[] = this.tableData[this.versionIndex].variantReport.geneFusions;
-          this.geneIn = itemsGene.filter(item => item.inclusion === true);
-          this.geneEx = itemsGene.filter(item => item.inclusion === false);
+      let itemsGene: any[] = this.tableData[this.versionIndex].variantReport.geneFusions;
+      this.geneIn = itemsGene.filter(item => item.inclusion === true);
+      this.geneEx = itemsGene.filter(item => item.inclusion === false);
 
-          let itemsRule: any[] = this.tableData[this.versionIndex].variantReport.nonHotspotRules;
-          this.ruleIn = itemsRule.filter(item => item.inclusion === true);
-          this.ruleEx = itemsRule.filter(item => item.inclusion === false);
+      let itemsRule: any[] = this.tableData[this.versionIndex].variantReport.nonHotspotRules;
+      this.ruleIn = itemsRule.filter(item => item.inclusion === true);
+      this.ruleEx = itemsRule.filter(item => item.inclusion === false);
 
-          this.geneIn.forEach(element => {
-            let genes = element.identifier.split('-');
-            element.gene1 = genes[0];
-            element.gene2 = genes[1].split('.')[0];
-          });
+      this.geneIn.forEach(element => {
+        let genes = element.identifier.split('-');
+        element.gene1 = genes[0];
+        element.gene2 = genes[1].split('.')[0];
+      });
 
-          this.geneEx.forEach(element => {
-            let genes = element.identifier.split('-');
-            element.gene1 = genes[0];
-            element.gene2 = genes[1].split('.')[0];
-          });
+      this.geneEx.forEach(element => {
+        let genes = element.identifier.split('-');
+        element.gene1 = genes[0];
+        element.gene2 = genes[1].split('.')[0];
+      });
 
-          this.dataAvailable = true;
-
-        }
-      },
-      error => this.errorMessage = <any>error
-      );
+    }
 
   }
 
@@ -324,13 +317,10 @@ OFF_TRIAL`.indexOf(element.assignmentStatusOutcome) !== -1) {
     this.getPreviousDetailsData();
   }
 
-  getVersionsData() {
-    this.treatmentArmApi.getTreatmentArmVersions(this.route.snapshot.params['id'])
-      .subscribe(itemList => {
-        this.versionData = itemList;
-      },
-      error => this.errorMessage = <any>error
-      );
+  getVersionsData(itemList: any) {
+
+    this.versionData = itemList;
+
   }
 
 }
