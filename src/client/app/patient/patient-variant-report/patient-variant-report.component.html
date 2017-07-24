@@ -145,7 +145,7 @@
     <div class="col-md-6">
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-middle">
         <div class="panel-heading">
-          <cnv-chart [data]="parsed_vcf_genes" ></cnv-chart>
+          <cnv-chart [data]="parsed_vcf_genes"></cnv-chart>
         </div>
       </div>
     </div>
@@ -224,7 +224,7 @@
             </thead>
             <tbody>
               <tr *ngFor="let item of assignmentHistory">
-                <td [colorCodeAssignment]="item.status"><a href [routerLink]="['/patients/' + patient.patientSequenceNumber + '/variant_reports/' + variantReport.analysisId + '/assignment/' + item.dateAssigned.$date]">{{item.patientAssignmentStatus | dashify}}</a></td>
+                <td [colorCodeAssignment]="item.status"><a [ngClass]="{true:'disabled'}[item.patientAssignmentMessages.length==0]" href [routerLink]="['/patients/' + patient.patientSequenceNumber + '/variant_reports/' + variantReport.analysisId + '/assignment/' + item.dateAssigned.$date]">{{item.patientAssignmentStatus | dashify}}</a></td>
                 <td>{{item.dateAssigned | gmt}}</td>
                 <td>{{item.dateConfirmed | gmt}}</td>
                 <td>{{item.dateSentToECOG | gmt}}</td>
