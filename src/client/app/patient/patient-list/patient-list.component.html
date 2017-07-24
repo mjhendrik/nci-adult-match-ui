@@ -1,4 +1,5 @@
-<div class="load-content" *ngIf="!dataAvailable">
+<div class="load-content">
+  <loading-indicator></loading-indicator>
   <div id="page-loader" class="page-loader fade in"><span class="spinner">Loading...</span></div>
 </div>
 <div *ngIf="dataAvailable" id="content" class="content">

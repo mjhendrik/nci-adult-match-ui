@@ -16,10 +16,12 @@ import { ConfigApiService } from './config/config-api.service';
   imports: [CommonModule,
     RouterModule],
   declarations: [NavbarComponent],
-  exports: [NavbarComponent,
+  exports: [
+    NavbarComponent,
     CommonModule,
     FormsModule,
-    RouterModule],
+    RouterModule
+  ],
   providers: [ConfigApiService]
 })
 export class SharedModule {
