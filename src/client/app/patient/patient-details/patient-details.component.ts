@@ -24,7 +24,7 @@ export class PatientDetailsComponent implements OnInit, PatientData {
   patient: any;
   summaryData: any = {};
 
-  analysisId: string = '';
+  entityId: string = '';
 
   section: string = '';
 
@@ -154,9 +154,12 @@ export class PatientDetailsComponent implements OnInit, PatientData {
   }
 
   isTabInitiallyActive(tabName: string, entityId?: string): boolean {
-    if (!!this.section && tabName === this.section) {
-      if (!!entityId && !!this.analysisId) { // Further check if the entity's tab is active
-        return this.analysisId === entityId;
+    if (!!this.section) {
+      if (this.section !== tabName) {
+        return false;
+      }
+      if (!!entityId && !!this.entityId) { // Further check if the entity's tab is active
+        return this.entityId === entityId;
       }
       return true;
     }

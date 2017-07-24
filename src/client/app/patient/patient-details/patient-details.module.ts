@@ -19,7 +19,7 @@ export interface PatientData {
   patient: any,
   summaryData: any,
   section: string,
-  analysisId: string
+  entityId: string
 }
 
 const DROPZONE_CONFIG: DropzoneConfigInterface = {
