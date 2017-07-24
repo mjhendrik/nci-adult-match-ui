@@ -59,21 +59,21 @@ export class CnvChartDirective implements OnInit {
   }
 
   getData() {
-          var array = this.data;
-          var temp: any[] = [];
+          let array = this.data;
+          let temp: any[] = [];
           Object.keys(array).forEach((key: any) => {
 
-            var gene = array[key].gene;
-            var values = array[key].values;
-            var median = array[key].raw_copy_number;
-            var position = array[key].position;
-            var chromosome = array[key].chromosome;
-            var status = !array[key].tsg_gene ? '#CD0000' : 'Green';
+            let gene = array[key].gene;
+            let values = array[key].values;
+            let median = array[key].raw_copy_number;
+            let position = array[key].position;
+            let chromosome = array[key].chromosome;
+            let status = !array[key].tsg_gene ? '#CD0000' : 'Green';
 
-            var min = values[0];
-            var max = values[10];
+            let min = values[0];
+            let max = values[10];
 
-            var Object = {
+            let Object = {
               x: key,
               label: gene,
               status: status,
@@ -94,7 +94,7 @@ export class CnvChartDirective implements OnInit {
           });
 
           this.cnvdata = temp;
-          var genes: any[] = [];
+          let genes: any[] = [];
 
           this.options = {
             chart: {
@@ -132,15 +132,15 @@ export class CnvChartDirective implements OnInit {
               },
               tooltip: {
                 contentGenerator: function (d: any) {
-                  var label;
-                  var position;
-                  var cn;
-                  var chr = '';
-                  var cl95;
-                  var cl05;
-                  var html;
-                  var li;
-                  var color;
+                  let label;
+                  let position;
+                  let cn;
+                  let chr = '';
+                  let cl95;
+                  let cl05;
+                  let html;
+                  let li;
+                  let color;
 
                   label = d.key;
 
@@ -186,12 +186,12 @@ export class CnvChartDirective implements OnInit {
                   return ['#FF0000', '#0026FF']
                 },
                 tickValues: function (d: any) {
-                  var temp: any[] = [];
-                  var chr: any;
-                  var min: any;
-                  var max: any;
-                  var x: any = 0;
-                  var val: any;
+                  let temp: any[] = [];
+                  let chr: any;
+                  let min: any;
+                  let max: any;
+                  let x: any = 0;
+                  let val: any;
 
                   Object.keys(d).forEach((key: any) => {
                     x = d[key].x;
@@ -199,7 +199,7 @@ export class CnvChartDirective implements OnInit {
                     chr = d[key].chr;
                     min = d[key].values.Q1;
                     max = d[key].values.Q3;
-                    var chrnum:any[] = chr.split('chr');
+                    let chrnum:any[] = chr.split('chr');
 
                     genes.push([val,chr,x,chrnum[1],min,max]);
                     temp.push(val);
@@ -232,16 +232,18 @@ export class CnvChartDirective implements OnInit {
               //   // }
               // },
               callback: function(chart: any) {
-                var height = 370;
-                var chr: any;
-                var prespot: any = 0;
-                var median: any = [];
-                var lowest: any = null;
-                var highest: any = null;
-                var spot: any = null;
-                var gene: any = null;
+                let height = 370;
+                let chr: any;
+                let prespot: any = 0;
+                let median: any = [];
+                let lowest: any = null;
+                let highest: any = null;
+                let spot: any = null;
+                let gene: any = null;
 
-                var svg = d3.select('#boxplotchart')
+                let lastspot = 0;
+
+                let svg = d3.select('#boxplotchart')
                   .select('.nv-boxPlotWithAxes')
                   .select('g')
                   .append('g');
@@ -250,9 +252,9 @@ export class CnvChartDirective implements OnInit {
 
                 Object.keys(genes).forEach((key: any) => {
                   gene = genes[key][0];
-                  var temp = genes[key][1];
-                  var x = genes[key][2];
-                  var chrnum = genes[key][3];
+                  let temp = genes[key][1];
+                  let x = genes[key][2];
+                  let chrnum = genes[key][3];
 
                   if(lowest !== null) {
                     lowest = genes[key][4] < lowest ? genes[key][4] : lowest;
@@ -322,11 +324,11 @@ export class CnvChartDirective implements OnInit {
 
                   }
                 });
-                var max =  Math.round(highest / 10) * 3 + lowest;
-                // var line2 = (7 - parseFloat(((5 / max) * 2)));
-                var lastspot = chart.xScale()(gene)+35;
-                var y1 = chart.yScale()(max);
-                var y2 = chart.yScale()(7);
+                let max =  Math.round(highest / 10) * 3 + lowest;
+                // let line2 = (7 - parseFloat(((5 / max) * 2)));
+               lastspot = chart.xScale()(gene)+35;
+                let y1 = chart.yScale()(max);
+                let y2 = chart.yScale()(7);
 
                 svg.append("line")
                   .attr("x1", 0)
