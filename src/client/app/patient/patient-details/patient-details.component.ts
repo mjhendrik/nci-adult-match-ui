@@ -37,7 +37,7 @@ export class PatientDetailsComponent implements OnInit, PatientData {
   configDnaBam: DropzoneConfigInterface;
   configCdnaBam: DropzoneConfigInterface;
   configDocuments: DropzoneConfigInterface;
-
+  
   constructor(private route: ActivatedRoute,
     private patientApi: PatientApiService,
     private changeDetector: ChangeDetectorRef,
@@ -52,9 +52,14 @@ export class PatientDetailsComponent implements OnInit, PatientData {
   ngOnInit() {
     Object.assign(this, this.route.snapshot.data['data']);
 
-    setTimeout(() => {
-      document.getElementById(this.sequence).scrollIntoView();
-    }, 190);
+    if (this.sequence) {
+      setTimeout(() => {
+        const element = document.getElementById(this.sequence);
+        if (element) {
+          element.scrollIntoView();
+        }
+      }, 190);
+    }
 
     this.changeDetector = this.changeDetector;
 

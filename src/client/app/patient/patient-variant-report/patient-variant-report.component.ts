@@ -36,7 +36,8 @@ export class PatientVariantReportComponent implements OnInit, VariantReportData 
   pool2: number;
   mapd: string;
   cellularity: any
-  
+  showPools: boolean;
+
   scrollTo = scrollToElement;
 
   constructor(
