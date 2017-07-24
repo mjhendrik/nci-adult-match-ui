@@ -29,13 +29,13 @@ export class AssignmentReportComponent implements OnInit {
   assay: any[];
   snv: any[];
   indels: any[];
-  assignmentReason: any;
   assignmentData: any[];
   assignmentHistory: any[];
   ocpSummary: any;
   dateAssigned: any;
   analysisId: any;
   molecularSequenceNumber: any;
+  assignmentReason: any[];
 
   dataAvailable: boolean;
   errorMessage: string;
@@ -59,9 +59,36 @@ export class AssignmentReportComponent implements OnInit {
         this.analysisId = itemList.biopsies[0].nextGenerationSequences[0].ionReporterResults.jobName;
         this.molecularSequenceNumber = itemList.biopsies[0].nextGenerationSequences[0].ionReporterResults.molecularSequenceNumber;
         this.dataAvailable = true;
+        this.groupReason(this.assignmentData.patientAssignmentLogic);
       },
       error => this.errorMessage = <any>error
       );
+  }
+
+  groupReason(patientAssignmentLogic: any): any {
+
+    let groupedAssignmentReason = patientAssignmentLogic.reduce(function (total: any, ele: any, ndx: any, ary: any) {
+      var category = ele.patientAssignmentReasonCategory;
+      if (!total[category]) {
+        total[category] = {
+          items: []
+        };
+      }
+      total[category].items.push(ary[ndx]);
+      return total;
+    }, {});
+
+    let groupedPatientAssignmentLogic: any[] = [];
+
+    Object.keys(groupedAssignmentReason).map((x: any, index: number) => {
+      groupedPatientAssignmentLogic[index] = {
+        name: x,
+        items: groupedAssignmentReason[x].items
+      };
+    });
+
+    this.assignmentReason = groupedPatientAssignmentLogic;
+
   }
 
 }
