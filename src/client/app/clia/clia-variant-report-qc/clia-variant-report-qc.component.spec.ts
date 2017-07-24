@@ -50,24 +50,24 @@ export function main() {
       });
     });
 
-    it('should work for clia_mocha',
-      async(() => {
-        TestBed
-          .compileComponents()
-          .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportQcComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportQcComponent);
-            fixture.componentInstance.ngOnInit();
-            fixture.componentInstance.downloadDnaBam();
-            fixture.componentInstance.downloadDnaBai();
-            fixture.componentInstance.downloadRnaBam();
-            fixture.componentInstance.downloadRnaBai();
-            fixture.componentInstance.downloadVcf();
-          });
-      }));
+    // it('should work for clia_mocha',
+    //   async(() => {
+    //     TestBed
+    //       .compileComponents()
+    //       .then(() => {
+    //         let fixture = TestBed.overrideComponent(CliaVariantReportQcComponent, {
+    //           set: {
+    //             templateUrl: ''
+    //           }
+    //         }).createComponent(CliaVariantReportQcComponent);
+    //         fixture.componentInstance.ngOnInit();
+    //         fixture.componentInstance.downloadDnaBam();
+    //         fixture.componentInstance.downloadDnaBai();
+    //         fixture.componentInstance.downloadRnaBam();
+    //         fixture.componentInstance.downloadRnaBai();
+    //         fixture.componentInstance.downloadVcf();
+    //       });
+    //   }));
 
   });
 
@@ -85,19 +85,19 @@ export function main() {
       });
     });
 
-    it('should work for clia_dartmouth',
-      async(() => {
-        TestBed
-          .compileComponents()
-          .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportQcComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportQcComponent);
-            fixture.componentInstance.ngOnInit();
-          });
-      }));
+    // it('should work for clia_dartmouth',
+    //   async(() => {
+    //     TestBed
+    //       .compileComponents()
+    //       .then(() => {
+    //         let fixture = TestBed.overrideComponent(CliaVariantReportQcComponent, {
+    //           set: {
+    //             templateUrl: ''
+    //           }
+    //         }).createComponent(CliaVariantReportQcComponent);
+    //         fixture.componentInstance.ngOnInit();
+    //       });
+    //   }));
 
   });
 
@@ -115,19 +115,19 @@ export function main() {
       });
     });
 
-    it('should work for clia_yale',
-      async(() => {
-        TestBed
-          .compileComponents()
-          .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportQcComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportQcComponent);
-            fixture.componentInstance.ngOnInit();
-          });
-      }));
+    // it('should work for clia_yale',
+    //   async(() => {
+    //     TestBed
+    //       .compileComponents()
+    //       .then(() => {
+    //         let fixture = TestBed.overrideComponent(CliaVariantReportQcComponent, {
+    //           set: {
+    //             templateUrl: ''
+    //           }
+    //         }).createComponent(CliaVariantReportQcComponent);
+    //         fixture.componentInstance.ngOnInit();
+    //       });
+    //   }));
 
   });
 
@@ -145,19 +145,19 @@ export function main() {
       });
     });
 
-    it('should work for clia_mgh',
-      async(() => {
-        TestBed
-          .compileComponents()
-          .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportQcComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportQcComponent);
-            fixture.componentInstance.ngOnInit();
-          });
-      }));
+    // it('should work for clia_mgh',
+    //   async(() => {
+    //     TestBed
+    //       .compileComponents()
+    //       .then(() => {
+    //         let fixture = TestBed.overrideComponent(CliaVariantReportQcComponent, {
+    //           set: {
+    //             templateUrl: ''
+    //           }
+    //         }).createComponent(CliaVariantReportQcComponent);
+    //         fixture.componentInstance.ngOnInit();
+    //       });
+    //   }));
 
   });
 
@@ -175,19 +175,19 @@ export function main() {
       });
     });
 
-    it('should work for clia_mda',
-      async(() => {
-        TestBed
-          .compileComponents()
-          .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportQcComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportQcComponent);
-            fixture.componentInstance.ngOnInit();
-          });
-      }));
+    // it('should work for clia_mda',
+    //   async(() => {
+    //     TestBed
+    //       .compileComponents()
+    //       .then(() => {
+    //         let fixture = TestBed.overrideComponent(CliaVariantReportQcComponent, {
+    //           set: {
+    //             templateUrl: ''
+    //           }
+    //         }).createComponent(CliaVariantReportQcComponent);
+    //         fixture.componentInstance.ngOnInit();
+    //       });
+    //   }));
 
   });
 }
