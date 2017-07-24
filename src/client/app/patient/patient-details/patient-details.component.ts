@@ -26,7 +26,7 @@ export class PatientDetailsComponent implements OnInit, PatientData {
 
   analysisId: string = '';
 
-  sequence: string = '';
+  section: string = '';
 
   uploadedFiles: any[];
   fileCount: number = 0;
@@ -37,6 +37,8 @@ export class PatientDetailsComponent implements OnInit, PatientData {
   configDnaBam: DropzoneConfigInterface;
   configCdnaBam: DropzoneConfigInterface;
   configDocuments: DropzoneConfigInterface;
+
+  private defaultTabName: string = 'summary';
   
   constructor(private route: ActivatedRoute,
     private patientApi: PatientApiService,
@@ -52,9 +54,9 @@ export class PatientDetailsComponent implements OnInit, PatientData {
   ngOnInit() {
     Object.assign(this, this.route.snapshot.data['data']);
 
-    if (this.sequence) {
+    if (this.section) {
       setTimeout(() => {
-        const element = document.getElementById(this.sequence);
+        const element = document.getElementById(this.section);
         if (element) {
           element.scrollIntoView();
         }
@@ -149,6 +151,14 @@ export class PatientDetailsComponent implements OnInit, PatientData {
 
     this.configDocuments = DROPZONE_CONFIG_DOCUMENTS;
 
+  }
+
+  isTabInitiallyActive(tabName: string, entityId?: string): boolean {
+    if (this.section && tabName === this.section) {
+      return true;
+    }
+
+    return tabName === this.defaultTabName;
   }
 
   onUploadSuccess(evt: any): void {

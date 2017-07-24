@@ -39,7 +39,7 @@ class DataResolver implements Resolve<PatientData> {
 
     const psn: string = route.params['patientSequenceNumber']
     const analysisId: string = route.params['analysisId']
-    const sequence: string = route.params['sequence'] ? route.params['sequence'] : 'psn';
+    const section: string = route.params['section'] ? route.params['section'] : 'summary';
 
     return this.api.getPatientDetails(psn)
       .map(
@@ -49,7 +49,8 @@ class DataResolver implements Resolve<PatientData> {
             psn: psn,
             analysisId: analysisId,
             patient: patient,
-            summaryData: {}
+            summaryData: {},
+            section: section
           };
         }
       );
@@ -66,7 +67,7 @@ class DataResolver implements Resolve<PatientData> {
         resolve: { data: DataResolver }
       },
       {
-        path: 'patients/:patientSequenceNumber/:sequence',
+        path: 'patients/:patientSequenceNumber/:section',
         component: PatientDetailsComponent,
         canActivate: [AuthGuard],
         resolve: { data: DataResolver }

@@ -18,6 +18,7 @@ export interface PatientData {
   psn: string,
   patient: any,
   summaryData: any,
+  section: string,
   analysisId: string
 }
 
