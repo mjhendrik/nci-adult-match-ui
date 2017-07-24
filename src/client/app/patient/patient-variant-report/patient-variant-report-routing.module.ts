@@ -55,9 +55,9 @@ class DataResolver implements Resolve<VariantReportData> {
           assignmentHistory: patient.patientAssignments,
           parsed_vcf_genes: data[1].parsed_vcf_genes,
           tvc_version: tvc_version,
-          pool1: data[1].pool1,
-          pool2: data[1].pool2,
-          mapd: data[2].mapd,
+          pool1: data[2].pool1,
+          pool2: data[2].pool2,
+          mapd: data[1].mapd,
           cellularity: data[1].cellularity,
           showPools: showPools
         }
