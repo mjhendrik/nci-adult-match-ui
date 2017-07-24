@@ -38,7 +38,6 @@ class DataResolver implements Resolve<PatientData> {
   ): Observable<PatientData> | Promise<PatientData> | PatientData {
 
     const psn: string = route.params['patientSequenceNumber']
-    const analysisId: string = route.params['analysisId']
     const section: string = route.params['section'] ? route.params['section'] : 'summary';
     const entityId: string = route.params['entityId'];
 
@@ -48,7 +47,6 @@ class DataResolver implements Resolve<PatientData> {
           const patient = this.transformer.transformPatient(data);
           return {
             psn: psn,
-            analysisId: analysisId,
             patient: patient,
             summaryData: {},
             section: section,

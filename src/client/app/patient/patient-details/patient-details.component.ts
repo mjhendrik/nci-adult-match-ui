@@ -19,14 +19,14 @@ import { PatientData } from "./patient-details.module";
   host: { '[@routerTransition]': '' }
 })
 export class PatientDetailsComponent implements OnInit, PatientData {
-
+  needToScroll: boolean = true;
+  
   psn: string;
   patient: any;
   summaryData: any = {};
 
-  entityId: string = '';
-
-  section: string = '';
+  entityId: string;
+  section: string;
 
   uploadedFiles: any[];
   fileCount: number = 0;
@@ -53,15 +53,6 @@ export class PatientDetailsComponent implements OnInit, PatientData {
 
   ngOnInit() {
     Object.assign(this, this.route.snapshot.data['data']);
-
-    if (this.section) {
-      setTimeout(() => {
-        const element = document.getElementById(this.section);
-        if (element) {
-          element.scrollIntoView();
-        }
-      }, 190);
-    }
 
     this.changeDetector = this.changeDetector;
 
@@ -155,11 +146,38 @@ export class PatientDetailsComponent implements OnInit, PatientData {
 
   isTabInitiallyActive(tabName: string, entityId?: string): boolean {
     if (!!this.section) {
-      if (this.section !== tabName) {
+      let tabToSelect = this.section;
+      let entityToSelect = this.entityId;;
+
+      let findBiopsyIdByMsn = function (msn: string, biopsies: any[]): string {
+        if (!msn || !biopsies || !biopsies.length)
+          return null;
+
+        for (const biopsy of biopsies) {
+          if (!biopsy.nucleicAcidSendouts || !biopsy.nucleicAcidSendouts.length) {
+            continue;
+          }
+          let found = biopsy.nucleicAcidSendouts.some((x: any) => x.molecularSequenceNumber === msn);
+          if (found)
+            return biopsy.biopsySequenceNumber;
+        }
+
+        return null;
+      }
+
+      if (this.section === 'msn') {
+        // Searching for Molecular Sequence Number, will need to look for a Biopsy tab
+        tabToSelect = 'biopsies';
+        entityToSelect = findBiopsyIdByMsn(this.entityId, this.patient.biopsies);
+        this.waitAndScrollTo(this.entityId);
+      }
+
+      if (tabToSelect !== tabName) {
         return false;
       }
-      if (!!entityId && !!this.entityId) { // Further check if the entity's tab is active
-        return this.entityId === entityId;
+
+      if (!!entityToSelect && !!entityId) { // Further check if the entity's tab is active
+        return entityToSelect === entityId;
       }
       return true;
     }
@@ -214,5 +232,17 @@ export class PatientDetailsComponent implements OnInit, PatientData {
 
   detectChanges(): void {
     this.changeDetector.detectChanges();
+  }
+
+  private waitAndScrollTo(elementId: string): void {
+    if (elementId && this.needToScroll) {
+      setTimeout(() => {
+        const element = document.getElementById(elementId);
+        if (element) {
+          element.scrollIntoView();
+          this.needToScroll = false;
+        }
+      }, 50);
+    }
   }
 }
