@@ -36,7 +36,6 @@ export class CliaVariantReportsPcComponent implements OnInit {
   report_status: any;
   false_positive_variants: any[];
   positive_variants: any[];
-  dataAvailable: boolean;
   errorMessage: string;
   pcType: string;
   cliaTypeName: string;
@@ -57,28 +56,22 @@ export class CliaVariantReportsPcComponent implements OnInit {
 
     this.molecular_id = this.route.snapshot.params['id'];
 
-    this.getData();
+    this.getData(this.route.snapshot.data['data'].data);
   }
 
-  getData() {
-    this.cliaApi.getCliaVariantReportsPC(this.molecular_id)
-      .subscribe((itemList: CliaVariantReportsPCInterface) => {
-        this.molecular_id = itemList.molecular_id;
-        this.analysis_id = itemList.analysis_id;
-        this.total_variants = itemList.total_variants;
-        this.mapd = itemList.mapd;
-        this.cellularity = itemList.cellularity;
-        this.positive_control_version = itemList.positive_control_version;
-        this.date_molecular_id_created = itemList.date_molecular_id_created;
-        this.date_variant_received = itemList.date_variant_received;
-        this.torrent_variant_caller_version = itemList.torrent_variant_caller_version;
-        this.report_status = itemList.report_status;
-        this.dataAvailable = true;
-        this.false_positive_variants = itemList.false_positive_variants;
-        this.positive_variants = itemList.positive_variants;
-      },
-      error => this.errorMessage = <any>error
-      );
+  getData(itemList: CliaVariantReportsPCInterface) {
+    this.molecular_id = itemList.molecular_id;
+    this.analysis_id = itemList.analysis_id;
+    this.total_variants = itemList.total_variants;
+    this.mapd = itemList.mapd;
+    this.cellularity = itemList.cellularity;
+    this.positive_control_version = itemList.positive_control_version;
+    this.date_molecular_id_created = itemList.date_molecular_id_created;
+    this.date_variant_received = itemList.date_variant_received;
+    this.torrent_variant_caller_version = itemList.torrent_variant_caller_version;
+    this.report_status = itemList.report_status;
+    this.false_positive_variants = itemList.false_positive_variants;
+    this.positive_variants = itemList.positive_variants;
   };
 
   downloadDnaBam(): void {

@@ -35,25 +35,26 @@ export function main() {
       });
     });
 
-    it('should work for clia_mocha',
-      async(() => {
-        TestBed
-          .compileComponents()
-          .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportsNtcComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportsNtcComponent);
-            // console.log(fixture);
-            fixture.componentInstance.ngOnInit();
-            fixture.componentInstance.downloadDnaBam();
-            fixture.componentInstance.downloadDnaBai();
-            fixture.componentInstance.downloadRnaBam();
-            fixture.componentInstance.downloadRnaBai();
-            fixture.componentInstance.downloadVcf();
-          });
-      }));
+    // it('should work for clia_mocha',
+    //   async(() => {
+    //     TestBed
+    //       .compileComponents()
+    //       .then(() => {
+    //         let fixture = TestBed.overrideComponent(CliaVariantReportsNtcComponent, {
+    //           set: {
+    //             templateUrl: ''
+    //           }
+    //         }).createComponent(CliaVariantReportsNtcComponent);
+    //         // console.log(fixture);
+    //         fixture.componentInstance.ngOnInit();
+    //         fixture.componentInstance.downloadDnaBam();
+    //         fixture.componentInstance.downloadDnaBai();
+    //         fixture.componentInstance.downloadRnaBam();
+    //         fixture.componentInstance.downloadRnaBai();
+    //         fixture.componentInstance.downloadVcf();
+    //       });
+    //   }));
+
   });
 
   describe('clia variant reports ntc component with clia type dartmouth', () => {
@@ -74,20 +75,21 @@ export function main() {
       });
     });
 
-    it('should work for clia_dartmouth',
-      async(() => {
-        TestBed
-          .compileComponents()
-          .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportsNtcComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportsNtcComponent);
-            // console.log(fixture);
-            fixture.componentInstance.ngOnInit();
-          });
-      }));
+    // it('should work for clia_dartmouth',
+    //   async(() => {
+    //     TestBed
+    //       .compileComponents()
+    //       .then(() => {
+    //         let fixture = TestBed.overrideComponent(CliaVariantReportsNtcComponent, {
+    //           set: {
+    //             templateUrl: ''
+    //           }
+    //         }).createComponent(CliaVariantReportsNtcComponent);
+    //         // console.log(fixture);
+    //         fixture.componentInstance.ngOnInit();
+    //       });
+    //   }));
+
   });
 
   describe('clia variant reports ntc component with clia type yale', () => {
@@ -108,20 +110,21 @@ export function main() {
       });
     });
 
-    it('should work for clia_yale',
-      async(() => {
-        TestBed
-          .compileComponents()
-          .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportsNtcComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportsNtcComponent);
-            // console.log(fixture);
-            fixture.componentInstance.ngOnInit();
-          });
-      }));
+    // it('should work for clia_yale',
+    //   async(() => {
+    //     TestBed
+    //       .compileComponents()
+    //       .then(() => {
+    //         let fixture = TestBed.overrideComponent(CliaVariantReportsNtcComponent, {
+    //           set: {
+    //             templateUrl: ''
+    //           }
+    //         }).createComponent(CliaVariantReportsNtcComponent);
+    //         // console.log(fixture);
+    //         fixture.componentInstance.ngOnInit();
+    //       });
+    //   }));
+
   });
 
   describe('clia variant reports ntc component with clia type mgh', () => {
@@ -142,20 +145,21 @@ export function main() {
       });
     });
 
-    it('should work for clia_mgh',
-      async(() => {
-        TestBed
-          .compileComponents()
-          .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportsNtcComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportsNtcComponent);
-            // console.log(fixture);
-            fixture.componentInstance.ngOnInit();
-          });
-      }));
+    // it('should work for clia_mgh',
+    //   async(() => {
+    //     TestBed
+    //       .compileComponents()
+    //       .then(() => {
+    //         let fixture = TestBed.overrideComponent(CliaVariantReportsNtcComponent, {
+    //           set: {
+    //             templateUrl: ''
+    //           }
+    //         }).createComponent(CliaVariantReportsNtcComponent);
+    //         // console.log(fixture);
+    //         fixture.componentInstance.ngOnInit();
+    //       });
+    //   }));
+
   });
 
   describe('clia variant reports ntc component with clia type mda', () => {
@@ -176,25 +180,26 @@ export function main() {
       });
     });
 
-    it('should work for clia_mda',
-      async(() => {
-        TestBed
-          .compileComponents()
-          .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportsNtcComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportsNtcComponent);
-            // console.log(fixture);
-            fixture.componentInstance.ngOnInit();
-            fixture.componentInstance.downloadDnaBam();
-            fixture.componentInstance.downloadDnaBai();
-            fixture.componentInstance.downloadRnaBam();
-            fixture.componentInstance.downloadRnaBai();
-            fixture.componentInstance.downloadVcf();
-          });
-      }));
+    // it('should work for clia_mda',
+    //   async(() => {
+    //     TestBed
+    //       .compileComponents()
+    //       .then(() => {
+    //         let fixture = TestBed.overrideComponent(CliaVariantReportsNtcComponent, {
+    //           set: {
+    //             templateUrl: ''
+    //           }
+    //         }).createComponent(CliaVariantReportsNtcComponent);
+    //         // console.log(fixture);
+    //         fixture.componentInstance.ngOnInit();
+    //         fixture.componentInstance.downloadDnaBam();
+    //         fixture.componentInstance.downloadDnaBai();
+    //         fixture.componentInstance.downloadRnaBam();
+    //         fixture.componentInstance.downloadRnaBai();
+    //         fixture.componentInstance.downloadVcf();
+    //       });
+    //   }));
+
   });
 
 }

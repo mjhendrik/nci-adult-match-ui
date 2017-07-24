@@ -78,7 +78,7 @@ export class CliaVariantReportQcComponent implements OnInit {
     this.getData(this.route.snapshot.data['data'].data);
   }
 
-  getData(itemList: any) {
+  getData(itemList: CliaVariantReportsQCInterface) {
     this.molecular_id = itemList.molecular_id;
     this.analysis_id = itemList.analysis_id;
     this.total_variants = itemList.total_variants;
@@ -94,7 +94,7 @@ export class CliaVariantReportQcComponent implements OnInit {
     this.copy_number_variants = itemList.copy_number_variants;
     this.gene_fusions = itemList.gene_fusions;
     this.snv_indels = itemList.snv_indels;
-  }
+  };
 
   downloadDnaBam(): void {
     this.cliaApi.downloadCliaDnaBam(this.molecular_id)
