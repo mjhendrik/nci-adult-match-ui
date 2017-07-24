@@ -1,4 +1,7 @@
-import { NgModule, Injectable } from '@angular/core';
+import {
+  NgModule,
+  Injectable
+} from '@angular/core';
 import {
   RouterModule,
   Resolve,
@@ -35,12 +38,12 @@ class DataResolver implements Resolve<VariantReportData> {
         // getPatientDetails => data[0]
         // getPatientVariantReportOcp => data[1]
         // getPatientCopyNumberReport => data[2]
-        
+
         const patient = this.transformer.transformPatient(data[0]) || {};
         const analysis = patient.analyses[route.params.analysisId] || {};
 
         let tvc_version = data[1].tvc_version;
-        let showPools: boolean = tvc_version && tvc_version.startsWith("5.2")            
+        let showPools: boolean = tvc_version && tvc_version.startsWith("5.2")
 
         return {
           psn: psn,
@@ -59,7 +62,7 @@ class DataResolver implements Resolve<VariantReportData> {
           showPools: showPools
         }
       }
-    );
+      );
   }
 }
 
