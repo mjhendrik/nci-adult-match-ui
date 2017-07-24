@@ -7,7 +7,7 @@ import { DataTableModule } from '../../shared/datatables/index';
 import { PipesModule } from '../../shared/pipes/pipes.module';
 import { DirectivesModule } from '../../shared/directives/directives.module';
 import { PatientApiService } from '../patient-api.service';
-import { LoadingIndicatorModule } from "../../shared/loading-indicator/loading-indicator.module";
+import { LoadingIndicatorModule } from '../../shared/loading-indicator/loading-indicator.module';
 
 @NgModule({
   imports: [

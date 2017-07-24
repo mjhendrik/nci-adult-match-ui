@@ -4,15 +4,12 @@ https://codepen.io/FilipVitas/
 https://codepen.io/FilipVitas/pen/MbbGLy
 */
 
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-    selector: 'loading-indicator',
-    templateUrl: 'loading-indicator.component.html',
-    styleUrls: ['loading-indicator.component.sss']
+  moduleId: module.id,
+  selector: 'sd-load-ind',
+  templateUrl: 'loading-indicator.component.html',
+  styleUrls: ['loading-indicator.component.css']
 })
-export class LoadingIndicatorComponent implements OnInit {
-    constructor() { }
-
-    ngOnInit() { }
-}
+export class LoadingIndicatorComponent { }

@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { LoadingIndicatorComponent } from './loading-indicator.component';
 
 @NgModule({
-    exports: [LoadingIndicatorComponent],
-    declarations: [LoadingIndicatorComponent]
+    imports: [CommonModule],
+    declarations: [LoadingIndicatorComponent],
+    exports: [LoadingIndicatorComponent]
 })
-export class LoadingIndicatorModule { }
+export class LoadingIndicatorModule {}
