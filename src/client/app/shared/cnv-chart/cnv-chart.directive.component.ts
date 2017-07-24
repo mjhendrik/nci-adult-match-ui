@@ -5,51 +5,42 @@ import {
   Component,
   OnInit,
   Input,
+  Output,
   animate,
   transition, style,
-  trigger
+  trigger,
+  EventEmitter
 } from '@angular/core';
 import { nvD3 } from 'ng2-nvd3';
-import {PopupModule} from 'ng2-opd-popup';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
-// import { animations } from './../shared/router.animations';
 
 declare let d3: any;
 
 @Component({
   selector: 'cnv-chart',
-  animations: [
-    trigger(
-      'expandChart',
-      [
-        transition(
-          ':enter', [
-            style({transform: 'translateX(100%)', 'opacity': 0}),
-            animate('500ms', style({transform: 'translateX(0)', 'opacity': 1}))
-          ]
-        ),
-        transition(
-          ':leave', [
-            style({transform: 'translateX(0)', 'opacity': 1}),
-            animate('500ms', style({transform: 'translateX(100%)', 'opacity': 0}))
-          ])])
-  ],
-  providers: [nvD3],
-  template: '<div>'
-    // + '<div *ngIf="show"  class="box">'
-    // + '<a class="btn btn-small btn-info" href="#" (click)="show = !show">({{show}})>'
-    // + '<a class="btn btn-small" href="#">'
-    // + '<i class="fa fa-search-plus"></i></a>'
-  + '<i class="fa fa-search-plus fa-2x" aria-hidden="true" *ngIf="!show" (click)="show = !show" style="cursor: pointer"></i>'
-  + '<i class="fa fa-search-minus fa-2x" aria-hidden="true" *ngIf="show" (click)="show = !show" style="cursor: pointer"></i>'
-  + '<div *ngIf="show" [@expandChart]>Expand</div>'
-  // + '<i class="fa fa-calendar fa-2x" aria-hidden="true" ng-if="show == true" ng-click="" style="cursor: pointer"></i>'
-  // + '<i class="fa fa-bar-chart fa-2x" aria-hidden="true" ng-if="show == false" ng-click="" style="cursor: pointer"></i>'
 
-    // '<button (click)="show = !show">({{show}})'
-    // + '<i class="fa fa-search-plus" aria-hidden="true"></i> </button>'
-    + '<nvd3 id="boxplotchart" [options]="options" [data]="cnvdata" ></nvd3>'
-    + '</div>'
+  animations: [
+    trigger('dialog', [
+      transition('void => *', [
+        style({ transform: 'scale3d(.5, .5, .5)' }),
+        animate(100)
+      ]),
+      transition('* => void', [
+        animate(100, style({ transform: 'scale3d(.0, .0, .0)' }))
+      ])
+    ])
+  ],
+
+  providers: [nvD3],
+  template:
+            '<div [@dialog] *ngIf="show" class="dialog">'
+          + '<i class="fa fa-search-minus fa-2x" aria-hidden="true" *ngIf="show" (click)="show = !show" style="cursor: pointer"></i>'
+          + '<nvd3 id="boxplotchart" [options]="options" [data]="cnvdata" *ngIf="show"></nvd3>'
+          + '</div>'
+
+          + '<div *ngIf="!show">'
+          + '<i class="fa fa-search-plus fa-2x" aria-hidden="true" *ngIf="!show" (click)="show = !show" style="cursor: pointer"></i>'
+          + '<nvd3 id="boxplotchart" [options]="options" [data]="cnvdata" *ngIf="!show"></nvd3>'
+          + '</div>'
 })
 
 export class CnvChartDirective implements OnInit {
@@ -58,7 +49,10 @@ export class CnvChartDirective implements OnInit {
   errorMessage: string;
   cnvdata: any;
 
-  constructor() { }
+  @Input() visible: boolean;
+  @Output() visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  constructor() {}
 
   ngOnInit() {
     this.getData();
