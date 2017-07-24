@@ -37,7 +37,7 @@ export class PatientDetailsComponent implements OnInit, PatientData {
   configDnaBam: DropzoneConfigInterface;
   configCdnaBam: DropzoneConfigInterface;
   configDocuments: DropzoneConfigInterface;
-  
+
   constructor(private route: ActivatedRoute,
     private patientApi: PatientApiService,
     private changeDetector: ChangeDetectorRef,
