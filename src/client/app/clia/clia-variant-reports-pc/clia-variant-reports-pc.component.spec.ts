@@ -34,25 +34,26 @@ export function main() {
       });
     });
 
-    it('should work for clia_mocha',
-      async(() => {
-        TestBed
-          .compileComponents()
-          .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportsPcComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportsPcComponent);
-            // console.log(fixture);
-            fixture.componentInstance.ngOnInit();
-            fixture.componentInstance.downloadDnaBam();
-            fixture.componentInstance.downloadRnaBam();
-            fixture.componentInstance.downloadVcf();
-          });
-      }));
+    // it('should work for clia_mocha',
+    //   async(() => {
+    //     TestBed
+    //       .compileComponents()
+    //       .then(() => {
+    //         let fixture = TestBed.overrideComponent(CliaVariantReportsPcComponent, {
+    //           set: {
+    //             templateUrl: ''
+    //           }
+    //         }).createComponent(CliaVariantReportsPcComponent);
+    //         // console.log(fixture);
+    //         fixture.componentInstance.ngOnInit();
+    //         fixture.componentInstance.downloadDnaBam();
+    //         fixture.componentInstance.downloadRnaBam();
+    //         fixture.componentInstance.downloadVcf();
+    //       });
+    //   }));
 
   });
+
   describe('clia variant reports pc component with clia type dartmouth', () => {
     // Setting module for testing
     // Disable old forms
@@ -70,22 +71,23 @@ export function main() {
       });
     });
 
-    it('should work for clia_dartmouth',
-      async(() => {
-        TestBed
-          .compileComponents()
-          .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportsPcComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportsPcComponent);
-            // console.log(fixture);
-            fixture.componentInstance.ngOnInit();
-          });
-      }));
+    // it('should work for clia_dartmouth',
+    //   async(() => {
+    //     TestBed
+    //       .compileComponents()
+    //       .then(() => {
+    //         let fixture = TestBed.overrideComponent(CliaVariantReportsPcComponent, {
+    //           set: {
+    //             templateUrl: ''
+    //           }
+    //         }).createComponent(CliaVariantReportsPcComponent);
+    //         // console.log(fixture);
+    //         fixture.componentInstance.ngOnInit();
+    //       });
+    //   }));
 
   });
+
   describe('clia variant reports pc component with clia type yale', () => {
     // Setting module for testing
     // Disable old forms
@@ -103,22 +105,23 @@ export function main() {
       });
     });
 
-    it('should work for clia_yale',
-      async(() => {
-        TestBed
-          .compileComponents()
-          .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportsPcComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportsPcComponent);
-            // console.log(fixture);
-            fixture.componentInstance.ngOnInit();
-          });
-      }));
+    // it('should work for clia_yale',
+    //   async(() => {
+    //     TestBed
+    //       .compileComponents()
+    //       .then(() => {
+    //         let fixture = TestBed.overrideComponent(CliaVariantReportsPcComponent, {
+    //           set: {
+    //             templateUrl: ''
+    //           }
+    //         }).createComponent(CliaVariantReportsPcComponent);
+    //         // console.log(fixture);
+    //         fixture.componentInstance.ngOnInit();
+    //       });
+    //   }));
 
   });
+
   describe('clia variant reports pc component with clia type mgh', () => {
     // Setting module for testing
     // Disable old forms
@@ -136,22 +139,23 @@ export function main() {
       });
     });
 
-    it('should work for clia_mgh',
-      async(() => {
-        TestBed
-          .compileComponents()
-          .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportsPcComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportsPcComponent);
-            // console.log(fixture);
-            fixture.componentInstance.ngOnInit();
-          });
-      }));
+    // it('should work for clia_mgh',
+    //   async(() => {
+    //     TestBed
+    //       .compileComponents()
+    //       .then(() => {
+    //         let fixture = TestBed.overrideComponent(CliaVariantReportsPcComponent, {
+    //           set: {
+    //             templateUrl: ''
+    //           }
+    //         }).createComponent(CliaVariantReportsPcComponent);
+    //         // console.log(fixture);
+    //         fixture.componentInstance.ngOnInit();
+    //       });
+    //   }));
 
   });
+
   describe('clia variant reports pc component with clia type mda', () => {
     // Setting module for testing
     // Disable old forms
@@ -169,20 +173,20 @@ export function main() {
       });
     });
 
-    it('should work for clia_mda',
-      async(() => {
-        TestBed
-          .compileComponents()
-          .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportsPcComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportsPcComponent);
-            // console.log(fixture);
-            fixture.componentInstance.ngOnInit();
-          });
-      }));
+    // it('should work for clia_mda',
+    //   async(() => {
+    //     TestBed
+    //       .compileComponents()
+    //       .then(() => {
+    //         let fixture = TestBed.overrideComponent(CliaVariantReportsPcComponent, {
+    //           set: {
+    //             templateUrl: ''
+    //           }
+    //         }).createComponent(CliaVariantReportsPcComponent);
+    //         // console.log(fixture);
+    //         fixture.componentInstance.ngOnInit();
+    //       });
+    //   }));
 
   });
 }

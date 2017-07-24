@@ -5,7 +5,10 @@ import {
 import { ActivatedRoute } from '@angular/router';
 
 import { routerTransition } from './../../shared/router.animations';
-import { CliaApiService } from '../clia-api.service';
+import {
+  CliaApiService,
+  CliaVariantReportsQCInterface
+} from '../clia-api.service';
 
 /**
  * CliaVariantReportQcComponent.
@@ -75,7 +78,7 @@ export class CliaVariantReportQcComponent implements OnInit {
     this.getData(this.route.snapshot.data['data'].data);
   }
 
-  getData(itemList: any) {
+  getData(itemList: CliaVariantReportsQCInterface) {
     this.molecular_id = itemList.molecular_id;
     this.analysis_id = itemList.analysis_id;
     this.total_variants = itemList.total_variants;
