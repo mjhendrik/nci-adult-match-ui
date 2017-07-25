@@ -195,7 +195,7 @@ export function main() {
                 templateUrl: ''
               }
             }).createComponent(BiopsyTrackingListComponent);
-            fixture.componentInstance.getBiopsyCount();
+            fixture.componentInstance.getBiopsyCount('');
           });
       }));
 
