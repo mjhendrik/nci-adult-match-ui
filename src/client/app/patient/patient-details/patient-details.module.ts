@@ -32,7 +32,6 @@ export class Tabs {
 
   set(key: string, active: boolean): void {
     this.tabs[key] = active;
-    console.debug('setting key=' + key + ', to value=' + active);
     this.hasActive = this.hasActive || active;
     if (active) {
       this.activeTab = key;
@@ -41,7 +40,6 @@ export class Tabs {
 
   get(key: string, subKey?: string): boolean {
     const fullKey = key + (subKey || '');
-    console.debug('getting key=' + fullKey + ', value=' + this.tabs[fullKey] || false);
     return this.tabs[fullKey] || false;
   }
 }
