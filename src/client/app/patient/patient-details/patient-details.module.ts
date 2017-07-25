@@ -39,8 +39,7 @@ export class Tabs {
   }
 
   get(key: string, subKey?: string): boolean {
-    const fullKey = key + (subKey || '');
-    return this.tabs[fullKey] || false;
+    return this.tabs[key + (subKey || '')] || false;
   }
 }
 
