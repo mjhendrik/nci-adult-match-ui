@@ -24,21 +24,19 @@ declare let d3: any;
         style({ transform: 'scale3d(.5, .5, .5)' }),
         animate(100)
       ]),
-      transition('* => void', [
-        animate(100, style({ transform: 'scale3d(.0, .0, .0)' }))
-      ])
+      transition('* => void', [])
     ])
   ],
 
   providers: [nvD3],
   template:
             '<div [@dialog] *ngIf="show" class="dialog">'
-          + '<i class="fa fa-search-minus fa-2x" aria-hidden="true" *ngIf="show" (click)="show = !show" style="cursor: pointer"></i>'
+          + '<i class="fa fa-search-minus fa-2x" aria-hidden="true" *ngIf="show" (click)="show = !show" style="cursor: pointer; color: gray"></i>'
           + '<nvd3 id="boxplotchart" [options]="options" [data]="cnvdata" *ngIf="show"></nvd3>'
           + '</div>'
 
           + '<div *ngIf="!show">'
-          + '<i class="fa fa-search-plus fa-2x" aria-hidden="true" *ngIf="!show" (click)="show = !show" style="cursor: pointer"></i>'
+          + '<i class="fa fa-search-plus fa-2x" aria-hidden="true" *ngIf="!show" (click)="show = !show" style="cursor: pointer; color: gray"></i>'
           + '<nvd3 id="boxplotchart" [options]="options" [data]="cnvdata" *ngIf="!show"></nvd3>'
           + '</div>'
 })
@@ -61,6 +59,7 @@ export class CnvChartDirective implements OnInit {
   getData() {
           let array = this.data;
           let temp: any[] = [];
+          let svg: any;
           Object.keys(array).forEach((key: any) => {
 
             let gene = array[key].gene;
@@ -243,12 +242,10 @@ export class CnvChartDirective implements OnInit {
 
                 let lastspot = 0;
 
-                let svg = d3.select('#boxplotchart')
+                svg = d3.select('#boxplotchart')
                   .select('.nv-boxPlotWithAxes')
                   .select('g')
                   .append('g');
-
-                // svg(".nv-scatterWrap").remove();
 
                 Object.keys(genes).forEach((key: any) => {
                   gene = genes[key][0];
@@ -326,7 +323,7 @@ export class CnvChartDirective implements OnInit {
                 });
                 let max =  Math.round(highest / 10) * 3 + lowest;
                 // let line2 = (7 - parseFloat(((5 / max) * 2)));
-               lastspot = chart.xScale()(gene)+35;
+                lastspot = chart.xScale()(gene)+35;
                 let y1 = chart.yScale()(max);
                 let y2 = chart.yScale()(7);
 
