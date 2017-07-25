@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 
 @Component({
   moduleId: module.id,
-  selector: 'sd-load-ind',
+  selector: 'sd-load-indicator',
   templateUrl: 'loading-indicator.component.html',
   styleUrls: ['loading-indicator.component.css']
 })
