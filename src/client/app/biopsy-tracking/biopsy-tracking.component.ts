@@ -26,7 +26,6 @@ export class BiopsyTrackingListComponent implements OnInit {
   tableBiopsyTrackingListDefaultSort: string = 'biopsySequenceNumber';
   tableBiopsyTrackingListData: any[];
   errorMessage: string;
-  dataAvailable: boolean = false;
   biopsyCount: number;
   biopsyTotal: number;
   previous: any;
@@ -41,7 +40,7 @@ export class BiopsyTrackingListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getBiopsyCount();
+    this.getBiopsyCount(this.searchtermBiopsyTrackingList);
   }
 
   getData() {
@@ -96,22 +95,15 @@ export class BiopsyTrackingListComponent implements OnInit {
 
         }
 
-        this.dataAvailable = true;
-
       },
       error => this.errorMessage = <any>error
       );
   }
 
-  getBiopsyCount() {
-    this.biopsyTrackingApi.getBiopsyCount(this.searchtermBiopsyTrackingList)
-      .subscribe(itemList => {
-        this.biopsyCount = itemList;
-        this.getData();
-        this.getBiopsyTotal();
-      },
-      error => this.errorMessage = <any>error
-      );
+  getBiopsyCount(itemList: any) {
+    this.biopsyCount = itemList;
+    this.getData();
+    this.getBiopsyTotal();
   }
 
   getBiopsyTotal() {
@@ -127,7 +119,7 @@ export class BiopsyTrackingListComponent implements OnInit {
     if (this.searchtermBiopsyTrackingList !== val) {
       this.searchtermBiopsyTrackingList = val;
       this.previous = this.page + ',' + this.size + ',' + this.sortOrder + ',' + this.sortBy + ',' + this.searchtermBiopsyTrackingList;
-      this.getBiopsyCount();
+      this.getBiopsyCount(this.searchtermBiopsyTrackingList);
     }
     this.searchtermBiopsyTrackingList = val;
   }
@@ -140,14 +132,14 @@ export class BiopsyTrackingListComponent implements OnInit {
     this.sortOrder = params[2];
     this.sortBy = params[3];
     if (this.previous !== evt && this.previous !== undefined)
-      this.getBiopsyCount();
+      this.getBiopsyCount(this.searchtermBiopsyTrackingList);
     this.previous = evt;
   }
 
   SortStatus(evt: any): void {
     evt += ',' + this.searchtermBiopsyTrackingList;
     if (this.previous !== evt)
-      this.getBiopsyCount();
+      this.getBiopsyCount(this.searchtermBiopsyTrackingList);
     this.previous = evt;
   }
 
