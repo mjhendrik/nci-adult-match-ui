@@ -66,18 +66,18 @@ class DataResolver implements Resolve<PatientData> {
         canActivate: [AuthGuard],
         resolve: { data: DataResolver }
       },
-      {
-        path: 'patients/:patientSequenceNumber/:section',
-        component: PatientDetailsComponent,
-        canActivate: [AuthGuard],
-        resolve: { data: DataResolver }
-      },
-      {
-        path: 'patients/:patientSequenceNumber/:section/:entityId',
-        component: PatientDetailsComponent,
-        canActivate: [AuthGuard],
-        resolve: { data: DataResolver }
-      }
+      // {
+      //   path: 'patients/:patientSequenceNumber/:section',
+      //   component: PatientDetailsComponent,
+      //   canActivate: [AuthGuard],
+      //   resolve: { data: DataResolver }
+      // },
+      // {
+      //   path: 'patients/:patientSequenceNumber/:section/:entityId',
+      //   component: PatientDetailsComponent,
+      //   canActivate: [AuthGuard],
+      //   resolve: { data: DataResolver }
+      // }
     ])
   ],
   exports: [RouterModule],
