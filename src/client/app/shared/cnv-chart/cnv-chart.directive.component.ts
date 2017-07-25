@@ -29,14 +29,28 @@ declare let d3: any;
   ],
 
   providers: [nvD3],
-  template:
+  template://Zoomout panel
             '<div [@dialog] *ngIf="show" class="dialog">'
           + '<i class="fa fa-search-minus fa-2x" aria-hidden="true" *ngIf="show" (click)="show = !show" style="cursor: pointer; color: gray"></i>'
+          + '<h4>SampleControl_MoCha_22_v1_SampleControl_MoCha_22_RNA_v1</h4>'
+            + '<ul class="list-group" style="list-style-type: none;">'
+            + '<li>Tumor suppressor genes '
+            + '<i class="fa fa-circle-thin" aria-hidden="true" style="color:#CD0000;background-color:#CD0000"></i> </li>'
+            + '<li>Oncogenes '
+            + '<i class="fa fa-circle-thin" aria-hidden="true" style="color:green;background-color:green"></i>'
+            + '</li></ul>'
           + '<nvd3 id="boxplotchart" [options]="options" [data]="cnvdata" *ngIf="show"></nvd3>'
           + '</div>'
-
+          //Small panel
           + '<div *ngIf="!show">'
           + '<i class="fa fa-search-plus fa-2x" aria-hidden="true" *ngIf="!show" (click)="show = !show" style="cursor: pointer; color: gray"></i>'
+          + '<h5>SampleControl_MoCha_22_v1_SampleControl_MoCha_22_RNA_v1</h5>'
+            + '<ul class="list-group" style="list-style-type: none;">'
+            + '<li>Tumor suppressor genes '
+            + '<i class="fa fa-circle-thin" aria-hidden="true" style="color:#CD0000;background-color:#CD0000"></i> </li>'
+            + '<li>Oncogenes '
+            + '<i class="fa fa-circle-thin" aria-hidden="true" style="color:green;background-color:green"></i>'
+            + '</li></ul>'
           + '<nvd3 id="boxplotchart" [options]="options" [data]="cnvdata" *ngIf="!show"></nvd3>'
           + '</div>'
 })
@@ -55,7 +69,6 @@ export class CnvChartDirective implements OnInit {
   ngOnInit() {
     this.getData();
   }
-
   getData() {
           let array = this.data;
           let temp: any[] = [];
@@ -111,6 +124,7 @@ export class CnvChartDirective implements OnInit {
                 xDomain: [0, 5],
                 xRange: [0, 10]
               },
+
               outliers: function (d: any) {
                 return d.values.outliers;
               },
@@ -173,6 +187,7 @@ export class CnvChartDirective implements OnInit {
               x: function (d: any) {
                 return d.label;
               },
+              showLabels: true,
               showXAxis: true,
               xAxis: {
                 itemColor: function () {
@@ -221,15 +236,6 @@ export class CnvChartDirective implements OnInit {
                 // },
                 axisLabelDistance: 30
               },
-              // title: {
-              //   enable: function () { return true },
-              //   text: function () { return "Write Your Title" }
-              //   // className: "h4"
-              //   // css: {
-              //   //   width: "nullpx",
-              //   //   textAlign: "center"
-              //   // }
-              // },
               callback: function(chart: any) {
                 let height = 370;
                 let chr: any;
@@ -353,9 +359,19 @@ export class CnvChartDirective implements OnInit {
                   .style('stroke-width', 0.5)
                   .style('stroke-linecap', 'line');
               },
+
+              // title: {
+              //   enable: function () { return true },
+              //   text: function () { return "Write Your Title" },
+              //   className: "h4",
+              //   css: {
+              //     width: "200 px",
+              //     textAlign: "center"
+              //   }
+              // },
               maxBoxWidth: 0.01,
               yDomain: [0, 10]
             }
-          };
+          }
   }
 }
