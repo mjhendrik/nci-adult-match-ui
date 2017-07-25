@@ -1,6 +1,7 @@
 import {
   Component,
   OnInit,
+  AfterViewInit,
   ChangeDetectorRef
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -8,7 +9,7 @@ import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 import { routerTransition } from './../../shared/router.animations';
 import { PatientApiService } from '../patient-api.service';
 import { ViewDataTransformer } from './../view-data-transformer.service';
-import { PatientData } from "./patient-details.module";
+import { PatientData, Tabs } from './patient-details.module';
 
 @Component({
   moduleId: module.id,
@@ -18,9 +19,8 @@ import { PatientData } from "./patient-details.module";
   animations: [routerTransition()],
   host: { '[@routerTransition]': '' }
 })
-export class PatientDetailsComponent implements OnInit, PatientData {
-  needToScroll: boolean = true;
-  
+export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientData {
+  needToScroll: boolean;
   psn: string;
   patient: any;
   summaryData: any = {};
@@ -38,8 +38,8 @@ export class PatientDetailsComponent implements OnInit, PatientData {
   configCdnaBam: DropzoneConfigInterface;
   configDocuments: DropzoneConfigInterface;
 
-  private defaultTabName: string = 'summary';
-  
+  tabs: Tabs;
+
   constructor(private route: ActivatedRoute,
     private patientApi: PatientApiService,
     private changeDetector: ChangeDetectorRef,
@@ -144,45 +144,16 @@ export class PatientDetailsComponent implements OnInit, PatientData {
 
   }
 
-  isTabInitiallyActive(tabName: string, entityId?: string): boolean {
-    if (!!this.section) {
-      let tabToSelect = this.section;
-      let entityToSelect = this.entityId;;
-
-      let findBiopsyIdByMsn = function (msn: string, biopsies: any[]): string {
-        if (!msn || !biopsies || !biopsies.length)
-          return null;
-
-        for (const biopsy of biopsies) {
-          if (!biopsy.nucleicAcidSendouts || !biopsy.nucleicAcidSendouts.length) {
-            continue;
-          }
-          let found = biopsy.nucleicAcidSendouts.some((x: any) => x.molecularSequenceNumber === msn);
-          if (found)
-            return biopsy.biopsySequenceNumber;
+  ngAfterViewInit() {
+    if (this. needToScroll && !!this.entityId) {
+      setTimeout(() => {
+        const element = document.getElementById(this.entityId);
+        if (element) {
+          console.info(`scrolling to ID ${this.entityId}`);
+          element.scrollIntoView();
         }
-
-        return null;
-      }
-
-      if (this.section === 'msn') {
-        // Searching for Molecular Sequence Number, will need to look for a Biopsy tab
-        tabToSelect = 'biopsies';
-        entityToSelect = findBiopsyIdByMsn(this.entityId, this.patient.biopsies);
-        this.waitAndScrollTo(this.entityId);
-      }
-
-      if (tabToSelect !== tabName) {
-        return false;
-      }
-
-      if (!!entityToSelect && !!entityId) { // Further check if the entity's tab is active
-        return entityToSelect === entityId;
-      }
-      return true;
+      }, 200);
     }
-
-    return tabName === this.defaultTabName;
   }
 
   onUploadSuccess(evt: any): void {
@@ -232,17 +203,5 @@ export class PatientDetailsComponent implements OnInit, PatientData {
 
   detectChanges(): void {
     this.changeDetector.detectChanges();
-  }
-
-  private waitAndScrollTo(elementId: string): void {
-    if (elementId && this.needToScroll) {
-      setTimeout(() => {
-        const element = document.getElementById(elementId);
-        if (element) {
-          element.scrollIntoView();
-          this.needToScroll = false;
-        }
-      }, 50);
-    }
   }
 }

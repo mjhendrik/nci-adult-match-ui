@@ -13,19 +13,19 @@ import { VariantReportSimpleTableModule } from '../../shared/variant-report-simp
 import { Resolve } from "@angular/router/router";
 
 export interface VariantReportData {
-  psn: string,
-  analysisId: string,
-  patient: any,
-  variantReport: any,
-  assignmentReport: any,
-  assignmentHistory: any,
-  parsed_vcf_genes: any,
-  tvc_version: string,
-  pool1: number,
-  pool2: number,
-  mapd: string,
-  cellularity: any,
-  showPools: boolean
+  psn: string;
+  analysisId: string;
+  patient: any;
+  variantReport: any;
+  assignmentReport: any;
+  assignmentHistory: any;
+  parsed_vcf_genes: any;
+  tvc_version: string;
+  pool1: number;
+  pool2: number;
+  mapd: string;
+  cellularity: any;
+  showPools: boolean;
 }
 
 @NgModule({

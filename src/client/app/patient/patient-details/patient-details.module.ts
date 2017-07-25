@@ -15,11 +15,35 @@ import { DropzoneModule } from 'ngx-dropzone-wrapper';
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 
 export interface PatientData {
-  psn: string,
-  patient: any,
-  summaryData: any,
-  section: string,
-  entityId: string
+  psn: string;
+  patient: any;
+  summaryData: any;
+  section: string;
+  entityId: string;
+  needToScroll: boolean;
+  tabs: Tabs;
+}
+
+export class Tabs {
+  activeTab: string;
+  hasActive: boolean;
+
+  private tabs: { [key: string]: boolean } = {};
+
+  set(key: string, active: boolean): void {
+    this.tabs[key] = active;
+    console.debug('setting key=' + key + ', to value=' + active);
+    this.hasActive = this.hasActive || active;
+    if (active) {
+      this.activeTab = key;
+    }
+  }
+
+  get(key: string, subKey?: string): boolean {
+    const fullKey = key + (subKey || '');
+    console.debug('getting key=' + fullKey + ', value=' + this.tabs[fullKey] || false);
+    return this.tabs[fullKey] || false;
+  }
 }
 
 const DROPZONE_CONFIG: DropzoneConfigInterface = {

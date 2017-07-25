@@ -18,25 +18,25 @@ import { VariantReportFilteredTableModule } from '../../shared/variant-report-fi
 import { ViewDataTransformer } from "../view-data-transformer.service";
 
 export interface QcVariantReportData {
-  psn: string,
-  analysisId: string,
-  molecularSequenceNumber: string,
-  dateReceived: any,
-  cnv: any[],
-  geneFusions: any[],
-  snvAndIndels: any[],
-  tvc_version: string,
-  pool1: number,
-  pool2: number,
-  biopsySequenceNumber: string
-  ocpSummary: {[key:string]: any},
-  mapd: string,
-  cellularity: any,
-  parsed_vcf_genes: any,
-  dnaBamFilePath: string,
-  rnaBamFilePath: string,
-  vcfFilePath: string,
-  showPools: boolean
+  psn: string;
+  analysisId: string;
+  molecularSequenceNumber: string;
+  dateReceived: any;
+  cnv: any[];
+  geneFusions: any[];
+  snvAndIndels: any[];
+  tvc_version: string;
+  pool1: number;
+  pool2: number;
+  biopsySequenceNumber: string;
+  ocpSummary: {[key:string]: any};
+  mapd: string;
+  cellularity: any;
+  parsed_vcf_genes: any;
+  dnaBamFilePath: string;
+  rnaBamFilePath: string;
+  vcfFilePath: string;
+  showPools: boolean;
 }
 
 @NgModule({

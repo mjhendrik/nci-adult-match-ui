@@ -62,16 +62,16 @@
     <div class="col-md-12">
       <div class="panel">
         <ul class="nav nav-tabs nav-tabs-purple">
-          <li id="psn" [class.active]="isTabInitiallyActive('summary')"><a href="#tab-summary" data-toggle="tab">Summary</a></li>
-          <li id="bsn" [class.active]="isTabInitiallyActive('biopsies', biopsy.biopsySequenceNumber)" *ngFor="let biopsy of patient.biopsies; first as isFirst">
+          <li id="psn" [class.active]="tabs.get('summary').active"><a href="#tab-summary" data-toggle="tab">tabs.get('summary').active={{tabs.get('summary').active}} Summary</a></li>
+          <li id="bsn" [class.active]="tabs.get('biopsies', biopsy.biopsySequenceNumber).active" *ngFor="let biopsy of patient.biopsies; first as isFirst">
             <a href="#tab-biopsy-t-{{biopsy.biopsySequenceNumber}}" data-toggle="tab">
-              <i *ngIf="isFirst" class="fa fa-bell-o" aria-hidden="true"></i> Biopsy {{biopsy.biopsySequenceNumber}}, {{biopsy.dateCreated | gmt: 'YYYY-MM-DD'}}
+              <i *ngIf="isFirst" class="fa fa-bell-o" aria-hidden="true"></i>tabs.get('biopsies', biopsy.biopsySequenceNumber).active={{tabs.get('biopsies', biopsy.biopsySequenceNumber).active}}  Biopsy {{biopsy.biopsySequenceNumber}}, {{biopsy.dateCreated | gmt: 'YYYY-MM-DD'}}
             </a>
           </li>
-          <li class="" [class.active]="isTabInitiallyActive('documents')"><a href="#tab-documents" data-toggle="tab">Documents</a></li>
+          <li class="" [class.active]="tabs.get('documents').active"><a href="#tab-documents" data-toggle="tab">Documents</a></li>
         </ul>
         <div class="tab-content m-b-0">
-          <div class="tab-pane fade in" id="tab-summary" [class.active]="isTabInitiallyActive('summary')">
+          <div class="tab-pane fade in" id="tab-summary" [class.active]="tabs.get('summary').active">
             <div class="row">
               <div class="col-md-3" *ngIf="summaryData.pendingVariant">
                 <div class="widget widget-stat bg-danger">
@@ -102,7 +102,7 @@
               </div>
             </div>
           </div>
-          <div *ngFor="let biopsy of patient.biopsies" class="tab-pane fade in" [class.active]="isTabInitiallyActive('biopsies', biopsy.biopsySequenceNumber)"
+          <div *ngFor="let biopsy of patient.biopsies" class="tab-pane fade in" [class.active]="tabs.get('biopsies', biopsy.biopsySequenceNumber).active"
             id="tab-biopsy-t-{{biopsy.biopsySequenceNumber}}">
             <div class="panel-heading">
               <h4 class="panel-title f-s-18">Biopsy: {{biopsy.biopsySequenceNumber}}
@@ -302,7 +302,7 @@
               </div>
             </div>
           </div>
-          <div class="tab-pane fade" id="tab-documents" [class.active]="isTabInitiallyActive('documents')">
+          <div class="tab-pane fade" id="tab-documents" [class.active]="tabs.get('documents').active">
             <div class="panel-heading">
               <h4 class="panel-title f-s-18">Patient Documents</h4>
             </div>
