@@ -44,11 +44,11 @@
             <dd>{{variantReport.variantReporterFileReceivedDate | gmt}}</dd>
 
             <dt *ngIf="!showPools">Torrent Variant Caller Version</dt>
-            <dd *ngIf="!showPools">{{tvc_version | dashify}}</dd> 
+            <dd *ngIf="!showPools">{{tvc_version | dashify}}</dd>
             <dt *ngIf="showPools">Pool 1</dt>
-            <dd *ngIf="showPools">{{pool1 | dashify}}</dd> 
+            <dd *ngIf="showPools">{{pool1 | dashify}}</dd>
             <dt *ngIf="showPools">Pool 2</dt>
-            <dd *ngIf="showPools">{{pool2 | dashify}}</dd> 
+            <dd *ngIf="showPools">{{pool2 | dashify}}</dd>
           </dl>
           <div class="m-b-5">
             <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!variantReport.dnaBamFilePath" (click)="download(variantReport.dnaBamFilePath)"><i class="fa fa-download"></i> DNA BAM</button>
@@ -150,7 +150,12 @@
     <div class="col-md-6">
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-middle">
         <div class="panel-heading">
-          <cnv-chart [data]="parsed_vcf_genes"></cnv-chart>
+          <cnv-chart *ngIf="parsed_vcf_genes" [data]="parsed_vcf_genes"></cnv-chart>
+          <span *ngIf="!parsed_vcf_genes">
+            <i class="fa fa-bar-chart text-muted" style="font-size:154px; padding-left: 39px;"></i>
+            <br />
+            <span class="text-muted"> There are no CNV data </span>
+          </span>
         </div>
       </div>
     </div>

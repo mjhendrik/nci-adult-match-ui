@@ -28,11 +28,11 @@
             <dt>File Received Date</dt>
             <dd>{{dateReceived | gmt | dashify}}</dd>
             <dt *ngIf="!showPools">Torrent Variant Caller Version</dt>
-            <dd *ngIf="!showPools">{{tvc_version | dashify}}</dd> 
+            <dd *ngIf="!showPools">{{tvc_version | dashify}}</dd>
             <dt *ngIf="showPools">Pool 1</dt>
-            <dd *ngIf="showPools">{{pool1 | dashify}}</dd> 
+            <dd *ngIf="showPools">{{pool1 | dashify}}</dd>
             <dt *ngIf="showPools">Pool 2</dt>
-            <dd *ngIf="showPools">{{pool2 | dashify}}</dd> 
+            <dd *ngIf="showPools">{{pool2 | dashify}}</dd>
           </dl>
           <dl class="dl-horizontal">
             <h4>Oncomine Control Panel Summary</h4>
@@ -83,7 +83,12 @@
     <div class="col-md-6">
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-top">
         <div class="panel-heading">
-           <cnv-chart [data]="parsed_vcf_genes" ></cnv-chart>
+          <cnv-chart *ngIf="parsed_vcf_genes" [data]="parsed_vcf_genes"></cnv-chart>
+          <span *ngIf="!parsed_vcf_genes">
+            <i class="fa fa-bar-chart text-muted" style="font-size:154px; padding-left: 39px;"></i>
+            <br />
+            <span class="text-muted"> There are no CNV data </span>
+          </span>
         </div>
       </div>
     </div>
