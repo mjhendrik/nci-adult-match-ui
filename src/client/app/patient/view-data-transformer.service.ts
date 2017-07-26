@@ -232,17 +232,14 @@ export class ViewDataTransformer {
     if (!('patientAssignments' in transformedPatient)
       || !Array.isArray(transformedPatient.patientAssignments)
       || !transformedPatient.patientAssignments.length) {
-      console.debug('assignments not found');
+      console.info('Assignments not found');
       return;
     }
 
     for (let assignment of transformedPatient.patientAssignments) {
       let bsn = assignment.biopsySequenceNumber;
       let biopsy = transformedPatient.biopsies.find((x: any) => x.biopsySequenceNumber === bsn);
-        
-                  console.debug('assignment');
-          console.debug(assignment);
-      
+
       if (!biopsy || !biopsy.nucleicAcidSendouts) {
         continue;
       }
@@ -261,8 +258,6 @@ export class ViewDataTransformer {
           let selected = assignment.patientAssignmentLogic.find((x: any) => x.patientAssignmentReasonCategory === 'SELECTED');
           assignment.hasSelectedTreatmentArm = !!selected;
           assignment.reasons = this.transformAssignmentReason(assignment.patientAssignmentLogic);
-          console.debug('assignment.patientAssignmentLogic');
-          console.debug(assignment.patientAssignmentLogic);
         }
       }
     }
@@ -289,20 +284,21 @@ export class ViewDataTransformer {
       'ARM_NOT_OPEN': null
     };
 
-    for (let item of patientAssignmentLogic) {
+    for (const item of patientAssignmentLogic) {
       let section: AssignmentReasonSection;
-      if (!(item.patientAssignmentReasonCategory in map)) {
+      if (!map[item.patientAssignmentReasonCategory]) {
         section = new AssignmentReasonSection();
         section.name = item.patientAssignmentReasonCategory;
         map[item.patientAssignmentReasonCategory] = section;
       } else {
         section = map[item.patientAssignmentReasonCategory];
       }
+      section.items.push(item);
     }
 
-    for (let item in map) {
-      if (map[item]) {
-        sections.push(map[item]);
+    for (let sectionName in map) {
+      if (map[sectionName] && map[sectionName].items.length) {
+        sections.push(map[sectionName]);
       }
     }
 
