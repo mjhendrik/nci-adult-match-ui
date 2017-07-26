@@ -150,7 +150,6 @@ export class ViewDataTransformer {
         'copyNumberVariants',
         'indels',
         'nonHotspotRules',
-        'singleNucleotideVariants',
         'unifiedGeneFusions'
       ];
 
@@ -187,12 +186,9 @@ export class ViewDataTransformer {
       variantReport.vcfFilePath = message.ionReporterResults.vcfFilePath;
       variantReport.qcFile = message.ionReporterResults.qcFile;
 
-      let singleNucleotideVariantAndIndels: any[] = [];
-
-      singleNucleotideVariantAndIndels.concat(variantReport.singleNucleotideVariants || []);
-      singleNucleotideVariantAndIndels.concat(variantReport.indels || []);
-
-      variantReport.singleNucleotideVariantAndIndels = singleNucleotideVariantAndIndels;
+      variantReport.singleNucleotideVariantAndIndels
+        = (variantReport.singleNucleotideVariants || [])
+        .concat(variantReport.indels || []);
     }
   }
 
