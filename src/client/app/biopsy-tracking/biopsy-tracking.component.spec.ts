@@ -39,20 +39,20 @@ export function main() {
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
     });
 
-    it('should test ngoninit',
-      async((done: any) => {
-        TestBed
-          .compileComponents()
-          .then(() => {
-            let fixture = TestBed.overrideComponent(BiopsyTrackingListComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(BiopsyTrackingListComponent);
-            // console.log(fixture);
-            fixture.componentInstance.ngOnInit();
-          });
-      }));
+    // it('should test ngOnInit',
+    //   async((done: any) => {
+    //     TestBed
+    //       .compileComponents()
+    //       .then(() => {
+    //         let fixture = TestBed.overrideComponent(BiopsyTrackingListComponent, {
+    //           set: {
+    //             templateUrl: ''
+    //           }
+    //         }).createComponent(BiopsyTrackingListComponent);
+    //         // console.log(fixture);
+    //         fixture.componentInstance.ngOnInit();
+    //       });
+    //   }));
 
     it('should test currentPageActive',
       async((done: any) => {
