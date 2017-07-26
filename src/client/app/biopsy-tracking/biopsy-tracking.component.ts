@@ -2,6 +2,7 @@ import {
   Component,
   OnInit
 } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { routerTransition } from './../shared/router.animations';
 import { GmtPipe } from './../shared/pipes/gmt.pipe';
@@ -35,12 +36,12 @@ export class BiopsyTrackingListComponent implements OnInit {
   sortOrder: string = 'asc';
   sortBy: string = this.tableBiopsyTrackingListDefaultSort;
 
-  constructor(private biopsyTrackingApi: BiopsyTrackingApiService) {
+  constructor(private biopsyTrackingApi: BiopsyTrackingApiService, private route: ActivatedRoute) {
 
   }
 
   ngOnInit() {
-    this.getBiopsyCount(this.searchtermBiopsyTrackingList);
+    this.getBiopsyCount(this.route.snapshot.data['data'].data);
   }
 
   getData() {
