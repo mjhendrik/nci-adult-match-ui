@@ -5,13 +5,13 @@ import {
   ActivatedRouteSnapshot,
   RouterStateSnapshot
 } from '@angular/router';
-import { Observable } from "rxjs/Observable";
+import { Observable } from 'rxjs/Observable';
 
 import { PatientVariantReportQcComponent } from './patient-variant-report-qc.component';
 import { AuthGuard } from './../../shared/auth/auth.guard.service';
-import { QcVariantReportData } from "./patient-variant-report-qc.module";
-import { PatientApiService } from "../patient-api.service";
-import { ViewDataTransformer } from "../view-data-transformer.service";
+import { QcVariantReportData } from './patient-variant-report-qc.module';
+import { PatientApiService } from '../patient-api.service';
+import { ViewDataTransformer } from '../view-data-transformer.service';
 
 @Injectable()
 class DataResolver implements Resolve<QcVariantReportData> {
@@ -54,7 +54,7 @@ class DataResolver implements Resolve<QcVariantReportData> {
         let ocpSummary: {[key:string]: any} = data[1].genes;
         ocpSummary['SUM'] = this.calculateOcpSum(ocpSummary);
         let tvc_version = data[1].tvc_version;
-        let showPools: boolean = tvc_version && tvc_version.startsWith("5.2")
+        let showPools: boolean = tvc_version && tvc_version.startsWith('5.2');
         return {
           psn: psn,
           analysisId: analysisId,

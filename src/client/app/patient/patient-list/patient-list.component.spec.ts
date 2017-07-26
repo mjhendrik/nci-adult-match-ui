@@ -1,19 +1,16 @@
-import { Component } from '@angular/core';
 import {
   async,
-  TestBed,
-  ComponentFixture
+  TestBed
 } from '@angular/core/testing';
-import { FormsModule } from "@angular/forms";
-import { Observable } from "rxjs/Observable";
+import { FormsModule } from '@angular/forms';
+import { Observable } from 'rxjs/Observable';
 import { RouterTestingModule } from '@angular/router/testing';
-import { DirectivesModule } from "./../../shared/directives/directives.module";
-import { PipesModule } from "./../../shared/pipes/pipes.module";
-import { DataTableModule } from "./../../shared/datatables/DataTableModule";
-
+import { DirectivesModule } from './../../shared/directives/directives.module';
+import { PipesModule } from './../../shared/pipes/pipes.module';
+import { DataTableModule } from './../../shared/datatables/DataTableModule';
 
 import { PatientListComponent } from './patient-list.component';
-import { PatientApiService } from "./../patient-api.service";
+import { PatientApiService } from './../patient-api.service';
 
 export function main() {
   describe('patients component', () => {
@@ -370,198 +367,198 @@ class MockPatientApiService {
                         "gene": "ESR1",
                         "geneName": "",
                         "hgvs": "c.1610A>C",
-                        "identifier": "COSM1074639",
-                        "inclusion": true,
-                        "location": "exonic",
-                        "metadata": {
-                          "_id": "af37c87b-4b9b-49a8-96ff-4a22a97572b7"
+                        'identifier': 'COSM1074639',
+                        'inclusion': true,
+                        'location': 'exonic',
+                        'metadata': {
+                          '_id': 'af37c87b-4b9b-49a8-96ff-4a22a97572b7'
                         },
-                        "oncominevariantclass": "Hotspot",
-                        "position": "152419923",
-                        "protein": "p.Tyr537Ser",
-                        "rare": false,
-                        "readDepth": 1461,
-                        "reference": "A",
-                        "referenceAlleleObservations": 1128,
-                        "transcript": "NM_001122740.1"
+                        'oncominevariantclass': 'Hotspot',
+                        'position': '152419923',
+                        'protein': 'p.Tyr537Ser',
+                        'rare': false,
+                        'readDepth': 1461,
+                        'reference': 'A',
+                        'referenceAlleleObservations': 1128,
+                        'transcript': 'NM_001122740.1'
                       }
                     ],
-                    "unifiedGeneFusions": []
+                    'unifiedGeneFusions': []
                   },
-                  "vcfFilePath": "/local/content/ncimatch/matchfiles/patient-10010/biopsy-T-15-000017/ngs-MSN3053_v2_b6892e2d-700c-463f-9b50-34e31d32b4fd/MSN3053_v2_MSN3053_RNA_v2.vcf"
+                  'vcfFilePath': '/local/content/ncimatch/matchfiles/patient-10010/biopsy-T-15-000017/ngs-MSN3053_v2_b6892e2d-700c-463f-9b50-34e31d32b4fd/MSN3053_v2_MSN3053_RNA_v2.vcf'
                 },
-                "ngsRunNumber": "2",
-                "status": "CONFIRMED"
+                'ngsRunNumber': '2',
+                'status': 'CONFIRMED'
               }
             ]
           }
         ],
-        "concordance": "Y",
-        "currentPatientStatus": "OFF_TRIAL_NO_TA_AVAILABLE",
-        "currentStepNumber": "0",
-        "diseases": [
+        'concordance': 'Y',
+        'currentPatientStatus': 'OFF_TRIAL_NO_TA_AVAILABLE',
+        'currentStepNumber': '0',
+        'diseases': [
           {
-            "_id": "10006190",
-            "ctepCategory": "Breast Neoplasm",
-            "ctepSubCategory": "Breast Cancer - Invasive",
-            "ctepTerm": "Invasive breast carcinoma",
-            "shortName": "Invasive breast carcinoma"
+            '_id': '10006190',
+            'ctepCategory': 'Breast Neoplasm',
+            'ctepSubCategory': 'Breast Cancer - Invasive',
+            'ctepTerm': 'Invasive breast carcinoma',
+            'shortName': 'Invasive breast carcinoma'
           }
         ],
-        "ethnicity": "NOT_HISPANIC_OR_LATINO",
-        "exclusionCriterias": [],
-        "gender": "FEMALE",
-        "patientAssignments": [
+        'ethnicity': 'NOT_HISPANIC_OR_LATINO',
+        'exclusionCriterias': [],
+        'gender': 'FEMALE',
+        'patientAssignments': [
           {
-            "biopsySequenceNumber": "T-15-000017",
-            "dateAssigned": {
-              "$date": 1441390974672
+            'biopsySequenceNumber': 'T-15-000017',
+            'dateAssigned': {
+              '$date': 1441390974672
             },
-            "dateConfirmed": {
-              "$date": 1441754116416
+            'dateConfirmed': {
+              '$date': 1441754116416
             },
-            "patientAssignmentLogic": [
+            'patientAssignmentLogic': [
               {
-                "patientAssignmentReasonCategory": "RECORD_BASED_EXCLUSION",
-                "reason": "The patient is excluded from this treatment arm because the patient has disease(s) Invasive breast carcinoma.",
-                "treatmentArmId": "EAY131-Q",
-                "treatmentArmVersion": "2015-08-06"
+                'patientAssignmentReasonCategory': 'RECORD_BASED_EXCLUSION',
+                'reason': 'The patient is excluded from this treatment arm because the patient has disease(s) Invasive breast carcinoma.',
+                'treatmentArmId': 'EAY131-Q',
+                'treatmentArmVersion': '2015-08-06'
               },
               {
-                "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
-                "reason": "The patient contains no matching variant.",
-                "treatmentArmId": "EAY131-U",
-                "treatmentArmVersion": "2015-08-06"
+                'patientAssignmentReasonCategory': 'NO_VARIANT_MATCH',
+                'reason': 'The patient contains no matching variant.',
+                'treatmentArmId': 'EAY131-U',
+                'treatmentArmVersion': '2015-08-06'
               },
               {
-                "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
-                "reason": "The patient contains no matching variant.",
-                "treatmentArmId": "EAY131-F",
-                "treatmentArmVersion": "2015-08-06"
+                'patientAssignmentReasonCategory': 'NO_VARIANT_MATCH',
+                'reason': 'The patient contains no matching variant.',
+                'treatmentArmId': 'EAY131-F',
+                'treatmentArmVersion': '2015-08-06'
               },
               {
-                "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
-                "reason": "The patient contains no matching variant.",
-                "treatmentArmId": "EAY131-G",
-                "treatmentArmVersion": "2015-08-06"
+                'patientAssignmentReasonCategory': 'NO_VARIANT_MATCH',
+                'reason': 'The patient contains no matching variant.',
+                'treatmentArmId': 'EAY131-G',
+                'treatmentArmVersion': '2015-08-06'
               },
               {
-                "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
-                "reason": "The patient contains no matching variant.",
-                "treatmentArmId": "EAY131-H",
-                "treatmentArmVersion": "2015-08-06"
+                'patientAssignmentReasonCategory': 'NO_VARIANT_MATCH',
+                'reason': 'The patient contains no matching variant.',
+                'treatmentArmId': 'EAY131-H',
+                'treatmentArmVersion': '2015-08-06'
               },
               {
-                "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
-                "reason": "The patient contains no matching variant.",
-                "treatmentArmId": "EAY131-R",
-                "treatmentArmVersion": "2015-08-06"
+                'patientAssignmentReasonCategory': 'NO_VARIANT_MATCH',
+                'reason': 'The patient contains no matching variant.',
+                'treatmentArmId': 'EAY131-R',
+                'treatmentArmVersion': '2015-08-06'
               },
               {
-                "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
-                "reason": "The patient contains no matching variant.",
-                "treatmentArmId": "EAY131-E",
-                "treatmentArmVersion": "2015-08-06"
+                'patientAssignmentReasonCategory': 'NO_VARIANT_MATCH',
+                'reason': 'The patient contains no matching variant.',
+                'treatmentArmId': 'EAY131-E',
+                'treatmentArmVersion': '2015-08-06'
               },
               {
-                "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
-                "reason": "The patient contains no matching variant.",
-                "treatmentArmId": "EAY131-A",
-                "treatmentArmVersion": "2015-08-06"
+                'patientAssignmentReasonCategory': 'NO_VARIANT_MATCH',
+                'reason': 'The patient contains no matching variant.',
+                'treatmentArmId': 'EAY131-A',
+                'treatmentArmVersion': '2015-08-06'
               },
               {
-                "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
-                "reason": "The patient contains no matching variant.",
-                "treatmentArmId": "EAY131-B",
-                "treatmentArmVersion": "2015-08-06"
+                'patientAssignmentReasonCategory': 'NO_VARIANT_MATCH',
+                'reason': 'The patient contains no matching variant.',
+                'treatmentArmId': 'EAY131-B',
+                'treatmentArmVersion': '2015-08-06'
               },
               {
-                "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
-                "reason": "The patient contains no matching variant.",
-                "treatmentArmId": "EAY131-V",
-                "treatmentArmVersion": "2015-08-06"
+                'patientAssignmentReasonCategory': 'NO_VARIANT_MATCH',
+                'reason': 'The patient contains no matching variant.',
+                'treatmentArmId': 'EAY131-V',
+                'treatmentArmVersion': '2015-08-06'
               }
             ],
-            "patientAssignmentMessages": [
+            'patientAssignmentMessages': [
               {
-                "message": "No candidate arm is available for this patient, notified the site",
-                "patientSequenceNumber": "10010",
-                "status": "OFF_TRIAL_NO_TA_AVAILABLE",
-                "stepNumber": "0"
+                'message': 'No candidate arm is available for this patient, notified the site',
+                'patientSequenceNumber': '10010',
+                'status': 'OFF_TRIAL_NO_TA_AVAILABLE',
+                'stepNumber': '0'
               }
             ],
-            "patientAssignmentStatus": "NO_ARM_ASSIGNED",
-            "patientAssignmentStatusMessage": "No candidate arm is available for this patient, notified the site",
-            "stepNumber": "0"
+            'patientAssignmentStatus': 'NO_ARM_ASSIGNED',
+            'patientAssignmentStatusMessage': 'No candidate arm is available for this patient, notified the site',
+            'stepNumber': '0'
           }
         ],
-        "patientRejoinTriggers": [
+        'patientRejoinTriggers': [
           {
-            "dateScanned": {
-              "$date": 1456419670400
+            'dateScanned': {
+              '$date': 1456419670400
             },
-            "eligibleArms": []
+            'eligibleArms': []
           }
         ],
-        "patientSequenceNumber": "10010",
-        "patientTriggers": [
+        'patientSequenceNumber': '10010',
+        'patientTriggers': [
           {
-            "auditDate": {
-              "$date": 1440163817587
+            'auditDate': {
+              '$date': 1440163817587
             },
-            "dateCreated": {
-              "$date": 1440162777000
+            'dateCreated': {
+              '$date': 1440162777000
             },
-            "message": "Patient registration to step 0.",
-            "patientSequenceNumber": "10010",
-            "patientStatus": "REGISTRATION",
-            "stepNumber": "0",
-            "studyId": "EAY131"
+            'message': 'Patient registration to step 0.',
+            'patientSequenceNumber': '10010',
+            'patientStatus': 'REGISTRATION',
+            'stepNumber': '0',
+            'studyId': 'EAY131'
           },
           {
-            "auditDate": {
-              "$date": 1441390974677
+            'auditDate': {
+              '$date': 1441390974677
             },
-            "dateCreated": {
-              "$date": 1441390974677
+            'dateCreated': {
+              '$date': 1441390974677
             },
-            "patientSequenceNumber": "10010",
-            "patientStatus": "PENDING_CONFIRMATION",
-            "stepNumber": "0",
-            "studyId": "EAY131"
+            'patientSequenceNumber': '10010',
+            'patientStatus': 'PENDING_CONFIRMATION',
+            'stepNumber': '0',
+            'studyId': 'EAY131'
           },
           {
-            "auditDate": {
-              "$date": 1441754116416
+            'auditDate': {
+              '$date': 1441754116416
             },
-            "dateCreated": {
-              "$date": 1441754116416
+            'dateCreated': {
+              '$date': 1441754116416
             },
-            "patientSequenceNumber": "10010",
-            "patientStatus": "PENDING_OFF_STUDY",
-            "stepNumber": "0",
-            "studyId": "EAY131"
+            'patientSequenceNumber': '10010',
+            'patientStatus': 'PENDING_OFF_STUDY',
+            'stepNumber': '0',
+            'studyId': 'EAY131'
           },
           {
-            "auditDate": {
-              "$date": 1441754130458
+            'auditDate': {
+              '$date': 1441754130458
             },
-            "dateCreated": {
-              "$date": 1441754130458
+            'dateCreated': {
+              '$date': 1441754130458
             },
-            "message": "No candidate arm is available for this patient, notified the site",
-            "patientSequenceNumber": "10010",
-            "patientStatus": "OFF_TRIAL_NO_TA_AVAILABLE",
-            "stepNumber": "0",
-            "studyId": "EAY131"
+            'message': 'No candidate arm is available for this patient, notified the site',
+            'patientSequenceNumber': '10010',
+            'patientStatus': 'OFF_TRIAL_NO_TA_AVAILABLE',
+            'stepNumber': '0',
+            'studyId': 'EAY131'
           }
         ],
-        "priorDrugs": [],
-        "races": [
-          "WHITE"
+        'priorDrugs': [],
+        'races': [
+          'WHITE'
         ],
-        "registrationDate": {
-          "$date": 1440162777000
+        'registrationDate': {
+          '$date': 1440162777000
         }
       }
     ]

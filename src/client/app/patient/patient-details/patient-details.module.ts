@@ -1,4 +1,4 @@
-import { NgModule, ChangeDetectorRef } from '@angular/core';
+import { NgModule } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 import { PatientDetailsComponent } from './patient-details.component';

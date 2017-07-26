@@ -1,22 +1,16 @@
-import { Component } from '@angular/core';
 import {
-  async,
-  TestBed,
-  ComponentFixture
+  TestBed
 } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
-import { FormsModule } from "@angular/forms";
-import { Observable } from "rxjs/Observable";
+import { FormsModule } from '@angular/forms';
+import { Observable } from 'rxjs/Observable';
 import { RouterTestingModule } from '@angular/router/testing';
-import { DirectivesModule } from "./../../shared/directives/directives.module";
-import { PipesModule } from "./../../shared/pipes/pipes.module";
-import { DataTableModule } from "./../../shared/datatables/DataTableModule";
-import { PatientVariantReportQcComponent } from './patient-variant-report-qc.component';
-import { PatientApiService } from "./../patient-api.service";
+import { DirectivesModule } from './../../shared/directives/directives.module';
+import { PipesModule } from './../../shared/pipes/pipes.module';
+import { DataTableModule } from './../../shared/datatables/DataTableModule';
+import { PatientApiService } from './../patient-api.service';
 import { VariantReportFilteredTableModule } from '../../shared/variant-report-filtered-table/variant-report-filtered-table.module';
 import { CommonModule } from '@angular/common';
-
-
 
 export function main() {
   describe('patient varient report qc component', () => {
@@ -99,7 +93,7 @@ export function main() {
 class MockPatientApiServiceError {
 
   getPatientVariantReportQc(psn: any): Observable<any> {
-    return Observable.throw("error");
+    return Observable.throw('error');
   }
 }
 
@@ -107,12 +101,12 @@ class MockPatientApiService {
 
   getPatientVariantReportQc(psn: any): Observable<any> {
     let testdata = {
-      molecularSequenceNumber: "1234",
-      dateReceived: "",
-      copy_number_variants: "",
-      gene_fusions: "",
-      indels: "",
-      single_nucleotide_variants: ""
+      molecularSequenceNumber: '1234',
+      dateReceived: '',
+      copy_number_variants: '',
+      gene_fusions: '',
+      indels: '',
+      single_nucleotide_variants: ''
     };
 
     return Observable.of(testdata);
@@ -130,7 +124,7 @@ class MockPatientApiService {
 
   getPatientCopyNumberReport(): Observable<any> {
     return Observable.of({
-      mapd: "",
+      mapd: '',
       cellularity: '',
       parsed_vcf_genes: '',
       dnaBamFilePath: '',

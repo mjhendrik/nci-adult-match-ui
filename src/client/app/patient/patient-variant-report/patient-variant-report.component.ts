@@ -9,8 +9,7 @@ import {
 } from '../patient-api.service';
 
 import { scrollToElement } from '../../shared/utils/utils';
-import { Observable } from "rxjs/Observable";
-import { VariantReportData } from "./patient-variant-report.module";
+import { VariantReportData } from './patient-variant-report.module';
 
 /**
  * PatientVariantReportComponent.
@@ -35,7 +34,7 @@ export class PatientVariantReportComponent implements OnInit, VariantReportData 
   pool1: number;
   pool2: number;
   mapd: string;
-  cellularity: any
+  cellularity: any;
   showPools: boolean;
 
   scrollTo = scrollToElement;
@@ -45,7 +44,7 @@ export class PatientVariantReportComponent implements OnInit, VariantReportData 
     private patientApi: PatientApiService) { }
 
   ngOnInit() {
-    Object.assign(this, this.route.snapshot.data['data'])
+    Object.assign(this, this.route.snapshot.data['data']);
   }
 
   download(file: string) {

@@ -8,15 +8,15 @@ import {
   ActivatedRouteSnapshot,
   RouterStateSnapshot
 } from '@angular/router';
-import { Observable } from "rxjs/Observable";
+import { Observable } from 'rxjs/Observable';
 
 import { PatientVariantReportComponent } from './patient-variant-report.component';
 import { AuthGuard } from './../../shared/auth/auth.guard.service';
 import { VariantReportSimpleTableModule } from '../../shared/variant-report-simple-table/variant-report-simple-table.module';
 
-import { PatientApiService } from "../patient-api.service";
-import { ViewDataTransformer } from "../view-data-transformer.service";
-import { VariantReportData } from "./patient-variant-report.module";
+import { PatientApiService } from '../patient-api.service';
+import { ViewDataTransformer } from '../view-data-transformer.service';
+import { VariantReportData } from './patient-variant-report.module';
 
 @Injectable()
 class DataResolver implements Resolve<VariantReportData> {
@@ -43,7 +43,7 @@ class DataResolver implements Resolve<VariantReportData> {
         const analysis = patient.analyses[route.params.analysisId] || {};
 
         let tvc_version = data[1].tvc_version;
-        let showPools: boolean = tvc_version && tvc_version.startsWith("5.2")
+        let showPools: boolean = tvc_version && tvc_version.startsWith('5.2')
 
         return {
           psn: psn,

@@ -7,8 +7,7 @@ import { routerTransition } from './../../shared/router.animations';
 import {
   PatientApiService
 } from '../patient-api.service';
-import { Observable } from "rxjs/Observable";
-import { QcVariantReportData } from "./patient-variant-report-qc.module";
+import { QcVariantReportData } from './patient-variant-report-qc.module';
 
 /**
  * PatientVariantReportQcComponent.
@@ -52,7 +51,7 @@ export class PatientVariantReportQcComponent implements OnInit, QcVariantReportD
     private patientApi: PatientApiService) { }
 
   ngOnInit() {
-    Object.assign(this, this.route.snapshot.data['data'])
+    Object.assign(this, this.route.snapshot.data['data']);
   }
 
   download(file: string) {
