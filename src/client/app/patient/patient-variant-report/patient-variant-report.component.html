@@ -96,9 +96,43 @@
       </div>
     </div>
   </div>
+
   <div class="row" matchHeight="panel-height-middle">
-    <div class="col-md-3">
+    <div class="col-md-6 panel-height-middle">
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-middle">
+        <div class="panel-heading">
+          <dl class="dl-horizontal">
+            <h4>Assay</h4>
+            <table class="table table-condensed white-header">
+              <thead>
+                <tr>
+                  <th>IHC</th>
+                  <th>Result</th>
+                  <th>Order Date</th>
+                  <th>Result Date</th>
+                  <th>Comment</th>
+                </tr>
+              </thead>
+              <tbody *ngIf="assignmentReport">
+                <tr *ngFor="let item of assays">
+                  <td>{{item.biomarker | dashify}}</td>
+                  <td>{{item.result | dashify}}</td>
+                  <td>{{item.orderedDate | gmt}}</td>
+                  <td>{{item.reportedDate | gmt}}</td>
+                  <td>{{item.comment | dashify}}</td>
+                </tr>
+                <tr *ngIf="assignmentReport.assay && assignmentReport.assay.length">
+                  <td colspan="3" class="text-muted">No Assay data</td>
+                </tr>
+              </tbody>
+              <tbody *ngIf="!assignmentReport">
+                <tr>
+                  <td colspan="3" class="text-muted">No Assay data</td>
+                </tr>
+              </tbody>
+            </table>
+          </dl>
+        </div>
         <div class="panel-heading">
           <dl class="dl-horizontal">
             <h4>MOI/aMOI Summary</h4>
@@ -114,47 +148,16 @@
         </div>
       </div>
     </div>
-    <div class="col-md-3">
-      <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-middle">
-        <div class="panel-heading">
-          <dl class="dl-horizontal">
-            <h4>Assay</h4>
-            <table class="table table-condensed white-header">
-              <thead>
-                <tr>
-                  <th>IHC</th>
-                  <th>Result</th>
-                  <th>Comment</th>
-                </tr>
-              </thead>
-              <tbody *ngIf="assignmentReport">
-                <tr *ngFor="let item of assays">
-                  <td>{{item.biomarker | dashify}}</td>
-                  <td>{{item.result | dashify}}</td>
-                  <td>{{item.comment | dashify}}</td>
-                </tr>
-                <tr *ngIf="assignmentReport.assay && assignmentReport.assay.length">
-                  <td colspan="3" class="text-muted">No Assay data</td>
-                </tr>
-              </tbody>
-              <tbody *ngIf="!assignmentReport">
-                <tr>
-                  <td colspan="3" class="text-muted">No Assay data</td>
-                </tr>
-              </tbody>
-            </table>
-          </dl>
-        </div>
-      </div>
-    </div>
+
     <div class="col-md-6">
-      <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-middle">
-        <div class="panel-heading">
-          <cnv-chart [data]="parsed_vcf_genes"></cnv-chart>
+        <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-middle">
+          <div class="panel-heading">
+            <cnv-chart [data]="parsed_vcf_genes"></cnv-chart>
+          </div>
         </div>
-      </div>
     </div>
   </div>
+
   <div class="panel panel-white panel-accent-sides-purple overflow-hidden">
     <div class="panel-heading">
       <div class="row">
