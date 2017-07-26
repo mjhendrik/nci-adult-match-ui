@@ -98,7 +98,7 @@ export class ViewDataTransformer {
 
   private transformNgsMessages(transformedPatient: any, transformedBiopsy: any): void {
     /*
-    * The view data-model structure:
+    * The view data model structure:
     * biopsy {
     *    nucleicAcidSendouts: [{
     *        analyses: [
@@ -219,7 +219,7 @@ export class ViewDataTransformer {
 
   private transformAssignments(transformedPatient: any): void {
     /*
-    * The view data-model structure:
+    * The view data model structure:
     * biopsy {
     *    nucleicAcidSendouts: [{
     *        analyses: [
@@ -232,12 +232,17 @@ export class ViewDataTransformer {
     if (!('patientAssignments' in transformedPatient)
       || !Array.isArray(transformedPatient.patientAssignments)
       || !transformedPatient.patientAssignments.length) {
+      console.debug('assignments not found');
       return;
     }
 
     for (let assignment of transformedPatient.patientAssignments) {
       let bsn = assignment.biopsySequenceNumber;
       let biopsy = transformedPatient.biopsies.find((x: any) => x.biopsySequenceNumber === bsn);
+        
+                  console.debug('assignment');
+          console.debug(assignment);
+      
       if (!biopsy || !biopsy.nucleicAcidSendouts) {
         continue;
       }
@@ -252,10 +257,12 @@ export class ViewDataTransformer {
         let lastVariantReportAnalys = confirmedVariantReports[confirmedVariantReports.length - 1];
         lastVariantReportAnalys.assignmentReport = assignment;
 
-        if (assignment.treatmentArm && assignment.patientAssignmentLogic) {
+        if (assignment.patientAssignmentLogic) {
           let selected = assignment.patientAssignmentLogic.find((x: any) => x.patientAssignmentReasonCategory === 'SELECTED');
           assignment.hasSelectedTreatmentArm = !!selected;
           assignment.reasons = this.transformAssignmentReason(assignment.patientAssignmentLogic);
+          console.debug('assignment.patientAssignmentLogic');
+          console.debug(assignment.patientAssignmentLogic);
         }
       }
     }
@@ -290,7 +297,7 @@ export class ViewDataTransformer {
         map[item.patientAssignmentReasonCategory] = section;
       } else {
         section = map[item.patientAssignmentReasonCategory];
-      }     
+      }
     }
 
     for (let item in map) {

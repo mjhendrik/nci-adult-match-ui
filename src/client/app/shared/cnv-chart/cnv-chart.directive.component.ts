@@ -68,11 +68,12 @@ export class CnvChartDirective implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.getData();
+    if (!!this.data && Array.isArray(this.data) && this.data.length)
+      this.getData();
   }
   getData() {
           let array = this.data[0];
-          this.file_name = this.data[1].split('tmp/')[1];
+          this.file_name = this.data[1] ? this.data[1].split('tmp/')[1] : 'file name not found';
 
           let temp: any[] = [];
           let svg: any;
