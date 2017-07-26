@@ -6,8 +6,7 @@ import {
     RequestOptions,
     RequestOptionsArgs,
     Request,
-    Response,
-    Headers
+    Response
 } from '@angular/http';
 
 import { Observable } from 'rxjs/Rx';
@@ -16,7 +15,8 @@ import { Config } from './config/env.config';
 const anyParamRe = '([-a-zA-Z0-9:%_\+.~#?&//=]+)';
 const excludedFromHandlingUrlPatterns = [
     RegExp(Config.API.PATIENT + '/patients/' + anyParamRe + '/variant_reports/' + anyParamRe + '/copy_number_report'),
-    RegExp(Config.API.PATIENT + '/patients/' + anyParamRe + '/variant_reports/' + anyParamRe + '/oncomine_control_panel')
+    RegExp(Config.API.PATIENT + '/patients/' + anyParamRe + '/variant_reports/' + anyParamRe + '/oncomine_control_panel'),
+    RegExp(Config.API.PATIENT + '/patients/' + anyParamRe + '/variant_reports/' + anyParamRe + '/quality_control_report')
 ];
 
 @Injectable()
@@ -32,7 +32,7 @@ export class HttpInterceptor extends Http {
                 }
             }
         } catch (error) {
-            return false;            
+            return false;
         }
 
         return false;

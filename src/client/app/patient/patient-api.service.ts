@@ -77,7 +77,7 @@ export class PatientApiService {
       'assets/mock-data/oncomine-control-panel.json'))
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
-      .catch(this.handleError);
+      .catch(err => Observable.of({ hasError: true, error: err }));
   }
 
   getPatientCopyNumberReport(psn: string, analysisId: string): Observable<any> {

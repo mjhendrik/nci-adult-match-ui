@@ -186,6 +186,13 @@ export class ViewDataTransformer {
 
       variantReport.vcfFilePath = message.ionReporterResults.vcfFilePath;
       variantReport.qcFile = message.ionReporterResults.qcFile;
+
+      let singleNucleotideVariantAndIndels: any[] = [];
+
+      singleNucleotideVariantAndIndels.concat(variantReport.singleNucleotideVariants || []);
+      singleNucleotideVariantAndIndels.concat(variantReport.indels || []);
+
+      variantReport.singleNucleotideVariantAndIndels = singleNucleotideVariantAndIndels;
     }
   }
 
