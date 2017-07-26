@@ -18,7 +18,7 @@ class DataResolver implements Resolve<QcVariantReportData> {
   calculateOcpSum(ocpSummary: {[key:string]: any}): any {
     if (!ocpSummary)
       return null;
-    
+
     let sum: number = 0;
     for (let key of Object.keys(ocpSummary)) {
       sum += Number(ocpSummary[key]);
@@ -54,7 +54,7 @@ class DataResolver implements Resolve<QcVariantReportData> {
         let ocpSummary: {[key:string]: any} = data[1].genes;
         ocpSummary['SUM'] = this.calculateOcpSum(ocpSummary);
         let tvc_version = data[1].tvc_version;
-        let showPools: boolean = tvc_version && tvc_version.startsWith("5.2")            
+        let showPools: boolean = tvc_version && tvc_version.startsWith("5.2")
         return {
           psn: psn,
           analysisId: analysisId,
@@ -70,7 +70,7 @@ class DataResolver implements Resolve<QcVariantReportData> {
           ocpSummary: ocpSummary,
           mapd: data[2].mapd,
           cellularity: data[2].cellularity,
-          parsed_vcf_genes: data[2].parsed_vcf_genes,
+          parsed_vcf_genes: [data[2].parsed_vcf_genes,data[2].file_name],
           dnaBamFilePath: data[3].dnaBamFilePath,
           rnaBamFilePath: data[3].rnaBamFilePath,
           vcfFilePath: data[3].vcfFilePath,
