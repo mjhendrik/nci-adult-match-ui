@@ -45,10 +45,7 @@ export class PatientVariantReportComponent implements OnInit, VariantReportData 
     private patientApi: PatientApiService) { }
 
   ngOnInit() {
-    let data = this.route.snapshot.data['data'];
-    Object.assign(this, data);
-    console.info(data);
-    
+    Object.assign(this, this.route.snapshot.data['data']);
   }
 
   download(file: string) {
