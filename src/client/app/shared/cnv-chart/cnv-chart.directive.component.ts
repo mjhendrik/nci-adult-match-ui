@@ -32,7 +32,7 @@ declare let d3: any;
   template://Zoomout panel
             '<div [@dialog] *ngIf="show" class="dialog">'
           + '<i class="fa fa-search-minus fa-2x" aria-hidden="true" *ngIf="show" (click)="show = !show" style="cursor: pointer; color: gray"></i>'
-          + ' <h4 class="pull-right">SampleControl_MoCha_22_v1_SampleControl_MoCha_22_RNA_v1</h4>'
+          + ' <h4 class="pull-right">{{ file_name }}</h4>'
             + '<ul class="list-group" style="list-style-type: none;">'
             + '<li>Tumor suppressor genes '
             + '<i class="fa fa-square" aria-hidden="true" style="color:#CD0000;background-color:#CD0000"></i> </li>'
@@ -44,7 +44,7 @@ declare let d3: any;
           //Small panel
           + '<div *ngIf="!show">'
           + '<i class="fa fa-search-plus fa-2x" aria-hidden="true" *ngIf="!show" (click)="show = !show" style="cursor: pointer; color: gray"></i>'
-          + ' <h5 class="pull-right">SampleControl_MoCha_22_v1_SampleControl_MoCha_22_RNA_v1</h5>'
+          + ' <h5 class="pull-right">{{ file_name }}</h5>'
             + '<ul class="list-group" style="list-style-type: none;">'
             + '<li>Tumor suppressor genes '
             + '<i class="fa fa-square" aria-hidden="true" style="color:#CD0000;background-color:#CD0000"></i> </li>'
@@ -60,6 +60,7 @@ export class CnvChartDirective implements OnInit {
   options: any;
   errorMessage: string;
   cnvdata: any;
+  file_name: string ;
 
   @Input() visible: boolean;
   @Output() visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -71,7 +72,7 @@ export class CnvChartDirective implements OnInit {
   }
   getData() {
           let array = this.data[0];
-          let file_name = this.data[1];
+          this.file_name = this.data[1].split('tmp/')[1];
 
           let temp: any[] = [];
           let svg: any;
@@ -133,9 +134,6 @@ export class CnvChartDirective implements OnInit {
               outlierLabel: function (d: any) {
                 return d;
               },
-              // chr: function (d: any) {
-              //   return d.chr;
-              // },
               color: function (d: any) {
                 return d.status;
               },
