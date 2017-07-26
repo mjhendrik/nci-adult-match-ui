@@ -130,6 +130,8 @@ export class ViewDataTransformer {
 
       analysis.analysisId = message.ionReporterResults.jobName;
 
+      analysis.assays = transformedBiopsy.assayMessages;
+
       analysis.variantReportStatus = message.status;
       analysis.variantReportCreatedDate = message.ionReporterResults.variantReport
         ? message.ionReporterResults.variantReport.createdDate : null;

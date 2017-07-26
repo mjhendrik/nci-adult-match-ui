@@ -15,6 +15,7 @@ export interface VariantReportData {
   psn: string;
   analysisId: string;
   patient: any;
+  assays: any[];
   variantReport: any;
   assignmentReport: any;
   assignmentHistory: any;

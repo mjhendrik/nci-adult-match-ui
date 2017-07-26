@@ -59,8 +59,9 @@ class DataResolver implements Resolve<VariantReportData> {
           pool2: data[2].pool2,
           mapd: data[1].mapd,
           cellularity: data[1].cellularity,
-          showPools: showPools
-        }
+          showPools: showPools,
+          assays: analysis.assays
+        };
       }
       );
   }

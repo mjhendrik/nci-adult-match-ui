@@ -1,0 +1,297 @@
+{
+    "_class": "gov.match.model.Patient",
+    "_id": {
+        "$oid": "55d38ece009278fd8518656f"
+    },
+    "biopsies": [
+        {
+            "assayMessages": [
+                {
+                    "biomarker": "ICCPTENs",
+                    "biopsySequenceNumber": "T-15-000014",
+                    "orderedDate": {
+                        "$date": 1440624086743
+                    },
+                    "patientSequenceNumber": "10003"
+                },
+                {
+                    "biomarker": "ICCPTENs",
+                    "biopsySequenceNumber": "T-15-000014",
+                    "orderedDate": {
+                        "$date": 1440624086743
+                    },
+                    "patientSequenceNumber": "10003",
+                    "reportedDate": {
+                        "$date": 1441055732527
+                    },
+                    "result": "POSITIVE"
+                }
+            ],
+            "associatedPatientStatus": "REGISTRATION",
+            "biopsySequenceNumber": "T-15-000014",
+            "dateCreated": {
+                "$date": 1440597888220
+            },
+            "failure": false,
+            "mdAndersonMessages": [
+                {
+                    "biopsySequenceNumber": "T-15-000014",
+                    "collectedDate": {
+                        "$date": 1440601075107
+                    },
+                    "message": "SPECIMEN_RECEIVED",
+                    "patientSequenceNumber": "10003",
+                    "reportedDate": {
+                        "$date": 1440601075107
+                    }
+                },
+                {
+                    "_class": "gov.match.model.message.NucleicAcidsShippingMessage",
+                    "biopsySequenceNumber": "T-15-000014",
+                    "cDnaVolume": "25",
+                    "destinationSite": "MDACC",
+                    "dnaConcentration": "144800",
+                    "dnaVolume": "10",
+                    "message": "NUCLEIC_ACID_SENDOUT",
+                    "molecularSequenceNumber": "MSN3061",
+                    "patientSequenceNumber": "10003",
+                    "reportedDate": {
+                        "$date": 1440727207000
+                    },
+                    "trackingNumber": "Local"
+                },
+                {
+                    "biopsySequenceNumber": "T-15-000014",
+                    "message": "PATHOLOGY_CONFIRMATION",
+                    "patientSequenceNumber": "10003",
+                    "reportedDate": {
+                        "$date": 1441055732527
+                    },
+                    "status": "Y"
+                }
+            ],
+            "nextGenerationSequences": [
+                {
+                    "dateReceived": {
+                        "$date": 1441071139454
+                    },
+                    "dateVerified": {
+                        "$date": 1441163631475
+                    },
+                    "ionReporterResults": {
+                        "dnaBamFilePath": "/local/content/ncimatch/matchfiles/patient-10003/biopsy-T-15-000014/ngs-MSN3061_v1_61b14b2e-6da7-40d6-a540-2ae084b6febc/IonXpress_009_rawlib.bam",
+                        "jobName": "MSN3061_v1_61b14b2e-6da7-40d6-a540-2ae084b6febc",
+                        "molecularSequenceNumber": "MSN3061",
+                        "rnaBamFilePath": "/local/content/ncimatch/matchfiles/patient-10003/biopsy-T-15-000014/ngs-MSN3061_v1_61b14b2e-6da7-40d6-a540-2ae084b6febc/IonXpress_001_rawlib_fusions.bam",
+                        "variantReport": {
+                            "copyNumberVariants": [],
+                            "createdDate": {
+                                "$date": 1441071118969
+                            },
+                            "geneFusions": [],
+                            "indels": [],
+                            "nonHotspotRules": [],
+                            "singleNucleotideVariants": [],
+                            "unifiedGeneFusions": []
+                        },
+                        "vcfFilePath": "/local/content/ncimatch/matchfiles/patient-10003/biopsy-T-15-000014/ngs-MSN3061_v1_61b14b2e-6da7-40d6-a540-2ae084b6febc/MSN3061_v1_MSN3061_RNA_v1.vcf"
+                    },
+                    "ngsRunNumber": "1",
+                    "status": "CONFIRMED"
+                }
+            ]
+        }
+    ],
+    "concordance": "Y",
+    "currentPatientStatus": "OFF_TRIAL_NO_TA_AVAILABLE",
+    "currentStepNumber": "0",
+    "diseases": [
+        {
+            "_id": "10006190",
+            "ctepCategory": "Breast Neoplasm",
+            "ctepSubCategory": "Breast Cancer - Invasive",
+            "ctepTerm": "Invasive breast carcinoma",
+            "shortName": "Invasive breast carcinoma"
+        }
+    ],
+    "ethnicity": "NOT_HISPANIC_OR_LATINO",
+    "exclusionCriterias": [],
+    "gender": "FEMALE",
+    "patientAssignments": [
+        {
+            "biopsySequenceNumber": "T-15-000014",
+            "dateAssigned": {
+                "$date": 1441163643298
+            },
+            "dateConfirmed": {
+                "$date": 1441299570174
+            },
+            "patientAssignmentLogic": [
+                {
+                    "patientAssignmentReasonCategory": "RECORD_BASED_EXCLUSION",
+                    "reason": "The patient is excluded from this treatment arm because the patient has disease(s) Invasive breast carcinoma.",
+                    "treatmentArmId": "EAY131-Q",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "EAY131-U",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "EAY131-F",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "EAY131-G",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "EAY131-H",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "EAY131-R",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "EAY131-E",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "EAY131-A",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "EAY131-B",
+                    "treatmentArmVersion": "2015-08-06"
+                },
+                {
+                    "patientAssignmentReasonCategory": "NO_VARIANT_MATCH",
+                    "reason": "The patient contains no matching variant.",
+                    "treatmentArmId": "EAY131-V",
+                    "treatmentArmVersion": "2015-08-06"
+                }
+            ],
+            "patientAssignmentMessages": [
+                {
+                    "message": "No candidate arm is available for this patient, notified the site",
+                    "patientSequenceNumber": "10003",
+                    "status": "OFF_TRIAL_NO_TA_AVAILABLE",
+                    "stepNumber": "0"
+                }
+            ],
+            "patientAssignmentStatus": "NO_ARM_ASSIGNED",
+            "patientAssignmentStatusMessage": "No candidate arm is available for this patient, notified the site",
+            "stepNumber": "0"
+        }
+    ],
+    "patientRejoinTriggers": [
+        {
+            "dateScanned": {
+                "$date": 1456419637479
+            },
+            "eligibleArms": []
+        }
+    ],
+    "patientSequenceNumber": "10003",
+    "patientTriggers": [
+        {
+            "auditDate": {
+                "$date": 1439928014040
+            },
+            "dateCreated": {
+                "$date": 1439926830000
+            },
+            "message": "Patient registration to step 0.",
+            "patientSequenceNumber": "10003",
+            "patientStatus": "REGISTRATION",
+            "stepNumber": "0",
+            "studyId": "EAY131"
+        },
+        {
+            "auditDate": {
+                "$date": 1441163643303
+            },
+            "dateCreated": {
+                "$date": 1441163643303
+            },
+            "patientSequenceNumber": "10003",
+            "patientStatus": "PENDING_CONFIRMATION",
+            "stepNumber": "0",
+            "studyId": "EAY131"
+        },
+        {
+            "auditDate": {
+                "$date": 1441299570174
+            },
+            "dateCreated": {
+                "$date": 1441299570174
+            },
+            "patientSequenceNumber": "10003",
+            "patientStatus": "PENDING_OFF_STUDY",
+            "stepNumber": "0",
+            "studyId": "EAY131"
+        },
+        {
+            "auditDate": {
+                "$date": 1441299874407
+            },
+            "dateCreated": {
+                "$date": 1441299874407
+            },
+            "message": "No candidate arm is available for this patient, notified the site",
+            "patientSequenceNumber": "10003",
+            "patientStatus": "OFF_TRIAL_NO_TA_AVAILABLE",
+            "stepNumber": "0",
+            "studyId": "EAY131"
+        }
+    ],
+    "priorDrugs": [
+        {
+            "drugs": [
+                {
+                    "drugId": "780263",
+                    "name": "Trastuzumab emtansine (TDM1)"
+                }
+            ]
+        },
+        {
+            "drugs": [
+                {
+                    "drugId": "688097",
+                    "name": "Trastuzumab"
+                }
+            ]
+        },
+        {
+            "drugs": [
+                {
+                    "drugId": "740102",
+                    "name": "Pertuzumab"
+                }
+            ]
+        }
+    ],
+    "races": [
+        "WHITE"
+    ],
+    "registrationDate": {
+        "$date": 1439926830000
+    }
+}
