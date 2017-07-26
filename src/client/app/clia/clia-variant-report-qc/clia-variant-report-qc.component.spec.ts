@@ -1,13 +1,10 @@
-// import { Component } from '@angular/core';
 import {
   async,
   TestBed
 } from '@angular/core/testing';
 import { Observable } from 'rxjs/Observable';
 
-// import { CliaVariantReportqcModule } from './clia-variant-report-qc.module';
 import { CliaVariantReportQcComponent } from './clia-variant-report-qc.component';
-// import { CliaVariantReportqcRoutingModule } from './clia-variant-report-qc-routing.module';
 import { CliaApiService, CliaVariantReportsQCInterface } from './../clia-api.service';
 import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -45,29 +42,52 @@ export function main() {
         declarations: [CliaVariantReportQcComponent],
         providers: [
           { provide: CliaApiService, useClass: MockCliaApiService },
-          { provide: ActivatedRoute, useValue: { snapshot: { url: [{ path: 'clia_mocha' }, { path: 'pc' }], params: { id: 1234 } } } }
+          {
+            provide: ActivatedRoute, useValue: {
+              snapshot: {
+                url: [{ path: 'clia_mocha' }, { path: 'pc' }],
+                params: { id: 1234 },
+                data: {
+                  data: {
+                    data: {
+                      molecular_id: { 'test': 'test' },
+                      analysis_id: { 'test': 'test' },
+                      total_variants: { 'test': 'test' },
+                      mapd: { 'test': 'test' },
+                      cellularity: { 'test': 'test' },
+                      torrent_variant_caller_version: { 'test': 'test' },
+                      oncomine_control_panel_summary: ['test'],
+                      copy_number_variants: ['test'],
+                      gene_fusions: ['test'],
+                      snv_indels: ['test']
+                    }
+                  }
+                }
+              }
+            }
+          }
         ]
       });
     });
 
-    // it('should work for clia_mocha',
-    //   async(() => {
-    //     TestBed
-    //       .compileComponents()
-    //       .then(() => {
-    //         let fixture = TestBed.overrideComponent(CliaVariantReportQcComponent, {
-    //           set: {
-    //             templateUrl: ''
-    //           }
-    //         }).createComponent(CliaVariantReportQcComponent);
-    //         fixture.componentInstance.ngOnInit();
-    //         fixture.componentInstance.downloadDnaBam();
-    //         fixture.componentInstance.downloadDnaBai();
-    //         fixture.componentInstance.downloadRnaBam();
-    //         fixture.componentInstance.downloadRnaBai();
-    //         fixture.componentInstance.downloadVcf();
-    //       });
-    //   }));
+    it('should work for clia_mocha',
+      async(() => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(CliaVariantReportQcComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(CliaVariantReportQcComponent);
+            fixture.componentInstance.ngOnInit();
+            fixture.componentInstance.downloadDnaBam();
+            fixture.componentInstance.downloadDnaBai();
+            fixture.componentInstance.downloadRnaBam();
+            fixture.componentInstance.downloadRnaBai();
+            fixture.componentInstance.downloadVcf();
+          });
+      }));
 
   });
 
@@ -80,24 +100,46 @@ export function main() {
         declarations: [CliaVariantReportQcComponent],
         providers: [
           { provide: CliaApiService, useClass: MockCliaApiService },
-          { provide: ActivatedRoute, useValue: { snapshot: { url: [{ path: 'clia_dartmouth' }, { path: 'ntc' }], params: { id: 1234 } } } }
+          {
+            provide: ActivatedRoute, useValue: {
+              snapshot: {
+                url: [{ path: 'clia_dartmouth' }, { path: 'ntc' }], params: { id: 1234 },
+                data: {
+                  data: {
+                    data: {
+                      molecular_id: { 'test': 'test' },
+                      analysis_id: { 'test': 'test' },
+                      total_variants: { 'test': 'test' },
+                      mapd: { 'test': 'test' },
+                      cellularity: { 'test': 'test' },
+                      torrent_variant_caller_version: { 'test': 'test' },
+                      oncomine_control_panel_summary: ['test'],
+                      copy_number_variants: ['test'],
+                      gene_fusions: ['test'],
+                      snv_indels: ['test']
+                    }
+                  }
+                }
+              }
+            }
+          }
         ]
       });
     });
 
-    // it('should work for clia_dartmouth',
-    //   async(() => {
-    //     TestBed
-    //       .compileComponents()
-    //       .then(() => {
-    //         let fixture = TestBed.overrideComponent(CliaVariantReportQcComponent, {
-    //           set: {
-    //             templateUrl: ''
-    //           }
-    //         }).createComponent(CliaVariantReportQcComponent);
-    //         fixture.componentInstance.ngOnInit();
-    //       });
-    //   }));
+    it('should work for clia_dartmouth',
+      async(() => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(CliaVariantReportQcComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(CliaVariantReportQcComponent);
+            fixture.componentInstance.ngOnInit();
+          });
+      }));
 
   });
 
@@ -110,24 +152,46 @@ export function main() {
         declarations: [CliaVariantReportQcComponent],
         providers: [
           { provide: CliaApiService, useClass: MockCliaApiServiceWithErrors },
-          { provide: ActivatedRoute, useValue: { snapshot: { url: [{ path: 'clia_yale' }, { path: 'pacc' }], params: { id: 1234 } } } }
+          {
+            provide: ActivatedRoute, useValue: {
+              snapshot: {
+                url: [{ path: 'clia_yale' }, { path: 'pacc' }], params: { id: 1234 },
+                data: {
+                  data: {
+                    data: {
+                      molecular_id: { 'test': 'test' },
+                      analysis_id: { 'test': 'test' },
+                      total_variants: { 'test': 'test' },
+                      mapd: { 'test': 'test' },
+                      cellularity: { 'test': 'test' },
+                      torrent_variant_caller_version: { 'test': 'test' },
+                      oncomine_control_panel_summary: ['test'],
+                      copy_number_variants: ['test'],
+                      gene_fusions: ['test'],
+                      snv_indels: ['test']
+                    }
+                  }
+                }
+              }
+            }
+          }
         ]
       });
     });
 
-    // it('should work for clia_yale',
-    //   async(() => {
-    //     TestBed
-    //       .compileComponents()
-    //       .then(() => {
-    //         let fixture = TestBed.overrideComponent(CliaVariantReportQcComponent, {
-    //           set: {
-    //             templateUrl: ''
-    //           }
-    //         }).createComponent(CliaVariantReportQcComponent);
-    //         fixture.componentInstance.ngOnInit();
-    //       });
-    //   }));
+    it('should work for clia_yale',
+      async(() => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(CliaVariantReportQcComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(CliaVariantReportQcComponent);
+            fixture.componentInstance.ngOnInit();
+          });
+      }));
 
   });
 
@@ -140,24 +204,46 @@ export function main() {
         declarations: [CliaVariantReportQcComponent],
         providers: [
           { provide: CliaApiService, useClass: MockCliaApiService },
-          { provide: ActivatedRoute, useValue: { snapshot: { url: [{ path: 'clia_mgh' }, { path: 'pc' }], params: { id: 1234 } } } }
+          {
+            provide: ActivatedRoute, useValue: {
+              snapshot: {
+                url: [{ path: 'clia_mgh' }, { path: 'pc' }], params: { id: 1234 },
+                data: {
+                  data: {
+                    data: {
+                      molecular_id: { 'test': 'test' },
+                      analysis_id: { 'test': 'test' },
+                      total_variants: { 'test': 'test' },
+                      mapd: { 'test': 'test' },
+                      cellularity: { 'test': 'test' },
+                      torrent_variant_caller_version: { 'test': 'test' },
+                      oncomine_control_panel_summary: ['test'],
+                      copy_number_variants: ['test'],
+                      gene_fusions: ['test'],
+                      snv_indels: ['test']
+                    }
+                  }
+                }
+              }
+            }
+          }
         ]
       });
     });
 
-    // it('should work for clia_mgh',
-    //   async(() => {
-    //     TestBed
-    //       .compileComponents()
-    //       .then(() => {
-    //         let fixture = TestBed.overrideComponent(CliaVariantReportQcComponent, {
-    //           set: {
-    //             templateUrl: ''
-    //           }
-    //         }).createComponent(CliaVariantReportQcComponent);
-    //         fixture.componentInstance.ngOnInit();
-    //       });
-    //   }));
+    it('should work for clia_mgh',
+      async(() => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(CliaVariantReportQcComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(CliaVariantReportQcComponent);
+            fixture.componentInstance.ngOnInit();
+          });
+      }));
 
   });
 
@@ -170,24 +256,46 @@ export function main() {
         declarations: [CliaVariantReportQcComponent],
         providers: [
           { provide: CliaApiService, useClass: MockCliaApiService },
-          { provide: ActivatedRoute, useValue: { snapshot: { url: [{ path: 'clia_mda' }, { path: 'pc' }], params: { id: 1234 } } } }
+          {
+            provide: ActivatedRoute, useValue: {
+              snapshot: {
+                url: [{ path: 'clia_mda' }, { path: 'pc' }], params: { id: 1234 },
+                data: {
+                  data: {
+                    data: {
+                      molecular_id: { 'test': 'test' },
+                      analysis_id: { 'test': 'test' },
+                      total_variants: { 'test': 'test' },
+                      mapd: { 'test': 'test' },
+                      cellularity: { 'test': 'test' },
+                      torrent_variant_caller_version: { 'test': 'test' },
+                      oncomine_control_panel_summary: ['test'],
+                      copy_number_variants: ['test'],
+                      gene_fusions: ['test'],
+                      snv_indels: ['test']
+                    }
+                  }
+                }
+              }
+            }
+          }
         ]
       });
     });
 
-    // it('should work for clia_mda',
-    //   async(() => {
-    //     TestBed
-    //       .compileComponents()
-    //       .then(() => {
-    //         let fixture = TestBed.overrideComponent(CliaVariantReportQcComponent, {
-    //           set: {
-    //             templateUrl: ''
-    //           }
-    //         }).createComponent(CliaVariantReportQcComponent);
-    //         fixture.componentInstance.ngOnInit();
-    //       });
-    //   }));
+    it('should work for clia_mda',
+      async(() => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(CliaVariantReportQcComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(CliaVariantReportQcComponent);
+            fixture.componentInstance.ngOnInit();
+          });
+      }));
 
   });
 }
