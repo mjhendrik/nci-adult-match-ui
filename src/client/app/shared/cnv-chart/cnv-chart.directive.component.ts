@@ -53,6 +53,8 @@ declare let d3: any;
             + '</li></ul>'
           + '<nvd3 id="boxplotchart" [options]="options" [data]="cnvdata" *ngIf="!show"></nvd3>'
           + '</div>'
+
+
 })
 
 export class CnvChartDirective implements OnInit {
@@ -71,6 +73,9 @@ export class CnvChartDirective implements OnInit {
     this.getData();
   }
   getData() {
+
+    console.log("--> " + JSON.strngify(this.data))
+
           let array = this.data[0];
           this.file_name = this.data[1].split('tmp/')[1];
 
