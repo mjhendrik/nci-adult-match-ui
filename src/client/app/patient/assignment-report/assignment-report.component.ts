@@ -29,7 +29,7 @@ export class AssignmentReportComponent implements OnInit {
   assay: any[];
   snv: any[];
   indels: any[];
-  assignmentData: any[];
+  assignmentData: any;
   assignmentHistory: any[];
   ocpSummary: any;
   dateAssigned: any;
