@@ -70,7 +70,9 @@ export class CnvChartDirective implements OnInit {
     this.getData();
   }
   getData() {
-          let array = this.data;
+          let array = this.data[0];
+          let file_name = this.data[1];
+
           let temp: any[] = [];
           let svg: any;
           Object.keys(array).forEach((key: any) => {
