@@ -83,12 +83,7 @@
     <div class="col-md-6">
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-top">
         <div class="panel-heading">
-          <cnv-chart *ngIf="parsed_vcf_genes" [data]="parsed_vcf_genes"></cnv-chart>
-          <span *ngIf="!parsed_vcf_genes">
-            <i class="fa fa-bar-chart text-muted" style="font-size:154px; padding-left: 39px;"></i>
-            <br />
-            <span class="text-muted"> There are no CNV data </span>
-          </span>
+           <cnv-chart [data]="parsed_vcf_genes" ></cnv-chart>
         </div>
       </div>
     </div>
