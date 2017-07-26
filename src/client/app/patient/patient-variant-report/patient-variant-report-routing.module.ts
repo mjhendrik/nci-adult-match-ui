@@ -36,8 +36,8 @@ class DataResolver implements Resolve<VariantReportData> {
     ).map(
       data => {
         // getPatientDetails => data[0]
-        // getPatientVariantReportOcp => data[1]
-        // getPatientCopyNumberReport => data[2]
+        // getPatientCopyNumberReport => data[1]
+        // getPatientVariantReportOcp => data[2]
 
         const patient = this.transformer.transformPatient(data[0]) || {};
         const analysis = patient.analyses[route.params.analysisId] || {};
