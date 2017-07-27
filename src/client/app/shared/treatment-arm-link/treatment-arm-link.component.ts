@@ -5,7 +5,7 @@ import { Component, Input } from '@angular/core';
     selector: 'treatment-arm-link',
     styleUrls: ['treatment-arm-link.component.css'],
     template: `
-    <a *ngIf="treatmentArmId; else noData" href [routerLink]="['/treatments/details', treatmentArmId]" class="link-none ta-link">
+    <a *ngIf="treatmentArmId; else noData" href [routerLink]="['/treatments', treatmentArmId]" class="link-none ta-link">
         <span *ngIf="removePrefix; else showPrefix" [style.color]="textColor"><i class="fa fa-medkit"></i> {{suffix | dashify}}</span>
 
         <ng-template #showPrefix>

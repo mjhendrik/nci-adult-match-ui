@@ -5,6 +5,7 @@ import {
 } from '@angular/core/testing';
 
 import { AssignmentReasonTableModule } from './assignment-reason-table.module';
+import { SharedModule } from '../../shared/shared.module';
 
 export function main() {
   describe('assignment-reason-table component', () => {
@@ -14,7 +15,7 @@ export function main() {
     beforeEach(() => {
       TestBed.configureTestingModule({
         declarations: [TestComponent],
-        imports: [AssignmentReasonTableModule]
+        imports: [AssignmentReasonTableModule, SharedModule]
       });
     });
 

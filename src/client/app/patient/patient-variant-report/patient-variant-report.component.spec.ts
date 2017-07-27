@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { RouterTestingModule } from '@angular/router/testing';
+
 import { DirectivesModule } from './../../shared/directives/directives.module';
 import { PipesModule } from './../../shared/pipes/pipes.module';
 import { DataTableModule } from './../../shared/datatables/DataTableModule';
@@ -13,11 +14,10 @@ import { AssignmentReasonTableModule } from './../assignment-reason-table/assign
 import { PatientVariantReportComponent } from './patient-variant-report.component';
 import { PatientApiService } from './../patient-api.service';
 import { ViewDataTransformer } from './../view-data-transformer.service';
+import { SharedModule } from '../../shared/shared.module';
 
 export function main() {
-  describe('patient varient report component', () => {
-    // Setting module for testing
-    // Disable old forms
+  describe('patient variant report component', () => {
 
     let config: any[] = [
       { path: 'patients', component: 'PatientVariantReportComponent' }
@@ -25,9 +25,16 @@ export function main() {
 
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [RouterTestingModule.withRoutes(config), DirectivesModule,
-          PipesModule, FormsModule, DataTableModule, AssignmentReasonTableModule,
-          VariantReportSimpleTableModule],
+        imports: [
+          RouterTestingModule.withRoutes(config),
+          DirectivesModule,
+          PipesModule,
+          FormsModule,
+          DataTableModule,
+          AssignmentReasonTableModule,
+          VariantReportSimpleTableModule,
+          SharedModule
+        ],
         declarations: [PatientVariantReportComponent],
         providers: [
           { provide: PatientApiService, useClass: MockPatientApiService },

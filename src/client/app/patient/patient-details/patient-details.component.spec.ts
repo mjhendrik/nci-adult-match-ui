@@ -8,19 +8,19 @@ import {
   ComponentFixture
 } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
-import { FormsModule } from "@angular/forms";
-import { Observable } from "rxjs/Observable";
+import { FormsModule } from '@angular/forms';
+import { Observable } from 'rxjs/Observable';
 import { RouterTestingModule } from '@angular/router/testing';
-import { DirectivesModule } from "./../../shared/directives/directives.module";
-import { PipesModule } from "./../../shared/pipes/pipes.module";
-import { DataTableModule } from "./../../shared/datatables/DataTableModule";
 import { DropzoneModule } from 'ngx-dropzone-wrapper';
 
+import { DirectivesModule } from './../../shared/directives/directives.module';
+import { PipesModule } from './../../shared/pipes/pipes.module';
+import { DataTableModule } from './../../shared/datatables/DataTableModule';
 import { PatientDetailsComponent } from './patient-details.component';
-import { PatientApiService } from "./../patient-api.service";
+import { PatientApiService } from './../patient-api.service';
 import { ViewDataTransformer } from './../view-data-transformer.service';
 import { PatientTimelineModule } from './../patient-timeline/patient-timeline.module';
-
+import { SharedModule } from '../../shared/shared.module';
 
 export function main() {
   describe('patient-details component', () => {
@@ -33,8 +33,16 @@ export function main() {
 
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [RouterTestingModule.withRoutes(config), DirectivesModule,
-          PipesModule, FormsModule, DataTableModule, PatientTimelineModule, DropzoneModule],
+        imports: [
+          RouterTestingModule.withRoutes(config),
+          DirectivesModule,
+          PipesModule,
+          FormsModule,
+          DataTableModule,
+          PatientTimelineModule,
+          DropzoneModule,
+          SharedModule
+        ],
         declarations: [PatientDetailsComponent],
         providers: [
           { provide: PatientApiService, useClass: MockPatientApiService },

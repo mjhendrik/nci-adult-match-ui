@@ -4,26 +4,31 @@ import {
 } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
+
 import { RouterTestingModule } from '@angular/router/testing';
 import { DirectivesModule } from './../../shared/directives/directives.module';
 import { PipesModule } from './../../shared/pipes/pipes.module';
 import { DataTableModule } from './../../shared/datatables/DataTableModule';
-
 import { PatientListComponent } from './patient-list.component';
 import { PatientApiService } from './../patient-api.service';
+import { SharedModule } from '../../shared/shared.module';
 
 export function main() {
   describe('patients component', () => {
-    // Setting module for testing
-    // Disable old forms
-
     let config: any[] = [
       { path: 'patients', component: 'PatientListComponent' }
     ];
 
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [RouterTestingModule.withRoutes(config), DirectivesModule, PipesModule, FormsModule, DataTableModule],
+        imports: [
+          RouterTestingModule.withRoutes(config),
+          DirectivesModule,
+          PipesModule,
+          FormsModule,
+          DataTableModule,
+          SharedModule
+        ],
         declarations: [PatientListComponent],
         providers: [
           { provide: PatientApiService, useClass: MockPatientApiService },
@@ -151,7 +156,14 @@ export function main() {
 
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [RouterTestingModule.withRoutes(config), DirectivesModule, PipesModule, FormsModule, DataTableModule],
+        imports: [
+          RouterTestingModule.withRoutes(config),
+          DirectivesModule,
+          PipesModule,
+          FormsModule,
+          DataTableModule,
+          SharedModule
+        ],
         declarations: [PatientListComponent],
         providers: [
           { provide: PatientApiService, useClass: MockPatientApiServiceError },
