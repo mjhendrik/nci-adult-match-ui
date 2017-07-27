@@ -232,7 +232,7 @@
                                         </dl>
                                         <dl class="dl-horizontal">
                                           <dt>Status</dt>
-                                          <dd>{{analysis.variantReportStatus | dashify}}</dd>
+                                          <dd [colorCodeVariantReport]="analysis.variantReportStatus">{{analysis.variantReportStatus | dashify}}</dd>
                                           <dt>File Received Date</dt>
                                           <dd>{{analysis.variantReporterFileReceivedDate | gmt}}</dd>
                                           <dt>Rejected/Confirmed Date</dt>
@@ -256,7 +256,7 @@
                                         </dl>
                                         <dl *ngIf="analysis.assignmentReport" class="dl-horizontal">
                                           <dt>Status</dt>
-                                          <dd>{{analysis.assignmentReport.patientAssignmentStatus}}</dd>
+                                          <dd [colorCodeAssignment]="analysis.assignmentReport.patientAssignmentStatus">{{analysis.assignmentReport.patientAssignmentStatus}}</dd>
                                           <dt>Generation Date</dt>
                                           <dd>{{analysis.assignmentReport.dateAssigned | gmt}}</dd>
                                           <dt>Confirmed Date</dt>

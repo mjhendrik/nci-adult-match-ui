@@ -35,7 +35,7 @@
             <dt>Patient Concordance</dt>
             <dd>{{patient.concordance | dashify}}</dd>
             <dt>Status</dt>
-            <dd><span [colorCodeVariantReport]="variantReport.status">{{variantReport.variantReportStatus | dashify}}</span>              on {{variantReport.variantReportCreatedDate | gmt}} by {{variantReport.user | dashify}}</dd>
+            <dd><span [colorCodeVariantReport]="variantReport.variantReportStatus">{{variantReport.variantReportStatus | dashify}}</span> on {{variantReport.variantReportCreatedDate | gmt}} by {{variantReport.user | dashify}}</dd>
             <dt>MAPD</dt>
             <dd>{{mapd | dashify}}</dd>
             <dt>Cellularity</dt>
@@ -72,7 +72,7 @@
           <dl class="dl-horizontal widest-dt">
             <h4>Latest Assignment</h4>
             <dt>Status</dt>
-            <dd><span [colorCodeAssignment]="assignmentReport.status"> {{assignmentReport.patientAssignmentStatus | dashify}}</span>              on {{assignmentReport.dateConfirmed | gmt}} by {{(assignmentReport.user||'System User') | dashify}}</dd>
+            <dd><span [colorCodeAssignment]="assignmentReport.patientAssignmentStatus"> {{assignmentReport.patientAssignmentStatus | dashify}}</span> on {{assignmentReport.dateConfirmed | gmt}} by {{(assignmentReport.user||'System User') | dashify}}</dd>
             <dt>Generation Date</dt>
             <dd>{{assignmentReport.dateAssigned | gmt}}</dd>
             <dt>Assignment Sent to ECOG Date</dt>

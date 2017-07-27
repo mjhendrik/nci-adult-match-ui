@@ -14,6 +14,8 @@ export class ColorCodeAssignmentDirective implements OnInit {
             this.el.nativeElement.classList.add('text-info-light');
         } else if (this.colorCodeAssignment === 'REJECTED') {
             this.el.nativeElement.classList.add('text-danger-light');
+        } else if (this.colorCodeAssignment === 'NO_ARM_ASSIGNED') {
+            this.el.nativeElement.classList.add('text-danger-light');
         }
     }
 }
