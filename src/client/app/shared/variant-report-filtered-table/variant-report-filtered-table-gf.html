@@ -1,3 +1,4 @@
+
 <h4>Gene Fusions</h4>
 <div class="row">
   <div class="col-md-6">
@@ -25,23 +26,33 @@
     <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="items | filterByText: searchTerm" #mfTable="mfDataTable"
       [(mfSortBy)]="defaultSort" [mfRowsOnPage]="recordsPerPage">
       <thead>
-        <tr [ngClass]="{true:'purple-light', false:'orangeshade-light'}[type=='patient']">
+        <tr [ngClass]="{true:'purple-light',false:'orangeshade-light'}[type=='patient']">
           <th><mfDefaultSorter by="identifier"><span class="table-header">ID</span></mfDefaultSorter></th>
-          <th><mfDefaultSorter by="driverGene"><span class="table-header">Gene 2</span></mfDefaultSorter></th>
-          <th><mfDefaultSorter by="driverReadCount"><span class="table-header">Gene 2 Count</span></mfDefaultSorter></th>
-          <th><mfDefaultSorter by="partnerGene"><span class="table-header">Gene 1</span></mfDefaultSorter></th>
-          <th><mfDefaultSorter by="partnerReadCount"><span class="table-header">Gene 1 Count</span></mfDefaultSorter></th>
-          <th><mfDefaultSorter by="annotation"><span class="table-header">Annotation</span></mfDefaultSorter></th>
+          <th><mfDefaultSorter by="chromosome"><span class="table-header">Chrom</span></mfDefaultSorter></th>
+          <th><mfDefaultSorter by="position"><span class="table-header">Position </span></mfDefaultSorter></th>
+          <th><mfDefaultSorter by="reference"><span class="table-header">Reference</span></mfDefaultSorter></th>
+          <th><mfDefaultSorter by="alternative"><span class="table-header">Alternative</span></mfDefaultSorter></th>
+          <th><mfDefaultSorter by="filter"><span class="table-header">Filter</span></mfDefaultSorter></th>
+          <th><mfDefaultSorter by="func_gene"><span class="table-header">Gene</span></mfDefaultSorter></th>
+          <th><mfDefaultSorter by="oncomine_variant_class"><span class="table-header">Oncomine Variant Class</span></mfDefaultSorter></th>
+          <th><mfDefaultSorter by="exon"><span class="table-header">Exon</span></mfDefaultSorter></th>
+          <th><mfDefaultSorter by="function"><span class="table-header">Function</span></mfDefaultSorter></th>
+          <th><mfDefaultSorter by="read_depth"><span class="table-header">Read Count</span></mfDefaultSorter></th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let item of mfTable.data">
           <td>{{item.identifier | dashify}}</td>
-          <td><external-link [linkType]="'geneId'" [linkId]="item.driverGene"></external-link></td>
-          <td>{{item.driverReadCount | dashify}}</td>
-          <td>{{item.partnerGene | dashify}}</td>
-          <td>{{item.partnerReadCount | dashify}}</td>
-          <td>{{item.annotation | dashify}}</td>
+          <td>{{item.chromosome | dashify}}</td>
+          <td>{{item.position | dashify}}</td>
+          <td class="long-text-wrap">{{item.reference | dashify}}</td>
+          <td class="long-text-wrap">{{item.alternative | dashify}}</td>
+          <td>{{item.filter | dashify}}</td>
+          <td>{{item.func_gene | dashify}}</td>
+          <td>{{item.oncomine_variant_class | dashify}}</td>
+          <td>{{item.exon | dashify}}</td>
+          <td>{{item.function | dashify}}</td>
+          <td>{{item.read_depth | dashify}}</td>
         </tr>
         <tr *ngIf="!items || mfTable.data.length == 0">
           <td class="text-muted" colspan="14">
