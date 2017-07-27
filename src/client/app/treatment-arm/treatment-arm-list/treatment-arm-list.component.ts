@@ -7,7 +7,6 @@ import { routerTransition } from './../../shared/router.animations';
 import { GmtPipe } from './../../shared/pipes/gmt.pipe';
 import { TreatmentArmApiService } from '../treatment-arm-api.service';
 
-
 /**
  * TreatmentArmListComponent.
  */

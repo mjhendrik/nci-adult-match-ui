@@ -1,0 +1,13 @@
+@import "./../../../scss/colors.scss";
+
+.ta-link {
+  .prefix {
+    color: $text-muted-color;
+  }
+  .prefix:hover {
+    color: $text-muted-color;
+  }
+  .suffix {
+    color: inherit;
+  }
+}

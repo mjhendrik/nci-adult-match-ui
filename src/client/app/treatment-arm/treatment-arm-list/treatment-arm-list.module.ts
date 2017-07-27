@@ -7,10 +7,18 @@ import { DataTableModule } from '../../shared/datatables/index';
 import { PipesModule } from '../../shared/pipes/pipes.module';
 import { DirectivesModule } from '../../shared/directives/directives.module';
 import { TreatmentArmApiService } from '../treatment-arm-api.service';
-
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
-  imports: [CommonModule, TreatmentArmListRoutingModule, FormsModule, DataTableModule, PipesModule, DirectivesModule],
+  imports: [
+    CommonModule,
+    TreatmentArmListRoutingModule,
+    FormsModule,
+    DataTableModule,
+    PipesModule,
+    DirectivesModule,
+    SharedModule
+  ],
   declarations: [TreatmentArmListComponent],
   exports: [TreatmentArmListComponent],
   providers: [TreatmentArmApiService]
