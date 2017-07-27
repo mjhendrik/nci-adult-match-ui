@@ -8,15 +8,6 @@ import {
 } from '@angular/core/testing';
 import { Observable } from 'rxjs/Observable';
 import { FormsModule } from '@angular/forms';
-import { DataTableModule } from '../../shared/datatables/index';
-import { TreatmentArmListComponent } from './treatment-arm-list.component';
-import { TreatmentArmApiService } from './../treatment-arm-api.service';
-import { ActivatedRoute } from '@angular/router';
-import { RouterTestingModule } from '@angular/router/testing';
-import { PipesModule } from './../../shared/pipes/pipes.module';
-import { DirectivesModule } from './../../shared/directives/directives.module';
-import { GmtPipe } from './../../shared/pipes/gmt.pipe';
-
 import {
   HttpModule,
   Http,
@@ -30,8 +21,16 @@ import {
   MockConnection
 } from '@angular/http/testing';
 
+import { DataTableModule } from '../../shared/datatables/index';
+import { TreatmentArmListComponent } from './treatment-arm-list.component';
+import { TreatmentArmApiService } from './../treatment-arm-api.service';
+import { ActivatedRoute } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+import { PipesModule } from './../../shared/pipes/pipes.module';
+import { DirectivesModule } from './../../shared/directives/directives.module';
+import { GmtPipe } from './../../shared/pipes/gmt.pipe';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
-
+import { TreatmentArmLinkComponent } from '../../shared/treatment-arm-link/treatment-arm-link.component';
 
 export function main() {
   describe('treatment arms list component', () => {
@@ -44,8 +43,15 @@ export function main() {
     // inject([MockBackend], (mockBackend: MockBackend)
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [RouterTestingModule.withRoutes(config), DirectivesModule, PipesModule, FormsModule,
-          DataTableModule, ChartsModule],
+        imports: [
+          RouterTestingModule.withRoutes(config),
+          DirectivesModule,
+          PipesModule,
+          FormsModule,
+          DataTableModule,
+          ChartsModule,
+          TreatmentArmLinkComponent
+        ],
         declarations: [TreatmentArmListComponent],
         providers: [
           { provide: TreatmentArmApiService, useClass: MockTAListApiService },
