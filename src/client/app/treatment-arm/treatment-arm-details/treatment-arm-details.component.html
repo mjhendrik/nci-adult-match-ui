@@ -34,7 +34,6 @@
                               <ul class="dropdown-menu">
                                 <li *ngFor="let item of versionData;let ndx=index">
                                   <a *ngIf="item.version!==tableData[versionIndex].version" (click)="setVersionIndex(ndx)">{{item.version | dashify}}<span *ngIf="item.dateArchived===null">*</span></a>
-                                  <!--[routerLink]="['/treatments/details',tableData[versionIndex].treatmentId,item.version]"-->
                                   <a *ngIf="versionData.length===1">There are no other versions</a>
                                 </li>
                               </ul>

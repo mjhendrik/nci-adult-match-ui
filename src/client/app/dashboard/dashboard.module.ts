@@ -11,7 +11,15 @@ import { DashboardApiService } from './dashboard-api.service';
 
 
 @NgModule({
-  imports: [CommonModule, DashboardRoutingModule, SharedModule, FormsModule, DataTableModule, PipesModule, DirectivesModule],
+  imports: [
+    CommonModule,
+    DashboardRoutingModule,
+    SharedModule,
+    FormsModule,
+    DataTableModule,
+    PipesModule,
+    DirectivesModule
+  ],
   declarations: [DashboardComponent],
   exports: [DashboardComponent],
   providers: [DashboardApiService]

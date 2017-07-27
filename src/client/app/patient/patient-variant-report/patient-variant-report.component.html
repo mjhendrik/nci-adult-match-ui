@@ -82,7 +82,10 @@
           </dl>
           <dl *ngIf="assignmentReport.hasSelectedTreatmentArm" class="dl-horizontal widest-dt">
             <dt>Selected Treatment Arm</dt>
-            <dd><a href [routerLink]="['/treatments/details',assignmentReport.treatmentArm._id]" class="link-none"><i class="fa fa-medkit"></i> {{assignmentReport.treatmentArm._id | dashify}} ({{assignmentReport.treatmentArm.version}})</a></dd>
+            <dd>
+              <treatment-arm-link *ngIf="assignmentReport" [treatmentArmId]="assignmentReport.treatmentArm._id" [version]="assignmentReport.treatmentArm.version" [removePrefix]="true"></treatment-arm-link>
+              <span *ngIf="!assignmentReport">-</span>
+            </dd>
           </dl>
           <div *ngIf="assignmentReport.hasSelectedTreatmentArm" class="panel panel-success overflow-hidden">
             <div class="panel-heading">
