@@ -3,6 +3,9 @@ import { FormsModule } from '@angular/forms';
 import { TestBed } from '@angular/core/testing';
 import { APP_BASE_HREF } from '@angular/common';
 
+// import { nvd3 } from 'ng2-nvd3';
+
+
 import { async } from '@angular/core/testing';
 import { Route } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -22,9 +25,12 @@ import { CliaVariantReportsNtcComponent } from './clia/clia-variant-reports-ntc/
 import { CliaVariantReportsPaccComponent } from './clia/clia-variant-reports-pacc/clia-variant-reports-pacc.component';
 import { CliaVariantReportsPcComponent } from './clia/clia-variant-reports-pc/clia-variant-reports-pc.component';
 import { CliaVariantReportQcComponent } from './clia/clia-variant-report-qc/clia-variant-report-qc.component';
+import { CnvChartDirective } from './shared/cnv-chart/cnv-chart.directive.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
+import { nvD3 } from 'ng2-nvd3';
 
 export function main() {
+
 
   describe('App component', () => {
 
@@ -46,7 +52,9 @@ export function main() {
       { path: 'clia_variant_reports_ntc', component: CliaVariantReportsNtcComponent },
       { path: 'clia_variant_reports_pacc', component: CliaVariantReportsPaccComponent },
       { path: 'clia_variant_reports_pc', component: CliaVariantReportsPcComponent },
-      { path: 'clia_variant_reports_qc', component: CliaVariantReportQcComponent }
+      { path: 'clia_variant_reports_qc', component: CliaVariantReportQcComponent },
+      { path: 'cnv_chart_directive', component: CnvChartDirective },
+      { path: 'nvd3', component: nvD3 }
     ];
     beforeEach(() => {
       TestBed.configureTestingModule({
@@ -69,6 +77,8 @@ export function main() {
           CliaVariantReportQcComponent,
           PatientDetailsComponent,
           PatientVariantReportComponent,
+          CnvChartDirective,
+          nvD3
         ],
         providers: [
           { provide: APP_BASE_HREF, useValue: '' }
