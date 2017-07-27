@@ -7,12 +7,13 @@ import {
     ComponentFixture
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router/router';
 
 import { PipesModule } from './../../shared/pipes/pipes.module';
 import { TreatmentArmLinkComponent } from './treatment-arm-link.component';
 
 export function main() {
-    fdescribe('TreatmentArmLinkComponent component', () => {
+    describe('TreatmentArmLinkComponent component', () => {
 
         let comp: TreatmentArmLinkComponent;
         let fixture: ComponentFixture<TreatmentArmLinkComponent>;
@@ -22,8 +23,8 @@ export function main() {
         // async beforeEach
         beforeEach(async(() => {
             TestBed.configureTestingModule({
-                imports: [PipesModule, TreatmentArmLinkComponent],
-                declarations: [PipesModule, TreatmentArmLinkComponent],
+                imports: [PipesModule],
+                declarations: [TreatmentArmLinkComponent],
             }).compileComponents();  // compile template and css
         }));
 
@@ -44,8 +45,10 @@ export function main() {
             el = de.nativeElement;
         });
 
-        it('no title in the DOM until manually call `detectChanges`', () => {
+        xit('no title in the DOM until manually call `detectChanges`', () => {
             expect(el.textContent).toEqual('');
         });
+
     });
 }
+
