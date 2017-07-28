@@ -453,7 +453,7 @@
                           <tbody>
                             <tr *ngFor="let item of mftableSnvIn.data">
                               <td>
-                                <external-link [linkType]="'cosmicId'" [linkId]="item.identifier"></external-link>
+                                <cosmic-link [linkType]="'cosmicId'" [linkId]="item.identifier"></cosmic-link>
                               </td>
                               <td>{{item.chromosome | dashify}}</td>
                               <td>{{item.position | dashify}}</td>
@@ -570,7 +570,7 @@
                           <tbody>
                             <tr *ngFor="let item of mftableSnvEx.data">
                               <td>
-                                <external-link [linkType]="'cosmicId'" [linkId]="item.identifier"></external-link>
+                                <cosmic-link [linkType]="'cosmicId'" [linkId]="item.identifier"></cosmic-link>
                               </td>
                               <td>{{item.chromosome | dashify}}</td>
                               <td>{{item.position | dashify}}</td>
@@ -908,7 +908,7 @@
                           <tbody>
                             <tr *ngFor="let item of mftableGeneIn.data">
                               <td>
-                                <external-link [linkType]="'cosmicFusionId'" [linkId]="item.identifier"></external-link>
+                                <cosmic-link [linkType]="'cosmicFusionId'" [linkId]="item.identifier"></cosmic-link>
                               </td>
                               <td><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln={{item.gene1}}" class="link-none"
                                   target="_blank">{{item.gene1 | dashify}}</a></td>
@@ -1013,7 +1013,7 @@
                           <tbody>
                             <tr *ngFor="let item of mftableGeneEx.data">
                               <td>
-                                <external-link [linkType]="'cosmicFusionId'" [linkId]="item.identifier"></external-link>
+                                <cosmic-link [linkType]="'cosmicFusionId'" [linkId]="item.identifier"></cosmic-link>
                               </td>
                               <td><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln={{item.gene1}}" class="link-none"
                                   target="_blank">{{item.gene1 | dashify}}</a></td>

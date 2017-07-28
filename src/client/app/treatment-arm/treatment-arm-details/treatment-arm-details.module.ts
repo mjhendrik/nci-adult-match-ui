@@ -8,10 +8,20 @@ import { PipesModule } from '../../shared/pipes/pipes.module';
 import { DirectivesModule } from '../../shared/directives/directives.module';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { TreatmentArmApiService } from '../treatment-arm-api.service';
+import { SharedModule } from '../../shared/shared.module';
 
 
 @NgModule({
-  imports: [CommonModule, TreatmentArmDetailsRoutingModule, FormsModule, DataTableModule, PipesModule, DirectivesModule, ChartsModule],
+  imports: [
+    CommonModule,
+    TreatmentArmDetailsRoutingModule,
+    FormsModule,
+    DataTableModule,
+    PipesModule,
+    DirectivesModule,
+    ChartsModule,
+    SharedModule
+  ],
   declarations: [TreatmentArmDetailsComponent],
   exports: [TreatmentArmDetailsComponent],
   providers: [TreatmentArmApiService]

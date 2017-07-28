@@ -12,13 +12,13 @@ interface StringToStringMap {
 
 @Component({
     moduleId: module.id,
-    selector: 'external-link',
+    selector: 'cosmic-link',
     template: `
     <a *ngIf="isValidLink()" style="text-decoration: none;" href="{{getLinkUrl()}}" target="_blank" rel="noopener noreferrer">{{ text }}</a>
     <span *ngIf="!isValidLink()">{{ text }}</span>
   `,
 })
-export class ExternalLinksComponent {
+export class CosmicLinkComponent {
 
     text: string;
 
