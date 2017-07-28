@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { nvD3 } from 'ng2-nvd3';
 
 import { ColorCodeTaDirective } from './colorcode-ta.directive';
 import { ColorCodePatientsDirective } from './colorcode-patients.directive';
@@ -8,17 +9,14 @@ import { ColorCodeHoursDirective } from './colorcode-hours.directive';
 import { ColorCodeCliaDirective } from './colorcode-clia.directive';
 import { ColorCodeCliaIonDirective } from './colorcode-clia-ion.directive';
 import { MatchHeightDirective } from './match-height.directive';
-import {
-  ExternalLinksComponent,
-  LinkType
-} from './external-links.component';
+import { ExternalLinksComponent } from './external-links.component';
 import { ColorCodeAssignmentDirective } from './colorcode-assignment.directive';
 import { ColorCodeVariantReportDirective } from './colorcode-variant-report.directive';
 import { ActiveClassDirective } from './active-class.directive';
 import { MatchHeightTabClickDirective } from './match-height-tab.directive';
 import { FaIconDirective } from './fa-icon.directive';
 import { CnvChartDirective } from './../cnv-chart/cnv-chart.directive.component';
-import { nvD3 } from 'ng2-nvd3';
+import { ColorCodeYesNoDirective } from './colorcode-yes-no.directive';
 
 @NgModule({
   imports: [CommonModule],
@@ -37,8 +35,8 @@ import { nvD3 } from 'ng2-nvd3';
     MatchHeightTabClickDirective,
     FaIconDirective,
     nvD3,
-    CnvChartDirective
-
+    CnvChartDirective,
+    ColorCodeYesNoDirective
   ],
   exports: [
     ColorCodeTaDirective,
@@ -56,7 +54,7 @@ import { nvD3 } from 'ng2-nvd3';
     FaIconDirective,
     nvD3,
     CnvChartDirective,
+    ColorCodeYesNoDirective
   ],
 })
-export class DirectivesModule {
-}
+export class DirectivesModule {}

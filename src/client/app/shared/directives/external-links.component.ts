@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 
-
 export enum LinkType {
     geneId = 1,
     cosmicId = 2,
@@ -119,5 +118,5 @@ export class ExternalLinksComponent {
             default:
                 return '';
         }
-    }    
+    }
 }

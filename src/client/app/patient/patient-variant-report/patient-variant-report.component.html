@@ -30,10 +30,10 @@
             <dd>{{variantReport.analysisId | dashify}}</dd>
             <dt>Patient</dt>
             <dd><a href [routerLink]="['/patients', patient.patientSequenceNumber]" class="link-none">{{patient.patientSequenceNumber | dashify}}</a>,
-              <span [colorCodePatients]="patient.patientStatus">{{patient.currentPatientStatus | dashify}}</span>, Step {{patient.currentStepNumber
+              <span [colorCodePatients]="patient.currentPatientStatus">{{patient.currentPatientStatus | dashify}}</span>, Step {{patient.currentStepNumber
               | dashify}}</dd>
             <dt>Patient Concordance</dt>
-            <dd>{{patient.concordance | dashify}}</dd>
+            <dd><span [colorCodeYesNo]="patient.concordance">{{patient.concordance | dashify}}</span></dd>
             <dt>Status</dt>
             <dd><span [colorCodeVariantReport]="variantReport.variantReportStatus">{{variantReport.variantReportStatus | dashify}}</span> on {{variantReport.variantReportCreatedDate | gmt}} by {{variantReport.user | dashify}}</dd>
             <dt>MAPD</dt>
