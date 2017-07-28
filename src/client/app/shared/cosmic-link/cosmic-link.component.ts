@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-export enum LinkType {
+enum LinkType {
     geneId = 1,
     cosmicId = 2,
     cosmicFusionId = 3
@@ -22,7 +22,7 @@ export class CosmicLinkComponent {
 
     text: string;
 
-    @Input('linkType') linkType?: LinkType;
+    @Input('linkType') linkType: string;
 
     private linkIdValue: string;
     @Input()
