@@ -99,9 +99,13 @@ export function main() {
     let currentChartType: string;
     let outliers: any;
     let options: any;
+    let data: any;
     let svg: any;
     let nvd3: any;
     let h1 : any;
+    let X: any;
+    let Yx: any;
+    let Xx: any;
 
     const chartTypes = [
       'boxPlotChart'
@@ -128,6 +132,7 @@ export function main() {
         fixture.detectChanges();
 
         options = main.options;
+        data = main.data;
         h1 = debugElement.query(By.css('.type')).nativeElement;
 
         expect(h1.textContent).toEqual(options['chart'].type);
@@ -137,9 +142,8 @@ export function main() {
 
         svg = nvd3.querySelector('svg');
         expect(svg).toBeDefined();
-
-        outliers = options['chart'].outliers;
-
+        Yx = options['chart'].yAxis;
+        Xx = options['chart'].xAxis;
         done();
       });
     });
@@ -151,7 +155,31 @@ export function main() {
     });
 
     it('should have a defined outliers function', () => {
-      expect(outliers).toBeDefined();
+      let op = options['chart'].outliers;
+      expect(op(0)).toEqual([2.1,1.8,1.3]);
+    });
+
+    it('should have a defined x function', () => {
+      let op = options['chart'].x;
+      expect(op(0)).toEqual('Sample A');
+    });
+
+    it('Y Axis is a test', function(){
+      const op = Yx;
+      spyOn(op, 'tickFormat').and.returnValue(function(d:any){});
+    });
+
+    // it('X Axis is a test', function(){
+    //   const op = Xx;
+    //   // spyOn(op, 'itemColor').and.returnValue(d:[0]);
+    // });
+
+    it('should have a defined Y axis axisLabelDistance function', () => {
+      expect(Yx.axisLabelDistance).toEqual(30);
+    });
+
+    it('should have a defined Y axis tickFormat function', () => {
+      expect(Yx.axisLabelDistance).toEqual(30);
     });
   });
 }
@@ -188,14 +216,12 @@ class MockPatientApiService {
       2.192305
     ] }
     , 'ChartTestTitle']
-
     return Observable.of(testdata);
   }
 }
 
 class MockPatientOptionsService {
   getOptions():Observable<any> {
-
     let testoptions: any = [
 
       {"x":[{'label':'ABC'}],
@@ -220,17 +246,26 @@ const allOptions = {
       type: 'boxPlotChart',
       height: 450,
       outliers: function (d: any) {
-        return d.outliers;
+        return [2.1,1.8,1.3];
       },
       x: function (d: any) {
-        return d.label;
+        return "Sample A";
+      },
+      xAxis: {
+        itemColor: function () {
+          return this.color;
+        },
+        tickValues: function (d: any) {
+          return d3.format(',.0d')(d);
+        },
+        fontSize: 10
       },
       yAxis: {
         tickFormat: function (d: any) {
           return d3.format(',.0d')(d);
         },
         axisLabelDistance: 30
-      },
+      }
     }
   }
 };
