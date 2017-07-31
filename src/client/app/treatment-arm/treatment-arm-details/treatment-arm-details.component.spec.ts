@@ -421,8 +421,15 @@ export function main() {
     // inject([MockBackend], (mockBackend: MockBackend)
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [RouterTestingModule.withRoutes(config), DirectivesModule, PipesModule, FormsModule,
-          DataTableModule, ChartsModule],
+        imports: [
+          RouterTestingModule.withRoutes(config),
+          DirectivesModule,
+          PipesModule,
+          FormsModule,
+          DataTableModule,
+          ChartsModule,
+          SharedModule
+        ],
         declarations: [TreatmentArmDetailsComponent],
         providers: [
           { provide: TreatmentArmApiService, useClass: MockTADApiServiceError },
@@ -462,7 +469,6 @@ export function main() {
 
   });
 }
-
 
 class MockTADApiServiceError {
   getPreviousTreatmentArmDetails(): Observable<any> {
