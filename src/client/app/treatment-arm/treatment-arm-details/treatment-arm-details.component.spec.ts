@@ -305,7 +305,7 @@ let ta_resolved_data = {
       "pathway": "HER2"
     }],
     "treatmentArmStatus": "CLOSED",
-    "treatmentId": "EAY131-Q",
+    "treatmentArmId": "EAY131-Q",
     "variantReport": {
       "copyNumberVariants": [{
         "armSpecific": false,
@@ -743,7 +743,7 @@ class MockTADApiService {
         "pathway": "HER2"
       }],
       "treatmentArmStatus": "CLOSED",
-      "treatmentId": "EAY131-Q",
+      "treatmentArmId": "EAY131-Q",
       "variantReport": {
         "copyNumberVariants": [{
           "armSpecific": false,
