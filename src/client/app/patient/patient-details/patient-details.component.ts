@@ -31,9 +31,8 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
   uploadedFiles: any[];
   fileCount: number = 0;
   variantZip: boolean = false;
-  dnaBam: boolean = false;
-  cdnaBam: boolean = false;
-
+  dnaBam: boolean = false;;
+  cdnaBam: boolean = false;;
   configVariantZip: DropzoneConfigInterface;
   configDnaBam: DropzoneConfigInterface;
   configCdnaBam: DropzoneConfigInterface;
@@ -58,6 +57,9 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
     this.changeDetector = this.changeDetector;
 
     const DROPZONE_CONFIG_VARIANT_ZIP: DropzoneConfigInterface = {
+
+      // Change this to your upload POST address:
+      server: 'https://httpbin.org/post',
       maxFiles: 1,
       maxFilesize: 50000, // size in MB
       acceptedFiles: '.zip',
@@ -81,6 +83,9 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
     this.configVariantZip = DROPZONE_CONFIG_VARIANT_ZIP;
 
     const DROPZONE_CONFIG_DNA_BAM: DropzoneConfigInterface = {
+
+      // Change this to your upload POST address:
+      server: 'https://httpbin.org/post',
       maxFiles: 1,
       maxFilesize: 50000, // size in MB
       // acceptedFiles: '.bam',
@@ -103,6 +108,9 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
     this.configDnaBam = DROPZONE_CONFIG_DNA_BAM;
 
     const DROPZONE_CONFIG_CDNA_BAM: DropzoneConfigInterface = {
+
+      // Change this to your upload POST address:
+      server: 'https://httpbin.org/post',
       maxFiles: 1,
       maxFilesize: 50000, // size in MB
       // acceptedFiles: '.bam',
@@ -124,6 +132,8 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
     this.configCdnaBam = DROPZONE_CONFIG_CDNA_BAM;
 
     const DROPZONE_CONFIG_DOCUMENTS: DropzoneConfigInterface = {
+      // Change this to your upload POST address:
+      server: 'https://httpbin.org/post',
       // maxFiles: 3,
       maxFilesize: 50000, // size in MB
       // acceptedFiles: '.zip,.bam',
