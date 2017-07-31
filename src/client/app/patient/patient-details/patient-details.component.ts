@@ -70,8 +70,6 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
         });
       },
       accept: function (file: any, done: any) {
-        // console.log(file);
-        // console.log(done);
         // var _id = count++;
         // file._id = _id;
         // addedFilesHash[_id] = done;
