@@ -3,15 +3,14 @@ import {
   TestBed
 } from '@angular/core/testing';
 import { Observable } from 'rxjs/Observable';
+import { ActivatedRoute } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { CliaVariantReportsPcComponent } from './clia-variant-reports-pc.component';
 import { CliaApiService, CliaVariantReportsPCInterface } from './../clia-api.service';
-import { ActivatedRoute } from '@angular/router';
-import { RouterTestingModule } from '@angular/router/testing';
 import { PipesModule } from './../../shared/pipes/pipes.module';
 import { DirectivesModule } from './../../shared/directives/directives.module';
-
-
+import { SharedModule } from '../../shared/shared.module';
 
 export function main() {
   describe('clia variant reports pc component with clia type mocha', () => {
@@ -22,7 +21,12 @@ export function main() {
     ];
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [RouterTestingModule.withRoutes(config), DirectivesModule, PipesModule],
+        imports: [
+          RouterTestingModule.withRoutes(config),
+          DirectivesModule,
+          PipesModule,
+          SharedModule
+        ],
         declarations: [CliaVariantReportsPcComponent],
         providers: [
           { provide: CliaApiService, useClass: MockCliaApiService },
@@ -81,7 +85,12 @@ export function main() {
     ];
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [RouterTestingModule.withRoutes(config), DirectivesModule, PipesModule],
+        imports: [
+          RouterTestingModule.withRoutes(config),
+          DirectivesModule,
+          PipesModule,
+          SharedModule
+        ],
         declarations: [CliaVariantReportsPcComponent],
         providers: [
           { provide: CliaApiService, useClass: MockCliaApiService },
@@ -137,7 +146,12 @@ export function main() {
     ];
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [RouterTestingModule.withRoutes(config), DirectivesModule, PipesModule],
+        imports: [
+          RouterTestingModule.withRoutes(config),
+          DirectivesModule,
+          PipesModule,
+          SharedModule
+        ],
         declarations: [CliaVariantReportsPcComponent],
         providers: [
           { provide: CliaApiService, useClass: MockCliaApiService },
@@ -193,7 +207,12 @@ export function main() {
     ];
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [RouterTestingModule.withRoutes(config), DirectivesModule, PipesModule],
+        imports: [
+          RouterTestingModule.withRoutes(config),
+          DirectivesModule,
+          PipesModule,
+          SharedModule
+        ],
         declarations: [CliaVariantReportsPcComponent],
         providers: [
           { provide: CliaApiService, useClass: MockCliaApiService },
@@ -249,7 +268,12 @@ export function main() {
     ];
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [RouterTestingModule.withRoutes(config), DirectivesModule, PipesModule],
+        imports: [
+          RouterTestingModule.withRoutes(config),
+          DirectivesModule,
+          PipesModule,
+          SharedModule
+        ],
         declarations: [CliaVariantReportsPcComponent],
         providers: [
           { provide: CliaApiService, useClass: MockCliaApiServiceWithErrors },

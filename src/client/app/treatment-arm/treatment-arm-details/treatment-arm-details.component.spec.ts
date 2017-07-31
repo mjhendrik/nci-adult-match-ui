@@ -8,13 +8,6 @@ import {
 } from '@angular/core/testing';
 import { Observable } from 'rxjs/Observable';
 import { FormsModule } from '@angular/forms';
-import { DataTableModule } from '../../shared/datatables/index';
-import { TreatmentArmDetailsComponent } from './treatment-arm-details.component';
-import { TreatmentArmApiService } from './../treatment-arm-api.service';
-import { ActivatedRoute } from '@angular/router';
-import { RouterTestingModule } from '@angular/router/testing';
-import { PipesModule } from './../../shared/pipes/pipes.module';
-import { DirectivesModule } from './../../shared/directives/directives.module';
 import {
   HttpModule,
   Http,
@@ -27,9 +20,16 @@ import {
   MockBackend,
   MockConnection
 } from '@angular/http/testing';
-
+import { ActivatedRoute } from '@angular/router';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 
+import { DataTableModule } from '../../shared/datatables/index';
+import { TreatmentArmDetailsComponent } from './treatment-arm-details.component';
+import { TreatmentArmApiService } from './../treatment-arm-api.service';
+import { RouterTestingModule } from '@angular/router/testing';
+import { PipesModule } from './../../shared/pipes/pipes.module';
+import { DirectivesModule } from './../../shared/directives/directives.module';
+import { SharedModule } from '../../shared/shared.module';
 
 export function main() {
   describe('treatment arms details component', () => {
@@ -42,8 +42,15 @@ export function main() {
     // inject([MockBackend], (mockBackend: MockBackend)
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [RouterTestingModule.withRoutes(config), DirectivesModule, PipesModule, FormsModule,
-          DataTableModule, ChartsModule],
+        imports: [
+          RouterTestingModule.withRoutes(config),
+          DirectivesModule,
+          PipesModule,
+          FormsModule,
+          DataTableModule,
+          ChartsModule,
+          SharedModule
+        ],
         declarations: [TreatmentArmDetailsComponent],
         providers: [
           { provide: TreatmentArmApiService, useClass: MockTADApiService },
