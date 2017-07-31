@@ -45,14 +45,14 @@
       </thead>
       <tbody>
         <tr *ngFor="let item of mfTable.data">
-          <td>{{item.identifier | dashify}}</td>
+          <td><cosmic-link [linkType]="'cosmicId'" [linkId]="item.identifier"></cosmic-link></td>
           <td>{{item.chromosome | dashify}}</td>
           <td>{{item.position | dashify}}</td>
           <td class="long-text-wrap">{{item.reference | dashify}}</td>
           <td class="long-text-wrap">{{item.alternative | dashify}}</td>
           <td>{{item.filter | dashify}}</td>
           <td>{{item.allele_frequency | dashify}}</td>
-          <td>{{item.func_gene | dashify}}</td>
+          <td><cosmic-link [linkType]="'geneId'" [linkId]="item.func_gene"></cosmic-link></td>
           <td>{{item.oncomine_variant_class | dashify}}</td>
           <td>{{item.exon | dashify}}</td>
           <td>{{item.function | dashify}}</td>
