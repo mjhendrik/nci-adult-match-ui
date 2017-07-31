@@ -33,6 +33,38 @@ import {
 
 
 export function main() {
+
+
+  let resolved_data = {
+    PCData: [{
+      copy_number_variants: ['test'],
+      gene_fusions: ['test'],
+      snv_indels: ['test'],
+      molecular_id: { 'test': 'test' },
+      analysis_id: { 'test': 'test' },
+      total_variants: { 'test': 'test' },
+      mapd: { 'test': 'test' },
+      cellularity: { 'test': 'test' },
+      torrent_variant_caller_version: { 'test': 'test' },
+      report_status: { 'test': 'test' },
+      date_molecular_id_created: '2-12-2015',
+      date_variant_received: '2-12-2015'
+    }],
+    NTCData: [{
+      date_molecular_id_created: '2-12-2016',
+      date_variant_received: '2-12-2016',
+    }],
+    PACCData: [{
+      date_molecular_id_created: '2-12-2016',
+      date_variant_received: '2-12-2016',
+    }],
+    ionData: [{
+      date_molecular_id_created: '2-12-2016',
+      date_variant_received: '2-12-2016',
+    }]
+  }
+
+
   describe('clia parent component with clia type mocha', () => {
     // Setting module for testing
     // Disable old forms
@@ -46,7 +78,18 @@ export function main() {
         declarations: [CliaParentComponent],
         providers: [
           { provide: CliaApiService, useClass: MockCliaApiService },
-          { provide: ActivatedRoute, useValue: { snapshot: { url: [{ path: 'clia_mocha' }], data: { cliaType: 'mocha' } } } },
+          {
+            provide: ActivatedRoute, useValue: {
+              snapshot:
+              {
+                url: [{ path: 'clia_mocha' }],
+                data: {
+                  cliaType: 'mocha',
+                  data: resolved_data
+                }
+              }
+            }
+          },
           // MockBackend,
           // BaseRequestOptions,
           // { provide: XHRBackend, useClass: MockBackend },
@@ -70,31 +113,31 @@ export function main() {
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
     });
 
-    // it('should work',
-    //   async((done: any) => {
-    //     TestBed
-    //       .compileComponents()
-    //       .then(() => {
-    //         let fixture = TestBed.overrideComponent(CliaParentComponent, {
-    //           set: {
-    //             templateUrl: ''
-    //           }
-    //         }).createComponent(CliaParentComponent);
-    //         // console.log(fixture);
-    //         fixture.componentInstance.ngOnInit();
-    //         // let interval = setInterval(() => {
-    //         //   // expect(1).toBe(1);
-    //         //   // done();
-    //         //   // fixture.detectChanges();
-    //         // }, 1000 * 60);
-    //         // clearInterval(interval);
+    it('should work',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(CliaParentComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(CliaParentComponent);
+            // console.log(fixture);
+            fixture.componentInstance.ngOnInit();
+            // let interval = setInterval(() => {
+            //   // expect(1).toBe(1);
+            //   // done();
+            //   // fixture.detectChanges();
+            // }, 1000 * 60);
+            // clearInterval(interval);
 
-    //         // Observable.interval(1000 * 60).subscribe(() => {
-    //         //   fixture.detectChanges();
-    //         // });
+            // Observable.interval(1000 * 60).subscribe(() => {
+            //   fixture.detectChanges();
+            // });
 
-    //       });
-    //   }));
+          });
+      }));
 
     it('should test setControlType',
       async((done: any) => {
@@ -112,50 +155,50 @@ export function main() {
           });
       }));
 
-    // it('should test generateMsn with control type positive',
-    //   async((done: any) => {
-    //     TestBed
-    //       .compileComponents()
-    //       .then(() => {
-    //         let fixture = TestBed.overrideComponent(CliaParentComponent, {
-    //           set: {
-    //             templateUrl: ''
-    //           }
-    //         }).createComponent(CliaParentComponent);
-    //         fixture.componentInstance.control_type = 'positive';
-    //         fixture.componentInstance.generateMsn();
-    //       });
-    //   }));
+    it('should test generateMsn with control type positive',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(CliaParentComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(CliaParentComponent);
+            fixture.componentInstance.control_type = 'positive';
+            fixture.componentInstance.generateMsn();
+          });
+      }));
 
-    // it('should test generateMsn with control type no_template',
-    //   async((done: any) => {
-    //     TestBed
-    //       .compileComponents()
-    //       .then(() => {
-    //         let fixture = TestBed.overrideComponent(CliaParentComponent, {
-    //           set: {
-    //             templateUrl: ''
-    //           }
-    //         }).createComponent(CliaParentComponent);
-    //         fixture.componentInstance.control_type = 'no_template';
-    //         fixture.componentInstance.generateMsn();
-    //       });
-    //   }));
+    it('should test generateMsn with control type no_template',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(CliaParentComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(CliaParentComponent);
+            fixture.componentInstance.control_type = 'no_template';
+            fixture.componentInstance.generateMsn();
+          });
+      }));
 
-    // it('should test generateMsn with control type proficiency_competency',
-    //   async((done: any) => {
-    //     TestBed
-    //       .compileComponents()
-    //       .then(() => {
-    //         let fixture = TestBed.overrideComponent(CliaParentComponent, {
-    //           set: {
-    //             templateUrl: ''
-    //           }
-    //         }).createComponent(CliaParentComponent);
-    //         fixture.componentInstance.control_type = 'proficiency_competency';
-    //         fixture.componentInstance.generateMsn();
-    //       });
-    //   }));
+    it('should test generateMsn with control type proficiency_competency',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(CliaParentComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(CliaParentComponent);
+            fixture.componentInstance.control_type = 'proficiency_competency';
+            fixture.componentInstance.generateMsn();
+          });
+      }));
 
   });
 
@@ -171,25 +214,35 @@ export function main() {
         declarations: [CliaParentComponent],
         providers: [
           { provide: CliaApiService, useClass: MockCliaApiService },
-          { provide: ActivatedRoute, useValue: { snapshot: { url: [{ path: 'clia_dartmouth' }], data: { cliaType: 'dartmouth' } } } },
+          {
+            provide: ActivatedRoute, useValue: {
+              snapshot: {
+                url: [{ path: 'clia_dartmouth' }],
+                data: {
+                  cliaType: 'dartmouth',
+                  data: resolved_data
+                }
+              }
+            }
+          },
         ]
       });
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
     });
 
-    // it('should work for clia_dartmouth',
-    //   async((done: any) => {
-    //     TestBed
-    //       .compileComponents()
-    //       .then(() => {
-    //         let fixture = TestBed.overrideComponent(CliaParentComponent, {
-    //           set: {
-    //             templateUrl: ''
-    //           }
-    //         }).createComponent(CliaParentComponent);
-    //         fixture.componentInstance.ngOnInit();
-    //       });
-    //   }));
+    it('should work for clia_dartmouth',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(CliaParentComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(CliaParentComponent);
+            fixture.componentInstance.ngOnInit();
+          });
+      }));
 
   });
 
@@ -205,25 +258,35 @@ export function main() {
         declarations: [CliaParentComponent],
         providers: [
           { provide: CliaApiService, useClass: MockCliaApiService },
-          { provide: ActivatedRoute, useValue: { snapshot: { url: [{ path: 'clia_yale' }], data: { cliaType: 'yale' } } } },
+          {
+            provide: ActivatedRoute, useValue: {
+              snapshot: {
+                url: [{ path: 'clia_yale' }],
+                data: {
+                  cliaType: 'yale',
+                  data: resolved_data
+                }
+              }
+            }
+          },
         ]
       });
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
     });
 
-    // it('should work for clia_yale',
-    //   async((done: any) => {
-    //     TestBed
-    //       .compileComponents()
-    //       .then(() => {
-    //         let fixture = TestBed.overrideComponent(CliaParentComponent, {
-    //           set: {
-    //             templateUrl: ''
-    //           }
-    //         }).createComponent(CliaParentComponent);
-    //         fixture.componentInstance.ngOnInit();
-    //       });
-    //   }));
+    it('should work for clia_yale',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(CliaParentComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(CliaParentComponent);
+            fixture.componentInstance.ngOnInit();
+          });
+      }));
 
   });
 
@@ -239,25 +302,34 @@ export function main() {
         declarations: [CliaParentComponent],
         providers: [
           { provide: CliaApiService, useClass: MockCliaApiService },
-          { provide: ActivatedRoute, useValue: { snapshot: { url: [{ path: 'clia_mgh' }], data: { cliaType: 'mgh' } } } },
+          {
+            provide: ActivatedRoute, useValue: {
+              snapshot: {
+                url: [{ path: 'clia_mgh' }], data: {
+                  cliaType: 'mgh',
+                  data: resolved_data
+                }
+              }
+            }
+          },
         ]
       });
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
     });
 
-    // it('should work for clia_mgh',
-    //   async((done: any) => {
-    //     TestBed
-    //       .compileComponents()
-    //       .then(() => {
-    //         let fixture = TestBed.overrideComponent(CliaParentComponent, {
-    //           set: {
-    //             templateUrl: ''
-    //           }
-    //         }).createComponent(CliaParentComponent);
-    //         fixture.componentInstance.ngOnInit();
-    //       });
-    //   }));
+    it('should work for clia_mgh',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(CliaParentComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(CliaParentComponent);
+            fixture.componentInstance.ngOnInit();
+          });
+      }));
 
   });
 
@@ -273,25 +345,34 @@ export function main() {
         declarations: [CliaParentComponent],
         providers: [
           { provide: CliaApiService, useClass: MockCliaApiService },
-          { provide: ActivatedRoute, useValue: { snapshot: { url: [{ path: 'clia_mda' }], data: { cliaType: 'mda' } } } },
+          {
+            provide: ActivatedRoute, useValue: {
+              snapshot: {
+                url: [{ path: 'clia_mda' }], data: {
+                  cliaType: 'mda',
+                  data: resolved_data
+                }
+              }
+            }
+          },
         ]
       });
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['ADMIN'] }));
     });
 
-    // it('should work for clia_mda',
-    //   async((done: any) => {
-    //     TestBed
-    //       .compileComponents()
-    //       .then(() => {
-    //         let fixture = TestBed.overrideComponent(CliaParentComponent, {
-    //           set: {
-    //             templateUrl: ''
-    //           }
-    //         }).createComponent(CliaParentComponent);
-    //         fixture.componentInstance.ngOnInit();
-    //       });
-    //   }));
+    it('should work for clia_mda',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(CliaParentComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(CliaParentComponent);
+            fixture.componentInstance.ngOnInit();
+          });
+      }));
 
   });
 

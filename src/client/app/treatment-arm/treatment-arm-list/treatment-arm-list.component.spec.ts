@@ -1,3 +1,4 @@
+// import { Component } from '@angular/core';
 import {
   async,
   TestBed,
@@ -7,6 +8,15 @@ import {
 } from '@angular/core/testing';
 import { Observable } from 'rxjs/Observable';
 import { FormsModule } from '@angular/forms';
+import { DataTableModule } from '../../shared/datatables/index';
+import { TreatmentArmListComponent } from './treatment-arm-list.component';
+import { TreatmentArmApiService } from './../treatment-arm-api.service';
+import { ActivatedRoute } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+import { PipesModule } from './../../shared/pipes/pipes.module';
+import { DirectivesModule } from './../../shared/directives/directives.module';
+import { GmtPipe } from './../../shared/pipes/gmt.pipe';
+import { SharedModule } from '../../shared/shared.module';
 import {
   HttpModule,
   Http,
@@ -19,17 +29,16 @@ import {
   MockBackend,
   MockConnection
 } from '@angular/http/testing';
+
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 
-import { DataTableModule } from '../../shared/datatables/index';
-import { TreatmentArmListComponent } from './treatment-arm-list.component';
-import { TreatmentArmApiService } from './../treatment-arm-api.service';
-import { ActivatedRoute } from '@angular/router';
-import { RouterTestingModule } from '@angular/router/testing';
-import { PipesModule } from './../../shared/pipes/pipes.module';
-import { DirectivesModule } from './../../shared/directives/directives.module';
-import { GmtPipe } from './../../shared/pipes/gmt.pipe';
-import { SharedModule } from '../../shared/shared.module';
+let ta_list_data = {
+  data: [[{
+    date_molecular_id_created: '2-12-2016',
+    date_variant_received: '2-12-2016',
+    dateCreated: '2-12-2016',
+  }]]
+};
 
 export function main() {
   describe('treatment arms list component', () => {
@@ -42,38 +51,44 @@ export function main() {
     // inject([MockBackend], (mockBackend: MockBackend)
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [
-          RouterTestingModule.withRoutes(config),
-          DirectivesModule,
-          PipesModule,
-          FormsModule,
-          DataTableModule,
-          ChartsModule,
-          SharedModule
-        ],
+        imports: [RouterTestingModule.withRoutes(config),
+          DirectivesModule, PipesModule,
+          FormsModule, SharedModule,
+          DataTableModule, ChartsModule],
         declarations: [TreatmentArmListComponent],
         providers: [
           { provide: TreatmentArmApiService, useClass: MockTAListApiService },
-          { provide: ActivatedRoute, useValue: { snapshot: { params: { id: 'EAY131-F', version: '2016-05-31' } } } },
+          {
+            provide: ActivatedRoute, useValue: {
+              snapshot: {
+                params:
+                {
+                  id: 'EAY131-F',
+                  version: '2016-05-31'
+                },
+                data: ta_list_data
+              }
+            }
+          },
         ]
       });
 
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
     });
 
-    // it('should work by calling ngonInit',
-    //   async((done: any) => {
-    //     TestBed
-    //       .compileComponents()
-    //       .then(() => {
-    //         let fixture = TestBed.overrideComponent(TreatmentArmListComponent, {
-    //           set: {
-    //             templateUrl: ''
-    //           }
-    //         }).createComponent(TreatmentArmListComponent);
-    //         fixture.componentInstance.ngOnInit();
-    //       });
-    //   }));
+    it('should work by calling ngonInit',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(TreatmentArmListComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(TreatmentArmListComponent);
+            fixture.componentInstance.ngOnInit();
+          });
+      }));
 
     it('should test dateStatusLog',
       async((done: any) => {
@@ -185,43 +200,54 @@ export function main() {
 
   });
 
-  // describe('treatment arms list component', () => {
-  //   // Setting module for testing
-  //   // Disable old forms
-  //   let config: any[] = [
-  //     { path: 'treatments/details/:id/:version', component: TreatmentArmListComponent },
-  //     { path: 'treatmentsdetails/:id/:version', component: TreatmentArmListComponent }
-  //   ];
-  //   // inject([MockBackend], (mockBackend: MockBackend)
-  //   beforeEach(() => {
-  //     TestBed.configureTestingModule({
-  //       imports: [RouterTestingModule.withRoutes(config), DirectivesModule, PipesModule, FormsModule,
-  //         DataTableModule, ChartsModule],
-  //       declarations: [TreatmentArmListComponent],
-  //       providers: [
-  //         { provide: TreatmentArmApiService, useClass: MockTAListApiServiceError },
-  //         { provide: ActivatedRoute, useValue: { snapshot: { params: { id: 'EAY131-F', version: '2016-05-31' } } } },
-  //       ]
-  //     });
+  describe('treatment arms list component', () => {
+    // Setting module for testing
+    // Disable old forms
+    let config: any[] = [
+      { path: 'treatments/details/:id/:version', component: TreatmentArmListComponent },
+      { path: 'treatmentsdetails/:id/:version', component: TreatmentArmListComponent }
+    ];
+    // inject([MockBackend], (mockBackend: MockBackend)
+    beforeEach(() => {
+      TestBed.configureTestingModule({
+        imports: [RouterTestingModule.withRoutes(config), DirectivesModule,
+          PipesModule, FormsModule, SharedModule,
+          DataTableModule, ChartsModule],
+        declarations: [TreatmentArmListComponent],
+        providers: [
+          { provide: TreatmentArmApiService, useClass: MockTAListApiServiceError },
+          {
+            provide: ActivatedRoute, useValue: {
+              snapshot: {
+                params: {
+                  id: 'EAY131-F',
+                  version: '2016-05-31'
+                },
+                data: ta_list_data
+              }
+            }
+          },
+        ]
+      });
 
-  //     spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
-  //   });
+      spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
+    });
 
-  //   // it('should work by calling ngonInit',
-  //   //   async((done: any) => {
-  //   //     TestBed
-  //   //       .compileComponents()
-  //   //       .then(() => {
-  //   //         let fixture = TestBed.overrideComponent(TreatmentArmListComponent, {
-  //   //           set: {
-  //   //             templateUrl: ''
-  //   //           }
-  //   //         }).createComponent(TreatmentArmListComponent);
-  //   //         fixture.componentInstance.ngOnInit();
-  //   //       });
-  //   //   }));
+    it('should work by calling ngonInit',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(TreatmentArmListComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(TreatmentArmListComponent);
+            fixture.componentInstance.ngOnInit();
+          });
+      }));
 
-  // });
+  });
 }
 
 class MockTAListApiServiceError {
