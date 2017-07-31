@@ -21,7 +21,7 @@ export class ColorCodePatientsDirective implements OnInit {
             this.el.nativeElement.classList.add('text-purple-light');
         } else if (this.colorCodePatients.indexOf('OFF_TRIAL_') !== -1 || this.colorCodePatients === 'OFF_TRIAL') {
             this.el.nativeElement.classList.add('text-danger-light');
-        } else if (this.colorCodePatients === 'FORMERLY_ON_ARM_OFF_TRIAL' || this.colorCodePatients === 'PROGRESSION_REBIOPSY') {
+        } else if (this.colorCodePatients === 'FORMERLY_ON_ARM_OFF_TRIAL' || this.colorCodePatients.indexOf('PROGRESSION') !== -1) {
             this.el.nativeElement.classList.add('text-warning-light');
         }
 
