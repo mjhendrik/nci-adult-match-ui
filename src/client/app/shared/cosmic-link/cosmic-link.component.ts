@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
 
 enum LinkType {
-    geneId = 1,
-    cosmicId = 2,
-    cosmicFusionId = 3
+    geneId = 'geneId',
+    cosmicId = 'cosmicId',
+    cosmicFusionId = 'cosmicFusionId'
 }
 
 interface StringToStringMap {
@@ -22,7 +22,7 @@ export class CosmicLinkComponent {
 
     text: string;
 
-    @Input('linkType') linkType: string;
+    @Input('linkType') linkType: LinkType;
 
     private linkIdValue: string;
     @Input()
@@ -68,7 +68,7 @@ export class CosmicLinkComponent {
         var matches: any = null;
 
         switch (this.linkType) {
-            case LinkType.cosmicId.toString():
+            case LinkType.cosmicId:
                 matches = this.linkId.match(new RegExp(this.patterns['cosmicId']));
                 if (matches && matches[1] !== '') {
                     return !!matches[1];
@@ -76,7 +76,7 @@ export class CosmicLinkComponent {
                     return false;
                 }
 
-            case LinkType.cosmicFusionId.toString():
+            case LinkType.cosmicFusionId:
                 matches = this.linkId.match(new RegExp(this.patterns['cosmicFusionId']));
                 if (matches && matches[1] !== '') {
                     return !!matches[1];
@@ -84,7 +84,7 @@ export class CosmicLinkComponent {
                     return false;
                 }
 
-            case LinkType.geneId.toString():
+            case LinkType.geneId:
                 return true;
 
             default:
@@ -97,7 +97,7 @@ export class CosmicLinkComponent {
         let matches: any = null;
 
         switch (this.linkType) {
-            case LinkType.cosmicId.toString():
+            case LinkType.cosmicId:
                 matches = this.linkId.match(new RegExp(this.patterns['cosmicId']));
                 if (matches && matches[1] !== '') {
                     return matches[1];
@@ -105,7 +105,7 @@ export class CosmicLinkComponent {
                     return '';
                 }
 
-            case LinkType.cosmicFusionId.toString():
+            case LinkType.cosmicFusionId:
                 matches = this.linkId.match(new RegExp(this.patterns['cosmicFusionId']));
                 if (matches && matches[1] !== '') {
                     return matches[1];
@@ -113,7 +113,7 @@ export class CosmicLinkComponent {
                     return '';
                 }
 
-            case LinkType.geneId.toString():
+            case LinkType.geneId:
                 return this.linkId;
 
             default:
