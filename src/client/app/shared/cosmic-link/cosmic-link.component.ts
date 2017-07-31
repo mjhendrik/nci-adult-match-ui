@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 enum LinkType {
-    geneId = 'geneId',
+    cosmicGene = 'cosmicGene',
     cosmicId = 'cosmicId',
     cosmicFusionId = 'cosmicFusionId'
 }
@@ -35,7 +35,7 @@ export class CosmicLinkComponent {
     private urls: StringToStringMap = {
         'cosmicId': 'http://cancer.sanger.ac.uk/cosmic/mutation/overview?id={id}',
         'cosmicFusionId': 'http://cancer.sanger.ac.uk/cosmic/fusion/summary?id={id}',
-        'geneId': 'http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln={id}',
+        'cosmicGene': 'http://grch37-cancer.sanger.ac.uk/cosmic/gene/overview?ln={id}',
     };
 
     private patterns: StringToStringMap = {
@@ -84,7 +84,7 @@ export class CosmicLinkComponent {
                     return false;
                 }
 
-            case LinkType.geneId:
+            case LinkType.cosmicGene:
                 return true;
 
             default:
@@ -113,7 +113,7 @@ export class CosmicLinkComponent {
                     return '';
                 }
 
-            case LinkType.geneId:
+            case LinkType.cosmicGene:
                 return this.linkId;
 
             default:

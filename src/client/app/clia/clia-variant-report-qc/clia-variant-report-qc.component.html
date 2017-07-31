@@ -39,12 +39,12 @@
               <table class="table table-condensed white-header">
                 <thead>
                   <tr>
-                    <th *ngIf="tabType=='pc'"><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln=lrp1" class="link-none" target="_blank">LRP1</a></th>
-                    <th *ngIf="tabType!='pc'"><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln=lmna" class="link-none" target="_blank">LMNA</a></th>
-                    <th><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln=tbp" class="link-none" target="_blank">TBP</a></th>
-                    <th><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln=myc" class="link-none" target="_blank">MYC</a></th>
-                    <th><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln=hmbs" class="link-none" target="_blank">HMBS</a></th>
-                    <th><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln=itgb7" class="link-none" target="_blank">ITGB7</a></th>
+                    <th *ngIf="tabType=='pc'"><cosmic-link [linkType]="'cosmicGene'" [linkId]="'LRP1'"></cosmic-link></th>
+                    <th *ngIf="tabType!='pc'"><cosmic-link [linkType]="'cosmicGene'" [linkId]="'LMNA'"></cosmic-link></th>
+                    <th><cosmic-link [linkType]="'cosmicGene'" [linkId]="'TBP'"></cosmic-link></th>
+                    <th><cosmic-link [linkType]="'cosmicGene'" [linkId]="'MYC'"></cosmic-link></th>
+                    <th><cosmic-link [linkType]="'cosmicGene'" [linkId]="'HMBS'"></cosmic-link></th>
+                    <th><cosmic-link [linkType]="'cosmicGene'" [linkId]="'ITGB7'"></cosmic-link></th>
                     <th>SUM</th>
                   </tr>
                 </thead>

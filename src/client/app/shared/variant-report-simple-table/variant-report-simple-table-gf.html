@@ -15,11 +15,11 @@
   <tbody>
     <tr *ngFor="let item of items">
       <td><input type="checkbox" name="chr" value="checked" checked disabled></td>
-      <td>{{item.identifier | dashify}}</td>
+      <td><cosmic-link [linkType]="'cosmicFusionId'" [linkId]="item.identifier"></cosmic-link></td>
       <td>{{item.aMoi | dashify}}</td>
-      <td><cosmic-link [linkType]="'cosmicFusionId'" [linkId]="item.driverGene"></cosmic-link></td>
+      <td><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.driverGene"></cosmic-link></td>
       <td>{{item.driverReadCount | dashify}}</td>
-      <td>{{item.partnerGene | dashify}}</td>
+      <td><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.partnerGene"></cosmic-link></td>
       <td>{{item.partnerReadCount | dashify}}</td>
       <td>{{item.annotation | dashify}}</td>
     </tr>

@@ -95,7 +95,7 @@
                 <td>{{item.ocp_reference | dashify}}</td>
                 <td>{{item.ocp_alternative | dashify}}</td>
                 <td>{{item.allele_frequency | dashify}}</td>
-                <td><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln={{item.func_gene}}" class="link-none" target="_blank">{{item.func_gene | dashify}}</a></td>
+                <td><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.func_gene"></cosmic-link></td>
                 <td>{{item.oncomine_variant_class | dashify}}</td>
                 <td>{{item.function | dashify}}</td>
                 <td>{{item.hgvs | dashify}}</td>
@@ -161,9 +161,9 @@
             <tbody>
               <tr *ngFor="let item of gene_fusions">
                 <td>{{item.identifier | dashify}}</td>
-                <td><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln={{item.driver_gene}}" class="link-none" target="_blank">{{item.driver_gene | dashify}}</a></td>
+                <td><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.driver_gene"></cosmic-link></td>
                 <td>{{item.driver_read_count | dashify}}</td>
-                <td><a href="http://cancer.sanger.ac.uk/cosmic/gene/analysis?ln={{item.partner_gene}}" class="link-none" target="_blank">{{item.partner_gene | dashify}}</a></td>
+                <td><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.partner_gene"></cosmic-link></td>
                 <td>{{item.partner_read_count | dashify}}</td>
                 <td>{{item.annotation | dashify}}</td>
               </tr>

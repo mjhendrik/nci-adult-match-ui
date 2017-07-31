@@ -52,7 +52,7 @@
           <td class="long-text-wrap">{{item.alternative | dashify}}</td>
           <td>{{item.filter | dashify}}</td>
           <td>{{item.allele_frequency | dashify}}</td>
-          <td><cosmic-link [linkType]="'geneId'" [linkId]="item.func_gene"></cosmic-link></td>
+          <td><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.func_gene"></cosmic-link></td>
           <td>{{item.oncomine_variant_class | dashify}}</td>
           <td>{{item.exon | dashify}}</td>
           <td>{{item.function | dashify}}</td>

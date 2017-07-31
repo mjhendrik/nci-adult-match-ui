@@ -11,6 +11,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { PipesModule } from './../../shared/pipes/pipes.module';
 import { DirectivesModule } from './../../shared/directives/directives.module';
 import { VariantReportFilteredTableModule } from '../../shared/variant-report-filtered-table/variant-report-filtered-table.module';
+import { SharedModule } from '../../shared/shared.module';
 
 
 export function main() {
@@ -38,7 +39,13 @@ export function main() {
     // Disable old forms
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [RouterTestingModule.withRoutes(config), DirectivesModule, PipesModule, VariantReportFilteredTableModule],
+        imports: [
+          RouterTestingModule.withRoutes(config),
+          DirectivesModule,
+          PipesModule,
+          VariantReportFilteredTableModule,
+          SharedModule
+        ],
         declarations: [CliaVariantReportQcComponent],
         providers: [
           { provide: CliaApiService, useClass: MockCliaApiService },
@@ -96,7 +103,13 @@ export function main() {
     // Disable old forms
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [RouterTestingModule.withRoutes(config), DirectivesModule, PipesModule, VariantReportFilteredTableModule],
+        imports: [
+          RouterTestingModule.withRoutes(config),
+          DirectivesModule,
+          PipesModule,
+          VariantReportFilteredTableModule,
+          SharedModule
+        ],
         declarations: [CliaVariantReportQcComponent],
         providers: [
           { provide: CliaApiService, useClass: MockCliaApiService },
@@ -148,7 +161,13 @@ export function main() {
     // Disable old forms
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [RouterTestingModule.withRoutes(config), DirectivesModule, PipesModule, VariantReportFilteredTableModule],
+        imports: [
+          RouterTestingModule.withRoutes(config),
+          DirectivesModule,
+          PipesModule,
+          VariantReportFilteredTableModule,
+          SharedModule
+        ],
         declarations: [CliaVariantReportQcComponent],
         providers: [
           { provide: CliaApiService, useClass: MockCliaApiServiceWithErrors },
@@ -200,7 +219,13 @@ export function main() {
     // Disable old forms
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [RouterTestingModule.withRoutes(config), DirectivesModule, PipesModule, VariantReportFilteredTableModule],
+        imports: [
+          RouterTestingModule.withRoutes(config),
+          DirectivesModule,
+          PipesModule,
+          VariantReportFilteredTableModule,
+          SharedModule
+        ],
         declarations: [CliaVariantReportQcComponent],
         providers: [
           { provide: CliaApiService, useClass: MockCliaApiService },
@@ -252,7 +277,13 @@ export function main() {
     // Disable old forms
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [RouterTestingModule.withRoutes(config), DirectivesModule, PipesModule, VariantReportFilteredTableModule],
+        imports: [
+          RouterTestingModule.withRoutes(config),
+          DirectivesModule,
+          PipesModule,
+          VariantReportFilteredTableModule,
+          SharedModule
+        ],
         declarations: [CliaVariantReportQcComponent],
         providers: [
           { provide: CliaApiService, useClass: MockCliaApiService },
