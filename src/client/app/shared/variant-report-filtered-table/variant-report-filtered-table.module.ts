@@ -9,6 +9,7 @@ import { CliaApiService } from '../../clia/clia-api.service';
 import { VariantReportFilteredTableCnvComponent } from './variant-report-filtered-table-cnv.component';
 import { VariantReportFilteredTableGeneFusionComponent } from './variant-report-filtered-table-gf.component';
 import { VariantReportFilteredTableSnvIndelsComponent } from './variant-report-filtered-table-snv-indels.component';
+import { SharedModule } from '../shared.module';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { VariantReportFilteredTableSnvIndelsComponent } from './variant-report-f
     FormsModule,
     DataTableModule,
     PipesModule,
-    DirectivesModule
+    DirectivesModule,
+    SharedModule
   ],
   declarations: [
     VariantReportFilteredTableCnvComponent,

@@ -68,7 +68,7 @@ export class CosmicLinkComponent {
         var matches: any = null;
 
         switch (this.linkType) {
-            case LinkType.cosmicId:
+            case LinkType.cosmicId.toString():
                 matches = this.linkId.match(new RegExp(this.patterns['cosmicId']));
                 if (matches && matches[1] !== '') {
                     return !!matches[1];
@@ -76,7 +76,7 @@ export class CosmicLinkComponent {
                     return false;
                 }
 
-            case LinkType.cosmicFusionId:
+            case LinkType.cosmicFusionId.toString():
                 matches = this.linkId.match(new RegExp(this.patterns['cosmicFusionId']));
                 if (matches && matches[1] !== '') {
                     return !!matches[1];
@@ -84,10 +84,11 @@ export class CosmicLinkComponent {
                     return false;
                 }
 
-            case LinkType.geneId:
+            case LinkType.geneId.toString():
                 return true;
 
             default:
+                console.error('Unknown cosmic link type ' + this.linkType);
                 return false;
         }
     }
@@ -96,7 +97,7 @@ export class CosmicLinkComponent {
         let matches: any = null;
 
         switch (this.linkType) {
-            case LinkType.cosmicId:
+            case LinkType.cosmicId.toString():
                 matches = this.linkId.match(new RegExp(this.patterns['cosmicId']));
                 if (matches && matches[1] !== '') {
                     return matches[1];
@@ -104,7 +105,7 @@ export class CosmicLinkComponent {
                     return '';
                 }
 
-            case LinkType.cosmicFusionId:
+            case LinkType.cosmicFusionId.toString():
                 matches = this.linkId.match(new RegExp(this.patterns['cosmicFusionId']));
                 if (matches && matches[1] !== '') {
                     return matches[1];
@@ -112,10 +113,11 @@ export class CosmicLinkComponent {
                     return '';
                 }
 
-            case LinkType.geneId:
+            case LinkType.geneId.toString():
                 return this.linkId;
 
             default:
+                console.error('Unknown cosmic link type ' + this.linkType);
                 return '';
         }
     }
