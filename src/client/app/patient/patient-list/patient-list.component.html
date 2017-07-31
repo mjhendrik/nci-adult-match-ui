@@ -74,7 +74,7 @@
                           <td>{{item.currentStepNumber | dashify}}</td>
                           <td>{{item.diseaseList | dashify}}</td>
                           <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                            <treatment-arm-link *ngIf="item.currentTreatmentArm" [treatmentArmId]="item.currentTreatmentArm._id" [version]="item.currentTreatmentArm.version" [removePrefix]="true"></treatment-arm-link>
+                            <treatment-arm-link *ngIf="item.currentTreatmentArm" [treatmentArmId]="item.currentTreatmentArm.treatmentArmId" [version]="item.currentTreatmentArm.version" [removePrefix]="true"></treatment-arm-link>
                             <span *ngIf="!item.currentTreatmentArm">-</span>
                           </td>
                           <td>{{item.registrationDate}}</td>

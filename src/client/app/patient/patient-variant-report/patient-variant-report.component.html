@@ -83,7 +83,7 @@
           <dl *ngIf="assignmentReport.hasSelectedTreatmentArm" class="dl-horizontal widest-dt">
             <dt>Selected Treatment Arm</dt>
             <dd>
-              <treatment-arm-link *ngIf="assignmentReport" [treatmentArmId]="assignmentReport.treatmentArm._id" [version]="assignmentReport.treatmentArm.version" [removePrefix]="true"></treatment-arm-link>
+              <treatment-arm-link *ngIf="assignmentReport" [treatmentArmId]="assignmentReport.treatmentArm.treatmentArmId" [version]="assignmentReport.treatmentArm.version" [removePrefix]="true"></treatment-arm-link>
               <span *ngIf="!assignmentReport">-</span>
             </dd>
           </dl>
