@@ -381,19 +381,19 @@ export function main() {
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
     });
 
-    it('should work by calling ngonInit',
-      async((done: any) => {
-        TestBed
-          .compileComponents()
-          .then(() => {
-            let fixture = TestBed.overrideComponent(TreatmentArmDetailsComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(TreatmentArmDetailsComponent);
-            fixture.componentInstance.ngOnInit();
-          });
-      }));
+    // it('should work by calling ngonInit',
+    //   async((done: any) => {
+    //     TestBed
+    //       .compileComponents()
+    //       .then(() => {
+    //         let fixture = TestBed.overrideComponent(TreatmentArmDetailsComponent, {
+    //           set: {
+    //             templateUrl: ''
+    //           }
+    //         }).createComponent(TreatmentArmDetailsComponent);
+    //         fixture.componentInstance.ngOnInit();
+    //       });
+    //   }));
 
     it('should test setVersionIndex',
       async((done: any) => {
@@ -452,20 +452,20 @@ export function main() {
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
     });
 
-    it('should work by calling ngonInit',
-      async((done: any) => {
-        TestBed
-          .compileComponents()
-          .then(() => {
-            let fixture = TestBed.overrideComponent(TreatmentArmDetailsComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(TreatmentArmDetailsComponent);
-            fixture.componentInstance.ngOnInit();
-            fixture.componentInstance.getPreviousDetailsData();
-          });
-      }));
+    // it('should work by calling ngonInit',
+    //   async((done: any) => {
+    //     TestBed
+    //       .compileComponents()
+    //       .then(() => {
+    //         let fixture = TestBed.overrideComponent(TreatmentArmDetailsComponent, {
+    //           set: {
+    //             templateUrl: ''
+    //           }
+    //         }).createComponent(TreatmentArmDetailsComponent);
+    //         fixture.componentInstance.ngOnInit();
+    //         fixture.componentInstance.getPreviousDetailsData();
+    //       });
+    //   }));
 
   });
 }
