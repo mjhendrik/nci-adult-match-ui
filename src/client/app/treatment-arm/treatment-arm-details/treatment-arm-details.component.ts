@@ -178,7 +178,7 @@ export class TreatmentArmDetailsComponent implements OnInit {
       let assignmentRecords = this.tableData[this.versionIndex].summaryReport.assignmentRecords;
 
       this.barChartLabels = assignmentRecords.map((x: any) => {
-        return x.diseases[0].shortName + '(' + x.diseases[0].meddraCode + ')';
+        return x.disease.shortName + '(' + x.disease.meddraCode + ')';
       });
       this.barChartLabels = Array.from(new Set(this.barChartLabels));
 
@@ -189,11 +189,11 @@ export class TreatmentArmDetailsComponent implements OnInit {
 
       assignmentRecords.forEach((element: any) => {
         this.barChartLabels.forEach((label: any) => {
-          if (label.indexOf(element.diseases[0].shortName) !== -1) {
-            if (statusArray[element.diseases[0].shortName] === undefined) {
-              statusArray[element.diseases[0].shortName] = '';
+          if (label.indexOf(element.disease.shortName) !== -1) {
+            if (statusArray[element.disease.shortName] === undefined) {
+              statusArray[element.disease.shortName] = '';
             }
-            statusArray[element.diseases[0].shortName] = statusArray[element.diseases[0].shortName] + JSON.stringify(element) + '|||';
+            statusArray[element.disease.shortName] = statusArray[element.disease.shortName] + JSON.stringify(element) + '|||';
           }
         });
       });

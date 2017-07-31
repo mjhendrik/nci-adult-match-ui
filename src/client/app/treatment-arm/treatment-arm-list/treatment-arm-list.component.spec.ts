@@ -135,7 +135,7 @@ export function main() {
                 "pathway": "cKIT"
               }],
               "treatmentArmStatus": "OPEN",
-              "treatmentArmId": "CukeTest-1065",
+              "treatmentId": "CukeTest-1065",
               "version": "2015-08-06"
             }
             fixture.componentInstance.gmt = new GmtPipe();
@@ -190,7 +190,7 @@ export function main() {
                 "pathway": "cKIT"
               }],
               "treatmentArmStatus": "CLOSED",
-              "treatmentArmId": "CukeTest-1065",
+              "treatmentId": "CukeTest-1065",
               "version": "2015-08-06"
             }
             fixture.componentInstance.gmt = new GmtPipe();
@@ -517,7 +517,7 @@ class MockTAListApiService {
         "pathway": "HER2"
       }],
       "treatmentArmStatus": "CLOSED",
-      "treatmentArmId": "EAY131-Q",
+      "treatmentId": "EAY131-Q",
       "variantReport": {
         "copyNumberVariants": [{
           "armSpecific": false,
@@ -805,7 +805,7 @@ class MockTAListApiService {
         "pathway": "HER2"
       }],
       "treatmentArmStatus": "CLOSED",
-      "treatmentArmId": "EAY131-Q",
+      "treatmentId": "EAY131-Q",
       "variantReport": {
         "copyNumberVariants": [{
           "armSpecific": false,
