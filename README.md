@@ -13,39 +13,57 @@
 To start the front-end and services locally:
 
 ```bash
-$ docker-compose up
+docker-compose up
 ```
 
 To pull the latest front-end and services locally:
 
 ```bash
-$ docker-compose pull
+docker-compose pull
 ```
 
 Now open your browser at [http://localhost:5555](http://localhost:5555)
 
-To start only Monbgo DB, for example to develop your services locally:
+To start only MongoDB, for example to develop your services locally:
 
 ```bash
-$ docker-compose up mongo
+docker-compose up mongo
 ```
 
 To restore MongoDB data:
 
 ```bash
-$ docker exec -it nciadultmatchui_mongo_1 bash # to attach to the mongo service of your docker-compose
-$ mongorestore --db Match ./backup             # to restore the mongo dump
-$ exit                                         # to exit out of the mongo container into your terminal
+docker exec -it nciadultmatchui_mongo_1 bash            # attach to the mongo service of your docker-compose
+mongorestore --db Match ./backup                        # restore the mongo dump
+mongo shell                                             # launch mongo shell
+use Match                                               # switch to Match database
+db.patient.createIndex({'currentPatientStatus':1})      # create indexes
+db.patient.createIndex({'currentStepNumber':1})         #
+db.patient.createIndex({'currentTreatmentArm.name':1})  #
+db.patient.createIndex({'diseaseList':1})               #
+db.patient.createIndex({'offTrialDate':1})              #
+db.patient.createIndex({'patientSequenceNumber':1})     #
+db.patient.createIndex({'registrationDate':1})          #
+exit                                                    # exit out of the mongo shell
+exit                                                    # exit out of the mongo container into your terminal
+```
+
+To backup MongoDB data:
+
+```bash
+docker exec -it nciadultmatchui_mongo_1 bash # attach to the mongo service of your docker-compose
+mongodump --db Match -o /backup              # backup the mongo
+exit                                         # exit out of the mongo container into your terminal
 ```
 
 After you've restored the backup you may check the restored data (while still attached to the mongo container, as above):
 
 ```bash
-$ mongo shell
-$ show dbs
-$ use match
-$ show collections
-$ db.patient.count()
+mongo shell
+show dbs
+use match
+show collections
+db.patient.count()
 ```
 
 Exit from MongoDB shell by pressing `Ctrl+C`
@@ -56,19 +74,19 @@ Please note each time you run `docker-compose down` the data volumes for the doc
 
 ```bash
 # Run unit tests
-$ npm test
+npm test
 
 # Development. Your app will be watched by karma
 # on each change all your specs will be executed.
-$ npm run test.watch
+npm run test.watch
 # NB: The command above might fail with a "EMFILE: too many open files" error.
 # Some OS have a small limit of opened file descriptors (256) by default
 # and will result in the EMFILE error.
 # You can raise the maximum of file descriptors by running the command below:
-$ ulimit -n 10480
+ulimit -n 10480
 
 # Run Cucumber tests
-$ npm run build.e2e && npm run e2e
+npm run build.e2e && npm run e2e
 ```
 
 ## For developers
@@ -78,53 +96,53 @@ $ npm run build.e2e && npm run e2e
 **Here is how to [speed-up the build on Windows](https://github.com/mgechev/angular-seed/wiki/Speed-up-the-build-on-Windows)**.
 
 ```bash
-$ git clone https://github.com/CBIIT/nci-adult-match-ui.git
-$ cd nci-adult-match-ui
+git clone https://github.com/CBIIT/nci-adult-match-ui.git
+cd nci-adult-match-ui
 
 # install global dependencies
-$ npm install -g cucumber
+npm install -g cucumber
 
 # install the project's dependencies
-$ npm install
+npm install
 
 # watches your files and uses livereload by default
-$ npm start
+npm start
 # api document for the app
 # npm run build.docs
 
 # Run using mock JSONs instead of back-end services
-$ npm run start.dev-mock
+npm run start.dev-mock
 
 # Run for using from inside docker-compose
-$ npm run start.dev-docker
+npm run start.dev-docker
 
 # if you see an error like 'Node Sass could not find a binding for your current environment'
-$ npm rebuild node-sass --force
+npm rebuild node-sass --force
 
 # generate api documentation
-$ npm run compodoc
-$ npm run serve.compodoc
+npm run compodoc
+npm run serve.compodoc
 
 
 # to start deving with livereload site and coverage as well as continuous testing
-$ npm run start.deving
+npm run start.deving
 
 # dev build
-$ npm run build.dev
+npm run build.dev
 # prod build, will output the production application in `dist/prod`
 # the produced code can be deployed (rsynced) to a remote server
-$ npm run build.prod
+npm run build.prod
 
 # Build using mock JSONs instead of back-end services
-$ npm run build.dev-mock
+npm run build.dev-mock
 
 # Build for using from inside docker-compose
-$ npm run build.dev-docker
+npm run build.dev-docker
 
 # dev build of multiple applications (by default the value of --app is "app")
-$ npm start -- --app baz
-$ npm start -- --app foo
-$ npm start -- --app bar
+npm start -- --app baz
+npm start -- --app foo
+npm start -- --app bar
 ```
 _Does not rely on any global dependencies._
 
@@ -137,7 +155,7 @@ In order to start with AoT use:
 ```bash
 # prod build with AoT compilation, will output the production application in `dist/prod`
 # the produced code can be deployed (rsynced) to a remote server
-$ npm run build.prod.aot
+npm run build.prod.aot
 ```
 
 ## Tree-shaking with Rollup
@@ -149,7 +167,7 @@ To run this optimized production build, use:
 ```bash
 # prod build with AoT compilation and Rollup tree-shaking, will output the production application in `dist/prod`
 # the produced code can be deployed (rsynced) to a remote server
-$ npm run build.prod.rollup.aot
+npm run build.prod.rollup.aot
 ```
 
 Your project will be compiled ahead of time (AOT), and then the resulting bundle will be tree-shaken and minified. During the tree-shaking process Rollup statically analyses your code, and your dependencies, and includes the bare minimum in your bundle.
@@ -166,11 +184,11 @@ Your project will be compiled ahead of time (AOT), and then the resulting bundle
 To build the image based on Apache run the following:
 
 ```bash
-$ docker build -f .docker/dockerfile.httpd -t "fnlcr/nci-adult-match-ui:latest" .
+docker build -f .docker/dockerfile.httpd -t "fnlcr/nci-adult-match-ui:latest" .
 ```
 
 To run the docker locally use port 5555 because Auth0 is configured to use it. Please make sure the UI has been built as `dev`, run `npm run build.dev` if necessary.
 
 ```bash
-$ docker run --name "nci-adult-match-ui" -it -p 5555:80  "fnlcr/nci-adult-match-ui:latest"
+docker run --name "nci-adult-match-ui" -it -p 5555:80  "fnlcr/nci-adult-match-ui:latest"
 ```
