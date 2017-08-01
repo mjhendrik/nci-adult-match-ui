@@ -1,0 +1,147 @@
+{
+    "_class": "gov.match.model.Patient",
+    "_id": {
+        "$oid": "5970c792b0c8f5584c5d38f5"
+    },
+    "biopsies": [
+        {
+            "assayMessages": [
+                {
+                    "biomarker": "ICCPTENs",
+                    "biopsySequenceNumber": "CARIS-case1",
+                    "orderedDate": {
+                        "$date": 1500563346276
+                    },
+                    "patientSequenceNumber": "OA4",
+                    "reportedDate": {
+                        "$date": 1500563346276
+                    },
+                    "result": "UNKNOWN",
+                    "studyId": "EAY131"
+                }
+            ],
+            "associatedPatientStatus": "REGISTRATION_OUTSIDE_ASSAY",
+            "biopsySequenceNumber": "CARIS-case1",
+            "dateCreated": {
+                "$date": 1500563346276
+            },
+            "failure": false,
+            "mdAndersonMessages": [
+                {
+                    "biopsySequenceNumber": "CARIS-case1",
+                    "collectedDate": {
+                        "$date": 1500563346276
+                    },
+                    "message": "SPECIMEN_RECEIVED",
+                    "patientSequenceNumber": "OA4",
+                    "reportedDate": {
+                        "$date": 1500563346276
+                    },
+                    "studyId": "EAY131"
+                },
+                {
+                    "biopsySequenceNumber": "CARIS-case1",
+                    "message": "PATHOLOGY_CONFIRMATION",
+                    "patientSequenceNumber": "OA4",
+                    "reportedDate": {
+                        "$date": 1500563346276
+                    },
+                    "status": "U",
+                    "studyId": "EAY131"
+                },
+                {
+                    "_class": "gov.match.model.message.NucleicAcidsShippingMessage",
+                    "biopsySequenceNumber": "CARIS-case1",
+                    "destinationSite": "CARIS",
+                    "message": "NUCLEIC_ACID_SENDOUT",
+                    "molecularSequenceNumber": "8e9554a7-335a-44a8-ad0a-12feda9405de",
+                    "patientSequenceNumber": "OA4",
+                    "reportedDate": {
+                        "$date": 1500563346312
+                    },
+                    "studyId": "EAY131"
+                }
+            ],
+            "nextGenerationSequences": [
+                {
+                    "dateReceived": {
+                        "$date": 1500563346312
+                    },
+                    "ionReporterResults": {
+                        "jobName": "c9f67fd7-5e8a-4abd-8771-f5884181a2c3",
+                        "molecularSequenceNumber": "8e9554a7-335a-44a8-ad0a-12feda9405de",
+                        "variantReport": {
+                            "copyNumberVariants": [],
+                            "createdDate": {
+                                "$date": 1500563346312
+                            },
+                            "geneFusions": [],
+                            "indels": [],
+                            "nonHotspotRules": [],
+                            "singleNucleotideVariants": [],
+                            "unifiedGeneFusions": [
+                                {
+                                    "armSpecific": false,
+                                    "confirmed": false,
+                                    "driverGene": "TPM3",
+                                    "driverReadCount": 450,
+                                    "identifier": "TPM3-ALK.T7A20",
+                                    "inclusion": true,
+                                    "metadata": {
+                                        "_id": "f29724b9-852e-4112-adee-64bef469caa8"
+                                    },
+                                    "partnerGene": "ALK",
+                                    "partnerReadCount": 450,
+                                    "rare": false
+                                }
+                            ]
+                        }
+                    },
+                    "ngsRunNumber": "1",
+                    "status": "PENDING"
+                }
+            ],
+            "pathologyReportMessages": [],
+            "patientOutsideAssayLabReport": {
+                "dateCreated": {
+                    "$date": 1500563346262
+                },
+                "lab": "CARIS",
+                "patientSequenceNumber": "OA4",
+                "reportId": "case1",
+                "studyId": "EAY131"
+            }
+        }
+    ],
+    "concordance": "U",
+    "currentPatientStatus": "REGISTRATION_OUTSIDE_ASSAY",
+    "currentStepNumber": "0",
+    "diseases": [],
+    "ethnicity": "UNKNOWN",
+    "exclusionCriterias": [],
+    "gender": "UNKNOWN",
+    "patientAssignments": [],
+    "patientRejoinTriggers": [],
+    "patientSequenceNumber": "OA4",
+    "patientTriggers": [
+        {
+            "accrualGroupId": "22334a2sr",
+            "auditDate": {
+                "$date": 1500563346235
+            },
+            "dateCreated": {
+                "$date": 1500563346225
+            },
+            "message": "Patient trigger for an outside assay patient",
+            "patientSequenceNumber": "OA4",
+            "patientStatus": "REGISTRATION_OUTSIDE_ASSAY",
+            "stepNumber": "0",
+            "studyId": "EAY131"
+        }
+    ],
+    "priorDrugs": [],
+    "races": [],
+    "registrationDate": {
+        "$date": 1500563346225
+    }
+}
