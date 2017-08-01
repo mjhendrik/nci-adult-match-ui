@@ -12,8 +12,7 @@ import { DirectivesModule } from "./../../shared/directives/directives.module";
 import { PipesModule } from "./../../shared/pipes/pipes.module";
 import { DataTableModule } from "./../../shared/datatables/DataTableModule";
 import { AssignmentReasonTableModule } from './../assignment-reason-table/assignment-reason-table.module';
-
-
+import { ActivatedRoute } from '@angular/router';
 import { AssignmentReportComponent } from './assignment-report.component';
 import { PatientApiService } from "./../patient-api.service";
 
@@ -28,64 +27,90 @@ export function main() {
 
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [RouterTestingModule.withRoutes(config), DirectivesModule, CommonModule,
-          PipesModule, FormsModule, DataTableModule, AssignmentReasonTableModule],
+        imports: [RouterTestingModule.withRoutes(config),
+          DirectivesModule,
+          CommonModule,
+          PipesModule,
+          FormsModule,
+          DataTableModule,
+          AssignmentReasonTableModule],
         declarations: [AssignmentReportComponent],
         providers: [
           { provide: PatientApiService, useClass: MockPatientApiService },
+          {
+            provide: ActivatedRoute, useValue: {
+              snapshot: {
+                params: { patientSequenceNumber: 1067, dateAssigned: '1441390974672' },
+              }
+            }
+          }
         ]
       });
     });
 
-    // it('should test ngOnInit',
-    //   async(() => {
-    //     TestBed
-    //       .compileComponents()
-    //       .then(() => {
-    //         let fixture = TestBed.overrideComponent(AssignmentReportComponent, {
-    //           set: {
-    //             templateUrl: ''
-    //           }
-    //         }).createComponent(AssignmentReportComponent);
-    //         expect(fixture.componentInstance).toBeDefined();
-    //         fixture.componentInstance.ngOnInit();
-    //       });
-    //   }));
+    it('should test ngOnInit',
+      async(() => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(AssignmentReportComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(AssignmentReportComponent);
+            expect(fixture.componentInstance).toBeDefined();
+            fixture.componentInstance.ngOnInit();
+          });
+      }));
 
   });
 
 
-  // describe('patients component', () => {
-  //   // Setting module for testing
-  //   // Disable old forms
+  describe('patients component', () => {
+    // Setting module for testing
+    // Disable old forms
 
-  //   let config: any[] = [
-  //     { path: 'clia_variant_reports_ntc', component: 'CliaParentComponent' }
-  //   ];
+    let config: any[] = [
+      { path: 'clia_variant_reports_ntc', component: 'CliaParentComponent' }
+    ];
 
-  //   beforeEach(() => {
-  //     TestBed.configureTestingModule({
-  //       imports: [RouterTestingModule.withRoutes(config), DirectivesModule, PipesModule, FormsModule, DataTableModule],
-  //       declarations: [AssignmentReportComponent],
-  //       providers: [
-  //         { provide: PatientApiService, useClass: MockPatientApiServiceError },
-  //       ]
-  //     });
-  //   });
+    beforeEach(() => {
+      TestBed.configureTestingModule({
+        imports: [RouterTestingModule.withRoutes(config),
+          DirectivesModule,
+          CommonModule,
+          PipesModule,
+          FormsModule,
+          DataTableModule,
+          AssignmentReasonTableModule],
+        declarations: [AssignmentReportComponent],
+        providers: [
+          { provide: PatientApiService, useClass: MockPatientApiServiceError },
+          {
+            provide: ActivatedRoute, useValue: {
+              snapshot: {
+                params: { patientSequenceNumber: 1067, dateAssigned: '1441390974672' },
+              }
+            }
+          }
+        ]
+      });
+    });
 
-  //   it('should test getData',
-  //     async((done: any) => {
-  //       TestBed
-  //         .compileComponents()
-  //         .then(() => {
-  //           let fixture = TestBed.overrideComponent(AssignmentReportComponent, {
-  //             set: {
-  //               templateUrl: ''
-  //             }
-  //           }).createComponent(AssignmentReportComponent);
-  //         });
-  //     }));
-  // });
+    it('should test getData',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(AssignmentReportComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(AssignmentReportComponent);
+            fixture.componentInstance.getData('test');
+          });
+      }));
+  });
 
 }
 
@@ -100,7 +125,7 @@ class MockPatientApiServiceError {
 class MockPatientApiService {
 
   getPatientVariantReport(): Observable<any> {
-    let testdata: any = [
+    let testdata: any =
       {
         "_class": "gov.match.model.Patient",
         "_id": {
@@ -463,7 +488,7 @@ class MockPatientApiService {
           "$date": 1440162777000
         }
       }
-    ]
+
     return Observable.of(testdata);
   }
 }
