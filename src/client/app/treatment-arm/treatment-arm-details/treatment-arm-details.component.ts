@@ -136,7 +136,7 @@ export class TreatmentArmDetailsComponent implements OnInit {
     {
       data: [],
       label: 'Off Trial'
-      // FORMERLY_ON_ARM_OFF_TRIAL, FORMERLY_ON_ARM_PROGRESSED, OFF_TRIAL_DECEASED, OFF_TRIAL
+      // FORMERLY_ON_ARM_OFF_TRIAL, FORMERLY_ON_ARM_PROGRESSED, OFF_TRIAL_DECEASED, OFF_TRIAL, PROGRESSION, PROGRESSION_REBIOPSY
     },
     {
       data: [],
@@ -214,7 +214,7 @@ export class TreatmentArmDetailsComponent implements OnInit {
             } else if ('PENDING_APPROVAL,PENDING_CONFIRMATION'.indexOf(element.assignmentStatusOutcome) !== -1) {
               pendingstatus++;
             } else if (`FORMERLY_ON_ARM_OFF_TRIAL, FORMERLY_ON_ARM_PROGRESSED, OFF_TRIAL_DECEASED, 
-OFF_TRIAL`.indexOf(element.assignmentStatusOutcome) !== -1) {
+OFF_TRIAL, PROGRESSION, PROGRESSION_REBIOPSY`.indexOf(element.assignmentStatusOutcome) !== -1) {
               offtrailstatus++;
             }
             result[key] = {
