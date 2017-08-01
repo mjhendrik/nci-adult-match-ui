@@ -142,21 +142,14 @@ export class CnvChartDirective implements OnInit {
                 xDomain: [0, 5],
                 xRange: [0, 10]
               },
-
               outliers: function (d: any) {
                 return d.values.outliers;
-              },
-              outlierLabel: function (d: any) {
-                return d;
               },
               color: function (d: any) {
                 return d.status;
               },
               position: function (d: any) {
                 return d.position;
-              },
-              cn: function (d: any) {
-                return d.cn;
               },
               tooltip: {
                 contentGenerator: function (d: any) {
@@ -172,13 +165,12 @@ export class CnvChartDirective implements OnInit {
 
                   label = d.key;
 
-                  if (typeof d.data.chr !== 'undefined') {
-                    chr = 'CHR: ' + d.data.chr;
-                  }
-                  else{
-                    chr = '';
-                  }
-                  // chr = 'CHR: ' + d.data.chr;
+                  // if (typeof d.data.chr !== 'undefined') {
+                  //   chr = 'CHR: ' + d.data.chr;
+                  // }
+                  // else{
+                  //   chr = '';
+                  // }
 
                   position = 'POS: ' + d.data.values.position;
                   cn = 'CN: ' + d.data.values.cn;
@@ -190,7 +182,6 @@ export class CnvChartDirective implements OnInit {
                   html = '<h4 class="text-center" style="' + color + '"><b>' + label + '</b></h4>';
                   li = '<li>' + position + '</li>';
                   li += '<li>' + cn + '</li>';
-                  li += '<li>' + chr + '</li>';
                   li += '<li>' + cl95 + '</li>';
                   li += '<li>' + cl05 + '</li>';
 
@@ -235,20 +226,12 @@ export class CnvChartDirective implements OnInit {
                   });
 
                   return temp;
-                },
-                tickArguments: function () { return [20] },
-                reduceXTicks: false,
-                ticks: function () { return 13},
-                width: function () { return 4},
-                tickSize:  function () { return 2}
+                }
               },
               yAxis: {
                 tickFormat: function (d: any) {
                   return d3.format(',.0d')(d);
                 },
-                // showMaxMin : function (d: any) {
-                //   return false;
-                // },
                 axisLabelDistance: 30
               },
               callback: function(chart: any) {
