@@ -161,7 +161,15 @@ export function main() {
 
     it('should have a defined x function', () => {
       let op = options['chart'].x;
-      expect(op(0)).toEqual('Sample A');
+      let opx = options['chart'];
+
+      let data = {
+        label: 'Sample A'
+      };
+      expect(op(data)).toEqual('Sample A');
+      spyOn(opx, 'x').and.callThrough();
+      // expect(op(data)).toHaveBeenCalled();
+
     });
 
     it('Y Axis is a test', function(){
@@ -249,7 +257,7 @@ const allOptions = {
         return [2.1,1.8,1.3];
       },
       x: function (d: any) {
-        return "Sample A";
+        return d.label;
       },
       xAxis: {
         itemColor: function () {
