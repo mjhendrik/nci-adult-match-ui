@@ -34,6 +34,7 @@ export class PatientListComponent implements OnInit {
   size: number = this.recordsPerPagePatients;
   sortOrder: string = 'asc';
   sortBy: string = this.tablePatientsDefaultSort;
+  isOutsideAssay?: boolean;
 
   constructor(private patientApi: PatientApiService) { }
 
@@ -43,7 +44,7 @@ export class PatientListComponent implements OnInit {
 
   getData() {
     let gmt = new GmtPipe();
-    this.patientApi.getPatientList(this.page, this.size, this.sortOrder, this.sortBy, this.searchTermPatients)
+    this.patientApi.getPatientList(this.page, this.size, this.sortOrder, this.sortBy, this.searchTermPatients, this.isOutsideAssay)
       .subscribe(itemList => {
         this.tablePatientsData = itemList.map(x => {
           x.registrationDate = gmt.transform(x.registrationDate);
@@ -59,7 +60,7 @@ export class PatientListComponent implements OnInit {
   }
 
   getPatientCount() {
-    this.patientApi.getPatientCount(this.searchTermPatients)
+    this.patientApi.getPatientCount(this.searchTermPatients, this.isOutsideAssay)
       .subscribe(itemList => {
         this.patientCount = itemList;
         // this.tablePatientsData = []; // add animation

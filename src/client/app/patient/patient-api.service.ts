@@ -26,18 +26,22 @@ export class PatientApiService {
    * Returns an Observable for the HTTP GET request for the JSON resource.
    * @return {string[]} The Observable for the HTTP request.
    */
-  getPatientList(page: number, size: number, sortOrder: string, sortBy: string, filter: string): Observable<any[]> {
+  getPatientList(page: number, size: number, sortOrder: string, sortBy: string, filter: string, isOutsideAssay?: boolean): Observable<any[]> {
     return this.http.get(this.url('/patients?projection=patientSequenceNumber,currentPatientStatus,currentStepNumber,diseases.shortName,registrationDate,patientAssignments.treatmentArm.name,patientAssignments.treatmentArm.treatmentArmId,patientAssignments.treatmentArm.version&page='
-      + page + '&size=' + size + '&sort=' + sortBy + ':' + sortOrder + '&projfilter=' + filter, 'assets/mock-data/patient-list.json'))
+      + page + '&size=' + size + '&sort=' + sortBy + ':' + sortOrder 
+      + (filter ? '&projfilter=' + filter : '')
+      + (isOutsideAssay != null ? '&is-oa=' + isOutsideAssay : ''),
+      'assets/mock-data/patient-list.json'))
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
   }
 
-  getPatientCount(filter: string): Observable<number> {
+  getPatientCount(filter: string, isOutsideAssay?: boolean): Observable<number> {
     return this.http.get(Config.API.PATIENT
-      + '/patients/count?projection=patientSequenceNumber,currentPatientStatus,currentStepNumber,diseases.shortName,registrationDate,patientAssignments.treatmentArm.name,patientAssignments.treatmentArm.version&projfilter='
-      + filter)
+      + '/patients/count?projection=patientSequenceNumber,currentPatientStatus,currentStepNumber,diseases.shortName,registrationDate,patientAssignments.treatmentArm.name,patientAssignments.treatmentArm.version'
+      + (filter ? '&projfilter=' + filter : '')
+      + (isOutsideAssay != null ? '&is-oa=' + isOutsideAssay : ''))
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
