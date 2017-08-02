@@ -84,6 +84,11 @@
   </div>
 </div>
 <!-- end #top-menu -->
+<!-- begin back to top -->
+<div class="footer fixed">
+  <a href="javascript:void(0)" class="btn-scroll-to-top pull-right" data-click="scroll-top" (click)="backToTop();"><img src="/assets/img/backToTop.png" alt="Back to Top" style="height:20%"></a>
+</div>
+<!-- end back to top -->
 <!-- begin #footer -->
 <div *ngIf="auth.authenticated()" id="footer" class="footer text-center footer-format">
   <span>
@@ -92,7 +97,6 @@
   </span>
   <span class="contact" id="contact">
     <span id="mail-to"> Contact us: <a class="link-email" href="mailto:matchbox-support@nih.gov">matchbox-support@nih.gov</a></span>
-  <a href="javascript:void(0)" class="btn-scroll-to-top pull-right" data-click="scroll-top" (click)="backToTop();"><i class="fa fa-arrow-up"></i><span class="hidden-xs"> Back to Top</span></a>
   </span>
   <span id="buildinfo" *ngIf="buildInfo" class="build-info text-muted">MATCH UI: {{buildInfo.buildNumber}}, {{buildInfo.buildTime}}</span>
 </div>

@@ -41,8 +41,14 @@
 
 .footer-format {
   background-color: #ffffff;
-  position: fixed;
+  position: fixed; // bottom: 0;
   z-index: 2000;
+}
+
+.fixed {
+  position: fixed;
+  z-index: 2100;
+  border-top: none;
 }
 
 .navbar-right {

@@ -97,28 +97,32 @@ export class NavbarComponent implements OnInit {
     if (st > this.lastScrollTop && st > this.navbarheight) {
 
       // Scroll Down
+      // Header
       document.getElementById('top-menu').classList.remove('top-position');
       document.getElementById('header').classList.add('header-up');
       document.getElementById('top-menu').classList.add('top-menu-up');
       document.getElementById('maindiv').classList.add('header-up');
 
-      document.getElementById('mail-to').classList.remove('none');
-      document.getElementById('buildinfo').classList.remove('none');
-      document.getElementById('contact').classList.remove('display-inline');
+      // Footer
+      // document.getElementById('mail-to').classList.remove('none');
+      // document.getElementById('buildinfo').classList.remove('none');
+      // document.getElementById('contact').classList.remove('display-inline');
 
     } else {
 
       // Scroll Up
       if ((parseInt(st) + window.innerHeight) < document.body.scrollHeight) {
 
+        // Header
         document.getElementById('header').classList.remove('header-up');
         document.getElementById('top-menu').classList.remove('top-menu-up');
         document.getElementById('top-menu').classList.add('top-position');
         document.getElementById('maindiv').classList.remove('header-up');
 
-        document.getElementById('mail-to').classList.add('none');
-        document.getElementById('buildinfo').classList.add('none');
-        document.getElementById('contact').classList.add('display-inline');
+        // Footer
+        // document.getElementById('mail-to').classList.add('none');
+        // document.getElementById('buildinfo').classList.add('none');
+        // document.getElementById('contact').classList.add('display-inline');
 
       }
 
