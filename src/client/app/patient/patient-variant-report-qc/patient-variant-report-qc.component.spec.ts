@@ -1,5 +1,6 @@
 import {
-  TestBed
+  TestBed,
+  async
 } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -11,6 +12,7 @@ import { DataTableModule } from './../../shared/datatables/DataTableModule';
 import { PatientApiService } from './../patient-api.service';
 import { VariantReportFilteredTableModule } from '../../shared/variant-report-filtered-table/variant-report-filtered-table.module';
 import { CommonModule } from '@angular/common';
+import { PatientVariantReportQcComponent } from './patient-variant-report-qc.component';
 
 export function main() {
   describe('patient varient report qc component', () => {

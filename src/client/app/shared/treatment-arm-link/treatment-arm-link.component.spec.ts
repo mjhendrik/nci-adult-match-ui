@@ -45,9 +45,9 @@ export function main() {
             el = de.nativeElement;
         });
 
-        xit('no title in the DOM until manually call `detectChanges`', () => {
-            expect(el.textContent).toEqual('');
-        });
+        // it('no title in the DOM until manually call `detectChanges`', () => {
+        //     expect(el.textContent).toEqual('');
+        // });
 
     });
 }
