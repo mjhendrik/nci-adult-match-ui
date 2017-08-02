@@ -42,7 +42,6 @@ db.patient.createIndex({'currentStepNumber':1})
 db.patient.createIndex({'patientAssignments.treatmentArm.treatmentArmId':1})
 db.patient.createIndex({'patientAssignments.treatmentArm.version':1})
 db.patient.createIndex({'diseases.shortName':1})
-db.patient.createIndex({'offTrialDate':1})
 db.patient.createIndex({'patientSequenceNumber':1})
 db.patient.createIndex({'registrationDate':1})
 exit                                                    # exit out of the mongo shell
