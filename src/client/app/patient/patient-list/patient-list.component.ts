@@ -23,9 +23,8 @@ export class PatientListComponent implements OnInit {
   searchTermPatients: string = '';
   recordsPerPagePatients: number = 10;
   tablePatientsDefaultSort: string = 'patientSequenceNumber';
-  tablePatientsData: any[];
+  tablePatientsData: any[] = [];
   errorMessage: string;
-  dataAvailable: boolean = false;
   activePage: number = 1;
   patientCount: number;
   patientTotal: number;
@@ -53,7 +52,6 @@ export class PatientListComponent implements OnInit {
           x.patientAssignments.treatmentArm = x.patientAssignments && x.patientAssignments.length ? x.patientAssignments[0].treatmentArm : null;
           return x;
         });
-        this.dataAvailable = true;
       },
       error => this.errorMessage = <any>error
       );

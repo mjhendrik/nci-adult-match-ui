@@ -1,4 +1,4 @@
-<div *ngIf="dataAvailable" id="content" class="content">
+<div id="content" class="content">
   <ul class="breadcrumb pull-right">
     <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
     <li class="active">Patients</li>
@@ -74,7 +74,7 @@
                           <td>{{item.currentStepNumber | dashify}}</td>
                           <td>{{item.diseases.shortName | dashify}}</td>
                           <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                            <treatment-arm-link *ngIf="item.patientAssignments.treatmentArm" [treatmentArmId]="item.patientAssignments.treatmentArm.treatmentArmId" [version]="item.patientAssignments.treatmentArm.version" [removePrefix]="true"></treatment-arm-link>
+                            <treatment-arm-link *ngIf="item.patientAssignments.treatmentArm" [treatmentArmId]="item.patientAssignments.treatmentArm.treatmentArmId" [version]="item.patientAssignments.treatmentArm.version"></treatment-arm-link>
                             <span *ngIf="!item.patientAssignments.treatmentArm">-</span>
                           </td>
                           <td>{{item.registrationDate}}</td>
