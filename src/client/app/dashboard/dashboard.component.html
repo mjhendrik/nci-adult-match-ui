@@ -193,7 +193,7 @@
                                 <a href [routerLink]="['/patients', item.patientSequenceNumber]" class="link-none"><i class="fa fa-share-alt"></i> {{item.molecularSequenceNumber | dashify}}</a>
                               </td>
                               <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                                <treatment-arm-link *ngIf="item.treatmentArm.id" [treatmentArmId]="item.treatmentArm.id" [version]="item.treatmentArm.version" [removePrefix]="true"></treatment-arm-link>
+                                <treatment-arm-link *ngIf="item.treatmentArm.id" [treatmentArmId]="item.treatmentArm.id" [version]="item.treatmentArm.version"></treatment-arm-link>
                                 <span *ngIf="!item.treatmentArm.id">No available treatment arm</span>
                               </td>
                               <td class="text-center"><a href [routerLink]="['/patients/' + item.patientSequenceNumber + '/variant_reports/' + item.analysisId]"
