@@ -56,6 +56,16 @@ mongodump --db Match -o /backup              # backup the mongo
 exit                                         # exit out of the mongo container into your terminal
 ```
 
+To drop MongoDB data (needed step before restore if you already have a dump currently):
+
+```bash
+docker exec -it nciadultmatchui_mongo_1 bash # attach to the mongo service of your docker-compose
+mongo shell                                  # launch mongo shell
+use Match                                    # switch to Match database
+db.dropDatabase()                            # drop the current mongo dump
+exit                                         # exit out of the mongo container into your terminal
+```
+
 After you've restored the backup you may check the restored data (while still attached to the mongo container, as above):
 
 ```bash
