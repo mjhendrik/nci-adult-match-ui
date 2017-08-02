@@ -167,13 +167,13 @@ let ta_resolved_data = {
         "dateOffArm": "test",
         "timeOnArm": 314235,
         "stepNumber": "1",
-        "disease": {
+        "diseases": [{
           "meddraCode": "90600236",
           "ctepCategory": "Reproductive System Neoplasm, Male",
           "ctepSubCategory": "Penile Cancer",
           "ctepTerm": "Penile adenocarcinoma",
           "shortName": "Penile adenocarcinoma"
-        },
+        }],
         "assignmentReason": "The patient was selected for this because it matched identifier COSM12345."
       },
       {
@@ -187,13 +187,13 @@ let ta_resolved_data = {
         "dateOffArm": null,
         "timeOnArm": 314235,
         "stepNumber": "1",
-        "disease": {
+        "diseases": [{
           "meddraCode": "90600236",
           "ctepCategory": "Reproductive System Neoplasm, Male",
           "ctepSubCategory": "Penile Cancer",
           "ctepTerm": "Penile adenocarcinoma",
           "shortName": "Penile adenocarcinoma"
-        },
+        }],
         "assignmentReason": "The patient was selected for this because it matched identifier COSM12345."
       },
       {
@@ -207,13 +207,13 @@ let ta_resolved_data = {
         "dateOffArm": null,
         "timeOnArm": 314235,
         "stepNumber": "1",
-        "disease": {
+        "diseases": [{
           "meddraCode": "90600236",
           "ctepCategory": "Reproductive System Neoplasm, Male",
           "ctepSubCategory": "Penile Cancer",
           "ctepTerm": "Penile adenocarcinoma",
           "shortName": "Neuroendocrine cancer, NOS"
-        },
+        }],
         "assignmentReason": "The patient was selected for this because it matched identifier COSM12345."
       },
       {
@@ -227,13 +227,13 @@ let ta_resolved_data = {
         "dateOffArm": null,
         "timeOnArm": 314235,
         "stepNumber": "1",
-        "disease": {
+        "diseases": [{
           "meddraCode": "90600236",
           "ctepCategory": "Reproductive System Neoplasm, Male",
           "ctepSubCategory": "Penile Cancer",
           "ctepTerm": "Penile adenocarcinoma",
           "shortName": "Neuroendocrine cancer, NOS"
-        },
+        }],
         "assignmentReason": "The patient was selected for this because it matched identifier COSM12345."
       },
       {
@@ -247,13 +247,13 @@ let ta_resolved_data = {
         "dateOffArm": null,
         "timeOnArm": 314235,
         "stepNumber": "1",
-        "disease": {
+        "diseases": [{
           "meddraCode": "90600236",
           "ctepCategory": "Reproductive System Neoplasm, Male",
           "ctepSubCategory": "Penile Cancer",
           "ctepTerm": "Penile adenocarcinoma",
           "shortName": "Lung adenocarcinoma"
-        },
+        }],
         "assignmentReason": "The patient was selected for this because it matched identifier COSM12345."
       },
       {
@@ -267,13 +267,13 @@ let ta_resolved_data = {
         "dateOffArm": null,
         "timeOnArm": 314235,
         "stepNumber": "1",
-        "disease": {
+        "diseases": [{
           "meddraCode": "90600236",
           "ctepCategory": "Reproductive System Neoplasm, Male",
           "ctepSubCategory": "Penile Cancer",
           "ctepTerm": "Penile adenocarcinoma",
           "shortName": "Neuroendocrine cancer, NOS"
-        },
+        }],
         "assignmentReason": "The patient was selected for this because it matched identifier COSM12345."
       },
       {
@@ -287,13 +287,13 @@ let ta_resolved_data = {
         "dateOffArm": null,
         "timeOnArm": 314235,
         "stepNumber": "1",
-        "disease": {
+        "diseases": [{
           "meddraCode": "90600236",
           "ctepCategory": "Reproductive System Neoplasm, Male",
           "ctepSubCategory": "Penile Cancer",
           "ctepTerm": "Penile adenocarcinoma",
           "shortName": "Penile adenocarcinoma"
-        },
+        }],
         "assignmentReason": "The patient was selected for this because it matched identifier COSM12345."
       }]
     },
@@ -381,19 +381,19 @@ export function main() {
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
     });
 
-    // it('should work by calling ngonInit',
-    //   async((done: any) => {
-    //     TestBed
-    //       .compileComponents()
-    //       .then(() => {
-    //         let fixture = TestBed.overrideComponent(TreatmentArmDetailsComponent, {
-    //           set: {
-    //             templateUrl: ''
-    //           }
-    //         }).createComponent(TreatmentArmDetailsComponent);
-    //         fixture.componentInstance.ngOnInit();
-    //       });
-    //   }));
+    it('should work by calling ngonInit',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(TreatmentArmDetailsComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(TreatmentArmDetailsComponent);
+            fixture.componentInstance.ngOnInit();
+          });
+      }));
 
     it('should test setVersionIndex',
       async((done: any) => {
@@ -452,20 +452,20 @@ export function main() {
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
     });
 
-    // it('should work by calling ngonInit',
-    //   async((done: any) => {
-    //     TestBed
-    //       .compileComponents()
-    //       .then(() => {
-    //         let fixture = TestBed.overrideComponent(TreatmentArmDetailsComponent, {
-    //           set: {
-    //             templateUrl: ''
-    //           }
-    //         }).createComponent(TreatmentArmDetailsComponent);
-    //         fixture.componentInstance.ngOnInit();
-    //         fixture.componentInstance.getPreviousDetailsData();
-    //       });
-    //   }));
+    it('should work by calling ngonInit',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(TreatmentArmDetailsComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(TreatmentArmDetailsComponent);
+            fixture.componentInstance.ngOnInit();
+            fixture.componentInstance.getPreviousDetailsData();
+          });
+      }));
 
   });
 }
@@ -605,13 +605,13 @@ class MockTADApiService {
           "dateOffArm": "test",
           "timeOnArm": 314235,
           "stepNumber": "1",
-          "disease": {
+          "diseases": [{
             "meddraCode": "90600236",
             "ctepCategory": "Reproductive System Neoplasm, Male",
             "ctepSubCategory": "Penile Cancer",
             "ctepTerm": "Penile adenocarcinoma",
             "shortName": "Penile adenocarcinoma"
-          },
+          }],
           "assignmentReason": "The patient was selected for this because it matched identifier COSM12345."
         },
         {
@@ -625,13 +625,13 @@ class MockTADApiService {
           "dateOffArm": null,
           "timeOnArm": 314235,
           "stepNumber": "1",
-          "disease": {
+          "diseases": [{
             "meddraCode": "90600236",
             "ctepCategory": "Reproductive System Neoplasm, Male",
             "ctepSubCategory": "Penile Cancer",
             "ctepTerm": "Penile adenocarcinoma",
             "shortName": "Penile adenocarcinoma"
-          },
+          }],
           "assignmentReason": "The patient was selected for this because it matched identifier COSM12345."
         },
         {
@@ -645,13 +645,13 @@ class MockTADApiService {
           "dateOffArm": null,
           "timeOnArm": 314235,
           "stepNumber": "1",
-          "disease": {
+          "diseases": [{
             "meddraCode": "90600236",
             "ctepCategory": "Reproductive System Neoplasm, Male",
             "ctepSubCategory": "Penile Cancer",
             "ctepTerm": "Penile adenocarcinoma",
             "shortName": "Neuroendocrine cancer, NOS"
-          },
+          }],
           "assignmentReason": "The patient was selected for this because it matched identifier COSM12345."
         },
         {
@@ -665,13 +665,13 @@ class MockTADApiService {
           "dateOffArm": null,
           "timeOnArm": 314235,
           "stepNumber": "1",
-          "disease": {
+          "diseases": [{
             "meddraCode": "90600236",
             "ctepCategory": "Reproductive System Neoplasm, Male",
             "ctepSubCategory": "Penile Cancer",
             "ctepTerm": "Penile adenocarcinoma",
             "shortName": "Neuroendocrine cancer, NOS"
-          },
+          }],
           "assignmentReason": "The patient was selected for this because it matched identifier COSM12345."
         },
         {
@@ -685,13 +685,13 @@ class MockTADApiService {
           "dateOffArm": null,
           "timeOnArm": 314235,
           "stepNumber": "1",
-          "disease": {
+          "diseases": [{
             "meddraCode": "90600236",
             "ctepCategory": "Reproductive System Neoplasm, Male",
             "ctepSubCategory": "Penile Cancer",
             "ctepTerm": "Penile adenocarcinoma",
             "shortName": "Lung adenocarcinoma"
-          },
+          }],
           "assignmentReason": "The patient was selected for this because it matched identifier COSM12345."
         },
         {
@@ -705,13 +705,13 @@ class MockTADApiService {
           "dateOffArm": null,
           "timeOnArm": 314235,
           "stepNumber": "1",
-          "disease": {
+          "diseases": [{
             "meddraCode": "90600236",
             "ctepCategory": "Reproductive System Neoplasm, Male",
             "ctepSubCategory": "Penile Cancer",
             "ctepTerm": "Penile adenocarcinoma",
             "shortName": "Neuroendocrine cancer, NOS"
-          },
+          }],
           "assignmentReason": "The patient was selected for this because it matched identifier COSM12345."
         },
         {
@@ -725,13 +725,13 @@ class MockTADApiService {
           "dateOffArm": null,
           "timeOnArm": 314235,
           "stepNumber": "1",
-          "disease": {
+          "diseases": [{
             "meddraCode": "90600236",
             "ctepCategory": "Reproductive System Neoplasm, Male",
             "ctepSubCategory": "Penile Cancer",
             "ctepTerm": "Penile adenocarcinoma",
             "shortName": "Penile adenocarcinoma"
-          },
+          }],
           "assignmentReason": "The patient was selected for this because it matched identifier COSM12345."
         }]
       },

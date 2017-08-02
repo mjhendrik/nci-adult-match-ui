@@ -104,7 +104,7 @@
                           <span *ngIf="tableData[0].summaryReport.assignmentRecords.length===0">
                             <i class="fa fa-bar-chart text-muted" style="font-size:154px; padding-left: 39px;"></i>
                             <br />
-                            <span class="text-muted">There have never been any patients assigned to treatment arm "{{tableData[versionIndex].treatmentArmId | dashify}}"</span>
+                            <span class="text-muted">No chart data available</span>
                           </span>
                           <canvas *ngIf="tableData[0].summaryReport.assignmentRecords.length!==0" baseChart [datasets]="barChartData" [labels]="barChartLabels"
                             [options]="barChartOptions" [legend]="barChartLegend" [colors]="lineChartColors" [chartType]="barChartType"></canvas>
