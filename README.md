@@ -38,12 +38,12 @@ mongorestore --db Match ./backup                        # restore the mongo dump
 mongo shell                                             # launch mongo shell
 use Match                                               # switch to Match database
 db.patient.createIndex({'currentPatientStatus':1})      # create indexes
-db.patient.createIndex({'currentStepNumber':1})         #
-db.patient.createIndex({'currentTreatmentArm.name':1})  #
-db.patient.createIndex({'diseaseList':1})               #
-db.patient.createIndex({'offTrialDate':1})              #
-db.patient.createIndex({'patientSequenceNumber':1})     #
-db.patient.createIndex({'registrationDate':1})          #
+db.patient.createIndex({'currentStepNumber':1})
+db.patient.createIndex({'patientAssignments.treatmentArm.treatmentArmId':1})
+db.patient.createIndex({'patientAssignments.treatmentArm.version':1})
+db.patient.createIndex({'diseases.shortName':1})
+db.patient.createIndex({'patientSequenceNumber':1})
+db.patient.createIndex({'registrationDate':1})
 exit                                                    # exit out of the mongo shell
 exit                                                    # exit out of the mongo container into your terminal
 ```

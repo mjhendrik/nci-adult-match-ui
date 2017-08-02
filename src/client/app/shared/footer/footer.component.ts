@@ -41,10 +41,6 @@ export class FooterComponent implements OnInit {
         this.getData();
     }
 
-    backToTop(): void {
-        setTimeout(() => window.scrollTo(0, 0), 1);
-    }
-
     getData() {
         this.configApi.getBuildInfo()
             .subscribe(info => {

@@ -52,10 +52,10 @@
                             <mfDefaultSorter (SortStatus)="SortStatus($event)" by="currentStepNumber"><span class="table-header">Step Number</span></mfDefaultSorter>
                           </th>
                           <th>
-                            <mfDefaultSorter (SortStatus)="SortStatus($event)" by="diseaseList"><span class="table-header">Diseases</span></mfDefaultSorter>
+                            <mfDefaultSorter (SortStatus)="SortStatus($event)" by="diseases.shortName"><span class="table-header">Diseases</span></mfDefaultSorter>
                           </th>
                           <th>
-                            <mfDefaultSorter (SortStatus)="SortStatus($event)" by="currentTreatmentArm.name"><span class="table-header">Treatment Arm</span></mfDefaultSorter>
+                            <mfDefaultSorter (SortStatus)="SortStatus($event)" by="patientAssignments.treatmentArm.name"><span class="table-header">Treatment Arm</span></mfDefaultSorter>
                           </th>
                           <th>
                             <mfDefaultSorter (SortStatus)="SortStatus($event)" by="registrationDate"><span class="table-header">Registration Date</span></mfDefaultSorter>
@@ -72,10 +72,10 @@
                           </td>
                           <td [colorCodePatients]="item.currentPatientStatus">{{item.currentPatientStatus | dashify}}</td>
                           <td>{{item.currentStepNumber | dashify}}</td>
-                          <td>{{item.diseaseList | dashify}}</td>
+                          <td>{{item.diseases.shortName | dashify}}</td>
                           <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                            <treatment-arm-link *ngIf="item.currentTreatmentArm" [treatmentArmId]="item.currentTreatmentArm.treatmentArmId" [version]="item.currentTreatmentArm.version" [removePrefix]="true"></treatment-arm-link>
-                            <span *ngIf="!item.currentTreatmentArm">-</span>
+                            <treatment-arm-link *ngIf="item.patientAssignments.treatmentArm" [treatmentArmId]="item.patientAssignments.treatmentArm.treatmentArmId" [version]="item.patientAssignments.treatmentArm.version" [removePrefix]="true"></treatment-arm-link>
+                            <span *ngIf="!item.patientAssignments.treatmentArm">-</span>
                           </td>
                           <td>{{item.registrationDate}}</td>
                           <td>{{item.offTrialDate}}</td>
