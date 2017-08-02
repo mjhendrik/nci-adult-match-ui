@@ -48,8 +48,8 @@ export class PatientListComponent implements OnInit {
         this.tablePatientsData = itemList.map(x => {
           x.registrationDate = gmt.transform(x.registrationDate);
           x.offTrialDate = gmt.transform(x.offTrialDate);
-          x.diseaseList = x.diseases && x.diseases.length ? x.diseases.map((y: any) => y.shortName).join(', ') : '';
-          x.currentTreatmentArm = x.patientAssignments && x.patientAssignments.length ? x.patientAssignments[0].treatmentArm : null;
+          x.diseases.shortName = x.diseases && x.diseases.length ? x.diseases.map((y: any) => y.shortName).join(', ') : '';
+          x.patientAssignments.treatmentArm = x.patientAssignments && x.patientAssignments.length ? x.patientAssignments[0].treatmentArm : null;
           return x;
         });
         this.dataAvailable = true;
