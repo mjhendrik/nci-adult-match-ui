@@ -23,7 +23,6 @@ import { DOCUMENT } from '@angular/platform-browser';
   styleUrls: ['navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-  buildInfo: any;
   userName: string;
 
   location: Location;
@@ -41,7 +40,6 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getData();
 
     this.auth.loggedIn.subscribe((t: any) => {
       if (localStorage.getItem('profile') !== null) this.userName = JSON.parse(localStorage.getItem('profile')).user_metadata.firstName;
@@ -97,32 +95,20 @@ export class NavbarComponent implements OnInit {
     if (st > this.lastScrollTop && st > this.navbarheight) {
 
       // Scroll Down
-      // Header
       document.getElementById('top-menu').classList.remove('top-position');
       document.getElementById('header').classList.add('header-up');
       document.getElementById('top-menu').classList.add('top-menu-up');
       document.getElementById('maindiv').classList.add('header-up');
-
-      // Footer
-      // document.getElementById('mail-to').classList.remove('none');
-      // document.getElementById('buildinfo').classList.remove('none');
-      // document.getElementById('contact').classList.remove('display-inline');
 
     } else {
 
       // Scroll Up
       if ((parseInt(st) + window.innerHeight) < document.body.scrollHeight) {
 
-        // Header
         document.getElementById('header').classList.remove('header-up');
         document.getElementById('top-menu').classList.remove('top-menu-up');
         document.getElementById('top-menu').classList.add('top-position');
         document.getElementById('maindiv').classList.remove('header-up');
-
-        // Footer
-        // document.getElementById('mail-to').classList.add('none');
-        // document.getElementById('buildinfo').classList.add('none');
-        // document.getElementById('contact').classList.add('display-inline');
 
       }
 
@@ -130,13 +116,6 @@ export class NavbarComponent implements OnInit {
 
     this.lastScrollTop = st;
 
-  }
-
-  getData() {
-    this.configApi.getBuildInfo()
-      .subscribe(info => {
-        this.buildInfo = info;
-      });
   }
 
 }

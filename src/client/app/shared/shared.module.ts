@@ -11,7 +11,7 @@ import { ConfigApiService } from './config/config-api.service';
 import { TreatmentArmLinkComponent } from './treatment-arm-link/treatment-arm-link.component';
 import { PipesModule } from './pipes/pipes.module';
 import { CosmicLinkComponent } from './cosmic-link/cosmic-link.component';
-
+import { FooterComponent } from './footer/footer.component';
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.
  */
@@ -25,7 +25,8 @@ import { CosmicLinkComponent } from './cosmic-link/cosmic-link.component';
   declarations: [
     NavbarComponent,
     TreatmentArmLinkComponent,
-    CosmicLinkComponent
+    CosmicLinkComponent,
+    FooterComponent
   ],
   exports: [
     NavbarComponent,
@@ -33,7 +34,8 @@ import { CosmicLinkComponent } from './cosmic-link/cosmic-link.component';
     FormsModule,
     RouterModule,
     TreatmentArmLinkComponent,
-    CosmicLinkComponent
+    CosmicLinkComponent,
+    FooterComponent
   ],
   providers: [ConfigApiService]
 })
