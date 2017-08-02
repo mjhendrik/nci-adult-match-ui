@@ -63,6 +63,7 @@ docker exec -it nciadultmatchui_mongo_1 bash # attach to the mongo service of yo
 mongo shell                                  # launch mongo shell
 use Match                                    # switch to Match database
 db.dropDatabase()                            # drop the current mongo dump
+exit                                         # exit out of the mongo shell
 exit                                         # exit out of the mongo container into your terminal
 ```
 
