@@ -4,128 +4,120 @@
     <li class="active">Biopsy Tracking</li>
   </ul>
   <h1 class="page-header">Biopsy Tracking</h1>
-  <div class="row">
-    <div class="col-md-12">
-      <!-- begin panel -->
-      <div class="panel" id="biopsy_tracking_list">
-        <div class="m-0 p-0">
-          <div>
-            <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
-              <div class="tab-pane active">
-                <!-- table BiopsyTrackingList -->
-                <div class="row">
-                  <!-- begin panel -->
-                  <div>
-                    <div class="col-md-12 bg-info-light">
-                      <div class="col-md-6 p-l-5">
-                        <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
-                          <label>Show
-                        <select name="data-table_length" [(ngModel)]="recordsPerPageBiopsyTrackingList" aria-controls="data-table" class="form-control form-control-info input-sm">
-                          <option [ngValue]=10>10</option>
-                          <option [ngValue]=25>25</option>
-                          <option [ngValue]=50>50</option>
-                          <option [ngValue]=100>100</option>
-                        </select>
-                      entries</label>
-                        </div>
-                      </div>
-                      <div class="col-md-6 p-r-5">
-                        <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
-                          <label>Search:
-                        <input type="text" [ngModel]="searchtermBiopsyTrackingList" (ngModelChange)="onSearchChanged($event)" class="form-control form-control-info input-sm" placeholder="" aria-controls="data-table">
-                        </label>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="table-responsive col-lg-12">
-                        <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="tableBiopsyTrackingListData" #mftableBiopsyTrackingList="mfDataTable"
-                          [(mfSortBy)]="tableBiopsyTrackingListDefaultSort" [mfRowsOnPage]="recordsPerPageBiopsyTrackingList"
-                          [(mfTotalLength)]="biopsyCount">
-                          <thead>
-                            <tr class="info-light">
-                              <th style="min-width:11em">
-                                <mfDefaultSorter (SortStatus)="SortStatus($event)" by="biopsySequenceNumber"><span class="table-header">Biopsy Sequence Number</span></mfDefaultSorter>
-                              </th>
-                              <th style="min-width:10em">
-                                <mfDefaultSorter (SortStatus)="SortStatus($event)" by="patientSequenceNumber"><span class="table-header">Patient Sequence Number</span></mfDefaultSorter>
-                              </th>
-                              <th style="min-width:16em">
-                                <mfDefaultSorter (SortStatus)="SortStatus($event)" by="molecularSequenceNumber"><span class="table-header">Molecular Sequence Number</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <mfDefaultSorter (SortStatus)="SortStatus($event)" by="destinationSite"><span class="table-header">Location</span></mfDefaultSorter>
-                              </th>
-                              <th style="min-width:12em">
-                                <mfDefaultSorter (SortStatus)="SortStatus($event)" by="trackingNumber"><span class="table-header">Tracking Number</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <mfDefaultSorter (SortStatus)="SortStatus($event)" by="specimenReceivedDate"><span class="table-header">Specimen Received Date</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <mfDefaultSorter (SortStatus)="SortStatus($event)" by="specimenFailureDate"><span class="table-header">Specimen Failure Date</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <mfDefaultSorter (SortStatus)="SortStatus($event)" by="pathologyReviewdate"><span class="table-header">Pathology Confirmation Date</span></mfDefaultSorter>
-                              </th>
-                              <th>
-                                <mfDefaultSorter (SortStatus)="SortStatus($event)" by="dnaShippedDate"><span class="table-header">Nucleic Acid Sendout Date</span></mfDefaultSorter>
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr *ngFor="let item of mftableBiopsyTrackingList.data">
-                              <td>
-                                <a href [routerLink]="['/patients', item.patientSequenceNumber]" [queryParams]="{section: 'biopsies', entityId:item.biopsySequenceNumber}" class="link-none"><i class="fa fa-tasks"></i> {{item.biopsySequenceNumber | dashify}}</a>
-                              </td>
-                              <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                                <a href [routerLink]="['/patients', item.patientSequenceNumber]" class="link-none"><i class="fa fa-user"></i> {{item.patientSequenceNumber | dashify}}</a>
-                              </td>
-                              <td>
-                                <span *ngIf="item.molecularSequenceNumber!==undefined">
-                                  <a href [routerLink]="['/patients', item.patientSequenceNumber]" [queryParams]="{section: 'msn', entityId: item.molecularSequenceNumber}" class="link-none"><i class="fa fa-share-alt"></i> {{item.molecularSequenceNumber | dashify}}</a>
-                                </span>
-                                <span *ngIf="item.molecularSequenceNumber===undefined">{{item.molecularSequenceNumber | dashify}}</span>
-                              </td>
-                              <td>{{item.destinationSite | dashify}}</td>
-                              <td>
-                                <span *ngIf="item.trackingNumber!==undefined && item.trackingNumber!=='Local'">
-                                  <a href="https://www.fedex.com/apps/fedextrack/?tracknumbers={{item.trackingNumber}}" class="link-none" target="_blank"><i class="fa fa-truck"></i> {{item.trackingNumber | dashify}}</a>
-                                </span>
-                                <span *ngIf="item.trackingNumber===undefined || item.trackingNumber==='Local'">{{item.trackingNumber | dashify}}</span>
-                              </td>
-                              <td>{{item.specimenReceivedDate | dashify}}</td>
-                              <td>{{item.specimenFailureDate | dashify}}</td>
-                              <td>{{item.pathologyReviewdate | dashify}}</td>
-                              <td>{{item.dnaShippedDate | dashify}}</td>
-                            </tr>
-                            <tr *ngIf="mftableBiopsyTrackingList.data.length == 0">
-                              <td class="text-muted" colspan="10">
-                                <span *ngIf="searchtermBiopsyTrackingList">No matching search results found for "{{searchtermBiopsyTrackingList}}"</span>
-                                <span *ngIf="!searchtermBiopsyTrackingList">No biopsy tracking data</span>
-                              </td>
-                            </tr>
-                          </tbody>
-                          <tfoot>
-                            <tr>
-                              <td class="tfoot-padding" colspan="10">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermBiopsyTrackingList" [totallength]="biopsyCount ? biopsyCount.length : 0"
-                                  [totalPageCount]="biopsyTotal" (CurrentlyActive)="currentPageActive($event)"></mfBootstrapPaginator>
-                              </td>
-                            </tr>
-                          </tfoot>
-                        </table>
-                      </div>
-                    </div>
+    <!-- begin panel -->
+    <div class="panel" id="biopsy_tracking_list">
+      <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
+        <div class="tab-pane active">
+          <!-- table BiopsyTrackingList -->
+          <div class="row">
+            <!-- begin panel -->
+            <div>
+              <div class="col-md-12 bg-info-light">
+                <div class="col-md-6 p-l-5">
+                  <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
+                    <label>Show
+                  <select name="data-table_length" [(ngModel)]="recordsPerPageBiopsyTrackingList" aria-controls="data-table" class="form-control form-control-info input-sm">
+                    <option [ngValue]=10>10</option>
+                    <option [ngValue]=25>25</option>
+                    <option [ngValue]=50>50</option>
+                    <option [ngValue]=100>100</option>
+                  </select>
+                entries</label>
                   </div>
-                  <!-- end panel -->
+                </div>
+                <div class="col-md-6 p-r-5">
+                  <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
+                    <label>Search:
+                  <input type="text" [ngModel]="searchtermBiopsyTrackingList" (ngModelChange)="onSearchChanged($event)" class="form-control form-control-info input-sm" placeholder="" aria-controls="data-table">
+                  </label>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="table-responsive col-lg-12">
+                  <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="tableBiopsyTrackingListData" #mftableBiopsyTrackingList="mfDataTable"
+                    [(mfSortBy)]="tableBiopsyTrackingListDefaultSort" [mfRowsOnPage]="recordsPerPageBiopsyTrackingList"
+                    [(mfTotalLength)]="biopsyCount">
+                    <thead>
+                      <tr class="info-light">
+                        <th style="min-width:11em">
+                          <mfDefaultSorter (SortStatus)="SortStatus($event)" by="biopsySequenceNumber"><span class="table-header">Biopsy Sequence Number</span></mfDefaultSorter>
+                        </th>
+                        <th style="min-width:10em">
+                          <mfDefaultSorter (SortStatus)="SortStatus($event)" by="patientSequenceNumber"><span class="table-header">Patient Sequence Number</span></mfDefaultSorter>
+                        </th>
+                        <th style="min-width:16em">
+                          <mfDefaultSorter (SortStatus)="SortStatus($event)" by="molecularSequenceNumber"><span class="table-header">Molecular Sequence Number</span></mfDefaultSorter>
+                        </th>
+                        <th>
+                          <mfDefaultSorter (SortStatus)="SortStatus($event)" by="destinationSite"><span class="table-header">Location</span></mfDefaultSorter>
+                        </th>
+                        <th style="min-width:12em">
+                          <mfDefaultSorter (SortStatus)="SortStatus($event)" by="trackingNumber"><span class="table-header">Tracking Number</span></mfDefaultSorter>
+                        </th>
+                        <th>
+                          <mfDefaultSorter (SortStatus)="SortStatus($event)" by="specimenReceivedDate"><span class="table-header">Specimen Received Date</span></mfDefaultSorter>
+                        </th>
+                        <th>
+                          <mfDefaultSorter (SortStatus)="SortStatus($event)" by="specimenFailureDate"><span class="table-header">Specimen Failure Date</span></mfDefaultSorter>
+                        </th>
+                        <th>
+                          <mfDefaultSorter (SortStatus)="SortStatus($event)" by="pathologyReviewdate"><span class="table-header">Pathology Confirmation Date</span></mfDefaultSorter>
+                        </th>
+                        <th>
+                          <mfDefaultSorter (SortStatus)="SortStatus($event)" by="dnaShippedDate"><span class="table-header">Nucleic Acid Sendout Date</span></mfDefaultSorter>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of mftableBiopsyTrackingList.data">
+                        <td>
+                          <a href [routerLink]="['/patients', item.patientSequenceNumber]" [queryParams]="{section: 'biopsies', entityId:item.biopsySequenceNumber}" class="link-none"><i class="fa fa-tasks"></i> {{item.biopsySequenceNumber | dashify}}</a>
+                        </td>
+                        <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                          <a href [routerLink]="['/patients', item.patientSequenceNumber]" class="link-none"><i class="fa fa-user"></i> {{item.patientSequenceNumber | dashify}}</a>
+                        </td>
+                        <td>
+                          <span *ngIf="item.molecularSequenceNumber!==undefined">
+                            <a href [routerLink]="['/patients', item.patientSequenceNumber]" [queryParams]="{section: 'msn', entityId: item.molecularSequenceNumber}" class="link-none"><i class="fa fa-share-alt"></i> {{item.molecularSequenceNumber | dashify}}</a>
+                          </span>
+                          <span *ngIf="item.molecularSequenceNumber===undefined">{{item.molecularSequenceNumber | dashify}}</span>
+                        </td>
+                        <td>{{item.destinationSite | dashify}}</td>
+                        <td>
+                          <span *ngIf="item.trackingNumber!==undefined && item.trackingNumber!=='Local'">
+                            <a href="https://www.fedex.com/apps/fedextrack/?tracknumbers={{item.trackingNumber}}" class="link-none" target="_blank"><i class="fa fa-truck"></i> {{item.trackingNumber | dashify}}</a>
+                          </span>
+                          <span *ngIf="item.trackingNumber===undefined || item.trackingNumber==='Local'">{{item.trackingNumber | dashify}}</span>
+                        </td>
+                        <td>{{item.specimenReceivedDate | dashify}}</td>
+                        <td>{{item.specimenFailureDate | dashify}}</td>
+                        <td>{{item.pathologyReviewdate | dashify}}</td>
+                        <td>{{item.dnaShippedDate | dashify}}</td>
+                      </tr>
+                      <tr *ngIf="mftableBiopsyTrackingList.data.length == 0">
+                        <td class="text-muted" colspan="10">
+                          <span *ngIf="searchtermBiopsyTrackingList">No matching search results found for "{{searchtermBiopsyTrackingList}}"</span>
+                          <span *ngIf="!searchtermBiopsyTrackingList">No biopsy tracking data</span>
+                        </td>
+                      </tr>
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <td class="tfoot-padding" colspan="10">
+                          <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermBiopsyTrackingList" [totallength]="biopsyCount ? biopsyCount.length : 0"
+                            [totalPageCount]="biopsyTotal" (CurrentlyActive)="currentPageActive($event)"></mfBootstrapPaginator>
+                        </td>
+                      </tr>
+                    </tfoot>
+                  </table>
                 </div>
               </div>
             </div>
+            <!-- end panel -->
           </div>
         </div>
       </div>
-      <!-- end panel -->
     </div>
-  </div>
+    <!-- end panel -->
 </div>
