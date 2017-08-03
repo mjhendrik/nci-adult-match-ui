@@ -23,11 +23,15 @@ class DataResolver implements Resolve<any> {
     state: RouterStateSnapshot
   ): Observable<any> | Promise<any> | any {
     return Observable.forkJoin(
-      this.api.getBiopsyCount('')
+      this.api.getBiopsyCount(''),
+      this.api.getBiopsyTracking(1, 10, 'asc', 'biopsySequenceNumber', ''),
+      this.api.getBiopsyTotal()
     ).map(
       data => {
         return {
-          data: data[0]
+          count: data[0],
+          data: data[1],
+          total: data[2]
         };
       }
       );

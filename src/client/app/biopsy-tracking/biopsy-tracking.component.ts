@@ -41,70 +41,80 @@ export class BiopsyTrackingListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getBiopsyCount(this.route.snapshot.data['data'].data);
+    this.getBiopsyCount(this.route.snapshot.data['data'].count);
+    this.biopsyCount = this.route.snapshot.data['data'].count;
+    this.biopsyTotal = this.route.snapshot.data['data'].total;
+    this.biopsyTableExtraction(this.route.snapshot.data['data'].data);
   }
 
   getData() {
-    let gmt = new GmtPipe();
     this.biopsyTrackingApi.getBiopsyTracking(this.page, this.size, this.sortOrder, this.sortBy, this.searchtermBiopsyTrackingList)
       .subscribe(itemList => {
-
-        this.tableBiopsyTrackingListData = [];
-
-        for (let i = 0; i < itemList.length; i++) {
-
-          let obj: any = {};
-
-          for (let j = 0; j < itemList[i].biopsies.mdAndersonMessages.length; j++) {
-
-            if (itemList[i].biopsies.mdAndersonMessages[j].message === 'SPECIMEN_RECEIVED') {
-
-              if (itemList[i].biopsies.mdAndersonMessages[j].collectedDate)
-                obj.specimenReceivedDate = itemList[i].biopsies.mdAndersonMessages[j].collectedDate;
-
-              else obj.specimenReceivedDate = itemList[i].biopsies.mdAndersonMessages[j].reportedDate;
-
-              obj.specimenReceivedDate = gmt.transform(obj.specimenReceivedDate);
-              obj.biopsySequenceNumber = itemList[i].biopsies.mdAndersonMessages[j].biopsySequenceNumber;
-              obj.patientSequenceNumber = itemList[i].biopsies.mdAndersonMessages[j].patientSequenceNumber;
-
-            }
-
-            if (itemList[i].biopsies.mdAndersonMessages[j].message === 'NUCLEIC_ACID_SENDOUT') {
-
-              obj.dnaShippedDate = itemList[i].biopsies.mdAndersonMessages[j].reportedDate;
-              obj.dnaShippedDate = gmt.transform(obj.dnaShippedDate);
-              obj.molecularSequenceNumber = itemList[i].biopsies.mdAndersonMessages[j].molecularSequenceNumber;
-              obj.destinationSite = itemList[i].biopsies.mdAndersonMessages[j].destinationSite;
-              obj.trackingNumber = itemList[i].biopsies.mdAndersonMessages[j].trackingNumber;
-
-            }
-
-            if (itemList[i].biopsies.mdAndersonMessages[j].message === 'SPECIMEN_FAILURE') {
-              obj.specimenFailureDate = itemList[i].biopsies.mdAndersonMessages[j].reportedDate;
-              obj.specimenFailureDate = gmt.transform(obj.specimenFailureDate);
-            }
-
-            if (itemList[i].biopsies.mdAndersonMessages[j].message === 'PATHOLOGY_CONFIRMATION') {
-              obj.pathologyReviewdate = itemList[i].biopsies.mdAndersonMessages[j].reportedDate;
-              obj.pathologyReviewdate = gmt.transform(obj.pathologyReviewdate);
-            }
-
-          }
-
-          this.tableBiopsyTrackingListData.push(obj);
-
-        }
-
+        this.biopsyTableExtraction(itemList);
       },
       error => this.errorMessage = <any>error
       );
   }
 
-  getBiopsyCount(itemList: any) {
-    this.biopsyCount = itemList;
-    this.getData();
-    this.getBiopsyTotal();
+  biopsyTableExtraction(itemList: any[]) {
+
+    let gmt = new GmtPipe();
+
+    this.tableBiopsyTrackingListData = [];
+
+    for (let i = 0; i < itemList.length; i++) {
+
+      let obj: any = {};
+
+      for (let j = 0; j < itemList[i].biopsies.mdAndersonMessages.length; j++) {
+
+        if (itemList[i].biopsies.mdAndersonMessages[j].message === 'SPECIMEN_RECEIVED') {
+
+          if (itemList[i].biopsies.mdAndersonMessages[j].collectedDate)
+            obj.specimenReceivedDate = itemList[i].biopsies.mdAndersonMessages[j].collectedDate;
+
+          else obj.specimenReceivedDate = itemList[i].biopsies.mdAndersonMessages[j].reportedDate;
+
+          obj.specimenReceivedDate = gmt.transform(obj.specimenReceivedDate);
+          obj.biopsySequenceNumber = itemList[i].biopsies.mdAndersonMessages[j].biopsySequenceNumber;
+          obj.patientSequenceNumber = itemList[i].biopsies.mdAndersonMessages[j].patientSequenceNumber;
+
+        }
+
+        if (itemList[i].biopsies.mdAndersonMessages[j].message === 'NUCLEIC_ACID_SENDOUT') {
+
+          obj.dnaShippedDate = itemList[i].biopsies.mdAndersonMessages[j].reportedDate;
+          obj.dnaShippedDate = gmt.transform(obj.dnaShippedDate);
+          obj.molecularSequenceNumber = itemList[i].biopsies.mdAndersonMessages[j].molecularSequenceNumber;
+          obj.destinationSite = itemList[i].biopsies.mdAndersonMessages[j].destinationSite;
+          obj.trackingNumber = itemList[i].biopsies.mdAndersonMessages[j].trackingNumber;
+
+        }
+
+        if (itemList[i].biopsies.mdAndersonMessages[j].message === 'SPECIMEN_FAILURE') {
+          obj.specimenFailureDate = itemList[i].biopsies.mdAndersonMessages[j].reportedDate;
+          obj.specimenFailureDate = gmt.transform(obj.specimenFailureDate);
+        }
+
+        if (itemList[i].biopsies.mdAndersonMessages[j].message === 'PATHOLOGY_CONFIRMATION') {
+          obj.pathologyReviewdate = itemList[i].biopsies.mdAndersonMessages[j].reportedDate;
+          obj.pathologyReviewdate = gmt.transform(obj.pathologyReviewdate);
+        }
+
+      }
+
+      this.tableBiopsyTrackingListData.push(obj);
+
+    }
+
+  }
+
+  getBiopsyCount(list: any) {
+    this.biopsyTrackingApi.getBiopsyCount('').subscribe((itemList: any) => {
+      this.biopsyCount = itemList;
+      this.getData();
+      this.getBiopsyTotal();
+    });
   }
 
   getBiopsyTotal() {
