@@ -192,7 +192,7 @@
                 <div class="row">
                   <!-- begin panel -->
                   <div>
-                    <div class="col-md-6 p-l-0 p-r-10">
+                    <div class="col-md-6 p-l-0 p-r-10" id="exclDrugs-header">
                       <div class="panel-heading">
                         <h4 class="panel-title f-s-18">Exclusionary Drugs</h4>
                       </div>
@@ -218,7 +218,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-md-6 p-l-0 p-l-10 p-r-0">
+                    <div class="col-md-6 p-l-0 p-l-10 p-r-0" id="exclDiseases-header">
                       <div class="panel-heading">
                         <h4 class="panel-title f-s-18">Exclusionary Diseases</h4>
                       </div>
@@ -266,7 +266,7 @@
                         </table>
                         <table *ngIf="tableData[versionIndex].exclusionDrugs.length!=0" class="table table-td-valign-middle table-striped table-col-width"
                           [mfData]="tableData[versionIndex].exclusionDrugs | filterByText: searchtermExdr" #mftableExdr="mfDataTable"
-                          [(mfSortBy)]="tableExdrDefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPageExdr">
+                          [(mfSortBy)]="tableExdrDefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPageExdr" id="exclDrugs-table">
                           <thead>
                             <tr class="success-light">
                               <th>
@@ -320,7 +320,7 @@
                         </table>
                         <table *ngIf="tableData[versionIndex].exclusionDiseases.length!=0" class="table table-td-valign-middle table-striped table-col-width"
                           [mfData]="tableData[versionIndex].exclusionDiseases | filterByText: searchtermExdz" #mftableExdz="mfDataTable"
-                          [(mfSortBy)]="tableExdzDefaultSort" [mfRowsOnPage]="recordsPerPageExdz">
+                          [(mfSortBy)]="tableExdzDefaultSort" [mfRowsOnPage]="recordsPerPageExdz" id="exclDiseases-table">
                           <thead>
                             <tr class="success-light">
                               <th>
@@ -396,7 +396,7 @@
                                 ID
                               </th>
                               <th>
-                                Chorm
+                                Chrom
                               </th>
                               <th>
                                 Position
@@ -430,7 +430,7 @@
                                 <mfDefaultSorter by="identifier"><span class="table-header">ID</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="chromosome"><span class="table-header">Chorm</span></mfDefaultSorter>
+                                <mfDefaultSorter by="chromosome"><span class="table-header">Chrom</span></mfDefaultSorter>
                               </th>
                               <th>
                                 <mfDefaultSorter by="position"><span class="table-header">Position</span></mfDefaultSorter>
@@ -519,7 +519,7 @@
                                 ID
                               </th>
                               <th>
-                                Chorm
+                                Chrom
                               </th>
                               <th>
                                 Position
@@ -550,7 +550,7 @@
                                 <mfDefaultSorter by="identifier"><span class="table-header">ID</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="chromosome"><span class="table-header">Chorm</span></mfDefaultSorter>
+                                <mfDefaultSorter by="chromosome"><span class="table-header">Chrom</span></mfDefaultSorter>
                               </th>
                               <th>
                                 <mfDefaultSorter by="position"><span class="table-header">Position</span></mfDefaultSorter>
@@ -642,7 +642,7 @@
                                 Gene
                               </th>
                               <th>
-                                Chorm
+                                Chrom
                               </th>
                               <th>
                                 Position
@@ -672,7 +672,7 @@
                                 <mfDefaultSorter by="geneName"><span class="table-header">Gene</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="chromosome"><span class="table-header">Chorm</span></mfDefaultSorter>
+                                <mfDefaultSorter by="chromosome"><span class="table-header">Chrom</span></mfDefaultSorter>
                               </th>
                               <th>
                                 <mfDefaultSorter by="position"><span class="table-header">Position</span></mfDefaultSorter>
@@ -751,7 +751,7 @@
                                 Gene
                               </th>
                               <th>
-                                Chorm
+                                Chrom
                               </th>
                               <th>
                                 Position
@@ -778,7 +778,7 @@
                                 <mfDefaultSorter by="geneName"><span class="table-header">Gene</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="chromosome"><span class="table-header">Chorm</span></mfDefaultSorter>
+                                <mfDefaultSorter by="chromosome"><span class="table-header">Chrom</span></mfDefaultSorter>
                               </th>
                               <th>
                                 <mfDefaultSorter by="position"><span class="table-header">Position</span></mfDefaultSorter>
