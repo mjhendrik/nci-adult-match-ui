@@ -48,7 +48,7 @@ export function main() {
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
     });
 
-    it('should test ngOnInit',
+    xit('should test ngOnInit',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -202,7 +202,7 @@ export function main() {
           });
       }));
 
-    it('should test getBiopsyCount',
+    xit('should test getBiopsyCount',
       async((done: any) => {
         TestBed
           .compileComponents()
