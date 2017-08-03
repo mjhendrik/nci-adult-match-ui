@@ -101,8 +101,14 @@ export class PatientListComponent implements OnInit {
 
   SortStatus(evt: any): void {
     evt += ',' + this.searchTermPatients;
-    if (this.previous !== evt)
+    let params = evt.split(',');
+    this.page = parseInt(params[0]);
+    this.size = parseInt(params[1]);
+    this.sortOrder = params[2];
+    this.sortBy = params[3];
+    if (this.previous !== evt) {
       this.getPatientCount();
+    }
     this.previous = evt;
   }
 

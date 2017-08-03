@@ -120,7 +120,7 @@ export class BiopsyTrackingListComponent implements OnInit {
     if (this.searchtermBiopsyTrackingList !== val) {
       this.searchtermBiopsyTrackingList = val;
       this.previous = this.page + ',' + this.size + ',' + this.sortOrder + ',' + this.sortBy + ',' + this.searchtermBiopsyTrackingList;
-      this.getBiopsyCount(this.searchtermBiopsyTrackingList);
+      this.getBiopsyCount(this.route.snapshot.data['data'].data);
     }
     this.searchtermBiopsyTrackingList = val;
   }
@@ -133,14 +133,19 @@ export class BiopsyTrackingListComponent implements OnInit {
     this.sortOrder = params[2];
     this.sortBy = params[3];
     if (this.previous !== evt && this.previous !== undefined)
-      this.getBiopsyCount(this.searchtermBiopsyTrackingList);
+      this.getBiopsyCount(this.route.snapshot.data['data'].data);
     this.previous = evt;
   }
 
   SortStatus(evt: any): void {
     evt += ',' + this.searchtermBiopsyTrackingList;
+    let params = evt.split(',');
+    this.page = parseInt(params[0]);
+    this.size = parseInt(params[1]);
+    this.sortOrder = params[2];
+    this.sortBy = params[3];
     if (this.previous !== evt)
-      this.getBiopsyCount(this.searchtermBiopsyTrackingList);
+      this.getBiopsyCount(this.route.snapshot.data['data'].data);
     this.previous = evt;
   }
 
