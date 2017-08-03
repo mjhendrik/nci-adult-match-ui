@@ -21,25 +21,31 @@
                     entries</label>
               </div>
             </div>
-            <div class="col-md-6 text-nowrap">
-              <div class="text-white form-inline p-t-15 p-b-10">
-                <label>Outside Assay
-                    <select [(ngModel)]="isOutsideAssay" class="form-control form-control-purple input-sm">
-                      <option [ngValue]="null">Any</option>
-                      <option [ngValue]="true">Only Outside Assay Patients</option>
-                      <option [ngValue]="false">Only Regular Patients</option>
-                    </select>
-                </label>
-              </div>
-              <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-r-5 p-b-10">
-                <label>Search:
-                  <input type="text" [ngModel]="searchTermPatients" (ngModelChange)="onSearchChanged($event)" class="form-control form-control-purple input-sm" placeholder="" aria-controls="data-table">
-                </label>
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-6 text-white">
+                  <div class="pull-right text-white form-inline p-t-15 p-r-5 p-b-10">
+                    <label>Outside Assay:
+                        <select [(ngModel)]="isOutsideAssay" class="form-control form-control-purple input-sm">
+                          <option [ngValue]="null">Any</option>
+                          <option [ngValue]="true">Only Outside Assay Patients</option>
+                          <option [ngValue]="false">Only Regular Patients</option>
+                        </select>
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-r-5 p-b-10">
+                    <label>Search:
+                      <input type="text" [ngModel]="searchTermPatients" (ngModelChange)="onSearchChanged($event)" class="form-control form-control-purple input-sm" placeholder="" aria-controls="data-table">
+                    </label>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
-          <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="tablePatientsData" #mftablePatients="mfDataTable"
+          <table class="table table-td-valign-middle table-striped table-col-width m-b-0" [mfData]="tablePatientsData" #mftablePatients="mfDataTable"
             [(mfSortBy)]="tablePatientsDefaultSort" [mfRowsOnPage]="recordsPerPagePatients" [mfActivePage]="activePage"
             [(mfTotalLength)]="patientCount">
             <thead>

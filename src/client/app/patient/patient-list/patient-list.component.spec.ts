@@ -183,7 +183,7 @@ export function main() {
             }).createComponent(PatientListComponent);
             fixture.componentInstance.previous = "1,100,asc,patientSequenceNumber";
             fixture.componentInstance.getData();
-            fixture.componentInstance.getPatientCount();
+            fixture.componentInstance.refreshData();
             fixture.componentInstance.getPatientTotal();
           });
       }));

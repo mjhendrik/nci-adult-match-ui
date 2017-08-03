@@ -378,3 +378,18 @@ td.long-text-wrap {
     max-width: 15em;
     word-wrap: break-word;
 }
+
+.table {
+  .tfoot-padding {
+    padding: 20px;
+  }
+  .pagination {
+    margin-top: 0px;
+  }
+  .dataTables_info{
+    margin-top: 8px;
+  }
+  div.dataTables_info {
+    margin-left: 0px;
+  }
+}

@@ -33,12 +33,20 @@ export class PatientListComponent implements OnInit {
   size: number = this.recordsPerPagePatients;
   sortOrder: string = 'asc';
   sortBy: string = this.tablePatientsDefaultSort;
-  isOutsideAssay?: boolean;
+
+  private isOutsideAssayValue?: boolean = null;
+  set isOutsideAssay(value: boolean) {
+    this.isOutsideAssayValue = value;
+    this.refreshData();
+  }
+  get isOutsideAssay(): boolean {
+    return this.isOutsideAssayValue;
+  }
 
   constructor(private patientApi: PatientApiService) { }
 
   ngOnInit() {
-    this.getPatientCount();
+    this.refreshData();
   }
 
   getData() {
@@ -57,7 +65,7 @@ export class PatientListComponent implements OnInit {
       );
   }
 
-  getPatientCount() {
+  refreshData() {
     this.patientApi.getPatientCount(this.searchTermPatients, this.isOutsideAssay)
       .subscribe(itemList => {
         this.patientCount = itemList;
@@ -82,7 +90,7 @@ export class PatientListComponent implements OnInit {
     if (this.searchTermPatients !== val) {
       this.searchTermPatients = val;
       this.previous = this.page + ',' + this.size + ',' + this.sortOrder + ',' + this.sortBy + ',' + this.searchTermPatients;
-      this.getPatientCount();
+      this.refreshData();
     }
     this.searchTermPatients = val;
   }
@@ -95,7 +103,7 @@ export class PatientListComponent implements OnInit {
     this.sortOrder = params[2];
     this.sortBy = params[3];
     if (this.previous !== evt && this.previous !== undefined)
-      this.getPatientCount();
+      this.refreshData();
     this.previous = evt;
   }
 
@@ -107,7 +115,7 @@ export class PatientListComponent implements OnInit {
     this.sortOrder = params[2];
     this.sortBy = params[3];
     if (this.previous !== evt) {
-      this.getPatientCount();
+      this.refreshData();
     }
     this.previous = evt;
   }
