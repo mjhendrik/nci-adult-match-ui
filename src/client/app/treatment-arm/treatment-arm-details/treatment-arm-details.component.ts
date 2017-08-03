@@ -171,6 +171,7 @@ export class TreatmentArmDetailsComponent implements OnInit {
       x.dateSelected = gmt.transform(x.dateSelected);
       x.dateOnArm = gmt.transform(x.dateOnArm);
       x.dateOffArm = gmt.transform(x.dateOffArm);
+      x.diseaseShortName = x.diseases[0].shortName;
       return x;
     });
 
