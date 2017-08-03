@@ -179,7 +179,7 @@ export class TreatmentArmDetailsComponent implements OnInit {
       let assignmentRecords = this.tableData[this.versionIndex].summaryReport.assignmentRecords;
 
       this.barChartLabels = assignmentRecords.map((x: any) => {
-        return x.diseases[0].shortName + '(' + x.diseases[0].meddraCode + ')';
+        return x.diseases[0].shortName + ' (' + x.diseases[0]._id + ')';
       });
       this.barChartLabels = Array.from(new Set(this.barChartLabels));
 
