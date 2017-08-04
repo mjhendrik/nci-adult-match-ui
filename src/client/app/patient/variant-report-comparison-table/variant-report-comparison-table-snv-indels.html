@@ -1,0 +1,46 @@
+<h4>{{title}}</h4>
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th>Confirm</th>
+      <th>ID</th>
+      <th>aMOI</th>
+      <th>Chrom</th>
+      <th>Position</th>
+      <th>Reference</th>
+      <th>Alternative</th>
+      <th>Allele Freq</th>
+      <th>Gene</th>
+      <th>Oncomine Variant Class</th>
+      <th>Exon</th>
+      <th>Function</th>
+      <th>HGVS</th>
+      <th>Read Depth </th>
+      <th>Transcript</th>
+      <th>Protein</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of items">
+      <td><input type="checkbox" name="chr" value="checked" checked disabled></td>
+      <td><cosmic-link [linkType]="'cosmicId'" [linkId]="item.identifier"></cosmic-link></td>
+      <td>{{item.aMoi | dashify}}</td>
+      <td>{{item.chromosome | dashify}}</td>
+      <td>{{item.position | dashify}}</td>
+      <td class="long-text-wrap">{{item.reference | dashify}}</td>
+      <td class="long-text-wrap">{{item.alternative | dashify}}</td>
+      <td>{{item.alleleFreq | dashify}}</td>
+      <td><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.funcGene"></cosmic-link></td>
+      <td>{{item.oncomineVariantClass | dashify}}</td>
+      <td>{{item.exon | dashify}}</td>
+      <td>{{item.function | dashify}}</td>
+      <td>{{item.hgvs | dashify}}</td>
+      <td>{{item.readDepth | dashify}}</td>
+      <td>{{item.transcript | dashify}}</td>
+      <td>{{item.protein | dashify}}</td>
+    </tr>
+    <tr *ngIf="!items || !items.length">
+      <td colspan="17" class="text-muted">No {{title}} data</td>
+    </tr>
+  </tbody>
+</table>
