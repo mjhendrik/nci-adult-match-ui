@@ -9,7 +9,7 @@ import { CliaApiService } from '../../clia/clia-api.service';
 import { VariantReportComparisonTableCnvComponent } from './variant-report-comparison-table-cnv.component';
 import { VariantReportComparisonTableGeneFusionComponent } from './variant-report-comparison-table-gf.component';
 import { VariantReportComparisonTableSnvIndelsComponent } from './variant-report-comparison-table-snv-indels.component';
-import { SharedModule } from '../shared.module';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   imports: [
