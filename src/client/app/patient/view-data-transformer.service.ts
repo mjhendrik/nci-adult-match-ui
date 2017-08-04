@@ -12,8 +12,12 @@ export class ViewDataTransformer {
 
     transformedPatient.disease = source.diseases && source.diseases.length ? source.diseases[0] : {};
 
+    transformedPatient.isOutsideAssay = false;
     if (transformedPatient.patientTriggers && transformedPatient.patientTriggers.length) {
       transformedPatient.patientTriggers = transformedPatient.patientTriggers.reverse();
+      transformedPatient.isOutsideAssay = transformedPatient.patientTriggers.any(
+        (x: any) => x.patientStatus === "REGISTRATION_OUTSIDE_ASSAY"
+      );
     }
 
     if (transformedPatient.biopsies && transformedPatient.biopsies.length) {
