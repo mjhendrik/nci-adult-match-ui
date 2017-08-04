@@ -22,22 +22,70 @@
   </thead>
   <tbody>
     <tr *ngFor="let item of items">
-      <td><input type="checkbox" name="chr" value="checked" checked disabled></td>
-      <td><cosmic-link [linkType]="'cosmicId'" [linkId]="item.identifier"></cosmic-link></td>
-      <td>{{item.aMoi | dashify}}</td>
-      <td>{{item.chromosome | dashify}}</td>
-      <td>{{item.position | dashify}}</td>
-      <td class="long-text-wrap">{{item.reference | dashify}}</td>
-      <td class="long-text-wrap">{{item.alternative | dashify}}</td>
-      <td>{{item.alleleFreq | dashify}}</td>
-      <td><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.funcGene"></cosmic-link></td>
-      <td>{{item.oncomineVariantClass | dashify}}</td>
-      <td>{{item.exon | dashify}}</td>
-      <td>{{item.function | dashify}}</td>
-      <td>{{item.hgvs | dashify}}</td>
-      <td>{{item.readDepth | dashify}}</td>
-      <td>{{item.transcript | dashify}}</td>
-      <td>{{item.protein | dashify}}</td>
+      <td>
+        <input type="checkbox" name="chr" value="checked" checked disabled>
+        <input type="checkbox" name="chr" value="checked" checked disabled>
+      </td>
+      <td>
+        <cosmic-link [linkType]="'cosmicId'" [linkId]="item.outsideData.identifier"></cosmic-link>
+        <cosmic-link [linkType]="'cosmicId'" [linkId]="item.matchData.identifier"></cosmic-link>
+      </td>
+      <td>
+        {{item.outsideData.aMoi | dashify}}
+        {{item.matchData.aMoi | dashify}}
+      </td>
+      <td>
+        {{item.outsideData.chromosome | dashify}}
+        {{item.matchData.chromosome | dashify}}
+      </td>
+      <td>
+        {{item.outsideData.position | dashify}}
+        {{item.matchData.position | dashify}}
+      </td>
+      <td class="long-text-wrap">
+        {{item.outsideData.reference | dashify}}
+        {{item.matchData.reference | dashify}}
+      </td>
+      <td class="long-text-wrap">
+        {{item.outsideData.alternative | dashify}}
+        {{item.matchData.alternative | dashify}}
+      </td>
+      <td>
+        {{item.outsideData.alleleFreq | dashify}}
+        {{item.matchData.alleleFreq | dashify}}
+      </td>
+      <td>
+        <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.outsideData.funcGene"></cosmic-link>
+        <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.matchData.funcGene"></cosmic-link>
+      </td>
+      <td>
+        {{item.outsideData.oncomineVariantClass | dashify}}
+        {{item.matchData.oncomineVariantClass | dashify}}
+      </td>
+      <td>
+        {{item.outsideData.exon | dashify}}
+        {{item.matchData.exon | dashify}}
+      </td>
+      <td>
+        {{item.outsideData.function | dashify}}
+        {{item.matchData.function | dashify}}
+      </td>
+      <td>
+        {{item.outsideData.hgvs | dashify}}
+        {{item.matchData.hgvs | dashify}}
+      </td>
+      <td>
+        {{item.outsideData.readDepth | dashify}}
+        {{item.matchData.readDepth | dashify}}
+      </td>
+      <td>
+        {{item.outsideData.transcript | dashify}}
+        {{item.matchData.transcript | dashify}}
+      </td>
+      <td>
+        {{item.outsideData.protein | dashify}}
+        {{item.matchData.protein | dashify}}
+      </td>
     </tr>
     <tr *ngIf="!items || !items.length">
       <td colspan="17" class="text-muted">No {{title}} data</td>

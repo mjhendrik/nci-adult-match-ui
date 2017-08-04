@@ -4,14 +4,14 @@ import {
 } from '@angular/core';
 
 /**
- * VariantReportSimpleTableSnvIndelsComponent.
+ * VariantReportComparisonTableSnvIndelsComponent.
  */
 @Component({
   moduleId: module.id,
   selector: 'sd-variant-report-comparison-table-snv-indels',
   templateUrl: 'variant-report-comparison-table-snv-indels.html'
 })
-export class VariantReportSimpleTableSnvIndelsComponent {
+export class VariantReportComparisonTableSnvIndelsComponent {
   @Input() items: any[];
   @Input() title: string;
 }

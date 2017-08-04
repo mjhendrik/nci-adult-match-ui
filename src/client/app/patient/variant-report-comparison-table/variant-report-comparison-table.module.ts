@@ -6,9 +6,9 @@ import { PipesModule } from '../../shared/pipes/pipes.module';
 import { DirectivesModule } from '../../shared/directives/directives.module';
 import { PatientApiService } from '../../patient/patient-api.service';
 import { CliaApiService } from '../../clia/clia-api.service';
-import { VariantReportSimpleTableCnvComponent } from './variant-report-comparison-table-cnv.component';
-import { VariantReportSimpleTableGeneFusionComponent } from './variant-report-comparison-table-gf.component';
-import { VariantReportSimpleTableSnvIndelsComponent } from './variant-report-comparison-table-snv-indels.component';
+import { VariantReportComparisonTableCnvComponent } from './variant-report-comparison-table-cnv.component';
+import { VariantReportComparisonTableGeneFusionComponent } from './variant-report-comparison-table-gf.component';
+import { VariantReportComparisonTableSnvIndelsComponent } from './variant-report-comparison-table-snv-indels.component';
 import { SharedModule } from '../shared.module';
 
 @NgModule({
@@ -21,18 +21,18 @@ import { SharedModule } from '../shared.module';
     SharedModule
   ],
   declarations: [
-    VariantReportSimpleTableCnvComponent,
-    VariantReportSimpleTableGeneFusionComponent,
-    VariantReportSimpleTableSnvIndelsComponent
+    VariantReportComparisonTableCnvComponent,
+    VariantReportComparisonTableGeneFusionComponent,
+    VariantReportComparisonTableSnvIndelsComponent
   ],
   exports: [
-    VariantReportSimpleTableCnvComponent,
-    VariantReportSimpleTableGeneFusionComponent,
-    VariantReportSimpleTableSnvIndelsComponent
+    VariantReportComparisonTableCnvComponent,
+    VariantReportComparisonTableGeneFusionComponent,
+    VariantReportComparisonTableSnvIndelsComponent
   ],
   providers: [
     PatientApiService,
     CliaApiService
   ]
 })
-export class VariantReportSimpleTableModule { }
+export class VariantReportComparisonTableModule { }

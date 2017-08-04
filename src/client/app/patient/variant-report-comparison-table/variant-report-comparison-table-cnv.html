@@ -15,15 +15,42 @@
   </thead>
   <tbody>
     <tr *ngFor="let item of items">
-      <td><input type="checkbox" name="chr" value="checked" checked disabled></td>
-      <td><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.identifier"></cosmic-link></td>
-      <td>{{item.aMoi | dashify}}</td>
-      <td>{{item.chromosome | dashify}}</td>
-      <td>{{item.position | dashify}}</td>
-      <td>{{item.rawCn | dashify}}</td>
-      <td>{{item.cn | dashify}}</td>
-      <td>{{item.ci5Percent | dashify}}</td>
-      <td>{{item.ci95Percent | dashify}}</td>
+      <td>
+        <input type="checkbox" name="chr" value="checked" checked disabled>
+        <input type="checkbox" name="chr" value="checked" checked disabled>
+      </td>
+      <td>
+        <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.identifier"></cosmic-link>
+        <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.identifier"></cosmic-link>
+      </td>
+      <td>
+        {{item.outsideData.aMoi | dashify}}
+        {{item.matchData.aMoi | dashify}}
+      </td>
+      <td>
+        {{item.outsideData.chromosome | dashify}}
+        {{item.matchData.chromosome | dashify}}
+      </td>
+      <td>
+        {{item.outsideData.position | dashify}}
+        {{item.matchData.position | dashify}}
+      </td>
+      <td>
+        {{item.outsideData.rawCn | dashify}}
+        {{item.matchData.rawCn | dashify}}
+      </td>
+      <td>
+        {{item.outsideData.cn | dashify}}
+        {{item.matchData.cn | dashify}}
+      </td>
+      <td>
+        {{item.outsideData.ci5Percent | dashify}}
+        {{item.matchData.ci5Percent | dashify}}
+      </td>
+      <td>
+        {{item.outsideData.ci95Percent | dashify}}
+        {{item.matchData.ci95Percent | dashify}}
+      </td>
     </tr>
     <tr *ngIf="!items || !items.length">
       <td colspan="9" class="text-muted">No {{title}} data</td>

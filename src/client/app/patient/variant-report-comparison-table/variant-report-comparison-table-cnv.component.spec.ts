@@ -4,7 +4,7 @@ import {
   TestBed
 } from '@angular/core/testing';
 
-import { VariantReportSimpleTableCnvComponent } from './variant-report-comparison-table-cnv.component';
+import { VariantReportComparisonTableCnvComponent } from './variant-report-comparison-table-cnv.component';
 
 export function main() {
   describe('variant-report-comparison-table-cnv component', () => {
@@ -13,7 +13,7 @@ export function main() {
 
     beforeEach(() => {
       TestBed.configureTestingModule({
-        declarations: [TestComponent, VariantReportSimpleTableCnvComponent],
+        declarations: [TestComponent, VariantReportComparisonTableCnvComponent],
         imports: []
       });
     });
