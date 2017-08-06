@@ -42,6 +42,8 @@ export class ViewDataTransformer {
     this.transformNgsMessages(transformedPatient, transformedBiopsy);
     this.transformAssayMessages(transformedPatient, transformedBiopsy);
 
+    transformedBiopsy.isOutsideAssay = !!transformedBiopsy.patientOutsideAssayLabReport;
+
     return transformedBiopsy;
   }
 
@@ -195,6 +197,8 @@ export class ViewDataTransformer {
       variantReport.singleNucleotideVariantAndIndels
         = (variantReport.singleNucleotideVariants || [])
         .concat(variantReport.indels || []);
+
+      variantReport.isOutsideAssay = transformedBiopsy.isOutsideAssay;
     }
   }
 
