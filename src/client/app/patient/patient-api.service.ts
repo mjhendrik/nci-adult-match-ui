@@ -55,10 +55,18 @@ export class PatientApiService {
   }
 
   getPatientDetails(psn: string): Observable<any> {
-    return this.http.get(this.url('/patients/' + psn, 'assets/mock-data/patient.1067.json'))
-      .map((res: Response) => res.json())
-      //              .do(data => console.log('server data:', data))  // debug
-      .catch(this.handleError);
+    if (psn === 'OA5') {
+      console.warn('Loading mock data for debugging Outside Assay workflow!');
+      return this.http.get('assets/mock-data/patient.OA5.json')
+        .map((res: Response) => res.json())
+        //              .do(data => console.log('server data:', data))  // debug
+        .catch(this.handleError);
+    } else {
+      return this.http.get(this.url('/patients/' + psn, 'assets/mock-data/patient.1067.json'))
+        .map((res: Response) => res.json())
+        //              .do(data => console.log('server data:', data))  // debug
+        .catch(this.handleError);
+    }
   }
 
   getPatientVariantReport(psn: string): Observable<any> {

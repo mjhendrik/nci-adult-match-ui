@@ -38,11 +38,11 @@ export class ViewDataTransformer {
   private transformBiopsy(transformedPatient: any, source: any): any {
     let transformedBiopsy = source;
 
+    transformedBiopsy.isOutsideAssay = !!transformedBiopsy.patientOutsideAssayLabReport;
+
     this.transformMdaMessages(transformedPatient, transformedBiopsy);
     this.transformNgsMessages(transformedPatient, transformedBiopsy);
     this.transformAssayMessages(transformedPatient, transformedBiopsy);
-
-    transformedBiopsy.isOutsideAssay = !!transformedBiopsy.patientOutsideAssayLabReport;
 
     return transformedBiopsy;
   }

@@ -10,6 +10,7 @@ import { PatientApiService } from '../patient-api.service';
 import { AssignmentReasonTableModule } from './../assignment-reason-table/assignment-reason-table.module';
 import { ViewDataTransformer } from './../view-data-transformer.service';
 import { VariantReportSimpleTableModule } from '../../shared/variant-report-simple-table/variant-report-simple-table.module';
+import { VariantReportComparisonTableModule } from '../variant-report-comparison-table/variant-report-comparison-table.module';
 import { SharedModule } from '../../shared/shared.module';
 
 export interface VariantReportData {
@@ -39,6 +40,7 @@ export interface VariantReportData {
     PipesModule,
     DirectivesModule,
     VariantReportSimpleTableModule,
+    VariantReportComparisonTableModule,
     SharedModule
   ],
   declarations: [PatientVariantReportComponent],
