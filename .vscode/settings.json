@@ -5,6 +5,9 @@
     "**/coverage_js": true,
     "**/coverage": true,
     "**/dist": true
-},
-"vsicons.presets.angular": true
+  },
+  "vsicons.presets.angular": true,
+  "htmlhint.options": {
+    "attr-lowercase": false
+  }
 }

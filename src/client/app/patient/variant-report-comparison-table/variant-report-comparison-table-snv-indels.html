@@ -27,64 +27,64 @@
         <input type="checkbox" name="chr" value="checked" checked disabled>
       </td>
       <td>
-        <cosmic-link [linkType]="'cosmicId'" [linkId]="item.outsideData.identifier"></cosmic-link>
-        <cosmic-link [linkType]="'cosmicId'" [linkId]="item.matchData.identifier"></cosmic-link>
+        <span class="outside-data"><cosmic-link [linkType]="'cosmicId'" [linkId]="item.outsideData.identifier"></cosmic-link></span>
+        <span class="match-data"><cosmic-link [linkType]="'cosmicId'" [linkId]="item.matchData.identifier"></cosmic-link></span>
       </td>
       <td>
-        {{item.outsideData.aMoi | dashify}}
-        {{item.matchData.aMoi | dashify}}
+        <span class="outside-data">{{item.outsideData.aMoi | dashify}}</span>
+        <span class="match-data">{{item.matchData.aMoi | dashify}}</span>
       </td>
       <td>
-        {{item.outsideData.chromosome | dashify}}
-        {{item.matchData.chromosome | dashify}}
+        <span class="outside-data">{{item.outsideData.chromosome | dashify}}</span>
+        <span class="match-data">{{item.matchData.chromosome | dashify}}</span>
       </td>
       <td>
-        {{item.outsideData.position | dashify}}
-        {{item.matchData.position | dashify}}
+        <span class="outside-data">{{item.outsideData.position | dashify}}</span>
+        <span class="match-data">{{item.matchData.position | dashify}}</span>
       </td>
       <td class="long-text-wrap">
-        {{item.outsideData.reference | dashify}}
-        {{item.matchData.reference | dashify}}
+        <span class="outside-data">{{item.outsideData.reference | dashify}}</span>
+        <span class="match-data">{{item.matchData.reference | dashify}}</span>
       </td>
       <td class="long-text-wrap">
-        {{item.outsideData.alternative | dashify}}
-        {{item.matchData.alternative | dashify}}
+        <span class="outside-data">{{item.outsideData.alternative | dashify}}</span>
+        <span class="match-data">{{item.matchData.alternative | dashify}}</span>
       </td>
       <td>
-        {{item.outsideData.alleleFreq | dashify}}
-        {{item.matchData.alleleFreq | dashify}}
+        <span class="outside-data">{{item.outsideData.alleleFreq | dashify}}</span>
+        <span class="match-data">{{item.matchData.alleleFreq | dashify}}</span>
       </td>
       <td>
-        <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.outsideData.funcGene"></cosmic-link>
-        <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.matchData.funcGene"></cosmic-link>
+        <span class="outside-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.outsideData.funcGene"></cosmic-link></span>
+        <span class="match-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.matchData.funcGene"></cosmic-link></span>
       </td>
       <td>
-        {{item.outsideData.oncomineVariantClass | dashify}}
-        {{item.matchData.oncomineVariantClass | dashify}}
+        <span class="outside-data">{{item.outsideData.oncomineVariantClass | dashify}}</span>
+        <span class="match-data">{{item.matchData.oncomineVariantClass | dashify}}</span>
       </td>
       <td>
-        {{item.outsideData.exon | dashify}}
-        {{item.matchData.exon | dashify}}
+        <span class="outside-data">{{item.outsideData.exon | dashify}}</span>
+        <span class="match-data">{{item.matchData.exon | dashify}}</span>
       </td>
       <td>
-        {{item.outsideData.function | dashify}}
-        {{item.matchData.function | dashify}}
+        <span class="outside-data">{{item.outsideData.function | dashify}}</span>
+        <span class="match-data">{{item.matchData.function | dashify}}</span>
       </td>
       <td>
-        {{item.outsideData.hgvs | dashify}}
-        {{item.matchData.hgvs | dashify}}
+        <span class="outside-data">{{item.outsideData.hgvs | dashify}}</span>
+        <span class="match-data">{{item.matchData.hgvs | dashify}}</span>
       </td>
       <td>
-        {{item.outsideData.readDepth | dashify}}
-        {{item.matchData.readDepth | dashify}}
+        <span class="outside-data">{{item.outsideData.readDepth | dashify}}</span>
+        <span class="match-data">{{item.matchData.readDepth | dashify}}</span>
       </td>
       <td>
-        {{item.outsideData.transcript | dashify}}
-        {{item.matchData.transcript | dashify}}
+        <span class="outside-data">{{item.outsideData.transcript | dashify}}</span>
+        <span class="match-data">{{item.matchData.transcript | dashify}}</span>
       </td>
       <td>
-        {{item.outsideData.protein | dashify}}
-        {{item.matchData.protein | dashify}}
+        <span class="outside-data">{{item.outsideData.protein | dashify}}</span>
+        <span class="match-data">{{item.matchData.protein | dashify}}</span>
       </td>
     </tr>
     <tr *ngIf="!items || !items.length">

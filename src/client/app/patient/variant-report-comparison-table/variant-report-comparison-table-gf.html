@@ -19,32 +19,32 @@
         <input type="checkbox" name="chr" value="checked" checked disabled>
       </td>
       <td>
-        <cosmic-link [linkType]="'cosmicFusionId'" [linkId]="item.outsideData.identifier"></cosmic-link>
-        <cosmic-link [linkType]="'cosmicFusionId'" [linkId]="item.matchData.identifier"></cosmic-link>
+        <span class="outside-data"><cosmic-link [linkType]="'cosmicFusionId'" [linkId]="item.outsideData.identifier"></cosmic-link></span>
+        <span class="match-data"><cosmic-link [linkType]="'cosmicFusionId'" [linkId]="item.matchData.identifier"></cosmic-link></span>
       </td>
       <td>
-        {{item.aMoi | dashify}}
-        {{item.aMoi | dashify}}
+        <span class="outside-data">{{item.outsideData.aMoi | dashify}}</span>
+        <span class="match-data">{{item.matchData.aMoi | dashify}}</span>
       </td>
       <td>
-        <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.outsideData.driverGene"></cosmic-link>
-        <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.matchData.driverGene"></cosmic-link>
+        <span class="outside-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.outsideData.driverGene"></cosmic-link></span>
+        <span class="match-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.matchData.driverGene"></cosmic-link></span>
       </td>
       <td>
-        {{item.outsideData.driverReadCount | dashify}}
-        {{item.matchData.driverReadCount | dashify}}
+        <span class="outside-data">{{item.outsideData.driverReadCount | dashify}}</span>
+        <span class="match-data">{{item.matchData.driverReadCount | dashify}}</span>
       </td>
       <td>
-        <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.outsideData.partnerGene"></cosmic-link>
-        <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.matchData.partnerGene"></cosmic-link>
+        <span class="outside-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.outsideData.partnerGene"></cosmic-link></span>
+        <span class="match-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.matchData.partnerGene"></cosmic-link></span>
       </td>
       <td>
-        {{item.outsideData.partnerReadCount | dashify}}
-        {{item.matchData.partnerReadCount | dashify}}
+        <span class="outside-data">{{item.outsideData.partnerReadCount | dashify}}</span>
+        <span class="match-data">{{item.matchData.partnerReadCount | dashify}}</span>
       </td>
       <td>
-        {{item.outsideData.annotation | dashify}}
-        {{item.matchData.annotation | dashify}}
+        <span class="outside-data">{{item.outsideData.annotation | dashify}}</span>
+        <span class="match-data">{{item.matchData.annotation | dashify}}</span>
       </td>
     </tr>
     <tr *ngIf="!items || !items.length">

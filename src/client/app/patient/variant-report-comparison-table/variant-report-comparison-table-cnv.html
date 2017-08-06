@@ -20,36 +20,36 @@
         <input type="checkbox" name="chr" value="checked" checked disabled>
       </td>
       <td>
-        <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.identifier"></cosmic-link>
-        <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.identifier"></cosmic-link>
+        <span class="outside-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.identifier"></cosmic-link></span>
+        <span class="match-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.identifier"></cosmic-link></span>
       </td>
       <td>
-        {{item.outsideData.aMoi | dashify}}
-        {{item.matchData.aMoi | dashify}}
+        <span class="outside-data">{{item.outsideData.aMoi | dashify}}</span>
+        <span class="match-data">{{item.matchData.aMoi | dashify}}</span>
       </td>
       <td>
-        {{item.outsideData.chromosome | dashify}}
-        {{item.matchData.chromosome | dashify}}
+        <span class="outside-data">{{item.outsideData.chromosome | dashify}}</span>
+        <span class="match-data">{{item.matchData.chromosome | dashify}}</span>
       </td>
       <td>
-        {{item.outsideData.position | dashify}}
-        {{item.matchData.position | dashify}}
+        <span class="outside-data">{{item.outsideData.position | dashify}}</span>
+        <span class="match-data">{{item.matchData.position | dashify}}</span>
       </td>
       <td>
-        {{item.outsideData.rawCn | dashify}}
-        {{item.matchData.rawCn | dashify}}
+        <span class="outside-data">{{item.outsideData.rawCn | dashify}}</span>
+        <span class="match-data">{{item.matchData.rawCn | dashify}}</span>
       </td>
       <td>
-        {{item.outsideData.cn | dashify}}
-        {{item.matchData.cn | dashify}}
+        <span class="outside-data">{{item.outsideData.cn | dashify}}</span>
+        <span class="match-data">{{item.matchData.cn | dashify}}</span>
       </td>
       <td>
-        {{item.outsideData.ci5Percent | dashify}}
-        {{item.matchData.ci5Percent | dashify}}
+        <span class="outside-data">{{item.outsideData.ci5Percent | dashify}}</span>
+        <span class="match-data">{{item.matchData.ci5Percent | dashify}}</span>
       </td>
       <td>
-        {{item.outsideData.ci95Percent | dashify}}
-        {{item.matchData.ci95Percent | dashify}}
+        <span class="outside-data">{{item.outsideData.ci95Percent | dashify}}</span>
+        <span class="match-data">{{item.matchData.ci95Percent | dashify}}</span>
       </td>
     </tr>
     <tr *ngIf="!items || !items.length">

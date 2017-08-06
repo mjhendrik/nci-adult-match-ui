@@ -9,7 +9,8 @@ import {
 @Component({
   moduleId: module.id,
   selector: 'sd-variant-report-comparison-table-gf',
-  templateUrl: 'variant-report-comparison-table-gf.html'
+  templateUrl: 'variant-report-comparison-table-gf.html',
+  styleUrls: ['variant-report-comparison-table.component.css']
 })
 export class VariantReportComparisonTableGeneFusionComponent {
   @Input() items: any[];

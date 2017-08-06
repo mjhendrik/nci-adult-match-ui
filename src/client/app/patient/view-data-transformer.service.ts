@@ -156,6 +156,7 @@ export class ViewDataTransformer {
         : message.ionReporterResults.variantReport;
 
       analysis.variantReport = variantReport;
+      variantReport.isOutsideAssay = transformedBiopsy.isOutsideAssay;
       variantReport.variantReporterFileReceivedDate = analysis.variantReporterFileReceivedDate;
 
       const variantTables: Array<string> = [
@@ -202,8 +203,6 @@ export class ViewDataTransformer {
       variantReport.singleNucleotideVariantAndIndels
         = (variantReport.singleNucleotideVariants || [])
         .concat(variantReport.indels || []);
-
-      variantReport.isOutsideAssay = transformedBiopsy.isOutsideAssay;
     }
   }
 

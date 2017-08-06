@@ -162,7 +162,7 @@
   </div>
 
   <div class="panel panel-white panel-accent-sides-purple overflow-hidden">
-    <div class="panel-heading" *ngIf="!isOutsideAssay">
+    <div class="panel-heading" *ngIf="!variantReport.isOutsideAssay">
       <div class="row">
         <div class="col-md-12">
           <sd-variant-report-simple-table-snv-indels [items]="variantReport.singleNucleotideVariantAndIndels" [title]="'Single Nucleotide Variants and Indels'"></sd-variant-report-simple-table-snv-indels>
@@ -179,7 +179,7 @@
         </div>
       </div>
     </div>
-    <div class="panel-heading" *ngIf="isOutsideAssay">
+    <div class="panel-heading" *ngIf="variantReport.isOutsideAssay">
       <div class="row">
         <div class="col-md-12">
           <sd-variant-report-comparison-table-snv-indels [items]="variantReport.singleNucleotideVariantAndIndels" [title]="'Single Nucleotide Variants and Indels (Comparison)'"></sd-variant-report-comparison-table-snv-indels>
@@ -187,7 +187,7 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <sd-variant-report-comparison-table-cnv [items]="variantReport.copyNumberVariants" [title="'Copy Number Variants (Comparison)'"]></sd-variant-report-comparison-table-cnv>
+          <sd-variant-report-comparison-table-cnv [items]="variantReport.copyNumberVariants" [title]="'Copy Number Variants (Comparison)'"></sd-variant-report-comparison-table-cnv>
         </div>
       </div>
       <div class="row">
