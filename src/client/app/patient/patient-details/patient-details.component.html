@@ -25,8 +25,9 @@
             <dt>Current Step</dt>
             <dd>{{patient.currentStepNumber | dashify}}</dd>
             <dt>Treatment Arm</dt>
-            <dd>{{(patient.currentPatientAssignmentLogic ? patient.currentPatientAssignmentLogic.treatmentArmId + ' (' + patient.currentPatientAssignmentLogic.treatmentArmVersion
-              + ')' : '') | dashify}}</dd>
+            <dd><treatment-arm-link *ngIf="patient.currentPatientAssignmentLogic" 
+              [treatmentArmId]="patient.currentPatientAssignmentLogic.treatmentArmId" 
+              [version]="patient.currentPatientAssignmentLogic.treatmentArmVersion"></treatment-arm-link><span *ngIf="!patient.currentPatientAssignmentLogic">-</span></dd>
             <dt>Registration Date</dt>
             <dd>{{patient.registrationDate | gmt | dashify}}</dd>
             <dt>Last Rejoin Scan Date</dt>
@@ -220,7 +221,8 @@
                                     <li class=""><a href="#panel-tab-files" data-toggle="tab" aria-expanded="false"><i class="fa fa-file-archive-o"></i><span class="hidden-xs"> Files</span></a></li>
                                   </ul>
                                   <h4 class="panel-title f-s-18">Analysis ID: {{analysis.analysisId}}</h4>
-                                  <h5><a href [routerLink]="['/patients/' + patient.patientSequenceNumber + '/variant_reports/' + analysis.analysisId]"><i class="fa fa-file-text-o"></i> Variant and Assignment Reports</a></h5>
+                                  <h5><a *ngIf="!biopsy.isOutsideAssay" href [routerLink]="['/patients/' + patient.patientSequenceNumber + '/variant_reports/' + analysis.analysisId]"><i class="fa fa-file-text-o"></i> Variant and Assignment Reports</a></h5>
+                                  <h5><a *ngIf="biopsy.isOutsideAssay" href [routerLink]="['/patients/' + patient.patientSequenceNumber + '/variant_reports_oa/' + analysis.analysisId]"><i class="fa fa-file-text-o"></i> Variant and Assignment Reports</a></h5>
                                 </div>
                                 <div id="panel-tab-content" class="tab-content p-t-0">
                                   <div class="tab-pane fade active in" id="panel-tab-info">

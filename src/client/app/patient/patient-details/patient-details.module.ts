@@ -10,6 +10,7 @@ import { DirectivesModule } from '../../shared/directives/directives.module';
 import { PatientApiService } from '../patient-api.service';
 import { PatientTimelineModule } from './../patient-timeline/patient-timeline.module';
 import { ViewDataTransformer } from './../view-data-transformer.service';
+import { SharedModule } from '../../shared/shared.module';
 
 import { DropzoneModule } from 'ngx-dropzone-wrapper';
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
@@ -60,6 +61,7 @@ const DROPZONE_CONFIG: DropzoneConfigInterface = {
     PipesModule,
     DirectivesModule,
     PatientTimelineModule,
+    SharedModule,
     DropzoneModule.forRoot(DROPZONE_CONFIG)],
   declarations: [PatientDetailsComponent],
   exports: [PatientDetailsComponent],

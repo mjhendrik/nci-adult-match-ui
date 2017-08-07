@@ -29,6 +29,7 @@ import { TreatmentArmDetailsModule } from './treatment-arm/treatment-arm-details
 import { PatientListModule } from './patient/patient-list/patient-list.module';
 import { PatientDetailsModule } from './patient/patient-details/patient-details.module';
 import { PatientVariantReportModule } from './patient/patient-variant-report/patient-variant-report.module';
+import { PatientVariantReportOutsideAssayModule } from './patient/patient-variant-report-oa/patient-variant-report-oa.module';
 import { PatientVariantReportQcModule } from './patient/patient-variant-report-qc/patient-variant-report-qc.module';
 import { CliaVariantReportQcModule } from './clia/clia-variant-report-qc/clia-variant-report-qc.module';
 import { AssignmentReportModule } from './patient/assignment-report/assignment-report.module';
@@ -59,6 +60,7 @@ import { Router } from '@angular/router';
     PatientListModule,
     PatientDetailsModule,
     PatientVariantReportModule,
+    PatientVariantReportOutsideAssayModule,
     PatientVariantReportQcModule,
     CliaVariantReportQcModule,
     AssignmentReportModule,
