@@ -251,8 +251,16 @@ export function main() {
 
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [RouterTestingModule.withRoutes(config), DirectivesModule,
-          PipesModule, FormsModule, DataTableModule, PatientTimelineModule, DropzoneModule],
+        imports: [
+          RouterTestingModule.withRoutes(config),
+          DirectivesModule,
+          PipesModule,
+          FormsModule,
+          DataTableModule,
+          PatientTimelineModule,
+          DropzoneModule,
+          SharedModule
+        ],
         declarations: [PatientDetailsComponent],
         providers: [
           { provide: PatientApiService, useClass: MockPatientApiServiceError },

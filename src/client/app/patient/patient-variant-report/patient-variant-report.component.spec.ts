@@ -16,7 +16,6 @@ import { PatientVariantReportComponent } from './patient-variant-report.componen
 import { PatientApiService } from './../patient-api.service';
 import { ViewDataTransformer } from './../view-data-transformer.service';
 import { SharedModule } from '../../shared/shared.module';
-import { VariantReportComparisonTableModule } from '../variant-report-comparison-table/variant-report-comparison-table.module';
 
 let p_vr_resolved_data = {
   data: {
@@ -55,7 +54,6 @@ export function main() {
           DataTableModule,
           AssignmentReasonTableModule,
           VariantReportSimpleTableModule,
-          VariantReportComparisonTableModule,
           SharedModule,
           CommonModule
         ],

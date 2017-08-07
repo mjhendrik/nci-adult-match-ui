@@ -10,7 +10,6 @@ import { CommonModule } from '@angular/common';
 import { DirectivesModule } from './../../shared/directives/directives.module';
 import { PipesModule } from './../../shared/pipes/pipes.module';
 import { DataTableModule } from './../../shared/datatables/DataTableModule';
-import { VariantReportSimpleTableModule } from '../../shared/variant-report-simple-table/variant-report-simple-table.module';
 import { AssignmentReasonTableModule } from './../assignment-reason-table/assignment-reason-table.module';
 import { PatientVariantReportOutsideAssayComponent } from './patient-variant-report-oa.component';
 import { PatientApiService } from './../patient-api.service';
@@ -36,7 +35,7 @@ let p_vr_resolved_data = {
     showPools: 'showPools',
     assays: 'assays'
   }
-}
+};
 
 export function main() {
   describe('patient variant report component', () => {
@@ -54,12 +53,11 @@ export function main() {
           FormsModule,
           DataTableModule,
           AssignmentReasonTableModule,
-          VariantReportSimpleTableModule,
           VariantReportComparisonTableModule,
           SharedModule,
           CommonModule
         ],
-        declarations: [PatientVariantReportComponent],
+        declarations: [PatientVariantReportOutsideAssayComponent],
         providers: [
           { provide: PatientApiService, useClass: MockPatientApiService },
           {
@@ -80,11 +78,11 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(PatientVariantReportComponent, {
+            let fixture = TestBed.overrideComponent(PatientVariantReportOutsideAssayComponent, {
               set: {
                 templateUrl: ''
               }
-            }).createComponent(PatientVariantReportComponent);
+            }).createComponent(PatientVariantReportOutsideAssayComponent);
             fixture.componentInstance.ngOnInit();
             fixture.componentInstance.download('test');
           });
