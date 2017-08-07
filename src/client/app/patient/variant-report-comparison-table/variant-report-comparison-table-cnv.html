@@ -14,44 +14,69 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let item of items">
-      <td>
-        <button class="btn btn-success btn-xs">Pass</button>
-        <button class="btn btn-danger btn-xs">Fail</button>
-      </td>
-      <td>
-        <span class="outside-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.identifier"></cosmic-link></span>
-        <span class="match-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.identifier"></cosmic-link></span>
-      </td>
-      <td>
-        <span class="outside-data">{{item.outsideData.aMoi | dashify}}</span>
-        <span class="match-data">{{item.matchData.aMoi | dashify}}</span>
-      </td>
-      <td>
-        <span class="outside-data">{{item.outsideData.chromosome | dashify}}</span>
-        <span class="match-data">{{item.matchData.chromosome | dashify}}</span>
-      </td>
-      <td>
-        <span class="outside-data">{{item.outsideData.position | dashify}}</span>
-        <span class="match-data">{{item.matchData.position | dashify}}</span>
-      </td>
-      <td>
-        <span class="outside-data">{{item.outsideData.rawCn | dashify}}</span>
-        <span class="match-data">{{item.matchData.rawCn | dashify}}</span>
-      </td>
-      <td>
-        <span class="outside-data">{{item.outsideData.cn | dashify}}</span>
-        <span class="match-data">{{item.matchData.cn | dashify}}</span>
-      </td>
-      <td>
-        <span class="outside-data">{{item.outsideData.ci5Percent | dashify}}</span>
-        <span class="match-data">{{item.matchData.ci5Percent | dashify}}</span>
-      </td>
-      <td>
-        <span class="outside-data">{{item.outsideData.ci95Percent | dashify}}</span>
-        <span class="match-data">{{item.matchData.ci95Percent | dashify}}</span>
-      </td>
-    </tr>
+    <ng-template ngFor let-item [ngForOf]="items">
+      <tr class="outside-data-row">
+        <td rowspan="2" class="bg-reset">
+          <div class="m-t-10">
+            <button class="btn btn-lime btn-xs">Pass</button>
+            <button class="btn btn-danger btn-xs">Fail</button>
+          </div>
+        </td>
+
+        <td>
+          <span class="outside-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.identifier"></cosmic-link></span>
+        </td>
+        <td>
+          <span class="outside-data">{{item.outsideData.aMoi | dashify}}</span>
+        </td>
+        <td>
+          <span class="outside-data">{{item.outsideData.chromosome | dashify}}</span>
+        </td>
+        <td>
+          <span class="outside-data">{{item.outsideData.position | dashify}}</span>
+        </td>
+        <td>
+          <span class="outside-data">{{item.outsideData.rawCn | dashify}}</span>
+        </td>
+        <td>
+          <span class="outside-data">{{item.outsideData.cn | dashify}}</span>
+        </td>
+        <td>
+          <span class="outside-data">{{item.outsideData.ci5Percent | dashify}}</span>
+        </td>
+        <td>
+          <span class="outside-data">{{item.outsideData.ci95Percent | dashify}}</span>
+        </td>
+      </tr>
+
+      <tr class="match-data-row">
+        <td>
+          <span class="match-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.identifier"></cosmic-link></span>
+        </td>
+        <td>
+          <span class="match-data">{{item.matchData.aMoi | dashify}}</span>
+        </td>
+        <td>
+          <span class="match-data">{{item.matchData.chromosome | dashify}}</span>
+        </td>
+        <td>
+          <span class="match-data">{{item.matchData.position | dashify}}</span>
+        </td>
+        <td>
+          <span class="match-data">{{item.matchData.rawCn | dashify}}</span>
+        </td>
+        <td>
+          <span class="match-data">{{item.matchData.cn | dashify}}</span>
+        </td>
+        <td>
+          <span class="match-data">{{item.matchData.ci5Percent | dashify}}</span>
+        </td>
+        <td>
+          <span class="match-data">{{item.matchData.ci95Percent | dashify}}</span>
+        </td>
+      </tr>
+
+    </ng-template>
     <tr *ngIf="!items || !items.length">
       <td colspan="9" class="text-muted">No {{title}} data</td>
     </tr>

@@ -165,23 +165,29 @@
     <div class="panel-heading">
       <div class="row">
         <div class="col-md-12">
-          <sd-variant-report-comparison-table-snv-indels [items]="variantReport.singleNucleotideVariantAndIndels" [title]="'Single Nucleotide Variants and Indels (Comparison)'"></sd-variant-report-comparison-table-snv-indels>
+          <h5>Compare <span class="badge outside-data-text">Outside Lab Data</span> to <span class="badge match-data-text">Confimartion Report Data</span></h5>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-12">
+          <sd-variant-report-comparison-table-snv-indels [items]="variantReport.singleNucleotideVariantAndIndels" [title]="'Single Nucleotide Variants and Indels'"></sd-variant-report-comparison-table-snv-indels>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
-          <sd-variant-report-comparison-table-cnv [items]="variantReport.copyNumberVariants" [title]="'Copy Number Variants (Comparison)'"></sd-variant-report-comparison-table-cnv>
+          <sd-variant-report-comparison-table-cnv [items]="variantReport.copyNumberVariants" [title]="'Copy Number Variants'"></sd-variant-report-comparison-table-cnv>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
-          <sd-variant-report-comparison-table-gf [items]="variantReport.unifiedGeneFusions" [title]="'Gene Fusions (Comparison)'"></sd-variant-report-comparison-table-gf>
+          <sd-variant-report-comparison-table-gf [items]="variantReport.unifiedGeneFusions" [title]="'Gene Fusions'"></sd-variant-report-comparison-table-gf>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12 text-center">
-          <button class="btn btn-lime">Pass</button>
-          <button class="btn btn-danger">Fail</button>
+          <button class="btn btn-lime">Pass Report</button>
+          <button class="btn btn-danger">Fail Report</button>
         </div>
       </div>
     </div>

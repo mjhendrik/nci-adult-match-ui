@@ -1,4 +1,13 @@
-a.disabled {
-  pointer-events: none;
-  color: #30373e;
+@import "./../../../scss/colors.scss";
+
+.outside-data-text {
+  background-color: $bg-outside-color;
+  color: $text-outside-color;
+  font-size: 100%;
+}
+
+.match-data-text {
+  background-color: $bg-match-color;
+  color: $text-match-color;
+  font-size: 100%;
 }

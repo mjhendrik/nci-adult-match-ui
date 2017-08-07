@@ -3,6 +3,7 @@
 .pass-fail {
   width: 95px;
 }
+
 .outside-data {
   display: block
 }
@@ -16,20 +17,31 @@
   font-weight: bold;
 }
 
+.match-data-row {
+  td {
+    background-color: $bg-match-color;
+    color: $text-match-color;
+  }
+}
+
 .outside-data-row {
   td {
-    background-color: #d7eff6;
-    color: #277b94;    
+    background-color: $bg-outside-color;
+    color: $text-outside-color;
   }
-
   td.bg-reset {
     background: inherit;
   }
 }
 
-.match-data-row {
-  td {
-    background-color: #feefd9;
-    color: #b17b2e;
-  }
+.outside-data-text {
+  background-color: $bg-outside-color;
+  color: $text-outside-color;
+  font-size: 100%;
+}
+
+.match-data-text {
+  background-color: $bg-match-color;
+  color: $text-match-color;
+  font-size: 100%;
 }

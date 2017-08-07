@@ -21,72 +21,112 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let item of items">
-      <td>
-        <button class="btn btn-success btn-xs">Pass</button>
-        <button class="btn btn-danger btn-xs">Fail</button>
-      </td>
-      <td>
-        <span class="outside-data"><cosmic-link [linkType]="'cosmicId'" [linkId]="item.outsideData.identifier"></cosmic-link></span>
-        <span class="match-data"><cosmic-link [linkType]="'cosmicId'" [linkId]="item.matchData.identifier"></cosmic-link></span>
-      </td>
-      <td>
-        <span class="outside-data">{{item.outsideData.aMoi | dashify}}</span>
-        <span class="match-data">{{item.matchData.aMoi | dashify}}</span>
-      </td>
-      <td>
-        <span class="outside-data">{{item.outsideData.chromosome | dashify}}</span>
-        <span class="match-data">{{item.matchData.chromosome | dashify}}</span>
-      </td>
-      <td>
-        <span class="outside-data">{{item.outsideData.position | dashify}}</span>
-        <span class="match-data">{{item.matchData.position | dashify}}</span>
-      </td>
-      <td class="long-text-wrap">
-        <span class="outside-data">{{item.outsideData.reference | dashify}}</span>
-        <span class="match-data">{{item.matchData.reference | dashify}}</span>
-      </td>
-      <td class="long-text-wrap">
-        <span class="outside-data">{{item.outsideData.alternative | dashify}}</span>
-        <span class="match-data">{{item.matchData.alternative | dashify}}</span>
-      </td>
-      <td>
-        <span class="outside-data">{{item.outsideData.alleleFreq | dashify}}</span>
-        <span class="match-data">{{item.matchData.alleleFreq | dashify}}</span>
-      </td>
-      <td>
-        <span class="outside-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.outsideData.funcGene"></cosmic-link></span>
-        <span class="match-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.matchData.funcGene"></cosmic-link></span>
-      </td>
-      <td>
-        <span class="outside-data">{{item.outsideData.oncomineVariantClass | dashify}}</span>
-        <span class="match-data">{{item.matchData.oncomineVariantClass | dashify}}</span>
-      </td>
-      <td>
-        <span class="outside-data">{{item.outsideData.exon | dashify}}</span>
-        <span class="match-data">{{item.matchData.exon | dashify}}</span>
-      </td>
-      <td>
-        <span class="outside-data">{{item.outsideData.function | dashify}}</span>
-        <span class="match-data">{{item.matchData.function | dashify}}</span>
-      </td>
-      <td>
-        <span class="outside-data">{{item.outsideData.hgvs | dashify}}</span>
-        <span class="match-data">{{item.matchData.hgvs | dashify}}</span>
-      </td>
-      <td>
-        <span class="outside-data">{{item.outsideData.readDepth | dashify}}</span>
-        <span class="match-data">{{item.matchData.readDepth | dashify}}</span>
-      </td>
-      <td>
-        <span class="outside-data">{{item.outsideData.transcript | dashify}}</span>
-        <span class="match-data">{{item.matchData.transcript | dashify}}</span>
-      </td>
-      <td>
-        <span class="outside-data">{{item.outsideData.protein | dashify}}</span>
-        <span class="match-data">{{item.matchData.protein | dashify}}</span>
-      </td>
-    </tr>
+    <ng-template ngFor let-item [ngForOf]="items">
+      <tr class="outside-data-row">
+        <td rowspan="2" class="bg-reset">
+          <div class="m-t-10">
+            <button class="btn btn-lime btn-xs">Pass</button>
+            <button class="btn btn-danger btn-xs">Fail</button>
+          </div>
+        </td>
+
+        <td>
+          <span class="outside-data"><cosmic-link [linkType]="'cosmicId'" [linkId]="item.outsideData.identifier"></cosmic-link></span>
+        </td>
+        <td>
+          <span class="outside-data">{{item.outsideData.aMoi | dashify}}</span>
+        </td>
+        <td>
+          <span class="outside-data">{{item.outsideData.chromosome | dashify}}</span>
+        </td>
+        <td>
+          <span class="outside-data">{{item.outsideData.position | dashify}}</span>
+        </td>
+        <td class="long-text-wrap">
+          <span class="outside-data">{{item.outsideData.reference | dashify}}</span>
+        </td>
+        <td class="long-text-wrap">
+          <span class="outside-data">{{item.outsideData.alternative | dashify}}</span>
+        </td>
+        <td>
+          <span class="outside-data">{{item.outsideData.alleleFreq | dashify}}</span>
+        </td>
+        <td>
+          <span class="outside-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.outsideData.funcGene"></cosmic-link></span>
+        </td>
+        <td>
+          <span class="outside-data">{{item.outsideData.oncomineVariantClass | dashify}}</span>
+        </td>
+        <td>
+          <span class="outside-data">{{item.outsideData.exon | dashify}}</span>
+        </td>
+        <td>
+          <span class="outside-data">{{item.outsideData.function | dashify}}</span>
+        </td>
+        <td>
+          <span class="outside-data">{{item.outsideData.hgvs | dashify}}</span>
+        </td>
+        <td>
+          <span class="outside-data">{{item.outsideData.readDepth | dashify}}</span>
+        </td>
+        <td>
+          <span class="outside-data">{{item.outsideData.transcript | dashify}}</span>
+        </td>
+        <td>
+          <span class="outside-data">{{item.outsideData.protein | dashify}}</span>
+        </td>
+      </tr>
+
+      <tr class="match-data-row">
+        <td>
+          <span class="match-data"><cosmic-link [linkType]="'cosmicId'" [linkId]="item.matchData.identifier"></cosmic-link></span>
+        </td>
+        <td>
+          <span class="match-data">{{item.matchData.aMoi | dashify}}</span>
+        </td>
+        <td>
+          <span class="match-data">{{item.matchData.chromosome | dashify}}</span>
+        </td>
+        <td>
+          <span class="match-data">{{item.matchData.position | dashify}}</span>
+        </td>
+        <td class="long-text-wrap">
+          <span class="match-data">{{item.matchData.reference | dashify}}</span>
+        </td>
+        <td class="long-text-wrap">
+          <span class="match-data">{{item.matchData.alternative | dashify}}</span>
+        </td>
+        <td>
+          <span class="match-data">{{item.matchData.alleleFreq | dashify}}</span>
+        </td>
+        <td>
+          <span class="match-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.matchData.funcGene"></cosmic-link></span>
+        </td>
+        <td>
+          <span class="match-data">{{item.matchData.oncomineVariantClass | dashify}}</span>
+        </td>
+        <td>
+          <span class="match-data">{{item.matchData.exon | dashify}}</span>
+        </td>
+        <td>
+          <span class="match-data">{{item.matchData.function | dashify}}</span>
+        </td>
+        <td>
+          <span class="match-data">{{item.matchData.hgvs | dashify}}</span>
+        </td>
+        <td>
+          <span class="match-data">{{item.matchData.readDepth | dashify}}</span>
+        </td>
+        <td>
+          <span class="match-data">{{item.matchData.transcript | dashify}}</span>
+        </td>
+        <td>
+          <span class="match-data">{{item.matchData.protein | dashify}}</span>
+        </td>
+      </tr>
+
+    </ng-template>
+
     <tr *ngIf="!items || !items.length">
       <td colspan="17" class="text-muted">No {{title}} data</td>
     </tr>
