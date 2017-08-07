@@ -165,17 +165,17 @@
     <div class="panel-heading">
       <div class="row">
         <div class="col-md-12">
-          <sd-variant-report-simple-table-snv-indels [items]="variantReport.singleNucleotideVariantAndIndels" [title]="'Single Nucleotide Variants and Indels'"></sd-variant-report-simple-table-snv-indels>
+          <sd-variant-report-comparison-table-snv-indels [items]="variantReport.singleNucleotideVariantAndIndels" [title]="'Single Nucleotide Variants and Indels (Comparison)'"></sd-variant-report-comparison-table-snv-indels>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
-          <sd-variant-report-simple-table-cnv [items]="variantReport.copyNumberVariants"></sd-variant-report-simple-table-cnv>
+          <sd-variant-report-comparison-table-cnv [items]="variantReport.copyNumberVariants" [title]="'Copy Number Variants (Comparison)'"></sd-variant-report-comparison-table-cnv>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
-          <sd-variant-report-simple-table-gf [items]="variantReport.unifiedGeneFusions"></sd-variant-report-simple-table-gf>
+          <sd-variant-report-comparison-table-gf [items]="variantReport.unifiedGeneFusions" [title]="'Gene Fusions (Comparison)'"></sd-variant-report-comparison-table-gf>
         </div>
       </div>
     </div>
