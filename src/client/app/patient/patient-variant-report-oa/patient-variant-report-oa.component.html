@@ -6,6 +6,7 @@
     <li class="active">Variant Report</li>
   </ul>
   <h1 class="page-header">Variant and Assignment Report</h1>
+
   <div class="row" matchHeight="panel-height-top">
     <div class="col-md-6">
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-top">
@@ -60,6 +61,7 @@
         </div>
       </div>
     </div>
+
     <div class="col-md-6">
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-top">
         <div class="panel-heading" *ngIf="!assignmentReport">
@@ -100,64 +102,71 @@
     </div>
   </div>
 
-  <div class="row" matchHeight="panel-height-middle">
-    <div class="col-md-6 panel-height-middle">
-      <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-middle">
-        <div class="panel-heading">
-          <dl class="dl-horizontal">
-            <h4>Assays</h4>
-            <table class="table table-condensed white-header">
-              <thead>
-                <tr>
-                  <th>IHC</th>
-                  <th>Result</th>
-                  <th>Order Date</th>
-                  <th>Result Date</th>
-                  <th>Comment</th>
-                </tr>
-              </thead>
-              <tbody *ngIf="assignmentReport">
-                <tr *ngFor="let item of assays">
-                  <td>{{item.biomarker | dashify}}</td>
-                  <td>{{item.result | dashify}}</td>
-                  <td>{{item.orderedDate | gmt}}</td>
-                  <td>{{item.reportedDate | gmt}}</td>
-                  <td>{{item.comment | dashify}}</td>
-                </tr>
-                <tr *ngIf="assignmentReport.assay && assignmentReport.assay.length">
-                  <td colspan="3" class="text-muted">No Assay data</td>
-                </tr>
-              </tbody>
-              <tbody *ngIf="!assignmentReport">
-                <tr>
-                  <td colspan="3" class="text-muted">No Assay data</td>
-                </tr>
-              </tbody>
-            </table>
-          </dl>
+  <div class="panel panel-white panel-accent-sides-purple overflow-hidden">
+    <div class="panel-heading">
+      <h4>Assays</h4>
+      <table class="table table-condensed white-header">
+        <thead>
+          <tr>
+            <th>IHC</th>
+            <th>Result</th>
+            <th>Order Date</th>
+            <th>Result Date</th>
+            <th>Comment</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="assignmentReport">
+          <tr *ngFor="let item of assays">
+            <td>{{item.biomarker | dashify}}</td>
+            <td>{{item.result | dashify}}</td>
+            <td>{{item.orderedDate | gmt}}</td>
+            <td>{{item.reportedDate | gmt}}</td>
+            <td>{{item.comment | dashify}}</td>
+          </tr>
+          <tr *ngIf="assignmentReport.assay && assignmentReport.assay.length">
+            <td colspan="3" class="text-muted">No Assay data</td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="!assignmentReport">
+          <tr>
+            <td colspan="3" class="text-muted">No Assay data</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <div class="panel panel-white panel-accent-sides-purple overflow-hidden">
+    <div class="panel-heading">
+      <div class="row" matchHeight="panel-height-middle">
+        <div class="col-md-6 panel-height-middle">
+              <dl class="dl-horizontal">
+                <h4>Outside Lab Report MOI/aMOI Summary</h4>
+                <dt>Total aMOIs</dt>
+                <dd>{{variantReport.moiSummary.totalaMOIs | dashify}}</dd>
+                <dt>Total MOIs</dt>
+                <dd>{{variantReport.moiSummary.totalMOIs | dashify}}</dd>
+                <dt>Total Confirmed aMOIs</dt>
+                <dd>{{variantReport.moiSummary.confirmedaMOIs | dashify}}</dd>
+                <dt>Total Confirmed MOIs</dt>
+                <dd>{{variantReport.moiSummary.confirmedMOIs | dashify}}</dd>
+              </dl>
         </div>
-        <div class="panel-heading">
-          <dl class="dl-horizontal">
-            <h4>MOI/aMOI Summary</h4>
-            <dt>Total aMOIs</dt>
-            <dd>{{variantReport.moiSummary.totalaMOIs | dashify}}</dd>
-            <dt>Total MOIs</dt>
-            <dd>{{variantReport.moiSummary.totalMOIs | dashify}}</dd>
-            <dt>Total Confirmed aMOIs</dt>
-            <dd>{{variantReport.moiSummary.confirmedaMOIs | dashify}}</dd>
-            <dt>Total Confirmed MOIs</dt>
-            <dd>{{variantReport.moiSummary.confirmedMOIs | dashify}}</dd>
-          </dl>
+
+        <div class="col-md-6 panel-height-middle">
+              <dl class="dl-horizontal">
+                <h4>Confirmation Report MOI/aMOI Summary</h4>
+                <dt>Total aMOIs</dt>
+                <dd>{{variantReport.moiSummary.totalaMOIs | dashify}}</dd>
+                <dt>Total MOIs</dt>
+                <dd>{{variantReport.moiSummary.totalMOIs | dashify}}</dd>
+                <dt>Total Confirmed aMOIs</dt>
+                <dd>{{variantReport.moiSummary.confirmedaMOIs | dashify}}</dd>
+                <dt>Total Confirmed MOIs</dt>
+                <dd>{{variantReport.moiSummary.confirmedMOIs | dashify}}</dd>
+              </dl>
         </div>
       </div>
-    </div>
-
-    <div class="col-md-6">
-        <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-middle">
-          <div class="panel-heading">
-            <cnv-chart [data]="parsed_vcf_genes"></cnv-chart>
-          </div>
-        </div>
     </div>
   </div>
 
@@ -165,7 +174,7 @@
     <div class="panel-heading">
       <div class="row">
         <div class="col-md-12">
-          <h5>Compare <span class="badge outside-data-text">Outside Lab Data</span> to <span class="badge match-data-text">Confimartion Report Data</span></h5>
+          <h5 class="m-b-20">Compare <span class="badge outside-data-text">Outside Lab Data</span> to <span class="badge match-data-text">Confimartion Report Data</span></h5>
         </div>
       </div>
       
@@ -185,7 +194,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-12 text-center">
+        <div class="col-md-12 text-center m-t-20">
           <button class="btn btn-lime">Pass Report</button>
           <button class="btn btn-danger">Fail Report</button>
         </div>

@@ -30,97 +30,97 @@
           </div>
         </td>
 
-        <td>
+        <td [ngClass]="{'has-diff':item.hasDifference['identifier']}">
           <span class="outside-data"><cosmic-link [linkType]="'cosmicId'" [linkId]="item.outsideData.identifier"></cosmic-link></span>
         </td>
-        <td>
+        <td [ngClass]="{'has-diff':item.hasDifference['aMoi']}">
           <span class="outside-data">{{item.outsideData.aMoi | dashify}}</span>
         </td>
-        <td>
+        <td [ngClass]="{'has-diff':item.hasDifference['chromosome']}">
           <span class="outside-data">{{item.outsideData.chromosome | dashify}}</span>
         </td>
-        <td>
+        <td [ngClass]="{'has-diff':item.hasDifference['position']}">
           <span class="outside-data">{{item.outsideData.position | dashify}}</span>
         </td>
-        <td class="long-text-wrap">
+        <td [ngClass]="{'has-diff':item.hasDifference['reference']}" class="long-text-wrap">
           <span class="outside-data">{{item.outsideData.reference | dashify}}</span>
         </td>
-        <td class="long-text-wrap">
+        <td [ngClass]="{'has-diff':item.hasDifference['alternative']}" class="long-text-wrap">
           <span class="outside-data">{{item.outsideData.alternative | dashify}}</span>
         </td>
-        <td>
+        <td [ngClass]="{'has-diff':item.hasDifference['alleleFreq']}">
           <span class="outside-data">{{item.outsideData.alleleFreq | dashify}}</span>
         </td>
-        <td>
+        <td [ngClass]="{'has-diff':item.hasDifference['funcGene']}">
           <span class="outside-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.outsideData.funcGene"></cosmic-link></span>
         </td>
-        <td>
+        <td [ngClass]="{'has-diff':item.hasDifference['oncomineVariantClass']}">
           <span class="outside-data">{{item.outsideData.oncomineVariantClass | dashify}}</span>
         </td>
-        <td>
+        <td [ngClass]="{'has-diff':item.hasDifference['exon']}">
           <span class="outside-data">{{item.outsideData.exon | dashify}}</span>
         </td>
-        <td>
+        <td [ngClass]="{'has-diff':item.hasDifference['function']}">
           <span class="outside-data">{{item.outsideData.function | dashify}}</span>
         </td>
-        <td>
+        <td [ngClass]="{'has-diff':item.hasDifference['hgvs']}">
           <span class="outside-data">{{item.outsideData.hgvs | dashify}}</span>
         </td>
-        <td>
+        <td [ngClass]="{'has-diff':item.hasDifference['readDepth']}">
           <span class="outside-data">{{item.outsideData.readDepth | dashify}}</span>
         </td>
-        <td>
+        <td [ngClass]="{'has-diff':item.hasDifference['transcript']}">
           <span class="outside-data">{{item.outsideData.transcript | dashify}}</span>
         </td>
-        <td>
+        <td [ngClass]="{'has-diff':item.hasDifference['protein']}">
           <span class="outside-data">{{item.outsideData.protein | dashify}}</span>
         </td>
       </tr>
 
       <tr class="match-data-row">
-        <td>
+        <td [ngClass]="{'has-diff':item.hasDifference['identifier']}">
           <span class="match-data"><cosmic-link [linkType]="'cosmicId'" [linkId]="item.matchData.identifier"></cosmic-link></span>
         </td>
-        <td>
+        <td [ngClass]="{'has-diff':item.hasDifference['aMoi']}">
           <span class="match-data">{{item.matchData.aMoi | dashify}}</span>
         </td>
-        <td>
+        <td [ngClass]="{'has-diff':item.hasDifference['chromosome']}">
           <span class="match-data">{{item.matchData.chromosome | dashify}}</span>
         </td>
-        <td>
+        <td [ngClass]="{'has-diff':item.hasDifference['position']}">
           <span class="match-data">{{item.matchData.position | dashify}}</span>
         </td>
-        <td class="long-text-wrap">
+        <td [ngClass]="{'has-diff':item.hasDifference['reference']}" class="long-text-wrap">
           <span class="match-data">{{item.matchData.reference | dashify}}</span>
         </td>
-        <td class="long-text-wrap">
+        <td [ngClass]="{'has-diff':item.hasDifference['alternative']}" class="long-text-wrap">
           <span class="match-data">{{item.matchData.alternative | dashify}}</span>
         </td>
-        <td>
+        <td [ngClass]="{'has-diff':item.hasDifference['alleleFreq']}">
           <span class="match-data">{{item.matchData.alleleFreq | dashify}}</span>
         </td>
-        <td>
+        <td [ngClass]="{'has-diff':item.hasDifference['funcGene']}">
           <span class="match-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.matchData.funcGene"></cosmic-link></span>
         </td>
-        <td>
+        <td [ngClass]="{'has-diff':item.hasDifference['oncomineVariantClass']}">
           <span class="match-data">{{item.matchData.oncomineVariantClass | dashify}}</span>
         </td>
-        <td>
+        <td [ngClass]="{'has-diff':item.hasDifference['exon']}">
           <span class="match-data">{{item.matchData.exon | dashify}}</span>
         </td>
-        <td>
+        <td [ngClass]="{'has-diff':item.hasDifference['function']}">
           <span class="match-data">{{item.matchData.function | dashify}}</span>
         </td>
-        <td>
+        <td [ngClass]="{'has-diff':item.hasDifference['hgvs']}">
           <span class="match-data">{{item.matchData.hgvs | dashify}}</span>
         </td>
-        <td>
+        <td [ngClass]="{'has-diff':item.hasDifference['readDepth']}">
           <span class="match-data">{{item.matchData.readDepth | dashify}}</span>
         </td>
-        <td>
+        <td [ngClass]="{'has-diff':item.hasDifference['transcript']}">
           <span class="match-data">{{item.matchData.transcript | dashify}}</span>
         </td>
-        <td>
+        <td [ngClass]="{'has-diff':item.hasDifference['protein']}">
           <span class="match-data">{{item.matchData.protein | dashify}}</span>
         </td>
       </tr>

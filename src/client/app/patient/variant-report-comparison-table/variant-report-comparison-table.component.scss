@@ -45,3 +45,8 @@
   color: $text-match-color;
   font-size: 100%;
 }
+
+.table > tbody > tr.outside-data-row > td {
+  border-color: $bg-purple-light !important;
+  border-width: 1px;
+}

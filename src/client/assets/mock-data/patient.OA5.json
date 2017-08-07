@@ -101,7 +101,9 @@
             "$date": 1500563346427
           },
           "geneFusions": [{
-              "outsideData": {
+              "hasDifference": {
+              },            
+              "matchData": {
                 "alternative": "[chr1:154142875[A",
                 "armSpecific": false,
                 "chromosome": "chr2",
@@ -121,9 +123,7 @@
                 "readDepth": 1001,
                 "reference": "A",
                 "svType": "Fusion"
-              }
-            },
-            {
+              },
               "outsideData": {
                 "alternative": "[chr1:154142875[A",
                 "armSpecific": false,
@@ -152,8 +152,40 @@
           "singleNucleotideVariants": [],
           "unifiedGeneFusions": [{
             "hasDifference": {
-              "driverReadCount": true,
               "partnerReadCount": true
+            },
+            "outsideData": {
+              "annotation": "-",
+              "armSpecific": false,
+              "confirmed": false,
+              "driverGene": "TPM3",
+              "driverReadCount": 450,
+              "identifier": "TPM3-ALK.T7A20",
+              "inclusion": true,
+              "metadata": {
+                "_id": "716e68f3-ce87-4f67-9402-116df85fba7f"
+              },
+              "partnerGene": "ALK",
+              "partnerReadCount": 1001,
+              "rare": false
+            },
+            "matchData": {
+              "armSpecific": false,
+              "confirmed": true,
+              "driverGene": "TPM3",
+              "driverReadCount": 450,
+              "identifier": "TPM3-ALK.T7A20",
+              "inclusion": true,
+              "metadata": {
+                "_id": "31bf5559-409f-4356-8b81-69b2299d6ed1"
+              },
+              "partnerGene": "ALK",
+              "partnerReadCount": 450,
+              "rare": false
+            }
+          },{
+            "hasDifference": {
+              "driverReadCount": true
             },
             "outsideData": {
               "annotation": "-",
@@ -181,7 +213,7 @@
                 "_id": "31bf5559-409f-4356-8b81-69b2299d6ed1"
               },
               "partnerGene": "ALK",
-              "partnerReadCount": 450,
+              "partnerReadCount": 1001,
               "rare": false
             }
           }]

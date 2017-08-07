@@ -23,56 +23,56 @@
           </div>
         </td>
 
-        <td>
-          <span class="outside-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.identifier"></cosmic-link></span>
+        <td [ngClass]="{'has-diff':item.hasDifference['']}">
+          <span class="outside-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.outsideData.identifier"></cosmic-link></span>
         </td>
-        <td>
-          <span class="outside-data">{{item.outsideData.aMoi | dashify}}</span>
+        <td [ngClass]="{'has-diff':item.hasDifference['']}">
+          <span class="outside-data">{{item.outsideData.outsideData.aMoi | dashify}}</span>
         </td>
-        <td>
-          <span class="outside-data">{{item.outsideData.chromosome | dashify}}</span>
+        <td [ngClass]="{'has-diff':item.hasDifference['']}">
+          <span class="outside-data">{{item.outsideData.outsideData.chromosome | dashify}}</span>
         </td>
-        <td>
-          <span class="outside-data">{{item.outsideData.position | dashify}}</span>
+        <td [ngClass]="{'has-diff':item.hasDifference['']}">
+          <span class="outside-data">{{item.outsideData.outsideData.position | dashify}}</span>
         </td>
-        <td>
-          <span class="outside-data">{{item.outsideData.rawCn | dashify}}</span>
+        <td [ngClass]="{'has-diff':item.hasDifference['']}">
+          <span class="outside-data">{{item.outsideData.outsideData.rawCn | dashify}}</span>
         </td>
-        <td>
-          <span class="outside-data">{{item.outsideData.cn | dashify}}</span>
+        <td [ngClass]="{'has-diff':item.hasDifference['']}">
+          <span class="outside-data">{{item.outsideData.outsideData.cn | dashify}}</span>
         </td>
-        <td>
-          <span class="outside-data">{{item.outsideData.ci5Percent | dashify}}</span>
+        <td [ngClass]="{'has-diff':item.hasDifference['']}">
+          <span class="outside-data">{{item.outsideData.outsideData.ci5Percent | dashify}}</span>
         </td>
-        <td>
-          <span class="outside-data">{{item.outsideData.ci95Percent | dashify}}</span>
+        <td [ngClass]="{'has-diff':item.hasDifference['']}">
+          <span class="outside-data">{{item.outsideData.outsideData.ci95Percent | dashify}}</span>
         </td>
       </tr>
 
       <tr class="match-data-row">
-        <td>
-          <span class="match-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.identifier"></cosmic-link></span>
+        <td [ngClass]="{'has-diff':item.hasDifference['']}">
+          <span class="match-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.matchData.identifier"></cosmic-link></span>
         </td>
-        <td>
-          <span class="match-data">{{item.matchData.aMoi | dashify}}</span>
+        <td [ngClass]="{'has-diff':item.hasDifference['']}">
+          <span class="match-data">{{item.matchData.matchData.aMoi | dashify}}</span>
         </td>
-        <td>
-          <span class="match-data">{{item.matchData.chromosome | dashify}}</span>
+        <td [ngClass]="{'has-diff':item.hasDifference['']}">
+          <span class="match-data">{{item.matchData.matchData.chromosome | dashify}}</span>
         </td>
-        <td>
-          <span class="match-data">{{item.matchData.position | dashify}}</span>
+        <td [ngClass]="{'has-diff':item.hasDifference['']}">
+          <span class="match-data">{{item.matchData.matchData.position | dashify}}</span>
         </td>
-        <td>
-          <span class="match-data">{{item.matchData.rawCn | dashify}}</span>
+        <td [ngClass]="{'has-diff':item.hasDifference['']}">
+          <span class="match-data">{{item.matchData.matchData.rawCn | dashify}}</span>
         </td>
-        <td>
-          <span class="match-data">{{item.matchData.cn | dashify}}</span>
+        <td [ngClass]="{'has-diff':item.hasDifference['']}">
+          <span class="match-data">{{item.matchData.matchData.cn | dashify}}</span>
         </td>
-        <td>
-          <span class="match-data">{{item.matchData.ci5Percent | dashify}}</span>
+        <td [ngClass]="{'has-diff':item.hasDifference['']}">
+          <span class="match-data">{{item.matchData.matchData.ci5Percent | dashify}}</span>
         </td>
-        <td>
-          <span class="match-data">{{item.matchData.ci95Percent | dashify}}</span>
+        <td [ngClass]="{'has-diff':item.hasDifference['']}">
+          <span class="match-data">{{item.matchData.matchData.ci95Percent | dashify}}</span>
         </td>
       </tr>
 
