@@ -1,5 +1,8 @@
 @import "./../../../scss/colors.scss";
 
+.pass-fail {
+  width: 95px;
+}
 .outside-data {
   display: block
 }
@@ -9,7 +12,24 @@
 }
 
 .has-diff {
-  border-color: $bg-danger-color !important;
-  border-style: solid;
-  border-width: 1px;
+  color: $bg-danger-color !important;
+  font-weight: bold;
+}
+
+.outside-data-row {
+  td {
+    background-color: #d7eff6;
+    color: #277b94;    
+  }
+
+  td.bg-reset {
+    background: inherit;
+  }
+}
+
+.match-data-row {
+  td {
+    background-color: #feefd9;
+    color: #b17b2e;
+  }
 }

@@ -2,7 +2,7 @@
 <table class="table table-condensed">
   <thead>
     <tr>
-      <th>Confirm</th>
+      <th class="pass-fail"></th>
       <th>ID</th>
       <th>aMOI</th>
       <th>Gene 2</th>
@@ -13,40 +13,64 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let item of items">
-      <td>
-        <button class="btn btn-success btn-xs">Pass</button>
-        <button class="btn btn-danger btn-xs">Fail</button>
-      </td>
-      <td>
-        <span class="outside-data"><cosmic-link [linkType]="'cosmicFusionId'" [linkId]="item.outsideData.identifier"></cosmic-link></span>
-        <span class="match-data"><cosmic-link [linkType]="'cosmicFusionId'" [linkId]="item.matchData.identifier"></cosmic-link></span>
-      </td>
-      <td>
-        <span class="outside-data">{{item.outsideData.aMoi | dashify}}</span>
-        <span class="match-data">{{item.matchData.aMoi | dashify}}</span>
-      </td>
-      <td>
-        <span class="outside-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.outsideData.driverGene"></cosmic-link></span>
-        <span class="match-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.matchData.driverGene"></cosmic-link></span>
-      </td>
-      <td [ngClass]="{'has-diff':item.hasDifference['driverReadCount']}">
-        <span class="outside-data">{{item.outsideData.driverReadCount | dashify}}</span>
-        <span class="match-data">{{item.matchData.driverReadCount | dashify}}</span>
-      </td>
-      <td>
-        <span class="outside-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.outsideData.partnerGene"></cosmic-link></span>
-        <span class="match-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.matchData.partnerGene"></cosmic-link></span>
-      </td>
-      <td [ngClass]="{'has-diff':item.hasDifference['partnerReadCount']}">
-        <span class="outside-data">{{item.outsideData.partnerReadCount | dashify}}</span>
-        <span class="match-data">{{item.matchData.partnerReadCount | dashify}}</span>
-      </td>
-      <td>
-        <span class="outside-data">{{item.outsideData.annotation | dashify}}</span>
-        <span class="match-data">{{item.matchData.annotation | dashify}}</span>
-      </td>
-    </tr>
+    <ng-template ngFor let-item [ngForOf]="items">
+      <tr class="outside-data-row">
+        <td rowspan="2" class="bg-reset">
+          <div class="m-t-10">
+            <button class="btn btn-lime btn-xs">Pass</button>
+            <button class="btn btn-danger btn-xs">Fail</button>
+          </div>
+        </td>
+
+        <td>
+          <span class="outside-data"><cosmic-link [linkType]="'cosmicFusionId'" [linkId]="item.outsideData.identifier"></cosmic-link></span>
+        </td>
+        <td>
+          <span class="outside-data">{{item.outsideData.aMoi | dashify}}</span>
+        </td>
+        <td>
+          <span class="outside-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.outsideData.driverGene"></cosmic-link></span>
+        </td>
+        <td [ngClass]="{'has-diff':item.hasDifference['driverReadCount']}">
+          <span class="outside-data">{{item.outsideData.driverReadCount | dashify}}</span>
+        </td>
+        <td>
+          <span class="outside-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.outsideData.partnerGene"></cosmic-link></span>
+        </td>
+        <td [ngClass]="{'has-diff':item.hasDifference['partnerReadCount']}">
+          <span class="outside-data">{{item.outsideData.partnerReadCount | dashify}}</span>
+        </td>
+        <td>
+          <span class="outside-data">{{item.outsideData.annotation | dashify}}</span>
+        </td>        
+      </tr>
+
+      <tr class="match-data-row">
+        <td>
+          <span class="match-data"><cosmic-link [linkType]="'cosmicFusionId'" [linkId]="item.matchData.identifier"></cosmic-link></span>
+        </td>
+        <td>
+          <span class="match-data">{{item.matchData.aMoi | dashify}}</span>
+        </td>
+        <td>
+          <span class="match-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.matchData.driverGene"></cosmic-link></span>
+        </td>
+        <td [ngClass]="{'has-diff':item.hasDifference['driverReadCount']}">
+          <span class="match-data">{{item.matchData.driverReadCount | dashify}}</span>
+        </td>
+        <td>
+          <span class="match-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.matchData.partnerGene"></cosmic-link></span>
+        </td>
+        <td [ngClass]="{'has-diff':item.hasDifference['partnerReadCount']}">
+          <span class="match-data">{{item.matchData.partnerReadCount | dashify}}</span>
+        </td>
+        <td>
+          <span class="match-data">{{item.matchData.annotation | dashify}}</span>
+        </td>        
+      </tr>
+
+    </ng-template>
+
     <tr *ngIf="!items || !items.length">
       <td colspan="8" class="text-muted">No {{title}} data</td>
     </tr>
