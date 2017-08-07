@@ -4,108 +4,107 @@
     <li class="active">Patients</li>
   </ul>
   <h1 class="page-header">Patients</h1>
-    <!-- begin panel -->
-    <div class="panel" id="patient_list">
-      <div class="tab-content p-t-0 p-l-0 p-r-0 p-b-5">
-        <div class="tab-pane active">
-          <div class="row bg-purple-light m-l-0 m-r-0 p-l-15 p-r-15">
-            <div class="col-md-6 p-l-5 p-r-5 text-nowrap">
-              <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
-                <label>Show
-                    <select name="data-table_length" [(ngModel)]="recordsPerPagePatients" aria-controls="data-table" class="form-control form-control-purple input-sm">
-                      <option [ngValue]=10>10</option>
-                      <option [ngValue]=25>25</option>
-                      <option [ngValue]=50>50</option>
-                      <option [ngValue]=100>100</option>
-                    </select>
-                    entries</label>
-              </div>
+  <!-- begin panel -->
+  <div class="panel" id="patient_list">
+    <div class="tab-content p-t-0 p-l-0 p-r-0 p-b-5">
+      <div class="tab-pane active">
+        <div class="row bg-purple-light m-l-0 m-r-0 p-l-15 p-r-15">
+          <div class="col-md-6 p-l-5 p-r-5 text-nowrap">
+            <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
+              <label>Show
+                <select name="data-table_length" [(ngModel)]="recordsPerPagePatients" aria-controls="data-table" class="form-control form-control-purple input-sm">
+                  <option [ngValue]=10>10</option>
+                  <option [ngValue]=25>25</option>
+                  <option [ngValue]=50>50</option>
+                  <option [ngValue]=100>100</option>
+                </select>
+                entries</label>
             </div>
-            <div class="col-md-6">
-              <div class="row">
-                <div class="col-md-6 text-white">
-                  <div class="pull-right text-white form-inline p-t-15 p-r-5 p-b-10" id="outside-assay-selector">
-                    <label>Outside Assay:
-                        <select [(ngModel)]="isOutsideAssay" class="form-control form-control-purple input-sm">
-                          <option [ngValue]="null">Any</option>
-                          <option [ngValue]="true">Only Outside Assay Patients</option>
-                          <option [ngValue]="false">Only Regular Patients</option>
-                        </select>
-                    </label>
-                  </div>
+          </div>
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-md-6 text-white">
+                <div class="pull-right text-white form-inline p-t-15 p-r-5 p-b-10" id="outside-assay-selector">
+                  <label>Outside Assay:
+                    <select [(ngModel)]="isOutsideAssay" class="form-control form-control-purple input-sm">
+                      <option [ngValue]="null">Any</option>
+                      <option [ngValue]="true">Only Outside Assay Patients</option>
+                      <option [ngValue]="false">Only Regular Patients</option>
+                    </select>
+                  </label>
                 </div>
-                <div class="col-md-6">
-                  <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-r-5 p-b-10">
-                    <label>Search:
-                      <input type="text" [ngModel]="searchTermPatients" (ngModelChange)="onSearchChanged($event)" class="form-control form-control-purple input-sm" placeholder="" aria-controls="data-table">
-                    </label>
-                  </div>
+              </div>
+              <div class="col-md-6">
+                <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-r-5 p-b-10">
+                  <label>Search:
+                    <input type="text" [ngModel]="searchTermPatients" (ngModelChange)="onSearchChanged($event)" class="form-control form-control-purple input-sm" placeholder="" aria-controls="data-table">
+                  </label>
                 </div>
               </div>
             </div>
           </div>
-
-          <table class="table table-td-valign-middle table-striped table-col-width m-b-0" [mfData]="tablePatientsData" #mftablePatients="mfDataTable"
-            [(mfSortBy)]="tablePatientsDefaultSort" [mfRowsOnPage]="recordsPerPagePatients" [mfActivePage]="activePage"
-            [(mfTotalLength)]="patientCount">
-            <thead>
-              <tr class="purple-light">
-                <th>
-                  <mfDefaultSorter (SortStatus)="SortStatus($event)" by="patientSequenceNumber"><span class="table-header">Patient Sequence Number</span></mfDefaultSorter>
-                </th>
-                <th>
-                  <mfDefaultSorter (SortStatus)="SortStatus($event)" by="currentPatientStatus"><span class="table-header">Status</span></mfDefaultSorter>
-                </th>
-                <th>
-                  <mfDefaultSorter (SortStatus)="SortStatus($event)" by="currentStepNumber"><span class="table-header">Step Number</span></mfDefaultSorter>
-                </th>
-                <th>
-                  <mfDefaultSorter (SortStatus)="SortStatus($event)" by="diseases.shortName"><span class="table-header">Diseases</span></mfDefaultSorter>
-                </th>
-                <th>
-                  <mfDefaultSorter (SortStatus)="SortStatus($event)" by="patientAssignments.treatmentArm.name"><span class="table-header">Treatment Arm</span></mfDefaultSorter>
-                </th>
-                <th>
-                  <mfDefaultSorter (SortStatus)="SortStatus($event)" by="registrationDate"><span class="table-header">Registration Date</span></mfDefaultSorter>
-                </th>
-                <th>
-                  <mfDefaultSorter (SortStatus)="SortStatus($event)" by="offTrialDate"><span class="table-header">Off Trial Date</span></mfDefaultSorter>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let item of mftablePatients.data">
-                <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                  <a href [routerLink]="['/patients', item.patientSequenceNumber]" class="link-none"><i class="fa fa-user"></i> {{item.patientSequenceNumber | dashify}}</a>
-                </td>
-                <td [colorCodePatients]="item.currentPatientStatus">{{item.currentPatientStatus | dashify}}</td>
-                <td>{{item.currentStepNumber | dashify}}</td>
-                <td>{{item.diseases.shortName | dashify}}</td>
-                <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                  <treatment-arm-link *ngIf="item.patientAssignments.treatmentArm" [treatmentArmId]="item.patientAssignments.treatmentArm.treatmentArmId" [version]="item.patientAssignments.treatmentArm.version"></treatment-arm-link>
-                  <span *ngIf="!item.patientAssignments.treatmentArm">-</span>
-                </td>
-                <td>{{item.registrationDate}}</td>
-                <td>{{item.offTrialDate}}</td>
-              </tr>
-              <tr *ngIf="mftablePatients.data.length == 0">
-                <td class="text-muted" colspan="7">
-                  <span *ngIf="searchTermPatients">No matching search results found for "{{searchTermPatients}}"</span>
-                  <span *ngIf="!searchTermPatients">No patient data</span>
-                </td>
-              </tr>
-            </tbody>
-            <tfoot>
-              <tr>
-                <td class="tfoot-padding" colspan="7">
-                  <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchTermPatients" [totallength]="patientCount ? patientCount.length : 0"
-                    [totalPageCount]="patientTotal" (CurrentlyActive)="currentPageActive($event)"></mfBootstrapPaginator>
-                </td>
-              </tr>
-            </tfoot>
-          </table>
         </div>
+        <table class="table table-td-valign-middle table-striped table-col-width m-b-0" [mfData]="tablePatientsData" #mftablePatients="mfDataTable"
+          [(mfSortBy)]="tablePatientsDefaultSort" [mfRowsOnPage]="recordsPerPagePatients" [mfActivePage]="activePage" [(mfTotalLength)]="patientCount">
+          <thead>
+            <tr class="purple-light">
+              <th>
+                <mfDefaultSorter (SortStatus)="SortStatus($event)" by="patientSequenceNumber"><span class="table-header">Patient Sequence Number</span></mfDefaultSorter>
+              </th>
+              <th>
+                <mfDefaultSorter (SortStatus)="SortStatus($event)" by="currentPatientStatus"><span class="table-header">Status</span></mfDefaultSorter>
+              </th>
+              <th>
+                <mfDefaultSorter (SortStatus)="SortStatus($event)" by="currentStepNumber"><span class="table-header">Step Number</span></mfDefaultSorter>
+              </th>
+              <th>
+                <mfDefaultSorter (SortStatus)="SortStatus($event)" by="diseases.shortName"><span class="table-header">Diseases</span></mfDefaultSorter>
+              </th>
+              <th>
+                <mfDefaultSorter (SortStatus)="SortStatus($event)" by="patientAssignments.treatmentArm.name"><span class="table-header">Treatment Arm</span></mfDefaultSorter>
+              </th>
+              <th>
+                <mfDefaultSorter (SortStatus)="SortStatus($event)" by="registrationDate"><span class="table-header">Registration Date</span></mfDefaultSorter>
+              </th>
+              <th>
+                <mfDefaultSorter (SortStatus)="SortStatus($event)" by="offTrialDate"><span class="table-header">Off Trial Date</span></mfDefaultSorter>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of mftablePatients.data">
+              <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a href [routerLink]="['/patients', item.patientSequenceNumber]" class="link-none"><i class="fa fa-user"></i> {{item.patientSequenceNumber | dashify}}</a>
+              </td>
+              <td [colorCodePatients]="item.currentPatientStatus">{{item.currentPatientStatus | dashify}}</td>
+              <td>{{item.currentStepNumber | dashify}}</td>
+              <td>{{item.diseases.shortName | dashify}}</td>
+              <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <treatment-arm-link *ngIf="item.patientAssignments.treatmentArm" [treatmentArmId]="item.patientAssignments.treatmentArm.treatmentArmId"
+                  [version]="item.patientAssignments.treatmentArm.version"></treatment-arm-link>
+                <span *ngIf="!item.patientAssignments.treatmentArm">-</span>
+              </td>
+              <td>{{item.registrationDate}}</td>
+              <td>{{item.offTrialDate}}</td>
+            </tr>
+            <tr *ngIf="mftablePatients.data.length == 0">
+              <td class="text-muted" colspan="7">
+                <span *ngIf="searchTermPatients">No matching search results found for "{{searchTermPatients}}"</span>
+                <span *ngIf="!searchTermPatients">No patient data</span>
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td class="tfoot-padding" colspan="7">
+                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchTermPatients" [totallength]="patientCount ? patientCount.length : 0"
+                  [totalPageCount]="patientTotal" (CurrentlyActive)="currentPageActive($event)"></mfBootstrapPaginator>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
       </div>
     </div>
-    <!-- end panel -->
+  </div>
+  <!-- end panel -->
 </div>

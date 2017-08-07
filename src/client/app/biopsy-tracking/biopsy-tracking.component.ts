@@ -24,7 +24,7 @@ export class BiopsyTrackingListComponent implements OnInit {
 
   searchtermBiopsyTrackingList: string = '';
   recordsPerPageBiopsyTrackingList: number = 10;
-  tableBiopsyTrackingListDefaultSort: string = 'biopsySequenceNumber';
+  tableBiopsyTrackingListDefaultSort: string = 'biopsies.mdAndersonMessages.biopsySequenceNumber';
   tableBiopsyTrackingListData: any[];
   errorMessage: string;
   biopsyCount: number;
