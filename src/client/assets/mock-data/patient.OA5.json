@@ -151,6 +151,10 @@
           "nonHotspotRules": [],
           "singleNucleotideVariants": [],
           "unifiedGeneFusions": [{
+            "hasDifference": {
+              "driverReadCount": true,
+              "partnerReadCount": true
+            },
             "outsideData": {
               "annotation": "-",
               "armSpecific": false,

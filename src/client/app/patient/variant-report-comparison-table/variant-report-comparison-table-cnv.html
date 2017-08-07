@@ -16,8 +16,8 @@
   <tbody>
     <tr *ngFor="let item of items">
       <td>
-        <input type="checkbox" name="chr" value="checked" checked disabled>
-        <input type="checkbox" name="chr" value="checked" checked disabled>
+        <button class="btn btn-success btn-xs">Pass</button>
+        <button class="btn btn-danger btn-xs">Fail</button>
       </td>
       <td>
         <span class="outside-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.identifier"></cosmic-link></span>

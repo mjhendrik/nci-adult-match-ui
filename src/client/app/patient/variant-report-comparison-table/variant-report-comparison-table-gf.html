@@ -15,8 +15,8 @@
   <tbody>
     <tr *ngFor="let item of items">
       <td>
-        <input type="checkbox" name="chr" value="checked" checked disabled>
-        <input type="checkbox" name="chr" value="checked" checked disabled>
+        <button class="btn btn-success btn-xs">Pass</button>
+        <button class="btn btn-danger btn-xs">Fail</button>
       </td>
       <td>
         <span class="outside-data"><cosmic-link [linkType]="'cosmicFusionId'" [linkId]="item.outsideData.identifier"></cosmic-link></span>
@@ -30,7 +30,7 @@
         <span class="outside-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.outsideData.driverGene"></cosmic-link></span>
         <span class="match-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.matchData.driverGene"></cosmic-link></span>
       </td>
-      <td>
+      <td [ngClass]="{'has-diff':item.hasDifference['driverReadCount']}">
         <span class="outside-data">{{item.outsideData.driverReadCount | dashify}}</span>
         <span class="match-data">{{item.matchData.driverReadCount | dashify}}</span>
       </td>
@@ -38,7 +38,7 @@
         <span class="outside-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.outsideData.partnerGene"></cosmic-link></span>
         <span class="match-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.matchData.partnerGene"></cosmic-link></span>
       </td>
-      <td>
+      <td [ngClass]="{'has-diff':item.hasDifference['partnerReadCount']}">
         <span class="outside-data">{{item.outsideData.partnerReadCount | dashify}}</span>
         <span class="match-data">{{item.matchData.partnerReadCount | dashify}}</span>
       </td>
