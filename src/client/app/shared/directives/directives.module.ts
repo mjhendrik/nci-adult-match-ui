@@ -16,6 +16,7 @@ import { MatchHeightTabClickDirective } from './match-height-tab.directive';
 import { FaIconDirective } from './fa-icon.directive';
 import { CnvChartDirective } from './../cnv-chart/cnv-chart.directive.component';
 import { ColorCodeYesNoDirective } from './colorcode-yes-no.directive';
+import { RefreshMatchHeightDirective } from './refresh-match-height.directive';
 
 @NgModule({
   imports: [CommonModule],
@@ -27,6 +28,7 @@ import { ColorCodeYesNoDirective } from './colorcode-yes-no.directive';
     ColorCodeCliaDirective,
     ColorCodeCliaIonDirective,
     MatchHeightDirective,
+    RefreshMatchHeightDirective,
     ColorCodeAssignmentDirective,
     ColorCodeVariantReportDirective,
     ActiveClassDirective,
@@ -44,6 +46,7 @@ import { ColorCodeYesNoDirective } from './colorcode-yes-no.directive';
     ColorCodeCliaDirective,
     ColorCodeCliaIonDirective,
     MatchHeightDirective,
+    RefreshMatchHeightDirective,
     ColorCodeAssignmentDirective,
     ColorCodeVariantReportDirective,
     ActiveClassDirective,

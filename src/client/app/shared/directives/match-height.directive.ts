@@ -18,18 +18,21 @@ export class MatchHeightDirective implements AfterViewChecked {
     constructor(private el: ElementRef) { }
 
     ngAfterViewChecked() {
-        // call our matchHeight function here later
-        this.adjustHeight(this.el.nativeElement, this.matchHeight);
+        this.adjust();
     }
 
     @HostListener('window:resize')
     onResize() {
-        // call our matchHeight function here later
+        this.adjust();
+    }
+
+    adjust() {
         this.adjustHeight(this.el.nativeElement, this.matchHeight);
     }
 
-    adjustHeight(parent: HTMLElement, className: string) {
-        // match height logic here
+    private adjustHeight(parent: HTMLElement, className: string) {
+              console.debug('AAAAAA!');
+  // match height logic here
 
         if (!parent) return;
         const children = parent.getElementsByClassName(className);
@@ -58,6 +61,5 @@ export class MatchHeightDirective implements AfterViewChecked {
         //     let contentHeight: number = maxHeight - 67;
         //     document.getElementById('tbody-height').style.height = `${contentHeight}px`;
         // }
-
     }
 }
