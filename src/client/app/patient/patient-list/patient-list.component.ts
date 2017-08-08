@@ -57,7 +57,7 @@ export class PatientListComponent implements OnInit {
           x.registrationDate = gmt.transform(x.registrationDate);
           x.offTrialDate = gmt.transform(x.offTrialDate);
           x.diseases.shortName = x.diseases && x.diseases.length ? x.diseases.map((y: any) => y.shortName).join(', ') : '';
-          x.patientAssignments.treatmentArm = x.patientAssignments && x.patientAssignments.length ? x.patientAssignments[0].treatmentArm : null;
+          x.treatmentArm = x && x.length ? x.treatmentArm : null;
           return x;
         });
       },
@@ -69,7 +69,6 @@ export class PatientListComponent implements OnInit {
     this.patientApi.getPatientCount(this.searchTermPatients, this.isOutsideAssay)
       .subscribe(itemList => {
         this.patientCount = itemList;
-        // this.tablePatientsData = []; // add animation
         this.getData();
         this.getPatientTotal();
       },

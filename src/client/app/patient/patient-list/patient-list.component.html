@@ -61,7 +61,7 @@
                 <mfDefaultSorter (SortStatus)="SortStatus($event)" by="diseases.shortName"><span class="table-header">Diseases</span></mfDefaultSorter>
               </th>
               <th>
-                <mfDefaultSorter (SortStatus)="SortStatus($event)" by="patientAssignments.treatmentArm.name"><span class="table-header">Treatment Arm</span></mfDefaultSorter>
+                <mfDefaultSorter (SortStatus)="SortStatus($event)" by="treatmentArm.treatmentArmId"><span class="table-header">Treatment Arm</span></mfDefaultSorter>
               </th>
               <th>
                 <mfDefaultSorter (SortStatus)="SortStatus($event)" by="registrationDate"><span class="table-header">Registration Date</span></mfDefaultSorter>
@@ -80,9 +80,8 @@
               <td>{{item.currentStepNumber | dashify}}</td>
               <td>{{item.diseases.shortName | dashify}}</td>
               <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                <treatment-arm-link *ngIf="item.patientAssignments.treatmentArm" [treatmentArmId]="item.patientAssignments.treatmentArm.treatmentArmId"
-                  [version]="item.patientAssignments.treatmentArm.version"></treatment-arm-link>
-                <span *ngIf="!item.patientAssignments.treatmentArm">-</span>
+                <treatment-arm-link *ngIf="item.treatmentArm" [treatmentArmId]="item.treatmentArm.treatmentArmId" [version]="item.treatmentArm.version"></treatment-arm-link>
+                <span *ngIf="!item.treatmentArm">-</span>
               </td>
               <td>{{item.registrationDate}}</td>
               <td>{{item.offTrialDate}}</td>
