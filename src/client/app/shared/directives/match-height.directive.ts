@@ -31,8 +31,7 @@ export class MatchHeightDirective implements AfterViewChecked {
     }
 
     private adjustHeight(parent: HTMLElement, className: string) {
-              console.debug('AAAAAA!');
-  // match height logic here
+        // match height logic here
 
         if (!parent) return;
         const children = parent.getElementsByClassName(className);

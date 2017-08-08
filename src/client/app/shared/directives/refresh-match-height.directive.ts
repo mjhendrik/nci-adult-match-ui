@@ -17,19 +17,19 @@ export class RefreshMatchHeightDirective implements AfterContentInit {
     constructor(private el: ElementRef) { }
 
     ngAfterContentInit() {
-        console.debug('AAAAAA!');
         this.refresh();
     }
 
     @HostListener('click')
     onClick() {
-        console.debug('AAAAAA!');
         this.refresh();
     }
 
     private refresh(): void {
-        this.children.toArray().forEach((item) => {
-            item.adjust();
-        });
+        setTimeout(() => {
+            this.children.toArray().forEach((item) => {
+                item.adjust();
+            });
+        }, 200);
     }
 }
