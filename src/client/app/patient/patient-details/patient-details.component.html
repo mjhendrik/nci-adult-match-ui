@@ -69,7 +69,7 @@
               <i *ngIf="isFirst" class="fa fa-bell-o" aria-hidden="true"></i>Biopsy {{biopsy.biopsySequenceNumber}}, {{biopsy.dateCreated | gmt: 'YYYY-MM-DD'}}
             </a>
           </li>
-          <li class="" [class.active]="tabs.get('documents')"><a href="#tab-documents" data-toggle="tab">Documents</a></li>
+          <li id="documents" class="" [class.active]="tabs.get('documents')"><a href="#tab-documents" data-toggle="tab">Documents</a></li>
         </ul>
         <div class="tab-content m-b-0">
           <div class="tab-pane fade in" id="tab-summary" [class.active]="tabs.get('summary')">

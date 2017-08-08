@@ -7,164 +7,318 @@
   </ul>
   <h1 class="page-header">Variant and Assignment Report</h1>
 
-  <div class="row" matchHeight="panel-height-top">
-    <div class="col-md-6">
-      <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-top">
-        <div class="panel-heading">
-          <div class="row">
-            <div class="col-md-8">
-              <h4>Variant Report</h4>
+  <div class="row">
+
+    <div class="col-md-12">
+      <div class="panel">
+        <ul class="nav nav-tabs nav-tabs-purple">
+          <li id="outsideDataTab" class="active"><a href="#tab-outside-lab-report" data-toggle="tab">Outside Lab Report</a></li>
+          <li id="matchDataTab"><a href="#tab-confirmation-report" data-toggle="tab">Confirmation Report</a></li>
+        </ul>
+
+        <div class="tab-content m-b-0">
+          <div class="tab-pane fade active in" id="tab-outside-lab-report">
+            <div class="row" matchHeight="panel-height-top">
+              <div class="col-md-6">
+                <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
+                  <div class="panel-heading">
+                    <div class="row">
+                      <div class="col-md-8">
+                        <h4>Variant Report</h4>
+                      </div>
+                      <div class="col-md-4 text-right">
+                        <a href="javascript:;" class="btn btn-sm btn-link"><i class="fa fa-file-excel-o"></i> Excel</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel-heading">
+                    <dl class="dl-horizontal">
+                      <dt>Molecular Sequence Number</dt>
+                      <dd>{{variantReport.molecularSequenceNumber | dashify}}</dd>
+                      <dt>Biopsy Sequence Number</dt>
+                      <dd>{{variantReport.biopsySequenceNumber | dashify}}</dd>
+                      <dt>Analysis ID</dt>
+                      <dd>{{variantReport.analysisId | dashify}}</dd>
+                      <dt>Patient</dt>
+                      <dd><a href [routerLink]="['/patients', patient.patientSequenceNumber]" class="link-none">{{patient.patientSequenceNumber | dashify}}</a>,
+                        <span [colorCodePatients]="patient.currentPatientStatus">{{patient.currentPatientStatus | dashify}}</span>,
+                        Step {{patient.currentStepNumber | dashify}}</dd>
+                      <dt>Patient Concordance</dt>
+                      <dd><span [colorCodeYesNo]="patient.concordance">{{patient.concordance | dashify}}</span></dd>
+                      <dt>Status</dt>
+                      <dd><span [colorCodeVariantReport]="variantReport.variantReportStatus">{{variantReport.variantReportStatus | dashify}}</span>                        on {{variantReport.variantReportCreatedDate | gmt}} by {{variantReport.user | dashify}}</dd>
+                      <dt>MAPD</dt>
+                      <dd>{{mapd | dashify}}</dd>
+                      <dt>Cellularity</dt>
+                      <dd>{{cellularity | dashify}}</dd>
+                      <dt>File Received Date</dt>
+                      <dd>{{variantReport.variantReporterFileReceivedDate | gmt}}</dd>
+
+                      <dt *ngIf="!showPools">Torrent Variant Caller Version</dt>
+                      <dd *ngIf="!showPools">{{tvc_version | dashify}}</dd>
+                      <dt *ngIf="showPools">Pool 1</dt>
+                      <dd *ngIf="showPools">{{pool1 | dashify}}</dd>
+                      <dt *ngIf="showPools">Pool 2</dt>
+                      <dd *ngIf="showPools">{{pool2 | dashify}}</dd>
+                    </dl>
+                    <div class="m-b-5">
+                      <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!variantReport.dnaBamFilePath" (click)="download(variantReport.dnaBamFilePath)"><i class="fa fa-download"></i> DNA BAM</button>
+                      <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!variantReport.dnaBaiFilePath" (click)="download(variantReport.dnaBaiFilePath)"><i class="fa fa-download"></i> DNA BAI</button>
+                      <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!variantReport.rnaBamFilePath" (click)="download(variantReport.rnaBamFilePath)"><i class="fa fa-download"></i> RNA BAM</button>
+                      <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!variantReport.rnaBaiFilePath" (click)="download(variantReport.rnaBaiFilePath)"><i class="fa fa-download"></i> RNA BAI</button>
+                      <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!variantReport.vcfFilePath" (click)="download(variantReport.vcfFilePath)"><i class="fa fa-download"></i> VCF</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
+                  <div class="panel-heading" *ngIf="!assignmentReport">
+                    <h4>Latest Assignment</h4>
+                  </div>
+                  <div class="panel-heading" *ngIf="!assignmentReport">
+                    <p class="text-muted">No Assignment data yet</p>
+                  </div>
+                  <div class="panel-heading" *ngIf="assignmentReport">
+                    <dl class="dl-horizontal widest-dt">
+                      <h4>Latest Assignment</h4>
+                      <dt>Status</dt>
+                      <dd><span [colorCodeAssignment]="assignmentReport.patientAssignmentStatus"> {{assignmentReport.patientAssignmentStatus | dashify}}</span>                        on {{assignmentReport.dateConfirmed | gmt}} by {{(assignmentReport.user||'System User') | dashify}}</dd>
+                      <dt>Generation Date</dt>
+                      <dd>{{assignmentReport.dateAssigned | gmt}}</dd>
+                      <dt>Assignment Sent to ECOG Date</dt>
+                      <dd>{{assignmentReport.dateSentToECOG | gmt}}</dd>
+                      <dt>Assignment Received by ECOG Date</dt>
+                      <dd>{{assignmentReport.dateReceivedByECOG | gmt}}</dd>
+                    </dl>
+                    <dl *ngIf="assignmentReport.hasSelectedTreatmentArm" class="dl-horizontal widest-dt">
+                      <dt>Selected Treatment Arm</dt>
+                      <dd>
+                        <treatment-arm-link *ngIf="assignmentReport" [treatmentArmId]="assignmentReport.treatmentArm.treatmentArmId" [version]="assignmentReport.treatmentArm.version"
+                          [removePrefix]="true"></treatment-arm-link>
+                        <span *ngIf="!assignmentReport">-</span>
+                      </dd>
+                    </dl>
+                    <div *ngIf="assignmentReport.hasSelectedTreatmentArm" class="panel panel-success overflow-hidden">
+                      <div class="panel-heading">
+                        <p>
+                          {{assignmentReport.patientAssignmentStatusMessage | dashify}}
+                          <a (click)="scrollTo('assignment-details')" class="text-white text-underlined white-link"><br><br><i class="fa fa-arrow-down" aria-hidden="true"></i> Click for details...</a>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="col-md-4 text-right">
-              <a class="btn btn-sm btn-link" role="button" href [routerLink]="['/patients/' + patient.patientSequenceNumber + '/variant_reports/' + variantReport.analysisId +'/qc']"><i class="fa fa-file-text-o"></i> QC Report</a>
-              <a href="javascript:;" class="btn btn-sm btn-link"><i class="fa fa-file-excel-o"></i> Excel</a>
+
+            <div class="row" matchHeight="panel-height-middle">
+              <div class="col-md-6">
+                <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-middle">
+                  <dl class="dl-horizontal">
+                    <h4>Confirmation Report MOI/aMOI Summary</h4>
+                    <dt>Total aMOIs</dt>
+                    <dd>{{variantReport.moiSummary.totalaMOIs | dashify}}</dd>
+                    <dt>Total MOIs</dt>
+                    <dd>{{variantReport.moiSummary.totalMOIs | dashify}}</dd>
+                    <dt>Total Confirmed aMOIs</dt>
+                    <dd>{{variantReport.moiSummary.confirmedaMOIs | dashify}}</dd>
+                    <dt>Total Confirmed MOIs</dt>
+                    <dd>{{variantReport.moiSummary.confirmedMOIs | dashify}}</dd>
+                  </dl>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-middle">                
+                  <div class="panel-heading">
+                    <h4>Assays</h4>
+                    <table class="table table-condensed white-header">
+                      <thead>
+                        <tr>
+                          <th>IHC</th>
+                          <th>Result</th>
+                          <th>Order Date</th>
+                          <th>Result Date</th>
+                          <th>Comment</th>
+                        </tr>
+                      </thead>
+                      <tbody *ngIf="assignmentReport">
+                        <tr *ngFor="let item of assays">
+                          <td>{{item.biomarker | dashify}}</td>
+                          <td>{{item.result | dashify}}</td>
+                          <td>{{item.orderedDate | gmt}}</td>
+                          <td>{{item.reportedDate | gmt}}</td>
+                          <td>{{item.comment | dashify}}</td>
+                        </tr>
+                        <tr *ngIf="assignmentReport.assay && assignmentReport.assay.length">
+                          <td colspan="3" class="text-muted">No Assay data</td>
+                        </tr>
+                      </tbody>
+                      <tbody *ngIf="!assignmentReport">
+                        <tr>
+                          <td colspan="3" class="text-muted">No Assay data</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="panel-heading">
-          <dl class="dl-horizontal">
-            <dt>Molecular Sequence Number</dt>
-            <dd>{{variantReport.molecularSequenceNumber | dashify}}</dd>
-            <dt>Biopsy Sequence Number</dt>
-            <dd>{{variantReport.biopsySequenceNumber | dashify}}</dd>
-            <dt>Analysis ID</dt>
-            <dd>{{variantReport.analysisId | dashify}}</dd>
-            <dt>Patient</dt>
-            <dd><a href [routerLink]="['/patients', patient.patientSequenceNumber]" class="link-none">{{patient.patientSequenceNumber | dashify}}</a>,
-              <span [colorCodePatients]="patient.currentPatientStatus">{{patient.currentPatientStatus | dashify}}</span>, Step {{patient.currentStepNumber
-              | dashify}}</dd>
-            <dt>Patient Concordance</dt>
-            <dd><span [colorCodeYesNo]="patient.concordance">{{patient.concordance | dashify}}</span></dd>
-            <dt>Status</dt>
-            <dd><span [colorCodeVariantReport]="variantReport.variantReportStatus">{{variantReport.variantReportStatus | dashify}}</span> on {{variantReport.variantReportCreatedDate | gmt}} by {{variantReport.user | dashify}}</dd>
-            <dt>MAPD</dt>
-            <dd>{{mapd | dashify}}</dd>
-            <dt>Cellularity</dt>
-            <dd>{{cellularity | dashify}}</dd>
-            <dt>File Received Date</dt>
-            <dd>{{variantReport.variantReporterFileReceivedDate | gmt}}</dd>
 
-            <dt *ngIf="!showPools">Torrent Variant Caller Version</dt>
-            <dd *ngIf="!showPools">{{tvc_version | dashify}}</dd>
-            <dt *ngIf="showPools">Pool 1</dt>
-            <dd *ngIf="showPools">{{pool1 | dashify}}</dd>
-            <dt *ngIf="showPools">Pool 2</dt>
-            <dd *ngIf="showPools">{{pool2 | dashify}}</dd>
-          </dl>
-          <div class="m-b-5">
-            <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!variantReport.dnaBamFilePath" (click)="download(variantReport.dnaBamFilePath)"><i class="fa fa-download"></i> DNA BAM</button>
-            <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!variantReport.dnaBaiFilePath" (click)="download(variantReport.dnaBaiFilePath)"><i class="fa fa-download"></i> DNA BAI</button>
-            <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!variantReport.rnaBamFilePath" (click)="download(variantReport.rnaBamFilePath)"><i class="fa fa-download"></i> RNA BAM</button>
-            <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!variantReport.rnaBaiFilePath" (click)="download(variantReport.rnaBaiFilePath)"><i class="fa fa-download"></i> RNA BAI</button>
-            <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!variantReport.vcfFilePath" (click)="download(variantReport.vcfFilePath)"><i class="fa fa-download"></i> VCF</button>
-          </div>
-        </div>
-      </div>
-    </div>
+          <div class="tab-pane fade" id="tab-confirmation-report">
+            <div class="row" matchHeight="panel-height-top">
+              <div class="col-md-6">
+                <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
+                  <div class="panel-heading">
+                    <div class="row">
+                      <div class="col-md-8">
+                        <h4>Variant Report</h4>
+                      </div>
+                      <div class="col-md-4 text-right">
+                        <a class="btn btn-sm btn-link" role="button" href [routerLink]="['/patients/' + patient.patientSequenceNumber + '/variant_reports/' + variantReport.analysisId +'/qc']"><i class="fa fa-file-text-o"></i> QC Report</a>
+                        <a href="javascript:;" class="btn btn-sm btn-link"><i class="fa fa-file-excel-o"></i> Excel</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel-heading">
+                    <dl class="dl-horizontal">
+                      <dt>Molecular Sequence Number</dt>
+                      <dd>{{variantReport.molecularSequenceNumber | dashify}}</dd>
+                      <dt>Biopsy Sequence Number</dt>
+                      <dd>{{variantReport.biopsySequenceNumber | dashify}}</dd>
+                      <dt>Analysis ID</dt>
+                      <dd>{{variantReport.analysisId | dashify}}</dd>
+                      <dt>Patient</dt>
+                      <dd><a href [routerLink]="['/patients', patient.patientSequenceNumber]" class="link-none">{{patient.patientSequenceNumber | dashify}}</a>,
+                        <span [colorCodePatients]="patient.currentPatientStatus">{{patient.currentPatientStatus | dashify}}</span>,
+                        Step {{patient.currentStepNumber | dashify}}</dd>
+                      <dt>Patient Concordance</dt>
+                      <dd><span [colorCodeYesNo]="patient.concordance">{{patient.concordance | dashify}}</span></dd>
+                      <dt>Status</dt>
+                      <dd><span [colorCodeVariantReport]="variantReport.variantReportStatus">{{variantReport.variantReportStatus | dashify}}</span>                        on {{variantReport.variantReportCreatedDate | gmt}} by {{variantReport.user | dashify}}</dd>
+                      <dt>MAPD</dt>
+                      <dd>{{mapd | dashify}}</dd>
+                      <dt>Cellularity</dt>
+                      <dd>{{cellularity | dashify}}</dd>
+                      <dt>File Received Date</dt>
+                      <dd>{{variantReport.variantReporterFileReceivedDate | gmt}}</dd>
 
-    <div class="col-md-6">
-      <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-top">
-        <div class="panel-heading" *ngIf="!assignmentReport">
-          <h4>Latest Assignment</h4>
-        </div>
-        <div class="panel-heading" *ngIf="!assignmentReport">
-          <p class="text-muted">No Assignment data yet</p>
-        </div>
-        <div class="panel-heading" *ngIf="assignmentReport">
-          <dl class="dl-horizontal widest-dt">
-            <h4>Latest Assignment</h4>
-            <dt>Status</dt>
-            <dd><span [colorCodeAssignment]="assignmentReport.patientAssignmentStatus"> {{assignmentReport.patientAssignmentStatus | dashify}}</span> on {{assignmentReport.dateConfirmed | gmt}} by {{(assignmentReport.user||'System User') | dashify}}</dd>
-            <dt>Generation Date</dt>
-            <dd>{{assignmentReport.dateAssigned | gmt}}</dd>
-            <dt>Assignment Sent to ECOG Date</dt>
-            <dd>{{assignmentReport.dateSentToECOG | gmt}}</dd>
-            <dt>Assignment Received by ECOG Date</dt>
-            <dd>{{assignmentReport.dateReceivedByECOG | gmt}}</dd>
-          </dl>
-          <dl *ngIf="assignmentReport.hasSelectedTreatmentArm" class="dl-horizontal widest-dt">
-            <dt>Selected Treatment Arm</dt>
-            <dd>
-              <treatment-arm-link *ngIf="assignmentReport" [treatmentArmId]="assignmentReport.treatmentArm.treatmentArmId" [version]="assignmentReport.treatmentArm.version" [removePrefix]="true"></treatment-arm-link>
-              <span *ngIf="!assignmentReport">-</span>
-            </dd>
-          </dl>
-          <div *ngIf="assignmentReport.hasSelectedTreatmentArm" class="panel panel-success overflow-hidden">
-            <div class="panel-heading">
-              <p>
-                {{assignmentReport.patientAssignmentStatusMessage | dashify}}
-                <a (click)="scrollTo('assignment-details')" class="text-white text-underlined white-link"><br><br><i class="fa fa-arrow-down" aria-hidden="true"></i> Click for details...</a>
-              </p>
+                      <dt *ngIf="!showPools">Torrent Variant Caller Version</dt>
+                      <dd *ngIf="!showPools">{{tvc_version | dashify}}</dd>
+                      <dt *ngIf="showPools">Pool 1</dt>
+                      <dd *ngIf="showPools">{{pool1 | dashify}}</dd>
+                      <dt *ngIf="showPools">Pool 2</dt>
+                      <dd *ngIf="showPools">{{pool2 | dashify}}</dd>
+                    </dl>
+                    <div class="m-b-5">
+                      <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!variantReport.dnaBamFilePath" (click)="download(variantReport.dnaBamFilePath)"><i class="fa fa-download"></i> DNA BAM</button>
+                      <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!variantReport.dnaBaiFilePath" (click)="download(variantReport.dnaBaiFilePath)"><i class="fa fa-download"></i> DNA BAI</button>
+                      <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!variantReport.rnaBamFilePath" (click)="download(variantReport.rnaBamFilePath)"><i class="fa fa-download"></i> RNA BAM</button>
+                      <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!variantReport.rnaBaiFilePath" (click)="download(variantReport.rnaBaiFilePath)"><i class="fa fa-download"></i> RNA BAI</button>
+                      <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!variantReport.vcfFilePath" (click)="download(variantReport.vcfFilePath)"><i class="fa fa-download"></i> VCF</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
+                  <div class="panel-heading" *ngIf="!assignmentReport">
+                    <h4>Latest Assignment</h4>
+                  </div>
+                  <div class="panel-heading" *ngIf="!assignmentReport">
+                    <p class="text-muted">No Assignment data yet</p>
+                  </div>
+                  <div class="panel-heading" *ngIf="assignmentReport">
+                    <dl class="dl-horizontal widest-dt">
+                      <h4>Latest Assignment</h4>
+                      <dt>Status</dt>
+                      <dd><span [colorCodeAssignment]="assignmentReport.patientAssignmentStatus"> {{assignmentReport.patientAssignmentStatus | dashify}}</span>                        on {{assignmentReport.dateConfirmed | gmt}} by {{(assignmentReport.user||'System User') | dashify}}</dd>
+                      <dt>Generation Date</dt>
+                      <dd>{{assignmentReport.dateAssigned | gmt}}</dd>
+                      <dt>Assignment Sent to ECOG Date</dt>
+                      <dd>{{assignmentReport.dateSentToECOG | gmt}}</dd>
+                      <dt>Assignment Received by ECOG Date</dt>
+                      <dd>{{assignmentReport.dateReceivedByECOG | gmt}}</dd>
+                    </dl>
+                    <dl *ngIf="assignmentReport.hasSelectedTreatmentArm" class="dl-horizontal widest-dt">
+                      <dt>Selected Treatment Arm</dt>
+                      <dd>
+                        <treatment-arm-link *ngIf="assignmentReport" [treatmentArmId]="assignmentReport.treatmentArm.treatmentArmId" [version]="assignmentReport.treatmentArm.version"
+                          [removePrefix]="true"></treatment-arm-link>
+                        <span *ngIf="!assignmentReport">-</span>
+                      </dd>
+                    </dl>
+                    <div *ngIf="assignmentReport.hasSelectedTreatmentArm" class="panel panel-success overflow-hidden">
+                      <div class="panel-heading">
+                        <p>
+                          {{assignmentReport.patientAssignmentStatusMessage | dashify}}
+                          <a (click)="scrollTo('assignment-details')" class="text-white text-underlined white-link"><br><br><i class="fa fa-arrow-down" aria-hidden="true"></i> Click for details...</a>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row" matchHeight="panel-height-middle">
+              <div class="col-md-6">
+                <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-middle">
+                  <dl class="dl-horizontal">
+                    <h4>Confirmation Report MOI/aMOI Summary</h4>
+                    <dt>Total aMOIs</dt>
+                    <dd>{{variantReport.moiSummary.totalaMOIs | dashify}}</dd>
+                    <dt>Total MOIs</dt>
+                    <dd>{{variantReport.moiSummary.totalMOIs | dashify}}</dd>
+                    <dt>Total Confirmed aMOIs</dt>
+                    <dd>{{variantReport.moiSummary.confirmedaMOIs | dashify}}</dd>
+                    <dt>Total Confirmed MOIs</dt>
+                    <dd>{{variantReport.moiSummary.confirmedMOIs | dashify}}</dd>
+                  </dl>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-middle">
+                  <div class="panel-heading">
+                    <h4>Assays</h4>
+                    <table class="table table-condensed white-header">
+                      <thead>
+                        <tr>
+                          <th>IHC</th>
+                          <th>Result</th>
+                          <th>Order Date</th>
+                          <th>Result Date</th>
+                          <th>Comment</th>
+                        </tr>
+                      </thead>
+                      <tbody *ngIf="assignmentReport">
+                        <tr *ngFor="let item of assays">
+                          <td>{{item.biomarker | dashify}}</td>
+                          <td>{{item.result | dashify}}</td>
+                          <td>{{item.orderedDate | gmt}}</td>
+                          <td>{{item.reportedDate | gmt}}</td>
+                          <td>{{item.comment | dashify}}</td>
+                        </tr>
+                        <tr *ngIf="assignmentReport.assay && assignmentReport.assay.length">
+                          <td colspan="3" class="text-muted">No Assay data</td>
+                        </tr>
+                      </tbody>
+                      <tbody *ngIf="!assignmentReport">
+                        <tr>
+                          <td colspan="3" class="text-muted">No Assay data</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="panel panel-white panel-accent-sides-purple overflow-hidden">
-    <div class="panel-heading">
-      <h4>Assays</h4>
-      <table class="table table-condensed white-header">
-        <thead>
-          <tr>
-            <th>IHC</th>
-            <th>Result</th>
-            <th>Order Date</th>
-            <th>Result Date</th>
-            <th>Comment</th>
-          </tr>
-        </thead>
-        <tbody *ngIf="assignmentReport">
-          <tr *ngFor="let item of assays">
-            <td>{{item.biomarker | dashify}}</td>
-            <td>{{item.result | dashify}}</td>
-            <td>{{item.orderedDate | gmt}}</td>
-            <td>{{item.reportedDate | gmt}}</td>
-            <td>{{item.comment | dashify}}</td>
-          </tr>
-          <tr *ngIf="assignmentReport.assay && assignmentReport.assay.length">
-            <td colspan="3" class="text-muted">No Assay data</td>
-          </tr>
-        </tbody>
-        <tbody *ngIf="!assignmentReport">
-          <tr>
-            <td colspan="3" class="text-muted">No Assay data</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  
-  <div class="panel panel-white panel-accent-sides-purple overflow-hidden">
-    <div class="panel-heading">
-      <div class="row" matchHeight="panel-height-middle">
-        <div class="col-md-6 panel-height-middle">
-              <dl class="dl-horizontal">
-                <h4>Outside Lab Report MOI/aMOI Summary</h4>
-                <dt>Total aMOIs</dt>
-                <dd>{{variantReport.moiSummary.totalaMOIs | dashify}}</dd>
-                <dt>Total MOIs</dt>
-                <dd>{{variantReport.moiSummary.totalMOIs | dashify}}</dd>
-                <dt>Total Confirmed aMOIs</dt>
-                <dd>{{variantReport.moiSummary.confirmedaMOIs | dashify}}</dd>
-                <dt>Total Confirmed MOIs</dt>
-                <dd>{{variantReport.moiSummary.confirmedMOIs | dashify}}</dd>
-              </dl>
-        </div>
-
-        <div class="col-md-6 panel-height-middle">
-              <dl class="dl-horizontal">
-                <h4>Confirmation Report MOI/aMOI Summary</h4>
-                <dt>Total aMOIs</dt>
-                <dd>{{variantReport.moiSummary.totalaMOIs | dashify}}</dd>
-                <dt>Total MOIs</dt>
-                <dd>{{variantReport.moiSummary.totalMOIs | dashify}}</dd>
-                <dt>Total Confirmed aMOIs</dt>
-                <dd>{{variantReport.moiSummary.confirmedaMOIs | dashify}}</dd>
-                <dt>Total Confirmed MOIs</dt>
-                <dd>{{variantReport.moiSummary.confirmedMOIs | dashify}}</dd>
-              </dl>
         </div>
       </div>
     </div>
@@ -177,7 +331,7 @@
           <h5 class="m-b-20">Compare <span class="badge outside-data-text">Outside Lab Data</span> to <span class="badge match-data-text">Confimartion Report Data</span></h5>
         </div>
       </div>
-      
+
       <div class="row">
         <div class="col-md-12">
           <sd-variant-report-comparison-table-snv-indels [items]="variantReport.singleNucleotideVariantAndIndels" [title]="'Single Nucleotide Variants and Indels'"></sd-variant-report-comparison-table-snv-indels>
