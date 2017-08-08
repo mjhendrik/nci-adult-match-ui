@@ -1,6 +1,6 @@
 @import "./../../../scss/colors.scss";
 
-.pass-fail {
+.pass-fail-column {
   width: 95px;
 }
 
@@ -32,18 +32,6 @@
   td.bg-reset {
     background: inherit;
   }
-}
-
-.outside-data-text {
-  background-color: $bg-outside-color;
-  color: $text-outside-color;
-  font-size: 100%;
-}
-
-.match-data-text {
-  background-color: $bg-match-color;
-  color: $text-match-color;
-  font-size: 100%;
 }
 
 .table > tbody > tr.outside-data-row > td {
