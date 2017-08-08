@@ -57,7 +57,6 @@ export class PatientListComponent implements OnInit {
           x.registrationDate = gmt.transform(x.registrationDate);
           x.offTrialDate = gmt.transform(x.offTrialDate);
           x.diseases.shortName = x.diseases && x.diseases.length ? x.diseases.map((y: any) => y.shortName).join(', ') : '';
-          x.treatmentArm = x && x.length ? x.treatmentArm : null;
           return x;
         });
       },
