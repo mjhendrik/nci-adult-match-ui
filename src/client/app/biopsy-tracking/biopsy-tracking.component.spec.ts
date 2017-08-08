@@ -14,7 +14,73 @@ import { BiopsyTrackingApiService } from './biopsy-tracking-api.service';
 import { ActivatedRoute } from '@angular/router';
 
 let biopsy_resolved_data = {
-  data: 135
+  data: {
+    count: 135,
+    data: [{
+      'biopsies': {
+        mdAndersonMessages: [{
+          message: 'SPECIMEN_RECEIVED',
+          collectedDate: '1462468345727',
+          "biopsySequenceNumber": "T-16-000008",
+          "specimenReceivedDate": 1462468345727,
+          "specimenFailureDate": 1479760274770,
+          "patientSequenceNumber": "10402",
+          "molecularSequenceNumber": "MSN2105",
+          "lab": "MoCha",
+          "dnaShippedDate": 1462550578015,
+          "trackingNumber": "794692795960"
+        }, {
+          message: 'SPECIMEN_RECEIVED',
+          collectedDate: null,
+          "biopsySequenceNumber": "T-16-000008",
+          "specimenReceivedDate": 1462468345727,
+          "specimenFailureDate": 1479760274770,
+          "patientSequenceNumber": "10402",
+          "molecularSequenceNumber": "MSN2105",
+          "lab": "MoCha",
+          "dnaShippedDate": 1462550578015,
+          "trackingNumber": "794692795960"
+        }, {
+          message: 'NUCLEIC_ACID_SENDOUT',
+          collectedDate: '1462468345727',
+          "biopsySequenceNumber": "T-16-000008",
+          "specimenReceivedDate": 1462468345727,
+          "specimenFailureDate": 1479760274770,
+          "patientSequenceNumber": "10402",
+          "molecularSequenceNumber": "MSN2105",
+          "lab": "MoCha",
+          "dnaShippedDate": 1462550578015,
+          "trackingNumber": "794692795960"
+        },
+        {
+          message: 'SPECIMEN_FAILURE',
+          collectedDate: '1462468345727',
+          "biopsySequenceNumber": "T-16-000008",
+          "specimenReceivedDate": 1462468345727,
+          "specimenFailureDate": 1479760274770,
+          "patientSequenceNumber": "10402",
+          "molecularSequenceNumber": "MSN2105",
+          "lab": "MoCha",
+          "dnaShippedDate": 1462550578015,
+          "trackingNumber": "794692795960"
+        },
+        {
+          message: 'PATHOLOGY_CONFIRMATION',
+          collectedDate: '1462468345727',
+          "biopsySequenceNumber": "T-16-000008",
+          "specimenReceivedDate": 1462468345727,
+          "specimenFailureDate": 1479760274770,
+          "patientSequenceNumber": "10402",
+          "molecularSequenceNumber": "MSN2105",
+          "lab": "MoCha",
+          "dnaShippedDate": 1462550578015,
+          "trackingNumber": "794692795960"
+        }]
+      }
+    }],
+    total: 220
+  }
+
 };
 
 export function main() {
@@ -26,7 +92,7 @@ export function main() {
     // Disable old forms
 
     let config: any[] = [
-      { path: 'clia_variant_reports_ntc', component: 'CliaParentComponent' }
+      { path: 'tracking', component: 'BiopsyTrackingListComponent'}
     ];
 
     beforeEach(() => {
@@ -48,7 +114,7 @@ export function main() {
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
     });
 
-    xit('should test ngOnInit',
+    it('should test ngOnInit',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -88,7 +154,7 @@ export function main() {
                 templateUrl: ''
               }
             }).createComponent(BiopsyTrackingListComponent);
-            fixture.componentInstance.searchtermBiopsyTrackingList='';
+            fixture.componentInstance.searchtermBiopsyTrackingList = '';
             fixture.componentInstance.previous = "1,10,asc,biopsySequenceNumber,";
             fixture.componentInstance.currentPageActive("1,10,asc,biopsySequenceNumber");
           });
@@ -157,15 +223,15 @@ export function main() {
 
   });
 
-  describe('biopsy tracking component', () => {
+  describe('biopsy tracking component with error response', () => {
 
     let component: BiopsyTrackingListComponent;
     let fixture: ComponentFixture<BiopsyTrackingListComponent>;
     // Setting module for testing
-    // Disable old forms
+    // Disable old form
 
     let config: any[] = [
-      { path: 'clia_variant_reports_ntc', component: 'CliaParentComponent' }
+      { path: 'tracking', component: 'BiopsyTrackingListComponent'}
     ];
 
     beforeEach(() => {
@@ -242,69 +308,7 @@ class MockBiopsyService {
     return Observable.of(100);
   }
   getBiopsyTracking(): Observable<any> {
-    let testdata = [{
-      'biopsies': {
-        mdAndersonMessages: [{
-          message: 'SPECIMEN_RECEIVED',
-          collectedDate: '1462468345727',
-          "biopsySequenceNumber": "T-16-000008",
-          "specimenReceivedDate": 1462468345727,
-          "specimenFailureDate": 1479760274770,
-          "patientSequenceNumber": "10402",
-          "molecularSequenceNumber": "MSN2105",
-          "lab": "MoCha",
-          "dnaShippedDate": 1462550578015,
-          "trackingNumber": "794692795960"
-        }, {
-          message: 'SPECIMEN_RECEIVED',
-          collectedDate: null,
-          "biopsySequenceNumber": "T-16-000008",
-          "specimenReceivedDate": 1462468345727,
-          "specimenFailureDate": 1479760274770,
-          "patientSequenceNumber": "10402",
-          "molecularSequenceNumber": "MSN2105",
-          "lab": "MoCha",
-          "dnaShippedDate": 1462550578015,
-          "trackingNumber": "794692795960"
-        }, {
-          message: 'NUCLEIC_ACID_SENDOUT',
-          collectedDate: '1462468345727',
-          "biopsySequenceNumber": "T-16-000008",
-          "specimenReceivedDate": 1462468345727,
-          "specimenFailureDate": 1479760274770,
-          "patientSequenceNumber": "10402",
-          "molecularSequenceNumber": "MSN2105",
-          "lab": "MoCha",
-          "dnaShippedDate": 1462550578015,
-          "trackingNumber": "794692795960"
-        },
-        {
-          message: 'SPECIMEN_FAILURE',
-          collectedDate: '1462468345727',
-          "biopsySequenceNumber": "T-16-000008",
-          "specimenReceivedDate": 1462468345727,
-          "specimenFailureDate": 1479760274770,
-          "patientSequenceNumber": "10402",
-          "molecularSequenceNumber": "MSN2105",
-          "lab": "MoCha",
-          "dnaShippedDate": 1462550578015,
-          "trackingNumber": "794692795960"
-        },
-        {
-          message: 'PATHOLOGY_CONFIRMATION',
-          collectedDate: '1462468345727',
-          "biopsySequenceNumber": "T-16-000008",
-          "specimenReceivedDate": 1462468345727,
-          "specimenFailureDate": 1479760274770,
-          "patientSequenceNumber": "10402",
-          "molecularSequenceNumber": "MSN2105",
-          "lab": "MoCha",
-          "dnaShippedDate": 1462550578015,
-          "trackingNumber": "794692795960"
-        }]
-      }
-    }];
-    return Observable.of(testdata);
+    return Observable.of(biopsy_resolved_data.data);
   }
 }
 
