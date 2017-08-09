@@ -14,25 +14,35 @@ import { SharedModule } from '../../shared/shared.module';
 
 export interface VariantReportComparisonData {
   psn: string;
-  analysisId: string;
   patient: any;
-  assays: any[];
-  variantReport: {
-    outsideData: any,
-    matchData: any
+  outsideData: {
+    analysisId: string;
+    assays: any[];
+    variantReport: any;
+    assignmentReport: any;
+    assignmentHistory: any;
+    parsed_vcf_genes: any;
+    tvc_version: string;
+    pool1: number;
+    pool2: number;
+    mapd: string;
+    cellularity: any;
+    showPools: boolean;
   };
-  assignmentReport: {
-    outsideData: any,
-    matchData: any
+  matchData: {
+    analysisId: string;
+    assays: any[];
+    variantReport: any;
+    assignmentReport: any;
+    assignmentHistory: any;
+    parsed_vcf_genes: any;
+    tvc_version: string;
+    pool1: number;
+    pool2: number;
+    mapd: string;
+    cellularity: any;
+    showPools: boolean;
   };
-  assignmentHistory: any;
-  parsed_vcf_genes: any;
-  tvc_version: string;
-  pool1: number;
-  pool2: number;
-  mapd: string;
-  cellularity: any;
-  showPools: boolean;
 }
 
 @NgModule({

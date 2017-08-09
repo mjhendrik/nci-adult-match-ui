@@ -45,10 +45,8 @@ class DataResolver implements Resolve<VariantReportComparisonData> {
         let tvc_version = data[1].tvc_version;
         let showPools: boolean = tvc_version && tvc_version.startsWith('5.2')
 
-        return {
-          psn: psn,
+        let outsideData = {
           analysisId: route.params.analysisId,
-          patient: patient,
           analysis: analysis,
           variantReport: analysis.variantReport,
           assignmentReport: analysis.assignmentReport,
@@ -62,8 +60,31 @@ class DataResolver implements Resolve<VariantReportComparisonData> {
           showPools: showPools,
           assays: analysis.assays
         };
+
+        let matchData = {
+          analysisId: route.params.analysisId,
+          analysis: analysis,
+          variantReport: analysis.variantReport,
+          assignmentReport: analysis.assignmentReport,
+          assignmentHistory: patient.patientAssignments,
+          parsed_vcf_genes: [data[1].parsed_vcf_genes,data[1].file_name],
+          tvc_version: tvc_version,
+          pool1: data[2].pool1,
+          pool2: data[2].pool2,
+          mapd: data[1].mapd,
+          cellularity: data[1].cellularity,
+          showPools: showPools,
+          assays: analysis.assays
+        };
+
+        return {
+          psn: psn,
+          patient: patient,
+          outsideData: outsideData,
+          matchData: matchData
+        };
       }
-      );
+    );
   }
 }
 
