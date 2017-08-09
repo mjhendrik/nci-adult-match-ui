@@ -9,7 +9,7 @@ import {
 } from '../patient-api.service';
 
 import { scrollToElement } from '../../shared/utils/utils';
-import { VariantReportData } from './patient-variant-report-oa.module';
+import { VariantReportComparisonData } from './patient-variant-report-oa.module';
 
 /**
  * PatientVariantReportOutsideAssayComponent.
@@ -22,7 +22,7 @@ import { VariantReportData } from './patient-variant-report-oa.module';
   animations: [routerTransition()],
   host: { '[@routerTransition]': '' }
 })
-export class PatientVariantReportOutsideAssayComponent implements OnInit, VariantReportData {
+export class PatientVariantReportOutsideAssayComponent implements OnInit, VariantReportComparisonData {
   psn: string;
   analysisId: string;
   patient: any;

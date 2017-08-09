@@ -12,13 +12,19 @@ import { ViewDataTransformer } from './../view-data-transformer.service';
 import { VariantReportComparisonTableModule } from '../variant-report-comparison-table/variant-report-comparison-table.module';
 import { SharedModule } from '../../shared/shared.module';
 
-export interface VariantReportData {
+export interface VariantReportComparisonData {
   psn: string;
   analysisId: string;
   patient: any;
   assays: any[];
-  variantReport: any;
-  assignmentReport: any;
+  variantReport: {
+    outsideData: any,
+    matchData: any
+  };
+  assignmentReport: {
+    outsideData: any,
+    matchData: any
+  };
   assignmentHistory: any;
   parsed_vcf_genes: any;
   tvc_version: string;

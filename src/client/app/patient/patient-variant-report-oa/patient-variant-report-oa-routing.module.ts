@@ -16,16 +16,16 @@ import { VariantReportSimpleTableModule } from '../../shared/variant-report-simp
 
 import { PatientApiService } from '../patient-api.service';
 import { ViewDataTransformer } from '../view-data-transformer.service';
-import { VariantReportData } from './patient-variant-report-oa.module';
+import { VariantReportComparisonData } from './patient-variant-report-oa.module';
 
 @Injectable()
-class DataResolver implements Resolve<VariantReportData> {
+class DataResolver implements Resolve<VariantReportComparisonData> {
   constructor(private api: PatientApiService, private transformer: ViewDataTransformer) { }
 
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<VariantReportData> | Promise<VariantReportData> | VariantReportData {
+  ): Observable<VariantReportComparisonData> | Promise<VariantReportComparisonData> | VariantReportComparisonData {
     const psn: string = route.params.patientSequenceNumber;
     const analysisId: string = route.params.analysisId;
 

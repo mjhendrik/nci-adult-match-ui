@@ -5,10 +5,10 @@
     <li><a href [routerLink]="['/patients', patient.patientSequenceNumber]" class="link-none">Patient {{patient.patientSequenceNumber}}</a></li>
     <li class="active">Variant Report</li>
   </ul>
+
   <h1 class="page-header">Variant and Assignment Report</h1>
 
   <div class="row">
-
     <div class="col-md-12">
       <div class="panel">
         <ul class="nav nav-tabs nav-tabs-purple">
@@ -34,11 +34,11 @@
                   <div class="panel-heading">
                     <dl class="dl-horizontal">
                       <dt>Molecular Sequence Number</dt>
-                      <dd>{{variantReport.molecularSequenceNumber | dashify}}</dd>
+                      <dd>{{variantReport.outsideData.molecularSequenceNumber | dashify}}</dd>
                       <dt>Biopsy Sequence Number</dt>
-                      <dd>{{variantReport.biopsySequenceNumber | dashify}}</dd>
+                      <dd>{{variantReport.outsideData.biopsySequenceNumber | dashify}}</dd>
                       <dt>Analysis ID</dt>
-                      <dd>{{variantReport.analysisId | dashify}}</dd>
+                      <dd>{{variantReport.outsideData.analysisId | dashify}}</dd>
                       <dt>Patient</dt>
                       <dd><a href [routerLink]="['/patients', patient.patientSequenceNumber]" class="link-none">{{patient.patientSequenceNumber | dashify}}</a>,
                         <span [colorCodePatients]="patient.currentPatientStatus">{{patient.currentPatientStatus | dashify}}</span>,
@@ -46,13 +46,13 @@
                       <dt>Patient Concordance</dt>
                       <dd><span [colorCodeYesNo]="patient.concordance">{{patient.concordance | dashify}}</span></dd>
                       <dt>Status</dt>
-                      <dd><span [colorCodeVariantReport]="variantReport.variantReportStatus">{{variantReport.variantReportStatus | dashify}}</span>                        on {{variantReport.variantReportCreatedDate | gmt}} by {{variantReport.user | dashify}}</dd>
+                      <dd><span [colorCodeVariantReport]="variantReport.outsideData.variantReportStatus">{{variantReport.outsideData.variantReportStatus | dashify}}</span> on {{variantReport.outsideData.variantReportCreatedDate | gmt}} by {{variantReport.outsideData.user | dashify}}</dd>
                       <dt>MAPD</dt>
                       <dd>{{mapd | dashify}}</dd>
                       <dt>Cellularity</dt>
                       <dd>{{cellularity | dashify}}</dd>
                       <dt>File Received Date</dt>
-                      <dd>{{variantReport.variantReporterFileReceivedDate | gmt}}</dd>
+                      <dd>{{variantReport.outsideData.variantReporterFileReceivedDate | gmt}}</dd>
 
                       <dt *ngIf="!showPools">Torrent Variant Caller Version</dt>
                       <dd *ngIf="!showPools">{{tvc_version | dashify}}</dd>
@@ -62,11 +62,11 @@
                       <dd *ngIf="showPools">{{pool2 | dashify}}</dd>
                     </dl>
                     <div class="m-b-5">
-                      <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!variantReport.dnaBamFilePath" (click)="download(variantReport.dnaBamFilePath)"><i class="fa fa-download"></i> DNA BAM</button>
-                      <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!variantReport.dnaBaiFilePath" (click)="download(variantReport.dnaBaiFilePath)"><i class="fa fa-download"></i> DNA BAI</button>
-                      <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!variantReport.rnaBamFilePath" (click)="download(variantReport.rnaBamFilePath)"><i class="fa fa-download"></i> RNA BAM</button>
-                      <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!variantReport.rnaBaiFilePath" (click)="download(variantReport.rnaBaiFilePath)"><i class="fa fa-download"></i> RNA BAI</button>
-                      <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!variantReport.vcfFilePath" (click)="download(variantReport.vcfFilePath)"><i class="fa fa-download"></i> VCF</button>
+                      <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!variantReport.outsideData.dnaBamFilePath" (click)="download(variantReport.outsideData.dnaBamFilePath)"><i class="fa fa-download"></i> DNA BAM</button>
+                      <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!variantReport.outsideData.dnaBaiFilePath" (click)="download(variantReport.outsideData.dnaBaiFilePath)"><i class="fa fa-download"></i> DNA BAI</button>
+                      <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!variantReport.outsideData.rnaBamFilePath" (click)="download(variantReport.outsideData.rnaBamFilePath)"><i class="fa fa-download"></i> RNA BAM</button>
+                      <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!variantReport.outsideData.rnaBaiFilePath" (click)="download(variantReport.outsideData.rnaBaiFilePath)"><i class="fa fa-download"></i> RNA BAI</button>
+                      <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!variantReport.outsideData.vcfFilePath" (click)="download(variantReport.outsideData.vcfFilePath)"><i class="fa fa-download"></i> VCF</button>
                     </div>
                   </div>
                 </div>
@@ -74,36 +74,36 @@
 
               <div class="col-md-6">
                 <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
-                  <div class="panel-heading" *ngIf="!assignmentReport">
+                  <div class="panel-heading" *ngIf="!assignmentReport.outsideData">
                     <h4>Latest Assignment</h4>
                   </div>
-                  <div class="panel-heading" *ngIf="!assignmentReport">
+                  <div class="panel-heading" *ngIf="!assignmentReport.outsideData">
                     <p class="text-muted">No Assignment data yet</p>
                   </div>
-                  <div class="panel-heading" *ngIf="assignmentReport">
+                  <div class="panel-heading" *ngIf="assignmentReport.outsideData">
                     <dl class="dl-horizontal widest-dt">
                       <h4>Latest Assignment</h4>
                       <dt>Status</dt>
-                      <dd><span [colorCodeAssignment]="assignmentReport.patientAssignmentStatus"> {{assignmentReport.patientAssignmentStatus | dashify}}</span>                        on {{assignmentReport.dateConfirmed | gmt}} by {{(assignmentReport.user||'System User') | dashify}}</dd>
+                      <dd><span [colorCodeAssignment]="assignmentReport.outsideData.patientAssignmentStatus"> {{assignmentReport.outsideData.patientAssignmentStatus | dashify}}</span> on {{assignmentReport.outsideData.dateConfirmed | gmt}} by {{(assignmentReport.outsideData.user||'System User') | dashify}}</dd>
                       <dt>Generation Date</dt>
-                      <dd>{{assignmentReport.dateAssigned | gmt}}</dd>
+                      <dd>{{assignmentReport.outsideData.dateAssigned | gmt}}</dd>
                       <dt>Assignment Sent to ECOG Date</dt>
-                      <dd>{{assignmentReport.dateSentToECOG | gmt}}</dd>
+                      <dd>{{assignmentReport.outsideData.dateSentToECOG | gmt}}</dd>
                       <dt>Assignment Received by ECOG Date</dt>
-                      <dd>{{assignmentReport.dateReceivedByECOG | gmt}}</dd>
+                      <dd>{{assignmentReport.outsideData.dateReceivedByECOG | gmt}}</dd>
                     </dl>
-                    <dl *ngIf="assignmentReport.hasSelectedTreatmentArm" class="dl-horizontal widest-dt">
+                    <dl *ngIf="assignmentReport.outsideData.hasSelectedTreatmentArm" class="dl-horizontal widest-dt">
                       <dt>Selected Treatment Arm</dt>
                       <dd>
-                        <treatment-arm-link *ngIf="assignmentReport" [treatmentArmId]="assignmentReport.treatmentArm.treatmentArmId" [version]="assignmentReport.treatmentArm.version"
+                        <treatment-arm-link *ngIf="assignmentReport.outsideData" [treatmentArmId]="assignmentReport.outsideData.treatmentArm.treatmentArmId" [version]="assignmentReport.outsideData.treatmentArm.version"
                           [removePrefix]="true"></treatment-arm-link>
-                        <span *ngIf="!assignmentReport">-</span>
+                        <span *ngIf="!assignmentReport.outsideData">-</span>
                       </dd>
                     </dl>
-                    <div *ngIf="assignmentReport.hasSelectedTreatmentArm" class="panel panel-success overflow-hidden">
+                    <div *ngIf="assignmentReport.outsideData.hasSelectedTreatmentArm" class="panel panel-success overflow-hidden">
                       <div class="panel-heading">
                         <p>
-                          {{assignmentReport.patientAssignmentStatusMessage | dashify}}
+                          {{assignmentReport.outsideData.patientAssignmentStatusMessage | dashify}}
                           <a (click)="scrollTo('assignment-details')" class="text-white text-underlined white-link"><br><br><i class="fa fa-arrow-down" aria-hidden="true"></i> Click for details...</a>
                         </p>
                       </div>
@@ -119,13 +119,13 @@
                   <dl class="dl-horizontal">
                     <h4>Confirmation Report MOI/aMOI Summary</h4>
                     <dt>Total aMOIs</dt>
-                    <dd>{{variantReport.moiSummary.totalaMOIs | dashify}}</dd>
+                    <dd>{{variantReport.outsideData.moiSummary.totalaMOIs | dashify}}</dd>
                     <dt>Total MOIs</dt>
-                    <dd>{{variantReport.moiSummary.totalMOIs | dashify}}</dd>
+                    <dd>{{variantReport.outsideData.moiSummary.totalMOIs | dashify}}</dd>
                     <dt>Total Confirmed aMOIs</dt>
-                    <dd>{{variantReport.moiSummary.confirmedaMOIs | dashify}}</dd>
+                    <dd>{{variantReport.outsideData.moiSummary.confirmedaMOIs | dashify}}</dd>
                     <dt>Total Confirmed MOIs</dt>
-                    <dd>{{variantReport.moiSummary.confirmedMOIs | dashify}}</dd>
+                    <dd>{{variantReport.outsideData.moiSummary.confirmedMOIs | dashify}}</dd>
                   </dl>
                 </div>
               </div>
@@ -144,7 +144,7 @@
                           <th>Comment</th>
                         </tr>
                       </thead>
-                      <tbody *ngIf="assignmentReport">
+                      <tbody *ngIf="assignmentReport.outsideData">
                         <tr *ngFor="let item of assays">
                           <td>{{item.biomarker | dashify}}</td>
                           <td>{{item.result | dashify}}</td>
@@ -152,11 +152,11 @@
                           <td>{{item.reportedDate | gmt}}</td>
                           <td>{{item.comment | dashify}}</td>
                         </tr>
-                        <tr *ngIf="assignmentReport.assay && assignmentReport.assay.length">
+                        <tr *ngIf="assignmentReport.outsideData.assay && assignmentReport.outsideData.assay.length">
                           <td colspan="3" class="text-muted">No Assay data</td>
                         </tr>
                       </tbody>
-                      <tbody *ngIf="!assignmentReport">
+                      <tbody *ngIf="!assignmentReport.outsideData">
                         <tr>
                           <td colspan="3" class="text-muted">No Assay data</td>
                         </tr>
@@ -178,7 +178,7 @@
                         <h4>Variant Report</h4>
                       </div>
                       <div class="col-md-4 text-right">
-                        <a class="btn btn-sm btn-link" role="button" href [routerLink]="['/patients/' + patient.patientSequenceNumber + '/variant_reports/' + variantReport.analysisId +'/qc']"><i class="fa fa-file-text-o"></i> QC Report</a>
+                        <a class="btn btn-sm btn-link" role="button" href [routerLink]="['/patients/' + patient.patientSequenceNumber + '/variant_reports/' + variantReport.matchData.analysisId +'/qc']"><i class="fa fa-file-text-o"></i> QC Report</a>
                         <a href="javascript:;" class="btn btn-sm btn-link"><i class="fa fa-file-excel-o"></i> Excel</a>
                       </div>
                     </div>
@@ -186,11 +186,11 @@
                   <div class="panel-heading">
                     <dl class="dl-horizontal">
                       <dt>Molecular Sequence Number</dt>
-                      <dd>{{variantReport.molecularSequenceNumber | dashify}}</dd>
+                      <dd>{{variantReport.matchData.molecularSequenceNumber | dashify}}</dd>
                       <dt>Biopsy Sequence Number</dt>
-                      <dd>{{variantReport.biopsySequenceNumber | dashify}}</dd>
+                      <dd>{{variantReport.matchData.biopsySequenceNumber | dashify}}</dd>
                       <dt>Analysis ID</dt>
-                      <dd>{{variantReport.analysisId | dashify}}</dd>
+                      <dd>{{variantReport.matchData.analysisId | dashify}}</dd>
                       <dt>Patient</dt>
                       <dd><a href [routerLink]="['/patients', patient.patientSequenceNumber]" class="link-none">{{patient.patientSequenceNumber | dashify}}</a>,
                         <span [colorCodePatients]="patient.currentPatientStatus">{{patient.currentPatientStatus | dashify}}</span>,
@@ -198,13 +198,13 @@
                       <dt>Patient Concordance</dt>
                       <dd><span [colorCodeYesNo]="patient.concordance">{{patient.concordance | dashify}}</span></dd>
                       <dt>Status</dt>
-                      <dd><span [colorCodeVariantReport]="variantReport.variantReportStatus">{{variantReport.variantReportStatus | dashify}}</span>                        on {{variantReport.variantReportCreatedDate | gmt}} by {{variantReport.user | dashify}}</dd>
+                      <dd><span [colorCodeVariantReport]="variantReport.matchData.variantReportStatus">{{variantReport.matchData.variantReportStatus | dashify}}</span>                        on {{variantReport.matchData.variantReportCreatedDate | gmt}} by {{variantReport.matchData.user | dashify}}</dd>
                       <dt>MAPD</dt>
                       <dd>{{mapd | dashify}}</dd>
                       <dt>Cellularity</dt>
                       <dd>{{cellularity | dashify}}</dd>
                       <dt>File Received Date</dt>
-                      <dd>{{variantReport.variantReporterFileReceivedDate | gmt}}</dd>
+                      <dd>{{variantReport.matchData.variantReporterFileReceivedDate | gmt}}</dd>
 
                       <dt *ngIf="!showPools">Torrent Variant Caller Version</dt>
                       <dd *ngIf="!showPools">{{tvc_version | dashify}}</dd>
@@ -214,11 +214,11 @@
                       <dd *ngIf="showPools">{{pool2 | dashify}}</dd>
                     </dl>
                     <div class="m-b-5">
-                      <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!variantReport.dnaBamFilePath" (click)="download(variantReport.dnaBamFilePath)"><i class="fa fa-download"></i> DNA BAM</button>
-                      <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!variantReport.dnaBaiFilePath" (click)="download(variantReport.dnaBaiFilePath)"><i class="fa fa-download"></i> DNA BAI</button>
-                      <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!variantReport.rnaBamFilePath" (click)="download(variantReport.rnaBamFilePath)"><i class="fa fa-download"></i> RNA BAM</button>
-                      <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!variantReport.rnaBaiFilePath" (click)="download(variantReport.rnaBaiFilePath)"><i class="fa fa-download"></i> RNA BAI</button>
-                      <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!variantReport.vcfFilePath" (click)="download(variantReport.vcfFilePath)"><i class="fa fa-download"></i> VCF</button>
+                      <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!variantReport.matchData.dnaBamFilePath" (click)="download(variantReport.matchData.dnaBamFilePath)"><i class="fa fa-download"></i> DNA BAM</button>
+                      <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!variantReport.matchData.dnaBaiFilePath" (click)="download(variantReport.matchData.dnaBaiFilePath)"><i class="fa fa-download"></i> DNA BAI</button>
+                      <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!variantReport.matchData.rnaBamFilePath" (click)="download(variantReport.matchData.rnaBamFilePath)"><i class="fa fa-download"></i> RNA BAM</button>
+                      <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!variantReport.matchData.rnaBaiFilePath" (click)="download(variantReport.matchData.rnaBaiFilePath)"><i class="fa fa-download"></i> RNA BAI</button>
+                      <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!variantReport.matchData.vcfFilePath" (click)="download(variantReport.matchData.vcfFilePath)"><i class="fa fa-download"></i> VCF</button>
                     </div>
                   </div>
                 </div>
@@ -226,36 +226,36 @@
 
               <div class="col-md-6">
                 <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
-                  <div class="panel-heading" *ngIf="!assignmentReport">
+                  <div class="panel-heading" *ngIf="!assignmentReport.matchData">
                     <h4>Latest Assignment</h4>
                   </div>
-                  <div class="panel-heading" *ngIf="!assignmentReport">
+                  <div class="panel-heading" *ngIf="!assignmentReport.matchData">
                     <p class="text-muted">No Assignment data yet</p>
                   </div>
-                  <div class="panel-heading" *ngIf="assignmentReport">
+                  <div class="panel-heading" *ngIf="assignmentReport.matchData">
                     <dl class="dl-horizontal widest-dt">
                       <h4>Latest Assignment</h4>
                       <dt>Status</dt>
-                      <dd><span [colorCodeAssignment]="assignmentReport.patientAssignmentStatus"> {{assignmentReport.patientAssignmentStatus | dashify}}</span>                        on {{assignmentReport.dateConfirmed | gmt}} by {{(assignmentReport.user||'System User') | dashify}}</dd>
+                      <dd><span [colorCodeAssignment]="assignmentReport.matchData.patientAssignmentStatus"> {{assignmentReport.matchData.patientAssignmentStatus | dashify}}</span>                        on {{assignmentReport.matchData.dateConfirmed | gmt}} by {{(assignmentReport.matchData.user||'System User') | dashify}}</dd>
                       <dt>Generation Date</dt>
-                      <dd>{{assignmentReport.dateAssigned | gmt}}</dd>
+                      <dd>{{assignmentReport.matchData.dateAssigned | gmt}}</dd>
                       <dt>Assignment Sent to ECOG Date</dt>
-                      <dd>{{assignmentReport.dateSentToECOG | gmt}}</dd>
+                      <dd>{{assignmentReport.matchData.dateSentToECOG | gmt}}</dd>
                       <dt>Assignment Received by ECOG Date</dt>
-                      <dd>{{assignmentReport.dateReceivedByECOG | gmt}}</dd>
+                      <dd>{{assignmentReport.matchData.dateReceivedByECOG | gmt}}</dd>
                     </dl>
-                    <dl *ngIf="assignmentReport.hasSelectedTreatmentArm" class="dl-horizontal widest-dt">
+                    <dl *ngIf="assignmentReport.matchData.hasSelectedTreatmentArm" class="dl-horizontal widest-dt">
                       <dt>Selected Treatment Arm</dt>
                       <dd>
-                        <treatment-arm-link *ngIf="assignmentReport" [treatmentArmId]="assignmentReport.treatmentArm.treatmentArmId" [version]="assignmentReport.treatmentArm.version"
+                        <treatment-arm-link *ngIf="assignmentReport.matchData" [treatmentArmId]="assignmentReport.matchData.treatmentArm.treatmentArmId" [version]="assignmentReport.matchData.treatmentArm.version"
                           [removePrefix]="true"></treatment-arm-link>
-                        <span *ngIf="!assignmentReport">-</span>
+                        <span *ngIf="!assignmentReport.matchData">-</span>
                       </dd>
                     </dl>
-                    <div *ngIf="assignmentReport.hasSelectedTreatmentArm" class="panel panel-success overflow-hidden">
+                    <div *ngIf="assignmentReport.matchData.hasSelectedTreatmentArm" class="panel panel-success overflow-hidden">
                       <div class="panel-heading">
                         <p>
-                          {{assignmentReport.patientAssignmentStatusMessage | dashify}}
+                          {{assignmentReport.matchData.patientAssignmentStatusMessage | dashify}}
                           <a (click)="scrollTo('assignment-details')" class="text-white text-underlined white-link"><br><br><i class="fa fa-arrow-down" aria-hidden="true"></i> Click for details...</a>
                         </p>
                       </div>
@@ -271,13 +271,13 @@
                   <dl class="dl-horizontal">
                     <h4>MOI/aMOI Summary</h4>
                     <dt>Total aMOIs</dt>
-                    <dd>{{variantReport.moiSummary.totalaMOIs | dashify}}</dd>
+                    <dd>{{variantReport.matchData.moiSummary.totalaMOIs | dashify}}</dd>
                     <dt>Total MOIs</dt>
-                    <dd>{{variantReport.moiSummary.totalMOIs | dashify}}</dd>
+                    <dd>{{variantReport.matchData.moiSummary.totalMOIs | dashify}}</dd>
                     <dt>Total Confirmed aMOIs</dt>
-                    <dd>{{variantReport.moiSummary.confirmedaMOIs | dashify}}</dd>
+                    <dd>{{variantReport.matchData.moiSummary.confirmedaMOIs | dashify}}</dd>
                     <dt>Total Confirmed MOIs</dt>
-                    <dd>{{variantReport.moiSummary.confirmedMOIs | dashify}}</dd>
+                    <dd>{{variantReport.matchData.moiSummary.confirmedMOIs | dashify}}</dd>
                   </dl>
                 </div>
               </div>
@@ -296,7 +296,7 @@
                           <th>Comment</th>
                         </tr>
                       </thead>
-                      <tbody *ngIf="assignmentReport">
+                      <tbody *ngIf="assignmentReport.matchData">
                         <tr *ngFor="let item of assays">
                           <td>{{item.biomarker | dashify}}</td>
                           <td>{{item.result | dashify}}</td>
@@ -304,11 +304,11 @@
                           <td>{{item.reportedDate | gmt}}</td>
                           <td>{{item.comment | dashify}}</td>
                         </tr>
-                        <tr *ngIf="assignmentReport.assay && assignmentReport.assay.length">
+                        <tr *ngIf="assignmentReport.matchData.assay && assignmentReport.matchData.assay.length">
                           <td colspan="3" class="text-muted">No Assay data</td>
                         </tr>
                       </tbody>
-                      <tbody *ngIf="!assignmentReport">
+                      <tbody *ngIf="!assignmentReport.matchData">
                         <tr>
                           <td colspan="3" class="text-muted">No Assay data</td>
                         </tr>
@@ -326,27 +326,14 @@
 
   <div class="panel panel-white panel-accent-sides-purple overflow-hidden">
     <div class="panel-heading">
-      <div class="row">
-        <div class="col-md-12">
-          <h5 class="m-b-20">Compare <span class="badge outside-data-text">Outside Lab Data</span> to <span class="badge match-data-text">Confimartion Report Data</span></h5>
-        </div>
-      </div>
+      <h5 class="m-b-20">Compare <span class="badge outside-data-text">Outside Lab Data</span> to <span class="badge match-data-text">Confimartion Report Data</span></h5>
 
-      <div class="row">
-        <div class="col-md-12">
-          <sd-variant-report-comparison-table-snv-indels [items]="variantReport.singleNucleotideVariantAndIndels" [title]="'Single Nucleotide Variants and Indels'"></sd-variant-report-comparison-table-snv-indels>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <sd-variant-report-comparison-table-cnv [items]="variantReport.copyNumberVariants" [title]="'Copy Number Variants'"></sd-variant-report-comparison-table-cnv>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <sd-variant-report-comparison-table-gf [items]="variantReport.unifiedGeneFusions" [title]="'Gene Fusions'"></sd-variant-report-comparison-table-gf>
-        </div>
-      </div>
+      <sd-variant-report-comparison-table-snv-indels [items]="variantReport.singleNucleotideVariantAndIndels" [title]="'Single Nucleotide Variants and Indels'"></sd-variant-report-comparison-table-snv-indels>
+
+      <sd-variant-report-comparison-table-cnv [items]="variantReport.copyNumberVariants" [title]="'Copy Number Variants'"></sd-variant-report-comparison-table-cnv>
+
+      <sd-variant-report-comparison-table-gf [items]="variantReport.unifiedGeneFusions" [title]="'Gene Fusions'"></sd-variant-report-comparison-table-gf>
+
       <div class="row">
         <div class="col-md-12 text-center m-t-20">
           <button class="btn btn-lime">Pass Report</button>
