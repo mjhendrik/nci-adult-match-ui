@@ -356,10 +356,21 @@
     </div>
   </div>
 
-  <div *ngIf="assignmentReport && assignmentReport.reasons" id="assignment-details" class="panel panel-white panel-accent-sides-purple overflow-hidden">
-    <div class="panel-heading">
-      <div class="row">
-        <div class="col-md-12">
+  <div class="panel">
+    <ul class="nav nav-tabs nav-tabs-purple">
+      <li id="outsideDataTab" class="active"><a href="#tab-outside-lab-assignment" data-toggle="tab" refreshMatchHeight>Outside Lab Assignment</a></li>
+      <li id="matchDataTab"><a href="#tab-confirmation-assignment" data-toggle="tab" refreshMatchHeight>Confirmation Assignment</a></li>
+    </ul>
+
+    <div class="tab-content m-b-0">
+      <div class="tab-pane fade active in" id="tab-outside-lab-assignment">
+        <div *ngIf="assignmentReport && assignmentReport.reasons">
+          <sd-assignment-reason-table [reasons]="assignmentReport.reasons"></sd-assignment-reason-table>
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="tab-confirmation-assignment">
+        <div *ngIf="assignmentReport && assignmentReport.reasons">
           <sd-assignment-reason-table [reasons]="assignmentReport.reasons"></sd-assignment-reason-table>
         </div>
       </div>
