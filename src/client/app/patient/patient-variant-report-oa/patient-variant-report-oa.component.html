@@ -2,7 +2,7 @@
   <ul class="breadcrumb pull-right">
     <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
     <li><a href [routerLink]="['/patients']" class="link-none">Patients</a></li>
-    <li><a href [routerLink]="['/patients', patient.patientSequenceNumber]" class="link-none">Patient {{patient.patientSequenceNumber}}</a></li>
+    <li><a href [routerLink]="['/patients', psn]" class="link-none">Patient {{psn}}</a></li>
     <li class="active">Variant Report</li>
   </ul>
 
@@ -40,11 +40,11 @@
                       <dt>Analysis ID</dt>
                       <dd>{{outsideData.variantReport.analysisId | dashify}}</dd>
                       <dt>Patient</dt>
-                      <dd><a href [routerLink]="['/patients', patient.patientSequenceNumber]" class="link-none">{{patient.patientSequenceNumber | dashify}}</a>,
-                        <span [colorCodePatients]="patient.currentPatientStatus">{{patient.currentPatientStatus | dashify}}</span>,
-                        Step {{patient.currentStepNumber | dashify}}</dd>
+                      <dd><a href [routerLink]="['/patients', psn]" class="link-none">{{psn | dashify}}</a>,
+                        <span [colorCodePatients]="currentPatientStatus">{{currentPatientStatus | dashify}}</span>,
+                        Step {{currentStepNumber | dashify}}</dd>
                       <dt>Patient Concordance</dt>
-                      <dd><span [colorCodeYesNo]="patient.concordance">{{patient.concordance | dashify}}</span></dd>
+                      <dd><span [colorCodeYesNo]="concordance">{{concordance | dashify}}</span></dd>
                       <dt>Status</dt>
                       <dd><span [colorCodeVariantReport]="outsideData.variantReport.variantReportStatus">{{outsideData.variantReport.variantReportStatus | dashify}}</span> on {{outsideData.variantReport.variantReportCreatedDate | gmt}} by {{outsideData.variantReport.user | dashify}}</dd>
                       <dt>MAPD</dt>
@@ -178,7 +178,7 @@
                         <h4>Variant Report</h4>
                       </div>
                       <div class="col-md-4 text-right">
-                        <a class="btn btn-sm btn-link" role="button" href [routerLink]="['/patients/' + patient.patientSequenceNumber + '/variant_reports/' + matchData.variantReport.analysisId +'/qc']"><i class="fa fa-file-text-o"></i> QC Report</a>
+                        <a class="btn btn-sm btn-link" role="button" href [routerLink]="['/patients/' + psn + '/variant_reports/' + matchData.variantReport.analysisId +'/qc']"><i class="fa fa-file-text-o"></i> QC Report</a>
                         <a href="javascript:;" class="btn btn-sm btn-link"><i class="fa fa-file-excel-o"></i> Excel</a>
                       </div>
                     </div>
@@ -192,11 +192,11 @@
                       <dt>Analysis ID</dt>
                       <dd>{{matchData.variantReport.analysisId | dashify}}</dd>
                       <dt>Patient</dt>
-                      <dd><a href [routerLink]="['/patients', patient.patientSequenceNumber]" class="link-none">{{patient.patientSequenceNumber | dashify}}</a>,
-                        <span [colorCodePatients]="patient.currentPatientStatus">{{patient.currentPatientStatus | dashify}}</span>,
-                        Step {{patient.currentStepNumber | dashify}}</dd>
+                      <dd><a href [routerLink]="['/patients', psn]" class="link-none">{{psn | dashify}}</a>,
+                        <span [colorCodePatients]="currentPatientStatus">{{currentPatientStatus | dashify}}</span>,
+                        Step {{currentStepNumber | dashify}}</dd>
                       <dt>Patient Concordance</dt>
-                      <dd><span [colorCodeYesNo]="patient.concordance">{{patient.concordance | dashify}}</span></dd>
+                      <dd><span [colorCodeYesNo]="concordance">{{concordance | dashify}}</span></dd>
                       <dt>Status</dt>
                       <dd><span [colorCodeVariantReport]="matchData.variantReport.variantReportStatus">{{matchData.variantReport.variantReportStatus | dashify}}</span>                        on {{matchData.variantReport.variantReportCreatedDate | gmt}} by {{matchData.variantReport.user | dashify}}</dd>
                       <dt>MAPD</dt>
@@ -328,11 +328,11 @@
     <div class="panel-heading">
       <h5 class="m-b-20">Compare <span class="badge outside-data-text">Outside Lab Data</span> to <span class="badge match-data-text">Confimartion Report Data</span></h5>
 
-      <sd-variant-report-comparison-table-snv-indels [items]="comparisonReport.singleNucleotideVariantAndIndels" [title]="'Single Nucleotide Variants and Indels'"></sd-variant-report-comparison-table-snv-indels>
+      <sd-variant-report-comparison-table-snv-indels [items]="comparisonVariantReport.singleNucleotideVariantAndIndels" [title]="'Single Nucleotide Variants and Indels'"></sd-variant-report-comparison-table-snv-indels>
 
-      <sd-variant-report-comparison-table-cnv [items]="comparisonReport.copyNumberVariants" [title]="'Copy Number Variants'"></sd-variant-report-comparison-table-cnv>
+      <sd-variant-report-comparison-table-cnv [items]="comparisonVariantReport.copyNumberVariants" [title]="'Copy Number Variants'"></sd-variant-report-comparison-table-cnv>
 
-      <sd-variant-report-comparison-table-gf [items]="comparisonReport.unifiedGeneFusions" [title]="'Gene Fusions'"></sd-variant-report-comparison-table-gf>
+      <sd-variant-report-comparison-table-gf [items]="comparisonVariantReport.unifiedGeneFusions" [title]="'Gene Fusions'"></sd-variant-report-comparison-table-gf>
 
       <div class="row">
         <div class="col-md-12 text-center m-t-20">
@@ -381,7 +381,7 @@
             </thead>
             <tbody>
               <tr *ngFor="let item of assignmentHistory">
-                <td [colorCodeAssignment]="item.status"><a [ngClass]="{true:'disabled'}[item.patientAssignmentMessages.length==0]" href [routerLink]="['/patients/' + patient.patientSequenceNumber + '/variant_reports/' + variantReport.analysisId + '/assignment/' + item.dateAssigned.$date]">{{item.patientAssignmentStatus | dashify}}</a></td>
+                <td [colorCodeAssignment]="item.status"><a [ngClass]="{true:'disabled'}[item.patientAssignmentMessages.length==0]" href [routerLink]="['/patients/' + psn + '/variant_reports/' + variantReport.analysisId + '/assignment/' + item.dateAssigned.$date]">{{item.patientAssignmentStatus | dashify}}</a></td>
                 <td>{{item.dateAssigned | gmt}}</td>
                 <td>{{item.dateConfirmed | gmt}}</td>
                 <td>{{item.dateSentToECOG | gmt}}</td>

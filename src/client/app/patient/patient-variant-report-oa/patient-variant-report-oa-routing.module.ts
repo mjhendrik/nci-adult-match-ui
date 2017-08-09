@@ -50,8 +50,6 @@ class DataResolver implements Resolve<VariantReportComparisonData> {
           analysis: analysis,
           variantReport: analysis.variantReport,
           assignmentReport: analysis.assignmentReport,
-          assignmentHistory: patient.patientAssignments,
-          parsed_vcf_genes: [data[1].parsed_vcf_genes,data[1].file_name],
           tvc_version: tvc_version,
           pool1: data[2].pool1,
           pool2: data[2].pool2,
@@ -66,8 +64,6 @@ class DataResolver implements Resolve<VariantReportComparisonData> {
           analysis: analysis,
           variantReport: analysis.variantReport,
           assignmentReport: analysis.assignmentReport,
-          assignmentHistory: patient.patientAssignments,
-          parsed_vcf_genes: [data[1].parsed_vcf_genes,data[1].file_name],
           tvc_version: tvc_version,
           pool1: data[2].pool1,
           pool2: data[2].pool2,
@@ -77,18 +73,20 @@ class DataResolver implements Resolve<VariantReportComparisonData> {
           assays: analysis.assays
         };
 
-        let comparisonReport = {
+        let comparisonVariantReport = {
           singleNucleotideVariantAndIndels: analysis.variantReport.singleNucleotideVariantAndIndels,
           copyNumberVariants: analysis.variantReport.copyNumberVariants,
           unifiedGeneFusions: analysis.variantReport.unifiedGeneFusions,
         };
 
         let model = {
-          psn: psn,
-          patient: patient,
+          psn: patient.patientSequenceNumber,
+          currentPatientStatus: patient.currentPatientStatus,
+          currentStepNumber: patient.currentStepNumber,
+          concordance: patient.concordance,
           outsideData: outsideData,
           matchData: matchData,
-          comparisonReport: comparisonReport
+          comparisonVariantReport: comparisonVariantReport
         };
 
         console.debug('model');

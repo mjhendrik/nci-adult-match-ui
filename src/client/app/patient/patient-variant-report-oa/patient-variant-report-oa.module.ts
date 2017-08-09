@@ -14,14 +14,14 @@ import { SharedModule } from '../../shared/shared.module';
 
 export interface VariantReportComparisonData {
   psn: string;
-  patient: any;
+  currentPatientStatus: string;
+  currentStepNumber: string;
+  concordance: string;
   outsideData: {
     analysisId: string;
     assays: any[];
     variantReport: any;
     assignmentReport: any;
-    assignmentHistory: any;
-    parsed_vcf_genes: any;
     tvc_version: string;
     pool1: number;
     pool2: number;
@@ -34,8 +34,6 @@ export interface VariantReportComparisonData {
     assays: any[];
     variantReport: any;
     assignmentReport: any;
-    assignmentHistory: any;
-    parsed_vcf_genes: any;
     tvc_version: string;
     pool1: number;
     pool2: number;
@@ -43,7 +41,7 @@ export interface VariantReportComparisonData {
     cellularity: any;
     showPools: boolean;
   };
-  comparisonReport: {
+  comparisonVariantReport: {
     singleNucleotideVariantAndIndels: any[];
     copyNumberVariants: any[];
     unifiedGeneFusions: any[];

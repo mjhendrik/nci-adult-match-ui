@@ -24,19 +24,45 @@ import { VariantReportComparisonData } from './patient-variant-report-oa.module'
 })
 export class PatientVariantReportOutsideAssayComponent implements OnInit, VariantReportComparisonData {
   psn: string;
-  analysisId: string;
-  patient: any;
-  variantReport: any;
-  assignmentReport: any;
-  assignmentHistory: any;
-  parsed_vcf_genes: any;
-  tvc_version: string;
-  pool1: number;
-  pool2: number;
-  mapd: string;
-  cellularity: any;
-  showPools: boolean;
-  assays: any[] = [];
+  currentPatientStatus: string;
+  currentStepNumber: string;
+  concordance: string;
+
+  outsideData: {
+    analysisId: string;
+    assays: any[];
+    variantReport: any;
+    assignmentReport: any;
+    assignmentHistory: any;
+    parsed_vcf_genes: any;
+    tvc_version: string;
+    pool1: number;
+    pool2: number;
+    mapd: string;
+    cellularity: any;
+    showPools: boolean;
+  };
+
+  matchData: {
+    analysisId: string;
+    assays: any[];
+    variantReport: any;
+    assignmentReport: any;
+    assignmentHistory: any;
+    parsed_vcf_genes: any;
+    tvc_version: string;
+    pool1: number;
+    pool2: number;
+    mapd: string;
+    cellularity: any;
+    showPools: boolean;
+  };
+
+  comparisonVariantReport: {
+    singleNucleotideVariantAndIndels: any[];
+    copyNumberVariants: any[];
+    unifiedGeneFusions: any[];
+  };
 
   scrollTo = scrollToElement;
 
