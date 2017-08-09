@@ -145,14 +145,14 @@
                         </tr>
                       </thead>
                       <tbody *ngIf="outsideData.assignmentReport">
-                        <tr *ngFor="let item of assays">
+                        <tr *ngFor="let item of outsideData.assays">
                           <td>{{item.biomarker | dashify}}</td>
                           <td>{{item.result | dashify}}</td>
                           <td>{{item.orderedDate | gmt}}</td>
                           <td>{{item.reportedDate | gmt}}</td>
                           <td>{{item.comment | dashify}}</td>
                         </tr>
-                        <tr *ngIf="outsideData.assignmentReport.assay && outsideData.assignmentReport.assay.length">
+                        <tr *ngIf="!outsideData.assays || !outsideData.assays.length">
                           <td colspan="3" class="text-muted">No Assay data</td>
                         </tr>
                       </tbody>
@@ -297,14 +297,14 @@
                         </tr>
                       </thead>
                       <tbody *ngIf="matchData.assignmentReport">
-                        <tr *ngFor="let item of assays">
+                        <tr *ngFor="let item of matchData.assays">
                           <td>{{item.biomarker | dashify}}</td>
                           <td>{{item.result | dashify}}</td>
                           <td>{{item.orderedDate | gmt}}</td>
                           <td>{{item.reportedDate | gmt}}</td>
                           <td>{{item.comment | dashify}}</td>
                         </tr>
-                        <tr *ngIf="matchData.assignmentReport.assay && matchData.assignmentReport.assay.length">
+                        <tr *ngIf="!matchData.assays || !matchData.assays.length">
                           <td colspan="3" class="text-muted">No Assay data</td>
                         </tr>
                       </tbody>

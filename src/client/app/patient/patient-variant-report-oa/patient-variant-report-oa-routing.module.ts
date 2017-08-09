@@ -83,13 +83,18 @@ class DataResolver implements Resolve<VariantReportComparisonData> {
           unifiedGeneFusions: analysis.variantReport.unifiedGeneFusions,
         };
 
-        return {
+        let model = {
           psn: psn,
           patient: patient,
           outsideData: outsideData,
           matchData: matchData,
           comparisonReport: comparisonReport
         };
+
+        console.debug('model');
+        console.debug(JSON.stringify(model));
+
+        return model;
       }
     );
   }
