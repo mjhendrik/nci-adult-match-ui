@@ -11,7 +11,6 @@ import { ColorCodeCliaIonDirective } from './colorcode-clia-ion.directive';
 import { MatchHeightDirective } from './match-height.directive';
 import { ColorCodeAssignmentDirective } from './colorcode-assignment.directive';
 import { ColorCodeVariantReportDirective } from './colorcode-variant-report.directive';
-import { ActiveClassDirective } from './active-class.directive';
 import { MatchHeightTabClickDirective } from './match-height-tab.directive';
 import { FaIconDirective } from './fa-icon.directive';
 import { CnvChartDirective } from './../cnv-chart/cnv-chart.directive.component';
@@ -31,7 +30,6 @@ import { RefreshMatchHeightDirective } from './refresh-match-height.directive';
     RefreshMatchHeightDirective,
     ColorCodeAssignmentDirective,
     ColorCodeVariantReportDirective,
-    ActiveClassDirective,
     MatchHeightTabClickDirective,
     FaIconDirective,
     nvD3,
@@ -49,7 +47,6 @@ import { RefreshMatchHeightDirective } from './refresh-match-height.directive';
     RefreshMatchHeightDirective,
     ColorCodeAssignmentDirective,
     ColorCodeVariantReportDirective,
-    ActiveClassDirective,
     MatchHeightTabClickDirective,
     FaIconDirective,
     nvD3,
