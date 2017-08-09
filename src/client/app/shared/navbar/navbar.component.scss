@@ -86,7 +86,7 @@
 
 .tooltip_footer .tooltiptext {
   visibility: hidden;
-  width: 75px;
+  width: 85px;
   background-color: black;
   color: #fff;
   text-align: center;
@@ -96,6 +96,7 @@
   z-index: 1;
   font-size: 13px;
   right: 120%;
+  font-family: 'Nunito', sans-serif;
 }
 
 .tooltip_footer .tooltiptext::after {
