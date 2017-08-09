@@ -89,9 +89,6 @@ class DataResolver implements Resolve<VariantReportComparisonData> {
           comparisonVariantReport: comparisonVariantReport
         };
 
-        console.debug('model');
-        console.debug(JSON.stringify(model));
-
         return model;
       }
     );

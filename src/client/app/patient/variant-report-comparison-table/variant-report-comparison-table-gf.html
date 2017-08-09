@@ -14,7 +14,7 @@
   </thead>
   <tbody>
     <ng-template ngFor let-item [ngForOf]="items">
-      <tr class="outside-data-row">
+      <tr *ngIf="item.outsideData" class="outside-data-row">
         <td rowspan="2" class="bg-reset">
           <div class="m-t-10">
             <button class="btn btn-lime btn-xs">Pass</button>
@@ -45,7 +45,17 @@
         </td>        
       </tr>
 
-      <tr class="match-data-row">
+      <tr *ngIf="!item.outsideData" class="outside-data-row">
+        <td rowspan="2" class="bg-reset">
+          <div class="m-t-10">
+            <button class="btn btn-lime btn-xs">Pass</button>
+            <button class="btn btn-danger btn-xs">Fail</button>
+          </div>
+        </td>
+        <td colspan="7"><span class="text-muted">No Outside Lab row</span></td>
+      </tr>
+
+      <tr *ngIf="item.matchData" class="match-data-row">
         <td [ngClass]="{'has-diff':item.hasDifference['identifier']}">
           <span class="match-data"><cosmic-link [linkType]="'cosmicFusionId'" [linkId]="item.matchData.identifier"></cosmic-link></span>
         </td>
@@ -67,6 +77,10 @@
         <td [ngClass]="{'has-diff':item.hasDifference['annotation']}">
           <span class="match-data">{{item.matchData.annotation | dashify}}</span>
         </td>        
+      </tr>
+
+      <tr *ngIf="!item.matchData" class="match-data-row">
+        <td colspan="8"><span class="text-muted">No Confirmation Report row</span></td>
       </tr>
 
     </ng-template>
