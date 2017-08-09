@@ -77,11 +77,18 @@ class DataResolver implements Resolve<VariantReportComparisonData> {
           assays: analysis.assays
         };
 
+        let comparisonReport = {
+          singleNucleotideVariantAndIndels: analysis.variantReport.singleNucleotideVariantAndIndels,
+          copyNumberVariants: analysis.variantReport.copyNumberVariants,
+          unifiedGeneFusions: analysis.variantReport.unifiedGeneFusions,
+        };
+
         return {
           psn: psn,
           patient: patient,
           outsideData: outsideData,
-          matchData: matchData
+          matchData: matchData,
+          comparisonReport: comparisonReport
         };
       }
     );

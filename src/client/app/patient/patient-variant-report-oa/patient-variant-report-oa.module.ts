@@ -43,6 +43,11 @@ export interface VariantReportComparisonData {
     cellularity: any;
     showPools: boolean;
   };
+  comparisonReport: {
+    singleNucleotideVariantAndIndels: any[];
+    copyNumberVariants: any[];
+    unifiedGeneFusions: any[];
+  };
 }
 
 @NgModule({
