@@ -79,14 +79,14 @@
   margin-left: -77px;
 }
 
-.tooltip_test {
+.tooltip_footer {
   position: relative;
   display: inline-block;
 }
 
-.tooltip_test .tooltiptext {
+.tooltip_footer .tooltiptext {
   visibility: hidden;
-  width: 90px;
+  width: 85px;
   background-color: black;
   color: #fff;
   text-align: center;
@@ -94,12 +94,12 @@
   padding: 4px 0;
   position: absolute;
   z-index: 1;
-  // top: -2px;
-  font-size: 16px;
+  font-size: 13px;
   right: 120%;
+  font-family: 'Nunito', sans-serif;
 }
 
-.tooltip_test .tooltiptext::after {
+.tooltip_footer .tooltiptext::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -110,6 +110,6 @@
   border-color: transparent transparent transparent black;
 }
 
-.tooltip_test:hover .tooltiptext {
+.tooltip_footer:hover .tooltiptext {
   visibility: visible;
 }
