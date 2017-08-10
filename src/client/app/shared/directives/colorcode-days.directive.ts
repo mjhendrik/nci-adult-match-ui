@@ -1,21 +1,24 @@
-import { Directive, ElementRef, Input, OnInit } from '@angular/core';
+import { Directive, ElementRef, Input } from '@angular/core';
+import { ColorCodeDirective } from './colorcode.directive';
 
 @Directive({ selector: '[colorCodeDays]' })
-export class ColorCodeDaysDirective implements OnInit {
+export class ColorCodeDaysDirective extends ColorCodeDirective<number> {
 
-    @Input() 'colorCodeDays': number;
+    @Input() set colorCodeDays(value: number) {
+        this.value = value;
+        this.setColor();
+    }
+    get colorCodeDays(): number {
+        return this.value;
+    }
 
-    constructor(private el: ElementRef) { }
-
-    ngOnInit() {
-        if (this.colorCodeDays < 7) {
-            this.el.nativeElement.classList.add('text-success-light');
-        } else if (this.colorCodeDays < 14) {
-            this.el.nativeElement.classList.add('text-warning-light');
-        } else {
-            this.el.nativeElement.classList.add('text-danger-light');
-        }
-
+    constructor(protected el: ElementRef) {
+        super(el,
+            [
+                { evaluate: (x) => x < 7, cssClass: 'text-success-light' },
+                { evaluate: (x) => x < 14, cssClass: 'text-warning-light' },
+                { evaluate: (x) => x >= 14, cssClass: 'text-danger-light' }
+            ]);
     }
 
 }

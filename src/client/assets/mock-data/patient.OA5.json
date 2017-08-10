@@ -3,7 +3,8 @@
   "_id": {
     "$oid": "5970c792b0c8f5584c5d38f6"
   },
-  "biopsies": [{
+  "biopsies": [
+    {
       "assayMessages": [{
         "biomarker": "ICCPTENs",
         "biopsySequenceNumber": "MDACC-case1",

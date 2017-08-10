@@ -1,25 +1,25 @@
 import { Directive, ElementRef, Input } from '@angular/core';
+import { ColorCodeDirective } from './colorcode.directive';
 
 @Directive({ selector: '[colorCodeCliaIon]' })
-export class ColorCodeCliaIonDirective {
-
-    private colorCodeCliaIonValue?: string = null;
-
+export class ColorCodeCliaIonDirective extends ColorCodeDirective<string> {
     @Input() set colorCodeCliaIon(value: string) {
-        this.colorCodeCliaIonValue = value;
+        this.value = value;
         this.setColor();
     }
     get colorCodeCliaIon(): string {
-        return this.colorCodeCliaIonValue;
+        return this.value;
     }
 
-    constructor(private el: ElementRef) { }
-
-    private setColor() {
-        if (this.colorCodeCliaIon && this.colorCodeCliaIon.indexOf('Contacted') !== -1)
-            this.el.nativeElement.classList.add('text-success-light');
-        else
-            this.el.nativeElement.classList.add('text-danger-light');
+    constructor(protected el: ElementRef) {
+        super(el,
+            [
+                {
+                    evaluate: (x) => (typeof x !== 'undefined' && x !== null && x.indexOf('Contacted') !== -1),
+                    cssClass: 'text-success-light'
+                }
+            ],
+            'text-danger-light');
     }
 
 }

@@ -1,29 +1,23 @@
 import { Directive, ElementRef, Input } from '@angular/core';
+import { ColorCodeDirective } from './colorcode.directive';
 
 @Directive({ selector: '[colorCodeClia]' })
-export class ColorCodeCliaDirective {
-
-    private colorCodeCliaValue?: string = null;
-
+export class ColorCodeCliaDirective extends ColorCodeDirective<string> {
     @Input() set colorCodeClia(value: string) {
-        this.colorCodeCliaValue = value;
+        this.value = value;
         this.setColor();
     }
     get colorCodeClia(): string {
-        return this.colorCodeCliaValue;
+        return this.value;
     }
 
-    constructor(private el: ElementRef) { }
-
-    private setColor() {
-        if (this.colorCodeClia === 'PASSED') {
-            this.el.nativeElement.classList.add('text-success-light');
-        } else if (this.colorCodeClia === 'FAILED') {
-            this.el.nativeElement.classList.add('text-danger-light');
-        } else if (this.colorCodeClia === 'PENDING') {
-            this.el.nativeElement.classList.add('text-purple-light');
-        }
-
+    constructor(protected el: ElementRef) {
+        super(el,
+            [
+                { evaluate: (x) => x === 'PASSED', cssClass: 'text-success-light' },
+                { evaluate: (x) => x === 'FAILED', cssClass: 'text-danger-light' },
+                { evaluate: (x) => x === 'PENDING', cssClass: 'text-purple-light' },
+            ]);
     }
 
 }

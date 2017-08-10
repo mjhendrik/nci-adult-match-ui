@@ -1,28 +1,24 @@
 import { Directive, ElementRef, Input } from '@angular/core';
+import { ColorCodeDirective } from './colorcode.directive';
 
 @Directive({ selector: '[colorCodeAssignment]' })
-export class ColorCodeAssignmentDirective {
-    private colorCodeAssignmentValue?: string = null;
-
+export class ColorCodeAssignmentDirective extends ColorCodeDirective<string> {
     @Input() set colorCodeAssignment(value: string) {
-        this.colorCodeAssignmentValue = value;
+        this.value = value;
         this.setColor();
     }
     get colorCodeAssignment(): string {
-        return this.colorCodeAssignmentValue;
+        return this.value;
     }
 
-    constructor(private el: ElementRef) { }
-
-    private setColor() {
-        if (this.colorCodeAssignment === 'CONFIRMED') {
-            this.el.nativeElement.classList.add('text-success-light');
-        } else if (this.colorCodeAssignment === 'PENDING_CONFIMATION') {
-            this.el.nativeElement.classList.add('text-info-light');
-        } else if (this.colorCodeAssignment === 'REJECTED') {
-            this.el.nativeElement.classList.add('text-danger-light');
-        } else if (this.colorCodeAssignment === 'NO_ARM_ASSIGNED') {
-            this.el.nativeElement.classList.add('text-danger-light');
-        }
+    constructor(protected el: ElementRef) {
+        super(el,
+            [
+                { evaluate: (x) => x === 'CONFIRMED', cssClass: 'text-success-light' },
+                { evaluate: (x) => x === 'PENDING_CONFIMATION', cssClass: 'text-info-light' },
+                { evaluate: (x) => x === 'REJECTED', cssClass: 'text-danger-light' },
+                { evaluate: (x) => x === 'NO_ARM_ASSIGNED', cssClass: 'text-danger-light' },
+            ]);
     }
+
 }

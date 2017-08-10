@@ -5,7 +5,7 @@ import { By } from '@angular/platform-browser';
 import { ColorCodeCliaDirective } from './colorcode-clia.directive';
 
 export function main() {
-    describe('Pipe: Default', () => {
+    describe('ColorCodeCliaDirective', () => {
         let testHost: TestHostComponent;
         let fixture: ComponentFixture<TestHostComponent>;
         let testEl: DebugElement;

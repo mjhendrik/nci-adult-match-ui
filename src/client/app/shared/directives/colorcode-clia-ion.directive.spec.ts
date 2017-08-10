@@ -5,7 +5,7 @@ import { By } from '@angular/platform-browser';
 import { ColorCodeCliaIonDirective } from './colorcode-clia-ion.directive';
 
 export function main() {
-    describe('Pipe: Default', () => {
+    describe('ColorCodeCliaIonDirective', () => {
         let testHost: TestHostComponent;
         let fixture: ComponentFixture<TestHostComponent>;
         let testEl: DebugElement;
@@ -20,10 +20,10 @@ export function main() {
             fixture = TestBed.createComponent(TestHostComponent);
             testHost = fixture.componentInstance;
             testEl = fixture.debugElement.query(By.css('span'));
-            fixture.detectChanges();
         });
 
         it('empty value adds "text-danger-light" class', () => {
+            fixture.detectChanges();
             expect(testEl.nativeElement.classList.contains('text-success-light')).toBe(false);
             expect(testEl.nativeElement.classList.contains('text-danger-light')).toBe(true);
         });

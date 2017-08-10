@@ -2,17 +2,17 @@ import { TestBed, ComponentFixture, async } from '@angular/core/testing';
 import { Component, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
-import { ColorCodeAssignmentDirective } from './colorcode-assignment.directive';
+import { ColorCodeDaysDirective } from './colorcode-days.directive';
 
 export function main() {
-    describe('ColorCodeAssignmentDirective', () => {
+    describe('ColorCodeDaysDirective', () => {
         let testHost: TestHostComponent;
         let fixture: ComponentFixture<TestHostComponent>;
         let testEl: DebugElement;
 
         beforeEach(async(() => {
             TestBed.configureTestingModule({
-                declarations: [TestHostComponent, ColorCodeAssignmentDirective]
+                declarations: [TestHostComponent, ColorCodeDaysDirective]
             }).compileComponents();
         }));
 
@@ -25,47 +25,55 @@ export function main() {
 
         it('empty value adds no color class', () => {
             expect(testEl.nativeElement.classList.contains('text-success-light')).toBe(false);
-            expect(testEl.nativeElement.classList.contains('text-info-light')).toBe(false);
             expect(testEl.nativeElement.classList.contains('text-danger-light')).toBe(false);
+            expect(testEl.nativeElement.classList.contains('text-warning-light')).toBe(false);
         });
 
-        it('"CONFIRMED" adds "text-success-light" color class', () => {
-            testHost.testStatus = 'CONFIRMED';
+        it('0 adds "text-success-light" color class', () => {
+            testHost.testStatus = 0;
             fixture.detectChanges();
             expect(testEl.nativeElement.classList.contains('text-success-light')).toBe(true);
-            expect(testEl.nativeElement.classList.contains('text-info-light')).toBe(false);
             expect(testEl.nativeElement.classList.contains('text-danger-light')).toBe(false);
+            expect(testEl.nativeElement.classList.contains('text-warning-light')).toBe(false);
         });
 
-        it('"PENDING_CONFIMATION" adds "text-info-light" color class', () => {
-            testHost.testStatus = 'PENDING_CONFIMATION';
+        it('6 adds "text-success-light" color class', () => {
+            testHost.testStatus = 6;
             fixture.detectChanges();
-            expect(testEl.nativeElement.classList.contains('text-success-light')).toBe(false);
-            expect(testEl.nativeElement.classList.contains('text-info-light')).toBe(true);
+            expect(testEl.nativeElement.classList.contains('text-success-light')).toBe(true);
             expect(testEl.nativeElement.classList.contains('text-danger-light')).toBe(false);
+            expect(testEl.nativeElement.classList.contains('text-warning-light')).toBe(false);
         });
 
-        it('"REJECTED" adds "text-danger-light" color class', () => {
-            testHost.testStatus = 'REJECTED';
+        it('7 adds "text-warning-light" color class', () => {
+            testHost.testStatus = 7;
             fixture.detectChanges();
             expect(testEl.nativeElement.classList.contains('text-success-light')).toBe(false);
-            expect(testEl.nativeElement.classList.contains('text-info-light')).toBe(false);
-            expect(testEl.nativeElement.classList.contains('text-danger-light')).toBe(true);
+            expect(testEl.nativeElement.classList.contains('text-danger-light')).toBe(false);
+            expect(testEl.nativeElement.classList.contains('text-warning-light')).toBe(true);
         });
 
-        it('"NO_ARM_ASSIGNED" adds "text-danger-light" color class', () => {
-            testHost.testStatus = 'NO_ARM_ASSIGNED';
+        it('13 adds "text-warning-light" color class', () => {
+            testHost.testStatus = 13;
             fixture.detectChanges();
             expect(testEl.nativeElement.classList.contains('text-success-light')).toBe(false);
-            expect(testEl.nativeElement.classList.contains('text-info-light')).toBe(false);
+            expect(testEl.nativeElement.classList.contains('text-danger-light')).toBe(false);
+            expect(testEl.nativeElement.classList.contains('text-warning-light')).toBe(true);
+        });
+
+        it('14 adds "text-danger-light" color class', () => {
+            testHost.testStatus = 14;
+            fixture.detectChanges();
+            expect(testEl.nativeElement.classList.contains('text-success-light')).toBe(false);
             expect(testEl.nativeElement.classList.contains('text-danger-light')).toBe(true);
+            expect(testEl.nativeElement.classList.contains('text-warning-light')).toBe(false);
         });
     });
 }
 
 @Component({
-    template: `<span [colorCodeAssignment]="testStatus">Some Text</span>`
+    template: `<span [colorCodeDays]="testStatus">Some Text</span>`
 })
 class TestHostComponent {
-    testStatus: string;
+    testStatus?: number;
 }
