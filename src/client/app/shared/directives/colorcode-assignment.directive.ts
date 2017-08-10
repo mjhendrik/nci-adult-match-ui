@@ -1,13 +1,20 @@
-import { Directive, ElementRef, Input, OnInit } from '@angular/core';
+import { Directive, ElementRef, Input } from '@angular/core';
 
 @Directive({ selector: '[colorCodeAssignment]' })
-export class ColorCodeAssignmentDirective implements OnInit {
+export class ColorCodeAssignmentDirective {
+    private colorCodeAssignmentValue?: string = null;
 
-    @Input() 'colorCodeAssignment': string;
+    @Input() set colorCodeAssignment(value: string) {
+        this.colorCodeAssignmentValue = value;
+        this.setColor();
+    }
+    get colorCodeAssignment(): string {
+        return this.colorCodeAssignmentValue;
+    }
 
     constructor(private el: ElementRef) { }
 
-    ngOnInit() {
+    private setColor() {
         if (this.colorCodeAssignment === 'CONFIRMED') {
             this.el.nativeElement.classList.add('text-success-light');
         } else if (this.colorCodeAssignment === 'PENDING_CONFIMATION') {
