@@ -28,7 +28,7 @@ export function main() {
             expect(testEl.nativeElement.classList.contains('text-danger-light')).toBe(true);
         });
 
-        xit('"Contacted" in the text adds "text-success-light" color class', () => {
+        it('"Contacted" in the text adds "text-success-light" color class', () => {
             testHost.testStatus = 'This lab has been Contacted';
             fixture.detectChanges();
             expect(testEl.nativeElement.classList.contains('text-success-light')).toBe(true);
