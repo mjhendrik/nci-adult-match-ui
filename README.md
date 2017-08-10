@@ -30,36 +30,36 @@ To start only MongoDB, for example to develop your services locally:
 docker-compose up mongo
 ```
 
-To restore MongoDB data:
+## Restoring Data to MongoDB for Local Development
+
+Do the restore the dockerized MongoDB, first attach to the MongoDB container:
 
 ```bash
-docker exec -it nciadultmatchui_mongo_1 bash            # attach to the mongo service of your docker-compose
-mongorestore --db Match ./backup                        # restore the mongo dump
-mongo shell                                             # launch mongo shell
-use Match                                               # switch to Match database
-db.patient.createIndex({'currentPatientStatus':1})      # create indexes
-db.patient.createIndex({'currentStepNumber':1})
-db.patient.createIndex({'patientAssignments.treatmentArm.treatmentArmId':1})
-db.patient.createIndex({'patientAssignments.treatmentArm.version':1})
-db.patient.createIndex({'diseases.shortName':1})
-db.patient.createIndex({'patientSequenceNumber':1})
-db.patient.createIndex({'registrationDate':1})
-exit                                                    # exit out of the mongo shell
-exit                                                    # exit out of the mongo container into your terminal
+docker exec -it nciadultmatchui_mongo_1 bash
+mongo Match --eval "db.dropDatabase()"
+mongorestore --db Match ./backup
 ```
 
-To drop MongoDB data (needed step before restore if you already have a dump currently):
+Do the restore from from the Linux shell to local Mongo:
 
 ```bash
-docker exec -it nciadultmatchui_mongo_1 bash # attach to the mongo service of your docker-compose
-mongo shell                                  # launch mongo shell
-use Match                                    # switch to Match database
-db.dropDatabase()                            # drop the current mongo dump
-exit                                         # exit out of the mongo shell
-exit                                         # exit out of the mongo container into your terminal
+mongo Match --eval "db.dropDatabase()"
+mongorestore --db Match ./data_setup/match
 ```
 
-To backup MongoDB data:
+After you've restored the backup you may check the restored data
+
+```bash
+mongo shell
+show dbs
+use Match
+show collections
+db.patient.count()
+```
+
+Exit from MongoDB shell by pressing `Ctrl+C` or typing `exit`.
+
+## Backing up MongoDB data
 
 ```bash
 docker exec -it nciadultmatchui_mongo_1 bash # attach to the mongo service of your docker-compose
