@@ -5,7 +5,7 @@ import { By } from '@angular/platform-browser';
 import { ColorCodeAssignmentDirective } from './colorcode-assignment.directive';
 
 export function main() {
-    fdescribe('Pipe: Default', () => {
+    describe('Pipe: Default', () => {
         let testHost: TestHostComponent;
         let fixture: ComponentFixture<TestHostComponent>;
         let testEl: DebugElement;
@@ -24,7 +24,6 @@ export function main() {
         });
 
         it('empty value adds no color class', () => {
-            console.debug(testEl.nativeElement.classList);
             expect(testEl.nativeElement.classList.contains('text-success-light')).toBe(false);
             expect(testEl.nativeElement.classList.contains('text-info-light')).toBe(false);
             expect(testEl.nativeElement.classList.contains('text-danger-light')).toBe(false);
@@ -38,7 +37,7 @@ export function main() {
             expect(testEl.nativeElement.classList.contains('text-danger-light')).toBe(false);
         });
 
-        it('"PENDING_CONFIMATION" adds "text-success-light" color class', () => {
+        it('"PENDING_CONFIMATION" adds "text-info-light" color class', () => {
             testHost.testStatus = 'PENDING_CONFIMATION';
             fixture.detectChanges();
             expect(testEl.nativeElement.classList.contains('text-success-light')).toBe(false);
@@ -46,7 +45,7 @@ export function main() {
             expect(testEl.nativeElement.classList.contains('text-danger-light')).toBe(false);
         });
 
-        it('"REJECTED" adds "text-success-light" color class', () => {
+        it('"REJECTED" adds "text-danger-light" color class', () => {
             testHost.testStatus = 'REJECTED';
             fixture.detectChanges();
             expect(testEl.nativeElement.classList.contains('text-success-light')).toBe(false);
@@ -54,7 +53,7 @@ export function main() {
             expect(testEl.nativeElement.classList.contains('text-danger-light')).toBe(true);
         });
 
-        it('"NO_ARM_ASSIGNED" adds "text-success-light" color class', () => {
+        it('"NO_ARM_ASSIGNED" adds "text-danger-light" color class', () => {
             testHost.testStatus = 'NO_ARM_ASSIGNED';
             fixture.detectChanges();
             expect(testEl.nativeElement.classList.contains('text-success-light')).toBe(false);
