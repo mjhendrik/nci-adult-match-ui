@@ -116,7 +116,6 @@ export class CnvChartDirective implements OnInit {
                 Q3: parseFloat(max),
                 whisker_low: 0.95 * parseFloat(min),
                 whisker_high: 1.05 * parseFloat(max),
-                // outliers: []
                 outliers: [0.95 * parseFloat(min), parseFloat(median), 1.05 * parseFloat(max)]
               }
             };
@@ -136,11 +135,6 @@ export class CnvChartDirective implements OnInit {
                 right: 20,
                 bottom: 60,
                 left: 40
-              },
-              lines: { // for line chart
-                forceX: [100],
-                xDomain: [0, 5],
-                xRange: [0, 10]
               },
               outliers: function (d: any) {
                 return d.values.outliers;
@@ -164,14 +158,6 @@ export class CnvChartDirective implements OnInit {
                   let color;
 
                   label = d.key;
-
-                  // if (typeof d.data.chr !== 'undefined') {
-                  //   chr = 'CHR: ' + d.data.chr;
-                  // }
-                  // else{
-                  //   chr = '';
-                  // }
-
                   position = 'POS: ' + d.data.values.position;
                   cn = 'CN: ' + d.data.values.cn;
                   color = 'color: white; background-color: ' + d.data.status;
@@ -231,8 +217,7 @@ export class CnvChartDirective implements OnInit {
               yAxis: {
                 tickFormat: function (d: any) {
                   return d3.format(',.0d')(d);
-                },
-                axisLabelDistance: 30
+                }
               },
               callback: function(chart: any) {
                 let height = 370;
@@ -243,7 +228,6 @@ export class CnvChartDirective implements OnInit {
                 let highest: any = null;
                 let spot: any = null;
                 let gene: any = null;
-
                 let lastspot = 0;
 
                 svg = d3.select('#boxplotchart')
@@ -357,17 +341,6 @@ export class CnvChartDirective implements OnInit {
                   .style('stroke-width', 0.5)
                   .style('stroke-linecap', 'line');
               },
-
-              // title: {
-              //   enable: function () { return true },
-              //   text: function () { return "Write Your Title" },
-              //   className: "h4",
-              //   css: {
-              //     width: "200 px",
-              //     textAlign: "center"
-              //   }
-              // },
-              maxBoxWidth: 0.01,
               yDomain: [0, 10]
             }
           }
