@@ -24,7 +24,7 @@ class DataResolver implements Resolve<any> {
   ): Observable<any> | Promise<any> | any {
     return Observable.forkJoin(
       this.api.getBiopsyCount(''),
-      this.api.getBiopsyTracking(1, 10, 'asc', 'biopsies.mdAndersonMessages.biopsySequenceNumber', ''),
+      this.api.getBiopsyTracking(1, 10, 'asc', 'biopsySequenceNumber', ''),
       this.api.getBiopsyTotal()
     ).map(
       data => {
