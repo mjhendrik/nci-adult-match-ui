@@ -1,30 +1,37 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
+import { ColorCodeDirective } from './colorcode.directive';
 
 @Directive({ selector: '[colorCodePatients]' })
-export class ColorCodePatientsDirective implements OnInit {
+export class ColorCodePatientsDirective extends ColorCodeDirective<string> {
 
-    @Input() 'colorCodePatients': string;
-
-    constructor(private el: ElementRef) { }
-
-    ngOnInit() {
-        if (!this.colorCodePatients) {
-            return;
-        }
-
-        if (this.colorCodePatients === 'ON_TREATMENT_ARM') {
-            this.el.nativeElement.classList.add('text-success-light');
-        } else if (this.colorCodePatients.indexOf('REGISTRATION') !== -1) {
-            this.el.nativeElement.classList.add('text-info-light');
-        } else if (this.colorCodePatients === 'COMPASSIONATE_CARE' || this.colorCodePatients.indexOf('PENDING_') !== -1
-            || this.colorCodePatients === 'REJOIN_REQUESTED' || this.colorCodePatients === 'NOT_ELIGIBLE') {
-            this.el.nativeElement.classList.add('text-purple-light');
-        } else if (this.colorCodePatients.indexOf('OFF_TRIAL_') !== -1 || this.colorCodePatients === 'OFF_TRIAL') {
-            this.el.nativeElement.classList.add('text-danger-light');
-        } else if (this.colorCodePatients.indexOf('FORMERLY') !== -1 || this.colorCodePatients.indexOf('PROGRESSION') !== -1) {
-            this.el.nativeElement.classList.add('text-warning-light');
-        }
-
+    @Input() set colorCodePatients(value: string) {
+        this.value = value;
+        this.setColor();
     }
 
+    constructor(protected el: ElementRef) {
+        super(el,
+            [
+                { evaluate: (x) => x === 'ON_TREATMENT_ARM', cssClass: 'text-success-light' },
+                { evaluate: (x) => x && x.indexOf('REGISTRATION') !== -1, cssClass: 'text-info-light' },
+                {
+                    evaluate: (x) => x
+                        && (x === 'COMPASSIONATE_CARE'
+                            || x.indexOf('PENDING_') !== -1
+                            || x === 'REJOIN_REQUESTED'
+                            || x === 'NOT_ELIGIBLE'),
+                    cssClass: 'text-purple-light'
+                },
+                {
+                    evaluate: (x) => x
+                        && (x.indexOf('OFF_TRIAL_') !== -1 || x === 'OFF_TRIAL'),
+                    cssClass: 'text-danger-light'
+                },
+                {
+                    evaluate: (x) => x
+                        && (x.indexOf('FORMERLY') !== -1 || x.indexOf('PROGRESSION') !== -1),
+                    cssClass: 'text-warning-light'
+                },
+            ]);
+    }
 }
