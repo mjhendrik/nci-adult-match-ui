@@ -1,19 +1,20 @@
-import { Directive, ElementRef, Input, OnInit } from '@angular/core';
+import { Directive, ElementRef, Input } from '@angular/core';
+import { ColorCodeDirective } from './colorcode.directive';
 
 @Directive({ selector: '[colorCodeVariantReport]' })
-export class ColorCodeVariantReportDirective implements OnInit {
+export class ColorCodeVariantReportDirective extends ColorCodeDirective<string> {
 
-    @Input() 'colorCodeVariantReport': string;
+    @Input() set colorCodeVariantReport(value: string) {
+        this.value = value;
+        this.setColor();
+    }
 
-    constructor(private el: ElementRef) { }
-
-    ngOnInit() {
-        if (this.colorCodeVariantReport === 'CONFIRMED') {
-            this.el.nativeElement.classList.add('text-success-light');
-        } else if (this.colorCodeVariantReport === 'PENDING') {
-            this.el.nativeElement.classList.add('text-info-light');
-        } else if (this.colorCodeVariantReport === 'REJECTED') {
-            this.el.nativeElement.classList.add('text-danger-light');
-        }
+    constructor(protected el: ElementRef) {
+        super(el,
+            [
+                { evaluate: (x) => x && (x === 'CONFIRMED'), cssClass: 'text-success-light' },
+                { evaluate: (x) => x && (x === 'PENDING'), cssClass: 'text-info-light' },
+                { evaluate: (x) => x && (x === 'REJECTED'), cssClass: 'text-danger-light' },
+            ]);
     }
 }
