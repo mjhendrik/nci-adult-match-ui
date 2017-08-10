@@ -4,6 +4,13 @@ import { By } from '@angular/platform-browser';
 
 import { ColorCodeDaysDirective } from './colorcode-days.directive';
 
+@Component({
+    template: `<span [colorCodeDays]="testStatus">Some Text</span>`
+})
+class TestHostComponent {
+    testStatus?: number;
+}
+
 export function main() {
     describe('ColorCodeDaysDirective', () => {
         let testHost: TestHostComponent;
@@ -69,11 +76,4 @@ export function main() {
             expect(testEl.nativeElement.classList.contains('text-warning-light')).toBe(false);
         });
     });
-}
-
-@Component({
-    template: `<span [colorCodeDays]="testStatus">Some Text</span>`
-})
-class TestHostComponent {
-    testStatus?: number;
 }

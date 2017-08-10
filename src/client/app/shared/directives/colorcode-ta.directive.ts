@@ -1,23 +1,21 @@
-import { Directive, ElementRef, Input, OnInit } from '@angular/core';
+import { Directive, ElementRef, Input } from '@angular/core';
+import { ColorCodeDirective } from './colorcode.directive';
 
 @Directive({ selector: '[colorCodeTa]' })
-export class ColorCodeTaDirective implements OnInit {
+export class ColorCodeTaDirective extends ColorCodeDirective<string> {
 
-    @Input() 'colorCodeTa': string;
-
-    constructor(private el: ElementRef) { }
-
-    ngOnInit() {
-        if (this.colorCodeTa === 'OPEN' || this.colorCodeTa === 'REACTIVATED') {
-            this.el.nativeElement.classList.add('text-success-light');
-        } else if (this.colorCodeTa === 'SUSPENDED') {
-            this.el.nativeElement.classList.add('text-warning-light');
-        } else if (this.colorCodeTa === 'CLOSED' || this.colorCodeTa === 'AMENDED') {
-            this.el.nativeElement.classList.add('text-danger-light');
-        } else if (this.colorCodeTa === 'PENDING' || this.colorCodeTa === 'READY') {
-            this.el.nativeElement.classList.add('text-info-light');
-        }
-
+    @Input() set colorCodeTa(value: string) {
+        this.value = value;
+        this.setColor();
     }
 
+    constructor(protected el: ElementRef) {
+        super(el,
+            [
+                { evaluate: (x) => x && (x === 'OPEN' || x === 'REACTIVATED'), cssClass: 'text-success-light' },
+                { evaluate: (x) => x && (x === 'SUSPENDED'), cssClass: 'text-warning-light' },
+                { evaluate: (x) => x && (x === 'CLOSED' || x === 'AMENDED'), cssClass: 'text-danger-light' },
+                { evaluate: (x) => x && (x === 'PENDING' || x === 'READY'), cssClass: 'text-info-light' },
+            ]);
+    }
 }

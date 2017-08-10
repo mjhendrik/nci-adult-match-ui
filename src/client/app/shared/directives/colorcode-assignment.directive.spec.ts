@@ -4,6 +4,13 @@ import { By } from '@angular/platform-browser';
 
 import { ColorCodeAssignmentDirective } from './colorcode-assignment.directive';
 
+@Component({
+    template: `<span [colorCodeAssignment]="testStatus">Some Text</span>`
+})
+class TestHostComponent {
+    testStatus: string;
+}
+
 export function main() {
     describe('ColorCodeAssignmentDirective', () => {
         let testHost: TestHostComponent;
@@ -61,11 +68,4 @@ export function main() {
             expect(testEl.nativeElement.classList.contains('text-danger-light')).toBe(true);
         });
     });
-}
-
-@Component({
-    template: `<span [colorCodeAssignment]="testStatus">Some Text</span>`
-})
-class TestHostComponent {
-    testStatus: string;
 }

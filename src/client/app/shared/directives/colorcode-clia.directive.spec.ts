@@ -4,6 +4,13 @@ import { By } from '@angular/platform-browser';
 
 import { ColorCodeCliaDirective } from './colorcode-clia.directive';
 
+@Component({
+    template: `<span [colorCodeClia]="testStatus">Some Text</span>`
+})
+class TestHostComponent {
+    testStatus: string;
+}
+
 export function main() {
     describe('ColorCodeCliaDirective', () => {
         let testHost: TestHostComponent;
@@ -53,11 +60,4 @@ export function main() {
             expect(testEl.nativeElement.classList.contains('text-purple-light')).toBe(true);
         });
     });
-}
-
-@Component({
-    template: `<span [colorCodeClia]="testStatus">Some Text</span>`
-})
-class TestHostComponent {
-    testStatus: string;
 }

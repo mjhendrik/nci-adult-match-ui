@@ -4,6 +4,13 @@ import { By } from '@angular/platform-browser';
 
 import { ColorCodePatientsDirective } from './colorcode-patients.directive';
 
+@Component({
+    template: `<span [colorCodePatients]="testStatus">Some Text</span>`
+})
+class TestHostComponent {
+    testStatus: string;
+}
+
 export function main() {
     describe('ColorCodePatientsDirective', () => {
         let testHost: TestHostComponent;
@@ -131,11 +138,4 @@ export function main() {
             expect(testEl.nativeElement.classList.contains('text-warning-light')).toBe(true);
         });
     });
-}
-
-@Component({
-    template: `<span [colorCodePatients]="testStatus">Some Text</span>`
-})
-class TestHostComponent {
-    testStatus: string;
 }

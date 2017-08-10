@@ -4,6 +4,13 @@ import { By } from '@angular/platform-browser';
 
 import { ColorCodeCliaIonDirective } from './colorcode-clia-ion.directive';
 
+@Component({
+    template: `<span [colorCodeCliaIon]="testStatus">Some Text</span>`
+})
+class TestHostComponent {
+    testStatus: string;
+}
+
 export function main() {
     describe('ColorCodeCliaIonDirective', () => {
         let testHost: TestHostComponent;
@@ -42,11 +49,4 @@ export function main() {
             expect(testEl.nativeElement.classList.contains('text-danger-light')).toBe(true);
         });
     });
-}
-
-@Component({
-    template: `<span [colorCodeCliaIon]="testStatus">Some Text</span>`
-})
-class TestHostComponent {
-    testStatus: string;
 }
