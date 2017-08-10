@@ -7,9 +7,6 @@ export class ColorCodeCliaIonDirective extends ColorCodeDirective<string> {
         this.value = value;
         this.setColor();
     }
-    get colorCodeCliaIon(): string {
-        return this.value;
-    }
 
     constructor(protected el: ElementRef) {
         super(el,

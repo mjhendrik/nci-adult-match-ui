@@ -7,9 +7,6 @@ export class ColorCodeAssignmentDirective extends ColorCodeDirective<string> {
         this.value = value;
         this.setColor();
     }
-    get colorCodeAssignment(): string {
-        return this.value;
-    }
 
     constructor(protected el: ElementRef) {
         super(el,

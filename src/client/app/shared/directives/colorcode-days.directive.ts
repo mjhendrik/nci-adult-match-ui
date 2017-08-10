@@ -8,9 +8,6 @@ export class ColorCodeDaysDirective extends ColorCodeDirective<number> {
         this.value = value;
         this.setColor();
     }
-    get colorCodeDays(): number {
-        return this.value;
-    }
 
     constructor(protected el: ElementRef) {
         super(el,
