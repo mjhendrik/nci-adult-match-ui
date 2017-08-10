@@ -13,7 +13,7 @@ export abstract class ColorCodeDirective<T> {
         protected el: ElementRef,
         evaluators: CssClassComparer<T>[],
         private defaultCssClass?: string) {
-        this.evaluators = evaluators || [];
+        this.evaluators = evaluators;
     }
 
     protected resetColor() {
@@ -28,7 +28,7 @@ export abstract class ColorCodeDirective<T> {
     protected setColor() {
         this.resetColor();
 
-        for (const evaluator of this.evaluators) {
+        for (const evaluator of this.evaluators || []) {
             let matches = evaluator.evaluate(this.value);
             if (matches) {
                 this.el.nativeElement.classList.add(evaluator.cssClass);
