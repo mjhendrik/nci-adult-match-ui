@@ -1,13 +1,21 @@
-import { Directive, ElementRef, Input, OnInit } from '@angular/core';
+import { Directive, ElementRef, Input } from '@angular/core';
 
 @Directive({ selector: '[colorCodeClia]' })
-export class ColorCodeCliaDirective implements OnInit {
+export class ColorCodeCliaDirective {
 
-    @Input() 'colorCodeClia': string;
+    private colorCodeCliaValue?: string = null;
+
+    @Input() set colorCodeClia(value: string) {
+        this.colorCodeCliaValue = value;
+        this.setColor();
+    }
+    get colorCodeClia(): string {
+        return this.colorCodeCliaValue;
+    }
 
     constructor(private el: ElementRef) { }
 
-    ngOnInit() {
+    private setColor() {
         if (this.colorCodeClia === 'PASSED') {
             this.el.nativeElement.classList.add('text-success-light');
         } else if (this.colorCodeClia === 'FAILED') {
