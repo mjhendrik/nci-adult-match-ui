@@ -1,9 +1,9 @@
 import { Directive, ElementRef, Input } from '@angular/core';
 
-import { ColorCodeDirective } from './colorcode.directive';
+import { ConditionalCssDirective } from './conditional-css.directive';
 
 @Directive({ selector: '[colorCodeHours]' })
-export class ColorCodeHoursDirective extends ColorCodeDirective<number> {
+export class ColorCodeHoursDirective extends ConditionalCssDirective<number> {
 
     @Input() set colorCodeHours(value: number) {
         this.value = value;

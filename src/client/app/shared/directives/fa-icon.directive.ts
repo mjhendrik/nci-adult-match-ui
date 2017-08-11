@@ -1,21 +1,21 @@
-import { Directive, ElementRef, Input, OnInit } from '@angular/core';
+import { Directive, ElementRef, Input } from '@angular/core';
+
+import { ConditionalCssDirective } from './conditional-css.directive';
 
 @Directive({ selector: '[faIcon]' })
-export class FaIconDirective implements OnInit {
+export class FaIconDirective extends ConditionalCssDirective<string> {
 
-    @Input() 'faIcon': string;
-
-    constructor(private el: ElementRef) { }
-
-    ngOnInit() {
-        if (this.faIcon === 'bar-chart') {
-            this.el.nativeElement.classList.add('fa-bar-chart');
-        } else if (this.faIcon === 'user') {
-            this.el.nativeElement.classList.add('fa-user');
-        } else if (this.faIcon === 'medkit') {
-            this.el.nativeElement.classList.add('fa-medkit');
-        }
-
+    @Input() set faIcon(value: string) {
+        this.value = value;
+        this.setColor();
     }
 
+    constructor(protected el: ElementRef) {
+        super(el,
+            [
+                { evaluate: (x) => x && (x === 'bar-chart'), cssClass: 'fa-bar-chart' },
+                { evaluate: (x) => x && (x === 'user'), cssClass: 'fa-user' },
+                { evaluate: (x) => x && (x === 'medkit'), cssClass: 'fa-medkit' },
+            ]);
+    }
 }

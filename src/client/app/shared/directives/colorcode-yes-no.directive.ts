@@ -1,11 +1,11 @@
 import { Directive, ElementRef, Input } from '@angular/core';
 
-import { ColorCodeDirective } from './colorcode.directive';
+import { ConditionalCssDirective } from './conditional-css.directive';
 
 const yesRegEx = /y|yes|true/i;
 
 @Directive({ selector: '[colorCodeYesNo]' })
-export class ColorCodeYesNoDirective extends ColorCodeDirective<string> {
+export class ColorCodeYesNoDirective extends ConditionalCssDirective<string> {
 
     @Input() set colorCodeYesNo(value: string) {
         this.value = value;
@@ -20,4 +20,3 @@ export class ColorCodeYesNoDirective extends ColorCodeDirective<string> {
             ]);
     }
 }
-

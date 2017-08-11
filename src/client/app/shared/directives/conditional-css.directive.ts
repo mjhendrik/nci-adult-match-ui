@@ -5,7 +5,7 @@ export interface CssClassComparer<T> {
     cssClass: string;
 }
 
-export abstract class ColorCodeDirective<T> {
+export abstract class ConditionalCssDirective<T> {
     protected evaluators: CssClassComparer<T>[] = [];
     protected value?: T;
 
