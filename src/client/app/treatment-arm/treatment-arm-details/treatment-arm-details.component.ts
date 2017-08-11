@@ -136,7 +136,7 @@ export class TreatmentArmDetailsComponent implements OnInit {
     {
       data: [],
       label: 'Off Trial'
-      // FORMERLY_ON_ARM_OFF_TRIAL, FORMERLY_ON_ARM_PROGRESSED, OFF_TRIAL_DECEASED, OFF_TRIAL, PROGRESSION, PROGRESSION_REBIOPSY
+      // FORMERLY_ON_ARM_OFF_TRIAL, FORMERLY_ON_ARM_PROGRESSED, OFF_TRIAL_DECEASED, OFF_TRIAL
     },
     {
       data: [],
@@ -149,7 +149,7 @@ export class TreatmentArmDetailsComponent implements OnInit {
       // PENDING_APPROVAL, PENDING_CONFIRMATION
     }
   ];
-  // NOT_ELIGIBLE, OFF_TRIAL_NOT_CONSENTED
+  // NOT_ELIGIBLE, OFF_TRIAL_NOT_CONSENTED, PROGRESSION, PROGRESSION_REBIOPSY
 
 
 
@@ -178,9 +178,10 @@ export class TreatmentArmDetailsComponent implements OnInit {
     if (this.tableData[this.versionIndex] !== null) {
       let assignmentRecords = this.tableData[this.versionIndex].summaryReport.assignmentRecords;
 
-      this.barChartLabels = assignmentRecords.map((x: any) => {
-        return x.diseases[0].shortName + ' (' + x.diseases[0]._id + ')';
-      });
+      this.barChartLabels = assignmentRecords.filter((x: any) => `FORMERLY_ON_ARM_OFF_TRIAL, FORMERLY_ON_ARM_PROGRESSED, OFF_TRIAL_DECEASED,
+OFF_TRIAL, PENDING_CONFIRMATION, PENDING_APPROVAL, ON_TREATMENT_ARM`.indexOf(x.assignmentStatusOutcome) !== -1).map((x: any) => {
+          return x.diseases[0].shortName + ' (' + x.diseases[0]._id + ')';
+        });
       this.barChartLabels = Array.from(new Set(this.barChartLabels));
 
       let statusArray: any = {};
@@ -200,7 +201,6 @@ export class TreatmentArmDetailsComponent implements OnInit {
       });
 
       let result: any = {};
-
       Object.keys(statusArray).forEach((key: any) => {
         let disease = statusArray[key].split('|||');
         tastatus = 0;
@@ -215,7 +215,7 @@ export class TreatmentArmDetailsComponent implements OnInit {
             } else if ('PENDING_APPROVAL,PENDING_CONFIRMATION'.indexOf(element.assignmentStatusOutcome) !== -1) {
               pendingstatus++;
             } else if (`FORMERLY_ON_ARM_OFF_TRIAL, FORMERLY_ON_ARM_PROGRESSED, OFF_TRIAL_DECEASED, 
-OFF_TRIAL, PROGRESSION, PROGRESSION_REBIOPSY`.indexOf(element.assignmentStatusOutcome) !== -1) {
+OFF_TRIAL`.indexOf(element.assignmentStatusOutcome) !== -1) {
               offtrailstatus++;
             }
             result[key] = {
@@ -228,10 +228,14 @@ OFF_TRIAL, PROGRESSION, PROGRESSION_REBIOPSY`.indexOf(element.assignmentStatusOu
       });
 
       Object.keys(result).forEach((key: any) => {
-        this.barChartData[0].data.push(10);
-        this.barChartData[1].data.push(result[key].offtrail);
-        this.barChartData[2].data.push(result[key].onta);
-        this.barChartData[3].data.push(result[key].pending);
+        if (result[key].offtrail === 0 && result[key].onta === 0 && result[key].pending === 0) {
+
+        } else {
+          this.barChartData[0].data.push(10);
+          this.barChartData[1].data.push(result[key].offtrail);
+          this.barChartData[2].data.push(result[key].onta);
+          this.barChartData[3].data.push(result[key].pending);
+        }
       });
 
 
