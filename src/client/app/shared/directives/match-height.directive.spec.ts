@@ -48,8 +48,8 @@ export function main() {
         });
 
         it('the second element has the same height as the first element', () => {
-            // testElement.triggerEventHandler('window:resize', null);
-            // fixture.detectChanges();
+            window.dispatchEvent(new Event('resize'));
+            fixture.detectChanges();
             expect(innerElements[1].nativeElement.style.height).toBe('100px');
         });
     });

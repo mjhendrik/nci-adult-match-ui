@@ -21,7 +21,7 @@ export class MatchHeightDirective implements AfterViewChecked {
         this.adjust();
     }
 
-    @HostListener('window:resize')
+    @HostListener('window:resize', ['$event'])
     onResize() {
         this.adjust();
     }
