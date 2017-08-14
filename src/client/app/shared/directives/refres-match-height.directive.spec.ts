@@ -71,12 +71,18 @@ export function main() {
         it('should have dependent directives', () => {
             expect(testElement).toBeDefined();
             expect(innerElements.length).toBe(1);
+            expect(innerElements[0]).toBeDefined();
         });
 
-        xit('the second element has the same height as the first element', () => {
+       xit('click on tab causes MatchHeightDirective to adjust height', () => {
+            // spyOn(fixture.componentInstance.options.chart, 'x').and.callThrough();
+            let innerComponent = innerElements[0].componentInstance;
+            expect(innerComponent).toBeDefined();
+            console.log(innerElements[0]);
+            let spy = spyOn(innerComponent, 'adjust').and.callThrough();
             testElement.triggerEventHandler('click', null);
             fixture.detectChanges();
-            expect(innerElements[1].nativeElement.style.height).toBe('100px');
+            expect(spy).toHaveBeenCalled();
         });
     });
 }
