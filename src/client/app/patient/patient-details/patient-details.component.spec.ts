@@ -24,48 +24,13 @@ import { SharedModule } from '../../shared/shared.module';
 
 export function main() {
   describe('patient-details component', () => {
+    // Setting module for testing
+    // Disable old forms
     let fixture: ComponentFixture<PatientDetailsComponent>;
 
     let config: any[] = [
       { path: 'patients/1234', component: 'PatientDetailsComponent' }
     ];
-
-    beforeEach(async(() => {
-      TestBed.configureTestingModule({
-        imports: [
-          RouterTestingModule.withRoutes(config),
-          DirectivesModule,
-          PipesModule,
-          FormsModule,
-          DataTableModule,
-          PatientTimelineModule,
-          DropzoneModule,
-          SharedModule
-        ],
-        declarations: [PatientDetailsComponent],
-        providers: [
-          { provide: PatientApiService, useClass: MockPatientApiService },
-          { provide: ActivatedRoute, useValue: { snapshot: { params: { patientSequenceNumber: 1234 } } } },
-          ChangeDetectorRef,
-          ViewDataTransformer
-        ]
-      }).compileComponents();
-    }));
-
-    beforeEach(() => {
-      fixture = TestBed.createComponent(PatientDetailsComponent, {
-              set: {
-                templateUrl: ''
-              }
-            });
-      testHost = fixture.componentInstance;
-
-      fixture = TestBed.overrideComponent(PatientDetailsComponent, {
-              set: {
-                templateUrl: ''
-              }
-            })
-    });
 
     beforeEach(() => {
       TestBed.configureTestingModule({
@@ -94,7 +59,7 @@ export function main() {
     //     TestBed
     //       .compileComponents()
     //       .then(() => {
-    //         let fixture = TestBed.overrideComponent(PatientDetailsComponent, {
+    //         fixture = TestBed.overrideComponent(PatientDetailsComponent, {
     //           set: {
     //             templateUrl: ''
     //           }
@@ -108,7 +73,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(PatientDetailsComponent, {
+            fixture = TestBed.overrideComponent(PatientDetailsComponent, {
               set: {
                 templateUrl: ''
               }
@@ -122,7 +87,7 @@ export function main() {
     //     TestBed
     //       .compileComponents()
     //       .then(() => {
-    //         let fixture = TestBed.overrideComponent(PatientDetailsComponent, {
+    //         fixture = TestBed.overrideComponent(PatientDetailsComponent, {
     //           set: {
     //             templateUrl: ''
     //           }
@@ -136,11 +101,12 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(PatientDetailsComponent, {
+            fixture = TestBed.overrideComponent(PatientDetailsComponent, {
               set: {
                 templateUrl: ''
               }
             }).createComponent(PatientDetailsComponent);
+
             fixture.componentInstance.configVariantZip = {};
             fixture.componentInstance.configDnaBam = {};
             fixture.componentInstance.configCdnaBam = {};
@@ -154,7 +120,7 @@ export function main() {
     //     TestBed
     //       .compileComponents()
     //       .then(() => {
-    //         let fixture = TestBed.overrideComponent(PatientDetailsComponent, {
+    //         fixture = TestBed.overrideComponent(PatientDetailsComponent, {
     //           set: {
     //             templateUrl: ''
     //           }
@@ -168,7 +134,7 @@ export function main() {
     //     TestBed
     //       .compileComponents()
     //       .then(() => {
-    //         let fixture = TestBed.overrideComponent(PatientDetailsComponent, {
+    //         fixture = TestBed.overrideComponent(PatientDetailsComponent, {
     //           set: {
     //             templateUrl: ''
     //           }
@@ -182,7 +148,7 @@ export function main() {
     //     TestBed
     //       .compileComponents()
     //       .then(() => {
-    //         let fixture = TestBed.overrideComponent(PatientDetailsComponent, {
+    //         fixture = TestBed.overrideComponent(PatientDetailsComponent, {
     //           set: {
     //             templateUrl: ''
     //           }
@@ -196,7 +162,7 @@ export function main() {
     //     TestBed
     //       .compileComponents()
     //       .then(() => {
-    //         let fixture = TestBed.overrideComponent(PatientDetailsComponent, {
+    //         fixture = TestBed.overrideComponent(PatientDetailsComponent, {
     //           set: {
     //             templateUrl: ''
     //           }
@@ -210,7 +176,7 @@ export function main() {
     //       TestBed
     //         .compileComponents()
     //         .then(() => {
-    //           let fixture = TestBed.overrideComponent(PatientDetailsComponent, {
+    //           fixture = TestBed.overrideComponent(PatientDetailsComponent, {
     //             set: {
     //               templateUrl: ''
     //             }
@@ -224,7 +190,7 @@ export function main() {
     //       TestBed
     //         .compileComponents()
     //         .then(() => {
-    //           let fixture = TestBed.overrideComponent(PatientDetailsComponent, {
+    //           fixture = TestBed.overrideComponent(PatientDetailsComponent, {
     //             set: {
     //               templateUrl: ''
     //             }
@@ -238,7 +204,7 @@ export function main() {
     //       TestBed
     //         .compileComponents()
     //         .then(() => {
-    //           let fixture = TestBed.overrideComponent(PatientDetailsComponent, {
+    //           fixture = TestBed.overrideComponent(PatientDetailsComponent, {
     //             set: {
     //               templateUrl: ''
     //             }
@@ -252,7 +218,7 @@ export function main() {
     //       TestBed
     //         .compileComponents()
     //         .then(() => {
-    //           let fixture = TestBed.overrideComponent(PatientDetailsComponent, {
+    //           fixture = TestBed.overrideComponent(PatientDetailsComponent, {
     //             set: {
     //               templateUrl: ''
     //             }
@@ -266,7 +232,7 @@ export function main() {
     //       TestBed
     //         .compileComponents()
     //         .then(() => {
-    //           let fixture = TestBed.overrideComponent(PatientDetailsComponent, {
+    //           fixture = TestBed.overrideComponent(PatientDetailsComponent, {
     //             set: {
     //               templateUrl: ''
     //             }
@@ -312,7 +278,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(PatientDetailsComponent, {
+            fixture = TestBed.overrideComponent(PatientDetailsComponent, {
               set: {
                 templateUrl: ''
               }
@@ -325,6 +291,7 @@ export function main() {
 
 
 class MockPatientApiServiceError {
+
   getPatientDetails(): Observable<any> {
     return Observable.throw("error");
   }
