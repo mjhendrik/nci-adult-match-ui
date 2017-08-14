@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { FilterByTextPipe } from './filterpipe.pipe';
+import { FilterByTextPipe } from './filter-by-text.pipe';
 import { DashifyPipe } from './dashify.pipe';
 import { GmtPipe } from './gmt.pipe';
 import { KeysPipe } from './keys.pipe';
