@@ -50,6 +50,7 @@ docs
 lib
 test
 tmp
+local_db/
 
 gulpfile.js
 gulpfile.js.map
