@@ -1,15 +1,17 @@
 import {
   Component,
-  ChangeDetectorRef
+  ChangeDetectorRef,
+  Injectable
 } from '@angular/core';
 import {
   async,
   TestBed,
   ComponentFixture
 } from '@angular/core/testing';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, convertToParamMap, ParamMap } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { RouterTestingModule } from '@angular/router/testing';
 import { DropzoneModule } from 'ngx-dropzone-wrapper';
 
@@ -21,6 +23,28 @@ import { PatientApiService } from './../patient-api.service';
 import { ViewDataTransformer } from './../view-data-transformer.service';
 import { PatientTimelineModule } from './../patient-timeline/patient-timeline.module';
 import { SharedModule } from '../../shared/shared.module';
+
+@Injectable()
+export class ActivatedRouteStub {
+
+  // ActivatedRoute.paramMap is Observable
+  private subject = new BehaviorSubject(convertToParamMap(this.testParamMap));
+  // tslint:disable-next-line:member-ordering
+  paramMap = this.subject.asObservable();
+
+  // Test parameters
+  private _testParamMap: ParamMap;
+  get testParamMap() { return this._testParamMap; }
+  set testParamMap(params: {}) {
+    this._testParamMap = convertToParamMap(params);
+    this.subject.next(this._testParamMap);
+  }
+
+  // ActivatedRoute.snapshot.paramMap
+  get snapshot() {
+    return { paramMap: this.testParamMap };
+  }
+}
 
 export function main() {
   describe('patient-details component', () => {
@@ -75,19 +99,28 @@ export function main() {
           });
       }));
 
-    // it('should work for ngoninit',
-    //   async(() => {
-    //     TestBed
-    //       .compileComponents()
-    //       .then(() => {
-    //         fixture = TestBed.overrideComponent(PatientDetailsComponent, {
-    //           set: {
-    //             templateUrl: ''
-    //           }
-    //         }).createComponent(PatientDetailsComponent);
-    //         fixture.componentInstance.ngOnInit();
-    //       });
-    //   }));
+    xit('should work for ngoninit',
+      async(() => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            fixture = TestBed.overrideComponent(PatientDetailsComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(PatientDetailsComponent);
+
+            component = fixture.componentInstance;
+
+            component.ngOnInit();
+
+            expect(component.configVariantZip).toBeDefined();
+            expect(component.configDnaBam).toBeDefined();
+            expect(component.configCdnaBam).toBeDefined();
+            expect(component.configDocuments).toBeDefined();
+
+          });
+      }));
 
     it('should work for onUploadSuccess',
       async(() => {
@@ -267,7 +300,7 @@ export function main() {
   describe('patient-details component with error', () => {
     let fixture: ComponentFixture<PatientDetailsComponent>;
     let component: PatientDetailsComponent;
-  
+
     let config: any[] = [
       { path: 'patients/1234', component: 'PatientDetailsComponent' }
     ];
