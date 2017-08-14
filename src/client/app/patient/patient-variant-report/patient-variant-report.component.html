@@ -7,7 +7,7 @@
   </ul>
   <h1 class="page-header">Variant and Assignment Report</h1>
   <div class="row" matchHeight="panel-height-top">
-    <div class="col-md-6">
+    <div class="col-md-6" id="variant-report-tile">
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-top">
         <div class="panel-heading">
           <div class="row">
@@ -60,7 +60,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6" id="latest-assignment-tile">
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-top">
         <div class="panel-heading" *ngIf="!assignmentReport">
           <h4>Latest Assignment</h4>
@@ -101,7 +101,7 @@
   </div>
 
   <div class="row" matchHeight="panel-height-middle">
-    <div class="col-md-6 panel-height-middle">
+    <div class="col-md-6 panel-height-middle" id="assays-tile">
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-middle">
         <div class="panel-heading">
           <dl class="dl-horizontal">
@@ -152,7 +152,7 @@
       </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-6" id="cnv-chart-tile">
         <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-middle">
           <div class="panel-heading">
             <cnv-chart [data]="parsed_vcf_genes"></cnv-chart>
@@ -191,7 +191,7 @@
     </div>
   </div>
 
-  <div *ngIf="assignmentHistory && assignmentHistory.length > 1" class="panel panel-white panel-accent-sides-purple overflow-hidden">
+  <div *ngIf="assignmentHistory && assignmentHistory.length > 1" id="assignment-history" class="panel panel-white panel-accent-sides-purple overflow-hidden">
     <div class="panel-heading">
       <div class="row">
         <div class="col-md-12">
