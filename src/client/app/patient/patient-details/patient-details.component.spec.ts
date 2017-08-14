@@ -24,9 +24,8 @@ import { SharedModule } from '../../shared/shared.module';
 
 export function main() {
   describe('patient-details component', () => {
-    // Setting module for testing
-    // Disable old forms
     let fixture: ComponentFixture<PatientDetailsComponent>;
+    let component: PatientDetailsComponent;
 
     let config: any[] = [
       { path: 'patients/1234', component: 'PatientDetailsComponent' }
@@ -53,6 +52,28 @@ export function main() {
         ]
       });
     });
+
+    it('should work for download',
+      async(() => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            fixture = TestBed.overrideComponent(PatientDetailsComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(PatientDetailsComponent);
+
+            component = fixture.componentInstance;
+            let api = fixture.debugElement.injector.get(PatientApiService);
+
+            let spy = spyOn(api, 'downloadPatientFile').and.callFake(() => { });
+
+            component.download('fake_url')
+
+            expect(spy).toHaveBeenCalled();
+          });
+      }));
 
     // it('should work for ngoninit',
     //   async(() => {
@@ -244,9 +265,9 @@ export function main() {
   });
 
   describe('patient-details component with error', () => {
-    // Setting module for testing
-    // Disable old forms
-
+    let fixture: ComponentFixture<PatientDetailsComponent>;
+    let component: PatientDetailsComponent;
+  
     let config: any[] = [
       { path: 'patients/1234', component: 'PatientDetailsComponent' }
     ];
@@ -665,5 +686,9 @@ class MockPatientApiService {
       }
     ]
     return Observable.of(testdata);
+  }
+
+  downloadPatientFile(psn: string, url: string): void {
+    ;
   }
 }
