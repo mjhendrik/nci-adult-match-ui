@@ -30,12 +30,12 @@ class DataResolver implements Resolve<VariantReportComparisonData> {
     const analysisId: string = route.params.analysisId;
 
     return Observable.forkJoin(
-      this.api.getPatientDetails(psn),
+      this.api.getOutsideAssayComparisonVariantReport(psn),
       this.api.getPatientCopyNumberReport(psn, analysisId),
       this.api.getPatientVariantReportOcp(psn, analysisId)
     ).map(
       data => {
-        // getPatientDetails => data[0]
+        // getOutsideAssayComparisonVariantReport => data[0]
         // getPatientCopyNumberReport => data[1]
         // getPatientVariantReportOcp => data[2]
 

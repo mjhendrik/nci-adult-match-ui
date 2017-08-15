@@ -144,16 +144,14 @@ export class ViewDataTransformer {
       analysis.variantReporterFileReceivedDate = message.dateReceived;
       analysis.variantReporterRejectedOrConfirmedDate = message.dateVerified;
 
-      if (!message.ionReporterResults.variantReport && !message.comparisonVariantReport) {
-        console.warn('No ionReporterResults.variantReport or comparisonVariantReport found in the nextGenerationSequences item');
+      if (!message.ionReporterResults.variantReport) {
+        console.warn('No ionReporterResults.variantReport found in the nextGenerationSequences item');
         continue;
       }
 
       transformedPatient.analyses = transformedPatient.analyses || {};
 
-      let variantReport = transformedBiopsy.isOutsideAssay
-        ? message.comparisonVariantReport
-        : message.ionReporterResults.variantReport;
+      let variantReport = message.ionReporterResults.variantReport;
 
       analysis.variantReport = variantReport;
       variantReport.isOutsideAssay = transformedBiopsy.isOutsideAssay;
