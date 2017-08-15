@@ -81,6 +81,14 @@ export class PatientApiService {
       .catch(this.handleError);
   }
 
+  getOutsideAssayComparisonVariantReport(psn: string, analysisId: string): Observable<any> {
+    return this.http.get(this.url('/patients/' + psn + '/outside_assay/comparison_variant_report',
+      'assets/mock-data/patient.OA5.comparison-variant-report.json'))
+      .map((res: Response) => res.json())
+      //              .do(data => console.log('server data:', data))  // debug
+      .catch(this.handleError);
+  }
+
   getPatientVariantReportQc(psn: string, analysisId: string): Observable<any> {
     return this.http.get(this.url('/patients/' + psn + '/variant_reports/' + analysisId + '/quality_control_report',
       'assets/mock-data/qcvr-MSN3053_v1_e3d4df31-9785-40ff-8001-985297a3240e.json'))
