@@ -44,23 +44,42 @@ export function main() {
               }
             }).createComponent(CnvChartDirective);
 
-            fixture.componentInstance.data = [ { 'values' : [
-              1.916932,
-              1.937298,
-              1.954991,
-              1.975595,
-              2.000843,
-              2.01052,
-              2.05,
-              2.090255,
-              2.100364,
-              2.127207,
-              2.149627,
-              2.169258,
-              2.192305
-            ] }, 'tmp/ChartTitle'];
+            fixture.componentInstance.data = [ {
+              // 'x':'70',
+              // 'label':'AR',
+              // 'status':'#CD0000',
+              // 'chr':'chrX',
+              'values' :
+                [{'position':'66773856',
+                    'cn':'0.92',
+                    'Q1':'0.781879',
+                    'Q2':'0.92',
+                    'Q3':'1.032146',
+                    'whisker_low':'0.74278505',
+                    'whisker_high':'1.0837533000000001',
+                    'outliers':['0.74278505','0.92','1.0837533000000001']
+                  }]
+            }, 'tmp/ChartTitle'];
 
-            fixture.componentInstance.cnvdata = [{"x":"values","status":"#CD0000","values":{"Q1":2.0,"Q2":1.5,"Q3":1.8,"whisker_low":1.3,"whisker_high":2.1,"outliers":[2.1,1.8,1.3]}}];
+            fixture.componentInstance.cnvdata  = [
+              { 'x':'70',
+                'label':'AR',
+                'status':'#CD0000',
+                'chr':'chrX',
+                'values':
+                {'position':'66773856',
+                  'cn':'0.92',
+                  'Q1':'0.781879',
+                  'Q2':'0.92',
+                  'Q3':'1.032146',
+                  'whisker_low':'0.74278505',
+                  'whisker_high':'1.0837533000000001',
+                  'outliers':['0.74278505','0.92','1.0837533000000001']
+                }
+              }
+            ];
+
+            // fixture.componentInstance.cnvdata = [{"x":"values","status":"#CD0000","values":{"Q1":2.0,"Q2":1.5,"Q3":1.8,"whisker_low":1.3,"whisker_high":2.1,"outliers":[2.1,1.8,1.3]}}];
             fixture.componentInstance.ngOnInit();
           });
       }));
@@ -89,6 +108,7 @@ export function main() {
   chart: any;
   x: any;
   data: any;
+  cnvdata: any;
   app: any;
   modal:any;
   allOptions:any;
@@ -106,7 +126,6 @@ export function main() {
       this.chart = allOptions['boxPlotChart'].chart;
       this.x = this.chart.x;
       this.outliers = this.chart.outliers;
-
     }
   }
 
@@ -119,6 +138,7 @@ export function main() {
     let outliers: any;
     let options: any;
     let data: {};
+    let cnvdata: any;
     let svg: any;
     let nvd3: any;
     let h1 : any;
@@ -128,6 +148,10 @@ export function main() {
     let Xx: any;
     let de: DebugElement;
     let el: HTMLElement;
+
+
+
+    // require('angular-mocks/ngMock');
 
     const chartTypes = [
       'boxPlotChart'
@@ -171,7 +195,7 @@ export function main() {
           }
         };
 
-        let svg: any = [
+        let cnvdata: any = [
           {"x":"0","label":"MYCL","status":"#CD0000","chr":"chr1","values":{"position":"40361592","cn":"1.86","Q1":1.595531,"Q2":1.86,"Q3":2.073049,"whisker_low":1.51575445,"whisker_high":2.1767014500000004,"outliers":[1.51575445,1.86,2.1767014500000004]}},
           {"x":"1","label":"BCL9","status":"#CD0000","chr":"chr1","values":{"position":"147022100","cn":"1.74","Q1":1.492594,"Q2":1.74,"Q3":1.939304,"whisker_low":1.4179643,"whisker_high":2.0362692,"outliers":[1.4179643,1.74,2.0362692]}}];
 
@@ -184,15 +208,45 @@ export function main() {
 
         expect(outliers).toBeDefined();
 
-        let runner = {
-          infunction: spyOn(fixture.componentInstance.options.chart, 'outliers')
-            .and.returnValue(d.values.outliers)
-        };
+        fixture.componentInstance.cnvdata  =
+          { "x":"70",
+            "label":"AR",
+            "status":"#CD0000",
+            "chr":"chrX",
+            "values":
+            {"position":"66773856",
+              "cn":"0.92",
+              "Q1":"0.781879",
+              "Q2":"0.92",
+              "Q3":"1.032146",
+              "whisker_low":"0.74278505",
+              "whisker_high":"1.0837533000000001",
+              "outliers":["0.74278505","0.92","1.0837533000000001"]
+            }
+          }
+        ;
+        // let runner = {
+        //   infunction: spyOn(fixture.componentInstance.options.chart, 'outliers')
+        //     .and.returnValue(d.values.outliers)
+        // };
+        // fixture.detectChanges();
+        // expect(runner.infunction).toHaveBeenCalled();
+        // let temp:any = fixture.componentInstance.options.chart.outliers(d);
 
-        fixture.detectChanges();
-        expect(runner.infunction).toHaveBeenCalled();
-        let temp:any = fixture.componentInstance.options.chart.outliers(d);
-        expect(temp).toEqual([ 2.1, 1.8, 1.3 ]);
+
+        let tmp:any = fixture.componentInstance.options.chart;
+        spyOn(tmp, 'outliers').and.returnValue(Observable.of(d.values.outliers));
+        let val = tmp.outliers(d);
+
+
+        console.log("VAL--> " + JSON.stringify(val))
+
+
+
+
+        // console.log("--> " + temp.json())
+
+        // expect(temp).toEqual([ 2.1, 1.8, 1.3 ]);
         fixture.detectChanges();
 
         expect(fixture.componentInstance.options.chart.outliers).toBeDefined();
@@ -201,6 +255,8 @@ export function main() {
 
         done();
       });
+
+
 
       it('BoxPlot chart type X values should be created correctly', (done) => {
 
@@ -222,6 +278,8 @@ export function main() {
 
         options = main.options;
         data = main.data;
+
+
         spyOn(fixture.componentInstance.options.chart, 'x').and.callThrough();
         fixture.detectChanges();
         expect(fixture.componentInstance.options.chart.x(d)).toEqual("Sample A");
@@ -261,6 +319,7 @@ export function main() {
 
     });
   });
+
 
   class MockOptionsService {
 
@@ -309,12 +368,7 @@ export function main() {
         }
       };
 
-
       let jsonObj: any = Observable.of(allOptions).map(allOptions => allOptions.json());
-
-      console.log("OBSERVE--> " + JSON.stringify(jsonObj))
-
-      // return Observable.of(new Object()).mapTo(allOptions);
       return jsonObj;
     }
   }
@@ -341,9 +395,7 @@ export function main() {
             xDomain: [0, 5],
             xRange: [0, 10]
           },
-          outliers: function (d:any) {
-            return d.values.outliers;
-          },
+          outliers: function (d:any) {return d.values.outliers;},
           x: function (d:any) {
             return d.label;
           },
@@ -515,7 +567,6 @@ export function main() {
       }
 
     };
-// }]
 
   const allData = {
     boxPlotChart: [
@@ -548,12 +599,6 @@ class MockPatientOptionsServiceError {
     return Observable.throw("error");
   }
 }
-
-// class MockOptions {
-//   getOptions(): Observable<any> {
-//     return allOptions;
-//   }
-// }
 
 class MockPatientApiService {
   getData():Observable<any> {
