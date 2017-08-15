@@ -120,9 +120,12 @@ export class CnvChartDirective implements OnInit {
         temp.push(Object);
 
       });
-
-      this.cnvdata = temp;
-          // let genes: any[] = [];
+    let colors: any[] = [];
+    //COLORS
+    Object.keys(temp).forEach((key: any) => {
+      colors.push(temp[key].status);
+    });
+    this.cnvdata = temp;
 
     let id:any = function () {return 'boxplotchart';};
     let type:any = function () {return 'boxPlotChart';};
@@ -131,12 +134,13 @@ export class CnvChartDirective implements OnInit {
     let showLabels:any = function () {return true;};
     let showXAxis:any = function () {return true;};
     let xAxis:any = function () {return {rotateLabels: -45, fontSize: 10}};
-    let color = function () {return ["Green", "#c70505"];};
+    let color = function () {return colors;};
     let callback:any = function () {return true;};
 
     this.options = {
       chart : {
 
+        color: color(),
         id: id(),
         type: type(),
         height: height(),
@@ -144,7 +148,6 @@ export class CnvChartDirective implements OnInit {
         showLabels: showLabels(),
         showXAxis: showXAxis(),
         xAxis: xAxis(),
-        color: color(),
         callback: callback()
 
       }
