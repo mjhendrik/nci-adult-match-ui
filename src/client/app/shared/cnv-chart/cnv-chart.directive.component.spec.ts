@@ -225,28 +225,9 @@ export function main() {
             }
           }
         ;
-        // let runner = {
-        //   infunction: spyOn(fixture.componentInstance.options.chart, 'outliers')
-        //     .and.returnValue(d.values.outliers)
-        // };
-        // fixture.detectChanges();
-        // expect(runner.infunction).toHaveBeenCalled();
-        // let temp:any = fixture.componentInstance.options.chart.outliers(d);
-
-
         let tmp:any = fixture.componentInstance.options.chart;
-        spyOn(tmp, 'outliers').and.returnValue(Observable.of(d.values.outliers));
+        spyOn(tmp, 'outliers').and.returnValue(d.values.outliers);
         let val = tmp.outliers(d);
-
-
-        console.log("VAL--> " + JSON.stringify(val))
-
-
-
-
-        // console.log("--> " + temp.json())
-
-        // expect(temp).toEqual([ 2.1, 1.8, 1.3 ]);
         fixture.detectChanges();
 
         expect(fixture.componentInstance.options.chart.outliers).toBeDefined();
@@ -368,8 +349,7 @@ export function main() {
         }
       };
 
-      let jsonObj: any = Observable.of(allOptions).map(allOptions => allOptions.json());
-      return jsonObj;
+      return allOptions;
     }
   }
 
@@ -399,16 +379,6 @@ export function main() {
           x: function (d:any) {
             return d.label;
           },
-          // xAxis: {
-          //   itemColor: function () {
-          //     return this.color;
-          //   },
-          //   tickValues: function (d:any) {
-          //     return d3.format(',.0d')(d);
-          //   },
-          //   fontSize: 10
-          // },
-
           xAxis: {
             itemColor: function () {
               return this.color;
@@ -620,7 +590,7 @@ class MockPatientApiService {
       2.192305
     ] }
     , 'ChartTestTitle']
-    return Observable.of(testdata);
+    return testdata;
   }
 }
 
@@ -645,6 +615,6 @@ class MockPatientOptionsService {
 
       ];
 
-    return Observable.of(testoptions);
+    return testoptions;
   }
 }
