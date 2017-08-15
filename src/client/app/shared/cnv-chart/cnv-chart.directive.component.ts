@@ -82,47 +82,47 @@ export class CnvChartDirective implements OnInit {
   }
   getData() {
 
-          let array = this.data[0];
+      let array = this.data[0];
+      if(typeof this.data[1] !== 'undefined') {
+        this.file_name = this.data[1].split('tmp/')[1];
+      }
+      let temp: any[] = [];
+      let svg: any;
 
-          if(typeof this.data[1] !== 'undefined') {
-            this.file_name = this.data[1].split('tmp/')[1];
+      Object.keys(array).forEach((key: any) => {
+
+        let gene = array[key].gene;
+        let values = array[key].values;
+        let median = array[key].raw_copy_number;
+        let position = array[key].position;
+        let chromosome = array[key].chromosome;
+        let status = !array[key].tsg_gene ? '#CD0000' : 'Green';
+
+        let min = values[0];
+        let max = values[10];
+
+        let Object = {
+          x: key,
+          label: gene,
+          status: status,
+          chr: chromosome,
+          values: {
+            position: position,
+            cn: median,
+            Q1: parseFloat(min).toFixed(2),
+            Q2: parseFloat(median).toFixed(2),
+            Q3: parseFloat(max).toFixed(2),
+            whisker_low: (0.95 * parseFloat(min)).toFixed(2),
+            whisker_high: (1.05 * parseFloat(max)).toFixed(2),
+            outliers: [(0.95 * parseFloat(min)).toFixed(2), parseFloat(median).toFixed(2), (1.05 * parseFloat(max)).toFixed(2)]
           }
-          let temp: any[] = [];
-          let svg: any;
-          Object.keys(array).forEach((key: any) => {
+        };
+        temp.push(Object);
 
-            let gene = array[key].gene;
-            let values = array[key].values;
-            let median = array[key].raw_copy_number;
-            let position = array[key].position;
-            let chromosome = array[key].chromosome;
-            let status = !array[key].tsg_gene ? '#CD0000' : 'Green';
+      });
 
-            let min = values[0];
-            let max = values[10];
-
-            let Object = {
-              x: key,
-              label: gene,
-              status: status,
-              chr: chromosome,
-              values: {
-                position: position,
-                cn: median,
-                Q1: parseFloat(min),
-                Q2: parseFloat(median),
-                Q3: parseFloat(max),
-                whisker_low: 0.95 * parseFloat(min),
-                whisker_high: 1.05 * parseFloat(max),
-                outliers: [0.95 * parseFloat(min), parseFloat(median), 1.05 * parseFloat(max)]
-              }
-            };
-            temp.push(Object);
-          });
-
-          this.cnvdata = temp;
-
-          let genes: any[] = [];
+      this.cnvdata = temp;
+          // let genes: any[] = [];
 
     let id:any = function () {return 'boxplotchart';};
     let type:any = function () {return 'boxPlotChart';};
@@ -131,7 +131,7 @@ export class CnvChartDirective implements OnInit {
     let showLabels:any = function () {return true;};
     let showXAxis:any = function () {return true;};
     let xAxis:any = function () {return {rotateLabels: -45, fontSize: 10}};
-    let color:any = function () {return ["Green", "#c70505"];};
+    let color = function () {return ["Green", "#c70505"];};
     let callback:any = function () {return true;};
 
     this.options = {
@@ -146,7 +146,9 @@ export class CnvChartDirective implements OnInit {
         xAxis: xAxis(),
         color: color(),
         callback: callback()
-    }
-  };
+
+      }
+    };
+
   }
 }
