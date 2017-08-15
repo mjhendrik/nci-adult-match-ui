@@ -8,7 +8,7 @@ import {
   TestBed,
   ComponentFixture
 } from '@angular/core/testing';
-import { ActivatedRoute, convertToParamMap, ParamMap, ActivatedRouteSnapshot } from '@angular/router';
+import { ActivatedRoute, convertToParamMap, ParamMap, ActivatedRouteSnapshot, Data } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -48,7 +48,12 @@ export class ActivatedRouteStub {
 
   constructor() {
     this.actvatedSnapshot = new ActivatedRouteSnapshot();
+    this.actvatedSnapshot.data = {};
     this.actvatedSnapshot.data['data'] = {};
+  }
+
+  toString(): string {
+    return "ActivatedRouteStub";
   }
 }
 
@@ -77,7 +82,7 @@ export function main() {
         providers: [
           { provide: ActivatedRoute, useClass: ActivatedRouteStub },
           { provide: PatientApiService, useClass: PatientApiServiceStub },
-          { provide: ActivatedRoute, useValue: { snapshot: { params: { patientSequenceNumber: 1234 } } } },
+          // { provide: ActivatedRoute, useValue: { snapshot: { params: { patientSequenceNumber: 1234 } } } },
           ChangeDetectorRef,
           ViewDataTransformer
         ]
@@ -107,7 +112,7 @@ export function main() {
       }));
 
 
-    fit('should work for ngoninit',
+    it('should work for ngoninit',
       async(() => {
         TestBed
           .compileComponents()
@@ -596,3 +601,7 @@ class PatientApiServiceStub {
     return Observable.of(testdata);
   }
 
+  downloadPatientFile(psn: string, url: string): void {
+    ;
+  }
+}
