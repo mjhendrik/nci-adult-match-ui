@@ -8,7 +8,7 @@ import {
   TestBed,
   ComponentFixture
 } from '@angular/core/testing';
-import { ActivatedRoute, convertToParamMap, ParamMap } from '@angular/router';
+import { ActivatedRoute, convertToParamMap, ParamMap, ActivatedRouteSnapshot } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -26,7 +26,6 @@ import { SharedModule } from '../../shared/shared.module';
 
 @Injectable()
 export class ActivatedRouteStub {
-
   // ActivatedRoute.paramMap is Observable
   private subject = new BehaviorSubject(convertToParamMap(this.testParamMap));
   // tslint:disable-next-line:member-ordering
@@ -40,9 +39,16 @@ export class ActivatedRouteStub {
     this.subject.next(this._testParamMap);
   }
 
+  private actvatedSnapshot: ActivatedRouteSnapshot;
+
   // ActivatedRoute.snapshot.paramMap
-  get snapshot() {
-    return { paramMap: this.testParamMap };
+  get snapshot(): ActivatedRouteSnapshot {
+    return this.actvatedSnapshot;
+  }
+
+  constructor() {
+    this.actvatedSnapshot = new ActivatedRouteSnapshot();
+    this.actvatedSnapshot.data['data'] = {};
   }
 }
 
@@ -69,7 +75,8 @@ export function main() {
         ],
         declarations: [PatientDetailsComponent],
         providers: [
-          { provide: PatientApiService, useClass: MockPatientApiService },
+          { provide: ActivatedRoute, useClass: ActivatedRouteStub },
+          { provide: PatientApiService, useClass: PatientApiServiceStub },
           { provide: ActivatedRoute, useValue: { snapshot: { params: { patientSequenceNumber: 1234 } } } },
           ChangeDetectorRef,
           ViewDataTransformer
@@ -99,7 +106,8 @@ export function main() {
           });
       }));
 
-    xit('should work for ngoninit',
+
+    fit('should work for ngoninit',
       async(() => {
         TestBed
           .compileComponents()
@@ -136,20 +144,6 @@ export function main() {
           });
       }));
 
-    // it('should work for onUploadError',
-    //   async(() => {
-    //     TestBed
-    //       .compileComponents()
-    //       .then(() => {
-    //         fixture = TestBed.overrideComponent(PatientDetailsComponent, {
-    //           set: {
-    //             templateUrl: ''
-    //           }
-    //         }).createComponent(PatientDetailsComponent);
-    //         fixture.componentInstance.onUploadError("test");
-    //       });
-    //   }));
-
     it('should work for uploadFiles',
       async(() => {
         TestBed
@@ -168,133 +162,6 @@ export function main() {
             fixture.componentInstance.uploadFiles();
           });
       }));
-
-    // it('should work for addedFileVariantZip',
-    //   async(() => {
-    //     TestBed
-    //       .compileComponents()
-    //       .then(() => {
-    //         fixture = TestBed.overrideComponent(PatientDetailsComponent, {
-    //           set: {
-    //             templateUrl: ''
-    //           }
-    //         }).createComponent(PatientDetailsComponent);
-    //         fixture.componentInstance.addedFileVariantZip("");
-    //       });
-    //   }));
-
-    // it('should work for removedFileVariantZip',
-    //   async(() => {
-    //     TestBed
-    //       .compileComponents()
-    //       .then(() => {
-    //         fixture = TestBed.overrideComponent(PatientDetailsComponent, {
-    //           set: {
-    //             templateUrl: ''
-    //           }
-    //         }).createComponent(PatientDetailsComponent);
-    //         fixture.componentInstance.removedFileVariantZip();
-    //       });
-    //   }));
-
-    // it('should work for addedFileDnaBam',
-    //   async(() => {
-    //     TestBed
-    //       .compileComponents()
-    //       .then(() => {
-    //         fixture = TestBed.overrideComponent(PatientDetailsComponent, {
-    //           set: {
-    //             templateUrl: ''
-    //           }
-    //         }).createComponent(PatientDetailsComponent);
-    //         fixture.componentInstance.addedFileDnaBam("");
-    //       });
-    //   }));
-
-    // it('should work for removedFileDnaBam',
-    //   async(() => {
-    //     TestBed
-    //       .compileComponents()
-    //       .then(() => {
-    //         fixture = TestBed.overrideComponent(PatientDetailsComponent, {
-    //           set: {
-    //             templateUrl: ''
-    //           }
-    //         }).createComponent(PatientDetailsComponent);
-    //         fixture.componentInstance.removedFileDnaBam();
-    //       });
-    //   }));
-
-    //   it('should work for addedFileCdnaBam',
-    //     async(() => {
-    //       TestBed
-    //         .compileComponents()
-    //         .then(() => {
-    //           fixture = TestBed.overrideComponent(PatientDetailsComponent, {
-    //             set: {
-    //               templateUrl: ''
-    //             }
-    //           }).createComponent(PatientDetailsComponent);
-    //           fixture.componentInstance.addedFileCdnaBam("");
-    //         });
-    //     }));
-
-    //   it('should work for removedFileCdnaBam',
-    //     async(() => {
-    //       TestBed
-    //         .compileComponents()
-    //         .then(() => {
-    //           fixture = TestBed.overrideComponent(PatientDetailsComponent, {
-    //             set: {
-    //               templateUrl: ''
-    //             }
-    //           }).createComponent(PatientDetailsComponent);
-    //           fixture.componentInstance.removedFileCdnaBam();
-    //         });
-    //     }));
-
-    //   it('should work for addedFileCdnaBam',
-    //     async(() => {
-    //       TestBed
-    //         .compileComponents()
-    //         .then(() => {
-    //           fixture = TestBed.overrideComponent(PatientDetailsComponent, {
-    //             set: {
-    //               templateUrl: ''
-    //             }
-    //           }).createComponent(PatientDetailsComponent);
-    //           fixture.componentInstance.addedFileCdnaBam("");
-    //         });
-    //     }));
-
-    //   it('should work for removedFileCdnaBam',
-    //     async(() => {
-    //       TestBed
-    //         .compileComponents()
-    //         .then(() => {
-    //           fixture = TestBed.overrideComponent(PatientDetailsComponent, {
-    //             set: {
-    //               templateUrl: ''
-    //             }
-    //           }).createComponent(PatientDetailsComponent);
-    //           fixture.componentInstance.removedFileCdnaBam();
-    //         });
-    //     }));
-
-    //   it('should work for detectChanges',
-    //     async(() => {
-    //       TestBed
-    //         .compileComponents()
-    //         .then(() => {
-    //           fixture = TestBed.overrideComponent(PatientDetailsComponent, {
-    //             set: {
-    //               templateUrl: ''
-    //             }
-    //           }).createComponent(PatientDetailsComponent);
-    //           fixture.componentInstance.detectChanges();
-    //         });
-    //     }));
-
   });
 
   describe('patient-details component with error', () => {
@@ -319,7 +186,7 @@ export function main() {
         ],
         declarations: [PatientDetailsComponent],
         providers: [
-          { provide: PatientApiService, useClass: MockPatientApiServiceError },
+          { provide: PatientApiService, useClass: PatientApiServiceWithErrorStub },
           { provide: ActivatedRoute, useValue: { snapshot: { params: { patientSequenceNumber: 1234 } } } },
           ChangeDetectorRef,
           ViewDataTransformer
@@ -344,6 +211,14 @@ export function main() {
 }
 
 
+class PatientApiServiceWithErrorStub {
+
+  getPatientDetails(): Observable<any> {
+    return Observable.throw("error");
+  }
+}
+
+
 class MockPatientApiServiceError {
 
   getPatientDetails(): Observable<any> {
@@ -351,7 +226,7 @@ class MockPatientApiServiceError {
   }
 }
 
-class MockPatientApiService {
+class PatientApiServiceStub {
 
   getPatientDetails(): Observable<any> {
     let testdata: any = [
@@ -721,7 +596,3 @@ class MockPatientApiService {
     return Observable.of(testdata);
   }
 
-  downloadPatientFile(psn: string, url: string): void {
-    ;
-  }
-}
