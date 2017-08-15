@@ -1,11 +1,21 @@
 import {
   Component,
-  OnInit
+  OnInit,
+  NgZone,
+  ChangeDetectorRef,
+  ApplicationRef,
+  ViewChild,
+  ElementRef
 } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 import { routerTransition } from './../../shared/router.animations';
 import { GmtPipe } from './../../shared/pipes/gmt.pipe';
 import { PatientApiService } from '../patient-api.service';
+
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/throttleTime';
+import 'rxjs/add/observable/fromEvent';
 
 /**
  * Lazy loaded PatientListComponent.
@@ -34,6 +44,8 @@ export class PatientListComponent implements OnInit {
   sortOrder: string = 'asc';
   sortBy: string = this.tablePatientsDefaultSort;
 
+  @ViewChild('input') inputElRef: ElementRef;
+
   private isOutsideAssayValue?: boolean = null;
   set isOutsideAssay(value: boolean) {
     this.isOutsideAssayValue = value;
@@ -43,7 +55,10 @@ export class PatientListComponent implements OnInit {
     return this.isOutsideAssayValue;
   }
 
-  constructor(private patientApi: PatientApiService) { }
+  constructor(private patientApi: PatientApiService,
+    private ngzone: NgZone,
+    private cdref: ChangeDetectorRef,
+    private appref: ApplicationRef) { }
 
   ngOnInit() {
     this.refreshData();
@@ -85,12 +100,20 @@ export class PatientListComponent implements OnInit {
   }
 
   onSearchChanged(val: any) {
-    if (this.searchTermPatients !== val) {
-      this.searchTermPatients = val;
-      this.previous = this.page + ',' + this.size + ',' + this.sortOrder + ',' + this.sortBy + ',' + this.searchTermPatients;
-      this.refreshData();
-    }
-    this.searchTermPatients = val;
+    this.ngzone.runOutsideAngular(() => {
+      Observable.fromEvent(this.inputElRef.nativeElement, 'keyup')
+        .debounceTime(400)
+        .subscribe((val: any) => {
+          this.cdref.detectChanges();
+          if (this.searchTermPatients !== val.target.value) {
+            this.searchTermPatients = val.target.value;
+            this.previous = this.page + ',' + this.size + ',' + this.sortOrder + ',' + this.sortBy + ','
+              + this.searchTermPatients;
+            this.refreshData();
+          }
+          this.searchTermPatients = val.target.value;
+        });
+    });
   }
 
   currentPageActive(evt: any): void {
