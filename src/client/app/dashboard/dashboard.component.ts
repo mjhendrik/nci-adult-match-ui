@@ -60,7 +60,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.getOverviewData();
     this.getData();
-    this.autoLoadOverviewData();
+    // this.autoLoadOverviewData();
   }
 
   getData() {
@@ -103,21 +103,21 @@ export class DashboardComponent implements OnInit {
       );
   }
 
-  autoLoadOverviewData() {
-    setInterval(() => {
+  // autoLoadOverviewData() {
+  //   setInterval(() => {
 
-      this.dashboardApi.getDashboardOverview()
-        .subscribe((itemList: DashboardOverviewInterface) => {
-          this.patients = itemList.patients;
-          this.treatmentArms = itemList.treatmentArms;
-          this.biopsyTracking = itemList.biopsyTracking;
-        },
-        error => this.errorMessage = <any>error
-        );
+  //     this.dashboardApi.getDashboardOverview()
+  //       .subscribe((itemList: DashboardOverviewInterface) => {
+  //         this.patients = itemList.patients;
+  //         this.treatmentArms = itemList.treatmentArms;
+  //         this.biopsyTracking = itemList.biopsyTracking;
+  //       },
+  //       error => this.errorMessage = <any>error
+  //       );
 
-      this.timestamp = new Date();
+  //     this.timestamp = new Date();
 
-    }, 1000 * 30);
-  }
+  //   }, 1000 * 30);
+  // }
 
 }

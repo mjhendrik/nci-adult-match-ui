@@ -23,7 +23,7 @@
             <dt>Analysis ID</dt>
             <dd>{{analysisId | dashify}}</dd>
             <dt>Status</dt>
-            <dd><span [colorCodeAssignment]="assignmentData.patientAssignmentMessages[0].status"> {{assignmentData.patientAssignmentMessages[0].status | dashify}}</span> on {{assignmentData.dateConfirmed | gmt}} by TA Committee</dd>
+            <dd><span [colorCodeAssignment]="assignmentData.patientAssignmentMessages[0].status"> {{assignmentData.patientAssignmentMessages[0].status | dashify}}</span>              on {{assignmentData.dateConfirmed | gmt}} by TA Committee</dd>
           </dl>
         </div>
       </div>
@@ -51,7 +51,10 @@
     <div class="panel-heading">
       <div class="row">
         <div class="col-md-12">
-          <h4>Selected Treatment Arm: <span class="text-success-light">{{assignmentData.patientAssignmentMessages[0].treatmentArmId | dashify}} ({{assignmentData.treatmentArm.version | dashify}})</span></h4>
+          <h4>Selected Treatment Arm:
+            <span *ngIf="assignmentData.treatmentArm" class="text-success-light">{{assignmentData.patientAssignmentMessages[0].treatmentArmId | dashify}} ({{assignmentData.treatmentArm.version | dashify}})</span>
+            <span *ngIf="!assignmentData.treatmentArm" class="text-muted">No available treatment arm</span>
+          </h4>
           <div class="panel panel-success overflow-hidden">
             <div class="panel-heading">
               <p>
