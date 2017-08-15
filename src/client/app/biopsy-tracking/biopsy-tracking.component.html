@@ -28,7 +28,7 @@
               <div class="col-md-6 p-r-5">
                 <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                   <label>Search:
-                  <input type="text" [ngModel]="searchtermBiopsyTrackingList" (ngModelChange)="onSearchChanged($event)" class="form-control form-control-info input-sm" placeholder="" aria-controls="data-table">
+                  <input type="text" #input [ngModel]="searchtermBiopsyTrackingList" (ngModelChange)="onSearchChanged($event)" class="form-control form-control-info input-sm" placeholder="" aria-controls="data-table">
                   </label>
                 </div>
               </div>
