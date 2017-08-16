@@ -296,6 +296,14 @@ body {
   color: $dark-text-muted-color;
 }
 
+.text-pink {
+  color: $pink-color;
+}
+
+.text-orangeshade-dark {
+  color: $dark-orangeshade-color;
+}
+
 .footer {
   .build-info {
     margin-left: 4px;
@@ -375,8 +383,8 @@ body {
 }
 
 td.long-text-wrap {
-    max-width: 15em;
-    word-wrap: break-word;
+  max-width: 15em;
+  word-wrap: break-word;
 }
 
 .table {
@@ -386,7 +394,7 @@ td.long-text-wrap {
   .pagination {
     margin-top: 0px;
   }
-  .dataTables_info{
+  .dataTables_info {
     margin-top: 8px;
   }
   div.dataTables_info {

@@ -32,7 +32,7 @@ export function main() {
       });
     });
 
-    xit('should work by calling Cnv chart ngOnInit',
+    it('should work by calling Cnv chart ngOnInit',
       async((done: any) => {
 
         TestBed
@@ -45,10 +45,6 @@ export function main() {
             }).createComponent(CnvChartDirective);
 
             fixture.componentInstance.data = [ {
-              // 'x':'70',
-              // 'label':'AR',
-              // 'status':'#CD0000',
-              // 'chr':'chrX',
               'values' :
                 [{'position':'66773856',
                     'cn':'0.92',
@@ -79,12 +75,13 @@ export function main() {
               }
             ];
 
-            // fixture.componentInstance.cnvdata = [{"x":"values","status":"#CD0000","values":{"Q1":2.0,"Q2":1.5,"Q3":1.8,"whisker_low":1.3,"whisker_high":2.1,"outliers":[2.1,1.8,1.3]}}];
             fixture.componentInstance.ngOnInit();
+            expect(fixture.componentInstance.data).toBeDefined();
+            expect(fixture.componentInstance.cnvdata).toBeDefined();
+
           });
       }));
   });
-
 
 @Component({
   selector: 'example-chart',
@@ -97,7 +94,6 @@ export function main() {
   '<h1 class="outliers">{{options.chart.outliers}}</h1>' +
   '<h1 class="chart">{{chart}}</h1>' +
   '<h1 class="x">{{x}}</h1>' +
-  // '<div class="outliers" value="{{options.chart.outliers}}"></div>' +
   '<nvd3 id="boxplotchart" [options]="options" [data]="data"></nvd3>' +
   '</div>'
 })
@@ -112,12 +108,7 @@ export function main() {
   app: any;
   modal:any;
   allOptions:any;
-  // json = {boxPlotChart:{ chart: {} }};
   json = { chart: {} };
-  // boxPlotChart: any;
-  // allOptions: any;
-
-// getOptions(type: any)
 
     ngOnInit() {
       // this.app = new CnvOptions();
@@ -149,22 +140,15 @@ export function main() {
     let de: DebugElement;
     let el: HTMLElement;
 
-
-
-    // require('angular-mocks/ngMock');
-
     const chartTypes = [
       'boxPlotChart'
     ];
 
     beforeEach(() => {
       TestBed.configureTestingModule({
-        // declarations: [nvD3, MainComponent, CnvChartDirective],
         declarations: [nvD3, MainComponent],
         providers: [
           { provide: MockOptionsService, useClass: MockOptionsService },
-          // { provide: MockDataService, useClass: MockDataServiceError },
-          // { provide: MockOutliers, useClass: MockDataServiceError },
         ],
       });
       fixture = TestBed.createComponent(MainComponent);
@@ -237,8 +221,6 @@ export function main() {
         done();
       });
 
-
-
       it('BoxPlot chart type X values should be created correctly', (done) => {
 
         let d = {
@@ -259,7 +241,6 @@ export function main() {
 
         options = main.options;
         data = main.data;
-
 
         spyOn(fixture.componentInstance.options.chart, 'x').and.callThrough();
         fixture.detectChanges();
