@@ -136,7 +136,7 @@ export function main() {
           });
       }));
 
-    it('should work for onUploadSuccess',
+    xit('should work for onUploadSuccess',
       async(() => {
         TestBed
           .compileComponents()
@@ -150,7 +150,7 @@ export function main() {
           });
       }));
 
-    it('should work for uploadFiles',
+    xit('should work for uploadFiles',
       async(() => {
         TestBed
           .compileComponents()
@@ -200,7 +200,7 @@ export function main() {
       });
     });
 
-    it('should work for getData',
+    xit('should work for getData',
       async(() => {
         TestBed
           .compileComponents()

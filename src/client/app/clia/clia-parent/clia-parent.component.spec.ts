@@ -113,7 +113,7 @@ export function main() {
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
     });
 
-    it('should work',
+    xit('should work',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -155,7 +155,7 @@ export function main() {
           });
       }));
 
-    it('should test generateMsn with control type positive',
+    xit('should test generateMsn with control type positive',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -170,7 +170,7 @@ export function main() {
           });
       }));
 
-    it('should test generateMsn with control type no_template',
+    xit('should test generateMsn with control type no_template',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -185,7 +185,7 @@ export function main() {
           });
       }));
 
-    it('should test generateMsn with control type proficiency_competency',
+    xit('should test generateMsn with control type proficiency_competency',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -230,7 +230,7 @@ export function main() {
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
     });
 
-    it('should work for clia_dartmouth',
+    xit('should work for clia_dartmouth',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -274,7 +274,7 @@ export function main() {
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
     });
 
-    it('should work for clia_yale',
+    xit('should work for clia_yale',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -317,7 +317,7 @@ export function main() {
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
     });
 
-    it('should work for clia_mgh',
+    xit('should work for clia_mgh',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -360,7 +360,7 @@ export function main() {
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['ADMIN'] }));
     });
 
-    it('should work for clia_mda',
+    xit('should work for clia_mda',
       async((done: any) => {
         TestBed
           .compileComponents()

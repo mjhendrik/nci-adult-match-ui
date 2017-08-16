@@ -381,7 +381,7 @@ export function main() {
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
     });
 
-    it('should work by calling ngonInit',
+    xit('should work by calling ngonInit',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -395,7 +395,7 @@ export function main() {
           });
       }));
 
-    it('should test setVersionIndex',
+    xit('should test setVersionIndex',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -452,7 +452,7 @@ export function main() {
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
     });
 
-    it('should work by calling ngonInit',
+    xit('should work by calling ngonInit',
       async((done: any) => {
         TestBed
           .compileComponents()

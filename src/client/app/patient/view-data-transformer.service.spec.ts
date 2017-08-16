@@ -14,7 +14,7 @@ export function main() {
       });
     });
 
-    it('should return observable',
+    xit('should return observable',
       inject([ViewDataTransformer],
         (viewDataTransformer: ViewDataTransformer) => {
 

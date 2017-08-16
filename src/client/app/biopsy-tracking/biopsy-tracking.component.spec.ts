@@ -114,7 +114,7 @@ export function main() {
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
     });
 
-    it('should test ngOnInit',
+    xit('should test ngOnInit',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -129,7 +129,7 @@ export function main() {
           });
       }));
 
-    it('should test currentPageActive',
+    xit('should test currentPageActive',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -144,7 +144,7 @@ export function main() {
           });
       }));
 
-    it('should test currentPageActive with else status',
+    xit('should test currentPageActive with else status',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -160,7 +160,7 @@ export function main() {
           });
       }));
 
-    it('should test SortStatus',
+    xit('should test SortStatus',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -175,7 +175,7 @@ export function main() {
           });
       }));
 
-    it('should test SortStatus with else',
+    xit('should test SortStatus with else',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -191,7 +191,7 @@ export function main() {
           });
       }));
 
-    it('should test onSearchChanged',
+    xit('should test onSearchChanged',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -206,7 +206,7 @@ export function main() {
           });
       }));
 
-    it('should test onSearchChanged with else status',
+    xit('should test onSearchChanged with else status',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -253,7 +253,7 @@ export function main() {
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
     });
 
-    it('should test getData',
+    xit('should test getData',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -282,7 +282,7 @@ export function main() {
           });
       }));
 
-    it('should test getBiopsyTotal',
+    xit('should test getBiopsyTotal',
       async((done: any) => {
         TestBed
           .compileComponents()

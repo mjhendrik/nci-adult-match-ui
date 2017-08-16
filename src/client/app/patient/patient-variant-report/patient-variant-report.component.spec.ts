@@ -73,7 +73,7 @@ export function main() {
       });
     });
 
-    it('should test ngOnInit',
+    xit('should test ngOnInit',
       async((done: any) => {
         TestBed
           .compileComponents()

@@ -76,7 +76,7 @@ export function main() {
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
     });
 
-    it('should work by calling ngonInit',
+    xit('should work by calling ngonInit',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -90,7 +90,7 @@ export function main() {
           });
       }));
 
-    it('should test dateStatusLog',
+    xit('should test dateStatusLog',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -145,7 +145,7 @@ export function main() {
           });
       }));
 
-    it('should test dateStatusLog with type closed',
+    xit('should test dateStatusLog with type closed',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -233,7 +233,7 @@ export function main() {
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
     });
 
-    it('should work by calling ngonInit',
+    xit('should work by calling ngonInit',
       async((done: any) => {
         TestBed
           .compileComponents()

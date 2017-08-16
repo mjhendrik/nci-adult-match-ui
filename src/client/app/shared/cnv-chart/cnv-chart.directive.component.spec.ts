@@ -32,7 +32,7 @@ export function main() {
       });
     });
 
-    it('should work by calling Cnv chart ngOnInit',
+    xit('should work by calling Cnv chart ngOnInit',
       async((done: any) => {
 
         TestBed

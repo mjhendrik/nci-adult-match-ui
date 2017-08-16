@@ -37,7 +37,7 @@ export function main() {
       });
     });
 
-    it('should return observable',
+    xit('should return observable',
       inject([CliaApiService, XHRBackend],
         (CliaApiService: CliaApiService, mockBackend: MockBackend) => {
 

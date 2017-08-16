@@ -36,7 +36,7 @@ export function main() {
       });
     });
 
-    it('should return observable',
+    xit('should return observable',
       inject([BiopsyTrackingApiService, XHRBackend],
         (BiopsyTrackingApiService: BiopsyTrackingApiService, mockBackend: MockBackend) => {
 

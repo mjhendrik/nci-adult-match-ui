@@ -21,7 +21,7 @@ export function main() {
       });
     });
 
-    it('should test getIcon',
+    xit('should test getIcon',
       async((done: any) => {
         TestBed
           .compileComponents()
