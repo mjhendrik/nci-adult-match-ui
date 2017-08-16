@@ -368,25 +368,22 @@
               <thead>
                 <tr class="purple-light">
                   <th>
+                    Details
+                  </th>
+                  <th>
                     Patient Sequence Number
                   </th>
                   <th>
-                    Biopsy Sequence Number
+                    Current Status
                   </th>
                   <th>
-                    Molecular Sequence Number
-                  </th>
-                  <th class="text-center">
-                    Variant Report
-                  </th>
-                  <th>
-                    Reason
+                    Message
                   </th>
                   <th>
                     AMOI
                   </th>
                   <th>
-                    Confirmation Date
+                    Days Waiting
                   </th>
                 </tr>
               </thead>
@@ -397,55 +394,56 @@
               </tbody>
             </table>
             <table *ngIf="tablePatientsAwaitingData.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="tablePatientsAwaitingData | filterByText: searchtermPatientsAwaiting"
-              #mftablePatientsAwaiting="mfDataTable" [(mfSortBy)]="tablePatientsAwaitingDefaultSort" [mfRowsOnPage]="recordsPerPagePatientsAwaiting">
+              #mftablePatientsAwaiting="mfDataTable" [(mfSortBy)]="tablePatientsAwaitingDefaultSort" [(mfSortOrder)]="sortByDesc"
+              [mfRowsOnPage]="recordsPerPagePatientsAwaiting">
               <thead>
                 <tr class="purple-light">
+                  <th class="text-center">
+                    <mfDefaultSorter by="details"><span class="table-header">Details</span></mfDefaultSorter>
+                  </th>
                   <th>
                     <mfDefaultSorter by="psn"><span class="table-header">Patient Sequence Number</span></mfDefaultSorter>
                   </th>
                   <th>
-                    <mfDefaultSorter by="bsn"><span class="table-header">Biopsy Sequence Number</span></mfDefaultSorter>
+                    <mfDefaultSorter by="currentStatus"><span class="table-header">Current Status</span></mfDefaultSorter>
                   </th>
                   <th>
-                    <mfDefaultSorter by="msn"><span class="table-header">Molecular Sequence Number</span></mfDefaultSorter>
-                  </th>
-                  <th class="text-center">
-                    Variant Report
-                  </th>
-                  <th>
-                    Reason
-                    <!--<mfDefaultSorter by="reason?!"><span class="table-header">Reason</span></mfDefaultSorter>-->
+                    <mfDefaultSorter by="message"><span class="table-header">Message</span></mfDefaultSorter>
                   </th>
                   <th class="text-center">
                     <mfDefaultSorter by="amoi"><span class="table-header">AMOI</span></mfDefaultSorter>
                   </th>
                   <th>
-                    <mfDefaultSorter by="date_verified"><span class="table-header">Confirmation Date</span></mfDefaultSorter>
+                    <mfDefaultSorter by="daysWaiting"><span class="table-header">Days Waiting</span></mfDefaultSorter>
                   </th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let item of mftablePatientsAwaiting.data">
+                  <td class="text-center">
+                    <a (click)="showRow=!showRow">
+                      <i *ngIf="!showRow" id="item.psn" class="fa fa-chevron-right"></i>
+                      <i *ngIf="showRow" id="item.psn" class="fa fa-chevron-down"></i>
+                    </a>
+                  </td>
                   <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                     <a href [routerLink]="['/patients', item.psn]" class="link-none"><i class="fa fa-user"></i> {{item.psn | dashify}}</a>
                   </td>
-                  <td><a href [routerLink]="['/patients', item.psn]" class="link-none"><i class="fa fa-tasks"></i> {{item.bsn | dashify}}</a></td>
-                  <td><a href [routerLink]="['/patients', item.psn]" class="link-none"><i class="fa fa-share-alt"></i> {{item.msn | dashify}}</a></td>
-                  <td class="text-center"><a href [routerLink]="['/patients/' + item.psn + '/variant_reports/' + item.analysisId]" class="link-none"><i class="fa fa-file-text-o"></i></a></td>
-                  <td>AWAITING DATA</td>
+                  <td [colorCodePatients]="item.currentStatus">{{item.currentStatus | dashify}}</td>
+                  <td class="text-danger-light">{{item.message | dashify}}</td>
                   <td class="text-center">
                     <span *ngIf="item.amoi===true"><i class="fa fa-check-circle text-success-light"></i></span>
                     <span *ngIf="item.amoi===false"><i class="fa fa-times-circle text-danger-light"></i></span>
                   </td>
-                  <td>{{item.date_verified | dashify}}</td>
+                  <td [colorCodeDays]="item.daysWaiting">{{item.daysWaiting | dashify}}</td>
                 </tr>
                 <tr *ngIf="mftablePatientsAwaiting.data.length == 0">
-                  <td class="text-muted" colspan="7">No matching search results found for "{{searchtermPatientsAwaiting}}"</td>
+                  <td class="text-muted" colspan="6">No matching search results found for "{{searchtermPatientsAwaiting}}"</td>
                 </tr>
               </tbody>
               <tfoot>
                 <tr>
-                  <td class="tfoot-padding" colspan="7">
+                  <td class="tfoot-padding" colspan="6">
                     <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermPatientsAwaiting" [totallength]="tablePatientsAwaitingData.length"></mfBootstrapPaginator>
                   </td>
                 </tr>

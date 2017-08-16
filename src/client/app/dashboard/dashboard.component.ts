@@ -34,7 +34,7 @@ export class DashboardComponent implements OnInit {
 
   tableVRDefaultSort: string = 'daysPending';
   tableARDefaultSort: string = 'hoursPending';
-  tablePatientsAwaitingDefaultSort: string = 'date_verified';
+  tablePatientsAwaitingDefaultSort: string = 'daysWaiting';
 
   sortByAsc: string = 'asc';
   sortByDesc: string = 'desc';
