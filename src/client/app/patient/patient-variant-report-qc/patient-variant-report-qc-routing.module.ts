@@ -34,8 +34,8 @@ class DataResolver implements Resolve<QcVariantReportData> {
     state: RouterStateSnapshot
   ): Observable<QcVariantReportData> | Promise<QcVariantReportData> | QcVariantReportData {
 
-    const psn: string = route.params['patientSequenceNumber']
-    const analysisId: string = route.params['analysisId']
+    const psn: string = route.params['patientSequenceNumber'];
+    const analysisId: string = route.params['analysisId'];
 
     return Observable.forkJoin(
       this.api.getPatientVariantReportQc(psn, analysisId),
@@ -50,7 +50,8 @@ class DataResolver implements Resolve<QcVariantReportData> {
         // getPatientVariantReportFileInfo => data[3]
 
         let snvAndIndels: any[] = data[0].indels || [];
-        snvAndIndels = snvAndIndels.concat(data[0].single_nucleotide_variants || [])
+        snvAndIndels = snvAndIndels.concat(data[0].single_nucleotide_variants || []);
+
         let ocpSummary: {[key:string]: any} = data[1].genes;
         ocpSummary['SUM'] = this.calculateOcpSum(ocpSummary);
         let tvc_version = data[1].tvc_version;
