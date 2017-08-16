@@ -37,7 +37,12 @@ export class ViewDataTransformer {
 
   transformOutsidePatientReport(source: any): any {
     const transformedReport: any = { ...source }; // Deep-copy the source
+
     return transformedReport;
+  }
+
+  showPools(tvcVersion: string): boolean {
+    return !!tvcVersion && tvcVersion.startsWith('5.2');
   }
 
   private transformBiopsy(transformedPatient: any, source: any): any {

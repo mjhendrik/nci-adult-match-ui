@@ -43,7 +43,7 @@ class DataResolver implements Resolve<VariantReportComparisonData> {
         const analysis = patient.analyses[route.params.analysisId] || {};
 
         let tvc_version = data[1].tvc_version;
-        let showPools: boolean = tvc_version && tvc_version.startsWith('5.2')
+        let showPools: boolean = this.transformer.showPools(tvc_version);
 
         let outsideData = {
           analysisId: route.params.analysisId,
