@@ -35,7 +35,7 @@
             <dt>Patient Concordance</dt>
             <dd><span [colorCodeYesNo]="patient.concordance">{{patient.concordance | dashify}}</span></dd>
             <dt>Status</dt>
-            <dd><span [colorCodeVariantReport]="variantReport.variantReportStatus">{{variantReport.variantReportStatus | dashify}}</span> on {{variantReport.variantReportCreatedDate | gmt}} by {{variantReport.user | dashify}}</dd>
+            <dd><span [colorCodeVariantReport]="variantReport.variantReportStatus">{{variantReport.variantReportStatus | dashify}}</span> on {{variantReport.variantReporterRejectedOrConfirmedDate | gmt}} by {{variantReport.user | dashify}}</dd>
             <dt>MAPD</dt>
             <dd>{{mapd | dashify}}</dd>
             <dt>Cellularity</dt>
