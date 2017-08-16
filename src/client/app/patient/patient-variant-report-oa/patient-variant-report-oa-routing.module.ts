@@ -27,83 +27,41 @@ class DataResolver implements Resolve<VariantReportComparisonData> {
     state: RouterStateSnapshot
   ): Observable<VariantReportComparisonData> | Promise<VariantReportComparisonData> | VariantReportComparisonData {
     const psn: string = route.params.patientSequenceNumber;
-    const analysisId: string = route.params.analysisId;
 
     const reportObservable = this.api.getOutsideAssayComparisonVariantReport(psn);
 
-    const supplementalObservable = Observable.forkJoin(
-      this.api.getPatientCopyNumberReport(psn, analysisId),
-      this.api.getPatientVariantReportOcp(psn, analysisId)
-    );
+    /* Interesting case of Observables.
+    / `flatMap` causes sequential "execution" of the observables
+    /  `forkJoin` causes parallel "execution" of the observables
+    /  What is happening here, in plain English:
+    /  First, request the Outside Assay Comparison Report data, then after the request has returned the data,
+    /  execute the 4 OCP and CNV requests in parallel.
+    /  After all 4 requests have returned data, `map` the resulting 5 elements to process further
+    */
+    return reportObservable.flatMap(x => Observable.forkJoin(
+      Observable.of(x),
+      this.api.getPatientCopyNumberReport(psn, x.outsideData.analysisId),
+      this.api.getPatientVariantReportOcp(psn, x.outsideData.analysisId),
+      this.api.getPatientCopyNumberReport(psn, x.matchData.analysisId),
+      this.api.getPatientVariantReportOcp(psn, x.matchData.analysisId)
+    )).map(x => {
+      let [report, cnvDataOutside, ocpDataOutside, cnvDataMatch, ocpDataMatch] = x;
 
-    return Observable.concat(reportObservable, supplementalObservable)
-      .map(x => {
-        console.log(x);
-        return {} as VariantReportComparisonData;
-      });
+      report.matchData.pool1 = ocpDataMatch.pool1;
+      report.matchData.pool2 = ocpDataMatch.pool2;
+      report.matchData.mapd = cnvDataMatch.mapd;
+      report.matchData.cellularity = cnvDataMatch.cellularity;
+      report.matchData.showPools = this.transformer.showPools(cnvDataMatch.tvc_version);
+
+      report.outsideData.pool1 = ocpDataOutside.pool1;
+      report.outsideData.pool2 = ocpDataOutside.pool2;
+      report.outsideData.mapd = cnvDataOutside.mapd;
+      report.outsideData.cellularity = cnvDataOutside.cellularity;
+      report.outsideData.showPools = this.transformer.showPools(cnvDataOutside.tvc_version);
+
+      return report;
+    });
   }
-
-  // resolveOld(
-  //   route: ActivatedRouteSnapshot,
-  //   state: RouterStateSnapshot
-  // ): Observable<VariantReportComparisonData> | Promise<VariantReportComparisonData> | VariantReportComparisonData {
-  //   const psn: string = route.params.patientSequenceNumber;
-  //   const analysisId: string = route.params.analysisId;
-
-  //   return Observable.forkJoin(
-  //     this.api.getOutsideAssayComparisonVariantReport(psn),
-  //     this.api.getPatientCopyNumberReport(psn, analysisId),
-  //     this.api.getPatientVariantReportOcp(psn, analysisId)
-  //   ).map(
-  //     data => {
-  //       // getOutsideAssayComparisonVariantReport => data[0]
-  //       // getPatientCopyNumberReport => data[1]
-  //       // getPatientVariantReportOcp => data[2]
-
-  //       const report = this.transformer.transformOutsidePatientReport(data[0]) || {};
-
-  //       let tvc_version = data[1].tvc_version;
-
-  //       let outsideData = report.outsideData;
-  //       outsideData.showPools = this.transformer.showPools(tvc_version);
-
-  //       let matchData = report.matchData;
-  //       matchData.showPools = this.transformer.showPools(tvc_version);
-
-  //       // let matchData = {
-  //       //   analysisId: route.params.analysisId,
-  //       //   analysis: analysis,
-  //       //   variantReport: analysis.variantReport,
-  //       //   assignmentReport: analysis.assignmentReport,
-  //       //   tvc_version: tvc_version,
-  //       //   pool1: data[2].pool1,
-  //       //   pool2: data[2].pool2,
-  //       //   mapd: data[1].mapd,
-  //       //   cellularity: data[1].cellularity,
-  //       //   showPools: showPools,
-  //       //   assays: analysis.assays
-  //       // };
-
-  //       let comparisonVariantReport = {
-  //         singleNucleotideVariantAndIndels: analysis.variantReport.singleNucleotideVariantAndIndels,
-  //         copyNumberVariants: analysis.variantReport.copyNumberVariants,
-  //         unifiedGeneFusions: analysis.variantReport.unifiedGeneFusions,
-  //       };
-
-  //       let model = {
-  //         psn: report.patientSequenceNumber,
-  //         currentPatientStatus: report.currentPatientStatus,
-  //         currentStepNumber: report.currentStepNumber,
-  //         concordance: report.concordance,
-  //         outsideData: outsideData,
-  //         matchData: matchData,
-  //         comparisonVariantReport: comparisonVariantReport
-  //       };
-
-  //       return model;
-  //     }
-  //     );
-  // }
 }
 
 @NgModule({
