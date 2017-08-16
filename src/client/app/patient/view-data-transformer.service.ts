@@ -35,6 +35,11 @@ export class ViewDataTransformer {
     return transformedPatient;
   }
 
+  transformOutsidePatientReport(source: any): any {
+    const transformedReport: any = { ...source }; // Deep-copy the source
+    return transformedReport;
+  }
+
   private transformBiopsy(transformedPatient: any, source: any): any {
     let transformedBiopsy = source;
 

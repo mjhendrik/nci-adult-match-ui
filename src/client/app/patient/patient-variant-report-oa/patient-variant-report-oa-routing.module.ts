@@ -39,7 +39,7 @@ class DataResolver implements Resolve<VariantReportComparisonData> {
         // getPatientCopyNumberReport => data[1]
         // getPatientVariantReportOcp => data[2]
 
-        const patient = this.transformer.transformPatient(data[0]) || {};
+        const patient = this.transformer.transformOutsidePatientReport(data[0]) || {};
         const analysis = patient.analyses[route.params.analysisId] || {};
 
         let tvc_version = data[1].tvc_version;
