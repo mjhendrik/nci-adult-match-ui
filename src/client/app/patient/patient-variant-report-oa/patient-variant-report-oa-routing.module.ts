@@ -16,7 +16,7 @@ import { VariantReportSimpleTableModule } from '../../shared/variant-report-simp
 
 import { PatientApiService } from '../patient-api.service';
 import { ViewDataTransformer } from '../view-data-transformer.service';
-import { VariantReportComparisonData } from './patient-variant-report-oa.module';
+import { VariantReportComparisonData } from './variant-report-comparison-data';
 
 @Injectable()
 class DataResolver implements Resolve<VariantReportComparisonData> {
@@ -29,70 +29,81 @@ class DataResolver implements Resolve<VariantReportComparisonData> {
     const psn: string = route.params.patientSequenceNumber;
     const analysisId: string = route.params.analysisId;
 
-    return Observable.forkJoin(
-      this.api.getOutsideAssayComparisonVariantReport(psn),
+    const reportObservable = this.api.getOutsideAssayComparisonVariantReport(psn);
+
+    const supplementalObservable = Observable.forkJoin(
       this.api.getPatientCopyNumberReport(psn, analysisId),
       this.api.getPatientVariantReportOcp(psn, analysisId)
-    ).map(
-      data => {
-        // getOutsideAssayComparisonVariantReport => data[0]
-        // getPatientCopyNumberReport => data[1]
-        // getPatientVariantReportOcp => data[2]
-
-        const patient = this.transformer.transformOutsidePatientReport(data[0]) || {};
-        const analysis = patient.analyses[route.params.analysisId] || {};
-
-        let tvc_version = data[1].tvc_version;
-        let showPools: boolean = this.transformer.showPools(tvc_version);
-
-        let outsideData = {
-          analysisId: route.params.analysisId,
-          analysis: analysis,
-          variantReport: analysis.variantReport,
-          assignmentReport: analysis.assignmentReport,
-          tvc_version: tvc_version,
-          pool1: data[2].pool1,
-          pool2: data[2].pool2,
-          mapd: data[1].mapd,
-          cellularity: data[1].cellularity,
-          showPools: showPools,
-          assays: analysis.assays
-        };
-
-        let matchData = {
-          analysisId: route.params.analysisId,
-          analysis: analysis,
-          variantReport: analysis.variantReport,
-          assignmentReport: analysis.assignmentReport,
-          tvc_version: tvc_version,
-          pool1: data[2].pool1,
-          pool2: data[2].pool2,
-          mapd: data[1].mapd,
-          cellularity: data[1].cellularity,
-          showPools: showPools,
-          assays: analysis.assays
-        };
-
-        let comparisonVariantReport = {
-          singleNucleotideVariantAndIndels: analysis.variantReport.singleNucleotideVariantAndIndels,
-          copyNumberVariants: analysis.variantReport.copyNumberVariants,
-          unifiedGeneFusions: analysis.variantReport.unifiedGeneFusions,
-        };
-
-        let model = {
-          psn: patient.patientSequenceNumber,
-          currentPatientStatus: patient.currentPatientStatus,
-          currentStepNumber: patient.currentStepNumber,
-          concordance: patient.concordance,
-          outsideData: outsideData,
-          matchData: matchData,
-          comparisonVariantReport: comparisonVariantReport
-        };
-
-        return model;
-      }
     );
+
+    return Observable.concat(reportObservable, supplementalObservable)
+      .map(x => {
+        console.log(x);
+        return {} as VariantReportComparisonData;
+      });
   }
+
+  // resolveOld(
+  //   route: ActivatedRouteSnapshot,
+  //   state: RouterStateSnapshot
+  // ): Observable<VariantReportComparisonData> | Promise<VariantReportComparisonData> | VariantReportComparisonData {
+  //   const psn: string = route.params.patientSequenceNumber;
+  //   const analysisId: string = route.params.analysisId;
+
+  //   return Observable.forkJoin(
+  //     this.api.getOutsideAssayComparisonVariantReport(psn),
+  //     this.api.getPatientCopyNumberReport(psn, analysisId),
+  //     this.api.getPatientVariantReportOcp(psn, analysisId)
+  //   ).map(
+  //     data => {
+  //       // getOutsideAssayComparisonVariantReport => data[0]
+  //       // getPatientCopyNumberReport => data[1]
+  //       // getPatientVariantReportOcp => data[2]
+
+  //       const report = this.transformer.transformOutsidePatientReport(data[0]) || {};
+
+  //       let tvc_version = data[1].tvc_version;
+
+  //       let outsideData = report.outsideData;
+  //       outsideData.showPools = this.transformer.showPools(tvc_version);
+
+  //       let matchData = report.matchData;
+  //       matchData.showPools = this.transformer.showPools(tvc_version);
+
+  //       // let matchData = {
+  //       //   analysisId: route.params.analysisId,
+  //       //   analysis: analysis,
+  //       //   variantReport: analysis.variantReport,
+  //       //   assignmentReport: analysis.assignmentReport,
+  //       //   tvc_version: tvc_version,
+  //       //   pool1: data[2].pool1,
+  //       //   pool2: data[2].pool2,
+  //       //   mapd: data[1].mapd,
+  //       //   cellularity: data[1].cellularity,
+  //       //   showPools: showPools,
+  //       //   assays: analysis.assays
+  //       // };
+
+  //       let comparisonVariantReport = {
+  //         singleNucleotideVariantAndIndels: analysis.variantReport.singleNucleotideVariantAndIndels,
+  //         copyNumberVariants: analysis.variantReport.copyNumberVariants,
+  //         unifiedGeneFusions: analysis.variantReport.unifiedGeneFusions,
+  //       };
+
+  //       let model = {
+  //         psn: report.patientSequenceNumber,
+  //         currentPatientStatus: report.currentPatientStatus,
+  //         currentStepNumber: report.currentStepNumber,
+  //         concordance: report.concordance,
+  //         outsideData: outsideData,
+  //         matchData: matchData,
+  //         comparisonVariantReport: comparisonVariantReport
+  //       };
+
+  //       return model;
+  //     }
+  //     );
+  // }
 }
 
 @NgModule({

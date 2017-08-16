@@ -8,6 +8,7 @@ import { AuthHttp } from 'angular2-jwt';
 import { Config } from '../shared/config/env.config';
 
 import { downloadFile } from '../shared/utils/utils';
+import { VariantReportComparisonData } from './patient-variant-report-oa/variant-report-comparison-data';
 
 /**
  * This class provides the NameList service with methods to read names and add names.
@@ -73,7 +74,7 @@ export class PatientApiService {
       .catch(this.handleError);
   }
 
-  getOutsideAssayComparisonVariantReport(psn: string): Observable<any> {
+  getOutsideAssayComparisonVariantReport(psn: string): Observable<VariantReportComparisonData> {
     return this.http.get(this.url('/patients/' + psn + '/outside_assay/comparison_variant_report',
       'assets/mock-data/patient.OA5.comparison-variant-report.json'))
       .map((res: Response) => res.json())

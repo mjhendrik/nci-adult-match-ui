@@ -9,7 +9,7 @@ import {
 } from '../patient-api.service';
 
 import { scrollToElement } from '../../shared/utils/utils';
-import { VariantReportComparisonData } from './patient-variant-report-oa.module';
+import { VariantReportComparisonData } from './variant-report-comparison-data';
 
 /**
  * PatientVariantReportOutsideAssayComponent.

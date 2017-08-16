@@ -12,42 +12,6 @@ import { ViewDataTransformer } from './../view-data-transformer.service';
 import { VariantReportComparisonTableModule } from '../variant-report-comparison-table/variant-report-comparison-table.module';
 import { SharedModule } from '../../shared/shared.module';
 
-export interface VariantReportComparisonData {
-  psn: string;
-  currentPatientStatus: string;
-  currentStepNumber: string;
-  concordance: string;
-  outsideData: {
-    analysisId: string;
-    assays: any[];
-    variantReport: any;
-    assignmentReport: any;
-    tvc_version: string;
-    pool1: number;
-    pool2: number;
-    mapd: string;
-    cellularity: any;
-    showPools: boolean;
-  };
-  matchData: {
-    analysisId: string;
-    assays: any[];
-    variantReport: any;
-    assignmentReport: any;
-    tvc_version: string;
-    pool1: number;
-    pool2: number;
-    mapd: string;
-    cellularity: any;
-    showPools: boolean;
-  };
-  comparisonVariantReport: {
-    singleNucleotideVariantAndIndels: any[];
-    copyNumberVariants: any[];
-    unifiedGeneFusions: any[];
-  };
-}
-
 @NgModule({
   imports: [
     CommonModule,
