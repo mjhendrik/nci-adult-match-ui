@@ -19,6 +19,9 @@ export interface DashboardOverviewInterfaceTa {
 
 export interface DashboardOverviewInterfacePatients {
   patients: {};
+}
+
+export interface DashboardOverviewInterfaceBt {
   biopsyTracking: {};
 }
 
@@ -58,9 +61,16 @@ export class DashboardApiService {
 
   getDashboardOverviewPatients(): Observable<DashboardOverviewInterfacePatients> {
 
-    return this.http.get('assets/mock-data/dashboard-overview.json')
+    // return this.http.get('assets/mock-data/dashboard-overview.json')
 
-    // return this.http.get(Config.API.PATIENT + '/patients/')
+    return this.http.get(Config.API.PATIENT + '/patients/dashboard/overview')
+      .map((res: Response) => res.json())
+      //              .do(data => console.log('server data:', data))  // debug
+      .catch(this.handleError);
+  }
+
+  getDashboardOverviewBt(): Observable<DashboardOverviewInterfaceBt> {
+    return this.http.get(Config.API.PATIENT + '/patients/tracking/dashboard/overview')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);

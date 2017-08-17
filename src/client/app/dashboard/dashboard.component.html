@@ -1,7 +1,7 @@
-<div class="load-content" *ngIf="!dataAvailable && !overviewDataAvailable && !overviewDataAvailable1">
+<div class="load-content" *ngIf="!dataAvailable && !overviewDataAvailableTa && !overviewDataAvailablePatients && !overviewDataAvailableTa">
   <div id="page-loader" class="page-loader fade in"><span class="spinner">Loading...</span></div>
 </div>
-<div id="content" class="content" *ngIf="dataAvailable && overviewDataAvailable && overviewDataAvailable1">
+<div id="content" class="content" *ngIf="dataAvailable && overviewDataAvailableTa && overviewDataAvailablePatients && overviewDataAvailableTa">
   <div class="row">
     <div class="p-l-15 f-s-10 text-muted-dark pull-right dashboard-loaded-at">
       Loaded at {{timestamp | date: 'mediumTime'}}
@@ -13,8 +13,8 @@
           <div class="widget-stat-icon"><i class="fa fa-users fa-lg"></i></div>
           <div class="widget-stat-info">
             <div class="widget-stat-title text-right">Patients</div>
-            <div class="widget-stat-number text-right">{{patients.total}}</div>
-            <div class="widget-stat-text text-right">{{patients.onTreatmentArm}} On Treatment Arm&nbsp;&nbsp;|&nbsp;&nbsp;{{patients.offTrial}} Off Trial</div>
+            <div class="widget-stat-number text-right">{{patients.TOTAL}}</div>
+            <div class="widget-stat-text text-right">{{patients.ON_TREATMENT_ARM}} On Treatment Arm&nbsp;&nbsp;|&nbsp;&nbsp;{{patients.OFF_TRIAL}} Off Trial</div>
           </div>
         </div>
       </a>
@@ -44,8 +44,8 @@
           <div class="widget-stat-icon"><i class="fa fa-truck fa-lg"></i></div>
           <div class="widget-stat-info">
             <div class="widget-stat-title text-right">Biopsy Tracking</div>
-            <div class="widget-stat-number text-right">{{biopsyTracking.total}}</div>
-            <div class="widget-stat-text text-right">{{biopsyTracking.biopsySequences}} Biopsy Sequences&nbsp;&nbsp;|&nbsp;&nbsp;{{biopsyTracking.molecularSequences}}
+            <div class="widget-stat-number text-right">{{biopsyTracking.TOTAL}}</div>
+            <div class="widget-stat-text text-right">{{biopsyTracking.BIOPSY_SEQUENCES}} Biopsy Sequences&nbsp;&nbsp;|&nbsp;&nbsp;{{biopsyTracking.MOLECULAR_SEQUENCES}}
               Molecular Sequences</div>
           </div>
         </div>

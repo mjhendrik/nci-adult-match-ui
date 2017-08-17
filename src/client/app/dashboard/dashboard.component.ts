@@ -8,7 +8,8 @@ import {
   DashboardApiService,
   DashboardInterface,
   DashboardOverviewInterfaceTa,
-  DashboardOverviewInterfacePatients
+  DashboardOverviewInterfacePatients,
+  DashboardOverviewInterfaceBt
 } from './dashboard-api.service';
 
 
@@ -50,8 +51,9 @@ export class DashboardComponent implements OnInit {
   tableVRData: any[];
   tablePatientsAwaitingData: any[];
   dataAvailable: boolean = false;
-  overviewDataAvailable: boolean = false;
-  overviewDataAvailable1: boolean = false;
+  overviewDataAvailableTa: boolean = false;
+  overviewDataAvailablePatients: boolean = false;
+  overviewDataAvailableBt: boolean = false;
 
   errorMessage: string;
 
@@ -62,6 +64,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.getOverviewDataTa();
     this.getOverviewDataPatients();
+    this.getOverviewDataBt();
     this.getData();
     // this.autoLoadOverviewData();
   }
@@ -98,7 +101,7 @@ export class DashboardComponent implements OnInit {
     this.dashboardApi.getDashboardOverviewTa()
       .subscribe((itemList: DashboardOverviewInterfaceTa) => {
         this.treatmentArms = itemList;
-        this.overviewDataAvailable = true;
+        this.overviewDataAvailableTa = true;
       },
       error => this.errorMessage = <any>error
       );
@@ -107,9 +110,18 @@ export class DashboardComponent implements OnInit {
   getOverviewDataPatients() {
     this.dashboardApi.getDashboardOverviewPatients()
       .subscribe((itemList: DashboardOverviewInterfacePatients) => {
-        this.patients = itemList.patients;
-        this.biopsyTracking = itemList.biopsyTracking;
-        this.overviewDataAvailable1 = true;
+        this.patients = itemList;
+        this.overviewDataAvailablePatients = true;
+      },
+      error => this.errorMessage = <any>error
+      );
+  }
+
+  getOverviewDataBt() {
+    this.dashboardApi.getDashboardOverviewBt()
+      .subscribe((itemList: DashboardOverviewInterfaceBt) => {
+        this.biopsyTracking = itemList;
+        this.overviewDataAvailableBt = true;
       },
       error => this.errorMessage = <any>error
       );
