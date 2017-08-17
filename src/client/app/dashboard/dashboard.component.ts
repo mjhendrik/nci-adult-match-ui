@@ -49,8 +49,9 @@ export class DashboardComponent implements OnInit {
   tableARData: any[];
   tableVRData: any[];
   tablePatientsAwaitingData: any[];
-  dataAvailable: boolean;
-  overviewDataAvailable: boolean;
+  dataAvailable: boolean = false;
+  overviewDataAvailable: boolean = false;
+  overviewDataAvailable1: boolean = false;
 
   errorMessage: string;
 
@@ -108,7 +109,7 @@ export class DashboardComponent implements OnInit {
       .subscribe((itemList: DashboardOverviewInterfacePatients) => {
         this.patients = itemList.patients;
         this.biopsyTracking = itemList.biopsyTracking;
-        this.overviewDataAvailable = true;
+        this.overviewDataAvailable1 = true;
       },
       error => this.errorMessage = <any>error
       );
