@@ -52,12 +52,16 @@ class DataResolver implements Resolve<VariantReportComparisonData> {
       report.matchData.mapd = cnvDataMatch.mapd;
       report.matchData.cellularity = cnvDataMatch.cellularity;
       report.matchData.showPools = this.transformer.showPools(cnvDataMatch.tvc_version);
+      report.matchData.variantReport = report.matchData.variantReport || {};
+      report.matchData.variantReport.moiSummary = report.matchData.variantReport.moiSummary || {};
 
       report.outsideData.pool1 = ocpDataOutside.pool1;
       report.outsideData.pool2 = ocpDataOutside.pool2;
       report.outsideData.mapd = cnvDataOutside.mapd;
       report.outsideData.cellularity = cnvDataOutside.cellularity;
       report.outsideData.showPools = this.transformer.showPools(cnvDataOutside.tvc_version);
+      report.outsideData.variantReport = report.outsideData.variantReport || {};
+      report.outsideData.variantReport.moiSummary = report.outsideData.variantReport.moiSummary || {};
 
       return report;
     });
