@@ -42,10 +42,10 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
 
     this.auth.loggedIn.subscribe((t: any) => {
-      if (localStorage.getItem('profile') !== null) this.userName = JSON.parse(localStorage.getItem('profile')).user_metadata.firstName;
+      if (localStorage.getItem('profile') !== null) this.userName = JSON.parse(localStorage.getItem('profile')).user_metadata.name;
     });
 
-    if (localStorage.getItem('profile') !== null) this.userName = JSON.parse(localStorage.getItem('profile')).user_metadata.firstName;
+    if (localStorage.getItem('profile') !== null) this.userName = JSON.parse(localStorage.getItem('profile')).user_metadata.name;
 
   }
 
