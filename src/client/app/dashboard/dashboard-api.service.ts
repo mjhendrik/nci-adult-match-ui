@@ -5,15 +5,20 @@ import { AuthHttp } from 'angular2-jwt';
 
 // import 'rxjs/add/operator/do';  // for debugging
 
+import { Config } from '../shared/config/env.config';
+
 export interface DashboardInterface {
   tableARData: any[];
   tableVRData: any[];
   tablePatientsAwaitingData: any[];
 }
 
-export interface DashboardOverviewInterface {
-  patients: {};
+export interface DashboardOverviewInterfaceTa {
   treatmentArms: {};
+}
+
+export interface DashboardOverviewInterfacePatients {
+  patients: {};
   biopsyTracking: {};
 }
 
@@ -41,8 +46,21 @@ export class DashboardApiService {
       .catch(this.handleError);
   }
 
-  getDashboardOverview(): Observable<DashboardOverviewInterface> {
+  getDashboardOverviewTa(): Observable<DashboardOverviewInterfaceTa> {
+
+    // return this.http.get('assets/mock-data/dashboard-overview.json')
+
+    return this.http.get(Config.API.TREATMENT_ARM + '/treatment_arms/dashboard/overview')
+      .map((res: Response) => res.json())
+      //              .do(data => console.log('server data:', data))  // debug
+      .catch(this.handleError);
+  }
+
+  getDashboardOverviewPatients(): Observable<DashboardOverviewInterfacePatients> {
+
     return this.http.get('assets/mock-data/dashboard-overview.json')
+
+    // return this.http.get(Config.API.PATIENT + '/patients/')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);

@@ -7,7 +7,8 @@ import { GmtPipe } from './../shared/pipes/gmt.pipe';
 import {
   DashboardApiService,
   DashboardInterface,
-  DashboardOverviewInterface
+  DashboardOverviewInterfaceTa,
+  DashboardOverviewInterfacePatients
 } from './dashboard-api.service';
 
 
@@ -58,7 +59,8 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getOverviewData();
+    this.getOverviewDataTa();
+    this.getOverviewDataPatients();
     this.getData();
     // this.autoLoadOverviewData();
   }
@@ -91,11 +93,20 @@ export class DashboardComponent implements OnInit {
       );
   }
 
-  getOverviewData() {
-    this.dashboardApi.getDashboardOverview()
-      .subscribe((itemList: DashboardOverviewInterface) => {
+  getOverviewDataTa() {
+    this.dashboardApi.getDashboardOverviewTa()
+      .subscribe((itemList: DashboardOverviewInterfaceTa) => {
+        this.treatmentArms = itemList;
+        this.overviewDataAvailable = true;
+      },
+      error => this.errorMessage = <any>error
+      );
+  }
+
+  getOverviewDataPatients() {
+    this.dashboardApi.getDashboardOverviewPatients()
+      .subscribe((itemList: DashboardOverviewInterfacePatients) => {
         this.patients = itemList.patients;
-        this.treatmentArms = itemList.treatmentArms;
         this.biopsyTracking = itemList.biopsyTracking;
         this.overviewDataAvailable = true;
       },
