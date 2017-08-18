@@ -60,6 +60,9 @@ export class ViewDataTransformer {
     transformedReport.outsideData.variantReport = transformedReport.outsideData.variantReport || {};
     transformedReport.outsideData.variantReport.moiSummary = transformedReport.outsideData.variantReport.moiSummary || {};
 
+    this.transformAssignmentLogic(transformedReport.matchData.assignmentReport);
+    this.transformAssignmentLogic(transformedReport.outsideData.assignmentReport);
+
     return transformedReport;
   }
 
@@ -298,13 +301,18 @@ export class ViewDataTransformer {
         let lastVariantReportAnalys = confirmedVariantReports[confirmedVariantReports.length - 1];
         lastVariantReportAnalys.assignmentReport = assignment;
 
-        if (assignment.patientAssignmentLogic) {
-          let selected = assignment.patientAssignmentLogic.find((x: any) => x.patientAssignmentReasonCategory === 'SELECTED');
-          assignment.hasSelectedTreatmentArm = !!selected;
-          assignment.reasons = this.transformAssignmentReason(assignment.patientAssignmentLogic);
-        }
+        this.transformAssignmentLogic(assignment);
       }
     }
+  }
+
+  private transformAssignmentLogic(assignment: any) {
+    if (!assignment || !assignment.patientAssignmentLogic)
+      return;
+
+    let selected = assignment.patientAssignmentLogic.find((x: any) => x.patientAssignmentReasonCategory === 'SELECTED');
+    assignment.hasSelectedTreatmentArm = !!selected;
+    assignment.reasons = this.transformAssignmentReason(assignment.patientAssignmentLogic);
   }
 
   private transformAssignmentReason(patientAssignmentLogic: any): any {
