@@ -44,6 +44,22 @@ export class ViewDataTransformer {
     ocpDataMatch: any): any {
     const transformedReport: any = { ...report }; // Deep-copy the source
 
+    transformedReport.matchData.pool1 = ocpDataMatch.pool1;
+    transformedReport.matchData.pool2 = ocpDataMatch.pool2;
+    transformedReport.matchData.mapd = cnvDataMatch.mapd;
+    transformedReport.matchData.cellularity = cnvDataMatch.cellularity;
+    transformedReport.matchData.showPools = this.showPools(cnvDataMatch.tvc_version);
+    transformedReport.matchData.variantReport = transformedReport.matchData.variantReport || {};
+    transformedReport.matchData.variantReport.moiSummary = transformedReport.matchData.variantReport.moiSummary || {};
+
+    transformedReport.outsideData.pool1 = ocpDataOutside.pool1;
+    transformedReport.outsideData.pool2 = ocpDataOutside.pool2;
+    transformedReport.outsideData.mapd = cnvDataOutside.mapd;
+    transformedReport.outsideData.cellularity = cnvDataOutside.cellularity;
+    transformedReport.outsideData.showPools = this.showPools(cnvDataOutside.tvc_version);
+    transformedReport.outsideData.variantReport = transformedReport.outsideData.variantReport || {};
+    transformedReport.outsideData.variantReport.moiSummary = transformedReport.outsideData.variantReport.moiSummary || {};
+
     return transformedReport;
   }
 

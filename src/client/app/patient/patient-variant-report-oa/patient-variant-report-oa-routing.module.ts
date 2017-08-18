@@ -47,23 +47,10 @@ class DataResolver implements Resolve<VariantReportComparisonData> {
     )).map(x => {
       let [report, cnvDataOutside, ocpDataOutside, cnvDataMatch, ocpDataMatch] = x;
 
-      report.matchData.pool1 = ocpDataMatch.pool1;
-      report.matchData.pool2 = ocpDataMatch.pool2;
-      report.matchData.mapd = cnvDataMatch.mapd;
-      report.matchData.cellularity = cnvDataMatch.cellularity;
-      report.matchData.showPools = this.transformer.showPools(cnvDataMatch.tvc_version);
-      report.matchData.variantReport = report.matchData.variantReport || {};
-      report.matchData.variantReport.moiSummary = report.matchData.variantReport.moiSummary || {};
+      const transformedReport = this.transformer.transformOutsidePatientReport(
+        report, cnvDataOutside, ocpDataOutside, cnvDataMatch, ocpDataMatch);
 
-      report.outsideData.pool1 = ocpDataOutside.pool1;
-      report.outsideData.pool2 = ocpDataOutside.pool2;
-      report.outsideData.mapd = cnvDataOutside.mapd;
-      report.outsideData.cellularity = cnvDataOutside.cellularity;
-      report.outsideData.showPools = this.transformer.showPools(cnvDataOutside.tvc_version);
-      report.outsideData.variantReport = report.outsideData.variantReport || {};
-      report.outsideData.variantReport.moiSummary = report.outsideData.variantReport.moiSummary || {};
-
-      return report;
+      return transformedReport;
     });
   }
 }
