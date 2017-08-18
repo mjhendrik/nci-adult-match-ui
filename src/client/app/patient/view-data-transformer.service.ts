@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { AssignmentReasonSection } from './assignment-reason-table/assignment-reason-table.component';
+import { VariantReportComparisonData } from './patient-variant-report-oa/variant-report-comparison-data';
 
 /*
 *  View transformation service
@@ -35,8 +36,13 @@ export class ViewDataTransformer {
     return transformedPatient;
   }
 
-  transformOutsidePatientReport(source: any): any {
-    const transformedReport: any = { ...source }; // Deep-copy the source
+  transformOutsidePatientReport(
+    report: VariantReportComparisonData,
+    cnvDataOutside: any,
+    ocpDataOutside: any,
+    cnvDataMatch: any,
+    ocpDataMatch: any): any {
+    const transformedReport: any = { ...report }; // Deep-copy the source
 
     return transformedReport;
   }
