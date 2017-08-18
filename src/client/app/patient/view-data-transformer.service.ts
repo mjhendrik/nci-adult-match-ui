@@ -72,14 +72,14 @@ export class ViewDataTransformer {
 
     transformedBiopsy.isOutsideAssay = !!transformedBiopsy.patientOutsideAssayLabReport;
 
-    this.transformMdaMessages(transformedPatient, transformedBiopsy);
+    this.transformMdaMessages(transformedBiopsy);
     this.transformNgsMessages(transformedPatient, transformedBiopsy);
     this.transformAssayMessages(transformedPatient, transformedBiopsy);
 
     return transformedBiopsy;
   }
 
-  private transformMdaMessages(transformedPatient: any, transformedBiopsy: any): void {
+  private transformMdaMessages(transformedBiopsy: any): void {
     if (!('mdAndersonMessages' in transformedBiopsy)) {
       return;
     }
