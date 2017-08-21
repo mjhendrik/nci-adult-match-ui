@@ -7,18 +7,6 @@ import { AuthHttp } from 'angular2-jwt';
 
 import { Config } from '../shared/config/env.config';
 
-export interface DashboardOverviewInterfaceTa {
-  treatmentArms: {};
-}
-
-export interface DashboardOverviewInterfacePatients {
-  patients: {};
-}
-
-export interface DashboardOverviewInterfaceBt {
-  biopsyTracking: {};
-}
-
 /**
  * This class provides the NameList service with methods to read names and add names.
  */
@@ -57,7 +45,7 @@ export class DashboardApiService {
       .catch(this.handleError);
   }
 
-  getDashboardOverviewTa(): Observable<DashboardOverviewInterfaceTa> {
+  getDashboardOverviewTa(): Observable<any> {
 
     // return this.http.get('assets/mock-data/dashboard-overview.json')
 
@@ -67,7 +55,7 @@ export class DashboardApiService {
       .catch(this.handleError);
   }
 
-  getDashboardOverviewPatients(): Observable<DashboardOverviewInterfacePatients> {
+  getDashboardOverviewPatients(): Observable<any> {
 
     // return this.http.get('assets/mock-data/dashboard-overview.json')
 
@@ -77,7 +65,7 @@ export class DashboardApiService {
       .catch(this.handleError);
   }
 
-  getDashboardOverviewBt(): Observable<DashboardOverviewInterfaceBt> {
+  getDashboardOverviewBt(): Observable<any> {
     return this.http.get(Config.API.PATIENT + '/patients/tracking/dashboard/overview')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug

@@ -4,12 +4,7 @@ import {
 } from '@angular/core';
 import { routerTransition } from './../shared/router.animations';
 import { GmtPipe } from './../shared/pipes/gmt.pipe';
-import {
-  DashboardApiService,
-  DashboardOverviewInterfaceTa,
-  DashboardOverviewInterfacePatients,
-  DashboardOverviewInterfaceBt
-} from './dashboard-api.service';
+import { DashboardApiService } from './dashboard-api.service';
 
 
 /**
@@ -126,7 +121,7 @@ export class DashboardComponent implements OnInit {
 
   getOverviewDataTa() {
     this.dashboardApi.getDashboardOverviewTa()
-      .subscribe((itemList: DashboardOverviewInterfaceTa) => {
+      .subscribe((itemList: any) => {
         this.treatmentArms = itemList;
         this.overviewDataAvailableTa = true;
       },
@@ -136,7 +131,7 @@ export class DashboardComponent implements OnInit {
 
   getOverviewDataPatients() {
     this.dashboardApi.getDashboardOverviewPatients()
-      .subscribe((itemList: DashboardOverviewInterfacePatients) => {
+      .subscribe((itemList: any) => {
         this.patients = itemList;
         this.overviewDataAvailablePatients = true;
       },
@@ -146,7 +141,7 @@ export class DashboardComponent implements OnInit {
 
   getOverviewDataBt() {
     this.dashboardApi.getDashboardOverviewBt()
-      .subscribe((itemList: DashboardOverviewInterfaceBt) => {
+      .subscribe((itemList: any) => {
         this.biopsyTracking = itemList;
         this.overviewDataAvailableBt = true;
       },
