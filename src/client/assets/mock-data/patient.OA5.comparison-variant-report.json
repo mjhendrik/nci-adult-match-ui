@@ -1038,7 +1038,8 @@
         }
     },
     "outsideData": {
-        "analysisId": "88fd81b9-d77b-4760-93f9-a5225f129a5c",
+        "biopsySequenceNumber": "biopsies[n].biopsySequenceNumber",
+        "analysisId": "biopsies[n].nextGenerationSequences[k].ionReporterResults.jobName",
         "assayMessages": [
             {
                 "biomarker": "ICCPTENs",
@@ -1909,6 +1910,11 @@
             }
         },
         "variantReport": {
+            "molecularSequenceNumber": "biopsies[n].nextGenerationSequences[k].ionReporterResults.molecularSequenceNumber",
+            "variantReportStatus": "biopsies[n].nextGenerationSequences[k].status",
+            "variantReportCreatedDate": "biopsies[n].nextGenerationSequences[k].ionReporterResults.variantReport.createdDate",
+            "variantReporterFileReceivedDate": "biopsies[n].nextGenerationSequences[k].dateReceived",
+            "variantReporterRejectedOrConfirmedDate": "biopsies[n].nextGenerationSequences[k].dateVerified",
             "copyNumberVariants": [],
             "createdDate": {
                 "$date": 1500563346427
