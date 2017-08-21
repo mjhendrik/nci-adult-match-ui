@@ -36,7 +36,7 @@ export class PatientApiService {
       + (filter ? '&projfilter=' + filter : '')
       + (isOutsideAssay !== null ? '&is-oa=' + isOutsideAssay : ''),
       'assets/mock-data/patient-list.json'))
-      .map((res: Response) => res.json())
+      .map(this.extractData)
       .catch(this.handleError);
   }
 
@@ -45,60 +45,60 @@ export class PatientApiService {
       + '/patients/count?projection=patientSequenceNumber,currentPatientStatus,currentStepNumber,diseases.shortName,registrationDate,patientAssignments.treatmentArm.name,patientAssignments.treatmentArm.version'
       + (filter ? '&projfilter=' + filter : '')
       + (isOutsideAssay !== null ? '&is-oa=' + isOutsideAssay : ''))
-      .map((res: Response) => res.json())
+      .map(this.extractData)
       .catch(this.handleError);
   }
 
   getPatientTotal(): Observable<number> {
     return this.http.get(Config.API.PATIENT + '/patients/count?projection=patientSequenceNumber')
-      .map((res: Response) => res.json())
+      .map(this.extractData)
       .catch(this.handleError);
   }
 
   getPatientDetails(psn: string): Observable<any> {
     return this.http.get(this.url('/patients/' + psn, 'assets/mock-data/patient.1067.json'))
-      .map((res: Response) => res.json())
+      .map(this.extractData)
       .catch(this.handleError);
   }
 
   getPatientVariantReport(psn: string): Observable<any> {
     return this.http.get(Config.API.PATIENT + '/patients/' + psn)
-      .map((res: Response) => res.json())
+      .map(this.extractData)
       .catch(this.handleError);
   }
 
   getOutsideAssayComparisonVariantReport(psn: string): Observable<VariantReportComparisonData> {
     return this.http.get(this.url('/patients/' + psn + '/outside_assay/comparison_variant_report',
       'assets/mock-data/patient.OA5.comparison-variant-report.json'))
-      .map((res: Response) => res.json())
+      .map(this.extractData)
       .catch(this.handleError);
   }
 
   getPatientVariantReportQc(psn: string, analysisId: string): Observable<any> {
     return this.http.get(this.url('/patients/' + psn + '/variant_reports/' + analysisId + '/quality_control_report',
       'assets/mock-data/qcvr-MSN3053_v1_e3d4df31-9785-40ff-8001-985297a3240e.json'))
-      .map((res: Response) => res.json())
+      .map(this.extractData)
       .catch(this.handleError);
   }
 
   getPatientVariantReportOcp(psn: string, analysisId: string): Observable<any> {
     return this.http.get(this.url('/patients/' + psn + '/variant_reports/' + analysisId + '/oncomine_control_panel',
       'assets/mock-data/oncomine-control-panel.json'))
-      .map((res: Response) => res.json())
+      .map(this.extractData)
       .catch(err => Observable.of({ hasError: true, error: err }));
   }
 
   getPatientCopyNumberReport(psn: string, analysisId: string): Observable<any> {
     return this.http.get(this.url('/patients/' + psn + '/variant_reports/' + analysisId + '/copy_number_report',
       'assets/mock-data/copy-number-report.json'))
-      .map((res: Response) => res.json())
+      .map(this.extractData)
       .catch(err => Observable.of({ hasError: true, error: err, parsed_vcf_genes: {} }));
   }
 
   getPatientVariantReportFileInfo(psn: string, analysisId: string): Observable<any> {
     return this.http.get(this.url('/patients/' + psn + '/variant_reports/' + analysisId + '/file_info',
       'assets/mock-data/variant-report-file-info.json'))
-      .map((res: Response) => res.json())
+      .map(this.extractData)
       .catch(this.handleError);
   }
 
@@ -128,5 +128,13 @@ export class PatientApiService {
 
   private url(endpoint: string, defaultUrl: string): string {
     return Config.API.PATIENT && Config.API.PATIENT !== '[TBD]' ? Config.API.PATIENT + endpoint : defaultUrl;
+  }
+
+  private extractData(res: Response) {
+    if (res.status < 200 || res.status >= 300) {
+      throw new Error('Bad response status: ' + res.status);
+    }
+    let body = res.json();
+    return body || {};
   }
 }
