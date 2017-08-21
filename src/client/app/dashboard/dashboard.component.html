@@ -109,39 +109,7 @@
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table *ngIf="tableARData.length == 0" class="table table-td-valign-middle table-striped table-col-width">
-                          <thead>
-                            <tr class="purple-light">
-                              <th>
-                                Patient Sequence Number
-                              </th>
-                              <th>
-                                Biopsy Sequence Number
-                              </th>
-                              <th>
-                                Molecular Sequence Number
-                              </th>
-                              <th>
-                                Selected Treatment Arm
-                              </th>
-                              <th class="text-center">
-                                Assignment Report
-                              </th>
-                              <th>
-                                Assignment Date
-                              </th>
-                              <th>
-                                Hours Pending
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td class="text-muted" colspan="7">There are no pending assignment reports that need review</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                        <table *ngIf="tableARData.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="tableARData | filterByText: searchtermAR"
+                        <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="tableARData | filterByText: searchtermAR"
                           #mftableAR="mfDataTable" [(mfSortBy)]="tableARDefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPageAR">
                           <thead>
                             <tr class="purple-light">
@@ -189,7 +157,10 @@
                               <td [colorCodeHours]="item.hoursPending">{{item.hoursPending | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftableAR.data.length == 0">
-                              <td class="text-muted" colspan="7">No matching search results found for "{{searchtermAR}}"</td>
+                              <td class="text-muted" colspan="7">
+                                <span *ngIf="searchtermAR">No matching search results found for "{{searchtermAR}}"</span>
+                                <span *ngIf="!searchtermAR">There are no pending assignment reports that need review</span>
+                              </td>
                             </tr>
                           </tbody>
                           <tfoot>
@@ -234,42 +205,7 @@
                     </div>
                     <div class="row">
                       <div class="table-responsive col-lg-12">
-                        <table *ngIf="tableVRData.length == 0" class="table table-td-valign-middle table-striped table-col-width">
-                          <thead>
-                            <tr class="purple-light">
-                              <th>
-                                Patient Sequence Number
-                              </th>
-                              <th>
-                                Biopsy Sequence Number
-                              </th>
-                              <th>
-                                Molecular Sequence Number
-                              </th>
-                              <th class="text-center">
-                                Variant Report
-                              </th>
-                              <th>
-                                Location
-                              </th>
-                              <th>
-                                Specimen Received Date
-                              </th>
-                              <th>
-                                Variant Report Recieved Date
-                              </th>
-                              <th>
-                                Days Pending
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td class="text-muted" colspan="8">There are no pending variant reports that need review</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                        <table *ngIf="tableVRData!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="tableVRData | filterByText: searchtermVR"
+                        <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="tableVRData | filterByText: searchtermVR"
                           #mftableVR="mfDataTable" [(mfSortBy)]="tableVRDefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPageVR">
                           <thead>
                             <tr class="purple-light">
@@ -314,7 +250,10 @@
                               <td [colorCodeDays]="item.daysPending">{{item.daysPending | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftableVR.data.length == 0">
-                              <td class="text-muted" colspan="8">No matching search results found for "{{searchtermVR}}"</td>
+                              <td class="text-muted" colspan="8">
+                                <span *ngIf="searchtermVR">No matching search results found for "{{searchtermVR}}"</span>
+                                <span *ngIf="!searchtermVR">There are no pending variant reports that need review</span>
+                              </td>
                             </tr>
                           </tbody>
                           <tfoot>
@@ -365,36 +304,7 @@
         </div>
         <div class="row">
           <div class="table-responsive col-lg-12">
-            <table *ngIf="tablePatientsAwaitingData.length == 0" class="table table-td-valign-middle table-striped table-col-width">
-              <thead>
-                <tr class="purple-light">
-                  <th>
-                    Details
-                  </th>
-                  <th>
-                    Patient Sequence Number
-                  </th>
-                  <th>
-                    Current Status
-                  </th>
-                  <th>
-                    Message
-                  </th>
-                  <th>
-                    AMOI
-                  </th>
-                  <th>
-                    Days Waiting
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="text-muted" colspan="7">There are no patients awaiting further action or information</td>
-                </tr>
-              </tbody>
-            </table>
-            <table *ngIf="tablePatientsAwaitingData.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="tablePatientsAwaitingData | filterByText: searchtermPatientsAwaiting"
+            <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="tablePatientsAwaitingData | filterByText: searchtermPatientsAwaiting"
               #mftablePatientsAwaiting="mfDataTable" [(mfSortBy)]="tablePatientsAwaitingDefaultSort" [(mfSortOrder)]="sortByDesc"
               [mfRowsOnPage]="recordsPerPagePatientsAwaiting">
               <thead>
@@ -439,7 +349,10 @@
                   <td [colorCodeDays]="item.daysWaiting">{{item.daysWaiting | dashify}}</td>
                 </tr>
                 <tr *ngIf="mftablePatientsAwaiting.data.length == 0">
-                  <td class="text-muted" colspan="6">No matching search results found for "{{searchtermPatientsAwaiting}}"</td>
+                  <td class="text-muted" colspan="6">
+                    <span *ngIf="searchtermPatientsAwaiting">No matching search results found for "{{searchtermPatientsAwaiting}}"</span>
+                    <span *ngIf="!searchtermPatientsAwaiting">There are no patients awaiting further action or information</span>
+                  </td>
                 </tr>
               </tbody>
               <tfoot>
