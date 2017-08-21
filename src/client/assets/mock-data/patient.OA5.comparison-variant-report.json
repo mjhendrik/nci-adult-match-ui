@@ -97,6 +97,8 @@
     "currentPatientStatus": "ON_TREATMENT_ARM",
     "currentStepNumber": "1",
     "matchData": {
+        "biopsySequenceNumber": "biopsies[n].biopsySequenceNumber",
+        "analysisId": "biopsies[n].nextGenerationSequences[k].ionReporterResults.jobName",
         "analysisId": "job-OA5",
         "assayMessages": [
             {
@@ -967,6 +969,11 @@
             }
         },
         "variantReport": {
+            "molecularSequenceNumber": "biopsies[n].nextGenerationSequences[k].ionReporterResults.molecularSequenceNumber",
+            "variantReportStatus": "biopsies[n].nextGenerationSequences[k].status",
+            "variantReportCreatedDate": "biopsies[n].nextGenerationSequences[k].ionReporterResults.variantReport.createdDate",
+            "variantReporterFileReceivedDate": "biopsies[n].nextGenerationSequences[k].dateReceived",
+            "variantReporterRejectedOrConfirmedDate": "biopsies[n].nextGenerationSequences[k].dateVerified",
             "copyNumberVariants": [],
             "createdDate": {
                 "$date": 1500563378608
