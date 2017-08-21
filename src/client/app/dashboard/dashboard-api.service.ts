@@ -7,12 +7,6 @@ import { AuthHttp } from 'angular2-jwt';
 
 import { Config } from '../shared/config/env.config';
 
-export interface DashboardInterface {
-  tableARData: any[];
-  tableVRData: any[];
-  tablePatientsAwaitingData: any[];
-}
-
 export interface DashboardOverviewInterfaceTa {
   treatmentArms: {};
 }
@@ -42,8 +36,22 @@ export class DashboardApiService {
    * Returns an Observable for the HTTP GET request for the JSON resource.
    * @return {string[]} The Observable for the HTTP request.
    */
-  getDashboard(): Observable<DashboardInterface> {
-    return this.http.get('assets/mock-data/dashboard.json')
+  getDashboardAR(): Observable<any[]> {
+    return this.http.get('assets/mock-data/dashboard-ar.json')
+      .map((res: Response) => res.json())
+      //              .do(data => console.log('server data:', data))  // debug
+      .catch(this.handleError);
+  }
+
+  getDashboardVR(): Observable<any[]> {
+    return this.http.get('assets/mock-data/dashboard-vr.json')
+      .map((res: Response) => res.json())
+      //              .do(data => console.log('server data:', data))  // debug
+      .catch(this.handleError);
+  }
+
+  getDashboardPatientsAwaiting(): Observable<any[]> {
+    return this.http.get('assets/mock-data/dashboard-pa.json')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);

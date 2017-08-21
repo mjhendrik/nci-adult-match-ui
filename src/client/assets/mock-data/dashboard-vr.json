@@ -1,0 +1,3885 @@
+[{
+    "biopsySequenceNumber": "T-17-001294",
+    "dateVariantReportReceived": {
+      "$date": 1491009358219
+    },
+    "daysPending": 142,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN51128",
+    "patientSequenceNumber": "14874",
+    "specimenReceivedDate": {
+      "$date": 1490280712643
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1491009322891
+      },
+      "geneFusions": [],
+      "indels": [],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001254",
+    "dateVariantReportReceived": {
+      "$date": 1490754281377
+    },
+    "daysPending": 145,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN50716",
+    "patientSequenceNumber": "14877",
+    "specimenReceivedDate": {
+      "$date": 1490109241867
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1490754243146
+      },
+      "geneFusions": [],
+      "indels": [{
+        "alleleFrequency": 0.291429,
+        "alternative": "-",
+        "alternativeAlleleObservationCount": 460,
+        "armSpecific": false,
+        "chromosome": "chr17",
+        "confirmed": false,
+        "exon": "4",
+        "filter": "PASS",
+        "flowAlternativeAlleleObservationCount": "459",
+        "flowReferenceAlleleObservations": "1116",
+        "function": "frameshiftDeletion",
+        "gene": "TP53",
+        "geneName": "",
+        "hgvs": "c.150delT",
+        "identifier": ".",
+        "inclusion": true,
+        "location": "exonic",
+        "metadata": {
+          "_id": "c94d95d6-564f-4a9e-8c87-56cbfd58cdec"
+        },
+        "oncominevariantclass": "Deleterious",
+        "position": "7579537",
+        "protein": "p.Ile50fs",
+        "rare": false,
+        "readDepth": 1584,
+        "reference": "A",
+        "referenceAlleleObservations": 1111,
+        "transcript": "NM_000546.5"
+      }],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001196",
+    "dateVariantReportReceived": {
+      "$date": 1490412405172
+    },
+    "daysPending": 149,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN50195",
+    "patientSequenceNumber": "15030",
+    "specimenReceivedDate": {
+      "$date": 1489762500071
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1490412378070
+      },
+      "geneFusions": [{
+          "alternative": "G[chr7:116414934[",
+          "armSpecific": false,
+          "chromosome": "chr7",
+          "confirmed": false,
+          "exon": "13",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "",
+          "flowReferenceAlleleObservations": "",
+          "function": "",
+          "gene": "MET",
+          "geneName": "MET",
+          "hgvs": "",
+          "identifier": "MET-MET.M13M15_1",
+          "inclusion": true,
+          "location": "",
+          "metadata": {
+            "_id": "35909738-5457-4c9b-b8ff-e76d0e1a740d"
+          },
+          "oncominevariantclass": "Fusion",
+          "position": "116411708",
+          "rare": false,
+          "readDepth": 1440,
+          "reference": "G"
+        },
+        {
+          "alternative": "]chr7:116411708]G",
+          "armSpecific": false,
+          "chromosome": "chr7",
+          "confirmed": false,
+          "exon": "15",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "",
+          "flowReferenceAlleleObservations": "",
+          "function": "",
+          "gene": "MET",
+          "geneName": "MET",
+          "hgvs": "",
+          "identifier": "MET-MET.M13M15_2",
+          "inclusion": true,
+          "location": "",
+          "metadata": {
+            "_id": "040554df-b04a-4a76-ac3e-ff33129ff2ff"
+          },
+          "oncominevariantclass": "Fusion",
+          "position": "116414934",
+          "rare": false,
+          "readDepth": 1440,
+          "reference": "G"
+        }
+      ],
+      "indels": [{
+        "alleleFrequency": 0.713098,
+        "alternative": "-",
+        "alternativeAlleleObservationCount": 1022,
+        "armSpecific": false,
+        "chromosome": "chr3",
+        "confirmed": false,
+        "exon": "10",
+        "filter": "PASS",
+        "flowAlternativeAlleleObservationCount": "1029",
+        "flowReferenceAlleleObservations": "414",
+        "function": "frameshiftDeletion",
+        "gene": "BAP1",
+        "geneName": "",
+        "hgvs": "c.799_800delCA",
+        "identifier": ".",
+        "inclusion": true,
+        "location": "exonic",
+        "metadata": {
+          "_id": "162d164f-3c9c-415e-94f9-8e2648f5a697"
+        },
+        "oncominevariantclass": "Deleterious",
+        "position": "52439912",
+        "protein": "p.Gln267fs",
+        "rare": false,
+        "readDepth": 1447,
+        "reference": "TG",
+        "referenceAlleleObservations": 412,
+        "transcript": "NM_004656.3"
+      }],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [{
+        "alleleFrequency": 0.0571776,
+        "alternative": "C",
+        "alternativeAlleleObservationCount": 94,
+        "armSpecific": false,
+        "chromosome": "chr17",
+        "confirmed": false,
+        "exon": "4",
+        "filter": "PASS",
+        "flowAlternativeAlleleObservationCount": "94",
+        "flowReferenceAlleleObservations": "1550",
+        "function": "missense",
+        "gene": "TP53",
+        "geneName": "",
+        "hgvs": "c.214C>G",
+        "identifier": ".",
+        "inclusion": true,
+        "location": "exonic",
+        "metadata": {
+          "_id": "d4dcf19d-5b29-4622-b2ed-ab6e56bd69d9"
+        },
+        "oncominevariantclass": "Hotspot",
+        "position": "7579473",
+        "protein": "p.Pro72Ala",
+        "rare": false,
+        "readDepth": 1645,
+        "reference": "G",
+        "referenceAlleleObservations": 1550,
+        "transcript": "NM_000546.5"
+      }],
+      "unifiedGeneFusions": [{
+        "annotation": "-",
+        "armSpecific": false,
+        "confirmed": false,
+        "driverGene": "MET",
+        "driverReadCount": 1440,
+        "identifier": "MET-MET.M13M15",
+        "inclusion": true,
+        "metadata": {
+          "_id": "3e6f301c-640a-4919-b8a0-759020ebcd64"
+        },
+        "partnerGene": "MET",
+        "partnerReadCount": 1440,
+        "rare": false
+      }]
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001191",
+    "dateVariantReportReceived": {
+      "$date": 1490407949401
+    },
+    "daysPending": 149,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN50054",
+    "patientSequenceNumber": "15053",
+    "specimenReceivedDate": {
+      "$date": 1489681913293
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1490407932810
+      },
+      "geneFusions": [{
+          "alternative": "G]chr8:38283763]",
+          "armSpecific": false,
+          "chromosome": "chr8",
+          "confirmed": false,
+          "exon": "2",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "",
+          "flowReferenceAlleleObservations": "",
+          "function": "",
+          "gene": "BAG4",
+          "geneName": "BAG4",
+          "hgvs": "",
+          "identifier": "BAG4-FGFR1.B2F6_1",
+          "inclusion": true,
+          "location": "",
+          "metadata": {
+            "_id": "3d9bd6d0-61be-4514-ac2d-a5f71ec3dda1"
+          },
+          "oncominevariantclass": "Fusion",
+          "position": "38050313",
+          "rare": false,
+          "readDepth": 1174,
+          "reference": "G"
+        },
+        {
+          "alternative": "]chr8:38050313]C",
+          "armSpecific": false,
+          "chromosome": "chr8",
+          "confirmed": false,
+          "exon": "6",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "",
+          "flowReferenceAlleleObservations": "",
+          "function": "",
+          "gene": "FGFR1",
+          "geneName": "FGFR1",
+          "hgvs": "",
+          "identifier": "BAG4-FGFR1.B2F6_2",
+          "inclusion": true,
+          "location": "",
+          "metadata": {
+            "_id": "aee47880-ed3c-43a6-888e-25f89d39b5b5"
+          },
+          "oncominevariantclass": "Fusion",
+          "position": "38283763",
+          "rare": false,
+          "readDepth": 1174,
+          "reference": "C"
+        }
+      ],
+      "indels": [],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [{
+          "alleleFrequency": 0.6045,
+          "alternative": "A",
+          "alternativeAlleleObservationCount": 1445,
+          "armSpecific": false,
+          "chromosome": "chr17",
+          "confirmed": false,
+          "exon": "6",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "1209",
+          "flowReferenceAlleleObservations": "791",
+          "function": "nonsense",
+          "gene": "TP53",
+          "geneName": "",
+          "hgvs": "c.586C>T",
+          "identifier": ".",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "b3b7ce11-9db5-40bf-8aa6-18a8853c2369"
+          },
+          "oncominevariantclass": "Deleterious",
+          "position": "7578263",
+          "protein": "p.Arg196Ter",
+          "rare": false,
+          "readDepth": 2362,
+          "reference": "G",
+          "referenceAlleleObservations": 917,
+          "transcript": "NM_000546.5"
+        },
+        {
+          "alleleFrequency": 0.69142,
+          "alternative": "A",
+          "alternativeAlleleObservationCount": 1375,
+          "armSpecific": false,
+          "chromosome": "chr17",
+          "confirmed": false,
+          "exon": "7",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "1378",
+          "flowReferenceAlleleObservations": "615",
+          "function": "nonsense",
+          "gene": "BRCA1",
+          "geneName": "",
+          "hgvs": "c.514C>T",
+          "identifier": ".",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "78418c60-f0ba-45ae-8bbf-b0c056c4616e"
+          },
+          "oncominevariantclass": "Deleterious",
+          "position": "41251825",
+          "protein": "p.Gln172Ter",
+          "rare": false,
+          "readDepth": 1993,
+          "reference": "G",
+          "referenceAlleleObservations": 614,
+          "transcript": "NM_007300.3"
+        }
+      ],
+      "unifiedGeneFusions": [{
+        "annotation": "-",
+        "armSpecific": false,
+        "confirmed": false,
+        "driverGene": "FGFR1",
+        "driverReadCount": 1174,
+        "identifier": "BAG4-FGFR1.B2F6",
+        "inclusion": true,
+        "metadata": {
+          "_id": "26bc3876-e84a-4b11-b561-363c0d39412c"
+        },
+        "partnerGene": "BAG4",
+        "partnerReadCount": 1174,
+        "rare": false
+      }]
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001250",
+    "dateVariantReportReceived": {
+      "$date": 1490755871289
+    },
+    "daysPending": 145,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN50682",
+    "patientSequenceNumber": "15057",
+    "specimenReceivedDate": {
+      "$date": 1490107635037
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1490755852709
+      },
+      "geneFusions": [],
+      "indels": [],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001122",
+    "dateVariantReportReceived": {
+      "$date": 1490399728132
+    },
+    "daysPending": 149,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN49460",
+    "patientSequenceNumber": "15062",
+    "specimenReceivedDate": {
+      "$date": 1489420877007
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1490399704347
+      },
+      "geneFusions": [],
+      "indels": [],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [{
+        "alleleFrequency": 0.0543294,
+        "alternative": "C",
+        "alternativeAlleleObservationCount": 64,
+        "armSpecific": false,
+        "chromosome": "chr17",
+        "confirmed": false,
+        "exon": "4",
+        "filter": "PASS",
+        "flowAlternativeAlleleObservationCount": "64",
+        "flowReferenceAlleleObservations": "1114",
+        "function": "missense",
+        "gene": "TP53",
+        "geneName": "",
+        "hgvs": "c.214C>G",
+        "identifier": ".",
+        "inclusion": true,
+        "location": "exonic",
+        "metadata": {
+          "_id": "97469e12-bc58-4b67-88e4-21448781ef88"
+        },
+        "oncominevariantclass": "Hotspot",
+        "position": "7579473",
+        "protein": "p.Pro72Ala",
+        "rare": false,
+        "readDepth": 1178,
+        "reference": "G",
+        "referenceAlleleObservations": 1114,
+        "transcript": "NM_000546.5"
+      }],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001198",
+    "dateVariantReportReceived": {
+      "$date": 1490759712187
+    },
+    "daysPending": 145,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN50625",
+    "patientSequenceNumber": "15072",
+    "specimenReceivedDate": {
+      "$date": 1489763456313
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1490759689333
+      },
+      "geneFusions": [],
+      "indels": [{
+        "alleleFrequency": 0.272088,
+        "alternative": "CAGA",
+        "alternativeAlleleObservationCount": 564,
+        "armSpecific": false,
+        "chromosome": "chr16",
+        "confirmed": false,
+        "exon": "2",
+        "filter": "PASS",
+        "flowAlternativeAlleleObservationCount": "542",
+        "flowReferenceAlleleObservations": "1450",
+        "function": "frameshiftInsertion",
+        "gene": "CDH1",
+        "geneName": "",
+        "hgvs": "c.52_53insCAGA",
+        "identifier": ".",
+        "inclusion": true,
+        "location": "exonic",
+        "metadata": {
+          "_id": "898330ff-eb24-4a64-8a1e-3b4effccd6fe"
+        },
+        "oncominevariantclass": "Deleterious",
+        "position": "68772204",
+        "protein": "p.Ser19fs",
+        "rare": false,
+        "readDepth": 2121,
+        "reference": "-",
+        "referenceAlleleObservations": 1552,
+        "transcript": "NM_004360.3"
+      }],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001243",
+    "dateVariantReportReceived": {
+      "$date": 1490760203262
+    },
+    "daysPending": 145,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN50575",
+    "patientSequenceNumber": "15082",
+    "specimenReceivedDate": {
+      "$date": 1490028884167
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1490760185523
+      },
+      "geneFusions": [],
+      "indels": [],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001302",
+    "dateVariantReportReceived": {
+      "$date": 1491002609487
+    },
+    "daysPending": 142,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN51045",
+    "patientSequenceNumber": "15096",
+    "specimenReceivedDate": {
+      "$date": 1490283601007
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1491002567625
+      },
+      "geneFusions": [],
+      "indels": [{
+        "alleleFrequency": 0.407311,
+        "alternative": "-",
+        "alternativeAlleleObservationCount": 619,
+        "armSpecific": false,
+        "chromosome": "chr13",
+        "confirmed": false,
+        "exon": "17",
+        "filter": "PASS",
+        "flowAlternativeAlleleObservationCount": "624",
+        "flowReferenceAlleleObservations": "908",
+        "function": "frameshiftDeletion",
+        "gene": "RB1",
+        "geneName": "",
+        "hgvs": "c.1588_1589delAA",
+        "identifier": ".",
+        "inclusion": true,
+        "location": "exonic",
+        "metadata": {
+          "_id": "b49ba78d-d09e-4761-8ed5-c199ddf398f5"
+        },
+        "oncominevariantclass": "Deleterious",
+        "position": "48955472",
+        "protein": "p.Lys530fs",
+        "rare": false,
+        "readDepth": 1538,
+        "reference": "AA",
+        "referenceAlleleObservations": 899,
+        "transcript": "NM_000321.2"
+      }],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [{
+        "alleleFrequency": 0.527972,
+        "alternative": "G",
+        "alternativeAlleleObservationCount": 676,
+        "armSpecific": false,
+        "chromosome": "chr17",
+        "confirmed": false,
+        "exon": "5",
+        "filter": "PASS",
+        "flowAlternativeAlleleObservationCount": "755",
+        "flowReferenceAlleleObservations": "675",
+        "function": "missense",
+        "gene": "TP53",
+        "geneName": "",
+        "hgvs": "c.379T>C",
+        "identifier": "COSM44687",
+        "inclusion": true,
+        "location": "exonic",
+        "metadata": {
+          "_id": "2787e971-0459-4db1-a080-f351bcdeac97"
+        },
+        "oncominevariantclass": "Hotspot",
+        "position": "7578551",
+        "protein": "p.Ser127Pro",
+        "rare": false,
+        "readDepth": 1356,
+        "reference": "A",
+        "referenceAlleleObservations": 671,
+        "transcript": "NM_000546.5"
+      }],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001106",
+    "dateVariantReportReceived": {
+      "$date": 1490401754978
+    },
+    "daysPending": 149,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN49411",
+    "patientSequenceNumber": "15135",
+    "specimenReceivedDate": {
+      "$date": 1489249615247
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1490401717559
+      },
+      "geneFusions": [],
+      "indels": [],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [{
+          "alleleFrequency": 0.280639,
+          "alternative": "T",
+          "alternativeAlleleObservationCount": 1,
+          "armSpecific": false,
+          "chromosome": "chr17",
+          "confirmed": false,
+          "exon": "5",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "158",
+          "flowReferenceAlleleObservations": "400",
+          "function": "missense",
+          "gene": "TP53",
+          "geneName": "",
+          "hgvs": "c.535C>A",
+          "identifier": "COSM44151",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "5f9dc88d-94a5-4904-b48b-d8d0b8291363"
+          },
+          "oncominevariantclass": "Hotspot",
+          "position": "7578395",
+          "protein": "p.His179Asn",
+          "rare": false,
+          "readDepth": 791,
+          "reference": "G",
+          "referenceAlleleObservations": 789,
+          "transcript": "NM_000546.5"
+        },
+        {
+          "alleleFrequency": 0.0572082,
+          "alternative": "C",
+          "alternativeAlleleObservationCount": 74,
+          "armSpecific": false,
+          "chromosome": "chr17",
+          "confirmed": false,
+          "exon": "4",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "75",
+          "flowReferenceAlleleObservations": "1236",
+          "function": "missense",
+          "gene": "TP53",
+          "geneName": "",
+          "hgvs": "c.214C>G",
+          "identifier": ".",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "94a37e8b-c0b4-4468-8463-5100b1f1a023"
+          },
+          "oncominevariantclass": "Hotspot",
+          "position": "7579473",
+          "protein": "p.Pro72Ala",
+          "rare": false,
+          "readDepth": 1310,
+          "reference": "G",
+          "referenceAlleleObservations": 1236,
+          "transcript": "NM_000546.5"
+        }
+      ],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001261",
+    "dateVariantReportReceived": {
+      "$date": 1490764719672
+    },
+    "daysPending": 145,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN50773",
+    "patientSequenceNumber": "15140",
+    "specimenReceivedDate": {
+      "$date": 1490113362072
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1490764700442
+      },
+      "geneFusions": [],
+      "indels": [],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [{
+          "alleleFrequency": 0.24758,
+          "alternative": "G",
+          "alternativeAlleleObservationCount": 356,
+          "armSpecific": false,
+          "chromosome": "chr17",
+          "confirmed": false,
+          "exon": "10",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "358",
+          "flowReferenceAlleleObservations": "1088",
+          "function": "missense",
+          "gene": "TP53",
+          "geneName": "",
+          "hgvs": "c.1025G>C",
+          "identifier": "COSM45276",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "4731c342-d3cb-4463-9c12-04c3d8593ed6"
+          },
+          "oncominevariantclass": "Hotspot",
+          "position": "7574002",
+          "protein": "p.Arg342Pro",
+          "rare": false,
+          "readDepth": 1443,
+          "reference": "C",
+          "referenceAlleleObservations": 1085,
+          "transcript": "NM_000546.5"
+        },
+        {
+          "alleleFrequency": 0.423499,
+          "alternative": "A",
+          "alternativeAlleleObservationCount": 812,
+          "armSpecific": false,
+          "chromosome": "chr17",
+          "confirmed": false,
+          "exon": "7",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "811",
+          "flowReferenceAlleleObservations": "1104",
+          "function": "missense",
+          "gene": "TP53",
+          "geneName": "",
+          "hgvs": "c.742C>T",
+          "identifier": "COSM10656",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "c5e99cb9-5bb8-4712-a8b0-44b08543ec66"
+          },
+          "oncominevariantclass": "Hotspot",
+          "position": "7577539",
+          "protein": "p.Arg248Trp",
+          "rare": false,
+          "readDepth": 1917,
+          "reference": "G",
+          "referenceAlleleObservations": 1102,
+          "transcript": "NM_000546.5"
+        }
+      ],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001171",
+    "dateVariantReportReceived": {
+      "$date": 1490422523731
+    },
+    "daysPending": 149,
+    "location": "MGH",
+    "molecularSequenceNumber": "MSN50468",
+    "patientSequenceNumber": "15154",
+    "specimenReceivedDate": {
+      "$date": 1489674947016
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1490422490170
+      },
+      "geneFusions": [],
+      "indels": [],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [{
+          "alleleFrequency": 0.165627,
+          "alternative": "T",
+          "alternativeAlleleObservationCount": 241,
+          "armSpecific": false,
+          "chromosome": "chr7",
+          "confirmed": false,
+          "exon": "15",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "239",
+          "flowReferenceAlleleObservations": "1204",
+          "function": "missense",
+          "gene": "BRAF",
+          "geneName": "",
+          "hgvs": "c.1799T>A",
+          "identifier": "COSM476",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "f12cd74c-92d3-4bfd-96aa-0e710a74bd6b"
+          },
+          "oncominevariantclass": "Hotspot",
+          "position": "140453136",
+          "protein": "p.Val600Glu",
+          "rare": false,
+          "readDepth": 1447,
+          "reference": "A",
+          "referenceAlleleObservations": 1187,
+          "transcript": "NM_004333.4"
+        },
+        {
+          "alleleFrequency": 0.206061,
+          "alternative": "TT",
+          "alternativeAlleleObservationCount": 237,
+          "armSpecific": false,
+          "chromosome": "chr4",
+          "confirmed": false,
+          "exon": "3",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "238",
+          "flowReferenceAlleleObservations": "917",
+          "function": "synonymous;nonsense",
+          "gene": "TET2",
+          "geneName": "",
+          "hgvs": "c.2289_2290delCCinsTT",
+          "identifier": ".",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "bb971b90-3e87-4a8e-8e5c-66792472aa31"
+          },
+          "oncominevariantclass": "Deleterious",
+          "position": "106157388",
+          "protein": "p.Gln764Ter",
+          "rare": false,
+          "readDepth": 1161,
+          "reference": "CC",
+          "referenceAlleleObservations": 905,
+          "transcript": "NM_001127208.2"
+        },
+        {
+          "alleleFrequency": 0.165042,
+          "alternative": "TT",
+          "alternativeAlleleObservationCount": 238,
+          "armSpecific": false,
+          "chromosome": "chr7",
+          "confirmed": false,
+          "exon": "15",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "237",
+          "flowReferenceAlleleObservations": "1199",
+          "function": "missense",
+          "gene": "BRAF",
+          "geneName": "",
+          "hgvs": "c.1799_1800delTGinsAA",
+          "identifier": ".",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "0d66e13b-3be4-4399-9ea6-826ac4a6f0fb"
+          },
+          "oncominevariantclass": "Hotspot",
+          "position": "140453135",
+          "protein": "p.Val600Glu",
+          "rare": false,
+          "readDepth": 1449,
+          "reference": "CA",
+          "referenceAlleleObservations": 1202,
+          "transcript": "NM_004333.4"
+        }
+      ],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001260",
+    "dateVariantReportReceived": {
+      "$date": 1490765238617
+    },
+    "daysPending": 145,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN50765",
+    "patientSequenceNumber": "15159",
+    "specimenReceivedDate": {
+      "$date": 1490113007383
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1490765222043
+      },
+      "geneFusions": [],
+      "indels": [],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [{
+        "alleleFrequency": 0.473392,
+        "alternative": "A",
+        "alternativeAlleleObservationCount": 855,
+        "armSpecific": false,
+        "chromosome": "chr17",
+        "confirmed": false,
+        "exon": "6",
+        "filter": "PASS",
+        "flowAlternativeAlleleObservationCount": "854",
+        "flowReferenceAlleleObservations": "950",
+        "function": "nonsense",
+        "gene": "TP53",
+        "geneName": "",
+        "hgvs": "c.586C>T",
+        "identifier": ".",
+        "inclusion": true,
+        "location": "exonic",
+        "metadata": {
+          "_id": "ad7dcd7e-f2de-4d52-aad5-835315a1d399"
+        },
+        "oncominevariantclass": "Deleterious",
+        "position": "7578263",
+        "protein": "p.Arg196Ter",
+        "rare": false,
+        "readDepth": 1801,
+        "reference": "G",
+        "referenceAlleleObservations": 944,
+        "transcript": "NM_000546.5"
+      }],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001291",
+    "dateVariantReportReceived": {
+      "$date": 1491011145942
+    },
+    "daysPending": 142,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN51094",
+    "patientSequenceNumber": "15164",
+    "specimenReceivedDate": {
+      "$date": 1490279582093
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1491011108156
+      },
+      "geneFusions": [],
+      "indels": [{
+        "alleleFrequency": 0.235119,
+        "alternative": "-",
+        "alternativeAlleleObservationCount": 387,
+        "armSpecific": false,
+        "chromosome": "chr5",
+        "confirmed": false,
+        "exon": "16",
+        "filter": "PASS",
+        "flowAlternativeAlleleObservationCount": "395",
+        "flowReferenceAlleleObservations": "1285",
+        "function": "frameshiftDeletion",
+        "gene": "APC",
+        "geneName": "",
+        "hgvs": "c.3889delG",
+        "identifier": ".",
+        "inclusion": true,
+        "location": "exonic",
+        "metadata": {
+          "_id": "f8b88384-153f-4e4f-b306-cb16f2563fb8"
+        },
+        "oncominevariantclass": "Deleterious",
+        "position": "112175180",
+        "protein": "p.Asp1297fs",
+        "rare": false,
+        "readDepth": 1682,
+        "reference": "G",
+        "referenceAlleleObservations": 1279,
+        "transcript": "NM_000038.5"
+      }],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [{
+          "alleleFrequency": 0.173434,
+          "alternative": "G",
+          "alternativeAlleleObservationCount": 468,
+          "armSpecific": false,
+          "chromosome": "chr12",
+          "confirmed": false,
+          "exon": "2",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "346",
+          "flowReferenceAlleleObservations": "1649",
+          "function": "missense",
+          "gene": "KRAS",
+          "geneName": "",
+          "hgvs": "c.35G>C",
+          "identifier": "COSM522",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "2e9cb040-fdb0-4fb5-b206-1022b6eb5699"
+          },
+          "oncominevariantclass": "Hotspot",
+          "position": "25398284",
+          "protein": "p.Gly12Ala",
+          "rare": false,
+          "readDepth": 2710,
+          "reference": "C",
+          "referenceAlleleObservations": 2238,
+          "transcript": "NM_033360.3"
+        },
+        {
+          "alleleFrequency": 0.255756,
+          "alternative": "T",
+          "alternativeAlleleObservationCount": 646,
+          "armSpecific": false,
+          "chromosome": "chr12",
+          "confirmed": false,
+          "exon": "8",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "511",
+          "flowReferenceAlleleObservations": "1487",
+          "function": "missense",
+          "gene": "ERBB3",
+          "geneName": "",
+          "hgvs": "c.889G>T",
+          "identifier": "COSM160822",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "b6007041-cf2d-436f-b17f-76d5a6290ec7"
+          },
+          "oncominevariantclass": "Hotspot",
+          "position": "56482341",
+          "protein": "p.Asp297Tyr",
+          "rare": false,
+          "readDepth": 2553,
+          "reference": "G",
+          "referenceAlleleObservations": 1903,
+          "transcript": "NM_001982.3"
+        },
+        {
+          "alleleFrequency": 0.224725,
+          "alternative": "A",
+          "alternativeAlleleObservationCount": 462,
+          "armSpecific": false,
+          "chromosome": "chr17",
+          "confirmed": false,
+          "exon": "7",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "449",
+          "flowReferenceAlleleObservations": "1549",
+          "function": "missense",
+          "gene": "TP53",
+          "geneName": "",
+          "hgvs": "c.742C>T",
+          "identifier": "COSM10656",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "cb166541-b390-40c7-a1aa-fbde5dfb3938"
+          },
+          "oncominevariantclass": "Hotspot",
+          "position": "7577539",
+          "protein": "p.Arg248Trp",
+          "rare": false,
+          "readDepth": 2087,
+          "reference": "G",
+          "referenceAlleleObservations": 1623,
+          "transcript": "NM_000546.5"
+        }
+      ],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001307",
+    "dateVariantReportReceived": {
+      "$date": 1491019178486
+    },
+    "daysPending": 142,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN51185",
+    "patientSequenceNumber": "15170",
+    "specimenReceivedDate": {
+      "$date": 1490285378197
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1491019149756
+      },
+      "geneFusions": [],
+      "indels": [],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001114",
+    "dateVariantReportReceived": {
+      "$date": 1490400349345
+    },
+    "daysPending": 149,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN49445",
+    "patientSequenceNumber": "15180",
+    "specimenReceivedDate": {
+      "$date": 1489252468447
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1490400323815
+      },
+      "geneFusions": [],
+      "indels": [],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [{
+          "alleleFrequency": 0.659187,
+          "alternative": "T",
+          "alternativeAlleleObservationCount": 1086,
+          "armSpecific": false,
+          "chromosome": "chr12",
+          "confirmed": false,
+          "exon": "2",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "1087",
+          "flowReferenceAlleleObservations": "562",
+          "function": "missense",
+          "gene": "KRAS",
+          "geneName": "",
+          "hgvs": "c.35G>A",
+          "identifier": "COSM521",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "05b1f9e7-d8ed-46cc-8601-c2972e686a7f"
+          },
+          "oncominevariantclass": "Hotspot",
+          "position": "25398284",
+          "protein": "p.Gly12Asp",
+          "rare": false,
+          "readDepth": 1651,
+          "reference": "C",
+          "referenceAlleleObservations": 561,
+          "transcript": "NM_033360.3"
+        },
+        {
+          "alleleFrequency": 0.051497,
+          "alternative": "C",
+          "alternativeAlleleObservationCount": 86,
+          "armSpecific": false,
+          "chromosome": "chr17",
+          "confirmed": false,
+          "exon": "4",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "86",
+          "flowReferenceAlleleObservations": "1584",
+          "function": "missense",
+          "gene": "TP53",
+          "geneName": "",
+          "hgvs": "c.214C>G",
+          "identifier": ".",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "9fd2a1f5-ec3b-4e10-81b4-14155b9e807f"
+          },
+          "oncominevariantclass": "Hotspot",
+          "position": "7579473",
+          "protein": "p.Pro72Ala",
+          "rare": false,
+          "readDepth": 1670,
+          "reference": "G",
+          "referenceAlleleObservations": 1584,
+          "transcript": "NM_000546.5"
+        },
+        {
+          "alleleFrequency": 0.229087,
+          "alternative": "T",
+          "alternativeAlleleObservationCount": 241,
+          "armSpecific": false,
+          "chromosome": "chr20",
+          "confirmed": false,
+          "exon": "8",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "241",
+          "flowReferenceAlleleObservations": "811",
+          "function": "missense",
+          "gene": "GNAS",
+          "geneName": "",
+          "hgvs": "c.2530C>T",
+          "identifier": "COSM27887",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "13aafba8-f737-41be-9d6d-f58768098ef4"
+          },
+          "oncominevariantclass": "",
+          "position": "57484420",
+          "protein": "p.Arg844Cys",
+          "rare": false,
+          "readDepth": 1052,
+          "reference": "C",
+          "referenceAlleleObservations": 810,
+          "transcript": "NM_080425.2"
+        }
+      ],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001256",
+    "dateVariantReportReceived": {
+      "$date": 1490767364622
+    },
+    "daysPending": 145,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN50732",
+    "patientSequenceNumber": "15184",
+    "specimenReceivedDate": {
+      "$date": 1490109809083
+    },
+    "analysisId": {
+      "copyNumberVariants": [{
+        "alternative": "<CNV>",
+        "armSpecific": false,
+        "chromosome": "chr11",
+        "confidenceInterval5percent": 11.1894,
+        "confidenceInterval95percent": 13.8526,
+        "confirmed": false,
+        "copyNumber": 12.45,
+        "exon": "",
+        "filter": "PASS",
+        "flowAlternativeAlleleObservationCount": "",
+        "flowReferenceAlleleObservations": "",
+        "function": "",
+        "gene": "CD44",
+        "geneName": "",
+        "hgvs": "",
+        "identifier": "CD44",
+        "inclusion": true,
+        "location": "",
+        "metadata": {
+          "_id": "25e3ecb7-5150-4c5a-bb54-4a29c84ec7b4"
+        },
+        "oncominevariantclass": "Amplification",
+        "position": "35163607",
+        "rare": false,
+        "rawCopyNumber": 12.45,
+        "refCopyNumber": 2.0,
+        "reference": "G"
+      }],
+      "createdDate": {
+        "$date": 1490767300661
+      },
+      "geneFusions": [],
+      "indels": [],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [{
+        "alleleFrequency": 0.826894,
+        "alternative": "A",
+        "alternativeAlleleObservationCount": 4130,
+        "armSpecific": false,
+        "chromosome": "chr17",
+        "confirmed": false,
+        "exon": "10",
+        "filter": "PASS",
+        "flowAlternativeAlleleObservationCount": "1648",
+        "flowReferenceAlleleObservations": "345",
+        "function": "missense",
+        "gene": "TP53",
+        "geneName": "",
+        "hgvs": "c.1010G>T",
+        "identifier": "COSM11411",
+        "inclusion": true,
+        "location": "exonic",
+        "metadata": {
+          "_id": "0376fedf-efc5-4cd6-8eca-49c5f2cf77ab"
+        },
+        "oncominevariantclass": "Hotspot",
+        "position": "7574017",
+        "protein": "p.Arg337Leu",
+        "rare": false,
+        "readDepth": 5027,
+        "reference": "C",
+        "referenceAlleleObservations": 889,
+        "transcript": "NM_000546.5"
+      }],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001246",
+    "dateVariantReportReceived": {
+      "$date": 1490757021092
+    },
+    "daysPending": 145,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN50666",
+    "patientSequenceNumber": "15190",
+    "specimenReceivedDate": {
+      "$date": 1490106254587
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1490756984306
+      },
+      "geneFusions": [],
+      "indels": [],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [{
+        "alleleFrequency": 0.421922,
+        "alternative": "C",
+        "alternativeAlleleObservationCount": 1460,
+        "armSpecific": false,
+        "chromosome": "chr7",
+        "confirmed": false,
+        "exon": "15",
+        "filter": "PASS",
+        "flowAlternativeAlleleObservationCount": "843",
+        "flowReferenceAlleleObservations": "1155",
+        "function": "missense",
+        "gene": "BRAF",
+        "geneName": "",
+        "hgvs": "c.1801A>G",
+        "identifier": "COSM478",
+        "inclusion": true,
+        "location": "exonic",
+        "metadata": {
+          "_id": "b848c83c-0c65-44fb-8533-6ecd02425a95"
+        },
+        "oncominevariantclass": "Hotspot",
+        "position": "140453134",
+        "protein": "p.Lys601Glu",
+        "rare": false,
+        "readDepth": 3498,
+        "reference": "T",
+        "referenceAlleleObservations": 2035,
+        "transcript": "NM_004333.4"
+      }],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001248",
+    "dateVariantReportReceived": {
+      "$date": 1490758125527
+    },
+    "daysPending": 145,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN50641",
+    "patientSequenceNumber": "15194",
+    "specimenReceivedDate": {
+      "$date": 1490107023207
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1490758107171
+      },
+      "geneFusions": [],
+      "indels": [{
+        "alleleFrequency": 0.483412,
+        "alternative": "G",
+        "alternativeAlleleObservationCount": 373,
+        "armSpecific": false,
+        "chromosome": "chr9",
+        "confirmed": false,
+        "exon": "2",
+        "filter": "PASS",
+        "flowAlternativeAlleleObservationCount": "408",
+        "flowReferenceAlleleObservations": "436",
+        "function": "frameshiftInsertion",
+        "gene": "CDKN2A",
+        "geneName": "",
+        "hgvs": "c.259_260insC",
+        "identifier": ".",
+        "inclusion": true,
+        "location": "exonic",
+        "metadata": {
+          "_id": "d91fb7d1-f661-4f9e-ac7a-88995097aa0a"
+        },
+        "oncominevariantclass": "Deleterious",
+        "position": "21971099",
+        "protein": "p.Arg87fs",
+        "rare": false,
+        "readDepth": 850,
+        "reference": "-",
+        "referenceAlleleObservations": 449,
+        "transcript": "NM_000077.4"
+      }],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [{
+        "alleleFrequency": 0.539146,
+        "alternative": "G",
+        "alternativeAlleleObservationCount": 305,
+        "armSpecific": false,
+        "chromosome": "chr17",
+        "confirmed": false,
+        "exon": "4",
+        "filter": "PASS",
+        "flowAlternativeAlleleObservationCount": "303",
+        "flowReferenceAlleleObservations": "259",
+        "function": "missense",
+        "gene": "TP53",
+        "geneName": "",
+        "hgvs": "c.329G>C",
+        "identifier": "COSM11250",
+        "inclusion": true,
+        "location": "exonic",
+        "metadata": {
+          "_id": "2e2c7ffa-07d0-4a3a-bcd4-a77457c5dafe"
+        },
+        "oncominevariantclass": "Hotspot",
+        "position": "7579358",
+        "protein": "p.Arg110Pro",
+        "rare": false,
+        "readDepth": 566,
+        "reference": "C",
+        "referenceAlleleObservations": 259,
+        "transcript": "NM_000546.5"
+      }],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001206",
+    "dateVariantReportReceived": {
+      "$date": 1490746457777
+    },
+    "daysPending": 145,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN50500",
+    "patientSequenceNumber": "15195",
+    "specimenReceivedDate": {
+      "$date": 1489766376061
+    },
+    "analysisId": {
+      "copyNumberVariants": [{
+          "alternative": "<CNV>",
+          "armSpecific": false,
+          "chromosome": "chr12",
+          "confidenceInterval5percent": 134.985,
+          "confidenceInterval95percent": 166.863,
+          "confirmed": false,
+          "copyNumber": 150.08,
+          "exon": "",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "",
+          "flowReferenceAlleleObservations": "",
+          "function": "",
+          "gene": "KRAS",
+          "geneName": "",
+          "hgvs": "",
+          "identifier": "KRAS",
+          "inclusion": true,
+          "location": "",
+          "metadata": {
+            "_id": "9194e9ee-29ef-4f21-96e8-4adb117d03d9"
+          },
+          "oncominevariantclass": "Amplification",
+          "position": "25364760",
+          "rare": false,
+          "rawCopyNumber": 150.08,
+          "refCopyNumber": 2.0,
+          "reference": "C"
+        },
+        {
+          "alternative": "<CNV>",
+          "armSpecific": false,
+          "chromosome": "chr19",
+          "confidenceInterval5percent": 6.81918,
+          "confidenceInterval95percent": 8.31491,
+          "confirmed": false,
+          "copyNumber": 7.53,
+          "exon": "",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "",
+          "flowReferenceAlleleObservations": "",
+          "function": "",
+          "gene": "CCNE1",
+          "geneName": "",
+          "hgvs": "",
+          "identifier": "CCNE1",
+          "inclusion": true,
+          "location": "",
+          "metadata": {
+            "_id": "bd7b8e1d-4b29-4bb3-9a88-ada345ce4bd0"
+          },
+          "oncominevariantclass": "Amplification",
+          "position": "30303692",
+          "rare": false,
+          "rawCopyNumber": 7.53,
+          "refCopyNumber": 2.0,
+          "reference": "A"
+        }
+      ],
+      "createdDate": {
+        "$date": 1490746439627
+      },
+      "geneFusions": [],
+      "indels": [],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [{
+          "alleleFrequency": 0.618072,
+          "alternative": "C",
+          "alternativeAlleleObservationCount": 512,
+          "armSpecific": false,
+          "chromosome": "chr17",
+          "confirmed": false,
+          "exon": "5",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "513",
+          "flowReferenceAlleleObservations": "317",
+          "function": "missense",
+          "gene": "TP53",
+          "geneName": "",
+          "hgvs": "c.395A>G",
+          "identifier": "COSM11582",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "02de41f1-27c3-457f-bdb6-ee17d35d9283"
+          },
+          "oncominevariantclass": "Hotspot",
+          "position": "7578535",
+          "protein": "p.Lys132Arg",
+          "rare": false,
+          "readDepth": 832,
+          "reference": "T",
+          "referenceAlleleObservations": 316,
+          "transcript": "NM_000546.5"
+        },
+        {
+          "alleleFrequency": 0.485457,
+          "alternative": "T",
+          "alternativeAlleleObservationCount": 704,
+          "armSpecific": false,
+          "chromosome": "chr19",
+          "confirmed": false,
+          "exon": "6",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "701",
+          "flowReferenceAlleleObservations": "743",
+          "function": "missense",
+          "gene": "PPP2R1A",
+          "geneName": "",
+          "hgvs": "c.767C>T",
+          "identifier": "COSM86039",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "93c2f833-fd0c-4092-96d3-382d2ac120ca"
+          },
+          "oncominevariantclass": "Hotspot",
+          "position": "52716323",
+          "protein": "p.Ser256Phe",
+          "rare": false,
+          "readDepth": 1448,
+          "reference": "C",
+          "referenceAlleleObservations": 744,
+          "transcript": "NM_014225.5"
+        }
+      ],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001293",
+    "dateVariantReportReceived": {
+      "$date": 1491010024493
+    },
+    "daysPending": 142,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN51110",
+    "patientSequenceNumber": "15202",
+    "specimenReceivedDate": {
+      "$date": 1490280213813
+    },
+    "analysisId": {
+      "copyNumberVariants": [{
+        "alternative": "<CNV>",
+        "armSpecific": false,
+        "chromosome": "chr8",
+        "confidenceInterval5percent": 7.27115,
+        "confidenceInterval95percent": 9.63491,
+        "confirmed": false,
+        "copyNumber": 8.37,
+        "exon": "",
+        "filter": "PASS",
+        "flowAlternativeAlleleObservationCount": "",
+        "flowReferenceAlleleObservations": "",
+        "function": "",
+        "gene": "MYC",
+        "geneName": "",
+        "hgvs": "",
+        "identifier": "MYC",
+        "inclusion": true,
+        "location": "",
+        "metadata": {
+          "_id": "7ad1139e-3d1e-4ded-9316-edd1801a4e4f"
+        },
+        "oncominevariantclass": "Amplification",
+        "position": "128748884",
+        "rare": false,
+        "rawCopyNumber": 8.37,
+        "refCopyNumber": 2.0,
+        "reference": "C"
+      }],
+      "createdDate": {
+        "$date": 1491009974345
+      },
+      "geneFusions": [],
+      "indels": [],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [{
+        "alleleFrequency": 0.416066,
+        "alternative": "C",
+        "alternativeAlleleObservationCount": 404,
+        "armSpecific": false,
+        "chromosome": "chr17",
+        "confirmed": false,
+        "exon": "5",
+        "filter": "PASS",
+        "flowAlternativeAlleleObservationCount": "404",
+        "flowReferenceAlleleObservations": "567",
+        "function": "missense",
+        "gene": "TP53",
+        "geneName": "",
+        "hgvs": "c.488A>G",
+        "identifier": "COSM10808",
+        "inclusion": true,
+        "location": "exonic",
+        "metadata": {
+          "_id": "b34c3214-e477-4533-878c-c7218f0a5e1e"
+        },
+        "oncominevariantclass": "Hotspot",
+        "position": "7578442",
+        "protein": "p.Tyr163Cys",
+        "rare": false,
+        "readDepth": 971,
+        "reference": "T",
+        "referenceAlleleObservations": 566,
+        "transcript": "NM_000546.5"
+      }],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001190",
+    "dateVariantReportReceived": {
+      "$date": 1491007421557
+    },
+    "daysPending": 142,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN50955",
+    "patientSequenceNumber": "15205",
+    "specimenReceivedDate": {
+      "$date": 1489681178267
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1491007340927
+      },
+      "geneFusions": [],
+      "indels": [],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001286",
+    "dateVariantReportReceived": {
+      "$date": 1491013523874
+    },
+    "daysPending": 142,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN51060",
+    "patientSequenceNumber": "15211",
+    "specimenReceivedDate": {
+      "$date": 1490277760088
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1491013482362
+      },
+      "geneFusions": [],
+      "indels": [],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [{
+          "alleleFrequency": 0.377561,
+          "alternative": "C",
+          "alternativeAlleleObservationCount": 836,
+          "armSpecific": false,
+          "chromosome": "chr2",
+          "confirmed": false,
+          "exon": "2",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "737",
+          "flowReferenceAlleleObservations": "1215",
+          "function": "missense",
+          "gene": "NFE2L2",
+          "geneName": "",
+          "hgvs": "c.80A>G",
+          "identifier": "OM158",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "de1aca6a-6c4d-48df-91b0-4987e91c3acf"
+          },
+          "oncominevariantclass": "Hotspot",
+          "position": "178098965",
+          "protein": "p.Asp27Gly",
+          "rare": false,
+          "readDepth": 2229,
+          "reference": "T",
+          "referenceAlleleObservations": 1388,
+          "transcript": "NM_006164.4"
+        },
+        {
+          "alleleFrequency": 0.717557,
+          "alternative": "C",
+          "alternativeAlleleObservationCount": 847,
+          "armSpecific": false,
+          "chromosome": "chr17",
+          "confirmed": false,
+          "exon": "5",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "846",
+          "flowReferenceAlleleObservations": "333",
+          "function": "missense",
+          "gene": "TP53",
+          "geneName": "",
+          "hgvs": "c.388C>G",
+          "identifier": "COSM11462",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "986e6645-2420-4b3f-85ad-3c6dbb0c7ebb"
+          },
+          "oncominevariantclass": "Hotspot",
+          "position": "7578542",
+          "protein": "p.Leu130Val",
+          "rare": false,
+          "readDepth": 1186,
+          "reference": "G",
+          "referenceAlleleObservations": 333,
+          "transcript": "NM_000546.5"
+        }
+      ],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001292",
+    "dateVariantReportReceived": {
+      "$date": 1491010527258
+    },
+    "daysPending": 142,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN51102",
+    "patientSequenceNumber": "15225",
+    "specimenReceivedDate": {
+      "$date": 1490280189023
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1491010501339
+      },
+      "geneFusions": [],
+      "indels": [],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [{
+        "alleleFrequency": 0.252926,
+        "alternative": "A",
+        "alternativeAlleleObservationCount": 2211,
+        "armSpecific": false,
+        "chromosome": "chr3",
+        "confirmed": false,
+        "exon": "10",
+        "filter": "PASS",
+        "flowAlternativeAlleleObservationCount": "497",
+        "flowReferenceAlleleObservations": "1468",
+        "function": "missense",
+        "gene": "PIK3CA",
+        "geneName": "",
+        "hgvs": "c.1624G>A",
+        "identifier": "COSM760",
+        "inclusion": true,
+        "location": "exonic",
+        "metadata": {
+          "_id": "1a3952ee-f5ca-425e-bdd8-0e0d36d99d05"
+        },
+        "oncominevariantclass": "Hotspot",
+        "position": "178936082",
+        "protein": "p.Glu542Lys",
+        "rare": false,
+        "readDepth": 9056,
+        "reference": "G",
+        "referenceAlleleObservations": 6749,
+        "transcript": "NM_006218.2"
+      }],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001301",
+    "dateVariantReportReceived": {
+      "$date": 1491020128117
+    },
+    "daysPending": 142,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN51151",
+    "patientSequenceNumber": "15239",
+    "specimenReceivedDate": {
+      "$date": 1490283098033
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1491020064906
+      },
+      "geneFusions": [],
+      "indels": [],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001251",
+    "dateVariantReportReceived": {
+      "$date": 1490755330774
+    },
+    "daysPending": 145,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN50690",
+    "patientSequenceNumber": "15245",
+    "specimenReceivedDate": {
+      "$date": 1490108101693
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1490755304327
+      },
+      "geneFusions": [],
+      "indels": [],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [{
+        "alleleFrequency": 0.594837,
+        "alternative": "C",
+        "alternativeAlleleObservationCount": 530,
+        "armSpecific": false,
+        "chromosome": "chr17",
+        "confirmed": false,
+        "exon": "5",
+        "filter": "PASS",
+        "flowAlternativeAlleleObservationCount": "530",
+        "flowReferenceAlleleObservations": "361",
+        "function": "missense",
+        "gene": "TP53",
+        "geneName": "",
+        "hgvs": "c.488A>G",
+        "identifier": "COSM10808",
+        "inclusion": true,
+        "location": "exonic",
+        "metadata": {
+          "_id": "3147c0bb-53a8-472c-b239-11640790462a"
+        },
+        "oncominevariantclass": "Hotspot",
+        "position": "7578442",
+        "protein": "p.Tyr163Cys",
+        "rare": false,
+        "readDepth": 891,
+        "reference": "T",
+        "referenceAlleleObservations": 359,
+        "transcript": "NM_000546.5"
+      }],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001235",
+    "dateVariantReportReceived": {
+      "$date": 1490759160369
+    },
+    "daysPending": 145,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN50633",
+    "patientSequenceNumber": "15260",
+    "specimenReceivedDate": {
+      "$date": 1489860831027
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1490759141504
+      },
+      "geneFusions": [],
+      "indels": [],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [{
+        "alleleFrequency": 0.325157,
+        "alternative": "C",
+        "alternativeAlleleObservationCount": 498,
+        "armSpecific": false,
+        "chromosome": "chr17",
+        "confirmed": false,
+        "exon": "8",
+        "filter": "PASS",
+        "flowAlternativeAlleleObservationCount": "517",
+        "flowReferenceAlleleObservations": "1073",
+        "function": "missense",
+        "gene": "TP53",
+        "geneName": "",
+        "hgvs": "c.815T>G",
+        "identifier": "COSM44870",
+        "inclusion": true,
+        "location": "exonic",
+        "metadata": {
+          "_id": "ba4c8912-bd81-4973-8f1c-b29e375f92ee"
+        },
+        "oncominevariantclass": "Hotspot",
+        "position": "7577123",
+        "protein": "p.Val272Gly",
+        "rare": false,
+        "readDepth": 1615,
+        "reference": "A",
+        "referenceAlleleObservations": 1054,
+        "transcript": "NM_000546.5"
+      }],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001257",
+    "dateVariantReportReceived": {
+      "$date": 1490765872427
+    },
+    "daysPending": 145,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN50740",
+    "patientSequenceNumber": "15263",
+    "specimenReceivedDate": {
+      "$date": 1490110916027
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1490765840570
+      },
+      "geneFusions": [],
+      "indels": [],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [{
+        "alleleFrequency": 0.492492,
+        "alternative": "C",
+        "alternativeAlleleObservationCount": 2027,
+        "armSpecific": false,
+        "chromosome": "chr17",
+        "confirmed": false,
+        "exon": "8",
+        "filter": "PASS",
+        "flowAlternativeAlleleObservationCount": "984",
+        "flowReferenceAlleleObservations": "1014",
+        "function": "missense",
+        "gene": "TP53",
+        "geneName": "",
+        "hgvs": "c.838A>G",
+        "identifier": "COSM11123",
+        "inclusion": true,
+        "location": "exonic",
+        "metadata": {
+          "_id": "e099f5c1-86bf-4244-9f76-fe0a8e5f5b56"
+        },
+        "oncominevariantclass": "Hotspot",
+        "position": "7577100",
+        "protein": "p.Arg280Gly",
+        "rare": false,
+        "readDepth": 4249,
+        "reference": "T",
+        "referenceAlleleObservations": 2191,
+        "transcript": "NM_000546.5"
+      }],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001230",
+    "dateVariantReportReceived": {
+      "$date": 1491024024647
+    },
+    "daysPending": 142,
+    "location": "MoCha",
+    "molecularSequenceNumber": "MSN50542",
+    "patientSequenceNumber": "15267",
+    "specimenReceivedDate": {
+      "$date": 1489858880047
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1491023994254
+      },
+      "geneFusions": [],
+      "indels": [],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001272",
+    "dateVariantReportReceived": {
+      "$date": 1491023717735
+    },
+    "daysPending": 142,
+    "location": "MoCha",
+    "molecularSequenceNumber": "MSN51037",
+    "patientSequenceNumber": "15271",
+    "specimenReceivedDate": {
+      "$date": 1490195195923
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1491023675110
+      },
+      "geneFusions": [],
+      "indels": [{
+        "alleleFrequency": 0.258388,
+        "alternative": "GA",
+        "alternativeAlleleObservationCount": 748,
+        "armSpecific": false,
+        "chromosome": "chr5",
+        "confirmed": false,
+        "exon": "9",
+        "filter": "PASS",
+        "flowAlternativeAlleleObservationCount": "516",
+        "flowReferenceAlleleObservations": "1481",
+        "function": "frameshiftInsertion",
+        "gene": "PIK3R1",
+        "geneName": "",
+        "hgvs": "c.1072_1073insGA",
+        "identifier": ".",
+        "inclusion": true,
+        "location": "exonic",
+        "metadata": {
+          "_id": "c82fedbd-13b3-48f8-be63-4d6016332289"
+        },
+        "oncominevariantclass": "Deleterious",
+        "position": "67588982",
+        "protein": "p.Asp359fs",
+        "rare": false,
+        "readDepth": 2888,
+        "reference": "-",
+        "referenceAlleleObservations": 2133,
+        "transcript": "NM_181523.2"
+      }],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [{
+          "alleleFrequency": 0.364155,
+          "alternative": "G",
+          "alternativeAlleleObservationCount": 638,
+          "armSpecific": false,
+          "chromosome": "chr3",
+          "confirmed": false,
+          "exon": "3",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "638",
+          "flowReferenceAlleleObservations": "1114",
+          "function": "missense",
+          "gene": "CTNNB1",
+          "geneName": "",
+          "hgvs": "c.110C>G",
+          "identifier": "COSM5679",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "64b2649c-4c36-49e4-a22e-e8c79d6af62e"
+          },
+          "oncominevariantclass": "Hotspot",
+          "position": "41266113",
+          "protein": "p.Ser37Cys",
+          "rare": false,
+          "readDepth": 1752,
+          "reference": "C",
+          "referenceAlleleObservations": 1112,
+          "transcript": "NM_001904.3"
+        },
+        {
+          "alleleFrequency": 0.35,
+          "alternative": "A",
+          "alternativeAlleleObservationCount": 793,
+          "armSpecific": false,
+          "chromosome": "chr6",
+          "confirmed": false,
+          "exon": "9",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "700",
+          "flowReferenceAlleleObservations": "1300",
+          "function": "missense",
+          "gene": "ESR1",
+          "geneName": "",
+          "hgvs": "c.1604C>A",
+          "identifier": ".",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "4e1deaef-c7fd-4b07-b67e-3b2713c1421a"
+          },
+          "oncominevariantclass": "Hotspot",
+          "position": "152419917",
+          "protein": "p.Pro535His",
+          "rare": false,
+          "readDepth": 2256,
+          "reference": "C",
+          "referenceAlleleObservations": 1463,
+          "transcript": "NM_001122740.1"
+        },
+        {
+          "alleleFrequency": 0.365899,
+          "alternative": "T",
+          "alternativeAlleleObservationCount": 588,
+          "armSpecific": false,
+          "chromosome": "chr10",
+          "confirmed": false,
+          "exon": "5",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "588",
+          "flowReferenceAlleleObservations": "1019",
+          "function": "missense",
+          "gene": "PTEN",
+          "geneName": "",
+          "hgvs": "c.275A>T",
+          "identifier": "COSM5236",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "7e855c5b-7cb3-422a-adc2-3c21ad9ef4bf"
+          },
+          "oncominevariantclass": "Hotspot",
+          "position": "89692791",
+          "protein": "p.Asp92Val",
+          "rare": false,
+          "readDepth": 1614,
+          "reference": "A",
+          "referenceAlleleObservations": 1017,
+          "transcript": "NM_000314.4"
+        },
+        {
+          "alleleFrequency": 0.36036,
+          "alternative": "A",
+          "alternativeAlleleObservationCount": 832,
+          "armSpecific": false,
+          "chromosome": "chr10",
+          "confirmed": false,
+          "exon": "5",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "720",
+          "flowReferenceAlleleObservations": "1278",
+          "function": "missense",
+          "gene": "PTEN",
+          "geneName": "",
+          "hgvs": "c.389G>A",
+          "identifier": "COSM5033",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "81879dff-df6a-41d3-8412-f73762e02ecb"
+          },
+          "oncominevariantclass": "Hotspot",
+          "position": "89692905",
+          "protein": "p.Arg130Gln",
+          "rare": false,
+          "readDepth": 2334,
+          "reference": "G",
+          "referenceAlleleObservations": 1486,
+          "transcript": "NM_000314.4"
+        }
+      ],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001247",
+    "dateVariantReportReceived": {
+      "$date": 1490756377182
+    },
+    "daysPending": 145,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN50674",
+    "patientSequenceNumber": "15272",
+    "specimenReceivedDate": {
+      "$date": 1490106681002
+    },
+    "analysisId": {
+      "copyNumberVariants": [{
+        "alternative": "<CNV>",
+        "armSpecific": false,
+        "chromosome": "chr1",
+        "confidenceInterval5percent": 31.3316,
+        "confidenceInterval95percent": 38.8303,
+        "confirmed": false,
+        "copyNumber": 34.88,
+        "exon": "",
+        "filter": "PASS",
+        "flowAlternativeAlleleObservationCount": "",
+        "flowReferenceAlleleObservations": "",
+        "function": "",
+        "gene": "MYCL",
+        "geneName": "",
+        "hgvs": "",
+        "identifier": "MYCL",
+        "inclusion": true,
+        "location": "",
+        "metadata": {
+          "_id": "7d67fbfc-5809-4266-b437-9c835f1b0d1f"
+        },
+        "oncominevariantclass": "Amplification",
+        "position": "40361592",
+        "rare": false,
+        "rawCopyNumber": 34.88,
+        "refCopyNumber": 2.0,
+        "reference": "C"
+      }],
+      "createdDate": {
+        "$date": 1490756354743
+      },
+      "geneFusions": [],
+      "indels": [],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [{
+          "alleleFrequency": 0.882287,
+          "alternative": "T",
+          "alternativeAlleleObservationCount": 785,
+          "armSpecific": false,
+          "chromosome": "chr13",
+          "confirmed": false,
+          "exon": "17",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "787",
+          "flowReferenceAlleleObservations": "105",
+          "function": "nonsense",
+          "gene": "RB1",
+          "geneName": "",
+          "hgvs": "c.1510C>T",
+          "identifier": ".",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "c94b791a-0b1f-4760-b1c3-aeac41a2fc7b"
+          },
+          "oncominevariantclass": "Deleterious",
+          "position": "48955394",
+          "protein": "p.Gln504Ter",
+          "rare": false,
+          "readDepth": 890,
+          "reference": "C",
+          "referenceAlleleObservations": 104,
+          "transcript": "NM_000321.2"
+        },
+        {
+          "alleleFrequency": 0.788489,
+          "alternative": "A",
+          "alternativeAlleleObservationCount": 549,
+          "armSpecific": false,
+          "chromosome": "chr17",
+          "confirmed": false,
+          "exon": "4",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "548",
+          "flowReferenceAlleleObservations": "147",
+          "function": "missense",
+          "gene": "TP53",
+          "geneName": "",
+          "hgvs": "c.329G>T",
+          "identifier": "COSM10716",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "5e65e0ce-a88d-4816-b6f1-5314702d03a4"
+          },
+          "oncominevariantclass": "Hotspot",
+          "position": "7579358",
+          "protein": "p.Arg110Leu",
+          "rare": false,
+          "readDepth": 698,
+          "reference": "C",
+          "referenceAlleleObservations": 147,
+          "transcript": "NM_000546.5"
+        }
+      ],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001280",
+    "dateVariantReportReceived": {
+      "$date": 1491004559207
+    },
+    "daysPending": 142,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN50997",
+    "patientSequenceNumber": "15273",
+    "specimenReceivedDate": {
+      "$date": 1490198550016
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1491004529219
+      },
+      "geneFusions": [],
+      "indels": [{
+        "alleleFrequency": 0.218136,
+        "alternative": "-",
+        "alternativeAlleleObservationCount": 609,
+        "armSpecific": false,
+        "chromosome": "chr5",
+        "confirmed": false,
+        "exon": "16",
+        "filter": "PASS",
+        "flowAlternativeAlleleObservationCount": "433",
+        "flowReferenceAlleleObservations": "1552",
+        "function": "frameshiftDeletion",
+        "gene": "APC",
+        "geneName": "",
+        "hgvs": "c.4484delG",
+        "identifier": ".",
+        "inclusion": true,
+        "location": "exonic",
+        "metadata": {
+          "_id": "f6edf8fd-3881-49a6-b7da-692e7e210156"
+        },
+        "oncominevariantclass": "Deleterious",
+        "position": "112175775",
+        "protein": "p.Ser1495fs",
+        "rare": false,
+        "readDepth": 3088,
+        "reference": "G",
+        "referenceAlleleObservations": 2433,
+        "transcript": "NM_000038.5"
+      }],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [{
+          "alleleFrequency": 0.235944,
+          "alternative": "T",
+          "alternativeAlleleObservationCount": 470,
+          "armSpecific": false,
+          "chromosome": "chr5",
+          "confirmed": false,
+          "exon": "16",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "470",
+          "flowReferenceAlleleObservations": "1522",
+          "function": "nonsense",
+          "gene": "APC",
+          "geneName": "",
+          "hgvs": "c.2950G>T",
+          "identifier": ".",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "af52e86d-e1c7-4c66-9a8e-a333e3aaffad"
+          },
+          "oncominevariantclass": "Deleterious",
+          "position": "112174241",
+          "protein": "p.Glu984Ter",
+          "rare": false,
+          "readDepth": 1992,
+          "reference": "G",
+          "referenceAlleleObservations": 1516,
+          "transcript": "NM_000038.5"
+        },
+        {
+          "alleleFrequency": 0.347848,
+          "alternative": "A",
+          "alternativeAlleleObservationCount": 1109,
+          "armSpecific": false,
+          "chromosome": "chr12",
+          "confirmed": false,
+          "exon": "2",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "695",
+          "flowReferenceAlleleObservations": "1303",
+          "function": "missense",
+          "gene": "KRAS",
+          "geneName": "",
+          "hgvs": "c.34G>T",
+          "identifier": "COSM516",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "045045e8-45df-4ee5-8329-c01329dae982"
+          },
+          "oncominevariantclass": "Hotspot",
+          "position": "25398285",
+          "protein": "p.Gly12Cys",
+          "rare": false,
+          "readDepth": 3212,
+          "reference": "C",
+          "referenceAlleleObservations": 2091,
+          "transcript": "NM_033360.3"
+        },
+        {
+          "alleleFrequency": 0.264085,
+          "alternative": "A",
+          "alternativeAlleleObservationCount": 300,
+          "armSpecific": false,
+          "chromosome": "chr17",
+          "confirmed": false,
+          "exon": "8",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "300",
+          "flowReferenceAlleleObservations": "836",
+          "function": "missense",
+          "gene": "TP53",
+          "geneName": "",
+          "hgvs": "c.817C>T",
+          "identifier": "COSM10659",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "fe35e7f7-ded9-4d72-81b4-2fd12327f898"
+          },
+          "oncominevariantclass": "Hotspot",
+          "position": "7577121",
+          "protein": "p.Arg273Cys",
+          "rare": false,
+          "readDepth": 1138,
+          "reference": "G",
+          "referenceAlleleObservations": 833,
+          "transcript": "NM_000546.5"
+        }
+      ],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001297",
+    "dateVariantReportReceived": {
+      "$date": 1491020768974
+    },
+    "daysPending": 142,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN51144",
+    "patientSequenceNumber": "15274",
+    "specimenReceivedDate": {
+      "$date": 1490281296657
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1491020730408
+      },
+      "geneFusions": [],
+      "indels": [],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [{
+          "alleleFrequency": 0.716453,
+          "alternative": "T",
+          "alternativeAlleleObservationCount": 623,
+          "armSpecific": false,
+          "chromosome": "chr5",
+          "confirmed": false,
+          "exon": "16",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "614",
+          "flowReferenceAlleleObservations": "243",
+          "function": "nonsense",
+          "gene": "APC",
+          "geneName": "",
+          "hgvs": "c.3211C>T",
+          "identifier": ".",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "b300b14f-bee4-469b-8fe9-89b12c522829"
+          },
+          "oncominevariantclass": "Deleterious",
+          "position": "112174502",
+          "protein": "p.Gln1071Ter",
+          "rare": false,
+          "readDepth": 866,
+          "reference": "C",
+          "referenceAlleleObservations": 241,
+          "transcript": "NM_000038.5"
+        },
+        {
+          "alleleFrequency": 0.7021,
+          "alternative": "T",
+          "alternativeAlleleObservationCount": 531,
+          "armSpecific": false,
+          "chromosome": "chr17",
+          "confirmed": false,
+          "exon": "5",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "535",
+          "flowReferenceAlleleObservations": "227",
+          "function": "missense",
+          "gene": "TP53",
+          "geneName": "",
+          "hgvs": "c.535C>A",
+          "identifier": "COSM44151",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "9189dd59-030d-43eb-a28b-1f9ebf678337"
+          },
+          "oncominevariantclass": "Hotspot",
+          "position": "7578395",
+          "protein": "p.His179Asn",
+          "rare": false,
+          "readDepth": 761,
+          "reference": "G",
+          "referenceAlleleObservations": 230,
+          "transcript": "NM_000546.5"
+        }
+      ],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001310",
+    "dateVariantReportReceived": {
+      "$date": 1491018615586
+    },
+    "daysPending": 142,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN51193",
+    "patientSequenceNumber": "15275",
+    "specimenReceivedDate": {
+      "$date": 1490287845247
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1491018571454
+      },
+      "geneFusions": [],
+      "indels": [],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001274",
+    "dateVariantReportReceived": {
+      "$date": 1491006663343
+    },
+    "daysPending": 142,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN50963",
+    "patientSequenceNumber": "15276",
+    "specimenReceivedDate": {
+      "$date": 1490196180003
+    },
+    "analysisId": {
+      "copyNumberVariants": [{
+        "alternative": "<CNV>",
+        "armSpecific": false,
+        "chromosome": "chr7",
+        "confidenceInterval5percent": 61.3483,
+        "confidenceInterval95percent": 72.9977,
+        "confirmed": false,
+        "copyNumber": 66.92,
+        "exon": "",
+        "filter": "PASS",
+        "flowAlternativeAlleleObservationCount": "",
+        "flowReferenceAlleleObservations": "",
+        "function": "",
+        "gene": "MET",
+        "geneName": "",
+        "hgvs": "",
+        "identifier": "MET",
+        "inclusion": true,
+        "location": "",
+        "metadata": {
+          "_id": "ade9cb39-02b8-4f07-a3cb-1e840d91c346"
+        },
+        "oncominevariantclass": "Amplification",
+        "position": "116313479",
+        "rare": false,
+        "rawCopyNumber": 66.92,
+        "refCopyNumber": 2.0,
+        "reference": "A"
+      }],
+      "createdDate": {
+        "$date": 1491006606822
+      },
+      "geneFusions": [{
+          "alternative": "G[chr7:116414934[",
+          "armSpecific": false,
+          "chromosome": "chr7",
+          "confirmed": false,
+          "exon": "13",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "",
+          "flowReferenceAlleleObservations": "",
+          "function": "",
+          "gene": "MET",
+          "geneName": "MET",
+          "hgvs": "",
+          "identifier": "MET-MET.M13M15_1",
+          "inclusion": true,
+          "location": "",
+          "metadata": {
+            "_id": "d100edf8-9379-4bbb-9b6b-0bbcdaeb6ef5"
+          },
+          "oncominevariantclass": "Fusion",
+          "position": "116411708",
+          "rare": false,
+          "readDepth": 8693,
+          "reference": "G"
+        },
+        {
+          "alternative": "]chr7:116411708]G",
+          "armSpecific": false,
+          "chromosome": "chr7",
+          "confirmed": false,
+          "exon": "15",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "",
+          "flowReferenceAlleleObservations": "",
+          "function": "",
+          "gene": "MET",
+          "geneName": "MET",
+          "hgvs": "",
+          "identifier": "MET-MET.M13M15_2",
+          "inclusion": true,
+          "location": "",
+          "metadata": {
+            "_id": "6b51c590-f2ba-48a3-9688-6251321d7b58"
+          },
+          "oncominevariantclass": "Fusion",
+          "position": "116414934",
+          "rare": false,
+          "readDepth": 8693,
+          "reference": "G"
+        }
+      ],
+      "indels": [],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [{
+          "alleleFrequency": 0.763975,
+          "alternative": "A",
+          "alternativeAlleleObservationCount": 490,
+          "armSpecific": false,
+          "chromosome": "chr9",
+          "confirmed": false,
+          "exon": "30",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "492",
+          "flowReferenceAlleleObservations": "152",
+          "function": "nonsense",
+          "gene": "NOTCH1",
+          "geneName": "",
+          "hgvs": "c.5476G>T",
+          "identifier": ".",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "3bd6565d-8714-45e6-9ffd-d1c10df687c0"
+          },
+          "oncominevariantclass": "Deleterious",
+          "position": "139396362",
+          "protein": "p.Glu1826Ter",
+          "rare": false,
+          "readDepth": 642,
+          "reference": "C",
+          "referenceAlleleObservations": 152,
+          "transcript": "NM_017617.3"
+        },
+        {
+          "alleleFrequency": 0.737869,
+          "alternative": "A",
+          "alternativeAlleleObservationCount": 1,
+          "armSpecific": false,
+          "chromosome": "chr17",
+          "confirmed": false,
+          "exon": "10",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "1475",
+          "flowReferenceAlleleObservations": "524",
+          "function": "missense",
+          "gene": "TP53",
+          "geneName": "",
+          "hgvs": "c.1044G>T",
+          "identifier": "COSM46348",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "e6d841e4-2020-4ceb-831b-e2f6ce681531"
+          },
+          "oncominevariantclass": "Hotspot",
+          "position": "7573983",
+          "protein": "p.Leu348Phe",
+          "rare": false,
+          "readDepth": 544,
+          "reference": "C",
+          "referenceAlleleObservations": 537,
+          "transcript": "NM_000546.5"
+        }
+      ],
+      "unifiedGeneFusions": [{
+        "annotation": "-",
+        "armSpecific": false,
+        "confirmed": false,
+        "driverGene": "MET",
+        "driverReadCount": 8693,
+        "identifier": "MET-MET.M13M15",
+        "inclusion": true,
+        "metadata": {
+          "_id": "22072dbc-cfda-4426-8252-d2d91f4efeb8"
+        },
+        "partnerGene": "MET",
+        "partnerReadCount": 8693,
+        "rare": false
+      }]
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001276",
+    "dateVariantReportReceived": {
+      "$date": 1491005866285
+    },
+    "daysPending": 142,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN50971",
+    "patientSequenceNumber": "15281",
+    "specimenReceivedDate": {
+      "$date": 1490196842943
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1491005834206
+      },
+      "geneFusions": [],
+      "indels": [],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001279",
+    "dateVariantReportReceived": {
+      "$date": 1491005283482
+    },
+    "daysPending": 142,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN50989",
+    "patientSequenceNumber": "15283",
+    "specimenReceivedDate": {
+      "$date": 1490197830293
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1491005229108
+      },
+      "geneFusions": [],
+      "indels": [],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [{
+          "alleleFrequency": 0.105501,
+          "alternative": "T",
+          "alternativeAlleleObservationCount": 141,
+          "armSpecific": false,
+          "chromosome": "chr12",
+          "confirmed": false,
+          "exon": "2",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "140",
+          "flowReferenceAlleleObservations": "1187",
+          "function": "missense",
+          "gene": "KRAS",
+          "geneName": "",
+          "hgvs": "c.35G>A",
+          "identifier": "COSM521",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "fa6313b0-97aa-4e31-b38b-2530c8ad9964"
+          },
+          "oncominevariantclass": "Hotspot",
+          "position": "25398284",
+          "protein": "p.Gly12Asp",
+          "rare": false,
+          "readDepth": 1331,
+          "reference": "C",
+          "referenceAlleleObservations": 1187,
+          "transcript": "NM_033360.3"
+        },
+        {
+          "alleleFrequency": 0.0890445,
+          "alternative": "A",
+          "alternativeAlleleObservationCount": 382,
+          "armSpecific": false,
+          "chromosome": "chr17",
+          "confirmed": false,
+          "exon": "7",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "178",
+          "flowReferenceAlleleObservations": "1821",
+          "function": "missense",
+          "gene": "TP53",
+          "geneName": "",
+          "hgvs": "c.747G>T",
+          "identifier": "COSM10817",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "f5c31be0-f217-483f-8203-3541c1ccf467"
+          },
+          "oncominevariantclass": "Hotspot",
+          "position": "7577534",
+          "protein": "p.Arg249Ser",
+          "rare": false,
+          "readDepth": 4205,
+          "reference": "C",
+          "referenceAlleleObservations": 3821,
+          "transcript": "NM_000546.5"
+        },
+        {
+          "alleleFrequency": 0.099026,
+          "alternative": "T",
+          "alternativeAlleleObservationCount": 183,
+          "armSpecific": false,
+          "chromosome": "chr18",
+          "confirmed": false,
+          "exon": "9",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "183",
+          "flowReferenceAlleleObservations": "1665",
+          "function": "missense",
+          "gene": "SMAD4",
+          "geneName": "",
+          "hgvs": "c.1081C>T",
+          "identifier": "COSM14140",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "76c2cca8-9a39-4b07-97ad-29f10550083e"
+          },
+          "oncominevariantclass": "Hotspot",
+          "position": "48591918",
+          "protein": "p.Arg361Cys",
+          "rare": false,
+          "readDepth": 1848,
+          "reference": "C",
+          "referenceAlleleObservations": 1665,
+          "transcript": "NM_005359.5"
+        }
+      ],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001245",
+    "dateVariantReportReceived": {
+      "$date": 1490757686458
+    },
+    "daysPending": 145,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN50658",
+    "patientSequenceNumber": "15285",
+    "specimenReceivedDate": {
+      "$date": 1490105812036
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1490757646038
+      },
+      "geneFusions": [],
+      "indels": [],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [{
+          "alleleFrequency": 0.624373,
+          "alternative": "T",
+          "alternativeAlleleObservationCount": 1432,
+          "armSpecific": false,
+          "chromosome": "chr5",
+          "confirmed": false,
+          "exon": "6",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "1245",
+          "flowReferenceAlleleObservations": "749",
+          "function": "nonsense",
+          "gene": "APC",
+          "geneName": "",
+          "hgvs": "c.637C>T",
+          "identifier": ".",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "5df86aa7-2492-4eb9-9adc-41b1aeb8ebf4"
+          },
+          "oncominevariantclass": "Deleterious",
+          "position": "112116592",
+          "protein": "p.Arg213Ter",
+          "rare": false,
+          "readDepth": 2296,
+          "reference": "C",
+          "referenceAlleleObservations": 854,
+          "transcript": "NM_000038.5"
+        },
+        {
+          "alleleFrequency": 0.738152,
+          "alternative": "T",
+          "alternativeAlleleObservationCount": 624,
+          "armSpecific": false,
+          "chromosome": "chr17",
+          "confirmed": false,
+          "exon": "5",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "623",
+          "flowReferenceAlleleObservations": "221",
+          "function": "missense",
+          "gene": "TP53",
+          "geneName": "",
+          "hgvs": "c.524G>A",
+          "identifier": "COSM10648",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "637a2b24-38ac-4785-9ecb-4a46dbf27beb"
+          },
+          "oncominevariantclass": "Hotspot",
+          "position": "7578406",
+          "protein": "p.Arg175His",
+          "rare": false,
+          "readDepth": 846,
+          "reference": "C",
+          "referenceAlleleObservations": 221,
+          "transcript": "NM_000546.5"
+        },
+        {
+          "alleleFrequency": 0.345846,
+          "alternative": "A",
+          "alternativeAlleleObservationCount": 965,
+          "armSpecific": false,
+          "chromosome": "chr17",
+          "confirmed": false,
+          "exon": "21",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "691",
+          "flowReferenceAlleleObservations": "1307",
+          "function": "missense",
+          "gene": "ERBB2",
+          "geneName": "",
+          "hgvs": "c.2524G>A",
+          "identifier": "COSM14065",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "678df150-be54-498e-bb8d-51183b3d1b41"
+          },
+          "oncominevariantclass": "Hotspot",
+          "position": "37881332",
+          "protein": "p.Val842Ile",
+          "rare": false,
+          "readDepth": 2790,
+          "reference": "G",
+          "referenceAlleleObservations": 1820,
+          "transcript": "NM_004448.3"
+        }
+      ],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001281",
+    "dateVariantReportReceived": {
+      "$date": 1491003969186
+    },
+    "daysPending": 142,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN51003",
+    "patientSequenceNumber": "15288",
+    "specimenReceivedDate": {
+      "$date": 1490199554081
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1491003929810
+      },
+      "geneFusions": [],
+      "indels": [{
+        "alleleFrequency": 0.208268,
+        "alternative": "-",
+        "alternativeAlleleObservationCount": 262,
+        "armSpecific": false,
+        "chromosome": "chr9",
+        "confirmed": false,
+        "exon": "2",
+        "filter": "PASS",
+        "flowAlternativeAlleleObservationCount": "267",
+        "flowReferenceAlleleObservations": "1015",
+        "function": "frameshiftDeletion",
+        "gene": "CDKN2A",
+        "geneName": "",
+        "hgvs": "c.171_172delCC",
+        "identifier": ".",
+        "inclusion": true,
+        "location": "exonic",
+        "metadata": {
+          "_id": "5d6f9764-3a92-4bfc-a8fc-61b95e2e05d7"
+        },
+        "oncominevariantclass": "Deleterious",
+        "position": "21971186",
+        "protein": "p.Arg58fs",
+        "rare": false,
+        "readDepth": 1289,
+        "reference": "GG",
+        "referenceAlleleObservations": 983,
+        "transcript": "NM_000077.4"
+      }],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [{
+        "alleleFrequency": 0.24,
+        "alternative": "A",
+        "alternativeAlleleObservationCount": 675,
+        "armSpecific": false,
+        "chromosome": "chr10",
+        "confirmed": false,
+        "exon": "5",
+        "filter": "PASS",
+        "flowAlternativeAlleleObservationCount": "480",
+        "flowReferenceAlleleObservations": "1520",
+        "function": "missense",
+        "gene": "PTEN",
+        "geneName": "",
+        "hgvs": "c.395G>A",
+        "identifier": "COSM5123",
+        "inclusion": true,
+        "location": "exonic",
+        "metadata": {
+          "_id": "245e5f25-95a3-480b-a7a0-8a4234ab42f0"
+        },
+        "oncominevariantclass": "Hotspot",
+        "position": "89692911",
+        "protein": "p.Gly132Asp",
+        "rare": false,
+        "readDepth": 2878,
+        "reference": "G",
+        "referenceAlleleObservations": 2200,
+        "transcript": "NM_000314.4"
+      }],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001255",
+    "dateVariantReportReceived": {
+      "$date": 1490753610976
+    },
+    "daysPending": 145,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN50724",
+    "patientSequenceNumber": "15289",
+    "specimenReceivedDate": {
+      "$date": 1490109751477
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1490753582540
+      },
+      "geneFusions": [],
+      "indels": [],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [{
+        "alleleFrequency": 0.182127,
+        "alternative": "T",
+        "alternativeAlleleObservationCount": 162,
+        "armSpecific": false,
+        "chromosome": "chr11",
+        "confirmed": false,
+        "exon": "3",
+        "filter": "PASS",
+        "flowAlternativeAlleleObservationCount": "161",
+        "flowReferenceAlleleObservations": "723",
+        "function": "nonsense",
+        "gene": "ATM",
+        "geneName": "",
+        "hgvs": "c.82G>T",
+        "identifier": ".",
+        "inclusion": true,
+        "location": "exonic",
+        "metadata": {
+          "_id": "970f8b4b-43ed-4db4-ae2c-5a8fdc5e781c"
+        },
+        "oncominevariantclass": "Deleterious",
+        "position": "108098512",
+        "protein": "p.Glu28Ter",
+        "rare": false,
+        "readDepth": 884,
+        "reference": "G",
+        "referenceAlleleObservations": 722,
+        "transcript": "NM_000051.3"
+      }],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001282",
+    "dateVariantReportReceived": {
+      "$date": 1491014273010
+    },
+    "daysPending": 142,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN51011",
+    "patientSequenceNumber": "15292",
+    "specimenReceivedDate": {
+      "$date": 1490199839493
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1491014212432
+      },
+      "geneFusions": [],
+      "indels": [],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [{
+          "alleleFrequency": 0.639769,
+          "alternative": "T",
+          "alternativeAlleleObservationCount": 444,
+          "armSpecific": false,
+          "chromosome": "chr13",
+          "confirmed": false,
+          "exon": "8",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "444",
+          "flowReferenceAlleleObservations": "250",
+          "function": "nonsense",
+          "gene": "RB1",
+          "geneName": "",
+          "hgvs": "c.763C>T",
+          "identifier": ".",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "1b60e006-33a5-4209-aa86-8c4f4467964b"
+          },
+          "oncominevariantclass": "Deleterious",
+          "position": "48936995",
+          "protein": "p.Arg255Ter",
+          "rare": false,
+          "readDepth": 694,
+          "reference": "C",
+          "referenceAlleleObservations": 250,
+          "transcript": "NM_000321.2"
+        },
+        {
+          "alleleFrequency": 0.631948,
+          "alternative": "A",
+          "alternativeAlleleObservationCount": 1318,
+          "armSpecific": false,
+          "chromosome": "chr17",
+          "confirmed": false,
+          "exon": "4",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "1262",
+          "flowReferenceAlleleObservations": "732",
+          "function": "missense",
+          "gene": "TP53",
+          "geneName": "",
+          "hgvs": "c.329G>T",
+          "identifier": "COSM10716",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "98eecf5c-048f-4dc8-a8e0-493605ff1832"
+          },
+          "oncominevariantclass": "Hotspot",
+          "position": "7579358",
+          "protein": "p.Arg110Leu",
+          "rare": false,
+          "readDepth": 2098,
+          "reference": "C",
+          "referenceAlleleObservations": 776,
+          "transcript": "NM_000546.5"
+        }
+      ],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001299",
+    "dateVariantReportReceived": {
+      "$date": 1491017137796
+    },
+    "daysPending": 142,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN51227",
+    "patientSequenceNumber": "15293",
+    "specimenReceivedDate": {
+      "$date": 1490282125497
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1491017098779
+      },
+      "geneFusions": [],
+      "indels": [],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [{
+          "alleleFrequency": 0.104605,
+          "alternative": "A",
+          "alternativeAlleleObservationCount": 395,
+          "armSpecific": false,
+          "chromosome": "chr2",
+          "confirmed": false,
+          "exon": "4",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "209",
+          "flowReferenceAlleleObservations": "1789",
+          "function": "missense",
+          "gene": "IDH1",
+          "geneName": "",
+          "hgvs": "c.394C>T",
+          "identifier": "COSM28747",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "dce79a88-6e8b-4756-ae88-eb228a0a3175"
+          },
+          "oncominevariantclass": "Hotspot",
+          "position": "209113113",
+          "protein": "p.Arg132Cys",
+          "rare": false,
+          "readDepth": 3660,
+          "reference": "G",
+          "referenceAlleleObservations": 3255,
+          "transcript": "NM_005896.3"
+        },
+        {
+          "alleleFrequency": 0.109719,
+          "alternative": "A",
+          "alternativeAlleleObservationCount": 295,
+          "armSpecific": false,
+          "chromosome": "chr12",
+          "confirmed": false,
+          "exon": "2",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "219",
+          "flowReferenceAlleleObservations": "1777",
+          "function": "missense",
+          "gene": "KRAS",
+          "geneName": "",
+          "hgvs": "c.37G>T",
+          "identifier": "COSM527",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "e3ec96a4-71cd-4356-b6fe-7b24f5757115"
+          },
+          "oncominevariantclass": "Hotspot",
+          "position": "25398282",
+          "protein": "p.Gly13Cys",
+          "rare": false,
+          "readDepth": 2650,
+          "reference": "C",
+          "referenceAlleleObservations": 2347,
+          "transcript": "NM_033360.3"
+        }
+      ],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001253",
+    "dateVariantReportReceived": {
+      "$date": 1490754806983
+    },
+    "daysPending": 145,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN50708",
+    "patientSequenceNumber": "15294",
+    "specimenReceivedDate": {
+      "$date": 1490108671917
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1490754782526
+      },
+      "geneFusions": [],
+      "indels": [],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [{
+        "alleleFrequency": 0.417203,
+        "alternative": "C",
+        "alternativeAlleleObservationCount": 712,
+        "armSpecific": false,
+        "chromosome": "chr17",
+        "confirmed": false,
+        "exon": "19",
+        "filter": "PASS",
+        "flowAlternativeAlleleObservationCount": "713",
+        "flowReferenceAlleleObservations": "996",
+        "function": "missense",
+        "gene": "ERBB2",
+        "geneName": "",
+        "hgvs": "c.2264T>C",
+        "identifier": "COSM14060",
+        "inclusion": true,
+        "location": "exonic",
+        "metadata": {
+          "_id": "15eed0c4-f0e9-4938-abdf-4f74a5284a95"
+        },
+        "oncominevariantclass": "Hotspot",
+        "position": "37880220",
+        "protein": "p.Leu755Ser",
+        "rare": false,
+        "readDepth": 1708,
+        "reference": "T",
+        "referenceAlleleObservations": 995,
+        "transcript": "NM_004448.3"
+      }],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001288",
+    "dateVariantReportReceived": {
+      "$date": 1491012938416
+    },
+    "daysPending": 142,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN51078",
+    "patientSequenceNumber": "15303",
+    "specimenReceivedDate": {
+      "$date": 1490278724068
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1491012888117
+      },
+      "geneFusions": [],
+      "indels": [],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [{
+          "alleleFrequency": 0.445418,
+          "alternative": "A",
+          "alternativeAlleleObservationCount": 539,
+          "armSpecific": false,
+          "chromosome": "chr3",
+          "confirmed": false,
+          "exon": "3",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "559",
+          "flowReferenceAlleleObservations": "696",
+          "function": "missense",
+          "gene": "CTNNB1",
+          "geneName": "",
+          "hgvs": "c.98C>A",
+          "identifier": "COSM5673",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "00752904-138d-49fd-a11a-b99dd3bf68c4"
+          },
+          "oncominevariantclass": "Hotspot",
+          "position": "41266101",
+          "protein": "p.Ser33Tyr",
+          "rare": false,
+          "readDepth": 1268,
+          "reference": "C",
+          "referenceAlleleObservations": 682,
+          "transcript": "NM_001904.3"
+        },
+        {
+          "alleleFrequency": 0.684,
+          "alternative": "T",
+          "alternativeAlleleObservationCount": 1882,
+          "armSpecific": false,
+          "chromosome": "chr9",
+          "confirmed": false,
+          "exon": "27",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "1368",
+          "flowReferenceAlleleObservations": "632",
+          "function": "nonsense",
+          "gene": "NOTCH1",
+          "geneName": "",
+          "hgvs": "c.5076C>A",
+          "identifier": ".",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "7013397d-9dd7-484e-b805-47708476b561"
+          },
+          "oncominevariantclass": "Deleterious",
+          "position": "139397725",
+          "protein": "p.Cys1692Ter",
+          "rare": false,
+          "readDepth": 2740,
+          "reference": "G",
+          "referenceAlleleObservations": 855,
+          "transcript": "NM_017617.3"
+        },
+        {
+          "alleleFrequency": 0.417037,
+          "alternative": "A",
+          "alternativeAlleleObservationCount": 562,
+          "armSpecific": false,
+          "chromosome": "chr10",
+          "confirmed": false,
+          "exon": "5",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "563",
+          "flowReferenceAlleleObservations": "787",
+          "function": "missense",
+          "gene": "PTEN",
+          "geneName": "",
+          "hgvs": "c.463T>A",
+          "identifier": "COSM5258",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "9fd3fe63-98aa-4c74-a653-ea94b839da86"
+          },
+          "oncominevariantclass": "Hotspot",
+          "position": "89692979",
+          "protein": "p.Tyr155Asn",
+          "rare": false,
+          "readDepth": 1355,
+          "reference": "T",
+          "referenceAlleleObservations": 771,
+          "transcript": "NM_000314.4"
+        },
+        {
+          "alleleFrequency": 0.577789,
+          "alternative": "T",
+          "alternativeAlleleObservationCount": 1707,
+          "armSpecific": false,
+          "chromosome": "chr13",
+          "confirmed": false,
+          "exon": "23",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "1155",
+          "flowReferenceAlleleObservations": "844",
+          "function": "nonsense",
+          "gene": "RB1",
+          "geneName": "",
+          "hgvs": "c.2359C>T",
+          "identifier": ".",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "ffa7806d-3afa-4655-bac3-f1c053f49c2d"
+          },
+          "oncominevariantclass": "Deleterious",
+          "position": "49039374",
+          "protein": "p.Arg787Ter",
+          "rare": false,
+          "readDepth": 2924,
+          "reference": "C",
+          "referenceAlleleObservations": 1215,
+          "transcript": "NM_000321.2"
+        }
+      ],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001285",
+    "dateVariantReportReceived": {
+      "$date": 1491017813464
+    },
+    "daysPending": 142,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN51201",
+    "patientSequenceNumber": "15318",
+    "specimenReceivedDate": {
+      "$date": 1490205707953
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1491017768507
+      },
+      "geneFusions": [],
+      "indels": [],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001296",
+    "dateVariantReportReceived": {
+      "$date": 1491021651803
+    },
+    "daysPending": 142,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN51136",
+    "patientSequenceNumber": "15320",
+    "specimenReceivedDate": {
+      "$date": 1490281279943
+    },
+    "analysisId": {
+      "copyNumberVariants": [{
+        "alternative": "<CNV>",
+        "armSpecific": false,
+        "chromosome": "chr5",
+        "confidenceInterval5percent": 9.62196,
+        "confidenceInterval95percent": 12.4159,
+        "confirmed": false,
+        "copyNumber": 10.93,
+        "exon": "",
+        "filter": "PASS",
+        "flowAlternativeAlleleObservationCount": "",
+        "flowReferenceAlleleObservations": "",
+        "function": "",
+        "gene": "TERT",
+        "geneName": "",
+        "hgvs": "",
+        "identifier": "TERT",
+        "inclusion": true,
+        "location": "",
+        "metadata": {
+          "_id": "12674768-734c-46e3-acad-a70037a260f0"
+        },
+        "oncominevariantclass": "Amplification",
+        "position": "1258799",
+        "rare": false,
+        "rawCopyNumber": 10.93,
+        "refCopyNumber": 2.0,
+        "reference": "A"
+      }],
+      "createdDate": {
+        "$date": 1491021596817
+      },
+      "geneFusions": [],
+      "indels": [],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [{
+        "alleleFrequency": 0.78072,
+        "alternative": "A",
+        "alternativeAlleleObservationCount": 722,
+        "armSpecific": false,
+        "chromosome": "chr17",
+        "confirmed": false,
+        "exon": "6",
+        "filter": "PASS",
+        "flowAlternativeAlleleObservationCount": "737",
+        "flowReferenceAlleleObservations": "207",
+        "function": "nonsense",
+        "gene": "TP53",
+        "geneName": "",
+        "hgvs": "c.637C>T",
+        "identifier": ".",
+        "inclusion": true,
+        "location": "exonic",
+        "metadata": {
+          "_id": "8b56ed19-10fe-44d5-9dfb-e4105820471a"
+        },
+        "oncominevariantclass": "Deleterious",
+        "position": "7578212",
+        "protein": "p.Arg213Ter",
+        "rare": false,
+        "readDepth": 930,
+        "reference": "G",
+        "referenceAlleleObservations": 199,
+        "transcript": "NM_000546.5"
+      }],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001284",
+    "dateVariantReportReceived": {
+      "$date": 1491003330272
+    },
+    "daysPending": 142,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN51029",
+    "patientSequenceNumber": "15324",
+    "specimenReceivedDate": {
+      "$date": 1490205143773
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1491003301387
+      },
+      "geneFusions": [],
+      "indels": [],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "T-17-001308",
+    "dateVariantReportReceived": {
+      "$date": 1491002037161
+    },
+    "daysPending": 142,
+    "location": "Yale",
+    "molecularSequenceNumber": "MSN51052",
+    "patientSequenceNumber": "15351",
+    "specimenReceivedDate": {
+      "$date": 1490286311059
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1491001940977
+      },
+      "geneFusions": [],
+      "indels": [],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [{
+          "alleleFrequency": 0.427139,
+          "alternative": "C",
+          "alternativeAlleleObservationCount": 726,
+          "armSpecific": false,
+          "chromosome": "chr1",
+          "confirmed": false,
+          "exon": "3",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "724",
+          "flowReferenceAlleleObservations": "971",
+          "function": "missense",
+          "gene": "NRAS",
+          "geneName": "",
+          "hgvs": "c.182A>G",
+          "identifier": "COSM584",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "ddbdea60-c3a1-40f4-bcce-93123f70ea58"
+          },
+          "oncominevariantclass": "Hotspot",
+          "position": "115256529",
+          "protein": "p.Gln61Arg",
+          "rare": false,
+          "readDepth": 1695,
+          "reference": "T",
+          "referenceAlleleObservations": 969,
+          "transcript": "NM_002524.4"
+        },
+        {
+          "alleleFrequency": 0.453727,
+          "alternative": "T",
+          "alternativeAlleleObservationCount": 2189,
+          "armSpecific": false,
+          "chromosome": "chr5",
+          "confirmed": false,
+          "exon": "16",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "907",
+          "flowReferenceAlleleObservations": "1092",
+          "function": "nonsense",
+          "gene": "APC",
+          "geneName": "",
+          "hgvs": "c.4348C>T",
+          "identifier": ".",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "523e0d3b-641a-486a-84bd-be225a094b8c"
+          },
+          "oncominevariantclass": "Deleterious",
+          "position": "112175639",
+          "protein": "p.Arg1450Ter",
+          "rare": false,
+          "readDepth": 4851,
+          "reference": "C",
+          "referenceAlleleObservations": 2655,
+          "transcript": "NM_000038.5"
+        },
+        {
+          "alleleFrequency": 0.496696,
+          "alternative": "T",
+          "alternativeAlleleObservationCount": 451,
+          "armSpecific": false,
+          "chromosome": "chr16",
+          "confirmed": false,
+          "exon": "15",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "451",
+          "flowReferenceAlleleObservations": "457",
+          "function": "nonsense",
+          "gene": "TSC2",
+          "geneName": "",
+          "hgvs": "c.1513C>T",
+          "identifier": ".",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "0e5fb57e-9a60-4760-a91c-1bfcd6d27387"
+          },
+          "oncominevariantclass": "Deleterious",
+          "position": "2114342",
+          "protein": "p.Arg505Ter",
+          "rare": false,
+          "readDepth": 908,
+          "reference": "C",
+          "referenceAlleleObservations": 457,
+          "transcript": "NM_000548.3"
+        },
+        {
+          "alleleFrequency": 0.4375,
+          "alternative": "A",
+          "alternativeAlleleObservationCount": 1295,
+          "armSpecific": false,
+          "chromosome": "chr17",
+          "confirmed": false,
+          "exon": "8",
+          "filter": "PASS",
+          "flowAlternativeAlleleObservationCount": "875",
+          "flowReferenceAlleleObservations": "1125",
+          "function": "missense",
+          "gene": "TP53",
+          "geneName": "",
+          "hgvs": "c.844C>T",
+          "identifier": "COSM10704",
+          "inclusion": true,
+          "location": "exonic",
+          "metadata": {
+            "_id": "1abadb0b-2722-4092-a407-bf7f57c7f9c3"
+          },
+          "oncominevariantclass": "Hotspot",
+          "position": "7577094",
+          "protein": "p.Arg282Trp",
+          "rare": false,
+          "readDepth": 2923,
+          "reference": "G",
+          "referenceAlleleObservations": 1628,
+          "transcript": "NM_000546.5"
+        }
+      ],
+      "unifiedGeneFusions": []
+    }
+  },
+  {
+    "biopsySequenceNumber": "CARIS-case1",
+    "dateVariantReportReceived": {
+      "$date": 1500563346312
+    },
+    "daysPending": 32,
+    "location": "CARIS",
+    "molecularSequenceNumber": "8e9554a7-335a-44a8-ad0a-12feda9405de",
+    "patientSequenceNumber": "OA4",
+    "specimenReceivedDate": {
+      "$date": 1500563346276
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1500563346312
+      },
+      "geneFusions": [],
+      "indels": [],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [],
+      "unifiedGeneFusions": [{
+        "armSpecific": false,
+        "confirmed": false,
+        "driverGene": "TPM3",
+        "driverReadCount": 450,
+        "identifier": "TPM3-ALK.T7A20",
+        "inclusion": true,
+        "metadata": {
+          "_id": "f29724b9-852e-4112-adee-64bef469caa8"
+        },
+        "partnerGene": "ALK",
+        "partnerReadCount": 450,
+        "rare": false
+      }]
+    }
+  },
+  {
+    "biopsySequenceNumber": "BSN-OA5",
+    "dateVariantReportReceived": {
+      "$date": 1500563378673
+    },
+    "daysPending": 32,
+    "location": "Boston",
+    "molecularSequenceNumber": "MSN-OA5",
+    "patientSequenceNumber": "OA5",
+    "specimenReceivedDate": {
+      "$date": 1500563376705
+    },
+    "analysisId": {
+      "copyNumberVariants": [],
+      "createdDate": {
+        "$date": 1500563378608
+      },
+      "geneFusions": [{
+          "alternative": "[chr1:154142875[A",
+          "armSpecific": false,
+          "chromosome": "chr2",
+          "confirmed": false,
+          "exon": "20",
+          "filter": "PASS",
+          "gene": "ALK",
+          "geneName": "ALK",
+          "identifier": "TPM3-ALK.T7A20_1",
+          "inclusion": true,
+          "metadata": {
+            "_id": "ce4f590a-eedc-40c0-ac07-59a712d33108"
+          },
+          "oncominevariantclass": "Fusion",
+          "position": "29446394",
+          "rare": false,
+          "readDepth": 1001,
+          "reference": "A",
+          "svType": "Fusion"
+        },
+        {
+          "alternative": "[chr1:154142875[A",
+          "armSpecific": false,
+          "chromosome": "chr2",
+          "confirmed": false,
+          "exon": "12",
+          "filter": "PASS",
+          "gene": "TPM3",
+          "geneName": "TPM3",
+          "identifier": "TPM3-ALK.T7A20_2",
+          "inclusion": true,
+          "metadata": {
+            "_id": "79eb0009-91d0-442a-9b04-167477d1d84c"
+          },
+          "oncominevariantclass": "Fusion",
+          "position": "29446394",
+          "rare": false,
+          "readDepth": 1001,
+          "reference": "C",
+          "svType": "Fusion"
+        }
+      ],
+      "indels": [],
+      "nonHotspotRules": [],
+      "singleNucleotideVariants": [],
+      "unifiedGeneFusions": [{
+        "annotation": "-",
+        "armSpecific": false,
+        "confirmed": false,
+        "driverGene": "TPM3",
+        "driverReadCount": 1001,
+        "identifier": "TPM3-ALK.T7A20",
+        "inclusion": true,
+        "metadata": {
+          "_id": "716e68f3-ce87-4f67-9402-116df85fba7f"
+        },
+        "partnerGene": "ALK",
+        "partnerReadCount": 1001,
+        "rare": false
+      }]
+    }
+  }
+]

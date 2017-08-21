@@ -1,7 +1,7 @@
-<div class="load-content" *ngIf="!dataAvailable && !overviewDataAvailableTa && !overviewDataAvailablePatients && !overviewDataAvailableBt">
+<div class="load-content" *ngIf="!dataAvailableAR && !dataAvailableVR && !dataAvailablePA && !overviewDataAvailableTa && !overviewDataAvailablePatients && !overviewDataAvailableBt">
   <div id="page-loader" class="page-loader fade in"><span class="spinner">Loading...</span></div>
 </div>
-<div id="content" class="content" *ngIf="dataAvailable && overviewDataAvailableTa && overviewDataAvailablePatients && overviewDataAvailableBt">
+<div id="content" class="content" *ngIf="dataAvailableAR && dataAvailableVR && dataAvailablePA && overviewDataAvailableTa && overviewDataAvailablePatients && overviewDataAvailableBt">
   <div class="row">
     <div class="p-l-15 f-s-10 text-muted-dark pull-right dashboard-loaded-at">
       Loaded at {{timestamp | date: 'mediumTime'}}
@@ -228,7 +228,7 @@
                                 <mfDefaultSorter by="specimenReceivedDate"><span class="table-header">Specimen Received Date</span></mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="ngsDateReceived"><span class="table-header">Variant Report Recieved Date</span></mfDefaultSorter>
+                                <mfDefaultSorter by="dateVariantReportReceived"><span class="table-header">Variant Report Recieved Date</span></mfDefaultSorter>
                               </th>
                               <th>
                                 <mfDefaultSorter by="daysPending"><span class="table-header">Days Pending</span></mfDefaultSorter>
@@ -246,7 +246,7 @@
                                   class="link-none"><i class="fa fa-file-text-o"></i></a></td>
                               <td>{{item.location | dashify}}</td>
                               <td>{{item.specimenReceivedDate | dashify}}</td>
-                              <td>{{item.ngsDateReceived | dashify}}</td>
+                              <td>{{item.dateVariantReportReceived | dashify}}</td>
                               <td [colorCodeDays]="item.daysPending">{{item.daysPending | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftableVR.data.length == 0">

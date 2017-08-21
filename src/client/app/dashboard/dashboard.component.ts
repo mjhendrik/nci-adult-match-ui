@@ -6,7 +6,6 @@ import { routerTransition } from './../shared/router.animations';
 import { GmtPipe } from './../shared/pipes/gmt.pipe';
 import {
   DashboardApiService,
-  DashboardInterface,
   DashboardOverviewInterfaceTa,
   DashboardOverviewInterfacePatients,
   DashboardOverviewInterfaceBt
@@ -50,7 +49,9 @@ export class DashboardComponent implements OnInit {
   tableARData: any[];
   tableVRData: any[];
   tablePatientsAwaitingData: any[];
-  dataAvailable: boolean = false;
+  dataAvailableAR: boolean = false;
+  dataAvailableVR: boolean = false;
+  dataAvailablePA: boolean = false;
   overviewDataAvailableTa: boolean = false;
   overviewDataAvailablePatients: boolean = false;
   overviewDataAvailableBt: boolean = false;
@@ -65,29 +66,55 @@ export class DashboardComponent implements OnInit {
     this.getOverviewDataTa();
     this.getOverviewDataPatients();
     this.getOverviewDataBt();
-    this.getData();
+    this.getDataAR();
+    this.getDataVR();
+    this.getDataPatientsAwaiting();
     // this.autoLoadOverviewData();
   }
 
-  getData() {
+  getDataAR() {
     let gmt = new GmtPipe();
-    this.dashboardApi.getDashboard()
-      .subscribe((itemList: DashboardInterface) => {
+    this.dashboardApi.getDashboardAR()
+      .subscribe((itemList: any[]) => {
 
-        this.dataAvailable = true;
+        this.dataAvailableAR = true;
 
-        this.tableARData = itemList.tableARData.map(x => {
+        this.tableARData = itemList.map(x => {
           x.dateAssigned = gmt.transform(x.dateAssigned);
           return x;
         });
 
-        this.tableVRData = itemList.tableVRData.map(x => {
+      },
+      error => this.errorMessage = <any>error
+      );
+  }
+
+  getDataVR() {
+    let gmt = new GmtPipe();
+    this.dashboardApi.getDashboardVR()
+      .subscribe((itemList: any[]) => {
+
+        this.dataAvailableVR = true;
+
+        this.tableVRData = itemList.map(x => {
           x.specimenReceivedDate = gmt.transform(x.specimenReceivedDate);
-          x.ngsDateReceived = gmt.transform(x.ngsDateReceived);
+          x.dateVariantReportReceived = gmt.transform(x.dateVariantReportReceived);
           return x;
         });
 
-        this.tablePatientsAwaitingData = itemList.tablePatientsAwaitingData.map(x => {
+      },
+      error => this.errorMessage = <any>error
+      );
+  }
+
+  getDataPatientsAwaiting() {
+    let gmt = new GmtPipe();
+    this.dashboardApi.getDashboardPatientsAwaiting()
+      .subscribe((itemList: any[]) => {
+
+        this.dataAvailablePA = true;
+
+        this.tablePatientsAwaitingData = itemList.map(x => {
           x.date_verified = gmt.transform(x.date_verified);
           return x;
         });
