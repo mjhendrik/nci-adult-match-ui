@@ -63,7 +63,7 @@ export class DashboardComponent implements OnInit {
     this.getDataAR();
     this.getDataVR();
     this.getDataPatientsAwaiting();
-    this.autoLoadOverviewData();
+    // this.autoLoadOverviewData();
   }
 
   getDataAR() {
@@ -148,13 +148,13 @@ export class DashboardComponent implements OnInit {
       );
   }
 
-  autoLoadOverviewData() {
-    setInterval(() => {
-      this.getOverviewDataTa();
-      this.getOverviewDataPatients();
-      this.getOverviewDataBt();
-      this.timestamp = new Date();
-    }, 1000 * 30);
-  }
+  // autoLoadOverviewData() {
+  //   setInterval(() => {
+  //     this.getOverviewDataTa();
+  //     this.getOverviewDataPatients();
+  //     this.getOverviewDataBt();
+  //     this.timestamp = new Date();
+  //   }, 1000 * 30);
+  // }
 
 }
