@@ -142,10 +142,12 @@
                                 <a href [routerLink]="['/patients', item.patientSequenceNumber]" class="link-none"><i class="fa fa-user"></i> {{item.patientSequenceNumber | dashify}}</a>
                               </td>
                               <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                                <a href [routerLink]="['/patients', item.patientSequenceNumber]" class="link-none"><i class="fa fa-tasks"></i> {{item.biopsySequenceNumber | dashify}}</a>
+                                <a href [routerLink]="['/patients', item.patientSequenceNumber]" [queryParams]="{section: 'biopsies', entityId:item.biopsySequenceNumber}"
+                                  class="link-none"><i class="fa fa-tasks"></i> {{item.biopsySequenceNumber | dashify}}</a>
                               </td>
                               <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                                <a href [routerLink]="['/patients', item.patientSequenceNumber]" class="link-none"><i class="fa fa-share-alt"></i> {{item.molecularSequenceNumber | dashify}}</a>
+                                <a href [routerLink]="['/patients', item.patientSequenceNumber]" [queryParams]="{section: 'msn', entityId: item.molecularSequenceNumber}"
+                                  class="link-none"><i class="fa fa-share-alt"></i> {{item.molecularSequenceNumber | dashify}}</a>
                               </td>
                               <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                                 <treatment-arm-link *ngIf="item.treatmentArm.id" [treatmentArmId]="item.treatmentArm.id" [version]="item.treatmentArm.version"></treatment-arm-link>
@@ -240,8 +242,10 @@
                               <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                                 <a href [routerLink]="['/patients', item.patientSequenceNumber]" class="link-none"><i class="fa fa-user"></i> {{item.patientSequenceNumber | dashify}}</a>
                               </td>
-                              <td><a href [routerLink]="['/patients', item.patientSequenceNumber]" class="link-none"><i class="fa fa-tasks"></i> {{item.biopsySequenceNumber | dashify}}</a></td>
-                              <td><a href [routerLink]="['/patients', item.patientSequenceNumber]" class="link-none"><i class="fa fa-share-alt"></i> {{item.molecularSequenceNumber | dashify}}</a></td>
+                              <td><a href [routerLink]="['/patients', item.patientSequenceNumber]" [queryParams]="{section: 'biopsies', entityId:item.biopsySequenceNumber}"
+                                  class="link-none"><i class="fa fa-tasks"></i> {{item.biopsySequenceNumber | dashify}}</a></td>
+                              <td><a href [routerLink]="['/patients', item.patientSequenceNumber]" [queryParams]="{section: 'msn', entityId: item.molecularSequenceNumber}"
+                                  class="link-none"><i class="fa fa-share-alt"></i> {{item.molecularSequenceNumber | dashify}}</a></td>
                               <td class="text-center"><a href [routerLink]="['/patients/' + item.patientSequenceNumber + '/variant_reports/' + item.analysisId]"
                                   class="link-none"><i class="fa fa-file-text-o"></i></a></td>
                               <td>{{item.location | dashify}}</td>
