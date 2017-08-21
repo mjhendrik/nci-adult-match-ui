@@ -6,7 +6,6 @@ import { routerTransition } from './../shared/router.animations';
 import { GmtPipe } from './../shared/pipes/gmt.pipe';
 import { DashboardApiService } from './dashboard-api.service';
 
-
 /**
  * DashboardComponent.
  */
@@ -64,7 +63,7 @@ export class DashboardComponent implements OnInit {
     this.getDataAR();
     this.getDataVR();
     this.getDataPatientsAwaiting();
-    // this.autoLoadOverviewData();
+    this.autoLoadOverviewData();
   }
 
   getDataAR() {
@@ -149,21 +148,13 @@ export class DashboardComponent implements OnInit {
       );
   }
 
-  // autoLoadOverviewData() {
-  //   setInterval(() => {
-
-  //     this.dashboardApi.getDashboardOverview()
-  //       .subscribe((itemList: DashboardOverviewInterface) => {
-  //         this.patients = itemList.patients;
-  //         this.treatmentArms = itemList.treatmentArms;
-  //         this.biopsyTracking = itemList.biopsyTracking;
-  //       },
-  //       error => this.errorMessage = <any>error
-  //       );
-
-  //     this.timestamp = new Date();
-
-  //   }, 1000 * 30);
-  // }
+  autoLoadOverviewData() {
+    setInterval(() => {
+      this.getOverviewDataTa();
+      this.getOverviewDataPatients();
+      this.getOverviewDataBt();
+      this.timestamp = new Date();
+    }, 1000 * 30);
+  }
 
 }
