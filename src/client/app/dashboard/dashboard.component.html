@@ -110,7 +110,7 @@
                     <div class="row">
                       <div class="table-responsive col-lg-12">
                         <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="tableARData | filterByText: searchtermAR"
-                          #mftableAR="mfDataTable" [(mfSortBy)]="tableARDefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPageAR">
+                          #mftableAR="mfDataTable" [(mfSortBy)]="tableARDefaultSort" [(mfSortOrder)]="sortByDescAR" [mfRowsOnPage]="recordsPerPageAR">
                           <thead>
                             <tr class="purple-light">
                               <th>
@@ -208,7 +208,7 @@
                     <div class="row">
                       <div class="table-responsive col-lg-12">
                         <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="tableVRData | filterByText: searchtermVR"
-                          #mftableVR="mfDataTable" [(mfSortBy)]="tableVRDefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPageVR">
+                          #mftableVR="mfDataTable" [(mfSortBy)]="tableVRDefaultSort" [(mfSortOrder)]="sortByDescVR" [mfRowsOnPage]="recordsPerPageVR">
                           <thead>
                             <tr class="purple-light">
                               <th>
@@ -309,7 +309,7 @@
         <div class="row">
           <div class="table-responsive col-lg-12">
             <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="tablePatientsAwaitingData | filterByText: searchtermPatientsAwaiting"
-              #mftablePatientsAwaiting="mfDataTable" [(mfSortBy)]="tablePatientsAwaitingDefaultSort" [(mfSortOrder)]="sortByDesc"
+              #mftablePatientsAwaiting="mfDataTable" [(mfSortBy)]="tablePatientsAwaitingDefaultSort" [(mfSortOrder)]="sortByDescPatientsAwaiting"
               [mfRowsOnPage]="recordsPerPagePatientsAwaiting">
               <thead>
                 <tr class="purple-light">

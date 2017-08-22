@@ -31,9 +31,10 @@ export class DashboardComponent implements OnInit {
   tableARDefaultSort: string = 'hoursPending';
   tablePatientsAwaitingDefaultSort: string = 'daysWaiting';
 
-  sortByAsc: string = 'asc';
-  sortByDesc: string = 'desc';
-
+  sortByDescVR: string = 'desc';
+  sortByDescAR: string = 'desc';
+  sortByDescPatientsAwaiting: string = 'desc';
+  
   timestamp: any = new Date();
 
   patients: any;

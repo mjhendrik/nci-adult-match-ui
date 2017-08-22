@@ -37,9 +37,10 @@ export class CliaParentComponent implements OnInit {
   tableNTCDefaultSort: string = 'date_molecular_id_created';
   tablePACCDefaultSort: string = 'date_molecular_id_created';
 
-  sortByAsc: string = 'asc';
-  sortByDesc: string = 'desc';
-
+  sortByDescPC: string = 'desc';
+  sortByDescNTC: string = 'desc';
+  sortByDescPACC: string = 'desc';
+  
   countContacted: number = 0;
   countLost: number = 0;
 

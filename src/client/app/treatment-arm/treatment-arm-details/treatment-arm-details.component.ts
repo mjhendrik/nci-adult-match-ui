@@ -67,7 +67,6 @@ export class TreatmentArmDetailsComponent implements OnInit {
   tableAssayDefaultSort: string = 'gene';
   tablePatientDefaultSort: string = 'dateSelected';
 
-  sortByAsc: string = 'asc';
   sortByDesc: string = 'desc';
 
   snvIn: any[];
