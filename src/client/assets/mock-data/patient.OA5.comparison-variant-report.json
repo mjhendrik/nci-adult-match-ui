@@ -97,8 +97,6 @@
     "currentPatientStatus": "ON_TREATMENT_ARM",
     "currentStepNumber": "1",
     "matchData": {
-        "biopsySequenceNumber": "biopsies[n].biopsySequenceNumber",
-        "analysisId": "biopsies[n].nextGenerationSequences[k].ionReporterResults.jobName",
         "analysisId": "job-OA5",
         "assayMessages": [
             {
@@ -118,7 +116,7 @@
             "assayMessages": [
                 {
                     "biomarker": "ICCPTENs",
-                    "biopsySequenceNumber": "MDACC-case1",
+                    "biopsySequenceNumber": "BSN-OA5",
                     "orderedDate": {
                         "$date": 1500563346387
                     },
@@ -131,7 +129,7 @@
                 }
             ],
             "assignmentType": "CONFIRMATION",
-            "biopsySequenceNumber": "MDACC-case1",
+            "biopsySequenceNumber": "BSN-OA5",
             "dateAssigned": {
                 "$date": 1500563371502
             },
@@ -968,12 +966,8 @@
                 "version": "2015-08-06"
             }
         },
+        "biopsySequenceNumber": "BSN-OA5",
         "variantReport": {
-            "molecularSequenceNumber": "biopsies[n].nextGenerationSequences[k].ionReporterResults.molecularSequenceNumber",
-            "variantReportStatus": "biopsies[n].nextGenerationSequences[k].status",
-            "variantReportCreatedDate": "biopsies[n].nextGenerationSequences[k].ionReporterResults.variantReport.createdDate",
-            "variantReporterFileReceivedDate": "biopsies[n].nextGenerationSequences[k].dateReceived",
-            "variantReporterRejectedOrConfirmedDate": "biopsies[n].nextGenerationSequences[k].dateVerified",
             "copyNumberVariants": [],
             "createdDate": {
                 "$date": 1500563378608
@@ -1023,6 +1017,7 @@
                 }
             ],
             "indels": [],
+            "molecularSequenceNumber": "MSN-OA5",
             "nonHotspotRules": [],
             "singleNucleotideVariants": [],
             "unifiedGeneFusions": [
@@ -1041,12 +1036,15 @@
                     "partnerReadCount": 1001,
                     "rare": false
                 }
-            ]
+            ],
+            "variantReportFileReceivedDate": {
+                "$date": 1500563378673
+            },
+            "variantReportStatus": "PENDING"
         }
     },
     "outsideData": {
-        "biopsySequenceNumber": "biopsies[n].biopsySequenceNumber",
-        "analysisId": "biopsies[n].nextGenerationSequences[k].ionReporterResults.jobName",
+        "analysisId": "88fd81b9-d77b-4760-93f9-a5225f129a5c",
         "assayMessages": [
             {
                 "biomarker": "ICCPTENs",
@@ -1916,18 +1914,15 @@
                 "version": "2015-08-06"
             }
         },
+        "biopsySequenceNumber": "MDACC-case1",
         "variantReport": {
-            "molecularSequenceNumber": "biopsies[n].nextGenerationSequences[k].ionReporterResults.molecularSequenceNumber",
-            "variantReportStatus": "biopsies[n].nextGenerationSequences[k].status",
-            "variantReportCreatedDate": "biopsies[n].nextGenerationSequences[k].ionReporterResults.variantReport.createdDate",
-            "variantReporterFileReceivedDate": "biopsies[n].nextGenerationSequences[k].dateReceived",
-            "variantReporterRejectedOrConfirmedDate": "biopsies[n].nextGenerationSequences[k].dateVerified",
             "copyNumberVariants": [],
             "createdDate": {
                 "$date": 1500563346427
             },
             "geneFusions": [],
             "indels": [],
+            "molecularSequenceNumber": "5fe34a7f-88f6-4ea5-b547-41f3053b680d",
             "nonHotspotRules": [],
             "singleNucleotideVariants": [],
             "unifiedGeneFusions": [
@@ -1945,7 +1940,14 @@
                     "partnerReadCount": 450,
                     "rare": false
                 }
-            ]
+            ],
+            "variantReportFileReceivedDate": {
+                "$date": 1500563346427
+            },
+            "variantReportRejectedOrConfirmedDate": {
+                "$date": 1500563346472
+            },
+            "variantReportStatus": "CONFIRMED"
         }
     },
     "patientSequenceNumber": "OA5"

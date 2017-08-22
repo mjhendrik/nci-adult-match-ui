@@ -2,7 +2,7 @@
   <ul class="breadcrumb pull-right">
     <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
     <li><a href [routerLink]="['/patients']" class="link-none">Patients</a></li>
-    <li><a href [routerLink]="['/patients', psn]" class="link-none">Patient {{psn}}</a></li>
+    <li><a href [routerLink]="['/patients', patientSequenceNumber]" class="link-none">Patient {{patientSequenceNumber}}</a></li>
     <li class="active">Variant Report</li>
   </ul>
 
@@ -30,17 +30,16 @@
                         <a href="javascript:;" class="btn btn-sm btn-link"><i class="fa fa-file-excel-o"></i> Excel</a>
                       </div>
                     </div>
-                  </div>
-                  <div class="panel-heading">
+
                     <dl class="dl-horizontal">
                       <dt>Molecular Sequence Number</dt>
                       <dd>{{outsideData.variantReport.molecularSequenceNumber | dashify}}</dd>
                       <dt>Biopsy Sequence Number</dt>
-                      <dd>{{outsideData.variantReport.biopsySequenceNumber | dashify}}</dd>
+                      <dd>{{outsideData.biopsySequenceNumber | dashify}}</dd>
                       <dt>Analysis ID</dt>
-                      <dd>{{outsideData.variantReport.analysisId | dashify}}</dd>
+                      <dd>{{outsideData.analysisId | dashify}}</dd>
                       <dt>Patient</dt>
-                      <dd><a href [routerLink]="['/patients', psn]" class="link-none">{{psn | dashify}}</a>,
+                      <dd><a href [routerLink]="['/patients', patientSequenceNumber]" class="link-none">{{patientSequenceNumber | dashify}}</a>,
                         <span [colorCodePatients]="currentPatientStatus">{{currentPatientStatus | dashify}}</span>,
                         Step {{currentStepNumber | dashify}}</dd>
                       <dt>Patient Concordance</dt>
@@ -81,8 +80,8 @@
                     <p class="text-muted">No Assignment data yet</p>
                   </div>
                   <div class="panel-heading" *ngIf="outsideData.assignmentReport">
+                    <h4>Latest Assignment</h4>
                     <dl class="dl-horizontal widest-dt">
-                      <h4>Latest Assignment</h4>
                       <dt>Status</dt>
                       <dd><span [colorCodeAssignment]="outsideData.assignmentReport.patientAssignmentStatus"> {{outsideData.assignmentReport.patientAssignmentStatus | dashify}}</span> on {{outsideData.assignmentReport.dateConfirmed | gmt}} by {{(outsideData.assignmentReport.user||'System User') | dashify}}</dd>
                       <dt>Generation Date</dt>
@@ -180,21 +179,20 @@
                         <h4>Variant Report</h4>
                       </div>
                       <div class="col-md-4 text-right">
-                        <a class="btn btn-sm btn-link" role="button" href [routerLink]="['/patients/' + psn + '/variant_reports/' + matchData.variantReport.analysisId +'/qc']"><i class="fa fa-file-text-o"></i> QC Report</a>
+                        <a class="btn btn-sm btn-link" role="button" href [routerLink]="['/patients/' + patientSequenceNumber + '/variant_reports/' + matchData.analysisId +'/qc']"><i class="fa fa-file-text-o"></i> QC Report</a>
                         <a href="javascript:;" class="btn btn-sm btn-link"><i class="fa fa-file-excel-o"></i> Excel</a>
                       </div>
                     </div>
-                  </div>
-                  <div class="panel-heading">
+
                     <dl class="dl-horizontal">
                       <dt>Molecular Sequence Number</dt>
                       <dd>{{matchData.variantReport.molecularSequenceNumber | dashify}}</dd>
                       <dt>Biopsy Sequence Number</dt>
-                      <dd>{{matchData.variantReport.biopsySequenceNumber | dashify}}</dd>
+                      <dd>{{matchData.biopsySequenceNumber | dashify}}</dd>
                       <dt>Analysis ID</dt>
-                      <dd>{{matchData.variantReport.analysisId | dashify}}</dd>
+                      <dd>{{matchData.analysisId | dashify}}</dd>
                       <dt>Patient</dt>
-                      <dd><a href [routerLink]="['/patients', psn]" class="link-none">{{psn | dashify}}</a>,
+                      <dd><a href [routerLink]="['/patients', patientSequenceNumber]" class="link-none">{{patientSequenceNumber | dashify}}</a>,
                         <span [colorCodePatients]="currentPatientStatus">{{currentPatientStatus | dashify}}</span>,
                         Step {{currentStepNumber | dashify}}</dd>
                       <dt>Patient Concordance</dt>
@@ -235,8 +233,8 @@
                     <p class="text-muted">No Assignment data yet</p>
                   </div>
                   <div class="panel-heading" *ngIf="matchData.assignmentReport">
+                    <h4>Latest Assignment</h4>
                     <dl class="dl-horizontal widest-dt">
-                      <h4>Latest Assignment</h4>
                       <dt>Status</dt>
                       <dd><span [colorCodeAssignment]="matchData.assignmentReport.patientAssignmentStatus"> {{matchData.assignmentReport.patientAssignmentStatus | dashify}}</span>                        on {{matchData.assignmentReport.dateConfirmed | gmt}} by {{(matchData.assignmentReport.user||'System User') | dashify}}</dd>
                       <dt>Generation Date</dt>
