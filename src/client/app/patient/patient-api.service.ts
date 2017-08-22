@@ -21,10 +21,6 @@ export class PatientApiService {
    */
   constructor(private http: AuthHttp) { }
 
-  /**
-   * Returns an Observable for the HTTP GET request for the JSON resource.
-   * @return {string[]} The Observable for the HTTP request.
-   */
   getPatientList(page: number,
     size: number,
     sortOrder: string,
@@ -135,6 +131,6 @@ export class PatientApiService {
       throw new Error('Bad response status: ' + res.status);
     }
     let body = res.json();
-    return body || {};
+    return (typeof body !== 'undefined') ? body : null;
   }
 }
