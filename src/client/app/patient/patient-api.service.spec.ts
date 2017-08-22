@@ -55,39 +55,39 @@ const makeVariantReportData = () => {
 
 const makeOutsideAssayComparisonVariantReportData = () => {
   return {
-    psn: string;
-    currentPatientStatus: string;
-    currentStepNumber: string;
-    concordance: string;
+    psn: 'value',
+    currentPatientStatus: 'value',
+    currentStepNumber: 'value',
+    concordance: 'value',
     outsideData: {
-        analysisId: string;
-        assays: any[];
-        variantReport: any;
-        assignmentReport: any;
-        tvc_version: string;
-        pool1: number;
-        pool2: number;
-        mapd: string;
-        cellularity: any;
-        showPools: boolean;
-    };
+        analysisId: 'value',
+        assays: ['value'],
+        variantReport: 'value',
+        assignmentReport: 'value',
+        tvc_version: 'value',
+        pool1: 1,
+        pool2: 1,
+        mapd: 'value',
+        cellularity: 'value',
+        showPools: false
+    },
     matchData: {
-        analysisId: string;
-        assays: any[];
-        variantReport: any;
-        assignmentReport: any;
-        tvc_version: string;
-        pool1: number;
-        pool2: number;
-        mapd: string;
-        cellularity: any;
-        showPools: boolean;
-    };
+      analysisId: 'value',
+      assays: ['value'],
+      variantReport: 'value',
+      assignmentReport: 'value',
+    tvc_version: 'value',
+      pool1: 1,
+      pool2: 1,
+      mapd: 'value',
+      cellularity: 'value',
+      showPools: false
+    },
     comparisonVariantReport: {
-        singleNucleotideVariantAndIndels: any[];
-        copyNumberVariants: any[];
-        unifiedGeneFusions: any[];
-    };
+        singleNucleotideVariantAndIndels: ['value'],
+        copyNumberVariants: ['value'],
+        unifiedGeneFusions: ['value']
+    },
 } as VariantReportComparisonData;
 };
 
@@ -490,4 +490,5 @@ export function main() {
       })));
 
     });
-  }
+  });
+}
