@@ -16,6 +16,7 @@ import { AuthHttp } from 'angular2-jwt';
 import { Observable } from 'rxjs/Observable';
 
 import { PatientApiService } from './patient-api.service';
+import { VariantReportComparisonData } from './patient-variant-report-oa/variant-report-comparison-data';
 
 const makePatientListData = () => [
   { patientSequenceNumber: '1', currentStepNumber: '1.1' },
@@ -50,6 +51,44 @@ const makeVariantReportData = () => {
       torrentVariantCallerVersion: '5.0-9'
     }
   } as any;
+};
+
+const makeOutsideAssayComparisonVariantReportData = () => {
+  return {
+    psn: string;
+    currentPatientStatus: string;
+    currentStepNumber: string;
+    concordance: string;
+    outsideData: {
+        analysisId: string;
+        assays: any[];
+        variantReport: any;
+        assignmentReport: any;
+        tvc_version: string;
+        pool1: number;
+        pool2: number;
+        mapd: string;
+        cellularity: any;
+        showPools: boolean;
+    };
+    matchData: {
+        analysisId: string;
+        assays: any[];
+        variantReport: any;
+        assignmentReport: any;
+        tvc_version: string;
+        pool1: number;
+        pool2: number;
+        mapd: string;
+        cellularity: any;
+        showPools: boolean;
+    };
+    comparisonVariantReport: {
+        singleNucleotideVariantAndIndels: any[];
+        copyNumberVariants: any[];
+        unifiedGeneFusions: any[];
+    };
+} as VariantReportComparisonData;
 };
 
 export function main() {
@@ -329,7 +368,7 @@ export function main() {
     });
 
 
-    fdescribe('when getPatientVariantReport', () => {
+    describe('when getPatientVariantReport', () => {
       let backend: MockBackend;
       let service: PatientApiService;
       let fakeData: any;
@@ -390,5 +429,65 @@ export function main() {
 
     });
 
-  });
-}
+
+    describe('when getOutsideAssayComparisonVariantReport', () => {
+      let backend: MockBackend;
+      let service: PatientApiService;
+      let fakeData: any;
+      let response: Response;
+
+      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
+        backend = be;
+        service = new PatientApiService(http);
+        fakeData = makeOutsideAssayComparisonVariantReportData();
+        let options = new ResponseOptions({ status: 200, body: fakeData });
+        response = new Response(options);
+      }));
+
+      it('should have expected fake patients (then)', async(inject([], () => {
+        backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
+
+        service.getOutsideAssayComparisonVariantReport('fake-psn').toPromise()
+          .then(patient => {
+            expect(patient).toBe(fakeData);
+          });
+      })));
+
+      it('should have expected fake patients (Observable.do)', async(inject([], () => {
+        backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
+
+        service.getOutsideAssayComparisonVariantReport('fake-psn')
+          .do(patient => {
+            expect(patient).toBe(fakeData, 'should have expected no. of patients');
+          })
+          .toPromise();
+      })));
+
+      it('should be OK returning no patients', async(inject([], () => {
+        let resp = new Response(new ResponseOptions({ status: 200, body: {} }));
+        backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
+
+        service.getOutsideAssayComparisonVariantReport('fake-psn')
+          .do(patient => {
+            expect(patient).toEqual({}, 'should have no patients');
+          })
+          .toPromise();
+      })));
+
+      it('should treat 404 as an Observable error', async(inject([], () => {
+        let resp = new Response(new ResponseOptions({ status: 404 }));
+        backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
+
+        service.getOutsideAssayComparisonVariantReport('fake-psn')
+          .do(patient => {
+            fail('should not respond with patients');
+          })
+          .catch(err => {
+            expect(err).toMatch(/Bad response status/, 'should catch bad response status code');
+            return Observable.of(null); // failure is the expected test result
+          })
+          .toPromise();
+      })));
+
+    });
+  }
