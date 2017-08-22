@@ -51,7 +51,7 @@
                       <dt>Cellularity</dt>
                       <dd>{{cellularity | dashify}}</dd>
                       <dt>File Received Date</dt>
-                      <dd>{{outsideData.variantReport.variantReporterFileReceivedDate | gmt}}</dd>
+                      <dd>{{outsideData.variantReport.createdDate | gmt}}</dd>
 
                       <dt *ngIf="!showPools">Torrent Variant Caller Version</dt>
                       <dd *ngIf="!showPools">{{tvc_version | dashify}}</dd>
@@ -204,7 +204,7 @@
                       <dt>Cellularity</dt>
                       <dd>{{cellularity | dashify}}</dd>
                       <dt>File Received Date</dt>
-                      <dd>{{matchData.variantReport.variantReporterFileReceivedDate | gmt}}</dd>
+                      <dd>{{matchData.variantReport.createdDate | gmt}}</dd>
 
                       <dt *ngIf="!showPools">Torrent Variant Caller Version</dt>
                       <dd *ngIf="!showPools">{{tvc_version | dashify}}</dd>
@@ -347,7 +347,7 @@
     </div>
   </div>
 
-  <h2 class="subsection-heading">Assignment Reports</h2>
+  <h2 class="subsection-heading" id="assignment-details">Assignment Reports</h2>
   
   <div class="panel">
     <ul class="nav nav-tabs nav-tabs-purple">
