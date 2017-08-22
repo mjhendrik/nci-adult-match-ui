@@ -314,7 +314,7 @@
               <thead>
                 <tr class="purple-light">
                   <th class="text-center">
-                    <mfDefaultSorter by="details"><span class="table-header">Details</span></mfDefaultSorter>
+                    <span class="table-header">Details</span>
                   </th>
                   <th>
                     <mfDefaultSorter by="psn"><span class="table-header">Patient Sequence Number</span></mfDefaultSorter>
@@ -337,8 +337,8 @@
                 <tr *ngFor="let item of mftablePatientsAwaiting.data">
                   <td class="text-center">
                     <a (click)="showRow=!showRow">
-                      <i *ngIf="!showRow" id="item.psn" class="fa fa-chevron-right"></i>
-                      <i *ngIf="showRow" id="item.psn" class="fa fa-chevron-down"></i>
+                      <i *ngIf="!showRow" id="{{item.psn}}" class="fa fa-chevron-right"></i>
+                      <i *ngIf="showRow" id="{{item.psn}}" class="fa fa-chevron-down"></i>
                     </a>
                   </td>
                   <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
