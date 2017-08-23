@@ -17,6 +17,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { PatientApiService } from './patient-api.service';
 import { VariantReportComparisonData } from './patient-variant-report-oa/variant-report-comparison-data';
+import { downloadFile } from '../shared/utils/utils';
 
 const makePatientListData = () => [
   { patientSequenceNumber: '1', currentStepNumber: '1.1' },
@@ -92,6 +93,69 @@ const makeOutsideAssayComparisonVariantReportData = () => {
 };
 
 const makeVariantReportQcData = () => {
+  return {
+    variantReport: {
+      patientSequenceNumber: '11276',
+      patientStatus: 'PENDING_CONFIRMATION',
+      step: 0,
+      concordance: 'YES',
+      variantReportStatus: 'CONFIRMED',
+      variantReportDate: 'August 26, 2016 3:28 PM GMT',
+      user: 'TA commettee',
+      biopsySequenceNumber: 'T-16-000762',
+      molecularSequenceNumber: 'MSN17772',
+      analysisId: 'MSN17772_v1_92ad9833-e79a-4807-b1f3-6be88a0ab824',
+      mapd: '0.317',
+      cellularity: '1.000000',
+      fileReceivedDate: 'August 25, 2016 10:13 PM GMT',
+      torrentVariantCallerVersion: '5.0-9'
+    }
+  } as any;
+};
+
+const makePatientVariantReportOcpData = () => {
+  return {
+    variantReport: {
+      patientSequenceNumber: '11276',
+      patientStatus: 'PENDING_CONFIRMATION',
+      step: 0,
+      concordance: 'YES',
+      variantReportStatus: 'CONFIRMED',
+      variantReportDate: 'August 26, 2016 3:28 PM GMT',
+      user: 'TA commettee',
+      biopsySequenceNumber: 'T-16-000762',
+      molecularSequenceNumber: 'MSN17772',
+      analysisId: 'MSN17772_v1_92ad9833-e79a-4807-b1f3-6be88a0ab824',
+      mapd: '0.317',
+      cellularity: '1.000000',
+      fileReceivedDate: 'August 25, 2016 10:13 PM GMT',
+      torrentVariantCallerVersion: '5.0-9'
+    }
+  } as any;
+};
+
+const makePatientCopyNumberReportData = () => {
+  return {
+    variantReport: {
+      patientSequenceNumber: '11276',
+      patientStatus: 'PENDING_CONFIRMATION',
+      step: 0,
+      concordance: 'YES',
+      variantReportStatus: 'CONFIRMED',
+      variantReportDate: 'August 26, 2016 3:28 PM GMT',
+      user: 'TA commettee',
+      biopsySequenceNumber: 'T-16-000762',
+      molecularSequenceNumber: 'MSN17772',
+      analysisId: 'MSN17772_v1_92ad9833-e79a-4807-b1f3-6be88a0ab824',
+      mapd: '0.317',
+      cellularity: '1.000000',
+      fileReceivedDate: 'August 25, 2016 10:13 PM GMT',
+      torrentVariantCallerVersion: '5.0-9'
+    }
+  } as any;
+};
+
+const makePatientVariantReportFileInfoData = () => {
   return {
     variantReport: {
       patientSequenceNumber: '11276',
@@ -584,7 +648,7 @@ export function main() {
       beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http);
-        fakeData = makeVariantReportQcData();
+        fakeData = makePatientVariantReportOcpData();
         let options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
       }));
@@ -612,7 +676,7 @@ export function main() {
         let resp = new Response(new ResponseOptions({ status: 200, body: {} }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
-        service.getPatientVariantReportOcp('fake-psn', 'faka-analysis-id')
+        service.getPatientVariantReportOcp('fake-psn', 'fake-analysis-id')
           .do(patient => {
             expect(patient).toEqual({}, 'should have no patients');
           })
@@ -646,7 +710,7 @@ export function main() {
       beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http);
-        fakeData = makeVariantReportQcData();
+        fakeData = makePatientCopyNumberReportData();
         let options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
       }));
@@ -654,7 +718,7 @@ export function main() {
       it('should have expected fake patients (then)', async(inject([], () => {
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
-        service.getPatientCopyNumberReport('fake-psn', 'faka-analysis-id').toPromise()
+        service.getPatientCopyNumberReport('fake-psn', 'fake-analysis-id').toPromise()
           .then(patient => {
             expect(patient).toBe(fakeData);
           });
@@ -663,7 +727,7 @@ export function main() {
       it('should have expected fake patients (Observable.do)', async(inject([], () => {
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
-        service.getPatientCopyNumberReport('fake-psn', 'faka-analysis-id')
+        service.getPatientCopyNumberReport('fake-psn', 'fake-analysis-id')
           .do(patient => {
             expect(patient).toBe(fakeData, 'should have expected no. of patients');
           })
@@ -674,7 +738,7 @@ export function main() {
         let resp = new Response(new ResponseOptions({ status: 200, body: {} }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
-        service.getPatientCopyNumberReport('fake-psn', 'faka-analysis-id')
+        service.getPatientCopyNumberReport('fake-psn', 'fake-analysis-id')
           .do(patient => {
             expect(patient).toEqual({}, 'should have no patients');
           })
@@ -710,7 +774,7 @@ export function main() {
       beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http);
-        fakeData = makeVariantReportQcData();
+        fakeData = makePatientVariantReportFileInfoData();
         let options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
       }));
@@ -762,6 +826,71 @@ export function main() {
 
     });
 
+
+    fdescribe('when downloadPatientFile', () => {
+      let backend: MockBackend;
+      let service: PatientApiService;
+      let fakeData: any;
+      let response: Response;
+      let downloadFileSpy: jasmine.Spy;
+      let dummyFunctionHolder: any = {};
+
+      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
+        backend = be;
+        service = new PatientApiService(http);
+        fakeData = {download_url:'fake-url'};
+        let options = new ResponseOptions({ status: 200, body: fakeData });
+        dummyFunctionHolder.downloadFile = downloadFile;
+        response = new Response(options);
+        downloadFileSpy = spyOn(dummyFunctionHolder, 'downloadFile').and.callFake(() => { ; });
+      }));
+
+      fit('should have expected fake download url', async(inject([], () => {
+        backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
+
+        service.downloadPatientFile('fake-psn', 'fake-url');
+
+        expect(downloadFileSpy).toHaveBeenCalled();
+
+      })));
+
+      // it('should have expected fake patients (Observable.do)', async(inject([], () => {
+      //   backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
+
+      //   service.downloadPatientFile('fake-psn', 'fake-url')
+      //     .do(patient => {
+      //       expect(patient).toBe(fakeData, 'should have expected no. of patients');
+      //     })
+      //     .toPromise();
+      // })));
+
+      // it('should be OK returning no patients', async(inject([], () => {
+      //   let resp = new Response(new ResponseOptions({ status: 200, body: {} }));
+      //   backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
+
+      //   service.downloadPatientFile('fake-psn', 'fake-url')
+      //     .do(patient => {
+      //       expect(patient).toEqual({}, 'should have no patients');
+      //     })
+      //     .toPromise();
+      // })));
+
+      // it('should treat 404 as an Observable error', async(inject([], () => {
+      //   let resp = new Response(new ResponseOptions({ status: 404 }));
+      //   backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
+
+      //   service.downloadPatientFile('fake-psn', 'fake-url')
+      //     .do(patient => {
+      //       fail('should not respond with patients');
+      //     })
+      //     .catch(err => {
+      //       expect(err).toMatch(/Bad response status/, 'should catch bad response status code');
+      //       return Observable.of(null); // failure is the expected test result
+      //     })
+      //     .toPromise();
+      // })));
+
+    });
 
   });
 }
