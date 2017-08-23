@@ -12,6 +12,7 @@ import { DataTableModule } from './../../shared/datatables/DataTableModule';
 import { PatientListComponent } from './patient-list.component';
 import { PatientApiService } from './../patient-api.service';
 import { SharedModule } from '../../shared/shared.module';
+import { PatientApiServiceWithErrorStub } from '../testing/patient-api-service-stub';
 
 export function main() {
   describe('patients component', () => {
@@ -166,7 +167,7 @@ export function main() {
         ],
         declarations: [PatientListComponent],
         providers: [
-          { provide: PatientApiService, useClass: MockPatientApiServiceError },
+          { provide: PatientApiService, useClass: PatientApiServiceWithErrorStub },
         ]
       });
     });
@@ -189,22 +190,6 @@ export function main() {
       }));
   });
 
-}
-
-
-class MockPatientApiServiceError {
-
-  getPatientList(): Observable<any> {
-    return Observable.throw("error");
-  }
-
-  getPatientCount(): Observable<any> {
-    return Observable.throw("error");
-  }
-
-  getPatientTotal(): Observable<any> {
-    return Observable.throw("error");
-  }
 }
 
 class MockPatientApiService {

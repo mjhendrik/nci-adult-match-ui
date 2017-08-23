@@ -5,6 +5,18 @@ export class PatientApiServiceWithErrorStub {
     getPatientDetails(): Observable<any> {
         return Observable.throw("error");
     }
+    
+    getPatientList(): Observable<any> {
+        return Observable.throw("error");
+    }
+
+    getPatientCount(): Observable<any> {
+        return Observable.throw("error");
+    }
+
+    getPatientTotal(): Observable<any> {
+        return Observable.throw("error");
+    }
 }
 
 export class PatientApiServiceStub {
