@@ -35,7 +35,7 @@ export class DashboardApiService {
 
     // return this.http.get('assets/mock-data/dashboard-vr.json')
 
-    return this.http.get(Config.API.PATIENT + '/patients/tracking/dashboard/variant_reports')
+    return this.http.get(Config.API.PATIENT + '/patients/dashboard/variant_reports')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
