@@ -34,7 +34,7 @@ export class DashboardComponent implements OnInit {
   sortByDescVR: string = 'desc';
   sortByDescAR: string = 'desc';
   sortByDescPatientsAwaiting: string = 'desc';
-  
+
   timestamp: any = new Date();
 
   patients: any;
@@ -52,6 +52,8 @@ export class DashboardComponent implements OnInit {
   overviewDataAvailableBt: boolean = false;
 
   errorMessage: string;
+
+  showRow: any = {};
 
   constructor(private dashboardApi: DashboardApiService) {
 

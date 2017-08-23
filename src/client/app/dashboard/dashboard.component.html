@@ -334,30 +334,41 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let item of mftablePatientsAwaiting.data">
-                  <td class="text-center">
-                    <a (click)="showRow=!showRow">
-                      <i *ngIf="!showRow" id="{{item.psn}}" class="fa fa-chevron-right"></i>
-                      <i *ngIf="showRow" id="{{item.psn}}" class="fa fa-chevron-down"></i>
+                <ng-template ngFor let-item [ngForOf]="mftablePatientsAwaiting.data">
+                  <tr>
+                    <td class="text-center">
+                      <a (click)="showRow[item.psn] = !showRow[item.psn]">
+                      <i *ngIf="!showRow[item.psn]" id="icon_{{item.psn}}" class="fa fa-chevron-right"></i>
+                      <i *ngIf="showRow[item.psn]"   id="icon_{{item.psn}}" class="fa fa-chevron-down"></i>
                     </a>
-                  </td>
-                  <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                    <a href [routerLink]="['/patients', item.psn]" class="link-none"><i class="fa fa-user"></i> {{item.psn | dashify}}</a>
-                  </td>
-                  <td [colorCodePatients]="item.currentStatus">{{item.currentStatus | dashify}}</td>
-                  <td class="text-danger-light">{{item.message | dashify}}</td>
-                  <td class="text-center">
-                    <span *ngIf="item.amoi===true"><i class="fa fa-check-circle text-success-light"></i></span>
-                    <span *ngIf="item.amoi===false"><i class="fa fa-times-circle text-danger-light"></i></span>
-                  </td>
-                  <td [colorCodeDays]="item.daysWaiting">{{item.daysWaiting | dashify}}</td>
-                </tr>
-                <tr *ngIf="mftablePatientsAwaiting.data.length == 0">
-                  <td class="text-muted" colspan="6">
-                    <span *ngIf="searchtermPatientsAwaiting">No matching search results found for "{{searchtermPatientsAwaiting}}"</span>
-                    <span *ngIf="!searchtermPatientsAwaiting">There are no patients awaiting further action or information</span>
-                  </td>
-                </tr>
+                    </td>
+                    <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                      <a href [routerLink]="['/patients', item.psn]" class="link-none"><i class="fa fa-user"></i> {{item.psn | dashify}}</a>
+                    </td>
+                    <td [colorCodePatients]="item.currentStatus">{{item.currentStatus | dashify}}</td>
+                    <td class="text-danger-light">{{item.message | dashify}}</td>
+                    <td class="text-center">
+                      <span *ngIf="item.amoi===true"><i class="fa fa-check-circle text-success-light"></i></span>
+                      <span *ngIf="item.amoi===false"><i class="fa fa-times-circle text-danger-light"></i></span>
+                    </td>
+                    <td [colorCodeDays]="item.daysWaiting">{{item.daysWaiting | dashify}}</td>
+                  </tr>
+                  <tr *ngIf="mftablePatientsAwaiting.data.length == 0">
+                    <td class="text-muted" colspan="6">
+                      <span *ngIf="searchtermPatientsAwaiting">No matching search results found for "{{searchtermPatientsAwaiting}}"</span>
+                      <span *ngIf="!searchtermPatientsAwaiting">There are no patients awaiting further action or information</span>
+                    </td>
+                  </tr>
+                  <tr *ngIf="showRow[item.psn]">
+                    <td colspan="6">
+                      <ul class="panel-list">
+                        <li id="panel_{{item.psn}}" class="info-element">
+                          Pannel: {{item.psn}}
+                        </li>
+                      </ul>
+                    </td>
+                  </tr>
+                </ng-template>
               </tbody>
               <tfoot>
                 <tr>
