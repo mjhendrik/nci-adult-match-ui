@@ -23,7 +23,7 @@ import { ViewDataTransformer } from './../view-data-transformer.service';
 import { PatientTimelineModule } from './../patient-timeline/patient-timeline.module';
 import { SharedModule } from '../../shared/shared.module';
 
-import { PatientApiServiceStub, PatientApiServiceWithErrorStub } from '../testing/patient-api-service-stubs';
+import { PatientApiServiceStub, PatientApiServiceWithErrorStub } from '../testing/patient-api-service-stub';
 
 @Injectable()
 export class ActivatedRouteStub {

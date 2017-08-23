@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs/Observable';
+import { VariantReportComparisonData } from '../patient-variant-report-oa/variant-report-comparison-data';
 
 export class PatientApiServiceWithErrorStub {
-
     getPatientDetails(): Observable<any> {
         return Observable.throw("error");
     }
@@ -380,4 +380,161 @@ export class PatientApiServiceStub {
     downloadPatientFile(psn: string, url: string): void {
         ;
     }
+
+    makePatientListData = () => [
+        { patientSequenceNumber: '1', currentStepNumber: '1.1' },
+        { patientSequenceNumber: '2', currentStepNumber: '1.1' },
+        { patientSequenceNumber: '3', currentStepNumber: '1.1' },
+        { patientSequenceNumber: '4', currentStepNumber: '1.1' }
+    ] as any[];
+
+    makePatientData = () => {
+        return {
+            patientSequenceNumber: '1',
+            currentStepNumber: '1.1'
+        } as any;
+    };
+
+    makeVariantReportData = () => {
+        return {
+            variantReport: {
+                patientSequenceNumber: '11276',
+                patientStatus: 'PENDING_CONFIRMATION',
+                step: 0,
+                concordance: 'YES',
+                variantReportStatus: 'CONFIRMED',
+                variantReportDate: 'August 26, 2016 3:28 PM GMT',
+                user: 'TA commettee',
+                biopsySequenceNumber: 'T-16-000762',
+                molecularSequenceNumber: 'MSN17772',
+                analysisId: 'MSN17772_v1_92ad9833-e79a-4807-b1f3-6be88a0ab824',
+                mapd: '0.317',
+                cellularity: '1.000000',
+                fileReceivedDate: 'August 25, 2016 10:13 PM GMT',
+                torrentVariantCallerVersion: '5.0-9'
+            }
+        } as any;
+    };
+
+    makeOutsideAssayComparisonVariantReportData = () => {
+        return {
+            psn: 'value',
+            currentPatientStatus: 'value',
+            currentStepNumber: 'value',
+            concordance: 'value',
+            outsideData: {
+                analysisId: 'value',
+                assays: ['value'],
+                variantReport: 'value',
+                assignmentReport: 'value',
+                tvc_version: 'value',
+                pool1: 1,
+                pool2: 1,
+                mapd: 'value',
+                cellularity: 'value',
+                showPools: false
+            },
+            matchData: {
+                analysisId: 'value',
+                assays: ['value'],
+                variantReport: 'value',
+                assignmentReport: 'value',
+                tvc_version: 'value',
+                pool1: 1,
+                pool2: 1,
+                mapd: 'value',
+                cellularity: 'value',
+                showPools: false
+            },
+            comparisonVariantReport: {
+                singleNucleotideVariantAndIndels: ['value'],
+                copyNumberVariants: ['value'],
+                unifiedGeneFusions: ['value']
+            },
+        } as VariantReportComparisonData;
+    };
+
+    makeVariantReportQcData = () => {
+        return {
+            variantReport: {
+                patientSequenceNumber: '11276',
+                patientStatus: 'PENDING_CONFIRMATION',
+                step: 0,
+                concordance: 'YES',
+                variantReportStatus: 'CONFIRMED',
+                variantReportDate: 'August 26, 2016 3:28 PM GMT',
+                user: 'TA commettee',
+                biopsySequenceNumber: 'T-16-000762',
+                molecularSequenceNumber: 'MSN17772',
+                analysisId: 'MSN17772_v1_92ad9833-e79a-4807-b1f3-6be88a0ab824',
+                mapd: '0.317',
+                cellularity: '1.000000',
+                fileReceivedDate: 'August 25, 2016 10:13 PM GMT',
+                torrentVariantCallerVersion: '5.0-9'
+            }
+        } as any;
+    };
+
+    makePatientVariantReportOcpData = () => {
+        return {
+            variantReport: {
+                patientSequenceNumber: '11276',
+                patientStatus: 'PENDING_CONFIRMATION',
+                step: 0,
+                concordance: 'YES',
+                variantReportStatus: 'CONFIRMED',
+                variantReportDate: 'August 26, 2016 3:28 PM GMT',
+                user: 'TA commettee',
+                biopsySequenceNumber: 'T-16-000762',
+                molecularSequenceNumber: 'MSN17772',
+                analysisId: 'MSN17772_v1_92ad9833-e79a-4807-b1f3-6be88a0ab824',
+                mapd: '0.317',
+                cellularity: '1.000000',
+                fileReceivedDate: 'August 25, 2016 10:13 PM GMT',
+                torrentVariantCallerVersion: '5.0-9'
+            }
+        } as any;
+    };
+
+    makePatientCopyNumberReportData = () => {
+        return {
+            variantReport: {
+                patientSequenceNumber: '11276',
+                patientStatus: 'PENDING_CONFIRMATION',
+                step: 0,
+                concordance: 'YES',
+                variantReportStatus: 'CONFIRMED',
+                variantReportDate: 'August 26, 2016 3:28 PM GMT',
+                user: 'TA commettee',
+                biopsySequenceNumber: 'T-16-000762',
+                molecularSequenceNumber: 'MSN17772',
+                analysisId: 'MSN17772_v1_92ad9833-e79a-4807-b1f3-6be88a0ab824',
+                mapd: '0.317',
+                cellularity: '1.000000',
+                fileReceivedDate: 'August 25, 2016 10:13 PM GMT',
+                torrentVariantCallerVersion: '5.0-9'
+            }
+        } as any;
+    };
+
+    makePatientVariantReportFileInfoData = () => {
+        return {
+            variantReport: {
+                patientSequenceNumber: '11276',
+                patientStatus: 'PENDING_CONFIRMATION',
+                step: 0,
+                concordance: 'YES',
+                variantReportStatus: 'CONFIRMED',
+                variantReportDate: 'August 26, 2016 3:28 PM GMT',
+                user: 'TA commettee',
+                biopsySequenceNumber: 'T-16-000762',
+                molecularSequenceNumber: 'MSN17772',
+                analysisId: 'MSN17772_v1_92ad9833-e79a-4807-b1f3-6be88a0ab824',
+                mapd: '0.317',
+                cellularity: '1.000000',
+                fileReceivedDate: 'August 25, 2016 10:13 PM GMT',
+                torrentVariantCallerVersion: '5.0-9'
+            }
+        } as any;
+    };
 }

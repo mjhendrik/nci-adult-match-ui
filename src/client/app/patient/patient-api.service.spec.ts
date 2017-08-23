@@ -8,8 +8,7 @@ import {
   Http,
   Response,
   ResponseOptions,
-  XHRBackend,
-  BaseRequestOptions
+  XHRBackend
 } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { AuthHttp } from 'angular2-jwt';
@@ -19,163 +18,7 @@ import { PatientApiService } from './patient-api.service';
 import { VariantReportComparisonData } from './patient-variant-report-oa/variant-report-comparison-data';
 import { DownloadService } from '../shared/utils/download.service';
 import { WindowStub } from './testing/window-stub';
-
-const makePatientListData = () => [
-  { patientSequenceNumber: '1', currentStepNumber: '1.1' },
-  { patientSequenceNumber: '2', currentStepNumber: '1.1' },
-  { patientSequenceNumber: '3', currentStepNumber: '1.1' },
-  { patientSequenceNumber: '4', currentStepNumber: '1.1' }
-] as any[];
-
-const makePatientData = () => {
-  return {
-    patientSequenceNumber: '1',
-    currentStepNumber: '1.1'
-  } as any;
-};
-
-const makeVariantReportData = () => {
-  return {
-    variantReport: {
-      patientSequenceNumber: '11276',
-      patientStatus: 'PENDING_CONFIRMATION',
-      step: 0,
-      concordance: 'YES',
-      variantReportStatus: 'CONFIRMED',
-      variantReportDate: 'August 26, 2016 3:28 PM GMT',
-      user: 'TA commettee',
-      biopsySequenceNumber: 'T-16-000762',
-      molecularSequenceNumber: 'MSN17772',
-      analysisId: 'MSN17772_v1_92ad9833-e79a-4807-b1f3-6be88a0ab824',
-      mapd: '0.317',
-      cellularity: '1.000000',
-      fileReceivedDate: 'August 25, 2016 10:13 PM GMT',
-      torrentVariantCallerVersion: '5.0-9'
-    }
-  } as any;
-};
-
-const makeOutsideAssayComparisonVariantReportData = () => {
-  return {
-    psn: 'value',
-    currentPatientStatus: 'value',
-    currentStepNumber: 'value',
-    concordance: 'value',
-    outsideData: {
-      analysisId: 'value',
-      assays: ['value'],
-      variantReport: 'value',
-      assignmentReport: 'value',
-      tvc_version: 'value',
-      pool1: 1,
-      pool2: 1,
-      mapd: 'value',
-      cellularity: 'value',
-      showPools: false
-    },
-    matchData: {
-      analysisId: 'value',
-      assays: ['value'],
-      variantReport: 'value',
-      assignmentReport: 'value',
-      tvc_version: 'value',
-      pool1: 1,
-      pool2: 1,
-      mapd: 'value',
-      cellularity: 'value',
-      showPools: false
-    },
-    comparisonVariantReport: {
-      singleNucleotideVariantAndIndels: ['value'],
-      copyNumberVariants: ['value'],
-      unifiedGeneFusions: ['value']
-    },
-  } as VariantReportComparisonData;
-};
-
-const makeVariantReportQcData = () => {
-  return {
-    variantReport: {
-      patientSequenceNumber: '11276',
-      patientStatus: 'PENDING_CONFIRMATION',
-      step: 0,
-      concordance: 'YES',
-      variantReportStatus: 'CONFIRMED',
-      variantReportDate: 'August 26, 2016 3:28 PM GMT',
-      user: 'TA commettee',
-      biopsySequenceNumber: 'T-16-000762',
-      molecularSequenceNumber: 'MSN17772',
-      analysisId: 'MSN17772_v1_92ad9833-e79a-4807-b1f3-6be88a0ab824',
-      mapd: '0.317',
-      cellularity: '1.000000',
-      fileReceivedDate: 'August 25, 2016 10:13 PM GMT',
-      torrentVariantCallerVersion: '5.0-9'
-    }
-  } as any;
-};
-
-const makePatientVariantReportOcpData = () => {
-  return {
-    variantReport: {
-      patientSequenceNumber: '11276',
-      patientStatus: 'PENDING_CONFIRMATION',
-      step: 0,
-      concordance: 'YES',
-      variantReportStatus: 'CONFIRMED',
-      variantReportDate: 'August 26, 2016 3:28 PM GMT',
-      user: 'TA commettee',
-      biopsySequenceNumber: 'T-16-000762',
-      molecularSequenceNumber: 'MSN17772',
-      analysisId: 'MSN17772_v1_92ad9833-e79a-4807-b1f3-6be88a0ab824',
-      mapd: '0.317',
-      cellularity: '1.000000',
-      fileReceivedDate: 'August 25, 2016 10:13 PM GMT',
-      torrentVariantCallerVersion: '5.0-9'
-    }
-  } as any;
-};
-
-const makePatientCopyNumberReportData = () => {
-  return {
-    variantReport: {
-      patientSequenceNumber: '11276',
-      patientStatus: 'PENDING_CONFIRMATION',
-      step: 0,
-      concordance: 'YES',
-      variantReportStatus: 'CONFIRMED',
-      variantReportDate: 'August 26, 2016 3:28 PM GMT',
-      user: 'TA commettee',
-      biopsySequenceNumber: 'T-16-000762',
-      molecularSequenceNumber: 'MSN17772',
-      analysisId: 'MSN17772_v1_92ad9833-e79a-4807-b1f3-6be88a0ab824',
-      mapd: '0.317',
-      cellularity: '1.000000',
-      fileReceivedDate: 'August 25, 2016 10:13 PM GMT',
-      torrentVariantCallerVersion: '5.0-9'
-    }
-  } as any;
-};
-
-const makePatientVariantReportFileInfoData = () => {
-  return {
-    variantReport: {
-      patientSequenceNumber: '11276',
-      patientStatus: 'PENDING_CONFIRMATION',
-      step: 0,
-      concordance: 'YES',
-      variantReportStatus: 'CONFIRMED',
-      variantReportDate: 'August 26, 2016 3:28 PM GMT',
-      user: 'TA commettee',
-      biopsySequenceNumber: 'T-16-000762',
-      molecularSequenceNumber: 'MSN17772',
-      analysisId: 'MSN17772_v1_92ad9833-e79a-4807-b1f3-6be88a0ab824',
-      mapd: '0.317',
-      cellularity: '1.000000',
-      fileReceivedDate: 'August 25, 2016 10:13 PM GMT',
-      torrentVariantCallerVersion: '5.0-9'
-    }
-  } as any;
-};
+import { PatientApiServiceStub } from './testing/patient-api-service-stub';
 
 export function main() {
   describe('PatientApiService (mockBackend)', () => {
@@ -213,13 +56,15 @@ export function main() {
     describe('when getPatientList', () => {
       let backend: MockBackend;
       let service: PatientApiService;
+      let serviceStub: PatientApiServiceStub;
       let fakePatients: any[];
       let response: Response;
 
       beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http, download);
-        fakePatients = makePatientListData();
+        serviceStub = new PatientApiServiceStub();
+        fakePatients = serviceStub.makePatientListData();
         let options = new ResponseOptions({ status: 200, body: fakePatients });
         response = new Response(options);
       }));
@@ -275,12 +120,14 @@ export function main() {
     describe('when getPatientCount', () => {
       let backend: MockBackend;
       let service: PatientApiService;
+      let serviceStub: PatientApiServiceStub;
       let fakeCount: number;
       let response: Response;
 
       beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http, download);
+        serviceStub = new PatientApiServiceStub();
         fakeCount = 4;
         let options = new ResponseOptions({ status: 200, body: fakeCount });
         response = new Response(options);
@@ -337,12 +184,14 @@ export function main() {
     describe('when getPatientTotal', () => {
       let backend: MockBackend;
       let service: PatientApiService;
+      let serviceStub: PatientApiServiceStub;
       let fakeCount: number;
       let response: Response;
 
       beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http, download);
+        serviceStub = new PatientApiServiceStub();
         fakeCount = 4;
         let options = new ResponseOptions({ status: 200, body: fakeCount });
         response = new Response(options);
@@ -399,18 +248,20 @@ export function main() {
     describe('when getPatientDetails', () => {
       let backend: MockBackend;
       let service: PatientApiService;
+      let serviceStub: PatientApiServiceStub;
       let fakePatient: any;
       let response: Response;
 
       beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http, download);
-        fakePatient = makePatientData();
+        serviceStub = new PatientApiServiceStub();
+        fakePatient = serviceStub.makePatientData();
         let options = new ResponseOptions({ status: 200, body: fakePatient });
         response = new Response(options);
       }));
 
-      it('should have expected fake patients (then)', async(inject([], () => {
+      it('should have expected fake patient details (then)', async(inject([], () => {
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
         service.getPatientDetails('fake-psn').toPromise()
@@ -419,23 +270,23 @@ export function main() {
           });
       })));
 
-      it('should have expected fake patients (Observable.do)', async(inject([], () => {
+      it('should have expected fake patient details (Observable.do)', async(inject([], () => {
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
         service.getPatientDetails('fake-psn')
           .do(patient => {
-            expect(patient).toBe(fakePatient, 'should have expected no. of patients');
+            expect(patient).toBe(fakePatient, 'should have expected patient details');
           })
           .toPromise();
       })));
 
-      it('should be OK returning no patients', async(inject([], () => {
+      it('should be OK returning no patient details', async(inject([], () => {
         let resp = new Response(new ResponseOptions({ status: 200, body: {} }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
         service.getPatientDetails('fake-psn')
           .do(patient => {
-            expect(patient).toEqual({}, 'should have no patients');
+            expect(patient).toEqual({}, 'should have no patient details');
           })
           .toPromise();
       })));
@@ -446,7 +297,7 @@ export function main() {
 
         service.getPatientDetails('fake-psn')
           .do(patient => {
-            fail('should not respond with patients');
+            fail('should not respond with patient details');
           })
           .catch(err => {
             expect(err).toMatch(/Bad response status/, 'should catch bad response status code');
@@ -461,18 +312,20 @@ export function main() {
     describe('when getPatientVariantReport', () => {
       let backend: MockBackend;
       let service: PatientApiService;
+      let serviceStub: PatientApiServiceStub;
       let fakeData: any;
       let response: Response;
 
       beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http, download);
-        fakeData = makeVariantReportData();
+        serviceStub = new PatientApiServiceStub();
+        fakeData = serviceStub.makeVariantReportData();
         let options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
       }));
 
-      it('should have expected fake patients (then)', async(inject([], () => {
+      it('should have expected fake patient variant report (then)', async(inject([], () => {
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
         service.getPatientVariantReport('fake-psn').toPromise()
@@ -481,23 +334,23 @@ export function main() {
           });
       })));
 
-      it('should have expected fake patients (Observable.do)', async(inject([], () => {
+      it('should have expected fake patient variant report (Observable.do)', async(inject([], () => {
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
         service.getPatientVariantReport('fake-psn')
           .do(patient => {
-            expect(patient).toBe(fakeData, 'should have expected no. of patients');
+            expect(patient).toBe(fakeData, 'should have expected patient variant report');
           })
           .toPromise();
       })));
 
-      it('should be OK returning no patients', async(inject([], () => {
+      it('should be OK returning no patient variant report', async(inject([], () => {
         let resp = new Response(new ResponseOptions({ status: 200, body: {} }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
         service.getPatientVariantReport('fake-psn')
           .do(patient => {
-            expect(patient).toEqual({}, 'should have no patients');
+            expect(patient).toEqual({}, 'should have no patient variant report');
           })
           .toPromise();
       })));
@@ -508,7 +361,7 @@ export function main() {
 
         service.getPatientVariantReport('fake-psn')
           .do(patient => {
-            fail('should not respond with patients');
+            fail('should not respond with patient variant report');
           })
           .catch(err => {
             expect(err).toMatch(/Bad response status/, 'should catch bad response status code');
@@ -523,18 +376,20 @@ export function main() {
     describe('when getOutsideAssayComparisonVariantReport', () => {
       let backend: MockBackend;
       let service: PatientApiService;
+      let serviceStub: PatientApiServiceStub;
       let fakeData: VariantReportComparisonData;
       let response: Response;
 
       beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http, download);
-        fakeData = makeOutsideAssayComparisonVariantReportData();
+        serviceStub = new PatientApiServiceStub();
+        fakeData = serviceStub.makeOutsideAssayComparisonVariantReportData();
         let options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
       }));
 
-      it('should have expected fake patients (then)', async(inject([], () => {
+      it('should have expected outside assay comparison report (then)', async(inject([], () => {
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
         service.getOutsideAssayComparisonVariantReport('fake-psn').toPromise()
@@ -543,23 +398,23 @@ export function main() {
           });
       })));
 
-      it('should have expected fake patients (Observable.do)', async(inject([], () => {
+      it('should have expected outside assay comparison report (Observable.do)', async(inject([], () => {
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
         service.getOutsideAssayComparisonVariantReport('fake-psn')
           .do(patient => {
-            expect(patient).toBe(fakeData, 'should have expected no. of patients');
+            expect(patient).toBe(fakeData, 'should have expected outside assay comparison report');
           })
           .toPromise();
       })));
 
-      it('should be OK returning no patients', async(inject([], () => {
+      it('should be OK returning no fake outside assay comparison report', async(inject([], () => {
         let resp = new Response(new ResponseOptions({ status: 200, body: {} }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
         service.getOutsideAssayComparisonVariantReport('fake-psn')
           .do(patient => {
-            expect(patient).toEqual({}, 'should have no patients');
+            expect(patient).toEqual({}, 'should have no outside assay comparison report');
           })
           .toPromise();
       })));
@@ -570,7 +425,7 @@ export function main() {
 
         service.getOutsideAssayComparisonVariantReport('fake-psn')
           .do(patient => {
-            fail('should not respond with patients');
+            fail('should not respond with fake outside assay comparison report');
           })
           .catch(err => {
             expect(err).toMatch(/Bad response status/, 'should catch bad response status code');
@@ -585,18 +440,20 @@ export function main() {
     describe('when getPatientVariantReportQc', () => {
       let backend: MockBackend;
       let service: PatientApiService;
+      let serviceStub: PatientApiServiceStub;
       let fakeData: any;
       let response: Response;
 
       beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http, download);
-        fakeData = makeVariantReportQcData();
+        serviceStub = new PatientApiServiceStub();
+        fakeData = serviceStub.makeVariantReportQcData();
         let options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
       }));
 
-      it('should have expected fake patients (then)', async(inject([], () => {
+      it('should have expected fake QC variant report (then)', async(inject([], () => {
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
         service.getPatientVariantReportQc('fake-psn', 'fake-analysis-id').toPromise()
@@ -605,23 +462,23 @@ export function main() {
           });
       })));
 
-      it('should have expected fake patients (Observable.do)', async(inject([], () => {
+      it('should have expected fake QC variant report (Observable.do)', async(inject([], () => {
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
         service.getPatientVariantReportQc('fake-psn', 'fake-analysis-id')
           .do(patient => {
-            expect(patient).toBe(fakeData, 'should have expected no. of patients');
+            expect(patient).toBe(fakeData, 'should have expected QC variant report');
           })
           .toPromise();
       })));
 
-      it('should be OK returning no patients', async(inject([], () => {
+      it('should be OK returning no QC variant report', async(inject([], () => {
         let resp = new Response(new ResponseOptions({ status: 200, body: {} }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
         service.getPatientVariantReportQc('fake-psn', 'fake-analysis-id')
           .do(patient => {
-            expect(patient).toEqual({}, 'should have no patients');
+            expect(patient).toEqual({}, 'should have no QC variant report');
           })
           .toPromise();
       })));
@@ -632,7 +489,7 @@ export function main() {
 
         service.getPatientVariantReportQc('fake-psn', 'fake-analysis-id')
           .do(patient => {
-            fail('should not respond with patients');
+            fail('should not respond with QC variant report');
           })
           .catch(err => {
             expect(err).toMatch(/Bad response status/, 'should catch bad response status code');
@@ -647,18 +504,20 @@ export function main() {
     describe('when getPatientVariantReportOcp', () => {
       let backend: MockBackend;
       let service: PatientApiService;
+      let serviceStub: PatientApiServiceStub;
       let fakeData: any;
       let response: Response;
 
       beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http, download);
-        fakeData = makePatientVariantReportOcpData();
+        serviceStub = new PatientApiServiceStub();
+        fakeData = serviceStub.makePatientVariantReportOcpData();
         let options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
       }));
 
-      it('should have expected fake patients (then)', async(inject([], () => {
+      it('should have expected fake OCP data (then)', async(inject([], () => {
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
         service.getPatientVariantReportOcp('fake-psn', 'faka-analysis-id').toPromise()
@@ -667,23 +526,23 @@ export function main() {
           });
       })));
 
-      it('should have expected fake patients (Observable.do)', async(inject([], () => {
+      it('should have expected fake OCP data (Observable.do)', async(inject([], () => {
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
         service.getPatientVariantReportOcp('fake-psn', 'faka-analysis-id')
           .do(patient => {
-            expect(patient).toBe(fakeData, 'should have expected no. of patients');
+            expect(patient).toBe(fakeData, 'should have expected OCP data');
           })
           .toPromise();
       })));
 
-      it('should be OK returning no patients', async(inject([], () => {
+      it('should be OK returning no OCP data', async(inject([], () => {
         let resp = new Response(new ResponseOptions({ status: 200, body: {} }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
         service.getPatientVariantReportOcp('fake-psn', 'fake-analysis-id')
           .do(patient => {
-            expect(patient).toEqual({}, 'should have no patients');
+            expect(patient).toEqual({}, 'should have no OCP data');
           })
           .toPromise();
       })));
@@ -697,7 +556,7 @@ export function main() {
             expect(patientWitError).toEqual({ hasError: true, error: new Error('Bad response status: 404') }, 'should have hasError=true');
           })
           .catch(err => {
-            fail('should not respond with patients');
+            fail('should not respond with OCP data');
             return Observable.of(null); // failure is the expected test result
           })
           .toPromise();
@@ -709,18 +568,20 @@ export function main() {
     describe('when getPatientCopyNumberReport', () => {
       let backend: MockBackend;
       let service: PatientApiService;
+      let serviceStub: PatientApiServiceStub;
       let fakeData: any;
       let response: Response;
 
       beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http, download);
-        fakeData = makePatientCopyNumberReportData();
+        serviceStub = new PatientApiServiceStub();
+        fakeData = serviceStub.makePatientCopyNumberReportData();
         let options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
       }));
 
-      it('should have expected fake patients (then)', async(inject([], () => {
+      it('should have expected fake CNV data (then)', async(inject([], () => {
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
         service.getPatientCopyNumberReport('fake-psn', 'fake-analysis-id').toPromise()
@@ -729,23 +590,23 @@ export function main() {
           });
       })));
 
-      it('should have expected fake patients (Observable.do)', async(inject([], () => {
+      it('should have expected fake CNV data (Observable.do)', async(inject([], () => {
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
         service.getPatientCopyNumberReport('fake-psn', 'fake-analysis-id')
           .do(patient => {
-            expect(patient).toBe(fakeData, 'should have expected no. of patients');
+            expect(patient).toBe(fakeData, 'should have expected CNV data');
           })
           .toPromise();
       })));
 
-      it('should be OK returning no patients', async(inject([], () => {
+      it('should be OK returning no CNV data', async(inject([], () => {
         let resp = new Response(new ResponseOptions({ status: 200, body: {} }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
         service.getPatientCopyNumberReport('fake-psn', 'fake-analysis-id')
           .do(patient => {
-            expect(patient).toEqual({}, 'should have no patients');
+            expect(patient).toEqual({}, 'should have no CNV data');
           })
           .toPromise();
       })));
@@ -761,7 +622,7 @@ export function main() {
             );
           })
           .catch(err => {
-            fail('should not respond with patients');
+            fail('should not respond with CNV data');
             return Observable.of(null); // failure is the expected test result
           })
           .toPromise();
@@ -773,18 +634,20 @@ export function main() {
     describe('when getPatientVariantReportFileInfo', () => {
       let backend: MockBackend;
       let service: PatientApiService;
+      let serviceStub: PatientApiServiceStub;
       let fakeData: any;
       let response: Response;
 
       beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http, download);
-        fakeData = makePatientVariantReportFileInfoData();
+        serviceStub = new PatientApiServiceStub();
+        fakeData = serviceStub.makePatientVariantReportFileInfoData();
         let options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
       }));
 
-      it('should have expected fake patients (then)', async(inject([], () => {
+      it('should have expected fake file info data (then)', async(inject([], () => {
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
         service.getPatientVariantReportFileInfo('fake-psn', 'fake-analysis-id').toPromise()
@@ -793,23 +656,23 @@ export function main() {
           });
       })));
 
-      it('should have expected fake patients (Observable.do)', async(inject([], () => {
+      it('should have expected fake file info data (Observable.do)', async(inject([], () => {
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
         service.getPatientVariantReportFileInfo('fake-psn', 'fake-analysis-id')
           .do(patient => {
-            expect(patient).toBe(fakeData, 'should have expected no. of patients');
+            expect(patient).toBe(fakeData, 'should have expected file info data');
           })
           .toPromise();
       })));
 
-      it('should be OK returning no patients', async(inject([], () => {
+      it('should be OK returning no file info data', async(inject([], () => {
         let resp = new Response(new ResponseOptions({ status: 200, body: {} }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
         service.getPatientVariantReportFileInfo('fake-psn', 'fake-analysis-id')
           .do(patient => {
-            expect(patient).toEqual({}, 'should have no patients');
+            expect(patient).toEqual({}, 'should have no file info data');
           })
           .toPromise();
       })));
@@ -820,7 +683,7 @@ export function main() {
 
         service.getPatientVariantReportFileInfo('fake-psn', 'fake-analysis-id')
           .do(patient => {
-            fail('should not respond with patients');
+            fail('should not respond with file info data');
           })
           .catch(err => {
             expect(err).toMatch(/Bad response status/, 'should catch bad response status code');
@@ -835,6 +698,7 @@ export function main() {
     describe('when downloadPatientFile', () => {
       let backend: MockBackend;
       let service: PatientApiService;
+      let serviceStub: PatientApiServiceStub;
       let fakeData: any;
       let response: Response;
       let downloadFileSpy: jasmine.Spy;
@@ -842,6 +706,7 @@ export function main() {
       beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http, download);
+        serviceStub = new PatientApiServiceStub();
         fakeData = {download_url:'fake-url'};
         let options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
