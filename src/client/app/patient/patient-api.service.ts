@@ -105,7 +105,6 @@ export class PatientApiService {
       .subscribe((resp: Response) => {
         const data = resp.json();
         if (data && data.download_url) {
-          console.log('HERE!!!!');
           this.download.downloadFile(data.download_url);
         }
       });

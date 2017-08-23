@@ -18,6 +18,7 @@ import { Observable } from 'rxjs/Observable';
 import { PatientApiService } from './patient-api.service';
 import { VariantReportComparisonData } from './patient-variant-report-oa/variant-report-comparison-data';
 import { DownloadService } from '../shared/utils/download.service';
+import { WindowStub } from './testing/window-stub';
 
 const makePatientListData = () => [
   { patientSequenceNumber: '1', currentStepNumber: '1.1' },
@@ -177,12 +178,14 @@ const makePatientVariantReportFileInfoData = () => {
 };
 
 export function main() {
-  fdescribe('PatientApiService (mockBackend)', () => {
+  describe('PatientApiService (mockBackend)', () => {
     beforeEach(async(() => {
       TestBed.configureTestingModule({
         imports: [HttpModule],
         providers: [
           PatientApiService,
+          DownloadService,
+          { provide: Window, useClass: WindowStub },
           { provide: XHRBackend, useClass: MockBackend },
           { provide: AuthHttp, useExisting: Http },
         ]
@@ -190,7 +193,7 @@ export function main() {
         .compileComponents();
     }));
 
-    it('can provide the mockBackend as XHRBackend and DownloadService', 
+    it('can provide the mockBackend as XHRBackend and DownloadService',
       inject([XHRBackend, DownloadService], (backend: MockBackend, download: DownloadService) => {
       expect(backend).not.toBeNull('backend should be provided');
       expect(download).not.toBeNull('download should be provided');
@@ -829,7 +832,7 @@ export function main() {
     });
 
 
-    xdescribe('when downloadPatientFile', () => {
+    describe('when downloadPatientFile', () => {
       let backend: MockBackend;
       let service: PatientApiService;
       let fakeData: any;
@@ -842,10 +845,10 @@ export function main() {
         fakeData = {download_url:'fake-url'};
         let options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
-        // downloadFileSpy = spyOn(dummyFunctionHolder, 'downloadFile').and.callFake(() => { ; });
+        downloadFileSpy = spyOn(download, 'downloadFile').and.callFake(() => { ; });
       }));
 
-      fit('should have expected fake download url', async(inject([], () => {
+      it('should have expected fake download url', async(inject([], () => {
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
         service.downloadPatientFile('fake-psn', 'fake-url');
@@ -854,41 +857,14 @@ export function main() {
 
       })));
 
-      // it('should have expected fake patients (Observable.do)', async(inject([], () => {
-      //   backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
+      it('should be ok if GET download_url endpoint fails and should not call downloadFile', async(inject([], () => {
+        let resp = new Response(new ResponseOptions({ status: 404 }));
+        backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
-      //   service.downloadPatientFile('fake-psn', 'fake-url')
-      //     .do(patient => {
-      //       expect(patient).toBe(fakeData, 'should have expected no. of patients');
-      //     })
-      //     .toPromise();
-      // })));
+        service.downloadPatientFile('fake-psn', 'fake-url');
 
-      // it('should be OK returning no patients', async(inject([], () => {
-      //   let resp = new Response(new ResponseOptions({ status: 200, body: {} }));
-      //   backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
-
-      //   service.downloadPatientFile('fake-psn', 'fake-url')
-      //     .do(patient => {
-      //       expect(patient).toEqual({}, 'should have no patients');
-      //     })
-      //     .toPromise();
-      // })));
-
-      // it('should treat 404 as an Observable error', async(inject([], () => {
-      //   let resp = new Response(new ResponseOptions({ status: 404 }));
-      //   backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
-
-      //   service.downloadPatientFile('fake-psn', 'fake-url')
-      //     .do(patient => {
-      //       fail('should not respond with patients');
-      //     })
-      //     .catch(err => {
-      //       expect(err).toMatch(/Bad response status/, 'should catch bad response status code');
-      //       return Observable.of(null); // failure is the expected test result
-      //     })
-      //     .toPromise();
-      // })));
+        expect(downloadFileSpy).not.toHaveBeenCalled();
+      })));
 
     });
 
