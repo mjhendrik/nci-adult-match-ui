@@ -9,6 +9,7 @@ import { DirectivesModule } from '../../shared/directives/directives.module';
 import { PatientApiService } from '../patient-api.service';
 import { LoadingIndicatorModule } from '../../shared/loading-indicator/loading-indicator.module';
 import { SharedModule } from '../../shared/shared.module';
+import { UtilsModule } from '../../shared/utils/utils.module';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { SharedModule } from '../../shared/shared.module';
     PipesModule,
     DirectivesModule,
     LoadingIndicatorModule,
-    SharedModule
+    SharedModule,
+    UtilsModule
   ],
   declarations: [PatientListComponent],
   exports: [PatientListComponent],
