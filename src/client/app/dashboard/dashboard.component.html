@@ -11,7 +11,8 @@
           <div class="widget-stat-info">
             <div class="widget-stat-title text-right">Patients</div>
             <div class="widget-stat-number text-right">{{patients.TOTAL}}</div>
-            <div class="widget-stat-text text-right">{{patients.ON_TREATMENT_ARM}} On Treatment Arm&nbsp;&nbsp;|&nbsp;&nbsp;{{patients.OFF_TRIAL}} Off Trial</div>
+            <div class="widget-stat-text text-right"><span *ngIf="!patients.ON_TREATMENT_ARM">0</span>{{patients.ON_TREATMENT_ARM}} On Treatment Arm&nbsp;&nbsp;|&nbsp;&nbsp;
+              <span *ngIf="!patients.OFF_TRIAL">0</span>{{patients.OFF_TRIAL}} Off Trial</div>
           </div>
         </div>
       </a>
@@ -26,8 +27,9 @@
             <div class="widget-stat-title text-right">Treatment Arms</div>
             <div class="widget-stat-number text-right">{{treatmentArms.TOTAL}}</div>
             <div class="widget-stat-text text-right">
-              {{treatmentArms.OPEN}} Open&nbsp;&nbsp;|&nbsp;&nbsp;{{treatmentArms.SUSPENDED}} Suspended&nbsp;&nbsp;|&nbsp;&nbsp;{{treatmentArms.CLOSED}}
-              Closed
+              <span *ngIf="!treatmentArms.OPEN">0</span>{{treatmentArms.OPEN}} Open&nbsp;&nbsp;|&nbsp;&nbsp;<span *ngIf="!treatmentArms.SUSPENDED">0</span>{{treatmentArms.SUSPENDED}}
+              Suspended&nbsp;&nbsp;|&nbsp;&nbsp;
+              <span *ngIf="!treatmentArms.CLOSED">0</span>{{treatmentArms.CLOSED}} Closed
             </div>
           </div>
         </div>
@@ -42,8 +44,9 @@
           <div class="widget-stat-info">
             <div class="widget-stat-title text-right">Biopsy Tracking</div>
             <div class="widget-stat-number text-right">{{biopsyTracking.TOTAL}}</div>
-            <div class="widget-stat-text text-right">{{biopsyTracking.BIOPSY_SEQUENCES}} Biopsy Sequences&nbsp;&nbsp;|&nbsp;&nbsp;{{biopsyTracking.MOLECULAR_SEQUENCES}}
-              Molecular Sequences</div>
+            <div class="widget-stat-text text-right"><span *ngIf="!biopsyTracking.BIOPSY_SEQUENCES">0</span>{{biopsyTracking.BIOPSY_SEQUENCES}} Biopsy Sequences&nbsp;&nbsp;|&nbsp;&nbsp;
+              <span
+                *ngIf="!biopsyTracking.MOLECULAR_SEQUENCES">0</span>{{biopsyTracking.MOLECULAR_SEQUENCES}} Molecular Sequences</div>
           </div>
         </div>
       </a>
@@ -365,17 +368,20 @@
                               <dt>IHC BAF47</dt>
                               <dd *ngIf="!item.daysWaiting"><i class="fa fa-times-circle text-danger-light"></i></dd>
                               <dd *ngIf="item.daysWaiting"><i class="fa fa-check-circle text-success-light"></i> {{item.daysWaiting | dashify | gmt}}
-                                (<span [colorCodePatients]="item.currentStatus">{{item.currentStatus}}</span>)
+                                (
+                                <span [colorCodePatients]="item.currentStatus">{{item.currentStatus}}</span>)
                               </dd>
                               <dt>IHC BRG1</dt>
                               <dd *ngIf="!item.daysWaiting"><i class="fa fa-times-circle text-danger-light"></i></dd>
                               <dd *ngIf="item.daysWaiting"><i class="fa fa-check-circle text-success-light"></i> {{item.daysWaiting | dashify | gmt}}
-                                (<span [colorCodePatients]="item.currentStatus">{{item.currentStatus}}</span>)
+                                (
+                                <span [colorCodePatients]="item.currentStatus">{{item.currentStatus}}</span>)
                               </dd>
                               <dt>IHC PTEN</dt>
                               <dd *ngIf="!item.daysWaiting"><i class="fa fa-times-circle text-danger-light"></i></dd>
                               <dd *ngIf="item.daysWaiting"><i class="fa fa-check-circle text-success-light"></i> {{item.daysWaiting | dashify | gmt}}
-                                (<span [colorCodePatients]="item.currentStatus">{{item.currentStatus}}</span>)
+                                (
+                                <span [colorCodePatients]="item.currentStatus">{{item.currentStatus}}</span>)
                               </dd>
                               <dt>Disease</dt>
                               <dd *ngIf="!item.message"><i class="fa fa-times-circle text-danger-light"></i></dd>
