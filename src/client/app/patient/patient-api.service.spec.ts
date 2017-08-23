@@ -530,7 +530,7 @@ export function main() {
       it('should have expected fake patients (then)', async(inject([], () => {
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
-        service.getPatientVariantReportQc('fake-psn', 'faka-analysis-id').toPromise()
+        service.getPatientVariantReportQc('fake-psn', 'fake-analysis-id').toPromise()
           .then(patient => {
             expect(patient).toBe(fakeData);
           });
@@ -539,7 +539,7 @@ export function main() {
       it('should have expected fake patients (Observable.do)', async(inject([], () => {
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
-        service.getPatientVariantReportQc('fake-psn', 'faka-analysis-id')
+        service.getPatientVariantReportQc('fake-psn', 'fake-analysis-id')
           .do(patient => {
             expect(patient).toBe(fakeData, 'should have expected no. of patients');
           })
@@ -550,7 +550,7 @@ export function main() {
         let resp = new Response(new ResponseOptions({ status: 200, body: {} }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
-        service.getPatientVariantReportQc('fake-psn', 'faka-analysis-id')
+        service.getPatientVariantReportQc('fake-psn', 'fake-analysis-id')
           .do(patient => {
             expect(patient).toEqual({}, 'should have no patients');
           })
@@ -561,7 +561,7 @@ export function main() {
         let resp = new Response(new ResponseOptions({ status: 404 }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
-        service.getPatientVariantReportQc('fake-psn', 'faka-analysis-id')
+        service.getPatientVariantReportQc('fake-psn', 'fake-analysis-id')
           .do(patient => {
             fail('should not respond with patients');
           })
@@ -623,7 +623,7 @@ export function main() {
         let resp = new Response(new ResponseOptions({ status: 404 }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
-        service.getPatientVariantReportOcp('fake-psn', 'faka-analysis-id')
+        service.getPatientVariantReportOcp('fake-psn', 'fake-analysis-id')
           .do(patientWitError => {
             expect(patientWitError).toEqual({ hasError: true, error: new Error('Bad response status: 404') }, 'should have hasError=true');
           })
@@ -685,7 +685,7 @@ export function main() {
         let resp = new Response(new ResponseOptions({ status: 404 }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
-        service.getPatientCopyNumberReport('fake-psn', 'faka-analysis-id')
+        service.getPatientCopyNumberReport('fake-psn', 'fake-analysis-id')
           .do(patientWitError => {
             expect(patientWitError).toEqual(
               { hasError: true, error: new Error('Bad response status: 404'), parsed_vcf_genes: {} }, 'should have hasError=true'
