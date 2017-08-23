@@ -87,20 +87,18 @@ export class BiopsyTrackingListComponent implements OnInit {
   }
 
   onSearchChanged(val: any) {
-    this.ngzone.runOutsideAngular(() => {
-      Observable.fromEvent(this.inputElRef.nativeElement, 'keyup')
-        .debounceTime(400)
-        .subscribe((val: any) => {
-          this.cdref.detectChanges();
-          if (this.searchtermBiopsyTrackingList !== val.target.value) {
-            this.searchtermBiopsyTrackingList = val.target.value;
-            this.previous = this.page + ',' + this.size + ',' + this.sortOrder + ',' + this.sortBy + ','
-              + this.searchtermBiopsyTrackingList;
-            this.getBiopsyCount(this.route.snapshot.data['data'].data);
-          }
+    Observable.fromEvent(this.inputElRef.nativeElement, 'keyup')
+      .debounceTime(400)
+      .subscribe((val: any) => {
+        this.cdref.detectChanges();
+        if (this.searchtermBiopsyTrackingList !== val.target.value) {
           this.searchtermBiopsyTrackingList = val.target.value;
-        });
-    });
+          this.previous = this.page + ',' + this.size + ',' + this.sortOrder + ',' + this.sortBy + ','
+            + this.searchtermBiopsyTrackingList;
+          this.getBiopsyCount(this.route.snapshot.data['data'].data);
+        }
+        this.searchtermBiopsyTrackingList = val.target.value;
+      });
   }
 
   currentPageActive(evt: any): void {
