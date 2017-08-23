@@ -337,9 +337,9 @@
                 <ng-template ngFor let-item [ngForOf]="mftablePatientsAwaiting.data">
                   <tr>
                     <td class="text-center">
-                      <a (click)="showRow[item.psn] = !showRow[item.psn]">
-                      <i *ngIf="!showRow[item.psn]" id="icon_{{item.psn}}" class="fa fa-chevron-right"></i>
-                      <i *ngIf="showRow[item.psn]"   id="icon_{{item.psn}}" class="fa fa-chevron-down"></i>
+                      <a (click)="showRow[item.psn]=!showRow[item.psn]">
+                      <i *ngIf="!showRow[item.psn]" class="fa fa-chevron-right"></i>
+                      <i *ngIf="showRow[item.psn]" class="fa fa-chevron-down"></i>
                     </a>
                     </td>
                     <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
@@ -360,12 +360,47 @@
                     </td>
                   </tr>
                   <tr *ngIf="showRow[item.psn]">
-                    <td colspan="6">
-                      <ul class="panel-list">
-                        <li id="panel_{{item.psn}}" class="info-element">
-                          Pannel: {{item.psn}}
-                        </li>
-                      </ul>
+                    <td colspan="6" class="bg-body">
+                      <div class="panel panel-accent-sides-purple panel-details-row">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <dl class="dl-horizontal p-t-15 m-b-15">
+                              <dt>IHC BAF47</dt>
+                              <dd *ngIf="!item.daysWaiting"><i class="fa fa-times-circle text-danger-light"></i></dd>
+                              <dd *ngIf="item.daysWaiting"><i class="fa fa-check-circle text-success-light"></i> {{item.daysWaiting | dashify | gmt}}
+                                (<span [colorCodePatients]="item.currentStatus">{{item.currentStatus}}</span>)
+                              </dd>
+                              <dt>IHC BRG1</dt>
+                              <dd *ngIf="!item.daysWaiting"><i class="fa fa-times-circle text-danger-light"></i></dd>
+                              <dd *ngIf="item.daysWaiting"><i class="fa fa-check-circle text-success-light"></i> {{item.daysWaiting | dashify | gmt}}
+                                (<span [colorCodePatients]="item.currentStatus">{{item.currentStatus}}</span>)
+                              </dd>
+                              <dt>IHC PTEN</dt>
+                              <dd *ngIf="!item.daysWaiting"><i class="fa fa-times-circle text-danger-light"></i></dd>
+                              <dd *ngIf="item.daysWaiting"><i class="fa fa-check-circle text-success-light"></i> {{item.daysWaiting | dashify | gmt}}
+                                (<span [colorCodePatients]="item.currentStatus">{{item.currentStatus}}</span>)
+                              </dd>
+                              <dt>Disease</dt>
+                              <dd *ngIf="!item.message"><i class="fa fa-times-circle text-danger-light"></i></dd>
+                              <dd *ngIf="item.message"><i class="fa fa-check-circle text-success-light"></i> {{item.message | dashify}}</dd>
+                            </dl>
+                          </div>
+                          <div class="col-md-6">
+                            <dl class="dl-horizontal p-t-15 m-b-15">
+                              <dt>Surgical Event Id</dt>
+                              <dd>{{item.psn | dashify}}</dd>
+                              <dt>Specimen Collected Date</dt>
+                              <dd>{{item.daysWaiting | dashify | gmt}}</dd>
+                              <dt>Molecular Id</dt>
+                              <dd>{{item.psn | dashify}}</dd>
+                              <dt>Analysis Id</dt>
+                              <dd>{{item.psn | dashify}}</dd>
+                              <dt>Molecular Id Shipped Date</dt>
+                              <dd>{{item.daysWaiting | dashify | gmt}}</dd>
+                            </dl>
+                          </div>
+                        </div>
+                      </div>
                     </td>
                   </tr>
                 </ng-template>
