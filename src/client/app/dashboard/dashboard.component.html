@@ -1,7 +1,4 @@
-<div class="load-content" *ngIf="!dataAvailableAR && !dataAvailableVR && !dataAvailablePA && !overviewDataAvailableTa && !overviewDataAvailablePatients && !overviewDataAvailableBt">
-  <div id="page-loader" class="page-loader fade in"><span class="spinner">Loading...</span></div>
-</div>
-<div id="content" class="content" *ngIf="dataAvailableAR && dataAvailableVR && dataAvailablePA && overviewDataAvailableTa && overviewDataAvailablePatients && overviewDataAvailableBt">
+<div id="content" class="content">
   <div class="row">
     <div class="p-l-15 f-s-10 text-muted-dark pull-right dashboard-loaded-at">
       Loaded at {{timestamp | date: 'mediumTime'}}

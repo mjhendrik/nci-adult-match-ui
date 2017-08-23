@@ -5,6 +5,7 @@ import {
 import { routerTransition } from './../shared/router.animations';
 import { GmtPipe } from './../shared/pipes/gmt.pipe';
 import { DashboardApiService } from './dashboard-api.service';
+import { ActivatedRoute } from '@angular/router';
 
 /**
  * DashboardComponent.
@@ -44,111 +45,61 @@ export class DashboardComponent implements OnInit {
   tableARData: any[];
   tableVRData: any[];
   tablePatientsAwaitingData: any[];
-  dataAvailableAR: boolean = false;
-  dataAvailableVR: boolean = false;
-  dataAvailablePA: boolean = false;
-  overviewDataAvailableTa: boolean = false;
-  overviewDataAvailablePatients: boolean = false;
-  overviewDataAvailableBt: boolean = false;
 
   errorMessage: string;
 
   showRow: any = {};
 
-  constructor(private dashboardApi: DashboardApiService) {
+  constructor(private dashboardApi: DashboardApiService, private route: ActivatedRoute) {
 
   }
 
   ngOnInit() {
-    this.getOverviewDataTa();
-    this.getOverviewDataPatients();
-    this.getOverviewDataBt();
-    this.getDataAR();
-    this.getDataVR();
-    this.getDataPatientsAwaiting();
+    this.getDataAR(this.route.snapshot.data['data'].AR);
+    this.getDataVR(this.route.snapshot.data['data'].VR);
+    this.getDataPatientsAwaiting(this.route.snapshot.data['data'].PatientsAwaiting);
+    this.getOverviewDataTa(this.route.snapshot.data['data'].OverviewTa);
+    this.getOverviewDataPatients(this.route.snapshot.data['data'].OverviewPatients);
+    this.getOverviewDataBt(this.route.snapshot.data['data'].OverviewBt);
     // this.autoLoadOverviewData();
   }
 
-  getDataAR() {
+  getDataAR(itemList: any[]) {
     let gmt = new GmtPipe();
-    this.dashboardApi.getDashboardAR()
-      .subscribe((itemList: any[]) => {
-
-        this.dataAvailableAR = true;
-
-        this.tableARData = itemList.map(x => {
-          x.dateAssigned = gmt.transform(x.dateAssigned);
-          return x;
-        });
-
-      },
-      error => this.errorMessage = <any>error
-      );
+    this.tableARData = itemList.map(x => {
+      x.dateAssigned = gmt.transform(x.dateAssigned);
+      return x;
+    });
   }
 
-  getDataVR() {
+  getDataVR(itemList: any[]) {
     let gmt = new GmtPipe();
-    this.dashboardApi.getDashboardVR()
-      .subscribe((itemList: any[]) => {
+    this.tableVRData = itemList.map(x => {
+      x.specimenReceivedDate = gmt.transform(x.specimenReceivedDate);
+      x.dateVariantReportReceived = gmt.transform(x.dateVariantReportReceived);
+      return x;
+    });
 
-        this.dataAvailableVR = true;
-
-        this.tableVRData = itemList.map(x => {
-          x.specimenReceivedDate = gmt.transform(x.specimenReceivedDate);
-          x.dateVariantReportReceived = gmt.transform(x.dateVariantReportReceived);
-          return x;
-        });
-
-      },
-      error => this.errorMessage = <any>error
-      );
   }
 
-  getDataPatientsAwaiting() {
+  getDataPatientsAwaiting(itemList: any[]) {
     let gmt = new GmtPipe();
-    this.dashboardApi.getDashboardPatientsAwaiting()
-      .subscribe((itemList: any[]) => {
-
-        this.dataAvailablePA = true;
-
-        this.tablePatientsAwaitingData = itemList.map(x => {
-          x.date_verified = gmt.transform(x.date_verified);
-          return x;
-        });
-
-      },
-      error => this.errorMessage = <any>error
-      );
+    this.tablePatientsAwaitingData = itemList.map(x => {
+      x.date_verified = gmt.transform(x.date_verified);
+      return x;
+    });
   }
 
-  getOverviewDataTa() {
-    this.dashboardApi.getDashboardOverviewTa()
-      .subscribe((itemList: any) => {
-        this.treatmentArms = itemList;
-        this.overviewDataAvailableTa = true;
-      },
-      error => this.errorMessage = <any>error
-      );
+  getOverviewDataTa(itemList: any) {
+    this.treatmentArms = itemList;
   }
 
-  getOverviewDataPatients() {
-    this.dashboardApi.getDashboardOverviewPatients()
-      .subscribe((itemList: any) => {
-        this.patients = itemList;
-        this.overviewDataAvailablePatients = true;
-      },
-      error => this.errorMessage = <any>error
-      );
+  getOverviewDataPatients(itemList: any) {
+    this.patients = itemList;
   }
 
-  getOverviewDataBt() {
-    this.dashboardApi.getDashboardOverviewBt()
-      .subscribe((itemList: any) => {
-        this.biopsyTracking = itemList;
-        this.overviewDataAvailableBt = true;
-      },
-      error => this.errorMessage = <any>error
-      );
+  getOverviewDataBt(itemList: any) {
+    this.biopsyTracking = itemList;
   }
 
   // autoLoadOverviewData() {
