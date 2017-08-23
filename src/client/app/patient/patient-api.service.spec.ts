@@ -700,5 +700,68 @@ export function main() {
 
     });
 
+
+    describe('when getPatientVariantReportFileInfo', () => {
+      let backend: MockBackend;
+      let service: PatientApiService;
+      let fakeData: any;
+      let response: Response;
+
+      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
+        backend = be;
+        service = new PatientApiService(http);
+        fakeData = makeVariantReportQcData();
+        let options = new ResponseOptions({ status: 200, body: fakeData });
+        response = new Response(options);
+      }));
+
+      it('should have expected fake patients (then)', async(inject([], () => {
+        backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
+
+        service.getPatientVariantReportFileInfo('fake-psn', 'fake-analysis-id').toPromise()
+          .then(patient => {
+            expect(patient).toBe(fakeData);
+          });
+      })));
+
+      it('should have expected fake patients (Observable.do)', async(inject([], () => {
+        backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
+
+        service.getPatientVariantReportFileInfo('fake-psn', 'fake-analysis-id')
+          .do(patient => {
+            expect(patient).toBe(fakeData, 'should have expected no. of patients');
+          })
+          .toPromise();
+      })));
+
+      it('should be OK returning no patients', async(inject([], () => {
+        let resp = new Response(new ResponseOptions({ status: 200, body: {} }));
+        backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
+
+        service.getPatientVariantReportFileInfo('fake-psn', 'fake-analysis-id')
+          .do(patient => {
+            expect(patient).toEqual({}, 'should have no patients');
+          })
+          .toPromise();
+      })));
+
+      it('should treat 404 as an Observable error', async(inject([], () => {
+        let resp = new Response(new ResponseOptions({ status: 404 }));
+        backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
+
+        service.getPatientVariantReportFileInfo('fake-psn', 'fake-analysis-id')
+          .do(patient => {
+            fail('should not respond with patients');
+          })
+          .catch(err => {
+            expect(err).toMatch(/Bad response status/, 'should catch bad response status code');
+            return Observable.of(null); // failure is the expected test result
+          })
+          .toPromise();
+      })));
+
+    });
+
+
   });
 }
