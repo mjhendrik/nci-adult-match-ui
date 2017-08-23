@@ -9,5 +9,10 @@
   "vsicons.presets.angular": true,
   "htmlhint.options": {
     "attr-lowercase": false
-  }
+  },
+  "cSpell.words": [
+    "noopener",
+    "noreferrer"
+  ],
+  "html.suggest.angular1": false
 }

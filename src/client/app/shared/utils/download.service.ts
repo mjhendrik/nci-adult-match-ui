@@ -1,7 +1,3 @@
-export function downloadFile(url: string) {
-    window.open(url, '_blank', 'rel="noopener noreferrer"');
-}
-
 import { Injectable } from '@angular/core';
 
 @Injectable()

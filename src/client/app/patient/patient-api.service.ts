@@ -4,9 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import { AuthHttp } from 'angular2-jwt';
 
 import { Config } from '../shared/config/env.config';
-
-import { downloadFile } from '../shared/utils/utils';
 import { VariantReportComparisonData } from './patient-variant-report-oa/variant-report-comparison-data';
+import { DownloadService } from '../shared/utils/download.service';
 
 /**
  * This class provides the NameList service with methods to read names and add names.
@@ -19,7 +18,8 @@ export class PatientApiService {
    * @param {AuthHttp} http - The injected AuthHttp.
    * @constructor
    */
-  constructor(private http: AuthHttp) { }
+  constructor(private http: AuthHttp,
+    private download: DownloadService) { }
 
   getPatientList(page: number,
     size: number,
@@ -106,7 +106,7 @@ export class PatientApiService {
         const data = resp.json();
         if (data && data.download_url) {
           console.log('HERE!!!!');
-          downloadFile(data.download_url);
+          this.download.downloadFile(data.download_url);
         }
       });
   }

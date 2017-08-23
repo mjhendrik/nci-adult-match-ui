@@ -8,8 +8,8 @@ import {
   PatientApiService
 } from '../patient-api.service';
 
-import { scrollToElement } from '../../shared/utils/utils';
 import { VariantReportData } from './patient-variant-report.module';
+import { ScrollService } from '../../shared/utils/scroll.to.service';
 
 /**
  * PatientVariantReportComponent.
@@ -23,6 +23,8 @@ import { VariantReportData } from './patient-variant-report.module';
   host: { '[@routerTransition]': '' }
 })
 export class PatientVariantReportComponent implements OnInit, VariantReportData {
+  scrollTo: (id: string) => void;
+
   psn: string;
   analysisId: string;
   patient: any;
@@ -38,11 +40,12 @@ export class PatientVariantReportComponent implements OnInit, VariantReportData 
   showPools: boolean;
   assays: any[] = [];
 
-  scrollTo = scrollToElement;
-
   constructor(
     private route: ActivatedRoute,
-    private patientApi: PatientApiService) { }
+    private patientApi: PatientApiService,
+    private scrollService: ScrollService) {
+      this.scrollTo = scrollService.scrollToElement;
+    }
 
   ngOnInit() {
     Object.assign(this, this.route.snapshot.data['data']);

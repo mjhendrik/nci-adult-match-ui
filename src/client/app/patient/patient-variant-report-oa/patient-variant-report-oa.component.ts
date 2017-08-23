@@ -8,8 +8,8 @@ import {
   PatientApiService
 } from '../patient-api.service';
 
-import { scrollToElement } from '../../shared/utils/utils';
 import { VariantReportComparisonData } from './variant-report-comparison-data';
+import { ScrollService } from '../../shared/utils/scroll.to.service';
 
 /**
  * PatientVariantReportOutsideAssayComponent.
@@ -23,6 +23,8 @@ import { VariantReportComparisonData } from './variant-report-comparison-data';
   host: { '[@routerTransition]': '' }
 })
 export class PatientVariantReportOutsideAssayComponent implements OnInit, VariantReportComparisonData {
+  scrollTo: (id: string) => void;
+
   psn: string;
   currentPatientStatus: string;
   currentStepNumber: string;
@@ -64,11 +66,13 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, Varian
     unifiedGeneFusions: any[];
   };
 
-  scrollTo = scrollToElement;
 
   constructor(
     private route: ActivatedRoute,
-    private patientApi: PatientApiService) { }
+    private patientApi: PatientApiService,
+    private scrollService: ScrollService) {
+    this.scrollTo = scrollService.scrollToElement;
+  }
 
   ngOnInit() {
     Object.assign(this, this.route.snapshot.data['data']);
