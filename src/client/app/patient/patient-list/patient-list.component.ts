@@ -100,20 +100,18 @@ export class PatientListComponent implements OnInit {
   }
 
   onSearchChanged(val: any) {
-    this.ngzone.runOutsideAngular(() => {
-      Observable.fromEvent(this.inputElRef.nativeElement, 'keyup')
-        .debounceTime(400)
-        .subscribe((val: any) => {
-          this.cdref.detectChanges();
-          if (this.searchTermPatients !== val.target.value) {
-            this.searchTermPatients = val.target.value;
-            this.previous = this.page + ',' + this.size + ',' + this.sortOrder + ',' + this.sortBy + ','
-              + this.searchTermPatients;
-            this.refreshData();
-          }
+    Observable.fromEvent(this.inputElRef.nativeElement, 'keyup')
+      .debounceTime(400)
+      .subscribe((val: any) => {
+        this.cdref.detectChanges();
+        if (this.searchTermPatients !== val.target.value) {
           this.searchTermPatients = val.target.value;
-        });
-    });
+          this.previous = this.page + ',' + this.size + ',' + this.sortOrder + ',' + this.sortBy + ','
+            + this.searchTermPatients;
+          this.refreshData();
+        }
+        this.searchTermPatients = val.target.value;
+      });
   }
 
   currentPageActive(evt: any): void {
