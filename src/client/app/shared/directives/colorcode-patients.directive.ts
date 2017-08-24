@@ -21,9 +21,7 @@ export class ColorCodePatientsDirective extends ConditionalCssDirective<string> 
                             || x.indexOf('PENDING_') !== -1
                             || x === 'REJOIN_REQUESTED'
                             || x === 'NOT_ELIGIBLE'
-                            || x === 'RB_ORDER_REQUESTED'
-                            || x === 'RB_ORDERED'
-                            || x === 'RB_RESULT_RECEIVED'),
+                            || x.indexOf('RB') !== -1),
                     cssClass: 'text-purple-light'
                 },
                 {
