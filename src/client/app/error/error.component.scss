@@ -1,6 +1,5 @@
 :host {
-  display: block;
-  // padding: 0 16px;
+  display: block; // padding: 0 16px;
 }
 
 h2 {
@@ -9,4 +8,12 @@ h2 {
   letter-spacing: 0.005em;
   margin-bottom: 0;
   margin-top: 0.83em;
+}
+
+.error {
+  margin-top: -120px;
+}
+
+.error-content {
+  padding-top: 445px;
 }
