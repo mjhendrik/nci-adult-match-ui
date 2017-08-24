@@ -25,7 +25,10 @@ export class DashboardApiService {
    * @return {string[]} The Observable for the HTTP request.
    */
   getDashboardAR(): Observable<any[]> {
-    return this.http.get('assets/mock-data/dashboard-ar.json')
+
+    // return this.http.get('assets/mock-data/dashboard-ar.json')
+
+    return this.http.get(Config.API.PATIENT + '/patients/dashboard/assignment_reports')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
