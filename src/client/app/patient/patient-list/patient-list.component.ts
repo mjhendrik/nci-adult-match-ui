@@ -100,7 +100,7 @@ export class PatientListComponent implements OnInit {
   }
 
   onSearchChanged(val: any) {
-    Observable.fromEvent(this.inputElRef.nativeElement, 'keyup')
+    Observable.fromEvent(this.inputElRef.nativeElement, 'input')
       .debounceTime(400)
       .subscribe((val: any) => {
         this.cdref.detectChanges();
