@@ -45,8 +45,8 @@
             <div class="widget-stat-title text-right">Biopsy Tracking</div>
             <div class="widget-stat-number text-right">{{biopsyTracking.TOTAL}}</div>
             <div class="widget-stat-text text-right"><span *ngIf="!biopsyTracking.BIOPSY_SEQUENCES">0</span>{{biopsyTracking.BIOPSY_SEQUENCES}} Biopsy Sequences&nbsp;&nbsp;|&nbsp;&nbsp;
-              <span
-                *ngIf="!biopsyTracking.MOLECULAR_SEQUENCES">0</span>{{biopsyTracking.MOLECULAR_SEQUENCES}} Molecular Sequences</div>
+              <span *ngIf="!biopsyTracking.MOLECULAR_SEQUENCES">0</span>{{biopsyTracking.MOLECULAR_SEQUENCES}} Molecular
+              Sequences</div>
           </div>
         </div>
       </a>
@@ -365,6 +365,12 @@
                         <div class="row">
                           <div class="col-md-6">
                             <dl class="dl-horizontal p-t-15 m-b-15">
+                              <dt>RB</dt>
+                              <dd *ngIf="!item.daysWaiting"><i class="fa fa-times-circle text-danger-light"></i></dd>
+                              <dd *ngIf="item.daysWaiting"><i class="fa fa-check-circle text-success-light"></i> {{item.daysWaiting | dashify | gmt}}
+                                (
+                                <span [colorCodePatients]="item.currentStatus">{{item.currentStatus}}</span>)
+                              </dd>
                               <dt>IHC BAF47</dt>
                               <dd *ngIf="!item.daysWaiting"><i class="fa fa-times-circle text-danger-light"></i></dd>
                               <dd *ngIf="item.daysWaiting"><i class="fa fa-check-circle text-success-light"></i> {{item.daysWaiting | dashify | gmt}}
@@ -390,7 +396,7 @@
                           </div>
                           <div class="col-md-6">
                             <dl class="dl-horizontal p-t-15 m-b-15">
-                              <dt>Surgical Event Id</dt>
+                              <dt>Biopsy Sequence Number</dt>
                               <dd>{{item.psn | dashify}}</dd>
                               <dt>Specimen Collected Date</dt>
                               <dd>{{item.daysWaiting | dashify | gmt}}</dd>
