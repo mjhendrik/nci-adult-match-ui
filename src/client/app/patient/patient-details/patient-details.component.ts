@@ -11,6 +11,83 @@ import { PatientApiService } from '../patient-api.service';
 import { ViewDataTransformer } from './../view-data-transformer.service';
 import { PatientData, Tabs } from './patient-details.module';
 
+const dropzoneConfigCdnaBam: DropzoneConfigInterface = {
+  // Change this to your upload POST address:
+  server: 'https://httpbin.org/post',
+  maxFiles: 1,
+  maxFilesize: 50000, // size in MB
+  // acceptedFiles: '.bam',
+  addRemoveLinks: true,
+  autoProcessQueue: false,
+  init: function () {
+    this.on('removedfile', function (file: any) {
+      // delete from our dict removed file
+      //delete addedFilesHash[file];
+    });
+  },
+  accept: function (file: any, done: any) {
+    // var _id = count++;
+    // file._id = _id;
+    // addedFilesHash[_id] = done;
+  }
+};
+
+const dropzoneConfigDnaBam: DropzoneConfigInterface = {
+
+  // Change this to your upload POST address:
+  server: 'https://httpbin.org/post',
+  maxFiles: 1,
+  maxFilesize: 50000, // size in MB
+  // acceptedFiles: '.bam',
+  addRemoveLinks: true,
+  autoProcessQueue: false,
+  init: function () {
+    this.on('removedfile', function (file: any) {
+      // delete from our dict removed file
+      //delete addedFilesHash[file];
+    });
+  },
+  accept: function (file: any, done: any) {
+    // var _id = count++;
+    // file._id = _id;
+    // addedFilesHash[_id] = done;
+  }
+
+};
+
+const dropzoneConfigVariantZip: DropzoneConfigInterface = {
+
+  // Change this to your upload POST address:
+  server: 'https://httpbin.org/post',
+  maxFiles: 1,
+  maxFilesize: 50000, // size in MB
+  acceptedFiles: '.zip',
+  addRemoveLinks: true,
+  autoProcessQueue: false,
+  init: function () {
+    this.on('removedfile', function (file: any) {
+      // delete from our dict removed file
+      //delete addedFilesHash[file];
+    });
+  },
+  accept: function (file: any, done: any) {
+    // console.log(file);
+    // console.log(done);
+    // var _id = count++;
+    // file._id = _id;
+    // addedFilesHash[_id] = done;
+  }
+};
+
+const dropzoneConfigDocuments: DropzoneConfigInterface = {
+  // Change this to your upload POST address:
+  server: 'https://httpbin.org/post',
+  // maxFiles: 3,
+  maxFilesize: 50000, // size in MB
+  // acceptedFiles: '.zip,.bam',
+  addRemoveLinks: true
+};
+
 @Component({
   moduleId: module.id,
   selector: 'sd-patient-details',
@@ -33,10 +110,10 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
   variantZip: boolean = false;
   dnaBam: boolean = false;;
   cdnaBam: boolean = false;;
-  configVariantZip: DropzoneConfigInterface;
-  configDnaBam: DropzoneConfigInterface;
-  configCdnaBam: DropzoneConfigInterface;
-  configDocuments: DropzoneConfigInterface;
+  configVariantZip = dropzoneConfigVariantZip;
+  configDnaBam = dropzoneConfigDnaBam;
+  configCdnaBam = dropzoneConfigCdnaBam;
+  configDocuments = dropzoneConfigDocuments;
 
   tabs: Tabs;
 
@@ -53,97 +130,10 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
 
   ngOnInit() {
     Object.assign(this, this.route.snapshot.data['data']);
-
-    const DROPZONE_CONFIG_VARIANT_ZIP: DropzoneConfigInterface = {
-
-      // Change this to your upload POST address:
-      server: 'https://httpbin.org/post',
-      maxFiles: 1,
-      maxFilesize: 50000, // size in MB
-      acceptedFiles: '.zip',
-      addRemoveLinks: true,
-      autoProcessQueue: false,
-      init: function () {
-        this.on('removedfile', function (file: any) {
-          // delete from our dict removed file
-          //delete addedFilesHash[file];
-        });
-      },
-      accept: function (file: any, done: any) {
-        // console.log(file);
-        // console.log(done);
-        // var _id = count++;
-        // file._id = _id;
-        // addedFilesHash[_id] = done;
-      }
-    };
-
-    this.configVariantZip = DROPZONE_CONFIG_VARIANT_ZIP;
-
-    const DROPZONE_CONFIG_DNA_BAM: DropzoneConfigInterface = {
-
-      // Change this to your upload POST address:
-      server: 'https://httpbin.org/post',
-      maxFiles: 1,
-      maxFilesize: 50000, // size in MB
-      // acceptedFiles: '.bam',
-      addRemoveLinks: true,
-      autoProcessQueue: false,
-      init: function () {
-        this.on('removedfile', function (file: any) {
-          // delete from our dict removed file
-          //delete addedFilesHash[file];
-        });
-      },
-      accept: function (file: any, done: any) {
-        // var _id = count++;
-        // file._id = _id;
-        // addedFilesHash[_id] = done;
-      }
-
-    };
-
-    this.configDnaBam = DROPZONE_CONFIG_DNA_BAM;
-
-    const DROPZONE_CONFIG_CDNA_BAM: DropzoneConfigInterface = {
-
-      // Change this to your upload POST address:
-      server: 'https://httpbin.org/post',
-      maxFiles: 1,
-      maxFilesize: 50000, // size in MB
-      // acceptedFiles: '.bam',
-      addRemoveLinks: true,
-      autoProcessQueue: false,
-      init: function () {
-        this.on('removedfile', function (file: any) {
-          // delete from our dict removed file
-          //delete addedFilesHash[file];
-        });
-      },
-      accept: function (file: any, done: any) {
-        // var _id = count++;
-        // file._id = _id;
-        // addedFilesHash[_id] = done;
-      }
-    };
-
-    this.configCdnaBam = DROPZONE_CONFIG_CDNA_BAM;
-
-    const DROPZONE_CONFIG_DOCUMENTS: DropzoneConfigInterface = {
-      // Change this to your upload POST address:
-      server: 'https://httpbin.org/post',
-      // maxFiles: 3,
-      maxFilesize: 50000, // size in MB
-      // acceptedFiles: '.zip,.bam',
-      addRemoveLinks: true
-    };
-
-    this.configDocuments = DROPZONE_CONFIG_DOCUMENTS;
-
   }
 
   ngAfterViewInit() {
-    if (this. needToScroll && !!this.entityId) {
+    if (this.needToScroll && !!this.entityId) {
       setTimeout(() => {
         const element = document.getElementById(this.entityId);
         if (element) {
