@@ -20,7 +20,9 @@ const dropzoneConfigCdnaBam: DropzoneConfigInterface = {
   addRemoveLinks: true,
   autoProcessQueue: false,
   init: function () {
+    // console.log('HERE!!!');
     this.on('removedfile', function (file: any) {
+      // console.log('HERE 22222!!!');
       // delete from our dict removed file
       //delete addedFilesHash[file];
     });

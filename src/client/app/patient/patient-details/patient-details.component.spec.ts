@@ -27,6 +27,10 @@ import { SharedModule } from '../../shared/shared.module';
 import { PatientApiServiceStub, PatientApiServiceWithErrorStub } from '../testing/patient-api-service-stub';
 import { ActivatedRouteStub } from '../testing/activated-route-stub';
 
+// interface On {
+//   on(arg:string): void;
+// }
+
 export function main() {
   describe('PatientDetailsComponent (templateUrl)', () => {
 
@@ -174,6 +178,18 @@ export function main() {
         expect(component.cdnaBam).toBe(false);
         expect(spy).toHaveBeenCalled();
       });
+
+      // fit('should call configVariantZip.on(removedfile)', () => {
+      //   let config = component.configVariantZip as On;
+      //   config.on = jasmine.createSpy('on').and.callFake((arg: string)=> { ; });
+
+      //   // expect(() => { config.on('removedFile'); }).not.toThrowError();
+      //   expect(component.configVariantZip.init).toBeDefined();
+
+      //   console.log(component.configVariantZip.init.toString());
+
+      //   expect(component.configVariantZip.init.on).toBeDefined('component.configVariantZip.init.on');
+      // });
 
     });
   });
