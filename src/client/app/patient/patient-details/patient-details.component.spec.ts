@@ -109,12 +109,70 @@ export function main() {
         expect(() => { component.onUploadSuccess('test'); }).not.toThrowError();
       });
 
+      it('should call onUploadError with no errors', () => {
+        expect(() => { component.onUploadError('test'); }).not.toThrowError();
+      });
+
       it('should call uploadFiles with no errors', () => {
         expect(() => { component.uploadFiles(); }).not.toThrowError();
 
         expect(component.configVariantZip.autoProcessQueue).toBe(true);
         expect(component.configDnaBam.autoProcessQueue).toBe(true);
         expect(component.configCdnaBam.autoProcessQueue).toBe(true);
+      });
+
+      it('should call addedFileVariantZip with detectChanges()', () => {
+        let spy = spyOn(component.changeDetector, 'detectChanges').and.callThrough();
+
+        component.addedFileVariantZip('test');
+
+        expect(component.variantZip).toBe(true);
+        expect(spy).toHaveBeenCalled();
+      });
+
+      it('should call removedFileVariantZip with detectChanges()', () => {
+        let spy = spyOn(component.changeDetector, 'detectChanges').and.callThrough();
+
+        component.removedFileVariantZip();
+
+        expect(component.variantZip).toBe(false);
+        expect(spy).toHaveBeenCalled();
+      });
+
+      it('should call addedFileDnaBam with detectChanges()', () => {
+        let spy = spyOn(component.changeDetector, 'detectChanges').and.callThrough();
+
+        component.addedFileDnaBam('test');
+
+        expect(component.dnaBam).toBe(true);
+        expect(spy).toHaveBeenCalled();
+      });
+
+      it('should call removedFileDnaBam with detectChanges()', () => {
+        let spy = spyOn(component.changeDetector, 'detectChanges').and.callThrough();
+
+        component.removedFileDnaBam();
+
+        expect(component.dnaBam).toBe(false);
+        expect(spy).toHaveBeenCalled();
+      });
+
+      it('should call addedFileCdnaBam with detectChanges()', () => {
+        let spy = spyOn(component.changeDetector, 'detectChanges').and.callThrough();
+
+        component.addedFileCdnaBam('test');
+
+        expect(component.cdnaBam).toBe(true);
+        expect(spy).toHaveBeenCalled();
+      });
+
+      it('should call removedFileCdnaBam with detectChanges()', () => {
+        let spy = spyOn(component.changeDetector, 'detectChanges').and.callThrough();
+
+        component.removedFileCdnaBam();
+
+        expect(component.cdnaBam).toBe(false);
+        expect(spy).toHaveBeenCalled();
       });
 
     });

@@ -40,9 +40,9 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
 
   tabs: Tabs;
 
-  constructor(private route: ActivatedRoute,
+  constructor(public changeDetector: ChangeDetectorRef,
+    private route: ActivatedRoute,
     private patientApi: PatientApiService,
-    private changeDetector: ChangeDetectorRef,
     private transformer: ViewDataTransformer,
     private router: Router) {
   }
@@ -53,8 +53,6 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
 
   ngOnInit() {
     Object.assign(this, this.route.snapshot.data['data']);
-
-    this.changeDetector = this.changeDetector;
 
     const DROPZONE_CONFIG_VARIANT_ZIP: DropzoneConfigInterface = {
 
@@ -173,7 +171,6 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
   addedFileVariantZip(evt: any): void {
     this.variantZip = true;
     this.changeDetector.detectChanges();
-    // console.log(evt);
   }
 
   removedFileVariantZip(): void {
@@ -198,10 +195,6 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
 
   removedFileCdnaBam(): void {
     this.cdnaBam = false;
-    this.changeDetector.detectChanges();
-  }
-
-  detectChanges(): void {
     this.changeDetector.detectChanges();
   }
 }
