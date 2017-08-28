@@ -57,12 +57,6 @@ export class PatientApiService {
       .catch(this.handleError);
   }
 
-  getPatientVariantReport(psn: string): Observable<any> {
-    return this.http.get(Config.API.PATIENT + '/patients/' + psn)
-      .map(this.extractData)
-      .catch(this.handleError);
-  }
-
   getOutsideAssayComparisonVariantReport(psn: string): Observable<VariantReportComparisonData> {
     return this.http.get(this.url('/patients/' + psn + '/outside_assay/comparison_variant_report',
       'assets/mock-data/patient.OA5.comparison-variant-report.json'))

@@ -23,22 +23,11 @@ import {
 export class AssignmentReportComponent implements OnInit {
 
   psn: string;
-  variantReport: any;
-  assignmentReport: any;
-  moiSummary: any;
-  assay: any[];
-  snv: any[];
-  indels: any[];
   assignmentData: any;
-  assignmentHistory: any[];
-  ocpSummary: any;
   dateAssigned: any;
   analysisId: any;
   molecularSequenceNumber: any;
   assignmentReason: any[];
-
-  dataAvailable: boolean;
-  errorMessage: string;
 
   constructor(private route: ActivatedRoute, private patientApi: PatientApiService) { }
 
@@ -49,15 +38,15 @@ export class AssignmentReportComponent implements OnInit {
   }
 
   getData(psn: string) {
-    this.patientApi.getPatientVariantReport(psn)
-      .subscribe((itemList: any) => {
-        let assignmentReport = itemList.patientAssignments;
+    this.patientApi.getPatientDetails(psn)
+      .subscribe((patient: any) => {
+        let assignmentReport = patient.patientAssignments;
         assignmentReport.map((x: any) => {
           if (x.dateAssigned.$date.toString() === this.dateAssigned)
             this.assignmentData = x;
         });
-        this.analysisId = itemList.biopsies[0].nextGenerationSequences[0].ionReporterResults.jobName;
-        this.molecularSequenceNumber = itemList.biopsies[0].nextGenerationSequences[0].ionReporterResults.molecularSequenceNumber;
+        this.analysisId = patient.biopsies[0].nextGenerationSequences[0].ionReporterResults.jobName;
+        this.molecularSequenceNumber = patient.biopsies[0].nextGenerationSequences[0].ionReporterResults.molecularSequenceNumber;
         this.dataAvailable = true;
         this.groupReason(this.assignmentData.patientAssignmentLogic);
       },

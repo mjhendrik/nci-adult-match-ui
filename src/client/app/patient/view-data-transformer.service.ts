@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { AssignmentReasonSection } from './assignment-reason-table/assignment-reason-table.component';
 import { VariantReportComparisonData } from './patient-variant-report-oa/variant-report-comparison-data';
+import { AssignmentReportData } from './assignment-report/assignment-report.module';
 
 /*
 *  View transformation service
@@ -64,6 +65,29 @@ export class ViewDataTransformer {
     this.transformAssignmentLogic(transformedReport.outsideData.assignmentReport);
 
     return transformedReport;
+  }
+
+  transformAssignment(source: any, dateAssigned: string): AssignmentReportData {
+    const transformedPatient: any = { ...source }; // Deep-copy the source
+
+    let assignmentReport = null;
+    if (transformedPatient.patientAssignments && transformedPatient.patientAssignments.length > 0) {
+      assignmentReport = (transformedPatient.patientAssignments as any[])
+        .find(x => x.dateAssigned.$date.toString() === dateAssigned);
+    }
+
+    if (assignmentReport) {
+      this.transformAssignmentLogic(assignmentReport);
+    }
+
+    return {
+      psn: transformedPatient.patientSequenceNumber,
+      molecularSequenceNumber: transformedPatient.biopsies[0].nextGenerationSequences[0].ionReporterResults.molecularSequenceNumber,
+      analysisId: transformedPatient.biopsies[0].nextGenerationSequences[0].ionReporterResults.jobName,
+      assignmentReport: assignmentReport,
+      dateAssigned: dateAssigned
+    };
+
   }
 
   showPools(tvcVersion: string): boolean {
