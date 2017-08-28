@@ -29,10 +29,8 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
   psn: string;
   patient: any;
   summaryData: any = {};
-
   entityId: string;
   section: string;
-
   uploadedFiles: any[];
   fileCount: number = 0;
   variantZip: boolean = false;
@@ -63,8 +61,11 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
   ngAfterViewInit() {
     if (this.needToScroll && !!this.entityId) {
       setTimeout(() => {
+        console.log('HERE BEFORE!!!');
+        console.log('this.entityId=' + this.entityId);
         const element = document.getElementById(this.entityId);
         if (element) {
+          console.log('HERE!!!');
           console.info(`scrolling to ID ${this.entityId}`);
           element.scrollIntoView();
         }

@@ -17,7 +17,7 @@ export class ViewDataTransformerStub {
             },
             summaryData: {},
             section: 'fake-section',
-            entityId: 'fake-entity-id',
+            entityId: 'patient-timeline',
             needToScroll: () => { ; },
             tabs: new Tabs(),
         };

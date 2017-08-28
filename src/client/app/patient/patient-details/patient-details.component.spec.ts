@@ -5,7 +5,9 @@ import {
 import {
   async,
   TestBed,
-  ComponentFixture
+  ComponentFixture,
+  fakeAsync,
+  tick
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
@@ -179,16 +181,28 @@ export function main() {
     describe('with scroll', () => {
       beforeEach(() => {
         component.needToScroll = true;
-        component.entityId = '';
         component.ngOnInit();
       });
 
-      it('should work when entityId and needToScroll are passed', () => {
-        
-      });
+      it('should work when entityId and needToScroll are passed', fakeAsync(() => {
+
+
+        const scrollToElement = fixture.debugElement.query(By.css('.ut-patient-timeline'));
+        expect(scrollToElement).not.toBeNull();
+
+        const htmlElement = scrollToElement.nativeElement as HTMLElement;
+
+        let spy = spyOn(htmlElement, 'scrollIntoView').and.callThrough();
+
+        component.ngAfterViewInit();
+
+        tick(228);
+
+        expect(spy).toHaveBeenCalled();
+      }));
+
     });
 
   });
 
 }
-
