@@ -1,5 +1,4 @@
 import {
-  Component,
   ChangeDetectorRef,
   DebugElement
 } from '@angular/core';
@@ -24,12 +23,8 @@ import { ViewDataTransformer } from './../view-data-transformer.service';
 import { PatientTimelineModule } from './../patient-timeline/patient-timeline.module';
 import { SharedModule } from '../../shared/shared.module';
 
-import { PatientApiServiceStub, PatientApiServiceWithErrorStub } from '../testing/patient-api-service-stub';
+import { PatientApiServiceStub } from '../testing/patient-api-service-stub';
 import { ActivatedRouteStub } from '../testing/activated-route-stub';
-
-// interface On {
-//   on(arg:string): void;
-// }
 
 export function main() {
   describe('PatientDetailsComponent (templateUrl)', () => {
@@ -87,7 +82,7 @@ export function main() {
       expect(el.textContent).toEqual('Patient ' + component.patient.patientSequenceNumber);
     });
 
-    it('should work for download', () => {
+    it('should call downloadPatientFile when download is called', () => {
       let api = fixture.debugElement.injector.get(PatientApiService);
       let spy = spyOn(api, 'downloadPatientFile').and.callFake(() => { ; });
       component.download('fake_url');
@@ -179,19 +174,20 @@ export function main() {
         expect(spy).toHaveBeenCalled();
       });
 
-      // fit('should call configVariantZip.on(removedfile)', () => {
-      //   let config = component.configVariantZip as On;
-      //   config.on = jasmine.createSpy('on').and.callFake((arg: string)=> { ; });
-
-      //   // expect(() => { config.on('removedFile'); }).not.toThrowError();
-      //   expect(component.configVariantZip.init).toBeDefined();
-
-      //   console.log(component.configVariantZip.init.toString());
-
-      //   expect(component.configVariantZip.init.on).toBeDefined('component.configVariantZip.init.on');
-      // });
-
     });
+
+    describe('with scroll', () => {
+      beforeEach(() => {
+        component.needToScroll = true;
+        component.entityId = '';
+        component.ngOnInit();
+      });
+
+      it('should work when entityId and needToScroll are passed', () => {
+        
+      });
+    });
+
   });
 
 }
