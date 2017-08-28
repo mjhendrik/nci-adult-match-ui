@@ -8,7 +8,6 @@ import { PipesModule } from '../../shared/pipes/pipes.module';
 import { DirectivesModule } from '../../shared/directives/directives.module';
 import { PatientApiService } from '../patient-api.service';
 import { AssignmentReasonTableModule } from './../assignment-reason-table/assignment-reason-table.module';
-import { AssignmentReasonSection } from '../assignment-reason-table/assignment-reason-table.component';
 
 export interface AssignmentReportData {
   psn: string;
@@ -16,6 +15,7 @@ export interface AssignmentReportData {
   analysisId: any;
   assignmentReport: any;
   dateAssigned: any;
+}
 
 @NgModule({
   imports: [

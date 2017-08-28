@@ -5,8 +5,8 @@
   <ul class="breadcrumb pull-right">
     <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
     <li><a href [routerLink]="['/patients']" class="link-none">Patients</a></li>
-    <li><a href [routerLink]="['/patients/' + assignmentData.patientAssignmentMessages[0].patientSequenceNumber]" class="link-none">Patient {{assignmentData.patientAssignmentMessages[0].patientSequenceNumber}}</a></li>
-    <li><a href [routerLink]="['/patients/' + assignmentData.patientAssignmentMessages[0].patientSequenceNumber + '/variant_reports/' + analysisId]"
+    <li><a href [routerLink]="['/patients/' + assignmentReport.patientAssignmentMessages[0].patientSequenceNumber]" class="link-none">Patient {{assignmentReport.patientAssignmentMessages[0].patientSequenceNumber}}</a></li>
+    <li><a href [routerLink]="['/patients/' + assignmentReport.patientAssignmentMessages[0].patientSequenceNumber + '/variant_reports/' + analysisId]"
         class="link-none">Variant Report</a></li>
     <li class="active">Historical Assignment Report</li>
   </ul>
@@ -19,11 +19,11 @@
             <dt>Molecular Sequence Number</dt>
             <dd>{{molecularSequenceNumber | dashify}}</dd>
             <dt>Biopsy Sequence Number</dt>
-            <dd>{{assignmentData.biopsySequenceNumber | dashify}}</dd>
+            <dd>{{assignmentReport.biopsySequenceNumber | dashify}}</dd>
             <dt>Analysis ID</dt>
             <dd>{{analysisId | dashify}}</dd>
             <dt>Status</dt>
-            <dd><span [colorCodeAssignment]="assignmentData.patientAssignmentMessages[0].status"> {{assignmentData.patientAssignmentMessages[0].status | dashify}}</span>              on {{assignmentData.dateConfirmed | gmt}} by TA Committee</dd>
+            <dd><span [colorCodeAssignment]="assignmentReport.patientAssignmentMessages[0].status"> {{assignmentReport.patientAssignmentMessages[0].status | dashify}}</span>              on {{assignmentReport.dateConfirmed | gmt}} by TA Committee</dd>
           </dl>
         </div>
       </div>
@@ -33,15 +33,15 @@
         <div class="panel-heading">
           <dl class="dl-horizontal widest-dt">
             <dt>Assignment Report Status</dt>
-            <dd>{{assignmentData.patientAssignmentStatus | dashify}}</dd>
+            <dd>{{assignmentReport.patientAssignmentStatus | dashify}}</dd>
             <dt>Assignment Report Generation Date</dt>
-            <dd>{{assignmentData.dateAssigned | gmt }}</dd>
+            <dd>{{assignmentReport.dateAssigned | gmt }}</dd>
             <dt>Assignment Report Confirmed Date</dt>
-            <dd>{{assignmentData.dateConfirmed | gmt}}</dd>
+            <dd>{{assignmentReport.dateConfirmed | gmt}}</dd>
             <dt>Assignment Sent to ECOG Date</dt>
-            <dd>{{assignmentData.dateSentToECOG | gmt}}</dd>
+            <dd>{{assignmentReport.dateSentToECOG | gmt}}</dd>
             <dt>Assignment Received by ECOG Date</dt>
-            <dd>{{assignmentData.dateReceivedByECOG | gmt}}</dd>
+            <dd>{{assignmentReport.dateReceivedByECOG | gmt}}</dd>
           </dl>
         </div>
       </div>
@@ -52,13 +52,13 @@
       <div class="row">
         <div class="col-md-12">
           <h4>Selected Treatment Arm:
-            <span *ngIf="assignmentData.treatmentArm" class="text-success-light">{{assignmentData.patientAssignmentMessages[0].treatmentArmId | dashify}} ({{assignmentData.treatmentArm.version | dashify}})</span>
-            <span *ngIf="!assignmentData.treatmentArm" class="text-muted">No available treatment arm</span>
+            <span *ngIf="assignmentReport.treatmentArm" class="text-success-light">{{assignmentReport.patientAssignmentMessages[0].treatmentArmId | dashify}} ({{assignmentReport.treatmentArm.version | dashify}})</span>
+            <span *ngIf="!assignmentReport.treatmentArm" class="text-muted">No available treatment arm</span>
           </h4>
           <div class="panel panel-success overflow-hidden">
             <div class="panel-heading">
               <p>
-                {{assignmentData.patientAssignmentMessages[0].message | dashify}}
+                {{assignmentReport.patientAssignmentMessages[0].message | dashify}}
               </p>
             </div>
           </div>
@@ -70,7 +70,7 @@
     <div class="panel-heading">
       <div class="row">
         <div class="col-md-12">
-          <sd-assignment-reason-table [reasons]="assignmentReason"></sd-assignment-reason-table>
+          <sd-assignment-reason-table [reasons]="assignmentReport.reasons"></sd-assignment-reason-table>
         </div>
       </div>
     </div>
