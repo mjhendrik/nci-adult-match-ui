@@ -77,7 +77,7 @@ export function main() {
                 templateUrl: ''
               }
             }).createComponent(PatientListComponent);
-            fixture.componentInstance.previous;
+            fixture.componentInstance.previous = "1,10,asc,patientSequenceNumber";
             fixture.componentInstance.currentPageActive("1,10,asc,patientSequenceNumber");
           });
       }));

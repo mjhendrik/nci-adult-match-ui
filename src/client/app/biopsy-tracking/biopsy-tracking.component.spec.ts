@@ -92,7 +92,7 @@ export function main() {
     // Disable old forms
 
     let config: any[] = [
-      { path: 'tracking', component: 'BiopsyTrackingListComponent'}
+      { path: 'tracking', component: 'BiopsyTrackingListComponent' }
     ];
 
     beforeEach(() => {
@@ -231,7 +231,7 @@ export function main() {
     // Disable old form
 
     let config: any[] = [
-      { path: 'tracking', component: 'BiopsyTrackingListComponent'}
+      { path: 'tracking', component: 'BiopsyTrackingListComponent' }
     ];
 
     beforeEach(() => {
@@ -314,12 +314,12 @@ class MockBiopsyService {
 
 class MockBiopsyServiceWithErrors {
   getBiopsyCount(): Observable<any> {
-    return Observable.throw("135");
+    return Observable.throw('135');
   }
   getBiopsyTotal(): Observable<any> {
     return Observable.throw(100);
   }
   getBiopsyTracking(): Observable<any> {
-    return Observable.throw("errpr");
+    return Observable.throw('error');
   }
 }
