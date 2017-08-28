@@ -70,7 +70,7 @@ export function main() {
 
       component = fixture.componentInstance; // PatientDetailsComponent test instance
 
-      // query for the title <h1> by CSS element selector
+      // query for the title 'page-header' by CSS element selector
       de = fixture.debugElement.query(By.css('.page-header'));
       el = de.nativeElement;
     });
