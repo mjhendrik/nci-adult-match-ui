@@ -389,7 +389,10 @@
                               <dd *ngIf="item.daysWaiting"><i class="fa fa-check-circle text-success-light"></i> {{item.daysWaiting | dashify | gmt}}
                                 (<span [colorCodePatients]="item.currentStatus">{{item.currentStatus}}</span>)
                               </dd>
-                              <dt>Disease</dt>
+                              <dt>Variant Report</dt>
+                              <dd *ngIf="!item.message"><i class="fa fa-times-circle text-danger-light"></i></dd>
+                              <dd *ngIf="item.message"><i class="fa fa-check-circle text-success-light"></i> {{item.message | dashify}}</dd>
+                              <dt>Disease Concordance</dt>
                               <dd *ngIf="!item.message"><i class="fa fa-times-circle text-danger-light"></i></dd>
                               <dd *ngIf="item.message"><i class="fa fa-check-circle text-success-light"></i> {{item.message | dashify}}</dd>
                             </dl>
