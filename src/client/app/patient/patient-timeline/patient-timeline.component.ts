@@ -12,7 +12,7 @@ import {
   templateUrl: 'patient-timeline.component.html'
 })
 export class PatientTimelineComponent {
-  @Input() items: any;
+  @Input() items: any[];
 
   getIcon(status: string): string {
     return 'fa-user-o';

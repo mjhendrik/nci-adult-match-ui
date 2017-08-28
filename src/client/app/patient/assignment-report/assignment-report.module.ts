@@ -8,6 +8,7 @@ import { PipesModule } from '../../shared/pipes/pipes.module';
 import { DirectivesModule } from '../../shared/directives/directives.module';
 import { PatientApiService } from '../patient-api.service';
 import { AssignmentReasonTableModule } from './../assignment-reason-table/assignment-reason-table.module';
+import { SharedModule } from '../../shared/shared.module';
 
 export interface AssignmentReportData {
   psn: string;
@@ -25,7 +26,8 @@ export interface AssignmentReportData {
     FormsModule,
     DataTableModule,
     PipesModule,
-    DirectivesModule
+    DirectivesModule,
+    SharedModule
   ],
   declarations: [AssignmentReportComponent],
   exports: [AssignmentReportComponent],
