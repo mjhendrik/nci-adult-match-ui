@@ -37,9 +37,7 @@ export function main() {
     let de: DebugElement;
     let el: HTMLElement;
     let activatedRouteStub: ActivatedRouteStub = new ActivatedRouteStub();
-    let trasformerStub: ViewDataTransformerStub = new ViewDataTransformerStub();
-
-    activatedRouteStub.snapshot.data['data'] = this.trasformerStub.makePatientData();
+    activatedRouteStub.snapshot.data['data'] = ViewDataTransformerStub.makePatientData();
 
     let config: any[] = [
       { path: 'patients/1234', component: 'PatientDetailsComponent' }

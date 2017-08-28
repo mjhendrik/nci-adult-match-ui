@@ -67,10 +67,10 @@ export class ViewDataTransformer {
     return transformedReport;
   }
 
-  transformAssignment(source: any, dateAssigned: string): AssignmentReportData {
+  transformPatientAssignment(source: any, dateAssigned: string): AssignmentReportData {
     const transformedPatient: any = { ...source }; // Deep-copy the source
 
-    let assignmentReport = null;
+    let assignmentReport;
     if (transformedPatient.patientAssignments && transformedPatient.patientAssignments.length > 0) {
       assignmentReport = (transformedPatient.patientAssignments as any[])
         .find(x => x.dateAssigned.$date.toString() === dateAssigned);
@@ -78,6 +78,8 @@ export class ViewDataTransformer {
 
     if (assignmentReport) {
       this.transformAssignmentLogic(assignmentReport);
+    } else {
+      assignmentReport = {};
     }
 
     return {

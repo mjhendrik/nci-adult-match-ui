@@ -20,7 +20,7 @@ class DataResolver implements Resolve<AssignmentReportData> {
     const psn: string = route.params.patientSequenceNumber;
 
     return this.api.getPatientDetails(psn)
-      .map(patient => this.transformer.transformAssignment(patient, dateAssigned));
+      .map(patient => this.transformer.transformPatientAssignment(patient, dateAssigned));
   }
 }
 

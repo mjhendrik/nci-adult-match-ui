@@ -1,12 +1,12 @@
-<div class="load-content" *ngIf="!dataAvailable">
+<div class="load-content">
   <div id="page-loader" class="page-loader fade in"><span class="spinner">Loading...</span></div>
 </div>
-<div id="content" class="content" *ngIf="dataAvailable">
+<div id="content" class="content">
   <ul class="breadcrumb pull-right">
     <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
     <li><a href [routerLink]="['/patients']" class="link-none">Patients</a></li>
-    <li><a href [routerLink]="['/patients/' + assignmentReport.patientAssignmentMessages[0].patientSequenceNumber]" class="link-none">Patient {{assignmentReport.patientAssignmentMessages[0].patientSequenceNumber}}</a></li>
-    <li><a href [routerLink]="['/patients/' + assignmentReport.patientAssignmentMessages[0].patientSequenceNumber + '/variant_reports/' + analysisId]"
+    <li><a href [routerLink]="['/patients/' + psn]" class="link-none">Patient {{psn}}</a></li>
+    <li><a href [routerLink]="['/patients/' + psn + '/variant_reports/' + analysisId]"
         class="link-none">Variant Report</a></li>
     <li class="active">Historical Assignment Report</li>
   </ul>
@@ -23,7 +23,7 @@
             <dt>Analysis ID</dt>
             <dd>{{analysisId | dashify}}</dd>
             <dt>Status</dt>
-            <dd><span [colorCodeAssignment]="assignmentReport.patientAssignmentMessages[0].status"> {{assignmentReport.patientAssignmentMessages[0].status | dashify}}</span>              on {{assignmentReport.dateConfirmed | gmt}} by TA Committee</dd>
+            <dd><span [colorCodeAssignment]="assignmentReport.patientAssignmentStatus"> {{assignmentReport.patientAssignmentStatus | dashify}}</span> on {{assignmentReport.dateConfirmed | gmt}} by {{(assignmentReport.user||'System User') | dashify}}</dd>
           </dl>
         </div>
       </div>
@@ -51,14 +51,18 @@
     <div class="panel-heading">
       <div class="row">
         <div class="col-md-12">
-          <h4>Selected Treatment Arm:
-            <span *ngIf="assignmentReport.treatmentArm" class="text-success-light">{{assignmentReport.patientAssignmentMessages[0].treatmentArmId | dashify}} ({{assignmentReport.treatmentArm.version | dashify}})</span>
-            <span *ngIf="!assignmentReport.treatmentArm" class="text-muted">No available treatment arm</span>
-          </h4>
-          <div class="panel panel-success overflow-hidden">
+          <dl *ngIf="assignmentReport.hasSelectedTreatmentArm" class="dl-horizontal widest-dt">
+            <dt>Selected Treatment Arm</dt>
+            <dd>
+              <treatment-arm-link *ngIf="assignmentReport" [treatmentArmId]="assignmentReport.treatmentArm.treatmentArmId" 
+                [version]="assignmentReport.treatmentArm.version" [removePrefix]="true"></treatment-arm-link>
+              <span *ngIf="!assignmentReport">-</span>
+            </dd>
+          </dl>
+          <div *ngIf="assignmentReport.hasSelectedTreatmentArm" class="panel panel-success overflow-hidden">
             <div class="panel-heading">
               <p>
-                {{assignmentReport.patientAssignmentMessages[0].message | dashify}}
+                {{assignmentReport.patientAssignmentStatusMessage | dashify}}
               </p>
             </div>
           </div>

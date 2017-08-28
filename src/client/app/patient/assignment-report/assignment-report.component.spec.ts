@@ -17,11 +17,10 @@ import { SharedModule } from '../../shared/shared.module';
 import { AssignmentReportComponent } from './assignment-report.component';
 import { AssignmentReasonTableModule } from '../assignment-reason-table/assignment-reason-table.module';
 import { DirectivesModule } from '../../shared/directives/directives.module';
-import { PatientApiService } from './../patient-api.service';
 import { ViewDataTransformer } from './../view-data-transformer.service';
 
-import { PatientApiServiceStub } from '../testing/patient-api-service-stub';
 import { ActivatedRouteStub } from '../testing/activated-route-stub';
+import { ViewDataTransformerStub } from '../testing/view-data-transformer-stubs';
 
 export function main() {
   describe('AssignmentReportComponent (templateUrl)', () => {
@@ -29,6 +28,10 @@ export function main() {
     let fixture: ComponentFixture<AssignmentReportComponent>;
     let de: DebugElement;
     let el: HTMLElement;
+    let activatedRouteStub: ActivatedRouteStub = new ActivatedRouteStub();
+    let rawPatientData = ViewDataTransformerStub.makePatientWithAssignmentData();
+    let transformedPatientData = new ViewDataTransformer().transformPatientAssignment(rawPatientData, '1234');
+    activatedRouteStub.snapshot.data['data'] = transformedPatientData;
 
     let config: any[] = [
       { path: 'patients/1234/variant_reports/ABCD/assignment/2017-02-04', component: 'AssignmentReportComponent' }
@@ -47,8 +50,7 @@ export function main() {
         ],
         declarations: [AssignmentReportComponent],
         providers: [
-          { provide: ActivatedRoute, useClass: ActivatedRouteStub },
-          { provide: PatientApiService, useClass: PatientApiServiceStub },
+          { provide: ActivatedRoute, useValue: activatedRouteStub },
           ChangeDetectorRef,
           ViewDataTransformer
         ]
@@ -64,11 +66,11 @@ export function main() {
       el = de.nativeElement;
     });
 
-    fit('no PSN in title until manually call `detectChanges`', () => {
+    it('no Date Assigned in title until manually call `detectChanges`', () => {
       expect(el.textContent).toEqual('Historical Assignment Report ');
     });
 
-    it('should display PSN in the title', () => {
+    it('should display Date Assigned in the title', () => {
       fixture.detectChanges();
       expect(el.textContent).toEqual('Historical Assignment Report ' + component.dateAssigned);
     });
