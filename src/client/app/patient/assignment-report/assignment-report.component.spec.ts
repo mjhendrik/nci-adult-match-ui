@@ -8,6 +8,7 @@ import {
   ComponentFixture
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { PipesModule } from './../../shared/pipes/pipes.module';
 import { SharedModule } from '../../shared/shared.module';
@@ -15,53 +16,47 @@ import { AssignmentReportComponent } from './assignment-report.component';
 import { AssignmentReasonTableModule } from '../assignment-reason-table/assignment-reason-table.module';
 import { DirectivesModule } from '../../shared/directives/directives.module';
 
-@Component({
-  selector: 'test-cmp',
-  template: '<sd-assignment-report></sd-assignment-report>'
-})
-class TestComponent {
-}
-
 export function main() {
-  fdescribe('AssignmentReportComponent (templateUrl)', () => {
-    let hostComponent: TestComponent;
-    let fixture: ComponentFixture<TestComponent>;
+  xdescribe('AssignmentReportComponent (templateUrl)', () => {
+    let component: AssignmentReportComponent;
+    let fixture: ComponentFixture<AssignmentReportComponent>;
     let de: DebugElement;
     let el: HTMLElement;
+
+    let config: any[] = [
+      { path: 'patients/1234/variant_reports/ABCD/assignment/2017-02-04', component: 'AssignmentReportComponent' }
+    ];
 
     // async beforeEach
     beforeEach(async(() => {
       TestBed.configureTestingModule({
         imports: [
+          RouterTestingModule.withRoutes(config),
           PipesModule,
           SharedModule,
           DirectivesModule,
           AssignmentReasonTableModule
         ],
-        declarations: [AssignmentReportComponent, TestComponent]
+        declarations: [AssignmentReportComponent]
       }).compileComponents();  // compile template and css
     }));
 
     // synchronous beforeEach
     beforeEach(() => {
-      fixture = TestBed.createComponent(TestComponent);
-      hostComponent = fixture.componentInstance;
-      de = fixture.debugElement.query(By.css('sd-assignment-report'));
-      console.log(fixture.debugElement.nativeElement.innerText);
+      fixture = TestBed.createComponent(AssignmentReportComponent);
+      component = fixture.componentInstance; // AssignmentReportComponent test instance
+      // query for the title 'page-header' by CSS element selector
+      de = fixture.debugElement.query(By.css('.page-header'));
       el = de.nativeElement;
     });
 
-    it('should have no table body until manually calling `detectChanges`', () => {
-      let tbody = fixture.debugElement.query(By.css('tbody'));
-      expect(tbody).toBeNull();
+    it('no PSN in title until manually call `detectChanges`', () => {
+      expect(el.textContent).toEqual('Patient ');
     });
 
-    it('should display "No Assignment data" when host provides empty array', () => {
+    it('should display PSN in the title', () => {
       fixture.detectChanges();
-      let tbody = fixture.debugElement.query(By.css('tbody'));
-      let rows = tbody.queryAll(By.css('tr'));
-      expect(rows.length).toBe(1);
-      expect((rows[0].nativeElement as HTMLElement).innerText).toContain('No Assignment data');
+      expect(el.textContent).toEqual('Patient ' + component.psn);
     });
 
   });

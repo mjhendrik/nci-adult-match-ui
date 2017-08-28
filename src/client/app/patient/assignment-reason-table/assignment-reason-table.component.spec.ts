@@ -44,7 +44,6 @@ export function main() {
       fixture = TestBed.createComponent(TestComponent);
       hostComponent = fixture.componentInstance;
       de = fixture.debugElement.query(By.css('sd-assignment-reason-table'));
-      console.log(fixture.debugElement.nativeElement.innerText);
       el = de.nativeElement;
     });
 

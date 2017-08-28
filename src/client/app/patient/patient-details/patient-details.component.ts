@@ -61,11 +61,8 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
   ngAfterViewInit() {
     if (this.needToScroll && !!this.entityId) {
       setTimeout(() => {
-        console.log('HERE BEFORE!!!');
-        console.log('this.entityId=' + this.entityId);
         const element = document.getElementById(this.entityId);
         if (element) {
-          console.log('HERE!!!');
           console.info(`scrolling to ID ${this.entityId}`);
           element.scrollIntoView();
         }

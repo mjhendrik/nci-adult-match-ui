@@ -67,9 +67,7 @@ export function main() {
     // synchronous beforeEach
     beforeEach(() => {
       fixture = TestBed.createComponent(PatientDetailsComponent);
-
       component = fixture.componentInstance; // PatientDetailsComponent test instance
-
       // query for the title 'page-header' by CSS element selector
       de = fixture.debugElement.query(By.css('.page-header'));
       el = de.nativeElement;
