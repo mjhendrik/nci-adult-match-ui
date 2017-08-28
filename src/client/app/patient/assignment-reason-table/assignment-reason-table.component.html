@@ -7,7 +7,7 @@
       <th>Reason</th>
     </tr>
   </thead>
-  <tbody *ngIf="reasons">
+  <tbody *ngIf="reasons" class="ut-tbody">
     <ng-template ngFor let-section let-index="index" [ngForOf]="reasons">
       <tr>
         <td colspan="2">
@@ -22,7 +22,7 @@
       </tr>
     </ng-template>
   </tbody>
-  <tbody *ngIf="!reasons">
+  <tbody *ngIf="!reasons" class="ut-tbody">
     <tr>
       <td colspan="3" class="text-muted">No Assignment data</td>
     </tr>
