@@ -27,6 +27,7 @@ import { SharedModule } from '../../shared/shared.module';
 
 import { PatientApiServiceStub } from '../testing/patient-api-service-stub';
 import { ActivatedRouteStub } from '../testing/activated-route-stub';
+import { ViewDataTransformerStub } from '../testing/view-data-transformer-stubs';
 
 export function main() {
   describe('PatientDetailsComponent (templateUrl)', () => {
@@ -35,6 +36,10 @@ export function main() {
     let fixture: ComponentFixture<PatientDetailsComponent>;
     let de: DebugElement;
     let el: HTMLElement;
+    let activatedRouteStub: ActivatedRouteStub = new ActivatedRouteStub();
+    let trasformerStub: ViewDataTransformerStub = new ViewDataTransformerStub();
+
+    activatedRouteStub.snapshot.data['data'] = this.trasformerStub.makePatientData();
 
     let config: any[] = [
       { path: 'patients/1234', component: 'PatientDetailsComponent' }
@@ -56,7 +61,7 @@ export function main() {
         ],
         declarations: [PatientDetailsComponent],
         providers: [
-          { provide: ActivatedRoute, useClass: ActivatedRouteStub },
+          { provide: ActivatedRoute, useValue: activatedRouteStub },
           { provide: PatientApiService, useClass: PatientApiServiceStub },
           ChangeDetectorRef,
           ViewDataTransformer

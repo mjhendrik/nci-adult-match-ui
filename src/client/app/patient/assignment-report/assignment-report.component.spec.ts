@@ -1,5 +1,5 @@
 import {
-  Component,
+  ChangeDetectorRef,
   DebugElement
 } from '@angular/core';
 import {
@@ -9,15 +9,22 @@ import {
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { ActivatedRoute } from '@angular/router';
 
 import { PipesModule } from './../../shared/pipes/pipes.module';
 import { SharedModule } from '../../shared/shared.module';
 import { AssignmentReportComponent } from './assignment-report.component';
 import { AssignmentReasonTableModule } from '../assignment-reason-table/assignment-reason-table.module';
 import { DirectivesModule } from '../../shared/directives/directives.module';
+import { PatientApiService } from './../patient-api.service';
+import { ViewDataTransformer } from './../view-data-transformer.service';
+
+import { PatientApiServiceStub } from '../testing/patient-api-service-stub';
+import { ActivatedRouteStub } from '../testing/activated-route-stub';
 
 export function main() {
-  xdescribe('AssignmentReportComponent (templateUrl)', () => {
+  describe('AssignmentReportComponent (templateUrl)', () => {
     let component: AssignmentReportComponent;
     let fixture: ComponentFixture<AssignmentReportComponent>;
     let de: DebugElement;
@@ -35,9 +42,16 @@ export function main() {
           PipesModule,
           SharedModule,
           DirectivesModule,
-          AssignmentReasonTableModule
+          AssignmentReasonTableModule,
+          NoopAnimationsModule
         ],
-        declarations: [AssignmentReportComponent]
+        declarations: [AssignmentReportComponent],
+        providers: [
+          { provide: ActivatedRoute, useClass: ActivatedRouteStub },
+          { provide: PatientApiService, useClass: PatientApiServiceStub },
+          ChangeDetectorRef,
+          ViewDataTransformer
+        ]
       }).compileComponents();  // compile template and css
     }));
 
@@ -50,13 +64,13 @@ export function main() {
       el = de.nativeElement;
     });
 
-    it('no PSN in title until manually call `detectChanges`', () => {
-      expect(el.textContent).toEqual('Patient ');
+    fit('no PSN in title until manually call `detectChanges`', () => {
+      expect(el.textContent).toEqual('Historical Assignment Report ');
     });
 
     it('should display PSN in the title', () => {
       fixture.detectChanges();
-      expect(el.textContent).toEqual('Patient ' + component.psn);
+      expect(el.textContent).toEqual('Historical Assignment Report ' + component.dateAssigned);
     });
 
   });

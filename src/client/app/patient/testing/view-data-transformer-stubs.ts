@@ -1,7 +1,7 @@
 import { Tabs } from '../patient-details/patient-details.module';
 
 export class ViewDataTransformerStub {
-    makePatientListData = () => {
+    makePatientData = () => {
         return {
             psn: 'fake-psm',
             patient: {

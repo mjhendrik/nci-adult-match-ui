@@ -22,7 +22,7 @@ export class ActivatedRouteStub {
         this.subject.next(this._testParamMap);
     }
 
-    private actvatedSnapshot: ActivatedRouteSnapshot;
+    private actvatedSnapshot: ActivatedRouteSnapshot = new ActivatedRouteSnapshot();
 
     // ActivatedRoute.snapshot.paramMap
     get snapshot(): ActivatedRouteSnapshot {
@@ -30,9 +30,7 @@ export class ActivatedRouteStub {
     }
 
     constructor() {
-        this.actvatedSnapshot = new ActivatedRouteSnapshot();
         this.actvatedSnapshot.data = {};
-        this.actvatedSnapshot.data['data'] = this.trasformerStub.makePatientListData();
     }
 
     toString(): string {
