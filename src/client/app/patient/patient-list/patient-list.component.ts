@@ -64,41 +64,6 @@ export class PatientListComponent implements OnInit {
     this.refreshData();
   }
 
-  getData() {
-    let gmt = new GmtPipe();
-    this.patientApi.getPatientList(this.page, this.size, this.sortOrder, this.sortBy, this.searchTermPatients, this.isOutsideAssay)
-      .subscribe(itemList => {
-        this.tablePatientsData = itemList.map(x => {
-          x.registrationDate = gmt.transform(x.registrationDate);
-          x.offTrialDate = gmt.transform(x.offTrialDate);
-          x.diseases.shortName = x.diseases && x.diseases.length ? x.diseases.map((y: any) => y.shortName).join(', ') : '';
-          return x;
-        });
-      },
-      error => this.errorMessage = <any>error
-      );
-  }
-
-  refreshData() {
-    this.patientApi.getPatientCount(this.searchTermPatients, this.isOutsideAssay)
-      .subscribe(itemList => {
-        this.patientCount = itemList;
-        this.getData();
-        this.getPatientTotal();
-      },
-      error => this.errorMessage = <any>error
-      );
-  }
-
-  getPatientTotal() {
-    this.patientApi.getPatientTotal()
-      .subscribe(itemList => {
-        this.patientTotal = itemList;
-      },
-      error => this.errorMessage = <any>error
-      );
-  }
-
   onSearchChanged(val: any) {
     Observable.fromEvent(this.inputElRef.nativeElement, 'input')
       .debounceTime(400)
@@ -139,4 +104,38 @@ export class PatientListComponent implements OnInit {
     this.previous = evt;
   }
 
+  private refreshData() {
+    this.patientApi.getPatientCount(this.searchTermPatients, this.isOutsideAssay)
+      .subscribe(itemList => {
+        this.patientCount = itemList;
+        this.getData();
+        this.getPatientTotal();
+      },
+      error => this.errorMessage = <any>error
+      );
+  }
+
+  private getData() {
+    let gmt = new GmtPipe();
+    this.patientApi.getPatientList(this.page, this.size, this.sortOrder, this.sortBy, this.searchTermPatients, this.isOutsideAssay)
+      .subscribe(itemList => {
+        this.tablePatientsData = itemList.map(x => {
+          x.registrationDate = gmt.transform(x.registrationDate);
+          x.offTrialDate = gmt.transform(x.offTrialDate);
+          x.diseases.shortName = x.diseases && x.diseases.length ? x.diseases.map((y: any) => y.shortName).join(', ') : '';
+          return x;
+        });
+      },
+      error => this.errorMessage = <any>error
+      );
+  }
+
+  private getPatientTotal() {
+    this.patientApi.getPatientTotal()
+      .subscribe(itemList => {
+        this.patientTotal = itemList;
+      },
+      error => this.errorMessage = <any>error
+      );
+  }
 }
