@@ -17,10 +17,10 @@ export class ActivatedRouteStub {
     // Test parameters
     private _testParamMap: ParamMap;
     get testParamMap() { return this._testParamMap; }
-    set testParamMap(params: {}) {
-        this._testParamMap = convertToParamMap(params);
-        this.subject.next(this._testParamMap);
-    }
+    // set testParamMap(params: {}) {
+    //     this._testParamMap = convertToParamMap(params);
+    //     this.subject.next(this._testParamMap);
+    // }
 
     private actvatedSnapshot: ActivatedRouteSnapshot = new ActivatedRouteSnapshot();
 

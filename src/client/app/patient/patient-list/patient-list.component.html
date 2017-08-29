@@ -49,25 +49,25 @@
           <thead>
             <tr class="purple-light">
               <th>
-                <mfDefaultSorter (SortStatus)="SortStatus($event)" by="patientSequenceNumber"><span class="table-header">Patient Sequence Number</span></mfDefaultSorter>
+                <mfDefaultSorter (SortStatus)="sortStatus($event)" by="patientSequenceNumber"><span class="table-header">Patient Sequence Number</span></mfDefaultSorter>
               </th>
               <th>
-                <mfDefaultSorter (SortStatus)="SortStatus($event)" by="currentPatientStatus"><span class="table-header">Status</span></mfDefaultSorter>
+                <mfDefaultSorter (SortStatus)="sortStatus($event)" by="currentPatientStatus"><span class="table-header">Status</span></mfDefaultSorter>
               </th>
               <th>
-                <mfDefaultSorter (SortStatus)="SortStatus($event)" by="currentStepNumber"><span class="table-header">Step Number</span></mfDefaultSorter>
+                <mfDefaultSorter (SortStatus)="sortStatus($event)" by="currentStepNumber"><span class="table-header">Step Number</span></mfDefaultSorter>
               </th>
               <th>
-                <mfDefaultSorter (SortStatus)="SortStatus($event)" by="diseases.shortName"><span class="table-header">Diseases</span></mfDefaultSorter>
+                <mfDefaultSorter (SortStatus)="sortStatus($event)" by="diseases.shortName"><span class="table-header">Diseases</span></mfDefaultSorter>
               </th>
               <th>
-                <mfDefaultSorter (SortStatus)="SortStatus($event)" by="treatmentArm.treatmentArmId"><span class="table-header">Treatment Arm</span></mfDefaultSorter>
+                <mfDefaultSorter (SortStatus)="sortStatus($event)" by="treatmentArm.treatmentArmId"><span class="table-header">Treatment Arm</span></mfDefaultSorter>
               </th>
               <th>
-                <mfDefaultSorter (SortStatus)="SortStatus($event)" by="registrationDate"><span class="table-header">Registration Date</span></mfDefaultSorter>
+                <mfDefaultSorter (SortStatus)="sortStatus($event)" by="registrationDate"><span class="table-header">Registration Date</span></mfDefaultSorter>
               </th>
               <th>
-                <mfDefaultSorter (SortStatus)="SortStatus($event)" by="offTrialDate"><span class="table-header">Off Trial Date</span></mfDefaultSorter>
+                <mfDefaultSorter (SortStatus)="sortStatus($event)" by="offTrialDate"><span class="table-header">Off Trial Date</span></mfDefaultSorter>
               </th>
             </tr>
           </thead>
@@ -89,7 +89,7 @@
             <tr *ngIf="mftablePatients.data.length == 0">
               <td class="text-muted" colspan="7">
                 <span *ngIf="searchTermPatients">No matching search results found for "{{searchTermPatients}}"</span>
-                <span *ngIf="!searchTermPatients">No patient data</span>
+                <span *ngIf="!searchTermPatients">No Patient data</span>
               </td>
             </tr>
           </tbody>

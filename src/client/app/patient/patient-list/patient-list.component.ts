@@ -126,7 +126,7 @@ export class PatientListComponent implements OnInit {
     this.previous = evt;
   }
 
-  SortStatus(evt: any): void {
+  sortStatus(evt: any): void {
     evt += ',' + this.searchTermPatients;
     let params = evt.split(',');
     this.page = parseInt(params[0]);

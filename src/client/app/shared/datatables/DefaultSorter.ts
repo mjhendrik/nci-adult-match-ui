@@ -23,7 +23,7 @@ export class DefaultSorter implements OnInit {
     @Input('by') sortBy: string;
     @Output('SortStatus') SortStatus = new EventEmitter<string>();
 
-    isSortedByMeAsc: boolean = false;
+    isSortedByMeAsc: boolean = false; 
     isSortedByMeDesc: boolean = false;
 
     public constructor(private mfTable: DataTable) {
