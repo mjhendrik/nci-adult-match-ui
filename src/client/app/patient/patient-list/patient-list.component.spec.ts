@@ -26,9 +26,9 @@ export function main() {
     let fixture: ComponentFixture<PatientListComponent>;
     let api: PatientApiService;
     let spy: jasmine.Spy;
-    let de: DebugElement;
+    let tableDebugElement: DebugElement;
     let el: HTMLElement;
-    let tbody: DebugElement;
+    let tbodyDebugElement: DebugElement;
 
     let config: any[] = [
       { path: 'patients', component: 'PatientListComponent' }
@@ -62,13 +62,13 @@ export function main() {
       spy = spyOn(api, 'getPatientList').and.callThrough();
 
       // Get the Twain quote element by CSS selector (e.g., by class name)
-      de = fixture.debugElement.query(By.css('table'));
-      tbody = de.query(By.css('tbody'));
-      el = de.nativeElement;
+      tableDebugElement = fixture.debugElement.query(By.css('table'));
+      tbodyDebugElement = tableDebugElement.query(By.css('tbody'));
+      el = tableDebugElement.nativeElement;
     });
 
     it('should not show any rows before OnInit', () => {
-      let rows = tbody.queryAll(By.css('tr'));
+      let rows = tbodyDebugElement.queryAll(By.css('tr'));
       expect(rows.length).toBe(0);
     });
 
@@ -76,145 +76,172 @@ export function main() {
       fixture.detectChanges();
 
       fixture.whenStable().then(() => { // wait for async getPatientList
-        let rows = tbody.queryAll(By.css('tr'));
+        let rows = tbodyDebugElement.queryAll(By.css('tr'));
         expect(rows.length).toBe(10);
       });
 
     }));
 
-  });
 
+    xdescribe('with sort', () => {
+      it('should sort by first column in ASC order', async((done: any) => {
+        component.sortStatus({'Subhash,':'what should we pass here? :)'});
 
-  xdescribe('patients component', () => {
-    let config: any[] = [
-      { path: 'patients', component: 'PatientListComponent' }
-    ];
+        fixture.whenStable().then(() => { // wait for async getPatientList
+          let rows = tbodyDebugElement.queryAll(By.css('tr'));
+          expect(rows.length).toBe(10);
+        });
+      }));
 
-    beforeEach(() => {
-      TestBed.configureTestingModule({
-        imports: [
-          RouterTestingModule.withRoutes(config),
-          DirectivesModule,
-          PipesModule,
-          FormsModule,
-          DataTableModule,
-          SharedModule
-        ],
-        declarations: [PatientListComponent],
-        providers: [
-          { provide: PatientApiService, useClass: PatientApiServiceMock },
-        ]
-      });
+      it('should sort by first column in DESC order', async((done: any) => {
+      }));
     });
 
-    xit('should test ngOnInit',
-      async((done: any) => {
-        TestBed
-          .compileComponents()
-          .then(() => {
-            let fixture = TestBed.overrideComponent(PatientListComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(PatientListComponent);
-            fixture.componentInstance.previous = '1,100,asc,patientSequenceNumber';
-            fixture.componentInstance.ngOnInit();
-          });
-      }));
 
-    xit('should test currentPageActive',
-      async((done: any) => {
-        TestBed
-          .compileComponents()
-          .then(() => {
-            let fixture = TestBed.overrideComponent(PatientListComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(PatientListComponent);
-            fixture.componentInstance.previous = '1,100,asc,patientSequenceNumber';
-            fixture.componentInstance.currentPageActive('1,10,asc,patientSequenceNumber');
-          });
-      }));
+    xdescribe('with pagination', () => {
+      // it should set page size to 10 and preserve order
+      // it should set page size to 25 and preserve order
+    });
 
-    xit('should test currentPageActive with else status',
-      async((done: any) => {
-        TestBed
-          .compileComponents()
-          .then(() => {
-            let fixture = TestBed.overrideComponent(PatientListComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(PatientListComponent);
-            fixture.componentInstance.previous = '1,10,asc,patientSequenceNumber';
-            fixture.componentInstance.currentPageActive('1,10,asc,patientSequenceNumber');
-          });
-      }));
 
-    xit('should test sortStatus',
-      async((done: any) => {
-        TestBed
-          .compileComponents()
-          .then(() => {
-            let fixture = TestBed.overrideComponent(PatientListComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(PatientListComponent);
-            fixture.componentInstance.previous = '1,100,asc,patientSequenceNumber';
-            fixture.componentInstance.sortStatus('1,10,asc,patientSequenceNumber');
-          });
-      }));
-
-    xit('should test sortStatus with else',
-      async((done: any) => {
-        TestBed
-          .compileComponents()
-          .then(() => {
-            let fixture = TestBed.overrideComponent(PatientListComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(PatientListComponent);
-            fixture.componentInstance.previous = '1,100,asc,patientSequenceNumber,test';
-            fixture.componentInstance.searchTermPatients = 'test';
-            fixture.componentInstance.sortStatus('1,100,asc,patientSequenceNumber');
-          });
-      }));
-
-    xit('should test onSearchChanged',
-      async((done: any) => {
-        TestBed
-          .compileComponents()
-          .then(() => {
-            let fixture = TestBed.overrideComponent(PatientListComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(PatientListComponent);
-            fixture.componentInstance.previous = '1,100,asc,patientSequenceNumber';
-            fixture.componentInstance.onSearchChanged('test');
-          });
-      }));
-
-    xit('should test onSearchChanged with else',
-      async((done: any) => {
-        TestBed
-          .compileComponents()
-          .then(() => {
-            let fixture = TestBed.overrideComponent(PatientListComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(PatientListComponent);
-            fixture.componentInstance.previous = '1,100,asc,patientSequenceNumber';
-            fixture.componentInstance.searchTermPatients = 'test';
-            fixture.componentInstance.onSearchChanged('test');
-          });
-      }));
+    xdescribe('with filtering', () => {
+      // it should filter by free text
+      // it should filter by OA toggle
+      // it should filter by both free text anb OA toggle
+    });
 
   });
+
+  // xdescribe('patients component', () => {
+  //   let config: any[] = [
+  //     { path: 'patients', component: 'PatientListComponent' }
+  //   ];
+
+  //   beforeEach(() => {
+  //     TestBed.configureTestingModule({
+  //       imports: [
+  //         RouterTestingModule.withRoutes(config),
+  //         DirectivesModule,
+  //         PipesModule,
+  //         FormsModule,
+  //         DataTableModule,
+  //         SharedModule
+  //       ],
+  //       declarations: [PatientListComponent],
+  //       providers: [
+  //         { provide: PatientApiService, useClass: PatientApiServiceMock },
+  //       ]
+  //     });
+  //   });
+
+  //   xit('should test ngOnInit',
+  //     async((done: any) => {
+  //       TestBed
+  //         .compileComponents()
+  //         .then(() => {
+  //           let fixture = TestBed.overrideComponent(PatientListComponent, {
+  //             set: {
+  //               templateUrl: ''
+  //             }
+  //           }).createComponent(PatientListComponent);
+  //           fixture.componentInstance.previous = '1,100,asc,patientSequenceNumber';
+  //           fixture.componentInstance.ngOnInit();
+  //         });
+  //     }));
+
+  //   xit('should test currentPageActive',
+  //     async((done: any) => {
+  //       TestBed
+  //         .compileComponents()
+  //         .then(() => {
+  //           let fixture = TestBed.overrideComponent(PatientListComponent, {
+  //             set: {
+  //               templateUrl: ''
+  //             }
+  //           }).createComponent(PatientListComponent);
+  //           fixture.componentInstance.previous = '1,100,asc,patientSequenceNumber';
+  //           fixture.componentInstance.currentPageActive('1,10,asc,patientSequenceNumber');
+  //         });
+  //     }));
+
+  //   xit('should test currentPageActive with else status',
+  //     async((done: any) => {
+  //       TestBed
+  //         .compileComponents()
+  //         .then(() => {
+  //           let fixture = TestBed.overrideComponent(PatientListComponent, {
+  //             set: {
+  //               templateUrl: ''
+  //             }
+  //           }).createComponent(PatientListComponent);
+  //           fixture.componentInstance.previous = '1,10,asc,patientSequenceNumber';
+  //           fixture.componentInstance.currentPageActive('1,10,asc,patientSequenceNumber');
+  //         });
+  //     }));
+
+  //   xit('should test sortStatus',
+  //     async((done: any) => {
+  //       TestBed
+  //         .compileComponents()
+  //         .then(() => {
+  //           let fixture = TestBed.overrideComponent(PatientListComponent, {
+  //             set: {
+  //               templateUrl: ''
+  //             }
+  //           }).createComponent(PatientListComponent);
+  //           fixture.componentInstance.previous = '1,100,asc,patientSequenceNumber';
+  //           fixture.componentInstance.sortStatus('1,10,asc,patientSequenceNumber');
+  //         });
+  //     }));
+
+  //   xit('should test sortStatus with else',
+  //     async((done: any) => {
+  //       TestBed
+  //         .compileComponents()
+  //         .then(() => {
+  //           let fixture = TestBed.overrideComponent(PatientListComponent, {
+  //             set: {
+  //               templateUrl: ''
+  //             }
+  //           }).createComponent(PatientListComponent);
+  //           fixture.componentInstance.previous = '1,100,asc,patientSequenceNumber,test';
+  //           fixture.componentInstance.searchTermPatients = 'test';
+  //           fixture.componentInstance.sortStatus('1,100,asc,patientSequenceNumber');
+  //         });
+  //     }));
+
+  //   xit('should test onSearchChanged',
+  //     async((done: any) => {
+  //       TestBed
+  //         .compileComponents()
+  //         .then(() => {
+  //           let fixture = TestBed.overrideComponent(PatientListComponent, {
+  //             set: {
+  //               templateUrl: ''
+  //             }
+  //           }).createComponent(PatientListComponent);
+  //           fixture.componentInstance.previous = '1,100,asc,patientSequenceNumber';
+  //           fixture.componentInstance.onSearchChanged('test');
+  //         });
+  //     }));
+
+  //   xit('should test onSearchChanged with else',
+  //     async((done: any) => {
+  //       TestBed
+  //         .compileComponents()
+  //         .then(() => {
+  //           let fixture = TestBed.overrideComponent(PatientListComponent, {
+  //             set: {
+  //               templateUrl: ''
+  //             }
+  //           }).createComponent(PatientListComponent);
+  //           fixture.componentInstance.previous = '1,100,asc,patientSequenceNumber';
+  //           fixture.componentInstance.searchTermPatients = 'test';
+  //           fixture.componentInstance.onSearchChanged('test');
+  //         });
+  //     }));
+
+  // });
 
 }
 

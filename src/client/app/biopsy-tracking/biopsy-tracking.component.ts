@@ -89,6 +89,7 @@ export class BiopsyTrackingListComponent implements OnInit {
   onSearchChanged(val: any) {
     Observable.fromEvent(this.inputElRef.nativeElement, 'input')
       .debounceTime(400)
+      .distinctUntilChanged()
       .subscribe((val: any) => {
         this.cdref.detectChanges();
         if (this.searchtermBiopsyTrackingList !== val.target.value) {
