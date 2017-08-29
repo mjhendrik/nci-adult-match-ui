@@ -5,7 +5,6 @@ import { PatientTimelineComponent } from './patient-timeline.component';
 import { FormsModule } from '@angular/forms';
 import { PipesModule } from '../../shared/pipes/pipes.module';
 import { DirectivesModule } from '../../shared/directives/directives.module';
-import { LongListModule } from '../../shared/long-list/long-list.module';
 
 @NgModule({
   imports: [
@@ -14,7 +13,6 @@ import { LongListModule } from '../../shared/long-list/long-list.module';
     FormsModule,
     PipesModule,
     DirectivesModule,
-    LongListModule
   ],
   declarations: [PatientTimelineComponent],
   exports: [PatientTimelineComponent]

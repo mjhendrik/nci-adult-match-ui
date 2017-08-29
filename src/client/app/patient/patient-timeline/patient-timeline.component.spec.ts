@@ -11,7 +11,7 @@ import { LongListModule } from '../../shared/long-list/long-list.module';
 import { PatientTimelineComponent } from './patient-timeline.component';
 
 export function main() {
-  describe('patient timeline component', () => {
+  fdescribe('patient timeline component', () => {
 
     beforeEach(() => {
       TestBed.configureTestingModule({
@@ -21,7 +21,7 @@ export function main() {
       });
     });
 
-    xit('should test getIcon',
+    fit('should test getIcon',
       async((done: any) => {
         TestBed
           .compileComponents()
