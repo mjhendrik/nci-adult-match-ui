@@ -12,10 +12,10 @@ import {
 import { By } from '@angular/platform-browser';
 import { nvD3 } from 'ng2-nvd3';
 import { Observable } from 'rxjs/Observable';
-import { MockBackend } from '@angular/http/testing';
 
 declare let d3: any;
 import { CnvChartDirective } from './cnv-chart.directive.component';
+import { PatientApiServiceStub } from '../../patient/testing/patient-api-service-stub';
 
 export function main() {
   describe('Cnv chart component', () => {
@@ -44,36 +44,8 @@ export function main() {
               }
             }).createComponent(CnvChartDirective);
 
-            fixture.componentInstance.data = [ {
-              'values' :
-                [{'position':'66773856',
-                    'cn':'0.92',
-                    'Q1':'0.781879',
-                    'Q2':'0.92',
-                    'Q3':'1.032146',
-                    'whisker_low':'0.74278505',
-                    'whisker_high':'1.0837533000000001',
-                    'outliers':['0.74278505','0.92','1.0837533000000001']
-                  }]
-            }, 'tmp/ChartTitle'];
-
-            fixture.componentInstance.cnvdata  = [
-              { 'x':'70',
-                'label':'AR',
-                'status':'#CD0000',
-                'chr':'chrX',
-                'values':
-                {'position':'66773856',
-                  'cn':'0.92',
-                  'Q1':'0.781879',
-                  'Q2':'0.92',
-                  'Q3':'1.032146',
-                  'whisker_low':'0.74278505',
-                  'whisker_high':'1.0837533000000001',
-                  'outliers':['0.74278505','0.92','1.0837533000000001']
-                }
-              }
-            ];
+            fixture.componentInstance.data = PatientApiServiceStub.makeParsedVcftData();
+            fixture.componentInstance.cnvdata  = PatientApiServiceStub.makeCnvData();
 
             fixture.componentInstance.ngOnInit();
             expect(fixture.componentInstance.data).toBeDefined();

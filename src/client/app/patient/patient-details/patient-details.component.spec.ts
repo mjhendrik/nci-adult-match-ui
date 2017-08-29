@@ -25,7 +25,7 @@ import { ViewDataTransformer } from './../view-data-transformer.service';
 import { PatientTimelineModule } from './../patient-timeline/patient-timeline.module';
 import { SharedModule } from '../../shared/shared.module';
 
-import { PatientApiServiceStub } from '../testing/patient-api-service-stub';
+import { PatientApiServiceMock } from '../testing/patient-api-service-stub';
 import { ActivatedRouteStub } from '../testing/activated-route-stub';
 import { ViewDataTransformerStub } from '../testing/view-data-transformer-stubs';
 
@@ -60,7 +60,7 @@ export function main() {
         declarations: [PatientDetailsComponent],
         providers: [
           { provide: ActivatedRoute, useValue: activatedRouteStub },
-          { provide: PatientApiService, useClass: PatientApiServiceStub },
+          { provide: PatientApiService, useClass: PatientApiServiceMock },
           ChangeDetectorRef,
           ViewDataTransformer
         ]
