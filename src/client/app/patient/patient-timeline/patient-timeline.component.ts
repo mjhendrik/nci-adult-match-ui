@@ -1,11 +1,5 @@
-import {
-  Component,
-  Input
-} from '@angular/core';
+import { Component, Input } from '@angular/core';
 
-/**
- * PatientTimelineComponent.
- */
 @Component({
   moduleId: module.id,
   selector: 'sd-patient-timeline',
