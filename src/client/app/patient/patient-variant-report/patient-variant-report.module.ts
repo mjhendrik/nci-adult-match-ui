@@ -11,6 +11,7 @@ import { AssignmentReasonTableModule } from './../assignment-reason-table/assign
 import { ViewDataTransformer } from './../view-data-transformer.service';
 import { VariantReportSimpleTableModule } from '../../shared/variant-report-simple-table/variant-report-simple-table.module';
 import { SharedModule } from '../../shared/shared.module';
+import { ScrollService } from '../../shared/utils/scroll.to.service';
 
 export interface VariantReportData {
   psn: string;
@@ -43,6 +44,6 @@ export interface VariantReportData {
   ],
   declarations: [PatientVariantReportComponent],
   exports: [PatientVariantReportComponent],
-  providers: [PatientApiService, ViewDataTransformer]
+  providers: [PatientApiService, ViewDataTransformer, ScrollService]
 })
 export class PatientVariantReportModule { }

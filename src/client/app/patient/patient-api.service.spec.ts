@@ -56,15 +56,13 @@ export function main() {
     describe('when getPatientList', () => {
       let backend: MockBackend;
       let service: PatientApiService;
-      let serviceStub: PatientApiServiceStub;
       let fakePatients: any[];
       let response: Response;
 
       beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http, download);
-        serviceStub = new PatientApiServiceStub();
-        fakePatients = serviceStub.makePatientListData();
+        fakePatients = PatientApiServiceStub.makePatientListData();
         let options = new ResponseOptions({ status: 200, body: fakePatients });
         response = new Response(options);
       }));
@@ -120,14 +118,12 @@ export function main() {
     describe('when getPatientCount', () => {
       let backend: MockBackend;
       let service: PatientApiService;
-      let serviceStub: PatientApiServiceStub;
       let fakeCount: number;
       let response: Response;
 
       beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http, download);
-        serviceStub = new PatientApiServiceStub();
         fakeCount = 4;
         let options = new ResponseOptions({ status: 200, body: fakeCount });
         response = new Response(options);
@@ -184,14 +180,12 @@ export function main() {
     describe('when getPatientTotal', () => {
       let backend: MockBackend;
       let service: PatientApiService;
-      let serviceStub: PatientApiServiceStub;
       let fakeCount: number;
       let response: Response;
 
       beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http, download);
-        serviceStub = new PatientApiServiceStub();
         fakeCount = 4;
         let options = new ResponseOptions({ status: 200, body: fakeCount });
         response = new Response(options);
@@ -248,15 +242,13 @@ export function main() {
     describe('when getPatientDetails', () => {
       let backend: MockBackend;
       let service: PatientApiService;
-      let serviceStub: PatientApiServiceStub;
       let fakePatient: any;
       let response: Response;
 
       beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http, download);
-        serviceStub = new PatientApiServiceStub();
-        fakePatient = serviceStub.makePatientData();
+        fakePatient = PatientApiServiceStub.makePatientData();
         let options = new ResponseOptions({ status: 200, body: fakePatient });
         response = new Response(options);
       }));
@@ -312,15 +304,13 @@ export function main() {
     describe('when getOutsideAssayComparisonVariantReport', () => {
       let backend: MockBackend;
       let service: PatientApiService;
-      let serviceStub: PatientApiServiceStub;
       let fakeData: VariantReportComparisonData;
       let response: Response;
 
       beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http, download);
-        serviceStub = new PatientApiServiceStub();
-        fakeData = serviceStub.makeOutsideAssayComparisonVariantReportData();
+        fakeData = PatientApiServiceStub.makeOutsideAssayComparisonVariantReportData();
         let options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
       }));
@@ -376,15 +366,13 @@ export function main() {
     describe('when getPatientVariantReportQc', () => {
       let backend: MockBackend;
       let service: PatientApiService;
-      let serviceStub: PatientApiServiceStub;
       let fakeData: any;
       let response: Response;
 
       beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http, download);
-        serviceStub = new PatientApiServiceStub();
-        fakeData = serviceStub.makeVariantReportQcData();
+        fakeData = PatientApiServiceStub.makeVariantReportQcData();
         let options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
       }));
@@ -440,15 +428,13 @@ export function main() {
     describe('when getPatientVariantReportOcp', () => {
       let backend: MockBackend;
       let service: PatientApiService;
-      let serviceStub: PatientApiServiceStub;
       let fakeData: any;
       let response: Response;
 
       beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http, download);
-        serviceStub = new PatientApiServiceStub();
-        fakeData = serviceStub.makePatientVariantReportOcpData();
+        fakeData = PatientApiServiceStub.makePatientVariantReportOcpData();
         let options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
       }));
@@ -504,15 +490,13 @@ export function main() {
     describe('when getPatientCopyNumberReport', () => {
       let backend: MockBackend;
       let service: PatientApiService;
-      let serviceStub: PatientApiServiceStub;
       let fakeData: any;
       let response: Response;
 
       beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http, download);
-        serviceStub = new PatientApiServiceStub();
-        fakeData = serviceStub.makePatientCopyNumberReportData();
+        fakeData = PatientApiServiceStub.makePatientCopyNumberReportData();
         let options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
       }));
@@ -570,15 +554,13 @@ export function main() {
     describe('when getPatientVariantReportFileInfo', () => {
       let backend: MockBackend;
       let service: PatientApiService;
-      let serviceStub: PatientApiServiceStub;
       let fakeData: any;
       let response: Response;
 
       beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http, download);
-        serviceStub = new PatientApiServiceStub();
-        fakeData = serviceStub.makePatientVariantReportFileInfoData();
+        fakeData = PatientApiServiceStub.makePatientVariantReportFileInfoData();
         let options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
       }));
@@ -634,7 +616,6 @@ export function main() {
     describe('when downloadPatientFile', () => {
       let backend: MockBackend;
       let service: PatientApiService;
-      let serviceStub: PatientApiServiceStub;
       let fakeData: any;
       let response: Response;
       let downloadFileSpy: jasmine.Spy;
@@ -642,7 +623,6 @@ export function main() {
       beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http, download);
-        serviceStub = new PatientApiServiceStub();
         fakeData = {download_url:'fake-url'};
         let options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
