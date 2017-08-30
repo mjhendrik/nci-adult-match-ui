@@ -26,7 +26,7 @@ import { UtilsModule } from '../../shared/utils/utils.module';
 import { VariantReportFilteredTableModule } from "../../shared/variant-report-filtered-table/variant-report-filtered-table.module";
 
 export function main() {
-  fdescribe('PatientVariantReportQcComponent (templateUrl)', () => {
+  describe('PatientVariantReportQcComponent (templateUrl)', () => {
 
     let component: PatientVariantReportQcComponent;
     let fixture: ComponentFixture<PatientVariantReportQcComponent>;
