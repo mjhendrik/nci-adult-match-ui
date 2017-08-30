@@ -43,6 +43,37 @@ export class PatientApiServiceStub {
         ];
     }
 
+    static makeVariantReportQcData = () => {
+        return {
+            psn: '11276',
+            analysisId: 'ABCD',
+            molecularSequenceNumber: 'fake-msn',
+            dateReceived: null,
+            biopsySequenceNumber: 'fake-bsn',
+            mapd: 'mapd',
+            tvc_version: 'tvc_version',
+            pool1: 'pool1',
+            pool2: 'pool2',
+            cellularity: 'cellularity',
+            variantReport: {},
+            assignmentReport: {},
+            moiSummary: {},
+            cnv: [],
+            snvAndIndels: [],
+            geneFusions: [],
+            ocpSummary: {},
+            showPools: false,
+            parsed_vcf_genes: PatientApiServiceStub.makeParsedVcftData(),
+            dnaBamFilePath: 'fake-path',
+            rnaBamFilePath: 'fake-path',
+            vcfFilePath: 'fake-path',
+            assignmentHistory: {},
+            patient: {},
+            analysis: {},
+            assays: []
+        } as any;
+    }
+
     static makeVariantReportData = () => {
         return {
             psn: '11276',
@@ -155,27 +186,6 @@ export class PatientApiServiceStub {
                 unifiedGeneFusions: ['value']
             },
         } as VariantReportComparisonData;
-    }
-
-    static makeVariantReportQcData = () => {
-        return {
-            variantReport: {
-                patientSequenceNumber: '11276',
-                patientStatus: 'PENDING_CONFIRMATION',
-                step: 0,
-                concordance: 'YES',
-                variantReportStatus: 'CONFIRMED',
-                variantReportDate: 'August 26, 2016 3:28 PM GMT',
-                user: 'TA commettee',
-                biopsySequenceNumber: 'T-16-000762',
-                molecularSequenceNumber: 'MSN17772',
-                analysisId: 'MSN17772_v1_92ad9833-e79a-4807-b1f3-6be88a0ab824',
-                mapd: '0.317',
-                cellularity: '1.000000',
-                fileReceivedDate: 'August 25, 2016 10:13 PM GMT',
-                torrentVariantCallerVersion: '5.0-9'
-            }
-        } as any;
     }
 
     static makePatientVariantReportOcpData = () => {

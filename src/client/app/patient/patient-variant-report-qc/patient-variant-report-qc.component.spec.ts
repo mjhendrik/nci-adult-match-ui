@@ -26,17 +26,17 @@ import { UtilsModule } from '../../shared/utils/utils.module';
 import { VariantReportFilteredTableModule } from "../../shared/variant-report-filtered-table/variant-report-filtered-table.module";
 
 export function main() {
-  describe('PatientVariantReportQcComponent (templateUrl)', () => {
+  fdescribe('PatientVariantReportQcComponent (templateUrl)', () => {
 
     let component: PatientVariantReportQcComponent;
     let fixture: ComponentFixture<PatientVariantReportQcComponent>;
     let de: DebugElement;
     let el: HTMLElement;
     let activatedRouteStub: ActivatedRouteStub = new ActivatedRouteStub();
-    activatedRouteStub.snapshot.data['data'] = PatientApiServiceStub.makeVariantReportData();
+    activatedRouteStub.snapshot.data['data'] = PatientApiServiceStub.makeVariantReportQcData();
 
     let config: any[] = [
-      { path: 'patients/1234', component: 'PatientVariantReportQcComponent' }
+      { path: 'patients/1234/variant_reports/ABCD/qc', component: 'PatientVariantReportQcComponent' }
     ];
 
     // async beforeEach
@@ -73,12 +73,12 @@ export function main() {
     });
 
     it('no Analysis ID in title until manually call `detectChanges`', () => {
-      expect(el.textContent).toEqual('Variant and Assignment Report ');
+      expect(el.textContent).toEqual('Quality Control Report ');
     });
 
     it('should display Analysis ID in the title', () => {
       fixture.detectChanges();
-      expect(el.textContent).toEqual('Variant and Assignment Report ' + component.analysisId);
+      expect(el.textContent).toEqual('Quality Control Report ' + component.analysisId);
     });
 
     it('should call downloadPatientFile when download is called', () => {
