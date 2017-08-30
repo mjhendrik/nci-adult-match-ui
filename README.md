@@ -121,6 +121,9 @@ npm start
 # api document for the app
 # npm run build.docs
 
+# Run API-only part of the docker-compose system
+docker-compose up patient-api treatment-arm-api
+
 # Run using mock JSONs instead of back-end services
 npm run start.dev-mock
 
