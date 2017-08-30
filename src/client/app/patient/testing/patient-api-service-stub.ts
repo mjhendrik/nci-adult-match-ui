@@ -67,7 +67,7 @@ export class PatientApiServiceStub {
             analysisId: 'ABCD',
             patient: {},
             analysis: {},
-            variantReport: {},
+            variantReport: {moiSummary:{}},
             assignmentReport: {},
             assignmentHistory: {},
             parsed_vcf_genes: PatientApiServiceStub.makeParsedVcftData(),

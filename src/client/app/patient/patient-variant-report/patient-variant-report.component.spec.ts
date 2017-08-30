@@ -22,7 +22,7 @@ import { PatientVariantReportComponent } from './patient-variant-report.componen
 import { PatientApiService } from './../patient-api.service';
 import { ViewDataTransformer } from './../view-data-transformer.service';
 import { SharedModule } from '../../shared/shared.module';
-import { PatientApiServiceStub } from '../testing/patient-api-service-stub';
+import { PatientApiServiceStub, PatientApiServiceMock } from '../testing/patient-api-service-stub';
 import { ActivatedRouteStub } from '../testing/activated-route-stub';
 import { UtilsModule } from '../../shared/utils/utils.module';
 
@@ -58,7 +58,7 @@ export function main() {
         declarations: [PatientVariantReportComponent],
         providers: [
           { provide: ActivatedRoute, useValue: activatedRouteStub },
-          { provide: PatientApiService, useClass: PatientApiServiceStub },
+          { provide: PatientApiService, useClass: PatientApiServiceMock },
           ChangeDetectorRef,
           ViewDataTransformer
         ]
@@ -78,81 +78,17 @@ export function main() {
       expect(el.textContent).toEqual('Variant and Assignment Report ');
     });
 
-    xit('should display Analysis ID in the title', () => {
+    it('should display Analysis ID in the title', () => {
       fixture.detectChanges();
-      expect(el.textContent).toEqual('Patient ' + component.analysisId);
+      expect(el.textContent).toEqual('Variant and Assignment Report ' + component.analysisId);
     });
 
+    it('should call downloadPatientFile when download is called', () => {
+      let api = fixture.debugElement.injector.get(PatientApiService);
+      let spy = spyOn(api, 'downloadPatientFile').and.callFake(() => { ; });
+      component.download('fake_url');
+
+      expect(spy).toHaveBeenCalled();
+    });
   });
-
-  // let p_vr_resolved_data = {
-  //   data: {
-  //     psn: 'psn',
-  //     analysisId: '1111',
-  //     patient: 'patient',
-  //     analysis: '',
-  //     variantReport: 'variantReport',
-  //     assignmentReport: 'assignmentReport',
-  //     assignmentHistory: 'patientAssignments',
-  //     parsed_vcf_genes: ['parsed_vcf_genes', 'file_name'],
-  //     tvc_version: 'tvc_version',
-  //     pool1: 'pool1',
-  //     pool2: 'pool2',
-  //     mapd: 'mapd',
-  //     cellularity: 'cellularity',
-  //     showPools: 'showPools',
-  //     assays: 'assays'
-  //   }
-  // };
-  
-  // describe('patient variant report component', () => {
-
-  //   let config: any[] = [
-  //     { path: 'patients/1234/variant_reports/ABCD', component: 'PatientVariantReportComponent' }
-  //   ];
-
-  //   beforeEach(() => {
-  //     TestBed.configureTestingModule({
-  //       imports: [
-  //         RouterTestingModule.withRoutes(config),
-  //         DirectivesModule,
-  //         PipesModule,
-  //         FormsModule,
-  //         DataTableModule,
-  //         AssignmentReasonTableModule,
-  //         VariantReportSimpleTableModule,
-  //         SharedModule,
-  //         CommonModule
-  //       ],
-  //       declarations: [PatientVariantReportComponent],
-  //       providers: [
-  //         { provide: PatientApiService, useClass: PatientApiServiceMock },
-  //         {
-  //           provide: ActivatedRoute, useValue: {
-  //             snapshot: {
-  //               params: { patientSequenceNumber: 1067, analysisId: 1234 },
-  //               data: p_vr_resolved_data
-  //             }
-  //           }
-  //         },
-  //         ViewDataTransformer
-  //       ]
-  //     });
-  //   });
-
-  //   xit('should test ngOnInit',
-  //     async((done: any) => {
-  //       TestBed
-  //         .compileComponents()
-  //         .then(() => {
-  //           let fixture = TestBed.overrideComponent(PatientVariantReportComponent, {
-  //             set: {
-  //               templateUrl: ''
-  //             }
-  //           }).createComponent(PatientVariantReportComponent);
-  //           fixture.componentInstance.ngOnInit();
-  //           fixture.componentInstance.download('test');
-  //         });
-  //     }));
-  // });
 }
