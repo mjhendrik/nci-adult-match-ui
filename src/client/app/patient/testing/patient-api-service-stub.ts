@@ -1,24 +1,6 @@
 import { Observable } from 'rxjs/Observable';
 import { VariantReportComparisonData } from '../patient-variant-report-oa/variant-report-comparison-data';
 
-export class PatientApiServiceWithErrorStub {
-    // getPatientDetails(): Observable<any> {
-    //     return Observable.throw('error');
-    // }
-
-    // getPatientList(): Observable<any> {
-    //     return Observable.throw('error');
-    // }
-
-    // getPatientCount(): Observable<any> {
-    //     return Observable.throw('error');
-    // }
-
-    // getPatientTotal(): Observable<any> {
-    //     return Observable.throw('error');
-    // }
-}
-
 export class PatientApiServiceStub {
     static makeParsedVcftData = () => {
         return [
@@ -79,6 +61,48 @@ export class PatientApiServiceStub {
             showPools: false,
             assays: []
         } as any;
+    }
+
+    static makeOutsideAssayVariantReportData = () => {
+        return {
+            psn: 'dummy-value',
+            currentPatientStatus: 'dummy-value',
+            currentStepNumber: 'dummy-value',
+            concordance: 'dummy-value',
+            outsideData: {
+              analysisId: 'dummy-value',
+              assays: [],
+              variantReport: {},
+              assignmentReport: {},
+              assignmentHistory: {},
+              parsed_vcf_genes: PatientApiServiceStub.makeParsedVcftData(),
+              tvc_version: 'dummy-value',
+              pool1: 123,
+              pool2: 123,
+              mapd: 'dummy-value',
+              cellularity: {},
+              showPools: false,
+            },
+            matchData: {
+              analysisId: 'dummy-value',
+              assays: [],
+              variantReport: {},
+              assignmentReport: {},
+              assignmentHistory: {},
+              parsed_vcf_genes: PatientApiServiceStub.makeParsedVcftData(),
+              tvc_version: 'dummy-value',
+              pool1: 123,
+              pool2: 123,
+              mapd: 'dummy-value',
+              cellularity: {},
+              showPools: false,
+            },
+            comparisonVariantReport: {
+              singleNucleotideVariantAndIndels: [],
+              copyNumberVariants: [],
+              unifiedGeneFusions: [],
+            }
+        } as VariantReportComparisonData;
     }
 
     static makePatientListData = () => [

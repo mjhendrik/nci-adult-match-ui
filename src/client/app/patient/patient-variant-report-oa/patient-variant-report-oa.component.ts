@@ -66,7 +66,6 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, Varian
     unifiedGeneFusions: any[];
   };
 
-
   constructor(
     private route: ActivatedRoute,
     private patientApi: PatientApiService,
