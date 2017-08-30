@@ -16,7 +16,6 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { DirectivesModule } from './../../shared/directives/directives.module';
 import { PipesModule } from './../../shared/pipes/pipes.module';
 import { DataTableModule } from './../../shared/datatables/DataTableModule';
-import { VariantReportSimpleTableModule } from '../../shared/variant-report-simple-table/variant-report-simple-table.module';
 import { AssignmentReasonTableModule } from './../assignment-reason-table/assignment-reason-table.module';
 import { PatientVariantReportOutsideAssayComponent } from './patient-variant-report-oa.component';
 import { PatientApiService } from './../patient-api.service';
@@ -25,6 +24,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { PatientApiServiceStub, PatientApiServiceMock } from '../testing/patient-api-service-stub';
 import { ActivatedRouteStub } from '../testing/activated-route-stub';
 import { UtilsModule } from '../../shared/utils/utils.module';
+import { VariantReportComparisonTableModule } from '../variant-report-comparison-table/variant-report-comparison-table.module';
 
 export function main() {
   fdescribe('PatientVariantReportOutsideAssayComponent (templateUrl)', () => {
@@ -51,7 +51,7 @@ export function main() {
           DataTableModule,
           SharedModule,
           NoopAnimationsModule,
-          VariantReportSimpleTableModule,
+          VariantReportComparisonTableModule,
           AssignmentReasonTableModule,
           UtilsModule
         ],
@@ -75,7 +75,7 @@ export function main() {
     });
 
     fit('no Analysis ID in title until manually call `detectChanges`', () => {
-      expect(el.textContent).toEqual('Variant and Assignment Report ');
+      expect(el.textContent).toEqual('Variant and Assignment Report');
     });
 
     it('should display Analysis ID in the title', () => {
