@@ -1,145 +1,92 @@
 import {
+  ChangeDetectorRef,
+  DebugElement
+} from '@angular/core';
+import {
+  async,
   TestBed,
-  async
+  ComponentFixture
 } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { Observable } from 'rxjs/Observable';
 import { RouterTestingModule } from '@angular/router/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
 import { DirectivesModule } from './../../shared/directives/directives.module';
 import { PipesModule } from './../../shared/pipes/pipes.module';
 import { DataTableModule } from './../../shared/datatables/DataTableModule';
-import { PatientApiService } from './../patient-api.service';
-import { VariantReportFilteredTableModule } from '../../shared/variant-report-filtered-table/variant-report-filtered-table.module';
-import { CommonModule } from '@angular/common';
 import { PatientVariantReportQcComponent } from './patient-variant-report-qc.component';
+import { PatientApiService } from './../patient-api.service';
+import { ViewDataTransformer } from './../view-data-transformer.service';
+import { SharedModule } from '../../shared/shared.module';
+import { PatientApiServiceStub, PatientApiServiceMock } from '../testing/patient-api-service-stub';
+import { ActivatedRouteStub } from '../testing/activated-route-stub';
+import { UtilsModule } from '../../shared/utils/utils.module';
+import { VariantReportFilteredTableModule } from "../../shared/variant-report-filtered-table/variant-report-filtered-table.module";
 
 export function main() {
-  describe('patient varient report qc component', () => {
-    // Setting module for testing
-    // Disable old forms
+  describe('PatientVariantReportQcComponent (templateUrl)', () => {
+
+    let component: PatientVariantReportQcComponent;
+    let fixture: ComponentFixture<PatientVariantReportQcComponent>;
+    let de: DebugElement;
+    let el: HTMLElement;
+    let activatedRouteStub: ActivatedRouteStub = new ActivatedRouteStub();
+    activatedRouteStub.snapshot.data['data'] = PatientApiServiceStub.makeVariantReportData();
 
     let config: any[] = [
-      { path: 'patients', component: 'PatientVariantReportQcComponent' }
+      { path: 'patients/1234', component: 'PatientVariantReportQcComponent' }
     ];
 
-    beforeEach(() => {
+    // async beforeEach
+    beforeEach(async(() => {
       TestBed.configureTestingModule({
-        imports: [RouterTestingModule.withRoutes(config), DirectivesModule,
-          PipesModule, FormsModule, DataTableModule, CommonModule,
-          VariantReportFilteredTableModule],
+        imports: [
+          RouterTestingModule.withRoutes(config),
+          DirectivesModule,
+          PipesModule,
+          FormsModule,
+          DataTableModule,
+          SharedModule,
+          NoopAnimationsModule,
+          VariantReportFilteredTableModule,
+          UtilsModule
+        ],
+        declarations: [PatientVariantReportQcComponent],
         providers: [
-          { provide: PatientApiService, useClass: MockPatientApiService },
-          { provide: ActivatedRoute, useValue: { snapshot: { params: { patientSequenceNumber: 1067, analysisId: 1234 } } } }
+          { provide: ActivatedRoute, useValue: activatedRouteStub },
+          { provide: PatientApiService, useClass: PatientApiServiceMock },
+          ChangeDetectorRef,
+          ViewDataTransformer
         ]
-      });
+      }).compileComponents();  // compile template and css
+    }));
+
+    // synchronous beforeEach
+    beforeEach(() => {
+      fixture = TestBed.createComponent(PatientVariantReportQcComponent);
+      component = fixture.componentInstance; // PatientVariantReportQcComponent test instance
+      // query for the title 'page-header' by CSS element selector
+      de = fixture.debugElement.query(By.css('.page-header'));
+      el = de.nativeElement;
     });
 
-    // it('should test ngOnInit',
-    //   async((done: any) => {
-    //     TestBed
-    //       .compileComponents()
-    //       .then(() => {
-    //         let fixture = TestBed.overrideComponent(PatientVariantReportQcComponent, {
-    //           set: {
-    //             templateUrl: ''
-    //           }
-    //         }).createComponent(PatientVariantReportQcComponent);
-    //         //fixture.componentInstance.ngOnInit();
-    //       });
-    //   }));
+    it('no Analysis ID in title until manually call `detectChanges`', () => {
+      expect(el.textContent).toEqual('Variant and Assignment Report ');
+    });
 
+    it('should display Analysis ID in the title', () => {
+      fixture.detectChanges();
+      expect(el.textContent).toEqual('Variant and Assignment Report ' + component.analysisId);
+    });
+
+    it('should call downloadPatientFile when download is called', () => {
+      let api = fixture.debugElement.injector.get(PatientApiService);
+      let spy = spyOn(api, 'downloadPatientFile').and.callFake(() => { ; });
+      component.download('fake_url');
+
+      expect(spy).toHaveBeenCalled();
+    });
   });
-
-
-  // describe('patients component', () => {
-  //   // Setting module for testing
-  //   // Disable old forms
-
-  //   let config: any[] = [
-  //     { path: 'patient', component: 'PatientVariantReportQcComponent' }
-  //   ];
-
-  //   beforeEach(() => {
-  //     TestBed.configureTestingModule({
-  //       imports: [RouterTestingModule.withRoutes(config), DirectivesModule,
-  //         PipesModule, FormsModule, DataTableModule, CommonModule,
-  //         VariantReportFilteredTableModule],
-  //       declarations: [PatientVariantReportQcComponent],
-  //       providers: [
-  //         { provide: PatientApiService, useClass: MockPatientApiServiceError },
-  //         { provide: ActivatedRoute, useValue: { snapshot: { params: { patientSequenceNumber: 1067, analysisId: 1234 } } } }
-  //       ]
-  //     });
-  //   });
-
-  //   it('should test getData',
-  //     async((done: any) => {
-  //       TestBed
-  //         .compileComponents()
-  //         .then(() => {
-  //           let fixture = TestBed.overrideComponent(PatientVariantReportQcComponent, {
-  //             set: {
-  //               templateUrl: ''
-  //             }
-  //           }).createComponent(PatientVariantReportQcComponent);
-  //           fixture.componentInstance.getData('1067', '1234');
-  //         });
-
-  //     }));
-  // });
-
-}
-
-
-class MockPatientApiServiceError {
-
-  getPatientVariantReportQc(psn: any): Observable<any> {
-    return Observable.throw('error');
-  }
-}
-
-class MockPatientApiService {
-
-  getPatientVariantReportQc(psn: any): Observable<any> {
-    let testdata = {
-      molecularSequenceNumber: '1234',
-      dateReceived: '',
-      copy_number_variants: '',
-      gene_fusions: '',
-      indels: '',
-      single_nucleotide_variants: ''
-    };
-
-    return Observable.of(testdata);
-  }
-
-  getPatientVariantReportOcp(): Observable<any> {
-    return Observable.of({
-      tvc_version: '',
-      pool1: '',
-      pool2: '',
-      biopsySequenceNumber: '',
-      genes: ''
-    });
-  }
-
-  getPatientCopyNumberReport(): Observable<any> {
-    return Observable.of({
-      mapd: '',
-      cellularity: '',
-      parsed_vcf_genes: '',
-      dnaBamFilePath: '',
-      rnaBamFilePath: '',
-      vcfFilePath: ''
-    });
-
-  }
-  getPatientVariantReportFileInfo(): Observable<any> {
-    return Observable.of({
-      dnaBamFilePath: '',
-      rnaBamFilePath: '',
-      vcfFilePath: ''
-    });
-  }
 }
