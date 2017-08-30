@@ -27,7 +27,7 @@ import { UtilsModule } from '../../shared/utils/utils.module';
 import { VariantReportComparisonTableModule } from '../variant-report-comparison-table/variant-report-comparison-table.module';
 
 export function main() {
-  fdescribe('PatientVariantReportOutsideAssayComponent (templateUrl)', () => {
+  describe('PatientVariantReportOutsideAssayComponent (templateUrl)', () => {
 
     let component: PatientVariantReportOutsideAssayComponent;
     let fixture: ComponentFixture<PatientVariantReportOutsideAssayComponent>;
@@ -69,18 +69,18 @@ export function main() {
     beforeEach(() => {
       fixture = TestBed.createComponent(PatientVariantReportOutsideAssayComponent);
       component = fixture.componentInstance; // PatientVariantReportOutsideAssayComponent test instance
-      // query for the title 'page-header' by CSS element selector
-      de = fixture.debugElement.query(By.css('.page-header'));
+      // query for the MSN 'ut-outside-msn' by CSS element selector
+      de = fixture.debugElement.query(By.css('.ut-outside-msn'));
       el = de.nativeElement;
     });
 
-    fit('no Analysis ID in title until manually call `detectChanges`', () => {
-      expect(el.textContent).toEqual('Variant and Assignment Report');
+    it('no Analysis ID in title until manually call `detectChanges`', () => {
+      expect(el.textContent).toEqual('');
     });
 
     it('should display Analysis ID in the title', () => {
       fixture.detectChanges();
-      expect(el.textContent).toEqual('Variant and Assignment Report ' + component.analysisId);
+      expect(el.textContent).toEqual(component.outsideData.variantReport.molecularSequenceNumber);
     });
 
     it('should call downloadPatientFile when download is called', () => {
