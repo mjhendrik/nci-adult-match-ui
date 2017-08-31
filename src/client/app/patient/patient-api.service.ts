@@ -80,7 +80,7 @@ export class PatientApiService {
 
   getPatientCopyNumberReport(psn: string, analysisId: string): Observable<any> {
     return this.http.get(this.url('/patients/' + psn + '/variant_reports/' + analysisId + '/copy_number_report',
-      'assets/mock-data/copy-number-report.json'))
+      ''))
       .map(this.extractData)
       .catch(err => Observable.of({ hasError: true, error: err, parsed_vcf_genes: {} }));
   }

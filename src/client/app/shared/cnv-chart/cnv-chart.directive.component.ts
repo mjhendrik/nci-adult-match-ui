@@ -76,8 +76,6 @@ export class CnvChartDirective implements OnInit {
   @Input() visible: boolean;
   @Output() visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  // constructor() {}
-
   ngOnInit() {
     this.getData();
   }
@@ -137,38 +135,6 @@ export class CnvChartDirective implements OnInit {
     let showXAxis:any = function () {return true;};
     let xAxis:any = function () {return {rotateLabels: -45, fontSize: 10}};
     let color = function () {return colors;};
-
-    // let contentGenerator = function (d) {console.log("--> " + JSON.stringify(d))};
-
-    // let contentGenerator = (d:any) => {
-    //   let label:any;
-    //   let position:any;
-    //   let cn:any;
-    //   let cl95:any;
-    //   let cl05:any;
-    //   let html:any;
-    //   let li:any;
-    //   let color:any;
-    //
-    //   label = d.key;
-    //   position = 'POS: ' + d.data.values.position;
-    //   cn = 'CN: ' + d.data.values.cn;
-    //   color = 'color: white; background-color: ' + d.data.status;
-    //
-    //   cl95 = 'Cl 5%: ' + d.data.values.whisker_low;
-    //   cl05 = 'Cl 95%: ' + d.data.values.whisker_high;
-    //
-    //   html = '<h4 class="text-center" style="' + color + '"><b>' + label + '</b></h4>';
-    //   li = '<li>' + position + '</li>';
-    //   li += '<li>' + cn + '</li>';
-    //   li += '<li>' + cl95 + '</li>';
-    //   li += '<li>' + cl05 + '</li>';
-    //
-    //   html += '<ul class="list-group" style="list-style-type: none;">' + li + '</ul>';
-    //
-    //   return html;
-    // }
-
 
     this.options = {
       chart : {
