@@ -45,6 +45,10 @@ export class ViewDataTransformer {
     ocpDataOutside: any,
     cnvDataMatch: any,
     ocpDataMatch: any): any {
+
+    if (!report)
+      return null;
+
     const transformedReport: any = { ...report }; // Deep-copy the source
 
     transformedReport.matchData.pool1 = ocpDataMatch.pool1;
@@ -70,6 +74,10 @@ export class ViewDataTransformer {
   }
 
   transformPatientAssignment(source: any, dateAssigned: string): AssignmentReportData {
+    if (!source) {
+      return null;
+    };
+
     const transformedPatient: any = { ...source }; // Deep-copy the source
 
     let assignmentReport;
@@ -332,9 +340,6 @@ export class ViewDataTransformer {
   }
 
   private transformAssignmentReason(patientAssignmentLogic: any): any {
-    if (!patientAssignmentLogic)
-      return null;
-
     let sections: AssignmentReasonSection[] = [];
     let map: { [key: string]: AssignmentReasonSection } = {
       'SELECTED': null,
@@ -378,13 +383,9 @@ export class ViewDataTransformer {
       return p2;
     };
 
-    try {
-      var regExp = /^(ICC)([A-Za-z0-9_-]*)(s)$/; // Parse out 'ICC' at the start of the value and 's' at the end, all case-sensitive
-      if (!assay || (typeof assay !== 'string'))
-        return assay;
-      return assay.replace(regExp, replacer);
-    } catch (error) {
+    var regExp = /^(ICC)([A-Za-z0-9_-]*)(s)$/; // Parse out 'ICC' at the start of the value and 's' at the end, all case-sensitive
+    if (!assay || (typeof assay !== 'string'))
       return assay;
-    }
+    return assay.replace(regExp, replacer);
   }
 }

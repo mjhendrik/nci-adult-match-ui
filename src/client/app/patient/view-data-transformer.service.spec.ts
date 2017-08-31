@@ -2,6 +2,7 @@ import { inject, async, TestBed } from '@angular/core/testing';
 
 import { ViewDataTransformer } from './view-data-transformer.service';
 import { PatientApiServiceStub } from './testing/patient-api-service-stub';
+import { VariantReportComparisonData } from './patient-variant-report-oa/variant-report-comparison-data';
 
 export function main() {
   describe('ViewDataTransformer', () => {
@@ -25,6 +26,7 @@ export function main() {
     it('can instantiate service when inject service', inject([ViewDataTransformer], (service: ViewDataTransformer) => {
       expect(service instanceof ViewDataTransformer).toBe(true, 'new service should be ok');
     }));
+
 
     describe('with transformPatient', () => {
       let fakeSource: any;
@@ -84,7 +86,19 @@ export function main() {
         expect(transformedBiopsy.pathologyStatus).toBe('Pathology status is unknown at this time');
       });
 
+      it('should not throw error if no `patientAssignments` is found in the patient data', () => {
+        fakeSource.patientAssignments = null;
+
+        expect(() => {
+          transformed = service.transformPatient(fakeSource);
+        }
+        ).not.toThrow();
+
+        expect(transformed.patientAssignments).toBeFalsy();
+      });
+
     });
+
 
     describe('with showPools', () => {
       beforeEach(() => {
@@ -106,6 +120,110 @@ export function main() {
         expect(expected).toBe(true);
       });
 
+    });
+
+
+    describe('with transformPatientAssignment', () => {
+      let dateAssigned = '1500563371502';
+
+      beforeEach(() => {
+        service = new ViewDataTransformer();
+      });
+
+      it('should return null if source is falsy', () => {
+        let fakeSource = null;
+        let transformed = service.transformPatientAssignment(fakeSource, dateAssigned);
+        expect(transformed).toBeNull();
+      });
+
+      it('should return assignment view data if source is supplied', () => {
+        let fakeSource = PatientApiServiceStub.makePatientData();
+        let transformed = service.transformPatientAssignment(fakeSource, dateAssigned);
+        expect(transformed).not.toBeNull();
+        expect(transformed.psn).not.toBeNull();
+        expect(transformed.molecularSequenceNumber).not.toBeNull();
+        expect(transformed.analysisId).not.toBeNull();
+        expect(transformed.assignmentReport).not.toBeNull();
+        expect(transformed.dateAssigned).not.toBeNull();
+      });
+
+    });
+
+    describe('with transformOutsidePatientReport', () => {
+      beforeEach(() => {
+        service = new ViewDataTransformer();
+      });
+
+      it('should return null if source report is falsy', () => {
+        let report: VariantReportComparisonData = null;
+        let cnvDataOutside: any = null;
+        let ocpDataOutside: any = null;
+        let cnvDataMatch: any = null;
+        let ocpDataMatch: any = null;
+
+        let transformed = service.transformOutsidePatientReport(
+          report,
+          cnvDataOutside,
+          ocpDataOutside,
+          cnvDataMatch,
+          ocpDataMatch);
+
+        expect(transformed).toBeNull();
+      });
+
+      it('should throw error if OCP or CNV data is missing', () => {
+        let report: VariantReportComparisonData = PatientApiServiceStub.makeOutsideAssayComparisonVariantReportData();
+        let cnvDataOutside: any = null;
+        let ocpDataOutside: any = null;
+        let cnvDataMatch: any = null;
+        let ocpDataMatch: any = null;
+
+        expect(() => {
+          service.transformOutsidePatientReport(
+            report,
+            cnvDataOutside,
+            ocpDataOutside,
+            cnvDataMatch,
+            ocpDataMatch);
+        }
+        ).toThrow();
+      });
+
+      it('should return view data for comparison report when all parameters are passed', () => {
+        let report: VariantReportComparisonData = PatientApiServiceStub.makeOutsideAssayComparisonVariantReportData();
+        let cnvDataOutside: any = {};
+        let ocpDataOutside: any = {};
+        let cnvDataMatch: any = {};
+        let ocpDataMatch: any = {};
+        let transformed: VariantReportComparisonData;
+
+        expect(() => {
+          transformed = service.transformOutsidePatientReport(
+            report,
+            cnvDataOutside,
+            ocpDataOutside,
+            cnvDataMatch,
+            ocpDataMatch);
+        }
+        ).not.toThrow();
+
+        expect(transformed.matchData.pool1).not.toBeNull();
+        expect(transformed.matchData.pool2).not.toBeNull();
+        expect(transformed.matchData.mapd).not.toBeNull();
+        expect(transformed.matchData.cellularity).not.toBeNull();
+        expect(transformed.matchData.showPools).not.toBeNull();
+        expect(transformed.matchData.variantReport).not.toBeNull();
+        expect(transformed.matchData.variantReport).not.toBeNull();
+        expect(transformed.outsideData.pool1).not.toBeNull();
+        expect(transformed.outsideData.pool2).not.toBeNull();
+        expect(transformed.outsideData.mapd).not.toBeNull();
+        expect(transformed.outsideData.cellularity).not.toBeNull();
+        expect(transformed.outsideData.showPools).not.toBeNull();
+        expect(transformed.outsideData.variantReport).not.toBeNull();
+        expect(transformed.outsideData.variantReport).not.toBeNull();
+        expect(transformed.matchData.assignmentReport).not.toBeNull();
+        expect(transformed.outsideData.assignmentReport).not.toBeNull();
+      });
     });
 
   });

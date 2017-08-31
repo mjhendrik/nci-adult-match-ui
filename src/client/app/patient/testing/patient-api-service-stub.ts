@@ -301,8 +301,19 @@ export class PatientApiServiceStub {
                                 '$date': 1500563377616
                             },
                             'result': 'NEGATIVE'
-                        }
-                    ],
+                        },
+                        {
+                            'biomarker': 123,
+                            'biopsySequenceNumber': 'BSN-OA5',
+                            'orderedDate': {
+                                '$date': 1500563377616
+                            },
+                            'patientSequenceNumber': 'OA5',
+                            'reportedDate': {
+                                '$date': 1500563377616
+                            },
+                            'result': 'NEGATIVE'
+                        }                    ],
                     'associatedPatientStatus': 'REGISTRATION_OUTSIDE_ASSAY',
                     'biopsySequenceNumber': 'BSN-OA5',
                     'dateCreated': {
@@ -405,7 +416,8 @@ export class PatientApiServiceStub {
                                         {
                                             'annotation': '-',
                                             'armSpecific': false,
-                                            'confirmed': false,
+                                            'confirmed': true,
+                                            'isAMoi': true,
                                             'driverGene': 'TPM3',
                                             'driverReadCount': 1001,
                                             'identifier': 'TPM3-ALK.T7A20',
@@ -2373,8 +2385,23 @@ export class PatientApiServiceStub {
             outsideData: {
                 analysisId: 'value',
                 assays: ['value'],
-                variantReport: 'value',
-                assignmentReport: 'value',
+                variantReport: {},
+                assignmentReport: {
+                    patientAssignmentLogic: [
+                        {
+                            'patientAssignmentReasonCategory': 'NO_VARIANT_MATCH',
+                            'reason': 'The patient contains no matching variant.',
+                            'treatmentArmId': 'CukeTest-1048',
+                            'treatmentArmVersion': '2015-08-06'
+                        },
+                        {
+                            'patientAssignmentReasonCategory': 'NO_VARIANT_MATCH',
+                            'reason': 'The patient contains no matching variant.',
+                            'treatmentArmId': 'CukeTest-1049',
+                            'treatmentArmVersion': '2015-08-06'
+                        }
+                    ]
+                },
                 tvc_version: 'value',
                 pool1: 1,
                 pool2: 1,
@@ -2385,8 +2412,9 @@ export class PatientApiServiceStub {
             matchData: {
                 analysisId: 'value',
                 assays: ['value'],
-                variantReport: 'value',
-                assignmentReport: 'value',
+                variantReport: {},
+                assignmentReport: {
+                },
                 tvc_version: 'value',
                 pool1: 1,
                 pool2: 1,
