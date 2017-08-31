@@ -111,12 +111,8 @@ export class ViewDataTransformer {
   }
 
   private transformMdaMessages(transformedBiopsy: any): void {
-    if (!('mdAndersonMessages' in transformedBiopsy)) {
-      return;
-    }
-
     transformedBiopsy.nucleicAcidSendouts = transformedBiopsy.nucleicAcidSendouts || [];
-    for (let message of transformedBiopsy.mdAndersonMessages) {
+    for (let message of (transformedBiopsy.mdAndersonMessages || [])) {
       switch (message.message) {
         case 'NUCLEIC_ACID_SENDOUT':
           {
@@ -177,11 +173,7 @@ export class ViewDataTransformer {
     * }
     */
 
-    if (!('nextGenerationSequences' in transformedBiopsy)) {
-      return;
-    }
-
-    for (let message of transformedBiopsy.nextGenerationSequences) {
+    for (let message of (transformedBiopsy.nextGenerationSequences || [])) {
       if (!message.ionReporterResults) {
         continue;
       }
@@ -268,11 +260,7 @@ export class ViewDataTransformer {
   }
 
   private transformAssayMessages(transformedPatient: any, transformedBiopsy: any): void {
-    if (!('assayMessages' in transformedBiopsy)) {
-      return;
-    }
-
-    for (let assay of transformedBiopsy.assayMessages) {
+    for (let assay of (transformedBiopsy.assayMessages || [])) {
       assay.gene = this.parseGeneFromAssay(assay.biomarker);
     }
   }
@@ -315,7 +303,7 @@ export class ViewDataTransformer {
       let bsn = assignment.biopsySequenceNumber;
       let biopsy = transformedPatient.biopsies.find((x: any) => x.biopsySequenceNumber === bsn);
 
-      if (!biopsy || !biopsy.nucleicAcidSendouts) {
+      if (!biopsy || !biopsy.nucleicAcidSendouts || !biopsy.nucleicAcidSendouts.length) {
         continue;
       }
 
@@ -323,7 +311,7 @@ export class ViewDataTransformer {
       let confirmedVariantReports = biopsy.nucleicAcidSendouts
         .map((x: any) => x.analyses)
         .reduce((acc: Array<any>, val: Array<any>) => acc.concat(val))
-        .filter((x: any) => x.variantReportStatus === 'CONFIRMED');
+        .filter((x: any) => x && x.variantReportStatus === 'CONFIRMED');
 
       if (confirmedVariantReports && confirmedVariantReports.length) {
         let lastVariantReportAnalys = confirmedVariantReports[confirmedVariantReports.length - 1];

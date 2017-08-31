@@ -26,7 +26,7 @@ export function main() {
       expect(service instanceof ViewDataTransformer).toBe(true, 'new service should be ok');
     }));
 
-    describe('when transformPatient', () => {
+    describe('with transformPatient', () => {
       let fakeSource: any;
       let transformed: any;
 
@@ -36,16 +36,77 @@ export function main() {
         transformed = service.transformPatient(fakeSource);
       });
 
-      fit('should return something if nothing is passed', () => {
+      it('should return empty object if source is falsy', () => {
         fakeSource = null;
         transformed = service.transformPatient(fakeSource);
+        expect(transformed).toEqual({});
+      });
+
+      it('should return transformed patient', () => {
         expect(transformed).not.toBeNull();
       });
 
-      fit('should return something', () => {
-        expect(transformed).not.toBeNull();
+      it('should create empty biopsies array if no biopsies exists in the source', () => {
+        fakeSource.biopsies = undefined;
+        transformed = service.transformPatient(fakeSource);
+        expect(transformed.biopsies).toEqual([]);
+      });
+
+      it('should create pathology status `Agreement on pathology` when mdAndersonMessages[PATHOLOGY_CONFIRMATION].status is `Y`', () => {
+        let biopsy = fakeSource.biopsies[1];
+        let message = (biopsy.mdAndersonMessages as any[]).find(x => x.message === 'PATHOLOGY_CONFIRMATION');
+        message.status = 'Y';
+        transformed = service.transformPatient(fakeSource);
+        let transformedBiopsy = transformed.biopsies[0];
+
+        expect(transformedBiopsy.pathologyStatus).toBe('Agreement on pathology');
+      });
+
+      // tslint:disable-next-line:max-line-length
+      it('should create pathology status `Do not agree on pathology` when mdAndersonMessages[PATHOLOGY_CONFIRMATION].status is `N`', () => {
+        let biopsy = fakeSource.biopsies[1];
+        let message = (biopsy.mdAndersonMessages as any[]).find(x => x.message === 'PATHOLOGY_CONFIRMATION');
+        message.status = 'N';
+        transformed = service.transformPatient(fakeSource);
+        let transformedBiopsy = transformed.biopsies[0];
+
+        expect(transformedBiopsy.pathologyStatus).toBe('Do not agree on pathology');
+      });
+
+      // tslint:disable-next-line:max-line-length
+      it('should create pathology status `Pathology status is unknown at this time` when mdAndersonMessages[PATHOLOGY_CONFIRMATION].status is `U`', () => {
+        let biopsy = fakeSource.biopsies[1];
+        let message = (biopsy.mdAndersonMessages as any[]).find(x => x.message === 'PATHOLOGY_CONFIRMATION');
+        message.status = 'U';
+        transformed = service.transformPatient(fakeSource);
+        let transformedBiopsy = transformed.biopsies[0];
+
+        expect(transformedBiopsy.pathologyStatus).toBe('Pathology status is unknown at this time');
       });
 
     });
+
+    describe('with showPools', () => {
+      beforeEach(() => {
+        service = new ViewDataTransformer();
+      });
+
+      it('should return `false` if nothing is passed', () => {
+        let expected = service.showPools(null);
+        expect(expected).toBe(false);
+      });
+
+      it('should return `false` if the supplied value is not `5.2`', () => {
+        let expected = service.showPools('5.3');
+        expect(expected).toBe(false);
+      });
+
+      it('should return `true` if the supplied value is not `5.2`', () => {
+        let expected = service.showPools('5.2');
+        expect(expected).toBe(true);
+      });
+
+    });
+
   });
 }

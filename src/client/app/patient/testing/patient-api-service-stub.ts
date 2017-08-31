@@ -151,6 +151,7 @@ export class PatientApiServiceStub {
             },
             'biopsies': [
                 {
+                    'abc':'cba',
                     'assayMessages': [
                         {
                             'biomarker': 'ICCPTENs',
@@ -206,6 +207,18 @@ export class PatientApiServiceStub {
                                 '$date': 1500563346427
                             },
                             'studyId': 'EAY131'
+                        },
+                        {
+                            'biopsySequenceNumber': 'MDACC-case1',
+                            'collectedDate': {
+                                '$date': 1500563346387
+                            },
+                            'message': 'SPECIMEN_FAILURE',
+                            'patientSequenceNumber': 'OA5',
+                            'reportedDate': {
+                                '$date': 1500563346387
+                            },
+                            'studyId': 'EAY131'
                         }
                     ],
                     'nextGenerationSequences': [
@@ -220,14 +233,14 @@ export class PatientApiServiceStub {
                                 'jobName': '88fd81b9-d77b-4760-93f9-a5225f129a5c',
                                 'molecularSequenceNumber': '5fe34a7f-88f6-4ea5-b547-41f3053b680d',
                                 'variantReport': {
-                                    'copyNumberVariants': [],
+                                    'copyNumberVariants': [] as any[],
                                     'createdDate': {
                                         '$date': 1500563346427
                                     },
-                                    'geneFusions': [],
-                                    'indels': [],
-                                    'nonHotspotRules': [],
-                                    'singleNucleotideVariants': [],
+                                    'geneFusions': [] as any[],
+                                    'indels': [] as any[],
+                                    'nonHotspotRules': [] as any[],
+                                    'singleNucleotideVariants': [] as any[],
                                     'unifiedGeneFusions': [
                                         {
                                             'armSpecific': false,
@@ -248,9 +261,23 @@ export class PatientApiServiceStub {
                             },
                             'ngsRunNumber': '1',
                             'status': 'CONFIRMED'
+                        },
+                        {
+                            'dateReceived': {
+                                '$date': 1500563346427
+                            },
+                            'dateVerified': {
+                                '$date': 1500563346473
+                            },
+                            'ionReporterResults': {
+                                'jobName': '88fd81b9-d77b-4760-93f9-a5225f129a5c',
+                                'molecularSequenceNumber': '5fe34a7f-88f6-4ea5-b547-41f3053b680d'
+                            },
+                            'ngsRunNumber': '2',
+                            'status': 'REJECTED'
                         }
                     ],
-                    'pathologyReportMessages': [],
+                    'pathologyReportMessages': [] as any[],
                     'patientOutsideAssayLabReport': {
                         'dateCreated': {
                             '$date': 1500563346375
@@ -294,11 +321,11 @@ export class PatientApiServiceStub {
                         {
                             '_class': 'gov.match.model.message.NucleicAcidsShippingMessage',
                             'biopsySequenceNumber': 'BSN-OA5',
-                            'cDnaConcentration': ',
-                            'cDnaVolume': ',
+                            'cDnaConcentration': '',
+                            'cDnaVolume': '',
                             'destinationSite': 'Boston',
-                            'dnaConcentration': ',
-                            'dnaVolume': ',
+                            'dnaConcentration': '',
+                            'dnaVolume': '',
                             'message': 'NUCLEIC_ACID_SENDOUT',
                             'molecularSequenceNumber': 'MSN-OA5',
                             'patientSequenceNumber': 'OA5',
@@ -323,7 +350,7 @@ export class PatientApiServiceStub {
                                 'rnaBaiFilePath': 's3://BDD/MSN-OA5/job-OA5/sample2.bai',
                                 'rnaBamFilePath': 's3://BDD/MSN-OA5/job-OA5/sample2.bam',
                                 'variantReport': {
-                                    'copyNumberVariants': [],
+                                    'copyNumberVariants': [] as any[],
                                     'createdDate': {
                                         '$date': 1500563378608
                                     },
@@ -371,9 +398,9 @@ export class PatientApiServiceStub {
                                             'svType': 'Fusion'
                                         }
                                     ],
-                                    'indels': [],
-                                    'nonHotspotRules': [],
-                                    'singleNucleotideVariants': [],
+                                    'indels': [] as any[],
+                                    'nonHotspotRules': [] as any[],
+                                    'singleNucleotideVariants': [] as any[],
                                     'unifiedGeneFusions': [
                                         {
                                             'annotation': '-',
@@ -400,7 +427,7 @@ export class PatientApiServiceStub {
                             'tvcVersion': '4.2-13'
                         }
                     ],
-                    'pathologyReportMessages': []
+                    'pathologyReportMessages': [] as any[]
                 }
             ],
             'concordance': 'U',
@@ -413,7 +440,7 @@ export class PatientApiServiceStub {
             'currentPatientStatus': 'ON_TREATMENT_ARM',
             'currentStepNumber': '1',
             'currentTreatmentArm': {
-                'assayResults': [],
+                'assayResults': [] as any[],
                 'dateCreated': {
                     '$date': 1488461499519
                 },
@@ -488,7 +515,7 @@ export class PatientApiServiceStub {
                 'treatmentArmId': 'CukeTest-113',
                 'treatmentArmStatus': 'OPEN',
                 'variantReport': {
-                    'copyNumberVariants': [],
+                    'copyNumberVariants': [] as any[],
                     'geneFusions': [
                         {
                             'alternative': '[chr1:154142875[A',
@@ -522,7 +549,7 @@ export class PatientApiServiceStub {
                             'reference': 'C'
                         }
                     ],
-                    'indels': [],
+                    'indels': [] as any[],
                     'nonHotspotRules': [
                         {
                             'armSpecific': false,
@@ -533,8 +560,8 @@ export class PatientApiServiceStub {
                             'rare': false
                         }
                     ],
-                    'singleNucleotideVariants': [],
-                    'unifiedGeneFusions': []
+                    'singleNucleotideVariants': [] as any[],
+                    'unifiedGeneFusions': [] as any[]
                 },
                 'version': '2015-08-06'
             },
@@ -555,7 +582,7 @@ export class PatientApiServiceStub {
                 }
             ],
             'ethnicity': 'PATIENT_REFUSAL',
-            'exclusionCriterias': [],
+            'exclusionCriterias': [] as any[],
             'gender': 'MALE',
             'patientAssignments': [
                 {
@@ -1286,7 +1313,7 @@ export class PatientApiServiceStub {
                     'patientAssignmentStatusMessage': 'Treatment evaluation process completed.',
                     'stepNumber': '0',
                     'treatmentArm': {
-                        'assayResults': [],
+                        'assayResults': [] as any[],
                         'dateCreated': {
                             '$date': 1488461499519
                         },
@@ -1361,7 +1388,7 @@ export class PatientApiServiceStub {
                         'treatmentArmId': 'CukeTest-113',
                         'treatmentArmStatus': 'OPEN',
                         'variantReport': {
-                            'copyNumberVariants': [],
+                            'copyNumberVariants': [] as any[],
                             'geneFusions': [
                                 {
                                     'alternative': '[chr1:154142875[A',
@@ -1395,7 +1422,7 @@ export class PatientApiServiceStub {
                                     'reference': 'C'
                                 }
                             ],
-                            'indels': [],
+                            'indels': [] as any[],
                             'nonHotspotRules': [
                                 {
                                     'armSpecific': false,
@@ -1406,8 +1433,8 @@ export class PatientApiServiceStub {
                                     'rare': false
                                 }
                             ],
-                            'singleNucleotideVariants': [],
-                            'unifiedGeneFusions': []
+                            'singleNucleotideVariants': [] as any[],
+                            'unifiedGeneFusions': [] as any[]
                         },
                         'version': '2015-08-06'
                     }
@@ -2140,7 +2167,7 @@ export class PatientApiServiceStub {
                     'patientAssignmentStatusMessage': 'Treatment evaluation process completed.',
                     'stepNumber': '0',
                     'treatmentArm': {
-                        'assayResults': [],
+                        'assayResults': [] as any[],
                         'dateCreated': {
                             '$date': 1488461499519
                         },
@@ -2215,7 +2242,7 @@ export class PatientApiServiceStub {
                         'treatmentArmId': 'CukeTest-113',
                         'treatmentArmStatus': 'OPEN',
                         'variantReport': {
-                            'copyNumberVariants': [],
+                            'copyNumberVariants': [] as any[],
                             'geneFusions': [
                                 {
                                     'alternative': '[chr1:154142875[A',
@@ -2249,7 +2276,7 @@ export class PatientApiServiceStub {
                                     'reference': 'C'
                                 }
                             ],
-                            'indels': [],
+                            'indels': [] as any[],
                             'nonHotspotRules': [
                                 {
                                     'armSpecific': false,
@@ -2260,14 +2287,14 @@ export class PatientApiServiceStub {
                                     'rare': false
                                 }
                             ],
-                            'singleNucleotideVariants': [],
+                            'singleNucleotideVariants': [] as any[],
                             'unifiedGeneFusions': []
                         },
                         'version': '2015-08-06'
                     }
                 }
             ],
-            'patientRejoinTriggers': [],
+            'patientRejoinTriggers': [] as any[],
             'patientSequenceNumber': 'OA5',
             'patientTriggers': [
                 {
@@ -2322,7 +2349,7 @@ export class PatientApiServiceStub {
                     'studyId': 'EAY131'
                 }
             ],
-            'priorDrugs': [],
+            'priorDrugs': [] as any[],
             'races': [
                 'WHITE'
             ],
@@ -2451,7 +2478,7 @@ export class PatientApiServiceMock {
     //         'races': [
     //             'WHITE'
     //         ],
-    //         'patientRejoinTriggers': [],
+    //         'patientRejoinTriggers': [] as any[],
     //         'patientTriggers': [{
     //             'studyId': 'EAY131',
     //             'patientSequenceNumber': '1067',
@@ -2511,11 +2538,11 @@ export class PatientApiServiceMock {
     //                             'inclusion': true,
     //                             'armSpecific': false
     //                         }],
-    //                         'indels': [],
-    //                         'copyNumberVariants': [],
-    //                         'geneFusions': [],
-    //                         'unifiedGeneFusions': [],
-    //                         'nonHotspotRules': [],
+    //                         'indels': [] as any[],
+    //                         'copyNumberVariants': [] as any[],
+    //                         'geneFusions': [] as any[],
+    //                         'unifiedGeneFusions': [] as any[],
+    //                         'nonHotspotRules': [] as any[],
     //                         'createdDate': '2017-03-10T23:05:07.304Z'
     //                     }
     //                 },
@@ -2551,7 +2578,7 @@ export class PatientApiServiceMock {
     //                 'reportedDate': '2017-03-10T23:05:07.138Z'
     //             }
     //             ],
-    //             'pathologyReportMessages': [],
+    //             'pathologyReportMessages': [] as any[],
     //             'mdAndersonMessages': [{
     //                 'patientSequenceNumber': '1067',
     //                 'biopsySequenceNumber': 'BSN-1067',
@@ -2720,7 +2747,7 @@ export class PatientApiServiceMock {
     //                     }]
     //                 }
     //                 ],
-    //                 'exclusionCriterias': [],
+    //                 'exclusionCriterias': [] as any[],
     //                 'assayResults': [{
     //                     'gene': 'MSH2',
     //                     'assayResultStatus': 'POSITIVE',
@@ -2917,10 +2944,10 @@ export class PatientApiServiceMock {
     //                         'armSpecific': false
     //                     }
     //                     ],
-    //                     'indels': [],
-    //                     'copyNumberVariants': [],
-    //                     'geneFusions': [],
-    //                     'unifiedGeneFusions': [],
+    //                     'indels': [] as any[],
+    //                     'copyNumberVariants': [] as any[],
+    //                     'geneFusions': [] as any[],
+    //                     'unifiedGeneFusions': [] as any[],
     //                     'nonHotspotRules': []
     //                 },
     //                 'statusLog': {
@@ -3589,7 +3616,7 @@ export class PatientApiServiceMock {
     //                 assignmentHistory: 'test'
     //             }
     //         },
-    //         'exclusionCriterias': [],
+    //         'exclusionCriterias': [] as any[],
     //         'registrationDate': '2017-03-10T23:05:05.602Z'
     //     };
 
@@ -3606,7 +3633,7 @@ export class PatientApiServiceMock {
             {
                 'currentPatientStatus': 'REGISTRATION',
                 'currentStepNumber': '0',
-                'diseases': [],
+                'diseases': [] as any[],
                 'isOutsideAssay': false,
                 'offTrialDate': null,
                 'patientSequenceNumber': '1001re',
@@ -3617,7 +3644,7 @@ export class PatientApiServiceMock {
             {
                 'currentPatientStatus': 'REGISTRATION',
                 'currentStepNumber': '0',
-                'diseases': [],
+                'diseases': [] as any[],
                 'isOutsideAssay': false,
                 'offTrialDate': null,
                 'patientSequenceNumber': '1006',
@@ -3628,7 +3655,7 @@ export class PatientApiServiceMock {
             {
                 'currentPatientStatus': 'REGISTRATION',
                 'currentStepNumber': '0',
-                'diseases': [],
+                'diseases': [] as any[],
                 'isOutsideAssay': false,
                 'offTrialDate': null,
                 'patientSequenceNumber': '1007',
@@ -3639,7 +3666,7 @@ export class PatientApiServiceMock {
             {
                 'currentPatientStatus': 'REGISTRATION',
                 'currentStepNumber': '0',
-                'diseases': [],
+                'diseases': [] as any[],
                 'isOutsideAssay': false,
                 'offTrialDate': null,
                 'patientSequenceNumber': '1008',
@@ -3650,7 +3677,7 @@ export class PatientApiServiceMock {
             {
                 'currentPatientStatus': 'REGISTRATION',
                 'currentStepNumber': '0',
-                'diseases': [],
+                'diseases': [] as any[],
                 'isOutsideAssay': false,
                 'offTrialDate': null,
                 'patientSequenceNumber': '1009',
@@ -3661,7 +3688,7 @@ export class PatientApiServiceMock {
             {
                 'currentPatientStatus': 'REGISTRATION',
                 'currentStepNumber': '0',
-                'diseases': [],
+                'diseases': [] as any[],
                 'isOutsideAssay': false,
                 'offTrialDate': null,
                 'patientSequenceNumber': '1010re',
@@ -3672,7 +3699,7 @@ export class PatientApiServiceMock {
             {
                 'currentPatientStatus': 'REGISTRATION',
                 'currentStepNumber': '0',
-                'diseases': [],
+                'diseases': [] as any[],
                 'isOutsideAssay': false,
                 'offTrialDate': null,
                 'patientSequenceNumber': '1011re',
@@ -3683,7 +3710,7 @@ export class PatientApiServiceMock {
             {
                 'currentPatientStatus': 'REGISTRATION',
                 'currentStepNumber': '0',
-                'diseases': [],
+                'diseases': [] as any[],
                 'isOutsideAssay': false,
                 'offTrialDate': null,
                 'patientSequenceNumber': '1012',
@@ -3694,7 +3721,7 @@ export class PatientApiServiceMock {
             {
                 'currentPatientStatus': 'REGISTRATION',
                 'currentStepNumber': '0',
-                'diseases': [],
+                'diseases': [] as any[],
                 'isOutsideAssay': false,
                 'offTrialDate': null,
                 'patientSequenceNumber': '1013',
@@ -3705,7 +3732,7 @@ export class PatientApiServiceMock {
             {
                 'currentPatientStatus': 'REGISTRATION',
                 'currentStepNumber': '0',
-                'diseases': [],
+                'diseases': [] as any[],
                 'isOutsideAssay': false,
                 'offTrialDate': null,
                 'patientSequenceNumber': '1014',
