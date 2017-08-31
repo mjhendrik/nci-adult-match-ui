@@ -5,7 +5,6 @@ import { AssignmentReasonTableComponent } from './assignment-reason-table.compon
 import { DataTableModule } from '../../shared/datatables/index';
 import { PipesModule } from '../../shared/pipes/pipes.module';
 import { DirectivesModule } from '../../shared/directives/directives.module';
-import { LongListModule } from '../../shared/long-list/long-list.module';
 import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
@@ -15,7 +14,6 @@ import { SharedModule } from '../../shared/shared.module';
     DataTableModule,
     PipesModule,
     DirectivesModule,
-    LongListModule,
     SharedModule
   ],
   declarations: [AssignmentReasonTableComponent],

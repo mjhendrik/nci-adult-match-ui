@@ -20,7 +20,7 @@ export class ViewDataTransformer {
     if (transformedPatient.patientTriggers && transformedPatient.patientTriggers.length) {
       transformedPatient.patientTriggers = transformedPatient.patientTriggers.reverse();
       transformedPatient.isOutsideAssay = transformedPatient.patientTriggers.some(
-        (x: any) => x.patientStatus === "REGISTRATION_OUTSIDE_ASSAY"
+        (x: any) => x.patientStatus === 'REGISTRATION_OUTSIDE_ASSAY'
       );
     }
 
