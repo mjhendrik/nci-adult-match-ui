@@ -1,6 +1,7 @@
 import { inject, async, TestBed } from '@angular/core/testing';
 
 import { ViewDataTransformer } from './view-data-transformer.service';
+import { PatientApiServiceStub } from './testing/patient-api-service-stub';
 
 export function main() {
   describe('ViewDataTransformer', () => {
@@ -17,7 +18,7 @@ export function main() {
     });
 
     it('can instantiate service with "new"', inject([], () => {
-      let service = new ViewDataTransformer();
+      service = new ViewDataTransformer();
       expect(service instanceof ViewDataTransformer).toBe(true, 'new service should be ok');
     }));
 
@@ -25,5 +26,26 @@ export function main() {
       expect(service instanceof ViewDataTransformer).toBe(true, 'new service should be ok');
     }));
 
+    describe('when transformPatient', () => {
+      let fakeSource: any;
+      let transformed: any;
+
+      beforeEach(() => {
+        service = new ViewDataTransformer();
+        fakeSource = PatientApiServiceStub.makePatientData();
+        transformed = service.transformPatient(fakeSource);
+      });
+
+      fit('should return something if nothing is passed', () => {
+        fakeSource = null;
+        transformed = service.transformPatient(fakeSource);
+        expect(transformed).not.toBeNull();
+      });
+
+      fit('should return something', () => {
+        expect(transformed).not.toBeNull();
+      });
+
+    });
   });
 }
