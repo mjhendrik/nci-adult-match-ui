@@ -30,7 +30,7 @@ import 'rxjs/add/observable/fromEvent';
 })
 export class PatientListComponent implements OnInit {
 
-  searchTermPatients: string = '';
+  searchTerm: string = '';
   recordsPerPagePatients: number = 10;
   tablePatientsDefaultSort: string = 'patientSequenceNumber';
   tablePatientsData: any[] = [];
@@ -70,18 +70,18 @@ export class PatientListComponent implements OnInit {
       .distinctUntilChanged()
       .subscribe((val: any) => {
         this.cdref.detectChanges();
-        if (this.searchTermPatients !== val.target.value) {
-          this.searchTermPatients = val.target.value;
+        if (this.searchTerm !== val.target.value) {
+          this.searchTerm = val.target.value;
           this.previous = this.page + ',' + this.size + ',' + this.sortOrder + ',' + this.sortBy + ','
-            + this.searchTermPatients;
+            + this.searchTerm;
           this.refreshData();
         }
-        this.searchTermPatients = val.target.value;
+        this.searchTerm = val.target.value;
       });
   }
 
   currentPageActive(evt: any): void {
-    evt += ',' + this.searchTermPatients;
+    evt += ',' + this.searchTerm;
     let params = evt.split(',');
     this.page = parseInt(params[0]);
     this.size = parseInt(params[1]);
@@ -93,7 +93,7 @@ export class PatientListComponent implements OnInit {
   }
 
   sortStatus(evt: any): void {
-    evt += ',' + this.searchTermPatients;
+    evt += ',' + this.searchTerm;
     let params = evt.split(',');
     this.page = parseInt(params[0]);
     this.size = parseInt(params[1]);
@@ -106,7 +106,7 @@ export class PatientListComponent implements OnInit {
   }
 
   private refreshData() {
-    this.patientApi.getPatientCount(this.searchTermPatients, this.isOutsideAssay)
+    this.patientApi.getPatientCount(this.searchTerm, this.isOutsideAssay)
       .subscribe(itemList => {
         this.patientCount = itemList;
         this.getData();
@@ -118,7 +118,7 @@ export class PatientListComponent implements OnInit {
 
   private getData() {
     let gmt = new GmtPipe();
-    this.patientApi.getPatientList(this.page, this.size, this.sortOrder, this.sortBy, this.searchTermPatients, this.isOutsideAssay)
+    this.patientApi.getPatientList(this.page, this.size, this.sortOrder, this.sortBy, this.searchTerm, this.isOutsideAssay)
       .subscribe(itemList => {
         this.tablePatientsData = itemList.map(x => {
           x.registrationDate = gmt.transform(x.registrationDate);

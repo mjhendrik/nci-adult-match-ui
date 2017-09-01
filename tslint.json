@@ -3,6 +3,7 @@
   "rules": {
     "no-unused-variable": true,
     "use-host-property-decorator": false,
-    "disable-next-line:member-ordering": true
+    "disable-next-line:member-ordering": true,
+    "max-line-length": [true, 160]
   }
 }

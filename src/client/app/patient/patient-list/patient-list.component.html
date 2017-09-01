@@ -37,7 +37,7 @@
               <div class="col-md-6">
                 <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-r-5 p-b-10">
                   <label>Search:
-                    <input type="text" #input [ngModel]="searchTermPatients" (ngModelChange)="onSearchChanged($event)" class="form-control form-control-purple input-sm" placeholder="" aria-controls="data-table">
+                    <input type="text" #input [ngModel]="searchTerm" (ngModelChange)="onSearchChanged($event)" class="form-control form-control-purple input-sm" placeholder="" aria-controls="data-table">
                   </label>
                 </div>
               </div>
@@ -88,15 +88,15 @@
             </tr>
             <tr *ngIf="mftablePatients.data.length == 0">
               <td class="text-muted" colspan="7">
-                <span *ngIf="searchTermPatients">No matching search results found for "{{searchTermPatients}}"</span>
-                <span *ngIf="!searchTermPatients">No Patient data</span>
+                <span *ngIf="searchTerm">No matching search results found for "{{searchTerm}}"</span>
+                <span *ngIf="!searchTerm">No Patient data</span>
               </td>
             </tr>
           </tbody>
           <tfoot>
             <tr>
               <td class="tfoot-padding" colspan="7">
-                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchTermPatients" [totallength]="patientCount ? patientCount.length : 0"
+                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchTerm" [totallength]="patientCount ? patientCount.length : 0"
                   [totalPageCount]="patientTotal" (CurrentlyActive)="currentPageActive($event)"></mfBootstrapPaginator>
               </td>
             </tr>
