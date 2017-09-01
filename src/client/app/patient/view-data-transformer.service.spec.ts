@@ -171,7 +171,7 @@ export function main() {
         expect(transformed).toBeNull();
       });
 
-      it('should throw error if OCP or CNV data is missing', () => {
+      it('should not throw error if OCP or CNV data is missing', () => {
         let report: VariantReportComparisonData = PatientApiServiceStub.makeOutsideAssayComparisonVariantReportData();
         let cnvDataOutside: any = null;
         let ocpDataOutside: any = null;
@@ -186,7 +186,7 @@ export function main() {
             cnvDataMatch,
             ocpDataMatch);
         }
-        ).toThrow();
+        ).not.toThrow();
       });
 
       it('should return view data for comparison report when all parameters are passed', () => {

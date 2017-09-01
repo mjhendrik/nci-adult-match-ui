@@ -18,7 +18,7 @@
 
         <div class="tab-content m-b-0">
           <div class="tab-pane fade active in" id="tab-outside-lab-report">
-            <div class="row" matchHeight="panel-height-top">
+            <div *ngIf="outsideData && outsideData.analysisId" class="row" matchHeight="panel-height-top">
               <div class="col-md-6">
                 <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
                   <div class="panel-heading">
@@ -71,7 +71,7 @@
                 </div>
               </div>
 
-              <div class="col-md-6">
+              <div *ngIf="outsideData && outsideData.analysisId" class="col-md-6">
                 <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
                   <div class="panel-heading" *ngIf="!outsideData.assignmentReport">
                     <h4>Latest Assignment</h4>
@@ -170,7 +170,7 @@
           </div>
 
           <div class="tab-pane fade" id="tab-confirmation-report">
-            <div class="row" matchHeight="panel-height-top">
+            <div *ngIf="matchData && matchData.analysisId" class="row" matchHeight="panel-height-top">
               <div class="col-md-6">
                 <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
                   <div class="panel-heading">
@@ -265,7 +265,7 @@
               </div>
             </div>
 
-            <div class="row" matchHeight="panel-height-middle">
+            <div *ngIf="matchData && matchData.analysisId" class="row" matchHeight="panel-height-middle">
               <div class="col-md-6">
                 <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-middle">
                   <div class="panel-heading">                  
