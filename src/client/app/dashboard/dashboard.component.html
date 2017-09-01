@@ -154,7 +154,7 @@
                                   class="link-none"><i class="fa fa-share-alt"></i> {{item.molecularSequenceNumber | dashify}}</a>
                               </td>
                               <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                                <treatment-arm-link *ngIf="item.treatmentArmId" [treatmentArmId]="item.treatmentArmId" [version]="item.treatmentArmVersion"></treatment-arm-link>
+                                <treatment-arm-link *ngIf="item.treatmentArmId" [treatmentArmId]="item.treatmentArmId" [version]="item.treatmentArmVersion" [removePrefix]="true"></treatment-arm-link>
                                 <span *ngIf="!item.treatmentArmId" class="text-muted">No available treatment arm</span>
                               </td>
                               <td class="text-center"><a href [routerLink]="['/patients/' + item.patientSequenceNumber + '/variant_reports/' + item.analysisId]"

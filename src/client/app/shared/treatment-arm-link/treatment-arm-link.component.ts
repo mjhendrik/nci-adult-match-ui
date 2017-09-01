@@ -9,11 +9,11 @@ import { Component, Input } from '@angular/core';
         <span *ngIf="removePrefix; else showPrefix" [style.color]="textColor"><i class="fa fa-medkit"></i> {{suffix | dashify}}</span>
 
         <ng-template #showPrefix>
-            <span *ngIf="dimPrefix"><i class="fa fa-medkit"></i> <span class="prefix">{{prefix | dashify}}</span><span class="suffix">{{suffix | dashify}}</span></span>
-            <span *ngIf="!dimPrefix" [style.color]="textColor"><i class="fa fa-medkit"></i> <span>{{prefix | dashify}}</span><span>{{suffix | dashify}}</span></span>
+            <span *ngIf="dimPrefix"><i class="fa fa-medkit"></i> <span class="prefix">{{prefix}}</span><span class="suffix">{{suffix}}</span></span>
+            <span *ngIf="!dimPrefix" [style.color]="textColor"><i class="fa fa-medkit"></i> <span>{{prefix}}</span><span>{{suffix}}</span></span>
         </ng-template>
 
-        <span *ngIf="version" class="version" [style.color]="textColor">({{version | dashify}})</span>
+        <span *ngIf="version" class="version" [style.color]="textColor">({{version}})</span>
     </a>
     <ng-template #noData>-</ng-template>
     `
