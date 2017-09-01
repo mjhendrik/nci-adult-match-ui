@@ -106,6 +106,34 @@ export function main() {
             fixture.destroy();
           });
       }));
+
+    it('should work by calling Options --> Callback Response',
+      async((done:any) => {
+          TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(CnvChartDirective, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(CnvChartDirective);
+
+            fixture.componentInstance.data = PatientApiServiceStub.makeRawVcftData();
+            fixture.componentInstance.cnvdata = PatientApiServiceStub.makeCnvData();
+
+            fixture.componentInstance.ngOnInit();
+
+            expect(fixture.componentInstance.options).toBeDefined();
+            fixture.detectChanges();
+
+            expect(fixture.componentInstance.data).toBeDefined();
+            fixture.detectChanges();
+
+            expect(fixture.componentInstance.options.chart.callback).toBeDefined();
+            fixture.detectChanges();
+            fixture.destroy();
+          });
+      }));
   });
 
   @Component({
