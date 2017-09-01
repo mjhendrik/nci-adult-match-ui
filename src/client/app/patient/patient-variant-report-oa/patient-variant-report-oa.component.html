@@ -365,7 +365,7 @@
           <sd-assignment-reason-table [reasons]="outsideData.assignmentReport.reasons"></sd-assignment-reason-table>
         </div>
 
-        <p *ngIf="!outsideData.assignmentReport !! !outsideData.assignmentReport.reasons" class="empty-data-panel">No Outside Lab Assignment</p>            
+        <p *ngIf="!outsideData.assignmentReport || !outsideData.assignmentReport.reasons" class="empty-data-panel">No Outside Lab Assignment</p>            
       </div>
 
       <div class="tab-pane fade" id="tab-confirmation-assignment">
@@ -373,7 +373,7 @@
           <sd-assignment-reason-table [reasons]="matchData.assignmentReport.reasons"></sd-assignment-reason-table>
         </div>
 
-        <p *ngIf="!matchData.assignmentReport !! !matchData.assignmentReport.reasons" class="empty-data-panel">No Confirmation Report Assignment</p>            
+        <p *ngIf="!matchData.assignmentReport || !matchData.assignmentReport.reasons" class="empty-data-panel">No Confirmation Report Assignment</p>            
       </div>
     </div>
   </div>
