@@ -3662,13 +3662,13 @@ export class PatientApiServiceMock {
         sortOrder: string,
         sortBy: string,
         filter: string,
-        isOutsideAssay?: boolean): Observable<any[]> {
+        isOutsideAssayWorkflow?: boolean): Observable<any[]> {
         let testData: any = [
             {
                 'currentPatientStatus': 'REGISTRATION',
                 'currentStepNumber': '0',
                 'diseases': [] as any[],
-                'isOutsideAssay': false,
+                'isOutsideAssayWorkflow': false,
                 'offTrialDate': null,
                 'patientSequenceNumber': '1001re',
                 'registrationDate': {
@@ -3679,7 +3679,7 @@ export class PatientApiServiceMock {
                 'currentPatientStatus': 'REGISTRATION',
                 'currentStepNumber': '0',
                 'diseases': [] as any[],
-                'isOutsideAssay': false,
+                'isOutsideAssayWorkflow': false,
                 'offTrialDate': null,
                 'patientSequenceNumber': '1006',
                 'registrationDate': {
@@ -3690,7 +3690,7 @@ export class PatientApiServiceMock {
                 'currentPatientStatus': 'REGISTRATION',
                 'currentStepNumber': '0',
                 'diseases': [] as any[],
-                'isOutsideAssay': false,
+                'isOutsideAssayWorkflow': false,
                 'offTrialDate': null,
                 'patientSequenceNumber': '1007',
                 'registrationDate': {
@@ -3701,7 +3701,7 @@ export class PatientApiServiceMock {
                 'currentPatientStatus': 'REGISTRATION',
                 'currentStepNumber': '0',
                 'diseases': [] as any[],
-                'isOutsideAssay': false,
+                'isOutsideAssayWorkflow': false,
                 'offTrialDate': null,
                 'patientSequenceNumber': '1008',
                 'registrationDate': {
@@ -3712,7 +3712,7 @@ export class PatientApiServiceMock {
                 'currentPatientStatus': 'REGISTRATION',
                 'currentStepNumber': '0',
                 'diseases': [] as any[],
-                'isOutsideAssay': false,
+                'isOutsideAssayWorkflow': false,
                 'offTrialDate': null,
                 'patientSequenceNumber': '1009',
                 'registrationDate': {
@@ -3723,7 +3723,7 @@ export class PatientApiServiceMock {
                 'currentPatientStatus': 'REGISTRATION',
                 'currentStepNumber': '0',
                 'diseases': [] as any[],
-                'isOutsideAssay': false,
+                'isOutsideAssayWorkflow': false,
                 'offTrialDate': null,
                 'patientSequenceNumber': '1010re',
                 'registrationDate': {
@@ -3734,7 +3734,7 @@ export class PatientApiServiceMock {
                 'currentPatientStatus': 'REGISTRATION',
                 'currentStepNumber': '0',
                 'diseases': [] as any[],
-                'isOutsideAssay': false,
+                'isOutsideAssayWorkflow': false,
                 'offTrialDate': null,
                 'patientSequenceNumber': '1011re',
                 'registrationDate': {
@@ -3745,7 +3745,7 @@ export class PatientApiServiceMock {
                 'currentPatientStatus': 'REGISTRATION',
                 'currentStepNumber': '0',
                 'diseases': [] as any[],
-                'isOutsideAssay': false,
+                'isOutsideAssayWorkflow': false,
                 'offTrialDate': null,
                 'patientSequenceNumber': '1012',
                 'registrationDate': {
@@ -3756,7 +3756,7 @@ export class PatientApiServiceMock {
                 'currentPatientStatus': 'REGISTRATION',
                 'currentStepNumber': '0',
                 'diseases': [] as any[],
-                'isOutsideAssay': false,
+                'isOutsideAssayWorkflow': false,
                 'offTrialDate': null,
                 'patientSequenceNumber': '1013',
                 'registrationDate': {
@@ -3767,7 +3767,7 @@ export class PatientApiServiceMock {
                 'currentPatientStatus': 'REGISTRATION',
                 'currentStepNumber': '0',
                 'diseases': [] as any[],
-                'isOutsideAssay': false,
+                'isOutsideAssayWorkflow': false,
                 'offTrialDate': null,
                 'patientSequenceNumber': '1014',
                 'registrationDate': {

@@ -47,11 +47,11 @@ export class PatientListComponent implements OnInit {
   @ViewChild('input') inputElRef: ElementRef;
 
   private isOutsideAssayValue?: boolean = null;
-  set isOutsideAssay(value: boolean) {
+  set isOutsideAssayWorkflow(value: boolean) {
     this.isOutsideAssayValue = value;
     this.refreshData();
   }
-  get isOutsideAssay(): boolean {
+  get isOutsideAssayWorkflow(): boolean {
     return this.isOutsideAssayValue;
   }
 
@@ -106,7 +106,7 @@ export class PatientListComponent implements OnInit {
   }
 
   private refreshData() {
-    this.patientApi.getPatientCount(this.searchTerm, this.isOutsideAssay)
+    this.patientApi.getPatientCount(this.searchTerm, this.isOutsideAssayWorkflow)
       .subscribe(itemList => {
         this.patientCount = itemList;
         this.getData();
@@ -118,7 +118,7 @@ export class PatientListComponent implements OnInit {
 
   private getData() {
     let gmt = new GmtPipe();
-    this.patientApi.getPatientList(this.page, this.size, this.sortOrder, this.sortBy, this.searchTerm, this.isOutsideAssay)
+    this.patientApi.getPatientList(this.page, this.size, this.sortOrder, this.sortBy, this.searchTerm, this.isOutsideAssayWorkflow)
       .subscribe(itemList => {
         this.tablePatientsData = itemList.map(x => {
           x.registrationDate = gmt.transform(x.registrationDate);

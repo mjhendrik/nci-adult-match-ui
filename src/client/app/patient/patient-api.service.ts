@@ -26,21 +26,21 @@ export class PatientApiService {
     sortOrder: string,
     sortBy: string,
     filter: string,
-    isOutsideAssay?: boolean): Observable<any[]> {
+    isOutsideAssayWorkflow?: boolean): Observable<any[]> {
     return this.http.get(this.url('/patients?view=ui_list&page='
       + page + '&size=' + size + '&sort=' + sortBy + ':' + sortOrder
       + (filter ? '&projfilter=' + filter : '')
-      + (isOutsideAssay !== null ? '&is-oa=' + isOutsideAssay : ''),
+      + (isOutsideAssayWorkflow !== null ? '&is-oa=' + isOutsideAssayWorkflow : ''),
       'assets/mock-data/patient-list.json'))
       .map(this.extractData)
       .catch(this.handleError);
   }
 
-  getPatientCount(filter: string, isOutsideAssay?: boolean): Observable<number> {
+  getPatientCount(filter: string, isOutsideAssayWorkflow?: boolean): Observable<number> {
     return this.http.get(Config.API.PATIENT
       + '/patients/count?projection=patientSequenceNumber,currentPatientStatus,currentStepNumber,diseases.shortName,registrationDate,patientAssignments.treatmentArm.name,patientAssignments.treatmentArm.version'
       + (filter ? '&projfilter=' + filter : '')
-      + (isOutsideAssay !== null ? '&is-oa=' + isOutsideAssay : ''))
+      + (isOutsideAssayWorkflow !== null ? '&is-oa=' + isOutsideAssayWorkflow : ''))
       .map(this.extractData)
       .catch(this.handleError);
   }

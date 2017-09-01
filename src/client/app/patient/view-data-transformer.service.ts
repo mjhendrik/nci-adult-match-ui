@@ -16,10 +16,10 @@ export class ViewDataTransformer {
 
     transformedPatient.disease = source.diseases && source.diseases.length ? source.diseases[0] : {};
 
-    transformedPatient.isOutsideAssay = false;
+    transformedPatient.isOutsideAssayWorkflow = false;
     if (transformedPatient.patientTriggers && transformedPatient.patientTriggers.length) {
       transformedPatient.patientTriggers = transformedPatient.patientTriggers.reverse();
-      transformedPatient.isOutsideAssay = transformedPatient.patientTriggers.some(
+      transformedPatient.isOutsideAssayWorkflow = transformedPatient.patientTriggers.some(
         (x: any) => x.patientStatus === 'REGISTRATION_OUTSIDE_ASSAY'
       );
     }
@@ -114,7 +114,8 @@ export class ViewDataTransformer {
   private transformBiopsy(transformedPatient: any, source: any): any {
     let transformedBiopsy = source;
 
-    transformedBiopsy.isOutsideAssay = transformedPatient.isOutsideAssay;
+    transformedBiopsy.isOutsideAssayWorkflow = transformedPatient.isOutsideAssayWorkflow;
+    transformedBiopsy.isOutsideAssay = !!transformedBiopsy.patientOutsideAssayLabReport;
 
     this.transformMdaMessages(transformedBiopsy);
     this.transformNgsMessages(transformedPatient, transformedBiopsy);
@@ -222,7 +223,7 @@ export class ViewDataTransformer {
       let variantReport = message.ionReporterResults.variantReport;
 
       analysis.variantReport = variantReport;
-      variantReport.isOutsideAssay = transformedBiopsy.isOutsideAssay;
+      variantReport.isOutsideAssayWorkflow = transformedBiopsy.isOutsideAssayWorkflow;
       variantReport.variantReporterFileReceivedDate = analysis.variantReporterFileReceivedDate;
 
       const variantTables: Array<string> = [
