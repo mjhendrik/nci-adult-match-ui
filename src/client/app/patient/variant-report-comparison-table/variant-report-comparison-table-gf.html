@@ -22,25 +22,25 @@
           </div>
         </td>
 
-        <td [ngClass]="{'has-diff':item.hasDifference['identifier']}">
+        <td [ngClass]="{'has-diff':item && item.hasDifference && item.hasDifference['identifier']}">
           <span class="outside-data"><cosmic-link [linkType]="'cosmicFusionId'" [linkId]="item.outsideData.identifier"></cosmic-link></span>
         </td>
-        <td [ngClass]="{'has-diff':item.hasDifference['aMoi']}">
+        <td [ngClass]="{'has-diff':item && item.hasDifference && item.hasDifference['aMoi']}">
           <span class="outside-data">{{item.outsideData.aMoi | dashify}}</span>
         </td>
-        <td [ngClass]="{'has-diff':item.hasDifference['driverGene']}">
+        <td [ngClass]="{'has-diff':item && item.hasDifference && item.hasDifference['driverGene']}">
           <span class="outside-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.outsideData.driverGene"></cosmic-link></span>
         </td>
-        <td [ngClass]="{'has-diff':item.hasDifference['driverReadCount']}">
+        <td [ngClass]="{'has-diff':item && item.hasDifference && item.hasDifference['driverReadCount']}">
           <span class="outside-data">{{item.outsideData.driverReadCount | dashify}}</span>
         </td>
-        <td [ngClass]="{'has-diff':item.hasDifference['partnerGene']}">
+        <td [ngClass]="{'has-diff':item && item.hasDifference && item.hasDifference['partnerGene']}">
           <span class="outside-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.outsideData.partnerGene"></cosmic-link></span>
         </td>
-        <td [ngClass]="{'has-diff':item.hasDifference['partnerReadCount']}">
+        <td [ngClass]="{'has-diff':item && item.hasDifference && item.hasDifference['partnerReadCount']}">
           <span class="outside-data">{{item.outsideData.partnerReadCount | dashify}}</span>
         </td>
-        <td [ngClass]="{'has-diff':item.hasDifference['annotation']}">
+        <td [ngClass]="{'has-diff':item && item.hasDifference && item.hasDifference['annotation']}">
           <span class="outside-data">{{item.outsideData.annotation | dashify}}</span>
         </td>        
       </tr>
@@ -56,25 +56,25 @@
       </tr>
 
       <tr *ngIf="item.matchData" class="match-data-row">
-        <td [ngClass]="{'has-diff':item.hasDifference['identifier']}">
+        <td [ngClass]="{'has-diff':item && item.hasDifference && item.hasDifference['identifier']}">
           <span class="match-data"><cosmic-link [linkType]="'cosmicFusionId'" [linkId]="item.matchData.identifier"></cosmic-link></span>
         </td>
-        <td [ngClass]="{'has-diff':item.hasDifference['aMoi']}">
+        <td [ngClass]="{'has-diff':item && item.hasDifference && item.hasDifference['aMoi']}">
           <span class="match-data">{{item.matchData.aMoi | dashify}}</span>
         </td>
-        <td [ngClass]="{'has-diff':item.hasDifference['driverGene']}">
+        <td [ngClass]="{'has-diff':item && item.hasDifference && item.hasDifference['driverGene']}">
           <span class="match-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.matchData.driverGene"></cosmic-link></span>
         </td>
-        <td [ngClass]="{'has-diff':item.hasDifference['driverReadCount']}">
+        <td [ngClass]="{'has-diff':item && item.hasDifference && item.hasDifference['driverReadCount']}">
           <span class="match-data">{{item.matchData.driverReadCount | dashify}}</span>
         </td>
-        <td [ngClass]="{'has-diff':item.hasDifference['partnerGene']}">
+        <td [ngClass]="{'has-diff':item && item.hasDifference && item.hasDifference['partnerGene']}">
           <span class="match-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.matchData.partnerGene"></cosmic-link></span>
         </td>
-        <td [ngClass]="{'has-diff':item.hasDifference['partnerReadCount']}">
+        <td [ngClass]="{'has-diff':item && item.hasDifference && item.hasDifference['partnerReadCount']}">
           <span class="match-data">{{item.matchData.partnerReadCount | dashify}}</span>
         </td>
-        <td [ngClass]="{'has-diff':item.hasDifference['annotation']}">
+        <td [ngClass]="{'has-diff':item && item.hasDifference && item.hasDifference['annotation']}">
           <span class="match-data">{{item.matchData.annotation | dashify}}</span>
         </td>        
       </tr>
