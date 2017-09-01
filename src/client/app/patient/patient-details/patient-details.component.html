@@ -27,7 +27,7 @@
             <dt>Treatment Arm</dt>
             <dd><treatment-arm-link *ngIf="patient.currentPatientAssignmentLogic" 
               [treatmentArmId]="patient.currentPatientAssignmentLogic.treatmentArmId" 
-              [version]="patient.currentPatientAssignmentLogic.treatmentArmVersion"></treatment-arm-link><span *ngIf="!patient.currentPatientAssignmentLogic">-</span></dd>
+              [version]="patient.currentPatientAssignmentLogic.treatmentArmVersion" [removePrefix]="true"></treatment-arm-link><span *ngIf="!patient.currentPatientAssignmentLogic">-</span></dd>
             <dt>Registration Date</dt>
             <dd>{{patient.registrationDate | gmt | dashify}}</dd>
             <dt>Last Rejoin Scan Date</dt>

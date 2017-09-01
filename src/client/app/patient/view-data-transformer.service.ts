@@ -51,6 +51,11 @@ export class ViewDataTransformer {
 
     const transformedReport: any = { ...report }; // Deep-copy the source
 
+    cnvDataOutside = cnvDataOutside || {};
+    ocpDataOutside = ocpDataOutside || {};
+    cnvDataMatch = cnvDataMatch || {};
+    ocpDataMatch = ocpDataMatch || {};
+
     transformedReport.matchData.pool1 = ocpDataMatch.pool1;
     transformedReport.matchData.pool2 = ocpDataMatch.pool2;
     transformedReport.matchData.mapd = cnvDataMatch.mapd;
