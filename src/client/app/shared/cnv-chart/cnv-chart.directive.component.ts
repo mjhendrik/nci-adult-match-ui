@@ -71,6 +71,7 @@ export class CnvChartDirective implements OnInit {
   errorMessage: string;
   cnvdata: any;
   file_name: string ;
+  parseddata:any[] = [];
   // tooltip: any;
 
   @Input() visible: boolean;
@@ -82,13 +83,13 @@ export class CnvChartDirective implements OnInit {
   getData() {
 
     let array = this.data[0];
-    if(typeof this.data[1] !== 'undefined') {
+    if (typeof this.data[1] !== 'undefined') {
       this.file_name = this.data[1].split('tmp/')[1];
     }
-    let temp: any[] = [];
-    let svg: any;
+    let temp:any[] = [];
+    let svg:any;
 
-    Object.keys(array).forEach((key: any) => {
+    Object.keys(array).forEach((key:any) => {
 
       let gene = array[key].gene;
       let values = array[key].values;
@@ -99,6 +100,12 @@ export class CnvChartDirective implements OnInit {
 
       let min = values[0];
       let max = values[10];
+      let chrnum:any[] = [];
+
+      if (typeof chromosome !== 'undefined') {
+        chrnum = chromosome.split('chr');
+        this.parseddata.push([gene,chromosome,key,chrnum[1],min,max]);
+      }
 
       let Object = {
         x: key,
@@ -119,25 +126,41 @@ export class CnvChartDirective implements OnInit {
       temp.push(Object);
 
     });
-    let colors: any[] = [];
+    let colors:any[] = [];
     //COLORS
-    Object.keys(temp).forEach((key: any) => {
+    Object.keys(temp).forEach((key:any) => {
       colors.push(temp[key].status);
     });
 
     this.cnvdata = temp;
 
-    let id:any = function () {return 'boxplotchart';};
-    let type:any = function () {return 'boxPlotChart';};
-    let height:any = function () {return 450;};
-    let margin:any = function () {return {top: 20, right: 20, bottom: 60, left: 40};};
-    let showLabels:any = function () {return true;};
-    let showXAxis:any = function () {return true;};
-    let xAxis:any = function () {return {rotateLabels: -45, fontSize: 10}};
-    let color = function () {return colors;};
+    let id:any = function () {
+      return 'boxplotchart';
+    };
+    let type:any = function () {
+      return 'boxPlotChart';
+    };
+    let height:any = function () {
+      return 450;
+    };
+    let margin:any = function () {
+      return {top: 20, right: 20, bottom: 60, left: 40};
+    };
+    let showLabels:any = function () {
+      return true;
+    };
+    let showXAxis:any = function () {
+      return true;
+    };
+    let xAxis:any = function () {
+      return {rotateLabels: -45, fontSize: 10}
+    };
+    let color = function () {
+      return colors;
+    };
 
     this.options = {
-      chart : {
+      chart: {
 
         color: color(),
         id: id(),
@@ -147,6 +170,7 @@ export class CnvChartDirective implements OnInit {
         showLabels: showLabels(),
         showXAxis: showXAxis(),
         xAxis: xAxis(),
+        yDomain: [0, 10],
         tooltip: {
           contentGenerator: (d:any) => {
             let label:any;
@@ -177,9 +201,117 @@ export class CnvChartDirective implements OnInit {
             return html;
 
           }
+        },
+        callback: (chart:any) => {
+          let height = 370;
+          let chr:any;
+          let prespot:any = 0;
+          let median:any = [];
+          let lowest:any = null;
+          let highest:any = null;
+          let spot:any = null;
+          let gene:any = null;
+          let lastspot = 0;
+          let genes = this.parseddata;
+
+          svg = d3.select('#boxplotchart')
+            .select('.nv-boxPlotWithAxes')
+            .select('g')
+            .append('g');
+
+          Object.keys(genes).forEach((key:any) => {
+            gene = genes[key][0];
+            let temp = genes[key][1];
+            let x = genes[key][2];
+            let chrnum = genes[key][3];
+
+            if (lowest !== null) {
+              lowest = genes[key][4] < lowest ? genes[key][4] : lowest;
+              median[0] = lowest;
+            }
+            else {
+              lowest = genes[key][4];
+            }
+
+            if (highest !== null) {
+              highest = genes[key][5] > highest ? genes[key][5] : highest;
+              median[1] = highest;
+            }
+            else {
+              highest = genes[key][5];
+            }
+
+            if (temp !== chr && typeof temp !== 'undefined') {
+              spot = (chart.xScale()(gene)).toFixed(2) - 1;
+              chr = temp;
+
+              if (x > 0) {
+                svg.append('line')
+                  .attr('x1', spot)
+                  .attr('x2', spot)
+                  .attr("y1", height)
+                  .style('fill', 'none')
+                  .style('stroke', 'gray')
+                  .style('stroke-width', 0.5)
+                  .style('stroke-linecap', 'line');
+
+                svg.append("text")
+                  .attr("class", "nv-zeroLine")
+                  // .attr("x", 0.5 * parseFloat(spot + prespot))
+                  .attr("x", parseFloat(spot) + 1)
+                  .attr("y", 365)
+                  .text(chrnum)
+                  .style("fill", "#c70505")
+                  .style("font-size", 8);
+
+                prespot = spot;
+              }
+              else {
+                svg.append("text")
+                  .attr("class", "nv-zeroLine")
+                  .attr("x", 5)
+                  .attr("y", 365)
+                  .text(chrnum)
+                  .style("fill", "#c70505")
+                  .style("font-size", 8);
+
+                prespot = spot;
+              }
+
+            }
+          });
+          let max = Math.round(highest / 10) * 3 + lowest;
+          lastspot = chart.xScale()(gene) + 35;
+          let y1 = chart.yScale()(max);
+          let y2 = chart.yScale()(7);
+
+          svg.append("line")
+            .attr("x1", 0)
+            .attr("y1", y2)
+            .attr("x2", lastspot)
+            .attr("y2", y2)
+            .style("stroke-opacity", 2)
+            .style("stroke", "red");
+
+          svg.append("line")
+            .attr("x1", 0)
+            .attr("y1", y1)
+            .attr("x2", lastspot)
+            .attr("y2", y1)
+            .style("stroke-dasharray", ("3, 3"))
+            .style("stroke-opacity", 2)
+            .style("stroke", "red");
+
+          svg.append('line')
+            .attr('x1', lastspot)
+            .attr('x2', lastspot)
+            .attr("y1", height)
+            .style('fill', 'none')
+            .style('stroke', 'gray')
+            .style('stroke-width', 0.5)
+            .style('stroke-linecap', 'line');
         }
       }
-    };
-
+    }
   }
 }
