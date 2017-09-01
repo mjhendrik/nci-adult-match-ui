@@ -70,16 +70,17 @@ export function main() {
       fixture = TestBed.createComponent(PatientVariantReportOutsideAssayComponent);
       component = fixture.componentInstance; // PatientVariantReportOutsideAssayComponent test instance
       // query for the MSN 'ut-outside-msn' by CSS element selector
-      de = fixture.debugElement.query(By.css('.ut-outside-msn'));
-      el = de.nativeElement;
     });
 
     it('no Analysis ID in title until manually call `detectChanges`', () => {
-      expect(el.textContent).toEqual('');
+      de = fixture.debugElement.query(By.css('.ut-outside-msn'));
+      expect(de).toBeNull();
     });
 
     it('should display Analysis ID in the title', () => {
       fixture.detectChanges();
+      de = fixture.debugElement.query(By.css('.ut-outside-msn'));
+      el = de.nativeElement;
       expect(el.textContent).toEqual(component.outsideData.variantReport.molecularSequenceNumber);
     });
 
