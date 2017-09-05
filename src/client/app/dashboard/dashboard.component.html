@@ -352,7 +352,7 @@
                     <td [colorCodePatients]="item.currentPatientStatus">{{item.currentPatientStatus | dashify}}</td>
                     <td class="text-danger-light">
                       <ul *ngFor="let items of item.messages">
-                        <li> {{items | dashify}}</li>
+                        <li>{{items | dashify}}</li>
                       </ul>
                     </td>
                     <td class="text-center">
@@ -375,23 +375,23 @@
                             <dl class="dl-horizontal p-t-15 m-b-15">
                               <dt>RB</dt>
                               <dd *ngIf="!item.RB"><i class="fa fa-times-circle text-danger-light"></i></dd>
-                              <dd *ngIf="item.RB"><i class="fa fa-check-circle text-success-light"></i> {{item.RB.reportedDate | gmt}} 
-                                (<span [colorCodeAssay]="item.RB.result">{{item.RB.result}}</span>)
+                              <dd *ngIf="item.RB"><i class="fa fa-check-circle text-success-light"></i> {{item.RB.reportedDate | gmt}} (<span
+                                  [colorCodeAssay]="item.RB.result">{{item.RB.result}}</span>)
                               </dd>
                               <dt>IHC MSH2</dt>
                               <dd *ngIf="!item.MSH2"><i class="fa fa-times-circle text-danger-light"></i></dd>
-                              <dd *ngIf="item.MSH2"><i class="fa fa-check-circle text-success-light"></i> {{item.MSH2.reportedDate | gmt}} 
-                                (<span [colorCodeAssay]="item.MSH2.result">{{item.MSH2.result}}</span>)
+                              <dd *ngIf="item.MSH2"><i class="fa fa-check-circle text-success-light"></i> {{item.MSH2.reportedDate | gmt}} (<span
+                                  [colorCodeAssay]="item.MSH2.result">{{item.MSH2.result}}</span>)
                               </dd>
                               <dt>IHC MLH1</dt>
                               <dd *ngIf="!item.MLH1"><i class="fa fa-times-circle text-danger-light"></i></dd>
-                              <dd *ngIf="item.MLH1"><i class="fa fa-check-circle text-success-light"></i> {{item.MLH1.reportedDate | gmt}} 
-                                (<span [colorCodeAssay]="item.MLH1.result">{{item.MLH1.result}}</span>)
+                              <dd *ngIf="item.MLH1"><i class="fa fa-check-circle text-success-light"></i> {{item.MLH1.reportedDate | gmt}} (<span
+                                  [colorCodeAssay]="item.MLH1.result">{{item.MLH1.result}}</span>)
                               </dd>
                               <dt>IHC PTEN</dt>
                               <dd *ngIf="!item.PTEN"><i class="fa fa-times-circle text-danger-light"></i></dd>
-                              <dd *ngIf="item.PTEN"><i class="fa fa-check-circle text-success-light"></i> {{item.PTEN.reportedDate | gmt}} 
-                                (<span [colorCodeAssay]="item.PTEN.result">{{item.PTEN.result}}</span>)
+                              <dd *ngIf="item.PTEN"><i class="fa fa-check-circle text-success-light"></i> {{item.PTEN.reportedDate | gmt}} (<span
+                                  [colorCodeAssay]="item.PTEN.result">{{item.PTEN.result}}</span>)
                               </dd>
                               <dt>Variant Report</dt>
                               <dd *ngIf="!item.variantReportConfirmedDate"><i class="fa fa-times-circle text-danger-light"></i></dd>
@@ -424,6 +424,15 @@
                               <dd>{{item.analysisId | dashify}}</dd>
                               <dt>MSN Shipped Date</dt>
                               <dd>{{item.dateMsnShipped | gmt}}</dd>
+                              <dt>aMOI</dt>
+                              <dd>
+                                <!-- <ul *ngFor="let items of item.amoi"> -->
+                                <!-- <li> -->
+                                <!-- {{items | dashify}} -->
+                                {{item.amoi | dashify}}
+                                <!-- </li> -->
+                                <!-- </ul> -->
+                              </dd>
                             </dl>
                           </div>
                         </div>
