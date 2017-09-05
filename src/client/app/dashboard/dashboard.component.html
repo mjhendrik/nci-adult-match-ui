@@ -351,7 +351,11 @@
                       <a href [routerLink]="['/patients', item.patientSequenceNumber]" class="link-none"><i class="fa fa-user"></i> {{item.patientSequenceNumber | dashify}}</a>
                     </td>
                     <td [colorCodePatients]="item.currentPatientStatus">{{item.currentPatientStatus | dashify}}</td>
-                    <td class="text-danger-light">{{item.messages | dashify}}</td>
+                    <td class="text-danger-light">
+                      <ul *ngFor="let items of item.messages">
+                        <li> {{items | dashify}}</li>
+                      </ul>
+                    </td>
                     <td class="text-center">
                       <span *ngIf="item.amoi!==null"><i class="fa fa-check-circle text-success-light"></i></span>
                       <span *ngIf="item.amoi===null"><i class="fa fa-times-circle text-danger-light"></i></span>
@@ -371,33 +375,38 @@
                           <div class="col-md-6">
                             <dl class="dl-horizontal p-t-15 m-b-15">
                               <dt>RB</dt>
-                              <dd *ngIf="!item.daysWaiting"><i class="fa fa-times-circle text-danger-light"></i></dd>
-                              <dd *ngIf="item.daysWaiting"><i class="fa fa-check-circle text-success-light"></i> {{item.daysWaiting | gmt}} (<span [colorCodePatients]="item.currentPatientStatus">{{item.currentPatientStatus}}</span>)
+                              <dd *ngIf="!item.RB"><i class="fa fa-times-circle text-danger-light"></i></dd>
+                              <dd *ngIf="item.RB"><i class="fa fa-check-circle text-success-light"></i> {{item.RB.reportedDate | gmt}} (<span [colorCodeAssay]="item.RB.result">{{item.RB.result}}</span>)
                               </dd>
                               <dt>IHC MSH2</dt>
-                              <dd *ngIf="!item.daysWaiting"><i class="fa fa-times-circle text-danger-light"></i></dd>
-                              <dd *ngIf="item.daysWaiting"><i class="fa fa-check-circle text-success-light"></i> {{item.daysWaiting | gmt}} (<span [colorCodePatients]="item.currentPatientStatus">{{item.currentPatientStatus}}</span>)
+                              <dd *ngIf="!item.MSH2"><i class="fa fa-times-circle text-danger-light"></i></dd>
+                              <dd *ngIf="item.MSH2"><i class="fa fa-check-circle text-success-light"></i> {{item.MSH2.reportedDate | gmt}} (<span [colorCodeAssay]="item.MSH2.result">{{item.MSH2.result}}</span>)
                               </dd>
                               <dt>IHC MLH1</dt>
-                              <dd *ngIf="!item.daysWaiting"><i class="fa fa-times-circle text-danger-light"></i></dd>
-                              <dd *ngIf="item.daysWaiting"><i class="fa fa-check-circle text-success-light"></i> {{item.daysWaiting | gmt}} (<span [colorCodePatients]="item.currentPatientStatus">{{item.currentPatientStatus}}</span>)
+                              <dd *ngIf="!item.MLH1"><i class="fa fa-times-circle text-danger-light"></i></dd>
+                              <dd *ngIf="item.MLH1"><i class="fa fa-check-circle text-success-light"></i> {{item.MLH1.reportedDate | gmt}} (<span [colorCodeAssay]="item.MLH1.result">{{item.MLH1.result}}</span>)
                               </dd>
                               <dt>IHC PTEN</dt>
                               <dd *ngIf="!item.PTEN"><i class="fa fa-times-circle text-danger-light"></i></dd>
                               <dd *ngIf="item.PTEN"><i class="fa fa-check-circle text-success-light"></i> {{item.PTEN.reportedDate | gmt}} (<span [colorCodeAssay]="item.PTEN.result">{{item.PTEN.result}}</span>)
                               </dd>
                               <dt>Variant Report</dt>
-                              <dd *ngIf="!item.messages"><i class="fa fa-times-circle text-danger-light"></i></dd>
-                              <dd *ngIf="item.messages"><i class="fa fa-check-circle text-success-light"></i> {{item.messages | dashify}}</dd>
-                              <dt>Disease Concordance</dt>
-                              <dd *ngIf="!item.messages"><i class="fa fa-times-circle text-danger-light"></i></dd>
-                              <dd *ngIf="item.messages"><i class="fa fa-check-circle text-success-light"></i> {{item.messages | dashify}}</dd>
+                              <dd *ngIf="!item.variantReport"><i class="fa fa-times-circle text-danger-light"></i></dd>
+                              <dd *ngIf="item.variantReport"><i class="fa fa-check-circle text-success-light"></i> {{item.variantReport.reportedDate | gmt}} (<span [colorCodeAssay]="item.variantReport.result">{{item.variantReport.result}}</span>)
+                              </dd>
+                              <dt>Disease</dt>
+                              <dd *ngIf="!item.diseases"><i class="fa fa-times-circle text-danger-light"></i></dd>
+                              <dd *ngIf="item.diseases"><i style="float: left" class="fa fa-check-circle text-success-light"></i>
+                                <ul *ngFor="let items of item.diseases">
+                                  <li>&nbsp;{{items.shortName | dashify}}</li>
+                                </ul>
+                              </dd>
                             </dl>
                           </div>
                           <div class="col-md-6">
                             <dl class="dl-horizontal p-t-15 m-b-15">
                               <dt>Biopsy Sequence Number</dt>
-                              <dd>{{item.patientSequenceNumber | dashify}}</dd>
+                              <dd>{{item.biopsySequenceNumber | dashify}}</dd>
                               <dt>Specimen Collected Date</dt>
                               <dd>{{item.dateSpecimenCollected | dashify | gmt}}</dd>
                               <dt>Molecular Sequence Number</dt>
