@@ -1,7 +1,6 @@
 {
-	"version": "0.2.0",
-	"configurations": [
-    {
+  "version": "0.2.0",
+  "configurations": [{
       "name": "Launch localhost with sourcemaps",
       "type": "chrome",
       "request": "launch",
@@ -39,3 +38,4 @@
       }
     }
   ]
+}
