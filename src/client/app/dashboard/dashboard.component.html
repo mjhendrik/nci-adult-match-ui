@@ -55,14 +55,14 @@
         </div>
       </a>
     </div>
-    <!-- end col-3 -->
+    <!-- end col-4 -->
     <div class="col-md-12">
       <!-- begin panel -->
       <h1 class="page-header">Pending Review</h1>
       <div class="panel">
         <div class="m-0 p-0">
           <div>
-            <!--panel-purple-->
+            <!-- panel-purple -->
             <ul class="nav nav-tabs nav-tabs-purple p-l-0">
               <li class="active">
                 <a class="p-0" href="#tab-AR" data-toggle="tab" aria-expanded="false">
@@ -84,9 +84,8 @@
               </li>
             </ul>
             <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
-
               <div class="tab-pane fade active in" id="tab-AR">
-                <!-- table 2 -->
+                <!-- table AR -->
                 <div class="row">
                   <!-- begin panel -->
                   <div>
@@ -185,7 +184,7 @@
                 </div>
               </div>
               <div class="tab-pane fade" id="tab-VR">
-                <!-- table 1 -->
+                <!-- table VR -->
                 <div class="row">
                   <!-- begin panel -->
                   <div>
@@ -285,7 +284,7 @@
       </div>
       <!-- end panel -->
     </div>
-    <!-- table 3 -->
+    <!-- table PA -->
     <div class="col-md-12">
       <!-- begin panel -->
       <h1 class="page-header">Patients Awaiting Further Action Or Information</h1>
@@ -401,8 +400,8 @@
                               <dt>Disease</dt>
                               <dd *ngIf="!item.diseases"><i class="fa fa-times-circle text-danger-light"></i></dd>
                               <dd *ngIf="item.diseases"><i style="float: left" class="fa fa-check-circle text-success-light"></i>
-                                <ul *ngFor="let items of item.diseases">
-                                  <li>&nbsp;{{items.shortName | dashify}}</li>
+                                <ul *ngFor="let items of item.diseases; let first = first">
+                                  <li>&nbsp;<span *ngIf="!first">&nbsp;</span>{{items.shortName | dashify}}</li>
                                 </ul>
                               </dd>
                             </dl>
