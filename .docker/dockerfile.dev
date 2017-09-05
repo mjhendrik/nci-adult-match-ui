@@ -8,8 +8,9 @@ COPY . .
 
 RUN npm install -g gulp \
     && npm install \
-    && npm rebuild node-sass
+    && ./node_modules/.bin/gulp build.bundle.rxjs \
+    && npm run build.dev-docker
 
 EXPOSE 5555
 
-CMD ["npm", "run", "start.dev-docker"]
+CMD npm run serve.dev-docker
