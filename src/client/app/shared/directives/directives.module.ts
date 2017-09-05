@@ -4,6 +4,7 @@ import { nvD3 } from 'ng2-nvd3';
 
 import { ColorCodeTaDirective } from './colorcode-ta.directive';
 import { ColorCodePatientsDirective } from './colorcode-patients.directive';
+import { ColorCodeAssayDirective } from './colorcode-assay.directive';
 import { ColorCodeDaysDirective } from './colorcode-days.directive';
 import { ColorCodeHoursDirective } from './colorcode-hours.directive';
 import { ColorCodeCliaDirective } from './colorcode-clia.directive';
@@ -22,6 +23,7 @@ import { RefreshMatchHeightDirective } from './refresh-match-height.directive';
   declarations: [
     ColorCodeTaDirective,
     ColorCodePatientsDirective,
+    ColorCodeAssayDirective,
     ColorCodeDaysDirective,
     ColorCodeHoursDirective,
     ColorCodeCliaDirective,
@@ -39,6 +41,7 @@ import { RefreshMatchHeightDirective } from './refresh-match-height.directive';
   exports: [
     ColorCodeTaDirective,
     ColorCodePatientsDirective,
+    ColorCodeAssayDirective,
     ColorCodeDaysDirective,
     ColorCodeHoursDirective,
     ColorCodeCliaDirective,
@@ -54,4 +57,4 @@ import { RefreshMatchHeightDirective } from './refresh-match-height.directive';
     ColorCodeYesNoDirective
   ],
 })
-export class DirectivesModule {}
+export class DirectivesModule { }

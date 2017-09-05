@@ -45,7 +45,10 @@ export class DashboardApiService {
   }
 
   getDashboardPatientsAwaiting(): Observable<any[]> {
-    return this.http.get('assets/mock-data/dashboard-pa.json')
+
+    // return this.http.get('assets/mock-data/dashboard-pa.json')
+
+    return this.http.get(Config.API.PATIENT + '/patients/dashboard/awaiting')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
