@@ -1,8 +1,17 @@
+# Git
+.git
+.gitignore
+
+# CI
+.codeclimate.yml
+.codacy.yml
+.travis.yml
+
 # compiled output
 tmp
 
 # dependencies
-# node_modules
+node_modules
 bower_components
 
 # IDEs and editors
