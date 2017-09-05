@@ -25,11 +25,6 @@ export function main() {
           MockBackend,
           BaseRequestOptions,
           { provide: XHRBackend, useClass: MockBackend },
-          {
-            provide: Http,
-            useFactory: (backend: MockBackend, options: BaseRequestOptions) => new Http(backend, options),
-            deps: [MockBackend, BaseRequestOptions]
-          },
           { provide: AuthHttp, useExisting: Http },
           DashboardApiService
         ]
