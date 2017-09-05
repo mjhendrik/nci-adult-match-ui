@@ -313,7 +313,7 @@
         </div>
         <div class="row">
           <div class="table-responsive col-lg-12">
-            <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="tablePatientsAwaitingData | filterByText: searchtermPatientsAwaiting"
+            <table class="table table-striped table-col-width" [mfData]="tablePatientsAwaitingData | filterByText: searchtermPatientsAwaiting"
               #mftablePatientsAwaiting="mfDataTable" [(mfSortBy)]="tablePatientsAwaitingDefaultSort" [(mfSortOrder)]="sortByDescPatientsAwaiting"
               [mfRowsOnPage]="recordsPerPagePatientsAwaiting">
               <thead>
