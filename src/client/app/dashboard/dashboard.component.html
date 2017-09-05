@@ -391,8 +391,8 @@
                               <dd *ngIf="item.PTEN"><i class="fa fa-check-circle text-success-light"></i> {{item.PTEN.reportedDate | gmt}} (<span [colorCodeAssay]="item.PTEN.result">{{item.PTEN.result}}</span>)
                               </dd>
                               <dt>Variant Report</dt>
-                              <dd *ngIf="!item.variantReportCreatedDate"><i class="fa fa-times-circle text-danger-light"></i></dd>
-                              <dd *ngIf="item.variantReportCreatedDate"><i class="fa fa-check-circle text-success-light"></i> {{item.variantReportCreatedDate | gmt}}
+                              <dd *ngIf="!item.variantReportConfirmedDate"><i class="fa fa-times-circle text-danger-light"></i></dd>
+                              <dd *ngIf="item.variantReportConfirmedDate"><i class="fa fa-check-circle text-success-light"></i> {{item.variantReportConfirmedDate | gmt}}
                               </dd>
                               <dt>Disease</dt>
                               <dd *ngIf="!item.diseases"><i class="fa fa-times-circle text-danger-light"></i></dd>
