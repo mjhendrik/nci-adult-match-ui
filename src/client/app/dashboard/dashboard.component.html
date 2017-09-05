@@ -376,19 +376,23 @@
                             <dl class="dl-horizontal p-t-15 m-b-15">
                               <dt>RB</dt>
                               <dd *ngIf="!item.RB"><i class="fa fa-times-circle text-danger-light"></i></dd>
-                              <dd *ngIf="item.RB"><i class="fa fa-check-circle text-success-light"></i> {{item.RB.reportedDate | gmt}} (<span [colorCodeAssay]="item.RB.result">{{item.RB.result}}</span>)
+                              <dd *ngIf="item.RB"><i class="fa fa-check-circle text-success-light"></i> {{item.RB.reportedDate | gmt}} 
+                                (<span [colorCodeAssay]="item.RB.result">{{item.RB.result}}</span>)
                               </dd>
                               <dt>IHC MSH2</dt>
                               <dd *ngIf="!item.MSH2"><i class="fa fa-times-circle text-danger-light"></i></dd>
-                              <dd *ngIf="item.MSH2"><i class="fa fa-check-circle text-success-light"></i> {{item.MSH2.reportedDate | gmt}} (<span [colorCodeAssay]="item.MSH2.result">{{item.MSH2.result}}</span>)
+                              <dd *ngIf="item.MSH2"><i class="fa fa-check-circle text-success-light"></i> {{item.MSH2.reportedDate | gmt}} 
+                                (<span [colorCodeAssay]="item.MSH2.result">{{item.MSH2.result}}</span>)
                               </dd>
                               <dt>IHC MLH1</dt>
                               <dd *ngIf="!item.MLH1"><i class="fa fa-times-circle text-danger-light"></i></dd>
-                              <dd *ngIf="item.MLH1"><i class="fa fa-check-circle text-success-light"></i> {{item.MLH1.reportedDate | gmt}} (<span [colorCodeAssay]="item.MLH1.result">{{item.MLH1.result}}</span>)
+                              <dd *ngIf="item.MLH1"><i class="fa fa-check-circle text-success-light"></i> {{item.MLH1.reportedDate | gmt}} 
+                                (<span [colorCodeAssay]="item.MLH1.result">{{item.MLH1.result}}</span>)
                               </dd>
                               <dt>IHC PTEN</dt>
                               <dd *ngIf="!item.PTEN"><i class="fa fa-times-circle text-danger-light"></i></dd>
-                              <dd *ngIf="item.PTEN"><i class="fa fa-check-circle text-success-light"></i> {{item.PTEN.reportedDate | gmt}} (<span [colorCodeAssay]="item.PTEN.result">{{item.PTEN.result}}</span>)
+                              <dd *ngIf="item.PTEN"><i class="fa fa-check-circle text-success-light"></i> {{item.PTEN.reportedDate | gmt}} 
+                                (<span [colorCodeAssay]="item.PTEN.result">{{item.PTEN.result}}</span>)
                               </dd>
                               <dt>Variant Report</dt>
                               <dd *ngIf="!item.variantReportConfirmedDate"><i class="fa fa-times-circle text-danger-light"></i></dd>
@@ -406,11 +410,17 @@
                           <div class="col-md-6">
                             <dl class="dl-horizontal p-t-15 m-b-15">
                               <dt>Biopsy Sequence Number</dt>
-                              <dd>{{item.biopsySequenceNumber | dashify}}</dd>
+                              <dd>
+                                <a href [routerLink]="['/patients', item.patientSequenceNumber]" [queryParams]="{section: 'biopsies', entityId:item.biopsySequenceNumber}"
+                                  class="link-none"><i class="fa fa-tasks"></i> {{item.biopsySequenceNumber | dashify}}</a>
+                              </dd>
                               <dt>Specimen Collected Date</dt>
                               <dd>{{item.dateSpecimenCollected | dashify | gmt}}</dd>
                               <dt>Molecular Sequence Number</dt>
-                              <dd>{{item.molecularSequenceNumber | dashify}}</dd>
+                              <dd>
+                                <a href [routerLink]="['/patients', item.patientSequenceNumber]" [queryParams]="{section: 'msn', entityId: item.molecularSequenceNumber}"
+                                  class="link-none"><i class="fa fa-share-alt"></i> {{item.molecularSequenceNumber | dashify}}</a>
+                              </dd>
                               <dt>Analysis Id</dt>
                               <dd>{{item.analysisId | dashify}}</dd>
                               <dt>MSN Shipped Date</dt>
