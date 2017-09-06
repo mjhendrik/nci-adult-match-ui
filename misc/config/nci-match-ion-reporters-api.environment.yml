@@ -1,7 +1,7 @@
 APEC1621SC:
   development:
     match_ui_endpoint: 'http://localhost:9000'
-    dynamo_endpoint: "http://localhost:8000"
+    dynamo_endpoint: "http://dynamo:8000"
     patient_endpoint: "http://localhost:10240"
     rule_endpoint: "http://localhost:10250"
     patient_post_path: "/api/v1/patients/variant_report/"
@@ -31,108 +31,10 @@ APEC1621SC:
     smtp_settings_address: "email-smtp.us-east-1.amazonaws.com"
     smtp_settings_port: "587"
 
-  test:
-    match_ui_endpoint: 'https://pedmatch-int.nci.nih.gov'
-    dynamo_endpoint: "https://dynamodb.us-east-1.amazonaws.com"
-    patient_endpoint: "https://pedmatch-int.nci.nih.gov"
-    rule_endpoint: "https://pedmatch-int.nci.nih.gov"
-    patient_post_path: "/api/v1/patients/variant_report/"
-    rule_path: "/api/v1/rules/sample_control_report/"
-    events_path: "/api/v1/patients/events"
-    shipments_path: "/api/v1/patients/shipments/"
-    shipment_status: "/api/v1/patients/shipment_status/"
-    auth0_url: "https://ncimatch.auth0.com"
-    auth0_username: "ped-matchbox-int@mail.nih.gov"
-    bot_name: "PED_MATCHBOTINT"
-    slack_channel_id: "C2NEK70F9"
-    icon_emoji: ":face_with_head_bandage:"
-    requeue_countdown: 10800
-    visibility_timeout: '36000'
-    region: "us-east-1"
-    port: "10241"
-    bucket: "pedmatch-int"
-    db_files_bucket: "match-uploader-int"
-    tmp_file_dir: "/mnt/efs-ionreporter"
-    polling_interval: 10
-    read_capacity: 5
-    write_capacity: 5
-    aws_download_time_limit: 600
-    aws_upload_time_limit: 600
-    ir_queue_name: pedmatch-int_ion_reporter_queue3
-    mailer_from: "ped-matchbox-int@mail.nih.gov"
-    smtp_settings_address: "email-smtp.us-east-1.amazonaws.com"
-    smtp_settings_port: "587"
-
-
-  uat:
-    match_ui_endpoint: 'https://pedmatch-uat.nci.nih.gov'
-    dynamo_endpoint: "https://dynamodb.us-east-1.amazonaws.com"
-    patient_endpoint: "https://pedmatch-uat.nci.nih.gov"
-    rule_endpoint: "https://pedmatch-uat.nci.nih.gov"
-    patient_post_path: "/api/v1/patients/variant_report/"
-    rule_path: "/api/v1/rules/sample_control_report/"
-    events_path: "/api/v1/patients/events"
-    shipments_path: "/api/v1/patients/shipments/"
-    shipment_status: "/api/v1/patients/shipment_status/"
-    auth0_url: "https://ncimatch.auth0.com"
-    auth0_username: "ped-matchbox-uat@mail.nih.gov"
-    bot_name: "PED_MATCHBOTUAT"
-    slack_channel_id: "C2NEA2XQW"
-    icon_emoji: ":face_with_head_bandage:"
-    requeue_countdown: 10800
-    visibility_timeout: '36000'
-    region: "us-east-1"
-    port: "10241"
-    bucket: "pedmatch-uat"
-    db_files_bucket: "match-uploader-uat"
-    tmp_file_dir: "/mnt/efs-ionreporter"
-    polling_interval: 10
-    read_capacity: 5
-    write_capacity: 5
-    aws_download_time_limit: 600
-    aws_upload_time_limit: 600
-    ir_queue_name: pedmatch-uat_ion_reporter_queue3
-    mailer_from: "ped-matchbox-uat@mail.nih.gov"
-    smtp_settings_address: "email-smtp.us-east-1.amazonaws.com"
-    smtp_settings_port: "587"
-
-  production:
-    match_ui_endpoint: 'https://pedmatch.nci.nih.gov'
-    dynamo_endpoint: "https://dynamodb.us-east-1.amazonaws.com"
-    patient_endpoint: "https://pedmatch.nci.nih.gov"
-    rule_endpoint: "https://pedmatch.nci.nih.gov"
-    patient_post_path: "/api/v1/patients/variant_report/"
-    rule_path: "/api/v1/rules/sample_control_report/"
-    events_path: "/api/v1/patients/events"
-    shipments_path: "/api/v1/patients/shipments/"
-    shipment_status: "/api/v1/patients/shipment_status/"
-    auth0_url: "https://ncimatch.auth0.com"
-    auth0_username: "ped-matchbox@mail.nih.gov"
-    bot_name: "PED_MATCHBOTPROD"
-    slack_channel_id: "C2NEFKYN9"
-    icon_emoji: ":face_with_head_bandage:"
-    requeue_countdown: 10800
-    visibility_timeout: '36000'
-    region: "us-east-1"
-    port: "10241"
-    bucket: "pedmatch"
-    db_files_bucket: "match-uploader"
-    tmp_file_dir: "/mnt/efs-ionreporter"
-    polling_interval: 10
-    read_capacity: 10
-    write_capacity: 10
-    aws_download_time_limit: 600
-    aws_upload_time_limit: 600
-    ir_queue_name: pedmatch-ion_reporter_queue3
-    mailer_from: "ped-matchbox@mail.nih.gov"
-    smtp_settings_address: "email-smtp.us-east-1.amazonaws.com"
-    smtp_settings_port: "587"
-
-
 EAY131:
   development:
     match_ui_endpoint: 'http://localhost:9000'
-    dynamo_endpoint: "http://localhost:8000"
+    dynamo_endpoint: "http://dynamo:8000"
     patient_endpoint: "http://localhost:10240"
     rule_endpoint: "http://localhost:10250"
     patient_post_path: "/api/v1/patients/variant_report/"
@@ -159,101 +61,5 @@ EAY131:
     bucket: adultmatch-dev
     ir_queue_name: adultmatch-dev_ion_reporter_queue3
     mailer_from: "matchbox-int@mail.nih.gov"
-    smtp_settings_address: "email-smtp.us-east-1.amazonaws.com"
-    smtp_settings_port: "587"
-
-  test:
-    match_ui_endpoint: 'https://pedmatch-int.nci.nih.gov'
-    dynamo_endpoint: "https://dynamodb.us-east-1.amazonaws.com"
-    patient_endpoint: "https://pedmatch-int.nci.nih.gov"
-    rule_endpoint: "https://pedmatch-int.nci.nih.gov"
-    patient_post_path: "/api/v1/patients/variant_report/"
-    rule_path: "/api/v1/rules/sample_control_report/"
-    events_path: "/api/v1/patients/events"
-    shipments_path: "/api/v1/patients/shipments/"
-    shipment_status: "/api/v1/patients/shipment_status/"
-    auth0_url: "https://ncimatch.auth0.com"
-    auth0_username: "ped-matchbox-int@mail.nih.gov"
-    bot_name: "ADULT_MATCHBOTINT"
-    slack_channel_id: "C2NEK70F9"
-    icon_emoji: ":face_with_head_bandage:"
-    requeue_countdown: 10800
-    visibility_timeout: '36000'
-    region: "us-east-1"
-    port: "10241"
-    db_files_bucket: "match-uploader-int"
-    tmp_file_dir: "/mnt/efs-ionreporter"
-    polling_interval: 10
-    read_capacity: 5
-    write_capacity: 5
-    aws_download_time_limit: 600
-    aws_upload_time_limit: 600
-    bucket: adultmatch-int
-    ir_queue_name: adultmatch-int_ion_reporter_queue3
-    mailer_from: "matchbox-int@mail.nih.gov"
-    smtp_settings_address: "email-smtp.us-east-1.amazonaws.com"
-    smtp_settings_port: "587"
-
-  uat:
-    match_ui_endpoint: 'https://pedmatch-uat.nci.nih.gov'
-    dynamo_endpoint: "https://dynamodb.us-east-1.amazonaws.com"
-    patient_endpoint: "https://pedmatch-uat.nci.nih.gov"
-    rule_endpoint: "https://pedmatch-uat.nci.nih.gov"
-    patient_post_path: "/api/v1/patients/variant_report/"
-    rule_path: "/api/v1/rules/sample_control_report/"
-    events_path: "/api/v1/patients/events"
-    shipments_path: "/api/v1/patients/shipments/"
-    shipment_status: "/api/v1/patients/shipment_status/"
-    auth0_url: "https://ncimatch.auth0.com"
-    auth0_username: "ped-matchbox-uat@mail.nih.gov"
-    bot_name: "ADULT_MATCHBOTUAT"
-    slack_channel_id: "C2NEA2XQW"
-    icon_emoji: ":face_with_head_bandage:"
-    requeue_countdown: 10800
-    visibility_timeout: '36000'
-    region: "us-east-1"
-    port: "10241"
-    db_files_bucket: "match-uploader-uat"
-    tmp_file_dir: "/mnt/efs-ionreporter"
-    polling_interval: 10
-    read_capacity: 5
-    write_capacity: 5
-    aws_download_time_limit: 600
-    aws_upload_time_limit: 600
-    bucket: adultmatch-uat
-    ir_queue_name: adultmatch-uat_ion_reporter_queue3
-    mailer_from: "pmatchbox-uat@mail.nih.gov"
-    smtp_settings_address: "email-smtp.us-east-1.amazonaws.com"
-    smtp_settings_port: "587"
-
-  production:
-    match_ui_endpoint: 'https://pedmatch.nci.nih.gov'
-    dynamo_endpoint: "https://dynamodb.us-east-1.amazonaws.com"
-    patient_endpoint: "https://pedmatch.nci.nih.gov"
-    rule_endpoint: "https://pedmatch.nci.nih.gov"
-    patient_post_path: "/api/v1/patients/variant_report/"
-    rule_path: "/api/v1/rules/sample_control_report/"
-    events_path: "/api/v1/patients/events"
-    shipments_path: "/api/v1/patients/shipments/"
-    shipment_status: "/api/v1/patients/shipment_status/"
-    auth0_url: "https://ncimatch.auth0.com"
-    auth0_username: "ped-matchbox@mail.nih.gov"
-    bot_name: "ADULT_MATCHBOTPROD"
-    slack_channel_id: "C2NEFKYN9"
-    icon_emoji: ":face_with_head_bandage:"
-    requeue_countdown: 10800
-    visibility_timeout: '36000'
-    region: "us-east-1"
-    port: "10241"
-    db_files_bucket: "match-uploader"
-    tmp_file_dir: "/mnt/efs-ionreporter"
-    polling_interval: 10
-    read_capacity: 10
-    write_capacity: 10
-    aws_download_time_limit: 600
-    aws_upload_time_limit: 600
-    bucket: adultmatch
-    ir_queue_name: adultmatch-ion_reporter_queue3
-    mailer_from: "ped-matchbox@mail.nih.gov"
     smtp_settings_address: "email-smtp.us-east-1.amazonaws.com"
     smtp_settings_port: "587"
