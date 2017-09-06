@@ -373,34 +373,30 @@
                         <div class="row">
                           <div class="col-md-6">
                             <dl class="dl-horizontal p-t-15 m-b-15">
-                              <span *ngIf="item.RB.applicable===true">
-                              <dt>RB</dt>
-                              <dd *ngIf="!item.RB.reportedDate"><i class="fa fa-times-circle text-danger-light"></i></dd>
+                              <dt>IHC RB</dt>
+                              <dd *ngIf="item.RB.applicable===false"><i class="fa fa-minus-circle text-warning-light"></i> Not Applicable</dd>
+                              <dd *ngIf="!item.RB.reportedDate && item.RB.applicable===true"><i class="fa fa-times-circle text-danger-light"></i></dd>
                               <dd *ngIf="item.RB.reportedDate"><i class="fa fa-check-circle text-success-light"></i> {{item.RB.reportedDate | gmt}} (<span
                                   [colorCodeAssay]="item.RB.result">{{item.RB.result | dashify}}</span>)
                               </dd>
-                              </span>
-                              <span *ngIf="item.MSH2.applicable===true">                                  
                               <dt>IHC MSH2</dt>
-                              <dd *ngIf="!item.MSH2.reportedDate"><i class="fa fa-times-circle text-danger-light"></i></dd>
+                              <dd *ngIf="item.MSH2.applicable===false"><i class="fa fa-minus-circle text-warning-light"></i> Not Applicable</dd>
+                              <dd *ngIf="!item.MSH2.reportedDate && item.MSH2.applicable===true"><i class="fa fa-times-circle text-danger-light"></i></dd>
                               <dd *ngIf="item.MSH2.reportedDate"><i class="fa fa-check-circle text-success-light"></i> {{item.MSH2.reportedDate | gmt}} (<span
                                   [colorCodeAssay]="item.MSH2.result">{{item.MSH2.result | dashify}}</span>)
                               </dd>
-                              </span>
-                              <span *ngIf="item.MLH1.applicable===true">                                  
                               <dt>IHC MLH1</dt>
-                              <dd *ngIf="!item.MLH1.reportedDate"><i class="fa fa-times-circle text-danger-light"></i></dd>
+                              <dd *ngIf="item.MLH1.applicable===false"><i class="fa fa-minus-circle text-warning-light"></i> Not Applicable</dd>
+                              <dd *ngIf="!item.MLH1.reportedDate && item.MLH1.applicable===true"><i class="fa fa-times-circle text-danger-light"></i></dd>
                               <dd *ngIf="item.MLH1.reportedDate"><i class="fa fa-check-circle text-success-light"></i> {{item.MLH1.reportedDate | gmt}} (<span
                                   [colorCodeAssay]="item.MLH1.result">{{item.MLH1.result | dashify}}</span>)
                               </dd>
-                              </span>
-                              <span *ngIf="item.PTEN.applicable===true">                                  
                               <dt>IHC PTEN</dt>
-                              <dd *ngIf="!item.PTEN.reportedDate"><i class="fa fa-times-circle text-danger-light"></i></dd>
+                              <dd *ngIf="item.PTEN.applicable===false"><i class="fa fa-minus-circle text-warning-light"></i> Not Applicable</dd>
+                              <dd *ngIf="!item.PTEN.reportedDate && item.PTEN.applicable===true"><i class="fa fa-times-circle text-danger-light"></i></dd>
                               <dd *ngIf="item.PTEN.reportedDate"><i class="fa fa-check-circle text-success-light"></i> {{item.PTEN.reportedDate | gmt}} (<span
                                   [colorCodeAssay]="item.PTEN.result">{{item.PTEN.result | dashify}}</span>)
                               </dd>
-                              </span>
                               <dt>Variant Report</dt>
                               <dd *ngIf="!item.variantReportConfirmedDate"><i class="fa fa-times-circle text-danger-light"></i></dd>
                               <dd *ngIf="item.variantReportConfirmedDate"><i class="fa fa-check-circle text-success-light"></i> {{item.variantReportConfirmedDate | gmt}}
@@ -430,7 +426,7 @@
                               </dd>
                               <dt>Analysis Id</dt>
                               <dd>{{item.analysisId | dashify}}</dd>
-                              <dt>MSN Shipped Date</dt>
+                              <dt>Nucleic Acid Shipped Date</dt>
                               <dd>{{item.dateMsnShipped | gmt}}</dd>
                               <dt>aMOI</dt>
                               <dd>{{item.amoi | dashify}}</dd>
