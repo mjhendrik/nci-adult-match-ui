@@ -374,7 +374,7 @@
                           <div class="col-md-6">
                             <dl class="dl-horizontal p-t-15 m-b-15">
                               <dt>IHC RB</dt>
-                              <dd *ngIf="item.RB.applicable===false"><i class="fa fa-minus-circle text-warning-light"></i> Not Applicable</dd>
+                              <dd class="text-muted" *ngIf="item.RB.applicable===false"><i class="fa fa-minus-circle text-warning-light"></i> Not Applicable</dd>
                               <dd *ngIf="!item.RB.reportedDate && item.RB.applicable===true"><i class="fa fa-times-circle text-danger-light"></i></dd>
                               <dd *ngIf="item.RB.reportedDate"><i class="fa fa-check-circle text-success-light"></i> {{item.RB.reportedDate | gmt}} (<span
                                   [colorCodeAssay]="item.RB.result">{{item.RB.result | dashify}}</span>)
