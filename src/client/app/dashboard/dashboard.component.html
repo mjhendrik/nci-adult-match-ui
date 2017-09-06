@@ -351,7 +351,7 @@
                     </td>
                     <td [colorCodePatients]="item.currentPatientStatus">{{item.currentPatientStatus | dashify}}</td>
                     <td class="text-danger-light">
-                      <ul *ngFor="let items of item.messages">
+                      <ul class="p-0" *ngFor="let items of item.messages">
                         <li>{{items | dashify}}</li>
                       </ul>
                     </td>
