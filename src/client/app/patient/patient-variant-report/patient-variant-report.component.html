@@ -30,19 +30,18 @@
             <dd>{{variantReport.analysisId | dashify}}</dd>
             <dt>Patient</dt>
             <dd><a href [routerLink]="['/patients', patient.patientSequenceNumber]" class="link-none">{{patient.patientSequenceNumber | dashify}}</a>,
-              <span [colorCodePatients]="patient.currentPatientStatus">{{patient.currentPatientStatus | dashify}}</span>, Step {{patient.currentStepNumber
-              | dashify}}</dd>
+              <span [colorCodePatients]="patient.currentPatientStatus">{{patient.currentPatientStatus | dashify}}</span>,
+              Step {{patient.currentStepNumber | dashify}}</dd>
             <dt>Patient Concordance</dt>
             <dd><span [colorCodeYesNo]="patient.concordance">{{patient.concordance | dashify}}</span></dd>
             <dt>Status</dt>
-            <dd><span [colorCodeVariantReport]="variantReport.variantReportStatus">{{variantReport.variantReportStatus | dashify}}</span> on {{variantReport.variantReporterRejectedOrConfirmedDate | gmt}} by {{variantReport.user | dashify}}</dd>
+            <dd><span [colorCodeVariantReport]="variantReport.variantReportStatus">{{variantReport.variantReportStatus | dashify}}</span>              on {{variantReport.variantReporterRejectedOrConfirmedDate | gmt}} by {{variantReport.user | dashify}}</dd>
             <dt>MAPD</dt>
             <dd>{{mapd | dashify}}</dd>
             <dt>Cellularity</dt>
             <dd>{{cellularity | dashify}}</dd>
             <dt>File Received Date</dt>
             <dd>{{variantReport.variantReporterFileReceivedDate | gmt}}</dd>
-
             <dt *ngIf="!showPools">Torrent Variant Caller Version</dt>
             <dd *ngIf="!showPools">{{tvc_version | dashify}}</dd>
             <dt *ngIf="showPools">Pool 1</dt>
@@ -72,7 +71,7 @@
           <dl class="dl-horizontal widest-dt">
             <h4>Latest Assignment</h4>
             <dt>Status</dt>
-            <dd><span [colorCodeAssignment]="assignmentReport.patientAssignmentStatus"> {{assignmentReport.patientAssignmentStatus | dashify}}</span> on {{assignmentReport.dateConfirmed | gmt}} by {{(assignmentReport.user||'System User') | dashify}}</dd>
+            <dd><span [colorCodeAssignment]="assignmentReport.patientAssignmentStatus"> {{assignmentReport.patientAssignmentStatus | dashify}}</span>              on {{assignmentReport.dateConfirmed | gmt}} by {{(assignmentReport.user||'System User') | dashify}}</dd>
             <dt>Generation Date</dt>
             <dd>{{assignmentReport.dateAssigned | gmt}}</dd>
             <dt>Assignment Sent to ECOG Date</dt>
@@ -83,7 +82,8 @@
           <dl *ngIf="assignmentReport.hasSelectedTreatmentArm" class="dl-horizontal widest-dt">
             <dt>Selected Treatment Arm</dt>
             <dd>
-              <treatment-arm-link *ngIf="assignmentReport" [treatmentArmId]="assignmentReport.treatmentArm.treatmentArmId" [version]="assignmentReport.treatmentArm.version" [removePrefix]="true"></treatment-arm-link>
+              <treatment-arm-link *ngIf="assignmentReport" [treatmentArmId]="assignmentReport.treatmentArm.treatmentArmId" [version]="assignmentReport.treatmentArm.version"
+                [removePrefix]="true"></treatment-arm-link>
               <span *ngIf="!assignmentReport">-</span>
             </dd>
           </dl>
@@ -99,7 +99,6 @@
       </div>
     </div>
   </div>
-
   <div class="row" matchHeight="panel-height-middle">
     <div class="col-md-6 panel-height-middle" id="assays-tile">
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-middle">
@@ -119,7 +118,7 @@
               <tbody *ngIf="assignmentReport">
                 <tr *ngFor="let item of assays">
                   <td>{{item.biomarker | dashify}}</td>
-                  <td>{{item.result | dashify}}</td>
+                  <td [colorCodeAssay]="item.result">{{item.result | dashify}}</td>
                   <td>{{item.orderedDate | gmt}}</td>
                   <td>{{item.reportedDate | gmt}}</td>
                   <td>{{item.comment | dashify}}</td>
@@ -151,16 +150,14 @@
         </div>
       </div>
     </div>
-
     <div class="col-md-6" id="cnv-chart-tile">
-        <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-middle">
-          <div class="panel-heading">
-            <cnv-chart [data]="parsed_vcf_genes"></cnv-chart>
-          </div>
+      <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-middle">
+        <div class="panel-heading">
+          <cnv-chart [data]="parsed_vcf_genes"></cnv-chart>
         </div>
+      </div>
     </div>
   </div>
-
   <div class="panel panel-white panel-accent-sides-purple overflow-hidden">
     <div class="panel-heading">
       <div class="row">
@@ -180,7 +177,6 @@
       </div>
     </div>
   </div>
-
   <div *ngIf="assignmentReport && assignmentReport.reasons" id="assignment-details" class="panel panel-white panel-accent-sides-purple overflow-hidden">
     <div class="panel-heading">
       <div class="row">
@@ -190,7 +186,6 @@
       </div>
     </div>
   </div>
-
   <div *ngIf="assignmentHistory && assignmentHistory.length > 1" id="assignment-history" class="panel panel-white panel-accent-sides-purple overflow-hidden">
     <div class="panel-heading">
       <div class="row">

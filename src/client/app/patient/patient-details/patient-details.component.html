@@ -25,9 +25,9 @@
             <dt>Current Step</dt>
             <dd>{{patient.currentStepNumber | dashify}}</dd>
             <dt>Treatment Arm</dt>
-            <dd><treatment-arm-link *ngIf="patient.currentPatientAssignmentLogic" 
-              [treatmentArmId]="patient.currentPatientAssignmentLogic.treatmentArmId" 
-              [version]="patient.currentPatientAssignmentLogic.treatmentArmVersion" [removePrefix]="true"></treatment-arm-link><span *ngIf="!patient.currentPatientAssignmentLogic">-</span></dd>
+            <dd>
+              <treatment-arm-link *ngIf="patient.currentPatientAssignmentLogic" [treatmentArmId]="patient.currentPatientAssignmentLogic.treatmentArmId"
+                [version]="patient.currentPatientAssignmentLogic.treatmentArmVersion" [removePrefix]="true"></treatment-arm-link><span *ngIf="!patient.currentPatientAssignmentLogic">-</span></dd>
             <dt>Registration Date</dt>
             <dd>{{patient.registrationDate | gmt | dashify}}</dd>
             <dt>Last Rejoin Scan Date</dt>
@@ -167,7 +167,7 @@
                           <td>{{item.gene | dashify}}</td>
                           <td>{{item.orderedDate | gmt}}</td>
                           <td>{{item.reportedDate | gmt}}</td>
-                          <td>{{item.result | dashify}}</td>
+                          <td [colorCodeAssay]="item.result">{{item.result | dashify}}</td>
                           <td>{{item.comment | dashify}}</td>
                         </tr>
                       </tbody>
@@ -334,7 +334,6 @@
     </div>
   </div>
 </div>
- 
 <div class="modal fade" id="file-upload" style="display: none;">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -399,4 +398,4 @@
       </div>
     </div>
   </div>
-</div> 
+</div>
