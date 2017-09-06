@@ -77,6 +77,8 @@ export function main() {
           }, "index": 61, "e": {"isTrusted": true}
         };
 
+        let s = {"series":[{"key":"4.49","color":"#CD0000"}],"e":{"isTrusted":true}};
+
         TestBed
           .compileComponents()
           .then(() => {
@@ -87,20 +89,30 @@ export function main() {
             }).createComponent(CnvChartDirective);
 
             fixture.componentInstance.data = PatientApiServiceStub.makeRawVcftData();
-            fixture.componentInstance.cnvdata = PatientApiServiceStub.makeCnvData();
-
             fixture.componentInstance.ngOnInit();
             expect(fixture.componentInstance.options).toBeDefined();
             fixture.detectChanges();
+
             expect(fixture.componentInstance.options.chart.tooltip).toBeDefined();
             fixture.detectChanges();
+
             let html:any = fixture.componentInstance.options.chart.tooltip.contentGenerator(d);
             expect(html).toBeDefined();
             fixture.detectChanges();
-            expect(html).toContain('<b>RPS6KB1</b>');
+
+            expect(html).toContain('<strong>RPS6KB1</strong>');
             fixture.detectChanges();
-            expect(html).toContain('<li>POS: 57974717</li>');
+
+            expect(html).toContain('<strong>6.48</strong>');
             fixture.detectChanges();
+
+            let series:any = fixture.componentInstance.options.chart.tooltip.contentGenerator(s);
+            expect(series).toBeDefined();
+            fixture.detectChanges();
+
+            expect(series).toContain('<span class="list-group">4.49</span>');
+            fixture.detectChanges();
+
             fixture.destroy();
           });
       }));

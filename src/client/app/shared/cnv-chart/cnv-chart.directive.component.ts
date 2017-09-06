@@ -123,6 +123,7 @@ export class CnvChartDirective implements OnInit {
       temp.push(Object);
 
     });
+
     let colors:any[] = [];
     //COLORS
     Object.keys(temp).forEach((key:any) => {
@@ -170,33 +171,51 @@ export class CnvChartDirective implements OnInit {
         yDomain: [0, 10],
         tooltip: {
           contentGenerator: (d:any) => {
-            let label:any;
-            let position:any;
-            let cn:any;
-            let cl95:any;
-            let cl05:any;
             let html:any;
-            let li:any;
-            let color:any;
+            let rows:any;
+            let header:any;
 
-            label = d.key;
-            position = 'POS: ' + d.data.values.position;
-            cn = 'CN: ' + d.data.values.cn;
-            color = 'color: white; background-color: ' + d.data.status;
+            const series = d.series[0];
 
-            cl95 = 'Cl 5%: ' + d.data.values.whisker_low;
-            cl05 = 'Cl 95%: ' + d.data.values.whisker_high;
+            if (series.key !== 'Q3') {
+              html = '<span class="list-group">' + series.key + '</span>';
+            }
+            else {
+              rows =
+                "<tr>" +
+                "<td class='key'>" + 'Position: ' + "</td>" +
+                "<td class='x-value'><strong>" + d.data.values.position + "</strong></td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td class='key'>" + 'CN: ' + "</td>" +
+                "<td class='x-value'><strong>" +  d.data.values.cn + "</strong></td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td class='key'>" + 'Cl 5%: ' + "</td>" +
+                "<td class='x-value'><strong>" +  d.data.values.whisker_low + "</strong></td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td class='key'>" + 'Cl 95%: ' + "</td>" +
+                "<td class='x-value'><strong>" + d.data.values.whisker_high + "</strong></td>" +
+                "</tr>";
 
-            html = '<h4 class="text-center" style="' + color + '"><b>' + label + '</b></h4>';
-            li = '<li>' + position + '</li>';
-            li += '<li>' + cn + '</li>';
-            li += '<li>' + cl95 + '</li>';
-            li += '<li>' + cl05 + '</li>';
+              header =
+                "<thead>" +
+                "<tr>" +
+                "<td class='legend-color-guide'><div style='background-color: " + d.data.status + ";'></div></td>" +
+                "<td class='key'><strong>" +  d.key + "</strong></td>" +
+                "</tr>" +
+                "</thead>";
 
-            html += '<ul class="list-group" style="list-style-type: none;">' + li + '</ul>';
+              return "<table>" +
+                header +
+                "<tbody>" +
+                rows +
+                "</tbody>" +
+                "</table>";
 
+            }
             return html;
-
           }
         },
         callback: (chart:any) => {
