@@ -18,8 +18,8 @@ export class ColorCodeAssayDirective extends ConditionalCssDirective<string> {
         super(el,
             [
                 { evaluate: (x) => x === 'POSITIVE', cssClass: 'text-success-light' },
-                { evaluate: (x) => x === 'NEGATIVE', cssClass: 'text-danger-light' },
-                { evaluate: (x) => x === 'INDETERMINATE', cssClass: 'text-warning-light' }
+                { evaluate: (x) => x === 'INDETERMINATE', cssClass: 'text-danger-light' },
+                { evaluate: (x) => x === 'NEGATIVE', cssClass: 'text-warning-light' }
             ]);
     }
 }

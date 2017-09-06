@@ -51,16 +51,16 @@ export function main() {
             expect(testEl.nativeElement.classList.contains('text-warning-light')).toBe(false);
         });
 
-        it('"NEGATIVE" adds "text-danger-light" color class', () => {
-            testHost.testStatus = 'NEGATIVE';
+        it('"INDETERMINATE" adds "text-danger-light" color class', () => {
+            testHost.testStatus = 'INDETERMINATE';
             fixture.detectChanges();
             expect(testEl.nativeElement.classList.contains('text-success-light')).toBe(false);
             expect(testEl.nativeElement.classList.contains('text-danger-light')).toBe(true);
             expect(testEl.nativeElement.classList.contains('text-warning-light')).toBe(false);
         });
 
-        it('"INDETERMINATE" adds "text-warning-light" color class', () => {
-            testHost.testStatus = 'INDETERMINATE';
+        it('"NEGATIVE" adds "text-warning-light" color class', () => {
+            testHost.testStatus = 'NEGATIVE';
             fixture.detectChanges();
             expect(testEl.nativeElement.classList.contains('text-success-light')).toBe(false);
             expect(testEl.nativeElement.classList.contains('text-danger-light')).toBe(false);
