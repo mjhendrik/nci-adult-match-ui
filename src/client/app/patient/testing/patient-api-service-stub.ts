@@ -7,7 +7,7 @@ export class PatientApiServiceStub {
             {
                 'values':
                 [{
-                    'position': '66773856',
+                    'position': '25',
                     'cn': '0.92',
                     'Q1': '0.781879',
                     'Q2': '0.92',

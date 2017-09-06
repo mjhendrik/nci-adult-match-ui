@@ -14,10 +14,10 @@ import {
 import { nvD3 } from 'ng2-nvd3';
 
 declare let d3: any;
+// styleUrls: ['./shared/cnv-chart/cnv-chart.directive.component.css'],
 
 @Component({
   selector: 'cnv-chart',
-
   animations: [
     trigger('dialog', [
       transition('void => *', [
@@ -27,42 +27,39 @@ declare let d3: any;
       transition('* => void', [])
     ])
   ],
-
   providers: [nvD3],
   template://Zoomout panel
-  '<div *ngIf="file_name">'
-  + '<div [@dialog] *ngIf="show" class="dialog">'
-  + '<i class="fa fa-search-minus fa-2x" aria-hidden="true" *ngIf="show" (click)="show = !show" style="cursor: pointer; color: gray"></i>'
-  + ' <h4 class="pull-right">{{ file_name }}</h4>'
-  + '<ul class="list-group" style="list-style-type: none;">'
-  + '<li>Tumor suppressor genes '
-  + '<i class="fa fa-square" aria-hidden="true" style="color:#CD0000;background-color:#CD0000"></i> </li>'
-  + '<li>Oncogenes '
-  + '<i class="fa fa-square" aria-hidden="true" style="color:green;background-color:green"></i>'
-  + '</li></ul>'
-  + '<nvd3 id="boxplotchart" config="{deepWatchData: false}" [options]="options" [data]="cnvdata" *ngIf="show"></nvd3>'
-  + '</div>'
-  //Small panel
-  + '<div *ngIf="!show">'
-  + '<i class="fa fa-search-plus fa-2x" aria-hidden="true" *ngIf="!show" (click)="show = !show" style="cursor: pointer; color: gray"></i>'
-  + ' <h5 class="pull-right">{{ file_name }}</h5>'
-  + '<ul class="list-group" style="list-style-type: none;">'
-  + '<li>Tumor suppressor genes '
-  + '<i class="fa fa-square" aria-hidden="true" style="color:#CD0000;background-color:#CD0000"></i> </li>'
-  + '<li>Oncogenes '
-  + '<i class="fa fa-square" aria-hidden="true" style="color:green;background-color:green"></i>'
-  + '</li></ul>'
-  + '<nvd3 id="boxplotchart" config="{deepWatchData: false}" [options]="options" [data]="cnvdata" *ngIf="!show"></nvd3>'
-  + '</div>'
-  + '</div>'
-
-  + '<div *ngIf="!file_name">'
-  + '<span *ngIf="!parsed_vcf_genes">'
-  + '<i class="fa fa-bar-chart text-muted" style="font-size:154px; padding-left: 39px;"></i>'
-  + '<br />'
-  + '<span class="text-muted"> There are no CNV data </span>'
-  + '</span>'
-
+  `<div *ngIf="file_name">
+  <div [@dialog] *ngIf="show" class="dialog">
+  <i class="fa fa-search-minus fa-2x" aria-hidden="true" *ngIf="show" (click)="show = !show" style="cursor: pointer; color: gray"></i>
+   <h4 class="pull-right">{{ file_name }}</h4>
+  <ul class="list-group" style="list-style-type: none;">
+  <li>Tumor suppressor genes 
+  <i class="fa fa-square" aria-hidden="true" style="color:#CD0000;background-color:#CD0000"></i> </li>
+  <li>Oncogenes 
+  <i class="fa fa-square" aria-hidden="true" style="color:green;background-color:green"></i>
+  </li></ul>
+  <nvd3 id="boxplotchart" config="{deepWatchData: false}" [options]="options" [data]="cnvdata" *ngIf="show"></nvd3>
+  </div>
+  <!--small panel-->
+  <div *ngIf="!show">
+  <i class="fa fa-search-plus fa-2x" aria-hidden="true" *ngIf="!show" (click)="show = !show" style="cursor: pointer; color: gray"></i>
+   <h5 class="pull-right">{{ file_name }}</h5>
+  <ul class="list-group" style="list-style-type: none;">
+  <li>Tumor suppressor genes 
+  <i class="fa fa-square" aria-hidden="true" style="color:#CD0000;background-color:#CD0000"></i> </li>
+  <li>Oncogenes 
+  <i class="fa fa-square" aria-hidden="true" style="color:green;background-color:green"></i>
+  </li></ul>
+  <nvd3 id="boxplotchart" config="{deepWatchData: false}" [options]="options" [data]="cnvdata" *ngIf="!show"></nvd3>
+  </div>
+  </div>
+  <div *ngIf="!file_name">
+  <span *ngIf="!parsed_vcf_genes">
+  <i class="fa fa-bar-chart text-muted" style="font-size:154px; padding-left: 39px;"></i>
+  <br />
+  <span class="text-muted"> There are no CNV data </span>
+  </span>`
 })
 
 export class CnvChartDirective implements OnInit {

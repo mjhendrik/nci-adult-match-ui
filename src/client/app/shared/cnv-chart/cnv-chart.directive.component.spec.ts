@@ -14,20 +14,20 @@ import { nvD3 } from 'ng2-nvd3';
 import { Observable } from 'rxjs/Observable';
 
 declare let d3: any;
+import { PatientApiService } from '../../patient/patient-api.service';
+import { PatientApiServiceStub, PatientApiServiceMock } from '../../patient/testing/patient-api-service-stub';
 import { CnvChartDirective } from './cnv-chart.directive.component';
-import { PatientApiServiceStub } from '../../patient/testing/patient-api-service-stub';
 
 export function main() {
   describe('Cnv chart component', () => {
 
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [],
         declarations: [CnvChartDirective, nvD3],
         providers: [
           {provide: MockPatientApiService, useClass: MockPatientApiServiceError},
           {provide: MockPatientOptionsService, useClass: MockPatientOptionsServiceError},
-          // { provide: MockOutliers, useClass: MockPatientOptionsServiceError },
+          {provide: PatientApiService, useClass: PatientApiServiceMock },
         ],
       });
     });
@@ -44,14 +44,12 @@ export function main() {
               }
             }).createComponent(CnvChartDirective);
 
-            fixture.componentInstance.data = PatientApiServiceStub.makeParsedVcftData();
+            fixture.componentInstance.data = PatientApiServiceStub.makeRawVcftData();
             fixture.componentInstance.cnvdata = PatientApiServiceStub.makeCnvData();
 
             fixture.componentInstance.ngOnInit();
             expect(fixture.componentInstance.data).toBeDefined();
             expect(fixture.componentInstance.cnvdata).toBeDefined();
-
-
           });
       }));
 
@@ -77,7 +75,7 @@ export function main() {
               "outliers": ["6.48", "8.53", "10.49"]
             }
           }, "index": 61, "e": {"isTrusted": true}
-        }
+        };
 
         TestBed
           .compileComponents()
@@ -88,7 +86,7 @@ export function main() {
               }
             }).createComponent(CnvChartDirective);
 
-            fixture.componentInstance.data = PatientApiServiceStub.makeParsedVcftData();
+            fixture.componentInstance.data = PatientApiServiceStub.makeRawVcftData();
             fixture.componentInstance.cnvdata = PatientApiServiceStub.makeCnvData();
 
             fixture.componentInstance.ngOnInit();
@@ -119,7 +117,6 @@ export function main() {
             }).createComponent(CnvChartDirective);
 
             fixture.componentInstance.data = PatientApiServiceStub.makeRawVcftData();
-            fixture.componentInstance.cnvdata = PatientApiServiceStub.makeCnvData();
 
             fixture.componentInstance.ngOnInit();
 
@@ -131,22 +128,25 @@ export function main() {
 
             expect(fixture.componentInstance.options.chart.callback).toBeDefined();
             fixture.detectChanges();
+
             fixture.destroy();
           });
       }));
+
+
   });
 
   @Component({
     selector: 'example-chart',
     providers: [nvD3],
     template: '<div> ' +
-    // '<cnv-chart [data]="parsed_vcf_genes"></cnv-chart>' +
     '<h1 class="type">{{options.chart.type}}</h1>' +
     '<h1 class="height">{{options.chart.height}}</h1>' +
     '<h1 class="margin">{{options.chart.margin}}</h1>' +
     '<h1 class="outliers">{{options.chart.outliers}}</h1>' +
     '<h1 class="chart">{{chart}}</h1>' +
     '<h1 class="x">{{x}}</h1>' +
+    '<i class="fa fa-search-minus fa-2x icon-pointer" aria-hidden="true"></i>' +
     '<nvd3 id="boxplotchart" [options]="options" [data]="data"></nvd3>' +
     '</div>'
   })
@@ -214,4 +214,6 @@ export function main() {
       return testoptions;
     }
   }
+
+
 }
