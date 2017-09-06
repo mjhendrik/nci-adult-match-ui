@@ -403,11 +403,10 @@
                               </dd>
                               <dt>Disease</dt>
                               <dd *ngIf="!item.diseases"><i class="fa fa-times-circle text-danger-light"></i></dd>
-                              <dd *ngIf="item.diseases"><i style="float: left" class="fa fa-check-circle text-success-light"></i>
-                                <ul *ngFor="let items of item.diseases; let first = first">
-                                  <li>&nbsp;<span *ngIf="!first">&nbsp;</span>{{items.shortName | dashify}}</li>
-                                </ul>
-                              </dd>
+                              <dd *ngIf="item.diseases"><i class="fa fa-check-circle text-success-light"></i> {{item.diseases.shortName | dashify}}</dd>
+                              <dt>Concordance</dt>
+                              <dd *ngIf="!item.concordance"><i class="fa fa-times-circle text-danger-light"></i></dd>
+                              <dd *ngIf="item.concordance" [colorCodeYesNo]="item.concordance"><i class="fa fa-check-circle text-success-light"></i> {{item.concordance | dashify}}</dd>
                             </dl>
                           </div>
                           <div class="col-md-6">
@@ -429,7 +428,11 @@
                               <dt>Nucleic Acid Shipped Date</dt>
                               <dd>{{item.dateMsnShipped | gmt}}</dd>
                               <dt>aMOI</dt>
-                              <dd>{{item.amoi | dashify}}</dd>
+                              <dd>{{item.amoi | dashify}}
+                                <!-- <span [amoi]="item.amoi" class="label label-inverse m-b-5">{{item.amoi | dashify}}</span> -->
+                                <!-- <treatment-arm-link *ngIf="item.amoi.treatmentArmId" [treatmentArmId]="item.amoi.treatmentArmId" [version]="item.amoi.version"
+                                  [removePrefix]="true"></treatment-arm-link> -->
+                              </dd>
                             </dl>
                           </div>
                         </div>

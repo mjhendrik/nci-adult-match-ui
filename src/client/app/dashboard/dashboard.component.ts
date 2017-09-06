@@ -83,9 +83,8 @@ export class DashboardComponent implements OnInit {
   }
 
   getDataPatientsAwaiting(itemList: any[]) {
-    let gmt = new GmtPipe();
     this.tablePatientsAwaitingData = itemList.map(x => {
-      x.date_verified = gmt.transform(x.date_verified);
+      if (x.diseases) x.diseases.shortName = x.diseases && x.diseases.length ? x.diseases.map((y: any) => y.shortName).join(', ') : '';
       return x;
     });
   }

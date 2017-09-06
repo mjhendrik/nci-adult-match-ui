@@ -14,6 +14,7 @@ import { ColorCodeAssignmentDirective } from './colorcode-assignment.directive';
 import { ColorCodeVariantReportDirective } from './colorcode-variant-report.directive';
 import { MatchHeightTabClickDirective } from './match-height-tab.directive';
 import { FaIconDirective } from './fa-icon.directive';
+import { AmoiDirective } from './amoi.directive';
 import { CnvChartDirective } from './../cnv-chart/cnv-chart.directive.component';
 import { ColorCodeYesNoDirective } from './colorcode-yes-no.directive';
 import { RefreshMatchHeightDirective } from './refresh-match-height.directive';
@@ -34,6 +35,7 @@ import { RefreshMatchHeightDirective } from './refresh-match-height.directive';
     ColorCodeVariantReportDirective,
     MatchHeightTabClickDirective,
     FaIconDirective,
+    AmoiDirective,
     nvD3,
     CnvChartDirective,
     ColorCodeYesNoDirective
@@ -52,6 +54,7 @@ import { RefreshMatchHeightDirective } from './refresh-match-height.directive';
     ColorCodeVariantReportDirective,
     MatchHeightTabClickDirective,
     FaIconDirective,
+    AmoiDirective,
     nvD3,
     CnvChartDirective,
     ColorCodeYesNoDirective
