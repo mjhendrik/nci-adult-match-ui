@@ -5,7 +5,9 @@ const DevConfig: EnvConfig = {
   API: {
     PATIENT: '',
     TREATMENT_ARM: '',
-    ION_REPORTER: ''
+    ION_REPORTERS: '',
+    SAMPLE_CONTROLS: '',
+    ALIQUOT: ''
   },
   CLIENT_ID: 'RjoYZXUDEzQxMJw04C6B5dsQKqUAEYzA',
   AUTH_DOMAIN: 'ncimatch.auth0.com'

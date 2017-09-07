@@ -83,7 +83,7 @@ export class CliaApiService {
 
     // return this.http.get('assets/mock-data/clia-' + type + '-ntc.json') // works only for mocha
 
-    return this.http.get(Config.API.ION_REPORTER + '/sample_controls?site=' + type
+    return this.http.get(Config.API.SAMPLE_CONTROLS + '/sample_controls?site=' + type
       + '&control_type=no_template&projection=molecular_id,date_molecular_id_created,date_variant_received,report_status')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
@@ -94,7 +94,7 @@ export class CliaApiService {
 
     // return this.http.get('assets/mock-data/clia-' + type + '-pacc.json') // works only for mocha
 
-    return this.http.get(Config.API.ION_REPORTER + '/sample_controls?site=' + type
+    return this.http.get(Config.API.SAMPLE_CONTROLS + '/sample_controls?site=' + type
       + '&control_type=proficiency_competency&projection=molecular_id,date_molecular_id_created,date_variant_received,report_status')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
@@ -105,7 +105,7 @@ export class CliaApiService {
 
     // return this.http.get('assets/mock-data/clia-' + type + '-pc.json') // works only for mocha
 
-    return this.http.get(Config.API.ION_REPORTER + '/sample_controls?site=' + type
+    return this.http.get(Config.API.SAMPLE_CONTROLS + '/sample_controls?site=' + type
       + '&control_type=positive&projection=molecular_id,date_molecular_id_created,date_variant_received,report_status')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
@@ -116,7 +116,7 @@ export class CliaApiService {
 
     // return this.http.get('assets/mock-data/clia-' + type + '-ion.json')
 
-    return this.http.get(Config.API.ION_REPORTER + '/ion_reporters/healthcheck?site=' + type)
+    return this.http.get(Config.API.ION_REPORTERS + '/ion_reporters/healthcheck?site=' + type)
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
@@ -127,7 +127,7 @@ export class CliaApiService {
     // getCliaVariantReportsNTC(ntcType: string): Observable<CliaVariantReportsNTCInterface> {
     //   return this.http.get('assets/mock-data/clia-variant-reports-ntc-' + ntcType + '.json') // works only for mocha
 
-    return this.http.get(Config.API.ION_REPORTER + '/aliquot/' + molecular_id
+    return this.http.get(Config.API.ALIQUOT + '/aliquot/' + molecular_id
       + '?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,date_variant_received,torrent_variant_caller_version,report_status,snv_indels,copy_number_variants,gene_fusions')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
@@ -139,7 +139,7 @@ export class CliaApiService {
     // getCliaVariantReportsPACC(paccType: string): Observable<CliaVariantReportsPACCInterface> {
     //   return this.http.get('assets/mock-data/clia-variant-reports-pacc-' + paccType + '.json') // works only for mocha
 
-    return this.http.get(Config.API.ION_REPORTER + '/aliquot/' + molecular_id
+    return this.http.get(Config.API.ALIQUOT + '/aliquot/' + molecular_id
       + '?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,date_variant_received,torrent_variant_caller_version,report_status,snv_indels,copy_number_variants,gene_fusions')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
@@ -151,7 +151,7 @@ export class CliaApiService {
     // getCliaVariantReportsPC(pcType: string): Observable<CliaVariantReportsPCInterface> {
     //   return this.http.get('assets/mock-data/clia-variant-reports-pc-' + pcType + '.json') // works only for mocha
 
-    return this.http.get(Config.API.ION_REPORTER + '/aliquot/' + molecular_id
+    return this.http.get(Config.API.ALIQUOT + '/aliquot/' + molecular_id
       + '?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,positive_control_version,date_molecular_id_created,date_variant_received,torrent_variant_caller_version,report_status,positive_variants,false_positive_variants')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
@@ -163,7 +163,7 @@ export class CliaApiService {
     // getCliaVariantReportQC(tabType: string, cliaType: string): Observable<CliaVariantReportsQCInterface> {
     //   return this.http.get('assets/mock-data/clia-variant-report-qc-' + tabType + '-' + cliaType + '.json') // works only for mocha
 
-    return this.http.get(Config.API.ION_REPORTER + '/sample_controls/quality_control/' + molecular_id
+    return this.http.get(Config.API.SAMPLE_CONTROLS + '/sample_controls/quality_control/' + molecular_id
       + '?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,torrent_variant_caller_version,oncomine_control_panel_summary')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
@@ -171,42 +171,42 @@ export class CliaApiService {
   }
 
   downloadCliaDnaBam(molecular_id: string): Observable<any> {
-    return this.http.get(Config.API.ION_REPORTER + '/sample_controls/files/' + molecular_id + '/dna_bam_name')
+    return this.http.get(Config.API.SAMPLE_CONTROLS + '/sample_controls/files/' + molecular_id + '/dna_bam_name')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
   }
 
   downloadCliaDnaBai(molecular_id: string): Observable<any> {
-    return this.http.get(Config.API.ION_REPORTER + '/sample_controls/files/' + molecular_id + '/dna_bai_name')
+    return this.http.get(Config.API.SAMPLE_CONTROLS + '/sample_controls/files/' + molecular_id + '/dna_bai_name')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
   }
 
   downloadCliaRnaBam(molecular_id: string): Observable<any> {
-    return this.http.get(Config.API.ION_REPORTER + '/sample_controls/files/' + molecular_id + '/cdna_bam_name')
+    return this.http.get(Config.API.SAMPLE_CONTROLS + '/sample_controls/files/' + molecular_id + '/cdna_bam_name')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
   }
 
   downloadCliaRnaBai(molecular_id: string): Observable<any> {
-    return this.http.get(Config.API.ION_REPORTER + '/sample_controls/files/' + molecular_id + '/cdna_bai_name')
+    return this.http.get(Config.API.SAMPLE_CONTROLS + '/sample_controls/files/' + molecular_id + '/cdna_bai_name')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
   }
 
   downloadCliaVcf(molecular_id: string): Observable<any> {
-    return this.http.get(Config.API.ION_REPORTER + '/sample_controls/files/' + molecular_id + '/vcf_name')
+    return this.http.get(Config.API.SAMPLE_CONTROLS + '/sample_controls/files/' + molecular_id + '/vcf_name')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
   }
 
   generateMsn(site: string, control_type: string): Observable<any> {
-    return this.http.post(Config.API.ION_REPORTER + '/sample_controls?site=' + site + '&control_type=' + control_type, '')
+    return this.http.post(Config.API.SAMPLE_CONTROLS + '/sample_controls?site=' + site + '&control_type=' + control_type, '')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);

@@ -10,7 +10,9 @@ export interface EnvConfig {
 interface EnvApiConfig {
   PATIENT: string;
   TREATMENT_ARM: string;
-  ION_REPORTER: string;
+  ION_REPORTERS: string;
+  SAMPLE_CONTROLS: string;
+  ALIQUOT: string;
 }
 
 export class EnvConstants {
