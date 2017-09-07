@@ -261,13 +261,13 @@ OFF_TRIAL`.indexOf(element.assignmentStatusOutcome) !== -1) {
       this.geneIn.forEach(element => {
         let genes = element.identifier.split('-');
         element.gene1 = genes[0];
-        element.gene2 = genes[1].split('.')[0];
+        if (genes[1]) element.gene2 = genes[1].split('.')[0];
       });
 
       this.geneEx.forEach(element => {
         let genes = element.identifier.split('-');
         element.gene1 = genes[0];
-        element.gene2 = genes[1].split('.')[0];
+        if (genes[1]) element.gene2 = genes[1].split('.')[0];
       });
 
     }
