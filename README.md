@@ -47,7 +47,7 @@ docker-compose pull
 To rebuild the latest UI docker image:
 
 ```
-docker-compose pull
+docker-compose build
 ```
 
 ## Restoring Data to MongoDB for Local Development
