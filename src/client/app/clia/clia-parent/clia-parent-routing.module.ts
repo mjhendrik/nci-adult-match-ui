@@ -23,10 +23,10 @@ class DataResolver implements Resolve<any> {
     state: RouterStateSnapshot
   ): Observable<any> | Promise<any> | any {
     return Observable.forkJoin(
-      this.api.getCliaDetailsPC(route.params['cliaType']),
-      this.api.getCliaDetailsNTC(route.params['cliaType']),
-      this.api.getCliaDetailsPACC(route.params['cliaType']),
-      this.api.getCliaIon(route.params['cliaType'])
+      this.api.getCliaDetailsPC(route.data['cliaType']),
+      this.api.getCliaDetailsNTC(route.data['cliaType']),
+      this.api.getCliaDetailsPACC(route.data['cliaType']),
+      this.api.getCliaIon(route.data['cliaType'])
     ).map(
       data => {
         return {
