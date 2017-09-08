@@ -10,6 +10,12 @@
 
 *Note: You need to have access to [FNLCR](https://hub.docker.com/u/fnlcr/) private docker repository. Please contact systems team if you need the access.*
 
+Login into docker using your docker account (needed only once)
+
+```
+docker login
+```
+
 To run the front-end and all back-end services locally:
 
 ```
