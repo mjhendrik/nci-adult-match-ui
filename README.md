@@ -10,13 +10,26 @@
 
 *Note: You need to have access to [FNLCR](https://hub.docker.com/u/fnlcr/) private docker repository. Please contact systems team if you need the access.*
 
+Make sure you have the following environment variables:
+
+    AUTH0_CLIENT_ID
+    AUTH0_CLIENT_SECRET # should be base-64 encoded
+    AUTH0_DATABASE
+    AUTH0_DOMAIN
+    AUTH0_MANAGEMENT_ID
+    AUTH0_MANAGEMENT_SECRET
+    AWS_ACCESS_KEY_ID
+    AWS_SECRET_ACCESS_KEY
+    AWS_SMTP_PASSWORD
+    SLACK_TOKEN
+
 Login into docker using your docker account (needed only once)
 
 ```
 docker login
 ```
 
-To run the front-end and all back-end services locally:
+To run the front-end and all back-end services:
 
 ```
 docker-compose up
@@ -28,8 +41,10 @@ To run only some of the services (for example only the `ui` and `patient-api`, w
 
 *Note: Each time you run `docker-compose down` the data volumes for the docker containers are removed and you'll have to restore the database backups again.*
 
+For front-end developers running the front-end code in node, run everything __but__ the front-end:
+
 ```
-docker-compose up ui patient-api
+docker-compose up patient-api treatment-arm-api ion-reporters-api sample-controls-api aliquots-api ir-processor-api 
 ```
 
 Full list of services included in `docker-compose.yml`
