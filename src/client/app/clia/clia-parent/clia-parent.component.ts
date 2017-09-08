@@ -40,7 +40,7 @@ export class CliaParentComponent implements OnInit {
   sortByDescPC: string = 'desc';
   sortByDescNTC: string = 'desc';
   sortByDescPACC: string = 'desc';
-  
+
   countContacted: number = 0;
   countLost: number = 0;
 

@@ -24,7 +24,7 @@ class DataResolver implements Resolve<any> {
   ): Observable<any> | Promise<any> | any {
     return Observable.forkJoin(
       this.api.getCliaDetailsPC(route.params['cliaType']),
-      this.api.getCliaDetailsNTC(route.params['cliaTypeid']),
+      this.api.getCliaDetailsNTC(route.params['cliaType']),
       this.api.getCliaDetailsPACC(route.params['cliaType']),
       this.api.getCliaIon(route.params['cliaType'])
     ).map(
