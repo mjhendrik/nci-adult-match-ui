@@ -1,0 +1,38 @@
+[
+    {
+        "studyId": "EAY131",
+        "biomarker": "ICCPTENs",
+        "assayActivationPeriods": [
+            {
+                "startDate": "2015-08-01"
+            }
+        ]
+    },
+    {
+        "studyId": "EAY131",
+        "biomarker": "ICCMLH1s",
+        "assayActivationPeriods": [
+            {
+                "startDate": "2016-06-01"
+            }
+        ]
+    },
+    {
+        "studyId": "EAY131",
+        "biomarker": "ICCMSH2s",
+        "assayActivationPeriods": [
+            {
+                "startDate": "2016-06-01"
+            }
+        ]
+    },
+    {
+        "studyId": "EAY131",
+        "biomarker": "ICCRBs",
+        "assayActivationPeriods": [
+            {
+                "startDate": "2016-06-01"
+            }
+        ]
+    }
+]
