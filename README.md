@@ -10,6 +10,12 @@
 
 *Note: You need to have access to [FNLCR](https://hub.docker.com/u/fnlcr/) private docker repository. Please contact systems team if you need the access.*
 
+Login into docker using your docker account (needed only once)
+
+```
+docker login
+```
+
 Make sure you have the following environment variables:
 
     AUTH0_CLIENT_ID
@@ -22,12 +28,6 @@ Make sure you have the following environment variables:
     AWS_SECRET_ACCESS_KEY
     AWS_SMTP_PASSWORD
     SLACK_TOKEN
-
-Login into docker using your docker account (needed only once)
-
-```
-docker login
-```
 
 To run the front-end and all back-end services:
 
