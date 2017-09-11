@@ -101,16 +101,18 @@ export function main() {
             fixture.detectChanges();
 
             expect(html).toContain('<strong>RPS6KB1</strong>');
+            // expect(html).toContain('<b>RPS6KB1</b>');
             fixture.detectChanges();
 
             expect(html).toContain('<strong>6.48</strong>');
+            // expect(html).toContain('<li>Cl 5%: 6.48</li>');
             fixture.detectChanges();
 
             let series:any = fixture.componentInstance.options.chart.tooltip.contentGenerator(s);
             expect(series).toBeDefined();
             fixture.detectChanges();
 
-            expect(series).toContain('<span class="list-group">4.49</span>');
+            expect(series).toContain('<strong>4.49</strong>');
             fixture.detectChanges();
 
             fixture.destroy();
@@ -144,8 +146,6 @@ export function main() {
             fixture.destroy();
           });
       }));
-
-
   });
 
   @Component({

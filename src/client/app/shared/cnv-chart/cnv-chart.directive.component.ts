@@ -28,16 +28,18 @@ declare let d3: any;
     ])
   ],
   providers: [nvD3],
+  // templateUrl:'app/shared/cnv-chart/cnv-chart.component.html'
+
   template://Zoomout panel
   `<div *ngIf="file_name">
   <div [@dialog] *ngIf="show" class="dialog">
   <i class="fa fa-search-minus fa-2x" aria-hidden="true" *ngIf="show" (click)="show = !show" style="cursor: pointer; color: gray"></i>
    <h4 class="pull-right">{{ file_name }}</h4>
   <ul class="list-group" style="list-style-type: none;">
-  <li>Tumor suppressor genes 
+  <li>Tumor suppressor genes
   <i class="fa fa-square" aria-hidden="true" style="color:#CD0000;background-color:#CD0000"></i> </li>
-  <li>Oncogenes 
-  <i class="fa fa-square" aria-hidden="true" style="color:green;background-color:green"></i>
+  <li>Oncogenes
+  <i class="fa fa-square" aria-hidden="true" style="color:#007200;background-color:#007200"></i>
   </li></ul>
   <nvd3 id="boxplotchart" config="{deepWatchData: false}" [options]="options" [data]="cnvdata" *ngIf="show"></nvd3>
   </div>
@@ -46,10 +48,10 @@ declare let d3: any;
   <i class="fa fa-search-plus fa-2x" aria-hidden="true" *ngIf="!show" (click)="show = !show" style="cursor: pointer; color: gray"></i>
    <h5 class="pull-right">{{ file_name }}</h5>
   <ul class="list-group" style="list-style-type: none;">
-  <li>Tumor suppressor genes 
+  <li>Tumor suppressor genes
   <i class="fa fa-square" aria-hidden="true" style="color:#CD0000;background-color:#CD0000"></i> </li>
-  <li>Oncogenes 
-  <i class="fa fa-square" aria-hidden="true" style="color:green;background-color:green"></i>
+  <li>Oncogenes
+  <i class="fa fa-square" aria-hidden="true" style="color:#007200;background-color:#007200"></i>
   </li></ul>
   <nvd3 id="boxplotchart" config="{deepWatchData: false}" [options]="options" [data]="cnvdata" *ngIf="!show"></nvd3>
   </div>
@@ -78,7 +80,6 @@ export class CnvChartDirective implements OnInit {
     this.getData();
   }
   getData() {
-
     let array = this.data[0];
     if (typeof this.data[1] !== 'undefined') {
       this.file_name = this.data[1].split('tmp/')[1];
@@ -88,12 +89,12 @@ export class CnvChartDirective implements OnInit {
 
     Object.keys(array).forEach((key:any) => {
 
-      let gene = array[key].gene;
+      let gene:string = array[key].gene;
       let values = array[key].values;
       let median = array[key].raw_copy_number;
-      let position = array[key].position;
-      let chromosome = array[key].chromosome;
-      let status = !array[key].tsg_gene ? '#CD0000' : 'Green';
+      let position:number = array[key].position;
+      let chromosome:string = array[key].chromosome;
+      let status:string = !array[key].tsg_gene ? '#CD0000' : '#007200';
 
       let min = values[0];
       let max = values[10];
@@ -153,13 +154,12 @@ export class CnvChartDirective implements OnInit {
     let xAxis:any = function () {
       return {rotateLabels: -45, fontSize: 10}
     };
-    let color = function () {
+    let color:any = function () {
       return colors;
     };
 
     this.options = {
       chart: {
-
         color: color(),
         id: id(),
         type: type(),
@@ -178,7 +178,9 @@ export class CnvChartDirective implements OnInit {
             const series = d.series[0];
 
             if (series.key !== 'Q3') {
-              html = '<span class="list-group">' + series.key + '</span>';
+              html = "<span class='list-group' style='font-size: 18px'><strong>" +
+                series.key +
+                "</strong></span>";
             }
             else {
               rows =
@@ -207,11 +209,9 @@ export class CnvChartDirective implements OnInit {
                 "</tr>" +
                 "</thead>";
 
-              return "<table>" +
+              return "<table style='font-size: 18px'>" +
                 header +
-                "<tbody>" +
-                rows +
-                "</tbody>" +
+                "<tbody>" + rows + "</tbody>" +
                 "</table>";
 
             }
@@ -269,7 +269,7 @@ export class CnvChartDirective implements OnInit {
                   .style('fill', 'none')
                   .style('stroke', 'gray')
                   .style('stroke-width', 0.5)
-                  .style('stroke-linecap', 'line');
+                  .style('stroke-linecap', 'round');
 
                 svg.append("text")
                   .attr("class", "nv-zeroLine")
@@ -278,7 +278,8 @@ export class CnvChartDirective implements OnInit {
                   .attr("y", 365)
                   .text(chrnum)
                   .style("fill", "#c70505")
-                  .style("font-size", 8);
+                  .style("font-weight", "bold")
+                  .style("font-size", '12px');
 
                 prespot = spot;
               }
@@ -289,11 +290,11 @@ export class CnvChartDirective implements OnInit {
                   .attr("y", 365)
                   .text(chrnum)
                   .style("fill", "#c70505")
-                  .style("font-size", 8);
+                  .style("font-weight", "bold")
+                  .style("font-size", '12px');
 
                 prespot = spot;
               }
-
             }
           });
           let max = Math.round(highest / 10) * 3 + lowest;
