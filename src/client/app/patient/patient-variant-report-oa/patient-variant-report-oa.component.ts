@@ -1,6 +1,7 @@
 import {
   Component,
-  OnInit
+  OnInit,
+  AfterViewInit
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { routerTransition } from './../../shared/router.animations';
@@ -22,9 +23,10 @@ import { ScrollService } from '../../shared/utils/scroll.to.service';
   animations: [routerTransition()],
   host: { '[@routerTransition]': '' }
 })
-export class PatientVariantReportOutsideAssayComponent implements OnInit, VariantReportComparisonData {
+export class PatientVariantReportOutsideAssayComponent implements OnInit, AfterViewInit, VariantReportComparisonData {
   scrollTo: (id: string) => void;
   isOutsideAssay: boolean;
+  isOutsideAssayValue: boolean = null;
 
   psn: string;
   currentPatientStatus: string;
@@ -76,6 +78,13 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, Varian
 
   ngOnInit() {
     Object.assign(this, this.route.snapshot.data['data']);
+  }
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      console.log('Attempting to refresh tabs...');
+      this.isOutsideAssayValue = this.isOutsideAssay;
+    }, 300);
   }
 
   download(file: string) {
