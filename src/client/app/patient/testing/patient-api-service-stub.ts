@@ -102,6 +102,7 @@ export class PatientApiServiceStub {
 
     static makeOutsideAssayVariantReportData = () => {
         return {
+            isOutsideAssay: true,
             psn: 'dummy-value',
             currentPatientStatus: 'dummy-value',
             currentStepNumber: 'dummy-value',

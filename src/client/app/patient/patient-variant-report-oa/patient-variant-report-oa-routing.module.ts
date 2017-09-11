@@ -29,6 +29,7 @@ class DataResolver implements Resolve<VariantReportComparisonData> {
     const psn: string = route.params.patientSequenceNumber;
 
     const reportObservable = this.api.getOutsideAssayComparisonVariantReport(psn);
+    const isOutsideAssay: boolean = !!route.queryParamMap.get('isOutsideAssay');
 
     /* Interesting case of Observables.
     / `flatMap` causes sequential "execution" of the observables
@@ -49,6 +50,8 @@ class DataResolver implements Resolve<VariantReportComparisonData> {
 
       const transformedReport = this.transformer.transformOutsidePatientReport(
         report, cnvDataOutside, ocpDataOutside, cnvDataMatch, ocpDataMatch);
+
+        transformedReport.isOutsideAssay = isOutsideAssay;
 
       return transformedReport;
     });

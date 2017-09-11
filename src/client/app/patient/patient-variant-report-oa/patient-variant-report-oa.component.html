@@ -12,12 +12,12 @@
     <div class="col-md-12">
       <div class="panel">
         <ul class="nav nav-tabs nav-tabs-purple">
-          <li id="outsideDataTab" class="active"><a href="#tab-outside-lab-report" data-toggle="tab" refreshMatchHeight>Outside Lab Report Summary</a></li>
-          <li id="matchDataTab"><a href="#tab-confirmation-report" data-toggle="tab" refreshMatchHeight>Confirmation Report Summary</a></li>
+          <li id="outsideDataTab" [class.active]="isOutsideAssay"><a href="#tab-outside-lab-report" data-toggle="tab" refreshMatchHeight>Outside Lab Report Summary</a></li>
+          <li id="matchDataTab" [class.active]="!isOutsideAssay"><a href="#tab-confirmation-report" data-toggle="tab" refreshMatchHeight>Confirmation Report Summary</a></li>
         </ul>
 
         <div class="tab-content m-b-0">
-          <div class="tab-pane fade active in" id="tab-outside-lab-report">
+          <div class="tab-pane fade" [class.active]="isOutsideAssay" id="tab-outside-lab-report">
             <div *ngIf="outsideData && outsideData.analysisId" class="row" matchHeight="panel-height-top">
               <div class="col-md-6">
                 <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
@@ -171,7 +171,7 @@
             <p *ngIf="!outsideData || !outsideData.analysisId" class="empty-data-panel">No Outside Lab Variant Report data</p>
           </div>
 
-          <div class="tab-pane fade" id="tab-confirmation-report">
+          <div class="tab-pane fade" [class.active]="!isOutsideAssay" id="tab-confirmation-report">
             <div *ngIf="matchData && matchData.analysisId" class="row" matchHeight="panel-height-top">
               <div class="col-md-6">
                 <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
@@ -355,12 +355,12 @@
   
   <div class="panel">
     <ul class="nav nav-tabs nav-tabs-purple">
-      <li id="outsideDataTab" class="active"><a href="#tab-outside-lab-assignment" data-toggle="tab" refreshMatchHeight>Outside Lab Assignment</a></li>
-      <li id="matchDataTab"><a href="#tab-confirmation-assignment" data-toggle="tab" refreshMatchHeight>Confirmation Report Assignment</a></li>
+      <li id="outsideDataTab" [class.active]="isOutsideAssay"><a href="#tab-outside-lab-assignment" data-toggle="tab" refreshMatchHeight>Outside Lab Assignment</a></li>
+      <li id="matchDataTab" [class.active]="!isOutsideAssay"><a href="#tab-confirmation-assignment" data-toggle="tab" refreshMatchHeight>Confirmation Report Assignment</a></li>
     </ul>
 
     <div class="tab-content m-b-0">
-      <div class="tab-pane fade active in" id="tab-outside-lab-assignment">
+      <div class="tab-pane fade" [class.active]="isOutsideAssay" id="tab-outside-lab-assignment">
         <div *ngIf="outsideData.assignmentReport && outsideData.assignmentReport.reasons">
           <sd-assignment-reason-table [reasons]="outsideData.assignmentReport.reasons"></sd-assignment-reason-table>
         </div>
@@ -368,7 +368,7 @@
         <p *ngIf="!outsideData.assignmentReport || !outsideData.assignmentReport.reasons" class="empty-data-panel">No Outside Lab Assignment data</p>            
       </div>
 
-      <div class="tab-pane fade" id="tab-confirmation-assignment">
+      <div class="tab-pane fade" [class.active]="!isOutsideAssay" id="tab-confirmation-assignment">
         <div *ngIf="matchData.assignmentReport && matchData.assignmentReport.reasons">
           <sd-assignment-reason-table [reasons]="matchData.assignmentReport.reasons"></sd-assignment-reason-table>
         </div>
