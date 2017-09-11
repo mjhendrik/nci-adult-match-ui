@@ -158,6 +158,11 @@ module.exports = function (config) {
         included: false,
         watched: true
       },
+      {
+        pattern: 'node_modules/ngx-bootstrap/bundles/ngx-bootstrap.umd.min.js',
+        included: false,
+        watched: true
+      },
 
       'test-config.js',
       'dist/dev/app/system-config.js',

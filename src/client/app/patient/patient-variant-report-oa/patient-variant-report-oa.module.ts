@@ -11,6 +11,8 @@ import { AssignmentReasonTableModule } from './../assignment-reason-table/assign
 import { ViewDataTransformer } from './../view-data-transformer.service';
 import { VariantReportComparisonTableModule } from '../variant-report-comparison-table/variant-report-comparison-table.module';
 import { SharedModule } from '../../shared/shared.module';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+
 
 @NgModule({
   imports: [
@@ -22,7 +24,8 @@ import { SharedModule } from '../../shared/shared.module';
     PipesModule,
     DirectivesModule,
     VariantReportComparisonTableModule,
-    SharedModule
+    SharedModule,
+    TabsModule.forRoot()
   ],
   declarations: [PatientVariantReportOutsideAssayComponent],
   exports: [PatientVariantReportOutsideAssayComponent],

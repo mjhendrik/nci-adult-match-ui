@@ -57,40 +57,53 @@ export class ProjectConfig extends SeedConfig {
     ];
 
     // Add packages (e.g. ng2-translate)
-    let additionalPackages: ExtendPackages[] = [{
-      name: 'angular2-jwt',
-      // Path to the package's bundle
-      path: 'node_modules/angular2-jwt/angular2-jwt.js'
-    },
-    {
-      name: 'lodash',
-      path: 'node_modules/lodash/lodash.js'
-    },
-    {
-      name: 'moment',
-      path: 'node_modules/moment/moment.js'
-    },
-    {
-      name: 'd3',
-      path: 'node_modules/d3/d3.js'
-    },
-    {
-      name: 'nvd3',
-      path: 'node_modules/nvd3/build/nv.d3.min.js'
-    },
-    {
-      name: 'ng2-nvd3',
-      // path: 'node_modules/ng2-nvd3/build/lib/ng2-nvd3.d.ts'
-      path: 'node_modules/ng2-nvd3/build/lib/ng2-nvd3.js'
-    },
-    {
-      name: 'ngx-dropzone-wrapper',
-      path: 'node_modules/ngx-dropzone-wrapper/bundles/ngx-dropzone-wrapper.umd.js'
-    },
-    {
-      name: 'ngx-popover',
-      path: 'node_modules/ngx-popover/index.js'
-    }];
+    let additionalPackages: ExtendPackages[] = [
+      {
+        name: 'angular2-jwt',
+        // Path to the package's bundle
+        path: 'node_modules/angular2-jwt/angular2-jwt.js'
+      },
+      {
+        name: 'lodash',
+        path: 'node_modules/lodash/lodash.js'
+      },
+      {
+        name: 'moment',
+        path: 'node_modules/moment/moment.js'
+      },
+      {
+        name: 'd3',
+        path: 'node_modules/d3/d3.js'
+      },
+      {
+        name: 'nvd3',
+        path: 'node_modules/nvd3/build/nv.d3.min.js'
+      },
+      {
+        name: 'ng2-nvd3',
+        // path: 'node_modules/ng2-nvd3/build/lib/ng2-nvd3.d.ts'
+        path: 'node_modules/ng2-nvd3/build/lib/ng2-nvd3.js'
+      },
+      {
+        name: 'ngx-dropzone-wrapper',
+        path: 'node_modules/ngx-dropzone-wrapper/bundles/ngx-dropzone-wrapper.umd.js'
+      },
+      {
+        name: 'ngx-popover',
+        path: 'node_modules/ngx-popover/index.js'
+      },
+      // required for dev build 
+      {
+        name: 'ngx-bootstrap',
+        path: 'node_modules/ngx-bootstrap/bundles/ngx-bootstrap.umd.min.js'
+      },
+
+      // required for prod build
+      {
+        name: 'ngx-bootstrap/*',
+        path: 'node_modules/ngx-bootstrap/bundles/ngx-bootstrap.umd.min.js'
+      }
+    ];
 
     this.addPackagesBundles(additionalPackages);
 
