@@ -17,9 +17,6 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/throttleTime';
 import 'rxjs/add/observable/fromEvent';
 
-/**
- * Lazy loaded PatientListComponent.
- */
 @Component({
   moduleId: module.id,
   selector: 'sd-patients',

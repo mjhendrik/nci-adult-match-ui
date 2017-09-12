@@ -1,19 +1,18 @@
-import { ErrorHandler, Injectable } from '@angular/core';
+import { ErrorHandler, Injectable, Inject, Injector } from '@angular/core';
 
 @Injectable()
 export class ErrorHandlingService implements ErrorHandler {
+    // constructor(@Inject(Injector) private injector: Injector) {
+    //     this.toastr = this.injector.get(ToastsManager);
+    // }
 
     constructor() {
-        // // Init to set key and tag and sendConsoleErrors boolean
-        // logglyService.push({
-        //     'logglyKey': 'Your Loggly Key goes here',
-        //     'sendConsoleErrors': true, // Optional set true to send uncaught console errors
-        //     'tag': 'loggly-logger'
-        // });
     }
 
     handleError(error: any) {
         const message = error.message ? error.message : error.toString();
+        // this.toastyService.error(error);
+        console.error(error);
         // To send logs to loggly
         // this.logglyService.push(message);
     }
