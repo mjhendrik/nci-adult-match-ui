@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { APP_BASE_HREF } from '@angular/common';
@@ -39,6 +39,8 @@ import { VariantReportFilteredTableModule } from './shared/variant-report-filter
 import { PopoverModule } from 'ngx-popover';
 import { HttpInterceptor } from './shared/http.interceptor';
 import { Router } from '@angular/router';
+import { ErrorHandlingService } from './shared/error-handling/error-handling.service';
+import { NgxLogglyModule } from 'ngx-loggly-logger';
 
 @NgModule({
   imports: [
@@ -67,6 +69,7 @@ import { Router } from '@angular/router';
     VariantReportFilteredTableModule,
     VariantReportSimpleTableModule,
     PopoverModule,
+    NgxLogglyModule.forRoot(),
     ErrorModule // This needs to be at the bottom of the list for ErrorComponent to work properly
   ],
   declarations: [AppComponent],
@@ -85,7 +88,8 @@ import { Router } from '@angular/router';
     AUTH_PROVIDERS,
     Auth,
     AuthGuard,
-    LoginGuard
+    LoginGuard,
+    {provide: ErrorHandler, useClass: ErrorHandlingService}
   ],
   bootstrap: [AppComponent]
 })

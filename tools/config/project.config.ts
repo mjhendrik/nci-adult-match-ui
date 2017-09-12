@@ -97,11 +97,14 @@ export class ProjectConfig extends SeedConfig {
         name: 'ngx-bootstrap',
         path: 'node_modules/ngx-bootstrap/bundles/ngx-bootstrap.umd.min.js'
       },
-
       // required for prod build
       {
         name: 'ngx-bootstrap/*',
         path: 'node_modules/ngx-bootstrap/bundles/ngx-bootstrap.umd.min.js'
+      },
+      {
+        name: 'ngx-loggly-logger',
+        path: 'node_modules/ngx-loggly-logger/index.js'
       }
     ];
 
