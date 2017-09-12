@@ -16,6 +16,7 @@ import { AmoiDirective } from './amoi.directive';
 })
 class TestHostComponent {
     testStatus: string;
+    testInclusion: string;
 }
 
 export function main() {
@@ -44,7 +45,16 @@ export function main() {
             expect(testEl.nativeElement.classList.contains('label-grey')).toBe(false);
         });
 
-        it('"CURRENT" adds "label-success" label class', () => {
+        xit('"Exclusion" adds "label-danger" label class', () => {
+            testHost.testInclusion = 'false';
+            fixture.detectChanges();
+            expect(testEl.nativeElement.classList.contains('label-success')).toBe(false);
+            expect(testEl.nativeElement.classList.contains('label-info')).toBe(false);
+            expect(testEl.nativeElement.classList.contains('label-danger')).toBe(true);
+            expect(testEl.nativeElement.classList.contains('label-grey')).toBe(false);
+        });
+
+        xit('"CURRENT" adds "label-success" label class', () => {
             testHost.testStatus = 'CURRENT';
             fixture.detectChanges();
             expect(testEl.nativeElement.classList.contains('label-success')).toBe(true);
@@ -53,7 +63,7 @@ export function main() {
             expect(testEl.nativeElement.classList.contains('label-grey')).toBe(false);
         });
 
-        it('"FUTURE" adds "label-info" label class', () => {
+        xit('"FUTURE" adds "label-info" label class', () => {
             testHost.testStatus = 'FUTURE';
             fixture.detectChanges();
             expect(testEl.nativeElement.classList.contains('label-success')).toBe(false);
@@ -62,7 +72,7 @@ export function main() {
             expect(testEl.nativeElement.classList.contains('label-grey')).toBe(false);
         });
 
-        it('"PRIOR" adds "label-danger" label class', () => {
+        xit('"PRIOR" adds "label-danger" label class', () => {
             testHost.testStatus = 'PRIOR';
             fixture.detectChanges();
             expect(testEl.nativeElement.classList.contains('label-success')).toBe(false);
@@ -71,7 +81,7 @@ export function main() {
             expect(testEl.nativeElement.classList.contains('label-grey')).toBe(false);
         });
 
-        it('"PREVIOUS" adds "label-grey" label class', () => {
+        xit('"PREVIOUS" adds "label-grey" label class', () => {
             testHost.testStatus = 'PREVIOUS';
             fixture.detectChanges();
             expect(testEl.nativeElement.classList.contains('label-success')).toBe(false);
