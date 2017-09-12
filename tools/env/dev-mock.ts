@@ -7,7 +7,8 @@ const DevConfig: EnvConfig = {
     TREATMENT_ARM: '',
     ION_REPORTERS: '',
     SAMPLE_CONTROLS: '',
-    ALIQUOT: ''
+    ALIQUOT: '',
+    MESSAGE: ''
   },
   CLIENT_ID: 'RjoYZXUDEzQxMJw04C6B5dsQKqUAEYzA',
   AUTH_DOMAIN: 'ncimatch.auth0.com'
