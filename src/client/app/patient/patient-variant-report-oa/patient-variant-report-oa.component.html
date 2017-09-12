@@ -11,8 +11,9 @@
   <div class="row">
     <div class="col-md-12">
       <div class="panel">
+          isOutsideAssay: {{isOutsideAssay}}
         <tabset class="nav-tabs-purple">
-          <tab heading="Outside Lab Report Summary">
+          <tab heading="Outside Lab Report Summary" [active]="isOutsideAssay">
             <div *ngIf="outsideData && outsideData.analysisId" class="row" matchHeight="panel-height-top">
               <div class="col-md-6">
                 <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
@@ -166,7 +167,7 @@
             <p *ngIf="!outsideData || !outsideData.analysisId" class="empty-data-panel">No Outside Lab Variant Report data</p>
           </tab>
 
-          <tab heading="Confirmation Report Summary">
+          <tab heading="Confirmation Report Summary" [active]="!isOutsideAssay">
             <div *ngIf="matchData && matchData.analysisId" class="row" matchHeight="panel-height-top">
               <div class="col-md-6">
                 <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
