@@ -40,7 +40,6 @@ import { PopoverModule } from 'ngx-popover';
 import { HttpInterceptor } from './shared/http.interceptor';
 import { Router } from '@angular/router';
 import { ErrorHandlingService } from './shared/error-handling/error-handling.service';
-import { NgxLogglyModule } from 'ngx-loggly-logger';
 
 @NgModule({
   imports: [
@@ -69,7 +68,6 @@ import { NgxLogglyModule } from 'ngx-loggly-logger';
     VariantReportFilteredTableModule,
     VariantReportSimpleTableModule,
     PopoverModule,
-    NgxLogglyModule.forRoot(),
     ErrorModule // This needs to be at the bottom of the list for ErrorComponent to work properly
   ],
   declarations: [AppComponent],

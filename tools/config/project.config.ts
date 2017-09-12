@@ -92,7 +92,7 @@ export class ProjectConfig extends SeedConfig {
         name: 'ngx-popover',
         path: 'node_modules/ngx-popover/index.js'
       },
-      // required for dev build 
+      // required for dev build
       {
         name: 'ngx-bootstrap',
         path: 'node_modules/ngx-bootstrap/bundles/ngx-bootstrap.umd.min.js'
@@ -101,10 +101,6 @@ export class ProjectConfig extends SeedConfig {
       {
         name: 'ngx-bootstrap/*',
         path: 'node_modules/ngx-bootstrap/bundles/ngx-bootstrap.umd.min.js'
-      },
-      {
-        name: 'ngx-loggly-logger',
-        path: 'node_modules/ngx-loggly-logger/index.js'
       }
     ];
 
