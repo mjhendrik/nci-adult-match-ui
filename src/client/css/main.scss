@@ -402,19 +402,25 @@ td.long-text-wrap {
   }
 }
 
-.empty-data-panel{
- color: $text-muted-color;
- font-size: 1.1em;
+.empty-data-panel {
+  color: $text-muted-color;
+  font-size: 1.1em;
 }
 
-.nav-tabs-purple.tab-container > ul > li.active:after, .nav-tabs-purple.tab-container > ul > li.active:hover:after, .nav-tabs-purple.tab-container > ul > li.active:focus:after {
-  background: $dark-purple-color;
+.nav-tabs-purple.tab-container>ul>li.active:after,
+.nav-tabs-purple.tab-container>ul>li.active:hover:after,
+.nav-tabs-purple.tab-container>ul>li.active:focus:after {
+  background: $purple-color;
 }
 
-.nav-tabs-success.tab-container > ul > li.active:after, .nav-tabs-success.tab-container > ul > li.active:hover:after, .nav-tabs-success.tab-container > ul > li.active:focus:after {
+.nav-tabs-success.tab-container>ul>li.active:after,
+.nav-tabs-success.tab-container>ul>li.active:hover:after,
+.nav-tabs-success.tab-container>ul>li.active:focus:after {
   background: $success-color;
 }
 
-.nav-tabs-orangeshade.tab-container > ul > li.active:after, .nav-tabs-orangeshade.tab-container > ul > li.active:hover:after, .nav-tabs-orangeshade.tab-container > ul > li.active:focus:after {
+.nav-tabs-orangeshade.tab-container>ul>li.active:after,
+.nav-tabs-orangeshade.tab-container>ul>li.active:hover:after,
+.nav-tabs-orangeshade.tab-container>ul>li.active:focus:after {
   background: $orangeshade-color;
 }
