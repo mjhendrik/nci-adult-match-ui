@@ -8,322 +8,317 @@
 
   <h1 class="page-header">Variant and Assignment Report</h1>
 
-  <div class="row">
-    <div class="col-md-12">
-      <div class="panel">
-          isOutsideAssay: {{isOutsideAssay}}
-        <tabset class="nav-tabs-purple">
-          <tab heading="Outside Lab Report Summary" [active]="isOutsideAssay">
-            <div *ngIf="outsideData && outsideData.analysisId" class="row" matchHeight="panel-height-top">
-              <div class="col-md-6">
-                <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
-                  <div class="panel-heading">
-                    <div class="row">
-                      <div class="col-md-8">
-                        <h4>Variant Report</h4>
-                      </div>
-                      <div class="col-md-4 text-right">
-                        <a href="javascript:;" class="btn btn-sm btn-link"><i class="fa fa-file-excel-o"></i> Excel</a>
-                      </div>
-                    </div>
-
-                    <dl class="dl-horizontal">
-                      <dt>Molecular Sequence Number</dt>
-                      <dd class="ut-outside-msn">{{outsideData.variantReport.molecularSequenceNumber | dashify}}</dd>
-                      <dt>Biopsy Sequence Number</dt>
-                      <dd>{{outsideData.biopsySequenceNumber | dashify}}</dd>
-                      <dt>Analysis ID</dt>
-                      <dd>{{outsideData.analysisId | dashify}}</dd>
-                      <dt>Patient</dt>
-                      <dd><a href [routerLink]="['/patients', patientSequenceNumber]" class="link-none">{{patientSequenceNumber | dashify}}</a>,
-                        <span [colorCodePatients]="currentPatientStatus">{{currentPatientStatus | dashify}}</span>,
-                        Step {{currentStepNumber | dashify}}</dd>
-                      <dt>Patient Concordance</dt>
-                      <dd><span [colorCodeYesNo]="concordance">{{concordance | dashify}}</span></dd>
-                      <dt>Status</dt>
-                      <dd><span [colorCodeVariantReport]="outsideData.variantReport.variantReportStatus">{{outsideData.variantReport.variantReportStatus | dashify}}</span> on {{outsideData.variantReport.variantReportCreatedDate | gmt}} by {{outsideData.variantReport.user | dashify}}</dd>
-                      <dt>MAPD</dt>
-                      <dd>{{mapd | dashify}}</dd>
-                      <dt>Cellularity</dt>
-                      <dd>{{cellularity | dashify}}</dd>
-                      <dt>File Received Date</dt>
-                      <dd>{{outsideData.variantReport.createdDate | gmt}}</dd>
-
-                      <dt *ngIf="!showPools">Torrent Variant Caller Version</dt>
-                      <dd *ngIf="!showPools">{{tvc_version | dashify}}</dd>
-                      <dt *ngIf="showPools">Pool 1</dt>
-                      <dd *ngIf="showPools">{{pool1 | dashify}}</dd>
-                      <dt *ngIf="showPools">Pool 2</dt>
-                      <dd *ngIf="showPools">{{pool2 | dashify}}</dd>
-                    </dl>
-                    <div class="m-b-5">
-                      <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!outsideData.variantReport.dnaBamFilePath" (click)="download(outsideData.variantReport.dnaBamFilePath)"><i class="fa fa-download"></i> DNA BAM</button>
-                      <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!outsideData.variantReport.dnaBaiFilePath" (click)="download(outsideData.variantReport.dnaBaiFilePath)"><i class="fa fa-download"></i> DNA BAI</button>
-                      <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!outsideData.variantReport.rnaBamFilePath" (click)="download(outsideData.variantReport.rnaBamFilePath)"><i class="fa fa-download"></i> RNA BAM</button>
-                      <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!outsideData.variantReport.rnaBaiFilePath" (click)="download(outsideData.variantReport.rnaBaiFilePath)"><i class="fa fa-download"></i> RNA BAI</button>
-                      <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!outsideData.variantReport.vcfFilePath" (click)="download(outsideData.variantReport.vcfFilePath)"><i class="fa fa-download"></i> VCF</button>
-                    </div>
+  <div class="panel">
+    <tabset class="nav-tabs-purple">
+      <tab heading="Outside Lab Report Summary" [active]="isOutsideAssay">
+        <div *ngIf="outsideData && outsideData.analysisId" class="row" matchHeight="panel-height-top">
+          <div class="col-md-6">
+            <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
+              <div class="panel-heading">
+                <div class="row">
+                  <div class="col-md-8">
+                    <h4>Variant Report</h4>
+                  </div>
+                  <div class="col-md-4 text-right">
+                    <a href="javascript:;" class="btn btn-sm btn-link"><i class="fa fa-file-excel-o"></i> Excel</a>
                   </div>
                 </div>
-              </div>
 
-              <div *ngIf="outsideData && outsideData.analysisId" class="col-md-6">
-                <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
-                  <div class="panel-heading" *ngIf="!outsideData.assignmentReport">
-                    <h4>Latest Assignment</h4>
-                  </div>
-                  <div class="panel-heading" *ngIf="!outsideData.assignmentReport">
-                    <p class="text-muted">No Assignment data yet</p>
-                  </div>
-                  <div class="panel-heading" *ngIf="outsideData.assignmentReport">
-                    <h4>Latest Assignment</h4>
-                    <dl class="dl-horizontal widest-dt">
-                      <dt>Status</dt>
-                      <dd><span [colorCodeAssignment]="outsideData.assignmentReport.patientAssignmentStatus"> {{outsideData.assignmentReport.patientAssignmentStatus | dashify}}</span> on {{outsideData.assignmentReport.dateConfirmed | gmt}} by {{(outsideData.assignmentReport.user||'System User') | dashify}}</dd>
-                      <dt>Generation Date</dt>
-                      <dd>{{outsideData.assignmentReport.dateAssigned | gmt}}</dd>
-                      <dt>Assignment Sent to ECOG Date</dt>
-                      <dd>{{outsideData.assignmentReport.dateSentToECOG | gmt}}</dd>
-                      <dt>Assignment Received by ECOG Date</dt>
-                      <dd>{{outsideData.assignmentReport.dateReceivedByECOG | gmt}}</dd>
-                    </dl>
-                    <dl *ngIf="outsideData.assignmentReport.hasSelectedTreatmentArm" class="dl-horizontal widest-dt">
-                      <dt>Selected Treatment Arm</dt>
-                      <dd>
-                        <treatment-arm-link *ngIf="outsideData.assignmentReport" [treatmentArmId]="outsideData.assignmentReport.treatmentArm.treatmentArmId" [version]="outsideData.assignmentReport.treatmentArm.version"
-                          [removePrefix]="true"></treatment-arm-link>
-                        <span *ngIf="!outsideData.assignmentReport">-</span>
-                      </dd>
-                    </dl>
-                    <div *ngIf="outsideData.assignmentReport.hasSelectedTreatmentArm" class="panel panel-success overflow-hidden">
-                      <div class="panel-heading">
-                        <p>
-                          {{outsideData.assignmentReport.patientAssignmentStatusMessage | dashify}}
-                          <a (click)="scrollTo('assignment-details')" class="text-white text-underlined white-link"><br><br><i class="fa fa-arrow-down" aria-hidden="true"></i> Click for details...</a>
-                        </p>
-                      </div>
-                    </div>
+                <dl class="dl-horizontal">
+                  <dt>Molecular Sequence Number</dt>
+                  <dd class="ut-outside-msn">{{outsideData.variantReport.molecularSequenceNumber | dashify}}</dd>
+                  <dt>Biopsy Sequence Number</dt>
+                  <dd>{{outsideData.biopsySequenceNumber | dashify}}</dd>
+                  <dt>Analysis ID</dt>
+                  <dd>{{outsideData.analysisId | dashify}}</dd>
+                  <dt>Patient</dt>
+                  <dd><a href [routerLink]="['/patients', patientSequenceNumber]" class="link-none">{{patientSequenceNumber | dashify}}</a>,
+                    <span [colorCodePatients]="currentPatientStatus">{{currentPatientStatus | dashify}}</span>,
+                    Step {{currentStepNumber | dashify}}</dd>
+                  <dt>Patient Concordance</dt>
+                  <dd><span [colorCodeYesNo]="concordance">{{concordance | dashify}}</span></dd>
+                  <dt>Status</dt>
+                  <dd><span [colorCodeVariantReport]="outsideData.variantReport.variantReportStatus">{{outsideData.variantReport.variantReportStatus | dashify}}</span> on {{outsideData.variantReport.variantReportCreatedDate | gmt}} by {{outsideData.variantReport.user | dashify}}</dd>
+                  <dt>MAPD</dt>
+                  <dd>{{mapd | dashify}}</dd>
+                  <dt>Cellularity</dt>
+                  <dd>{{cellularity | dashify}}</dd>
+                  <dt>File Received Date</dt>
+                  <dd>{{outsideData.variantReport.createdDate | gmt}}</dd>
+
+                  <dt *ngIf="!showPools">Torrent Variant Caller Version</dt>
+                  <dd *ngIf="!showPools">{{tvc_version | dashify}}</dd>
+                  <dt *ngIf="showPools">Pool 1</dt>
+                  <dd *ngIf="showPools">{{pool1 | dashify}}</dd>
+                  <dt *ngIf="showPools">Pool 2</dt>
+                  <dd *ngIf="showPools">{{pool2 | dashify}}</dd>
+                </dl>
+                <div class="m-b-5">
+                  <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!outsideData.variantReport.dnaBamFilePath" (click)="download(outsideData.variantReport.dnaBamFilePath)"><i class="fa fa-download"></i> DNA BAM</button>
+                  <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!outsideData.variantReport.dnaBaiFilePath" (click)="download(outsideData.variantReport.dnaBaiFilePath)"><i class="fa fa-download"></i> DNA BAI</button>
+                  <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!outsideData.variantReport.rnaBamFilePath" (click)="download(outsideData.variantReport.rnaBamFilePath)"><i class="fa fa-download"></i> RNA BAM</button>
+                  <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!outsideData.variantReport.rnaBaiFilePath" (click)="download(outsideData.variantReport.rnaBaiFilePath)"><i class="fa fa-download"></i> RNA BAI</button>
+                  <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!outsideData.variantReport.vcfFilePath" (click)="download(outsideData.variantReport.vcfFilePath)"><i class="fa fa-download"></i> VCF</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="outsideData && outsideData.analysisId" class="col-md-6">
+            <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
+              <div class="panel-heading" *ngIf="!outsideData.assignmentReport">
+                <h4>Latest Assignment</h4>
+              </div>
+              <div class="panel-heading" *ngIf="!outsideData.assignmentReport">
+                <p class="text-muted">No Assignment data yet</p>
+              </div>
+              <div class="panel-heading" *ngIf="outsideData.assignmentReport">
+                <h4>Latest Assignment</h4>
+                <dl class="dl-horizontal widest-dt">
+                  <dt>Status</dt>
+                  <dd><span [colorCodeAssignment]="outsideData.assignmentReport.patientAssignmentStatus"> {{outsideData.assignmentReport.patientAssignmentStatus | dashify}}</span> on {{outsideData.assignmentReport.dateConfirmed | gmt}} by {{(outsideData.assignmentReport.user||'System User') | dashify}}</dd>
+                  <dt>Generation Date</dt>
+                  <dd>{{outsideData.assignmentReport.dateAssigned | gmt}}</dd>
+                  <dt>Assignment Sent to ECOG Date</dt>
+                  <dd>{{outsideData.assignmentReport.dateSentToECOG | gmt}}</dd>
+                  <dt>Assignment Received by ECOG Date</dt>
+                  <dd>{{outsideData.assignmentReport.dateReceivedByECOG | gmt}}</dd>
+                </dl>
+                <dl *ngIf="outsideData.assignmentReport.hasSelectedTreatmentArm" class="dl-horizontal widest-dt">
+                  <dt>Selected Treatment Arm</dt>
+                  <dd>
+                    <treatment-arm-link *ngIf="outsideData.assignmentReport" [treatmentArmId]="outsideData.assignmentReport.treatmentArm.treatmentArmId" [version]="outsideData.assignmentReport.treatmentArm.version"
+                      [removePrefix]="true"></treatment-arm-link>
+                    <span *ngIf="!outsideData.assignmentReport">-</span>
+                  </dd>
+                </dl>
+                <div *ngIf="outsideData.assignmentReport.hasSelectedTreatmentArm" class="panel panel-success overflow-hidden">
+                  <div class="panel-heading">
+                    <p>
+                      {{outsideData.assignmentReport.patientAssignmentStatusMessage | dashify}}
+                      <a (click)="scrollTo('assignment-details')" class="text-white text-underlined white-link"><br><br><i class="fa fa-arrow-down" aria-hidden="true"></i> Click for details...</a>
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
 
-            <div *ngIf="outsideData && outsideData.analysisId" class="row" matchHeight="panel-height-middle">
-              <div class="col-md-6">
-                <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-middle">
-                  <div class="panel-heading">
-                    <dl class="dl-horizontal">
-                      <h4>MOI/aMOI Summary</h4>
-                      <dt>Total aMOIs</dt>
-                      <dd>{{outsideData.variantReport.moiSummary.totalaMOIs | dashify}}</dd>
-                      <dt>Total MOIs</dt>
-                      <dd>{{outsideData.variantReport.moiSummary.totalMOIs | dashify}}</dd>
-                      <dt>Total Confirmed aMOIs</dt>
-                      <dd>{{outsideData.variantReport.moiSummary.confirmedaMOIs | dashify}}</dd>
-                      <dt>Total Confirmed MOIs</dt>
-                      <dd>{{outsideData.variantReport.moiSummary.confirmedMOIs | dashify}}</dd>
-                    </dl>
+        <div *ngIf="outsideData && outsideData.analysisId" class="row" matchHeight="panel-height-middle">
+          <div class="col-md-6">
+            <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-middle">
+              <div class="panel-heading">
+                <dl class="dl-horizontal">
+                  <h4>MOI/aMOI Summary</h4>
+                  <dt>Total aMOIs</dt>
+                  <dd>{{outsideData.variantReport.moiSummary.totalaMOIs | dashify}}</dd>
+                  <dt>Total MOIs</dt>
+                  <dd>{{outsideData.variantReport.moiSummary.totalMOIs | dashify}}</dd>
+                  <dt>Total Confirmed aMOIs</dt>
+                  <dd>{{outsideData.variantReport.moiSummary.confirmedaMOIs | dashify}}</dd>
+                  <dt>Total Confirmed MOIs</dt>
+                  <dd>{{outsideData.variantReport.moiSummary.confirmedMOIs | dashify}}</dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-middle">                
+              <div class="panel-heading">
+                <h4>Assays</h4>
+                <table class="table table-condensed white-header">
+                  <thead>
+                    <tr>
+                      <th>IHC</th>
+                      <th>Result</th>
+                      <th>Order Date</th>
+                      <th>Result Date</th>
+                      <th>Comment</th>
+                    </tr>
+                  </thead>
+                  <tbody *ngIf="outsideData.assignmentReport">
+                    <tr *ngFor="let item of outsideData.assayMessages">
+                      <td>{{item.biomarker | dashify}}</td>
+                      <td>{{item.result | dashify}}</td>
+                      <td>{{item.orderedDate | gmt}}</td>
+                      <td>{{item.reportedDate | gmt}}</td>
+                      <td>{{item.comment | dashify}}</td>
+                    </tr>
+                    <tr *ngIf="!outsideData.assayMessages || !outsideData.assayMessages.length">
+                      <td colspan="3" class="text-muted">No Assay data</td>
+                    </tr>
+                  </tbody>
+                  <tbody *ngIf="!outsideData.assignmentReport">
+                    <tr>
+                      <td colspan="3" class="text-muted">No Assay data</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p *ngIf="!outsideData || !outsideData.analysisId" class="empty-data-panel">No Outside Lab Variant Report data</p>
+      </tab>
+
+      <tab heading="Confirmation Report Summary" [active]="!isOutsideAssay">
+        <div *ngIf="matchData && matchData.analysisId" class="row" matchHeight="panel-height-top">
+          <div class="col-md-6">
+            <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
+              <div class="panel-heading">
+                <div class="row">
+                  <div class="col-md-8">
+                    <h4>Variant Report</h4>
+                  </div>
+                  <div class="col-md-4 text-right">
+                    <a class="btn btn-sm btn-link" role="button" href [routerLink]="['/patients/' + patientSequenceNumber + '/variant_reports/' + matchData.analysisId +'/qc']"><i class="fa fa-file-text-o"></i> QC Report</a>
+                    <a href="javascript:;" class="btn btn-sm btn-link"><i class="fa fa-file-excel-o"></i> Excel</a>
                   </div>
                 </div>
-              </div>
 
-              <div class="col-md-6">
-                <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-middle">                
+                <dl class="dl-horizontal">
+                  <dt>Molecular Sequence Number</dt>
+                  <dd>{{matchData.variantReport.molecularSequenceNumber | dashify}}</dd>
+                  <dt>Biopsy Sequence Number</dt>
+                  <dd>{{matchData.biopsySequenceNumber | dashify}}</dd>
+                  <dt>Analysis ID</dt>
+                  <dd>{{matchData.analysisId | dashify}}</dd>
+                  <dt>Patient</dt>
+                  <dd><a href [routerLink]="['/patients', patientSequenceNumber]" class="link-none">{{patientSequenceNumber | dashify}}</a>,
+                    <span [colorCodePatients]="currentPatientStatus">{{currentPatientStatus | dashify}}</span>,
+                    Step {{currentStepNumber | dashify}}</dd>
+                  <dt>Patient Concordance</dt>
+                  <dd><span [colorCodeYesNo]="concordance">{{concordance | dashify}}</span></dd>
+                  <dt>Status</dt>
+                  <dd><span [colorCodeVariantReport]="matchData.variantReport.variantReportStatus">{{matchData.variantReport.variantReportStatus | dashify}}</span>                        on {{matchData.variantReport.variantReportCreatedDate | gmt}} by {{matchData.variantReport.user | dashify}}</dd>
+                  <dt>MAPD</dt>
+                  <dd>{{mapd | dashify}}</dd>
+                  <dt>Cellularity</dt>
+                  <dd>{{cellularity | dashify}}</dd>
+                  <dt>File Received Date</dt>
+                  <dd>{{matchData.variantReport.createdDate | gmt}}</dd>
+
+                  <dt *ngIf="!showPools">Torrent Variant Caller Version</dt>
+                  <dd *ngIf="!showPools">{{tvc_version | dashify}}</dd>
+                  <dt *ngIf="showPools">Pool 1</dt>
+                  <dd *ngIf="showPools">{{pool1 | dashify}}</dd>
+                  <dt *ngIf="showPools">Pool 2</dt>
+                  <dd *ngIf="showPools">{{pool2 | dashify}}</dd>
+                </dl>
+                <div class="m-b-5">
+                  <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!matchData.variantReport.dnaBamFilePath" (click)="download(matchData.variantReport.dnaBamFilePath)"><i class="fa fa-download"></i> DNA BAM</button>
+                  <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!matchData.variantReport.dnaBaiFilePath" (click)="download(matchData.variantReport.dnaBaiFilePath)"><i class="fa fa-download"></i> DNA BAI</button>
+                  <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!matchData.variantReport.rnaBamFilePath" (click)="download(matchData.variantReport.rnaBamFilePath)"><i class="fa fa-download"></i> RNA BAM</button>
+                  <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!matchData.variantReport.rnaBaiFilePath" (click)="download(matchData.variantReport.rnaBaiFilePath)"><i class="fa fa-download"></i> RNA BAI</button>
+                  <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!matchData.variantReport.vcfFilePath" (click)="download(matchData.variantReport.vcfFilePath)"><i class="fa fa-download"></i> VCF</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
+              <div class="panel-heading" *ngIf="!matchData.assignmentReport">
+                <h4>Latest Assignment</h4>
+              </div>
+              <div class="panel-heading" *ngIf="!matchData.assignmentReport">
+                <p class="text-muted">No Assignment data yet</p>
+              </div>
+              <div class="panel-heading" *ngIf="matchData.assignmentReport">
+                <h4>Latest Assignment</h4>
+                <dl class="dl-horizontal widest-dt">
+                  <dt>Status</dt>
+                  <dd><span [colorCodeAssignment]="matchData.assignmentReport.patientAssignmentStatus"> {{matchData.assignmentReport.patientAssignmentStatus | dashify}}</span>                        on {{matchData.assignmentReport.dateConfirmed | gmt}} by {{(matchData.assignmentReport.user||'System User') | dashify}}</dd>
+                  <dt>Generation Date</dt>
+                  <dd>{{matchData.assignmentReport.dateAssigned | gmt}}</dd>
+                  <dt>Assignment Sent to ECOG Date</dt>
+                  <dd>{{matchData.assignmentReport.dateSentToECOG | gmt}}</dd>
+                  <dt>Assignment Received by ECOG Date</dt>
+                  <dd>{{matchData.assignmentReport.dateReceivedByECOG | gmt}}</dd>
+                </dl>
+                <dl *ngIf="matchData.assignmentReport.hasSelectedTreatmentArm" class="dl-horizontal widest-dt">
+                  <dt>Selected Treatment Arm</dt>
+                  <dd>
+                    <treatment-arm-link *ngIf="matchData.assignmentReport" [treatmentArmId]="matchData.assignmentReport.treatmentArm.treatmentArmId" [version]="matchData.assignmentReport.treatmentArm.version"
+                      [removePrefix]="true"></treatment-arm-link>
+                    <span *ngIf="!matchData.assignmentReport">-</span>
+                  </dd>
+                </dl>
+                <div *ngIf="matchData.assignmentReport.hasSelectedTreatmentArm" class="panel panel-success overflow-hidden">
                   <div class="panel-heading">
-                    <h4>Assays</h4>
-                    <table class="table table-condensed white-header">
-                      <thead>
-                        <tr>
-                          <th>IHC</th>
-                          <th>Result</th>
-                          <th>Order Date</th>
-                          <th>Result Date</th>
-                          <th>Comment</th>
-                        </tr>
-                      </thead>
-                      <tbody *ngIf="outsideData.assignmentReport">
-                        <tr *ngFor="let item of outsideData.assayMessages">
-                          <td>{{item.biomarker | dashify}}</td>
-                          <td>{{item.result | dashify}}</td>
-                          <td>{{item.orderedDate | gmt}}</td>
-                          <td>{{item.reportedDate | gmt}}</td>
-                          <td>{{item.comment | dashify}}</td>
-                        </tr>
-                        <tr *ngIf="!outsideData.assayMessages || !outsideData.assayMessages.length">
-                          <td colspan="3" class="text-muted">No Assay data</td>
-                        </tr>
-                      </tbody>
-                      <tbody *ngIf="!outsideData.assignmentReport">
-                        <tr>
-                          <td colspan="3" class="text-muted">No Assay data</td>
-                        </tr>
-                      </tbody>
-                    </table>
+                    <p>
+                      {{matchData.assignmentReport.patientAssignmentStatusMessage | dashify}}
+                      <a (click)="scrollTo('assignment-details')" class="text-white text-underlined white-link"><br><br><i class="fa fa-arrow-down" aria-hidden="true"></i> Click for details...</a>
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
 
-            <p *ngIf="!outsideData || !outsideData.analysisId" class="empty-data-panel">No Outside Lab Variant Report data</p>
-          </tab>
-
-          <tab heading="Confirmation Report Summary" [active]="!isOutsideAssay">
-            <div *ngIf="matchData && matchData.analysisId" class="row" matchHeight="panel-height-top">
-              <div class="col-md-6">
-                <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
-                  <div class="panel-heading">
-                    <div class="row">
-                      <div class="col-md-8">
-                        <h4>Variant Report</h4>
-                      </div>
-                      <div class="col-md-4 text-right">
-                        <a class="btn btn-sm btn-link" role="button" href [routerLink]="['/patients/' + patientSequenceNumber + '/variant_reports/' + matchData.analysisId +'/qc']"><i class="fa fa-file-text-o"></i> QC Report</a>
-                        <a href="javascript:;" class="btn btn-sm btn-link"><i class="fa fa-file-excel-o"></i> Excel</a>
-                      </div>
-                    </div>
-
-                    <dl class="dl-horizontal">
-                      <dt>Molecular Sequence Number</dt>
-                      <dd>{{matchData.variantReport.molecularSequenceNumber | dashify}}</dd>
-                      <dt>Biopsy Sequence Number</dt>
-                      <dd>{{matchData.biopsySequenceNumber | dashify}}</dd>
-                      <dt>Analysis ID</dt>
-                      <dd>{{matchData.analysisId | dashify}}</dd>
-                      <dt>Patient</dt>
-                      <dd><a href [routerLink]="['/patients', patientSequenceNumber]" class="link-none">{{patientSequenceNumber | dashify}}</a>,
-                        <span [colorCodePatients]="currentPatientStatus">{{currentPatientStatus | dashify}}</span>,
-                        Step {{currentStepNumber | dashify}}</dd>
-                      <dt>Patient Concordance</dt>
-                      <dd><span [colorCodeYesNo]="concordance">{{concordance | dashify}}</span></dd>
-                      <dt>Status</dt>
-                      <dd><span [colorCodeVariantReport]="matchData.variantReport.variantReportStatus">{{matchData.variantReport.variantReportStatus | dashify}}</span>                        on {{matchData.variantReport.variantReportCreatedDate | gmt}} by {{matchData.variantReport.user | dashify}}</dd>
-                      <dt>MAPD</dt>
-                      <dd>{{mapd | dashify}}</dd>
-                      <dt>Cellularity</dt>
-                      <dd>{{cellularity | dashify}}</dd>
-                      <dt>File Received Date</dt>
-                      <dd>{{matchData.variantReport.createdDate | gmt}}</dd>
-
-                      <dt *ngIf="!showPools">Torrent Variant Caller Version</dt>
-                      <dd *ngIf="!showPools">{{tvc_version | dashify}}</dd>
-                      <dt *ngIf="showPools">Pool 1</dt>
-                      <dd *ngIf="showPools">{{pool1 | dashify}}</dd>
-                      <dt *ngIf="showPools">Pool 2</dt>
-                      <dd *ngIf="showPools">{{pool2 | dashify}}</dd>
-                    </dl>
-                    <div class="m-b-5">
-                      <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!matchData.variantReport.dnaBamFilePath" (click)="download(matchData.variantReport.dnaBamFilePath)"><i class="fa fa-download"></i> DNA BAM</button>
-                      <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!matchData.variantReport.dnaBaiFilePath" (click)="download(matchData.variantReport.dnaBaiFilePath)"><i class="fa fa-download"></i> DNA BAI</button>
-                      <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!matchData.variantReport.rnaBamFilePath" (click)="download(matchData.variantReport.rnaBamFilePath)"><i class="fa fa-download"></i> RNA BAM</button>
-                      <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!matchData.variantReport.rnaBaiFilePath" (click)="download(matchData.variantReport.rnaBaiFilePath)"><i class="fa fa-download"></i> RNA BAI</button>
-                      <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!matchData.variantReport.vcfFilePath" (click)="download(matchData.variantReport.vcfFilePath)"><i class="fa fa-download"></i> VCF</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
-                  <div class="panel-heading" *ngIf="!matchData.assignmentReport">
-                    <h4>Latest Assignment</h4>
-                  </div>
-                  <div class="panel-heading" *ngIf="!matchData.assignmentReport">
-                    <p class="text-muted">No Assignment data yet</p>
-                  </div>
-                  <div class="panel-heading" *ngIf="matchData.assignmentReport">
-                    <h4>Latest Assignment</h4>
-                    <dl class="dl-horizontal widest-dt">
-                      <dt>Status</dt>
-                      <dd><span [colorCodeAssignment]="matchData.assignmentReport.patientAssignmentStatus"> {{matchData.assignmentReport.patientAssignmentStatus | dashify}}</span>                        on {{matchData.assignmentReport.dateConfirmed | gmt}} by {{(matchData.assignmentReport.user||'System User') | dashify}}</dd>
-                      <dt>Generation Date</dt>
-                      <dd>{{matchData.assignmentReport.dateAssigned | gmt}}</dd>
-                      <dt>Assignment Sent to ECOG Date</dt>
-                      <dd>{{matchData.assignmentReport.dateSentToECOG | gmt}}</dd>
-                      <dt>Assignment Received by ECOG Date</dt>
-                      <dd>{{matchData.assignmentReport.dateReceivedByECOG | gmt}}</dd>
-                    </dl>
-                    <dl *ngIf="matchData.assignmentReport.hasSelectedTreatmentArm" class="dl-horizontal widest-dt">
-                      <dt>Selected Treatment Arm</dt>
-                      <dd>
-                        <treatment-arm-link *ngIf="matchData.assignmentReport" [treatmentArmId]="matchData.assignmentReport.treatmentArm.treatmentArmId" [version]="matchData.assignmentReport.treatmentArm.version"
-                          [removePrefix]="true"></treatment-arm-link>
-                        <span *ngIf="!matchData.assignmentReport">-</span>
-                      </dd>
-                    </dl>
-                    <div *ngIf="matchData.assignmentReport.hasSelectedTreatmentArm" class="panel panel-success overflow-hidden">
-                      <div class="panel-heading">
-                        <p>
-                          {{matchData.assignmentReport.patientAssignmentStatusMessage | dashify}}
-                          <a (click)="scrollTo('assignment-details')" class="text-white text-underlined white-link"><br><br><i class="fa fa-arrow-down" aria-hidden="true"></i> Click for details...</a>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+        <div *ngIf="matchData && matchData.analysisId" class="row" matchHeight="panel-height-middle">
+          <div class="col-md-6">
+            <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-middle">
+              <div class="panel-heading">                  
+                <dl class="dl-horizontal">
+                  <h4>MOI/aMOI Summary</h4>
+                  <dt>Total aMOIs</dt>
+                  <dd>{{matchData.variantReport.moiSummary.totalaMOIs | dashify}}</dd>
+                  <dt>Total MOIs</dt>
+                  <dd>{{matchData.variantReport.moiSummary.totalMOIs | dashify}}</dd>
+                  <dt>Total Confirmed aMOIs</dt>
+                  <dd>{{matchData.variantReport.moiSummary.confirmedaMOIs | dashify}}</dd>
+                  <dt>Total Confirmed MOIs</dt>
+                  <dd>{{matchData.variantReport.moiSummary.confirmedMOIs | dashify}}</dd>
+                </dl>
               </div>
             </div>
+          </div>
 
-            <div *ngIf="matchData && matchData.analysisId" class="row" matchHeight="panel-height-middle">
-              <div class="col-md-6">
-                <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-middle">
-                  <div class="panel-heading">                  
-                    <dl class="dl-horizontal">
-                      <h4>MOI/aMOI Summary</h4>
-                      <dt>Total aMOIs</dt>
-                      <dd>{{matchData.variantReport.moiSummary.totalaMOIs | dashify}}</dd>
-                      <dt>Total MOIs</dt>
-                      <dd>{{matchData.variantReport.moiSummary.totalMOIs | dashify}}</dd>
-                      <dt>Total Confirmed aMOIs</dt>
-                      <dd>{{matchData.variantReport.moiSummary.confirmedaMOIs | dashify}}</dd>
-                      <dt>Total Confirmed MOIs</dt>
-                      <dd>{{matchData.variantReport.moiSummary.confirmedMOIs | dashify}}</dd>
-                    </dl>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-middle">
-                  <div class="panel-heading">
-                    <h4>Assays</h4>
-                    <table class="table table-condensed white-header">
-                      <thead>
-                        <tr>
-                          <th>IHC</th>
-                          <th>Result</th>
-                          <th>Order Date</th>
-                          <th>Result Date</th>
-                          <th>Comment</th>
-                        </tr>
-                      </thead>
-                      <tbody *ngIf="matchData.assignmentReport">
-                        <tr *ngFor="let item of matchData.assayMessages">
-                          <td>{{item.biomarker | dashify}}</td>
-                          <td>{{item.result | dashify}}</td>
-                          <td>{{item.orderedDate | gmt}}</td>
-                          <td>{{item.reportedDate | gmt}}</td>
-                          <td>{{item.comment | dashify}}</td>
-                        </tr>
-                        <tr *ngIf="!matchData.assayMessages || !matchData.assayMessages.length">
-                          <td colspan="3" class="text-muted">No Assay data</td>
-                        </tr>
-                      </tbody>
-                      <tbody *ngIf="!matchData.assignmentReport">
-                        <tr>
-                          <td colspan="3" class="text-muted">No Assay data</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
+          <div class="col-md-6">
+            <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-middle">
+              <div class="panel-heading">
+                <h4>Assays</h4>
+                <table class="table table-condensed white-header">
+                  <thead>
+                    <tr>
+                      <th>IHC</th>
+                      <th>Result</th>
+                      <th>Order Date</th>
+                      <th>Result Date</th>
+                      <th>Comment</th>
+                    </tr>
+                  </thead>
+                  <tbody *ngIf="matchData.assignmentReport">
+                    <tr *ngFor="let item of matchData.assayMessages">
+                      <td>{{item.biomarker | dashify}}</td>
+                      <td>{{item.result | dashify}}</td>
+                      <td>{{item.orderedDate | gmt}}</td>
+                      <td>{{item.reportedDate | gmt}}</td>
+                      <td>{{item.comment | dashify}}</td>
+                    </tr>
+                    <tr *ngIf="!matchData.assayMessages || !matchData.assayMessages.length">
+                      <td colspan="3" class="text-muted">No Assay data</td>
+                    </tr>
+                  </tbody>
+                  <tbody *ngIf="!matchData.assignmentReport">
+                    <tr>
+                      <td colspan="3" class="text-muted">No Assay data</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
+          </div>
+        </div>
 
-            <p *ngIf="!matchData || !matchData.analysisId" class="empty-data-panel">No Confirmation Variant Report data</p>            
-          </tab>
-        </tabset>
-      </div>
-    </div>
+        <p *ngIf="!matchData || !matchData.analysisId" class="empty-data-panel">No Confirmation Variant Report data</p>            
+      </tab>
+    </tabset>
   </div>
 
   <h2 class="subsection-heading">Comparison Variant Report</h2>
@@ -350,28 +345,22 @@
   <h2 class="subsection-heading" id="assignment-details">Assignment Reports</h2>
   
   <div class="panel">
-    <ul class="nav nav-tabs nav-tabs-purple">
-      <li id="outsideDataTab" [class.active]="isOutsideAssayValue"><a href="#tab-outside-lab-assignment" data-toggle="tab" refreshMatchHeight>Outside Lab Assignment</a></li>
-      <li id="matchDataTab" [class.active]="!isOutsideAssayValue"><a href="#tab-confirmation-assignment" data-toggle="tab" refreshMatchHeight>Confirmation Report Assignment</a></li>
-    </ul>
-
-    <div class="tab-content m-b-0">
-      <div class="tab-pane fade" [class.active]="isOutsideAssayValue" id="tab-outside-lab-assignment">
+    <tabset class="nav-tabs-purple">
+      <tab heading="Outside Lab Assignment" [active]="isOutsideAssay" id="tab-outside-lab-assignment">
         <div *ngIf="outsideData.assignmentReport && outsideData.assignmentReport.reasons">
           <sd-assignment-reason-table [reasons]="outsideData.assignmentReport.reasons"></sd-assignment-reason-table>
         </div>
 
-        <p *ngIf="!outsideData.assignmentReport || !outsideData.assignmentReport.reasons" class="empty-data-panel">No Outside Lab Assignment data</p>            
-      </div>
-
-      <div class="tab-pane fade" [class.active]="!isOutsideAssayValue" id="tab-confirmation-assignment">
+        <p *ngIf="!outsideData.assignmentReport || !outsideData.assignmentReport.reasons" class="empty-data-panel">No Outside Lab Assignment data</p>
+      </tab>
+      <tab heading="Confirmation Report Assignment" [active]="!isOutsideAssay" id="tab-confirmation-assignment">
         <div *ngIf="matchData.assignmentReport && matchData.assignmentReport.reasons">
           <sd-assignment-reason-table [reasons]="matchData.assignmentReport.reasons"></sd-assignment-reason-table>
         </div>
 
-        <p *ngIf="!matchData.assignmentReport || !matchData.assignmentReport.reasons" class="empty-data-panel">No Confirmation Report Assignment data</p>            
-      </div>
-    </div>
+        <p *ngIf="!matchData.assignmentReport || !matchData.assignmentReport.reasons" class="empty-data-panel">No Confirmation Report Assignment data</p>
+      </tab>
+    </tabset>
   </div>
 
 </div>
