@@ -13,6 +13,7 @@ interface EnvApiConfig {
   ION_REPORTERS: string;
   SAMPLE_CONTROLS: string;
   ALIQUOT: string;
+  MESSAGE: string;
 }
 
 export class EnvConstants {
