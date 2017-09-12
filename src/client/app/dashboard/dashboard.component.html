@@ -428,7 +428,7 @@
                               <dd *ngIf="item.amoi.length!==0">
                                 <ul class="p-0" *ngFor="let items of item.amoi">
                                   <li>
-                                    <span class="label m-b-5" [amoi]="items.state">{{items.state | dashify}} - <span *ngIf="items.inclusion">INCLUSION</span><span *ngIf="!items.inclusion">EXCLUSION</span></span>
+                                    <span class="label m-b-5" amoi status="{{items.state}}" inclusion="{{items.inclusion}}">{{items.state | dashify}} - <span *ngIf="items.inclusion==='true'">INCLUSION</span><span *ngIf="items.inclusion==='false'">EXCLUSION</span></span>
                                     <treatment-arm-link [treatmentArmId]="items.treatmentArmId" [version]="items.version" [removePrefix]="true"></treatment-arm-link>
                                   </li>
                                 </ul>

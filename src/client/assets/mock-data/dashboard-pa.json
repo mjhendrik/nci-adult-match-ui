@@ -1,218 +1,102 @@
 [{
-    "psn": "11767",
-    "currentStatus": "T-16-001089",
-    "message": "MSN20818",
-    "amoi": false,
-    "daysWaiting": "2016-09-16T15:10:53.241Z"
+  "MLH1": {
+    "applicable": true
   },
-  {
-    "psn": "13066",
-    "currentStatus": "T-16-002168",
-    "message": "MSN30353",
-    "amoi": true,
-    "daysWaiting": "2016-11-18T15:53:36.164Z"
+  "MSH2": {
+    "applicable": true
   },
-  {
-    "psn": "13134",
-    "currentStatus": "T-16-002248",
-    "message": "MSN31351",
-    "amoi": false,
-    "daysWaiting": "2016-11-23T15:56:41.951Z"
+  "PTEN": {
+    "applicable": true
   },
-  {
-    "psn": "13397",
-    "currentStatus": "T-16-002465",
-    "message": "MSN32698",
-    "amoi": false,
-    "daysWaiting": "2016-12-05T20:07:24.121Z"
+  "RB": {
+    "applicable": false
   },
-  {
-    "psn": "13459",
-    "currentStatus": "T-16-002814",
-    "message": "MSN36343",
-    "amoi": false,
-    "daysWaiting": "2017-01-09T18:40:36.272Z"
+  "amoi": [{
+      "inclusion": "true",
+      "state": "CURRENT",
+      "treatmentArmId": "EAY131-E",
+      "type": "Hotspot",
+      "version": "2016-05-31"
+    },
+    {
+      "inclusion": "false",
+      "state": "CURRENT",
+      "treatmentArmId": "EAY131-E",
+      "type": "Hotspot",
+      "version": "2016-05-31"
+    },
+    {
+      "inclusion": "false",
+      "state": "PRIOR",
+      "treatmentArmId": "EAY131-A",
+      "type": "Hotspot",
+      "version": "2017-03-10"
+    },
+    {
+      "inclusion": "true",
+      "state": "PRIOR",
+      "treatmentArmId": "EAY131-A",
+      "type": "Hotspot",
+      "version": "2017-03-10"
+    },
+    {
+      "inclusion": "true",
+      "state": "FUTURE",
+      "treatmentArmId": "EAY131-A",
+      "type": "Both",
+      "version": "2017-03-10"
+    },
+    {
+      "inclusion": "false",
+      "state": "FUTURE",
+      "treatmentArmId": "EAY131-A",
+      "type": "Both",
+      "version": "2017-03-10"
+    },
+    {
+      "inclusion": "false",
+      "state": "PREVIOUS",
+      "treatmentArmId": "EAY131-B",
+      "type": "Hotspot",
+      "version": "2015-08-06"
+    },
+    {
+      "inclusion": "true",
+      "state": "PREVIOUS",
+      "treatmentArmId": "EAY131-A",
+      "type": "Hotspot",
+      "version": "2015-08-06"
+    }
+  ],
+  "biopsySequenceNumber": "N-14-000005-4",
+  "concordance": "Y",
+  "currentPatientStatus": "PROGRESSION_REBIOPSY",
+  "dateMsnShipped": {
+    "$date": 1488851996659
   },
-  {
-    "psn": "13537",
-    "currentStatus": "T-16-002717",
-    "message": "MSN35386",
-    "amoi": true,
-    "daysWaiting": "2016-12-19T20:50:22.018Z"
+  "dateSpecimenCollected": {
+    "$date": 1488851996617
   },
-  {
-    "psn": "13626",
-    "currentStatus": "T-16-002740",
-    "message": "MSN37481",
-    "amoi": false,
-    "daysWaiting": "2016-12-30T21:39:23.162Z"
-  },
-  {
-    "psn": "13663",
-    "currentStatus": "T-16-002848",
-    "message": "MSN35675",
-    "amoi": true,
-    "daysWaiting": "2016-12-23T15:15:36.350Z"
-  },
-  {
-    "psn": "13676",
-    "currentStatus": "T-16-002830",
-    "message": "MSN36467",
-    "amoi": true,
-    "daysWaiting": "2016-12-22T21:37:46.169Z"
-  },
-  {
-    "psn": "13693",
-    "currentStatus": "T-16-002879",
-    "message": "MSN36426",
-    "amoi": true,
-    "daysWaiting": "2016-12-22T21:08:34.867Z"
-  },
-  {
-    "psn": "13705",
-    "currentStatus": "T-16-003089",
-    "message": "MSN40295",
-    "amoi": true,
-    "daysWaiting": "2017-01-20T23:34:17.798Z"
-  },
-  {
-    "psn": "13784",
-    "currentStatus": "T-17-000630",
-    "message": "MSN37150",
-    "amoi": true,
-    "daysWaiting": "2016-12-30T19:39:43.729Z"
-  },
-  {
-    "psn": "14028",
-    "currentStatus": "T-17-000232",
-    "message": "MSN39016",
-    "amoi": false,
-    "daysWaiting": "2017-01-12T19:51:27.674Z"
-  },
-  {
-    "psn": "14225",
-    "currentStatus": "T-17-000264",
-    "message": "MSN41087",
-    "amoi": false,
-    "daysWaiting": "2017-01-26T18:53:08.268Z"
-  },
-  {
-    "psn": "14260",
-    "currentStatus": "T-17-000265",
-    "message": "MSN42002",
-    "amoi": false,
-    "daysWaiting": "2017-02-03T20:44:15.422Z"
-  },
-  {
-    "psn": "14277",
-    "currentStatus": "T-17-000424",
-    "message": "MSN42614",
-    "amoi": true,
-    "daysWaiting": "2017-02-07T18:53:58.185Z"
-  },
-  {
-    "psn": "14282",
-    "currentStatus": "T-17-000513",
-    "message": "MSN43109",
-    "amoi": false,
-    "daysWaiting": "2017-02-11T20:01:46.549Z"
-  },
-  {
-    "psn": "14298",
-    "currentStatus": "T-17-000526",
-    "message": "MSN41343",
-    "amoi": false,
-    "daysWaiting": "2017-02-01T17:19:02.544Z"
-  },
-  {
-    "psn": "14310",
-    "currentStatus": "T-17-000643",
-    "message": "MSN43935",
-    "amoi": false,
-    "daysWaiting": "2017-02-13T19:44:43.228Z"
-  },
-  {
-    "psn": "14330",
-    "currentStatus": "T-17-000627",
-    "message": "MSN41350",
-    "amoi": true,
-    "daysWaiting": "2017-02-01T18:32:57.773Z"
-  },
-  {
-    "psn": "14331",
-    "currentStatus": "T-17-000496",
-    "message": "MSN42036",
-    "amoi": true,
-    "daysWaiting": "2017-02-03T21:23:05.330Z"
-  },
-  {
-    "psn": "14339",
-    "currentStatus": "T-17-000514",
-    "message": "MSN42846",
-    "amoi": false,
-    "daysWaiting": "2017-02-07T19:24:03.439Z"
-  },
-  {
-    "psn": "14342",
-    "currentStatus": "T-17-000492",
-    "message": "MSN43042",
-    "amoi": false,
-    "daysWaiting": "2017-02-04T01:40:53.662Z"
-  },
-  {
-    "psn": "14421",
-    "currentStatus": "T-17-000512",
-    "message": "MSN42804",
-    "amoi": false,
-    "daysWaiting": "2017-02-07T19:09:29.688Z"
-  },
-  {
-    "psn": "14452",
-    "currentStatus": "T-17-000473",
-    "message": "MSN43778",
-    "amoi": false,
-    "daysWaiting": "2017-02-09T00:37:57.253Z"
-  },
-  {
-    "psn": "14490",
-    "currentStatus": "T-17-000664",
-    "message": "MSN43224",
-    "amoi": true,
-    "daysWaiting": "2017-02-10T02:32:42.410Z"
-  },
-  {
-    "psn": "14491",
-    "currentStatus": "T-17-000640",
-    "message": "MSN43604",
-    "amoi": false,
-    "daysWaiting": "2017-02-10T22:33:57.708Z"
-  },
-  {
-    "psn": "14503",
-    "currentStatus": "T-17-000573",
-    "message": "MSN43208",
-    "amoi": false,
-    "daysWaiting": "2017-02-11T21:59:17.556Z"
-  },
-  {
-    "psn": "14519",
-    "currentStatus": "T-17-000596",
-    "message": "MSN43729",
-    "amoi": false,
-    "daysWaiting": "2017-02-09T00:25:21.497Z"
-  },
-  {
-    "psn": "14531",
-    "currentStatus": "T-17-000586",
-    "message": "MSN43265",
-    "amoi": true,
-    "daysWaiting": "2017-02-11T21:23:49.114Z"
-  },
-  {
-    "psn": "14549",
-    "currentStatus": "T-17-000618",
-    "message": "MSN43786",
-    "amoi": false,
-    "daysWaiting": "2017-02-10T22:51:12.316Z"
-  }
-]
+  "daysWaiting": 183,
+  "diseases": [{
+      "_id": "10040811",
+      "ctepCategory": "Skin Neoplasm",
+      "ctepSubCategory": "Skin Neoplasm, Miscellaneous",
+      "ctepTerm": "Skin cancer - NOS",
+      "shortName": "Skin cancer - NOS"
+    },
+    {
+      "_id": "10040811",
+      "ctepCategory": "Skin Neoplasm",
+      "ctepSubCategory": "Skin Neoplasm, Miscellaneous",
+      "ctepTerm": "Skin cancer - NOS",
+      "shortName": "Skin cancer - NOS"
+    }
+  ],
+  "messages": [
+    "Variant report missing",
+    "Required assay result missing: MLH1, MSH2, PTEN"
+  ],
+  "molecularSequenceNumber": "MSN-170re-1",
+  "patientSequenceNumber": "170re"
+}]
