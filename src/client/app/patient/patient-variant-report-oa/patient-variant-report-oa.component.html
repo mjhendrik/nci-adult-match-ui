@@ -7,25 +7,12 @@
   </ul>
 
   <h1 class="page-header">Variant and Assignment Report</h1>
-  
-  <tabset>
-    <tab heading='Tab 1'>Tab 1 content</tab>
-    <tab>
-      <template tabHeading>Tab 2</template>
-      Tab 2 content
-    </tab>
-  </tabset>
 
   <div class="row">
     <div class="col-md-12">
       <div class="panel">
-        <ul class="nav nav-tabs nav-tabs-purple">
-          <li id="outsideDataTab" [class.active]="isOutsideAssayValue"><a href="#tab-outside-lab-report" data-toggle="tab" refreshMatchHeight>Outside Lab Report Summary</a></li>
-          <li id="matchDataTab" [class.active]="!isOutsideAssayValue"><a href="#tab-confirmation-report" data-toggle="tab" refreshMatchHeight>Confirmation Report Summary</a></li>
-        </ul>
-
-        <div class="tab-content m-b-0">
-          <div class="tab-pane fade" [class.active]="isOutsideAssayValue" id="tab-outside-lab-report">
+        <tabset class="nav-tabs-purple">
+          <tab heading="Outside Lab Report Summary">
             <div *ngIf="outsideData && outsideData.analysisId" class="row" matchHeight="panel-height-top">
               <div class="col-md-6">
                 <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
@@ -177,9 +164,9 @@
             </div>
 
             <p *ngIf="!outsideData || !outsideData.analysisId" class="empty-data-panel">No Outside Lab Variant Report data</p>
-          </div>
+          </tab>
 
-          <div class="tab-pane fade" [class.active]="!isOutsideAssayValue" id="tab-confirmation-report">
+          <tab heading="Confirmation Report Summary">
             <div *ngIf="matchData && matchData.analysisId" class="row" matchHeight="panel-height-top">
               <div class="col-md-6">
                 <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
@@ -332,8 +319,8 @@
             </div>
 
             <p *ngIf="!matchData || !matchData.analysisId" class="empty-data-panel">No Confirmation Variant Report data</p>            
-          </div>
-        </div>
+          </tab>
+        </tabset>
       </div>
     </div>
   </div>

@@ -12,6 +12,8 @@ import { ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+
 
 import { DirectivesModule } from './../../shared/directives/directives.module';
 import { PipesModule } from './../../shared/pipes/pipes.module';
@@ -53,7 +55,8 @@ export function main() {
           NoopAnimationsModule,
           VariantReportComparisonTableModule,
           AssignmentReasonTableModule,
-          UtilsModule
+          UtilsModule,
+          TabsModule.forRoot()
         ],
         declarations: [PatientVariantReportOutsideAssayComponent],
         providers: [
