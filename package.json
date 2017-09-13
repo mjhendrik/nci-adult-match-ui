@@ -123,7 +123,7 @@
     "karma-remap-istanbul": "^0.2.1",
     "merge-stream": "^1.0.0",
     "minimatch": "^3.0.3",
-    "ngx-dropzone-wrapper": "4.0.2",
+    "ngx-dropzone-wrapper": "4.6.2",
     "open": "0.0.5",
     "protractor": "^4.0.14",
     "protractor-cucumber-framework": "^3.1.0",

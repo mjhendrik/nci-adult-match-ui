@@ -46,8 +46,10 @@ export class Tabs {
 
 const DROPZONE_CONFIG: DropzoneConfigInterface = {
   // Change this to your upload POST address:
-  server: 'https://httpbin.org/post',
+  url: 'https://httpbin.org/post',
   // maxFiles: 3,
+  // parallelUploads: 3,
+  timeout: 0,
   maxFilesize: 50000, // size in MB
   // acceptedFiles: '.zip,.bam',
   addRemoveLinks: true
