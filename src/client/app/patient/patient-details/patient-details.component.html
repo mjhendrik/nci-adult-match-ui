@@ -351,7 +351,7 @@
           <div class="col-md-4 form-group has-feedback" [ngClass]="{true:'has-success',false:'has-error'}[variantZip]">
             <label class="control-label">Variant ZIP File</label>
             <div class="form-control" [ngClass]="{true:'disable-div'}[!analysisId]" [dropzone]="configVariantZip" (addedfile)="addedFileVariantZip($event)"
-              (removedfile)="removedFile()" (error)="onUploadError($event)" (success)="onUploadSuccess($event)">
+              (removedfile)="removedFileVariantZip()" (error)="onUploadError($event)" (success)="onUploadSuccess($event)">
               <div class="dz-message" data-dz-message>
                 <span *ngIf="analysisId">
                   Click or drag Variant ZIP file here

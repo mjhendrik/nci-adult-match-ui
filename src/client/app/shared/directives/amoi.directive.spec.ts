@@ -12,7 +12,7 @@ import { By } from '@angular/platform-browser';
 import { AmoiDirective } from './amoi.directive';
 
 @Component({
-    template: `<span [amoi]="testStatus">Some Text</span>`
+    template: `<span amoi status="{{testStatus}}" inclusion="{{testInclusion}}">Some Text</span>`
 })
 class TestHostComponent {
     testStatus: string;
