@@ -1,20 +1,29 @@
 import { ErrorHandler, Injectable, Inject, Injector } from '@angular/core';
+import { ToastrService } from './toastr.service';
 
 @Injectable()
 export class ErrorHandlingService implements ErrorHandler {
-    // constructor(@Inject(Injector) private injector: Injector) {
-    //     this.toastr = this.injector.get(ToastsManager);
-    // }
-
-    // constructor(private service: NotificationsService) { }
+    constructor(private toastrService: ToastrService) { }
 
     handleError(error: any) {
-        const message = error.message ? error.message : error.toString();
-        // this.toastyService.error(error);
         console.debug('Error handling service called');
-        // this.service.error(error);
-        // To send logs to loggly
-        // this.logglyService.push(message);
+        const message = error.message ? error.message : error.toString();
+
+        if (this.toastrService) {
+        console.debug('We have toastrService');
+        
+            // const toastrService = this.injector.get(ToastrService);
+            // if (toastrService) {
+                const toastr = this.toastrService.toastr;
+                // this.toastyService.error(error);
+                if (toastr) {
+                    console.debug('We have toastr');
+                    toastr.error(message);
+                }
+
+                // To send logs to loggly
+                // this.logglyService.push(message);
+            // }
+        }
     }
 }
-

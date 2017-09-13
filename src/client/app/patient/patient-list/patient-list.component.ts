@@ -61,16 +61,17 @@ export class PatientListComponent implements OnInit {
   constructor(private patientApi: PatientApiService,
     private ngzone: NgZone,
     private cdref: ChangeDetectorRef,
-    private appref: ApplicationRef,           private service: ToastsManager) { }
+    private appref: ApplicationRef,           private toastr: ToastsManager) { }
 
   ngOnInit() {
     this.refreshData();
   }
 
   testToast() {
+    throw Error('Everything is broken!');
     console.debug('Calling the toast');
-    this.service.info('Info!!!');
-    this.service.error('Unexpected Error');
+    this.toastr.info('Info!!!');
+    this.toastr.error('Unexpected Error');
   }
 
 

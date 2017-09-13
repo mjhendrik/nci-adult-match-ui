@@ -5,6 +5,7 @@ import 'd3';
 import 'nvd3';
 import 'ng2-nvd3';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { ToastrService } from './shared/error-handling/toastr.service';
 
 declare let d3: any;
 
@@ -25,7 +26,8 @@ export class AppComponent implements OnInit {
     lastOnBottom: true
   };
 
-  constructor(vcr: ViewContainerRef, private router: Router, public toastr: ToastsManager) {
+  constructor(vcr: ViewContainerRef, private router: Router, public toastr: ToastsManager, private toastrService: ToastrService) {
+    this.toastrService.toastr = toastr;
     this.toastr.setRootViewContainerRef(vcr);
   }
 

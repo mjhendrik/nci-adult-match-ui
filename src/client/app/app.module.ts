@@ -10,7 +10,7 @@ import {
 } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { AUTH_PROVIDERS } from 'angular2-jwt';
-import {ToastModule} from 'ng2-toastr/ng2-toastr';
+import { ToastModule, ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 import { AppComponent } from './app.component';
 import { Auth } from './shared/auth/auth.service';
@@ -41,6 +41,7 @@ import { PopoverModule } from 'ngx-popover';
 import { HttpInterceptor } from './shared/http.interceptor';
 import { Router } from '@angular/router';
 import { ErrorHandlingService } from './shared/error-handling/error-handling.service';
+import { ToastrService } from './shared/error-handling/toastr.service';
 
 @NgModule({
   imports: [
@@ -89,9 +90,9 @@ import { ErrorHandlingService } from './shared/error-handling/error-handling.ser
     Auth,
     AuthGuard,
     LoginGuard,
+    ToastrService,
     {provide: ErrorHandler, useClass: ErrorHandlingService}
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
