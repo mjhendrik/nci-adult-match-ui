@@ -25,6 +25,7 @@ import {
   host: { '[@routerTransition]': '' }
 })
 export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientData {
+
   needToScroll: boolean;
   psn: string;
   patient: any;
@@ -41,6 +42,9 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
   configCdnaBam = dropzoneConfigCdnaBam;
   configDocuments = dropzoneConfigDocuments;
 
+  roles: any[] = [];
+  fileUploadBtn: boolean = false;
+
   tabs: Tabs;
 
   constructor(public changeDetector: ChangeDetectorRef,
@@ -56,6 +60,15 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
 
   ngOnInit() {
     Object.assign(this, this.route.snapshot.data['data']);
+
+    this.roles = JSON.parse(localStorage.getItem('profile')).roles;
+
+    let roles = this.roles.filter(function (arrayElement) {
+      return arrayElement.indexOf('CLIA_') !== -1 || arrayElement.indexOf('SYSTEM') !== -1 || arrayElement === 'ADMIN';
+    });
+
+    if (roles.indexOf('ADMIN') !== -1 || roles.indexOf('SYSTEM') !== -1 || roles.indexOf('CLIA_') !== -1) this.fileUploadBtn = true;
+
   }
 
   ngAfterViewInit() {
