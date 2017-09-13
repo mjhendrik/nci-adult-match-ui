@@ -101,6 +101,10 @@ export class ProjectConfig extends SeedConfig {
       {
         name: 'ngx-bootstrap/*',
         path: 'node_modules/ngx-bootstrap/bundles/ngx-bootstrap.umd.min.js'
+      },
+      {
+        name: 'angular2-notifications*',
+        path: 'node_modules/angular2-notifications/dist/index.js'
       }
     ];
 

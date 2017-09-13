@@ -17,6 +17,12 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/throttleTime';
 import 'rxjs/add/observable/fromEvent';
 
+
+
+
+import { NotificationsService } from 'angular2-notifications';
+
+
 @Component({
   moduleId: module.id,
   selector: 'sd-patients',
@@ -55,10 +61,16 @@ export class PatientListComponent implements OnInit {
   constructor(private patientApi: PatientApiService,
     private ngzone: NgZone,
     private cdref: ChangeDetectorRef,
-    private appref: ApplicationRef) { }
+    private appref: ApplicationRef,           private service: NotificationsService) { }
 
   ngOnInit() {
     this.refreshData();
+  }
+
+  testToast() {
+    console.debug('Calling the toast');
+    this.service.info('Info!!!');
+    this.service.error('Unexpected Error', 'Some very long error text', { timeOut: 5000 });
   }
 
   onSearchChanged(val: any) {

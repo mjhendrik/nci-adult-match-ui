@@ -17,6 +17,12 @@ declare let d3: any;
 })
 export class AppComponent implements OnInit {
 
+  public options = {
+    position: ["bottom", "left"],
+    timeOut: 5000,
+    lastOnBottom: true
+  };
+
   constructor(private router: Router) { }
 
   ngOnInit() {

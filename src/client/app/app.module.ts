@@ -10,6 +10,7 @@ import {
 } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { AUTH_PROVIDERS } from 'angular2-jwt';
+import { SimpleNotificationsModule } from 'angular2-notifications';
 
 import { AppComponent } from './app.component';
 import { Auth } from './shared/auth/auth.service';
@@ -67,7 +68,8 @@ import { ErrorHandlingService } from './shared/error-handling/error-handling.ser
     AssignmentReportModule,
     VariantReportFilteredTableModule,
     VariantReportSimpleTableModule,
-    PopoverModule,
+    PopoverModule, 
+    SimpleNotificationsModule.forRoot(),
     ErrorModule // This needs to be at the bottom of the list for ErrorComponent to work properly
   ],
   declarations: [AppComponent],
