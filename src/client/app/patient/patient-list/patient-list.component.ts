@@ -68,10 +68,12 @@ export class PatientListComponent implements OnInit {
   }
 
   testToast() {
+    this.toastr.info('An info');
+    this.toastr.warning('A warning');
+    this.toastr.success('A success');
+    this.toastr.error('An error');
+
     throw Error('Everything is broken!');
-    console.debug('Calling the toast');
-    this.toastr.info('Info!!!');
-    this.toastr.error('Unexpected Error');
   }
 
 

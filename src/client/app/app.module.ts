@@ -10,7 +10,7 @@ import {
 } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { AUTH_PROVIDERS } from 'angular2-jwt';
-import { ToastModule, ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
 
 import { AppComponent } from './app.component';
 import { Auth } from './shared/auth/auth.service';

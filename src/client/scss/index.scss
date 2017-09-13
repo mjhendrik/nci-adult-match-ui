@@ -1,4 +1,6 @@
 // This is just an "index" file, that imports other SASS pieces, to be imported into the app/css/main.scss
 @import "variables";
 @import "colors";
-@import "theme.overrides";
+
+@import "overrides.theme";
+@import "overrides.ng2-toastr";

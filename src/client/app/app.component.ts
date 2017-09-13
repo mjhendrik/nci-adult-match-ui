@@ -20,14 +20,8 @@ declare let d3: any;
 })
 export class AppComponent implements OnInit {
 
-  public options = {
-    position: ["bottom", "left"],
-    timeOut: 5000,
-    lastOnBottom: true
-  };
-
   constructor(vcr: ViewContainerRef, private router: Router, public toastr: ToastsManager, private toastrService: ToastrService) {
-    this.toastrService.toastr = toastr;
+    this.toastrService.toastr = toastr; // A work-around for ToastsManager not being able to be injected into ErrorHandlingService for some reason
     this.toastr.setRootViewContainerRef(vcr);
   }
 
