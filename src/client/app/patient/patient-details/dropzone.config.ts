@@ -1,13 +1,22 @@
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 import { Config } from '../../shared/config/env.config';
+import { ViewDataTransformer } from '../view-data-transformer.service';
 
 export const dropzoneConfigCdnaBam: DropzoneConfigInterface = {
 
+  // constructor(private transformer: ViewDataTransformer) { }
+
   // Change this to your upload POST address:
-  server: Config.API.MESSAGE + '/message/clia/aliquot/presign_url',
+  server: Config.API.MESSAGE + '/message/clia/aliquot/presign_url', // url:
   maxFiles: 1,
   maxFilesize: 50000, // size in MB
-  acceptedFiles: '.bam',
+  headers:
+  {
+    "molecularSequenceNumber": "{{sendout.molecularSequenceNumber}}",
+    "analysisId": "{{analysis.analysisId}}",
+    "filename": "cDNA.bam"
+  },
+  // acceptedFiles: '.bam',
   addRemoveLinks: true,
   autoProcessQueue: false,
   init: function () {
@@ -26,10 +35,16 @@ export const dropzoneConfigCdnaBam: DropzoneConfigInterface = {
 export const dropzoneConfigDnaBam: DropzoneConfigInterface = {
 
   // Change this to your upload POST address:
-  server: Config.API.MESSAGE + '/message/clia/aliquot/presign_url',
+  server: Config.API.MESSAGE + '/message/clia/aliquot/presign_url', // url:
   maxFiles: 1,
   maxFilesize: 50000, // size in MB
-  acceptedFiles: '.bam',
+  headers:
+  {
+    "molecularSequenceNumber": "{{sendout.molecularSequenceNumber}}",
+    "analysisId": "{{analysis.analysisId}}",
+    "filename": "DNA.bam"
+  },
+  // acceptedFiles: '.bam',
   addRemoveLinks: true,
   autoProcessQueue: false,
   init: function () {
@@ -49,9 +64,15 @@ export const dropzoneConfigDnaBam: DropzoneConfigInterface = {
 export const dropzoneConfigVariantZip: DropzoneConfigInterface = {
 
   // Change this to your upload POST address:
-  server: Config.API.MESSAGE + '/message/clia/aliquot/presign_url',
+  server: Config.API.MESSAGE + '/message/clia/aliquot/presign_url', // url:
   maxFiles: 1,
   maxFilesize: 50000, // size in MB
+  headers:
+  {
+    "molecularSequenceNumber": "{{sendout.molecularSequenceNumber}}",
+    "analysisId": "{{analysis.analysisId}}",
+    "filename": "Variant.zip"
+  },
   acceptedFiles: '.zip',
   addRemoveLinks: true,
   autoProcessQueue: false,
@@ -70,7 +91,7 @@ export const dropzoneConfigVariantZip: DropzoneConfigInterface = {
 
 export const dropzoneConfigDocuments: DropzoneConfigInterface = {
   // Change this to your upload POST address:
-  server: 'https://httpbin.org/post',
+  server: 'https://httpbin.org/post', // url:
   // maxFiles: 3,
   maxFilesize: 50000, // size in MB
   // acceptedFiles: '.zip,.bam',
