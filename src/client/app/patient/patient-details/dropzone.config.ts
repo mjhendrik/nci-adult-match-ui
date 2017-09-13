@@ -7,8 +7,9 @@ export const dropzoneConfigCdnaBam: DropzoneConfigInterface = {
   // constructor(private transformer: ViewDataTransformer) { }
 
   // Change this to your upload POST address:
-  server: Config.API.MESSAGE + '/message/clia/aliquot/presign_url', // url:
+  url: Config.API.MESSAGE + '/message/clia/aliquot/presign_url',
   maxFiles: 1,
+  timeout: 0,
   maxFilesize: 50000, // size in MB
   headers:
   {
@@ -35,8 +36,9 @@ export const dropzoneConfigCdnaBam: DropzoneConfigInterface = {
 export const dropzoneConfigDnaBam: DropzoneConfigInterface = {
 
   // Change this to your upload POST address:
-  server: Config.API.MESSAGE + '/message/clia/aliquot/presign_url', // url:
+  url: Config.API.MESSAGE + '/message/clia/aliquot/presign_url',
   maxFiles: 1,
+  timeout: 0,
   maxFilesize: 50000, // size in MB
   headers:
   {
@@ -64,8 +66,9 @@ export const dropzoneConfigDnaBam: DropzoneConfigInterface = {
 export const dropzoneConfigVariantZip: DropzoneConfigInterface = {
 
   // Change this to your upload POST address:
-  server: Config.API.MESSAGE + '/message/clia/aliquot/presign_url', // url:
+  url: Config.API.MESSAGE + '/message/clia/aliquot/presign_url',
   maxFiles: 1,
+  timeout: 0,
   maxFilesize: 50000, // size in MB
   headers:
   {
@@ -91,8 +94,10 @@ export const dropzoneConfigVariantZip: DropzoneConfigInterface = {
 
 export const dropzoneConfigDocuments: DropzoneConfigInterface = {
   // Change this to your upload POST address:
-  server: 'https://httpbin.org/post', // url:
+  url: 'https://httpbin.org/post',
   // maxFiles: 3,
+  // parallelUploads: 3,
+  timeout: 0,
   maxFilesize: 50000, // size in MB
   // acceptedFiles: '.zip,.bam',
   addRemoveLinks: true
