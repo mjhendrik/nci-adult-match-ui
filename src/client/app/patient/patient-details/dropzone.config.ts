@@ -1,17 +1,17 @@
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
+import { Config } from '../../shared/config/env.config';
 
 export const dropzoneConfigCdnaBam: DropzoneConfigInterface = {
+
   // Change this to your upload POST address:
-  server: 'https://httpbin.org/post',
+  server: Config.API.MESSAGE + '/message/clia/aliquot/presign_url',
   maxFiles: 1,
   maxFilesize: 50000, // size in MB
-  // acceptedFiles: '.bam',
+  acceptedFiles: '.bam',
   addRemoveLinks: true,
   autoProcessQueue: false,
   init: function () {
-    // console.log('HERE!!!');
     this.on('removedfile', function (file: any) {
-      // console.log('HERE 22222!!!');
       // delete from our dict removed file
       //delete addedFilesHash[file];
     });
@@ -26,10 +26,10 @@ export const dropzoneConfigCdnaBam: DropzoneConfigInterface = {
 export const dropzoneConfigDnaBam: DropzoneConfigInterface = {
 
   // Change this to your upload POST address:
-  server: 'https://httpbin.org/post',
+  server: Config.API.MESSAGE + '/message/clia/aliquot/presign_url',
   maxFiles: 1,
   maxFilesize: 50000, // size in MB
-  // acceptedFiles: '.bam',
+  acceptedFiles: '.bam',
   addRemoveLinks: true,
   autoProcessQueue: false,
   init: function () {
@@ -49,7 +49,7 @@ export const dropzoneConfigDnaBam: DropzoneConfigInterface = {
 export const dropzoneConfigVariantZip: DropzoneConfigInterface = {
 
   // Change this to your upload POST address:
-  server: 'https://httpbin.org/post',
+  server: Config.API.MESSAGE + '/message/clia/aliquot/presign_url',
   maxFiles: 1,
   maxFilesize: 50000, // size in MB
   acceptedFiles: '.zip',
@@ -62,8 +62,6 @@ export const dropzoneConfigVariantZip: DropzoneConfigInterface = {
     });
   },
   accept: function (file: any, done: any) {
-    // console.log(file);
-    // console.log(done);
     // var _id = count++;
     // file._id = _id;
     // addedFilesHash[_id] = done;
