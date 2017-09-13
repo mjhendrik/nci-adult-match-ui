@@ -17,12 +17,6 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/throttleTime';
 import 'rxjs/add/observable/fromEvent';
 
-
-
-
-import { ToastsManager } from 'ng2-toastr/ng2-toastr';
-
-
 @Component({
   moduleId: module.id,
   selector: 'sd-patients',
@@ -61,21 +55,11 @@ export class PatientListComponent implements OnInit {
   constructor(private patientApi: PatientApiService,
     private ngzone: NgZone,
     private cdref: ChangeDetectorRef,
-    private appref: ApplicationRef,           private toastr: ToastsManager) { }
+    private appref: ApplicationRef) { }
 
   ngOnInit() {
     this.refreshData();
   }
-
-  testToast() {
-    this.toastr.info('An info');
-    this.toastr.warning('A warning');
-    this.toastr.success('A success');
-    this.toastr.error('An error');
-
-    throw Error('Everything is broken!');
-  }
-
 
   onSearchChanged(val: any) {
     Observable.fromEvent(this.inputElRef.nativeElement, 'input')
