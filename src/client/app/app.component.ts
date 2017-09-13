@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import './operators';
 import 'd3';
 import 'nvd3';
 import 'ng2-nvd3';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 declare let d3: any;
+
 
 /**
  * This class represents the main application component.
@@ -23,12 +25,13 @@ export class AppComponent implements OnInit {
     lastOnBottom: true
   };
 
-  constructor(private router: Router) { }
+  constructor(vcr: ViewContainerRef, private router: Router, public toastr: ToastsManager) {
+    this.toastr.setRootViewContainerRef(vcr);
+  }
 
   ngOnInit() {
     this.router.events.filter(event => event instanceof NavigationEnd).subscribe(event => {
       window.scroll(0, 0);
     });
   }
-
 }

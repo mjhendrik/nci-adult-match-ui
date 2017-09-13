@@ -20,7 +20,7 @@ import 'rxjs/add/observable/fromEvent';
 
 
 
-import { NotificationsService } from 'angular2-notifications';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 
 @Component({
@@ -61,7 +61,7 @@ export class PatientListComponent implements OnInit {
   constructor(private patientApi: PatientApiService,
     private ngzone: NgZone,
     private cdref: ChangeDetectorRef,
-    private appref: ApplicationRef,           private service: NotificationsService) { }
+    private appref: ApplicationRef,           private service: ToastsManager) { }
 
   ngOnInit() {
     this.refreshData();
@@ -70,8 +70,9 @@ export class PatientListComponent implements OnInit {
   testToast() {
     console.debug('Calling the toast');
     this.service.info('Info!!!');
-    this.service.error('Unexpected Error', 'Some very long error text', { timeOut: 5000 });
+    this.service.error('Unexpected Error');
   }
+
 
   onSearchChanged(val: any) {
     Observable.fromEvent(this.inputElRef.nativeElement, 'input')

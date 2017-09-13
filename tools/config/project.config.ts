@@ -36,7 +36,8 @@ export class ProjectConfig extends SeedConfig {
       { src: 'bootstrap/dist/js/bootstrap.min.js', inject: 'libs' },
       { src: 'font-awesome/css/font-awesome.min.css', inject: true },
       { src: 'bootstrap/dist/css/bootstrap.min.css', inject: true },
-      { src: 'nvd3/build/nv.d3.min.css', inject: true }
+      { src: 'nvd3/build/nv.d3.min.css', inject: true },
+      { src: 'ng2-toastr/bundles/ng2-toastr.min.css', inject: true }
     ];
 
     // Add `local` third-party libraries to be injected/bundled.
@@ -103,8 +104,8 @@ export class ProjectConfig extends SeedConfig {
         path: 'node_modules/ngx-bootstrap/bundles/ngx-bootstrap.umd.min.js'
       },
       {
-        name: 'angular2-notifications*',
-        path: 'node_modules/angular2-notifications/dist/index.js'
+        name: 'ng2-toastr',
+        path: 'node_modules/ng2-toastr/bundles/ng2-toastr.min.js'
       }
     ];
 
