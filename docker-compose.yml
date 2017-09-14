@@ -1,0 +1,165 @@
+version: "3"
+services:
+  ui:
+    build:
+      context: .
+      dockerfile: ./.docker/dockerfile.dev
+    image: "fnlcr/nci-adult-match-ui-dev"
+    ports:
+      - '5555:5555'
+
+  patient-api:
+    image: "fnlcr/nci-adult-match-patient-api"
+    command: python app.py
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongo
+    environment:
+      - MONGODB_URI=mongodb://mongo:27017/Match
+      - ENVIRONMENT=development
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+    # volumes: # this config is to override the default Patient API assay rules config. Normally commented out.
+    #   - ./misc/config/nci-adult-match-patient-api-assay_activation_rules.json:/usr/app/config/assay_activation_rules.json
+
+  treatment-arm-api:
+    image: "fnlcr/nci-adult-match-treatment-arm-api"
+    command: python app.py
+    ports:
+      - "5010:5010"
+    depends_on:
+      - mongo
+    environment:
+      - MONGODB_URI=mongodb://mongo:27017/Match
+      - ENVIRONMENT=development
+
+  ion-reporters-api:
+    image: "fnlcr/nci-match-ion-reporters-api"
+    command: python app.py
+    ports:
+      - "3001:3001"
+    depends_on:
+      - dynamo
+    environment:
+      - ENVIRONMENT=development
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - STUDY_ID=EAY131
+      - AUTH0_CLIENT_ID=${AUTH0_CLIENT_ID}
+      - AUTH0_CLIENT_SECRET=${AUTH0_CLIENT_SECRET}
+      - AUTH0_DATABASE=${AUTH0_DATABASE}
+      - AUTH0_DOMAIN=${AUTH0_DOMAIN}
+      - AUTH0_MANAGEMENT_ID=${AUTH0_MANAGEMENT_ID}
+      - AUTH0_MANAGEMENT_SECRET=${AUTH0_MANAGEMENT_SECRET}
+      - AWS_SMTP_USERNAME=${AWS_SMTP_USERNAME}
+      - AWS_SMTP_PASSWORD=${AWS_SMTP_PASSWORD}
+      - SLACK_TOKEN=${SLACK_TOKEN}
+    volumes:
+      - ./misc/config/nci-match-ion-reporters-api.environment.yml:/usr/app/config/environment.yml
+
+  sample-controls-api:
+    image: "fnlcr/nci-match-sample-controls-api"
+    command: python app.py
+    ports:
+      - "3002:3002"
+    depends_on:
+      - dynamo
+    environment:
+      - ENVIRONMENT=development
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - STUDY_ID=EAY131
+      - AUTH0_CLIENT_ID=${AUTH0_CLIENT_ID}
+      - AUTH0_CLIENT_SECRET=${AUTH0_CLIENT_SECRET}
+      - AUTH0_DATABASE=${AUTH0_DATABASE}
+      - AUTH0_DOMAIN=${AUTH0_DOMAIN}
+      - AUTH0_MANAGEMENT_ID=${AUTH0_MANAGEMENT_ID}
+      - AUTH0_MANAGEMENT_SECRET=${AUTH0_MANAGEMENT_SECRET}
+      - AWS_SMTP_USERNAME=${AWS_SMTP_USERNAME}
+      - AWS_SMTP_PASSWORD=${AWS_SMTP_PASSWORD}
+      - SLACK_TOKEN=${SLACK_TOKEN}
+    volumes:
+      - ./misc/config/nci-match-sample-controls-api.environment.yml:/usr/app/config/environment.yml
+
+  aliquots-api:
+    image: "fnlcr/nci-match-aliquots-api"
+    command: python app.py
+    ports:
+      - "3003:3003"
+    depends_on:
+      - dynamo
+    environment:
+      - ENVIRONMENT=development
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - STUDY_ID=EAY131
+      - AUTH0_CLIENT_ID=${AUTH0_CLIENT_ID}
+      - AUTH0_CLIENT_SECRET=${AUTH0_CLIENT_SECRET}
+      - AUTH0_DATABASE=${AUTH0_DATABASE}
+      - AUTH0_DOMAIN=${AUTH0_DOMAIN}
+      - AUTH0_MANAGEMENT_ID=${AUTH0_MANAGEMENT_ID}
+      - AUTH0_MANAGEMENT_SECRET=${AUTH0_MANAGEMENT_SECRET}
+      - AWS_SMTP_USERNAME=${AWS_SMTP_USERNAME}
+      - AWS_SMTP_PASSWORD=${AWS_SMTP_PASSWORD}
+      - SLACK_TOKEN=${SLACK_TOKEN}
+    volumes:
+      - ./misc/config/nci-match-aliquots-api.environment.yml:/usr/app/config/environment.yml
+
+  ir-processor-api:
+    image: "fnlcr/nci-match-ir-processor-api"
+    command: celery -A tasks.tasks worker --loglevel=INFO --concurrency=1
+    ports:
+      - "3004:3004"
+    depends_on:
+      - dynamo
+    environment:
+      - ENVIRONMENT=development
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - STUDY_ID=EAY131
+      - AUTH0_CLIENT_ID=${AUTH0_CLIENT_ID}
+      - AUTH0_CLIENT_SECRET=${AUTH0_CLIENT_SECRET}
+      - AUTH0_DATABASE=${AUTH0_DATABASE}
+      - AUTH0_DOMAIN=${AUTH0_DOMAIN}
+      - AUTH0_MANAGEMENT_ID=${AUTH0_MANAGEMENT_ID}
+      - AUTH0_MANAGEMENT_SECRET=${AUTH0_MANAGEMENT_SECRET}
+      - AWS_SMTP_USERNAME=${AWS_SMTP_USERNAME}
+      - AWS_SMTP_PASSWORD=${AWS_SMTP_PASSWORD}
+      - SLACK_TOKEN=${SLACK_TOKEN}
+    volumes:
+      - ./misc/config/nci-match-ir-processor-api.environment.yml:/usr/app/config/environment.yml
+
+  message-api:
+    image: "fnlcr/nci-adult-match-message-api"
+    ports:
+      - "10250:10250"
+    depends_on:
+      - mongo
+    environment:
+      - ENVIRONMENT=dev
+      - AWS_REGION=us-east-1 
+      - JAVA_OPTS="-Dorg.kie.demo=false -Dmatch.properties.file=/matchbox-dev.properties -XX:PermSize=128m -XX:MaxPermSize=512m -Xdebug -Djava.net.preferIPv4Stack=true -Xrunjdwp:transport=dt_socket,address=8282,server=y,suspend=n"
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AUTH0_DOMAIN=${AUTH0_DOMAIN}
+      - AUTH0_CLIENT_ID=${AUTH0_CLIENT_ID}
+      - AUTH0_CLIENT_SECRET=${AUTH0_CLIENT_SECRET}
+
+  mongo:
+    image: mongo:3.4.0
+    volumes:
+      - ./misc/data_setup/match:/backup
+    ports:
+      - "27018:27017" # Expose 27018 to avoid possible conflicting with the local MongoDB
+
+  dynamo:
+    image: matchbox/dynamodb-local
+    volumes:
+      - dynamo-data:/dynamodb_local
+    ports:
+      - "8001:8000" # Expose 8001 to avoid possible conflicting with the local DynamoDB
+
+volumes:
+  dynamo-data:
+  mongo-data:

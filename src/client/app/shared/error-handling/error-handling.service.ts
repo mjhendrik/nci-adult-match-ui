@@ -10,5 +10,6 @@ export class ErrorHandlingService implements ErrorHandler {
         if (this.toastrService && this.toastrService.toastr) {
             this.toastrService.toastr.error(message, 'Unexpected Error');
         }
+        console.error(error);
     }
 }
