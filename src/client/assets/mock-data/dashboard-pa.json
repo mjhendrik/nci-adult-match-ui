@@ -99,4 +99,76 @@
   ],
   "molecularSequenceNumber": "MSN-170re-1",
   "patientSequenceNumber": "170re"
-}]
+},
+{
+  "concordance": "U",
+  "confirmationBiopsy": {
+    "MLH1": {
+      "applicable": false
+    },
+    "MSH2": {
+      "applicable": false
+    },
+    "PTEN": {
+      "applicable": false
+    },
+    "RB": {
+      "applicable": false
+    },
+    "messages": [
+      "Variant report missing",
+      "Molecular Sequence Number missing",
+      "No diseases"
+    ]
+  },
+  "currentPatientStatus": "PENDING_APPROVAL",
+  "isOutsideAssay": true,
+  "outsideBiopsy": {
+    "MLH1": {
+      "applicable": true,
+      "result": "UNKNOWN"
+    },
+    "MSH2": {
+      "applicable": true,
+      "result": "UNKNOWN"
+    },
+    "PTEN": {
+      "applicable": false
+    },
+    "RB": {
+      "applicable": true,
+      "result": "UNKNOWN"
+    },
+    "amoi": [
+
+    ],
+    "analysisId": "3d76250c-adf0-4f8f-8c27-44d1b2961240",
+    "biopsySequenceNumber": "CARIS-case1",
+    "dateMsnShipped": {
+      "$date": 1500398551384
+    },
+    "dateSpecimenCollected": {
+      "$date": 1500398551321
+    },
+    "daysWaiting": 58,
+    "diseases": {
+      "_id": "10040811",
+      "ctepCategory": "Skin Neoplasm",
+      "ctepSubCategory": "Skin Neoplasm, Miscellaneous",
+      "ctepTerm": "Skin cancer, NOS",
+      "shortName": "Skin cancer, NOS"
+    },
+    "lab": "CARIS",
+    "messages": [
+      "Variant report missing",
+      "Molecular Sequence Number missing",
+      "No diseases"
+    ],
+    "molecularSequenceNumber": "49144272-e21f-4edc-b77b-a91649404f1b",
+    "variantReportConfirmedDate": {
+      "$date": 1500398551429
+    }
+  },
+  "patientSequenceNumber": "1112"
+}
+]

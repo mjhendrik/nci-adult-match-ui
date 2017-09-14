@@ -355,11 +355,17 @@
                         <li>{{items | dashify}}</li>
                       </ul>
                     </td>
-                    <td class="text-center">
+                    <td *ngIf="!item.isOutsideAssay" class="text-center">
                       <span *ngIf="item.amoi.length!==0"><i class="fa fa-check-circle text-success-light"></i></span>
                       <span *ngIf="item.amoi.length===0"><i class="fa fa-times-circle text-danger-light"></i></span>
                     </td>
-                    <td [colorCodeDays]="item.daysWaiting">{{item.daysWaiting | dashify}}</td>
+                    <td *ngIf="item.isOutsideAssay" class="text-center">
+                      <span *ngIf="item.outsideBiopsy.amoi.length!==0"><i class="fa fa-check-circle text-success-light"></i></span>
+                      <span *ngIf="item.outsideBiopsy.amoi.length===0"><i class="fa fa-times-circle text-danger-light"></i></span>
+                    </td>
+                    <td *ngIf="!item.isOutsideAssay" [colorCodeDays]="item.daysWaiting">{{item.daysWaiting | dashify}}</td>
+                    <td *ngIf="item.isOutsideAssay" [colorCodeDays]="item.outsideBiopsy.daysWaiting">{{item.outsideBiopsy.daysWaiting | dashify}}</td>
+                    <!-- <td *ngIf="item.isOutsideAssay" [colorCodeDays]="item.confirmationBiopsy.daysWaiting">{{item.daysWaiting | dashify}}</td> -->
                   </tr>
                   <tr *ngIf="mftablePatientsAwaiting.data.length == 0">
                     <td class="text-muted" colspan="6">
@@ -368,7 +374,7 @@
                     </td>
                   </tr>
                   <tr *ngIf="showRow[item.patientSequenceNumber]">
-                    <td colspan="6" class="bg-body">
+                    <td *ngIf="!item.isOutsideAssay" colspan="6" class="bg-body">
                       <div class="panel panel-accent-sides-purple panel-details-row">
                         <div class="row">
                           <div class="col-md-6">
@@ -376,22 +382,26 @@
                               <dt>IHC RB</dt>
                               <dd class="text-muted" *ngIf="item.RB.applicable===false"><i class="fa fa-minus-circle text-warning-light"></i> Not Applicable</dd>
                               <dd *ngIf="!item.RB.reportedDate && item.RB.applicable===true"><i class="fa fa-times-circle text-danger-light"></i></dd>
-                              <dd *ngIf="item.RB.reportedDate"><i class="fa fa-check-circle text-success-light"></i> {{item.RB.reportedDate | gmt}} (<span [colorCodeAssay]="item.RB.result">{{item.RB.result | dashify}}</span>)
+                              <dd *ngIf="item.RB.reportedDate"><i class="fa fa-check-circle text-success-light"></i> {{item.RB.reportedDate | gmt}} (<span
+                                  [colorCodeAssay]="item.RB.result">{{item.RB.result | dashify}}</span>)
                               </dd>
                               <dt>IHC MSH2</dt>
-                              <dd *ngIf="item.MSH2.applicable===false"><i class="fa fa-minus-circle text-warning-light"></i> Not Applicable</dd>
+                              <dd class="text-muted" *ngIf="item.MSH2.applicable===false"><i class="fa fa-minus-circle text-warning-light"></i> Not Applicable</dd>
                               <dd *ngIf="!item.MSH2.reportedDate && item.MSH2.applicable===true"><i class="fa fa-times-circle text-danger-light"></i></dd>
-                              <dd *ngIf="item.MSH2.reportedDate"><i class="fa fa-check-circle text-success-light"></i> {{item.MSH2.reportedDate | gmt}} (<span [colorCodeAssay]="item.MSH2.result">{{item.MSH2.result | dashify}}</span>)
+                              <dd *ngIf="item.MSH2.reportedDate"><i class="fa fa-check-circle text-success-light"></i> {{item.MSH2.reportedDate | gmt}} (<span
+                                  [colorCodeAssay]="item.MSH2.result">{{item.MSH2.result | dashify}}</span>)
                               </dd>
                               <dt>IHC MLH1</dt>
-                              <dd *ngIf="item.MLH1.applicable===false"><i class="fa fa-minus-circle text-warning-light"></i> Not Applicable</dd>
+                              <dd class="text-muted" *ngIf="item.MLH1.applicable===false"><i class="fa fa-minus-circle text-warning-light"></i> Not Applicable</dd>
                               <dd *ngIf="!item.MLH1.reportedDate && item.MLH1.applicable===true"><i class="fa fa-times-circle text-danger-light"></i></dd>
-                              <dd *ngIf="item.MLH1.reportedDate"><i class="fa fa-check-circle text-success-light"></i> {{item.MLH1.reportedDate | gmt}} (<span [colorCodeAssay]="item.MLH1.result">{{item.MLH1.result | dashify}}</span>)
+                              <dd *ngIf="item.MLH1.reportedDate"><i class="fa fa-check-circle text-success-light"></i> {{item.MLH1.reportedDate | gmt}} (<span
+                                  [colorCodeAssay]="item.MLH1.result">{{item.MLH1.result | dashify}}</span>)
                               </dd>
                               <dt>IHC PTEN</dt>
-                              <dd *ngIf="item.PTEN.applicable===false"><i class="fa fa-minus-circle text-warning-light"></i> Not Applicable</dd>
+                              <dd class="text-muted" *ngIf="item.PTEN.applicable===false"><i class="fa fa-minus-circle text-warning-light"></i> Not Applicable</dd>
                               <dd *ngIf="!item.PTEN.reportedDate && item.PTEN.applicable===true"><i class="fa fa-times-circle text-danger-light"></i></dd>
-                              <dd *ngIf="item.PTEN.reportedDate"><i class="fa fa-check-circle text-success-light"></i> {{item.PTEN.reportedDate | gmt}} (<span [colorCodeAssay]="item.PTEN.result">{{item.PTEN.result | dashify}}</span>)
+                              <dd *ngIf="item.PTEN.reportedDate"><i class="fa fa-check-circle text-success-light"></i> {{item.PTEN.reportedDate | gmt}} (<span
+                                  [colorCodeAssay]="item.PTEN.result">{{item.PTEN.result | dashify}}</span>)
                               </dd>
                               <dt>Variant Report</dt>
                               <dd *ngIf="!item.variantReportConfirmedDate"><i class="fa fa-times-circle text-danger-light"></i></dd>
@@ -429,7 +439,83 @@
                                 <ul class="p-0" *ngFor="let items of item.amoi">
                                   <li>
                                     <span class="label m-b-5" amoi status="{{items.state}}" inclusion="{{items.inclusion}}">{{items.state | dashify}} - <span *ngIf="items.inclusion==='true'">INCLUSION</span><span *ngIf="items.inclusion==='false'">EXCLUSION</span></span>
-                                    <treatment-arm-link [treatmentArmId]="items.treatmentArmId" [version]="items.version" [removePrefix]="true"></treatment-arm-link>
+                                      <treatment-arm-link [treatmentArmId]="items.treatmentArmId" [version]="items.version" [removePrefix]="true"></treatment-arm-link>
+                                  </li>
+                                </ul>
+                              </dd>
+                            </dl>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td *ngIf="item.isOutsideAssay" colspan="6" class="bg-body">
+                      <div class="panel panel-accent-sides-purple panel-details-row">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <dl class="dl-horizontal p-t-15 m-b-15">
+                              <dt>IHC RB</dt>
+                              <dd class="text-muted" *ngIf="item.outsideBiopsy.RB.applicable===false"><i class="fa fa-minus-circle text-warning-light"></i> Not Applicable</dd>
+                              <dd *ngIf="!item.outsideBiopsy.RB.reportedDate && item.outsideBiopsy.RB.applicable===true"><i class="fa fa-times-circle text-danger-light"></i></dd>
+                              <dd *ngIf="item.outsideBiopsy.RB.reportedDate"><i class="fa fa-check-circle text-success-light"></i> {{item.outsideBiopsy.RB.reportedDate
+                                | gmt}} (<span [colorCodeAssay]="item.outsideBiopsy.RB.result">{{item.outsideBiopsy.RB.result | dashify}}</span>)
+                              </dd>
+                              <dt>IHC MSH2</dt>
+                              <dd class="text-muted" *ngIf="item.outsideBiopsy.MSH2.applicable===false"><i class="fa fa-minus-circle text-warning-light"></i> Not Applicable</dd>
+                              <dd *ngIf="!item.outsideBiopsy.MSH2.reportedDate && item.outsideBiopsy.MSH2.applicable===true"><i class="fa fa-times-circle text-danger-light"></i></dd>
+                              <dd *ngIf="item.outsideBiopsy.MSH2.reportedDate"><i class="fa fa-check-circle text-success-light"></i> {{item.outsideBiopsy.MSH2.reportedDate
+                                | gmt}} (<span [colorCodeAssay]="item.outsideBiopsy.MSH2.result">{{item.outsideBiopsy.MSH2.result | dashify}}</span>)
+                              </dd>
+                              <dt>IHC MLH1</dt>
+                              <dd class="text-muted" *ngIf="item.outsideBiopsy.MLH1.applicable===false"><i class="fa fa-minus-circle text-warning-light"></i> Not Applicable</dd>
+                              <dd *ngIf="!item.outsideBiopsy.MLH1.reportedDate && item.outsideBiopsy.MLH1.applicable===true"><i class="fa fa-times-circle text-danger-light"></i></dd>
+                              <dd *ngIf="item.outsideBiopsy.MLH1.reportedDate"><i class="fa fa-check-circle text-success-light"></i> {{item.outsideBiopsy.MLH1.reportedDate
+                                | gmt}} (<span [colorCodeAssay]="item.outsideBiopsy.MLH1.result">{{item.outsideBiopsy.MLH1.result | dashify}}</span>)
+                              </dd>
+                              <dt>IHC PTEN</dt>
+                              <dd class="text-muted" *ngIf="item.outsideBiopsy.PTEN.applicable===false"><i class="fa fa-minus-circle text-warning-light"></i> Not Applicable</dd>
+                              <dd *ngIf="!item.outsideBiopsy.PTEN.reportedDate && item.outsideBiopsy.PTEN.applicable===true"><i class="fa fa-times-circle text-danger-light"></i></dd>
+                              <dd *ngIf="item.outsideBiopsy.PTEN.reportedDate"><i class="fa fa-check-circle text-success-light"></i> {{item.outsideBiopsy.PTEN.reportedDate
+                                | gmt}} (<span [colorCodeAssay]="item.outsideBiopsy.PTEN.result">{{item.outsideBiopsy.PTEN.result | dashify}}</span>)
+                              </dd>
+                              <dt>Variant Report</dt>
+                              <dd *ngIf="!item.outsideBiopsy.variantReportConfirmedDate"><i class="fa fa-times-circle text-danger-light"></i></dd>
+                              <dd *ngIf="item.outsideBiopsy.variantReportConfirmedDate"><i class="fa fa-check-circle text-success-light"></i> {{item.outsideBiopsy.variantReportConfirmedDate
+                                | gmt}}
+                              </dd>
+                              <dt>Disease</dt>
+                              <dd *ngIf="!item.outsideBiopsy.diseases"><i class="fa fa-times-circle text-danger-light"></i></dd>
+                              <dd *ngIf="item.outsideBiopsy.diseases"><i class="fa fa-check-circle text-success-light"></i> {{item.outsideBiopsy.diseases.shortName
+                                | dashify}}</dd>
+                              <dt>Concordance</dt>
+                              <dd *ngIf="!item.concordance"><i class="fa fa-times-circle text-danger-light"></i></dd>
+                              <dd *ngIf="item.concordance" [colorCodeYesNo]="item.concordance"><i class="fa fa-check-circle text-success-light"></i> {{item.concordance | dashify}}</dd>
+                            </dl>
+                          </div>
+                          <div class="col-md-6">
+                            <dl class="dl-horizontal p-t-15 m-b-15">
+                              <dt>Biopsy Sequence Number</dt>
+                              <dd>
+                                <a href [routerLink]="['/patients', item.patientSequenceNumber]" [queryParams]="{section: 'biopsies', entityId: item.outsideBiopsy.biopsySequenceNumber}"
+                                  class="link-none"><i class="fa fa-tasks"></i> {{item.outsideBiopsy.biopsySequenceNumber | dashify}}</a>
+                              </dd>
+                              <dt>Specimen Collected Date</dt>
+                              <dd>{{item.outsideBiopsy.dateSpecimenCollected | dashify | gmt}}</dd>
+                              <dt>Molecular Sequence Number</dt>
+                              <dd>
+                                <a href [routerLink]="['/patients', item.patientSequenceNumber]" [queryParams]="{section: 'msn', entityId: item.outsideBiopsy.molecularSequenceNumber}"
+                                  class="link-none"><i class="fa fa-share-alt"></i> {{item.outsideBiopsy.molecularSequenceNumber | dashify}}</a>
+                              </dd>
+                              <dt>Analysis Id</dt>
+                              <dd>{{item.outsideBiopsy.analysisId | dashify}}</dd>
+                              <dt>Nucleic Acid Shipped Date</dt>
+                              <dd>{{item.outsideBiopsy.dateMsnShipped | gmt}}</dd>
+                              <dt>aMOI</dt>
+                              <dd *ngIf="item.outsideBiopsy.amoi.length===0">-</dd>
+                              <dd *ngIf="item.outsideBiopsy.amoi.length!==0">
+                                <ul class="p-0" *ngFor="let items of item.outsideBiopsy.amoi">
+                                  <li>
+                                    <span class="label m-b-5" amoi status="{{items.state}}" inclusion="{{items.inclusion}}">{{items.state | dashify}} - <span *ngIf="items.inclusion==='true'">INCLUSION</span><span *ngIf="items.inclusion==='false'">EXCLUSION</span></span>
+                                      <treatment-arm-link [treatmentArmId]="items.treatmentArmId" [version]="items.version" [removePrefix]="true"></treatment-arm-link>
                                   </li>
                                 </ul>
                               </dd>
