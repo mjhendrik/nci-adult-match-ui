@@ -33,12 +33,13 @@
                   <dd>{{outsideData.analysisId | dashify}}</dd>
                   <dt>Patient</dt>
                   <dd><a href [routerLink]="['/patients', patientSequenceNumber]" class="link-none">{{patientSequenceNumber | dashify}}</a>,
-                    <span [colorCodePatients]="currentPatientStatus">{{currentPatientStatus | dashify}}</span>,
-                    Step {{currentStepNumber | dashify}}</dd>
+                    <span [colorCodePatients]="currentPatientStatus">{{currentPatientStatus | dashify}}</span>, Step {{currentStepNumber
+                    | dashify}}</dd>
                   <dt>Patient Concordance</dt>
                   <dd><span [colorCodeYesNo]="concordance">{{concordance | dashify}}</span></dd>
                   <dt>Status</dt>
-                  <dd><span [colorCodeVariantReport]="outsideData.variantReport.variantReportStatus">{{outsideData.variantReport.variantReportStatus | dashify}}</span> on {{outsideData.variantReport.variantReportCreatedDate | gmt}} by {{outsideData.variantReport.user | dashify}}</dd>
+                  <dd><span [colorCodeVariantReport]="outsideData.variantReport.variantReportStatus">{{outsideData.variantReport.variantReportStatus | dashify}}</span>                    on {{outsideData.variantReport.variantReportCreatedDate | gmt}} by {{outsideData.variantReport.user |
+                    dashify}}</dd>
                   <dt>MAPD</dt>
                   <dd>{{mapd | dashify}}</dd>
                   <dt>Cellularity</dt>
@@ -54,11 +55,16 @@
                   <dd *ngIf="showPools">{{pool2 | dashify}}</dd>
                 </dl>
                 <div class="m-b-5">
-                  <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!outsideData.variantReport.dnaBamFilePath" (click)="download(outsideData.variantReport.dnaBamFilePath)"><i class="fa fa-download"></i> DNA BAM</button>
-                  <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!outsideData.variantReport.dnaBaiFilePath" (click)="download(outsideData.variantReport.dnaBaiFilePath)"><i class="fa fa-download"></i> DNA BAI</button>
-                  <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!outsideData.variantReport.rnaBamFilePath" (click)="download(outsideData.variantReport.rnaBamFilePath)"><i class="fa fa-download"></i> RNA BAM</button>
-                  <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!outsideData.variantReport.rnaBaiFilePath" (click)="download(outsideData.variantReport.rnaBaiFilePath)"><i class="fa fa-download"></i> RNA BAI</button>
-                  <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!outsideData.variantReport.vcfFilePath" (click)="download(outsideData.variantReport.vcfFilePath)"><i class="fa fa-download"></i> VCF</button>
+                  <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!outsideData.variantReport.dnaBamFilePath"
+                    (click)="download(outsideData.variantReport.dnaBamFilePath)"><i class="fa fa-download"></i> DNA BAM</button>
+                  <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!outsideData.variantReport.dnaBaiFilePath"
+                    (click)="download(outsideData.variantReport.dnaBaiFilePath)"><i class="fa fa-download"></i> DNA BAI</button>
+                  <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!outsideData.variantReport.rnaBamFilePath"
+                    (click)="download(outsideData.variantReport.rnaBamFilePath)"><i class="fa fa-download"></i> RNA BAM</button>
+                  <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!outsideData.variantReport.rnaBaiFilePath"
+                    (click)="download(outsideData.variantReport.rnaBaiFilePath)"><i class="fa fa-download"></i> RNA BAI</button>
+                  <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!outsideData.variantReport.vcfFilePath"
+                    (click)="download(outsideData.variantReport.vcfFilePath)"><i class="fa fa-download"></i> VCF</button>
                 </div>
               </div>
             </div>
@@ -76,7 +82,8 @@
                 <h4>Latest Assignment</h4>
                 <dl class="dl-horizontal widest-dt">
                   <dt>Status</dt>
-                  <dd><span [colorCodeAssignment]="outsideData.assignmentReport.patientAssignmentStatus"> {{outsideData.assignmentReport.patientAssignmentStatus | dashify}}</span> on {{outsideData.assignmentReport.dateConfirmed | gmt}} by {{(outsideData.assignmentReport.user||'System User') | dashify}}</dd>
+                  <dd><span [colorCodeAssignment]="outsideData.assignmentReport.patientAssignmentStatus"> {{outsideData.assignmentReport.patientAssignmentStatus | dashify}}</span>                    on {{outsideData.assignmentReport.dateConfirmed | gmt}} by {{(outsideData.assignmentReport.user||'System
+                    User') | dashify}}</dd>
                   <dt>Generation Date</dt>
                   <dd>{{outsideData.assignmentReport.dateAssigned | gmt}}</dd>
                   <dt>Assignment Sent to ECOG Date</dt>
@@ -87,8 +94,8 @@
                 <dl *ngIf="outsideData.assignmentReport.hasSelectedTreatmentArm" class="dl-horizontal widest-dt">
                   <dt>Selected Treatment Arm</dt>
                   <dd>
-                    <treatment-arm-link *ngIf="outsideData.assignmentReport" [treatmentArmId]="outsideData.assignmentReport.treatmentArm.treatmentArmId" [version]="outsideData.assignmentReport.treatmentArm.version"
-                      [removePrefix]="true"></treatment-arm-link>
+                    <treatment-arm-link *ngIf="outsideData.assignmentReport" [treatmentArmId]="outsideData.assignmentReport.treatmentArm.treatmentArmId"
+                      [version]="outsideData.assignmentReport.treatmentArm.version" [removePrefix]="true"></treatment-arm-link>
                     <span *ngIf="!outsideData.assignmentReport">-</span>
                   </dd>
                 </dl>
@@ -125,7 +132,7 @@
           </div>
 
           <div class="col-md-6">
-            <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-middle">                
+            <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-middle">
               <div class="panel-heading">
                 <h4>Assays</h4>
                 <table class="table table-condensed white-header">
@@ -162,6 +169,20 @@
         </div>
 
         <p *ngIf="!outsideData || !outsideData.analysisId" class="empty-data-panel">No Treatment Variant Report data</p>
+
+        <sd-variant-report-simple-table-snv-indels [items]="variantReport.singleNucleotideVariantAndIndels" [title]="'Single Nucleotide Variants and Indels'"></sd-variant-report-simple-table-snv-indels>
+
+        <sd-variant-report-simple-table-cnv [items]="variantReport.copyNumberVariants"></sd-variant-report-simple-table-cnv>
+
+        <sd-variant-report-simple-table-gf [items]="variantReport.unifiedGeneFusions"></sd-variant-report-simple-table-gf>
+  
+        <h2 class="subsection-heading" id="assignment-details">Assignment Report</h2>
+
+        <div *ngIf="outsideData.assignmentReport && outsideData.assignmentReport.reasons">
+          <sd-assignment-reason-table [reasons]="outsideData.assignmentReport.reasons"></sd-assignment-reason-table>
+        </div>
+
+        <p *ngIf="!outsideData.assignmentReport || !outsideData.assignmentReport.reasons" class="empty-data-panel">No Treatment Report Assignment data</p>
       </tab>
 
       <tab heading="Confirmation Report Summary" [active]="!isOutsideAssay">
@@ -188,12 +209,12 @@
                   <dd>{{matchData.analysisId | dashify}}</dd>
                   <dt>Patient</dt>
                   <dd><a href [routerLink]="['/patients', patientSequenceNumber]" class="link-none">{{patientSequenceNumber | dashify}}</a>,
-                    <span [colorCodePatients]="currentPatientStatus">{{currentPatientStatus | dashify}}</span>,
-                    Step {{currentStepNumber | dashify}}</dd>
+                    <span [colorCodePatients]="currentPatientStatus">{{currentPatientStatus | dashify}}</span>, Step {{currentStepNumber
+                    | dashify}}</dd>
                   <dt>Patient Concordance</dt>
                   <dd><span [colorCodeYesNo]="concordance">{{concordance | dashify}}</span></dd>
                   <dt>Status</dt>
-                  <dd><span [colorCodeVariantReport]="matchData.variantReport.variantReportStatus">{{matchData.variantReport.variantReportStatus | dashify}}</span>                        on {{matchData.variantReport.variantReportCreatedDate | gmt}} by {{matchData.variantReport.user | dashify}}</dd>
+                  <dd><span [colorCodeVariantReport]="matchData.variantReport.variantReportStatus">{{matchData.variantReport.variantReportStatus | dashify}}</span>                    on {{matchData.variantReport.variantReportCreatedDate | gmt}} by {{matchData.variantReport.user | dashify}}</dd>
                   <dt>MAPD</dt>
                   <dd>{{mapd | dashify}}</dd>
                   <dt>Cellularity</dt>
@@ -209,11 +230,16 @@
                   <dd *ngIf="showPools">{{pool2 | dashify}}</dd>
                 </dl>
                 <div class="m-b-5">
-                  <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!matchData.variantReport.dnaBamFilePath" (click)="download(matchData.variantReport.dnaBamFilePath)"><i class="fa fa-download"></i> DNA BAM</button>
-                  <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!matchData.variantReport.dnaBaiFilePath" (click)="download(matchData.variantReport.dnaBaiFilePath)"><i class="fa fa-download"></i> DNA BAI</button>
-                  <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!matchData.variantReport.rnaBamFilePath" (click)="download(matchData.variantReport.rnaBamFilePath)"><i class="fa fa-download"></i> RNA BAM</button>
-                  <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!matchData.variantReport.rnaBaiFilePath" (click)="download(matchData.variantReport.rnaBaiFilePath)"><i class="fa fa-download"></i> RNA BAI</button>
-                  <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!matchData.variantReport.vcfFilePath" (click)="download(matchData.variantReport.vcfFilePath)"><i class="fa fa-download"></i> VCF</button>
+                  <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!matchData.variantReport.dnaBamFilePath"
+                    (click)="download(matchData.variantReport.dnaBamFilePath)"><i class="fa fa-download"></i> DNA BAM</button>
+                  <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!matchData.variantReport.dnaBaiFilePath"
+                    (click)="download(matchData.variantReport.dnaBaiFilePath)"><i class="fa fa-download"></i> DNA BAI</button>
+                  <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!matchData.variantReport.rnaBamFilePath"
+                    (click)="download(matchData.variantReport.rnaBamFilePath)"><i class="fa fa-download"></i> RNA BAM</button>
+                  <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!matchData.variantReport.rnaBaiFilePath"
+                    (click)="download(matchData.variantReport.rnaBaiFilePath)"><i class="fa fa-download"></i> RNA BAI</button>
+                  <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!matchData.variantReport.vcfFilePath"
+                    (click)="download(matchData.variantReport.vcfFilePath)"><i class="fa fa-download"></i> VCF</button>
                 </div>
               </div>
             </div>
@@ -231,7 +257,8 @@
                 <h4>Latest Assignment</h4>
                 <dl class="dl-horizontal widest-dt">
                   <dt>Status</dt>
-                  <dd><span [colorCodeAssignment]="matchData.assignmentReport.patientAssignmentStatus"> {{matchData.assignmentReport.patientAssignmentStatus | dashify}}</span>                        on {{matchData.assignmentReport.dateConfirmed | gmt}} by {{(matchData.assignmentReport.user||'System User') | dashify}}</dd>
+                  <dd><span [colorCodeAssignment]="matchData.assignmentReport.patientAssignmentStatus"> {{matchData.assignmentReport.patientAssignmentStatus | dashify}}</span>                    on {{matchData.assignmentReport.dateConfirmed | gmt}} by {{(matchData.assignmentReport.user||'System
+                    User') | dashify}}</dd>
                   <dt>Generation Date</dt>
                   <dd>{{matchData.assignmentReport.dateAssigned | gmt}}</dd>
                   <dt>Assignment Sent to ECOG Date</dt>
@@ -242,8 +269,8 @@
                 <dl *ngIf="matchData.assignmentReport.hasSelectedTreatmentArm" class="dl-horizontal widest-dt">
                   <dt>Selected Treatment Arm</dt>
                   <dd>
-                    <treatment-arm-link *ngIf="matchData.assignmentReport" [treatmentArmId]="matchData.assignmentReport.treatmentArm.treatmentArmId" [version]="matchData.assignmentReport.treatmentArm.version"
-                      [removePrefix]="true"></treatment-arm-link>
+                    <treatment-arm-link *ngIf="matchData.assignmentReport" [treatmentArmId]="matchData.assignmentReport.treatmentArm.treatmentArmId"
+                      [version]="matchData.assignmentReport.treatmentArm.version" [removePrefix]="true"></treatment-arm-link>
                     <span *ngIf="!matchData.assignmentReport">-</span>
                   </dd>
                 </dl>
@@ -263,7 +290,7 @@
         <div *ngIf="matchData && matchData.analysisId" class="row" matchHeight="panel-height-middle">
           <div class="col-md-6">
             <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-middle">
-              <div class="panel-heading">                  
+              <div class="panel-heading">
                 <dl class="dl-horizontal">
                   <h4>MOI/aMOI Summary</h4>
                   <dt>Total aMOIs</dt>
@@ -316,49 +343,33 @@
           </div>
         </div>
 
-        <p *ngIf="!matchData || !matchData.analysisId" class="empty-data-panel">No Confirmation Variant Report data</p>            
-      </tab>
-    </tabset>
-  </div>
+        <p *ngIf="!matchData || !matchData.analysisId" class="empty-data-panel">No Confirmation Variant Report data</p>
 
-  <h2 class="subsection-heading">Comparison Variant Report</h2>
-  
-  <div class="panel panel-white panel-accent-sides-purple overflow-hidden">
-    <div class="panel-heading">
-      <h5 class="m-b-20">Compare <span class="badge outside-data-text">Treatment Report Data</span> to <span class="badge match-data-text">Confimartion Report Data</span></h5>
+        <h2 class="subsection-heading">Comparison Variant Report</h2>
 
-      <sd-variant-report-comparison-table-snv-indels [items]="comparisonVariantReport.singleNucleotideVariantAndIndels" [title]="'Single Nucleotide Variants and Indels'"></sd-variant-report-comparison-table-snv-indels>
+        <h5 class="m-b-20">Compare <span class="badge outside-data-text">Treatment Report Data</span> to <span class="badge match-data-text">Confimartion Report Data</span></h5>
 
-      <sd-variant-report-comparison-table-cnv [items]="comparisonVariantReport.copyNumberVariants" [title]="'Copy Number Variants'"></sd-variant-report-comparison-table-cnv>
+        <sd-variant-report-comparison-table-snv-indels [items]="comparisonVariantReport.singleNucleotideVariantAndIndels" [title]="'Single Nucleotide Variants and Indels'"></sd-variant-report-comparison-table-snv-indels>
 
-      <sd-variant-report-comparison-table-gf [items]="comparisonVariantReport.unifiedGeneFusions" [title]="'Gene Fusions'"></sd-variant-report-comparison-table-gf>
+        <sd-variant-report-comparison-table-cnv [items]="comparisonVariantReport.copyNumberVariants" [title]="'Copy Number Variants'"></sd-variant-report-comparison-table-cnv>
 
-      <div class="row">
-        <div class="col-md-12 text-center m-t-20">
-          <button class="btn btn-lime">Pass Report</button>
-          <button class="btn btn-danger">Fail Report</button>
+        <sd-variant-report-comparison-table-gf [items]="comparisonVariantReport.unifiedGeneFusions" [title]="'Gene Fusions'"></sd-variant-report-comparison-table-gf>
+
+        <div class="row">
+          <div class="col-md-12 text-center m-t-20">
+            <button class="btn btn-lime">Reject Report</button>
+            <button class="btn btn-danger">Confirm Report</button>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
+        
+        <h2 class="subsection-heading" id="assignment-details">Assignment Report</h2>
 
-  <h2 class="subsection-heading" id="assignment-details">Assignment Reports</h2>
-  
-  <div class="panel">
-    <tabset class="nav-tabs-purple">
-      <tab heading="Treatment Report Assignment" [active]="isOutsideAssay" id="tab-outside-lab-assignment">
-        <div *ngIf="outsideData.assignmentReport && outsideData.assignmentReport.reasons">
-          <sd-assignment-reason-table [reasons]="outsideData.assignmentReport.reasons"></sd-assignment-reason-table>
-        </div>
-
-        <p *ngIf="!outsideData.assignmentReport || !outsideData.assignmentReport.reasons" class="empty-data-panel">No Treatment Report Assignment data</p>
-      </tab>
-      <tab heading="Confirmation Report Assignment" [active]="!isOutsideAssay" id="tab-confirmation-assignment">
         <div *ngIf="matchData.assignmentReport && matchData.assignmentReport.reasons">
           <sd-assignment-reason-table [reasons]="matchData.assignmentReport.reasons"></sd-assignment-reason-table>
         </div>
 
         <p *ngIf="!matchData.assignmentReport || !matchData.assignmentReport.reasons" class="empty-data-panel">No Confirmation Report Assignment data</p>
+
       </tab>
     </tabset>
   </div>
