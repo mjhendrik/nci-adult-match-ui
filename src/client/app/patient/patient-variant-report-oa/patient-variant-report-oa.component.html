@@ -10,7 +10,7 @@
 
   <div class="panel">
     <tabset class="nav-tabs-purple">
-      <tab heading="Outside Lab Report Summary" [active]="isOutsideAssay">
+      <tab heading="Treatment Report Summary" [active]="isOutsideAssay">
         <div *ngIf="outsideData && outsideData.analysisId" class="row" matchHeight="panel-height-top">
           <div class="col-md-6">
             <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
@@ -161,7 +161,7 @@
           </div>
         </div>
 
-        <p *ngIf="!outsideData || !outsideData.analysisId" class="empty-data-panel">No Outside Lab Variant Report data</p>
+        <p *ngIf="!outsideData || !outsideData.analysisId" class="empty-data-panel">No Treatment Variant Report data</p>
       </tab>
 
       <tab heading="Confirmation Report Summary" [active]="!isOutsideAssay">
@@ -325,7 +325,7 @@
   
   <div class="panel panel-white panel-accent-sides-purple overflow-hidden">
     <div class="panel-heading">
-      <h5 class="m-b-20">Compare <span class="badge outside-data-text">Outside Lab Data</span> to <span class="badge match-data-text">Confimartion Report Data</span></h5>
+      <h5 class="m-b-20">Compare <span class="badge outside-data-text">Treatment Report Data</span> to <span class="badge match-data-text">Confimartion Report Data</span></h5>
 
       <sd-variant-report-comparison-table-snv-indels [items]="comparisonVariantReport.singleNucleotideVariantAndIndels" [title]="'Single Nucleotide Variants and Indels'"></sd-variant-report-comparison-table-snv-indels>
 
@@ -346,12 +346,12 @@
   
   <div class="panel">
     <tabset class="nav-tabs-purple">
-      <tab heading="Outside Lab Assignment" [active]="isOutsideAssay" id="tab-outside-lab-assignment">
+      <tab heading="Treatment Report Assignment" [active]="isOutsideAssay" id="tab-outside-lab-assignment">
         <div *ngIf="outsideData.assignmentReport && outsideData.assignmentReport.reasons">
           <sd-assignment-reason-table [reasons]="outsideData.assignmentReport.reasons"></sd-assignment-reason-table>
         </div>
 
-        <p *ngIf="!outsideData.assignmentReport || !outsideData.assignmentReport.reasons" class="empty-data-panel">No Outside Lab Assignment data</p>
+        <p *ngIf="!outsideData.assignmentReport || !outsideData.assignmentReport.reasons" class="empty-data-panel">No Treatment Report Assignment data</p>
       </tab>
       <tab heading="Confirmation Report Assignment" [active]="!isOutsideAssay" id="tab-confirmation-assignment">
         <div *ngIf="matchData.assignmentReport && matchData.assignmentReport.reasons">
