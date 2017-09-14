@@ -17,8 +17,8 @@
       <tr *ngIf="item.outsideData" class="outside-data-row">
         <td rowspan="2" class="bg-reset">
           <div class="m-t-10">
-            <button class="btn btn-lime btn-xs">Pass</button>
-            <button class="btn btn-danger btn-xs">Fail</button>
+            <span class="badge badge-lime">Pass</span>
+            <span class="badge badge-danger">Fail</span>
           </div>
         </td>
 
@@ -48,8 +48,8 @@
       <tr *ngIf="!item.outsideData" class="outside-data-row">
         <td rowspan="2" class="bg-reset">
           <div class="m-t-10">
-            <button class="btn btn-lime btn-xs">Pass</button>
-            <button class="btn btn-danger btn-xs">Fail</button>
+            <span class="badge badge-lime">Pass</span>
+            <span class="badge badge-danger">Fail</span>
           </div>
         </td>
         <td colspan="7"><span class="text-muted">No Outside Lab row</span></td>
