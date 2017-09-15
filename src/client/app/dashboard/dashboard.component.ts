@@ -90,7 +90,7 @@ export class DashboardComponent implements OnInit {
       if (!x.messages) {
         if (x.confirmationBiopsy) x.messages = x.confirmationBiopsy.messages;
         if (x.outsideBiopsy) x.messages = x.outsideBiopsy.messages;
-        if (x.confirmationBiopsy && x.outsideBiopsy) x.messages = x.outsideBiopsy.messages.concat(x.outsideBiopsy.messages);
+        if (x.confirmationBiopsy && x.outsideBiopsy) x.messages = x.confirmationBiopsy.messages.concat(x.outsideBiopsy.messages);
       }
       return x;
     });
