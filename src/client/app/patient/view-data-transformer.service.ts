@@ -3,6 +3,15 @@ import { Injectable } from '@angular/core';
 import { AssignmentReasonSection } from './assignment-reason-table/assignment-reason-table.component';
 import { VariantReportComparisonData } from './patient-variant-report-oa/variant-report-comparison-data';
 import { AssignmentReportData } from './assignment-report/assignment-report.module';
+import { VariantReportComparisonSummary } from './patient-variant-report-oa/variant-report-comparison-summary';
+
+const variantTables: Array<string> = [
+  'geneFusions',
+  'copyNumberVariants',
+  'indels',
+  'nonHotspotRules',
+  'unifiedGeneFusions'
+];
 
 /*
 *  View transformation service
@@ -75,6 +84,8 @@ export class ViewDataTransformer {
     this.transformAssignmentLogic(transformedReport.matchData.assignmentReport);
     this.transformAssignmentLogic(transformedReport.outsideData.assignmentReport);
 
+    this.precessPassFailVariants(transformedReport.comparisonVariantReport);
+
     return transformedReport;
   }
 
@@ -109,6 +120,37 @@ export class ViewDataTransformer {
 
   showPools(tvcVersion: string): boolean {
     return !!tvcVersion && tvcVersion.startsWith('5.2');
+  }
+
+  private precessPassFailVariants(comparisonVariantReport: any): void {
+    const summary: VariantReportComparisonSummary = {
+      totalVariants: 0,
+      passVariants: 0,
+      failVariants: 0,
+    };
+
+    for (let table of variantTables) {
+      this.precessPassFailVariantTable(comparisonVariantReport[table], summary);
+    }
+
+    comparisonVariantReport.summary = summary;
+  }
+
+  private precessPassFailVariantTable(table: any[], summary: VariantReportComparisonSummary): void {
+    for (let item of table) {
+      summary.totalVariants += 1;
+
+      if (item.matchData && item.outsideData && item.hasDifference && Object.keys(item.hasDifference)) {
+        summary.failVariants += 1;
+        item.pass = false;
+      } else if (!item.matchData || !item.outsideData) {
+        summary.failVariants += 1;
+        item.pass = false;
+      } else {
+        summary.passVariants += 1;
+        item.pass = true;
+      }
+    }
   }
 
   private transformBiopsy(transformedPatient: any, source: any): any {
@@ -225,14 +267,6 @@ export class ViewDataTransformer {
       analysis.variantReport = variantReport;
       variantReport.isOutsideAssayWorkflow = transformedBiopsy.isOutsideAssayWorkflow;
       variantReport.variantReporterFileReceivedDate = analysis.variantReporterFileReceivedDate;
-
-      const variantTables: Array<string> = [
-        'geneFusions',
-        'copyNumberVariants',
-        'indels',
-        'nonHotspotRules',
-        'unifiedGeneFusions'
-      ];
 
       variantReport.moiSummary = {
         totalaMOIs: 0,

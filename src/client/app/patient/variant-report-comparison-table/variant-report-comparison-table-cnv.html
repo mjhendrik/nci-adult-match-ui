@@ -18,8 +18,8 @@
       <tr *ngIf="item.outsideData" class="outside-data-row">
         <td rowspan="2" class="bg-reset text-center">
           <div class="m-t-13">
-            <span class="badge badge-lime" *ngIf="pass">Pass</span>
-            <span class="badge badge-danger" *ngIf="!pass">Fail</span>
+            <span class="badge badge-lime" *ngIf="item.pass">Pass</span>
+            <span class="badge badge-danger" *ngIf="!item.pass">Fail</span>
           </div>
         </td>
 
@@ -52,8 +52,8 @@
       <tr *ngIf="!item.outsideData" class="outside-data-row">
         <td rowspan="2" class="bg-reset text-center">
           <div class="m-t-13">
-            <span class="badge badge-lime" *ngIf="pass">Pass</span>
-            <span class="badge badge-danger" *ngIf="!pass">Fail</span>
+            <span class="badge badge-lime" *ngIf="item.pass">Pass</span>
+            <span class="badge badge-danger" *ngIf="!item.pass">Fail</span>
           </div>
         </td>
         <td colspan="8"><span class="text-muted">No Outside Lab row</span></td>

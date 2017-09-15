@@ -350,7 +350,15 @@
         
         <p *ngIf="!matchData || !matchData.analysisId" class="empty-data-panel">No Confirmation Variant Report data</p>
 
-        <h5 class="m-b-20">Compare <span class="badge outside-data-text">Treatment Report Data</span> to <span class="badge match-data-text">Confimartion Report Data</span></h5>
+        <h5 class="m-b-20">Compared <span class="badge outside-data-text">Treatment Report Data</span> to <span class="badge match-data-text">Confimartion Report Data</span>
+          <br>
+          <br>
+          <span>Total Variants: {{comparisonVariantReport.summary.totalVariants}}</span>
+          <br>
+          <span>Variants Pass: <span class="badge badge-lime">{{comparisonVariantReport.summary.passVariants}}</span></span>
+          <br>
+          <span>Variants Fail:  <span class="badge badge-danger">{{comparisonVariantReport.summary.failVariants}}</span></span>
+        </h5>
 
         <sd-variant-report-comparison-table-snv-indels [items]="comparisonVariantReport.singleNucleotideVariantAndIndels" [title]="'Single Nucleotide Variants and Indels'"></sd-variant-report-comparison-table-snv-indels>
 
