@@ -23,10 +23,10 @@
   <tbody>
     <ng-template ngFor let-item [ngForOf]="items">
       <tr *ngIf="item.outsideData" class="outside-data-row">
-        <td rowspan="2" class="bg-reset">
-          <div class="m-t-10">
-            <span class="badge badge-lime">Pass</span>
-            <span class="badge badge-danger">Fail</span>
+        <td rowspan="2" class="bg-reset text-center">
+          <div class="m-t-13">
+            <span class="badge badge-lime" *ngIf="pass">Pass</span>
+            <span class="badge badge-danger" *ngIf="!pass">Fail</span>
           </div>
         </td>
 
@@ -78,10 +78,10 @@
       </tr>
 
       <tr *ngIf="!item.outsideData" class="outside-data-row">
-        <td rowspan="2" class="bg-reset">
-          <div class="m-t-10">
-            <span class="badge badge-lime">Pass</span>
-            <span class="badge badge-danger">Fail</span>
+        <td rowspan="2" class="bg-reset text-center">
+          <div class="m-t-13">
+            <span class="badge badge-lime" *ngIf="pass">Pass</span>
+            <span class="badge badge-danger" *ngIf="!pass">Fail</span>
           </div>
         </td>
         <td colspan="16"><span class="text-muted">No Outside Lab row</span></td>
