@@ -106,7 +106,7 @@
           <div *ngFor="let biopsy of patient.biopsies" class="tab-pane fade in" [class.active]="tabs.get('biopsies', biopsy.biopsySequenceNumber)"
             id="tab-biopsy-t-{{biopsy.biopsySequenceNumber}}">
             <div class="panel-heading">
-              <h4 class="panel-title f-s-18">Biopsy: {{biopsy.biopsySequenceNumber}}
+              <h4 class="panel-title f-s-18"><span *ngIf="biopsy.isOutsideAssayWorkflow"><span *ngIf="biopsy.isOutsideAssay">Treatment </span><span *ngIf="!biopsy.isOutsideAssay">Confirmation </span></span>Biopsy: {{biopsy.biopsySequenceNumber}}
               </h4>
             </div>
             <div class="row">
