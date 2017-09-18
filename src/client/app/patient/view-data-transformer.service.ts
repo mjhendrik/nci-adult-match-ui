@@ -137,6 +137,9 @@ export class ViewDataTransformer {
   }
 
   private precessPassFailVariantTable(table: any[], summary: VariantReportComparisonSummary): void {
+    if (!table || !Array.isArray(table))
+      return;
+
     for (let item of table) {
       summary.totalVariants += 1;
 
