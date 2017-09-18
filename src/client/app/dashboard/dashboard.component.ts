@@ -87,7 +87,7 @@ export class DashboardComponent implements OnInit {
     // .filter((x: any) => !x.isOutsideAssay)
     this.tablePatientsAwaitingData = itemList.map(x => {
 
-      if (x.diseases) x.diseases.shortName = x.diseases && x.diseases.length ? x.diseases.map((y: any) => y.shortName).join(', ') : '';
+      if (x.diseases) x.diseases.shortName = x.diseases.length ? x.diseases.map((y: any) => y.shortName).join(', ') : '';
 
       if (x.isOutsideAssay) {
 
@@ -97,14 +97,9 @@ export class DashboardComponent implements OnInit {
         else if (x.confirmationBiopsy) x.messages = x.confirmationBiopsy.messages;
         else if (x.outsideBiopsy) x.messages = x.outsideBiopsy.messages;
 
-        if (x.confirmationBiopsy) if (x.confirmationBiopsy.diseases) x.confirmationBiopsy.diseases.shortName = x.confirmationBiopsy.diseases
-          && x.confirmationBiopsy.diseases.length ? x.confirmationBiopsy.diseases.map((y: any) => y.shortName).join(', ') : '';
-
         if (x.outsideBiopsy) {
 
-          if (x.outsideBiopsy.diseases) x.diseases.shortName = x.outsideBiopsy.diseases && x.outsideBiopsy.diseases.length
-            ? x.outsideBiopsy.diseases.map((y: any) => y.shortName).join(', ') : '';
-
+          x.diseases = x.outsideBiopsy.diseases;
           x.MLH1 = x.outsideBiopsy.MLH1;
           x.MSH2 = x.outsideBiopsy.MLH1;
           x.PTEN = x.outsideBiopsy.MLH1;
