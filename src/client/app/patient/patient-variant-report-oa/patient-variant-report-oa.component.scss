@@ -4,12 +4,14 @@
   background-color: $bg-outside-color;
   color: $text-outside-color;
   font-size: 100%;
+  font-weight: normal;
 }
 
 .match-data-text {
   background-color: $bg-match-color;
   color: $text-match-color;
   font-size: 100%;
+  font-weight: normal;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -18,4 +20,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .subsection-heading {
   font-size: 16px;
+}
+
+.panel .panel-heading .label, .panel .panel-heading .badge {
+  padding-bottom: 3px;
 }
