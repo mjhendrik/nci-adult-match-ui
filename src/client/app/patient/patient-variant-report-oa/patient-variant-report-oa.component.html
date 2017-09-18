@@ -10,7 +10,7 @@
 
   <div class="panel">
     <tabset class="nav-tabs-purple">
-      <tab heading="Treatment Report" [active]="isOutsideAssay">
+      <tab heading="Treatment Report" [active]="showOutsideAssay">
         <div *ngIf="outsideData && outsideData.analysisId" class="row" matchHeight="panel-height-top">
           <div class="col-md-6">
             <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
@@ -183,14 +183,14 @@
           </div>
         </div>
 
-        <div *ngIf="outsideData.assignmentReport && outsideData.assignmentReport.reasons">
+        <div *ngIf="outsideData.assignmentReport && outsideData.assignmentReport.reasons" id="assignment-details">
           <sd-assignment-reason-table [reasons]="outsideData.assignmentReport.reasons"></sd-assignment-reason-table>
         </div>
 
         <p *ngIf="!outsideData.assignmentReport || !outsideData.assignmentReport.reasons" class="empty-data-panel">No Treatment Report Assignment data</p>
       </tab>
 
-      <tab heading="Confirmation Report" [active]="!isOutsideAssay">
+      <tab heading="Confirmation Report" [active]="!showOutsideAssay">
         <div *ngIf="matchData && matchData.analysisId" class="row" matchHeight="panel-height-top">
           <div class="col-md-6">
             <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
@@ -271,20 +271,42 @@
                   <dt>Assignment Received by ECOG Date</dt>
                   <dd>{{matchData.assignmentReport.dateReceivedByECOG | gmt}}</dd>
                 </dl>
-                <dl *ngIf="matchData.assignmentReport.hasSelectedTreatmentArm" class="dl-horizontal widest-dt">
-                  <dt>Selected Treatment Arm</dt>
-                  <dd>
-                    <treatment-arm-link *ngIf="matchData.assignmentReport" [treatmentArmId]="matchData.assignmentReport.treatmentArm.treatmentArmId"
-                      [version]="matchData.assignmentReport.treatmentArm.version" [removePrefix]="true"></treatment-arm-link>
-                    <span *ngIf="!matchData.assignmentReport">-</span>
-                  </dd>
-                </dl>
-                <div *ngIf="matchData.assignmentReport.hasSelectedTreatmentArm" class="panel panel-success overflow-hidden">
-                  <div class="panel-heading">
-                    <p>
-                      {{matchData.assignmentReport.patientAssignmentStatusMessage | dashify}}
-                      <a (click)="scrollTo('assignment-details')" class="text-white text-underlined white-link"><br><br><i class="fa fa-arrow-down" aria-hidden="true"></i> Click for details...</a>
-                    </p>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div *ngIf="outsideData.assignmentReport.hasSelectedTreatmentArm" class="dl-horizontal widest-dt">
+                      <h5><span class="badge outside-data-text">Selected Treatment Arm</span></h5>
+                      <h5>
+                        <treatment-arm-link *ngIf="outsideData.assignmentReport" [treatmentArmId]="outsideData.assignmentReport.treatmentArm.treatmentArmId"
+                        [version]="outsideData.assignmentReport.treatmentArm.version" [removePrefix]="true"></treatment-arm-link>
+                        <span *ngIf="!outsideData.assignmentReport">-</span>
+                      </h5>
+                    </div>
+                    <div *ngIf="outsideData.assignmentReport.hasSelectedTreatmentArm" class="panel panel-success overflow-hidden">
+                      <div class="panel-heading">
+                        <p>
+                          {{outsideData.assignmentReport.patientAssignmentStatusMessage | dashify}}
+                          <a (click)="openOutsideAssignmentReason('assignment-details')" class="text-white text-underlined white-link"><br><br><i class="fa fa-arrow-down" aria-hidden="true"></i> Click for details...</a>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div *ngIf="matchData.assignmentReport.hasSelectedTreatmentArm" class="dl-horizontal widest-dt">
+                        <h5><span class="badge match-data-text">Confirmation Treatment Arm</span></h5>
+                        <h5>
+                          <treatment-arm-link *ngIf="matchData.assignmentReport" [treatmentArmId]="matchData.assignmentReport.treatmentArm.treatmentArmId"
+                            [version]="matchData.assignmentReport.treatmentArm.version" [removePrefix]="true"></treatment-arm-link>
+                          <span *ngIf="!matchData.assignmentReport">-</span>
+                        </h5>
+                    </div>
+                    <div *ngIf="matchData.assignmentReport.hasSelectedTreatmentArm" class="panel panel-success overflow-hidden">
+                      <div class="panel-heading">
+                        <p>
+                          {{matchData.assignmentReport.patientAssignmentStatusMessage | dashify}}
+                          <a (click)="scrollTo('match-assignment-details')" class="text-white text-underlined white-link"><br><br><i class="fa fa-arrow-down" aria-hidden="true"></i> Click for details...</a>
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -377,7 +399,7 @@
           </div>
         </div>
 
-        <div *ngIf="matchData.assignmentReport && matchData.assignmentReport.reasons">
+        <div *ngIf="matchData.assignmentReport && matchData.assignmentReport.reasons" id="match-assignment-details">
           <sd-assignment-reason-table [reasons]="matchData.assignmentReport.reasons"></sd-assignment-reason-table>
         </div>
 

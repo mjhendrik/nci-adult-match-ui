@@ -25,7 +25,7 @@ import { ScrollService } from '../../shared/utils/scroll.to.service';
 })
 export class PatientVariantReportOutsideAssayComponent implements OnInit, AfterViewInit, VariantReportComparisonData {
   scrollTo: (id: string) => void;
-  isOutsideAssay: boolean;
+  showOutsideAssay: boolean;
   isOutsideAssayValue: boolean = null;
 
   psn: string;
@@ -76,6 +76,11 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, AfterV
     this.scrollTo = scrollService.scrollToElement;
   }
 
+  openOutsideAssignmentReason() {
+    this.showOutsideAssay = true;
+    this.scrollTo('assignment-details');
+  }
+
   ngOnInit() {
     Object.assign(this, this.route.snapshot.data['data']);
   }
@@ -83,7 +88,7 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, AfterV
   ngAfterViewInit() {
     setTimeout(() => {
       console.log('Attempting to refresh tabs...');
-      this.isOutsideAssayValue = this.isOutsideAssay;
+      this.isOutsideAssayValue = this.showOutsideAssay;
     }, 300);
   }
 
