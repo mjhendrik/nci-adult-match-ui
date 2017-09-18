@@ -429,6 +429,8 @@
                                 <a href [routerLink]="['/patients', item.patientSequenceNumber]" [queryParams]="{section: 'msn', entityId: item.molecularSequenceNumber}"
                                   class="link-none"><i class="fa fa-share-alt"></i> {{item.molecularSequenceNumber | dashify}}</a>
                               </dd>
+                              <dt>Lab</dt>
+                              <dd>{{item.lab | dashify}}</dd>
                               <dt>Analysis Id</dt>
                               <dd>{{item.analysisId | dashify}}</dd>
                               <dt>Nucleic Acid Shipped Date</dt>
@@ -505,6 +507,8 @@
                                 <a href [routerLink]="['/patients', item.patientSequenceNumber]" [queryParams]="{section: 'msn', entityId: item.outsideBiopsy.molecularSequenceNumber}"
                                   class="link-none"><i class="fa fa-share-alt"></i> {{item.outsideBiopsy.molecularSequenceNumber | dashify}}</a>
                               </dd>
+                              <dt>Lab</dt>
+                              <dd>{{item.outsideBiopsy.lab | dashify}}</dd>
                               <dt>Analysis Id</dt>
                               <dd>{{item.outsideBiopsy.analysisId | dashify}}</dd>
                               <dt>Nucleic Acid Shipped Date</dt>
