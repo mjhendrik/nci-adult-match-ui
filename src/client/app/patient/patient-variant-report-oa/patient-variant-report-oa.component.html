@@ -91,14 +91,14 @@
                   <dt>Assignment Received by ECOG Date</dt>
                   <dd>{{outsideData.assignmentReport.dateReceivedByECOG | gmt}}</dd>
                 </dl>
-                <dl *ngIf="outsideData.assignmentReport.hasSelectedTreatmentArm" class="dl-horizontal widest-dt">
-                  <dt>Selected Treatment Arm</dt>
-                  <dd>
+                <div *ngIf="outsideData.assignmentReport.hasSelectedTreatmentArm" class="dl-horizontal widest-dt">
+                  <h5>Selected Treatment Arm</h5>
+                  <h5>
                     <treatment-arm-link *ngIf="outsideData.assignmentReport" [treatmentArmId]="outsideData.assignmentReport.treatmentArm.treatmentArmId"
-                      [version]="outsideData.assignmentReport.treatmentArm.version" [removePrefix]="true"></treatment-arm-link>
+                    [version]="outsideData.assignmentReport.treatmentArm.version" [removePrefix]="true"></treatment-arm-link>
                     <span *ngIf="!outsideData.assignmentReport">-</span>
-                  </dd>
-                </dl>
+                  </h5>
+                </div>
                 <div *ngIf="outsideData.assignmentReport.hasSelectedTreatmentArm" class="panel panel-success overflow-hidden">
                   <div class="panel-heading">
                     <p>
