@@ -83,17 +83,49 @@ export class DashboardComponent implements OnInit {
   }
 
   getDataPatientsAwaiting(itemList: any[]) {
+
     // .filter((x: any) => !x.isOutsideAssay)
-    this.tablePatientsAwaitingData = itemList.filter((x: any) => !x.isOutsideAssay).map(x => {
+    this.tablePatientsAwaitingData = itemList.map(x => {
+
       if (x.diseases) x.diseases.shortName = x.diseases && x.diseases.length ? x.diseases.map((y: any) => y.shortName).join(', ') : '';
-      // if (!x.daysWaiting) x.daysWaiting = x.confirmationBiopsy ? x.confirmationBiopsy.daysWaiting : x.outsideBiopsy.daysWaiting;
-      if (!x.messages) {
-        if (x.confirmationBiopsy) x.messages = x.confirmationBiopsy.messages;
-        if (x.outsideBiopsy) x.messages = x.outsideBiopsy.messages;
+
+      if (x.isOutsideAssay) {
+
+        x.daysWaiting = x.outsideBiopsy ? x.outsideBiopsy.daysWaiting : x.confirmationBiopsy.daysWaiting;
+
         if (x.confirmationBiopsy && x.outsideBiopsy) x.messages = x.confirmationBiopsy.messages.concat(x.outsideBiopsy.messages);
+        else if (x.confirmationBiopsy) x.messages = x.confirmationBiopsy.messages;
+        else if (x.outsideBiopsy) x.messages = x.outsideBiopsy.messages;
+
+        if (x.confirmationBiopsy) if (x.confirmationBiopsy.diseases) x.confirmationBiopsy.diseases.shortName = x.confirmationBiopsy.diseases
+          && x.confirmationBiopsy.diseases.length ? x.confirmationBiopsy.diseases.map((y: any) => y.shortName).join(', ') : '';
+
+        if (x.outsideBiopsy) {
+
+          if (x.outsideBiopsy.diseases) x.diseases.shortName = x.outsideBiopsy.diseases && x.outsideBiopsy.diseases.length
+            ? x.outsideBiopsy.diseases.map((y: any) => y.shortName).join(', ') : '';
+
+          x.MLH1 = x.outsideBiopsy.MLH1;
+          x.MSH2 = x.outsideBiopsy.MLH1;
+          x.PTEN = x.outsideBiopsy.MLH1;
+          x.RB = x.outsideBiopsy.MLH1;
+          x.amoi = x.outsideBiopsy.amoi;
+          x.variantReportConfirmedDate = x.outsideBiopsy.variantReportConfirmedDate;
+          x.biopsySequenceNumber = x.outsideBiopsy.biopsySequenceNumber;
+          x.dateSpecimenCollected = x.outsideBiopsy.dateSpecimenCollected;
+          x.molecularSequenceNumber = x.outsideBiopsy.molecularSequenceNumber;
+          x.lab = x.outsideBiopsy.lab;
+          x.analysisId = x.outsideBiopsy.analysisId;
+          x.dateMsnShipped = x.outsideBiopsy.dateMsnShipped;
+
+        }
+
       }
+
       return x;
+
     });
+
   }
 
   getOverviewDataTa(itemList: any) {

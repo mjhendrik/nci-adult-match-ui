@@ -355,17 +355,15 @@
                         <li>{{items | dashify}}</li>
                       </ul>
                     </td>
-                    <td *ngIf="!item.isOutsideAssay" class="text-center">
+                    <td *ngIf="!item.isOutsideAssay || item.outsideBiopsy" class="text-center">
                       <span *ngIf="item.amoi.length!==0"><i class="fa fa-check-circle text-success-light"></i></span>
                       <span *ngIf="item.amoi.length===0"><i class="fa fa-times-circle text-danger-light"></i></span>
                     </td>
-                    <td *ngIf="item.isOutsideAssay" class="text-center">
-                      <span *ngIf="item.outsideBiopsy.amoi.length!==0"><i class="fa fa-check-circle text-success-light"></i></span>
-                      <span *ngIf="item.outsideBiopsy.amoi.length===0"><i class="fa fa-times-circle text-danger-light"></i></span>
+                    <td *ngIf="item.confirmationBiopsy" class="text-center">
+                      <span *ngIf="item.confirmationBiopsy.amoi.length!==0"><i class="fa fa-check-circle text-success-light"></i></span>
+                      <span *ngIf="item.confirmationBiopsy.amoi.length===0"><i class="fa fa-times-circle text-danger-light"></i></span>
                     </td>
                     <td [colorCodeDays]="item.daysWaiting">{{item.daysWaiting | dashify}}</td>
-                    <!-- <td *ngIf="item.isOutsideAssay" [colorCodeDays]="item.outsideBiopsy.daysWaiting">{{item.outsideBiopsy.daysWaiting | dashify}}</td> -->
-                    <!-- <td *ngIf="item.isOutsideAssay" [colorCodeDays]="item.confirmationBiopsy.daysWaiting">{{item.daysWaiting | dashify}}</td> -->
                   </tr>
                   <tr *ngIf="mftablePatientsAwaiting.data.length == 0">
                     <td class="text-muted" colspan="6">
@@ -374,11 +372,11 @@
                     </td>
                   </tr>
                   <tr *ngIf="showRow[item.patientSequenceNumber]">
-                    <td *ngIf="!item.isOutsideAssay" colspan="6" class="bg-body">
+                    <td *ngIf="!item.isOutsideAssay || item.outsideBiopsy" colspan="6" class="bg-body">
                       <div class="panel panel-accent-sides-purple panel-details-row">
-                        <!-- <div class="panel-heading">
+                        <div *ngIf="item.outsideBiopsy" class="panel-heading">
                           <h4 class="panel-title f-s-18">Treatment Biopsy</h4>
-                        </div> -->
+                        </div>
                         <div class="row">
                           <div class="col-md-6">
                             <dl class="dl-horizontal p-t-15 m-b-15">
@@ -453,46 +451,46 @@
                         </div>
                       </div>
                     </td>
-                    <td *ngIf="item.isOutsideAssay" colspan="6" class="bg-body">
+                    <td *ngIf="item.confirmationBiopsy" colspan="6" class="bg-body">
                       <div class="panel panel-accent-sides-purple panel-details-row">
-                        <!-- <div class="panel-heading">
+                        <div class="panel-heading">
                           <h4 class="panel-title f-s-18">Confirmation Biopsy</h4>
-                        </div> -->
+                        </div>
                         <div class="row">
                           <div class="col-md-6">
                             <dl class="dl-horizontal p-t-15 m-b-15">
                               <dt>IHC RB</dt>
-                              <dd class="text-muted" *ngIf="item.outsideBiopsy.RB.applicable===false"><i class="fa fa-minus-circle text-warning-light"></i> Not Applicable</dd>
-                              <dd *ngIf="!item.outsideBiopsy.RB.reportedDate && item.outsideBiopsy.RB.applicable===true"><i class="fa fa-times-circle text-danger-light"></i></dd>
-                              <dd *ngIf="item.outsideBiopsy.RB.reportedDate"><i class="fa fa-check-circle text-success-light"></i> {{item.outsideBiopsy.RB.reportedDate
-                                | gmt}} (<span [colorCodeAssay]="item.outsideBiopsy.RB.result">{{item.outsideBiopsy.RB.result | dashify}}</span>)
+                              <dd class="text-muted" *ngIf="item.confirmationBiopsy.RB.applicable===false"><i class="fa fa-minus-circle text-warning-light"></i> Not Applicable</dd>
+                              <dd *ngIf="!item.confirmationBiopsy.RB.reportedDate && item.confirmationBiopsy.RB.applicable===true"><i class="fa fa-times-circle text-danger-light"></i></dd>
+                              <dd *ngIf="item.confirmationBiopsy.RB.reportedDate"><i class="fa fa-check-circle text-success-light"></i> {{item.confirmationBiopsy.RB.reportedDate
+                                | gmt}} (<span [colorCodeAssay]="item.confirmationBiopsy.RB.result">{{item.confirmationBiopsy.RB.result | dashify}}</span>)
                               </dd>
                               <dt>IHC MSH2</dt>
-                              <dd class="text-muted" *ngIf="item.outsideBiopsy.MSH2.applicable===false"><i class="fa fa-minus-circle text-warning-light"></i> Not Applicable</dd>
-                              <dd *ngIf="!item.outsideBiopsy.MSH2.reportedDate && item.outsideBiopsy.MSH2.applicable===true"><i class="fa fa-times-circle text-danger-light"></i></dd>
-                              <dd *ngIf="item.outsideBiopsy.MSH2.reportedDate"><i class="fa fa-check-circle text-success-light"></i> {{item.outsideBiopsy.MSH2.reportedDate
-                                | gmt}} (<span [colorCodeAssay]="item.outsideBiopsy.MSH2.result">{{item.outsideBiopsy.MSH2.result | dashify}}</span>)
+                              <dd class="text-muted" *ngIf="item.confirmationBiopsy.MSH2.applicable===false"><i class="fa fa-minus-circle text-warning-light"></i> Not Applicable</dd>
+                              <dd *ngIf="!item.confirmationBiopsy.MSH2.reportedDate && item.confirmationBiopsy.MSH2.applicable===true"><i class="fa fa-times-circle text-danger-light"></i></dd>
+                              <dd *ngIf="item.confirmationBiopsy.MSH2.reportedDate"><i class="fa fa-check-circle text-success-light"></i> {{item.confirmationBiopsy.MSH2.reportedDate
+                                | gmt}} (<span [colorCodeAssay]="item.confirmationBiopsy.MSH2.result">{{item.confirmationBiopsy.MSH2.result | dashify}}</span>)
                               </dd>
                               <dt>IHC MLH1</dt>
-                              <dd class="text-muted" *ngIf="item.outsideBiopsy.MLH1.applicable===false"><i class="fa fa-minus-circle text-warning-light"></i> Not Applicable</dd>
-                              <dd *ngIf="!item.outsideBiopsy.MLH1.reportedDate && item.outsideBiopsy.MLH1.applicable===true"><i class="fa fa-times-circle text-danger-light"></i></dd>
-                              <dd *ngIf="item.outsideBiopsy.MLH1.reportedDate"><i class="fa fa-check-circle text-success-light"></i> {{item.outsideBiopsy.MLH1.reportedDate
-                                | gmt}} (<span [colorCodeAssay]="item.outsideBiopsy.MLH1.result">{{item.outsideBiopsy.MLH1.result | dashify}}</span>)
+                              <dd class="text-muted" *ngIf="item.confirmationBiopsy.MLH1.applicable===false"><i class="fa fa-minus-circle text-warning-light"></i> Not Applicable</dd>
+                              <dd *ngIf="!item.confirmationBiopsy.MLH1.reportedDate && item.confirmationBiopsy.MLH1.applicable===true"><i class="fa fa-times-circle text-danger-light"></i></dd>
+                              <dd *ngIf="item.confirmationBiopsy.MLH1.reportedDate"><i class="fa fa-check-circle text-success-light"></i> {{item.confirmationBiopsy.MLH1.reportedDate
+                                | gmt}} (<span [colorCodeAssay]="item.confirmationBiopsy.MLH1.result">{{item.confirmationBiopsy.MLH1.result | dashify}}</span>)
                               </dd>
                               <dt>IHC PTEN</dt>
-                              <dd class="text-muted" *ngIf="item.outsideBiopsy.PTEN.applicable===false"><i class="fa fa-minus-circle text-warning-light"></i> Not Applicable</dd>
-                              <dd *ngIf="!item.outsideBiopsy.PTEN.reportedDate && item.outsideBiopsy.PTEN.applicable===true"><i class="fa fa-times-circle text-danger-light"></i></dd>
-                              <dd *ngIf="item.outsideBiopsy.PTEN.reportedDate"><i class="fa fa-check-circle text-success-light"></i> {{item.outsideBiopsy.PTEN.reportedDate
-                                | gmt}} (<span [colorCodeAssay]="item.outsideBiopsy.PTEN.result">{{item.outsideBiopsy.PTEN.result | dashify}}</span>)
+                              <dd class="text-muted" *ngIf="item.confirmationBiopsy.PTEN.applicable===false"><i class="fa fa-minus-circle text-warning-light"></i> Not Applicable</dd>
+                              <dd *ngIf="!item.confirmationBiopsy.PTEN.reportedDate && item.confirmationBiopsy.PTEN.applicable===true"><i class="fa fa-times-circle text-danger-light"></i></dd>
+                              <dd *ngIf="item.confirmationBiopsy.PTEN.reportedDate"><i class="fa fa-check-circle text-success-light"></i> {{item.confirmationBiopsy.PTEN.reportedDate
+                                | gmt}} (<span [colorCodeAssay]="item.confirmationBiopsy.PTEN.result">{{item.confirmationBiopsy.PTEN.result | dashify}}</span>)
                               </dd>
                               <dt>Variant Report</dt>
-                              <dd *ngIf="!item.outsideBiopsy.variantReportConfirmedDate"><i class="fa fa-times-circle text-danger-light"></i></dd>
-                              <dd *ngIf="item.outsideBiopsy.variantReportConfirmedDate"><i class="fa fa-check-circle text-success-light"></i> {{item.outsideBiopsy.variantReportConfirmedDate
+                              <dd *ngIf="!item.confirmationBiopsy.variantReportConfirmedDate"><i class="fa fa-times-circle text-danger-light"></i></dd>
+                              <dd *ngIf="item.confirmationBiopsy.variantReportConfirmedDate"><i class="fa fa-check-circle text-success-light"></i> {{item.confirmationBiopsy.variantReportConfirmedDate
                                 | gmt}}
                               </dd>
                               <dt>Disease</dt>
-                              <dd *ngIf="!item.outsideBiopsy.diseases"><i class="fa fa-times-circle text-danger-light"></i></dd>
-                              <dd *ngIf="item.outsideBiopsy.diseases"><i class="fa fa-check-circle text-success-light"></i> {{item.outsideBiopsy.diseases.shortName
+                              <dd *ngIf="!item.confirmationBiopsy.diseases"><i class="fa fa-times-circle text-danger-light"></i></dd>
+                              <dd *ngIf="item.confirmationBiopsy.diseases"><i class="fa fa-check-circle text-success-light"></i> {{item.confirmationBiopsy.diseases.shortName
                                 | dashify}}</dd>
                               <dt>Concordance</dt>
                               <dd *ngIf="!item.concordance"><i class="fa fa-times-circle text-danger-light"></i></dd>
@@ -503,26 +501,26 @@
                             <dl class="dl-horizontal p-t-15 m-b-15">
                               <dt>Biopsy Sequence Number</dt>
                               <dd>
-                                <a href [routerLink]="['/patients', item.patientSequenceNumber]" [queryParams]="{section: 'biopsies', entityId: item.outsideBiopsy.biopsySequenceNumber}"
-                                  class="link-none"><i class="fa fa-tasks"></i> {{item.outsideBiopsy.biopsySequenceNumber | dashify}}</a>
+                                <a href [routerLink]="['/patients', item.patientSequenceNumber]" [queryParams]="{section: 'biopsies', entityId: item.confirmationBiopsy.biopsySequenceNumber}"
+                                  class="link-none"><i class="fa fa-tasks"></i> {{item.confirmationBiopsy.biopsySequenceNumber | dashify}}</a>
                               </dd>
                               <dt>Specimen Collected Date</dt>
-                              <dd>{{item.outsideBiopsy.dateSpecimenCollected | dashify | gmt}}</dd>
+                              <dd>{{item.confirmationBiopsy.dateSpecimenCollected | dashify | gmt}}</dd>
                               <dt>Molecular Sequence Number</dt>
                               <dd>
-                                <a href [routerLink]="['/patients', item.patientSequenceNumber]" [queryParams]="{section: 'msn', entityId: item.outsideBiopsy.molecularSequenceNumber}"
-                                  class="link-none"><i class="fa fa-share-alt"></i> {{item.outsideBiopsy.molecularSequenceNumber | dashify}}</a>
+                                <a href [routerLink]="['/patients', item.patientSequenceNumber]" [queryParams]="{section: 'msn', entityId: item.confirmationBiopsy.molecularSequenceNumber}"
+                                  class="link-none"><i class="fa fa-share-alt"></i> {{item.confirmationBiopsy.molecularSequenceNumber | dashify}}</a>
                               </dd>
                               <dt>Lab</dt>
-                              <dd>{{item.outsideBiopsy.lab | dashify}}</dd>
+                              <dd>{{item.confirmationBiopsy.lab | dashify}}</dd>
                               <dt>Analysis Id</dt>
-                              <dd>{{item.outsideBiopsy.analysisId | dashify}}</dd>
+                              <dd>{{item.confirmationBiopsy.analysisId | dashify}}</dd>
                               <dt>Nucleic Acid Shipped Date</dt>
-                              <dd>{{item.outsideBiopsy.dateMsnShipped | gmt}}</dd>
+                              <dd>{{item.confirmationBiopsy.dateMsnShipped | gmt}}</dd>
                               <dt>aMOI</dt>
-                              <dd *ngIf="item.outsideBiopsy.amoi.length===0">-</dd>
-                              <dd *ngIf="item.outsideBiopsy.amoi.length!==0">
-                                <ul class="p-0" *ngFor="let items of item.outsideBiopsy.amoi">
+                              <dd *ngIf="item.confirmationBiopsy.amoi.length===0">-</dd>
+                              <dd *ngIf="item.confirmationBiopsy.amoi.length!==0">
+                                <ul class="p-0" *ngFor="let items of item.confirmationBiopsy.amoi">
                                   <li>
                                     <span class="label m-b-5" amoi status="{{items.state}}" inclusion="{{items.inclusion}}">{{items.state | dashify}} - <span *ngIf="items.inclusion==='true'">INCLUSION</span><span *ngIf="items.inclusion==='false'">EXCLUSION</span></span>
                                       <treatment-arm-link [treatmentArmId]="items.treatmentArmId" [version]="items.version" [removePrefix]="true"></treatment-arm-link>
