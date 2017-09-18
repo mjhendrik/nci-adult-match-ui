@@ -84,9 +84,9 @@ export class DashboardComponent implements OnInit {
 
   getDataPatientsAwaiting(itemList: any[]) {
     // .filter((x: any) => !x.isOutsideAssay)
-    this.tablePatientsAwaitingData = itemList.map(x => {
+    this.tablePatientsAwaitingData = itemList.filter((x: any) => !x.isOutsideAssay).map(x => {
       if (x.diseases) x.diseases.shortName = x.diseases && x.diseases.length ? x.diseases.map((y: any) => y.shortName).join(', ') : '';
-      if (!x.daysWaiting) x.daysWaiting = x.outsideBiopsy.daysWaiting;
+      // if (!x.daysWaiting) x.daysWaiting = x.confirmationBiopsy ? x.confirmationBiopsy.daysWaiting : x.outsideBiopsy.daysWaiting;
       if (!x.messages) {
         if (x.confirmationBiopsy) x.messages = x.confirmationBiopsy.messages;
         if (x.outsideBiopsy) x.messages = x.outsideBiopsy.messages;

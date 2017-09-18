@@ -363,8 +363,8 @@
                       <span *ngIf="item.outsideBiopsy.amoi.length!==0"><i class="fa fa-check-circle text-success-light"></i></span>
                       <span *ngIf="item.outsideBiopsy.amoi.length===0"><i class="fa fa-times-circle text-danger-light"></i></span>
                     </td>
-                    <td *ngIf="!item.isOutsideAssay" [colorCodeDays]="item.daysWaiting">{{item.daysWaiting | dashify}}</td>
-                    <td *ngIf="item.isOutsideAssay" [colorCodeDays]="item.outsideBiopsy.daysWaiting">{{item.outsideBiopsy.daysWaiting | dashify}}</td>
+                    <td [colorCodeDays]="item.daysWaiting">{{item.daysWaiting | dashify}}</td>
+                    <!-- <td *ngIf="item.isOutsideAssay" [colorCodeDays]="item.outsideBiopsy.daysWaiting">{{item.outsideBiopsy.daysWaiting | dashify}}</td> -->
                     <!-- <td *ngIf="item.isOutsideAssay" [colorCodeDays]="item.confirmationBiopsy.daysWaiting">{{item.daysWaiting | dashify}}</td> -->
                   </tr>
                   <tr *ngIf="mftablePatientsAwaiting.data.length == 0">
@@ -376,6 +376,9 @@
                   <tr *ngIf="showRow[item.patientSequenceNumber]">
                     <td *ngIf="!item.isOutsideAssay" colspan="6" class="bg-body">
                       <div class="panel panel-accent-sides-purple panel-details-row">
+                        <!-- <div class="panel-heading">
+                          <h4 class="panel-title f-s-18">Treatment Biopsy</h4>
+                        </div> -->
                         <div class="row">
                           <div class="col-md-6">
                             <dl class="dl-horizontal p-t-15 m-b-15">
@@ -452,6 +455,9 @@
                     </td>
                     <td *ngIf="item.isOutsideAssay" colspan="6" class="bg-body">
                       <div class="panel panel-accent-sides-purple panel-details-row">
+                        <!-- <div class="panel-heading">
+                          <h4 class="panel-title f-s-18">Confirmation Biopsy</h4>
+                        </div> -->
                         <div class="row">
                           <div class="col-md-6">
                             <dl class="dl-horizontal p-t-15 m-b-15">
