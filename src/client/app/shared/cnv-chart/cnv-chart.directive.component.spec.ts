@@ -89,6 +89,7 @@ export function main() {
             }).createComponent(CnvChartDirective);
 
             fixture.componentInstance.data = PatientApiServiceStub.makeRawVcftData();
+
             fixture.componentInstance.ngOnInit();
             expect(fixture.componentInstance.options).toBeDefined();
             fixture.detectChanges();

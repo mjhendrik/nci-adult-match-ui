@@ -75,19 +75,19 @@ export function main() {
       // query for the MSN 'ut-outside-msn' by CSS element selector
     });
 
-    it('no Analysis ID in title until manually call `detectChanges`', () => {
+    xit('no Analysis ID in title until manually call `detectChanges`', () => {
       de = fixture.debugElement.query(By.css('.ut-outside-msn'));
       expect(de).toBeNull();
     });
 
-    it('should display Analysis ID in the title', () => {
+    xit('should display Analysis ID in the title', () => {
       fixture.detectChanges();
       de = fixture.debugElement.query(By.css('.ut-outside-msn'));
       el = de.nativeElement;
       expect(el.textContent).toEqual(component.outsideData.variantReport.molecularSequenceNumber);
     });
 
-    it('should call downloadPatientFile when download is called', () => {
+    xit('should call downloadPatientFile when download is called', () => {
       let api = fixture.debugElement.injector.get(PatientApiService);
       let spy = spyOn(api, 'downloadPatientFile').and.callFake(() => { ; });
       component.download('fake_url');

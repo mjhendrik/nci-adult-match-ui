@@ -3,9 +3,6 @@ import { FormsModule } from '@angular/forms';
 import { TestBed } from '@angular/core/testing';
 import { APP_BASE_HREF } from '@angular/common';
 
-// import { nvd3 } from 'ng2-nvd3';
-
-
 import { async } from '@angular/core/testing';
 import { Route } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -28,6 +25,7 @@ import { CliaVariantReportQcComponent } from './clia/clia-variant-report-qc/clia
 import { CnvChartDirective } from './shared/cnv-chart/cnv-chart.directive.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { nvD3 } from 'ng2-nvd3';
+
 
 export function main() {
 
@@ -64,7 +62,6 @@ export function main() {
           AppComponent,
           NavbarComponent,
           LoginComponent,
-          ErrorComponent,
           DashboardComponent,
           PatientListComponent,
           TreatmentArmListComponent,
@@ -78,7 +75,8 @@ export function main() {
           PatientDetailsComponent,
           PatientVariantReportComponent,
           CnvChartDirective,
-          nvD3
+          nvD3,
+          ErrorComponent
         ],
         providers: [
           { provide: APP_BASE_HREF, useValue: '' }

@@ -14,16 +14,16 @@ export function main() {
       });
     }));
 
-    it('should be created', () => {
+    it('should be created in Data Transformer Service', () => {
       expect(service instanceof ViewDataTransformer).toBe(false, 'should not be a static instance');
     });
 
-    it('can instantiate service with "new"', inject([], () => {
+    it('can instantiate service with "new" in Data Transformer Service', inject([], () => {
       service = new ViewDataTransformer();
       expect(service instanceof ViewDataTransformer).toBe(true, 'new service should be ok');
     }));
 
-    it('can instantiate service when inject service', inject([ViewDataTransformer], (service: ViewDataTransformer) => {
+    it('can instantiate service when inject service in Data Transformer Service', inject([ViewDataTransformer], (service: ViewDataTransformer) => {
       expect(service instanceof ViewDataTransformer).toBe(true, 'new service should be ok');
     }));
 

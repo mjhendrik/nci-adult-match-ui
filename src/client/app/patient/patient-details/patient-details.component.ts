@@ -35,8 +35,8 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
   uploadedFiles: any[];
   fileCount: number = 0;
   variantZip: boolean = false;
-  dnaBam: boolean = false;;
-  cdnaBam: boolean = false;;
+  dnaBam: boolean = false;
+  cdnaBam: boolean = false;
   configVariantZip = dropzoneConfigVariantZip;
   configDnaBam = dropzoneConfigDnaBam;
   configCdnaBam = dropzoneConfigCdnaBam;

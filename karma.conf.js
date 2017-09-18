@@ -163,7 +163,16 @@ module.exports = function (config) {
         included: false,
         watched: true
       },
-
+      {
+        pattern: 'node_modules/ng2-toastr/src/*.js',
+        included: false,
+        watched: true
+      },
+      {
+        pattern: 'node_modules/ng2-toastr/ng2-toastr.js',
+        included: false,
+        watched: true
+      },
       'test-config.js',
       'dist/dev/app/system-config.js',
       'test-main.js'

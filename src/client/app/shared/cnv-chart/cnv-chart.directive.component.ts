@@ -14,7 +14,6 @@ import {
 import { nvD3 } from 'ng2-nvd3';
 
 declare let d3: any;
-// styleUrls: ['./shared/cnv-chart/cnv-chart.directive.component.css'],
 
 @Component({
   selector: 'cnv-chart',
@@ -28,7 +27,6 @@ declare let d3: any;
     ])
   ],
   providers: [nvD3],
-  // templateUrl:'app/shared/cnv-chart/cnv-chart.component.html'
 
   template://Zoomout panel
   `<div *ngIf="file_name">
