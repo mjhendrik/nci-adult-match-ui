@@ -80,7 +80,8 @@
               <td>{{item.currentStepNumber | dashify}}</td>
               <td>{{item.diseases.shortName | dashify}}</td>
               <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                <treatment-arm-link *ngIf="item.treatmentArm" [treatmentArmId]="item.treatmentArm.treatmentArmId" [version]="item.treatmentArm.version" [removePrefix]="true"></treatment-arm-link>
+                <treatment-arm-link *ngIf="item.treatmentArm" [treatmentArmId]="item.treatmentArm.treatmentArmId" [version]="item.treatmentArm.version"
+                  [removePrefix]="true"></treatment-arm-link>
                 <span *ngIf="!item.treatmentArm">-</span>
               </td>
               <td>{{item.registrationDate}}</td>
