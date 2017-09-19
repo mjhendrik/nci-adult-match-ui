@@ -39,7 +39,8 @@
                   <dd><span [colorCodeYesNo]="concordance">{{concordance | dashify}}</span></dd>
                   <dt>Status</dt>
                   <dd><span [colorCodeVariantReport]="outsideData.variantReport.variantReportStatus">{{outsideData.variantReport.variantReportStatus | dashify}}</span>                    on {{outsideData.variantReport.variantReportCreatedDate | gmt}} by {{outsideData.variantReport.user |
-                    dashify}}</dd>
+                    dashify}}
+                  </dd>
                   <dt>MAPD</dt>
                   <dd>{{mapd | dashify}}</dd>
                   <dt>Cellularity</dt>
@@ -95,7 +96,7 @@
                   <h5>Selected Treatment Arm</h5>
                   <h5>
                     <treatment-arm-link *ngIf="outsideData.assignmentReport" [treatmentArmId]="outsideData.assignmentReport.treatmentArm.treatmentArmId"
-                    [version]="outsideData.assignmentReport.treatmentArm.version" [removePrefix]="true"></treatment-arm-link>
+                      [version]="outsideData.assignmentReport.treatmentArm.version" [removePrefix]="true"></treatment-arm-link>
                     <span *ngIf="!outsideData.assignmentReport">-</span>
                   </h5>
                 </div>
@@ -167,10 +168,11 @@
             </div>
           </div>
         </div>
-        
+
         <p *ngIf="!outsideData || !outsideData.analysisId" class="empty-data-panel">No Treatment Variant Report data</p>
-        
-        <sd-variant-report-simple-table-snv-indels *ngIf="outsideData && outsideData.variantReport" [items]="outsideData.variantReport.singleNucleotideVariantAndIndels" [title]="'Single Nucleotide Variants and Indels'"></sd-variant-report-simple-table-snv-indels>
+
+        <sd-variant-report-simple-table-snv-indels *ngIf="outsideData && outsideData.variantReport" [items]="outsideData.variantReport.singleNucleotideVariantAndIndels"
+          [title]="'Single Nucleotide Variants and Indels'"></sd-variant-report-simple-table-snv-indels>
 
         <sd-variant-report-simple-table-cnv *ngIf="outsideData && outsideData.variantReport" [items]="outsideData.variantReport.copyNumberVariants"></sd-variant-report-simple-table-cnv>
 
@@ -178,8 +180,8 @@
 
         <div class="row">
           <div class="col-md-12 text-center m-t-20">
-            <button class="btn btn-lime">Reject Report</button>
-            <button class="btn btn-danger">Confirm Report</button>
+            <button class="btn btn-danger"><i class="fa fa-times"></i> Reject Report</button>
+            <button class="btn btn-lime"><i class="fa fa-check"></i> Confirm Report</button>
           </div>
         </div>
 
@@ -277,7 +279,7 @@
                       <h5><span class="badge outside-data-text">Selected Treatment Arm</span></h5>
                       <h5>
                         <treatment-arm-link *ngIf="outsideData.assignmentReport" [treatmentArmId]="outsideData.assignmentReport.treatmentArm.treatmentArmId"
-                        [version]="outsideData.assignmentReport.treatmentArm.version" [removePrefix]="true"></treatment-arm-link>
+                          [version]="outsideData.assignmentReport.treatmentArm.version" [removePrefix]="true"></treatment-arm-link>
                         <span *ngIf="!outsideData.assignmentReport">-</span>
                       </h5>
                     </div>
@@ -292,12 +294,12 @@
                   </div>
                   <div class="col-md-6">
                     <div *ngIf="matchData.assignmentReport.hasSelectedTreatmentArm" class="dl-horizontal widest-dt">
-                        <h5><span class="badge match-data-text">Confirmation Treatment Arm</span></h5>
-                        <h5>
-                          <treatment-arm-link *ngIf="matchData.assignmentReport" [treatmentArmId]="matchData.assignmentReport.treatmentArm.treatmentArmId"
-                            [version]="matchData.assignmentReport.treatmentArm.version" [removePrefix]="true"></treatment-arm-link>
-                          <span *ngIf="!matchData.assignmentReport">-</span>
-                        </h5>
+                      <h5><span class="badge match-data-text">Confirmation Treatment Arm</span></h5>
+                      <h5>
+                        <treatment-arm-link *ngIf="matchData.assignmentReport" [treatmentArmId]="matchData.assignmentReport.treatmentArm.treatmentArmId"
+                          [version]="matchData.assignmentReport.treatmentArm.version" [removePrefix]="true"></treatment-arm-link>
+                        <span *ngIf="!matchData.assignmentReport">-</span>
+                      </h5>
                     </div>
                     <div *ngIf="matchData.assignmentReport.hasSelectedTreatmentArm" class="panel panel-success overflow-hidden">
                       <div class="panel-heading">
@@ -369,7 +371,7 @@
             </div>
           </div>
         </div>
-        
+
         <p *ngIf="!matchData || !matchData.analysisId" class="empty-data-panel">No Confirmation Variant Report data</p>
 
         <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-middle">
@@ -394,8 +396,8 @@
 
         <div class="row">
           <div class="col-md-12 text-center m-t-20">
-            <button class="btn btn-lime">Reject Report</button>
-            <button class="btn btn-danger">Confirm Report</button>
+            <button class="btn btn-danger"><i class="fa fa-times"></i> Reject Report</button>
+            <button class="btn btn-lime"><i class="fa fa-check"></i> Confirm Report</button>
           </div>
         </div>
 
