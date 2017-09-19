@@ -381,7 +381,7 @@ export function main() {
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
     });
 
-    xit('should work by calling ngonInit',
+    it('should work by calling ngonInit',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -392,10 +392,11 @@ export function main() {
               }
             }).createComponent(TreatmentArmDetailsComponent);
             fixture.componentInstance.ngOnInit();
+            expect(fixture.componentInstance).toBeDefined();
           });
       }));
 
-    xit('should test setVersionIndex',
+    it('should test setVersionIndex',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -406,9 +407,10 @@ export function main() {
               }
             }).createComponent(TreatmentArmDetailsComponent);
             fixture.componentInstance.setVersionIndex(0);
+            expect(fixture.componentInstance).toBeDefined();
+            expect(fixture.componentInstance.versionIndex).toBe(0);
           });
       }));
-
   });
 
   describe('treatment arms component with errors', () => {
@@ -448,11 +450,10 @@ export function main() {
           },
         ]
       });
-
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
     });
 
-    xit('should work by calling ngonInit',
+    it('should work by calling ngonInit',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -464,9 +465,9 @@ export function main() {
             }).createComponent(TreatmentArmDetailsComponent);
             fixture.componentInstance.ngOnInit();
             fixture.componentInstance.getPreviousDetailsData();
+            expect(fixture.componentInstance).toBeDefined();
           });
       }));
-
   });
 }
 

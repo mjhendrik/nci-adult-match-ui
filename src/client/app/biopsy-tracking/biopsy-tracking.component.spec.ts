@@ -222,6 +222,7 @@ export function main() {
             }).createComponent(BiopsyTrackingListComponent);
             fixture.componentInstance.previous = "1,100,asc,biopsySequenceNumber";
             fixture.componentInstance.onSearchChanged("test");
+            // fixture.componentInstance.onSearchChanged()
             expect(fixture.componentInstance).toBeDefined();
             expect(fixture.componentInstance.previous).toBeDefined();
             expect(fixture.componentInstance.previous).toBe("1,100,asc,biopsySequenceNumber");
@@ -240,8 +241,10 @@ export function main() {
             }).createComponent(BiopsyTrackingListComponent);
             fixture.componentInstance.searchtermBiopsyTrackingList = "test";
             fixture.componentInstance.onSearchChanged("test");
+
             expect(fixture.componentInstance).toBeDefined();
             expect(fixture.componentInstance.searchtermBiopsyTrackingList).toBeDefined();
+
             expect(fixture.componentInstance.searchtermBiopsyTrackingList).toBe("test");
           });
       }));
@@ -288,7 +291,6 @@ export function main() {
                 templateUrl: ''
               }
             }).createComponent(BiopsyTrackingListComponent);
-            // console.log(fixture);
             fixture.componentInstance.getData();
             expect(fixture.componentInstance).toBeDefined();
           });
@@ -304,7 +306,7 @@ export function main() {
                 templateUrl: ''
               }
             }).createComponent(BiopsyTrackingListComponent);
-            fixture.componentInstance.getBiopsyCount('');
+            fixture.componentInstance.getBiopsyCount({});
           });
       }));
 
