@@ -76,7 +76,7 @@ export function main() {
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
     });
 
-    xit('should work by calling ngonInit',
+    it('should work by calling ngonInit',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -87,10 +87,12 @@ export function main() {
               }
             }).createComponent(TreatmentArmListComponent);
             fixture.componentInstance.ngOnInit();
+            fixture.componentInstance.gmt = new GmtPipe();
+            expect(fixture.componentInstance).toBeDefined();
           });
       }));
 
-    xit('should test dateStatusLog',
+    it('should test dateStatusLog',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -141,6 +143,9 @@ export function main() {
             fixture.componentInstance.gmt = new GmtPipe();
             fixture.componentInstance.dateStatusLog(item.statusLog, 'OPEN', item);
             fixture.componentInstance.dateStatusLog(item.statusLog, 'CLOSED,SUSPENDED', item);
+
+            expect(fixture.componentInstance).toBeDefined();
+            // expect(fixture.componentInstance.gmt).toBe(GmtPipe({}));
 
           });
       }));
