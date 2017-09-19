@@ -126,6 +126,7 @@ export function main() {
             }).createComponent(BiopsyTrackingListComponent);
             // console.log(fixture);
             fixture.componentInstance.ngOnInit();
+            expect(fixture.componentInstance).toBeDefined();
           });
       }));
 
@@ -141,6 +142,10 @@ export function main() {
             }).createComponent(BiopsyTrackingListComponent);
             fixture.componentInstance.previous = "1,100,asc,biopsySequenceNumber";
             fixture.componentInstance.currentPageActive("1,10,asc,biopsySequenceNumber");
+            expect(fixture.componentInstance).toBeDefined();
+            expect(fixture.componentInstance.previous).toBeDefined();
+            expect(fixture.componentInstance.previous).toBe("1,10,asc,biopsySequenceNumber,");
+            expect(fixture.componentInstance.currentPageActive).toBeDefined();
           });
       }));
 
@@ -157,6 +162,10 @@ export function main() {
             fixture.componentInstance.searchtermBiopsyTrackingList = '';
             fixture.componentInstance.previous = "1,10,asc,biopsySequenceNumber,";
             fixture.componentInstance.currentPageActive("1,10,asc,biopsySequenceNumber");
+            expect(fixture.componentInstance).toBeDefined();
+            expect(fixture.componentInstance.previous).toBeDefined();
+            expect(fixture.componentInstance.previous).toBe("1,10,asc,biopsySequenceNumber,");
+            expect(fixture.componentInstance.currentPageActive).toBeDefined();
           });
       }));
 
@@ -172,6 +181,10 @@ export function main() {
             }).createComponent(BiopsyTrackingListComponent);
             fixture.componentInstance.previous = "1,100,asc,biopsySequenceNumber";
             fixture.componentInstance.SortStatus("1,10,asc,biopsySequenceNumber");
+            expect(fixture.componentInstance).toBeDefined();
+            expect(fixture.componentInstance.previous).toBeDefined();
+            expect(fixture.componentInstance.previous).toBe("1,10,asc,biopsySequenceNumber,");
+            expect(fixture.componentInstance.currentPageActive).toBeDefined();
           });
       }));
 
@@ -188,6 +201,12 @@ export function main() {
             fixture.componentInstance.searchtermBiopsyTrackingList = "test";
             fixture.componentInstance.previous = "1,100,asc,biopsySequenceNumber,test";
             fixture.componentInstance.SortStatus("1,100,asc,biopsySequenceNumber");
+            expect(fixture.componentInstance).toBeDefined();
+            expect(fixture.componentInstance.searchtermBiopsyTrackingList).toBeDefined();
+            expect(fixture.componentInstance.searchtermBiopsyTrackingList).toBe("test");
+            expect(fixture.componentInstance.previous).toBeDefined();
+            expect(fixture.componentInstance.previous).toBe("1,100,asc,biopsySequenceNumber,test");
+            expect(fixture.componentInstance.currentPageActive).toBeDefined();
           });
       }));
 
@@ -203,6 +222,9 @@ export function main() {
             }).createComponent(BiopsyTrackingListComponent);
             fixture.componentInstance.previous = "1,100,asc,biopsySequenceNumber";
             fixture.componentInstance.onSearchChanged("test");
+            expect(fixture.componentInstance).toBeDefined();
+            expect(fixture.componentInstance.previous).toBeDefined();
+            expect(fixture.componentInstance.previous).toBe("1,100,asc,biopsySequenceNumber");
           });
       }));
 
@@ -218,6 +240,9 @@ export function main() {
             }).createComponent(BiopsyTrackingListComponent);
             fixture.componentInstance.searchtermBiopsyTrackingList = "test";
             fixture.componentInstance.onSearchChanged("test");
+            expect(fixture.componentInstance).toBeDefined();
+            expect(fixture.componentInstance.searchtermBiopsyTrackingList).toBeDefined();
+            expect(fixture.componentInstance.searchtermBiopsyTrackingList).toBe("test");
           });
       }));
 
@@ -265,6 +290,7 @@ export function main() {
             }).createComponent(BiopsyTrackingListComponent);
             // console.log(fixture);
             fixture.componentInstance.getData();
+            expect(fixture.componentInstance).toBeDefined();
           });
       }));
 
