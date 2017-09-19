@@ -22,7 +22,6 @@ services:
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
     # volumes: # this config is to override the default Patient API assay rules config. Normally commented out.
     #   - ./misc/config/nci-adult-match-patient-api-assay_activation_rules.json:/usr/app/config/assay_activation_rules.json
-    network_mode: "host"
 
   treatment-arm-api:
     image: "fnlcr/nci-adult-match-treatment-arm-api"
@@ -34,7 +33,6 @@ services:
     environment:
       - MONGODB_URI=mongodb://mongo:27017/Match
       - ENVIRONMENT=development
-    network_mode: "host"
 
   ion-reporters-api:
     image: "fnlcr/nci-match-ion-reporters-api"
@@ -59,7 +57,6 @@ services:
       - SLACK_TOKEN=${SLACK_TOKEN}
     volumes:
       - ./misc/config/nci-match-ion-reporters-api.environment.yml:/usr/app/config/environment.yml
-    network_mode: "host"
 
   sample-controls-api:
     image: "fnlcr/nci-match-sample-controls-api"
@@ -84,7 +81,6 @@ services:
       - SLACK_TOKEN=${SLACK_TOKEN}
     volumes:
       - ./misc/config/nci-match-sample-controls-api.environment.yml:/usr/app/config/environment.yml
-    network_mode: "host"
 
   aliquots-api:
     image: "fnlcr/nci-match-aliquots-api"
@@ -109,7 +105,6 @@ services:
       - SLACK_TOKEN=${SLACK_TOKEN}
     volumes:
       - ./misc/config/nci-match-aliquots-api.environment.yml:/usr/app/config/environment.yml
-    network_mode: "host"
 
   ir-processor-api:
     image: "fnlcr/nci-match-ir-processor-api"
@@ -134,24 +129,25 @@ services:
       - SLACK_TOKEN=${SLACK_TOKEN}
     volumes:
       - ./misc/config/nci-match-ir-processor-api.environment.yml:/usr/app/config/environment.yml
-    network_mode: "host"
 
   message-api:
     image: "fnlcr/nci-adult-match-message-api"
     ports:
       - "10250:10250"
+      - "8282:8282"
     depends_on:
       - mongo
     environment:
       - ENVIRONMENT=dev
       - AWS_REGION=us-east-1 
-      - JAVA_OPTS="-Dorg.kie.demo=false -Dmatch.properties.file=/matchbox-dev.properties -XX:PermSize=128m -XX:MaxPermSize=512m -Xdebug -Djava.net.preferIPv4Stack=true -Xrunjdwp:transport=dt_socket,address=8282,server=y,suspend=n"
+      - JAVA_OPTS="-Dorg.kie.demo=false -Dmatch.properties.file=/matchbox-dev.properties -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=512m -XX:PermSize=128m -XX:MaxPermSize=512m -Xdebug -Djava.net.preferIPv4Stack=true -Xrunjdwp:transport=dt_socket,address=8282,server=y,suspend=n"
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - AUTH0_DOMAIN=${AUTH0_DOMAIN}
       - AUTH0_CLIENT_ID=${AUTH0_CLIENT_ID}
       - AUTH0_CLIENT_SECRET=${AUTH0_CLIENT_SECRET}
-    network_mode: "host"
+    volumes:
+      - $HOME/config/nci-adult-match/nci-adult-match-message-api.properties:/matchbox-dev.properties
 
   mongo:
     image: mongo:3.4.0
@@ -159,7 +155,6 @@ services:
       - ./misc/data_setup/match:/backup
     ports:
       - "27018:27017" # Expose 27018 to avoid possible conflicting with the local MongoDB
-    network_mode: "host"
 
   dynamo:
     image: matchbox/dynamodb-local
@@ -167,7 +162,6 @@ services:
       - dynamo-data:/dynamodb_local
     ports:
       - "8001:8000" # Expose 8001 to avoid possible conflicting with the local DynamoDB
-    network_mode: "host"
 
 volumes:
   dynamo-data:
