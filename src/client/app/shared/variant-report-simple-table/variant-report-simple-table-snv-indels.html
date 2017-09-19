@@ -29,9 +29,9 @@
       <td>{{item.position | dashify}}</td>
       <td class="long-text-wrap">{{item.reference | dashify}}</td>
       <td class="long-text-wrap">{{item.alternative | dashify}}</td>
-      <td>{{item.alleleFreq | dashify}}</td>
-      <td><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.funcGene"></cosmic-link></td>
-      <td>{{item.oncomineVariantClass | dashify}}</td>
+      <td>{{item.alleleFrequency | dashify}}</td>
+      <td><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.gene"></cosmic-link></td>
+      <td>{{item.oncominevariantclass | dashify}}</td>
       <td>{{item.exon | dashify}}</td>
       <td>{{item.function | dashify}}</td>
       <td>{{item.hgvs | dashify}}</td>
