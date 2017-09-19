@@ -22,6 +22,8 @@ services:
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
     # volumes: # this config is to override the default Patient API assay rules config. Normally commented out.
     #   - ./misc/config/nci-adult-match-patient-api-assay_activation_rules.json:/usr/app/config/assay_activation_rules.json
+    networks:
+      - adult-match
 
   treatment-arm-api:
     image: "fnlcr/nci-adult-match-treatment-arm-api"
@@ -33,6 +35,8 @@ services:
     environment:
       - MONGODB_URI=mongodb://mongo:27017/Match
       - ENVIRONMENT=development
+    networks:
+      - adult-match
 
   ion-reporters-api:
     image: "fnlcr/nci-match-ion-reporters-api"
@@ -57,6 +61,8 @@ services:
       - SLACK_TOKEN=${SLACK_TOKEN}
     volumes:
       - ./misc/config/nci-match-ion-reporters-api.environment.yml:/usr/app/config/environment.yml
+    networks:
+      - adult-match
 
   sample-controls-api:
     image: "fnlcr/nci-match-sample-controls-api"
@@ -81,6 +87,8 @@ services:
       - SLACK_TOKEN=${SLACK_TOKEN}
     volumes:
       - ./misc/config/nci-match-sample-controls-api.environment.yml:/usr/app/config/environment.yml
+    networks:
+      - adult-match
 
   aliquots-api:
     image: "fnlcr/nci-match-aliquots-api"
@@ -105,6 +113,8 @@ services:
       - SLACK_TOKEN=${SLACK_TOKEN}
     volumes:
       - ./misc/config/nci-match-aliquots-api.environment.yml:/usr/app/config/environment.yml
+    networks:
+      - adult-match
 
   ir-processor-api:
     image: "fnlcr/nci-match-ir-processor-api"
@@ -129,6 +139,8 @@ services:
       - SLACK_TOKEN=${SLACK_TOKEN}
     volumes:
       - ./misc/config/nci-match-ir-processor-api.environment.yml:/usr/app/config/environment.yml
+    networks:
+      - adult-match
 
   message-api:
     image: "fnlcr/nci-adult-match-message-api"
@@ -148,6 +160,8 @@ services:
       - AUTH0_CLIENT_SECRET=${AUTH0_CLIENT_SECRET}
     volumes:
       - $HOME/config/nci-adult-match/nci-adult-match-message-api.properties:/matchbox-dev.properties
+    networks:
+      - adult-match
 
   mongo:
     image: mongo:3.4.0
@@ -155,6 +169,8 @@ services:
       - ./misc/data_setup/match:/backup
     ports:
       - "27018:27017" # Expose 27018 to avoid possible conflicting with the local MongoDB
+    networks:
+      - adult-match
 
   dynamo:
     image: matchbox/dynamodb-local
@@ -162,7 +178,14 @@ services:
       - dynamo-data:/dynamodb_local
     ports:
       - "8001:8000" # Expose 8001 to avoid possible conflicting with the local DynamoDB
+    networks:
+      - adult-match
 
 volumes:
   dynamo-data:
   mongo-data:
+
+networks:
+  adult-match:
+    external:
+      name: adult-match-net

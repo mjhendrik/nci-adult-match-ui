@@ -157,3 +157,11 @@ To run the docker locally use port 5555 because Auth0 is configured to use it.
 ```
 docker run --name "nci-adult-match-ui" -it -p 5555:80  "fnlcr/nci-adult-match-ui:latest"
 ```
+
+## Misc
+
+Run Message API
+
+```
+docker run -p 10250:10250 -p 8282:8282 -e AWS_REGION==$AWS_REGION -e ENVIRONMENT=dev -e JAVA_OPTS="-Dorg.kie.demo=false -Dmatch.properties.file=/matchbox-dev.properties -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=512m -XX:PermSize=128m -XX:MaxPermSize=512m -Xdebug -Djava.net.preferIPv4Stack=true -Xrunjdwp:transport=dt_socket,address=8282,server=y,suspend=n" -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY -e AUTH0_DOMAIN=$AUTH0_DOMAIN -e AUTH0_CLIENT_ID=$AUTH0_CLIENT_ID -e AUTH0_CLIENT_SECRET=$AUTH0_CLIENT_SECRET -e MONGODB_URI=mongodb://mongo:27017/Match -v $HOME/config/nci-adult-match/nci-adult-match-message-api.properties:/matchbox-dev.properties --network=adult-match-net fnlcr/nci-adult-match-message-api:latest
+```
