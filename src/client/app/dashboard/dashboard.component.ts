@@ -50,6 +50,17 @@ export class DashboardComponent implements OnInit {
 
   showRow: any = {};
 
+  private isOutsideAssayValue?: boolean = null;
+
+  set isOutsideAssayWorkflow(value: boolean) {
+    this.isOutsideAssayValue = value;
+    this.getDataPatientsAwaiting(this.route.snapshot.data['data'].PatientsAwaiting);
+  }
+
+  get isOutsideAssayWorkflow(): boolean {
+    return this.isOutsideAssayValue;
+  }
+
   constructor(private dashboardApi: DashboardApiService, private route: ActivatedRoute) {
 
   }
@@ -84,12 +95,46 @@ export class DashboardComponent implements OnInit {
 
   getDataPatientsAwaiting(itemList: any[]) {
 
-    // .filter((x: any) => !x.isOutsideAssay)
-    this.tablePatientsAwaitingData = itemList.map(x => {
+    if (this.isOutsideAssayValue === null) {
+      this.tablePatientsAwaitingData = itemList.map(x => {
 
-      if (x.diseases) x.diseases.shortName = x.diseases.length ? x.diseases.map((y: any) => y.shortName).join(', ') : '';
+        if (x.diseases) x.diseases.shortName = x.diseases.length ? x.diseases.map((y: any) => y.shortName).join(', ') : '';
 
-      if (x.isOutsideAssay) {
+        if (x.isOutsideAssay) {
+
+          x.daysWaiting = x.outsideBiopsy ? x.outsideBiopsy.daysWaiting : x.confirmationBiopsy.daysWaiting;
+
+          if (x.confirmationBiopsy && x.outsideBiopsy) x.messages = x.confirmationBiopsy.messages.concat(x.outsideBiopsy.messages);
+          else if (x.confirmationBiopsy) x.messages = x.confirmationBiopsy.messages;
+          else if (x.outsideBiopsy) x.messages = x.outsideBiopsy.messages;
+
+          if (x.outsideBiopsy) {
+
+            x.diseases = x.outsideBiopsy.diseases;
+            x.MLH1 = x.outsideBiopsy.MLH1;
+            x.MSH2 = x.outsideBiopsy.MLH1;
+            x.PTEN = x.outsideBiopsy.MLH1;
+            x.RB = x.outsideBiopsy.MLH1;
+            x.amoi = x.outsideBiopsy.amoi;
+            x.variantReportConfirmedDate = x.outsideBiopsy.variantReportConfirmedDate;
+            x.biopsySequenceNumber = x.outsideBiopsy.biopsySequenceNumber;
+            x.dateSpecimenCollected = x.outsideBiopsy.dateSpecimenCollected;
+            x.molecularSequenceNumber = x.outsideBiopsy.molecularSequenceNumber;
+            x.lab = x.outsideBiopsy.lab;
+            x.analysisId = x.outsideBiopsy.analysisId;
+            x.dateMsnShipped = x.outsideBiopsy.dateMsnShipped;
+
+          }
+
+        }
+
+        return x;
+
+      });
+    }
+
+    if (this.isOutsideAssayValue === true) {
+      this.tablePatientsAwaitingData = itemList.filter((x: any) => x.isOutsideAssay).map(x => {
 
         x.daysWaiting = x.outsideBiopsy ? x.outsideBiopsy.daysWaiting : x.confirmationBiopsy.daysWaiting;
 
@@ -115,11 +160,17 @@ export class DashboardComponent implements OnInit {
 
         }
 
-      }
+        return x;
 
-      return x;
+      });
+    }
 
-    });
+    if (this.isOutsideAssayValue === false) {
+      this.tablePatientsAwaitingData = itemList.filter((x: any) => !x.isOutsideAssay).map(x => {
+        if (x.diseases) x.diseases.shortName = x.diseases.length ? x.diseases.map((y: any) => y.shortName).join(', ') : '';
+        return x;
+      });
+    }
 
   }
 
