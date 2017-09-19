@@ -355,13 +355,11 @@
                         <li>{{items | dashify}}</li>
                       </ul>
                     </td>
-                    <td *ngIf="!item.isOutsideAssay || item.outsideBiopsy" class="text-center">
-                      <span *ngIf="item.amoi.length!==0"><i class="fa fa-check-circle text-success-light"></i></span>
-                      <span *ngIf="item.amoi.length===0"><i class="fa fa-times-circle text-danger-light"></i></span>
-                    </td>
-                    <td *ngIf="item.confirmationBiopsy" class="text-center">
-                      <span *ngIf="item.confirmationBiopsy.amoi.length!==0"><i class="fa fa-check-circle text-success-light"></i></span>
-                      <span *ngIf="item.confirmationBiopsy.amoi.length===0"><i class="fa fa-times-circle text-danger-light"></i></span>
+                    <td class="text-center">
+                      <span *ngIf="(!item.isOutsideAssay || item.outsideBiopsy) && item.amoi.length!==0"><i class="fa fa-check-circle text-success-light"></i></span>
+                      <span *ngIf="(!item.isOutsideAssay || item.outsideBiopsy) && item.amoi.length===0"><i class="fa fa-times-circle text-danger-light"></i></span>
+                      <span *ngIf="item.confirmationBiopsy && item.confirmationBiopsy.amoi.length!==0"><i class="fa fa-check-circle text-success-light"></i></span>
+                      <span *ngIf="item.confirmationBiopsy && item.confirmationBiopsy.amoi.length===0"><i class="fa fa-times-circle text-danger-light"></i></span>
                     </td>
                     <td [colorCodeDays]="item.daysWaiting">{{item.daysWaiting | dashify}}</td>
                   </tr>
@@ -371,8 +369,8 @@
                       <span *ngIf="!searchtermPatientsAwaiting">There are no patients awaiting further action or information</span>
                     </td>
                   </tr>
-                  <tr *ngIf="showRow[item.patientSequenceNumber]">
-                    <td *ngIf="!item.isOutsideAssay || item.outsideBiopsy" colspan="6" class="bg-body">
+                  <tr *ngIf="showRow[item.patientSequenceNumber] && (!item.isOutsideAssay || item.outsideBiopsy)">
+                    <td colspan="6" class="bg-body">
                       <div class="panel panel-accent-sides-purple panel-details-row">
                         <div *ngIf="item.outsideBiopsy" class="panel-heading">
                           <h4 class="panel-title f-s-18">Treatment Biopsy</h4>
@@ -451,6 +449,8 @@
                         </div>
                       </div>
                     </td>
+                  </tr>
+                  <tr *ngIf="showRow[item.patientSequenceNumber] && item.confirmationBiopsy">
                     <td *ngIf="item.confirmationBiopsy" colspan="6" class="bg-body">
                       <div class="panel panel-accent-sides-purple panel-details-row">
                         <div class="panel-heading">
