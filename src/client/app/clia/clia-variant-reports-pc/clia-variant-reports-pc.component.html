@@ -119,7 +119,9 @@
                 </td>
                 <td>{{item.chromosome | dashify}}</td>
                 <td>{{item.position | dashify}}</td>
-                <td><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.gene"></cosmic-link></td>
+                <td>
+                  <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.gene"></cosmic-link>
+                </td>
                 <td>{{item.variant_type | dashify}}</td>
                 <td>{{item.ocp_reference | dashify}}</td>
                 <td>{{item.ocp_alternative | dashify}}</td>
@@ -159,7 +161,9 @@
                 </td>
                 <td>{{item.chromosome | dashify}}</td>
                 <td>{{item.position | dashify}}</td>
-                <td><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.gene"></cosmic-link></td>
+                <td>
+                  <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.gene"></cosmic-link>
+                </td>
                 <td>{{item.variant_type | dashify}}</td>
                 <td>{{item.ocp_reference | dashify}}</td>
                 <td>{{item.ocp_alternative | dashify}}</td>
@@ -172,6 +176,12 @@
               </tr>
             </tbody>
           </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-center m-t-20">
+          <button class="btn btn-danger"><i class="fa fa-times"></i> Reject Report</button>
+          <button class="btn btn-lime"><i class="fa fa-check"></i> Confirm Report</button>
         </div>
       </div>
     </div>

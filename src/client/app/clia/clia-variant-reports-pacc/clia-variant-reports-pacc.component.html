@@ -90,7 +90,9 @@
                 <td>{{item.ocp_reference | dashify}}</td>
                 <td>{{item.ocp_alternative | dashify}}</td>
                 <td>{{item.allele_frequency | dashify}}</td>
-                <td><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.func_gene"></cosmic-link></td>
+                <td>
+                  <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.func_gene"></cosmic-link>
+                </td>
                 <td>{{item.oncomine_variant_class | dashify}}</td>
                 <td>{{item.function | dashify}}</td>
                 <td>{{item.hgvs | dashify}}</td>
@@ -156,9 +158,13 @@
             <tbody>
               <tr *ngFor="let item of gene_fusions">
                 <td>{{item.identifier | dashify}}</td>
-                <td><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.driver_gene"></cosmic-link></td>
+                <td>
+                  <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.driver_gene"></cosmic-link>
+                </td>
                 <td>{{item.driver_read_count | dashify}}</td>
-                <td><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.partner_gene"></cosmic-link></td>
+                <td>
+                  <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.partner_gene"></cosmic-link>
+                </td>
                 <td>{{item.partner_read_count | dashify}}</td>
                 <td>{{item.annotation | dashify}}</td>
               </tr>
@@ -167,6 +173,12 @@
               </tr>
             </tbody>
           </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-center m-t-20">
+          <button class="btn btn-danger"><i class="fa fa-times"></i> Reject Report</button>
+          <button class="btn btn-lime"><i class="fa fa-check"></i> Confirm Report</button>
         </div>
       </div>
     </div>
