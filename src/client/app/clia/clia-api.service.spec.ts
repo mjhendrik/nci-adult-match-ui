@@ -90,7 +90,6 @@ export function main() {
           .toPromise();
       })));
 
-
       it('should treat 404 as an Observable error', async(inject([], () => {
         let resp = new Response(new ResponseOptions({ status: 404 }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
@@ -108,6 +107,135 @@ export function main() {
           .toPromise();
       })));
     });
+
+
+    describe('when getCliaDetailsPACC', () => {
+      let backend: MockBackend;
+      let service: CliaApiService;
+      let fakeData: any[];
+      let response: Response;
+
+      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
+        backend = be;
+        service = new CliaApiService(http);
+        fakeData = CliaApiServiceStub.makeCliaDetailsPACCData();
+        let options = new ResponseOptions({ status: 200, body: fakeData });
+        response = new Response(options);
+      }));
+
+      it('should have expected fake items total count (then)', async(inject([], () => {
+        backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
+
+        service.getCliaDetailsPACC('mocha').toPromise()
+          .then(items => {
+            expect(items.length).toBe(fakeData.length, 'should have expected no. of items');
+          });
+      })));
+
+
+      it('should have expected fake items total count count (Observable.do)', async(inject([], () => {
+        backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
+
+        service.getCliaDetailsPACC('mocha')
+          .do(items => {
+            expect(items.length).toBe(fakeData.length, 'should have expected no. of items');
+          })
+          .toPromise();
+      })));
+
+      it('should be OK returning no items', async(inject([], () => {
+        let resp = new Response(new ResponseOptions({ status: 200, body: [] }));
+        backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
+
+        service.getCliaDetailsPACC('mocha')
+          .do(items => {
+            expect(items.length).toBe(0, 'should have no items');
+          })
+          .toPromise();
+      })));
+
+      it('should treat 404 as an Observable error', async(inject([], () => {
+        let resp = new Response(new ResponseOptions({ status: 404 }));
+        backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
+
+        service.getCliaDetailsPACC('mocha')
+          .do(items => {
+            console.log('items');
+            console.log(items);
+            fail('should not respond with items');
+          })
+          .catch(err => {
+            expect(err).toMatch(/Bad response status/, 'should catch bad response status code');
+            return Observable.of(null); // failure is the expected test result
+          })
+          .toPromise();
+      })));
+    });
+
+
+    describe('when getCliaDetailsPC', () => {
+      let backend: MockBackend;
+      let service: CliaApiService;
+      let fakeData: any[];
+      let response: Response;
+
+      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
+        backend = be;
+        service = new CliaApiService(http);
+        fakeData = CliaApiServiceStub.makeCliaDetailsPCData();
+        let options = new ResponseOptions({ status: 200, body: fakeData });
+        response = new Response(options);
+      }));
+
+      it('should have expected fake items total count (then)', async(inject([], () => {
+        backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
+
+        service.getCliaDetailsPC('mocha').toPromise()
+          .then(items => {
+            expect(items.length).toBe(fakeData.length, 'should have expected no. of items');
+          });
+      })));
+
+
+      it('should have expected fake items total count count (Observable.do)', async(inject([], () => {
+        backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
+
+        service.getCliaDetailsPC('mocha')
+          .do(items => {
+            expect(items.length).toBe(fakeData.length, 'should have expected no. of items');
+          })
+          .toPromise();
+      })));
+
+      it('should be OK returning no items', async(inject([], () => {
+        let resp = new Response(new ResponseOptions({ status: 200, body: [] }));
+        backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
+
+        service.getCliaDetailsPC('mocha')
+          .do(items => {
+            expect(items.length).toBe(0, 'should have no items');
+          })
+          .toPromise();
+      })));
+
+      it('should treat 404 as an Observable error', async(inject([], () => {
+        let resp = new Response(new ResponseOptions({ status: 404 }));
+        backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
+
+        service.getCliaDetailsPC('mocha')
+          .do(items => {
+            console.log('items');
+            console.log(items);
+            fail('should not respond with items');
+          })
+          .catch(err => {
+            expect(err).toMatch(/Bad response status/, 'should catch bad response status code');
+            return Observable.of(null); // failure is the expected test result
+          })
+          .toPromise();
+      })));
+    });
+
 
   });
 }
