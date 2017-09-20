@@ -110,4 +110,8 @@ export class CliaVariantReportsPcComponent implements OnInit {
       });
   };
 
+  rejectReport(): void {
+    this.cliaApi.rejectReport(this.molecular_id);
+  }
+
 }

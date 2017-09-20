@@ -134,4 +134,8 @@ export class CliaVariantReportsNtcComponent implements OnInit {
       });
   };
 
+  confirmReport(): void {
+    this.cliaApi.rejectReport(this.molecular_id);
+  }
+
 }

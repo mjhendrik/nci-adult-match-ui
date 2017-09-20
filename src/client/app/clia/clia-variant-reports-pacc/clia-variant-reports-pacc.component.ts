@@ -108,4 +108,12 @@ export class CliaVariantReportsPaccComponent implements OnInit {
       });
   };
 
+  rejectReport(): void {
+    this.cliaApi.rejectReport(this.molecular_id);
+  }
+
+  confirmReport(): void {
+    this.cliaApi.rejectReport(this.molecular_id);
+  }
+
 }

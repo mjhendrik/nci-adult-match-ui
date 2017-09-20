@@ -219,6 +219,20 @@ export class CliaApiService {
       .catch(this.handleError);
   }
 
+  rejectReport(molecular_id: string): Observable<any> {
+    return this.http.post(Config.API.SAMPLE_CONTROLS + '/sample_controls/' + molecular_id, '')
+      .map((res: Response) => res.json())
+      //              .do(data => console.log('server data:', data))  // debug
+      .catch(this.handleError);
+  }
+
+  confirmReport(molecular_id: string): Observable<any> {
+    return this.http.post(Config.API.SAMPLE_CONTROLS + '/sample_controls/' + molecular_id, '')
+      .map((res: Response) => res.json())
+      //              .do(data => console.log('server data:', data))  // debug
+      .catch(this.handleError);
+  }
+
   /**
     * Handle HTTP error
     */
