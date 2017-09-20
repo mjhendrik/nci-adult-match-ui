@@ -6,20 +6,18 @@ import { AuthHttp } from 'angular2-jwt';
 import { Config } from '../shared/config/env.config';
 import { VariantReportComparisonData } from './patient-variant-report-oa/variant-report-comparison-data';
 import { DownloadService } from '../shared/utils/download.service';
+import { ApiService } from '../shared/api/api.service';
 
-/**
- * This class provides the NameList service with methods to read names and add names.
- */
 @Injectable()
-export class PatientApiService {
-
+export class PatientApiService extends ApiService {
   /**
-   * Creates a new PatientApiService with the injected AuthHttp.
+   * Creates a new CliaApiService with the injected AuthHttp.
    * @param {AuthHttp} http - The injected AuthHttp.
    * @constructor
    */
-  constructor(private http: AuthHttp,
-    private download: DownloadService) { }
+  constructor(http: AuthHttp, private download: DownloadService) {
+    super(http);
+  }
 
   getPatientList(page: number,
     size: number,
@@ -104,27 +102,7 @@ export class PatientApiService {
       });
   }
 
-  /**
-    * Handle HTTP error
-    */
-  private handleError(error: any) {
-    // In a real world app, we might use a remote logging infrastructure
-    // We'd also dig deeper into the error to get a better message
-    let errMsg = (error.message) ? error.message :
-      error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-    console.error(errMsg); // log to console instead
-    return Observable.throw(errMsg);
-  }
-
   private url(endpoint: string, defaultUrl: string): string {
     return Config.API.PATIENT && Config.API.PATIENT !== '[TBD]' ? Config.API.PATIENT + endpoint : defaultUrl;
-  }
-
-  private extractData(res: Response) {
-    if (res.status < 200 || res.status >= 300) {
-      throw new Error('Bad response status: ' + res.status);
-    }
-    let body = res.json();
-    return (typeof body !== 'undefined') ? body : null;
   }
 }

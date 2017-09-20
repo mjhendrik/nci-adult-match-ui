@@ -22,15 +22,7 @@ class DataResolver implements Resolve<any> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<any> | Promise<any> | any {
-    return Observable.forkJoin(
-      this.api.getCliaVariantReportsNTC(route.params['id'])
-    ).map(
-      data => {
-        return {
-          data: data[0]
-        };
-      }
-      );
+    return this.api.getCliaVariantReportsNTC(route.params['id']);
   }
 }
 
