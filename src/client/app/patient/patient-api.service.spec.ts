@@ -32,8 +32,7 @@ export function main() {
           { provide: XHRBackend, useClass: MockBackend },
           { provide: AuthHttp, useExisting: Http },
         ]
-      })
-        .compileComponents();
+      });
     }));
 
     it('can provide the mockBackend as XHRBackend and DownloadService',
