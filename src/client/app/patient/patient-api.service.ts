@@ -10,6 +10,8 @@ import { ApiService } from '../shared/api/api.service';
 
 @Injectable()
 export class PatientApiService extends ApiService {
+  protected get baseApiUrl(): string { return Config.API.PATIENT; }
+
   /**
    * Creates a new CliaApiService with the injected AuthHttp.
    * @param {AuthHttp} http - The injected AuthHttp.
@@ -100,9 +102,5 @@ export class PatientApiService extends ApiService {
           this.download.downloadFile(data.download_url);
         }
       });
-  }
-
-  private url(endpoint: string, defaultUrl: string): string {
-    return Config.API.PATIENT && Config.API.PATIENT !== '[TBD]' ? Config.API.PATIENT + endpoint : defaultUrl;
   }
 }

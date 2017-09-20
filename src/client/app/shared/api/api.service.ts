@@ -6,6 +6,8 @@ import { Response } from '@angular/http';
 export abstract class ApiService {
   constructor(protected http: AuthHttp) { }
 
+  protected abstract get baseApiUrl(): string;
+
   /**
     * Handle HTTP error
     */
@@ -28,5 +30,9 @@ export abstract class ApiService {
     }
     let body = res.json();
     return (typeof body !== 'undefined') ? body : null;
+  }
+
+  protected url(endpoint: string, defaultUrl: string): string {
+    return this.baseApiUrl && this.baseApiUrl !== '[TBD]' ? this.baseApiUrl + endpoint : defaultUrl;
   }
 }
