@@ -210,11 +210,6 @@ export function main() {
             expect(fixture.componentInstance).toBeDefined();
             expect(open).toBeDefined();
             expect(open).toBe('-');
-
-            //March 2, 2017 1:33 PM GMT
-
-            // console.log("--> " + JSON.stringify(open))
-
           });
       }));
 
