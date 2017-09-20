@@ -17,7 +17,7 @@ import { Observable } from 'rxjs/Observable';
 import { CliaApiService } from './clia-api.service';
 
 export function main() {
-  fdescribe('CliaApiService (mockBackend)', () => {
+  describe('CliaApiService (mockBackend)', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [HttpModule],
