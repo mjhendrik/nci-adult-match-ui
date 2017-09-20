@@ -150,7 +150,7 @@ export function main() {
           });
       }));
 
-    xit('should test dateStatusLog with type closed',
+    it('should test dateStatusLog with type closed',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -160,6 +160,7 @@ export function main() {
                 templateUrl: ''
               }
             }).createComponent(TreatmentArmListComponent);
+
             let item = {
               "_class": "gov.match.model.TreatmentArm",
               "_id": {
@@ -197,9 +198,23 @@ export function main() {
               "treatmentArmStatus": "CLOSED",
               "treatmentArmId": "CukeTest-1065",
               "version": "2015-08-06"
-            }
+            };
+
             fixture.componentInstance.gmt = new GmtPipe();
-            fixture.componentInstance.dateStatusLog(item.statusLog, 'CLOSED,SUSPENDED', item);
+            let closed = fixture.componentInstance.dateStatusLog(item.statusLog, 'CLOSED,SUSPENDED', item);
+            expect(fixture.componentInstance).toBeDefined();
+            expect(closed).toBeDefined();
+            expect(closed).toContain('March 2');
+
+            let open = fixture.componentInstance.dateStatusLog(item.statusLog, 'OPEN', item);
+            expect(fixture.componentInstance).toBeDefined();
+            expect(open).toBeDefined();
+            expect(open).toBe('-');
+
+            //March 2, 2017 1:33 PM GMT
+
+            // console.log("--> " + JSON.stringify(open))
+
           });
       }));
 
@@ -238,7 +253,7 @@ export function main() {
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
     });
 
-    xit('should work by calling ngonInit',
+    it('should work by calling ngonInit',
       async((done: any) => {
         TestBed
           .compileComponents()
