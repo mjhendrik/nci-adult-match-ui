@@ -11,7 +11,7 @@ import { PipesModule } from './../../shared/pipes/pipes.module';
 import { DirectivesModule } from './../../shared/directives/directives.module';
 import { SharedModule } from '../../shared/shared.module';
 import { SampleControlApiService } from '../sample-control-api.service';
-import { CliaVariantReportsPACCInterface } from '../clia-data-interfaces';
+import { CliaVariantReportsPACCViewData } from '../clia-data-interfaces';
 
 export function main() {
   describe('clia variant reports pacc component with clia type mocha', () => {
@@ -325,8 +325,8 @@ export function main() {
 
 
 class MockCliaApiService {
-  getCliaVariantReportsPACC(): Observable<CliaVariantReportsPACCInterface> {
-    let testData: CliaVariantReportsPACCInterface;
+  getCliaVariantReportsPACC(): Observable<CliaVariantReportsPACCViewData> {
+    let testData: CliaVariantReportsPACCViewData;
     testData = {
       copy_number_variants: ['test'],
       gene_fusions: ['test'],
@@ -364,8 +364,8 @@ class MockCliaApiService {
 }
 
 class MockCliaApiServiceWithErrors {
-  getCliaVariantReportsPACC(): Observable<CliaVariantReportsPACCInterface> {
-    let testData: CliaVariantReportsPACCInterface;
+  getCliaVariantReportsPACC(): Observable<CliaVariantReportsPACCViewData> {
+    let testData: CliaVariantReportsPACCViewData;
     testData = {
       copy_number_variants: ['test'],
       gene_fusions: ['test'],

@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { routerTransition } from './../../shared/router.animations';
 import { SampleControlApiService } from '../sample-control-api.service';
-import { CliaVariantReportsNTCInterface } from '../clia-data-interfaces';
+import { CliaVariantReportsNTCViewData } from '../clia-data-interfaces';
 
 
 /**
@@ -39,7 +39,6 @@ export class CliaVariantReportsNtcComponent implements OnInit {
   cliaTypeName: string;
 
   constructor(private api: SampleControlApiService, private route: ActivatedRoute) {
-
   }
 
   ngOnInit() {
@@ -57,7 +56,7 @@ export class CliaVariantReportsNtcComponent implements OnInit {
     this.getData(this.route.snapshot.data['data'].data);
   }
 
-  getData(itemList: CliaVariantReportsNTCInterface) {
+  getData(itemList: CliaVariantReportsNTCViewData) {
     this.molecular_id = itemList.molecular_id;
     this.analysis_id = itemList.analysis_id;
     this.total_variants = itemList.total_variants;

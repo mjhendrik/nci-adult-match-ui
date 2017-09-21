@@ -1,9 +1,9 @@
 import { Observable } from 'rxjs/Observable';
 
 import {
-    CliaVariantReportsNTCInterface,
-    CliaVariantReportsPACCInterface,
-    CliaVariantReportsPCInterface
+    CliaVariantReportsNTCViewData,
+    CliaVariantReportsPACCViewData,
+    CliaVariantReportsPCViewData
 } from '../clia-data-interfaces';
 
 export class CliaApiServiceStub {
@@ -68,7 +68,7 @@ export class CliaApiServiceStub {
             'total_variants': 0,
             'tsv_name': 'IR_WAO85/NTC_MOCHA_KGPVI/SC_KGPVI_analysis_1/SC_KGPVI_MoCha_12_notemplate_passed.tsv',
             'vcf_name': 'IR_WAO85/NTC_MOCHA_KGPVI/SC_KGPVI_analysis_1/SC_KGPVI_MoCha_12_notemplate_passed.vcf'
-        } as CliaVariantReportsNTCInterface;
+        } as CliaVariantReportsNTCViewData;
     }
 
     static makeCliaVariantReportsPACCData = () => {
@@ -95,7 +95,7 @@ export class CliaApiServiceStub {
             'total_variants': 0,
             'tsv_name': 'IR_WAO85/NTC_MOCHA_KGPVI/SC_KGPVI_analysis_1/SC_KGPVI_MoCha_12_notemplate_passed.tsv',
             'vcf_name': 'IR_WAO85/NTC_MOCHA_KGPVI/SC_KGPVI_analysis_1/SC_KGPVI_MoCha_12_notemplate_passed.vcf'
-        } as CliaVariantReportsPACCInterface;
+        } as CliaVariantReportsPACCViewData;
     }
 
     static makeCliaVariantReportsPCData = () => {
@@ -354,6 +354,6 @@ export class CliaApiServiceStub {
             'total_variants': 7,
             'tsv_name': 'IR_UITEST/SC_MOCHA_A2PD6/SC_A2PD6_ANI/test1.tsv',
             'vcf_name': 'IR_UITEST/SC_MOCHA_A2PD6/SC_A2PD6_ANI/test1.vcf'
-        } as CliaVariantReportsPCInterface;
+        } as CliaVariantReportsPCViewData;
     }
 }

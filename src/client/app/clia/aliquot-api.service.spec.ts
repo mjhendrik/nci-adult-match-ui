@@ -17,9 +17,9 @@ import { Observable } from 'rxjs/Observable';
 import { CliaApiServiceStub } from './testing/clia-api-service-stub';
 import { AliquotApiService } from './aliquot-api.service';
 import {
-  CliaVariantReportsNTCInterface,
-  CliaVariantReportsPACCInterface,
-  CliaVariantReportsPCInterface
+  CliaVariantReportsNTCViewData,
+  CliaVariantReportsPACCViewData,
+  CliaVariantReportsPCViewData
 } from './clia-data-interfaces';
 
 export function main() {
@@ -53,7 +53,7 @@ export function main() {
     describe('when getCliaVariantReportsNTC', () => {
       let backend: MockBackend;
       let service: AliquotApiService;
-      let fakeData: CliaVariantReportsNTCInterface;
+      let fakeData: CliaVariantReportsNTCViewData;
       let response: Response;
 
       beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
@@ -114,7 +114,7 @@ export function main() {
     describe('when getCliaVariantReportsPACC', () => {
       let backend: MockBackend;
       let service: AliquotApiService;
-      let fakeData: CliaVariantReportsPACCInterface;
+      let fakeData: CliaVariantReportsPACCViewData;
       let response: Response;
 
       beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
@@ -174,7 +174,7 @@ export function main() {
     describe('when getCliaVariantReportsPC', () => {
       let backend: MockBackend;
       let service: AliquotApiService;
-      let fakeData: CliaVariantReportsPCInterface;
+      let fakeData: CliaVariantReportsPCViewData;
       let response: Response;
 
       beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {

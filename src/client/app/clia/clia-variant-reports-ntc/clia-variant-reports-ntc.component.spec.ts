@@ -11,7 +11,7 @@ import { PipesModule } from './../../shared/pipes/pipes.module';
 import { DirectivesModule } from './../../shared/directives/directives.module';
 import { SharedModule } from '../../shared/shared.module';
 import { SampleControlApiService } from '../sample-control-api.service';
-import { CliaVariantReportsNTCInterface } from '../clia-data-interfaces';
+import { CliaVariantReportsNTCViewData } from '../clia-data-interfaces';
 
 export function main() {
   describe('clia variant reports ntc component with clia type mocha', () => {
@@ -338,8 +338,8 @@ export function main() {
 
 
 class MockCliaApiService {
-  getCliaVariantReportsNTC(type: any): Observable<CliaVariantReportsNTCInterface> {
-    let testData: CliaVariantReportsNTCInterface;
+  getCliaVariantReportsNTC(type: any): Observable<CliaVariantReportsNTCViewData> {
+    let testData: CliaVariantReportsNTCViewData;
     testData = {
       copy_number_variants: ['test'],
       gene_fusions: ['test'],
@@ -389,8 +389,8 @@ class MockCliaApiService {
 }
 
 class MockCliaApiServiceWithError {
-  getCliaVariantReportsNTC(type: any): Observable<CliaVariantReportsNTCInterface> {
-    let testData: CliaVariantReportsNTCInterface;
+  getCliaVariantReportsNTC(type: any): Observable<CliaVariantReportsNTCViewData> {
+    let testData: CliaVariantReportsNTCViewData;
     testData = {
       copy_number_variants: ['test'],
       gene_fusions: ['test'],

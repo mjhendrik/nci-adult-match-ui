@@ -5,7 +5,7 @@ import {
 import { ActivatedRoute } from '@angular/router';
 
 import { routerTransition } from './../../shared/router.animations';
-import { CliaVariantReportsPACCInterface } from '../clia-data-interfaces';
+import { CliaVariantReportsPACCViewData } from '../clia-data-interfaces';
 import { SampleControlApiService } from '../sample-control-api.service';
 
 /**
@@ -54,7 +54,7 @@ export class CliaVariantReportsPaccComponent implements OnInit {
     this.getData(this.route.snapshot.data['data'].data);
   }
 
-  getData(itemList: CliaVariantReportsPACCInterface) {
+  getData(itemList: CliaVariantReportsPACCViewData) {
     this.molecular_id = itemList.molecular_id;
     this.analysis_id = itemList.analysis_id;
     this.total_variants = itemList.total_variants;

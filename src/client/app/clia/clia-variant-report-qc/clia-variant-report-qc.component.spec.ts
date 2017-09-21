@@ -12,7 +12,7 @@ import { DirectivesModule } from './../../shared/directives/directives.module';
 import { VariantReportFilteredTableModule } from '../../shared/variant-report-filtered-table/variant-report-filtered-table.module';
 import { SharedModule } from '../../shared/shared.module';
 import { SampleControlApiService } from '../sample-control-api.service';
-import { CliaVariantReportsQCInterface } from '../clia-data-interfaces';
+import { CliaVariantReportsQCViewData } from '../clia-data-interfaces';
 
 export function main() {
 
@@ -333,8 +333,8 @@ export function main() {
 
 
 class MockCliaApiService {
-  getCliaVariantReportQC(): Observable<CliaVariantReportsQCInterface> {
-    let testData: CliaVariantReportsQCInterface;
+  getCliaVariantReportQC(): Observable<CliaVariantReportsQCViewData> {
+    let testData: CliaVariantReportsQCViewData;
     testData = {
       molecular_id: { 'test': 'test' },
       analysis_id: { 'test': 'test' },
@@ -383,8 +383,8 @@ class MockCliaApiService {
 }
 
 class MockCliaApiServiceWithErrors {
-  getCliaVariantReportQC(): Observable<CliaVariantReportsQCInterface> {
-    let testData: CliaVariantReportsQCInterface;
+  getCliaVariantReportQC(): Observable<CliaVariantReportsQCViewData> {
+    let testData: CliaVariantReportsQCViewData;
     testData = {
       molecular_id: { 'test': 'test' },
       analysis_id: { 'test': 'test' },

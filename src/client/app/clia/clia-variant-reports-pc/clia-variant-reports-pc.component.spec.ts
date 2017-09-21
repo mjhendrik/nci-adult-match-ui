@@ -10,7 +10,7 @@ import { CliaVariantReportsPcComponent } from './clia-variant-reports-pc.compone
 import { PipesModule } from './../../shared/pipes/pipes.module';
 import { DirectivesModule } from './../../shared/directives/directives.module';
 import { SharedModule } from '../../shared/shared.module';
-import { CliaVariantReportsPCInterface } from '../clia-data-interfaces';
+import { CliaVariantReportsPCViewData } from '../clia-data-interfaces';
 
 export function main() {
   describe('clia variant reports pc component with clia type mocha', () => {
@@ -319,8 +319,8 @@ export function main() {
 
 
 class MockCliaApiService {
-  getCliaVariantReportsPC(): Observable<CliaVariantReportsPCInterface> {
-    let testData: CliaVariantReportsPCInterface;
+  getCliaVariantReportsPC(): Observable<CliaVariantReportsPCViewData> {
+    let testData: CliaVariantReportsPCViewData;
     testData = {
       false_positive_variants: ['test'],
       positive_variants: ['test'],
@@ -358,8 +358,8 @@ class MockCliaApiService {
 }
 
 class MockCliaApiServiceWithErrors {
-  getCliaVariantReportsPC(): Observable<CliaVariantReportsPCInterface> {
-    let testData: CliaVariantReportsPCInterface;
+  getCliaVariantReportsPC(): Observable<CliaVariantReportsPCViewData> {
+    let testData: CliaVariantReportsPCViewData;
     testData = {
       false_positive_variants: ['test'],
       positive_variants: ['test'],

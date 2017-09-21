@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { routerTransition } from './../../shared/router.animations';
 import { SampleControlApiService } from '../sample-control-api.service';
-import { CliaVariantReportsPCInterface } from '../clia-data-interfaces';
+import { CliaVariantReportsPCViewData } from '../clia-data-interfaces';
 
 /**
  * This class represents the lazy loaded CLIAVariantReportsPcComponent.
@@ -55,7 +55,7 @@ export class CliaVariantReportsPcComponent implements OnInit {
     this.getData(this.route.snapshot.data['data'].data);
   }
 
-  getData(itemList: CliaVariantReportsPCInterface) {
+  getData(itemList: CliaVariantReportsPCViewData) {
     this.molecular_id = itemList.molecular_id;
     this.analysis_id = itemList.analysis_id;
     this.total_variants = itemList.total_variants;

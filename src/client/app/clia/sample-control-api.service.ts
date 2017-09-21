@@ -4,7 +4,7 @@ import { AuthHttp } from 'angular2-jwt';
 
 import { Config } from '../shared/config/env.config';
 import { ApiService } from '../shared/api/api.service';
-import { CliaVariantReportsQCInterface } from './clia-data-interfaces';
+import { CliaVariantReportsQCViewData } from './clia-data-interfaces';
 
 @Injectable()
 export class SampleControlApiService extends ApiService {
@@ -38,7 +38,7 @@ export class SampleControlApiService extends ApiService {
       .catch(this.handleError);
   }
 
-  getCliaVariantReportQC(molecular_id: string): Observable<CliaVariantReportsQCInterface> {
+  getCliaVariantReportQC(molecular_id: string): Observable<CliaVariantReportsQCViewData> {
     return this.http.get(this.url('/sample_controls/quality_control/' + molecular_id
       + '?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,torrent_variant_caller_version,oncomine_control_panel_summary',
       'assets/mock-data/clia-variant-report-qc-WHAT_SHOULD_BE_HERE.json'))
