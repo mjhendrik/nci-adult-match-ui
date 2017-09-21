@@ -1,4 +1,9 @@
-<div id="content" class="content">
+<div class="load-content" *ngIf="!dataAvailableAR && !dataAvailableVR && !dataAvailablePA && !dataAvailableOverviewTa && !dataAvailableOverviewPatients && !dataAvailableOverviewBt">
+  <div id="page-loader" class="page-loader fade in"><span class="spinner">Loading...</span></div>
+</div>
+<!-- use emit -->
+<div *ngIf="dataAvailableAR && dataAvailableVR && dataAvailablePA && dataAvailableOverviewTa && dataAvailableOverviewPatients && dataAvailableOverviewBt"
+  id="content" class="content">
   <div class="row">
     <div class="p-l-15 f-s-10 text-muted-dark pull-right dashboard-loaded-at">
       Loaded at {{timestamp | date: 'mediumTime'}}
@@ -396,26 +401,22 @@
                               <dt>IHC RB</dt>
                               <dd class="text-muted" *ngIf="item.RB.applicable===false"><i class="fa fa-minus-circle text-warning-light"></i> Not Applicable</dd>
                               <dd *ngIf="!item.RB.reportedDate && item.RB.applicable===true"><i class="fa fa-times-circle text-danger-light"></i></dd>
-                              <dd *ngIf="item.RB.reportedDate"><i class="fa fa-check-circle text-success-light"></i> {{item.RB.reportedDate | gmt}} (<span
-                                  [colorCodeAssay]="item.RB.result">{{item.RB.result | dashify}}</span>)
+                              <dd *ngIf="item.RB.reportedDate"><i class="fa fa-check-circle text-success-light"></i> {{item.RB.reportedDate | gmt}} (<span [colorCodeAssay]="item.RB.result">{{item.RB.result | dashify}}</span>)
                               </dd>
                               <dt>IHC MSH2</dt>
                               <dd class="text-muted" *ngIf="item.MSH2.applicable===false"><i class="fa fa-minus-circle text-warning-light"></i> Not Applicable</dd>
                               <dd *ngIf="!item.MSH2.reportedDate && item.MSH2.applicable===true"><i class="fa fa-times-circle text-danger-light"></i></dd>
-                              <dd *ngIf="item.MSH2.reportedDate"><i class="fa fa-check-circle text-success-light"></i> {{item.MSH2.reportedDate | gmt}} (<span
-                                  [colorCodeAssay]="item.MSH2.result">{{item.MSH2.result | dashify}}</span>)
+                              <dd *ngIf="item.MSH2.reportedDate"><i class="fa fa-check-circle text-success-light"></i> {{item.MSH2.reportedDate | gmt}} (<span [colorCodeAssay]="item.MSH2.result">{{item.MSH2.result | dashify}}</span>)
                               </dd>
                               <dt>IHC MLH1</dt>
                               <dd class="text-muted" *ngIf="item.MLH1.applicable===false"><i class="fa fa-minus-circle text-warning-light"></i> Not Applicable</dd>
                               <dd *ngIf="!item.MLH1.reportedDate && item.MLH1.applicable===true"><i class="fa fa-times-circle text-danger-light"></i></dd>
-                              <dd *ngIf="item.MLH1.reportedDate"><i class="fa fa-check-circle text-success-light"></i> {{item.MLH1.reportedDate | gmt}} (<span
-                                  [colorCodeAssay]="item.MLH1.result">{{item.MLH1.result | dashify}}</span>)
+                              <dd *ngIf="item.MLH1.reportedDate"><i class="fa fa-check-circle text-success-light"></i> {{item.MLH1.reportedDate | gmt}} (<span [colorCodeAssay]="item.MLH1.result">{{item.MLH1.result | dashify}}</span>)
                               </dd>
                               <dt>IHC PTEN</dt>
                               <dd class="text-muted" *ngIf="item.PTEN.applicable===false"><i class="fa fa-minus-circle text-warning-light"></i> Not Applicable</dd>
                               <dd *ngIf="!item.PTEN.reportedDate && item.PTEN.applicable===true"><i class="fa fa-times-circle text-danger-light"></i></dd>
-                              <dd *ngIf="item.PTEN.reportedDate"><i class="fa fa-check-circle text-success-light"></i> {{item.PTEN.reportedDate | gmt}} (<span
-                                  [colorCodeAssay]="item.PTEN.result">{{item.PTEN.result | dashify}}</span>)
+                              <dd *ngIf="item.PTEN.reportedDate"><i class="fa fa-check-circle text-success-light"></i> {{item.PTEN.reportedDate | gmt}} (<span [colorCodeAssay]="item.PTEN.result">{{item.PTEN.result | dashify}}</span>)
                               </dd>
                               <dt>Variant Report</dt>
                               <dd *ngIf="!item.variantReportConfirmedDate"><i class="fa fa-times-circle text-danger-light"></i></dd>
@@ -455,7 +456,7 @@
                                 <ul class="p-0" *ngFor="let items of item.amoi">
                                   <li>
                                     <span class="label m-b-5" amoi status="{{items.state}}" inclusion="{{items.inclusion}}">{{items.state | dashify}} - <span *ngIf="items.inclusion==='true'">INCLUSION</span><span *ngIf="items.inclusion==='false'">EXCLUSION</span></span>
-                                      <treatment-arm-link [treatmentArmId]="items.treatmentArmId" [version]="items.version" [removePrefix]="true"></treatment-arm-link>
+                                    <treatment-arm-link [treatmentArmId]="items.treatmentArmId" [version]="items.version" [removePrefix]="true"></treatment-arm-link>
                                   </li>
                                 </ul>
                               </dd>
@@ -538,7 +539,7 @@
                                 <ul class="p-0" *ngFor="let items of item.confirmationBiopsy.amoi">
                                   <li>
                                     <span class="label m-b-5" amoi status="{{items.state}}" inclusion="{{items.inclusion}}">{{items.state | dashify}} - <span *ngIf="items.inclusion==='true'">INCLUSION</span><span *ngIf="items.inclusion==='false'">EXCLUSION</span></span>
-                                      <treatment-arm-link [treatmentArmId]="items.treatmentArmId" [version]="items.version" [removePrefix]="true"></treatment-arm-link>
+                                    <treatment-arm-link [treatmentArmId]="items.treatmentArmId" [version]="items.version" [removePrefix]="true"></treatment-arm-link>
                                   </li>
                                 </ul>
                               </dd>
