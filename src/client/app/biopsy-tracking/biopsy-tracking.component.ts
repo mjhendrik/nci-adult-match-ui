@@ -7,7 +7,6 @@ import {
   ViewChild,
   ElementRef
 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
 import { routerTransition } from './../shared/router.animations';
@@ -33,8 +32,7 @@ export class BiopsyTrackingListComponent implements OnInit {
   searchtermBiopsyTrackingList: string = '';
   recordsPerPageBiopsyTrackingList: number = 10;
   tableBiopsyTrackingListDefaultSort: string = 'biopsySequenceNumber';
-  tableBiopsyTrackingListData: any[];
-  errorMessage: string;
+  tableBiopsyTrackingListData: any[] = [];
   biopsyCount: number;
   biopsyTotal: number;
   previous: any;
@@ -47,7 +45,6 @@ export class BiopsyTrackingListComponent implements OnInit {
   @ViewChild('input') inputElRef: ElementRef;
 
   constructor(private biopsyTrackingApi: BiopsyTrackingApiService,
-    private route: ActivatedRoute,
     private ngzone: NgZone,
     private cdref: ChangeDetectorRef,
     private appref: ApplicationRef) {
@@ -55,35 +52,30 @@ export class BiopsyTrackingListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getBiopsyCount(this.route.snapshot.data['data'].count);
-    this.biopsyCount = this.route.snapshot.data['data'].count;
-    this.biopsyTotal = this.route.snapshot.data['data'].total;
+    this.getBiopsyCount();
   }
 
   getData() {
     this.biopsyTrackingApi.getBiopsyTracking(this.page, this.size, this.sortOrder, this.sortBy, this.searchtermBiopsyTrackingList)
       .subscribe(itemList => {
         this.tableBiopsyTrackingListData = itemList;
-      },
-      error => this.errorMessage = <any>error
-      );
+      });
   }
 
-  getBiopsyCount(list: any) {
-    this.biopsyTrackingApi.getBiopsyCount('').subscribe((itemList: any) => {
-      this.biopsyCount = itemList;
-      this.getData();
-      this.getBiopsyTotal();
-    });
+  getBiopsyCount() {
+    this.biopsyTrackingApi.getBiopsyCount('')
+      .subscribe((itemList: any) => {
+        this.biopsyCount = itemList;
+        this.getData();
+        this.getBiopsyTotal();
+      });
   }
 
   getBiopsyTotal() {
     this.biopsyTrackingApi.getBiopsyTotal()
       .subscribe(itemList => {
         this.biopsyTotal = itemList;
-      },
-      error => this.errorMessage = <any>error
-      );
+      });
   }
 
   onSearchChanged(val: any) {
@@ -96,7 +88,7 @@ export class BiopsyTrackingListComponent implements OnInit {
           this.searchtermBiopsyTrackingList = val.target.value;
           this.previous = this.page + ',' + this.size + ',' + this.sortOrder + ',' + this.sortBy + ','
             + this.searchtermBiopsyTrackingList;
-          this.getBiopsyCount(this.route.snapshot.data['data'].data);
+          this.getBiopsyCount();
         }
         this.searchtermBiopsyTrackingList = val.target.value;
       });
@@ -110,7 +102,7 @@ export class BiopsyTrackingListComponent implements OnInit {
     this.sortOrder = params[2];
     this.sortBy = params[3];
     if (this.previous !== evt && this.previous !== undefined)
-      this.getBiopsyCount(this.route.snapshot.data['data'].data);
+      this.getBiopsyCount();
     this.previous = evt;
   }
 
@@ -122,7 +114,7 @@ export class BiopsyTrackingListComponent implements OnInit {
     this.sortOrder = params[2];
     this.sortBy = params[3];
     if (this.previous !== evt)
-      this.getBiopsyCount(this.route.snapshot.data['data'].data);
+      this.getBiopsyCount();
     this.previous = evt;
   }
 
