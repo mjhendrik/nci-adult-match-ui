@@ -7,10 +7,11 @@ import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { CliaVariantReportsPaccComponent } from './clia-variant-reports-pacc.component';
-import { CliaApiService, CliaVariantReportsPACCInterface } from './../clia-api.service';
 import { PipesModule } from './../../shared/pipes/pipes.module';
 import { DirectivesModule } from './../../shared/directives/directives.module';
 import { SharedModule } from '../../shared/shared.module';
+import { SampleControlApiService } from '../sample-control-api.service';
+import { CliaVariantReportsPACCInterface } from '../clia-data-interfaces';
 
 export function main() {
   describe('clia variant reports pacc component with clia type mocha', () => {
@@ -29,7 +30,7 @@ export function main() {
         ],
         declarations: [CliaVariantReportsPaccComponent],
         providers: [
-          { provide: CliaApiService, useClass: MockCliaApiService },
+          { provide: SampleControlApiService, useClass: MockCliaApiService },
           {
             provide: ActivatedRoute, useValue: {
               snapshot: {
@@ -93,7 +94,7 @@ export function main() {
 
         declarations: [CliaVariantReportsPaccComponent],
         providers: [
-          { provide: CliaApiService, useClass: MockCliaApiService },
+          { provide: SampleControlApiService, useClass: MockCliaApiService },
           {
             provide: ActivatedRoute, useValue: {
               snapshot: {
@@ -154,7 +155,7 @@ export function main() {
 
         declarations: [CliaVariantReportsPaccComponent],
         providers: [
-          { provide: CliaApiService, useClass: MockCliaApiService },
+          { provide: SampleControlApiService, useClass: MockCliaApiService },
           {
             provide: ActivatedRoute, useValue: {
               snapshot: {
@@ -215,7 +216,7 @@ export function main() {
 
         declarations: [CliaVariantReportsPaccComponent],
         providers: [
-          { provide: CliaApiService, useClass: MockCliaApiService },
+          { provide: SampleControlApiService, useClass: MockCliaApiService },
           {
             provide: ActivatedRoute, useValue: {
               snapshot: {
@@ -276,7 +277,7 @@ export function main() {
 
         declarations: [CliaVariantReportsPaccComponent],
         providers: [
-          { provide: CliaApiService, useClass: MockCliaApiServiceWithErrors },
+          { provide: SampleControlApiService, useClass: MockCliaApiServiceWithErrors },
           {
             provide: ActivatedRoute, useValue: {
               snapshot: {

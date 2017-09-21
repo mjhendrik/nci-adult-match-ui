@@ -5,11 +5,8 @@ import {
 import { ActivatedRoute } from '@angular/router';
 
 import { routerTransition } from './../../shared/router.animations';
-import {
-  CliaApiService,
-  CliaVariantReportsPACCInterface
-} from './../clia-api.service';
-
+import { CliaVariantReportsPACCInterface } from '../clia-data-interfaces';
+import { SampleControlApiService } from '../sample-control-api.service';
 
 /**
  * CLIAVariantReportsPaccComponent.
@@ -39,8 +36,7 @@ export class CliaVariantReportsPaccComponent implements OnInit {
   paccType: string;
   cliaTypeName: string;
 
-  constructor(private cliaApi: CliaApiService, private route: ActivatedRoute) {
-
+  constructor(private api: SampleControlApiService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -73,7 +69,7 @@ export class CliaVariantReportsPaccComponent implements OnInit {
   };
 
   downloadDnaBam(): void {
-    this.cliaApi.downloadCliaDnaBam(this.molecular_id)
+    this.api.downloadCliaDnaBam(this.molecular_id)
       .subscribe((itemList: any) => {
         let link = document.createElement('a');
         // link.download = name;
@@ -85,7 +81,7 @@ export class CliaVariantReportsPaccComponent implements OnInit {
   };
 
   downloadRnaBam(): void {
-    this.cliaApi.downloadCliaRnaBam(this.molecular_id)
+    this.api.downloadCliaRnaBam(this.molecular_id)
       .subscribe((itemList: any) => {
         let link = document.createElement('a');
         // link.download = name;
@@ -97,7 +93,7 @@ export class CliaVariantReportsPaccComponent implements OnInit {
   };
 
   downloadVcf(): void {
-    this.cliaApi.downloadCliaVcf(this.molecular_id)
+    this.api.downloadCliaVcf(this.molecular_id)
       .subscribe((itemList: any) => {
         let link = document.createElement('a');
         // link.download = name;
@@ -109,11 +105,11 @@ export class CliaVariantReportsPaccComponent implements OnInit {
   };
 
   rejectReport(): void {
-    this.cliaApi.rejectReport(this.molecular_id);
+    this.api.rejectReport(this.molecular_id);
   };
 
   confirmReport(): void {
-    this.cliaApi.rejectReport(this.molecular_id);
+    this.api.rejectReport(this.molecular_id);
   };
 
 }

@@ -5,10 +5,8 @@ import {
 import { ActivatedRoute } from '@angular/router';
 
 import { routerTransition } from './../../shared/router.animations';
-import {
-  CliaApiService,
-  CliaVariantReportsNTCInterface
-} from './../clia-api.service';
+import { SampleControlApiService } from '../sample-control-api.service';
+import { CliaVariantReportsNTCInterface } from '../clia-data-interfaces';
 
 
 /**
@@ -40,7 +38,7 @@ export class CliaVariantReportsNtcComponent implements OnInit {
   ntcType: string;
   cliaTypeName: string;
 
-  constructor(private cliaApi: CliaApiService, private route: ActivatedRoute) {
+  constructor(private api: SampleControlApiService, private route: ActivatedRoute) {
 
   }
 
@@ -75,7 +73,7 @@ export class CliaVariantReportsNtcComponent implements OnInit {
   };
 
   downloadDnaBam(): void {
-    this.cliaApi.downloadCliaDnaBam(this.molecular_id)
+    this.api.downloadCliaDnaBam(this.molecular_id)
       .subscribe((itemList: any) => {
         let link = document.createElement('a');
         // link.download = name;
@@ -87,7 +85,7 @@ export class CliaVariantReportsNtcComponent implements OnInit {
   };
 
   downloadDnaBai(): void {
-    this.cliaApi.downloadCliaDnaBai(this.molecular_id)
+    this.api.downloadCliaDnaBai(this.molecular_id)
       .subscribe((itemList: any) => {
         let link = document.createElement('a');
         // link.download = name;
@@ -99,7 +97,7 @@ export class CliaVariantReportsNtcComponent implements OnInit {
   };
 
   downloadRnaBam(): void {
-    this.cliaApi.downloadCliaRnaBam(this.molecular_id)
+    this.api.downloadCliaRnaBam(this.molecular_id)
       .subscribe((itemList: any) => {
         let link = document.createElement('a');
         // link.download = name;
@@ -111,7 +109,7 @@ export class CliaVariantReportsNtcComponent implements OnInit {
   };
 
   downloadRnaBai(): void {
-    this.cliaApi.downloadCliaRnaBai(this.molecular_id)
+    this.api.downloadCliaRnaBai(this.molecular_id)
       .subscribe((itemList: any) => {
         let link = document.createElement('a');
         // link.download = name;
@@ -123,7 +121,7 @@ export class CliaVariantReportsNtcComponent implements OnInit {
   };
 
   downloadVcf(): void {
-    this.cliaApi.downloadCliaVcf(this.molecular_id)
+    this.api.downloadCliaVcf(this.molecular_id)
       .subscribe((itemList: any) => {
         let link = document.createElement('a');
         // link.download = name;
@@ -135,7 +133,7 @@ export class CliaVariantReportsNtcComponent implements OnInit {
   };
 
   confirmReport(): void {
-    this.cliaApi.rejectReport(this.molecular_id);
+    this.api.rejectReport(this.molecular_id);
   };
 
 }

@@ -7,10 +7,10 @@ import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { CliaVariantReportsPcComponent } from './clia-variant-reports-pc.component';
-import { CliaApiService, CliaVariantReportsPCInterface } from './../clia-api.service';
 import { PipesModule } from './../../shared/pipes/pipes.module';
 import { DirectivesModule } from './../../shared/directives/directives.module';
 import { SharedModule } from '../../shared/shared.module';
+import { CliaVariantReportsPCInterface } from '../clia-data-interfaces';
 
 export function main() {
   describe('clia variant reports pc component with clia type mocha', () => {
@@ -29,7 +29,6 @@ export function main() {
         ],
         declarations: [CliaVariantReportsPcComponent],
         providers: [
-          { provide: CliaApiService, useClass: MockCliaApiService },
           {
             provide: ActivatedRoute, useValue: {
               snapshot: {
@@ -93,7 +92,6 @@ export function main() {
         ],
         declarations: [CliaVariantReportsPcComponent],
         providers: [
-          { provide: CliaApiService, useClass: MockCliaApiService },
           {
             provide: ActivatedRoute, useValue: {
               snapshot: {
@@ -154,7 +152,6 @@ export function main() {
         ],
         declarations: [CliaVariantReportsPcComponent],
         providers: [
-          { provide: CliaApiService, useClass: MockCliaApiService },
           {
             provide: ActivatedRoute, useValue: {
               snapshot: {
@@ -215,7 +212,6 @@ export function main() {
         ],
         declarations: [CliaVariantReportsPcComponent],
         providers: [
-          { provide: CliaApiService, useClass: MockCliaApiService },
           {
             provide: ActivatedRoute, useValue: {
               snapshot: {
@@ -276,7 +272,6 @@ export function main() {
         ],
         declarations: [CliaVariantReportsPcComponent],
         providers: [
-          { provide: CliaApiService, useClass: MockCliaApiServiceWithErrors },
           {
             provide: ActivatedRoute, useValue: {
               snapshot: {

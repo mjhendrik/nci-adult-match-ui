@@ -13,7 +13,7 @@ export class PatientApiService extends ApiService {
   protected get baseApiUrl(): string { return Config.API.PATIENT; }
 
   /**
-   * Creates a new CliaApiService with the injected AuthHttp.
+   * Creates a new PatientApiService with the injected AuthHttp.
    * @param {AuthHttp} http - The injected AuthHttp.
    * @constructor
    */

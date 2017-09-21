@@ -12,7 +12,6 @@ import { DataTableModule } from '../../shared/datatables/index';
 // import { CliaVariantReportsNtcModule } from './clia-variant-reports-ntc.module';
 import { CliaParentComponent } from './clia-parent.component';
 // import { CliaVariantReportsNtcRoutingModule } from './clia-variant-reports-ntc-routing.module';
-import { CliaApiService } from './../clia-api.service';
 import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { PipesModule } from './../../shared/pipes/pipes.module';
@@ -29,7 +28,7 @@ import {
   MockBackend,
   MockConnection
 } from '@angular/http/testing';
-
+import { SampleControlApiService } from '../sample-control-api.service';
 
 
 export function main() {
@@ -77,7 +76,7 @@ export function main() {
         imports: [RouterTestingModule.withRoutes(config), DirectivesModule, PipesModule, FormsModule, DataTableModule],
         declarations: [CliaParentComponent],
         providers: [
-          { provide: CliaApiService, useClass: MockCliaApiService },
+          { provide: SampleControlApiService, useClass: MockCliaApiService },
           {
             provide: ActivatedRoute, useValue: {
               snapshot:
@@ -213,7 +212,7 @@ export function main() {
         imports: [RouterTestingModule.withRoutes(config), DirectivesModule, PipesModule, FormsModule, DataTableModule],
         declarations: [CliaParentComponent],
         providers: [
-          { provide: CliaApiService, useClass: MockCliaApiService },
+          { provide: SampleControlApiService, useClass: MockCliaApiService },
           {
             provide: ActivatedRoute, useValue: {
               snapshot: {
@@ -257,7 +256,7 @@ export function main() {
         imports: [RouterTestingModule.withRoutes(config), DirectivesModule, PipesModule, FormsModule, DataTableModule],
         declarations: [CliaParentComponent],
         providers: [
-          { provide: CliaApiService, useClass: MockCliaApiService },
+          { provide: SampleControlApiService, useClass: MockCliaApiService },
           {
             provide: ActivatedRoute, useValue: {
               snapshot: {
@@ -301,7 +300,7 @@ export function main() {
         imports: [RouterTestingModule.withRoutes(config), DirectivesModule, PipesModule, FormsModule, DataTableModule],
         declarations: [CliaParentComponent],
         providers: [
-          { provide: CliaApiService, useClass: MockCliaApiService },
+          { provide: SampleControlApiService, useClass: MockCliaApiService },
           {
             provide: ActivatedRoute, useValue: {
               snapshot: {
@@ -344,7 +343,7 @@ export function main() {
         imports: [RouterTestingModule.withRoutes(config), DirectivesModule, PipesModule, FormsModule, DataTableModule],
         declarations: [CliaParentComponent],
         providers: [
-          { provide: CliaApiService, useClass: MockCliaApiService },
+          { provide: SampleControlApiService, useClass: MockCliaApiService },
           {
             provide: ActivatedRoute, useValue: {
               snapshot: {
