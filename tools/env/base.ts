@@ -7,7 +7,7 @@ const BaseConfig: EnvConfig = {
     ION_REPORTERS: 'http://localhost:3001',
     SAMPLE_CONTROLS: 'http://localhost:3002',
     ALIQUOT: 'http://localhost:3003',
-    MESSAGE: 'http://localhost:7100'
+    MESSAGE: 'http://localhost:10250'
   },
   CLIENT_ID: 'RjoYZXUDEzQxMJw04C6B5dsQKqUAEYzA', // Dev by default
   AUTH_DOMAIN: 'ncimatch.auth0.com'
