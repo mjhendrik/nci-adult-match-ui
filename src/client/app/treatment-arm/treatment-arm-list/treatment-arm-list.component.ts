@@ -2,7 +2,6 @@ import {
   Component,
   OnInit
 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { routerTransition } from './../../shared/router.animations';
 import { GmtPipe } from './../../shared/pipes/gmt.pipe';
 import { TreatmentArmApiService } from '../treatment-arm-api.service';
@@ -23,23 +22,30 @@ export class TreatmentArmListComponent implements OnInit {
   searchtermTA: string = '';
   recordsPerPageTA: number = 10;
   tableTADefaultSort: string = 'treatmentArmId';
-  tableTAData: any[];
-  errorMessage: string;
+  tableTAData: any[] = [];
+  dataAvailable: boolean = false; // use emit
 
   gmt: GmtPipe;
 
-  constructor(private treatmentArmApi: TreatmentArmApiService, private route: ActivatedRoute) {
+  constructor(private treatmentArmApi: TreatmentArmApiService) {
 
   }
 
   ngOnInit() {
     this.gmt = new GmtPipe();
-    let itemList = this.route.snapshot.data['data'];
-    this.tableTAData = itemList[0].map((x: any) => {
-      x.dateCreated = this.gmt.transform(x.dateCreated);
-      return x;
-    });
+    this.getData();
   }
+
+  getData() {
+    this.treatmentArmApi.getTreatmentArmList()
+      .subscribe(itemList => {
+        this.tableTAData = itemList.map(x => {
+          x.dateCreated = this.gmt.transform(x.dateCreated);
+          return x;
+        });
+        this.dataAvailable = true; // use emit
+      });
+  };
 
   dateStatusLog(statusLog: any, type: string, item: any): string {
 
