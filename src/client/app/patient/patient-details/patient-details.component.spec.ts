@@ -76,6 +76,7 @@ export function main() {
       // query for the title 'page-header' by CSS element selector
       de = fixture.debugElement.query(By.css('.page-header'));
       el = de.nativeElement;
+
     });
 
     xit('no PSN in title until manually call `detectChanges`', () => {
@@ -148,6 +149,9 @@ export function main() {
 
         component.addedFileDnaBam('test');
 
+
+        console.log("-->"+component.dnaBam)
+
         expect(component.dnaBam).toBe(true);
         expect(spy).toHaveBeenCalled();
       });
@@ -188,8 +192,6 @@ export function main() {
       });
 
       xit('should work when entityId and needToScroll are passed', fakeAsync(() => {
-
-
         const scrollToElement = fixture.debugElement.query(By.css('.ut-patient-timeline'));
         expect(scrollToElement).not.toBeNull();
 
