@@ -16,6 +16,12 @@ Login into docker using your docker account (needed only once)
 docker login
 ```
 
+Create external Docker network
+
+```
+docker network create adult-match-net
+```
+
 Make sure you have the following environment variables:
 
     AUTH0_CLIENT_ID
@@ -44,8 +50,15 @@ To run only some of the services (for example only the `ui` and `patient-api`, w
 For front-end developers running the front-end code in node, run everything __but__ the front-end:
 
 ```
-docker-compose up patient-api treatment-arm-api ion-reporters-api sample-controls-api aliquots-api ir-processor-api message-api
+docker-compose up patient-api treatment-arm-api ion-reporters-api sample-controls-api aliquots-api ir-processor-api
 ```
+
+*Note: for now Message API doesn't work in docker-compose. You will have to run it as a separate docker container:*
+
+```
+docker run -p 10250:10250 -p 8282:8282 -e AWS_REGION=$AWS_REGION -e ENVIRONMENT=dev -e JAVA_OPTS="-Dorg.kie.demo=false -Dmatch.properties.file=/matchbox-dev.properties -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=512m -XX:PermSize=128m -XX:MaxPermSize=512m -Xdebug -Djava.net.preferIPv4Stack=true -Xrunjdwp:transport=dt_socket,address=8282,server=y,suspend=n" -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY -e AUTH0_DOMAIN=$AUTH0_DOMAIN -e AUTH0_CLIENT_ID=$AUTH0_CLIENT_ID -e AUTH0_CLIENT_SECRET=$AUTH0_CLIENT_SECRET -e MONGODB_URI=mongodb://mongo:27017/Match -v $HOME/config/nci-adult-match/nci-adult-match-message-api.properties:/matchbox-dev.properties --network=adult-match-net fnlcr/nci-adult-match-message-api:latest
+```
+
 
 Full list of services included in `docker-compose.yml`
 
@@ -56,6 +69,7 @@ Full list of services included in `docker-compose.yml`
 * `sample-controls-api`
 * `aliquots-api`
 * `ir-processor-api`
+* `message-api`
 * `mongo`
 * `dynamo`
 
@@ -156,12 +170,4 @@ To run the docker locally use port 5555 because Auth0 is configured to use it.
 
 ```
 docker run --name "nci-adult-match-ui" -it -p 5555:80  "fnlcr/nci-adult-match-ui:latest"
-```
-
-## Misc
-
-Run Message API
-
-```
-docker run -p 10250:10250 -p 8282:8282 -e AWS_REGION==$AWS_REGION -e ENVIRONMENT=dev -e JAVA_OPTS="-Dorg.kie.demo=false -Dmatch.properties.file=/matchbox-dev.properties -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=512m -XX:PermSize=128m -XX:MaxPermSize=512m -Xdebug -Djava.net.preferIPv4Stack=true -Xrunjdwp:transport=dt_socket,address=8282,server=y,suspend=n" -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY -e AUTH0_DOMAIN=$AUTH0_DOMAIN -e AUTH0_CLIENT_ID=$AUTH0_CLIENT_ID -e AUTH0_CLIENT_SECRET=$AUTH0_CLIENT_SECRET -e MONGODB_URI=mongodb://mongo:27017/Match -v $HOME/config/nci-adult-match/nci-adult-match-message-api.properties:/matchbox-dev.properties --network=adult-match-net fnlcr/nci-adult-match-message-api:latest
 ```

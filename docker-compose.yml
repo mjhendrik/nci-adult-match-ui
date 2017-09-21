@@ -151,7 +151,7 @@ services:
       - mongo
     environment:
       - ENVIRONMENT=dev
-      - AWS_REGION=us-east-1 
+      - AWS_REGION=$AWS_REGION
       - JAVA_OPTS="-Dorg.kie.demo=false -Dmatch.properties.file=/matchbox-dev.properties -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=512m -XX:PermSize=128m -XX:MaxPermSize=512m -Xdebug -Djava.net.preferIPv4Stack=true -Xrunjdwp:transport=dt_socket,address=8282,server=y,suspend=n"
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
