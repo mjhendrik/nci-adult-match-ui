@@ -64,6 +64,7 @@ export interface CliaVariantReportsQCInterface {
 
 @Injectable()
 export class CliaApiService extends ApiService {
+  protected get baseApiUrl(): string { return Config.API.SAMPLE_CONTROLS; }
 
   /**
    * Creates a new CliaApiService with the injected AuthHttp.
@@ -74,89 +75,65 @@ export class CliaApiService extends ApiService {
     super(http);
   }
 
-  /**
-   * Returns an Observable for the HTTP GET request for the JSON resource.
-   * @return {string[]} The Observable for the HTTP request.
-   */
   getCliaDetailsNTC(type: string): Observable<any[]> {
-
-    // return this.http.get('assets/mock-data/clia-' + type + '-ntc.json') // works only for mocha
-
-    return this.http.get(Config.API.SAMPLE_CONTROLS + '/sample_controls?site=' + type
-      + '&control_type=no_template&projection=molecular_id,date_molecular_id_created,date_variant_received,report_status')
+    return this.http.get(this.url('/sample_controls?site=' + type
+      + '&control_type=no_template&projection=molecular_id,date_molecular_id_created,date_variant_received,report_status',
+      'assets/mock-data/clia-' + type + '-ntc.json'))
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   getCliaDetailsPACC(type: string): Observable<any[]> {
-
-    // return this.http.get('assets/mock-data/clia-' + type + '-pacc.json') // works only for mocha
-
-    return this.http.get(Config.API.SAMPLE_CONTROLS + '/sample_controls?site=' + type
-      + '&control_type=proficiency_competency&projection=molecular_id,date_molecular_id_created,date_variant_received,report_status')
+    return this.http.get(this.url('/sample_controls?site=' + type
+      + '&control_type=proficiency_competency&projection=molecular_id,date_molecular_id_created,date_variant_received,report_status',
+      'assets/mock-data/clia-' + type + '-pacc.json'))
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   getCliaDetailsPC(type: string): Observable<any[]> {
-
-    // return this.http.get('assets/mock-data/clia-' + type + '-pc.json') // works only for mocha
-
-    return this.http.get(Config.API.SAMPLE_CONTROLS + '/sample_controls?site=' + type
-      + '&control_type=positive&projection=molecular_id,date_molecular_id_created,date_variant_received,report_status')
+    return this.http.get(this.url('/sample_controls?site=' + type
+      + '&control_type=positive&projection=molecular_id,date_molecular_id_created,date_variant_received,report_status',
+      'assets/mock-data/clia-' + type + '-pc.json'))
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   getCliaIon(type: string): Observable<any[]> {
-
-    // return this.http.get('assets/mock-data/clia-' + type + '-ion.json')
-
-    return this.http.get(Config.API.ION_REPORTERS + '/ion_reporters/healthcheck?site=' + type)
+    return this.http.get(this.url('/ion_reporters/healthcheck?site=' + type,
+      'assets/mock-data/clia-' + type + '-ion.json'))
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   getCliaVariantReportsNTC(molecular_id: string): Observable<CliaVariantReportsNTCInterface> {
-
-    // getCliaVariantReportsNTC(ntcType: string): Observable<CliaVariantReportsNTCInterface> {
-    //   return this.http.get('assets/mock-data/clia-variant-reports-ntc-' + ntcType + '.json') // works only for mocha
-
-    return this.http.get(Config.API.ALIQUOT + '/aliquot/' + molecular_id
-      + '?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,date_variant_received,torrent_variant_caller_version,report_status,snv_indels,copy_number_variants,gene_fusions')
+    return this.http.get(this.url('/aliquot/' + molecular_id
+      + '?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,date_variant_received,torrent_variant_caller_version,report_status,snv_indels,copy_number_variants,gene_fusions',
+      'assets/mock-data/clia-variant-reports-ntc-WHAT_SHOULD_BE_HERE.json'))
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   getCliaVariantReportsPACC(molecular_id: string): Observable<CliaVariantReportsPACCInterface> {
-
-    // getCliaVariantReportsPACC(paccType: string): Observable<CliaVariantReportsPACCInterface> {
-    //   return this.http.get('assets/mock-data/clia-variant-reports-pacc-' + paccType + '.json') // works only for mocha
-
-    return this.http.get(Config.API.ALIQUOT + '/aliquot/' + molecular_id
-      + '?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,date_variant_received,torrent_variant_caller_version,report_status,snv_indels,copy_number_variants,gene_fusions')
+    return this.http.get(this.url('/aliquot/' + molecular_id
+      + '?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,date_variant_received,torrent_variant_caller_version,report_status,snv_indels,copy_number_variants,gene_fusions',
+      'assets/mock-data/clia-variant-reports-pacc-WHAT_SHOULD_BE_HERE.json'))
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   getCliaVariantReportsPC(molecular_id: string): Observable<CliaVariantReportsPCInterface> {
-
-    // getCliaVariantReportsPC(pcType: string): Observable<CliaVariantReportsPCInterface> {
-    //   return this.http.get('assets/mock-data/clia-variant-reports-pc-' + pcType + '.json') // works only for mocha
-
-    return this.http.get(Config.API.ALIQUOT + '/aliquot/' + molecular_id
-      + '?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,positive_control_version,date_molecular_id_created,date_variant_received,torrent_variant_caller_version,report_status,positive_variants,false_positive_variants')
+    return this.http.get(this.url('/aliquot/' + molecular_id
+      + '?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,positive_control_version,date_molecular_id_created,date_variant_received,torrent_variant_caller_version,report_status,positive_variants,false_positive_variants',
+      'assets/mock-data/clia-variant-reports-pc-WHAT_SHOULD_BE_HERE.json'))
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   getCliaVariantReportQC(molecular_id: string): Observable<CliaVariantReportsQCInterface> {
-
-    // getCliaVariantReportQC(tabType: string, cliaType: string): Observable<CliaVariantReportsQCInterface> {
-    //   return this.http.get('assets/mock-data/clia-variant-report-qc-' + tabType + '-' + cliaType + '.json') // works only for mocha
-
-    return this.http.get(Config.API.SAMPLE_CONTROLS + '/sample_controls/quality_control/' + molecular_id
-      + '?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,torrent_variant_caller_version,oncomine_control_panel_summary')
+    return this.http.get(this.url('/sample_controls/quality_control/' + molecular_id
+      + '?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,torrent_variant_caller_version,oncomine_control_panel_summary',
+      'assets/mock-data/clia-variant-report-qc-WHAT_SHOULD_BE_HERE.json'))
       .map(this.extractData)
       .catch(this.handleError);
   }
