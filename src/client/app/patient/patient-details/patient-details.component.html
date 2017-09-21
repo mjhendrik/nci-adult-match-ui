@@ -59,7 +59,6 @@
       </div>
     </div>
   </div>
-
   <div class="row">
     <div class="col-md-12">
       <div class="panel">
@@ -168,7 +167,6 @@
                         </thead>
                         <tbody>
                           <ng-template ngFor let-sendout [ngForOf]="biopsy.nucleicAcidSendouts">
-
                             <tr id="{{sendout.molecularSequenceNumber}}">
                               <td><i class="fa fa-share-alt"></i> {{sendout.molecularSequenceNumber | dashify}}</td>
                               <td>{{sendout.destinationSite | dashify}}</td>
@@ -183,10 +181,8 @@
                               <td>{{sendout.reportedDate | gmt}}</td>
                               <td>{{sendout.comment | dashify}}</td>
                             </tr>
-
                             <tr *ngFor="let analysis of sendout.analyses; let last = last" id="{{analysis.analysisId}}">
                               <td colspan="7" class="bg-body">
-
                                 <div class="panel panel-with-tabs panel-accent-sides-purple panel-details-row">
                                   <div class="panel-heading">
                                     <ul id="panel-tab" class="nav nav-tabs pull-right nav-tabs-purple">
@@ -198,10 +194,8 @@
                                     <h5><a *ngIf="biopsy.isOutsideAssayWorkflow" href [routerLink]="['/patients/' + patient.patientSequenceNumber + '/variant_reports_oa/' + analysis.analysisId]"
                                         [queryParams]="{isOutsideAssay: biopsy.isOutsideAssay}"><i class="fa fa-file-text-o"></i> Variant and Assignment Reports</a></h5>
                                   </div>
-
                                   <div id="panel-tab-content" class="tab-content p-t-0">
                                     <div class="tab-pane fade active in" id="panel-tab-info">
-
                                       <div class="row">
                                         <div class="col-md-6" id="variant-report-{{analysis.analysisId}}">
                                           <dl class="dl-horizontal m-b-4">

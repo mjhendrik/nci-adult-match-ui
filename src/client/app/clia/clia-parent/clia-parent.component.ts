@@ -8,6 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 import { routerTransition } from './../../shared/router.animations';
 import { GmtPipe } from './../../shared/pipes/gmt.pipe';
 import { SampleControlApiService } from '../sample-control-api.service';
+import { IonReportersApiService } from '../ion-reporters-api.service';
 
 /**
  * CliaParentComponent.
@@ -57,7 +58,9 @@ export class CliaParentComponent implements OnInit {
   roles: any[] = [];
   generateMsnBtn: boolean = false;
 
-  constructor(private api: SampleControlApiService, private route: ActivatedRoute) {
+  dataAvailable: boolean = false;
+
+  constructor(private apiSample: SampleControlApiService, private apiIon: IonReportersApiService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -70,10 +73,10 @@ export class CliaParentComponent implements OnInit {
     if (this.cliaType === 'mgh') this.cliaTypeName = 'MGH';
     if (this.cliaType === 'mda') this.cliaTypeName = 'MD Anderson';
 
-    this.getDataPC(this.route.snapshot.data['data'].PCData);
-    this.getDataNTC(this.route.snapshot.data['data'].NTCData);
-    this.getDataPACC(this.route.snapshot.data['data'].PACCData);
-    this.getDataIon(this.route.snapshot.data['data'].ionData);
+    this.getDataPC();
+    this.getDataNTC();
+    this.getDataPACC();
+    this.getDataIon();
     // this.autoLoadDataIon();
     // TO_DO: Error: Timeout - Async callback was not invoked within timeout specified by jasmine.DEFAULT_TIMEOUT_INTERVAL.
     // (https://github.com/angular/angular/issues/8280#issue-151377567)
@@ -88,53 +91,58 @@ export class CliaParentComponent implements OnInit {
 
   }
 
-  getDataPC(details: any) {
-    let gmt = new GmtPipe();
-
-    this.tablePCData = details.map((x: any) => {
-      x.date_molecular_id_created = gmt.transform(x.date_molecular_id_created);
-      x.date_variant_received = gmt.transform(x.date_variant_received);
-      return x;
-    });
-
-    this.tablePCData.splice(-1, 1);
-
+  getDataPC() {
+    this.apiSample.getCliaDetailsPC(this.cliaType)
+      .subscribe(details => {
+        let gmt = new GmtPipe();
+        this.tablePCData = details.map((x: any) => {
+          x.date_molecular_id_created = gmt.transform(x.date_molecular_id_created);
+          x.date_variant_received = gmt.transform(x.date_variant_received);
+          return x;
+        });
+        // this.tablePCData.splice(-1, 1); --> Check if you need this in the new message-api implementation
+        this.dataAvailable = true;
+      });
   };
 
-  getDataNTC(details: any) {
-    let gmt = new GmtPipe();
-
-    this.tableNTCData = details.map((x: any) => {
-      x.date_molecular_id_created = gmt.transform(x.date_molecular_id_created);
-      x.date_variant_received = gmt.transform(x.date_variant_received);
-      return x;
-    });
-
-    this.tableNTCData.splice(-1, 1);
-
+  getDataNTC() {
+    this.apiSample.getCliaDetailsNTC(this.cliaType)
+      .subscribe(details => {
+        let gmt = new GmtPipe();
+        this.tableNTCData = details.map((x: any) => {
+          x.date_molecular_id_created = gmt.transform(x.date_molecular_id_created);
+          x.date_variant_received = gmt.transform(x.date_variant_received);
+          return x;
+        });
+        // this.tableNTCData.splice(-1, 1); --> Check if you need this in the new message-api implementation
+        this.dataAvailable = true;
+      });
   };
 
-  getDataPACC(details: any) {
-    let gmt = new GmtPipe();
-
-    this.tablePACCData = details.map((x: any) => {
-      x.date_molecular_id_created = gmt.transform(x.date_molecular_id_created);
-      x.date_variant_received = gmt.transform(x.date_variant_received);
-      return x;
-    });
-
-    this.tablePACCData.splice(-1, 1);
-
+  getDataPACC() {
+    this.apiSample.getCliaDetailsPACC(this.cliaType)
+      .subscribe(details => {
+        let gmt = new GmtPipe();
+        this.tablePACCData = details.map((x: any) => {
+          x.date_molecular_id_created = gmt.transform(x.date_molecular_id_created);
+          x.date_variant_received = gmt.transform(x.date_variant_received);
+          return x;
+        });
+        // this.tablePACCData.splice(-1, 1); --> Check if you need this in the new message-api implementation
+        this.dataAvailable = true;
+      });
   };
 
-  getDataIon(details: any) {
-    let gmt = new GmtPipe();
-
-    this.ionReportersData = details.map((x: any) => {
-      x.lastContactDate = gmt.transform(x.lastContactDate);
-      return x;
-    });
-
+  getDataIon() {
+    this.apiIon.getCliaIon(this.cliaType)
+      .subscribe(details => {
+        let gmt = new GmtPipe();
+        this.ionReportersData = details.map((x: any) => {
+          x.lastContactDate = gmt.transform(x.lastContactDate);
+          return x;
+        });
+        this.dataAvailable = true;
+      });
   };
 
   // autoLoadDataIon() {
@@ -162,11 +170,11 @@ export class CliaParentComponent implements OnInit {
   }
 
   generateMsn(): void {
-    this.api.generateMsn(this.cliaType, this.control_type)
+    this.apiSample.generateMsn(this.cliaType, this.control_type)
       .subscribe((itemList: any) => {
-        if (this.control_type === 'positive') this.getDataPC(this.route.snapshot.data['data'].PCData);
-        if (this.control_type === 'no_template') this.getDataNTC(this.route.snapshot.data['data'].NTCData);
-        if (this.control_type === 'proficiency_competency') this.getDataPACC(this.route.snapshot.data['data'].PACCData);
+        if (this.control_type === 'positive') this.getDataPC();
+        if (this.control_type === 'no_template') this.getDataNTC();
+        if (this.control_type === 'proficiency_competency') this.getDataPACC();
       });
   };
 

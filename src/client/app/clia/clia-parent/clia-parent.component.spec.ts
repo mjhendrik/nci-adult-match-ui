@@ -138,7 +138,7 @@ export function main() {
           });
       }));
 
-    it('should test setControlType',
+    xit('should test setControlType',
       async((done: any) => {
         TestBed
           .compileComponents()
