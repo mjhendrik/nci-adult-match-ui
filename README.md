@@ -16,6 +16,12 @@ Login into docker using your docker account (needed only once)
 docker login
 ```
 
+Create external Docker network
+
+```
+docker network create adult-match-net
+```
+
 Make sure you have the following environment variables:
 
     AUTH0_CLIENT_ID
