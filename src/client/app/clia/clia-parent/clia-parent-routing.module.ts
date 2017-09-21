@@ -12,21 +12,24 @@ import {
 import { AuthGuard } from './../../shared/auth/auth.guard.service';
 import { CliaParentComponent } from './clia-parent.component';
 import { Observable } from 'rxjs/Observable';
-import { CliaApiService } from '../clia-api.service';
+import { SampleControlApiService } from '../sample-control-api.service';
+import { IonReportersApiService } from '../ion-reporters-api.service';
 
 @Injectable()
 class DataResolver implements Resolve<any> {
-  constructor(private api: CliaApiService) { }
+  constructor(
+    private sampleControlApi: SampleControlApiService, 
+    private ionReportersApi: IonReportersApiService) { }
 
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<any> | Promise<any> | any {
     return Observable.forkJoin(
-      this.api.getCliaDetailsPC(route.data['cliaType']),
-      this.api.getCliaDetailsNTC(route.data['cliaType']),
-      this.api.getCliaDetailsPACC(route.data['cliaType']),
-      this.api.getCliaIon(route.data['cliaType'])
+      this.sampleControlApi.getCliaDetailsPC(route.data['cliaType']),
+      this.sampleControlApi.getCliaDetailsNTC(route.data['cliaType']),
+      this.sampleControlApi.getCliaDetailsPACC(route.data['cliaType']),
+      this.ionReportersApi.getCliaIon(route.data['cliaType'])
     ).map(
       data => {
         return {

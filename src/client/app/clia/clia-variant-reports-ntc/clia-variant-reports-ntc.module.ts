@@ -8,7 +8,7 @@ import { CliaVariantReportsNtcRoutingModule } from './clia-variant-reports-ntc-r
 import { DirectivesModule } from '../../shared/directives/directives.module';
 import { DataTableModule } from '../../shared/datatables/index';
 import { PipesModule } from '../../shared/pipes/pipes.module';
-import { CliaApiService } from './../clia-api.service';
+import { SampleControlApiService } from '../sample-control-api.service';
 
 @NgModule({
   imports: [
@@ -22,6 +22,6 @@ import { CliaApiService } from './../clia-api.service';
   ],
   declarations: [CliaVariantReportsNtcComponent],
   exports: [CliaVariantReportsNtcComponent],
-  providers: [CliaApiService]
+  providers: [SampleControlApiService]
 })
 export class CliaVariantReportsNtcModule { }

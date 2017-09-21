@@ -5,10 +5,8 @@ import {
 import { ActivatedRoute } from '@angular/router';
 
 import { routerTransition } from './../../shared/router.animations';
-import {
-  CliaApiService,
-  CliaVariantReportsQCInterface
-} from '../clia-api.service';
+import { SampleControlApiService } from '../sample-control-api.service';
+import { CliaVariantReportsQCInterface } from '../clia-data-interfaces';
 
 /**
  * CliaVariantReportQcComponent.
@@ -43,7 +41,7 @@ export class CliaVariantReportQcComponent implements OnInit {
   tabTypeName: string;
   tabTypeHeaderName: string;
 
-  constructor(private cliaApi: CliaApiService, private route: ActivatedRoute) { }
+  constructor(private cliaApi: SampleControlApiService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.cliaType = this.route.snapshot.url[0].path;

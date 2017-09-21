@@ -8,15 +8,15 @@ import {
   ActivatedRouteSnapshot,
   RouterStateSnapshot
 } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 
 import { CliaVariantReportQcComponent } from './clia-variant-report-qc.component';
 import { AuthGuard } from './../../shared/auth/auth.guard.service';
-import { Observable } from 'rxjs/Observable';
-import { CliaApiService } from '../clia-api.service';
+import { SampleControlApiService } from '../sample-control-api.service';
 
 @Injectable()
 class DataResolver implements Resolve<any> {
-  constructor(private api: CliaApiService) { }
+  constructor(private api: SampleControlApiService) { }
 
   resolve(
     route: ActivatedRouteSnapshot,

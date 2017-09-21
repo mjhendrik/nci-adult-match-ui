@@ -7,8 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { routerTransition } from './../../shared/router.animations';
 import { GmtPipe } from './../../shared/pipes/gmt.pipe';
-import { CliaApiService } from './../clia-api.service';
-
+import { SampleControlApiService } from '../sample-control-api.service';
 
 /**
  * CliaParentComponent.
@@ -58,8 +57,7 @@ export class CliaParentComponent implements OnInit {
   roles: any[] = [];
   generateMsnBtn: boolean = false;
 
-  constructor(private cliaApi: CliaApiService, private route: ActivatedRoute) {
-
+  constructor(private api: SampleControlApiService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -164,7 +162,7 @@ export class CliaParentComponent implements OnInit {
   }
 
   generateMsn(): void {
-    this.cliaApi.generateMsn(this.cliaType, this.control_type)
+    this.api.generateMsn(this.cliaType, this.control_type)
       .subscribe((itemList: any) => {
         if (this.control_type === 'positive') this.getDataPC(this.route.snapshot.data['data'].PCData);
         if (this.control_type === 'no_template') this.getDataNTC(this.route.snapshot.data['data'].NTCData);

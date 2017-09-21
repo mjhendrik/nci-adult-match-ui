@@ -5,12 +5,13 @@ import {
 import { Observable } from 'rxjs/Observable';
 
 import { CliaVariantReportsNtcComponent } from './clia-variant-reports-ntc.component';
-import { CliaApiService, CliaVariantReportsNTCInterface } from './../clia-api.service';
 import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { PipesModule } from './../../shared/pipes/pipes.module';
 import { DirectivesModule } from './../../shared/directives/directives.module';
 import { SharedModule } from '../../shared/shared.module';
+import { SampleControlApiService } from '../sample-control-api.service';
+import { CliaVariantReportsNTCInterface } from '../clia-data-interfaces';
 
 export function main() {
   describe('clia variant reports ntc component with clia type mocha', () => {
@@ -30,7 +31,7 @@ export function main() {
         ],
         declarations: [CliaVariantReportsNtcComponent],
         providers: [
-          { provide: CliaApiService, useClass: MockCliaApiService },
+          { provide: SampleControlApiService, useClass: MockCliaApiService },
           {
             provide: ActivatedRoute, useValue: {
               snapshot: {
@@ -97,7 +98,7 @@ export function main() {
         ],
         declarations: [CliaVariantReportsNtcComponent],
         providers: [
-          { provide: CliaApiService, useClass: MockCliaApiService },
+          { provide: SampleControlApiService, useClass: MockCliaApiService },
           {
             provide: ActivatedRoute, useValue: {
               snapshot: {
@@ -159,7 +160,7 @@ export function main() {
         ],
         declarations: [CliaVariantReportsNtcComponent],
         providers: [
-          { provide: CliaApiService, useClass: MockCliaApiServiceWithError },
+          { provide: SampleControlApiService, useClass: MockCliaApiServiceWithError },
           {
             provide: ActivatedRoute, useValue: {
               snapshot: {
@@ -221,7 +222,7 @@ export function main() {
         ],
         declarations: [CliaVariantReportsNtcComponent],
         providers: [
-          { provide: CliaApiService, useClass: MockCliaApiService },
+          { provide: SampleControlApiService, useClass: MockCliaApiService },
           {
             provide: ActivatedRoute, useValue: {
               snapshot: {
@@ -283,7 +284,7 @@ export function main() {
         ],
         declarations: [CliaVariantReportsNtcComponent],
         providers: [
-          { provide: CliaApiService, useClass: MockCliaApiService },
+          { provide: SampleControlApiService, useClass: MockCliaApiService },
           {
             provide: ActivatedRoute, useValue: {
               snapshot: {
