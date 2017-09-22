@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { routerTransition } from './../../shared/router.animations';
 import { GmtPipe } from './../../shared/pipes/gmt.pipe';
 import { TreatmentArmApiService } from '../treatment-arm-api.service';
+import { Tabs } from './treatment-arm-details.module';
 
 /**
  * TreatmentArmDetailsComponent.
@@ -84,6 +85,8 @@ export class TreatmentArmDetailsComponent implements OnInit {
   versionData: any[];
   tableData: any[];
   dataAvailable: boolean = true;
+
+  tabs: Tabs;
 
   errorMessage: string;
 

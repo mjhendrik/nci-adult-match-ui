@@ -9,7 +9,26 @@ import { DirectivesModule } from '../../shared/directives/directives.module';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { TreatmentArmApiService } from '../treatment-arm-api.service';
 import { SharedModule } from '../../shared/shared.module';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
+export class Tabs {
+  activeTab: string;
+  hasActive: boolean;
+
+  private tabs: { [key: string]: boolean } = {};
+
+  set(key: string, active: boolean): void {
+    this.tabs[key] = active;
+    this.hasActive = this.hasActive || active;
+    if (active) {
+      this.activeTab = key;
+    }
+  }
+
+  get(key: string, subKey?: string): boolean {
+    return this.tabs[key + (subKey || '')] || false;
+  }
+}
 
 @NgModule({
   imports: [
@@ -20,7 +39,8 @@ import { SharedModule } from '../../shared/shared.module';
     PipesModule,
     DirectivesModule,
     ChartsModule,
-    SharedModule
+    SharedModule,
+    TabsModule.forRoot()
   ],
   declarations: [TreatmentArmDetailsComponent],
   exports: [TreatmentArmDetailsComponent],
