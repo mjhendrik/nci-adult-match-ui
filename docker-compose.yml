@@ -151,7 +151,7 @@ services:
       - adult-match
 
   message-api:
-    image: "nci-adult-match-message-api-jetty:latest"
+    image: "fnlcr/nci-adult-match-message-api-jetty:latest"
     ports:
       - "10250:10250"
       - "8282:8080"
