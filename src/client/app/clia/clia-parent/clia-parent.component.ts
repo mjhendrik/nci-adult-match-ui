@@ -170,7 +170,8 @@ export class CliaParentComponent implements OnInit {
   }
 
   generateMsn(): void {
-    this.apiSample.generateMsn(this.cliaType, this.control_type)
+    // this.apiSample.generateMsn(this.cliaType, this.control_type) // sample control
+    this.apiSample.generateMsn(this.control_type) // message
       .subscribe((itemList: any) => {
         if (this.control_type === 'positive') this.getDataPC();
         if (this.control_type === 'no_template') this.getDataNTC();
