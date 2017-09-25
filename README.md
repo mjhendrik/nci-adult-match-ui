@@ -8,7 +8,7 @@
 
 ## Local development
 
-*Note: You need to have access to [FNLCR](https://hub.docker.com/u/fnlcr/) private docker repository. Please contact systems team if you need the access.*
+*NOTE: You need to have access to [FNLCR](https://hub.docker.com/u/fnlcr/) private docker repository. Please contact systems team if you need the access.*
 
 Login into docker using your docker account (needed only once)
 
@@ -45,20 +45,25 @@ Wait for all of the services to start, then open your browser at [http://localho
 
 To run only some of the services (for example only the `ui` and `patient-api`, with their dependencies)
 
-*Note: Each time you run `docker-compose down` the data volumes for the docker containers are removed and you'll have to restore the database backups again.*
+*NOTE: Each time you run `docker-compose down` the data volumes for the docker containers are removed and you'll have to restore the database backups again.*
+
+*NOTE: you need to have your own Message API configuration file located at `$HOME/config/nci-adult-match/nci-adult-match-message-api.properties`. You will need to configure your own queue name. Replace `{REPLACE_WITH_YOUR_QUEUE_NAME}` with your user name for example.*
+
+Example of the properties file:
+
+```
+bucket.name=adultmatch-dev
+kie.wb.fs.filepath=/gov/nih/nci/matchbox/TreatmentArmAssignmentLogic.drl
+kie.wb.fs.package=gov/nih/nci/matchbox/TreatmentArmAssignmentLogic.drl
+queue.name=message-api-dev-{REPLACE_WITH_YOUR_QUEUE_NAME}-queue.fifo
+vcf.converter.path=/usr/local/bin
+```
 
 For front-end developers running the front-end code in node, run everything __but__ the front-end:
 
 ```
 docker-compose up patient-api treatment-arm-api ion-reporters-api sample-controls-api aliquots-api ir-processor-api message-api
 ```
-
-*Note: to run Message API as a separate docker container:*
-
-```
-docker run -p 10250:10250 -p 8282:8080 -e AWS_REGION=$AWS_REGION -e ENVIRONMENT=dev -e JAVA_OPTS="-Dorg.kie.demo=false -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=512m -XX:PermSize=128m -XX:MaxPermSize=512m -Xdebug -Djava.net.preferIPv4Stack=true -Xrunjdwp:transport=dt_socket,address=8282,server=y,suspend=n" -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY -e AUTH0_DOMAIN=$AUTH0_DOMAIN -e AUTH0_CLIENT_ID=$AUTH0_CLIENT_ID -e AUTH0_CLIENT_SECRET=$AUTH0_CLIENT_SECRET -e MONGODB_URI=mongodb://mongo:27017/Match -e MATCH_PROPERTIES_FILE=/var/lib/jetty/webapps/resources/matchbox-dev.properties -v $HOME/config/nci-adult-match/nci-adult-match-message-api.properties:/var/lib/jetty/webapps/resources/matchbox-dev.properties --network adult-match-net fnlcr/nci-adult-match-message-api-jetty:latest
-```
-
 
 Full list of services included in `docker-compose.yml`
 
@@ -87,7 +92,7 @@ docker-compose build
 
 ## Restoring Data to MongoDB for Local Development
 
-*Note: the `docker-compose` system needs to be up*
+*NOTE: the `docker-compose` system needs to be up*
 
 ```
 docker exec -it nciadultmatchui_mongo_1 bash
@@ -121,7 +126,7 @@ Please note each time you run `docker-compose down` the data volumes for the doc
 
 ## For front-end developers
 
-*Note: that this project requires node v6.5.x or higher and npm 3.10.3*
+*NOTE: that this project requires node v6.5.x or higher and npm 3.10.3*
 
 ```
 git clone https://github.com/CBIIT/nci-adult-match-ui.git
