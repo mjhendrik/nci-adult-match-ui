@@ -18,12 +18,11 @@ export class SampleControlApiService extends ApiService {
   getCliaDetailsNTC(type: string): Observable<any[]> {
 
     // return this.http.get(this.url('/sample_controls?site=' + type
-    //   + '&control_type=no_template&projection=molecular_id,date_molecular_id_created,date_variant_received,report_status',
-    //   'assets/mock-data/clia-' + type + '-ntc.json')) // sample control
+    //   + '&control_type=no_template&projection=molecular_id,date_molecular_id_created,date_variant_received,report_status', // sample control
 
     return this.http.get(this.url('/message/clia/ntc_control?site=' + type
-      + '&projection=molecular_id,date_molecular_id_created,date_variant_received,report_status',
-      'assets/mock-data/clia-' + type + '-ntc.json')) // message
+      + '&projection=molecular_id,date_molecular_id_created,date_variant_received,report_status', // message
+      'assets/mock-data/clia-' + type + '-ntc.json'))
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -31,12 +30,11 @@ export class SampleControlApiService extends ApiService {
   getCliaDetailsPACC(type: string): Observable<any[]> {
 
     // return this.http.get(this.url('/sample_controls?site=' + type
-    //   + '&control_type=proficiency_competency&projection=molecular_id,date_molecular_id_created,date_variant_received,report_status',
-    //   'assets/mock-data/clia-' + type + '-pacc.json')) // sample control
+    //   + '&control_type=proficiency_competency&projection=molecular_id,date_molecular_id_created,date_variant_received,report_status', // sample control
 
     return this.http.get(this.url('/message/clia/proficiency_competency_control?site=' + type
-      + '&projection=molecular_id,date_molecular_id_created,date_variant_received,report_status',
-      'assets/mock-data/clia-' + type + '-pacc.json')) // message
+      + '&projection=molecular_id,date_molecular_id_created,date_variant_received,report_status', // message
+      'assets/mock-data/clia-' + type + '-pacc.json'))
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -44,12 +42,11 @@ export class SampleControlApiService extends ApiService {
   getCliaDetailsPC(type: string): Observable<any[]> {
 
     // return this.http.get(this.url('/sample_controls?site=' + type
-    //   + '&control_type=positive&projection=molecular_id,date_molecular_id_created,date_variant_received,report_status',
-    //   'assets/mock-data/clia-' + type + '-pc.json')) // sample control
+    //   + '&control_type=positive&projection=molecular_id,date_molecular_id_created,date_variant_received,report_status', // sample control
 
     return this.http.get(this.url('/message/clia/sample_control?site=' + type
-      + '&projection=molecular_id,date_molecular_id_created,date_variant_received,report_status',
-      'assets/mock-data/clia-' + type + '-pc.json')) // message
+      + '&projection=molecular_id,date_molecular_id_created,date_variant_received,report_status', // message
+      'assets/mock-data/clia-' + type + '-pc.json'))
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -97,6 +94,12 @@ export class SampleControlApiService extends ApiService {
     // return this.http.post(Config.API.SAMPLE_CONTROLS + '/sample_controls?site=' + site + '&control_type=' + control_type, '') // sample control
 
     return this.http.post(Config.API.MESSAGE + 'message/clia/' + control_type + '/generateMolecularId?site=' + site, '') // message
+      // return this.http.post(Config.API.MESSAGE + 'message/clia/' + control_type + '/generateMolecularId',
+      // {
+      //   "site": site,
+      //   "ipAddress": "127.0.0.1",
+      //   "confirmation": "confirmed"
+      // }) // message (with body)
       .map(this.extractData)
       .catch(this.handleError);
   }
