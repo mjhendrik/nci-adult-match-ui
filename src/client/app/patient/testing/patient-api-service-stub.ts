@@ -27,27 +27,31 @@ export class PatientApiServiceStub {
       "/tmp/MSN3699_v2_MSN3699_RNA_v2.vcf"]
     };
 
-    static makeCnvData = () => {
-        return [
-            {
-                'x': '70',
-                'label': 'AR',
-                'status': '#CD0000',
-                'chr': 'chrX',
-                'values':
-                {
-                    'position': '66773856',
-                    'cn': '0.92',
-                    'Q1': '0.781879',
-                    'Q2': '0.92',
-                    'Q3': '1.032146',
-                    'whisker_low': '0.74278505',
-                    'whisker_high': '1.0837533000000001',
-                    'outliers': ['0.74278505', '0.92', '1.0837533000000001']
-                }
-            }
-        ];
-    };
+  static makeCnvData = () => {
+    return [
+      {
+        'x': '70',
+        'label': 'AR',
+        'status': '#CD0000',
+        'chr': 'chrX',
+        'values':
+        {
+          'position': '66773856',
+          'cn': '0.92',
+          'Q1': '0.781879',
+          'Q2': '0.92',
+          'Q3': '1.032146',
+          'whisker_low': '0.74278505',
+          'whisker_high': '1.0837533000000001',
+          'outliers': ['0.74278505', '0.92', '1.0837533000000001']
+        }
+      }
+    ];
+  };
+
+  static treatmentArmData = () => {
+    return [{"_class":"gov.match.model.TreatmentArm","_id":{"$oid":"5925b1e751fa87a5c729d017"},"assayResults":["test"],"dateArchived":"test","dateCreated":{"$date":1465225012704},"description":"TDM1 in HER2 amplification","exclusionDiseases":[{"_id":"10021980","ctepCategory":"Breast Cancer - Invasive","shortName":"Inflammatory breast carcinoma"},{"_id":"10006190","ctepCategory":"Breast Cancer - Invasive","shortName":"Invasive breast carcinoma"},{"_id":"10066354","ctepCategory":"Gastroesophageal Cancer","shortName":"Adenocarcinoma - GEJ"},{"_id":"10053130","ctepCategory":"Breast Cancer - Invasive","shortName":"Cystosarcoma phylloides - breast"},{"_id":"10006285","ctepCategory":"Breast Neoplasm - Misc","shortName":"Breast cancer, NOS"},{"_id":"10001150","ctepCategory":"Gastroesophageal Cancer","shortName":"Adenocarcinoma - stomach"}],"exclusionDrugs":[{"drugs":[{"drugId":"780263","name":"TDM1 (Ado-trastuzumab emtansine)"}]},{"drugs":[{"drugId":"","name":"Trastuzumab"}]},{"drugs":[{"drugId":"","name":"Pertuzumab"}]},{"drugs":[{"drugId":"","name":"Margetuximab"}]},{"drugs":[{"drugId":"","name":"PF-05280014 (Pfizer, Trastuzumab Biosimilar)"}]},{"drugs":[{"drugId":"","name":"CT-P6 (Celltrion, Trastuzumab Biosimilar)"}]},{"drugs":[{"drugId":"","name":"ABP-980 (Amgen, Trastuzumab Biosimilar)"}]}],"gene":"HER2","maxPatientsAllowed":35,"name":"TDM1 in HER2 Amplification","numPatientsAssigned":35,"stateToken":{"$uuid":"a52329ec664a4d1e98341f19aefd120c"},"statusLog":{"1438968834628":"PENDING","1439210391639":"READY","1439352000000":"OPEN","1456246261701":"AMENDED","1465225012890":"AMENDED","1489035600000":"CLOSED"},"summaryReport":{"numCurrentPatientOnArm":1,"numFormerPatients":0,"numPendingArmApproval":0,"numNotEnrolledPatient":0,"assignmentRecords":[{"patientSequenceNumber":"12340","treatmentArmVersion":"2017-03-12","assignmentStatusOutcome":"ON_TREATMENT_ARM","analysisId":"MSN25049_v2_91f2766b-dd32-471d-9e83-8eefbce3719d","assignmentReportId":0,"dateSelected":"2017-06-12 18:54:48.608332","dateOnArm":"2017-07-12 18:54:48.608332","dateOffArm":"test","timeOnArm":314235,"stepNumber":"1","diseases":[{"meddraCode":"90600236","ctepCategory":"Reproductive System Neoplasm, Male","ctepSubCategory":"Penile Cancer","ctepTerm":"Penile adenocarcinoma","shortName":"Penile adenocarcinoma"}],"assignmentReason":"The patient was selected for this because it matched identifier COSM12345."},{"patientSequenceNumber":"12340","treatmentArmVersion":"2017-03-12","assignmentStatusOutcome":"OFF_TRIAL_NOT_CONSENTED","analysisId":"MSN25049_v2_91f2766b-dd32-471d-9e83-8eefbce3719d","assignmentReportId":0,"dateSelected":"2017-06-12 18:54:48.608332","dateOnArm":"2017-07-12 18:54:48.608332","dateOffArm":null,"timeOnArm":314235,"stepNumber":"1","diseases":[{"meddraCode":"90600236","ctepCategory":"Reproductive System Neoplasm, Male","ctepSubCategory":"Penile Cancer","ctepTerm":"Penile adenocarcinoma","shortName":"Penile adenocarcinoma"}],"assignmentReason":"The patient was selected for this because it matched identifier COSM12345."},{"patientSequenceNumber":"12340","treatmentArmVersion":"2017-03-12","assignmentStatusOutcome":"FORMERLY_ON_ARM_OFF_TRIAL","analysisId":"MSN25049_v2_91f2766b-dd32-471d-9e83-8eefbce3719d","assignmentReportId":0,"dateSelected":"2017-06-12 18:54:48.608332","dateOnArm":"2017-07-12 18:54:48.608332","dateOffArm":null,"timeOnArm":314235,"stepNumber":"1","diseases":[{"meddraCode":"90600236","ctepCategory":"Reproductive System Neoplasm, Male","ctepSubCategory":"Penile Cancer","ctepTerm":"Penile adenocarcinoma","shortName":"Neuroendocrine cancer, NOS"}],"assignmentReason":"The patient was selected for this because it matched identifier COSM12345."},{"patientSequenceNumber":"12340","treatmentArmVersion":"2017-03-12","assignmentStatusOutcome":"FORMERLY_ON_ARM_OFF_TRIAL","analysisId":"MSN25049_v2_91f2766b-dd32-471d-9e83-8eefbce3719d","assignmentReportId":0,"dateSelected":"2017-06-12 18:54:48.608332","dateOnArm":"2017-07-12 18:54:48.608332","dateOffArm":null,"timeOnArm":314235,"stepNumber":"1","diseases":[{"meddraCode":"90600236","ctepCategory":"Reproductive System Neoplasm, Male","ctepSubCategory":"Penile Cancer","ctepTerm":"Penile adenocarcinoma","shortName":"Neuroendocrine cancer, NOS"}],"assignmentReason":"The patient was selected for this because it matched identifier COSM12345."},{"patientSequenceNumber":"12340","treatmentArmVersion":"2017-03-12","assignmentStatusOutcome":"ON_TREATMENT_ARM","analysisId":"MSN25049_v2_91f2766b-dd32-471d-9e83-8eefbce3719d","assignmentReportId":0,"dateSelected":"2017-06-12 18:54:48.608332","dateOnArm":"2017-07-12 18:54:48.608332","dateOffArm":null,"timeOnArm":314235,"stepNumber":"1","diseases":[{"meddraCode":"90600236","ctepCategory":"Reproductive System Neoplasm, Male","ctepSubCategory":"Penile Cancer","ctepTerm":"Penile adenocarcinoma","shortName":"Lung adenocarcinoma"}],"assignmentReason":"The patient was selected for this because it matched identifier COSM12345."},{"patientSequenceNumber":"12340","treatmentArmVersion":"2017-03-12","assignmentStatusOutcome":"ON_TREATMENT_ARM","analysisId":"MSN25049_v2_91f2766b-dd32-471d-9e83-8eefbce3719d","assignmentReportId":0,"dateSelected":"2017-06-12 18:54:48.608332","dateOnArm":"2017-07-12 18:54:48.608332","dateOffArm":null,"timeOnArm":314235,"stepNumber":"1","diseases":[{"meddraCode":"90600236","ctepCategory":"Reproductive System Neoplasm, Male","ctepSubCategory":"Penile Cancer","ctepTerm":"Penile adenocarcinoma","shortName":"Neuroendocrine cancer, NOS"}],"assignmentReason":"The patient was selected for this because it matched identifier COSM12345."},{"patientSequenceNumber":"12340","treatmentArmVersion":"2017-03-12","assignmentStatusOutcome":"PENDING_APPROVAL","analysisId":"MSN25049_v2_91f2766b-dd32-471d-9e83-8eefbce3719d","assignmentReportId":0,"dateSelected":"2017-06-12 18:54:48.608332","dateOnArm":"2017-07-12 18:54:48.608332","dateOffArm":null,"timeOnArm":314235,"stepNumber":"1","diseases":[{"meddraCode":"90600236","ctepCategory":"Reproductive System Neoplasm, Male","ctepSubCategory":"Penile Cancer","ctepTerm":"Penile adenocarcinoma","shortName":"Penile adenocarcinoma"}],"assignmentReason":"The patient was selected for this because it matched identifier COSM12345."}]},"targetId":"#REF!","targetName":"Ado-trastuzumab Emtansine","treatmentArmDrugs":[{"drugId":"780263","name":"Ado-trastuzumab Emtansine","pathway":"HER2"}],"treatmentArmStatus":"CLOSED","treatmentArmId":"EAY131-Q","variantReport":{"copyNumberVariants":[{"armSpecific":false,"chromosome":"chr17","confidenceInterval5percent":0,"confidenceInterval95percent":0,"confirmed":false,"copyNumber":0,"description":"ERBB2 Amplification","geneName":"ERBB2","identifier":"ERBB2","inclusion":true,"levelOfEvidence":1,"position":"37856492","publicMedIds":["3798106"],"rare":false,"rawCopyNumber":0,"refCopyNumber":0}],"geneFusions":[{"identifier":"identifier-test","inclusion":true},{"identifier":"identifier-test","inclusion":false}],"indels":["test"],"nonHotspotRules":["test"],"singleNucleotideVariants":["test"],"unifiedGeneFusions":["test"]},"version":"2016-05-31"}]
+  };
 
     static makeVariantReportQcData = () => {
         return {
@@ -141,14 +145,21 @@ export class PatientApiServiceStub {
                 unifiedGeneFusions: [],
             }
         } as VariantReportComparisonData;
-    }
+    };
 
     static makePatientListData = () => [
         { patientSequenceNumber: '1', currentStepNumber: '1.1' },
         { patientSequenceNumber: '2', currentStepNumber: '1.1' },
         { patientSequenceNumber: '3', currentStepNumber: '1.1' },
         { patientSequenceNumber: '4', currentStepNumber: '1.1' }
-    ] as any[]
+    ] as any[];
+
+    static makeTreatmentArmListData = () => [
+      { taSequenceNumber: '1', currentStepNumber: '1.1' },
+      { taSequenceNumber: '2', currentStepNumber: '1.1' },
+      { taSequenceNumber: '3', currentStepNumber: '1.1' },
+      { taSequenceNumber: '4', currentStepNumber: '1.1' }
+    ] as any[];
 
     static makePatientData = () => {
         let patient = {
@@ -2622,6 +2633,9 @@ export class PatientApiServiceMock {
         ];
         return Observable.of(testData);
     }
+
+
+
 
     getPatientCount(): Observable<any> {
         return Observable.of(150);
