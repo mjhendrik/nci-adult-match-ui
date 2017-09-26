@@ -8,7 +8,7 @@ const DevConfig: EnvConfig = {
     ION_REPORTERS: 'http://localhost:3001/api/v1',
     SAMPLE_CONTROLS: 'http://localhost:3002/api/v1',
     ALIQUOT: 'http://localhost:3003/api/v1',
-    MESSAGE: 'http://localhost:10250/api/v1'
+    MESSAGE: 'http://localhost:8282/api/v1' // 8282 for jetty docker; 10250 for wildfly docker; 8080 for wilfly/maven;
   },
   CLIENT_ID: 'RjoYZXUDEzQxMJw04C6B5dsQKqUAEYzA',
   AUTH_DOMAIN: 'ncimatch.auth0.com'
