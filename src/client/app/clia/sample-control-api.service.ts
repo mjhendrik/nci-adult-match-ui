@@ -93,15 +93,11 @@ export class SampleControlApiService extends ApiService {
 
     // return this.http.post(Config.API.SAMPLE_CONTROLS + '/sample_controls?site=' + site + '&control_type=' + control_type, '') // sample control
 
-    // const body = {
-    //   "site": site,
-    //   "ipAddress": "127.0.0.1",
-    //   "confirmation": "confirmed"
-    // };
+    if (control_type === 'positive') control_type = 'sample_control';
+    if (control_type === 'no_template') control_type = 'ntc_control';
+    if (control_type === 'proficiency_competency') control_type = 'proficiency_competency_control';
 
-    // return this.http.post(Config.API.MESSAGE + 'message/clia/' + control_type + '/generateMolecularId', body) // message (body)
-
-    return this.http.post(Config.API.MESSAGE + 'message/clia/' + control_type + '/generateMolecularId?site=' + site, '') // message (param)
+    return this.http.post(Config.API.MESSAGE + 'message/clia/' + control_type + '/generateMolecularId/' + site, '') // message
       .map(this.extractData)
       .catch(this.handleError);
   }
