@@ -13,6 +13,8 @@
 		"obertohuertasm.vscode-icons",
 		"xabikos.JasmineSnippets",
 		"eg2.tslint",
-		"stevejpurves.cucumber"
+		"stevejpurves.cucumber",
+		"CoenraadS.bracket-pair-colorizer",
+		"infinity1207.angular2-switcher"
 	]
 }
