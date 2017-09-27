@@ -20,10 +20,10 @@
       <td>{{item.aMoi | dashify}}</td>
       <td>{{item.chromosome | dashify}}</td>
       <td>{{item.position | dashify}}</td>
-      <td>{{item.rawCn | dashify}}</td>
-      <td>{{item.cn | dashify}}</td>
-      <td>{{item.ci5Percent | dashify}}</td>
-      <td>{{item.ci95Percent | dashify}}</td>
+      <td>{{item.rawCopyNumber | dashify}}</td>
+      <td>{{item.copyNumber | dashify}}</td>
+      <td>{{item.confidenceInterval5percent | dashify}}</td>
+      <td>{{item.confidenceInterval95percent | dashify}}</td>
     </tr>
     <tr *ngIf="!items || !items.length">
       <td colspan="9" class="text-muted">No {{title}} data</td>
