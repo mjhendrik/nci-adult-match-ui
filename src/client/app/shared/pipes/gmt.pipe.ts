@@ -24,9 +24,11 @@ export class GmtPipe implements PipeTransform {
                 date = new Date(value).getTime();
             }
             if (format) {
-                return moment.unix(date / 1000).utc().format(format);
+                if (date.toString().length > 10) return moment.unix(date / 1000).utc().format(format);
+                else return moment.unix(date).utc().format(format);
             } else {
-                return moment.unix(date / 1000).utc().format('LLL') + ' GMT';
+                if (date.toString().length > 10) return moment.unix(date / 1000).utc().format('LLL') + ' GMT';
+                else return moment.unix(date).utc().format('LLL') + ' GMT';
             }
         } else {
             return '-';
