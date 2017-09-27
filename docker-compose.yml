@@ -159,7 +159,7 @@ services:
       - mongo
     environment:
       - ENVIRONMENT=dev 
-      - JAVA_OPTIONS=$ADULT_MATCH_MESSAGE_API_JAVA_OPTIONS
+      - JAVA_OPTIONS=-Dorg.kie.demo=false -XX:MetaspaceSize=128m -Dmatch.properties.file=/matchbox-dev.properties -XX:MaxMetaspaceSize=512m -XX:PermSize=128m -XX:MaxPermSize=512m -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n
       - MONGODB_URI=mongodb://mongo:27017/Match
       - AWS_REGION=$AWS_REGION 
       - AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID 

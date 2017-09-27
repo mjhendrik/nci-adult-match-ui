@@ -47,9 +47,6 @@ To run only some of the services (for example only the `ui` and `patient-api`, w
 
 *NOTE: Each time you run `docker-compose down` the data volumes for the docker containers are removed and you'll have to restore the database backups again.*
 
-
-*NOTE: Due to some docker-compose glitch, we need to provide `JAVA_OPTIONS` variable from outside of the `docker-compose.yml` file. This problem doesn't exist when using `docker run` command. You can edit `ADULT_MATCH_MESSAGE_API_JAVA_OPTIONS` value int `.env` file located in the same directory as `docker-compose.yml`.*
-
 *You need to have your own Message API configuration file located at `$HOME/config/nci-adult-match/nci-adult-match-message-api.properties`. You will need to configure your own queue name. Replace `{REPLACE_WITH_YOUR_QUEUE_NAME}` with your user name for example.*
 
 Example of the properties file:
