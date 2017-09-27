@@ -159,7 +159,7 @@ services:
       - mongo
     environment:
       - ENVIRONMENT=dev 
-      - JAVA_OPTIONS=ADULT_MATCH_MESSAGE_API_JAVA_OPTIONS
+      - JAVA_OPTIONS=${ADULT_MATCH_MESSAGE_API_JAVA_OPTIONS}
       - MONGODB_URI=mongodb://mongo:27017/Match
       - AWS_REGION=${AWS_REGION}
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
