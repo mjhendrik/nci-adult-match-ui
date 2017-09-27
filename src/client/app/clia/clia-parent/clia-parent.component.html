@@ -3,59 +3,58 @@
 </div>
 <!-- use emit -->
 <div *ngIf="dataAvailable" id="content" class="content">
-  <div id="content" class="content">
-    <ul class="breadcrumb pull-right">
-      <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
-      <li>CLIA Lab: {{cliaTypeName}}</li>
-    </ul>
-    <h1 class="page-header">CLIA Lab: {{cliaTypeName}}</h1>
-    <div class="row tab-pane fade active in" matchHeight="clia-tab">
-      <div class="col-md-8">
-        <div class="panel clia-tab">
-          <div class="m-0 p-0">
-            <div>
-              <!--panel-orangeshade-->
-              <ul class="nav nav-tabs nav-tabs-orangeshade p-l-0">
-                <li class="active">
-                  <a class="p-0" href="#tab-PC" data-toggle="tab" (click)="setControlType('positive')" aria-expanded="true" matchHeightTab="clia-tab">
-                    <div class="panel-heading">
-                      <div class="panel-heading-btn">
-                      </div>
-                      <h4 class="panel-title">Positive Control</h4>
+  <ul class="breadcrumb pull-right">
+    <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
+    <li>CLIA Lab: {{cliaTypeName}}</li>
+  </ul>
+  <h1 class="page-header">CLIA Lab: {{cliaTypeName}}</h1>
+  <div class="row tab-pane fade active in" matchHeight="clia-tab">
+    <div class="col-md-8">
+      <div class="panel clia-tab">
+        <div class="m-0 p-0">
+          <div>
+            <!--panel-orangeshade-->
+            <ul class="nav nav-tabs nav-tabs-orangeshade p-l-0">
+              <li class="active">
+                <a class="p-0" href="#tab-PC" data-toggle="tab" (click)="setControlType('positive')" aria-expanded="true" matchHeightTab="clia-tab">
+                  <div class="panel-heading">
+                    <div class="panel-heading-btn">
                     </div>
-                  </a>
-                </li>
-                <li class="">
-                  <a class="p-0" href="#tab-NTC" data-toggle="tab" (click)="setControlType('no_template')" aria-expanded="false" matchHeightTab="clia-tab">
-                    <div class="panel-heading">
-                      <div class="panel-heading-btn">
-                      </div>
-                      <h4 class="panel-title">No Template Control</h4>
+                    <h4 class="panel-title">Positive Control</h4>
+                  </div>
+                </a>
+              </li>
+              <li class="">
+                <a class="p-0" href="#tab-NTC" data-toggle="tab" (click)="setControlType('no_template')" aria-expanded="false" matchHeightTab="clia-tab">
+                  <div class="panel-heading">
+                    <div class="panel-heading-btn">
                     </div>
-                  </a>
-                </li>
-                <li class="">
-                  <a class="p-0" href="#tab-PACC" data-toggle="tab" (click)="setControlType('proficiency_competency')" aria-expanded="false"
-                    matchHeightTab="clia-tab">
-                    <div class="panel-heading">
-                      <div class="panel-heading-btn">
-                      </div>
-                      <h4 class="panel-title">Proficiency And Competency Control</h4>
+                    <h4 class="panel-title">No Template Control</h4>
+                  </div>
+                </a>
+              </li>
+              <li class="">
+                <a class="p-0" href="#tab-PACC" data-toggle="tab" (click)="setControlType('proficiency_competency')" aria-expanded="false"
+                  matchHeightTab="clia-tab">
+                  <div class="panel-heading">
+                    <div class="panel-heading-btn">
                     </div>
-                  </a>
-                </li>
-                <a *ngIf="generateMsnBtn" href="javascript:void(0);" class="btn btn-orangeshade-light pull-right m-t-10 m-r-10" (click)="generateMsn()"><i class="fa fa-cogs"></i> Generate MSN</a>
-              </ul>
-              <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
-                <div class="tab-pane fade active in" id="tab-PC">
-                  <!-- table 1 -->
-                  <div class="row">
-                    <!-- begin panel -->
-                    <div>
-                      <div class="col-md-12 bg-orangeshade-light">
-                        <div class="col-md-6 p-l-5">
-                          <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
-                            <label>Show
+                    <h4 class="panel-title">Proficiency And Competency Control</h4>
+                  </div>
+                </a>
+              </li>
+              <a *ngIf="generateMsnBtn" href="javascript:void(0);" class="btn btn-orangeshade-light pull-right m-t-10 m-r-10" (click)="generateMsn()"><i class="fa fa-cogs"></i> Generate MSN</a>
+            </ul>
+            <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
+              <div class="tab-pane fade active in" id="tab-PC">
+                <!-- table 1 -->
+                <div class="row">
+                  <!-- begin panel -->
+                  <div>
+                    <div class="col-md-12 bg-orangeshade-light">
+                      <div class="col-md-6 p-l-5">
+                        <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
+                          <label>Show
                         <select name="data-table_length" [(ngModel)]="recordsPerPagePC" aria-controls="data-table" class="form-control form-control-orangeshade input-sm">
                           <option [ngValue]=10>10</option>
                           <option [ngValue]=25>25</option>
@@ -63,80 +62,80 @@
                           <option [ngValue]=100>100</option>
                         </select>
                       entries</label>
-                          </div>
-                        </div>
-                        <div class="col-md-6 p-r-5">
-                          <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
-                            <label>Search:
-                        <input type="text" [(ngModel)]="searchtermPC" class="form-control form-control-orangeshade input-sm" placeholder="" aria-controls="data-table">                      
-                        </label>
-                          </div>
                         </div>
                       </div>
-                      <div class="row">
-                        <div class="table-responsive col-lg-12">
-                          <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="tablePCData | filterByText: searchtermPC"
-                            #mftablePC="mfDataTable" [(mfSortBy)]="tablePCDefaultSort" [(mfSortOrder)]="sortByDescPC" [mfRowsOnPage]="recordsPerPagePC">
-                            <thead>
-                              <tr class="orangeshade-light">
-                                <th>
-                                  <mfDefaultSorter by="molecular_id"><span class="table-header">Molecular Sequence Number</span></mfDefaultSorter>
-                                </th>
-                                <th>
-                                  <mfDefaultSorter by="date_molecular_id_created"><span class="table-header">Created Date</span></mfDefaultSorter>
-                                </th>
-                                <th>
-                                  <mfDefaultSorter by="date_variant_received"><span class="table-header">Received Date</span></mfDefaultSorter>
-                                </th>
-                                <th class="text-center">
-                                  Variant Reports
-                                </th>
-                                <th>
-                                  <mfDefaultSorter by="report_status"><span class="table-header">Status</span></mfDefaultSorter>
-                                </th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr *ngFor="let item of mftablePC.data">
-                                <td><i class="fa fa-share-alt"></i> {{item.molecular_id | dashify}}</td>
-                                <td>{{item.date_molecular_id_created | dashify}}</td>
-                                <td>{{item.date_variant_received | dashify}}</td>
-                                <td class="text-center">
-                                  <span *ngIf="item.report_status!==undefined"><a href [routerLink]="['/clia_'+cliaType+'/variant_reports_pc',item.molecular_id]" class="link-none"><i class="fa fa-file-text-o"></i></a></span>
-                                  <span *ngIf="item.report_status===undefined">-</span>
-                                </td>
-                                <td [colorCodeClia]="item.report_status">{{item.report_status | dashify}}</td>
-                              </tr>
-                              <tr *ngIf="mftablePC.data.length == 0">
-                                <td class="text-muted" colspan="5">
-                                  <span *ngIf="searchtermPC">No matching search results found for "{{searchtermPC}}"</span>
-                                  <span *ngIf="!searchtermPC">No positive control data</span>
-                                </td>
-                              </tr>
-                            </tbody>
-                            <tfoot>
-                              <tr>
-                                <td class="tfoot-padding" colspan="5">
-                                  <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermPC" [totallength]="tablePCData.length"></mfBootstrapPaginator>
-                                </td>
-                              </tr>
-                            </tfoot>
-                          </table>
+                      <div class="col-md-6 p-r-5">
+                        <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
+                          <label>Search:
+                        <input type="text" [(ngModel)]="searchtermPC" class="form-control form-control-orangeshade input-sm" placeholder="" aria-controls="data-table">                      
+                        </label>
                         </div>
                       </div>
                     </div>
-                    <!-- end panel -->
+                    <div class="row">
+                      <div class="table-responsive col-lg-12">
+                        <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="tablePCData | filterByText: searchtermPC"
+                          #mftablePC="mfDataTable" [(mfSortBy)]="tablePCDefaultSort" [(mfSortOrder)]="sortByDescPC" [mfRowsOnPage]="recordsPerPagePC">
+                          <thead>
+                            <tr class="orangeshade-light">
+                              <th>
+                                <mfDefaultSorter by="molecular_id"><span class="table-header">Molecular Sequence Number</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="date_molecular_id_created"><span class="table-header">Created Date</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="date_variant_received"><span class="table-header">Received Date</span></mfDefaultSorter>
+                              </th>
+                              <th class="text-center">
+                                Variant Reports
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="report_status"><span class="table-header">Status</span></mfDefaultSorter>
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let item of mftablePC.data">
+                              <td><i class="fa fa-share-alt"></i> {{item.molecular_id | dashify}}</td>
+                              <td>{{item.date_molecular_id_created | dashify}}</td>
+                              <td>{{item.date_variant_received | dashify}}</td>
+                              <td class="text-center">
+                                <span *ngIf="item.report_status!==undefined"><a href [routerLink]="['/clia_'+cliaType+'/variant_reports_pc',item.molecular_id]" class="link-none"><i class="fa fa-file-text-o"></i></a></span>
+                                <span *ngIf="item.report_status===undefined">-</span>
+                              </td>
+                              <td [colorCodeClia]="item.report_status">{{item.report_status | dashify}}</td>
+                            </tr>
+                            <tr *ngIf="mftablePC.data.length == 0">
+                              <td class="text-muted" colspan="5">
+                                <span *ngIf="searchtermPC">No matching search results found for "{{searchtermPC}}"</span>
+                                <span *ngIf="!searchtermPC">No positive control data</span>
+                              </td>
+                            </tr>
+                          </tbody>
+                          <tfoot>
+                            <tr>
+                              <td class="tfoot-padding" colspan="5">
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermPC" [totallength]="tablePCData.length"></mfBootstrapPaginator>
+                              </td>
+                            </tr>
+                          </tfoot>
+                        </table>
+                      </div>
+                    </div>
                   </div>
+                  <!-- end panel -->
                 </div>
-                <div class="tab-pane fade" id="tab-NTC">
-                  <!-- table 1 -->
-                  <div class="row">
-                    <!-- begin panel -->
-                    <div>
-                      <div class="col-md-12 bg-orangeshade-light">
-                        <div class="col-md-6 p-l-5">
-                          <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
-                            <label>Show
+              </div>
+              <div class="tab-pane fade" id="tab-NTC">
+                <!-- table 1 -->
+                <div class="row">
+                  <!-- begin panel -->
+                  <div>
+                    <div class="col-md-12 bg-orangeshade-light">
+                      <div class="col-md-6 p-l-5">
+                        <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
+                          <label>Show
                         <select name="data-table_length" [(ngModel)]="recordsPerPageNTC" aria-controls="data-table" class="form-control form-control-orangeshade input-sm">
                           <option [ngValue]=10>10</option>
                           <option [ngValue]=25>25</option>
@@ -144,80 +143,80 @@
                           <option [ngValue]=100>100</option>
                         </select>
                       entries</label>
-                          </div>
-                        </div>
-                        <div class="col-md-6 p-r-5">
-                          <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
-                            <label>Search:
-                        <input type="text" [(ngModel)]="searchtermNTC" class="form-control form-control-orangeshade input-sm" placeholder="" aria-controls="data-table">                      
-                        </label>
-                          </div>
                         </div>
                       </div>
-                      <div class="row">
-                        <div class="table-responsive col-lg-12">
-                          <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="tableNTCData | filterByText: searchtermNTC"
-                            #mftableNTC="mfDataTable" [(mfSortBy)]="tableNTCDefaultSort" [(mfSortOrder)]="sortByDescNTC" [mfRowsOnPage]="recordsPerPageNTC">
-                            <thead>
-                              <tr class="orangeshade-light">
-                                <th>
-                                  <mfDefaultSorter by="molecular_id"><span class="table-header">Molecular Sequence Number</span></mfDefaultSorter>
-                                </th>
-                                <th>
-                                  <mfDefaultSorter by="date_molecular_id_created"><span class="table-header">Created Date</span></mfDefaultSorter>
-                                </th>
-                                <th>
-                                  <mfDefaultSorter by="date_variant_received"><span class="table-header">Received Date</span></mfDefaultSorter>
-                                </th>
-                                <th class="text-center">
-                                  Variant Reports
-                                </th>
-                                <th>
-                                  <mfDefaultSorter by="report_status"><span class="table-header">Status</span></mfDefaultSorter>
-                                </th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr *ngFor="let item of mftableNTC.data">
-                                <td><i class="fa fa-share-alt"></i> {{item.molecular_id | dashify}}</td>
-                                <td>{{item.date_molecular_id_created | dashify}}</td>
-                                <td>{{item.date_variant_received | dashify}}</td>
-                                <td class="text-center">
-                                  <span *ngIf="item.report_status!==undefined"><a href [routerLink]="['/clia_'+cliaType+'/variant_reports_ntc',item.molecular_id]" class="link-none"><i class="fa fa-file-text-o"></i></a></span>
-                                  <span *ngIf="item.report_status===undefined">-</span>
-                                </td>
-                                <td [colorCodeClia]="item.report_status">{{item.report_status | dashify}}</td>
-                              </tr>
-                              <tr *ngIf="mftableNTC.data.length == 0">
-                                <td class="text-muted" colspan="5">
-                                  <span *ngIf="searchtermNTC">No matching search results found for "{{searchtermNTC}}"</span>
-                                  <span *ngIf="!searchtermNTC">No no template control data</span>
-                                </td>
-                              </tr>
-                            </tbody>
-                            <tfoot>
-                              <tr>
-                                <td class="tfoot-padding" colspan="5">
-                                  <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermNTC" [totallength]="tableNTCData.length"></mfBootstrapPaginator>
-                                </td>
-                              </tr>
-                            </tfoot>
-                          </table>
+                      <div class="col-md-6 p-r-5">
+                        <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
+                          <label>Search:
+                        <input type="text" [(ngModel)]="searchtermNTC" class="form-control form-control-orangeshade input-sm" placeholder="" aria-controls="data-table">                      
+                        </label>
                         </div>
                       </div>
                     </div>
-                    <!-- end panel -->
+                    <div class="row">
+                      <div class="table-responsive col-lg-12">
+                        <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="tableNTCData | filterByText: searchtermNTC"
+                          #mftableNTC="mfDataTable" [(mfSortBy)]="tableNTCDefaultSort" [(mfSortOrder)]="sortByDescNTC" [mfRowsOnPage]="recordsPerPageNTC">
+                          <thead>
+                            <tr class="orangeshade-light">
+                              <th>
+                                <mfDefaultSorter by="molecular_id"><span class="table-header">Molecular Sequence Number</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="date_molecular_id_created"><span class="table-header">Created Date</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="date_variant_received"><span class="table-header">Received Date</span></mfDefaultSorter>
+                              </th>
+                              <th class="text-center">
+                                Variant Reports
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="report_status"><span class="table-header">Status</span></mfDefaultSorter>
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let item of mftableNTC.data">
+                              <td><i class="fa fa-share-alt"></i> {{item.molecular_id | dashify}}</td>
+                              <td>{{item.date_molecular_id_created | dashify}}</td>
+                              <td>{{item.date_variant_received | dashify}}</td>
+                              <td class="text-center">
+                                <span *ngIf="item.report_status!==undefined"><a href [routerLink]="['/clia_'+cliaType+'/variant_reports_ntc',item.molecular_id]" class="link-none"><i class="fa fa-file-text-o"></i></a></span>
+                                <span *ngIf="item.report_status===undefined">-</span>
+                              </td>
+                              <td [colorCodeClia]="item.report_status">{{item.report_status | dashify}}</td>
+                            </tr>
+                            <tr *ngIf="mftableNTC.data.length == 0">
+                              <td class="text-muted" colspan="5">
+                                <span *ngIf="searchtermNTC">No matching search results found for "{{searchtermNTC}}"</span>
+                                <span *ngIf="!searchtermNTC">No no template control data</span>
+                              </td>
+                            </tr>
+                          </tbody>
+                          <tfoot>
+                            <tr>
+                              <td class="tfoot-padding" colspan="5">
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermNTC" [totallength]="tableNTCData.length"></mfBootstrapPaginator>
+                              </td>
+                            </tr>
+                          </tfoot>
+                        </table>
+                      </div>
+                    </div>
                   </div>
+                  <!-- end panel -->
                 </div>
-                <div class="tab-pane fade" id="tab-PACC">
-                  <!-- table 1 -->
-                  <div class="row">
-                    <!-- begin panel -->
-                    <div>
-                      <div class="col-md-12 bg-orangeshade-light">
-                        <div class="col-md-6 p-l-5">
-                          <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
-                            <label>Show
+              </div>
+              <div class="tab-pane fade" id="tab-PACC">
+                <!-- table 1 -->
+                <div class="row">
+                  <!-- begin panel -->
+                  <div>
+                    <div class="col-md-12 bg-orangeshade-light">
+                      <div class="col-md-6 p-l-5">
+                        <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
+                          <label>Show
                         <select name="data-table_length" [(ngModel)]="recordsPerPagePACC" aria-controls="data-table" class="form-control form-control-orangeshade input-sm">
                           <option [ngValue]=10>10</option>
                           <option [ngValue]=25>25</option>
@@ -225,130 +224,129 @@
                           <option [ngValue]=100>100</option>
                         </select>
                       entries</label>
-                          </div>
                         </div>
-                        <div class="col-md-6 p-r-5">
-                          <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
-                            <label>Search:
+                      </div>
+                      <div class="col-md-6 p-r-5">
+                        <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
+                          <label>Search:
                         <input type="text" [(ngModel)]="searchtermPACC" class="form-control form-control-orangeshade input-sm" placeholder="" aria-controls="data-table">                      
                         </label>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="table-responsive col-lg-12">
-                          <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="tablePACCData | filterByText: searchtermPACC"
-                            #mftablePACC="mfDataTable" [(mfSortBy)]="tablePACCDefaultSort" [(mfSortOrder)]="sortByDescPACC"
-                            [mfRowsOnPage]="recordsPerPagePACC">
-                            <thead>
-                              <tr class="orangeshade-light">
-                                <th style="min-width:23em">
-                                  <mfDefaultSorter by="molecular_id"><span class="table-header">Molecular Sequence Number</span></mfDefaultSorter>
-                                </th>
-                                <th>
-                                  <mfDefaultSorter by="date_molecular_id_created"><span class="table-header">Created Date</span></mfDefaultSorter>
-                                </th>
-                                <th>
-                                  <mfDefaultSorter by="date_variant_received"><span class="table-header">Received Date</span></mfDefaultSorter>
-                                </th>
-                                <th class="text-center">
-                                  Variant Reports
-                                </th>
-                                <th>
-                                  <mfDefaultSorter by="report_status"><span class="table-header">Status</span></mfDefaultSorter>
-                                </th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr *ngFor="let item of mftablePACC.data">
-                                <td><i class="fa fa-share-alt"></i> {{item.molecular_id | dashify}}</td>
-                                <td>{{item.date_molecular_id_created | dashify}}</td>
-                                <td>{{item.date_variant_received | dashify}}</td>
-                                <td class="text-center">
-                                  <span *ngIf="item.report_status!==undefined"><a href [routerLink]="['/clia_'+cliaType+'/variant_reports_pacc',item.molecular_id]" class="link-none"><i class="fa fa-file-text-o"></i></a></span>
-                                  <span *ngIf="item.report_status===undefined">-</span>
-                                </td>
-                                <td [colorCodeClia]="item.report_status">{{item.report_status | dashify}}</td>
-                              </tr>
-                              <tr *ngIf="mftablePACC.data.length == 0">
-                                <td class="text-muted" colspan="5">
-                                  <span *ngIf="searchtermPACC">No matching search results found for "{{searchtermPACC}}"</span>
-                                  <span *ngIf="!searchtermPACC">No proficiency and competency control data</span>
-                                </td>
-                              </tr>
-                            </tbody>
-                            <tfoot>
-                              <tr>
-                                <td class="tfoot-padding" colspan="5">
-                                  <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermPACC" [totallength]="tablePACCData.length"></mfBootstrapPaginator>
-                                </td>
-                              </tr>
-                            </tfoot>
-                          </table>
                         </div>
                       </div>
                     </div>
-                    <!-- end panel -->
+                    <div class="row">
+                      <div class="table-responsive col-lg-12">
+                        <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="tablePACCData | filterByText: searchtermPACC"
+                          #mftablePACC="mfDataTable" [(mfSortBy)]="tablePACCDefaultSort" [(mfSortOrder)]="sortByDescPACC" [mfRowsOnPage]="recordsPerPagePACC">
+                          <thead>
+                            <tr class="orangeshade-light">
+                              <th style="min-width:23em">
+                                <mfDefaultSorter by="molecular_id"><span class="table-header">Molecular Sequence Number</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="date_molecular_id_created"><span class="table-header">Created Date</span></mfDefaultSorter>
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="date_variant_received"><span class="table-header">Received Date</span></mfDefaultSorter>
+                              </th>
+                              <th class="text-center">
+                                Variant Reports
+                              </th>
+                              <th>
+                                <mfDefaultSorter by="report_status"><span class="table-header">Status</span></mfDefaultSorter>
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let item of mftablePACC.data">
+                              <td><i class="fa fa-share-alt"></i> {{item.molecular_id | dashify}}</td>
+                              <td>{{item.date_molecular_id_created | dashify}}</td>
+                              <td>{{item.date_variant_received | dashify}}</td>
+                              <td class="text-center">
+                                <span *ngIf="item.report_status!==undefined"><a href [routerLink]="['/clia_'+cliaType+'/variant_reports_pacc',item.molecular_id]" class="link-none"><i class="fa fa-file-text-o"></i></a></span>
+                                <span *ngIf="item.report_status===undefined">-</span>
+                              </td>
+                              <td [colorCodeClia]="item.report_status">{{item.report_status | dashify}}</td>
+                            </tr>
+                            <tr *ngIf="mftablePACC.data.length == 0">
+                              <td class="text-muted" colspan="5">
+                                <span *ngIf="searchtermPACC">No matching search results found for "{{searchtermPACC}}"</span>
+                                <span *ngIf="!searchtermPACC">No proficiency and competency control data</span>
+                              </td>
+                            </tr>
+                          </tbody>
+                          <tfoot>
+                            <tr>
+                              <td class="tfoot-padding" colspan="5">
+                                <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermPACC" [totallength]="tablePACCData.length"></mfBootstrapPaginator>
+                              </td>
+                            </tr>
+                          </tfoot>
+                        </table>
+                      </div>
+                    </div>
                   </div>
+                  <!-- end panel -->
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="panel clia-tab" *ngIf="ionReportersData.length!=0">
-          <div class="m-0 p-0">
-            <div>
-              <ul class="nav nav-tabs nav-tabs-orangeshade p-l-0">
-                <li *ngFor="let item of ionReportersData; let index = index; let first = first" [class.active]="first">
-                  <a class="p-0" href="#tab-{{index}}" data-toggle="tab" aria-expanded="true">
-                    <div class="panel-heading">
-                      <div class="panel-heading-btn">
-                      </div>
-                      <h4 class="panel-title">
-                        <i [colorCodeCliaIon]="item.ir_status" class="fa fa-heartbeat"></i> {{item.ion_reporter_id}}
-                      </h4>
-                    </div>
-                  </a>
-                </li>
-              </ul>
-              <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
-                <div *ngFor="let item of ionReportersData; let index = index; let first = first" [class.active]="first" class="tab-pane fade in"
-                  id="tab-{{index}}">
-                  <div class="row">
-                    <div class="col-lg-12">
-                      <dl class="dl-horizontal m-t-20">
-                        <dt>IP Address</dt>
-                        <!--<dd>{{item.externalIpAddress | dashify}}</dd>-->
-                        <dd>-</dd>
-                        <dt>Internal IP Address</dt>
-                        <!--<dd>{{item.ipAddress | dashify}}</dd>-->
-                        <dd>-</dd>
-                        <dt>Host Name</dt>
-                        <!--<dd>{{item.hostName | dashify}}</dd>-->
-                        <dd>-</dd>
-                        <dt>Status</dt>
-                        <dd [colorCodeCliaIon]="item.ir_status">{{item.ir_status | dashify}}</dd>
-                        <dt>Ion Reporter Version</dt>
-                        <!--<dd>{{item.ionReporterVersion | dashify}}</dd>-->
-                        <dd>-</dd>
-                        <dt>Last Contact</dt>
-                        <dd>{{item.last_contact | gmt | dashify}}</dd>
-                      </dl>
-                      <small class="p-l-15 f-s-10 text-muted">
-                        Loaded at {{timestamp | date: 'mediumTime'}}
-                    </small>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="panel clia-tab p-t-15 p-l-20 p-r-20 text-muted" *ngIf="ionReportersData.length==0">
-          No Ion Reporter data
         </div>
       </div>
     </div>
+    <div class="col-md-4">
+      <div class="panel clia-tab" *ngIf="ionReportersData.length!=0">
+        <div class="m-0 p-0">
+          <div>
+            <ul class="nav nav-tabs nav-tabs-orangeshade p-l-0">
+              <li *ngFor="let item of ionReportersData; let index = index; let first = first" [class.active]="first">
+                <a class="p-0" href="#tab-{{index}}" data-toggle="tab" aria-expanded="true">
+                  <div class="panel-heading">
+                    <div class="panel-heading-btn">
+                    </div>
+                    <h4 class="panel-title">
+                      <i [colorCodeCliaIon]="item.ir_status" class="fa fa-heartbeat"></i> {{item.ion_reporter_id}}
+                    </h4>
+                  </div>
+                </a>
+              </li>
+            </ul>
+            <div class="tab-content m-b-0 p-l-10 p-r-10 p-t-0 p-b-0">
+              <div *ngFor="let item of ionReportersData; let index = index; let first = first" [class.active]="first" class="tab-pane fade in"
+                id="tab-{{index}}">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <dl class="dl-horizontal m-t-20">
+                      <dt>IP Address</dt>
+                      <!--<dd>{{item.externalIpAddress | dashify}}</dd>-->
+                      <dd>-</dd>
+                      <dt>Internal IP Address</dt>
+                      <!--<dd>{{item.ipAddress | dashify}}</dd>-->
+                      <dd>-</dd>
+                      <dt>Host Name</dt>
+                      <!--<dd>{{item.hostName | dashify}}</dd>-->
+                      <dd>-</dd>
+                      <dt>Status</dt>
+                      <dd [colorCodeCliaIon]="item.ir_status">{{item.ir_status | dashify}}</dd>
+                      <dt>Ion Reporter Version</dt>
+                      <!--<dd>{{item.ionReporterVersion | dashify}}</dd>-->
+                      <dd>-</dd>
+                      <dt>Last Contact</dt>
+                      <dd>{{item.last_contact | gmt | dashify}}</dd>
+                    </dl>
+                    <small class="p-l-15 f-s-10 text-muted">
+                        Loaded at {{timestamp | date: 'mediumTime'}}
+                    </small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel clia-tab p-t-15 p-l-20 p-r-20 text-muted" *ngIf="ionReportersData.length==0">
+        No Ion Reporter data
+      </div>
+    </div>
   </div>
+</div>
