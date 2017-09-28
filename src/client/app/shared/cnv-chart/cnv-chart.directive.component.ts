@@ -20,7 +20,7 @@ declare let d3: any;
   animations: [
     trigger('dialog', [
       transition('void => *', [
-        style({ transform: 'scale3d(.5, .5, .5)' }),
+        style({ perspective: '800px', transform: 'scale3d(1.5, 1.5, 1.5)', backgroundColor: 'gray', translateZ: '100px' }),
         animate(100)
       ]),
       transition('* => void', [])
@@ -69,7 +69,6 @@ export class CnvChartDirective implements OnInit {
   cnvdata: any;
   file_name: string ;
   parseddata:any[] = [];
-  // tooltip: any;
 
   @Input() visible: boolean;
   @Output() visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -124,10 +123,19 @@ export class CnvChartDirective implements OnInit {
     });
 
     let colors:any[] = [];
+    let tip:any = 0;
     //COLORS
     Object.keys(temp).forEach((key:any) => {
       colors.push(temp[key].status);
     });
+    //Y MARGINS
+    if(temp !== null && temp.length > 0) {
+      let keys:any = Object.keys(temp);
+      keys.sort(function (a:any, b:any) {
+        return temp[b].values.whisker_high - temp[a].values.whisker_high;
+      })
+      tip = temp[keys[0]].values.whisker_high;
+    }
 
     this.cnvdata = temp;
 
@@ -152,6 +160,9 @@ export class CnvChartDirective implements OnInit {
     let xAxis:any = function () {
       return {rotateLabels: -45, fontSize: 10}
     };
+    let yDomain:any = function () {
+      return [0, (tip)];
+    };
     let color:any = function () {
       return colors;
     };
@@ -166,7 +177,7 @@ export class CnvChartDirective implements OnInit {
         showLabels: showLabels(),
         showXAxis: showXAxis(),
         xAxis: xAxis(),
-        yDomain: [0, 10],
+        yDomain: yDomain(),
         tooltip: {
           contentGenerator: (d:any) => {
             let html:any;
@@ -233,6 +244,14 @@ export class CnvChartDirective implements OnInit {
             .select('g')
             .append('g');
 
+          //Get highest gene y value
+          let keys:any = Object.keys(genes);
+          keys.sort(function(a:any,b:any){
+            return genes[b][5] - genes[a][5];
+          })
+          let tip:any = genes[keys[0]];
+          highest = tip[5];
+
           Object.keys(genes).forEach((key:any) => {
             gene = genes[key][0];
             let temp = genes[key][1];
@@ -247,13 +266,7 @@ export class CnvChartDirective implements OnInit {
               lowest = genes[key][4];
             }
 
-            if (highest !== null) {
-              highest = genes[key][5] > highest ? genes[key][5] : highest;
-              median[1] = highest;
-            }
-            else {
-              highest = genes[key][5];
-            }
+            median[1] = highest;
 
             if (temp !== chr && typeof temp !== 'undefined') {
               spot = (chart.xScale()(gene)).toFixed(2) - 1;
@@ -261,8 +274,8 @@ export class CnvChartDirective implements OnInit {
 
               if (x > 0) {
                 svg.append('line')
-                  .attr('x1', spot)
-                  .attr('x2', spot)
+                  .attr("x1", spot)
+                  .attr("x2", spot)
                   .attr("y1", height)
                   .style('fill', 'none')
                   .style('stroke', 'gray')
@@ -271,7 +284,6 @@ export class CnvChartDirective implements OnInit {
 
                 svg.append("text")
                   .attr("class", "nv-zeroLine")
-                  // .attr("x", 0.5 * parseFloat(spot + prespot))
                   .attr("x", parseFloat(spot) + 1)
                   .attr("y", 365)
                   .text(chrnum)
