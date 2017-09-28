@@ -13,7 +13,7 @@ import { ViewDataTransformer } from '../view-data-transformer.service';
 
 export const dropzoneConfigCdnaBam: DropzoneConfigInterface = {
   // Change this to your upload POST address:
-  url: Config.API.MESSAGE + '/message/clia/aliquot/presign_url/' + 'sendout.molecularSequenceNumber' + '/cDNA',
+  url: Config.API.MESSAGE + '/message/clia/aliquot/presign_url?filename=cDNA&msn=' + 'sendout.molecularSequenceNumber',
   maxFiles: 1,
   timeout: 0,
   maxFilesize: 50000, // size in MB
@@ -35,7 +35,7 @@ export const dropzoneConfigCdnaBam: DropzoneConfigInterface = {
 
 export const dropzoneConfigDnaBam: DropzoneConfigInterface = {
   // Change this to your upload POST address:
-  url: Config.API.MESSAGE + '/message/clia/aliquot/presign_url/' + 'sendout.molecularSequenceNumber' + '/DNA',
+  url: Config.API.MESSAGE + '/message/clia/aliquot/presign_url?filename=DNA&msn=' + 'sendout.molecularSequenceNumber',
   maxFiles: 1,
   timeout: 0,
   maxFilesize: 50000, // size in MB
@@ -57,7 +57,7 @@ export const dropzoneConfigDnaBam: DropzoneConfigInterface = {
 
 export const dropzoneConfigVariantZip: DropzoneConfigInterface = {
   // Change this to your upload POST address:
-  url: Config.API.MESSAGE + '/message/clia/aliquot/presign_url/' + 'sendout.molecularSequenceNumber' + '/Variant',
+  url: Config.API.MESSAGE + '/message/clia/aliquot/presign_url?filename=Variant&msn=' + 'sendout.molecularSequenceNumber',
   maxFiles: 1,
   timeout: 0,
   maxFilesize: 50000, // size in MB
