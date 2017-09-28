@@ -72,9 +72,9 @@
               </div>
             </div>
           </tab>
-          <tab *ngFor="let biopsy of patient.biopsies">
+          <tab *ngFor="let biopsy of patient.biopsies; first as isFirst">
             <ng-template tabHeading>
-              <i class="fa fa-bell-o"></i> Biopsy {{biopsy.biopsySequenceNumber}}, {{biopsy.dateCreated | gmt: 'YYYY-MM-DD'}}
+              <i *ngIf="isFirst" class="fa fa-bell-o" aria-hidden="true"></i> Biopsy {{biopsy.biopsySequenceNumber}}, {{biopsy.dateCreated | gmt: 'YYYY-MM-DD'}}
             </ng-template>
             <div id="{{biopsy.biopsySequenceNumber}}">
               <h4 class="panel-title f-s-18">Biopsy: {{biopsy.biopsySequenceNumber}}</h4>
