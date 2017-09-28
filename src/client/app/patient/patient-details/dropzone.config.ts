@@ -1,22 +1,22 @@
+import { Injectable } from '@angular/core';
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
+
 import { Config } from '../../shared/config/env.config';
 import { ViewDataTransformer } from '../view-data-transformer.service';
 
+@Injectable() class Data {
+  constructor(private transformer: ViewDataTransformer) { }
+}
+
+// console.log(ViewDataTransformer);
+// console.log('here');
+
 export const dropzoneConfigCdnaBam: DropzoneConfigInterface = {
-
-  // constructor(private transformer: ViewDataTransformer) { }
-
   // Change this to your upload POST address:
-  url: Config.API.MESSAGE + '/message/clia/aliquot/presign_url',
+  url: Config.API.MESSAGE + '/message/clia/aliquot/presign_url/' + 'sendout.molecularSequenceNumber' + '/cDNA',
   maxFiles: 1,
   timeout: 0,
   maxFilesize: 50000, // size in MB
-  headers:
-  {
-    "molecularSequenceNumber": "{{sendout.molecularSequenceNumber}}",
-    "analysisId": "{{analysis.analysisId}}",
-    "filename": "cDNA.bam"
-  },
   // acceptedFiles: '.bam',
   addRemoveLinks: true,
   autoProcessQueue: false,
@@ -34,18 +34,11 @@ export const dropzoneConfigCdnaBam: DropzoneConfigInterface = {
 };
 
 export const dropzoneConfigDnaBam: DropzoneConfigInterface = {
-
   // Change this to your upload POST address:
-  url: Config.API.MESSAGE + '/message/clia/aliquot/presign_url',
+  url: Config.API.MESSAGE + '/message/clia/aliquot/presign_url/' + 'sendout.molecularSequenceNumber' + '/DNA',
   maxFiles: 1,
   timeout: 0,
   maxFilesize: 50000, // size in MB
-  headers:
-  {
-    "molecularSequenceNumber": "{{sendout.molecularSequenceNumber}}",
-    "analysisId": "{{analysis.analysisId}}",
-    "filename": "DNA.bam"
-  },
   // acceptedFiles: '.bam',
   addRemoveLinks: true,
   autoProcessQueue: false,
@@ -60,22 +53,14 @@ export const dropzoneConfigDnaBam: DropzoneConfigInterface = {
     // file._id = _id;
     // addedFilesHash[_id] = done;
   }
-
 };
 
 export const dropzoneConfigVariantZip: DropzoneConfigInterface = {
-
   // Change this to your upload POST address:
-  url: Config.API.MESSAGE + '/message/clia/aliquot/presign_url',
+  url: Config.API.MESSAGE + '/message/clia/aliquot/presign_url/' + 'sendout.molecularSequenceNumber' + '/Variant',
   maxFiles: 1,
   timeout: 0,
   maxFilesize: 50000, // size in MB
-  headers:
-  {
-    "molecularSequenceNumber": "{{sendout.molecularSequenceNumber}}",
-    "analysisId": "{{analysis.analysisId}}",
-    "filename": "Variant.zip"
-  },
   acceptedFiles: '.zip',
   addRemoveLinks: true,
   autoProcessQueue: false,

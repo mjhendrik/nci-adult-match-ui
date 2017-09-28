@@ -306,7 +306,7 @@ export class ViewDataTransformer {
 
       variantReport.singleNucleotideVariantAndIndels
         = (variantReport.singleNucleotideVariants || [])
-        .concat(variantReport.indels || []);
+          .concat(variantReport.indels || []);
     }
   }
 
