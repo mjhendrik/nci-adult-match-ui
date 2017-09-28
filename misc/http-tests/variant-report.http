@@ -1,0 +1,36 @@
+// Use "humao.rest-client" VS Code extension to run these
+
+
+// Confirm/refect variant
+PUT http://localhost:8282/api/v1/message/patient/{patient_id}/variant_report/{analysis_id}/variant/{variant_guid}
+content-type: application/json
+
+{
+    "action": "confirm|reject"
+    "comment": "comment text",
+    "comment_user": "comment user"
+}
+
+###
+
+// Confirm/refect variant report
+PUT http://localhost:8282/api/v1/message/patient/{patient_id}/variant_report/{analysis_id}
+content-type: application/json
+
+{
+    "action": "confirm|reject"
+    "comment": "comment text",
+    "comment_user": "comment user"
+}
+
+###
+
+// Confirm/refect assignment report
+PUT http://localhost:8282/api/v1/message/patient/{patient_id}/assignment_report/{analysis_id}
+content-type: application/json
+
+{
+    "action": "confirm|reject"
+    "comment": "comment text",
+    "comment_user": "comment user"
+}
