@@ -72,11 +72,11 @@
               </div>
             </div>
           </tab>
-          <tab>
+          <tab *ngFor="let biopsy of patient.biopsies">
             <ng-template tabHeading>
-              <i class="fa fa-bell-o"></i> Biopsy {{biopsy[0].biopsySequenceNumber}}, {{biopsy[0].dateCreated | gmt: 'YYYY-MM-DD'}}
+              <i class="fa fa-bell-o"></i> Biopsy {{biopsy.biopsySequenceNumber}}, {{biopsy.dateCreated | gmt: 'YYYY-MM-DD'}}
             </ng-template>
-            <div *ngFor="let biopsy of patient.biopsies" class="tab-pane fade in" id="{{biopsy.biopsySequenceNumber}}">
+            <div id="{{biopsy.biopsySequenceNumber}}">
               <h4 class="panel-title f-s-18">Biopsy: {{biopsy.biopsySequenceNumber}}</h4>
               <div class="row">
                 <div class="col-md-6">
