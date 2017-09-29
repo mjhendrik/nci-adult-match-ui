@@ -13,53 +13,101 @@ import {
   XHRBackend,
   BaseRequestOptions
 } from '@angular/http';
-import { MockBackend } from '@angular/http/testing';
+import { MockBackend, MockConnection } from '@angular/http/testing';
 import { AuthHttp } from 'angular2-jwt';
+import { PatientApiServiceStub } from '../patient/testing/patient-api-service-stub';
 
 export function main() {
-  describe('dashboard api service test', () => {
-    beforeEach(() => {
-      TestBed.configureTestingModule({
-        imports: [HttpModule],
-        providers: [
-          MockBackend,
-          BaseRequestOptions,
-          { provide: XHRBackend, useClass: MockBackend },
-          { provide: AuthHttp, useExisting: Http },
-          DashboardApiService
-        ]
+
+    describe('Dashboard api service test', () => {
+      let backend: MockBackend;
+      let service: DashboardApiService;
+      let response: Response;
+
+      beforeEach(async(() => {
+        TestBed.configureTestingModule({
+          imports: [HttpModule],
+          providers: [
+            DashboardApiService,
+            { provide: XHRBackend, useClass: MockBackend },
+            { provide: AuthHttp, useExisting: Http },
+          ]
+        });
+      }));
+
+      it('can instantiate service with "new"', inject([AuthHttp], (http: AuthHttp) => {
+        expect(http).not.toBeNull('http should be provided');
+        let service = new DashboardApiService(http);
+        expect(service instanceof DashboardApiService).toBe(true, 'new service should be ok');
+      }));
+
+      it('can instantiate service when inject service', inject([DashboardApiService], (
+        service: DashboardApiService) => {
+          expect(service instanceof DashboardApiService).toBe(true);
+      }));
+
+      describe('when Dashboard AR / VR dash data', () => {
+        let backend:MockBackend;
+        let service:DashboardApiService;
+        let fakeDashBoard:any[];
+        let response:Response;
+        let fakeCount:number;
+        let dash:any;
+
+        beforeEach(inject([AuthHttp, XHRBackend], (http:AuthHttp, be:MockBackend) => {
+          backend = be;
+          service = new DashboardApiService(http);
+          fakeDashBoard = PatientApiServiceStub.makeDashboardData();
+          let options = new ResponseOptions({status: 200, body: fakeDashBoard});
+          response = new Response(options);
+          fakeCount = 10;
+        }));
+
+        it('should have expected Dashboard AR details (then)', async(inject([], () => {
+          backend.connections.subscribe((c:MockConnection) => c.mockRespond(response));
+
+          service.getDashboardAR().toPromise()
+            .then(dash => {
+              expect(dash).toEqual(fakeDashBoard);
+            });
+        })));
+
+        it('should have expected Dashboard VR details (then)', async(inject([], () => {
+          backend.connections.subscribe((c:MockConnection) => c.mockRespond(response));
+
+          service.getDashboardVR().toPromise()
+            .then(dash => {
+              expect(dash).toEqual(fakeDashBoard);
+            });
+        })));
       });
-    });
 
-    xit('should return observable',
-      inject([DashboardApiService, XHRBackend],
-        (DashboardApiService: DashboardApiService, mockBackend: MockBackend) => {
+      describe('when Dashboard patient Awaiting dash data', () => {
+        let backend: MockBackend;
+        let service: DashboardApiService;
+        let fakeDashBoard: any[];
+        let response: Response;
+        let fakeCount: number;
+        let dash:any;
 
-          const mockResponse = {
-            data: [
-              { id: 0, name: 'Data 0' },
-              { id: 1, name: 'Data 1' },
-              { id: 2, name: 'Data 2' },
-              { id: 3, name: 'Data 3' },
-              { id: 4, name: 'Data 4' },
-              { id: 5, name: 'Data 5' },
-            ]
-          };
+        beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
+          backend = be;
+          service = new DashboardApiService(http);
+          fakeDashBoard = PatientApiServiceStub.makeDashboardPatientAwaitingData();
+          let options = new ResponseOptions({ status: 200, body: fakeDashBoard });
+          response = new Response(options);
+          fakeCount = 10;
+        }));
 
-          mockBackend.connections.subscribe((connection: any) => {
-            connection.mockRespond(new Response(new ResponseOptions({
-              body: mockResponse
-            })));
-          });
+        it('should have expected Dashboard Patients Awaiting details (then)', async(inject([], () => {
+          backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
-          DashboardApiService.getDashboardAR();
-          DashboardApiService.getDashboardVR();
-          DashboardApiService.getDashboardPatientsAwaiting();
-          DashboardApiService.getDashboardOverviewTa();
-          DashboardApiService.getDashboardOverviewPatients();
-          DashboardApiService.getDashboardOverviewBt();
-        })
-    );
+          service.getDashboardPatientsAwaiting().toPromise()
+            .then(dash => {
+              expect(dash).toEqual(fakeDashBoard);
+            });
+        })));
 
+      });
   });
 }
