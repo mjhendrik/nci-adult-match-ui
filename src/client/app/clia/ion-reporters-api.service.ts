@@ -14,7 +14,10 @@ export class IonReportersApiService extends ApiService {
   }
 
   getCliaIon(type: string): Observable<any[]> {
-    return this.http.get(this.url('/ion_reporters/healthcheck?site=' + type,
+
+    // return this.http.get(this.url('/ion_reporters/healthcheck?site=' + type, // ion reporters
+
+    return this.http.get(this.url('/message/clia/ion_reporters/health_check?location=' + type, // message
       'assets/mock-data/clia-' + type + '-ion.json'))
       .map(this.extractData)
       .catch(this.handleError);
