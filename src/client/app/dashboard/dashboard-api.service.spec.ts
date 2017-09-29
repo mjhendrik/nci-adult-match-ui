@@ -109,5 +109,35 @@ export function main() {
         })));
 
       });
+
+      describe('when Dashboard patient TA dash data', () => {
+        let backend: MockBackend;
+        let service: DashboardApiService;
+        let fakeDashBoard: any[];
+        let response: Response;
+        let fakeCount: number;
+        let dash:any;
+
+        beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
+          backend = be;
+          service = new DashboardApiService(http);
+          fakeDashBoard = PatientApiServiceStub.makeDashboardTAData();
+          let options = new ResponseOptions({ status: 200, body: fakeDashBoard });
+          response = new Response(options);
+          fakeCount = 10;
+        }));
+
+        it('should have expected Dashboard Patients Awaiting details (then)', async(inject([], () => {
+          backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
+
+          service.getDashboardOverviewTa().toPromise()
+            .then(dash => {
+              expect(dash).toEqual(fakeDashBoard);
+            });
+        })));
+
+      });
+
+
   });
 }

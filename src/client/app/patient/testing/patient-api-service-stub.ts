@@ -301,6 +301,36 @@ export class PatientApiServiceStub {
     return data as any;
   }
 
+  static makeDashboardTAData = () => {
+    let data = [{
+      patientSequenceNumber:  "1031",
+      dateAssigned:  "March 2, 2017 1:38 PM GMT",
+      biopsySequenceNumber:  "bsn-1031",
+      treatmentArmId:  "rejoinTest6",
+      treatmentArmVersion:  "2016-02-01",
+    }, {
+      patientSequenceNumber:  "105re",
+        dateAssigned:  "March 2, 2017 1:40 PM GMT",
+        biopsySequenceNumber:  "bsn-105re",
+        hoursPending:  5068,
+        molecularSequenceNumber:  "MSN-105re",
+    }, {
+      patientSequenceNumber:  "106re",
+        dateAssigned:  "March 2, 2017 1:40 PM GMT",
+        biopsySequenceNumber:  "BSN-106re",
+        hoursPending:  5068,
+        molecularSequenceNumber:  "MSN-106re",
+    }, {
+      patientSequenceNumber:  "111re",
+        dateAssigned:  "March 2, 2017 1:46 PM GMT",
+        biopsySequenceNumber:  "bsn-111re",
+        hoursPending:  5068,
+        molecularSequenceNumber:  "msn-111re",
+    }];
+
+    return data as any;
+  }
+
   static makePatientData = () => {
         let patient = {
             '_class': 'gov.match.model.Patient',
