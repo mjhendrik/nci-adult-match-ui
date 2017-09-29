@@ -161,7 +161,94 @@ export class PatientApiServiceStub {
       { taSequenceNumber: '4', currentStepNumber: '1.1' }
     ] as any[];
 
-    static makePatientData = () => {
+  static makeBiopsytrackingData = () => {
+    let tracking = [{
+      "patientSequenceNumber": "1001re",
+      "biopsySequenceNumber": "BSN-1001re",
+      "molecularSequenceNumber": "MSN-1001re",
+      "location": "Boston",
+      "trackingNumber": "123456789",
+      "nucleicAcidSendoutDate": {"$date": 1488461754715},
+      "specimenReceivedDate": {"$date": 1488461754675}
+    }, {
+      "patientSequenceNumber": "1010re",
+      "biopsySequenceNumber": "BSN-1010re",
+      "molecularSequenceNumber": "MSN-1010re",
+      "location": "Boston",
+      "trackingNumber": "TN-1010",
+      "nucleicAcidSendoutDate": {"$date": 1488461958348},
+      "specimenReceivedDate": {"$date": 1488461958310}
+    }, {
+      "patientSequenceNumber": "1011re",
+      "biopsySequenceNumber": "BSN-1011re",
+      "molecularSequenceNumber": "MSN-1011re",
+      "location": "Boston",
+      "trackingNumber": "TN-1011",
+      "nucleicAcidSendoutDate": {"$date": 1488461959774},
+      "specimenReceivedDate": {"$date": 1488461959733}
+    }, {
+      "patientSequenceNumber": "1013",
+      "biopsySequenceNumber": "BSN-1013",
+      "molecularSequenceNumber": "MSN-1013",
+      "location": "MDACC",
+      "trackingNumber": "TN-1013",
+      "nucleicAcidSendoutDate": {"$date": 1488461945611},
+      "specimenReceivedDate": {"$date": 1488461945578}
+    }, {
+      "patientSequenceNumber": "1014",
+      "biopsySequenceNumber": "BSN-1014",
+      "molecularSequenceNumber": "MSN-1014",
+      "location": "MoCha",
+      "trackingNumber": "TN-1014",
+      "nucleicAcidSendoutDate": {"$date": 1488461947248},
+      "specimenReceivedDate": {"$date": 1488461947209}
+    }, {
+      "patientSequenceNumber": "1015",
+      "biopsySequenceNumber": "BSN-1015",
+      "molecularSequenceNumber": "MSN-1015",
+      "location": "Yale",
+      "trackingNumber": "TN-1015",
+      "nucleicAcidSendoutDate": {"$date": 1488461948484},
+      "specimenReceivedDate": {"$date": 1488461948445}
+    }, {
+      "patientSequenceNumber": "1016",
+      "biopsySequenceNumber": "BSN-1016",
+      "molecularSequenceNumber": "MSN-1016",
+      "location": "MGH",
+      "trackingNumber": "TN-1016",
+      "nucleicAcidSendoutDate": {"$date": 1488461949610},
+      "specimenReceivedDate": {"$date": 1488461949570}
+    }, {
+      "patientSequenceNumber": "1022",
+      "biopsySequenceNumber": "BSN-1022",
+      "molecularSequenceNumber": "MSN-1022",
+      "location": "Boston1",
+      "trackingNumber": "TN-1022",
+      "nucleicAcidSendoutDate": {"$date": 1488461950890},
+      "specimenReceivedDate": {"$date": 1488461950852}
+    }, {
+      "patientSequenceNumber": "1023",
+      "biopsySequenceNumber": "BSN-1023",
+      "molecularSequenceNumber": "MSN-1023",
+      "location": "Boston2",
+      "trackingNumber": "TN-1023",
+      "nucleicAcidSendoutDate": {"$date": 1488461951980},
+      "specimenReceivedDate": {"$date": 1488461951940}
+    }, {
+      "patientSequenceNumber": "1055",
+      "biopsySequenceNumber": "BSN-1055",
+      "molecularSequenceNumber": "MSN-1055",
+      "location": "Boston",
+      "trackingNumber": "TN-1055",
+      "nucleicAcidSendoutDate": {"$date": 1489181844551},
+      "specimenReceivedDate": {"$date": 1489181844515}
+  }];
+
+    return tracking as any;
+}
+
+
+  static makePatientData = () => {
         let patient = {
             '_class': 'gov.match.model.Patient',
             '_id': {
