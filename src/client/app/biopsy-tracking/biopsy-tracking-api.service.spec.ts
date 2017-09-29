@@ -18,8 +18,6 @@ import { Observable } from 'rxjs/Observable';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { PatientApiServiceStub } from '../patient/testing/patient-api-service-stub';
 
-// import { WindowStub } from './testing/window-stub';
-
 export function main() {
     describe('BiopsyTrackingApiService (mockBackend)', () => {
       beforeEach(async(() => {
