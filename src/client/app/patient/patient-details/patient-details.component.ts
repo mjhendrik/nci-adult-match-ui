@@ -64,10 +64,12 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
     this.roles = JSON.parse(localStorage.getItem('profile')).roles;
 
     let roles = this.roles.filter(function (arrayElement) {
-      return arrayElement.indexOf('CLIA_') !== -1 || arrayElement.indexOf('SYSTEM') !== -1 || arrayElement === 'ADMIN';
+      return arrayElement.indexOf('CLIA_') !== -1 || arrayElement === 'SYSTEM' || arrayElement === 'ADMIN';
     });
 
     if (roles.indexOf('ADMIN') !== -1 || roles.indexOf('SYSTEM') !== -1 || roles.indexOf('CLIA_') !== -1) this.fileUploadBtn = true;
+
+    // console.log(this.patient.biopsies[0].nucleicAcidSendouts[0].analyses[0].analysisId);
 
   }
 
@@ -84,11 +86,11 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
   }
 
   onUploadSuccess(evt: any): void {
-    // console.log(evt);
+    console.log(evt);
   }
 
   onUploadError(evt: any): void {
-    // console.log(evt);
+    console.log(evt);
   }
 
   uploadFiles(): void {
