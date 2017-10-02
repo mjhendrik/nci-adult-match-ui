@@ -301,6 +301,9 @@
                 </tbody>
               </table>
             </div>
+            <!-- start bdd tests -->
+            <input *ngIf="false" type="file" id="documents_upload" name="documents_upload" multiple>
+            <!-- end bdd tests -->
             <div [dropzone]="configDocuments" (error)="onUploadError($event)" (success)="onUploadSuccess($event)"></div>
           </tab>
         </tabset>
