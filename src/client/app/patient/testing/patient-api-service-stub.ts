@@ -390,7 +390,18 @@ export class PatientApiServiceStub {
     }];
 
     return data as any;
-  }
+  };
+
+  static makeConfigApiData = () => {
+    let data = [{
+      "buildNumber": "built locally",
+      "buildTime": "just now",
+      "buildId": "local",
+      "docker": ""
+    }];
+
+    return data as any;
+  };
   
   static makePatientData = () => {
         let patient = {
