@@ -12,10 +12,10 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR $INSTALL_PATH
 
-COPY .docker/httpd.conf /usr/local/apache2/conf/ \
-    && ./dist/dev /usr/local/apache2/match \
-    && ./node_modules /usr/local/apache2/match/node_modules \
-    && ./tools/config/setenv.sh /usr/local/apache2/match
+COPY .docker/httpd.conf /usr/local/apache2/conf
+COPY ./dist/dev /usr/local/apache2/match
+COPY ./node_modules /usr/local/apache2/match/node_modules
+COPY ./tools/config/setenv.sh /usr/local/apache2/match
 
 RUN chmod +x /usr/local/apache2/match/setenv.sh
 
