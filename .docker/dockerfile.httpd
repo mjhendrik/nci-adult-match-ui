@@ -1,7 +1,7 @@
 # Base image 
 FROM httpd
 #FROM httpd:2.4
-MAINTAINER jeremy.pumphrey@nih.gov
+LABEL maintainer="jeremy.pumphrey@nih.gov"
 
 ENV INSTALL_PATH /usr/local/apache2/match
 
@@ -12,11 +12,11 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR $INSTALL_PATH
 
-COPY .docker/httpd.conf /usr/local/apache2/conf/
-COPY ./dist/dev /usr/local/apache2/match
-COPY ./node_modules /usr/local/apache2/match/node_modules
+COPY .docker/httpd.conf /usr/local/apache2/conf/ \
+    && ./dist/dev /usr/local/apache2/match \
+    && ./node_modules /usr/local/apache2/match/node_modules \
+    && ./tools/config/setenv.sh /usr/local/apache2/match
 
-# This is a debug list
-# RUN ls -alth /usr/local/apache2/match
+RUN chmod +x /usr/local/apache2/match/setenv.sh
 
-CMD httpd-foreground -C 'DocumentRoot /usr/local/apache2/match/'
+CMD  /usr/local/apache2/match/setenv.sh && sleep 3 && httpd-foreground -C 'DocumentRoot /usr/local/apache2/match/'
