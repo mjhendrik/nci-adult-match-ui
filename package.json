@@ -7,7 +7,7 @@
   },
   "scripts": {
     "build.dev": "gulp build.dev --color --env-config dev",
-    "build.inttest": "gulp build.inttest --color --env-config test",
+    "build.deploy": "gulp build.deploy --color --env-config deploy",
     "build.dev-docker": "gulp build.dev --color --env-config dev-docker",
     "build.dev-mock": "gulp build.dev --color --env-config dev-mock",
     "build.dev.watch": "gulp build.dev.watch --color",
