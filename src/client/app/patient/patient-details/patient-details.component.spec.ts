@@ -20,7 +20,7 @@ import { DirectivesModule } from './../../shared/directives/directives.module';
 import { PipesModule } from './../../shared/pipes/pipes.module';
 import { DataTableModule } from './../../shared/datatables/DataTableModule';
 import { PatientDetailsComponent } from './patient-details.component';
-import { AuthGuard } from './../../shared/auth/auth.guard.service';
+// import { AuthGuard } from './../../shared/auth/auth.guard.service';
 import { PatientApiService } from './../patient-api.service';
 import { ViewDataTransformer } from './../view-data-transformer.service';
 import { PatientTimelineModule } from './../patient-timeline/patient-timeline.module';
@@ -29,6 +29,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { PatientApiServiceMock } from '../testing/patient-api-service-stub';
 import { ActivatedRouteStub } from '../testing/activated-route-stub';
 import { ViewDataTransformerStub } from '../testing/view-data-transformer-stubs';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 export function main() {
   describe('PatientDetailsComponent (templateUrl)', () => {
@@ -51,13 +52,14 @@ export function main() {
           RouterTestingModule.withRoutes(config),
           DirectivesModule,
           PipesModule,
-          AuthGuard,
+          // AuthGuard,
           FormsModule,
           DataTableModule,
           PatientTimelineModule,
           DropzoneModule,
           SharedModule,
-          NoopAnimationsModule
+          NoopAnimationsModule,
+          TabsModule.forRoot()
         ],
         declarations: [PatientDetailsComponent],
         providers: [
@@ -67,17 +69,62 @@ export function main() {
           ViewDataTransformer
         ]
       }).compileComponents();  // compile template and css
+
+      spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['ADMIN'] }));
+
     }));
 
-    // synchronous beforeEach
-    beforeEach(() => {
-      fixture = TestBed.createComponent(PatientDetailsComponent);
-      component = fixture.componentInstance; // PatientDetailsComponent test instance
-      // query for the title 'page-header' by CSS element selector
-      de = fixture.debugElement.query(By.css('.page-header'));
-      el = de.nativeElement;
 
-    });
+    it('should work by calling Patient details ngonInit',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(PatientDetailsComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(PatientDetailsComponent);
+            fixture.componentInstance.ngOnInit();
+            expect(fixture.componentInstance).toBeDefined();
+            expect(fixture.componentInstance.fileUploadBtn).toBeDefined();
+          });
+      }));
+
+    it('should work by calling VariantZip / DnaBam / CdnaBam to be true',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(PatientDetailsComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(PatientDetailsComponent);
+            fixture.componentInstance.onUploadSuccess("Success");
+            fixture.componentInstance.onUploadError("Error");
+            fixture.componentInstance.uploadFiles();
+
+            expect(fixture.componentInstance.configVariantZip.autoProcessQueue).toBeTruthy();
+            expect(fixture.componentInstance.configDnaBam.autoProcessQueue).toBeTruthy();
+            expect(fixture.componentInstance.configCdnaBam.autoProcessQueue).toBeTruthy();
+
+          });
+      }));
+
+    it('should work by calling variantZip / DnaBam / CdnaBam to be true',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(PatientDetailsComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(PatientDetailsComponent);
+            fixture.componentInstance.download("File");
+          });
+      }));
 
     xit('no PSN in title until manually call `detectChanges`', () => {
       expect(el.textContent).toEqual('Patient ');
@@ -95,7 +142,6 @@ export function main() {
 
       expect(spy).toHaveBeenCalled();
     });
-
 
     describe('with upload', () => {
       beforeEach(() => {
@@ -128,7 +174,6 @@ export function main() {
 
       xit('should call addedFileVariantZip with detectChanges()', () => {
         let spy = spyOn(component.changeDetector, 'detectChanges').and.callThrough();
-
         component.addedFileVariantZip('test');
 
         expect(component.variantZip).toBe(true);
@@ -137,7 +182,6 @@ export function main() {
 
       xit('should call removedFileVariantZip with detectChanges()', () => {
         let spy = spyOn(component.changeDetector, 'detectChanges').and.callThrough();
-
         component.removedFileVariantZip();
 
         expect(component.variantZip).toBe(false);
@@ -146,11 +190,7 @@ export function main() {
 
       xit('should call addedFileDnaBam with detectChanges()', () => {
         let spy = spyOn(component.changeDetector, 'detectChanges').and.callThrough();
-
         component.addedFileDnaBam('test');
-
-
-        console.log("-->"+component.dnaBam)
 
         expect(component.dnaBam).toBe(true);
         expect(spy).toHaveBeenCalled();
@@ -158,7 +198,6 @@ export function main() {
 
       xit('should call removedFileDnaBam with detectChanges()', () => {
         let spy = spyOn(component.changeDetector, 'detectChanges').and.callThrough();
-
         component.removedFileDnaBam();
 
         expect(component.dnaBam).toBe(false);
@@ -167,7 +206,6 @@ export function main() {
 
       xit('should call addedFileCdnaBam with detectChanges()', () => {
         let spy = spyOn(component.changeDetector, 'detectChanges').and.callThrough();
-
         component.addedFileCdnaBam('test');
 
         expect(component.cdnaBam).toBe(true);
@@ -209,5 +247,5 @@ export function main() {
     });
 
   });
-
 }
+

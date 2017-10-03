@@ -1,15 +1,5 @@
-import { Injectable } from '@angular/core';
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
-
 import { Config } from '../../shared/config/env.config';
-import { ViewDataTransformer } from '../view-data-transformer.service';
-
-@Injectable() class Data {
-  constructor(private transformer: ViewDataTransformer) { }
-}
-
-// console.log(ViewDataTransformer);
-// console.log('here');
 
 export const dropzoneConfigCdnaBam: DropzoneConfigInterface = {
   // Change this to your upload POST address:
@@ -32,6 +22,8 @@ export const dropzoneConfigCdnaBam: DropzoneConfigInterface = {
     // addedFilesHash[_id] = done;
   }
 };
+
+// console.log(dropzoneConfigCdnaBam.autoProcessQueue);
 
 export const dropzoneConfigDnaBam: DropzoneConfigInterface = {
   // Change this to your upload POST address:
