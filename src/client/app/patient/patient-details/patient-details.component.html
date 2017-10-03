@@ -301,10 +301,16 @@
                 </tbody>
               </table>
             </div>
-            <!-- start bdd tests -->
-            <input *ngIf="false" type="file" id="documents_upload" name="documents_upload" multiple>
-            <!-- end bdd tests -->
-            <div [dropzone]="configDocuments" (error)="onUploadError($event)" (success)="onUploadSuccess($event)"></div>
+            <div [dropzone]="configDocuments" (error)="onUploadError($event)" (success)="onUploadSuccess($event)">
+              <div class="dz-message" data-dz-message>
+                <!-- start bdd tests -->
+                <input style="display: none" type="file" id="documents_upload" name="documents_upload" multiple>
+                <!-- end bdd tests -->
+                <span>
+                  Click or drop files here to upload
+                </span>
+              </div>
+            </div>
           </tab>
         </tabset>
       </div>
@@ -327,14 +333,14 @@
         <div class="row">
           <div class="col-md-4 form-group has-feedback" [ngClass]="{true:'has-success',false:'has-error'}[variantZip]">
             <label class="control-label">Variant ZIP File</label>
-            <!-- start bdd tests -->
-            <input *ngIf="false" type="file" id="variant" name="variant" accept=".zip">
-            <!-- end bdd tests -->
             <div class="form-control" [ngClass]="{true:'disable-div'}[!analysisId]" [dropzone]="configVariantZip" (addedfile)="addedFileVariantZip($event)"
               (removedfile)="removedFileVariantZip()" (error)="onUploadError($event)" (success)="onUploadSuccess($event)">
               <div class="dz-message" data-dz-message>
+                <!-- start bdd tests -->
+                <input style="display: none" type="file" id="variant" name="variant" accept=".zip">
+                <!-- end bdd tests -->
                 <span *ngIf="analysisId">
-                  Click or drag Variant ZIP file here
+                  Click or drop Variant ZIP file here
                 </span>
                 <span *ngIf="!analysisId">
                   Enter Analysis ID to add Variant ZIP file
@@ -344,14 +350,14 @@
           </div>
           <div class="col-md-4 form-group has-feedback" [ngClass]="{true:'has-success',false:'has-error'}[dnaBam]">
             <label class="control-label">DNA BAM File</label>
-            <!-- start bdd tests -->
-            <input *ngIf="false" type="file" id="dna" name="dna" accept=".bam">
-            <!-- end bdd tests -->
             <div class="form-control" [ngClass]="{true:'disable-div'}[!analysisId]" [dropzone]="configDnaBam" (addedfile)="addedFileDnaBam($event)"
               (removedfile)="removedFileDnaBam()" (error)="onUploadError($event)" (success)="onUploadSuccess($event)">
               <div class="dz-message" data-dz-message>
+                <!-- start bdd tests -->
+                <input style="display: none" type="file" id="dna" name="dna" accept=".bam">
+                <!-- end bdd tests -->
                 <span *ngIf="analysisId">
-                  Click or drag DNA BAM file here
+                  Click or drop DNA BAM file here
                 </span>
                 <span *ngIf="!analysisId">
                   Enter Analysis ID to add DNA BAM file
@@ -361,14 +367,14 @@
           </div>
           <div class="col-md-4 form-group has-feedback" [ngClass]="{true:'has-success',false:'has-error'}[cdnaBam]">
             <label class="control-label">cDNA BAM File</label>
-            <!-- start bdd tests -->
-            <input *ngIf="false" type="file" id="cdna" name="cdna" accept=".bam">
-            <!-- end bdd tests -->
             <div class="form-control" [ngClass]="{true:'disable-div'}[!analysisId]" [dropzone]="configCdnaBam" (addedfile)="addedFileCdnaBam($event)"
               (removedfile)="removedFileCdnaBam()" (error)="onUploadError($event)" (success)="onUploadSuccess($event)">
               <div class="dz-message" data-dz-message>
+                <!-- start bdd tests -->
+                <input style="display: none" type="file" id="cdna" name="cdna" accept=".bam">
+                <!-- end bdd tests -->
                 <span *ngIf="analysisId">
-                  Click or drag cDNA BAM file here
+                  Click or drop cDNA BAM file here
                 </span>
                 <span *ngIf="!analysisId">
                   Enter Analysis ID to add cDNA BAM file
