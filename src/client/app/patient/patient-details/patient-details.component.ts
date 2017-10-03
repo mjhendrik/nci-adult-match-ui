@@ -86,14 +86,15 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
   }
 
   onUploadSuccess(evt: any): void {
-    console.log(evt);
+    // console.log(evt);
   }
 
   onUploadError(evt: any): void {
-    console.log(evt);
+    // console.log(evt);
   }
 
   uploadFiles(): void {
+    // console.log(this.configVariantZip.autoProcessQueue);
     this.configVariantZip.autoProcessQueue = true;
     this.configDnaBam.autoProcessQueue = true;
     this.configCdnaBam.autoProcessQueue = true;
