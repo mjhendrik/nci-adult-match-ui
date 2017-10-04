@@ -53,6 +53,102 @@ export class PatientApiServiceStub {
     return [{"_class":"gov.match.model.TreatmentArm","_id":{"$oid":"5925b1e751fa87a5c729d017"},"assayResults":["test"],"dateArchived":"test","dateCreated":{"$date":1465225012704},"description":"TDM1 in HER2 amplification","exclusionDiseases":[{"_id":"10021980","ctepCategory":"Breast Cancer - Invasive","shortName":"Inflammatory breast carcinoma"},{"_id":"10006190","ctepCategory":"Breast Cancer - Invasive","shortName":"Invasive breast carcinoma"},{"_id":"10066354","ctepCategory":"Gastroesophageal Cancer","shortName":"Adenocarcinoma - GEJ"},{"_id":"10053130","ctepCategory":"Breast Cancer - Invasive","shortName":"Cystosarcoma phylloides - breast"},{"_id":"10006285","ctepCategory":"Breast Neoplasm - Misc","shortName":"Breast cancer, NOS"},{"_id":"10001150","ctepCategory":"Gastroesophageal Cancer","shortName":"Adenocarcinoma - stomach"}],"exclusionDrugs":[{"drugs":[{"drugId":"780263","name":"TDM1 (Ado-trastuzumab emtansine)"}]},{"drugs":[{"drugId":"","name":"Trastuzumab"}]},{"drugs":[{"drugId":"","name":"Pertuzumab"}]},{"drugs":[{"drugId":"","name":"Margetuximab"}]},{"drugs":[{"drugId":"","name":"PF-05280014 (Pfizer, Trastuzumab Biosimilar)"}]},{"drugs":[{"drugId":"","name":"CT-P6 (Celltrion, Trastuzumab Biosimilar)"}]},{"drugs":[{"drugId":"","name":"ABP-980 (Amgen, Trastuzumab Biosimilar)"}]}],"gene":"HER2","maxPatientsAllowed":35,"name":"TDM1 in HER2 Amplification","numPatientsAssigned":35,"stateToken":{"$uuid":"a52329ec664a4d1e98341f19aefd120c"},"statusLog":{"1438968834628":"PENDING","1439210391639":"READY","1439352000000":"OPEN","1456246261701":"AMENDED","1465225012890":"AMENDED","1489035600000":"CLOSED"},"summaryReport":{"numCurrentPatientOnArm":1,"numFormerPatients":0,"numPendingArmApproval":0,"numNotEnrolledPatient":0,"assignmentRecords":[{"patientSequenceNumber":"12340","treatmentArmVersion":"2017-03-12","assignmentStatusOutcome":"ON_TREATMENT_ARM","analysisId":"MSN25049_v2_91f2766b-dd32-471d-9e83-8eefbce3719d","assignmentReportId":0,"dateSelected":"2017-06-12 18:54:48.608332","dateOnArm":"2017-07-12 18:54:48.608332","dateOffArm":"test","timeOnArm":314235,"stepNumber":"1","diseases":[{"meddraCode":"90600236","ctepCategory":"Reproductive System Neoplasm, Male","ctepSubCategory":"Penile Cancer","ctepTerm":"Penile adenocarcinoma","shortName":"Penile adenocarcinoma"}],"assignmentReason":"The patient was selected for this because it matched identifier COSM12345."},{"patientSequenceNumber":"12340","treatmentArmVersion":"2017-03-12","assignmentStatusOutcome":"OFF_TRIAL_NOT_CONSENTED","analysisId":"MSN25049_v2_91f2766b-dd32-471d-9e83-8eefbce3719d","assignmentReportId":0,"dateSelected":"2017-06-12 18:54:48.608332","dateOnArm":"2017-07-12 18:54:48.608332","dateOffArm":null,"timeOnArm":314235,"stepNumber":"1","diseases":[{"meddraCode":"90600236","ctepCategory":"Reproductive System Neoplasm, Male","ctepSubCategory":"Penile Cancer","ctepTerm":"Penile adenocarcinoma","shortName":"Penile adenocarcinoma"}],"assignmentReason":"The patient was selected for this because it matched identifier COSM12345."},{"patientSequenceNumber":"12340","treatmentArmVersion":"2017-03-12","assignmentStatusOutcome":"FORMERLY_ON_ARM_OFF_TRIAL","analysisId":"MSN25049_v2_91f2766b-dd32-471d-9e83-8eefbce3719d","assignmentReportId":0,"dateSelected":"2017-06-12 18:54:48.608332","dateOnArm":"2017-07-12 18:54:48.608332","dateOffArm":null,"timeOnArm":314235,"stepNumber":"1","diseases":[{"meddraCode":"90600236","ctepCategory":"Reproductive System Neoplasm, Male","ctepSubCategory":"Penile Cancer","ctepTerm":"Penile adenocarcinoma","shortName":"Neuroendocrine cancer, NOS"}],"assignmentReason":"The patient was selected for this because it matched identifier COSM12345."},{"patientSequenceNumber":"12340","treatmentArmVersion":"2017-03-12","assignmentStatusOutcome":"FORMERLY_ON_ARM_OFF_TRIAL","analysisId":"MSN25049_v2_91f2766b-dd32-471d-9e83-8eefbce3719d","assignmentReportId":0,"dateSelected":"2017-06-12 18:54:48.608332","dateOnArm":"2017-07-12 18:54:48.608332","dateOffArm":null,"timeOnArm":314235,"stepNumber":"1","diseases":[{"meddraCode":"90600236","ctepCategory":"Reproductive System Neoplasm, Male","ctepSubCategory":"Penile Cancer","ctepTerm":"Penile adenocarcinoma","shortName":"Neuroendocrine cancer, NOS"}],"assignmentReason":"The patient was selected for this because it matched identifier COSM12345."},{"patientSequenceNumber":"12340","treatmentArmVersion":"2017-03-12","assignmentStatusOutcome":"ON_TREATMENT_ARM","analysisId":"MSN25049_v2_91f2766b-dd32-471d-9e83-8eefbce3719d","assignmentReportId":0,"dateSelected":"2017-06-12 18:54:48.608332","dateOnArm":"2017-07-12 18:54:48.608332","dateOffArm":null,"timeOnArm":314235,"stepNumber":"1","diseases":[{"meddraCode":"90600236","ctepCategory":"Reproductive System Neoplasm, Male","ctepSubCategory":"Penile Cancer","ctepTerm":"Penile adenocarcinoma","shortName":"Lung adenocarcinoma"}],"assignmentReason":"The patient was selected for this because it matched identifier COSM12345."},{"patientSequenceNumber":"12340","treatmentArmVersion":"2017-03-12","assignmentStatusOutcome":"ON_TREATMENT_ARM","analysisId":"MSN25049_v2_91f2766b-dd32-471d-9e83-8eefbce3719d","assignmentReportId":0,"dateSelected":"2017-06-12 18:54:48.608332","dateOnArm":"2017-07-12 18:54:48.608332","dateOffArm":null,"timeOnArm":314235,"stepNumber":"1","diseases":[{"meddraCode":"90600236","ctepCategory":"Reproductive System Neoplasm, Male","ctepSubCategory":"Penile Cancer","ctepTerm":"Penile adenocarcinoma","shortName":"Neuroendocrine cancer, NOS"}],"assignmentReason":"The patient was selected for this because it matched identifier COSM12345."},{"patientSequenceNumber":"12340","treatmentArmVersion":"2017-03-12","assignmentStatusOutcome":"PENDING_APPROVAL","analysisId":"MSN25049_v2_91f2766b-dd32-471d-9e83-8eefbce3719d","assignmentReportId":0,"dateSelected":"2017-06-12 18:54:48.608332","dateOnArm":"2017-07-12 18:54:48.608332","dateOffArm":null,"timeOnArm":314235,"stepNumber":"1","diseases":[{"meddraCode":"90600236","ctepCategory":"Reproductive System Neoplasm, Male","ctepSubCategory":"Penile Cancer","ctepTerm":"Penile adenocarcinoma","shortName":"Penile adenocarcinoma"}],"assignmentReason":"The patient was selected for this because it matched identifier COSM12345."}]},"targetId":"#REF!","targetName":"Ado-trastuzumab Emtansine","treatmentArmDrugs":[{"drugId":"780263","name":"Ado-trastuzumab Emtansine","pathway":"HER2"}],"treatmentArmStatus":"CLOSED","treatmentArmId":"EAY131-Q","variantReport":{"copyNumberVariants":[{"armSpecific":false,"chromosome":"chr17","confidenceInterval5percent":0,"confidenceInterval95percent":0,"confirmed":false,"copyNumber":0,"description":"ERBB2 Amplification","geneName":"ERBB2","identifier":"ERBB2","inclusion":true,"levelOfEvidence":1,"position":"37856492","publicMedIds":["3798106"],"rare":false,"rawCopyNumber":0,"refCopyNumber":0}],"geneFusions":[{"identifier":"identifier-test","inclusion":true},{"identifier":"identifier-test","inclusion":false}],"indels":["test"],"nonHotspotRules":["test"],"singleNucleotideVariants":["test"],"unifiedGeneFusions":["test"]},"version":"2016-05-31"}]
   };
 
+  static dashboardARData = () => {
+    return [{"patientSequenceNumber":"1031","dateAssigned":{"$date":1488461903558},"biopsySequenceNumber":"bsn-1031","treatmentArmId":"rejoinTest6","treatmentArmVersion":"2016-02-01","hoursPending":5184,"molecularSequenceNumber":"msn-1031","analysisId":"job-1031"},{"patientSequenceNumber":"105re","dateAssigned":{"$date":1488462008463},"biopsySequenceNumber":"bsn-105re","hoursPending":5184,"molecularSequenceNumber":"MSN-105re","analysisId":"JOB-105re"},{"patientSequenceNumber":"106re","dateAssigned":{"$date":1488462027293},"biopsySequenceNumber":"BSN-106re","hoursPending":5184,"molecularSequenceNumber":"MSN-106re","analysisId":"JOB-106re"},{"patientSequenceNumber":"111re","dateAssigned":{"$date":1488462377826},"biopsySequenceNumber":"bsn-111re","hoursPending":5184,"molecularSequenceNumber":"msn-111re","analysisId":"job-111re"},{"patientSequenceNumber":"1055","dateAssigned":{"$date":1489181874843},"biopsySequenceNumber":"BSN-1055","treatmentArmId":"CukeTest-1055","treatmentArmVersion":"2015-08-06","hoursPending":4984,"molecularSequenceNumber":"MSN-1055","analysisId":"JOB-1055"},{"patientSequenceNumber":"1056","dateAssigned":{"$date":1489181898876},"biopsySequenceNumber":"BSN-1056","treatmentArmId":"CukeTest-1056","treatmentArmVersion":"2015-08-06","hoursPending":4984,"molecularSequenceNumber":"MSN-1056","analysisId":"JOB-1056"},{"patientSequenceNumber":"1057","dateAssigned":{"$date":1489181921727},"biopsySequenceNumber":"BSN-1057","treatmentArmId":"CukeTest-1057","treatmentArmVersion":"2015-08-06","hoursPending":4984,"molecularSequenceNumber":"MSN-1057","analysisId":"JOB-1057"},{"patientSequenceNumber":"1058","dateAssigned":{"$date":1489181950923},"biopsySequenceNumber":"BSN-1058","treatmentArmId":"CukeTest-1057","treatmentArmVersion":"2015-08-06","hoursPending":4984,"molecularSequenceNumber":"MSN-1058","analysisId":"JOB-1058"},{"patientSequenceNumber":"1059","dateAssigned":{"$date":1489181981085},"biopsySequenceNumber":"BSN-1059","treatmentArmId":"CukeTest-1057","treatmentArmVersion":"2015-08-06","hoursPending":4984,"molecularSequenceNumber":"MSN-1059","analysisId":"JOB-1059"},{"patientSequenceNumber":"1060","dateAssigned":{"$date":1489182013585},"biopsySequenceNumber":"BSN-1060","treatmentArmId":"CukeTest-1057","treatmentArmVersion":"2015-08-06","hoursPending":4984,"molecularSequenceNumber":"MSN-1060","analysisId":"JOB-1060"},{"patientSequenceNumber":"1061","dateAssigned":{"$date":1489182034862},"biopsySequenceNumber":"BSN-1061","treatmentArmId":"CukeTest-1057","treatmentArmVersion":"2015-08-06","hoursPending":4984,"molecularSequenceNumber":"MSN-1061","analysisId":"JOB-1061"},{"patientSequenceNumber":"1062","dateAssigned":{"$date":1489182057322},"biopsySequenceNumber":"BSN-1062","treatmentArmId":"CukeTest-1057","treatmentArmVersion":"2015-08-06","hoursPending":4984,"molecularSequenceNumber":"MSN-1062","analysisId":"JOB-1062"},{"patientSequenceNumber":"1063","dateAssigned":{"$date":1489182084100},"biopsySequenceNumber":"BSN-1063","treatmentArmId":"CukeTest-1078","treatmentArmVersion":"2015-08-06","hoursPending":4984,"molecularSequenceNumber":"MSN-1063","analysisId":"JOB-1063"},{"patientSequenceNumber":"1064","dateAssigned":{"$date":1489187046378},"biopsySequenceNumber":"BSN-1064","treatmentArmId":"CukeTest-1064","treatmentArmVersion":"2015-08-06","hoursPending":4983,"molecularSequenceNumber":"MSN-1064","analysisId":"JOB-1064"},{"patientSequenceNumber":"1065","dateAssigned":{"$date":1489187075335},"biopsySequenceNumber":"BSN-1065","treatmentArmId":"CukeTest-1065","treatmentArmVersion":"2015-08-06","hoursPending":4983,"molecularSequenceNumber":"MSN-1065","analysisId":"JOB-1065"},{"patientSequenceNumber":"1066","dateAssigned":{"$date":1489187103365},"biopsySequenceNumber":"BSN-1066","treatmentArmId":"CukeTest-1066","treatmentArmVersion":"2015-08-06","hoursPending":4983,"molecularSequenceNumber":"MSN-1066","analysisId":"JOB-1066"},{"patientSequenceNumber":"1067","dateAssigned":{"$date":1489187127209},"biopsySequenceNumber":"BSN-1067","treatmentArmId":"CukeTest-1066","treatmentArmVersion":"2015-08-06","hoursPending":4983,"molecularSequenceNumber":"MSN-1067","analysisId":"JOB-1067"},{"patientSequenceNumber":"1068","dateAssigned":{"$date":1489187152061},"biopsySequenceNumber":"BSN-1068","treatmentArmId":"CukeTest-1066","treatmentArmVersion":"2015-08-06","hoursPending":4983,"molecularSequenceNumber":"MSN-1068","analysisId":"JOB-1068"},{"patientSequenceNumber":"1069","dateAssigned":{"$date":1489187182158},"biopsySequenceNumber":"BSN-1069","treatmentArmId":"CukeTest-1066","treatmentArmVersion":"2015-08-06","hoursPending":4983,"molecularSequenceNumber":"MSN-1069","analysisId":"JOB-1069"},{"patientSequenceNumber":"1070","dateAssigned":{"$date":1489187213388},"biopsySequenceNumber":"BSN-1070","treatmentArmId":"CukeTest-1066","treatmentArmVersion":"2015-08-06","hoursPending":4983,"molecularSequenceNumber":"MSN-1070","analysisId":"JOB-1070"},{"patientSequenceNumber":"1071","dateAssigned":{"$date":1489187249202},"biopsySequenceNumber":"BSN-1071","treatmentArmId":"CukeTest-1066","treatmentArmVersion":"2015-08-06","hoursPending":4983,"molecularSequenceNumber":"MSN-1071","analysisId":"JOB-1071"},{"patientSequenceNumber":"1072","dateAssigned":{"$date":1489187272808},"biopsySequenceNumber":"BSN-1072","hoursPending":4983,"molecularSequenceNumber":"MSN-1072","analysisId":"JOB-1072"},{"patientSequenceNumber":"1078","dateAssigned":{"$date":1489195129523},"biopsySequenceNumber":"BSN-1078","treatmentArmId":"CukeTest-1078","treatmentArmVersion":"2015-08-06","hoursPending":4980,"molecularSequenceNumber":"MSN-1078","analysisId":"JOB-1078"},{"patientSequenceNumber":"160re","dateAssigned":{"$date":1489416149287},"biopsySequenceNumber":"bsn-160re","treatmentArmId":"EAY131-F","treatmentArmVersion":"2015-08-06","hoursPending":4919,"molecularSequenceNumber":"msn-160re","analysisId":"job-160"}]
+  };
+
+  static dashboardVRData = () => {
+    return [{
+      "patientSequenceNumber" : "1001re",
+      "biopsySequenceNumber" : "BSN-1001re",
+      "molecularSequenceNumber" : "MSN-1001re",
+      "location" : "Boston",
+      "specimenReceivedDate" : {"$date" : 1488461755963},
+      "dateVariantReportReceived" : {"$date" : 1488461756559},
+      "analysisId" : "JOB-1001re",
+      "daysPending" : 216
+    },
+      {
+        "patientSequenceNumber" : "UIConfirmVariantReport",
+        "biopsySequenceNumber" : "BSN-UIConfirmVariantReport",
+        "molecularSequenceNumber" : "MSN-UIConfirmVariantReport",
+        "location" : "Boston",
+        "specimenReceivedDate" : {"$date" : 1488461755963},
+        "dateVariantReportReceived" : {"$date" : 1488461756559},
+        "analysisId" : "JOB-UIConfirmVariantReport",
+        "daysPending" : 216
+      }]
+  };
+
+
+  static dashboardPatientAwaitingData = () => {
+    return [{
+      "messages" : [
+        'Variant report missing,Required assay result missing: MLH1, MSH2, PTEN'
+    ],
+    "PTEN" : {"applicable" : true},
+      "MLH1" : {"applicable" : true},
+      "MSH2" : {"applicable" : true},
+      "RB" : {"applicable" : false},
+      "molecularSequenceNumber" : 'MSN-170re-1',
+      "dateMsnShipped" : {"$date" : 1489409094505},
+      "lab" : 'Boston',
+      "dateSpecimenCollected" : {"$date" : 1489409094505},
+      "daysWaiting" : 211,
+      "diseases" : [
+      {
+        "_id" : 10040811,
+        "ctepCategory" : 'Skin Neoplasm',
+        "ctepSubCategory" : 'Skin Neoplasm, Miscellaneous',
+        "ctepTerm" : 'Skin cancer, NOS',
+        "shortName" : 'Skin cancer, NOS'
+      }
+    ],
+      "amoi" : [''],
+      "biopsySequenceNumber" : 'N-14-000005-4',
+      "patientSequenceNumber" : '170re',
+      "currentPatientStatus" : 'PROGRESSION_REBIOPSY',
+      "concordance" : 'Y',
+      "isOutsideAssay" : false
+  },
+    {
+      "messages" : ['Required assay result missing: MLH1, MSH2'],
+    "variantReportConfirmedDate" : {"$date" : 1489409094505},
+      "analysisId" : 'j-1025-2',
+      "PTEN" : {
+      "applicable" : true,
+      "result" : 'NEGATIVE',
+      "reportedDate" : { "$date" : 1489409093949 }
+    },
+      "MLH1" : {"applicable" : true},
+      "MSH2" : {"applicable" : true},
+      "RB" : {"applicable" : false},
+      "molecularSequenceNumber" : 'msn-1025-2',
+      "dateMsnShipped":  {"$date" : 1489409093385},
+      "lab" : 'Boston',
+      "dateSpecimenCollected" :  {
+      "$date" : 1489409093346
+    },
+      "daysWaiting" : 205,
+      "diseases" : [
+      {
+        "_id" : 10030139,
+        "ctepCategory" : 'Gastrointestinal Neoplasm',
+        "ctepSubCategory" : 'Gastroesophageal Cancer',
+        "ctepTerm" : 'Adenocarcinoma of the esophagus',
+        "shortName" : 'Adenocarcinoma - esophagus'
+      }
+    ],
+      "amoi" : [''],
+      "biopsySequenceNumber" : 'bsn-1025-2',
+      "patientSequenceNumber" : 1025,
+      "currentPatientStatus" : 'PROGRESSION_REBIOPSY',
+      "concordance" : 'N',
+      "isOutsideAssay" : false,
+      "variantReportConfirmedBy" : 'Boston'
+  }]
+  };
+
     static makeVariantReportQcData = () => {
         return {
             psn: '11276',
@@ -402,7 +498,7 @@ export class PatientApiServiceStub {
 
     return data as any;
   };
-  
+
   static makePatientData = () => {
         let patient = {
             '_class': 'gov.match.model.Patient',
