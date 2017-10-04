@@ -27,11 +27,11 @@ import {
 export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientData {
 
   needToScroll: boolean;
-  psn: string;
-  patient: any;
+  psn: string = '';
+  patient: any = {};
   summaryData: any = {};
-  entityId: string;
-  section: string;
+  entityId: string = '';
+  section: string = '';
   uploadedFiles: any[];
   fileCount: number = 0;
   variantZip: boolean = false;
@@ -41,6 +41,11 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
   configDnaBam = dropzoneConfigDnaBam;
   configCdnaBam = dropzoneConfigCdnaBam;
   configDocuments = dropzoneConfigDocuments;
+
+  msn: string = '';
+  filename: string = '';
+  filenames: any[] = [];
+  dropzoneUrl: string = '';
 
   roles: any[] = [];
   fileUploadBtn: boolean = false;
@@ -70,6 +75,9 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
     if (roles.indexOf('ADMIN') !== -1 || roles.indexOf('SYSTEM') !== -1 || roles.indexOf('CLIA_') !== -1) this.fileUploadBtn = true;
 
     // console.log(this.patient.biopsies[0].nucleicAcidSendouts[0].analyses[0].analysisId);
+    // console.log(this.patient.biopsies[0].nucleicAcidSendouts[0].molecularSequenceNumber);
+
+    this.msn = this.patient.biopsies[0].nucleicAcidSendouts[0].molecularSequenceNumber;
 
   }
 
@@ -94,10 +102,15 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
   }
 
   uploadFiles(): void {
-    // console.log(this.configVariantZip.autoProcessQueue);
-    this.configVariantZip.autoProcessQueue = true;
-    this.configDnaBam.autoProcessQueue = true;
-    this.configCdnaBam.autoProcessQueue = true;
+    for (let i = 0; i < 3; i++) {
+      this.filenames = ['Variant', 'DNA', 'cDNA'];
+      this.filename = this.filenames[i];
+      console.log(this.filename);
+      this.patientApi.manualUpload(this.filename, this.msn)
+        .subscribe((itemList: any) => {
+          this.dropzoneUrl = itemList;
+        });
+    }
   }
 
   addedFileVariantZip(evt: any): void {
