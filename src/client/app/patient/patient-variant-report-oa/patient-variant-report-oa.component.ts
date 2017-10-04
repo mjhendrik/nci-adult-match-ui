@@ -25,6 +25,7 @@ import { ScrollService } from '../../shared/utils/scroll.to.service';
 })
 export class PatientVariantReportOutsideAssayComponent implements OnInit, AfterViewInit, VariantReportComparisonData {
   scrollTo: (id: string) => void;
+  showComparison: boolean;
   showOutsideAssay: boolean;
   isOutsideAssayValue: boolean = null;
 
