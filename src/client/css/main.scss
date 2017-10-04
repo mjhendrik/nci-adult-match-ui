@@ -2,6 +2,7 @@
 // replace for production: @import "style.min.css";
 @import "dropzone.css";
 // replace for production: @import "dropzone.min.css";
+@import "dropzone-overrides.css";
 @import "../scss/index";
 body {
   background-color: $body-back-color;
