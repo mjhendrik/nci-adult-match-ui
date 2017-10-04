@@ -13,8 +13,6 @@ import { DashboardComponent } from './dashboard.component';
 import { DashboardApiService } from './dashboard-api.service';
 import { ActivatedRoute } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
-import { PatientApiServiceStub, PatientApiServiceMock } from './../patient/testing/patient-api-service-stub';
-
 
 let dashboard_data = {
   data: {
@@ -144,6 +142,9 @@ export function main() {
           {
             provide: ActivatedRoute, useValue: {
               snapshot: {
+                params: {
+                  isOutsideAssayValue: true
+                },
                 data: dashboard_data
               }
             }
@@ -216,6 +217,50 @@ export function main() {
           });
       }));
 
+    it('should test getOverviewDataTa',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(DashboardComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(DashboardComponent);
+            fixture.componentInstance.getOverviewDataTa();
+            expect(fixture.componentInstance.dataAvailableOverviewTa).toBe(true);
+          });
+      }));
+
+    it('should test getOverviewDataPatients',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(DashboardComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(DashboardComponent);
+            fixture.componentInstance.getOverviewDataPatients();
+            expect(fixture.componentInstance.dataAvailableOverviewPatients).toBe(true);
+          });
+      }));
+
+    it('should test getOverviewDataBt',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(DashboardComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(DashboardComponent);
+            fixture.componentInstance.getOverviewDataBt();
+            expect(fixture.componentInstance.dataAvailableOverviewBt).toBe(true);
+          });
+      }));
   });
 
   describe('dashboard component with error response', () => {
@@ -245,7 +290,6 @@ export function main() {
         ]
       });
     });
-
   });
 }
 
@@ -315,13 +359,16 @@ class MockDashboardService {
     return Observable.of(testdata);
   }
   getDashboardOverviewTa(): Observable<any> {
-    return Observable.of();
+    let testdata = [{"TOTAL":105,"READY":1,"CLOSED":1,"OPEN":94,"PENDING":9}]
+    return Observable.of(testdata);
   }
   getDashboardOverviewPatients(): Observable<any> {
-    return Observable.of();
+    let testdata = [{"TOTAL":238,"ON_TREATMENT_ARM":4,"OFF_TRIAL":2}]
+    return Observable.of(testdata);
   }
   getDashboardOverviewBt(): Observable<any> {
-    return Observable.of();
+    let testdata = [{"BIOPSY_SEQUENCES":201,"TOTAL":233,"MOLECULAR_SEQUENCES":219}]
+    return Observable.of(testdata);;
   }
 }
 
