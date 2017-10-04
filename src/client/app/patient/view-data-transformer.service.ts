@@ -20,8 +20,10 @@ const variantTables: Array<string> = [
 export class ViewDataTransformer {
   transformPatient(source: any): any {
     const transformedPatient: any = { ...source }; // Deep-copy the source
-    if (!source)
+
+    if (!source) {
       return transformedPatient;
+    }
 
     transformedPatient.disease = source.diseases && source.diseases.length ? source.diseases[0] : {};
 
@@ -98,6 +100,13 @@ export class ViewDataTransformer {
       transformedReport.showComparison = true;
 
     return transformedReport;
+  }
+
+  updateOutsidePatientReport(report: VariantReportComparisonData): void {
+    report.showComparison = report.outsideData.variantReport.variantReportStatus
+      && report.outsideData.variantReport.variantReportStatus !== 'PENDING'
+      && report.matchData.variantReport.variantReportStatus
+      && report.matchData.variantReport.variantReportStatus !== 'PENDING';
   }
 
   transformPatientAssignment(source: any, dateAssigned: string): AssignmentReportData {

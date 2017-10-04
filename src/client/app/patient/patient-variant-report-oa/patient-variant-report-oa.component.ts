@@ -11,6 +11,7 @@ import {
 
 import { VariantReportComparisonData } from './variant-report-comparison-data';
 import { ScrollService } from '../../shared/utils/scroll.to.service';
+import { ViewDataTransformer } from '../view-data-transformer.service';
 
 /**
  * PatientVariantReportOutsideAssayComponent.
@@ -73,7 +74,8 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, AfterV
   constructor(
     private route: ActivatedRoute,
     private patientApi: PatientApiService,
-    private scrollService: ScrollService) {
+    private scrollService: ScrollService,
+    private transformer: ViewDataTransformer) {
     this.scrollTo = scrollService.scrollToElement;
   }
 
@@ -95,5 +97,25 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, AfterV
 
   download(file: string) {
     this.patientApi.downloadPatientFile(this.psn, file);
+  }
+
+  confirmMatchReport(): void {
+    console.log('confirmMatchReport');
+    this.transformer.updateOutsidePatientReport(this);
+  }
+
+  rejectMatchReport(): void {
+    console.log('rejectMatchReport');
+    this.transformer.updateOutsidePatientReport(this);
+  }
+
+  rejectOutsideReport(): void {
+    console.log('rejectOutsideReport');
+    this.transformer.updateOutsidePatientReport(this);
+  }
+
+  confirmOutsideReport(): void {
+    console.log('confirmOutsideReport');
+    this.transformer.updateOutsidePatientReport(this);
   }
 }
