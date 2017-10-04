@@ -192,7 +192,7 @@
         <p *ngIf="!outsideData.assignmentReport || !outsideData.assignmentReport.reasons" class="empty-data-panel">No Treatment Report Assignment data</p>
       </tab>
 
-      <tab heading="Confirmation Report" [active]="!showOutsideAssay">
+      <tab heading="Confirmation Report" [active]="!showOutsideAssay" *ngIf="!showComparison">
         <div *ngIf="matchData && matchData.analysisId" class="row" matchHeight="panel-height-top">
           <div class="col-md-6">
             <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
@@ -374,7 +374,7 @@
         <p *ngIf="!matchData.assignmentReport || !matchData.assignmentReport.reasons" class="empty-data-panel">No Confirmation Report Assignment data</p>
       </tab>
 
-      <tab heading="Confirmation Report" *ngIf="outisdeData && matchData">
+      <tab heading="Confirmation Report" [active]="!showOutsideAssay" *ngIf="showComparison">
         <div *ngIf="matchData && matchData.analysisId" class="row" matchHeight="panel-height-top">
           <div class="col-md-6">
             <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">

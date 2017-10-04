@@ -86,6 +86,10 @@ export class ViewDataTransformer {
 
     this.precessPassFailVariants(transformedReport.comparisonVariantReport);
 
+    transformedReport.showComparison = transformedReport.outsideData.variantReport.variantReportStatus
+      && transformedReport.outsideData.variantReport.variantReportStatus !== 'PENDING'
+      && transformedReport.outsideData.variantReport.variantReportStatus !== 'CONFIRMED';
+
     return transformedReport;
   }
 

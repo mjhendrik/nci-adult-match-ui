@@ -1,4 +1,5 @@
 export interface VariantReportComparisonData {
+    showComparison: boolean;
     showOutsideAssay: boolean;
     psn: string;
     currentPatientStatus: string;
