@@ -40,6 +40,7 @@ export class CliaVariantReportQcComponent implements OnInit {
   cliaTypeName: string;
   tabTypeName: string;
   tabTypeHeaderName: string;
+  graphData: any;
 
   constructor(private cliaApi: SampleControlApiService, private route: ActivatedRoute) { }
 
@@ -74,6 +75,8 @@ export class CliaVariantReportQcComponent implements OnInit {
     this.molecular_id = this.route.snapshot.params['id'];
 
     this.getData(this.route.snapshot.data['data'].data);
+    this.getGraph(this.route.snapshot.data['graph'].data);
+
   }
 
   getData(itemList: CliaVariantReportsQCViewData) {
@@ -93,6 +96,10 @@ export class CliaVariantReportQcComponent implements OnInit {
     this.gene_fusions = itemList.gene_fusions;
     this.snv_indels = itemList.snv_indels;
   };
+
+  getGraph(itemList: CliaVariantReportsQCViewData) {
+    this.graphData = itemList;
+  }
 
   downloadDnaBam(): void {
     this.cliaApi.downloadCliaDnaBam(this.molecular_id)

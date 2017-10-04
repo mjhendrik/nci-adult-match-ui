@@ -51,10 +51,25 @@ export class SampleControlApiService extends ApiService {
       .catch(this.handleError);
   }
 
-  getCliaVariantReportQC(molecular_id: string): Observable<CliaVariantReportsQCViewData> {
-    return this.http.get(this.url('/sample_controls/quality_control/' + molecular_id
-      + '?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,torrent_variant_caller_version,oncomine_control_panel_summary',
+  getCliaVariantReportQC(molecular_id: string, analysisId: string): Observable<CliaVariantReportsQCViewData> {
+
+    // getCliaVariantReportQC(molecular_id: string): Observable<CliaVariantReportsQCViewData> {
+    // return this.http.get(this.url('/sample_controls/quality_control/' + molecular_id
+    //   + '?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,torrent_variant_caller_version,oncomine_control_panel_summary',
+    // sample control
+
+    return this.http.get(this.url('message/ecog/patient/' + molecular_id + '/variant_reports/' + analysisId + '/qc_report'
+      // analysisId might not be readily available
+      + '?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,torrent_variant_caller_version,oncomine_control_panel_summary', // message
       'assets/mock-data/clia-variant-report-qc-WHAT_SHOULD_BE_HERE.json'))
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  getCliaVariantReportVCF(molecular_id: string, analysisId: string): Observable<CliaVariantReportsQCViewData> {
+    return this.http.get(this.url('message/ecog/patient/' + molecular_id + '/variant_reports/' + analysisId + '/vcf_graph', // message
+      // analysisId might not be readily available
+      'assets/mock-data/clia-variant-report-qc-WHAT_SHOULD_BE_HERE_FOR_GRAPH.json'))
       .map(this.extractData)
       .catch(this.handleError);
   }
