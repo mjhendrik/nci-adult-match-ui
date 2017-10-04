@@ -45,7 +45,10 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
   msn: string = '';
   filename: string = '';
   filenames: any[] = [];
-  dropzoneUrl: string = '';
+  dropzoneUrl: any[] = [];
+  dropzoneUrlVariant: string = '';
+  dropzoneUrlDna: string = '';
+  dropzoneUrlCdna: string = '';
 
   roles: any[] = [];
   fileUploadBtn: boolean = false;
@@ -105,12 +108,19 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
     for (let i = 0; i < 3; i++) {
       this.filenames = ['Variant', 'DNA', 'cDNA'];
       this.filename = this.filenames[i];
-      console.log(this.filename);
       this.patientApi.manualUpload(this.filename, this.msn)
         .subscribe((itemList: any) => {
-          this.dropzoneUrl = itemList;
+          this.dropzoneUrl[i] = itemList;
+          // this.dropzoneUrl[i] = 10 * i;
         });
     }
+    // this.dropzoneUrlVariant = this.dropzoneUrl[0];
+    // this.dropzoneUrlDna = this.dropzoneUrl[1];
+    // this.dropzoneUrlCdna = this.dropzoneUrl[2];
+    // console.log('herererererer');
+    // console.log(this.dropzoneUrlVariant);
+    // console.log(this.dropzoneUrlDna);
+    // console.log(this.dropzoneUrlCdna);
   }
 
   addedFileVariantZip(evt: any): void {
@@ -142,4 +152,5 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
     this.cdnaBam = false;
     this.changeDetector.detectChanges();
   }
+
 }

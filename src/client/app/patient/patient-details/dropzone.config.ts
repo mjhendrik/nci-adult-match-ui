@@ -2,127 +2,56 @@ import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 
 export const dropzoneConfigVariantZip: DropzoneConfigInterface = {
   // Change this to your upload POST address:
-  url: 'this.dropzoneUrl',
+  url: 'this.dropzoneUrlVariant',
   maxFiles: 1,
   timeout: 0,
   maxFilesize: 50000, // size in MB
   acceptedFiles: '.zip',
   addRemoveLinks: true,
-  autoProcessQueue: true,
-  // init: function () {
-  //   var submitButton = document.querySelector('#act-on-upload');
-  //   let myDropzone = this;
-  //   submitButton.addEventListener('success', function () {
-  //     myDropzone.processQueue();
-  //   });
-  //   myDropzone.on('addedfile', function (file: any) {
-  //     if (!file.type.match(/image.*/)) {
-  //       if (file.type.match(/application.zip/)) {
-  //         myDropzone.emit('thumbnail', file, 'path/to/img');
-  //       } else {
-  //         myDropzone.emit('thumbnail', file, 'path/to/img');
-  //       }
-  //     }
-  //   });
-  //   myDropzone.on('complete', function (file: any) {
-  //     myDropzone.removeFile(file);
-  //   });
-  // },
-  // init: function () {
-  //   this.on('removedfile', function (file: any) {
-  //     // delete from our dict removed file
-  //     //delete addedFilesHash[file];
-  //   });
-  // },
-  // accept: function (file: any, done: any) {
-  //   // var _id = count++;
-  //   // file._id = _id;
-  //   // addedFilesHash[_id] = done;
-  // }
+  autoProcessQueue: false,
+  init: function () {
+    var submitButton = document.querySelector('#upload-files');
+    let myDropzone = this; // closure
+    submitButton.addEventListener('click', function () {
+      myDropzone.processQueue(); // Tell Dropzone to process all queued files.
+    });
+  }
 };
-
-// console.log(dropzoneConfigVariantZip.autoProcessQueue);
 
 export const dropzoneConfigDnaBam: DropzoneConfigInterface = {
   // Change this to your upload POST address:
-  url: 'this.dropzoneUrl',
+  url: 'this.dropzoneUrlDna',
   maxFiles: 1,
   timeout: 0,
   maxFilesize: 50000, // size in MB
   // acceptedFiles: '.bam',
   addRemoveLinks: true,
-  autoProcessQueue: true,
-  // init: function () {
-  //   var submitButton = document.querySelector('#act-on-upload');
-  //   let myDropzone = this;
-  //   submitButton.addEventListener('success', function () {
-  //     myDropzone.processQueue();
-  //   });
-  //   myDropzone.on('addedfile', function (file: any) {
-  //     if (!file.type.match(/image.*/)) {
-  //       if (file.type.match(/application.zip/)) {
-  //         myDropzone.emit('thumbnail', file, 'path/to/img');
-  //       } else {
-  //         myDropzone.emit('thumbnail', file, 'path/to/img');
-  //       }
-  //     }
-  //   });
-  //   myDropzone.on('complete', function (file: any) {
-  //     myDropzone.removeFile(file);
-  //   });
-  // },
-  // init: function () {
-  //   this.on('removedfile', function (file: any) {
-  //     // delete from our dict removed file
-  //     //delete addedFilesHash[file];
-  //   });
-  // },
-  // accept: function (file: any, done: any) {
-  //   // var _id = count++;
-  //   // file._id = _id;
-  //   // addedFilesHash[_id] = done;
-  // }
+  autoProcessQueue: false,
+  init: function () {
+    var submitButton = document.querySelector('#upload-files');
+    let myDropzone = this; // closure
+    submitButton.addEventListener('click', function () {
+      myDropzone.processQueue(); // Tell Dropzone to process all queued files.
+    });
+  }
 };
 
 export const dropzoneConfigCdnaBam: DropzoneConfigInterface = {
   // Change this to your upload POST address:
-  url: 'this.dropzoneUrl',
+  url: 'this.dropzoneUrlCdna',
   maxFiles: 1,
   timeout: 0,
   maxFilesize: 50000, // size in MB
   // acceptedFiles: '.bam',
   addRemoveLinks: true,
-  autoProcessQueue: true,
-  // init: function () {
-  //   var submitButton = document.querySelector('#act-on-upload');
-  //   let myDropzone = this;
-  //   submitButton.addEventListener('success', function () {
-  //     myDropzone.processQueue();
-  //   });
-  //   myDropzone.on('addedfile', function (file: any) {
-  //     if (!file.type.match(/image.*/)) {
-  //       if (file.type.match(/application.zip/)) {
-  //         myDropzone.emit('thumbnail', file, 'path/to/img');
-  //       } else {
-  //         myDropzone.emit('thumbnail', file, 'path/to/img');
-  //       }
-  //     }
-  //   });
-  //   myDropzone.on('complete', function (file: any) {
-  //     myDropzone.removeFile(file);
-  //   });
-  // },
-  // init: function () {
-  //   this.on('removedfile', function (file: any) {
-  //     // delete from our dict removed file
-  //     //delete addedFilesHash[file];
-  //   });
-  // },
-  // accept: function (file: any, done: any) {
-  //   // var _id = count++;
-  //   // file._id = _id;
-  //   // addedFilesHash[_id] = done;
-  // }
+  autoProcessQueue: false,
+  init: function () {
+    var submitButton = document.querySelector('#upload-files');
+    let myDropzone = this; // closure
+    submitButton.addEventListener('click', function () {
+      myDropzone.processQueue(); // Tell Dropzone to process all queued files.
+    });
+  }
 };
 
 export const dropzoneConfigDocuments: DropzoneConfigInterface = {
