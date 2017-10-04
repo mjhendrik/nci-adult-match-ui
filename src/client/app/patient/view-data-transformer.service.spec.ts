@@ -10,7 +10,7 @@ export function main() {
 
     beforeEach(async(() => {
       TestBed.configureTestingModule({
-        providers: [ ViewDataTransformer ]
+        providers: [ViewDataTransformer]
       });
     }));
 
@@ -160,13 +160,15 @@ export function main() {
         let ocpDataOutside: any = null;
         let cnvDataMatch: any = null;
         let ocpDataMatch: any = null;
+        let isOutsideAssay: boolean;
 
         let transformed = service.transformOutsidePatientReport(
           report,
           cnvDataOutside,
           ocpDataOutside,
           cnvDataMatch,
-          ocpDataMatch);
+          ocpDataMatch,
+          isOutsideAssay);
 
         expect(transformed).toBeNull();
       });
@@ -177,6 +179,7 @@ export function main() {
         let ocpDataOutside: any = null;
         let cnvDataMatch: any = null;
         let ocpDataMatch: any = null;
+        let isOutsideAssay: boolean;
 
         expect(() => {
           service.transformOutsidePatientReport(
@@ -184,7 +187,8 @@ export function main() {
             cnvDataOutside,
             ocpDataOutside,
             cnvDataMatch,
-            ocpDataMatch);
+            ocpDataMatch,
+            isOutsideAssay);
         }
         ).not.toThrow();
       });
@@ -195,6 +199,7 @@ export function main() {
         let ocpDataOutside: any = {};
         let cnvDataMatch: any = {};
         let ocpDataMatch: any = {};
+        let isOutsideAssay: boolean;
         let transformed: VariantReportComparisonData;
 
         expect(() => {
@@ -203,7 +208,8 @@ export function main() {
             cnvDataOutside,
             ocpDataOutside,
             cnvDataMatch,
-            ocpDataMatch);
+            ocpDataMatch,
+            isOutsideAssay);
         }
         ).not.toThrow();
 
