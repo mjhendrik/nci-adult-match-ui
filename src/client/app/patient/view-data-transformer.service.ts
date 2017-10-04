@@ -53,10 +53,12 @@ export class ViewDataTransformer {
     cnvDataOutside: any,
     ocpDataOutside: any,
     cnvDataMatch: any,
-    ocpDataMatch: any): any {
+    ocpDataMatch: any,
+    isOutsideAssay: boolean): any {
 
-    if (!report)
+    if (!report) {
       return null;
+    }
 
     const transformedReport: any = { ...report }; // Deep-copy the source
 
@@ -86,9 +88,14 @@ export class ViewDataTransformer {
 
     this.precessPassFailVariants(transformedReport.comparisonVariantReport);
 
+    transformedReport.isOutsideAssay = isOutsideAssay;
+
     transformedReport.showComparison = transformedReport.outsideData.variantReport.variantReportStatus
       && transformedReport.outsideData.variantReport.variantReportStatus !== 'PENDING'
-      && transformedReport.outsideData.variantReport.variantReportStatus !== 'CONFIRMED';
+      && transformedReport.matchData.variantReport.variantReportStatus
+      && transformedReport.matchData.variantReport.variantReportStatus !== 'PENDING';
+
+      transformedReport.showComparison = true;
 
     return transformedReport;
   }
