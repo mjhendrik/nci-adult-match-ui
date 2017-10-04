@@ -99,23 +99,27 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, AfterV
     this.patientApi.downloadPatientFile(this.psn, file);
   }
 
-  confirmMatchReport(): void {
-    console.log('confirmMatchReport');
-    this.transformer.updateOutsidePatientReport(this);
-  }
-
-  rejectMatchReport(): void {
-    console.log('rejectMatchReport');
+  confirmOutsideReport(): void {
+    console.log('confirmOutsideReport');
+    this.outsideData.variantReport.variantReportStatus = 'CONFIRMED';
     this.transformer.updateOutsidePatientReport(this);
   }
 
   rejectOutsideReport(): void {
     console.log('rejectOutsideReport');
+    this.outsideData.variantReport.variantReportStatus = 'REJECTED';
     this.transformer.updateOutsidePatientReport(this);
   }
 
-  confirmOutsideReport(): void {
-    console.log('confirmOutsideReport');
+  confirmMatchReport(): void {
+    console.log('confirmMatchReport');
+    this.matchData.variantReport.variantReportStatus = 'CONFIRMED';
+    this.transformer.updateOutsidePatientReport(this);
+  }
+
+  rejectMatchReport(): void {
+    console.log('rejectMatchReport');
+    this.matchData.variantReport.variantReportStatus = 'REJECTED';
     this.transformer.updateOutsidePatientReport(this);
   }
 }

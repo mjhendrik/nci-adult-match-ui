@@ -97,8 +97,6 @@ export class ViewDataTransformer {
       && transformedReport.matchData.variantReport.variantReportStatus
       && transformedReport.matchData.variantReport.variantReportStatus !== 'PENDING';
 
-      transformedReport.showComparison = true;
-
     return transformedReport;
   }
 
