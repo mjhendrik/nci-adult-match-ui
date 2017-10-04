@@ -80,7 +80,6 @@ export class PatientApiServiceStub {
       }]
   };
 
-
   static dashboardPatientAwaitingData = () => {
     return [{
       "messages" : [
