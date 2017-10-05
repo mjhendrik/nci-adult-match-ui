@@ -109,15 +109,15 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
       this.filenames = ['Variant', 'DNA', 'cDNA'];
       this.filename = this.filenames[i];
       this.patientApi.manualUpload(this.filename, this.msn)
-        .subscribe((itemList: any) => {
-          this.dropzoneUrl[i] = itemList;
-          // this.dropzoneUrl[i] = 10 * i;
+        .subscribe((itemList: string) => {
+          this.dropzoneUrl.push(itemList);
+          // this.dropzoneUrl.push('0--0');
         });
     }
+    // console.log(this.dropzoneUrl);
     // this.dropzoneUrlVariant = this.dropzoneUrl[0];
     // this.dropzoneUrlDna = this.dropzoneUrl[1];
     // this.dropzoneUrlCdna = this.dropzoneUrl[2];
-    // console.log('herererererer');
     // console.log(this.dropzoneUrlVariant);
     // console.log(this.dropzoneUrlDna);
     // console.log(this.dropzoneUrlCdna);
