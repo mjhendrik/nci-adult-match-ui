@@ -365,7 +365,7 @@
               (removedfile)="removedFileVariantZip()" (error)="onUploadError($event)" (success)="onUploadSuccess($event)">
               <div class="dz-message" data-dz-message>
                 <!-- start bdd tests -->
-                <input style="display: inline" type="file" id="variant" name="variant" accept=".zip" (addedfile)="addedFileVariantZip($event)">
+                <input style="display: none" type="file" id="variant" name="variant" accept=".zip" (addedfile)="addedFileVariantZip($event)">
                 <!-- end bdd tests -->
                 <span *ngIf="analysisId">
                   Click or drop Variant ZIP file here
