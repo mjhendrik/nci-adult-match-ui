@@ -9,12 +9,6 @@ import { routerTransition } from './../../shared/router.animations';
 import { PatientApiService } from '../patient-api.service';
 import { ViewDataTransformer } from './../view-data-transformer.service';
 import { PatientData, Tabs } from './patient-details.module';
-import {
-  dropzoneConfigVariantZip,
-  dropzoneConfigDnaBam,
-  dropzoneConfigCdnaBam,
-  dropzoneConfigDocuments
-} from './dropzone.config';
 
 @Component({
   moduleId: module.id,
@@ -32,19 +26,7 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
   summaryData: any = {};
   entityId: string = '';
   section: string = '';
-  uploadedFiles: any[];
-  fileCount: number = 0;
-  variantZip: boolean = false;
-  dnaBam: boolean = false;
-  cdnaBam: boolean = false;
-  configVariantZip = dropzoneConfigVariantZip;
-  configDnaBam = dropzoneConfigDnaBam;
-  configCdnaBam = dropzoneConfigCdnaBam;
-  configDocuments = dropzoneConfigDocuments;
-
   roles: any[] = [];
-  fileUploadBtn: boolean = false;
-
   tabs: Tabs;
 
   constructor(public changeDetector: ChangeDetectorRef,
