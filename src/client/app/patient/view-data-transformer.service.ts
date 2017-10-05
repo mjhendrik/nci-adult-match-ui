@@ -56,7 +56,7 @@ export class ViewDataTransformer {
     ocpDataOutside: any,
     cnvDataMatch: any,
     ocpDataMatch: any,
-    isOutsideAssay: boolean): any {
+    isOutsideAssayReport: boolean): any {
 
     if (!report) {
       return null;
@@ -90,7 +90,7 @@ export class ViewDataTransformer {
 
     this.precessPassFailVariants(transformedReport.comparisonVariantReport);
 
-    transformedReport.isOutsideAssay = isOutsideAssay;
+    transformedReport.isOutsideAssay = isOutsideAssayReport;
 
     transformedReport.showComparison = transformedReport.outsideData.variantReport.variantReportStatus
       && transformedReport.outsideData.variantReport.variantReportStatus !== 'PENDING'
