@@ -1,7 +1,11 @@
 <div id="content" class="content">
   <ul class="breadcrumb pull-right">
-    <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
-    <li><a href [routerLink]="['/patients']" class="link-none">Patients</a></li>
+    <li>
+      <a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a>
+    </li>
+    <li>
+      <a href [routerLink]="['/patients']" class="link-none">Patients</a>
+    </li>
     <li class="active">Patient {{patient.patientSequenceNumber | dashify}}</li>
   </ul>
   <h1 class="page-header">Patient {{patient.patientSequenceNumber | dashify}}</h1>
@@ -19,7 +23,9 @@
               <span *ngIf="patient.raceList && patient.raceList!=='PATIENT_REFUSAL'"> {{patient.raceList}}</span>
             </dd>
             <dt>Status</dt>
-            <dd><span [colorCodePatients]="patient.currentPatientStatus">{{patient.currentPatientStatus | dashify}}</span></dd>
+            <dd>
+              <span [colorCodePatients]="patient.currentPatientStatus">{{patient.currentPatientStatus | dashify}}</span>
+            </dd>
             <dt>Assignment Reason</dt>
             <dd>{{(patient.currentPatientAssignmentLogic ? patient.currentPatientAssignmentLogic.reason : '') | dashify}}</dd>
             <dt>Current Step</dt>
@@ -27,7 +33,9 @@
             <dt>Treatment Arm</dt>
             <dd>
               <treatment-arm-link *ngIf="patient.currentPatientAssignmentLogic" [treatmentArmId]="patient.currentPatientAssignmentLogic.treatmentArmId"
-                [version]="patient.currentPatientAssignmentLogic.treatmentArmVersion" [removePrefix]="true"></treatment-arm-link><span *ngIf="!patient.currentPatientAssignmentLogic">-</span></dd>
+                [version]="patient.currentPatientAssignmentLogic.treatmentArmVersion" [removePrefix]="true"></treatment-arm-link>
+              <span *ngIf="!patient.currentPatientAssignmentLogic">-</span>
+            </dd>
             <dt>Registration Date</dt>
             <dd>{{patient.registrationDate | gmt | dashify}}</dd>
             <dt>Last Rejoin Scan Date</dt>
@@ -74,8 +82,7 @@
           </tab>
           <tab *ngFor="let biopsy of patient.biopsies; first as isFirst">
             <ng-template tabHeading>
-              <i *ngIf="isFirst" class="fa fa-bell-o" aria-hidden="true"></i> Biopsy {{biopsy.biopsySequenceNumber}}, {{biopsy.dateCreated
-              | gmt: 'YYYY-MM-DD'}}
+              <i *ngIf="isFirst" class="fa fa-bell-o" aria-hidden="true"></i> Biopsy {{biopsy.biopsySequenceNumber}}, {{biopsy.dateCreated | gmt: 'YYYY-MM-DD'}}
             </ng-template>
             <div id="{{biopsy.biopsySequenceNumber}}">
               <h4 class="panel-title f-s-18">Biopsy: {{biopsy.biopsySequenceNumber}}</h4>
@@ -169,12 +176,14 @@
                         <tbody>
                           <ng-template ngFor let-sendout [ngForOf]="biopsy.nucleicAcidSendouts">
                             <tr id="{{sendout.molecularSequenceNumber}}">
-                              <td><i class="fa fa-share-alt"></i> {{sendout.molecularSequenceNumber | dashify}}</td>
+                              <td>
+                                <i class="fa fa-share-alt"></i> {{sendout.molecularSequenceNumber | dashify}}</td>
                               <td>{{sendout.destinationSite | dashify}}</td>
                               <td>
                                 <span *ngIf="sendout.trackingNumber!==null && sendout.trackingNumber!=='Local'">
-                                      <a href="https://www.fedex.com/apps/fedextrack/?tracknumbers={{sendout.trackingNumber}}" class="link-none" target="_blank"><i class="fa fa-truck"></i> {{sendout.trackingNumber | dashify}}</a>
-                                    </span>
+                                  <a href="https://www.fedex.com/apps/fedextrack/?tracknumbers={{sendout.trackingNumber}}" class="link-none" target="_blank">
+                                    <i class="fa fa-truck"></i> {{sendout.trackingNumber | dashify}}</a>
+                                </span>
                                 <span *ngIf="sendout.trackingNumber===null || sendout.trackingNumber==='Local'">{{sendout.trackingNumber | dashify}}</span>
                               </td>
                               <td>{{sendout.dnaConcentration | dashify}}</td>
@@ -187,13 +196,29 @@
                                 <div class="panel panel-with-tabs panel-accent-sides-purple panel-details-row">
                                   <div class="panel-heading">
                                     <ul id="panel-tab" class="nav nav-tabs pull-right nav-tabs-purple">
-                                      <li class="active"><a href="#panel-tab-info" data-toggle="tab" aria-expanded="true"><i class="fa fa-align-left"></i><span class="hidden-xs"> Info</span></a></li>
-                                      <li class=""><a href="#panel-tab-files" data-toggle="tab" aria-expanded="false"><i class="fa fa-file-archive-o"></i><span class="hidden-xs"> Files</span></a></li>
+                                      <li class="active">
+                                        <a href="#panel-tab-info" data-toggle="tab" aria-expanded="true">
+                                          <i class="fa fa-align-left"></i>
+                                          <span class="hidden-xs"> Info</span>
+                                        </a>
+                                      </li>
+                                      <li class="">
+                                        <a href="#panel-tab-files" data-toggle="tab" aria-expanded="false">
+                                          <i class="fa fa-file-archive-o"></i>
+                                          <span class="hidden-xs"> Files</span>
+                                        </a>
+                                      </li>
                                     </ul>
                                     <h4 class="panel-title f-s-18">Analysis ID: {{analysis.analysisId}}</h4>
-                                    <h5><a *ngIf="!biopsy.isOutsideAssayWorkflow" href [routerLink]="['/patients/' + patient.patientSequenceNumber + '/variant_reports/' + analysis.analysisId]"><i class="fa fa-file-text-o"></i> Variant and Assignment Reports</a></h5>
-                                    <h5><a *ngIf="biopsy.isOutsideAssayWorkflow" href [routerLink]="['/patients/' + patient.patientSequenceNumber + '/variant_reports_oa/' + analysis.analysisId]"
-                                        [queryParams]="{isOutsideAssay: biopsy.isOutsideAssay}"><i class="fa fa-file-text-o"></i> Variant and Assignment Reports</a></h5>
+                                    <h5>
+                                      <a *ngIf="!biopsy.isOutsideAssayWorkflow" href [routerLink]="['/patients/' + patient.patientSequenceNumber + '/variant_reports/' + analysis.analysisId]">
+                                        <i class="fa fa-file-text-o"></i> Variant and Assignment Reports</a>
+                                    </h5>
+                                    <h5>
+                                      <a *ngIf="biopsy.isOutsideAssayWorkflow" href [routerLink]="['/patients/' + patient.patientSequenceNumber + '/variant_reports_oa/' + analysis.analysisId]"
+                                        [queryParams]="{isOutsideAssay: biopsy.isOutsideAssay}">
+                                        <i class="fa fa-file-text-o"></i> Variant and Assignment Reports</a>
+                                    </h5>
                                   </div>
                                   <div id="panel-tab-content" class="tab-content p-t-0">
                                     <div class="tab-pane fade active in" id="panel-tab-info">
@@ -254,24 +279,25 @@
                                       <p>
                                         <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!analysis.variantReport.dnaBamFilePath"
                                           (click)="download(analysis.variantReport.dnaBamFilePath)">
-                                        <i class="fa fa-download"></i> DNA BAM</button>
+                                          <i class="fa fa-download"></i> DNA BAM</button>
                                         <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!analysis.variantReport.dnaBaiFilePath"
                                           (click)="download(analysis.variantReport.dnaBaiFilePath)">
-                                        <i class="fa fa-download"></i> DNA BAI</button>
+                                          <i class="fa fa-download"></i> DNA BAI</button>
                                         <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!analysis.variantReport.rnaBamFilePath"
                                           (click)="download(analysis.variantReport.rnaBamFilePath)">
-                                        <i class="fa fa-download"></i> RNA BAM</button>
+                                          <i class="fa fa-download"></i> RNA BAM</button>
                                         <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!analysis.variantReport.rnaBaiFilePath"
                                           (click)="download(analysis.variantReport.rnaBaiFilePath)">
-                                        <i class="fa fa-download"></i> RNA BAI</button>
+                                          <i class="fa fa-download"></i> RNA BAI</button>
                                         <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!analysis.variantReport.vcfFilePath"
                                           (click)="download(analysis.variantReport.vcfFilePath)">
-                                        <i class="fa fa-download"></i> VCF</button>
+                                          <i class="fa fa-download"></i> VCF</button>
                                       </p>
                                     </div>
                                   </div>
                                 </div>
-                                <a *ngIf="last && fileUploadBtn" href="#file-upload" class="btn btn-purple-light pull-right" style="margin-top: -6px;" data-toggle="modal"><i class="fa fa-upload"></i> Upload Files</a>
+                                <a *ngIf="last && fileUploadBtn" href="#file-upload" class="btn btn-purple-light pull-right" style="margin-top: -6px;" data-toggle="modal">
+                                  <i class="fa fa-upload"></i> Upload Files</a>
                               </td>
                             </tr>
                           </ng-template>
@@ -317,4 +343,3 @@
     </div>
   </div>
 </div>
-
