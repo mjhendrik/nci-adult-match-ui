@@ -42,14 +42,6 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
   configCdnaBam = dropzoneConfigCdnaBam;
   configDocuments = dropzoneConfigDocuments;
 
-  msn: string = '';
-  filename: string = '';
-  filenames: any[] = [];
-  dropzoneUrl: any[] = [];
-  dropzoneUrlVariant: string = '';
-  dropzoneUrlDna: string = '';
-  dropzoneUrlCdna: string = '';
-
   roles: any[] = [];
   fileUploadBtn: boolean = false;
 
@@ -75,13 +67,11 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
       return arrayElement.indexOf('CLIA_') !== -1 || arrayElement === 'SYSTEM' || arrayElement === 'ADMIN';
     });
 
-    if (roles.indexOf('ADMIN') !== -1 || roles.indexOf('SYSTEM') !== -1 || roles.indexOf('CLIA_') !== -1) this.fileUploadBtn = true;
-
-    // console.log(this.patient.biopsies[0].nucleicAcidSendouts[0].analyses[0].analysisId);
-    // console.log(this.patient.biopsies[0].nucleicAcidSendouts[0].molecularSequenceNumber);
-
-    this.msn = this.patient.biopsies[0].nucleicAcidSendouts[0].molecularSequenceNumber;
-
+    if (roles.indexOf('ADMIN') !== -1
+      || roles.indexOf('SYSTEM') !== -1
+      || roles.indexOf('CLIA_') !== -1) {
+      this.fileUploadBtn = true;
+    }
   }
 
   ngAfterViewInit() {
@@ -104,23 +94,14 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
     // console.log(evt);
   }
 
-  uploadFiles(): void {
-    for (let i = 0; i < 3; i++) {
-      this.filenames = ['Variant', 'DNA', 'cDNA'];
-      this.filename = this.filenames[i];
-      this.patientApi.manualUpload(this.filename, this.msn)
-        .subscribe((itemList: any) => {
-          this.dropzoneUrl[i] = itemList;
-          // this.dropzoneUrl[i] = 10 * i;
+  upload(molecularSequenceNumber: string): void {
+    const fileNames = ['Variant', 'DNA', 'cDNA'];
+    for (let file of fileNames) {
+      this.patientApi.upload(file, molecularSequenceNumber)
+        .subscribe((url: string) => {
+          let dropzoneUrl = url;
         });
     }
-    // this.dropzoneUrlVariant = this.dropzoneUrl[0];
-    // this.dropzoneUrlDna = this.dropzoneUrl[1];
-    // this.dropzoneUrlCdna = this.dropzoneUrl[2];
-    // console.log('herererererer');
-    // console.log(this.dropzoneUrlVariant);
-    // console.log(this.dropzoneUrlDna);
-    // console.log(this.dropzoneUrlCdna);
   }
 
   addedFileVariantZip(evt: any): void {

@@ -104,10 +104,9 @@ export class PatientApiService extends ApiService {
       });
   }
 
-  manualUpload(filename: string, msn: string): Observable<any> {
-    return this.http.post(Config.API.MESSAGE + '/message/clia/aliquot/presign_url?filename=' + filename + '&msn=' + msn, '')
+  upload(fileName: string, msn: string): Observable<string> {
+    return this.http.post(Config.API.MESSAGE + '/message/clia/aliquot/presign_url?filename=' + fileName + '&msn=' + msn, '')
       .map(this.extractData)
       .catch(this.handleError);
   }
-
 }
