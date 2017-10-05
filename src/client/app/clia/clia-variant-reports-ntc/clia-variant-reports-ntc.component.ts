@@ -132,7 +132,7 @@ export class CliaVariantReportsNtcComponent implements OnInit {
   };
 
   confirmReport(): void {
-    this.api.rejectReport(this.molecular_id);
+    this.api.confirmReport(this.molecular_id, 'ntc_control');
   };
 
 }

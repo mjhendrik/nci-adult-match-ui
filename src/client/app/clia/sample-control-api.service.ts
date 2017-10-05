@@ -117,14 +117,24 @@ export class SampleControlApiService extends ApiService {
       .catch(this.handleError);
   }
 
-  rejectReport(molecular_id: string): Observable<any> {
-    return this.http.post(Config.API.SAMPLE_CONTROLS + '/sample_controls/' + molecular_id, '')
+  rejectReport(molecular_id: string, type: string): Observable<any> {
+    return this.http.post(Config.API.MESSAGE + 'message/clia/' + type + '/status',
+      {
+        'molecularSequenceNumber': molecular_id,
+        'confirmation': false,
+        'comment': null
+      })
       .map(this.extractData)
       .catch(this.handleError);
   }
 
-  confirmReport(molecular_id: string): Observable<any> {
-    return this.http.post(Config.API.SAMPLE_CONTROLS + '/sample_controls/' + molecular_id, '')
+  confirmReport(molecular_id: string, type: string): Observable<any> {
+    return this.http.post(Config.API.MESSAGE + 'message/clia/' + type + '/status',
+      {
+        'molecularSequenceNumber': molecular_id,
+        'confirmation': true,
+        'comment': null
+      })
       .map(this.extractData)
       .catch(this.handleError);
   }
