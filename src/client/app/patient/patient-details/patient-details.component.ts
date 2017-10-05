@@ -28,6 +28,7 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
   section: string = '';
   roles: any[] = [];
   tabs: Tabs;
+  enableFileUpload = false;
 
   constructor(public changeDetector: ChangeDetectorRef,
     private route: ActivatedRoute,
@@ -52,7 +53,7 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
     if (roles.indexOf('ADMIN') !== -1
       || roles.indexOf('SYSTEM') !== -1
       || roles.indexOf('CLIA_') !== -1) {
-      this.fileUploadBtn = true;
+      this.enableFileUpload = true;
     }
   }
 
