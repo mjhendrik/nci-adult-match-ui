@@ -10,7 +10,6 @@ import { routerTransition } from './../../shared/router.animations';
 import { PatientApiService } from '../patient-api.service';
 import { ViewDataTransformer } from './../view-data-transformer.service';
 import { PatientData, Tabs } from './patient-details.module';
-import { FileUploadService } from '../file-upload/file-upload.service';
 
 @Component({
   moduleId: module.id,
@@ -34,7 +33,6 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
   dzConfigDocuments: DropzoneConfigInterface;
 
   constructor(
-    public fileUpload: FileUploadService,
     private route: ActivatedRoute,
     private patientApi: PatientApiService,
     private transformer: ViewDataTransformer,

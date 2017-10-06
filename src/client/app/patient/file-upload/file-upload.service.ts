@@ -50,6 +50,6 @@ export class FileUploadService extends ApiService {
           cdnaFile: this.extractData(data[2])
         };
       }
-      );
+    );
   }
 }

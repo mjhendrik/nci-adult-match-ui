@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FileUploadComponent } from './file-upload.component';
 import { PipesModule } from '../../shared/pipes/pipes.module';
 import { DirectivesModule } from '../../shared/directives/directives.module';
+import { FileUploadService } from './file-upload.service';
 
 @NgModule({
   imports: [
@@ -11,6 +12,7 @@ import { DirectivesModule } from '../../shared/directives/directives.module';
     DirectivesModule,
   ],
   declarations: [FileUploadComponent],
-  exports: [FileUploadComponent]
+  exports: [FileUploadComponent],
+  providers: [FileUploadService]
 })
 export class FileUploadModule { }
