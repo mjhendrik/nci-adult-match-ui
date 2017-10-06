@@ -1,7 +1,10 @@
-import { Component, ChangeDetectorRef } from '@angular/core';
+import {
+  Component,
+  ChangeDetectorRef,
+  Input
+} from '@angular/core';
 
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
-import { FileUploadService } from './file-upload.service';
 
 @Component({
   moduleId: module.id,
@@ -9,6 +12,8 @@ import { FileUploadService } from './file-upload.service';
   templateUrl: 'file-upload.component.html'
 })
 export class FileUploadComponent {
+  @Input() msn: string;
+
   dzConfigVariantZip: DropzoneConfigInterface;
   dzConfigDnaBam: DropzoneConfigInterface;
   dzConfigCdnaBam: DropzoneConfigInterface;
@@ -25,66 +30,68 @@ export class FileUploadComponent {
   constructor(
     private changeDetector: ChangeDetectorRef) {
 
-    // this.fileUploadService.getPresignUrls().subscribe(
-    //   urls => {
-    //     this.dzConfigVariantZip = {
-    //       url: urls.zipFile,
-    //       maxFiles: 1,
-    //       timeout: 0,
-    //       maxFilesize: 50000, // size in MB
-    //       acceptedFiles: '.zip',
-    //       addRemoveLinks: true,
-    //       autoProcessQueue: false,
-    //       init: function () {
-    //         var submitButton = document.querySelector('#upload-files');
-    //         let myDropzone = this; // closure
-    //         submitButton.addEventListener('click', function () {
-    //           myDropzone.processQueue(); // Tell Dropzone to process all queued files.
-    //         });
-    //       }
-    //     };
+    this.dzConfigVariantZip = {
+      url: '',
+      maxFiles: 1,
+      timeout: 0,
+      maxFilesize: 50000, // size in MB
+      acceptedFiles: '.zip',
+      addRemoveLinks: true,
+      autoProcessQueue: false,
+      init: function () {
+        var submitButton = document.querySelector('#upload-files');
+        let myDropzone = this; // closure
+        submitButton.addEventListener('click', function () {
+          myDropzone.processQueue(); // Tell Dropzone to process all queued files.
+        });
+      }
+    };
 
-    //     this.dzConfigDnaBam = {
-    //       url: urls.dnaFile,
-    //       maxFiles: 1,
-    //       timeout: 0,
-    //       maxFilesize: 50000, // size in MB
-    //       // acceptedFiles: '.bam',
-    //       addRemoveLinks: true,
-    //       autoProcessQueue: false,
-    //       init: function () {
-    //         var submitButton = document.querySelector('#upload-files');
-    //         let myDropzone = this; // closure
-    //         submitButton.addEventListener('click', function () {
-    //           myDropzone.processQueue(); // Tell Dropzone to process all queued files.
-    //         });
-    //       }
-    //     };
+    this.dzConfigDnaBam = {
+      url: '',
+      maxFiles: 1,
+      timeout: 0,
+      maxFilesize: 50000, // size in MB
+      // acceptedFiles: '.bam',
+      addRemoveLinks: true,
+      autoProcessQueue: false,
+      init: function () {
+        var submitButton = document.querySelector('#upload-files');
+        let myDropzone = this; // closure
+        submitButton.addEventListener('click', function () {
+          myDropzone.processQueue(); // Tell Dropzone to process all queued files.
+        });
+      }
+    };
 
-    //     this.dzConfigCdnaBam = {
-    //       url: urls.cdnaFile,
-    //       maxFiles: 1,
-    //       timeout: 0,
-    //       maxFilesize: 50000, // size in MB
-    //       // acceptedFiles: '.bam',
-    //       addRemoveLinks: true,
-    //       autoProcessQueue: false,
-    //       init: function () {
-    //         var submitButton = document.querySelector('#upload-files');
-    //         let myDropzone = this; // closure
-    //         submitButton.addEventListener('click', function () {
-    //           myDropzone.processQueue(); // Tell Dropzone to process all queued files.
-    //         });
-    //       }
-    //     };
-    //   }
-    // );
+    this.dzConfigCdnaBam = {
+      url: '',
+      maxFiles: 1,
+      timeout: 0,
+      maxFilesize: 50000, // size in MB
+      // acceptedFiles: '.bam',
+      addRemoveLinks: true,
+      autoProcessQueue: false,
+      init: function () {
+        var submitButton = document.querySelector('#upload-files');
+        let myDropzone = this; // closure
+        submitButton.addEventListener('click', function () {
+          myDropzone.processQueue(); // Tell Dropzone to process all queued files.
+        });
+      }
+    };
   }
 
   upload(): void {
-    const fileNames = ['Variant', 'DNA', 'cDNA'];
-    for (let file of fileNames) {
-    }
+    this.dzConfigVariantZip.url = 'some url';
+    this.dzConfigDnaBam.url = 'some url';
+    this.dzConfigCdnaBam.url = 'some url';
+
+
+
+    // const fileNames = ['Variant', 'DNA', 'cDNA'];
+    // for (let file of fileNames) {
+    // }
   }
 
   addedFileVariantZip(evt: any): void {

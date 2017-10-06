@@ -1,7 +1,8 @@
 import { Observable } from 'rxjs/Observable';
-import { Injectable } from '@angular/core';
+import { Injectable, TemplateRef } from '@angular/core';
 import { AuthHttp } from 'angular2-jwt';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 
 import { Config } from '../../shared/config/env.config';
 import { ApiService } from '../../shared/api/api.service';
@@ -17,6 +18,8 @@ export interface FileSet {
 export class FileUploadService extends ApiService {
   protected get baseApiUrl(): string { return Config.API.MESSAGE; }
 
+  public modalRef: BsModalRef;
+
   msn: string;
 
   paths: FileSet = {
@@ -26,13 +29,14 @@ export class FileUploadService extends ApiService {
   };
 
   constructor(
-    private modalService: BsModalService,
-    http: AuthHttp) {
+    http: AuthHttp,
+    private modalService: BsModalService
+    ) {
 
     super(http);
   }
 
-  openUploadDialog(msn: string) {
+  openUploadDialog(msn: string, template: TemplateRef<any>) {
     // this.modalService.show(FileUploadComponent);
   }
 
