@@ -26,6 +26,7 @@ export class FileUploadContentComponent {
   cdnaBam: boolean = false;
 
   molecularSequenceNumber: string;
+  analysisId: string;
 
   constructor(
     public modalRef: BsModalRef,
