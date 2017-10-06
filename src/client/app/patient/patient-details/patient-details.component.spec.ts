@@ -20,11 +20,12 @@ import { DirectivesModule } from './../../shared/directives/directives.module';
 import { PipesModule } from './../../shared/pipes/pipes.module';
 import { DataTableModule } from './../../shared/datatables/DataTableModule';
 import { PatientDetailsComponent } from './patient-details.component';
-// import { AuthGuard } from './../../shared/auth/auth.guard.service';
 import { PatientApiService } from './../patient-api.service';
 import { ViewDataTransformer } from './../view-data-transformer.service';
 import { PatientTimelineModule } from './../patient-timeline/patient-timeline.module';
+import { FileUploadService } from '../file-upload/file-upload.service';
 import { SharedModule } from '../../shared/shared.module';
+import { Observable } from 'rxjs/Observable';
 
 import { PatientApiServiceMock } from '../testing/patient-api-service-stub';
 import { ActivatedRouteStub } from '../testing/activated-route-stub';
@@ -52,7 +53,6 @@ export function main() {
           RouterTestingModule.withRoutes(config),
           DirectivesModule,
           PipesModule,
-          // AuthGuard,
           FormsModule,
           DataTableModule,
           PatientTimelineModule,
@@ -65,6 +65,7 @@ export function main() {
         providers: [
           { provide: ActivatedRoute, useValue: activatedRouteStub },
           { provide: PatientApiService, useClass: PatientApiServiceMock },
+          { provide: FileUploadService, useClass: MockFileUploadService },
           ChangeDetectorRef,
           ViewDataTransformer
         ]
@@ -75,7 +76,7 @@ export function main() {
     }));
 
 
-    xit('should work by calling Patient details ngonInit',
+    it('should work by calling Patient details ngonInit',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -87,32 +88,12 @@ export function main() {
             }).createComponent(PatientDetailsComponent);
             fixture.componentInstance.ngOnInit();
             expect(fixture.componentInstance).toBeDefined();
-            // expect(fixture.componentInstance.fileUploadBtn).toBeDefined();
+            expect(fixture.componentInstance.roles).toBeDefined();
+            expect(fixture.componentInstance.roles).toEqual([ 'ADMIN' ]);
           });
       }));
 
-    // xit('should work by calling VariantZip / DnaBam / CdnaBam Upload to be true',
-    //   async((done: any) => {
-    //     TestBed
-    //       .compileComponents()
-    //       .then(() => {
-    //         let fixture = TestBed.overrideComponent(PatientDetailsComponent, {
-    //           set: {
-    //             templateUrl: ''
-    //           }
-    //         }).createComponent(PatientDetailsComponent);
-    //         fixture.componentInstance.onUploadSuccess("Success");
-    //         fixture.componentInstance.onUploadError("Error");
-    //         fixture.componentInstance.uploadFiles();
-
-    //         expect(fixture.componentInstance.dzConfigVariantZip.autoProcessQueue).toBeTruthy();
-    //         expect(fixture.componentInstance.dzConfigDnaBam.autoProcessQueue).toBeTruthy();
-    //         expect(fixture.componentInstance.dzConfigCdnaBam.autoProcessQueue).toBeTruthy();
-
-    //       });
-    //   }));
-
-    it('should work by calling variantZip / DnaBam / CdnaBam Download to be true',
+    it('should work by calling Patient details download',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -122,130 +103,32 @@ export function main() {
                 templateUrl: ''
               }
             }).createComponent(PatientDetailsComponent);
+
             fixture.componentInstance.download("File");
           });
       }));
 
-    xit('no PSN in title until manually call `detectChanges`', () => {
-      expect(el.textContent).toEqual('Patient ');
-    });
+    it('should work by calling Patient details ngAfterViewInit',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(PatientDetailsComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(PatientDetailsComponent);
 
-    xit('should display PSN in the title', () => {
-      fixture.detectChanges();
-      expect(el.textContent).toEqual('Patient ' + component.patient.patientSequenceNumber);
-    });
-
-    xit('should call downloadPatientFile when download is called', () => {
-      let api = fixture.debugElement.injector.get(PatientApiService);
-      let spy = spyOn(api, 'downloadPatientFile').and.callFake(() => { ; });
-      component.download('fake_url');
-
-      expect(spy).toHaveBeenCalled();
-    });
-
-    // describe('with upload', () => {
-    //   beforeEach(() => {
-    //     component.ngOnInit();
-    //   });
-
-    //   xit('should initialize drop-zones', () => {
-
-    //     expect(component.dzConfigVariantZip).toBeDefined();
-    //     expect(component.dzConfigDnaBam).toBeDefined();
-    //     expect(component.dzConfigCdnaBam).toBeDefined();
-    //     expect(component.dzConfigDocuments).toBeDefined();
-    //   });
-
-    //   xit('should call onUploadSuccess with no errors', () => {
-    //     expect(() => { component.onUploadSuccess('test'); }).not.toThrowError();
-    //   });
-
-    //   xit('should call onUploadError with no errors', () => {
-    //     expect(() => { component.onUploadError('test'); }).not.toThrowError();
-    //   });
-
-    //   xit('should call uploadFiles with no errors', () => {
-    //     expect(() => { component.uploadFiles(); }).not.toThrowError();
-
-    //     expect(component.dzConfigVariantZip.autoProcessQueue).toBe(true);
-    //     expect(component.dzConfigDnaBam.autoProcessQueue).toBe(true);
-    //     expect(component.dzConfigCdnaBam.autoProcessQueue).toBe(true);
-    //   });
-
-    //   xit('should call addedFileVariantZip with detectChanges()', () => {
-    //     let spy = spyOn(component.changeDetector, 'detectChanges').and.callThrough();
-    //     component.addedFileVariantZip('test');
-
-    //     expect(component.variantZip).toBe(true);
-    //     expect(spy).toHaveBeenCalled();
-    //   });
-
-    //   xit('should call removedFileVariantZip with detectChanges()', () => {
-    //     let spy = spyOn(component.changeDetector, 'detectChanges').and.callThrough();
-    //     component.removedFileVariantZip();
-
-    //     expect(component.variantZip).toBe(false);
-    //     expect(spy).toHaveBeenCalled();
-    //   });
-
-    //   xit('should call addedFileDnaBam with detectChanges()', () => {
-    //     let spy = spyOn(component.changeDetector, 'detectChanges').and.callThrough();
-    //     component.addedFileDnaBam('test');
-
-    //     expect(component.dnaBam).toBe(true);
-    //     expect(spy).toHaveBeenCalled();
-    //   });
-
-    //   xit('should call removedFileDnaBam with detectChanges()', () => {
-    //     let spy = spyOn(component.changeDetector, 'detectChanges').and.callThrough();
-    //     component.removedFileDnaBam();
-
-    //     expect(component.dnaBam).toBe(false);
-    //     expect(spy).toHaveBeenCalled();
-    //   });
-
-    //   xit('should call addedFileCdnaBam with detectChanges()', () => {
-    //     let spy = spyOn(component.changeDetector, 'detectChanges').and.callThrough();
-    //     component.addedFileCdnaBam('test');
-
-    //     expect(component.cdnaBam).toBe(true);
-    //     expect(spy).toHaveBeenCalled();
-    //   });
-
-    //   xit('should call removedFileCdnaBam with detectChanges()', () => {
-    //     let spy = spyOn(component.changeDetector, 'detectChanges').and.callThrough();
-
-    //     component.removedFileCdnaBam();
-
-    //     expect(component.cdnaBam).toBe(false);
-    //     expect(spy).toHaveBeenCalled();
-    //   });
-
-    // });
-
-    describe('with scroll', () => {
-      beforeEach(() => {
-        component.needToScroll = true;
-        component.ngOnInit();
-      });
-
-      xit('should work when entityId and needToScroll are passed', fakeAsync(() => {
-        const scrollToElement = fixture.debugElement.query(By.css('.ut-patient-timeline'));
-        expect(scrollToElement).not.toBeNull();
-
-        const htmlElement = scrollToElement.nativeElement as HTMLElement;
-
-        let spy = spyOn(htmlElement, 'scrollIntoView').and.callThrough();
-
-        component.ngAfterViewInit();
-
-        tick(228);
-
-        expect(spy).toHaveBeenCalled();
+            fixture.componentInstance.ngAfterViewInit();
+            fixture.componentInstance.entityId = 'li';
+          });
       }));
-
-    });
-
   });
+}
+
+class MockFileUploadService {
+  downloadPatientFile(): Observable<any> {
+    return Observable.of("Psn","File");
+  }
 }
 
