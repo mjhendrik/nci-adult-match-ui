@@ -34,7 +34,7 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
   dzConfigDocuments: DropzoneConfigInterface;
 
   constructor(
-    public fileUploadService: FileUploadService,
+    public fileUpload: FileUploadService,
     private route: ActivatedRoute,
     private patientApi: PatientApiService,
     private transformer: ViewDataTransformer,

@@ -33,7 +33,7 @@ export class FileUploadService extends ApiService {
     super(http);
   }
 
-  openUploadDialog(msn: string, files: FileSet) {
+  openUploadDialog(msn: string) {
     this.modalService.show(FileUploadComponent);
   }
 

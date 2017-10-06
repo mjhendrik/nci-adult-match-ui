@@ -296,7 +296,7 @@
                                     </div>
                                   </div>
                                 </div>
-                                <a *ngIf="last && enableFileUpload" class="btn btn-purple-light pull-right" class="m-t-n6" (click)="openUpload">
+                                <a *ngIf="last && enableFileUpload" class="btn btn-purple-light pull-right" class="m-t-n6" (click)="fileUpload.openUploadDialog(sendout.molecularSequenceNumber)">
                                   <i class="fa fa-upload"></i> Upload Files</a>
                               </td>
                             </tr>
