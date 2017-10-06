@@ -4,6 +4,7 @@ import { FileUploadComponent } from './file-upload.component';
 import { PipesModule } from '../../shared/pipes/pipes.module';
 import { DirectivesModule } from '../../shared/directives/directives.module';
 import { FileUploadService } from './file-upload.service';
+import { BsModalService } from 'ngx-bootstrap';
 
 @NgModule({
   imports: [

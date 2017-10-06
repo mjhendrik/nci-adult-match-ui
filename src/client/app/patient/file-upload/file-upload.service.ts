@@ -26,15 +26,14 @@ export class FileUploadService extends ApiService {
   };
 
   constructor(
-    http: AuthHttp,
     private modalService: BsModalService,
-    private bsModalRef: BsModalRef) {
+    http: AuthHttp) {
 
     super(http);
   }
 
   openUploadDialog(msn: string) {
-    this.modalService.show(FileUploadComponent);
+    // this.modalService.show(FileUploadComponent);
   }
 
   getPresignUrls(): Observable<FileSet> {
