@@ -100,4 +100,3 @@ import { FileUploadContentComponent } from './patient/file-upload/file-upload.co
   entryComponents: [FileUploadContentComponent]
 })
 export class AppModule { }
-

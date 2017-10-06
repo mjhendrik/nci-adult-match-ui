@@ -11,8 +11,8 @@ import { FileUploadService } from './file-upload.service';
     PipesModule,
     DirectivesModule,
   ],
-  declarations: [FileUploadComponent, FileUploadContentComponent],
-  exports: [FileUploadComponent, FileUploadContentComponent],
+  declarations: [FileUploadComponent],
+  exports: [FileUploadComponent],
   providers: [FileUploadService]
 })
 export class FileUploadModule { }
