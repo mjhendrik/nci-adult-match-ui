@@ -202,7 +202,7 @@ export function main() {
           });
       }));
 
-    it('should test getDataPatientsAwaiting',
+    it('should test getDataPatientsAwaiting when isOutsideAssayValue null',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -214,6 +214,40 @@ export function main() {
             }).createComponent(DashboardComponent);
             fixture.componentInstance.getDataPatientsAwaiting();
             expect(fixture.componentInstance.tablePatientsAwaitingData[0].outsideBiopsy.messages).not.toBe("");
+          });
+      }));
+
+    it('should test getDataPatientsAwaiting when isOutsideAssayValue true',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(DashboardComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(DashboardComponent);
+
+            fixture.componentInstance.isOutsideAssayWorkflow = true;
+            fixture.componentInstance.getDataPatientsAwaiting();
+            expect(fixture.componentInstance.tablePatientsAwaitingData[0].outsideBiopsy.messages).not.toBe("");
+          });
+      }));
+
+    it('should test getDataPatientsAwaiting when isOutsideAssayValue false',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(DashboardComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(DashboardComponent);
+
+            fixture.componentInstance.isOutsideAssayWorkflow = false;
+            fixture.componentInstance.getDataPatientsAwaiting();
+            expect(fixture.componentInstance.tablePatientsAwaitingData).toEqual([]);
           });
       }));
 
