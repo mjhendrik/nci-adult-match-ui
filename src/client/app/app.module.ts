@@ -43,6 +43,7 @@ import { Router } from '@angular/router';
 import { ErrorHandlingService } from './shared/error-handling/error-handling.service';
 import { ToastrService } from './shared/error-handling/toastr.service';
 import { ModalModule } from 'ngx-bootstrap';
+import { FileUploadContentComponent } from './patient/file-upload/file-upload.component';
 
 @NgModule({
   imports: [
@@ -95,6 +96,8 @@ import { ModalModule } from 'ngx-bootstrap';
     ToastrService,
     {provide: ErrorHandler, useClass: ErrorHandlingService}
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [FileUploadContentComponent]
 })
 export class AppModule { }
+

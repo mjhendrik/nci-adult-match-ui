@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FileUploadComponent } from './file-upload.component';
+import { FileUploadComponent, FileUploadContentComponent } from './file-upload.component';
 import { PipesModule } from '../../shared/pipes/pipes.module';
 import { DirectivesModule } from '../../shared/directives/directives.module';
 import { FileUploadService } from './file-upload.service';
-import { BsModalService } from 'ngx-bootstrap';
 
 @NgModule({
   imports: [
@@ -12,8 +11,8 @@ import { BsModalService } from 'ngx-bootstrap';
     PipesModule,
     DirectivesModule,
   ],
-  declarations: [FileUploadComponent],
-  exports: [FileUploadComponent],
+  declarations: [FileUploadComponent, FileUploadContentComponent],
+  exports: [FileUploadComponent, FileUploadContentComponent],
   providers: [FileUploadService]
 })
 export class FileUploadModule { }

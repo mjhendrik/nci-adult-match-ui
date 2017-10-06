@@ -1,8 +1,7 @@
 import {
   Component,
   ChangeDetectorRef,
-  Input,
-  TemplateRef
+  Input
 } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
@@ -31,7 +30,46 @@ export class FileUploadComponent {
   molecularSequenceNumber: string;
 
   constructor(
-    private modalService: BsModalService,
+    private modalService: BsModalService) {
+  }
+
+  openUploadDialog() {
+    this.modalRef = this.modalService.show(FileUploadContentComponent);
+  }
+}
+
+@Component({
+  moduleId: module.id,
+  selector: 'sd-file-upload-content',
+  template: `
+<div class="modal-header">
+  <h4 class="modal-title pull-left">Modal</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  This is a modal.
+</div>`
+})
+export class FileUploadContentComponent {
+  @Input() msn: string;
+
+  dzConfigVariantZip: DropzoneConfigInterface;
+  dzConfigDnaBam: DropzoneConfigInterface;
+  dzConfigCdnaBam: DropzoneConfigInterface;
+
+  uploadedFiles: any[];
+  fileCount: number = 0;
+
+  variantZip: boolean = false;
+  dnaBam: boolean = false;
+  cdnaBam: boolean = false;
+
+  molecularSequenceNumber: string;
+
+  constructor(
+    public modalRef: BsModalRef,
     private changeDetector: ChangeDetectorRef) {
 
     this.dzConfigVariantZip = {
@@ -86,18 +124,10 @@ export class FileUploadComponent {
     };
   }
 
-  openUploadDialog(msn: string, template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
-    
-    // this.modalService.show(FileUploadComponent);
-  }
-
   upload(): void {
     this.dzConfigVariantZip.url = 'some url';
     this.dzConfigDnaBam.url = 'some url';
     this.dzConfigCdnaBam.url = 'some url';
-
-
 
     // const fileNames = ['Variant', 'DNA', 'cDNA'];
     // for (let file of fileNames) {
