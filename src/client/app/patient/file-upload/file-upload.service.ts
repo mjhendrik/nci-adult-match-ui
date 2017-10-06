@@ -1,9 +1,11 @@
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { AuthHttp } from 'angular2-jwt';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap';
 
 import { Config } from '../../shared/config/env.config';
 import { ApiService } from '../../shared/api/api.service';
+import { FileUploadComponent } from './file-upload.component';
 
 export interface FileSet {
   zipFile: string;
@@ -23,8 +25,16 @@ export class FileUploadService extends ApiService {
     cdnaFile: ''
   };
 
-  constructor(http: AuthHttp) {
+  constructor(
+    http: AuthHttp,
+    private modalService: BsModalService,
+    private bsModalRef: BsModalRef) {
+
     super(http);
+  }
+
+  openUploadDialog(msn: string, files: FileSet) {
+    this.modalService.show(FileUploadComponent);
   }
 
   getPresignUrls(): Observable<FileSet> {

@@ -33,11 +33,12 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
   enableFileUpload = false;
   dzConfigDocuments: DropzoneConfigInterface;
 
-  constructor(private route: ActivatedRoute,
+  constructor(
+    public fileUploadService: FileUploadService,
+    private route: ActivatedRoute,
     private patientApi: PatientApiService,
     private transformer: ViewDataTransformer,
-    private router: Router,
-    private fileUploadService: FileUploadService) {
+    private router: Router) {
 
     this.dzConfigDocuments = {
       // Change this to your upload POST address:
@@ -82,12 +83,5 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
         }
       }, 226);
     }
-  }
-
-  openUpload(msn: string, zipFilePath: string, dnaFilePath: string, cdnaFilePath: string): void {
-    this.fileUploadService.msn = msn;
-    this.fileUploadService.paths.zipFile = zipFilePath;
-    this.fileUploadService.paths.dnaFile = dnaFilePath;
-    this.fileUploadService.paths.cdnaFile = cdnaFilePath;
   }
 }
