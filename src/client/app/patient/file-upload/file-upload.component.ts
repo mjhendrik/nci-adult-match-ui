@@ -1,9 +1,10 @@
 import {
   Component,
   ChangeDetectorRef,
-  Input
+  Input,
+  TemplateRef
 } from '@angular/core';
-
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 
 @Component({
@@ -12,6 +13,8 @@ import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
   templateUrl: 'file-upload.component.html'
 })
 export class FileUploadComponent {
+  public modalRef: BsModalRef;
+
   @Input() msn: string;
 
   dzConfigVariantZip: DropzoneConfigInterface;
@@ -28,6 +31,7 @@ export class FileUploadComponent {
   molecularSequenceNumber: string;
 
   constructor(
+    private modalService: BsModalService,
     private changeDetector: ChangeDetectorRef) {
 
     this.dzConfigVariantZip = {
@@ -80,6 +84,12 @@ export class FileUploadComponent {
         });
       }
     };
+  }
+
+  openUploadDialog(msn: string, template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+    
+    // this.modalService.show(FileUploadComponent);
   }
 
   upload(): void {

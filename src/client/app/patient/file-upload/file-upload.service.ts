@@ -18,8 +18,6 @@ export interface FileSet {
 export class FileUploadService extends ApiService {
   protected get baseApiUrl(): string { return Config.API.MESSAGE; }
 
-  public modalRef: BsModalRef;
-
   msn: string;
 
   paths: FileSet = {
@@ -34,10 +32,6 @@ export class FileUploadService extends ApiService {
     ) {
 
     super(http);
-  }
-
-  openUploadDialog(msn: string, template: TemplateRef<any>) {
-    // this.modalService.show(FileUploadComponent);
   }
 
   getPresignUrls(): Observable<FileSet> {
