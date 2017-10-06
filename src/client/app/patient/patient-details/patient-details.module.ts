@@ -15,7 +15,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 
 import { DropzoneModule } from 'ngx-dropzone-wrapper';
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
-
+import { FileUploadService } from '../file-upload/file-upload.service';
 
 export interface PatientData {
   psn: string;
@@ -70,6 +70,6 @@ const DROPZONE_CONFIG: DropzoneConfigInterface = {
     DropzoneModule.forRoot(DROPZONE_CONFIG)],
   declarations: [PatientDetailsComponent],
   exports: [PatientDetailsComponent],
-  providers: [PatientApiService, ViewDataTransformer]
+  providers: [PatientApiService, ViewDataTransformer, FileUploadService]
 })
 export class PatientDetailsModule { }

@@ -1,5 +1,4 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
-import { BsModalService } from 'ngx-bootstrap/modal';
 
 import { PatientApiService } from '../patient-api.service';
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';

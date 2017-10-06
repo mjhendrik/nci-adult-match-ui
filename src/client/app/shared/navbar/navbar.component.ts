@@ -33,20 +33,22 @@ export class NavbarComponent implements OnInit {
   navbarheight: any;
 
   constructor(location: Location,
-    private auth: Auth,
-    private configApi: ConfigApiService,
-    @Inject(DOCUMENT) private document: Document) {
+      private auth: Auth,
+      private configApi: ConfigApiService,
+      @Inject(DOCUMENT) private document: Document) {
     this.location = location;
   }
 
   ngOnInit() {
-
-    this.auth.loggedIn.subscribe((t: any) => {
-      if (localStorage.getItem('profile') !== null) this.userName = JSON.parse(localStorage.getItem('profile')).user_metadata.name;
+    this.auth.loggedIn.subscribe(() => {
+      if (localStorage.getItem('profile') !== null)  {
+        this.userName = JSON.parse(localStorage.getItem('profile')).user_metadata.name;
+      }
     });
 
-    if (localStorage.getItem('profile') !== null) this.userName = JSON.parse(localStorage.getItem('profile')).user_metadata.name;
-
+    if (localStorage.getItem('profile') !== null) {
+      this.userName = JSON.parse(localStorage.getItem('profile')).user_metadata.name;
+    }
   }
 
   backToTop(): void {
