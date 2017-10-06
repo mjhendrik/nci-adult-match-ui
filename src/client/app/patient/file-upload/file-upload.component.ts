@@ -4,7 +4,7 @@ import {
   Input
 } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
-import { FileUploadContentComponent } from './file-upload-conent.component';
+import { FileUploadContentComponent } from './file-upload-content.component';
 
 @Component({
   moduleId: module.id,

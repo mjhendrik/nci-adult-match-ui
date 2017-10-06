@@ -23,7 +23,6 @@ import { PatientDetailsComponent } from './patient-details.component';
 import { PatientApiService } from './../patient-api.service';
 import { ViewDataTransformer } from './../view-data-transformer.service';
 import { PatientTimelineModule } from './../patient-timeline/patient-timeline.module';
-import { FileUploadService } from '../file-upload/file-upload.service';
 import { SharedModule } from '../../shared/shared.module';
 import { Observable } from 'rxjs/Observable';
 
@@ -65,7 +64,6 @@ export function main() {
         providers: [
           { provide: ActivatedRoute, useValue: activatedRouteStub },
           { provide: PatientApiService, useClass: PatientApiServiceMock },
-          { provide: FileUploadService, useClass: MockFileUploadService },
           ChangeDetectorRef,
           ViewDataTransformer
         ]

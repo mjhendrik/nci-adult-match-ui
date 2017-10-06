@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FileUploadComponent, FileUploadContentComponent } from './file-upload.component';
+import { FileUploadComponent } from './file-upload.component';
 import { PipesModule } from '../../shared/pipes/pipes.module';
 import { DirectivesModule } from '../../shared/directives/directives.module';
-import { FileUploadService } from './file-upload.service';
+import { FileUploadContentComponent } from './file-upload-content.component';
 
 @NgModule({
   imports: [
@@ -11,8 +11,7 @@ import { FileUploadService } from './file-upload.service';
     PipesModule,
     DirectivesModule,
   ],
-  declarations: [FileUploadComponent],
-  exports: [FileUploadComponent],
-  providers: [FileUploadService]
+  declarations: [FileUploadComponent, FileUploadContentComponent],
+  exports: [FileUploadComponent, FileUploadContentComponent]
 })
 export class FileUploadModule { }
