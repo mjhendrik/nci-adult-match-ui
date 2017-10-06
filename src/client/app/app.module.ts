@@ -42,6 +42,7 @@ import { HttpInterceptor } from './shared/http.interceptor';
 import { Router } from '@angular/router';
 import { ErrorHandlingService } from './shared/error-handling/error-handling.service';
 import { ToastrService } from './shared/error-handling/toastr.service';
+import { ModalModule } from 'ngx-bootstrap';
 
 @NgModule({
   imports: [
@@ -71,6 +72,7 @@ import { ToastrService } from './shared/error-handling/toastr.service';
     VariantReportSimpleTableModule,
     PopoverModule,
     ToastModule.forRoot(),
+    ModalModule.forRoot(),
     ErrorModule // This needs to be at the bottom of the list for ErrorComponent to work properly
   ],
   declarations: [AppComponent],
