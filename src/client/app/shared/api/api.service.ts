@@ -24,7 +24,7 @@ export abstract class ApiService {
     * Extract data if the response status code is between 200 and 300
     * otherwise throw error
     */
-  protected extractData(res: Response): Promise<any> {
+  protected extractData(res: Response): Promise<any> | any {
     if (res.status < 200 || res.status >= 300) {
       throw new Error('Bad response status: ' + res.status);
     }

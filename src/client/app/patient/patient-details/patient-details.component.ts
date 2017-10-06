@@ -1,14 +1,16 @@
 import {
   Component,
   OnInit,
-  AfterViewInit,
-  ChangeDetectorRef
+  AfterViewInit
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
+
 import { routerTransition } from './../../shared/router.animations';
 import { PatientApiService } from '../patient-api.service';
 import { ViewDataTransformer } from './../view-data-transformer.service';
 import { PatientData, Tabs } from './patient-details.module';
+import { FileUploadService } from '../file-upload/file-upload.service';
 
 @Component({
   moduleId: module.id,
@@ -29,12 +31,25 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
   roles: any[] = [];
   tabs: Tabs;
   enableFileUpload = false;
+  dzConfigDocuments: DropzoneConfigInterface;
 
-  constructor(public changeDetector: ChangeDetectorRef,
-    private route: ActivatedRoute,
+  constructor(private route: ActivatedRoute,
     private patientApi: PatientApiService,
     private transformer: ViewDataTransformer,
-    private router: Router) {
+    private router: Router,
+    private fileUploadService: FileUploadService) {
+
+    this.dzConfigDocuments = {
+      // Change this to your upload POST address:
+      url: 'https://httpbin.org/post',
+      // maxFiles: 3,
+      // parallelUploads: 3,
+      timeout: 0,
+      maxFilesize: 50000, // size in MB
+      // acceptedFiles: '.zip,.bam',
+      addRemoveLinks: true
+    };
+
   }
 
   download(file: string) {
@@ -69,52 +84,10 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
     }
   }
 
-  onUploadSuccess(evt: any): void {
-    // console.log(evt);
+  openUpload(msn: string, zipFilePath: string, dnaFilePath: string, cdnaFilePath: string): void {
+    this.fileUploadService.msn = msn;
+    this.fileUploadService.paths.zipFile = zipFilePath;
+    this.fileUploadService.paths.dnaFile = dnaFilePath;
+    this.fileUploadService.paths.cdnaFile = cdnaFilePath;
   }
-
-  onUploadError(evt: any): void {
-    // console.log(evt);
-  }
-
-  upload(molecularSequenceNumber: string): void {
-    const fileNames = ['Variant', 'DNA', 'cDNA'];
-    for (let file of fileNames) {
-      this.patientApi.upload(file, molecularSequenceNumber)
-        .subscribe((url: string) => {
-          let dropzoneUrl = url;
-        });
-    }
-  }
-
-  addedFileVariantZip(evt: any): void {
-    this.variantZip = true;
-    this.changeDetector.detectChanges();
-  }
-
-  removedFileVariantZip(): void {
-    this.variantZip = false;
-    this.changeDetector.detectChanges();
-  }
-
-  addedFileDnaBam(evt: any): void {
-    this.dnaBam = true;
-    this.changeDetector.detectChanges();
-  }
-
-  removedFileDnaBam(): void {
-    this.dnaBam = false;
-    this.changeDetector.detectChanges();
-  }
-
-  addedFileCdnaBam(evt: any): void {
-    this.cdnaBam = true;
-    this.changeDetector.detectChanges();
-  }
-
-  removedFileCdnaBam(): void {
-    this.cdnaBam = false;
-    this.changeDetector.detectChanges();
-  }
-
 }

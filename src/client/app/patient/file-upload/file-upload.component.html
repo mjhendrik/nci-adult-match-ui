@@ -16,7 +16,7 @@
         <div class="row">
           <div class="col-md-4 form-group has-feedback" [ngClass]="{true:'has-success',false:'has-error'}[variantZip]">
             <label class="control-label">Variant ZIP File</label>
-            <div class="form-control" [ngClass]="{true:'disable-div'}[!analysisId]" [dropzone]="configVariantZip" (addedfile)="addedFileVariantZip($event)" id="variantUploadButton"
+            <div class="form-control" [ngClass]="{true:'disable-div'}[!analysisId]" [dropzone]="dzConfigVariantZip" (addedfile)="addedFileVariantZip($event)" id="variantUploadButton"
               (removedfile)="removedFileVariantZip()" (error)="onUploadError($event)" (success)="onUploadSuccess($event)">
               <div class="dz-message" data-dz-message>
                 <!-- start bdd tests -->
@@ -33,7 +33,7 @@
           </div>
           <div class="col-md-4 form-group has-feedback" [ngClass]="{true:'has-success',false:'has-error'}[dnaBam]">
             <label class="control-label">DNA BAM File</label>
-            <div class="form-control" [ngClass]="{true:'disable-div'}[!analysisId]" [dropzone]="configDnaBam" (addedfile)="addedFileDnaBam($event)" id="dnaUploadButton"
+            <div class="form-control" [ngClass]="{true:'disable-div'}[!analysisId]" [dropzone]="dzConfigDnaBam" (addedfile)="addedFileDnaBam($event)" id="dnaUploadButton"
               (removedfile)="removedFileDnaBam()" (error)="onUploadError($event)" (success)="onUploadSuccess($event)">
               <div class="dz-message" data-dz-message>
                 <!-- start bdd tests -->
@@ -50,7 +50,7 @@
           </div>
           <div class="col-md-4 form-group has-feedback" [ngClass]="{true:'has-success',false:'has-error'}[cdnaBam]">
             <label class="control-label">cDNA BAM File</label>
-            <div class="form-control" [ngClass]="{true:'disable-div'}[!analysisId]" [dropzone]="configCdnaBam" (addedfile)="addedFileCdnaBam($event)" id="cdnaUploadButton"
+            <div class="form-control" [ngClass]="{true:'disable-div'}[!analysisId]" [dropzone]="dzConfigCdnaBam" (addedfile)="addedFileCdnaBam($event)" id="cdnaUploadButton"
               (removedfile)="removedFileCdnaBam()" (error)="onUploadError($event)" (success)="onUploadSuccess($event)">
               <div class="dz-message" data-dz-message>
                 <!-- start bdd tests -->

@@ -1,11 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 
-import {
-  dropzoneConfigVariantZip,
-  dropzoneConfigDnaBam,
-  dropzoneConfigCdnaBam,
-  dropzoneConfigDocuments
-} from './dropzone.config';
+import { PatientApiService } from '../patient-api.service';
+import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
+import { FileUploadService } from './file-upload.service';
 
 @Component({
   moduleId: module.id,
@@ -13,21 +10,121 @@ import {
   templateUrl: 'file-upload.component.html'
 })
 export class FileUploadComponent {
-  configVariantZip = dropzoneConfigVariantZip;
-  configDnaBam = dropzoneConfigDnaBam;
-  configCdnaBam = dropzoneConfigCdnaBam;
-  configDocuments = dropzoneConfigDocuments;
+  dzConfigVariantZip: DropzoneConfigInterface;
+  dzConfigDnaBam: DropzoneConfigInterface;
+  dzConfigCdnaBam: DropzoneConfigInterface;
 
   uploadedFiles: any[];
   fileCount: number = 0;
+
   variantZip: boolean = false;
   dnaBam: boolean = false;
   cdnaBam: boolean = false;
-  fileUploadBtn: boolean = false;
 
-  @Input() items: any;
+  molecularSequenceNumber: string;
 
-  getIcon(status: string): string {
-    return 'fa-user-o';
+  constructor(
+    private changeDetector: ChangeDetectorRef,
+    private patientApi: PatientApiService,
+    private fileUploadService: FileUploadService) {
+
+    this.fileUploadService.getPresignUrls().subscribe(
+      urls => {
+        this.dzConfigVariantZip = {
+          url: urls.zipFile,
+          maxFiles: 1,
+          timeout: 0,
+          maxFilesize: 50000, // size in MB
+          acceptedFiles: '.zip',
+          addRemoveLinks: true,
+          autoProcessQueue: false,
+          init: function () {
+            var submitButton = document.querySelector('#upload-files');
+            let myDropzone = this; // closure
+            submitButton.addEventListener('click', function () {
+              myDropzone.processQueue(); // Tell Dropzone to process all queued files.
+            });
+          }
+        };
+
+        this.dzConfigDnaBam = {
+          url: urls.dnaFile,
+          maxFiles: 1,
+          timeout: 0,
+          maxFilesize: 50000, // size in MB
+          // acceptedFiles: '.bam',
+          addRemoveLinks: true,
+          autoProcessQueue: false,
+          init: function () {
+            var submitButton = document.querySelector('#upload-files');
+            let myDropzone = this; // closure
+            submitButton.addEventListener('click', function () {
+              myDropzone.processQueue(); // Tell Dropzone to process all queued files.
+            });
+          }
+        };
+
+        this.dzConfigCdnaBam = {
+          url: urls.cdnaFile,
+          maxFiles: 1,
+          timeout: 0,
+          maxFilesize: 50000, // size in MB
+          // acceptedFiles: '.bam',
+          addRemoveLinks: true,
+          autoProcessQueue: false,
+          init: function () {
+            var submitButton = document.querySelector('#upload-files');
+            let myDropzone = this; // closure
+            submitButton.addEventListener('click', function () {
+              myDropzone.processQueue(); // Tell Dropzone to process all queued files.
+            });
+          }
+        };
+      }
+    );
+  }
+
+  upload(): void {
+    const fileNames = ['Variant', 'DNA', 'cDNA'];
+    for (let file of fileNames) {
+    }
+  }
+
+  addedFileVariantZip(evt: any): void {
+    this.variantZip = true;
+    this.changeDetector.detectChanges();
+  }
+
+  removedFileVariantZip(): void {
+    this.variantZip = false;
+    this.changeDetector.detectChanges();
+  }
+
+  addedFileDnaBam(evt: any): void {
+    this.dnaBam = true;
+    this.changeDetector.detectChanges();
+  }
+
+  removedFileDnaBam(): void {
+    this.dnaBam = false;
+    this.changeDetector.detectChanges();
+  }
+
+  addedFileCdnaBam(evt: any): void {
+    this.cdnaBam = true;
+    this.changeDetector.detectChanges();
+  }
+
+  removedFileCdnaBam(): void {
+    this.cdnaBam = false;
+    this.changeDetector.detectChanges();
+  }
+
+  onUploadSuccess(evt: any): void {
+    // console.log(evt);
+  }
+
+  onUploadError(evt: any): void {
+    // console.log(evt);
   }
 }

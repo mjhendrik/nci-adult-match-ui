@@ -91,26 +91,26 @@ export function main() {
           });
       }));
 
-    xit('should work by calling VariantZip / DnaBam / CdnaBam Upload to be true',
-      async((done: any) => {
-        TestBed
-          .compileComponents()
-          .then(() => {
-            let fixture = TestBed.overrideComponent(PatientDetailsComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(PatientDetailsComponent);
-            fixture.componentInstance.onUploadSuccess("Success");
-            fixture.componentInstance.onUploadError("Error");
-            fixture.componentInstance.uploadFiles();
+    // xit('should work by calling VariantZip / DnaBam / CdnaBam Upload to be true',
+    //   async((done: any) => {
+    //     TestBed
+    //       .compileComponents()
+    //       .then(() => {
+    //         let fixture = TestBed.overrideComponent(PatientDetailsComponent, {
+    //           set: {
+    //             templateUrl: ''
+    //           }
+    //         }).createComponent(PatientDetailsComponent);
+    //         fixture.componentInstance.onUploadSuccess("Success");
+    //         fixture.componentInstance.onUploadError("Error");
+    //         fixture.componentInstance.uploadFiles();
 
-            expect(fixture.componentInstance.configVariantZip.autoProcessQueue).toBeTruthy();
-            expect(fixture.componentInstance.configDnaBam.autoProcessQueue).toBeTruthy();
-            expect(fixture.componentInstance.configCdnaBam.autoProcessQueue).toBeTruthy();
+    //         expect(fixture.componentInstance.dzConfigVariantZip.autoProcessQueue).toBeTruthy();
+    //         expect(fixture.componentInstance.dzConfigDnaBam.autoProcessQueue).toBeTruthy();
+    //         expect(fixture.componentInstance.dzConfigCdnaBam.autoProcessQueue).toBeTruthy();
 
-          });
-      }));
+    //       });
+    //   }));
 
     it('should work by calling variantZip / DnaBam / CdnaBam Download to be true',
       async((done: any) => {
@@ -143,85 +143,85 @@ export function main() {
       expect(spy).toHaveBeenCalled();
     });
 
-    describe('with upload', () => {
-      beforeEach(() => {
-        component.ngOnInit();
-      });
+    // describe('with upload', () => {
+    //   beforeEach(() => {
+    //     component.ngOnInit();
+    //   });
 
-      xit('should initialize drop-zones', () => {
+    //   xit('should initialize drop-zones', () => {
 
-        expect(component.configVariantZip).toBeDefined();
-        expect(component.configDnaBam).toBeDefined();
-        expect(component.configCdnaBam).toBeDefined();
-        expect(component.configDocuments).toBeDefined();
-      });
+    //     expect(component.dzConfigVariantZip).toBeDefined();
+    //     expect(component.dzConfigDnaBam).toBeDefined();
+    //     expect(component.dzConfigCdnaBam).toBeDefined();
+    //     expect(component.dzConfigDocuments).toBeDefined();
+    //   });
 
-      xit('should call onUploadSuccess with no errors', () => {
-        expect(() => { component.onUploadSuccess('test'); }).not.toThrowError();
-      });
+    //   xit('should call onUploadSuccess with no errors', () => {
+    //     expect(() => { component.onUploadSuccess('test'); }).not.toThrowError();
+    //   });
 
-      xit('should call onUploadError with no errors', () => {
-        expect(() => { component.onUploadError('test'); }).not.toThrowError();
-      });
+    //   xit('should call onUploadError with no errors', () => {
+    //     expect(() => { component.onUploadError('test'); }).not.toThrowError();
+    //   });
 
-      xit('should call uploadFiles with no errors', () => {
-        expect(() => { component.uploadFiles(); }).not.toThrowError();
+    //   xit('should call uploadFiles with no errors', () => {
+    //     expect(() => { component.uploadFiles(); }).not.toThrowError();
 
-        expect(component.configVariantZip.autoProcessQueue).toBe(true);
-        expect(component.configDnaBam.autoProcessQueue).toBe(true);
-        expect(component.configCdnaBam.autoProcessQueue).toBe(true);
-      });
+    //     expect(component.dzConfigVariantZip.autoProcessQueue).toBe(true);
+    //     expect(component.dzConfigDnaBam.autoProcessQueue).toBe(true);
+    //     expect(component.dzConfigCdnaBam.autoProcessQueue).toBe(true);
+    //   });
 
-      xit('should call addedFileVariantZip with detectChanges()', () => {
-        let spy = spyOn(component.changeDetector, 'detectChanges').and.callThrough();
-        component.addedFileVariantZip('test');
+    //   xit('should call addedFileVariantZip with detectChanges()', () => {
+    //     let spy = spyOn(component.changeDetector, 'detectChanges').and.callThrough();
+    //     component.addedFileVariantZip('test');
 
-        expect(component.variantZip).toBe(true);
-        expect(spy).toHaveBeenCalled();
-      });
+    //     expect(component.variantZip).toBe(true);
+    //     expect(spy).toHaveBeenCalled();
+    //   });
 
-      xit('should call removedFileVariantZip with detectChanges()', () => {
-        let spy = spyOn(component.changeDetector, 'detectChanges').and.callThrough();
-        component.removedFileVariantZip();
+    //   xit('should call removedFileVariantZip with detectChanges()', () => {
+    //     let spy = spyOn(component.changeDetector, 'detectChanges').and.callThrough();
+    //     component.removedFileVariantZip();
 
-        expect(component.variantZip).toBe(false);
-        expect(spy).toHaveBeenCalled();
-      });
+    //     expect(component.variantZip).toBe(false);
+    //     expect(spy).toHaveBeenCalled();
+    //   });
 
-      xit('should call addedFileDnaBam with detectChanges()', () => {
-        let spy = spyOn(component.changeDetector, 'detectChanges').and.callThrough();
-        component.addedFileDnaBam('test');
+    //   xit('should call addedFileDnaBam with detectChanges()', () => {
+    //     let spy = spyOn(component.changeDetector, 'detectChanges').and.callThrough();
+    //     component.addedFileDnaBam('test');
 
-        expect(component.dnaBam).toBe(true);
-        expect(spy).toHaveBeenCalled();
-      });
+    //     expect(component.dnaBam).toBe(true);
+    //     expect(spy).toHaveBeenCalled();
+    //   });
 
-      xit('should call removedFileDnaBam with detectChanges()', () => {
-        let spy = spyOn(component.changeDetector, 'detectChanges').and.callThrough();
-        component.removedFileDnaBam();
+    //   xit('should call removedFileDnaBam with detectChanges()', () => {
+    //     let spy = spyOn(component.changeDetector, 'detectChanges').and.callThrough();
+    //     component.removedFileDnaBam();
 
-        expect(component.dnaBam).toBe(false);
-        expect(spy).toHaveBeenCalled();
-      });
+    //     expect(component.dnaBam).toBe(false);
+    //     expect(spy).toHaveBeenCalled();
+    //   });
 
-      xit('should call addedFileCdnaBam with detectChanges()', () => {
-        let spy = spyOn(component.changeDetector, 'detectChanges').and.callThrough();
-        component.addedFileCdnaBam('test');
+    //   xit('should call addedFileCdnaBam with detectChanges()', () => {
+    //     let spy = spyOn(component.changeDetector, 'detectChanges').and.callThrough();
+    //     component.addedFileCdnaBam('test');
 
-        expect(component.cdnaBam).toBe(true);
-        expect(spy).toHaveBeenCalled();
-      });
+    //     expect(component.cdnaBam).toBe(true);
+    //     expect(spy).toHaveBeenCalled();
+    //   });
 
-      xit('should call removedFileCdnaBam with detectChanges()', () => {
-        let spy = spyOn(component.changeDetector, 'detectChanges').and.callThrough();
+    //   xit('should call removedFileCdnaBam with detectChanges()', () => {
+    //     let spy = spyOn(component.changeDetector, 'detectChanges').and.callThrough();
 
-        component.removedFileCdnaBam();
+    //     component.removedFileCdnaBam();
 
-        expect(component.cdnaBam).toBe(false);
-        expect(spy).toHaveBeenCalled();
-      });
+    //     expect(component.cdnaBam).toBe(false);
+    //     expect(spy).toHaveBeenCalled();
+    //   });
 
-    });
+    // });
 
     describe('with scroll', () => {
       beforeEach(() => {

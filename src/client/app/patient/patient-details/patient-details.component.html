@@ -296,7 +296,7 @@
                                     </div>
                                   </div>
                                 </div>
-                                <a *ngIf="last && enableFileUpload" class="btn btn-purple-light pull-right" class="m-t-n6">
+                                <a *ngIf="last && enableFileUpload" class="btn btn-purple-light pull-right" class="m-t-n6" (click)="openUpload">
                                   <i class="fa fa-upload"></i> Upload Files</a>
                               </td>
                             </tr>
@@ -327,7 +327,7 @@
                 </tbody>
               </table>
             </div>
-            <div [dropzone]="configDocuments" (error)="onUploadError($event)" (success)="onUploadSuccess($event)">
+            <div [dropzone]="dzConfigDocuments" (error)="onUploadError($event)" (success)="onUploadSuccess($event)">
               <div class="dz-message" data-dz-message>
                 <!-- start bdd tests -->
                 <input style="display: none" type="file" id="documents_upload" name="documents_upload" multiple>
