@@ -296,9 +296,8 @@
                                     </div>
                                   </div>
                                 </div>
-                                <sd-file-upload [msn]="sendout.molecularSequenceNumber"></sd-file-upload>
-                                <!-- <a *ngIf="last && enableFileUpload" class="btn btn-purple-light pull-right" class="m-t-n6" (click)="fileUpload.openUploadDialog(sendout.molecularSequenceNumber)">
-                                  <i class="fa fa-upload"></i> Upload Files</a> -->
+                                <sd-file-upload *ngIf="last && enableFileUpload" [msn]="sendout.molecularSequenceNumber"></sd-file-upload>
+                                <!-- <sd-file-upload *ngIf="last && enableFileUpload" [msn]="sendout.molecularSequenceNumber"></sd-file-upload> -->
                               </td>
                             </tr>
                           </ng-template>
