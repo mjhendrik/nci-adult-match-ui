@@ -14,7 +14,7 @@
         <div *ngIf="outsideData && outsideData.analysisId" class="row" matchHeight="panel-height-top">
           <div class="col-md-6">
             <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
-              <div class="panel-heading">
+              <div class="panel-heading" id="trVariantReport">
                 <div class="row">
                   <div class="col-md-8">
                     <h4>Variant Report</h4>
@@ -72,7 +72,7 @@
           </div>
 
           <div *ngIf="outsideData && outsideData.analysisId" class="col-md-6">
-            <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
+            <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top"  id="trAssignmentReport">
               <div class="panel-heading" *ngIf="!outsideData.assignmentReport">
                 <h4>Latest Assignment</h4>
               </div>
@@ -116,7 +116,7 @@
         <div *ngIf="outsideData && outsideData.analysisId" class="row" matchHeight="panel-height-middle">
           <div class="col-md-6">
             <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-middle">
-              <div class="panel-heading">
+              <div class="panel-heading" id="trMoiSummary">
                 <dl class="dl-horizontal">
                   <h4>MOI/aMOI Summary</h4>
                   <dt>Total aMOIs</dt>
@@ -134,7 +134,7 @@
 
           <div class="col-md-6">
             <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-middle">
-              <div class="panel-heading">
+              <div class="panel-heading" id="trAssay">
                 <h4>Assays</h4>
                 <table class="table table-condensed white-header">
                   <thead>
@@ -196,7 +196,7 @@
         <div *ngIf="matchData && matchData.analysisId" class="row" matchHeight="panel-height-top">
           <div class="col-md-6">
             <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
-              <div class="panel-heading">
+              <div class="panel-heading" id="crVariantReport">
                 <div class="row">
                   <div class="col-md-8">
                     <h4>Variant Report</h4>
@@ -255,7 +255,7 @@
 
           <div *ngIf="matchData && matchData.analysisId" class="col-md-6">
             <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
-              <div class="panel-heading" *ngIf="!matchData.assignmentReport">
+              <div class="panel-heading" *ngIf="!matchData.assignmentReport" id="crAssignmentReport">
                 <h4>Latest Assignment</h4>
               </div>
               <div class="panel-heading" *ngIf="!matchData.assignmentReport">
@@ -298,7 +298,7 @@
         <div *ngIf="matchData && matchData.analysisId" class="row" matchHeight="panel-height-middle">
           <div class="col-md-6">
             <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-middle">
-              <div class="panel-heading">
+              <div class="panel-heading" id="crMoiSummary">
                 <dl class="dl-horizontal">
                   <h4>MOI/aMOI Summary</h4>
                   <dt>Total aMOIs</dt>
@@ -316,7 +316,7 @@
 
           <div class="col-md-6">
             <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-middle">
-              <div class="panel-heading">
+              <div class="panel-heading" id="crAssays">
                 <h4>Assays</h4>
                 <table class="table table-condensed white-header">
                   <thead>
