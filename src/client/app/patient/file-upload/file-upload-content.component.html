@@ -4,3 +4,18 @@
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
+
+<div class="modal-body">
+  <div class="form-group has-feedback" [ngClass]="{true:'has-error',false:'has-success'}[!analysisId]">
+    <label class="control-label">Analysis ID</label>
+    <input type="text" class="form-control" placeholder="Enter Analysis ID" [(ngModel)]="analysisId">
+    <span class="fa form-control-feedback" [ngClass]="{true:'fa-times',false:'fa-check'}[!analysisId]"></span>
+  </div>
+
+</div>
+
+<div class="modal-footer">
+  <a [ngClass]="{false:'disabled'}[variantZip && dnaBam && cdnaBam]" (click)="uploadFiles()" id="upload-files" class="btn width-100 btn-purple-light"
+    data-dismiss="modal" aria-hidden="true">
+    <i class="fa fa-cloud-upload"></i> Upload</a>
+</div>
