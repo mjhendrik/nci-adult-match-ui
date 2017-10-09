@@ -46,17 +46,6 @@ export class Tabs {
   }
 }
 
-const DROPZONE_CONFIG: DropzoneConfigInterface = {
-  // Change this to your upload POST address:
-  url: 'https://httpbin.org/post',
-  // maxFiles: 3,
-  // parallelUploads: 3,
-  timeout: 0,
-  maxFilesize: 50000, // size in MB
-  // acceptedFiles: '.zip,.bam',
-  addRemoveLinks: true
-};
-
 @NgModule({
   imports: [CommonModule,
     PatientDetailsRoutingModule,
@@ -68,7 +57,7 @@ const DROPZONE_CONFIG: DropzoneConfigInterface = {
     SharedModule,
     FileUploadModule,
     TabsModule.forRoot(),
-    DropzoneModule.forRoot(DROPZONE_CONFIG)
+    DropzoneModule.forRoot()
   ],
   declarations: [PatientDetailsComponent],
   exports: [PatientDetailsComponent],
