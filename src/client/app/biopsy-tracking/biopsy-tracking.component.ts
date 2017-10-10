@@ -63,7 +63,7 @@ export class BiopsyTrackingListComponent implements OnInit {
   }
 
   getBiopsyCount() {
-    this.biopsyTrackingApi.getBiopsyCount('')
+    this.biopsyTrackingApi.getBiopsyCount(this.searchtermBiopsyTrackingList)
       .subscribe((itemList: any) => {
         this.biopsyCount = itemList;
         this.getData();

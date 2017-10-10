@@ -1,6 +1,8 @@
 <div id="content" class="content">
   <ul class="breadcrumb pull-right">
-    <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
+    <li>
+      <a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a>
+    </li>
     <li class="active">Patients</li>
   </ul>
   <h1 class="page-header">Patients</h1>
@@ -37,7 +39,8 @@
               <div class="col-md-6 p-r-5">
                 <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                   <label>Search:
-                    <input type="text" #input [ngModel]="searchTerm" (ngModelChange)="onSearchChanged($event)" class="form-control form-control-purple input-sm" placeholder="" aria-controls="data-table">
+                    <input type="text" #input [ngModel]="searchTerm" (ngModelChange)="onSearchChanged($event)" class="form-control form-control-purple input-sm"
+                      placeholder="" aria-controls="data-table">
                   </label>
                 </div>
               </div>
@@ -49,32 +52,47 @@
           <thead>
             <tr class="purple-light">
               <th>
-                <mfDefaultSorter (SortStatus)="sortStatus($event)" by="patientSequenceNumber"><span class="table-header">Patient Sequence Number</span></mfDefaultSorter>
+                <mfDefaultSorter (SortStatus)="sortStatus($event)" by="patientSequenceNumber">
+                  <span class="table-header">Patient Sequence Number</span>
+                </mfDefaultSorter>
               </th>
               <th>
-                <mfDefaultSorter (SortStatus)="sortStatus($event)" by="currentPatientStatus"><span class="table-header">Status</span></mfDefaultSorter>
+                <mfDefaultSorter (SortStatus)="sortStatus($event)" by="currentPatientStatus">
+                  <span class="table-header">Status</span>
+                </mfDefaultSorter>
               </th>
               <th>
-                <mfDefaultSorter (SortStatus)="sortStatus($event)" by="currentStepNumber"><span class="table-header">Step Number</span></mfDefaultSorter>
+                <mfDefaultSorter (SortStatus)="sortStatus($event)" by="currentStepNumber">
+                  <span class="table-header">Step Number</span>
+                </mfDefaultSorter>
               </th>
               <th>
-                <mfDefaultSorter (SortStatus)="sortStatus($event)" by="diseases.shortName"><span class="table-header">Diseases</span></mfDefaultSorter>
+                <mfDefaultSorter (SortStatus)="sortStatus($event)" by="diseases.shortName">
+                  <span class="table-header">Diseases</span>
+                </mfDefaultSorter>
               </th>
               <th>
-                <mfDefaultSorter (SortStatus)="sortStatus($event)" by="treatmentArm.treatmentArmId"><span class="table-header">Treatment Arm</span></mfDefaultSorter>
+                <mfDefaultSorter (SortStatus)="sortStatus($event)" by="treatmentArm.treatmentArmId">
+                  <span class="table-header">Treatment Arm</span>
+                </mfDefaultSorter>
               </th>
               <th>
-                <mfDefaultSorter (SortStatus)="sortStatus($event)" by="registrationDate"><span class="table-header">Registration Date</span></mfDefaultSorter>
+                <mfDefaultSorter (SortStatus)="sortStatus($event)" by="registrationDate">
+                  <span class="table-header">Registration Date</span>
+                </mfDefaultSorter>
               </th>
               <th>
-                <mfDefaultSorter (SortStatus)="sortStatus($event)" by="offTrialDate"><span class="table-header">Off Trial Date</span></mfDefaultSorter>
+                <mfDefaultSorter (SortStatus)="sortStatus($event)" by="offTrialDate">
+                  <span class="table-header">Off Trial Date</span>
+                </mfDefaultSorter>
               </th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let item of mftablePatients.data">
               <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                <a href [routerLink]="['/patients', item.patientSequenceNumber]" class="link-none"><i class="fa fa-user"></i> {{item.patientSequenceNumber | dashify}}</a>
+                <a href [routerLink]="['/patients', item.patientSequenceNumber]" class="link-none">
+                  <i class="fa fa-user"></i> {{item.patientSequenceNumber | dashify}}</a>
               </td>
               <td [colorCodePatients]="item.currentPatientStatus">{{item.currentPatientStatus | dashify}}</td>
               <td>{{item.currentStepNumber | dashify}}</td>
@@ -98,7 +116,7 @@
             <tr>
               <td class="tfoot-padding" colspan="7">
                 <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchTerm" [totallength]="patientCount ? patientCount.length : 0"
-                  [totalPageCount]="patientTotal" (CurrentlyActive)="currentPageActive($event)"></mfBootstrapPaginator>
+                  [totalPageCount]="patientTotal" [paginationType]="'mixed'" (CurrentlyActive)="currentPageActive($event)"></mfBootstrapPaginator>
               </td>
             </tr>
           </tfoot>
