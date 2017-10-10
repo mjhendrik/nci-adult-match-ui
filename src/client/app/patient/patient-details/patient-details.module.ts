@@ -46,6 +46,12 @@ export class Tabs {
   }
 }
 
+const DROPZONE_CONFIG: DropzoneConfigInterface = {
+  url: 'https://fakeurl.org/fakepost',
+  timeout: 0,
+  addRemoveLinks: true
+};
+
 @NgModule({
   imports: [CommonModule,
     PatientDetailsRoutingModule,
@@ -57,7 +63,7 @@ export class Tabs {
     SharedModule,
     FileUploadModule,
     TabsModule.forRoot(),
-    DropzoneModule.forRoot()
+    DropzoneModule.forRoot(DROPZONE_CONFIG)
   ],
   declarations: [PatientDetailsComponent],
   exports: [PatientDetailsComponent],

@@ -70,7 +70,6 @@ export class NavbarComponent implements OnInit {
 
     this.navBarHeight = navBar.offsetHeight;
     this.didScroll = true;
-
     if (document.body.scrollTop > 1) {
       setTimeout(() => {
         if (this.didScroll) {

@@ -32,8 +32,10 @@ export class FileUploadContentComponent {
     public modalRef: BsModalRef,
     private changeDetector: ChangeDetectorRef) {
 
+    const dummyUrl = 'https://fakeurl.org/fakepost';
+
     this.dzConfigVariantZip = {
-      url: '',
+      url: dummyUrl,
       maxFiles: 1,
       timeout: 0,
       maxFilesize: 50000, // size in MB
@@ -50,7 +52,7 @@ export class FileUploadContentComponent {
     };
 
     this.dzConfigDnaBam = {
-      url: '',
+      url: dummyUrl,
       maxFiles: 1,
       timeout: 0,
       maxFilesize: 50000, // size in MB
@@ -67,7 +69,7 @@ export class FileUploadContentComponent {
     };
 
     this.dzConfigCdnaBam = {
-      url: '',
+      url: dummyUrl,
       maxFiles: 1,
       timeout: 0,
       maxFilesize: 50000, // size in MB
