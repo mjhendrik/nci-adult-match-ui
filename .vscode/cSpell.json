@@ -10,18 +10,19 @@
         "cdref",
         "cellularity",
         "Clia",
+        "Filesize",
         "indels",
         "loggly",
         "mapd",
         "mongorestore",
         "ngzone",
+        "noopener",
+        "noreferrer",
         "oncomine",
         "PACC",
         "presign",
         "Presigned",
-        "Toastr",
-        "noopener",
-        "noreferrer"
+        "Toastr"
     ],
     // flagWords - list of words to be always considered incorrect
     // This is useful for offensive words and common spelling errors.
