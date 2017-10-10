@@ -68,6 +68,8 @@
 </div>
 
 <div class="modal-footer">
-  <a [ngClass]="{false:'disabled'}[hasVariantZipFile && hasDnaBamFile && hasCdnaBamFile]" (click)="upload()" id="upload-files" class="btn width-100 btn-purple-light" aria-hidden="true">
-    <i class="fa fa-cloud-upload"></i> Upload</a>
+  <button type="button" id="close-dialog" class="btn btn-default" (click)="modalRef.hide()">Close</button>
+
+  <a [ngClass]="{false:'disabled'}[hasVariantZipFile && hasDnaBamFile && hasCdnaBamFile]" (click)="upload()" id="upload-files" class="btn btn-purple-light" aria-hidden="true">
+    <i class="fa fa-cloud-upload"></i> Upload Files</a>
 </div>
