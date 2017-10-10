@@ -1,9 +1,10 @@
 import {
   Component,
-  ChangeDetectorRef
+  ChangeDetectorRef,
+  ViewChild
 } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap';
-import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
+import { DropzoneDirective, DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 
 import { AliquotApiService } from '../../clia/aliquot-api.service';
 
@@ -30,6 +31,10 @@ export class FileUploadContentComponent {
   variantZipFile: any;
   dnaBamFile: any;
   cdnaBamFile: any;
+
+  @ViewChild('variantZipFileDirective') variantZipFileDirective: DropzoneDirective;
+  @ViewChild('dnaBamFileDirective') dnaBamFileDirective: DropzoneDirective;
+  @ViewChild('cdnaBamFileDirective') cdnaBamFileDirective: DropzoneDirective;
 
   constructor(
     public modalRef: BsModalRef,
@@ -73,11 +78,16 @@ export class FileUploadContentComponent {
       this.cdnaBamFile.name
     ).subscribe(
       (data: [string, string, string]) => {
-        this.dzConfigVariantZip.url = data[0];
-        this.dzConfigDnaBam.url = data[1];
-        this.dzConfigCdnaBam.url = data[2];
+        this.variantZipFileDirective.config.url = data[0];
+        this.variantZipFileDirective.dropzone.enqueueFile(this.variantZipFile);
+
+        this.dnaBamFileDirective.config.url = data[1];
+        this.dnaBamFileDirective.dropzone.enqueueFile(this.dnaBamFile);
+
+        this.cdnaBamFileDirective.config.url = data[2];
+        this.cdnaBamFileDirective.dropzone.enqueueFile(this.cdnaBamFile);
       }
-      );
+    );
   }
 
   addedFileVariantZip(evt: any): void {
