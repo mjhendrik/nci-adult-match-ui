@@ -1,8 +1,4 @@
-import {
-  Component,
-  ChangeDetectorRef,
-  Input
-} from '@angular/core';
+import { Component } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { FileUploadContentComponent } from './file-upload-content.component';
 
@@ -16,7 +12,7 @@ import { FileUploadContentComponent } from './file-upload-content.component';
 export class FileUploadComponent {
   public modalRef: BsModalRef;
 
-  @Input() msn: string;
+  msn: string;
 
   uploadedFiles: any[];
   fileCount: number = 0;
