@@ -23,7 +23,7 @@ import { ActivatedRoute } from '@angular/router';
 
 export function main() {
 
-  describe('tratment-arm-link component', () => {
+  describe('cosmic-link component', () => {
 
     let component:CosmicLinkComponent;
     let fixture:ComponentFixture<CosmicLinkComponent>;
@@ -31,6 +31,8 @@ export function main() {
     let config:any[] = [
       {path: 'tracking', component: 'CosmicLinkComponent'}
     ];
+
+    let LinkId:any = "COSM"
 
     beforeEach(() => {
       TestBed.configureTestingModule({
@@ -41,7 +43,10 @@ export function main() {
           DataTableModule],
         declarations: [CosmicLinkComponent],
         // providers: [{ provide: DashboardApiService, useClass: MockDashboardService }]
-      });
+      }).compileComponents();
+
+      // spyOn(localStorage, 'getLinkUrl').and.returnValue(JSON.stringify({ 'linkType': ['CosmicId'] }));
+
     });
 
     it('should instantiate getLinkUrl',
@@ -55,9 +60,9 @@ export function main() {
               }
             }).createComponent(CosmicLinkComponent);
             fixture.componentInstance.getLinkUrl();
+            fixture.detectChanges();
           });
       }));
-
 
     it('should instantiate isValidLink',
       async((done: any) => {
@@ -70,8 +75,29 @@ export function main() {
               }
             }).createComponent(CosmicLinkComponent);
             fixture.componentInstance.isValidLink();
+            fixture.detectChanges();
           });
       }));
 
+    it('should instantiate getLinkId',
+      async((done: any) => {
+
+        let LinkType:any = {
+          cosmicGene : 'cosmicGene',
+          cosmicId : 'cosmicId',
+          cosmicFusionId : 'cosmicFusionId'
+        };
+
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(CosmicLinkComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(CosmicLinkComponent);
+            // fixture.componentInstance.getLinkId();
+          });
+      }));
   });
 }
