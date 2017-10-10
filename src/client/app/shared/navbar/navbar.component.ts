@@ -30,7 +30,7 @@ export class NavbarComponent implements OnInit {
   didScroll: any;
   lastScrollTop = 0;
   delta = 5;
-  navbarheight: any;
+  navBarHeight: any;
 
   constructor(location: Location,
       private auth: Auth,
@@ -64,7 +64,11 @@ export class NavbarComponent implements OnInit {
   @HostListener('window:scroll', [])
   onWindowScroll() {
 
-    this.navbarheight = document.getElementById('top-menu').offsetHeight;
+    const navBar = document.getElementById('top-menu');
+    if (!navBar)
+      return;
+
+    this.navBarHeight = navBar.offsetHeight;
     this.didScroll = true;
 
     if (document.body.scrollTop > 1) {
@@ -94,7 +98,7 @@ export class NavbarComponent implements OnInit {
     // If they scrolled down and are past the navbar, add class .nav-up.
     // This is necessary so you never see what is 'behind' the navbar.
 
-    if (st > this.lastScrollTop && st > this.navbarheight) {
+    if (st > this.lastScrollTop && st > this.navBarHeight) {
 
       // Scroll Down
       document.getElementById('top-menu').classList.remove('top-position');
