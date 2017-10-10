@@ -13,7 +13,7 @@
   </div>
   
   <div class="row">
-    <div class="col-md-4 form-group has-feedback" [ngClass]="{true:'has-success',false:'has-error'}[variantZip]">
+    <div class="col-md-4 form-group has-feedback" [ngClass]="{true:'has-success',false:'has-error'}[hasVariantZipFile]">
       <label class="control-label">Variant ZIP File</label>
       <div class="form-control" [ngClass]="{true:'disable-div'}[!analysisId]" [dropzone]="dzConfigVariantZip" (addedfile)="addedFileVariantZip($event)" id="variantUploadButton"
         (removedfile)="removedFileVariantZip()" (error)="onUploadError($event)" (success)="onUploadSuccess($event)">
@@ -30,7 +30,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-4 form-group has-feedback" [ngClass]="{true:'has-success',false:'has-error'}[dnaBam]">
+    <div class="col-md-4 form-group has-feedback" [ngClass]="{true:'has-success',false:'has-error'}[hasDnaBamFile]">
       <label class="control-label">DNA BAM File</label>
       <div class="form-control" [ngClass]="{true:'disable-div'}[!analysisId]" [dropzone]="dzConfigDnaBam" (addedfile)="addedFileDnaBam($event)" id="dnaUploadButton"
         (removedfile)="removedFileDnaBam()" (error)="onUploadError($event)" (success)="onUploadSuccess($event)">
@@ -47,7 +47,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-4 form-group has-feedback" [ngClass]="{true:'has-success',false:'has-error'}[cdnaBam]">
+    <div class="col-md-4 form-group has-feedback" [ngClass]="{true:'has-success',false:'has-error'}[hasCdnaBamFile]">
       <label class="control-label">cDNA BAM File</label>
       <div class="form-control" [ngClass]="{true:'disable-div'}[!analysisId]" [dropzone]="dzConfigCdnaBam" (addedfile)="addedFileCdnaBam($event)" id="cdnaUploadButton"
         (removedfile)="removedFileCdnaBam()" (error)="onUploadError($event)" (success)="onUploadSuccess($event)">
@@ -68,7 +68,6 @@
 </div>
 
 <div class="modal-footer">
-  <a [ngClass]="{false:'disabled'}[variantZip && dnaBam && cdnaBam]" (click)="uploadFiles()" id="upload-files" class="btn width-100 btn-purple-light"
-    data-dismiss="modal" aria-hidden="true">
+  <a [ngClass]="{false:'disabled'}[hasVariantZipFile && hasDnaBamFile && hasCdnaBamFile]" (click)="upload()" id="upload-files" class="btn width-100 btn-purple-light" aria-hidden="true">
     <i class="fa fa-cloud-upload"></i> Upload</a>
 </div>

@@ -1,10 +1,11 @@
 import {
   Component,
-  ChangeDetectorRef,
-  Input
+  ChangeDetectorRef
 } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap';
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
+
+import { AliquotApiService } from '../../clia/aliquot-api.service';
 
 @Component({
   moduleId: module.id,
@@ -12,7 +13,7 @@ import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
   templateUrl: 'file-upload-content.component.html'
 })
 export class FileUploadContentComponent {
-  @Input() msn: string;
+  msn: string;
 
   dzConfigVariantZip: DropzoneConfigInterface;
   dzConfigDnaBam: DropzoneConfigInterface;
@@ -21,16 +22,20 @@ export class FileUploadContentComponent {
   uploadedFiles: any[];
   fileCount: number = 0;
 
-  variantZip: boolean = false;
-  dnaBam: boolean = false;
-  cdnaBam: boolean = false;
+  hasVariantZipFile: boolean = false;
+  hasDnaBamFile: boolean = false;
+  hasCdnaBamFile: boolean = false;
 
-  molecularSequenceNumber: string;
+  variantZipFile: string;
+  dnaBamFile: string;
+  cdnaBamFile: string;
+
   analysisId: string;
 
   constructor(
     public modalRef: BsModalRef,
-    private changeDetector: ChangeDetectorRef) {
+    private changeDetector: ChangeDetectorRef,
+    private api: AliquotApiService) {
 
     const dummyUrl = 'https://fakeurl.org/fakepost';
 
@@ -44,9 +49,9 @@ export class FileUploadContentComponent {
       autoProcessQueue: false,
       init: function () {
         var submitButton = document.querySelector('#upload-files');
-        let myDropzone = this; // closure
+        let dz = this; // closure
         submitButton.addEventListener('click', function () {
-          myDropzone.processQueue(); // Tell Dropzone to process all queued files.
+          dz.processQueue(); // Tell Dropzone to process all queued files.
         });
       }
     };
@@ -61,9 +66,9 @@ export class FileUploadContentComponent {
       autoProcessQueue: false,
       init: function () {
         var submitButton = document.querySelector('#upload-files');
-        let myDropzone = this; // closure
+        let dz = this; // closure
         submitButton.addEventListener('click', function () {
-          myDropzone.processQueue(); // Tell Dropzone to process all queued files.
+          dz.processQueue(); // Tell Dropzone to process all queued files.
         });
       }
     };
@@ -78,51 +83,56 @@ export class FileUploadContentComponent {
       autoProcessQueue: false,
       init: function () {
         var submitButton = document.querySelector('#upload-files');
-        let myDropzone = this; // closure
+        let dz = this; // closure
         submitButton.addEventListener('click', function () {
-          myDropzone.processQueue(); // Tell Dropzone to process all queued files.
+          dz.processQueue(); // Tell Dropzone to process all queued files.
         });
       }
     };
   }
 
   upload(): void {
-    this.dzConfigVariantZip.url = 'some url';
-    this.dzConfigDnaBam.url = 'some url';
-    this.dzConfigCdnaBam.url = 'some url';
-
-    // const fileNames = ['Variant', 'DNA', 'cDNA'];
-    // for (let file of fileNames) {
-    // }
+    this.api.getPresignedUrls(
+      this.msn,
+      this.variantZipFile,
+      this.dnaBamFile,
+      this.cdnaBamFile
+    ).subscribe(
+      (data: [string, string, string]) => {
+        this.dzConfigVariantZip.url = data[0];
+        this.dzConfigDnaBam.url = data[1];
+        this.dzConfigCdnaBam.url = data[2];
+      }
+    );
   }
 
   addedFileVariantZip(evt: any): void {
-    this.variantZip = true;
+    this.hasVariantZipFile = true;
     this.changeDetector.detectChanges();
   }
 
   removedFileVariantZip(): void {
-    this.variantZip = false;
+    this.hasVariantZipFile = false;
     this.changeDetector.detectChanges();
   }
 
   addedFileDnaBam(evt: any): void {
-    this.dnaBam = true;
+    this.hasDnaBamFile = true;
     this.changeDetector.detectChanges();
   }
 
   removedFileDnaBam(): void {
-    this.dnaBam = false;
+    this.hasDnaBamFile = false;
     this.changeDetector.detectChanges();
   }
 
   addedFileCdnaBam(evt: any): void {
-    this.cdnaBam = true;
+    this.hasCdnaBamFile = true;
     this.changeDetector.detectChanges();
   }
 
   removedFileCdnaBam(): void {
-    this.cdnaBam = false;
+    this.hasCdnaBamFile = false;
     this.changeDetector.detectChanges();
   }
 
