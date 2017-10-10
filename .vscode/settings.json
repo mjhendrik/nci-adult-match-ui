@@ -11,8 +11,10 @@
     "attr-lowercase": false
   },
   "cSpell.words": [
+    "Presigned",
     "noopener",
-    "noreferrer"
+    "noreferrer",
+    "presign"
   ],
   "html.suggest.angular1": false
 }
