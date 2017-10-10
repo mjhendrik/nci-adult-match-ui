@@ -54,6 +54,8 @@ export class DashboardComponent implements OnInit {
   dataAvailableOverviewPatients: boolean = false; // use emit
   dataAvailableOverviewBt: boolean = false; // use emit
 
+  tablePatientsAwaitingDataInitial: number = 0;
+
   private isOutsideAssayValue?: boolean = null;
 
   set isOutsideAssayWorkflow(value: boolean) {
@@ -77,6 +79,7 @@ export class DashboardComponent implements OnInit {
     this.getOverviewDataPatients();
     this.getOverviewDataBt();
     // this.autoLoadOverviewData();
+    this.tablePatientsAwaitingDataInitial = this.tablePatientsAwaitingData.length;
   }
 
   getDataAR() {
