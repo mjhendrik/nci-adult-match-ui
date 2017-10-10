@@ -10,11 +10,5 @@
   "htmlhint.options": {
     "attr-lowercase": false
   },
-  "cSpell.words": [
-    "Presigned",
-    "noopener",
-    "noreferrer",
-    "presign"
-  ],
   "html.suggest.angular1": false
 }
