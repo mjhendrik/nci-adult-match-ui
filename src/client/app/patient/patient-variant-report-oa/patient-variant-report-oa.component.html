@@ -255,13 +255,13 @@
 
           <div *ngIf="matchData && matchData.analysisId" class="col-md-6">
             <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
-              <div class="panel-heading" *ngIf="!matchData.assignmentReport" id="crAssignmentReport">
+              <div class="panel-heading" *ngIf="!matchData.assignmentReport" >
                 <h4>Latest Assignment</h4>
               </div>
               <div class="panel-heading" *ngIf="!matchData.assignmentReport">
                 <p class="text-muted">No Assignment data yet</p>
               </div>
-              <div class="panel-heading" *ngIf="matchData.assignmentReport">
+              <div class="panel-heading" *ngIf="matchData.assignmentReport" id="crAssignmentReport">
                 <h4>Latest Assignment</h4>
                 <dl class="dl-horizontal widest-dt">
                   <dt>Status</dt>
@@ -316,7 +316,7 @@
 
           <div class="col-md-6">
             <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-middle">
-              <div class="panel-heading" id="crAssays">
+              <div class="panel-heading" id="crAssay">
                 <h4>Assays</h4>
                 <table class="table table-condensed white-header">
                   <thead>
