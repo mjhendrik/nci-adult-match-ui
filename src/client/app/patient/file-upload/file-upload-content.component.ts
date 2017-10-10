@@ -1,7 +1,6 @@
 import {
   Component,
-  ChangeDetectorRef,
-  Input
+  ChangeDetectorRef
 } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap';
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
@@ -14,7 +13,7 @@ import { AliquotApiService } from '../../clia/aliquot-api.service';
   templateUrl: 'file-upload-content.component.html'
 })
 export class FileUploadContentComponent {
-  @Input() msn: string;
+  msn: string;
   analysisId: string;
 
   dzConfigVariantZip: DropzoneConfigInterface;
