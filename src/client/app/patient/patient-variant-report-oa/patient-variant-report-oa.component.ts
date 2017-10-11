@@ -78,9 +78,9 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, Varian
     this.scrollTo = scrollService.scrollToElement;
   }
 
-  openOutsideAssignmentReason() {
-    this.showOutsideAssay = true;
-    this.scrollTo('assignment-details');
+  openOutsideAssignmentReason(elementId: string, isOutsideAssay: boolean) {
+    this.showOutsideAssay = isOutsideAssay;
+    this.scrollTo(elementId);
   }
 
   ngOnInit() {

@@ -104,7 +104,7 @@
                   <div class="panel-heading">
                     <p>
                       {{outsideData.assignmentReport.patientAssignmentStatusMessage | dashify}}
-                      <a (click)="scrollTo('assignment-details')" class="text-white text-underlined white-link"><br><br><i class="fa fa-arrow-down" aria-hidden="true"></i> Click for details...</a>
+                      <a (click)="scrollTo('outside-assignment-details')" class="text-white text-underlined white-link"><br><br><i class="fa fa-arrow-down" aria-hidden="true"></i> Click for details...</a>
                     </p>
                   </div>
                 </div>
@@ -185,7 +185,7 @@
           </div>
         </div>
 
-        <div *ngIf="outsideData.assignmentReport && outsideData.assignmentReport.reasons" id="assignment-details">
+        <div *ngIf="outsideData.assignmentReport && outsideData.assignmentReport.reasons" id="outside-assignment-details">
           <sd-assignment-reason-table [reasons]="outsideData.assignmentReport.reasons"></sd-assignment-reason-table>
         </div>
 
@@ -286,7 +286,7 @@
                   <div class="panel-heading">
                     <p>
                       {{matchData.assignmentReport.patientAssignmentStatusMessage | dashify}}
-                      <a (click)="scrollTo('assignment-details')" class="text-white text-underlined white-link"><br><br><i class="fa fa-arrow-down" aria-hidden="true"></i> Click for details...</a>
+                      <a (click)="scrollTo('match-assignment-details')" class="text-white text-underlined white-link"><br><br><i class="fa fa-arrow-down" aria-hidden="true"></i> Click for details...</a>
                     </p>
                   </div>
                 </div>
@@ -367,7 +367,7 @@
           </div>
         </div>
 
-        <div *ngIf="matchData.assignmentReport && matchData.assignmentReport.reasons" id="assignment-details">
+        <div *ngIf="matchData.assignmentReport && matchData.assignmentReport.reasons" id="match-assignment-details">
           <sd-assignment-reason-table [reasons]="matchData.assignmentReport.reasons"></sd-assignment-reason-table>
         </div>
 
@@ -447,7 +447,7 @@
                       <div class="panel-heading">
                         <p>
                           {{outsideData.assignmentReport.patientAssignmentStatusMessage | dashify}}
-                          <a (click)="openOutsideAssignmentReason('assignment-details')" class="text-white text-underlined white-link"><br><br><i class="fa fa-arrow-down" aria-hidden="true"></i> Click for details...</a>
+                          <a (click)="openOutsideAssignmentReason('outside-assignment-details', true)" class="text-white text-underlined white-link"><br><br><i class="fa fa-arrow-down" aria-hidden="true"></i> Click for details...</a>
                         </p>
                       </div>
                     </div>
@@ -465,7 +465,7 @@
                       <div class="panel-heading">
                         <p>
                           {{matchData.assignmentReport.patientAssignmentStatusMessage | dashify}}
-                          <a (click)="scrollTo('match-assignment-details')" class="text-white text-underlined white-link"><br><br><i class="fa fa-arrow-down" aria-hidden="true"></i> Click for details...</a>
+                          <a (click)="scrollTo('assignment-details')" class="text-white text-underlined white-link"><br><br><i class="fa fa-arrow-down" aria-hidden="true"></i> Click for details...</a>
                         </p>
                       </div>
                     </div>
@@ -498,7 +498,7 @@
 
         <sd-variant-report-comparison-table-gf [items]="comparisonVariantReport.unifiedGeneFusions" [title]="'Gene Fusions'"></sd-variant-report-comparison-table-gf>
 
-        <div *ngIf="matchData.assignmentReport && matchData.assignmentReport.reasons" id="match-assignment-details">
+        <div *ngIf="matchData.assignmentReport && matchData.assignmentReport.reasons" id="assignment-details">
           <sd-assignment-reason-table [reasons]="matchData.assignmentReport.reasons"></sd-assignment-reason-table>
         </div>
 
