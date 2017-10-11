@@ -36,7 +36,7 @@
                     <span [colorCodePatients]="currentPatientStatus">{{currentPatientStatus | dashify}}</span>, Step {{currentStepNumber
                     | dashify}}</dd>
                   <dt>Disease Concordance</dt>
-                  <dd><span [colorCodeConcordance]="concordance">{{concordance | dashify}}</span></dd>
+                  <dd><span [colorCodeYesNo]="concordance">{{concordance | dashify}}</span></dd>
                   <dt>Status</dt>
                   <dd><span [colorCodeVariantReport]="outsideData.variantReport.variantReportStatus">{{outsideData.variantReport.variantReportStatus | dashify}}</span>                    on {{outsideData.variantReport.variantReportCreatedDate | gmt}} by {{outsideData.variantReport.user |
                     dashify}}
@@ -218,7 +218,7 @@
                     <span [colorCodePatients]="currentPatientStatus">{{currentPatientStatus | dashify}}</span>, Step {{currentStepNumber
                     | dashify}}</dd>
                   <dt>Disease Concordance</dt>
-                  <dd><span [colorCodeConcordance]="concordance">{{concordance | dashify}}</span></dd>
+                  <dd><span [colorCodeYesNo]="concordance">{{concordance | dashify}}</span></dd>
                   <dt>Status</dt>
                   <dd><span [colorCodeVariantReport]="matchData.variantReport.variantReportStatus">{{matchData.variantReport.variantReportStatus | dashify}}</span>                    on {{matchData.variantReport.variantReportCreatedDate | gmt}} by {{matchData.variantReport.user |
                     dashify}}
@@ -401,7 +401,7 @@
                     <span [colorCodePatients]="currentPatientStatus">{{currentPatientStatus | dashify}}</span>, Step {{currentStepNumber
                     | dashify}}</dd>
                   <dt>Disease Concordance</dt>
-                  <dd><span [colorCodeConcordance]="concordance">{{concordance | dashify}}</span></dd>
+                  <dd><span [colorCodeYesNo]="concordance">{{concordance | dashify}}</span></dd>
                   <dt>Status</dt>
                   <dd><span [colorCodeVariantReport]="matchData.variantReport.variantReportStatus">{{matchData.variantReport.variantReportStatus | dashify}}</span>                    on {{matchData.variantReport.variantReportCreatedDate | gmt}} by {{matchData.variantReport.user | dashify}}</dd>
                   <dt>MAPD</dt>
