@@ -35,6 +35,7 @@ before_script:
 
 script:
   - npm run build.deploy
+  - npm test
   # - cat coverage/lcov.info | ./node_modules/.bin/codacy-coverage -d -v -l typescript # For codacy-coverage debugging
   - cat coverage/lcov.info | ./node_modules/.bin/codacy-coverage -l typescript # Regular codacy-coverage command
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
