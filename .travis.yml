@@ -34,8 +34,12 @@ before_script:
   - nohup bash -c "webdriver-manager start 2>&1 &"  # Protractor CI
 
 script:
+  - ls -l
+  - ls -l coverage/
   - npm run build.deploy
   - npm test
+  - ls -l
+  - ls -l coverage/
   # - cat coverage/lcov.info | ./node_modules/.bin/codacy-coverage -d -v -l typescript # For codacy-coverage debugging
   - cat coverage/lcov.info | ./node_modules/.bin/codacy-coverage -l typescript # Regular codacy-coverage command
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
