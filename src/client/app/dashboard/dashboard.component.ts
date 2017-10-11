@@ -129,9 +129,9 @@ export class DashboardComponent implements OnInit {
 
                 x.diseases = x.outsideBiopsy.diseases;
                 x.MLH1 = x.outsideBiopsy.MLH1;
-                x.MSH2 = x.outsideBiopsy.MLH1;
-                x.PTEN = x.outsideBiopsy.MLH1;
-                x.RB = x.outsideBiopsy.MLH1;
+                x.MSH2 = x.outsideBiopsy.MSH2;
+                x.PTEN = x.outsideBiopsy.PTEN;
+                x.RB = x.outsideBiopsy.RB;
                 x.amoi = x.outsideBiopsy.amoi;
                 x.variantReportConfirmedDate = x.outsideBiopsy.variantReportConfirmedDate;
                 x.biopsySequenceNumber = x.outsideBiopsy.biopsySequenceNumber;
@@ -163,9 +163,9 @@ export class DashboardComponent implements OnInit {
 
               x.diseases = x.outsideBiopsy.diseases;
               x.MLH1 = x.outsideBiopsy.MLH1;
-              x.MSH2 = x.outsideBiopsy.MLH1;
-              x.PTEN = x.outsideBiopsy.MLH1;
-              x.RB = x.outsideBiopsy.MLH1;
+              x.MSH2 = x.outsideBiopsy.MSH2;
+              x.PTEN = x.outsideBiopsy.PTEN;
+              x.RB = x.outsideBiopsy.RB;
               x.amoi = x.outsideBiopsy.amoi;
               x.variantReportConfirmedDate = x.outsideBiopsy.variantReportConfirmedDate;
               x.biopsySequenceNumber = x.outsideBiopsy.biopsySequenceNumber;
