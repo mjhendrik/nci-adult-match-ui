@@ -61,11 +61,11 @@ export class AliquotApiService extends ApiService {
       .catch(this.handleError);
   }
 
-  getPresignedUrls(msn: string, zipFile: string, dnaFile: string, cdnaFile: string): Observable<[string, string, string]> {
+  getPresignedUrls(msn: string, analysisId: string, zipFile: string, dnaFile: string, cdnaFile: string): Observable<[string, string, string]> {
     return Observable.forkJoin(
-      this.http.post(`${this.baseApiUrl}/message/clia/aliquot/presign_url?msn=${msn}&filename=${zipFile}`, ''),
-      this.http.post(`${this.baseApiUrl}/message/clia/aliquot/presign_url?msn=${msn}&filename=${dnaFile}`, ''),
-      this.http.post(`${this.baseApiUrl}/message/clia/aliquot/presign_url?msn=${msn}&filename=${cdnaFile}`, '')
+      this.http.post(`${this.baseApiUrl}/message/clia/aliquot/presign_ur`, {molecularSequenceNumber:msn, analysisId: analysisId, filename: zipFile}),
+      this.http.post(`${this.baseApiUrl}/message/clia/aliquot/presign_ur`, {molecularSequenceNumber:msn, analysisId: analysisId, filename: dnaFile}),
+      this.http.post(`${this.baseApiUrl}/message/clia/aliquot/presign_ur`, {molecularSequenceNumber:msn, analysisId: analysisId, filename: cdnaFile})
     ).map(
       data => {
         return [

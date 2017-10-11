@@ -73,6 +73,7 @@ export class FileUploadContentComponent {
   upload(): void {
     this.api.getPresignedUrls(
       this.msn,
+      this.analysisId,
       this.variantZipFile.name,
       this.dnaBamFile.name,
       this.cdnaBamFile.name
