@@ -75,31 +75,46 @@ export class SampleControlApiService extends ApiService {
   }
 
   downloadCliaDnaBam(molecular_id: string): Observable<any> {
-    return this.http.get(Config.API.SAMPLE_CONTROLS + '/sample_controls/files/' + molecular_id + '/dna_bam_name')
+
+    //   return this.http.get(Config.API.SAMPLE_CONTROLS + '/sample_controls/files/' + molecular_id + '/dna_bam_name') // sample control
+
+    return this.http.get(Config.API.MESSAGE + '/message/clia/aliquot/sample_control/files/' + molecular_id + '/dna_bam') // message
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   downloadCliaDnaBai(molecular_id: string): Observable<any> {
-    return this.http.get(Config.API.SAMPLE_CONTROLS + '/sample_controls/files/' + molecular_id + '/dna_bai_name')
+
+    //   return this.http.get(Config.API.SAMPLE_CONTROLS + '/sample_controls/files/' + molecular_id + '/dna_bai_name') // sample control
+
+    return this.http.get(Config.API.MESSAGE + '/message/clia/aliquot/sample_control/files/' + molecular_id + '/dna_bai') // message
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   downloadCliaRnaBam(molecular_id: string): Observable<any> {
-    return this.http.get(Config.API.SAMPLE_CONTROLS + '/sample_controls/files/' + molecular_id + '/cdna_bam_name')
+
+    //   return this.http.get(Config.API.SAMPLE_CONTROLS + '/sample_controls/files/' + molecular_id + '/cdna_bam_name') // sample control
+
+    return this.http.get(Config.API.MESSAGE + '/message/clia/aliquot/sample_control/files/' + molecular_id + '/rna_bam') // message
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   downloadCliaRnaBai(molecular_id: string): Observable<any> {
-    return this.http.get(Config.API.SAMPLE_CONTROLS + '/sample_controls/files/' + molecular_id + '/cdna_bai_name')
+
+    //   return this.http.get(Config.API.SAMPLE_CONTROLS + '/sample_controls/files/' + molecular_id + '/cdna_bai_name') // sample control
+
+    return this.http.get(Config.API.MESSAGE + '/message/clia/aliquot/sample_control/files/' + molecular_id + '/rna_bai') // message
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   downloadCliaVcf(molecular_id: string): Observable<any> {
-    return this.http.get(Config.API.SAMPLE_CONTROLS + '/sample_controls/files/' + molecular_id + '/vcf_name')
+
+    //   return this.http.get(Config.API.SAMPLE_CONTROLS + '/sample_controls/files/' + molecular_id + '/vcf_name') // sample control
+
+    return this.http.get(Config.API.MESSAGE + '/message/clia/aliquot/sample_control/files/' + molecular_id + '/vcf') // message
       .map(this.extractData)
       .catch(this.handleError);
   }
