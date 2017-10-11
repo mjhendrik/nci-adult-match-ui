@@ -12,7 +12,7 @@ export class FilterByTextPipe implements PipeTransform {
         var keys = Object.keys(items[0]);
         var pattern = keys.join('|');
         pattern = pattern + '"|{|}';
-        var regex: RegExp = new RegExp(pattern, 'gi');
+        var regex: RegExp = new RegExp(pattern, 'i');
         return items.filter(item => {
             return JSON.stringify(item).replace(regex, '').toLocaleLowerCase()
                 .indexOf(filterText.toLocaleLowerCase()) !== -1 ? true : false;
