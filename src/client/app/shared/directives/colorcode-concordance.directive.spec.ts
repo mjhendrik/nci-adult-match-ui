@@ -9,24 +9,24 @@ import {
 } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
-import { ColorCodeAssayDirective } from './colorcode-assay.directive';
+import { ColorCodeConcordanceDirective } from './colorcode-concordance.directive';
 
 @Component({
-    template: `<span [colorCodeAssay]="testStatus">Some Text</span>`
+    template: `<span [colorCodeConcordance]="testStatus">Some Text</span>`
 })
 class TestHostComponent {
     testStatus: string;
 }
 
 export function main() {
-    describe('ColorCodeAssayDirective', () => {
+    describe('ColorCodeConcordanceDirective', () => {
         let testHost: TestHostComponent;
         let fixture: ComponentFixture<TestHostComponent>;
         let testEl: DebugElement;
 
         beforeEach(async(() => {
             TestBed.configureTestingModule({
-                declarations: [TestHostComponent, ColorCodeAssayDirective]
+                declarations: [TestHostComponent, ColorCodeConcordanceDirective]
             }).compileComponents();
         }));
 

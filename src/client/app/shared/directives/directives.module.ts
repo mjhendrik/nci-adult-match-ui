@@ -18,6 +18,7 @@ import { AmoiDirective } from './amoi.directive';
 import { CnvChartDirective } from './../cnv-chart/cnv-chart.directive.component';
 import { ColorCodeYesNoDirective } from './colorcode-yes-no.directive';
 import { RefreshMatchHeightDirective } from './refresh-match-height.directive';
+import { ColorCodeConcordanceDirective } from './colorcode-concordance.directive';
 
 @NgModule({
   imports: [CommonModule],
@@ -38,7 +39,8 @@ import { RefreshMatchHeightDirective } from './refresh-match-height.directive';
     AmoiDirective,
     nvD3,
     CnvChartDirective,
-    ColorCodeYesNoDirective
+    ColorCodeYesNoDirective,
+    ColorCodeConcordanceDirective
   ],
   exports: [
     ColorCodeTaDirective,
@@ -57,7 +59,8 @@ import { RefreshMatchHeightDirective } from './refresh-match-height.directive';
     AmoiDirective,
     nvD3,
     CnvChartDirective,
-    ColorCodeYesNoDirective
+    ColorCodeYesNoDirective,
+    ColorCodeConcordanceDirective
   ],
 })
 export class DirectivesModule { }

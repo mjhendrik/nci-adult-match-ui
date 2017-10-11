@@ -6,8 +6,8 @@ import {
 
 import { ConditionalCssDirective } from './conditional-css.directive';
 
-@Directive({ selector: '[colorCodeAssay]' })
-export class ColorCodeAssayDirective extends ConditionalCssDirective<string> {
+@Directive({ selector: '[colorCodeConcordance]' })
+export class ColorCodeConcordanceDirective extends ConditionalCssDirective<string> {
 
     @Input() set colorCodeAssay(value: string) {
         this.value = value;
