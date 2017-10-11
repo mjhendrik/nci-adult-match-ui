@@ -92,7 +92,8 @@
                   <dt>Assignment Received by ECOG Date</dt>
                   <dd>{{outsideData.assignmentReport.dateReceivedByECOG | gmt}}</dd>
                 </dl>
-                <div *ngIf="outsideData.assignmentReport.hasSelectedTreatmentArm" class="dl-horizontal widest-dt">
+
+                <div *ngIf="outsideData.assignmentReport.hasSelectedTreatmentArm">
                   <h5>Selected Treatment Arm</h5>
                   <h5>
                     <treatment-arm-link *ngIf="outsideData.assignmentReport" [treatmentArmId]="outsideData.assignmentReport.treatmentArm.treatmentArmId"
@@ -100,6 +101,7 @@
                     <span *ngIf="!outsideData.assignmentReport">-</span>
                   </h5>
                 </div>
+
                 <div *ngIf="outsideData.assignmentReport.hasSelectedTreatmentArm" class="panel panel-success overflow-hidden">
                   <div class="panel-heading">
                     <p>
@@ -274,7 +276,7 @@
                   <dt>Assignment Received by ECOG Date</dt>
                   <dd>{{matchData.assignmentReport.dateReceivedByECOG | gmt}}</dd>
                 </dl>
-                <div *ngIf="matchData.assignmentReport.hasSelectedTreatmentArm" class="dl-horizontal widest-dt">
+                <div *ngIf="matchData.assignmentReport.hasSelectedTreatmentArm">
                   <h5>Selected Treatment Arm</h5>
                   <h5>
                     <treatment-arm-link *ngIf="matchData.assignmentReport" [treatmentArmId]="matchData.assignmentReport.treatmentArm.treatmentArmId"
@@ -435,7 +437,7 @@
                 <h4>Assignment</h4>
                 <div class="row">
                   <div class="col-md-6">
-                    <div *ngIf="outsideData.assignmentReport.hasSelectedTreatmentArm" class="dl-horizontal widest-dt">
+                    <div *ngIf="outsideData.assignmentReport.hasSelectedTreatmentArm">
                       <h5><span class="badge outside-data-text">Selected Treatment Arm</span></h5>
                       <h5>
                         <treatment-arm-link *ngIf="outsideData.assignmentReport" [treatmentArmId]="outsideData.assignmentReport.treatmentArm.treatmentArmId"
@@ -453,7 +455,7 @@
                     </div>
                   </div>
                   <div class="col-md-6">
-                    <div *ngIf="matchData.assignmentReport.hasSelectedTreatmentArm" class="dl-horizontal widest-dt">
+                    <div *ngIf="matchData.assignmentReport.hasSelectedTreatmentArm">
                       <h5><span class="badge match-data-text">Confirmation Treatment Arm</span></h5>
                       <h5>
                         <treatment-arm-link *ngIf="matchData.assignmentReport" [treatmentArmId]="matchData.assignmentReport.treatmentArm.treatmentArmId"
