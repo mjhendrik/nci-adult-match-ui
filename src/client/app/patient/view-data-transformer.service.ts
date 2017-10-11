@@ -90,7 +90,7 @@ export class ViewDataTransformer {
 
     this.precessPassFailVariants(transformedReport.comparisonVariantReport);
 
-    transformedReport.isOutsideAssay = isOutsideAssayReport;
+    transformedReport.showOutsideAssay = isOutsideAssayReport;
 
     transformedReport.showComparison = transformedReport.outsideData.variantReport.variantReportStatus
       && transformedReport.outsideData.variantReport.variantReportStatus !== 'PENDING'
