@@ -73,6 +73,7 @@ export class ViewDataTransformer {
     transformedReport.matchData.pool2 = ocpDataMatch.pool2;
     transformedReport.matchData.mapd = cnvDataMatch.mapd;
     transformedReport.matchData.cellularity = cnvDataMatch.cellularity;
+    transformedReport.matchData.tvc_version = cnvDataMatch.tvc_version;
     transformedReport.matchData.showPools = this.showPools(cnvDataMatch.tvc_version);
     transformedReport.matchData.variantReport = transformedReport.matchData.variantReport || {};
     transformedReport.matchData.variantReport.moiSummary = transformedReport.matchData.variantReport.moiSummary || {};
@@ -81,6 +82,7 @@ export class ViewDataTransformer {
     transformedReport.outsideData.pool2 = ocpDataOutside.pool2;
     transformedReport.outsideData.mapd = cnvDataOutside.mapd;
     transformedReport.outsideData.cellularity = cnvDataOutside.cellularity;
+    transformedReport.outsideData.tvc_version = cnvDataOutside.tvc_version;
     transformedReport.outsideData.showPools = this.showPools(cnvDataOutside.tvc_version);
     transformedReport.outsideData.variantReport = transformedReport.outsideData.variantReport || {};
     transformedReport.outsideData.variantReport.moiSummary = transformedReport.outsideData.variantReport.moiSummary || {};
