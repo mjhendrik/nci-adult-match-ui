@@ -34,7 +34,7 @@ before_script:
   - nohup bash -c "webdriver-manager start 2>&1 &"  # Protractor CI
 
 script:
-  - npm run build.deploy
+  # - npm run build.deploy
   - npm test
   - ls -l
   - ls -l coverage/
