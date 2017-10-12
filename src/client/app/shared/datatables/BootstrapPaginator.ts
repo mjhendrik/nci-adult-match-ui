@@ -24,7 +24,7 @@ import * as _ from 'lodash';
                 Showing {{p.dataLength==0 ? 0 : (p.activePage-1)*(p.rowsOnPage)+1}} to {{ p.dataLength
                 < (p.activePage-1)*(p.rowsOnPage)+p.rowsOnPage ? p.dataLength: (p.activePage-1)*(p.rowsOnPage)+paginationParse(p.rowsOnPage)}}
                     of {{totalPageCount}} entries </div>
-                <div class="dataTables_info" id="data-table_info" *ngIf="p.totalLength!=0 && searchTerm!=undefined && searchTerm.length!=0">
+                <div class="dataTables_info" id="data-table_info" *ngIf="p.dataLength!=0 && searchTerm!=undefined && searchTerm.length!=0">
                     Showing {{p.dataLength==0 ? 0 : (p.activePage-1)*(p.rowsOnPage)+1}} to 
                     {{ p.dataLength < (p.activePage-1)*(p.rowsOnPage)+p.rowsOnPage ? p.dataLength: (p.activePage-1)*(p.rowsOnPage)+paginationParse(p.rowsOnPage)}} of {{p.dataLength}}
                             entries (filtered from {{totalPageCount}} total entries)
@@ -52,7 +52,7 @@ import * as _ from 'lodash';
                             entries (filtered from {{p.totalLength}} total entries)
                 </div>
         </div>    
-        <ul style="margin-bottom: 0;" class="pagination pull-right" *ngIf="(paginationType==='client' && p.dataLength > p.rowsOnPage) || (paginationType!=='client' && p.totalLength > p.rowsOnPage)">
+        <ul style="margin-bottom: 0;" class="pagination pull-right" *ngIf="(paginationType!=='server' && p.dataLength > p.rowsOnPage) || (paginationType==='server' && p.totalLength > p.rowsOnPage)">
             <li class="page-item" [class.disabled]="p.activePage <= 1" (click)="p.setPage(p.activePage - 1)">
                 <a class="page-link" style="cursor: pointer">Previous</a>
             </li>
