@@ -130,11 +130,12 @@ export class PatientListComponent implements OnInit {
   }
 
   private getPatientTotal() {
-    this.patientApi.getPatientTotal()
-      .subscribe(itemList => {
+    this.patientApi.getPatientTotal(this.isOutsideAssayWorkflow)
+      .subscribe((itemList: number) => {
         this.patientTotal = itemList;
       },
-      error => this.errorMessage = <any>error
+      (error: any) => this.errorMessage = <any>error
       );
   }
+
 }

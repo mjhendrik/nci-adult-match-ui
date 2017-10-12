@@ -45,8 +45,9 @@ export class PatientApiService extends ApiService {
       .catch(this.handleError);
   }
 
-  getPatientTotal(): Observable<number> {
-    return this.http.get(Config.API.PATIENT + '/patients/count?projection=patientSequenceNumber')
+  getPatientTotal(isOutsideAssayWorkflow?: boolean): Observable<number> {
+    return this.http.get(Config.API.PATIENT + '/patients/count?projection=patientSequenceNumber'
+      + (isOutsideAssayWorkflow !== null ? '&is-oa=' + isOutsideAssayWorkflow : ''))
       .map(this.extractData)
       .catch(this.handleError);
   }
