@@ -53,6 +53,7 @@ export class BiopsyTrackingListComponent implements OnInit {
 
   ngOnInit() {
     this.getBiopsyCount();
+    this.onSearchChanged('');
   }
 
   getData() {

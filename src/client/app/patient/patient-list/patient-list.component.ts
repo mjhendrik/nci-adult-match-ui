@@ -59,6 +59,7 @@ export class PatientListComponent implements OnInit {
 
   ngOnInit() {
     this.refreshData();
+    this.onSearchChanged('');
   }
 
   onSearchChanged(val: any) {
