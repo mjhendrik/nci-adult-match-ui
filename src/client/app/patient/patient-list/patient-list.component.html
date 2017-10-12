@@ -116,7 +116,7 @@
             <tr>
               <td class="tfoot-padding" colspan="7">
                 <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchTerm" [totallength]="patientCount ? patientCount.length : 0"
-                  [totalPageCount]="patientTotal" [paginationType]="'mixed'" (CurrentlyActive)="currentPageActive($event)"></mfBootstrapPaginator>
+                  [totalPageCount]="patientTotal" [paginationType]="'server'" (CurrentlyActive)="currentPageActive($event)"></mfBootstrapPaginator>
               </td>
             </tr>
           </tfoot>

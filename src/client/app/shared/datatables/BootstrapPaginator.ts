@@ -19,7 +19,7 @@ import * as _ from 'lodash';
     }
     </style>
     <mfPaginator #p [mfTable]="mfTable" (CurrentlyActive)="currentlyActive($event)">
-        <div *ngIf="paginationType==='crossed'">
+        <div *ngIf="paginationType==='mixed'">
             <div class="dataTables_info" id="data-table_info" *ngIf="p.dataLength!=0 && (searchTerm==undefined || searchTerm.length==0)">
                 Showing {{p.dataLength==0 ? 0 : (p.activePage-1)*(p.rowsOnPage)+1}} to {{ p.dataLength
                 < (p.activePage-1)*(p.rowsOnPage)+p.rowsOnPage ? p.dataLength: (p.activePage-1)*(p.rowsOnPage)+paginationParse(p.rowsOnPage)}}
@@ -28,17 +28,6 @@ import * as _ from 'lodash';
                     Showing {{p.dataLength==0 ? 0 : (p.activePage-1)*(p.rowsOnPage)+1}} to 
                     {{ p.dataLength < (p.activePage-1)*(p.rowsOnPage)+p.rowsOnPage ? p.dataLength: (p.activePage-1)*(p.rowsOnPage)+paginationParse(p.rowsOnPage)}} of {{totalPageCount === undefined ? p.dataLength : p.totalLength}}
                             entries (filtered from {{totalPageCount === undefined ? p.totalLength : totalPageCount}} total entries)
-                </div>
-        </div>
-        <div *ngIf="paginationType==='mixed'">
-            <div class="dataTables_info" id="data-table_info" *ngIf="p.dataLength!=0 && (searchTerm==undefined || searchTerm.length==0)">
-                Showing {{p.dataLength==0 ? 0 : (p.activePage-1)*(p.rowsOnPage)+1}} to {{ p.totalLength
-                < (p.activePage-1)*(p.rowsOnPage)+p.rowsOnPage ? p.totalLength: (p.activePage-1)*(p.rowsOnPage)+paginationParse(p.rowsOnPage)}}
-                    of {{p.totalLength}} entries </div>
-                <div class="dataTables_info" id="data-table_info" *ngIf="p.totalLength!=0 && searchTerm!=undefined && searchTerm.length!=0">
-                    Showing {{p.dataLength==0 ? 0 : (p.activePage-1)*(p.rowsOnPage)+1}} to 
-                    {{ p.totalLength < (p.activePage-1)*(p.rowsOnPage)+p.rowsOnPage ? p.totalLength: (p.activePage-1)*(p.rowsOnPage)+paginationParse(p.rowsOnPage)}} of {{p.totalLength}}
-                            entries (filtered from {{totalPageCount}} total entries)
                 </div>
         </div>
         <div *ngIf="paginationType==='server'">
