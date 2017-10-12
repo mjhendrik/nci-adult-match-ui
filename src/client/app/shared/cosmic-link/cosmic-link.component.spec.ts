@@ -50,6 +50,27 @@ export function main() {
       }).compileComponents();
     });
 
+  it('should instantiate default getLinkUrl',
+    async((done: any) => {
+      TestBed
+        .compileComponents()
+        .then(() => {
+          let fixture = TestBed.overrideComponent(CosmicLinkComponent, {
+            set: {
+              templateUrl: ''
+            }
+          }).createComponent(CosmicLinkComponent);
+
+          let comp: CosmicLinkComponent = fixture.componentInstance;
+          comp.linkId = "unknown";
+          comp.linkType = LinkType;
+
+          fixture.componentInstance.getLinkUrl();
+          fixture.detectChanges();
+          fixture.destroy();
+        });
+    }));
+
     it('should instantiate cosmicId getLinkUrl',
       async((done: any) => {
         TestBed
@@ -89,7 +110,6 @@ export function main() {
             fixture.componentInstance.getLinkUrl();
             fixture.detectChanges();
             fixture.destroy();
-
           });
       }));
 
@@ -111,9 +131,9 @@ export function main() {
             fixture.componentInstance.getLinkUrl();
             fixture.detectChanges();
             fixture.destroy();
-
           });
       }));
+
 
     it('should instantiate isValidLink',
       async((done: any) => {
