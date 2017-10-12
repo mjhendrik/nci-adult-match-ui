@@ -38,8 +38,6 @@ export function main() {
       cosmicFusionId : 'cosmicFusionId'
     };
 
-    // let LinkId:any = "COSM"
-
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [RouterTestingModule.withRoutes(config),
@@ -50,9 +48,6 @@ export function main() {
         declarations: [CosmicLinkComponent],
         // providers: [{ provide: DashboardApiService, useClass: MockDashboardService }]
       }).compileComponents();
-
-      // spyOn(localStorage, 'getLinkUrl').and.returnValue(JSON.stringify({ 'linkType': ['CosmicId'] }));
-
     });
 
     it('should instantiate getLinkUrl',
@@ -68,9 +63,7 @@ export function main() {
 
             let comp: CosmicLinkComponent = fixture.componentInstance;
             comp.linkId = "cosmicId";
-
-            comp.linkType = "cosmicId";
-
+            comp.linkType = LinkType.cosmicId;
 
             fixture.componentInstance.getLinkUrl();
             fixture.detectChanges();
