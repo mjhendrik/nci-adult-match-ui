@@ -527,7 +527,7 @@
                               <dd *ngIf="!item.concordance">
                                 <i class="fa fa-times-circle text-danger-light"></i>
                               </dd>
-                              <dd *ngIf="item.concordance" [colorCodeYesNo]="item.concordance">
+                              <dd *ngIf="item.concordance" [colorCodeConcordance]="item.concordance">
                                 <i class="fa fa-check-circle text-success-light"></i> {{item.concordance | dashify}}</dd>
                             </dl>
                           </div>
@@ -631,7 +631,7 @@
                               <dd *ngIf="!item.concordance">
                                 <i class="fa fa-times-circle text-danger-light"></i>
                               </dd>
-                              <dd *ngIf="item.concordance" [colorCodeYesNo]="item.concordance">
+                              <dd *ngIf="item.concordance" [colorCodeConcordance]="item.concordance">
                                 <i class="fa fa-check-circle text-success-light"></i> {{item.concordance | dashify}}</dd>
                             </dl>
                           </div>

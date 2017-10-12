@@ -37,13 +37,13 @@ export function main() {
             fixture.detectChanges();
         });
 
-        xit('empty value adds no color class', () => {
+        it('empty value adds no color class', () => {
             expect(testEl.nativeElement.classList.contains('text-success-light')).toBe(false);
             expect(testEl.nativeElement.classList.contains('text-danger-light')).toBe(false);
             expect(testEl.nativeElement.classList.contains('text-warning-light')).toBe(false);
         });
 
-        xit('"Y" adds "text-success-light" color class', () => {
+        it('"Y" adds "text-success-light" color class', () => {
             testHost.testStatus = 'Y';
             fixture.detectChanges();
             expect(testEl.nativeElement.classList.contains('text-success-light')).toBe(true);
@@ -51,7 +51,7 @@ export function main() {
             expect(testEl.nativeElement.classList.contains('text-warning-light')).toBe(false);
         });
 
-        xit('"N" adds "text-warning-light" color class', () => {
+        it('"N" adds "text-warning-light" color class', () => {
             testHost.testStatus = 'N';
             fixture.detectChanges();
             expect(testEl.nativeElement.classList.contains('text-success-light')).toBe(false);
@@ -59,7 +59,7 @@ export function main() {
             expect(testEl.nativeElement.classList.contains('text-warning-light')).toBe(false);
         });
 
-        xit('"U" adds "text-muted" color class', () => {
+        it('"U" adds "text-muted" color class', () => {
             testHost.testStatus = 'U';
             fixture.detectChanges();
             expect(testEl.nativeElement.classList.contains('text-success-light')).toBe(false);

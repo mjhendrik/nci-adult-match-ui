@@ -9,7 +9,7 @@ import { ConditionalCssDirective } from './conditional-css.directive';
 @Directive({ selector: '[colorCodeConcordance]' })
 export class ColorCodeConcordanceDirective extends ConditionalCssDirective<string> {
 
-    @Input() set colorCodeAssay(value: string) {
+    @Input() set colorCodeConcordance(value: string) {
         this.value = value;
         this.setColor();
     }
