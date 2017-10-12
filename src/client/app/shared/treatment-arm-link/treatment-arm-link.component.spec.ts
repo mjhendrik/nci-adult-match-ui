@@ -50,7 +50,7 @@ export function main() {
         });
       });
 
-      it('should instantiate splitId',
+      it('should instantiate suffix --> splitId',
         async((done: any) => {
           TestBed
             .compileComponents()
@@ -60,29 +60,14 @@ export function main() {
                   templateUrl: ''
                 }
               }).createComponent(TreatmentArmLinkComponent);
-              // fixture.componentInstance.splitId();
-            });
-        }));
 
-      xit('should work by calling TreatmentArmLinkComponent',
-        async((done:any) => {
-
-          TestBed
-            .compileComponents()
-            .then(() => {
-              let fixture = TestBed.overrideComponent(TreatmentArmLinkComponent, {
-                set: {
-                  templateUrl: ''
-                }
-              }).createComponent(TreatmentArmLinkComponent);
+              let comp: TreatmentArmLinkComponent = fixture.componentInstance;
+              comp.treatmentArmId = "EAY131-ABC123";
+              expect(comp.suffix).toEqual('ABC123');
             });
         }));
     });
 }
-// @Component({
-//   selector: 'test-cmp',
-//   template: '<treatment-arm-link></treatment-arm-link>'
-// })
 class TestComponent { }
 class MockTALinkService {
   id(): Observable<any> {

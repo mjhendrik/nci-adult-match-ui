@@ -38,6 +38,12 @@ export function main() {
       cosmicFusionId : 'cosmicFusionId'
     };
 
+    let urls:any = {
+      'cosmicId': 'http://cancer.sanger.ac.uk/cosmic/mutation/overview?id={id}',
+      'cosmicFusionId': 'http://cancer.sanger.ac.uk/cosmic/fusion/summary?id={id}',
+      'cosmicGene': 'http://grch37-cancer.sanger.ac.uk/cosmic/gene/overview?ln={id}',
+    };
+
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [RouterTestingModule.withRoutes(config),
