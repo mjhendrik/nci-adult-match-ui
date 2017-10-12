@@ -32,7 +32,13 @@ export function main() {
       {path: 'tracking', component: 'CosmicLinkComponent'}
     ];
 
-    let LinkId:any = "COSM"
+    let LinkType:any = {
+      cosmicGene : 'cosmicGene',
+      cosmicId : 'cosmicId',
+      cosmicFusionId : 'cosmicFusionId'
+    };
+
+    // let LinkId:any = "COSM"
 
     beforeEach(() => {
       TestBed.configureTestingModule({
@@ -59,8 +65,16 @@ export function main() {
                 templateUrl: ''
               }
             }).createComponent(CosmicLinkComponent);
+
+            let comp: CosmicLinkComponent = fixture.componentInstance;
+            comp.linkId = "cosmicId";
+
+            comp.linkType = "cosmicId";
+
+
             fixture.componentInstance.getLinkUrl();
             fixture.detectChanges();
+            fixture.destroy();
           });
       }));
 
@@ -82,12 +96,6 @@ export function main() {
     it('should instantiate getLinkId',
       async((done: any) => {
 
-        let LinkType:any = {
-          cosmicGene : 'cosmicGene',
-          cosmicId : 'cosmicId',
-          cosmicFusionId : 'cosmicFusionId'
-        };
-
         TestBed
           .compileComponents()
           .then(() => {
@@ -101,3 +109,12 @@ export function main() {
       }));
   });
 }
+
+// @Component({
+//   selector  : 'test-cmp',
+//   template  : '<cosmic-link [isValidLink]="isValidLink"></cosmic-link>',
+//   directives: [ CosmicLinkComponent ]
+// })
+// class CosmicLinkComponent {
+//   isValidLink = new linkId("COSM"); //mock your input
+// }

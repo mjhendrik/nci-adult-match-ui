@@ -4,36 +4,24 @@ import {
   TestBed
 } from '@angular/core/testing';
 
-import { VariantReportSimpleTableCnvComponent } from './variant-report-simple-table-cnv.component';
+import { VariantReportSimpleTableGeneFusionComponent } from './variant-report-simple-table-gf.component';
 
 export function main() {
-  describe('variant-report-simple-table-cnv component', () => {
+  describe('variant-report-simple-table-gf component', () => {
     // Setting module for testing
     // Disable old forms
 
     beforeEach(() => {
       TestBed.configureTestingModule({
-        declarations: [TestComponent, VariantReportSimpleTableCnvComponent],
+        declarations: [TestComponent, VariantReportSimpleTableGeneFusionComponent],
         imports: []
       });
     });
-
-    // it('should work',
-    //   async(() => {
-    //     TestBed
-    //       .compileComponents()
-    //       .then(() => {
-    //         let fixture = TestBed.createComponent(TestComponent);
-    //         let aboutDOMEl = fixture.debugElement.children[0].nativeElement;
-    //         expect(aboutDOMEl).toBeTruthy();
-    //       });
-    //   }));
-
   });
 }
 
 @Component({
   selector: 'test-cmp',
-  template: '<sd-variant-report-simple-table-cnv></sd-variant-report-simple-table-cnv>'
+  template: '<sd-variant-report-simple-table-gf></sd-variant-report-simple-table-gf>'
 })
 class TestComponent { }

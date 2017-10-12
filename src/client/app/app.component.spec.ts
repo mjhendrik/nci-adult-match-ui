@@ -23,6 +23,7 @@ import { CliaVariantReportsPaccComponent } from './clia/clia-variant-reports-pac
 import { CliaVariantReportsPcComponent } from './clia/clia-variant-reports-pc/clia-variant-reports-pc.component';
 import { CliaVariantReportQcComponent } from './clia/clia-variant-report-qc/clia-variant-report-qc.component';
 import { CnvChartDirective } from './shared/cnv-chart/cnv-chart.directive.component';
+import { TreatmentArmLinkComponent } from './shared/treatment-arm-link/treatment-arm-link.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { nvD3 } from 'ng2-nvd3';
 
@@ -66,6 +67,7 @@ export function main() {
           PatientListComponent,
           TreatmentArmListComponent,
           TreatmentArmDetailsComponent,
+          TreatmentArmLinkComponent,
           BiopsyTrackingListComponent,
           CliaParentComponent,
           CliaVariantReportsNtcComponent,

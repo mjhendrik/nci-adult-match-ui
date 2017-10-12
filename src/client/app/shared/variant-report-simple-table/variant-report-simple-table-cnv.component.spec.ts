@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import {
   async,
   TestBed
@@ -17,18 +17,6 @@ export function main() {
         imports: []
       });
     });
-
-    // it('should work',
-    //   async(() => {
-    //     TestBed
-    //       .compileComponents()
-    //       .then(() => {
-    //         let fixture = TestBed.createComponent(TestComponent);
-    //         let aboutDOMEl = fixture.debugElement.children[0].nativeElement;
-    //         expect(aboutDOMEl).toBeTruthy();
-    //       });
-    //   }));
-
   });
 }
 

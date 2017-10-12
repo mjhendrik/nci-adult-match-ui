@@ -80,6 +80,59 @@ export function main() {
         expect(rows.length).toBe(10);
       });
 
+      it('should instantiate getData',
+        async((done: any) => {
+          TestBed
+            .compileComponents()
+            .then(() => {
+              let fixture = TestBed.overrideComponent(PatientListComponent, {
+                set: {
+                  templateUrl: ''
+                },
+              }).createComponent(PatientListComponent);
+              console.log(fixture.componentInstance);
+              let spy = spyOn(fixture.componentInstance, 'getData');
+              let init:any = fixture.componentInstance.ngOnInit();
+
+              fixture.componentInstance.recordsPerPagePatients= 300;
+              fixture.detectChanges();
+
+              expect(spy).toHaveBeenCalled();
+            });
+        }));
+
+      it('should test onSearchChanged',
+        async((done: any) => {
+          TestBed
+            .compileComponents()
+            .then(() => {
+              let fixture = TestBed.overrideComponent(PatientListComponent, {
+                set: {
+                  templateUrl: ''
+                }
+              }).createComponent(PatientListComponent);
+              console.log(fixture.componentInstance);
+              fixture.componentInstance.previous = 500;
+              fixture.componentInstance.sortStatus("1,100,asc,patientSequenceNumber");
+              // expect(fixture.componentInstance.tableARData.length).toEqual(dashboard_data.data.AR.length);
+            });
+        }));
+
+      it('should test currentPageActive',
+          async((done: any) => {
+            TestBed
+              .compileComponents()
+              .then(() => {
+                let fixture = TestBed.overrideComponent(PatientListComponent, {
+                  set: {
+                    templateUrl: ''
+                  }
+                }).createComponent(PatientListComponent);
+
+                fixture.componentInstance.onSearchChanged('1,300,asc,patientSequenceNumber');
+                fixture.componentInstance.onSearchChanged(null);
+              });
+          }));
     }));
 
 
@@ -96,7 +149,6 @@ export function main() {
       it('should sort by first column in DESC order', async((done: any) => {
       }));
     });
-
 
     xdescribe('with pagination', () => {
       // it should set page size to 10 and preserve order

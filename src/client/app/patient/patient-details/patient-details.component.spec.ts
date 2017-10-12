@@ -74,7 +74,7 @@ export function main() {
     }));
 
 
-    it('should work by calling Patient details ngonInit',
+    xit('should work by calling Patient details ngonInit',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -91,7 +91,7 @@ export function main() {
           });
       }));
 
-    it('should work by calling Patient details download',
+    xit('should work by calling Patient details download',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -106,7 +106,7 @@ export function main() {
           });
       }));
 
-    it('should work by calling Patient details ngAfterViewInit',
+    xit('should work by calling Patient details ngAfterViewInit',
       async((done: any) => {
         TestBed
           .compileComponents()

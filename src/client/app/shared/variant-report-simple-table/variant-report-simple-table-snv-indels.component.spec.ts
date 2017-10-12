@@ -4,16 +4,16 @@ import {
   TestBed
 } from '@angular/core/testing';
 
-import { VariantReportSimpleTableGeneFusionComponent } from './variant-report-simple-table-gf.component';
+import { VariantReportSimpleTableSnvIndelsComponent } from './variant-report-simple-table-snv-indels.component';
 
 export function main() {
-  describe('variant-report-simple-table-gf component', () => {
+  describe('variant-report-simple-table-snv-indels component', () => {
     // Setting module for testing
     // Disable old forms
 
     beforeEach(() => {
       TestBed.configureTestingModule({
-        declarations: [TestComponent, VariantReportSimpleTableGeneFusionComponent],
+        declarations: [TestComponent, VariantReportSimpleTableSnvIndelsComponent],
         imports: []
       });
     });
@@ -22,6 +22,6 @@ export function main() {
 
 @Component({
   selector: 'test-cmp',
-  template: '<sd-variant-report-simple-table-gf></sd-variant-report-simple-table-gf>'
+  template: '<sd-variant-report-simple-table-snv-indels></sd-variant-report-simple-table-snv-indels>'
 })
 class TestComponent { }

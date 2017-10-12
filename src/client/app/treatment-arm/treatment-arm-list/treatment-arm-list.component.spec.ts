@@ -2,6 +2,7 @@
 import {
   async,
   TestBed,
+  ComponentFixture,
   tick,
   fakeAsync,
   inject
@@ -42,19 +43,26 @@ let ta_list_data = {
 
 export function main() {
   describe('treatment arms list component', () => {
+
+    let component: TreatmentArmListComponent;
+    let fixture: ComponentFixture<TreatmentArmListComponent>;
+
     // Setting module for testing
     // Disable old forms
     let config: any[] = [
-      { path: 'treatments/details/:id/:version', component: TreatmentArmListComponent },
+      { path: 'treatments/details/:id/:version', component: 'TreatmentArmListComponent' },
       { path: 'treatmentsdetails/:id/:version', component: TreatmentArmListComponent }
     ];
     // inject([MockBackend], (mockBackend: MockBackend)
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [RouterTestingModule.withRoutes(config),
-          DirectivesModule, PipesModule,
-          FormsModule, SharedModule,
-          DataTableModule, ChartsModule],
+          DirectivesModule,
+          PipesModule,
+          FormsModule,
+          SharedModule,
+          DataTableModule,
+          ChartsModule],
         declarations: [TreatmentArmListComponent],
         providers: [
           { provide: TreatmentArmApiService, useClass: MockTAListApiService },

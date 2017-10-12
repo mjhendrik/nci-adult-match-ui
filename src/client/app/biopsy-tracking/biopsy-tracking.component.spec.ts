@@ -211,14 +211,20 @@ export function main() {
           });
       }));
 
-    it('should test onSearchChanged',
+    xit('should test onSearchChanged',
       async((done: any) => {
+
+        let input:any;
+        let inputValue:string = "test";
+
         TestBed
           .compileComponents()
           .then(() => {
             let fixture = TestBed.overrideComponent(BiopsyTrackingListComponent, {
               set: {
                 templateUrl: ''
+
+
               }
             }).createComponent(BiopsyTrackingListComponent);
             fixture.componentInstance.previous = "1,100,asc,biopsySequenceNumber";
@@ -227,6 +233,7 @@ export function main() {
             expect(fixture.componentInstance).toBeDefined();
             expect(fixture.componentInstance.previous).toBeDefined();
             expect(fixture.componentInstance.previous).toBe("1,100,asc,biopsySequenceNumber");
+
           });
       }));
 

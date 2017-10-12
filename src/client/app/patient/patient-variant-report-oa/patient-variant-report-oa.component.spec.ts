@@ -13,7 +13,9 @@ import { FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TabsModule } from 'ngx-bootstrap/tabs';
-
+import { Observable } from 'rxjs/Observable';
+import { PatientApiServiceMock } from '../testing/patient-api-service-stub';
+// import { FileUploadService } from '../file-upload/file-upload.service';
 
 import { DirectivesModule } from './../../shared/directives/directives.module';
 import { PipesModule } from './../../shared/pipes/pipes.module';
@@ -23,7 +25,7 @@ import { PatientVariantReportOutsideAssayComponent } from './patient-variant-rep
 import { PatientApiService } from './../patient-api.service';
 import { ViewDataTransformer } from './../view-data-transformer.service';
 import { SharedModule } from '../../shared/shared.module';
-import { PatientApiServiceStub, PatientApiServiceMock } from '../testing/patient-api-service-stub';
+import { PatientApiServiceStub } from '../testing/patient-api-service-stub';
 import { ActivatedRouteStub } from '../testing/activated-route-stub';
 import { UtilsModule } from '../../shared/utils/utils.module';
 import { VariantReportComparisonTableModule } from '../variant-report-comparison-table/variant-report-comparison-table.module';
@@ -62,11 +64,44 @@ export function main() {
         providers: [
           { provide: ActivatedRoute, useValue: activatedRouteStub },
           { provide: PatientApiService, useClass: PatientApiServiceMock },
+          // { provide: FileUploadService, useClass: MockFileUploadService },
           ChangeDetectorRef,
           ViewDataTransformer
         ]
       }).compileComponents();  // compile template and css
+
+      // spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'isOutsideAssayValue': true }));
+
     }));
+
+    // xit('should work by calling ngonInit',
+    //   async((done: any) => {
+    //     let id:string = 'EAY131-F';
+    //     TestBed
+    //       .compileComponents()
+    //       .then(() => {
+    //         let fixture = TestBed.overrideComponent(PatientVariantReportOutsideAssayComponent, {
+    //           set: {
+    //             templateUrl: ''
+    //           }
+    //         }).createComponent(PatientVariantReportOutsideAssayComponent);
+    //         fixture.componentInstance.ngOnInit();
+    //         expect(fixture.componentInstance).toBeDefined();
+    //
+    //
+    //
+    //         expect(fixture.componentInstance.route).toBeDefined();
+    //
+    //         console.log("fixture.componentInstance.route - " + JSON.stringify(fixture.componentInstance.route))
+    //
+    //
+    //         // expect(fixture.componentInstance.roles).toEqual([ 'ADMIN' ]);
+    //         // expect(fixture.componentInstance).toBeDefined();
+    //         // fixture.componentInstance.getVersionsData(id);
+    //         // expect(fixture.componentInstance.versionData).toBe('EAY131-F');
+    //
+    //       });
+    //   }));
 
     // synchronous beforeEach
     beforeEach(() => {
@@ -95,5 +130,11 @@ export function main() {
       expect(spy).toHaveBeenCalled();
     });
   });
+}
+
+class MockFileUploadService {
+  downloadPatientFile(): Observable<any> {
+    return Observable.of("Psn","File");
+  }
 }
 

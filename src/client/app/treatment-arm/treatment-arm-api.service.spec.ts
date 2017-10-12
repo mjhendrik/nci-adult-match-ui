@@ -98,11 +98,11 @@ export function main() {
           });
       })));
 
-      // xit('should treat 404 as an Observable error', async(inject([], () => {
+      // fit('should treat 404 as an Observable error', async(inject([], () => {
       //   let resp = new Response(new ResponseOptions({ status: 404 }));
       //   backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
       //
-      //   service.getBiopsyTracking(1, 2, 'sortOrder', 'sortBy', 'filter')
+      //   service.getTreatmentArmDetails('EAY131-Q')
       //     .do(arms => {
       //       fail('should not respond with biopsy arms data');
       //     })
