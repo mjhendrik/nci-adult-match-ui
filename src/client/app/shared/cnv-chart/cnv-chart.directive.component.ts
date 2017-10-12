@@ -31,10 +31,12 @@ declare let d3: any;
   template://Zoomout panel
   `<div *ngIf="file_name">
   <div [@dialog] *ngIf="show" class="dialog">
+  
   <i class="fa fa-search-minus fa-2x" aria-hidden="true" *ngIf="show" (click)="show = !show" style="cursor: pointer; color: gray"></i>
    <h4 class="pull-right">{{ file_name }}</h4>
   <ul class="list-group" style="list-style-type: none;">
-  <li>Tumor suppressor genes
+  <li>
+  Tumor suppressor genes
   <i class="fa fa-square" aria-hidden="true" style="color:#CD0000;background-color:#CD0000"></i> </li>
   <li>Oncogenes
   <i class="fa fa-square" aria-hidden="true" style="color:#007200;background-color:#007200"></i>
@@ -46,7 +48,8 @@ declare let d3: any;
   <i class="fa fa-search-plus fa-2x" aria-hidden="true" *ngIf="!show" (click)="show = !show" style="cursor: pointer; color: gray"></i>
    <h5 class="pull-right">{{ file_name }}</h5>
   <ul class="list-group" style="list-style-type: none;">
-  <li>Tumor suppressor genes
+  <li>
+  Tumor suppressor genes
   <i class="fa fa-square" aria-hidden="true" style="color:#CD0000;background-color:#CD0000"></i> </li>
   <li>Oncogenes
   <i class="fa fa-square" aria-hidden="true" style="color:#007200;background-color:#007200"></i>
@@ -58,7 +61,7 @@ declare let d3: any;
   <span *ngIf="!parsed_vcf_genes">
   <i class="fa fa-bar-chart text-muted" style="font-size:154px; padding-left: 39px;"></i>
   <br />
-  <span class="text-muted"> There are no CNV data </span>
+  <span class="text-muted" style="padding-left: 39px;"> There are no CNV data </span>
   </span>`
 })
 
@@ -77,9 +80,12 @@ export class CnvChartDirective implements OnInit {
     this.getData();
   }
   getData() {
-    let array = this.data[0];
-    if (typeof this.data[1] !== 'undefined') {
-      this.file_name = this.data[1].split('tmp/')[1];
+
+    let array:any = this.data[0];
+
+    if (typeof this.data[1] !== 'undefined' && this.data[1] !== null) {
+      this.file_name = "Test Name";
+      // this.file_name = this.data[1].split('tmp/')[1];
     }
     let temp:any[] = [];
     let svg:any;
@@ -244,6 +250,8 @@ export class CnvChartDirective implements OnInit {
             .select('g')
             .append('g');
 
+
+
           //Get highest gene y value
           let keys:any = Object.keys(genes);
           keys.sort(function(a:any,b:any){
@@ -337,6 +345,15 @@ export class CnvChartDirective implements OnInit {
             .style('stroke', 'gray')
             .style('stroke-width', 0.5)
             .style('stroke-linecap', 'line');
+        },
+        zoom: {
+          enabled: true,
+          scaleExtent: [1, 10],
+          useFixedDomain: false,
+          useNiceScale: false,
+          horizontalOff: false,
+          verticalOff: true,
+          unzoomEventType: "dblclick.zoom"
         }
       }
     }
