@@ -23,11 +23,11 @@ import * as _ from 'lodash';
             <div class="dataTables_info" id="data-table_info" *ngIf="p.dataLength!=0 && (searchTerm==undefined || searchTerm.length==0)">
                 Showing {{p.dataLength==0 ? 0 : (p.activePage-1)*(p.rowsOnPage)+1}} to {{ p.dataLength
                 < (p.activePage-1)*(p.rowsOnPage)+p.rowsOnPage ? p.dataLength: (p.activePage-1)*(p.rowsOnPage)+paginationParse(p.rowsOnPage)}}
-                    of {{totalPageCount === undefined ? p.dataLength : p.totalLength}} entries </div>
+                    of {{totalPageCount}} entries </div>
                 <div class="dataTables_info" id="data-table_info" *ngIf="p.totalLength!=0 && searchTerm!=undefined && searchTerm.length!=0">
                     Showing {{p.dataLength==0 ? 0 : (p.activePage-1)*(p.rowsOnPage)+1}} to 
-                    {{ p.dataLength < (p.activePage-1)*(p.rowsOnPage)+p.rowsOnPage ? p.dataLength: (p.activePage-1)*(p.rowsOnPage)+paginationParse(p.rowsOnPage)}} of {{totalPageCount === undefined ? p.dataLength : p.totalLength}}
-                            entries (filtered from {{totalPageCount === undefined ? p.totalLength : totalPageCount}} total entries)
+                    {{ p.dataLength < (p.activePage-1)*(p.rowsOnPage)+p.rowsOnPage ? p.dataLength: (p.activePage-1)*(p.rowsOnPage)+paginationParse(p.rowsOnPage)}} of {{p.dataLength}}
+                            entries (filtered from {{totalPageCount}} total entries)
                 </div>
         </div>
         <div *ngIf="paginationType==='server'">
