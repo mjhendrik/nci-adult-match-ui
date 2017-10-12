@@ -395,7 +395,8 @@
               <thead>
                 <tr class="purple-light">
                   <th class="text-center">
-                    <span class="table-header">Details</span>
+                    <span class="table-header">Details                  {{mftablePatientsAwaiting.data.length}}
+                    </span>
                   </th>
                   <th>
                     <mfDefaultSorter by="patientSequenceNumber">
@@ -425,6 +426,12 @@
                 </tr>
               </thead>
               <tbody>
+                <tr *ngIf="mftablePatientsAwaiting.data.length == 0">
+                  <td class="text-muted" colspan="6">
+                    <span *ngIf="searchtermPatientsAwaiting">No matching search results found for "{{searchtermPatientsAwaiting}}"</span>
+                    <span *ngIf="!searchtermPatientsAwaiting">There are no patients awaiting further action or information</span>
+                  </td>
+                </tr>
                 <ng-template ngFor let-item [ngForOf]="mftablePatientsAwaiting.data">
                   <tr>
                     <td class="text-center">
@@ -458,12 +465,6 @@
                       </span>
                     </td>
                     <td [colorCodeDays]="item.daysWaiting">{{item.daysWaiting | dashify}}</td>
-                  </tr>
-                  <tr *ngIf="mftablePatientsAwaiting.data.length == 0">
-                    <td class="text-muted" colspan="6">
-                      <span *ngIf="searchtermPatientsAwaiting">No matching search results found for "{{searchtermPatientsAwaiting}}"</span>
-                      <span *ngIf="!searchtermPatientsAwaiting">There are no patients awaiting further action or information</span>
-                    </td>
                   </tr>
                   <tr *ngIf="showRow[item.patientSequenceNumber] && (!item.isOutsideAssay || item.outsideBiopsy)">
                     <td colspan="6" class="bg-body">
