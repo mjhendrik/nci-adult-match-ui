@@ -64,7 +64,7 @@ export function main() {
             let comp: CosmicLinkComponent = fixture.componentInstance;
             comp.linkId = "unknown";
             comp.linkType = LinkType;
-
+            expect(comp.isValidLink()).toBe(false);
             fixture.componentInstance.getLinkUrl();
             fixture.detectChanges();
             fixture.destroy();
@@ -85,7 +85,7 @@ export function main() {
             let comp: CosmicLinkComponent = fixture.componentInstance;
             comp.linkId = "cosmicId";
             comp.linkType = LinkType.cosmicId;
-
+            expect(comp.text).toBe("cosmicId");
             fixture.componentInstance.getLinkUrl();
             fixture.detectChanges();
             fixture.destroy();
@@ -106,7 +106,7 @@ export function main() {
             let comp: CosmicLinkComponent = fixture.componentInstance;
             comp.linkId = "COSM123";
             comp.linkType = LinkType.cosmicId;
-
+            expect(comp.text).toBe("COSM123");
             fixture.componentInstance.getLinkUrl();
             fixture.detectChanges();
             fixture.destroy();
@@ -127,7 +127,7 @@ export function main() {
             let comp: CosmicLinkComponent = fixture.componentInstance;
             comp.linkId = "cosmicFusionId";
             comp.linkType = LinkType.cosmicFusionId;
-
+            expect(comp.text).toBe("cosmicFusionId");
             fixture.componentInstance.getLinkUrl();
             fixture.detectChanges();
             fixture.destroy();
@@ -148,7 +148,7 @@ export function main() {
             let comp: CosmicLinkComponent = fixture.componentInstance;
             comp.linkId = "COSF123";
             comp.linkType = LinkType.cosmicFusionId;
-
+            expect(comp.text).toBe("COSF123");
             fixture.componentInstance.getLinkUrl();
             fixture.detectChanges();
             fixture.destroy();
@@ -169,13 +169,12 @@ export function main() {
             let comp: CosmicLinkComponent = fixture.componentInstance;
             comp.linkId = "cosmicGene";
             comp.linkType = LinkType.cosmicGene;
-
+            expect(comp.text).toBe("cosmicGene");
             fixture.componentInstance.getLinkUrl();
             fixture.detectChanges();
             fixture.destroy();
           });
       }));
-
 
     it('should instantiate isValidLink',
       async((done: any) => {
