@@ -51,27 +51,27 @@ export function main() {
     });
 
   it('should instantiate default getLinkUrl',
-    async((done: any) => {
-      TestBed
-        .compileComponents()
-        .then(() => {
-          let fixture = TestBed.overrideComponent(CosmicLinkComponent, {
-            set: {
-              templateUrl: ''
-            }
-          }).createComponent(CosmicLinkComponent);
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(CosmicLinkComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(CosmicLinkComponent);
 
-          let comp: CosmicLinkComponent = fixture.componentInstance;
-          comp.linkId = "unknown";
-          comp.linkType = LinkType;
+            let comp: CosmicLinkComponent = fixture.componentInstance;
+            comp.linkId = "unknown";
+            comp.linkType = LinkType;
 
-          fixture.componentInstance.getLinkUrl();
-          fixture.detectChanges();
-          fixture.destroy();
-        });
-    }));
+            fixture.componentInstance.getLinkUrl();
+            fixture.detectChanges();
+            fixture.destroy();
+          });
+      }));
 
-    it('should instantiate cosmicId getLinkUrl',
+    it('should instantiate cosmicId -> cosmicId getLinkUrl',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -92,7 +92,28 @@ export function main() {
           });
       }));
 
-    it('should instantiate cosmicFusionId getLinkUrl',
+    it('should instantiate cosmicId -> COSM getLinkUrl',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(CosmicLinkComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(CosmicLinkComponent);
+
+            let comp: CosmicLinkComponent = fixture.componentInstance;
+            comp.linkId = "COSM123";
+            comp.linkType = LinkType.cosmicId;
+
+            fixture.componentInstance.getLinkUrl();
+            fixture.detectChanges();
+            fixture.destroy();
+          });
+      }));
+
+    it('should instantiate cosmicFusionId -> cosmicFusionId getLinkUrl',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -105,6 +126,27 @@ export function main() {
 
             let comp: CosmicLinkComponent = fixture.componentInstance;
             comp.linkId = "cosmicFusionId";
+            comp.linkType = LinkType.cosmicFusionId;
+
+            fixture.componentInstance.getLinkUrl();
+            fixture.detectChanges();
+            fixture.destroy();
+          });
+      }));
+
+    it('should instantiate cosmicFusionId -> COSF getLinkUrl',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(CosmicLinkComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(CosmicLinkComponent);
+
+            let comp: CosmicLinkComponent = fixture.componentInstance;
+            comp.linkId = "COSF123";
             comp.linkType = LinkType.cosmicFusionId;
 
             fixture.componentInstance.getLinkUrl();
