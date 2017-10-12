@@ -1,0 +1,7 @@
+<div class="stacked-container">\
+  <div class="stacked-front">\
+      <button type="input" (click)="confirm()" *ngDisabled="isEnabled"></button>\
+  </div>\
+  <div class="stacked-back">\
+      <input type="checkbox" tabindex="-1" [checked]="item.confirmed" *ngDisabled="!isEnabled">\
+  </div></div>
