@@ -66,6 +66,24 @@ export function main() {
               expect(comp.suffix).toEqual('ABC123');
             });
         }));
+
+      it('should instantiate null --> splitId',
+        async((done: any) => {
+          TestBed
+            .compileComponents()
+            .then(() => {
+              let fixture = TestBed.overrideComponent(TreatmentArmLinkComponent, {
+                set: {
+                  templateUrl: ''
+                }
+              }).createComponent(TreatmentArmLinkComponent);
+
+              let comp: TreatmentArmLinkComponent = fixture.componentInstance;
+              comp.treatmentArmId = null;
+              expect(comp.suffix).not.toEqual('ABC123');
+            });
+        }));
+
     });
 }
 class TestComponent { }
