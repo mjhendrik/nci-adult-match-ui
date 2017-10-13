@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { RouterModule, Router } from '@angular/router';
 import { APP_BASE_HREF, Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import {
   async,
@@ -9,7 +8,6 @@ import { Observable } from 'rxjs/Observable';
 
 import { Auth } from './../auth/auth.service';
 import { ConfigApiService } from './../config/config-api.service';
-
 import { FooterComponent } from './footer.component';
 
 export function main() {
@@ -20,10 +18,9 @@ export function main() {
     beforeEach(() => {
       TestBed.configureTestingModule({
         declarations: [TestComponent, FooterComponent],
-        imports: [RouterModule],
+        imports: [],
         providers: [
           Location,
-          Router,
           { provide: LocationStrategy, useClass: PathLocationStrategy },
           { provide: APP_BASE_HREF, useValue: '' },
           { provide: Auth, useClass: AuthMock },
@@ -32,17 +29,21 @@ export function main() {
       });
     });
 
-    // it('should work',
-    //   async(() => {
-    //     TestBed
-    //       .compileComponents()
-    //       .then(() => {
-    //         let fixture = TestBed.createComponent(TestComponent);
-    //         let aboutDOMEl = fixture.debugElement.children[0].nativeElement;
-    //         expect(aboutDOMEl).toBeTruthy();
-    //       });
-    //   }));
-
+    it('should work by calling ngonInit -> buildInfo',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(FooterComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(FooterComponent);
+            fixture.componentInstance.ngOnInit();
+            let comp: FooterComponent = fixture.componentInstance;
+            expect(comp.buildInfo).toEqual({"buildInfo":"mock_build"});
+          });
+      }));
   });
 }
 
