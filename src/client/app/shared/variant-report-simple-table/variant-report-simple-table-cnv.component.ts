@@ -24,7 +24,7 @@ export class VariantReportSimpleTableCnvComponent {
 
   onItemConfirmed(item: ConfirmableItem) {
     if (this.onVariantConfirmed) {
-        this.onVariantConfirmed.emit(item);
+      this.onVariantConfirmed.emit(item);
     }
-}
+  }
 }

@@ -14,7 +14,11 @@
   </thead>
   <tbody>
     <tr *ngFor="let item of items">
-      <td><input type="checkbox" name="chr" value="checked" checked disabled></td>
+      <td>
+        <sd-check-box-with-confirm [item]="item" [confirmTitle]="'Confirmation Comments'" [confirmMessage]="'Please enter a reason:'"
+          [promptOnlyIf]="true" [isEnabled]="isEditable" (onItemConfirmed)="onItemConfirmed(item)">
+        </sd-check-box-with-confirm>
+      </td>
       <td><cosmic-link [linkType]="'cosmicFusionId'" [linkId]="item.identifier"></cosmic-link></td>
       <td>{{item.aMoi | dashify}}</td>
       <td><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.driverGene"></cosmic-link></td>
