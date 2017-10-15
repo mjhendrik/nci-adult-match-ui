@@ -5,6 +5,8 @@ import {
   EventEmitter
 } from '@angular/core';
 
+import { BsModalRef } from 'ngx-bootstrap';
+
 export interface ConfirmableItem {
   confirmed: boolean;
   id: string;
@@ -26,7 +28,7 @@ export class CheckBoxWithConfirmComponent {
 
   @Output() onItemConfirmed: EventEmitter<ConfirmableItem> = new EventEmitter();
 
-  constructor(private uibModal: any) { }
+  constructor(public modalRef: BsModalRef) { }
 
   toggle(comment: string) {
     this.item.confirmed = !this.item.confirmed;
@@ -42,20 +44,20 @@ export class CheckBoxWithConfirmComponent {
       return;
     }
 
-    const modalInstance = this.uibModal.open({
-      templateUrl: 'views/templates/modal_dialog_with_comment.html',
-      controller: 'ModalDialogWithCommentController',
-      resolve: {
-        comment: () => this.item.comment,
-        title: () => this.confirmTitle,
-        message: () => this.confirmMessage,
-        enabled: () => this.isEnabled
-      }
-    });
+    // const modalInstance = this.uibModal.open({
+    //   templateUrl: 'views/templates/modal_dialog_with_comment.html',
+    //   controller: 'ModalDialogWithCommentController',
+    //   resolve: {
+    //     comment: () => this.item.comment,
+    //     title: () => this.confirmTitle,
+    //     message: () => this.confirmMessage,
+    //     enabled: () => this.isEnabled
+    //   }
+    // });
 
-    modalInstance.result.then(function (comment: string) {
-      this.toggle(comment);
-    });
+    // modalInstance.result.then(function (comment: string) {
+    //   this.toggle(comment);
+    // });
   }
 }
 

@@ -11,6 +11,7 @@ import { VariantReportSimpleTableGeneFusionComponent } from './variant-report-si
 import { VariantReportSimpleTableSnvIndelsComponent } from './variant-report-simple-table-snv-indels.component';
 import { SharedModule } from '../shared.module';
 import { SampleControlApiService } from '../../clia/sample-control-api.service';
+import { CheckBoxWithConfirmModule } from '../check-box-with-confirm/check-box-with-confirm.module';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { SampleControlApiService } from '../../clia/sample-control-api.service';
     DataTableModule,
     PipesModule,
     DirectivesModule,
-    SharedModule
+    SharedModule,
+    CheckBoxWithConfirmModule
   ],
   declarations: [
     VariantReportSimpleTableCnvComponent,
