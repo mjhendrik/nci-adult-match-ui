@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { ModalDialogWithCommentsComponent } from './modal-dialog-with-comments.component';
 
 export interface ConfirmableItem {
   confirmed: boolean;
@@ -45,6 +46,8 @@ export class CheckBoxWithConfirmComponent {
       this.toggle(null);
       return;
     }
+
+    this.modalRef = this.modalService.show(ModalDialogWithCommentsComponent);
 
     // const modalInstance = this.uibModal.open({
     //   templateUrl: 'views/templates/modal_dialog_with_comment.html',
