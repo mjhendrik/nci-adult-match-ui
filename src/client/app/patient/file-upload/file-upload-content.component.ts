@@ -11,7 +11,8 @@ import { AliquotApiService } from '../../clia/aliquot-api.service';
 @Component({
   moduleId: module.id,
   selector: 'sd-file-upload-content',
-  templateUrl: 'file-upload-content.component.html'
+  templateUrl: 'file-upload-content.component.html',
+  styleUrls: ['file-upload-content.component.css']
 })
 export class FileUploadContentComponent {
   msn: string;
@@ -88,7 +89,7 @@ export class FileUploadContentComponent {
         this.cdnaBamFileDirective.config.url = data[2];
         this.cdnaBamFileDirective.dropzone.enqueueFile(this.cdnaBamFile);
       }
-    );
+      );
   }
 
   addedFileVariantZip(evt: any): void {
