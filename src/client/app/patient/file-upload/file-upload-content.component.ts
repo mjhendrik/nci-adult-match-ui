@@ -3,7 +3,6 @@ import {
   ChangeDetectorRef,
   ViewChild
 } from '@angular/core';
-import { BsModalRef } from 'ngx-bootstrap';
 import { DropzoneDirective, DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 
 import { AliquotApiService } from '../../clia/aliquot-api.service';
@@ -38,7 +37,6 @@ export class FileUploadContentComponent {
   @ViewChild('cdnaBamFileDirective') cdnaBamFileDirective: DropzoneDirective;
 
   constructor(
-    public modalRef: BsModalRef,
     private changeDetector: ChangeDetectorRef,
     private api: AliquotApiService) {
 
