@@ -10,6 +10,9 @@
     <input type="text" #input class="form-control" placeholder="Enter Analysis ID" [(ngModel)]="analysisId" (ngModelChange)="onInputChanged($event)">
     <span class="fa form-control-feedback" [ngClass]="{true:'fa-times',false:'fa-check'}[!analysisIdValid]"></span>
   </div>
+  <div *ngIf="!analysisIdValid && analysisId && message" class="text-danger m-b-10 m-t-n10">
+    {{message}}
+  </div>
   <div class="row">
     <div class="col-md-4 form-group has-feedback" [ngClass]="{true:'has-success',false:'has-error'}[hasVariantZipFile]">
       <label class="control-label">Variant ZIP File</label>
@@ -24,7 +27,7 @@
             Click or drop Variant ZIP file here
           </span>
           <span *ngIf="!analysisIdValid">
-            Enter Analysis ID to add Variant ZIP file
+            Enter a valid Analysis ID to add Variant ZIP file
           </span>
         </div>
       </div>
@@ -42,7 +45,7 @@
             Click or drop DNA BAM file here
           </span>
           <span *ngIf="!analysisIdValid">
-            Enter Analysis ID to add DNA BAM file
+            Enter a valid Analysis ID to add DNA BAM file
           </span>
         </div>
       </div>
@@ -60,7 +63,7 @@
             Click or drop cDNA BAM file here
           </span>
           <span *ngIf="!analysisIdValid">
-            Enter Analysis ID to add cDNA BAM file
+            Enter a valid Analysis ID to add cDNA BAM file
           </span>
         </div>
       </div>
