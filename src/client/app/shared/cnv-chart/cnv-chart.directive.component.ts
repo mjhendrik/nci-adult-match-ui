@@ -80,11 +80,10 @@ export class CnvChartDirective implements OnInit {
     this.getData();
   }
   getData() {
-
     let array:any = this.data[0];
 
     if (typeof this.data[1] !== 'undefined' && this.data[1] !== null) {
-      this.file_name = "Test Name";
+      this.file_name = "Cnv Chart Test Name";
       // this.file_name = this.data[1].split('tmp/')[1];
     }
     let temp:any[] = [];
@@ -134,13 +133,14 @@ export class CnvChartDirective implements OnInit {
     Object.keys(temp).forEach((key:any) => {
       colors.push(temp[key].status);
     });
+
     //Y MARGINS
     if(temp !== null && temp.length > 0) {
       let keys:any = Object.keys(temp);
       keys.sort(function (a:any, b:any) {
         return temp[b].values.whisker_high - temp[a].values.whisker_high;
       })
-      tip = temp[keys[0]].values.whisker_high;
+      tip = (temp[keys[0]].values.whisker_high < 7) ? 7 : (temp[keys[0]].values.whisker_high);
     }
 
     this.cnvdata = temp;
@@ -250,14 +250,13 @@ export class CnvChartDirective implements OnInit {
             .select('g')
             .append('g');
 
-
-
           //Get highest gene y value
           let keys:any = Object.keys(genes);
           keys.sort(function(a:any,b:any){
             return genes[b][5] - genes[a][5];
           })
           let tip:any = genes[keys[0]];
+
           highest = tip[5];
 
           Object.keys(genes).forEach((key:any) => {
@@ -282,78 +281,69 @@ export class CnvChartDirective implements OnInit {
 
               if (x > 0) {
                 svg.append('line')
-                  .attr("x1", spot)
-                  .attr("x2", spot)
-                  .attr("y1", height)
+                  .attr('x1', spot)
+                  .attr('x2', spot)
+                  .attr('y1', height)
                   .style('fill', 'none')
                   .style('stroke', 'gray')
                   .style('stroke-width', 0.5)
                   .style('stroke-linecap', 'round');
 
-                svg.append("text")
-                  .attr("class", "nv-zeroLine")
-                  .attr("x", parseFloat(spot) + 1)
-                  .attr("y", 365)
+                svg.append('text')
+                  .attr('class', 'nv-zeroLine')
+                  .attr('x', parseFloat(spot) + 1)
+                  .attr('y', 365)
                   .text(chrnum)
-                  .style("fill", "#c70505")
-                  .style("font-weight", "bold")
-                  .style("font-size", '12px');
+                  .style('fill', '#c70505')
+                  .style('font-weight', 'bold')
+                  .style('font-size', '12px');
 
                 prespot = spot;
               }
               else {
-                svg.append("text")
-                  .attr("class", "nv-zeroLine")
-                  .attr("x", 5)
-                  .attr("y", 365)
+                svg.append('text')
+                  .attr('class', 'nv-zeroLine')
+                  .attr('x', 5)
+                  .attr('y', 365)
                   .text(chrnum)
-                  .style("fill", "#c70505")
-                  .style("font-weight", "bold")
-                  .style("font-size", '12px');
+                  .style('fill', '#c70505')
+                  .style('font-weight', 'bold')
+                  .style('font-size', '12px');
 
                 prespot = spot;
               }
             }
           });
-          let max = Math.round(highest / 10) * 3 + lowest;
+          let max = Math.round(highest / 10) * 3 + lowest  ;
           lastspot = chart.xScale()(gene) + 35;
           let y1 = chart.yScale()(max);
           let y2 = chart.yScale()(7);
 
-          svg.append("line")
-            .attr("x1", 0)
-            .attr("y1", y2)
-            .attr("x2", lastspot)
-            .attr("y2", y2)
-            .style("stroke-opacity", 2)
-            .style("stroke", "red");
+          svg.append('line')
+            .attr('x1', 0)
+            .attr('y1', y2)
+            .attr('x2', lastspot)
+            .attr('y2', y2)
+            .style('stroke-opacity', 2)
+            .style('stroke', 'red');
 
-          svg.append("line")
-            .attr("x1", 0)
-            .attr("y1", y1)
-            .attr("x2", lastspot)
-            .attr("y2", y1)
-            .style("stroke-dasharray", ("3, 3"))
-            .style("stroke-opacity", 2)
-            .style("stroke", "red");
+          svg.append('line')
+            .attr('x1', 0)
+            .attr('y1', y1)
+            .attr('x2', lastspot)
+            .attr('y2', y1)
+            .style('stroke-dasharray', ('3, 3'))
+            .style('stroke-opacity', 2)
+            .style('stroke', 'red');
 
           svg.append('line')
             .attr('x1', lastspot)
             .attr('x2', lastspot)
-            .attr("y1", height)
+            .attr('y1', height)
             .style('fill', 'none')
             .style('stroke', 'gray')
             .style('stroke-width', 0.5)
             .style('stroke-linecap', 'line');
-        },
-        zoom: {
-          enabled: true,
-          scaleExtent: [1, 10],
-          useFixedDomain: false,
-          useNiceScale: false,
-          horizontalOff: false,
-          verticalOff: true,
-          unzoomEventType: "dblclick.zoom"
         }
       }
     }
