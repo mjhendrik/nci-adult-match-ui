@@ -7,9 +7,9 @@ export class ErrorHandlingService implements ErrorHandler {
 
     handleError(error: any) {
         const message = error.message ? error.message : error.toString();
-        if (this.toastrService && this.toastrService.toastr) {
-            this.toastrService.toastr.error(message, 'Unexpected Error');
-        }
+        // if (this.toastrService && this.toastrService.toastr) {
+        //     this.toastrService.toastr.error(message, 'Unexpected Error');
+        // }
         console.error(error);
     }
 }
