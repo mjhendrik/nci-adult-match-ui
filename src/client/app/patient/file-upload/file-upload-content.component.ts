@@ -94,17 +94,9 @@ export class FileUploadContentComponent implements OnInit {
   validateAnalysisId(): void {
     this.api.validateAnalysisId(this.msn, this.analysisId)
       .subscribe(itemList => {
-
         delete this.message;
-
         this.analysisIdValid = !itemList;
-
-        if (!this.analysisIdValid) {
-          setTimeout(() => {
-            this.message = 'Analysis ID entered already exists';
-          }, 400);
-        }
-
+        if (!this.analysisIdValid) this.message = 'Analysis ID entered already exists';
       });
   }
 
