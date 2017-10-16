@@ -27,7 +27,7 @@ import 'rxjs/add/observable/fromEvent';
 })
 export class FileUploadContentComponent implements OnInit {
   msn: string;
-  analysisId: string;
+  analysisId: string = '';
   analysisIdValid: boolean = false;
   analysisIdPrev: string = this.analysisId;
 
@@ -103,11 +103,12 @@ export class FileUploadContentComponent implements OnInit {
       .distinctUntilChanged()
       .subscribe((val: any) => {
         this.changeDetector.detectChanges();
-        if (this.analysisIdPrev !== val.target.value) {
+        if (this.analysisIdPrev !== val.target.value && this.analysisId !== '') {
           this.analysisIdPrev = val.target.value;
           this.validateAnalysisId();
         }
         this.analysisIdPrev = val.target.value;
+        if (this.analysisId === '') this.analysisIdValid = false;
       });
   }
 
