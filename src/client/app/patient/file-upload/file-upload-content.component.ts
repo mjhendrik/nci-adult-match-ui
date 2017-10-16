@@ -73,7 +73,7 @@ export class FileUploadContentComponent {
   }
 
   validateAnalysisId(): void {
-    this.api.validateAnalysisId(this.analysisId)
+    this.api.validateAnalysisId(this.msn, this.analysisId)
       .subscribe(itemList => {
         this.analysisIdValid = itemList;
       });
