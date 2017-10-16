@@ -67,8 +67,8 @@ export class FileUploadContentComponent {
     };
 
     this.dzConfigVariantZip = createDzConfig('.zip');
-    this.dzConfigDnaBam = createDzConfig(null);
-    this.dzConfigCdnaBam = createDzConfig(null);
+    this.dzConfigDnaBam = createDzConfig(null); // '.bam'
+    this.dzConfigCdnaBam = createDzConfig(null); // '.bam'
   }
 
   upload(): void {
