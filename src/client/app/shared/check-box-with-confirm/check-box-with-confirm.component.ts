@@ -4,8 +4,9 @@ import {
   Output,
   EventEmitter
 } from '@angular/core';
-
+import { Subscription } from 'rxjs/Subscription';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+
 import { ModalDialogWithCommentsComponent } from './modal-dialog-with-comments.component';
 
 export interface ConfirmableItem {
@@ -22,6 +23,7 @@ export interface ConfirmableItem {
 })
 export class CheckBoxWithConfirmComponent {
   public modalRef: BsModalRef;
+  public subscription: Subscription;
 
   @Input() confirmTitle: string;
   @Input() confirmMessage: string;
@@ -42,19 +44,29 @@ export class CheckBoxWithConfirmComponent {
   }
 
   confirm() {
-    if (typeof this.promptOnlyIf !== null && this.item.confirmed !== this.promptOnlyIf) {
+    if (this.promptOnlyIf !== null && this.item.confirmed !== this.promptOnlyIf) {
       this.toggle(null);
       return;
     }
+
+    this.subscription = this.modalService.onHidden.subscribe((comments: string) => {
+      console.log('comments = ' + comments);
+      this.toggle(comments);
+      this.unsubscribe();
+    });
 
     this.modalRef = this.modalService.show(ModalDialogWithCommentsComponent);
     this.modalRef.content.comment = this.item.comment;
     this.modalRef.content.title = this.confirmTitle;
     this.modalRef.content.message = this.confirmMessage;
     this.modalRef.content.isEnabled = this.isEnabled;
+  }
 
-    // modalInstance.result.then(function (comment: string) {
-    //   this.toggle(comment);
-    // });
+  public unsubscribe() {
+    if (!this.subscription) {
+      return;
+    }
+    this.subscription.unsubscribe();
+    this.subscription = null;
   }
 }

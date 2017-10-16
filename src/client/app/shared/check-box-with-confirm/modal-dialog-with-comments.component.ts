@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BsModalRef } from 'ngx-bootstrap';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 
 @Component({
   moduleId: module.id,
@@ -12,9 +12,10 @@ export class ModalDialogWithCommentsComponent {
   isEnabled: boolean;
   comment: string;
 
-  constructor(public bsModalRef: BsModalRef) { }
+  constructor(public bsModalRef: BsModalRef, private modalService: BsModalService) { }
 
   ok() {
+    this.modalService.setDismissReason(this.comment);
     this.bsModalRef.hide();
   }
 
