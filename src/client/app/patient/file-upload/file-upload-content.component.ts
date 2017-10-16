@@ -16,6 +16,7 @@ import { AliquotApiService } from '../../clia/aliquot-api.service';
 export class FileUploadContentComponent {
   msn: string;
   analysisId: string;
+  analysisIdValid: boolean = false;
 
   dzConfigVariantZip: DropzoneConfigInterface;
   dzConfigDnaBam: DropzoneConfigInterface;
@@ -65,8 +66,15 @@ export class FileUploadContentComponent {
     };
 
     this.dzConfigVariantZip = createDzConfig('.zip');
-    this.dzConfigDnaBam = createDzConfig(null);
-    this.dzConfigCdnaBam = createDzConfig(null);
+    this.dzConfigDnaBam = createDzConfig(null); // '.bam'
+    this.dzConfigCdnaBam = createDzConfig(null); // '.bam'
+  }
+
+  validateAnalysisId(): void {
+    this.api.validateAnalysisId(this.msn, this.analysisId)
+      .subscribe(itemList => {
+        this.analysisIdValid = itemList;
+      });
   }
 
   upload(): void {
