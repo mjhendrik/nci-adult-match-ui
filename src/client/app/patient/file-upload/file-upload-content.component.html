@@ -7,7 +7,7 @@
 <div class="modal-body">
   <div class="form-group has-feedback" [ngClass]="{true:'has-error',false:'has-success'}[!analysisIdValid]">
     <label class="control-label">Analysis ID</label>
-    <input type="text" class="form-control" placeholder="Enter Analysis ID" [(ngModel)]="analysisId" (ngModelChange)="validateAnalysisId($event)">
+    <input type="text" #input class="form-control" placeholder="Enter Analysis ID" [(ngModel)]="analysisId" (ngModelChange)="onInputChanged($event)">
     <span class="fa form-control-feedback" [ngClass]="{true:'fa-times',false:'fa-check'}[!analysisIdValid]"></span>
   </div>
   <div class="row">

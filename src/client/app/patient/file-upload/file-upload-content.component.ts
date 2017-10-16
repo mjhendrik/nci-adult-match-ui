@@ -2,11 +2,22 @@ import {
   Component,
   ChangeDetectorRef,
   ViewChild,
-  OnInit
+  NgZone,
+  OnInit,
+  ElementRef,
+  ApplicationRef
 } from '@angular/core';
-import { DropzoneDirective, DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
+import { Observable } from 'rxjs/Observable';
+import {
+  DropzoneDirective,
+  DropzoneConfigInterface
+} from 'ngx-dropzone-wrapper';
 
 import { AliquotApiService } from '../../clia/aliquot-api.service';
+
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/throttleTime';
+import 'rxjs/add/observable/fromEvent';
 
 @Component({
   moduleId: module.id,
@@ -16,8 +27,9 @@ import { AliquotApiService } from '../../clia/aliquot-api.service';
 })
 export class FileUploadContentComponent implements OnInit {
   msn: string;
-  analysisId: string;
+  analysisId: string = '';
   analysisIdValid: boolean = false;
+  analysisIdPrev: string = this.analysisId;
 
   dzConfigVariantZip: DropzoneConfigInterface;
   dzConfigDnaBam: DropzoneConfigInterface;
@@ -34,12 +46,15 @@ export class FileUploadContentComponent implements OnInit {
   dnaBamFile: any;
   cdnaBamFile: any;
 
+  @ViewChild('input') inputElRef: ElementRef;
   @ViewChild('variantZipFileDirective') variantZipFileDirective: DropzoneDirective;
   @ViewChild('dnaBamFileDirective') dnaBamFileDirective: DropzoneDirective;
   @ViewChild('cdnaBamFileDirective') cdnaBamFileDirective: DropzoneDirective;
 
   constructor(
     private changeDetector: ChangeDetectorRef,
+    private ngzone: NgZone,
+    private appref: ApplicationRef,
     private api: AliquotApiService) {
 
     const createDzConfig = (acceptedFiles: string): DropzoneConfigInterface => {
@@ -72,31 +87,30 @@ export class FileUploadContentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.validateAnalysisId('');
+    this.onInputChanged('');
   }
 
-  validateAnalysisId(val: any): void {
+  validateAnalysisId(): void {
     this.api.validateAnalysisId(this.msn, this.analysisId)
       .subscribe(itemList => {
-        this.analysisIdValid = itemList;
+        this.analysisIdValid = !itemList;
       });
   }
 
-  // onSearchChanged(val: any) {
-  //   Observable.fromEvent(this.inputElRef.nativeElement, 'input')
-  //     .debounceTime(400)
-  //     .distinctUntilChanged()
-  //     .subscribe((val: any) => {
-  //       this.cdref.detectChanges();
-  //       if (this.searchtermBiopsyTrackingList !== val.target.value) {
-  //         this.searchtermBiopsyTrackingList = val.target.value;
-  //         this.previous = this.page + ',' + this.size + ',' + this.sortOrder + ',' + this.sortBy + ','
-  //           + this.searchtermBiopsyTrackingList;
-  //         this.getBiopsyCount();
-  //       }
-  //       this.searchtermBiopsyTrackingList = val.target.value;
-  //     });
-  // }
+  onInputChanged(val: any) {
+    Observable.fromEvent(this.inputElRef.nativeElement, 'input')
+      .debounceTime(400)
+      .distinctUntilChanged()
+      .subscribe((val: any) => {
+        this.changeDetector.detectChanges();
+        if (this.analysisIdPrev !== val.target.value && this.analysisId !== '') {
+          this.analysisIdPrev = val.target.value;
+          this.validateAnalysisId();
+        }
+        this.analysisIdPrev = val.target.value;
+        if (this.analysisId === '') this.analysisIdValid = false;
+      });
+  }
 
   upload(): void {
     this.api.getPresignedUrls(
