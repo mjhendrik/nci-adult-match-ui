@@ -1,7 +1,8 @@
 import {
   Component,
   ChangeDetectorRef,
-  ViewChild
+  ViewChild,
+  OnInit
 } from '@angular/core';
 import { DropzoneDirective, DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 
@@ -13,7 +14,7 @@ import { AliquotApiService } from '../../clia/aliquot-api.service';
   templateUrl: 'file-upload-content.component.html',
   styleUrls: ['file-upload-content.component.css']
 })
-export class FileUploadContentComponent {
+export class FileUploadContentComponent implements OnInit {
   msn: string;
   analysisId: string;
   analysisIdValid: boolean = false;
@@ -70,12 +71,32 @@ export class FileUploadContentComponent {
     this.dzConfigCdnaBam = createDzConfig(null); // '.bam'
   }
 
-  validateAnalysisId(): void {
+  ngOnInit() {
+    this.validateAnalysisId('');
+  }
+
+  validateAnalysisId(val: any): void {
     this.api.validateAnalysisId(this.msn, this.analysisId)
       .subscribe(itemList => {
         this.analysisIdValid = itemList;
       });
   }
+
+  // onSearchChanged(val: any) {
+  //   Observable.fromEvent(this.inputElRef.nativeElement, 'input')
+  //     .debounceTime(400)
+  //     .distinctUntilChanged()
+  //     .subscribe((val: any) => {
+  //       this.cdref.detectChanges();
+  //       if (this.searchtermBiopsyTrackingList !== val.target.value) {
+  //         this.searchtermBiopsyTrackingList = val.target.value;
+  //         this.previous = this.page + ',' + this.size + ',' + this.sortOrder + ',' + this.sortBy + ','
+  //           + this.searchtermBiopsyTrackingList;
+  //         this.getBiopsyCount();
+  //       }
+  //       this.searchtermBiopsyTrackingList = val.target.value;
+  //     });
+  // }
 
   upload(): void {
     this.api.getPresignedUrls(
