@@ -11,6 +11,7 @@ import {
 import { VariantReportComparisonData } from './variant-report-comparison-data';
 import { ScrollService } from '../../shared/utils/scroll.to.service';
 import { ViewDataTransformer } from '../view-data-transformer.service';
+import { ConfirmableItem } from '../../shared/check-box-with-confirm/check-box-with-confirm.component';
 
 /**
  * PatientVariantReportOutsideAssayComponent.
@@ -47,6 +48,7 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, Varian
     mapd: string;
     cellularity: any;
     showPools: boolean;
+    isEditable: boolean;
   };
 
   matchData: {
@@ -62,6 +64,7 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, Varian
     mapd: string;
     cellularity: any;
     showPools: boolean;
+    isEditable: boolean;
   };
 
   comparisonVariantReport: {
@@ -113,5 +116,9 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, Varian
     console.log('rejectMatchReport');
     this.matchData.variantReport.variantReportStatus = 'REJECTED';
     this.transformer.updateOutsidePatientReport(this);
+  }
+
+  onVariantConfirmed(item: ConfirmableItem) {
+    console.log(item);
   }
 }

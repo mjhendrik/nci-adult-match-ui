@@ -1,4 +1,4 @@
-<div id="content" class="content">
+ƒ<div id="content" class="content">
   <ul class="breadcrumb pull-right">
     <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
     <li><a href [routerLink]="['/patients']" class="link-none">Patients</a></li>
@@ -173,12 +173,12 @@
 
         <p *ngIf="!outsideData || !outsideData.analysisId" class="empty-data-panel">No Treatment Variant Report data</p>
 
-        <sd-variant-report-simple-table-snv-indels *ngIf="outsideData && outsideData.variantReport" [items]="outsideData.variantReport.singleNucleotideVariantAndIndels"
+        <sd-variant-report-simple-table-snv-indels *ngIf="outsideData && outsideData.variantReport" [items]="outsideData.variantReport.singleNucleotideVariantAndIndels" [isEditable]="outsideData.isEditable" (onVariantConfirmed)="onVariantConfirmed(item)"
           [title]="'Single Nucleotide Variants and Indels'"></sd-variant-report-simple-table-snv-indels>
 
-        <sd-variant-report-simple-table-cnv *ngIf="outsideData && outsideData.variantReport" [items]="outsideData.variantReport.copyNumberVariants"></sd-variant-report-simple-table-cnv>
+        <sd-variant-report-simple-table-cnv *ngIf="outsideData && outsideData.variantReport" [items]="outsideData.variantReport.copyNumberVariants" [isEditable]="outsideData.isEditable" (onVariantConfirmed)="onVariantConfirmed(item)"></sd-variant-report-simple-table-cnv>
 
-        <sd-variant-report-simple-table-gf *ngIf="outsideData && outsideData.variantReport" [items]="outsideData.variantReport.unifiedGeneFusions"></sd-variant-report-simple-table-gf>
+        <sd-variant-report-simple-table-gf *ngIf="outsideData && outsideData.variantReport" [items]="outsideData.variantReport.unifiedGeneFusions" [isEditable]="outsideData.isEditable" (onVariantConfirmed)="onVariantConfirmed(item)"></sd-variant-report-simple-table-gf>
 
         <div class="row">
           <div class="col-md-12 text-center m-t-20">
@@ -355,12 +355,12 @@
 
         <p *ngIf="!matchData || !matchData.analysisId" class="empty-data-panel">No Confirmation Variant Report data</p>
 
-        <sd-variant-report-simple-table-snv-indels *ngIf="matchData && matchData.variantReport" [items]="matchData.variantReport.singleNucleotideVariantAndIndels"
+        <sd-variant-report-simple-table-snv-indels *ngIf="matchData && matchData.variantReport" [items]="matchData.variantReport.singleNucleotideVariantAndIndels" [isEditable]="matchData.isEditable" (onVariantConfirmed)="onVariantConfirmed(item)"
           [title]="'Single Nucleotide Variants and Indels'"></sd-variant-report-simple-table-snv-indels>
 
-        <sd-variant-report-simple-table-cnv *ngIf="matchData && matchData.variantReport" [items]="matchData.variantReport.copyNumberVariants"></sd-variant-report-simple-table-cnv>
+        <sd-variant-report-simple-table-cnv *ngIf="matchData && matchData.variantReport" [items]="matchData.variantReport.copyNumberVariants" [isEditable]="matchData.isEditable" (onVariantConfirmed)="onVariantConfirmed(item)"></sd-variant-report-simple-table-cnv>
 
-        <sd-variant-report-simple-table-gf *ngIf="matchData && matchData.variantReport" [items]="matchData.variantReport.unifiedGeneFusions"></sd-variant-report-simple-table-gf>
+        <sd-variant-report-simple-table-gf *ngIf="matchData && matchData.variantReport" [items]="matchData.variantReport.unifiedGeneFusions" [isEditable]="matchData.isEditable" (onVariantConfirmed)="onVariantConfirmed(item)"></sd-variant-report-simple-table-gf>
 
         <div class="row">
           <div class="col-md-12 text-center m-t-20">

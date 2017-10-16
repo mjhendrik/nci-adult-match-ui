@@ -18,7 +18,8 @@ import { ConfirmableItem } from '../check-box-with-confirm/check-box-with-confir
 export class VariantReportSimpleTableGeneFusionComponent {
   @Input() items: any[];
   @Input() title: string = 'Gene Fusions';
-
+  @Input() isEditable: boolean;
+  
   @Output() onVariantConfirmed: EventEmitter<ConfirmableItem> = new EventEmitter();
 
   onItemConfirmed(item: ConfirmableItem) {

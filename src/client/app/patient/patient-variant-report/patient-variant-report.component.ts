@@ -10,6 +10,7 @@ import {
 
 import { VariantReportData } from './patient-variant-report.module';
 import { ScrollService } from '../../shared/utils/scroll.to.service';
+import { ConfirmableItem } from '../../shared/check-box-with-confirm/check-box-with-confirm.component';
 
 /**
  * PatientVariantReportComponent.
@@ -39,6 +40,7 @@ export class PatientVariantReportComponent implements OnInit, VariantReportData 
   cellularity: any;
   showPools: boolean;
   assays: any[] = [];
+  isEditable: boolean;
 
   constructor(
     private route: ActivatedRoute,
@@ -53,5 +55,9 @@ export class PatientVariantReportComponent implements OnInit, VariantReportData 
 
   download(file: string) {
     this.patientApi.downloadPatientFile(this.psn, file);
+  }
+
+  onVariantConfirmed(item: ConfirmableItem) {
+    console.log(item);
   }
 }

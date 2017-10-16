@@ -16,6 +16,7 @@ export interface VariantReportComparisonData {
         mapd: string;
         cellularity: any;
         showPools: boolean;
+        isEditable: boolean;
     };
     matchData: {
         analysisId: string;
@@ -28,6 +29,7 @@ export interface VariantReportComparisonData {
         mapd: string;
         cellularity: any;
         showPools: boolean;
+        isEditable: boolean;
     };
     comparisonVariantReport: {
         singleNucleotideVariantAndIndels: any[];

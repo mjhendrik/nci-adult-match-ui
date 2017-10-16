@@ -56,7 +56,7 @@ export class ViewDataTransformer {
     ocpDataOutside: any,
     cnvDataMatch: any,
     ocpDataMatch: any,
-    isOutsideAssayReport: boolean): any {
+    isOutsideAssayReport: boolean): VariantReportComparisonData {
 
     if (!report) {
       return null;
@@ -77,6 +77,7 @@ export class ViewDataTransformer {
     transformedReport.matchData.showPools = this.showPools(cnvDataMatch.tvc_version);
     transformedReport.matchData.variantReport = transformedReport.matchData.variantReport || {};
     transformedReport.matchData.variantReport.moiSummary = transformedReport.matchData.variantReport.moiSummary || {};
+    transformedReport.matchData.isEditable = this.getVariantReportEditable(transformedReport.matchData.variantReport);
 
     transformedReport.outsideData.pool1 = ocpDataOutside.pool1;
     transformedReport.outsideData.pool2 = ocpDataOutside.pool2;
@@ -86,6 +87,7 @@ export class ViewDataTransformer {
     transformedReport.outsideData.showPools = this.showPools(cnvDataOutside.tvc_version);
     transformedReport.outsideData.variantReport = transformedReport.outsideData.variantReport || {};
     transformedReport.outsideData.variantReport.moiSummary = transformedReport.outsideData.variantReport.moiSummary || {};
+    transformedReport.outsideData.isEditable = this.getVariantReportEditable(transformedReport.outsideData.variantReport);
 
     this.transformAssignmentLogic(transformedReport.matchData.assignmentReport);
     this.transformAssignmentLogic(transformedReport.outsideData.assignmentReport);
@@ -140,6 +142,13 @@ export class ViewDataTransformer {
 
   showPools(tvcVersion: string): boolean {
     return !!tvcVersion && tvcVersion.startsWith('5.2');
+  }
+
+  getVariantReportEditable(variantReport: any): boolean {
+    if (!variantReport && !variantReport.variantReportStatus) {
+      return false;
+    }
+    return variantReport.variantReportStatus !== 'PENDING';
   }
 
   private precessPassFailVariants(comparisonVariantReport: any): void {

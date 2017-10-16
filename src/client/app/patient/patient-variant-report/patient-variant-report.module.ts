@@ -28,6 +28,7 @@ export interface VariantReportData {
   mapd: string;
   cellularity: any;
   showPools: boolean;
+  isEditable: boolean;
 }
 
 @NgModule({
