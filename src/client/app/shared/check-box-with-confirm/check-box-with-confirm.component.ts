@@ -48,21 +48,13 @@ export class CheckBoxWithConfirmComponent {
     }
 
     this.modalRef = this.modalService.show(ModalDialogWithCommentsComponent);
-
-    // const modalInstance = this.uibModal.open({
-    //   templateUrl: 'views/templates/modal_dialog_with_comment.html',
-    //   controller: 'ModalDialogWithCommentController',
-    //   resolve: {
-    //     comment: () => this.item.comment,
-    //     title: () => this.confirmTitle,
-    //     message: () => this.confirmMessage,
-    //     enabled: () => this.isEnabled
-    //   }
-    // });
+    this.modalRef.content.comment = this.item.comment;
+    this.modalRef.content.title = this.confirmTitle;
+    this.modalRef.content.message = this.confirmMessage;
+    this.modalRef.content.isEnabled = this.isEnabled;
 
     // modalInstance.result.then(function (comment: string) {
     //   this.toggle(comment);
     // });
   }
 }
-

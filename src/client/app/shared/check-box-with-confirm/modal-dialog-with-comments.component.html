@@ -1,13 +1,22 @@
 <div class="modal-header">
-    <h4 class="modal-title pull-left">{{title}}</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
-      <span aria-hidden="true">&times;</span>
-    </button>
+  <h3 class="modal-title">{{ title }}</h3>
+</div>
+<div class="modal-body">
+  <div class="form-group">
+    <label for="comment">{{ message }}</label>
+    <input type="textarea" name="comment" id="comment" [(ngModel)]="comment" required class="form-control" autofocus="autofocus" ng-disabled="!isEnabled" #commentModel="ngModel" >
+
+    <div *ngIf="commentModel.invalid && (commentModel.dirty || commentModel.touched)" class="alert alert-danger">
+      <div *ngIf="commentModel.errors.required">
+        Comment is required.
+      </div>
+    </div>
   </div>
-  <div class="modal-body">
-  vidy
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Close</button>
-  </div>
-  
+</div>
+<div class="modal-footer">
+  <button class="btn btn-outline btn-default" type="button" (click)="cancel()">
+    <span *ngIf="isEnabled">Cancel</span>
+    <span *ngIf="!isEnabled">Close</span>
+  </button>
+  <button class="btn btn-outline btn-success" type="button" (click)="ok()" *ngIf="isEnabled" [disabled]="commentModel.invalid">OK</button>
+</div>
