@@ -30,6 +30,7 @@ export class FileUploadContentComponent implements OnInit {
   analysisId: string = '';
   analysisIdValid: boolean = false;
   analysisIdPrev: string = this.analysisId;
+  message: string;
 
   dzConfigVariantZip: DropzoneConfigInterface;
   dzConfigDnaBam: DropzoneConfigInterface;
@@ -93,7 +94,17 @@ export class FileUploadContentComponent implements OnInit {
   validateAnalysisId(): void {
     this.api.validateAnalysisId(this.msn, this.analysisId)
       .subscribe(itemList => {
+
+        delete this.message;
+
         this.analysisIdValid = !itemList;
+
+        if (!this.analysisIdValid) {
+          setTimeout(() => {
+            this.message = 'Analysis ID entered already exists';
+          }, 400);
+        }
+
       });
   }
 
@@ -102,13 +113,27 @@ export class FileUploadContentComponent implements OnInit {
       .debounceTime(400)
       .distinctUntilChanged()
       .subscribe((val: any) => {
+
         this.changeDetector.detectChanges();
-        if (this.analysisIdPrev !== val.target.value && this.analysisId !== '') {
+
+        if (this.analysisIdPrev !== val.target.value && this.analysisId !== '' && !this.analysisId.startsWith(' ')) {
           this.analysisIdPrev = val.target.value;
           this.validateAnalysisId();
         }
+
         this.analysisIdPrev = val.target.value;
-        if (this.analysisId === '') this.analysisIdValid = false;
+
+        if (this.analysisId === '') {
+          delete this.message;
+          this.analysisIdValid = false;
+        }
+
+        if (this.analysisId.startsWith(' ')) {
+          delete this.message;
+          this.analysisIdValid = false;
+          this.message = 'Analysis ID entered starts with a space';
+        }
+
       });
   }
 
