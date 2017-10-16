@@ -11,6 +11,7 @@ import {
 import { VariantReportData } from './patient-variant-report.module';
 import { ScrollService } from '../../shared/utils/scroll.to.service';
 import { ConfirmableItem } from '../../shared/check-box-with-confirm/check-box-with-confirm.component';
+import { ViewDataTransformer } from '../view-data-transformer.service';
 
 /**
  * PatientVariantReportComponent.
@@ -27,6 +28,7 @@ export class PatientVariantReportComponent implements OnInit, VariantReportData 
   scrollTo: (id: string) => void;
 
   psn: string;
+  bsn: string;
   analysisId: string;
   patient: any;
   variantReport: any;
@@ -45,7 +47,8 @@ export class PatientVariantReportComponent implements OnInit, VariantReportData 
   constructor(
     private route: ActivatedRoute,
     private patientApi: PatientApiService,
-    private scrollService: ScrollService) {
+    private scrollService: ScrollService,
+    private transformer: ViewDataTransformer) {
       this.scrollTo = scrollService.scrollToElement;
     }
 
@@ -57,7 +60,24 @@ export class PatientVariantReportComponent implements OnInit, VariantReportData 
     this.patientApi.downloadPatientFile(this.psn, file);
   }
 
+  confirmReport(): void {
+    console.info('Confirming variant report: ' + this.analysisId);
+    this.patientApi.confirmVariantReport(this.psn, this.bsn, this.analysisId).subscribe(
+      (x: any) => { /*this.transformer.updateOutsidePatientReport(this, x);*/ }
+    );
+  }
+
+  rejectReport(): void {
+    console.info('Rejecting variant report: ' + this.analysisId);
+    this.patientApi.rejectVariantReport(this.psn, this.bsn, this.analysisId).subscribe(
+      (x: any) => { /*this.transformer.updateOutsidePatientReport(this, x);*/ }
+    );
+  }
+
   onVariantConfirmed(item: ConfirmableItem) {
-    console.log(item);
+    console.info('Confirming variant: ' + JSON.stringify(item));
+    this.patientApi.confirmVariant(this.psn, this.bsn, this.analysisId, item.id).subscribe(
+      (x: any) => { /*this.transformer.updateVariant(item, x);*/ }
+    );
   }
 }

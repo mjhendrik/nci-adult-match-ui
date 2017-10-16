@@ -15,6 +15,7 @@ import { ScrollService } from '../../shared/utils/scroll.to.service';
 
 export interface VariantReportData {
   psn: string;
+  bsn: string;
   analysisId: string;
   patient: any;
   assays: any[];

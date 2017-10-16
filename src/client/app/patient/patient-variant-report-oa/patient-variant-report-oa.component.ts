@@ -95,30 +95,27 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, Varian
   }
 
   confirmOutsideReport(): void {
-    console.log('confirmOutsideReport');
-    this.outsideData.variantReport.variantReportStatus = 'CONFIRMED';
-    this.transformer.updateOutsidePatientReport(this);
+    console.info('Confirming outside variant report: ' + this.outsideData.analysisId);
+    // this.patientApi.confirmVariantReport().subscribe((x: any) => { this.transformer.updateOutsidePatientReport(this, x); });
   }
 
   rejectOutsideReport(): void {
-    console.log('rejectOutsideReport');
-    this.outsideData.variantReport.variantReportStatus = 'REJECTED';
-    this.transformer.updateOutsidePatientReport(this);
+    console.info('Rejecting outside variant report: ' + this.outsideData.analysisId);
+    // this.patientApi.rejectVariantReport().subscribe((x: any) => { this.transformer.updateOutsidePatientReport(this, x); });
   }
 
   confirmMatchReport(): void {
-    console.log('confirmMatchReport');
-    this.matchData.variantReport.variantReportStatus = 'CONFIRMED';
-    this.transformer.updateOutsidePatientReport(this);
+    console.info('Confirming MATCH variant report: ' + this.outsideData.analysisId);
+    // this.patientApi.confirmVariantReport().subscribe((x: any) => { this.transformer.updateOutsidePatientReport(this, x); });
   }
 
   rejectMatchReport(): void {
-    console.log('rejectMatchReport');
-    this.matchData.variantReport.variantReportStatus = 'REJECTED';
-    this.transformer.updateOutsidePatientReport(this);
+    console.info('Rejecting outside variant report: ' + this.outsideData.analysisId);
+    // this.patientApi.rejectVariantReport().subscribe((x: any) => { this.transformer.updateOutsidePatientReport(this, x); });
   }
 
   onVariantConfirmed(item: ConfirmableItem) {
-    console.log(item);
+    console.info('Confirming variant: ' + JSON.stringify(item));
+    // this.patientApi.confirmVariant().subscribe((x: any) => { this.transformer.updateVariant(item, x); });
   }
 }

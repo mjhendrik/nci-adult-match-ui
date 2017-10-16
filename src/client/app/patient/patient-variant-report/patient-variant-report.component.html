@@ -164,17 +164,17 @@
     <div class="panel-heading">
       <div class="row">
         <div class="col-md-12">
-          <sd-variant-report-simple-table-snv-indels [items]="variantReport.singleNucleotideVariantAndIndels" [isEditable]="isEditable" (onVariantConfirmed)="onVariantConfirmed(item)" [title]="'Single Nucleotide Variants and Indels'"></sd-variant-report-simple-table-snv-indels>
+          <sd-variant-report-simple-table-snv-indels [items]="variantReport.singleNucleotideVariantAndIndels" [isEditable]="isEditable" (onVariantConfirmed)="onVariantConfirmed($event)" [title]="'Single Nucleotide Variants and Indels'"></sd-variant-report-simple-table-snv-indels>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
-          <sd-variant-report-simple-table-cnv [items]="variantReport.copyNumberVariants" [isEditable]="isEditable" (onVariantConfirmed)="onVariantConfirmed(item)"></sd-variant-report-simple-table-cnv>
+          <sd-variant-report-simple-table-cnv [items]="variantReport.copyNumberVariants" [isEditable]="isEditable" (onVariantConfirmed)="onVariantConfirmed($event)"></sd-variant-report-simple-table-cnv>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
-          <sd-variant-report-simple-table-gf [items]="variantReport.unifiedGeneFusions" [isEditable]="isEditable" (onVariantConfirmed)="onVariantConfirmed(item)"></sd-variant-report-simple-table-gf>
+          <sd-variant-report-simple-table-gf [items]="variantReport.unifiedGeneFusions" [isEditable]="isEditable" (onVariantConfirmed)="onVariantConfirmed($event)"></sd-variant-report-simple-table-gf>
         </div>
       </div>
     </div>
