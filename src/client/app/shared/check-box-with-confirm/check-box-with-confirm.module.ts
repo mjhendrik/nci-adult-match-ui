@@ -1,10 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
 import { CheckBoxWithConfirmComponent } from './check-box-with-confirm.component';
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    PipesModule,
+    FormsModule
   ],
   declarations: [CheckBoxWithConfirmComponent],
   exports: [CheckBoxWithConfirmComponent]

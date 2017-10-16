@@ -5,7 +5,7 @@ import {
   EventEmitter
 } from '@angular/core';
 
-import { BsModalRef } from 'ngx-bootstrap';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 
 export interface ConfirmableItem {
   confirmed: boolean;
@@ -20,6 +20,8 @@ export interface ConfirmableItem {
   templateUrl: 'check-box-with-confirm.component.html'
 })
 export class CheckBoxWithConfirmComponent {
+  public modalRef: BsModalRef;
+
   @Input() confirmTitle: string;
   @Input() confirmMessage: string;
   @Input() promptOnlyIf?: boolean;
@@ -28,7 +30,7 @@ export class CheckBoxWithConfirmComponent {
 
   @Output() onItemConfirmed: EventEmitter<ConfirmableItem> = new EventEmitter();
 
-  constructor(public modalRef: BsModalRef) { }
+  constructor(private modalService: BsModalService) { }
 
   toggle(comment: string) {
     this.item.confirmed = !this.item.confirmed;
