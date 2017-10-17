@@ -1,6 +1,7 @@
 import { VariantReportData } from '../patient-variant-report/patient-variant-report.module';
 
 export interface VariantReportComparisonData {
+    psn: string;
     showComparison: boolean;
     showOutsideAssay: boolean;
     currentPatientStatus: string;

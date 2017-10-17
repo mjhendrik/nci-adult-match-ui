@@ -113,21 +113,23 @@ export class PatientApiService extends ApiService {
       .catch(this.handleError);
   }
 
-  confirmVariantReport(psn: string, bsn: string, analysisId: string): Observable<VariantReportStatus> {
-    return this.http.patch(`${Config.API.PATIENT}/patients/${psn}/biopsies/${bsn}/variant_reports/${analysisId}`, { })
-      .map((res: Response) => res)
-      .catch(this.handleError);
-  }
+  updateVariantReport(psn: string, bsn: string, analysisId: string, confirmed: boolean, comment: string): Observable<VariantReportStatus> {
+    const patch = {
+      'patientSequenceNumber': psn,
+      'biopsySequenceNumber': bsn,
+      'analysisId': analysisId,
+      'confirmed': confirmed,
+      'comment': comment
+    };
 
-  rejectVariantReport(psn: string, bsn: string, analysisId: string): Observable<VariantReportStatus> {
-    return this.http.patch(`${Config.API.PATIENT}/patients/${psn}/biopsies/${bsn}/variant_reports/${analysisId}`, { })
+    return this.http.patch(`${Config.API.PATIENT}/patients/${psn}/biopsies/${bsn}/variant_reports/${analysisId}`, patch)
       .map((res: Response) => res)
       .catch(this.handleError);
   }
 
   updateVariant(psn: string, bsn: string, analysisId: string, variantId: string, confirmed: boolean, comment: string): Observable<VariantReportStatus> {
 
-    const variantPatch = {
+    const patch = {
       'patientSequenceNumber': psn,
       'biopsySequenceNumber': bsn,
       'analysisId': analysisId,
@@ -136,7 +138,7 @@ export class PatientApiService extends ApiService {
       'comment': comment
     };
 
-    return this.http.patch(`${Config.API.PATIENT}/patients/${psn}/biopsies/${bsn}/variant_reports/${analysisId}/variants/${variantId}`, variantPatch)
+    return this.http.patch(`${Config.API.PATIENT}/patients/${psn}/biopsies/${bsn}/variant_reports/${analysisId}/variants/${variantId}`, patch)
       .map((res: Response) => res)
       .catch(this.handleError);
   }

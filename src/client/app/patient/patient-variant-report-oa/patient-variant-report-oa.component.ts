@@ -69,28 +69,28 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, Varian
 
   confirmOutsideReport(): void {
     console.info('Confirming outside variant report: ' + this.outsideData.analysisId);
-    this.patientApi.confirmVariantReport(this.psn, this.outsideData.bsn, this.outsideData.analysisId).subscribe(
+    this.patientApi.updateVariantReport(this.psn, this.outsideData.bsn, this.outsideData.analysisId, true, null).subscribe(
       (x: any) => { this.transformer.updateVariantReportStatus(this.outsideData, x); }
     );
   }
 
   rejectOutsideReport(): void {
     console.info('Rejecting outside variant report: ' + this.outsideData.analysisId);
-    this.patientApi.rejectVariantReport(this.psn, this.outsideData.bsn, this.outsideData.analysisId).subscribe(
+    this.patientApi.updateVariantReport(this.psn, this.outsideData.bsn, this.outsideData.analysisId, false, null).subscribe(
       (x: any) => { this.transformer.updateVariantReportStatus(this.outsideData, x); }
     );
   }
 
   confirmMatchReport(): void {
     console.info('Confirming MATCH variant report: ' + this.matchData.analysisId);
-    this.patientApi.confirmVariantReport(this.psn, this.matchData.bsn, this.matchData.analysisId).subscribe(
+    this.patientApi.updateVariantReport(this.psn, this.matchData.bsn, this.matchData.analysisId, true, null).subscribe(
       (x: any) => { this.transformer.updateVariantReportStatus(this.matchData, x); }
     );
   }
 
   rejectMatchReport(): void {
     console.info('Rejecting outside variant report: ' + this.matchData.analysisId);
-    this.patientApi.rejectVariantReport(this.psn, this.matchData.bsn, this.matchData.analysisId).subscribe(
+    this.patientApi.updateVariantReport(this.psn, this.matchData.bsn, this.matchData.analysisId, false, null).subscribe(
       (x: any) => { this.transformer.updateVariantReportStatus(this.matchData, x); }
     );
   }
