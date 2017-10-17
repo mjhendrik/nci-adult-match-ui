@@ -31,6 +31,7 @@ export class FileUploadContentComponent implements OnInit {
   analysisIdValid: boolean = false;
   analysisIdPrev: string = this.analysisId;
   message: string;
+  uploadMessage: any;
 
   dzConfigVariantZip: DropzoneConfigInterface;
   dzConfigDnaBam: DropzoneConfigInterface;
@@ -147,13 +148,20 @@ export class FileUploadContentComponent implements OnInit {
         this.cdnaBamFileDirective.config.url = data[2];
         this.cdnaBamFileDirective.dropzone.enqueueFile(this.cdnaBamFile);
       }
-    );
+      );
   }
 
   messageAfterUpload(uploaded: boolean): void {
-    this.api.messageAfterUpload(this.msn, this.analysisId)
-      .subscribe(itemList => {
-      });
+
+    this.uploadMessage = {
+      'molecularSequenceNumber': this.msn,
+      'analysisId': this.analysisId,
+      // 'filename': this.variantZipFile.name,
+      'uploaded': uploaded
+    };
+
+    this.api.messageAfterUpload(this.uploadMessage);
+
   }
 
   addedFileVariantZip(evt: any): void {

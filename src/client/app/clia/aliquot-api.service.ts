@@ -83,8 +83,8 @@ export class AliquotApiService extends ApiService {
       );
   }
 
-  messageAfterUpload(msn: string, analysisId: string) {
-    return this.http.get(this.url('/message/clia/aliquot/presign_url/' + msn + '/' + analysisId, 'assets/mock-data/WHAT_SHOULD_BE_HERE.json'))
+  messageAfterUpload(body: any) {
+    return this.http.post(`${this.baseApiUrl}/message/clia/aliquot/presign_url`, body)
       .map(this.extractData)
       .catch(this.handleError);
   }
