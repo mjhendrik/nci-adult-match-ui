@@ -61,6 +61,8 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, Varian
 
   ngOnInit() {
     Object.assign(this, this.route.snapshot.data['data']);
+    this.outsideData.isEditable = true;
+    this.matchData.isEditable = true;
   }
 
   download(file: string) {
@@ -97,6 +99,8 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, Varian
 
   onVariantConfirmed(report: VariantReportData, bsn: string, item: ConfirmableItem) {
     console.info('Confirming variant: ' + JSON.stringify(item));
+    console.info(JSON.stringify(report));
+    console.info(JSON.stringify(bsn));
     this.patientApi.confirmVariant(this.psn, bsn, report.analysisId, item.id).subscribe(
       (x: any) => { this.transformer.updateVariantStatus(report, x); }
     );

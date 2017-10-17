@@ -215,7 +215,7 @@
                                         <i class="fa fa-file-text-o"></i> Variant and Assignment Reports</a>
                                     </h5>
                                     <h5>
-                                      <a *ngIf="biopsy.isOutsideAssayWorkflow" href [routerLink]="['/patients/' + patient.patientSequenceNumber + '/biopsies/' + biopsy.biopsySequenceNumber + '/variant_reports_oa/' + analysis.analysisId]"
+                                      <a *ngIf="biopsy.isOutsideAssayWorkflow" href [routerLink]="['/patients/' + patient.patientSequenceNumber + '/variant_reports_oa/' + analysis.analysisId]"
                                         [queryParams]="{isOutsideAssay: biopsy.isOutsideAssay}">
                                         <i class="fa fa-file-text-o"></i> Variant and Assignment Reports</a>
                                     </h5>
