@@ -180,7 +180,7 @@
 
         <sd-variant-report-simple-table-gf *ngIf="outsideData && outsideData.variantReport" [items]="outsideData.variantReport.unifiedGeneFusions" [isEditable]="outsideData.isEditable" (onVariantConfirmed)="onVariantConfirmed($event)"></sd-variant-report-simple-table-gf>
 
-        <div class="row">
+        <div class="row" *ngIf="outsideData && outsideData.isEditable">
           <div class="col-md-12 text-center m-t-20">
             <button class="btn btn-danger" (click)="rejectOutsideReport()"><i class="fa fa-times"></i> Reject Report</button>
             <button class="btn btn-lime" (click)="confirmOutsideReport()"><i class="fa fa-check"></i> Confirm Report</button>
@@ -362,7 +362,7 @@
 
         <sd-variant-report-simple-table-gf *ngIf="matchData && matchData.variantReport" [items]="matchData.variantReport.unifiedGeneFusions" [isEditable]="matchData.isEditable" (onVariantConfirmed)="onVariantConfirmed($event)"></sd-variant-report-simple-table-gf>
 
-        <div class="row">
+        <div class="row" *ngIf="matchData && matchData.isEditable">
           <div class="col-md-12 text-center m-t-20">
             <button class="btn btn-danger" (click)="rejectMatchReport()"><i class="fa fa-times"></i> Reject Report</button>
             <button class="btn btn-lime" (click)="confirmMatchReport()"><i class="fa fa-check"></i> Confirm Report</button>
