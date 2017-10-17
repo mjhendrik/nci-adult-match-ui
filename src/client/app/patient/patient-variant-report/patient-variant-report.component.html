@@ -35,7 +35,7 @@
             <dt>Disease Concordance</dt>
             <dd><span [colorCodeConcordance]="patient.concordance">{{patient.concordance | dashify}}</span></dd>
             <dt>Status</dt>
-            <dd><span [colorCodeVariantReport]="variantReport.variantReportStatus">{{variantReport.variantReportStatus | dashify}}</span>              on {{variantReport.variantReporterRejectedOrConfirmedDate | gmt}} by {{variantReport.user | dashify}}</dd>
+            <dd><span [colorCodeVariantReport]="variantReport.variantReportStatus">{{variantReport.variantReportStatus | dashify}}</span> on {{variantReport.variantReporterRejectedOrConfirmedDate | gmt}} by {{variantReport.user | dashify}}</dd>
             <dt>MAPD</dt>
             <dd>{{mapd | dashify}}</dd>
             <dt>Cellularity</dt>
@@ -162,23 +162,19 @@
   </div>
   <div class="panel panel-white panel-accent-sides-purple overflow-hidden">
     <div class="panel-heading">
-      <div class="row">
-        <div class="col-md-12">
-          <sd-variant-report-simple-table-snv-indels [items]="variantReport.singleNucleotideVariantAndIndels" [isEditable]="isEditable" (onVariantConfirmed)="onVariantConfirmed(item)" [title]="'Single Nucleotide Variants and Indels'"></sd-variant-report-simple-table-snv-indels>
+      <sd-variant-report-simple-table-snv-indels [items]="variantReport.singleNucleotideVariantAndIndels" [isEditable]="isEditable" (onVariantConfirmed)="onVariantConfirmed($event)" [title]="'Single Nucleotide Variants and Indels'"></sd-variant-report-simple-table-snv-indels>
+      <sd-variant-report-simple-table-cnv [items]="variantReport.copyNumberVariants" [isEditable]="isEditable" (onVariantConfirmed)="onVariantConfirmed($event)"></sd-variant-report-simple-table-cnv>
+      <sd-variant-report-simple-table-gf [items]="variantReport.unifiedGeneFusions" [isEditable]="isEditable" (onVariantConfirmed)="onVariantConfirmed($event)"></sd-variant-report-simple-table-gf>
+    </div>
+
+    <div class="row" *ngIf="isEditable">
+        <div class="col-md-12 text-center m-b-20">
+          <button class="btn btn-danger" (click)="rejectReport()"><i class="fa fa-times"></i> Reject Report</button>
+          <button class="btn btn-lime" (click)="confirmReport()"><i class="fa fa-check"></i> Confirm Report</button>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <sd-variant-report-simple-table-cnv [items]="variantReport.copyNumberVariants" [isEditable]="isEditable" (onVariantConfirmed)="onVariantConfirmed(item)"></sd-variant-report-simple-table-cnv>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <sd-variant-report-simple-table-gf [items]="variantReport.unifiedGeneFusions" [isEditable]="isEditable" (onVariantConfirmed)="onVariantConfirmed(item)"></sd-variant-report-simple-table-gf>
-        </div>
-      </div>
     </div>
   </div>
+
   <div *ngIf="assignmentReport && assignmentReport.reasons" id="assignment-details" class="panel panel-white panel-accent-sides-purple overflow-hidden">
     <div class="panel-heading">
       <div class="row">

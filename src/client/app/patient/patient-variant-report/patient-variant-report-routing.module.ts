@@ -27,6 +27,7 @@ class DataResolver implements Resolve<VariantReportData> {
     state: RouterStateSnapshot
   ): Observable<VariantReportData> | Promise<VariantReportData> | VariantReportData {
     const psn: string = route.params.patientSequenceNumber;
+    const bsn: string = route.params.biopsySequenceNumber;
     const analysisId: string = route.params.analysisId;
 
     return Observable.forkJoin(
@@ -47,6 +48,7 @@ class DataResolver implements Resolve<VariantReportData> {
 
         return {
           psn: psn,
+          bsn: bsn,
           analysisId: route.params.analysisId,
           patient: patient,
           analysis: analysis,

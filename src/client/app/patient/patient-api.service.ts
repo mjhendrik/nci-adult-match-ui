@@ -7,6 +7,7 @@ import { Config } from '../shared/config/env.config';
 import { VariantReportComparisonData } from './patient-variant-report-oa/variant-report-comparison-data';
 import { DownloadService } from '../shared/utils/download.service';
 import { ApiService } from '../shared/api/api.service';
+import { VariantReportStatus } from './variant-report-status';
 
 @Injectable()
 export class PatientApiService extends ApiService {
@@ -38,6 +39,7 @@ export class PatientApiService extends ApiService {
 
   getPatientCount(filter: string, isOutsideAssayWorkflow?: boolean): Observable<number> {
     return this.http.get(Config.API.PATIENT
+      // tslint:disable-next-line:max-line-length
       + '/patients/count?projection=patientSequenceNumber,currentPatientStatus,currentStepNumber,diseases.shortName,registrationDate,patientAssignments.treatmentArm.name,patientAssignments.treatmentArm.version'
       + (filter ? '&projfilter=' + filter : '')
       + (isOutsideAssayWorkflow !== null ? '&is-oa=' + isOutsideAssayWorkflow : ''))
@@ -108,6 +110,30 @@ export class PatientApiService extends ApiService {
   getUrl(fileName: string, psn: string): Observable<string> {
     return this.http.post(Config.API.MESSAGE + '/patients/' + psn + '/documents/presign_url', null)
       .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  confirmVariantReport(psn: string, bsn: string, analysisId: string): Observable<VariantReportStatus> {
+    return this.http.patch(`${Config.API.PATIENT}/patients/${psn}/biopsies/${bsn}/variant_reports/${analysisId}`, { })
+      .map((res: Response) => res)
+      .catch(this.handleError);
+  }
+
+  rejectVariantReport(psn: string, bsn: string, analysisId: string): Observable<VariantReportStatus> {
+    return this.http.patch(`${Config.API.PATIENT}/patients/${psn}/biopsies/${bsn}/variant_reports/${analysisId}`, { })
+      .map((res: Response) => res)
+      .catch(this.handleError);
+  }
+
+  confirmVariant(psn: string, bsn: string, analysisId: string, variantId: string): Observable<VariantReportStatus> {
+    return this.http.patch(`${Config.API.PATIENT}/patients/${psn}/biopsies/${bsn}/variant_reports/${analysisId}/variants/${variantId}`, { })
+      .map((res: Response) => res)
+      .catch(this.handleError);
+  }
+
+  rejectVariant(psn: string, bsn: string, analysisId: string, variantId: string): Observable<VariantReportStatus> {
+    return this.http.patch(`${Config.API.PATIENT}/patients/${psn}/biopsies/${bsn}/variant_reports/${analysisId}/variants/${variantId}`, { })
+      .map((res: Response) => res)
       .catch(this.handleError);
   }
 }

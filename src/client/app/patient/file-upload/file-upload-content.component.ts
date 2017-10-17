@@ -147,7 +147,7 @@ export class FileUploadContentComponent implements OnInit {
         this.cdnaBamFileDirective.config.url = data[2];
         this.cdnaBamFileDirective.dropzone.enqueueFile(this.cdnaBamFile);
       }
-      );
+    );
   }
 
   messageAfterUpload(uploaded: boolean): void {
