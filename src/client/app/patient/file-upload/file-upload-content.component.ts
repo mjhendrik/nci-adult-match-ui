@@ -31,7 +31,7 @@ export class FileUploadContentComponent implements OnInit {
   analysisIdValid: boolean = false;
   analysisIdPrev: string = this.analysisId;
   message: string;
-  uploadMessage: any;
+  uploadNotification: any;
 
   dzConfigVariantZip: DropzoneConfigInterface;
   dzConfigDnaBam: DropzoneConfigInterface;
@@ -151,16 +151,16 @@ export class FileUploadContentComponent implements OnInit {
       );
   }
 
-  messageAfterUpload(uploaded: boolean): void {
+  notifyAfterUpload(uploaded: boolean): void {
 
-    this.uploadMessage = {
+    this.uploadNotification = {
       'molecularSequenceNumber': this.msn,
       'analysisId': this.analysisId,
       // 'filename': this.variantZipFile.name,
       'uploaded': uploaded
     };
 
-    this.api.messageAfterUpload(this.uploadMessage);
+    this.api.notifyAfterUpload(this.uploadNotification);
 
   }
 
@@ -203,12 +203,12 @@ export class FileUploadContentComponent implements OnInit {
   onUploadSuccess(evt: any): void {
     console.info(evt);
     console.log('success');
-    this.messageAfterUpload(true);
+    this.notifyAfterUpload(true);
   }
 
   onUploadError(evt: any): void {
     console.error(evt);
     console.log('failure');
-    this.messageAfterUpload(false);
+    this.notifyAfterUpload(false);
   }
 }
