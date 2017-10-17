@@ -74,7 +74,7 @@ class DataResolver implements Resolve<VariantReportData> {
   imports: [
     RouterModule.forRoot([
       {
-        path: 'patients/:patientSequenceNumber/variant_reports/:analysisId',
+        path: 'patients/:patientSequenceNumber/biopsies/:biopsySequenceNumber/variant_reports/:analysisId',
         component: PatientVariantReportComponent, canActivate: [AuthGuard],
         resolve: { data: DataResolver }
       }
