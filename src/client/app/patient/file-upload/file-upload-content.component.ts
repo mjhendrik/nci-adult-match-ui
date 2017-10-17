@@ -8,10 +8,6 @@ import {
   ApplicationRef
 } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import {
-  DropzoneDirective,
-  DropzoneConfigInterface
-} from 'ngx-dropzone-wrapper';
 
 import { AliquotApiService } from '../../clia/aliquot-api.service';
 
@@ -30,12 +26,8 @@ export class FileUploadContentComponent implements OnInit {
   analysisId: string = '';
   analysisIdValid: boolean = false;
   analysisIdPrev: string = this.analysisId;
-  message: string;
+  message: string = 'Enter a valid Analysis ID to add Variant ZIP file, DNA BAM file and cDNA BAM file';
   uploadNotification: any;
-
-  dzConfigVariantZip: DropzoneConfigInterface;
-  dzConfigDnaBam: DropzoneConfigInterface;
-  dzConfigCdnaBam: DropzoneConfigInterface;
 
   uploadedFiles: any[];
   fileCount: number = 0;
@@ -49,44 +41,12 @@ export class FileUploadContentComponent implements OnInit {
   cdnaBamFile: any;
 
   @ViewChild('input') inputElRef: ElementRef;
-  @ViewChild('variantZipFileDirective') variantZipFileDirective: DropzoneDirective;
-  @ViewChild('dnaBamFileDirective') dnaBamFileDirective: DropzoneDirective;
-  @ViewChild('cdnaBamFileDirective') cdnaBamFileDirective: DropzoneDirective;
 
   constructor(
     private changeDetector: ChangeDetectorRef,
     private ngzone: NgZone,
     private appref: ApplicationRef,
-    private api: AliquotApiService) {
-
-    const createDzConfig = (acceptedFiles: string): DropzoneConfigInterface => {
-      const dummyUrl = 'https://fakeurl.org/fakepost';
-
-      const dzInit = function () {
-        var submitButton = document.querySelector('#upload-files');
-        let dz = this; // closure
-        submitButton.addEventListener('click', function () {
-          dz.processQueue(); // Tell Dropzone to process all queued files.
-        });
-      };
-
-      return {
-        url: dummyUrl,
-        maxFiles: 1,
-        timeout: 0,
-        maxFilesize: 50000, // size in MB
-        acceptedFiles: acceptedFiles,
-        addRemoveLinks: true,
-        autoProcessQueue: false,
-        autoQueue: false,
-        init: dzInit
-      };
-    };
-
-    this.dzConfigVariantZip = createDzConfig('.zip');
-    this.dzConfigDnaBam = createDzConfig(null); // '.bam'
-    this.dzConfigCdnaBam = createDzConfig(null); // '.bam'
-  }
+    private api: AliquotApiService) { }
 
   ngOnInit() {
     this.onInputChanged('');
@@ -95,9 +55,11 @@ export class FileUploadContentComponent implements OnInit {
   validateAnalysisId(): void {
     this.api.validateAnalysisId(this.msn, this.analysisId)
       .subscribe(itemList => {
-        delete this.message;
         this.analysisIdValid = !itemList;
-        if (!this.analysisIdValid) this.message = 'Analysis ID entered already exists';
+        if (!this.analysisIdValid) {
+          delete this.message;
+          this.message = 'Analysis ID entered already exists';
+        }
       });
   }
 
@@ -119,6 +81,7 @@ export class FileUploadContentComponent implements OnInit {
         if (this.analysisId === '') {
           delete this.message;
           this.analysisIdValid = false;
+          this.message = 'Enter a valid Analysis ID to add Variant ZIP file, DNA BAM file and cDNA BAM file';
         }
 
         if (this.analysisId.startsWith(' ')) {
@@ -130,6 +93,21 @@ export class FileUploadContentComponent implements OnInit {
       });
   }
 
+  fileSelectedVariantZip(file: any): void {
+    this.hasVariantZipFile = false;
+    if (file !== undefined) this.hasVariantZipFile = true;
+  }
+
+  fileSelectedDnaBam(file: any): void {
+    this.hasDnaBamFile = false;
+    if (file !== undefined) this.hasDnaBamFile = true;
+  }
+
+  fileSelectedCdnaBam(file: any): void {
+    this.hasCdnaBamFile = false;
+    if (file !== undefined) this.hasCdnaBamFile = true;
+  }
+
   upload(): void {
     this.api.getPresignedUrls(
       this.msn,
@@ -139,14 +117,7 @@ export class FileUploadContentComponent implements OnInit {
       this.cdnaBamFile.name
     ).subscribe(
       (data: [string, string, string]) => {
-        this.variantZipFileDirective.config.url = data[0];
-        this.variantZipFileDirective.dropzone.enqueueFile(this.variantZipFile);
-
-        this.dnaBamFileDirective.config.url = data[1];
-        this.dnaBamFileDirective.dropzone.enqueueFile(this.dnaBamFile);
-
-        this.cdnaBamFileDirective.config.url = data[2];
-        this.cdnaBamFileDirective.dropzone.enqueueFile(this.cdnaBamFile);
+        // input type file code
       }
       );
   }
@@ -164,50 +135,12 @@ export class FileUploadContentComponent implements OnInit {
 
   }
 
-  addedFileVariantZip(evt: any): void {
-    this.variantZipFile = evt;
-    this.hasVariantZipFile = true;
-    this.changeDetector.detectChanges();
-  }
-
-  removedFileVariantZip(): void {
-    this.variantZipFile = null;
-    this.hasVariantZipFile = false;
-    this.changeDetector.detectChanges();
-  }
-
-  addedFileDnaBam(evt: any): void {
-    this.dnaBamFile = evt;
-    this.hasDnaBamFile = true;
-    this.changeDetector.detectChanges();
-  }
-
-  removedFileDnaBam(): void {
-    this.dnaBamFile = null;
-    this.hasDnaBamFile = false;
-    this.changeDetector.detectChanges();
-  }
-
-  addedFileCdnaBam(evt: any): void {
-    this.cdnaBamFile = evt;
-    this.hasCdnaBamFile = true;
-    this.changeDetector.detectChanges();
-  }
-
-  removedFileCdnaBam(): void {
-    this.cdnaBamFile = null;
-    this.hasCdnaBamFile = false;
-    this.changeDetector.detectChanges();
-  }
-
   onUploadSuccess(evt: any): void {
-    console.info(evt);
     console.log('success');
     this.notifyAfterUpload(true);
   }
 
   onUploadError(evt: any): void {
-    console.error(evt);
     console.log('failure');
     this.notifyAfterUpload(false);
   }

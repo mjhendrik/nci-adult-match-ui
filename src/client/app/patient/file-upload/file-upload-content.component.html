@@ -10,63 +10,26 @@
     <input type="text" #input class="form-control" placeholder="Enter Analysis ID" [(ngModel)]="analysisId" (ngModelChange)="onInputChanged($event)">
     <span class="fa form-control-feedback" [ngClass]="{true:'fa-times',false:'fa-check'}[!analysisIdValid]"></span>
   </div>
-  <div *ngIf="!analysisIdValid && analysisId && message" class="text-danger m-b-10 m-t-n10">
+  <div *ngIf="!analysisIdValid" class="text-danger m-b-10 m-t-n10">
     {{message}}
   </div>
   <div class="row">
     <div class="col-md-4 form-group has-feedback" [ngClass]="{true:'has-success',false:'has-error'}[hasVariantZipFile]">
       <label class="control-label">Variant ZIP File</label>
-      <div #variantZipFileDirective class="form-control" [ngClass]="{true:'disable-div'}[!analysisIdValid]" [dropzone]="dzConfigVariantZip"
-        (addedfile)="addedFileVariantZip($event)" id="variantUploadButton" (removedfile)="removedFileVariantZip()" (error)="onUploadError($event)"
-        (success)="onUploadSuccess($event)">
-        <div class="dz-message" data-dz-message>
-          <!-- start bdd tests -->
-          <input style="display: none" type="file" id="variant" name="variant" accept=".zip" (addedfile)="addedFileVariantZip($event)">
-          <!-- end bdd tests -->
-          <span *ngIf="analysisIdValid">
-            Click or drop Variant ZIP file here
-          </span>
-          <span *ngIf="!analysisIdValid">
-            Enter a valid Analysis ID to add Variant ZIP file
-          </span>
-        </div>
-      </div>
+      <input type="file" accept=".zip" value="" [ngModel]="variantZipFile" (change)="fileSelectedVariantZip($event.target.files[0])"
+        id="variantUploadButton" [ngClass]="{true:'disable-div'}[!analysisIdValid]">
     </div>
     <div class="col-md-4 form-group has-feedback" [ngClass]="{true:'has-success',false:'has-error'}[hasDnaBamFile]">
       <label class="control-label">DNA BAM File</label>
-      <div #dnaBamFileDirective class="form-control" [ngClass]="{true:'disable-div'}[!analysisIdValid]" [dropzone]="dzConfigDnaBam"
-        (addedfile)="addedFileDnaBam($event)" id="dnaUploadButton" (removedfile)="removedFileDnaBam()" (error)="onUploadError($event)"
-        (success)="onUploadSuccess($event)">
-        <div class="dz-message" data-dz-message>
-          <!-- start bdd tests -->
-          <input style="display: none" type="file" id="dna" name="dna" accept=".bam" (addedfile)="addedFileDnaBam($event)">
-          <!-- end bdd tests -->
-          <span *ngIf="analysisIdValid">
-            Click or drop DNA BAM file here
-          </span>
-          <span *ngIf="!analysisIdValid">
-            Enter a valid Analysis ID to add DNA BAM file
-          </span>
-        </div>
-      </div>
+      <input type="file" accept=".zip" value="" [ngModel]="dnaBamFile" (change)="fileSelectedDnaBam($event.target.files[0])" id="dnaUploadButton"
+        [ngClass]="{true:'disable-div'}[!analysisIdValid]">
+      <!-- .bam -->
     </div>
     <div class="col-md-4 form-group has-feedback" [ngClass]="{true:'has-success',false:'has-error'}[hasCdnaBamFile]">
       <label class="control-label">cDNA BAM File</label>
-      <div #cdnaBamFileDirective class="form-control" [ngClass]="{true:'disable-div'}[!analysisIdValid]" [dropzone]="dzConfigCdnaBam"
-        (addedfile)="addedFileCdnaBam($event)" id="cdnaUploadButton" (removedfile)="removedFileCdnaBam()" (error)="onUploadError($event)"
-        (success)="onUploadSuccess($event)">
-        <div class="dz-message" data-dz-message>
-          <!-- start bdd tests -->
-          <input style="display: none" type="file" id="cdna" name="cdna" accept=".bam" (addedfile)="addedFileCdnaBam($event)">
-          <!-- end bdd tests -->
-          <span *ngIf="analysisIdValid">
-            Click or drop cDNA BAM file here
-          </span>
-          <span *ngIf="!analysisIdValid">
-            Enter a valid Analysis ID to add cDNA BAM file
-          </span>
-        </div>
-      </div>
+      <input type="file" accept=".zip" value="" [ngModel]="cdnaBamFile" (change)="fileSelectedCdnaBam($event.target.files[0])"
+        id="cdnaUploadButton" [ngClass]="{true:'disable-div'}[!analysisIdValid]">
+      <!-- .bam -->
     </div>
   </div>
 </div>
