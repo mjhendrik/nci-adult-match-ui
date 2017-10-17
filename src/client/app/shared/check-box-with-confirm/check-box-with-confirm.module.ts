@@ -1,19 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 
 import { CheckBoxWithConfirmComponent } from './check-box-with-confirm.component';
-import { PipesModule } from '../pipes/pipes.module';
-import { ModalDialogWithCommentsComponent } from './modal-dialog-with-comments.component';
+import { ModalDialogWithCommentsModule } from '../modal-dialog-with-comments/modal-dialog-with-comments.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
-    PipesModule
+    ModalDialogWithCommentsModule
   ],
-  declarations: [CheckBoxWithConfirmComponent, ModalDialogWithCommentsComponent],
+  declarations: [CheckBoxWithConfirmComponent],
   exports: [CheckBoxWithConfirmComponent]
 })
 export class CheckBoxWithConfirmModule { }
-

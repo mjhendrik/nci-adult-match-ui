@@ -44,7 +44,7 @@ import { ErrorHandlingService } from './shared/error-handling/error-handling.ser
 import { ToastrService } from './shared/error-handling/toastr.service';
 import { ModalModule } from 'ngx-bootstrap';
 import { FileUploadContentComponent } from './patient/file-upload/file-upload-content.component';
-import { ModalDialogWithCommentsComponent } from './shared/check-box-with-confirm/modal-dialog-with-comments.component';
+import { ModalDialogWithCommentsComponent } from './shared/modal-dialog-with-comments/modal-dialog-with-comments.component';
 
 @NgModule({
   imports: [
