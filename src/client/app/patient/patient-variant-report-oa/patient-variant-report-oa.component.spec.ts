@@ -92,7 +92,7 @@ export function main() {
     //
     //         expect(fixture.componentInstance.route).toBeDefined();
     //
-    //         console.log("fixture.componentInstance.route - " + JSON.stringify(fixture.componentInstance.route))
+    //         console.log('fixture.componentInstance.route - ' + JSON.stringify(fixture.componentInstance.route))
     //
     //
     //         // expect(fixture.componentInstance.roles).toEqual([ 'ADMIN' ]);
@@ -119,7 +119,7 @@ export function main() {
       fixture.detectChanges();
       de = fixture.debugElement.query(By.css('.ut-outside-msn'));
       el = de.nativeElement;
-      expect(el.textContent).toEqual(component.outsideData.variantReport.molecularSequenceNumber);
+      expect(el.textContent).toEqual(component.outsideData.analysisId);
     });
 
     xit('should call downloadPatientFile when download is called', () => {
@@ -134,7 +134,7 @@ export function main() {
 
 class MockFileUploadService {
   downloadPatientFile(): Observable<any> {
-    return Observable.of("Psn","File");
+    return Observable.of('Psn', 'File');
   }
 }
 
