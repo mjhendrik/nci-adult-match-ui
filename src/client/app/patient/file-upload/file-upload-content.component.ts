@@ -150,6 +150,12 @@ export class FileUploadContentComponent implements OnInit {
       );
   }
 
+  messageAfterUpload(uploaded: boolean): void {
+    this.api.messageAfterUpload(this.msn, this.analysisId)
+      .subscribe(itemList => {
+      });
+  }
+
   addedFileVariantZip(evt: any): void {
     this.variantZipFile = evt;
     this.hasVariantZipFile = true;
@@ -188,9 +194,13 @@ export class FileUploadContentComponent implements OnInit {
 
   onUploadSuccess(evt: any): void {
     console.info(evt);
+    console.log('success');
+    this.messageAfterUpload(true);
   }
 
   onUploadError(evt: any): void {
     console.error(evt);
+    console.log('failure');
+    this.messageAfterUpload(false);
   }
 }
