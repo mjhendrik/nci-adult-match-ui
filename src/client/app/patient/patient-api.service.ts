@@ -125,14 +125,18 @@ export class PatientApiService extends ApiService {
       .catch(this.handleError);
   }
 
-  confirmVariant(psn: string, bsn: string, analysisId: string, variantId: string): Observable<VariantReportStatus> {
-    return this.http.patch(`${Config.API.PATIENT}/patients/${psn}/biopsies/${bsn}/variant_reports/${analysisId}/variants/${variantId}`, { })
-      .map((res: Response) => res)
-      .catch(this.handleError);
-  }
+  updateVariant(psn: string, bsn: string, analysisId: string, variantId: string, confirmed: boolean, comment: string): Observable<VariantReportStatus> {
 
-  rejectVariant(psn: string, bsn: string, analysisId: string, variantId: string): Observable<VariantReportStatus> {
-    return this.http.patch(`${Config.API.PATIENT}/patients/${psn}/biopsies/${bsn}/variant_reports/${analysisId}/variants/${variantId}`, { })
+    const variantPatch = {
+      'patientSequenceNumber': psn,
+      'biopsySequenceNumber': bsn,
+      'analysisId': analysisId,
+      'variantId': variantId,
+      'confirmed': confirmed,
+      'comment': comment
+    };
+
+    return this.http.patch(`${Config.API.PATIENT}/patients/${psn}/biopsies/${bsn}/variant_reports/${analysisId}/variants/${variantId}`, variantPatch)
       .map((res: Response) => res)
       .catch(this.handleError);
   }

@@ -76,7 +76,15 @@ export class PatientVariantReportComponent implements OnInit, VariantReportData 
 
   onVariantConfirmed(item: ConfirmableItem) {
     console.info('Confirming variant: ' + JSON.stringify(item));
-    this.patientApi.confirmVariant(this.psn, this.bsn, this.analysisId, item.id).subscribe(
+
+    this.patientApi.updateVariant(
+      this.psn,
+      this.bsn,
+      this.analysisId,
+      (item as any).metadata._id,
+      item.confirmed,
+      item.comment
+    ).subscribe(
       (x: any) => { this.transformer.updateVariantStatus(this, x); }
     );
   }

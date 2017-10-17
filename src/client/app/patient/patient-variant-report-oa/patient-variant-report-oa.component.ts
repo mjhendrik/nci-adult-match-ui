@@ -96,13 +96,23 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, Varian
   }
 
   onVariantConfirmed(reportData: any, item: ConfirmableItem) {
+    console.info('Confirming variant: ' + JSON.stringify(item));
+
     console.info('biopsySequenceNumber: ' + reportData.biopsySequenceNumber);
     console.info('analysisId: ' + reportData.analysisId);
     console.info('id: ' + (item as any).metadata._id);
     console.info('comment: ' + item.comment);
+    console.info('confirmed: ' + item.confirmed);
 
-    // this.patientApi.confirmVariant(this.psn, biopsySequenceNumber, reportData.analysisId, item.id).subscribe(
-    //   (x: any) => { this.transformer.updateVariantStatus(reportData.variantReport, x); }
-    // );
+    this.patientApi.updateVariant(
+      this.psn,
+      reportData.biopsySequenceNumber,
+      reportData.analysisId,
+      (item as any).metadata._id,
+      item.confirmed,
+      item.comment
+    ).subscribe(
+      (x: any) => { this.transformer.updateVariantStatus(reportData.variantReport, x); }
+    );
   }
 }
