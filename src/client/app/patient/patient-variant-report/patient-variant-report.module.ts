@@ -19,7 +19,11 @@ export interface VariantReportData {
   analysisId: string;
   patient: any;
   assays: any[];
-  variantReport: any;
+  variantReport: {
+    variantReportStatus: string;
+    comments: string;
+    statusUser: string;
+  };
   assignmentReport: any;
   assignmentHistory: any;
   parsed_vcf_genes: any;

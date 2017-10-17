@@ -63,21 +63,21 @@ export class PatientVariantReportComponent implements OnInit, VariantReportData 
   confirmReport(): void {
     console.info('Confirming variant report: ' + this.analysisId);
     this.patientApi.confirmVariantReport(this.psn, this.bsn, this.analysisId).subscribe(
-      (x: any) => { /*this.transformer.updateOutsidePatientReport(this, x);*/ }
+      (x: any) => { this.transformer.updateVariantReportStatus(this, x); }
     );
   }
 
   rejectReport(): void {
     console.info('Rejecting variant report: ' + this.analysisId);
     this.patientApi.rejectVariantReport(this.psn, this.bsn, this.analysisId).subscribe(
-      (x: any) => { /*this.transformer.updateOutsidePatientReport(this, x);*/ }
+      (x: any) => { this.transformer.updateVariantReportStatus(this, x); }
     );
   }
 
   onVariantConfirmed(item: ConfirmableItem) {
     console.info('Confirming variant: ' + JSON.stringify(item));
     this.patientApi.confirmVariant(this.psn, this.bsn, this.analysisId, item.id).subscribe(
-      (x: any) => { /*this.transformer.updateVariant(item, x);*/ }
+      (x: any) => { this.transformer.updateVariantStatus(this, x); }
     );
   }
 }

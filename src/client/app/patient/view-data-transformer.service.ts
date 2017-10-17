@@ -4,6 +4,8 @@ import { AssignmentReasonSection } from './assignment-reason-table/assignment-re
 import { VariantReportComparisonData } from './patient-variant-report-oa/variant-report-comparison-data';
 import { AssignmentReportData } from './assignment-report/assignment-report.module';
 import { VariantReportComparisonSummary } from './patient-variant-report-oa/variant-report-comparison-summary';
+import { VariantReportStatus } from './variant-report-status';
+import { VariantReportData } from './patient-variant-report/patient-variant-report.module';
 
 const variantTables: Array<string> = [
   'geneFusions',
@@ -102,6 +104,16 @@ export class ViewDataTransformer {
       && transformedReport.matchData.variantReport.variantReportStatus !== 'PENDING';
 
     return transformedReport;
+  }
+
+  updateVariantReportStatus(report: VariantReportData, updatedStatus: VariantReportStatus): void {
+    report.variantReport.variantReportStatus = updatedStatus.status;
+    report.variantReport.comments = updatedStatus.comments;
+    report.variantReport.statusUser = updatedStatus.user;
+  }
+
+  updateVariantStatus(report: VariantReportData, updatedStatus: VariantReportStatus): void {
+    //TODO: complete this
   }
 
   updateOutsidePatientReport(report: VariantReportComparisonData): void {
