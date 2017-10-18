@@ -4,6 +4,19 @@ import { FormsModule } from '@angular/forms';
 
 import { ModalDialogWithCommentsComponent } from './modal-dialog-with-comments.component';
 
+export class DialogResults {
+  success: boolean;
+  comment: string;
+
+  static fromString(value: string): DialogResults {
+    return JSON.parse(value) as DialogResults;
+  }
+
+  static toString(value: DialogResults): string {
+    return JSON.stringify(value);
+  }
+}
+
 @NgModule({
   imports: [
     CommonModule,
@@ -13,4 +26,3 @@ import { ModalDialogWithCommentsComponent } from './modal-dialog-with-comments.c
   exports: [ModalDialogWithCommentsComponent]
 })
 export class ModalDialogWithCommentsModule { }
-

@@ -8,6 +8,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 
 import { ModalDialogWithCommentsComponent } from './../modal-dialog-with-comments/modal-dialog-with-comments.component';
+import { DialogResults } from '../modal-dialog-with-comments/modal-dialog-with-comments.module';
 
 export interface ConfirmableItem {
   confirmed: boolean;
@@ -49,9 +50,12 @@ export class CheckBoxWithConfirmComponent {
       return;
     }
 
-    this.subscription = this.modalService.onHidden.subscribe((comments: string) => {
-      console.log('comments = ' + comments);
-      this.toggle(comments);
+    this.subscription = this.modalService.onHidden.subscribe((results: string) => {
+      const modalResults = DialogResults.fromString(results);
+      if (modalResults.success) {
+        console.log('comments = ' + modalResults.comment);
+        this.toggle(modalResults.comment);
+      }
       this.unsubscribe();
     });
 
