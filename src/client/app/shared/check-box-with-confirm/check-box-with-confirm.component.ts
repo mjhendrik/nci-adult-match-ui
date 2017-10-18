@@ -53,7 +53,6 @@ export class CheckBoxWithConfirmComponent {
     this.dialogSubscription = this.modalService.onHidden.subscribe((results: string) => {
       const modalResults = DialogResults.fromString(results);
       if (modalResults.success) {
-        console.log('comments = ' + modalResults.comment);
         this.toggle(modalResults.comment);
       }
       this.unsubscribe();

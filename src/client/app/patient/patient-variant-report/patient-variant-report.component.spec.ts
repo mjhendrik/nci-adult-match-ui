@@ -12,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BsModalService } from 'ngx-bootstrap';
 
 import { DirectivesModule } from './../../shared/directives/directives.module';
 import { PipesModule } from './../../shared/pipes/pipes.module';
@@ -25,6 +26,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { PatientApiServiceStub, PatientApiServiceMock } from '../testing/patient-api-service-stub';
 import { ActivatedRouteStub } from '../testing/activated-route-stub';
 import { UtilsModule } from '../../shared/utils/utils.module';
+import { BsModalServiceStub } from '../testing/bs-modal.service-stub';
 
 export function main() {
   describe('PatientVariantReportComponent (templateUrl)', () => {
@@ -59,6 +61,7 @@ export function main() {
         providers: [
           { provide: ActivatedRoute, useValue: activatedRouteStub },
           { provide: PatientApiService, useClass: PatientApiServiceMock },
+          { provide: BsModalService, useClass: BsModalServiceStub },
           ChangeDetectorRef,
           ViewDataTransformer
         ]
