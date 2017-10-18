@@ -130,15 +130,11 @@ export class PatientApiService extends ApiService {
   updateVariant(psn: string, bsn: string, analysisId: string, variantId: string, confirmed: boolean, comment: string): Observable<VariantReportStatus> {
 
     const patch = {
-      'patientSequenceNumber': psn,
-      'biopsySequenceNumber': bsn,
-      'analysisId': analysisId,
-      'variantId': variantId,
-      'confirmed': confirmed,
+      'status': confirmed ? 'CONFIRMED' : 'REJECTED',
       'comment': comment
     };
 
-    return this.http.patch(`${Config.API.PATIENT}/patients/${psn}/biopsies/${bsn}/variant_reports/${analysisId}/variants/${variantId}`, patch)
+    return this.http.patch(`${Config.API.PATIENT}/patient/${psn}/biopsy/${bsn}/variant_reports/${analysisId}/variants/${variantId}`, patch)
       .map((res: Response) => res)
       .catch(this.handleError);
   }
