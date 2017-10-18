@@ -45,6 +45,7 @@ import { ToastrService } from './shared/error-handling/toastr.service';
 import { ModalModule } from 'ngx-bootstrap';
 import { FileUploadContentComponent } from './patient/file-upload/file-upload-content.component';
 import { ModalDialogWithCommentsComponent } from './shared/modal-dialogs/modal-dialog-with-comments.component';
+import { ModalDialogConfirmationComponent } from './shared/modal-dialogs/modal-dialog-confirmation.component';
 
 @NgModule({
   imports: [
@@ -98,6 +99,10 @@ import { ModalDialogWithCommentsComponent } from './shared/modal-dialogs/modal-d
     {provide: ErrorHandler, useClass: ErrorHandlingService}
   ],
   bootstrap: [AppComponent],
-  entryComponents: [FileUploadContentComponent, ModalDialogWithCommentsComponent]
+  entryComponents: [
+    FileUploadContentComponent,
+    ModalDialogWithCommentsComponent,
+    ModalDialogConfirmationComponent
+  ]
 })
 export class AppModule { }

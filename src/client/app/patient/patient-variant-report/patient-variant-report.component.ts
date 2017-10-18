@@ -13,6 +13,7 @@ import { ScrollService } from '../../shared/utils/scroll.to.service';
 import { ConfirmableItem } from '../../shared/check-box-with-confirm/check-box-with-confirm.component';
 import { ViewDataTransformer } from '../view-data-transformer.service';
 import { DialogResults } from '../../shared/modal-dialogs/modal-dialog-results';
+import { ModalDialogConfirmationComponent } from '../../shared/modal-dialogs/modal-dialog-confirmation.component';
 
 /**
  * PatientVariantReportComponent.
@@ -66,16 +67,36 @@ export class PatientVariantReportComponent implements OnInit, VariantReportData 
   }
 
   confirmReport(): void {
-    console.info('Confirming variant report: ' + this.analysisId);
-    this.patientApi.updateVariantReport(this.psn, this.bsn, this.analysisId, true, null).subscribe(
-      (x: any) => { this.transformer.updateVariantReportStatus(this, x); }
+    const action = () => {
+      console.info('Confirming variant report: ' + this.analysisId);
+      this.patientApi.updateVariantReport(this.psn, this.bsn, this.analysisId, true, null).subscribe(
+        (x: any) => { this.transformer.updateVariantReportStatus(this, x); }
+      );
+    };
+
+    this.showConfirmation(
+      'Variant Report Confirmation',
+      `Are you sure you want to confirm Variant Report ${this.analysisId}?`,
+      'Confirm',
+      'Cancel',
+      action
     );
   }
 
   rejectReport(): void {
-    console.info('Rejecting variant report: ' + this.analysisId);
-    this.patientApi.updateVariantReport(this.psn, this.bsn, this.analysisId, false, null).subscribe(
-      (x: any) => { this.transformer.updateVariantReportStatus(this, x); }
+    const action = () => {
+      console.info('Rejecting variant report: ' + this.analysisId);
+      this.patientApi.updateVariantReport(this.psn, this.bsn, this.analysisId, false, null).subscribe(
+        (x: any) => { this.transformer.updateVariantReportStatus(this, x); }
+      );
+    };
+
+    this.showConfirmation(
+      'Variant Report Rejection',
+      `Are you sure you want to reject Variant Report ${this.analysisId}?`,
+      'Reject',
+      'Cancel',
+      action
     );
   }
 
@@ -94,21 +115,26 @@ export class PatientVariantReportComponent implements OnInit, VariantReportData 
     );
   }
 
-  confirm() {
+  private showConfirmation(
+    confirmTitle: string,
+    confirmMessage: string,
+    okButtonText: string,
+    cancelButtonText: string,
+    action: () => void) {
     this.dialogSubscription = this.modalService.onHidden.subscribe((results: string) => {
       const modalResults = DialogResults.fromString(results);
       if (modalResults.success) {
         console.log('comments = ' + modalResults.comment);
-        // this.toggle(modalResults.comment);
+        action();
       }
       this.unsubscribe();
     });
 
-    // this.modalRef = this.modalService.show(ModalDialogWithCommentsComponent);
-    // this.modalRef.content.comment = this.item.comment;
-    // this.modalRef.content.title = this.confirmTitle;
-    // this.modalRef.content.message = this.confirmMessage;
-    // this.modalRef.content.isEnabled = this.isEnabled;
+    this.modalRef = this.modalService.show(ModalDialogConfirmationComponent);
+    this.modalRef.content.title = confirmTitle;
+    this.modalRef.content.message = confirmMessage;
+    this.modalRef.content.okButtonText = okButtonText;
+    this.modalRef.content.cancelButtonText = cancelButtonText;
   }
 
   private unsubscribe() {

@@ -36,14 +36,6 @@ export class CheckBoxWithConfirmComponent {
 
   constructor(private modalService: BsModalService) { }
 
-  toggle(comment: string) {
-    this.item.confirmed = !this.item.confirmed;
-    this.item.comment = comment;
-    if (this.onItemConfirmed) {
-      this.onItemConfirmed.emit(this.item);
-    }
-  }
-
   confirm() {
     if (this.promptOnlyIf !== null && this.item.confirmed !== this.promptOnlyIf) {
       this.toggle(null);
@@ -63,6 +55,14 @@ export class CheckBoxWithConfirmComponent {
     this.modalRef.content.title = this.confirmTitle;
     this.modalRef.content.message = this.confirmMessage;
     this.modalRef.content.isEnabled = this.isEnabled;
+  }
+
+  private toggle(comment: string) {
+    this.item.confirmed = !this.item.confirmed;
+    this.item.comment = comment;
+    if (this.onItemConfirmed) {
+      this.onItemConfirmed.emit(this.item);
+    }
   }
 
   private unsubscribe() {
