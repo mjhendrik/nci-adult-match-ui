@@ -16,19 +16,16 @@
   <div class="row">
     <div class="col-md-4 form-group has-feedback" [ngClass]="{true:'has-success',false:'has-error'}[hasVariantZipFile]">
       <label class="control-label">Variant ZIP File</label>
-      <input type="file" accept=".zip" value="" [ngModel]="variantZipFile" (change)="fileSelectedVariantZip($event.target.files[0])"
-        id="variantUploadButton" [ngClass]="{true:'disable-div'}[!analysisIdValid]">
+      <input type="file" accept=".zip" (change)="fileSelectedVariantZip($event.target.files[0])" id="variantUploadButton" [ngClass]="{true:'disable-div'}[!analysisIdValid]">
     </div>
     <div class="col-md-4 form-group has-feedback" [ngClass]="{true:'has-success',false:'has-error'}[hasDnaBamFile]">
       <label class="control-label">DNA BAM File</label>
-      <input type="file" accept=".zip" value="" [ngModel]="dnaBamFile" (change)="fileSelectedDnaBam($event.target.files[0])" id="dnaUploadButton"
-        [ngClass]="{true:'disable-div'}[!analysisIdValid]">
+      <input type="file" accept=".zip" (change)="fileSelectedDnaBam($event.target.files[0])" id="dnaUploadButton" [ngClass]="{true:'disable-div'}[!analysisIdValid]">
       <!-- .bam -->
     </div>
     <div class="col-md-4 form-group has-feedback" [ngClass]="{true:'has-success',false:'has-error'}[hasCdnaBamFile]">
       <label class="control-label">cDNA BAM File</label>
-      <input type="file" accept=".zip" value="" [ngModel]="cdnaBamFile" (change)="fileSelectedCdnaBam($event.target.files[0])"
-        id="cdnaUploadButton" [ngClass]="{true:'disable-div'}[!analysisIdValid]">
+      <input type="file" accept=".zip" (change)="fileSelectedCdnaBam($event.target.files[0])" id="cdnaUploadButton" [ngClass]="{true:'disable-div'}[!analysisIdValid]">
       <!-- .bam -->
     </div>
   </div>
