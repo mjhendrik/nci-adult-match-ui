@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
-import { DialogResults } from './modal-dialog-with-comments.module';
+import { DialogResults } from './modal-dialog-results';
 
 @Component({
   moduleId: module.id,
@@ -16,16 +16,16 @@ export class ModalDialogWithCommentsComponent {
   constructor(public bsModalRef: BsModalRef, private modalService: BsModalService) { }
 
   ok() {
-    this.modalService.setDismissReason(this.constructResults(true, this.comment));
+    this.modalService.setDismissReason(
+      DialogResults.toString({ success: true, comment: this.comment })
+    );
     this.bsModalRef.hide();
   }
 
   cancel() {
-    this.modalService.setDismissReason(this.constructResults(false));
+    this.modalService.setDismissReason(
+      DialogResults.toString({ success: false, comment: null })
+    );
     this.bsModalRef.hide();
-  }
-
-  private constructResults(ok: boolean, comment?: string): string {
-    return DialogResults.toString({ success: ok, comment: comment });
   }
 }
