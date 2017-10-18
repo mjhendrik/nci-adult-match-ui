@@ -37,9 +37,9 @@ export class FileUploadContentComponent implements OnInit {
   dnaBamFile: any;
   cdnaBamFile: any;
 
-  variantZipFileUrl: any;
-  dnaBamFileUrl: any;
-  cdnaBamFileUrl: any;
+  variantZipFileUrl: string;
+  dnaBamFileUrl: string;
+  cdnaBamFileUrl: string;
 
   @ViewChild('input') inputElRef: ElementRef;
 
