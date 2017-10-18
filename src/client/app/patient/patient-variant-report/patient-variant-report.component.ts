@@ -3,11 +3,11 @@ import {
   OnInit
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { routerTransition } from './../../shared/router.animations';
-import {
-  PatientApiService
-} from '../patient-api.service';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { Subscription } from 'rxjs/Subscription';
 
+import { routerTransition } from './../../shared/router.animations';
+import { PatientApiService } from '../patient-api.service';
 import { VariantReportData } from './patient-variant-report.module';
 import { ScrollService } from '../../shared/utils/scroll.to.service';
 import { ConfirmableItem } from '../../shared/check-box-with-confirm/check-box-with-confirm.component';
@@ -44,13 +44,17 @@ export class PatientVariantReportComponent implements OnInit, VariantReportData 
   assays: any[] = [];
   isEditable: boolean;
 
+  public modalRef: BsModalRef;
+  public dialogSubscription: Subscription;
+
   constructor(
     private route: ActivatedRoute,
     private patientApi: PatientApiService,
     private scrollService: ScrollService,
-    private transformer: ViewDataTransformer) {
+    private transformer: ViewDataTransformer,
+    private modalService: BsModalService) {
       this.scrollTo = scrollService.scrollToElement;
-    }
+  }
 
   ngOnInit() {
     Object.assign(this, this.route.snapshot.data['data']);
@@ -87,5 +91,30 @@ export class PatientVariantReportComponent implements OnInit, VariantReportData 
     ).subscribe(
       (x: any) => { this.transformer.updateVariantStatus(this, x); }
     );
+  }
+
+  confirm() {
+    this.dialogSubscription = this.modalService.onHidden.subscribe((results: string) => {
+      const modalResults = DialogResults.fromString(results);
+      if (modalResults.success) {
+        console.log('comments = ' + modalResults.comment);
+        this.toggle(modalResults.comment);
+      }
+      this.unsubscribe();
+    });
+
+    this.modalRef = this.modalService.show(ModalDialogWithCommentsComponent);
+    this.modalRef.content.comment = this.item.comment;
+    this.modalRef.content.title = this.confirmTitle;
+    this.modalRef.content.message = this.confirmMessage;
+    this.modalRef.content.isEnabled = this.isEnabled;
+  }
+
+  private unsubscribe() {
+    if (!this.dialogSubscription) {
+      return;
+    }
+    this.dialogSubscription.unsubscribe();
+    this.dialogSubscription = null;
   }
 }

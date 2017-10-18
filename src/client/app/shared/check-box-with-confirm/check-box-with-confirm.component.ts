@@ -24,7 +24,7 @@ export interface ConfirmableItem {
 })
 export class CheckBoxWithConfirmComponent {
   public modalRef: BsModalRef;
-  public subscription: Subscription;
+  public dialogSubscription: Subscription;
 
   @Input() confirmTitle: string;
   @Input() confirmMessage: string;
@@ -50,7 +50,7 @@ export class CheckBoxWithConfirmComponent {
       return;
     }
 
-    this.subscription = this.modalService.onHidden.subscribe((results: string) => {
+    this.dialogSubscription = this.modalService.onHidden.subscribe((results: string) => {
       const modalResults = DialogResults.fromString(results);
       if (modalResults.success) {
         console.log('comments = ' + modalResults.comment);
@@ -66,11 +66,11 @@ export class CheckBoxWithConfirmComponent {
     this.modalRef.content.isEnabled = this.isEnabled;
   }
 
-  public unsubscribe() {
-    if (!this.subscription) {
+  private unsubscribe() {
+    if (!this.dialogSubscription) {
       return;
     }
-    this.subscription.unsubscribe();
-    this.subscription = null;
+    this.dialogSubscription.unsubscribe();
+    this.dialogSubscription = null;
   }
 }
