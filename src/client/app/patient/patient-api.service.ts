@@ -122,7 +122,7 @@ export class PatientApiService extends ApiService {
       'comment': comment
     };
 
-    return this.http.patch(`${Config.API.PATIENT}/patients/${psn}/biopsies/${bsn}/variant_reports/${analysisId}`, patch)
+    return this.http.patch(`${Config.API.MESSAGE}/patients/${psn}/biopsies/${bsn}/variant_reports/${analysisId}`, patch)
       .map((res: Response) => res)
       .catch(this.handleError);
   }
@@ -134,7 +134,7 @@ export class PatientApiService extends ApiService {
       'comment': comment
     };
 
-    return this.http.patch(`${Config.API.PATIENT}/patient/${psn}/biopsy/${bsn}/variant_reports/${analysisId}/variants/${variantId}`, patch)
+    return this.http.patch(`${Config.API.MESSAGE}/patient/${psn}/biopsy/${bsn}/variant_reports/${analysisId}/variants/${variantId}`, patch)
       .map((res: Response) => res)
       .catch(this.handleError);
   }
