@@ -130,21 +130,15 @@ export class FileUploadContentComponent implements OnInit {
         this.variantZipFileUrl = data[0];
         this.dnaBamFileUrl = data[1];
         this.cdnaBamFileUrl = data[2];
-        // input type file code
+        this.uploadFile(this.variantZipFileUrl, this.variantZipFile);
+        this.uploadFile(this.dnaBamFileUrl, this.dnaBamFile);
+        this.uploadFile(this.cdnaBamFileUrl, this.cdnaBamFile);
       });
   }
 
-  // downloadDnaBam(): void {
-  //   this.cliaApi.downloadCliaDnaBam(this.molecular_id)
-  //     .subscribe((itemList: any) => {
-  //       let link = document.createElement('a');
-  //       // link.download = name;
-  //       link.href = itemList.s3_download_file_url;
-  //       document.body.appendChild(link);
-  //       link.click();
-  //       document.body.removeChild(link);
-  //     });
-  // };
+  uploadFile(url: string, file: any): void {
+    this.api.uploadFile(url, file);
+  }
 
   notifyAfterUpload(uploaded: boolean): void {
 

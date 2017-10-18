@@ -79,8 +79,13 @@ export class AliquotApiService extends ApiService {
           this.extractData(data[1]),
           this.extractData(data[2])
         ] as [string, string, string];
-      }
-      );
+      });
+  }
+
+  uploadFile(url: string, file: any) {
+    return this.http.post(url, file) // { Key: file.name, Body: file }
+      .map(this.extractData)
+      .catch(this.handleError);
   }
 
   notifyAfterUpload(body: any) {
