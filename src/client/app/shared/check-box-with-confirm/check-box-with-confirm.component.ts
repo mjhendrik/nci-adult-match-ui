@@ -7,8 +7,8 @@ import {
 import { Subscription } from 'rxjs/Subscription';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 
-import { ModalDialogWithCommentsComponent } from './../modal-dialog-with-comments/modal-dialog-with-comments.component';
-import { DialogResults } from '../modal-dialog-with-comments/modal-dialog-results';
+import { ModalDialogWithCommentsComponent } from './../modal-dialogs/modal-dialog-with-comments.component';
+import { DialogResults } from '../modal-dialogs/modal-dialog-results';
 
 export interface ConfirmableItem {
   confirmed: boolean;

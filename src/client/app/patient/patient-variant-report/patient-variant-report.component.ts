@@ -12,8 +12,7 @@ import { VariantReportData } from './patient-variant-report.module';
 import { ScrollService } from '../../shared/utils/scroll.to.service';
 import { ConfirmableItem } from '../../shared/check-box-with-confirm/check-box-with-confirm.component';
 import { ViewDataTransformer } from '../view-data-transformer.service';
-import { DialogResults } from '../../shared/modal-dialog-with-comments/modal-dialog-results';
-import { ModalDialogWithCommentsComponent } from '../../shared/modal-dialog-with-comments/modal-dialog-with-comments.component';
+import { DialogResults } from '../../shared/modal-dialogs/modal-dialog-results';
 
 /**
  * PatientVariantReportComponent.

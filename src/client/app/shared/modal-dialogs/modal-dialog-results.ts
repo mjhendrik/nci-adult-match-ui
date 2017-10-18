@@ -1,6 +1,6 @@
 export class DialogResults {
     success: boolean;
-    comment: string;
+    comment?: string;
 
     static fromString(value: string): DialogResults {
         return JSON.parse(value) as DialogResults;

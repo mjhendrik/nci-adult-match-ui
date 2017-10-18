@@ -24,7 +24,7 @@ export class ModalDialogWithCommentsComponent {
 
   cancel() {
     this.modalService.setDismissReason(
-      DialogResults.toString({ success: false, comment: null })
+      DialogResults.toString({ success: false })
     );
     this.bsModalRef.hide();
   }

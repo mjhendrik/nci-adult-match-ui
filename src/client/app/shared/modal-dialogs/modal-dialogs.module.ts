@@ -12,4 +12,4 @@ import { ModalDialogWithCommentsComponent } from './modal-dialog-with-comments.c
   declarations: [ModalDialogWithCommentsComponent],
   exports: [ModalDialogWithCommentsComponent]
 })
-export class ModalDialogWithCommentsModule { }
+export class ModalDialogsModule { }

@@ -9,8 +9,6 @@ import {
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { PipesModule } from './../../shared/pipes/pipes.module';
-import { SharedModule } from '../../shared/shared.module';
 import { CheckBoxWithConfirmComponent } from './check-box-with-confirm.component';
 
 @Component({

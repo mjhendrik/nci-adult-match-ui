@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CheckBoxWithConfirmComponent } from './check-box-with-confirm.component';
-import { ModalDialogWithCommentsModule } from '../modal-dialog-with-comments/modal-dialog-with-comments.module';
+import { ModalDialogsModule } from '../modal-dialogs/modal-dialogs.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    ModalDialogWithCommentsModule
+    ModalDialogsModule
   ],
   declarations: [CheckBoxWithConfirmComponent],
   exports: [CheckBoxWithConfirmComponent]

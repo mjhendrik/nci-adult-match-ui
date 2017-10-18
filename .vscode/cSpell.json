@@ -10,6 +10,7 @@
         "cdref",
         "cellularity",
         "Clia",
+        "datatables",
         "Filesize",
         "indels",
         "loggly",
