@@ -12,6 +12,8 @@ import { VariantReportData } from './patient-variant-report.module';
 import { ScrollService } from '../../shared/utils/scroll.to.service';
 import { ConfirmableItem } from '../../shared/check-box-with-confirm/check-box-with-confirm.component';
 import { ViewDataTransformer } from '../view-data-transformer.service';
+import { DialogResults } from '../../shared/modal-dialog-with-comments/modal-dialog-results';
+import { ModalDialogWithCommentsComponent } from '../../shared/modal-dialog-with-comments/modal-dialog-with-comments.component';
 
 /**
  * PatientVariantReportComponent.
@@ -98,16 +100,16 @@ export class PatientVariantReportComponent implements OnInit, VariantReportData 
       const modalResults = DialogResults.fromString(results);
       if (modalResults.success) {
         console.log('comments = ' + modalResults.comment);
-        this.toggle(modalResults.comment);
+        // this.toggle(modalResults.comment);
       }
       this.unsubscribe();
     });
 
-    this.modalRef = this.modalService.show(ModalDialogWithCommentsComponent);
-    this.modalRef.content.comment = this.item.comment;
-    this.modalRef.content.title = this.confirmTitle;
-    this.modalRef.content.message = this.confirmMessage;
-    this.modalRef.content.isEnabled = this.isEnabled;
+    // this.modalRef = this.modalService.show(ModalDialogWithCommentsComponent);
+    // this.modalRef.content.comment = this.item.comment;
+    // this.modalRef.content.title = this.confirmTitle;
+    // this.modalRef.content.message = this.confirmMessage;
+    // this.modalRef.content.isEnabled = this.isEnabled;
   }
 
   private unsubscribe() {
