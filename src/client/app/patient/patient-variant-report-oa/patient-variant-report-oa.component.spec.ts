@@ -74,7 +74,7 @@ export function main() {
 
     }));
 
-    // xit('should work by calling ngonInit',
+    // xit('should work by calling ngOnInit',
     //   async((done: any) => {
     //     let id:string = 'EAY131-F';
     //     TestBed

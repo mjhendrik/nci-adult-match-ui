@@ -84,7 +84,7 @@ export function main() {
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
     });
 
-    it('should work by calling ngonInit',
+    it('should work by calling ngOnInit',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -256,7 +256,7 @@ export function main() {
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
     });
 
-    xit('should work by calling ngonInit',
+    xit('should work by calling ngOnInit',
       async((done: any) => {
         TestBed
           .compileComponents()

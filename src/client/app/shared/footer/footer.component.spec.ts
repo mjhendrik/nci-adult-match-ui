@@ -29,7 +29,7 @@ export function main() {
       });
     });
 
-    it('should work by calling ngonInit -> buildInfo',
+    it('should work by calling ngOnInit -> buildInfo',
       async((done: any) => {
         TestBed
           .compileComponents()

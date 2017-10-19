@@ -13,6 +13,8 @@ import { ScrollService } from '../../shared/utils/scroll.to.service';
 import { ViewDataTransformer } from '../view-data-transformer.service';
 import { ConfirmableItem } from '../../shared/check-box-with-confirm/check-box-with-confirm.component';
 import { VariantReportData } from '../patient-variant-report/patient-variant-report.module';
+import { DialogResults } from '../../shared/modal-dialogs/modal-dialog-results';
+import { ModalDialogConfirmationComponent } from '../../shared/modal-dialogs/modal-dialog-confirmation.component';
 
 /**
  * PatientVariantReportOutsideAssayComponent.

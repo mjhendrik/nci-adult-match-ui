@@ -14,8 +14,8 @@ export function main() {
 
     it('providing an object returns array of key-value objects', () => {
       const items = [ 'someValue1', 'some Value 2' ];
-      const filtertext = ['someValue1'];
-      pipe.transform(items, filtertext);
+      const filterText = ['someValue1'];
+      pipe.transform(items, filterText);
       // expect(pipe.transform(input, null)).toEqual(expected);
     });
   });

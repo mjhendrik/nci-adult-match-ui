@@ -7,7 +7,7 @@ import {
 import { VariantReportSimpleTableSnvIndelsComponent } from './variant-report-simple-table-snv-indels.component';
 
 export function main() {
-  describe('variant-report-simple-table-snv-indels component', () => {
+  xdescribe('variant-report-simple-table-snv-indels component', () => {
     // Setting module for testing
     // Disable old forms
 

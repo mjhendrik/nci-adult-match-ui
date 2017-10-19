@@ -7,7 +7,7 @@ import {
 import { VariantReportSimpleTableCnvComponent } from './variant-report-simple-table-cnv.component';
 
 export function main() {
-  describe('variant-report-simple-table-cnv component', () => {
+  xdescribe('variant-report-simple-table-cnv component', () => {
     // Setting module for testing
     // Disable old forms
 

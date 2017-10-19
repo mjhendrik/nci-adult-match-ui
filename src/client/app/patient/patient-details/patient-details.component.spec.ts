@@ -74,7 +74,7 @@ export function main() {
     }));
 
 
-    xit('should work by calling Patient details ngonInit',
+    xit('should work by calling Patient details ngOnInit',
       async((done: any) => {
         TestBed
           .compileComponents()
