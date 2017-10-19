@@ -113,7 +113,7 @@ export class PatientApiService extends ApiService {
       .catch(this.handleError);
   }
 
-  updateVariantReport(psn: string, bsn: string, analysisId: string, confirmed: boolean, comment: string): Observable<VariantReportStatus> {
+  updateVariantReport(psn: string, bsn: string, analysisId: string, confirmed: boolean): Observable<VariantReportStatus> {
     const patch = {
       'status': confirmed ? 'CONFIRMED' : 'REJECTED'
     };

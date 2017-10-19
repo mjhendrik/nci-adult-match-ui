@@ -69,7 +69,7 @@ export class PatientVariantReportComponent implements OnInit, VariantReportData 
   confirmReport(): void {
     const action = () => {
       console.info('Confirming variant report: ' + this.analysisId);
-      this.patientApi.updateVariantReport(this.psn, this.bsn, this.analysisId, true, null).subscribe(
+      this.patientApi.updateVariantReport(this.psn, this.bsn, this.analysisId, true).subscribe(
         (x: any) => { this.transformer.updateVariantReportStatus(this, x); }
       );
     };
@@ -78,7 +78,7 @@ export class PatientVariantReportComponent implements OnInit, VariantReportData 
       'Variant Report Confirmation',
       `Are you sure you want to confirm Variant Report ${this.analysisId}?`,
       'Confirm',
-      'Cancel',
+      'Don\'t Confirm',
       action
     );
   }
@@ -86,7 +86,7 @@ export class PatientVariantReportComponent implements OnInit, VariantReportData 
   rejectReport(): void {
     const action = () => {
       console.info('Rejecting variant report: ' + this.analysisId);
-      this.patientApi.updateVariantReport(this.psn, this.bsn, this.analysisId, false, null).subscribe(
+      this.patientApi.updateVariantReport(this.psn, this.bsn, this.analysisId, false).subscribe(
         (x: any) => { this.transformer.updateVariantReportStatus(this, x); }
       );
     };
@@ -95,7 +95,7 @@ export class PatientVariantReportComponent implements OnInit, VariantReportData 
       'Variant Report Rejection',
       `Are you sure you want to reject Variant Report ${this.analysisId}?`,
       'Reject',
-      'Cancel',
+      'Don\'t Reject',
       action
     );
   }
