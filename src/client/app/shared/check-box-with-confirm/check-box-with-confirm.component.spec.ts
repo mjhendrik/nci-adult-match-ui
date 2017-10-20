@@ -29,11 +29,11 @@ import { BsModalServiceStub } from '../../patient/testing/bs-modal.service-stub'
 class TestComponent {
   confirmTitle = 'Confirmation Comments';
 
-  @Input() items: ConfirmableItem[] = [{
+  @Input() item: ConfirmableItem = {
     confirmed: false,
     id: 'dummy_id',
     comment: 'dummy_comment'
-  }];
+  };
   @Input() isEditable: boolean;
 
   @Output() onVariantConfirmed: EventEmitter<ConfirmableItem> = new EventEmitter();
@@ -83,13 +83,15 @@ export function main() {
 
     it('should have no confirm-title until manually calling `detectChanges`', () => {
       let a = de.attributes['ng-reflect-confirm-title'];
-      expect(a).not.toBeNull();
+      console.log(a);
+      expect(a).not.toBeDefined();
     });
 
-    xit('should display confirm-title after manually calling `detectChanges`', () => {
+    it('should display confirm-title after manually calling `detectChanges`', () => {
       fixture.detectChanges();
       let a = de.attributes['ng-reflect-confirm-title'];
-      expect(a).not.toBeNull();
+      console.log(a);
+      expect(a).toEqual(hostComponent.confirmTitle);
     });
 
   });
