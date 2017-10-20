@@ -3,7 +3,8 @@ import {
   DebugElement,
   Input,
   Output,
-  EventEmitter
+  EventEmitter,
+  ViewChild
 } from '@angular/core';
 import {
   async,
@@ -17,6 +18,7 @@ import { BsModalService } from 'ngx-bootstrap';
 
 import { CheckBoxWithConfirmComponent, ConfirmableItem } from './check-box-with-confirm.component';
 import { BsModalServiceStub } from '../../patient/testing/bs-modal.service-stub';
+import { DialogResults } from "../modal-dialogs/modal-dialog-results";
 
 @Component({
   selector: 'test-cmp',
@@ -28,6 +30,9 @@ import { BsModalServiceStub } from '../../patient/testing/bs-modal.service-stub'
 })
 class TestComponent {
   confirmTitle = 'Confirmation Comments';
+
+  @ViewChild(CheckBoxWithConfirmComponent)
+  checkBoxWithConfirmComponent: CheckBoxWithConfirmComponent;
 
   @Input() item: ConfirmableItem = {
     confirmed: false,
@@ -51,6 +56,7 @@ export function main() {
     let fixture: ComponentFixture<TestComponent>;
     let de: DebugElement;
     let el: HTMLElement;
+    let modalService = new BsModalServiceStub();
 
     // async beforeEach
     beforeEach(async(() => {
@@ -58,7 +64,7 @@ export function main() {
         imports: [CommonModule],
         declarations: [CheckBoxWithConfirmComponent, TestComponent],
         providers: [
-          { provide: BsModalService, useClass: BsModalServiceStub }
+          { provide: BsModalService, useValue: modalService }
         ]
       }).compileComponents();  // compile template and css
     }));
@@ -77,22 +83,60 @@ export function main() {
 
     it('can instantiate service with "new"', inject([BsModalService], (modalService: BsModalService) => {
       expect(modalService).not.toBeNull('modalService should be provided');
-      let service = new CheckBoxWithConfirmComponent(modalService);
-      expect(service instanceof CheckBoxWithConfirmComponent).toBe(true, 'new service should be ok');
+      let comp = new CheckBoxWithConfirmComponent(modalService);
+      expect(comp instanceof CheckBoxWithConfirmComponent).toBe(true, 'new service should be ok');
     }));
 
     it('should have no confirm-title until manually calling `detectChanges`', () => {
-      let a = de.attributes['ng-reflect-confirm-title'];
-      console.log(a);
-      expect(a).not.toBeDefined();
+      let confirmTitle = de.attributes['ng-reflect-confirm-title'];
+      expect(confirmTitle).not.toBeDefined();
     });
 
     it('should display confirm-title after manually calling `detectChanges`', () => {
       fixture.detectChanges();
-      let a = de.attributes['ng-reflect-confirm-title'];
-      console.log(a);
-      expect(a).toEqual(hostComponent.confirmTitle);
+      let confirmTitle = de.attributes['ng-reflect-confirm-title'];
+      expect(confirmTitle).toEqual(hostComponent.confirmTitle);
     });
 
+    it('should not show dialog when confirming variant', () => {
+      hostComponent.item.confirmed = false;
+
+      fixture.detectChanges();
+
+      const spy = spyOn(modalService, 'show').and.callThrough();
+
+      hostComponent.checkBoxWithConfirmComponent.confirm();
+
+      expect(spy).not.toHaveBeenCalled();
+    });
+
+    it('should not dialog when un-confirming variant', () => {
+      hostComponent.item.confirmed = true;
+
+      fixture.detectChanges();
+
+      const spy = spyOn(modalService, 'show').and.callThrough();
+
+      hostComponent.checkBoxWithConfirmComponent.confirm();
+
+      expect(spy).toHaveBeenCalled();
+    });
+
+    it('should unsubscribe after the dialog is closed', () => {
+      hostComponent.item.confirmed = true;
+
+      fixture.detectChanges();
+
+      const showSpy = spyOn(modalService, 'show').and.callThrough();
+      const unsubscribeSpy = spyOn(
+        hostComponent.checkBoxWithConfirmComponent, 'unsubscribe'
+      ).and.callThrough();
+
+      hostComponent.checkBoxWithConfirmComponent.confirm();
+      modalService.onHidden.next(DialogResults.toString({ success: true }));
+
+      expect(showSpy).toHaveBeenCalled();
+      expect(unsubscribeSpy).toHaveBeenCalled();
+    });
   });
 }

@@ -3,7 +3,8 @@
 // import { ModalBackdropComponent } from './modal-backdrop.component';
 // import { BsModalRef, ModalOptions } from './modal-options.class';
 
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, TemplateRef } from '@angular/core';
+import { BsModalRef } from 'ngx-bootstrap';
 
 export class BsModalServiceStub {
     private clf: any;
@@ -12,7 +13,7 @@ export class BsModalServiceStub {
     // onShown: EventEmitter<any>;
     // onHide: EventEmitter<any>;
     // tslint:disable-next-line:member-ordering
-    onHidden: EventEmitter<any>;
+    onHidden: EventEmitter<any> = new EventEmitter();
     // protected isBodyOverflowing: boolean;
     // protected originalBodyPadding: number;
     // protected scrollbarWidth: number;
@@ -23,7 +24,11 @@ export class BsModalServiceStub {
     // private loaders;
     // constructor(clf: ComponentLoaderFactory);
     // /** Shows a modal */
-    // show(content: string | TemplateRef<any> | any, config?: any): BsModalRef;
+    show(content: string | TemplateRef<any> | any, config?: any): BsModalRef {
+        let modal = new BsModalRef();
+        modal.content = content;
+        return modal;
+    }
     // hide(level: number): void;
     // _showBackdrop(): void;
     // _hideBackdrop(): void;
