@@ -3,11 +3,13 @@
 // import { ModalBackdropComponent } from './modal-backdrop.component';
 // import { BsModalRef, ModalOptions } from './modal-options.class';
 
-import { EventEmitter, TemplateRef } from '@angular/core';
+import { EventEmitter, TemplateRef, Injectable } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap';
 
+@Injectable()
 export class BsModalServiceStub {
     private clf: any;
+    private reason: string;
     // config: ModalOptions;
     // onShow: EventEmitter<any>;
     // onShown: EventEmitter<any>;
@@ -29,13 +31,15 @@ export class BsModalServiceStub {
         modal.content = content;
         return modal;
     }
-    // hide(level: number): void;
+    hide(level: number): void { ; }
     // _showBackdrop(): void;
     // _hideBackdrop(): void;
     // _showModal(content: any): BsModalRef;
     // _hideModal(level: number): void;
     // getModalsCount(): number;
-    // setDismissReason(reason: string): void;
+    setDismissReason(reason: string): void {
+        this.reason = reason;
+    }
     // protected removeBackdrop(): void;
     // setScrollbar(): void;
     // private resetScrollbar();

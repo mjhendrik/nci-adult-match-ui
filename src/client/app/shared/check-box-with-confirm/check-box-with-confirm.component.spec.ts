@@ -18,7 +18,7 @@ import { BsModalService } from 'ngx-bootstrap';
 
 import { CheckBoxWithConfirmComponent, ConfirmableItem } from './check-box-with-confirm.component';
 import { BsModalServiceStub } from '../../patient/testing/bs-modal.service-stub';
-import { DialogResults } from "../modal-dialogs/modal-dialog-results";
+import { DialogResults } from '../modal-dialogs/modal-dialog-results';
 
 @Component({
   selector: 'test-cmp',
@@ -77,11 +77,11 @@ export function main() {
       el = de.nativeElement;
     });
 
-    it('can provide the BsModalServiceStub as BsModalService', inject([BsModalService], (modalService: BsModalServiceStub) => {
-      expect(BsModalService).not.toBeNull('BsModalService should be provided');
+    it('can provide the BsModalServiceStub as BsModalService', inject([BsModalService], (modalService: BsModalService) => {
+      expect(modalService).not.toBeNull('BsModalService should be provided');
     }));
 
-    it('can instantiate service with "new"', inject([BsModalService], (modalService: BsModalService) => {
+    it('can instantiate component with "new"', inject([BsModalService], (modalService: BsModalService) => {
       expect(modalService).not.toBeNull('modalService should be provided');
       let comp = new CheckBoxWithConfirmComponent(modalService);
       expect(comp instanceof CheckBoxWithConfirmComponent).toBe(true, 'new service should be ok');
