@@ -2,7 +2,8 @@
  * Created by hendrikssonm on 6/26/17.
  */
 import {
-  Component,DebugElement
+  Component,
+  DebugElement
 } from '@angular/core';
 import {
   async,
@@ -20,20 +21,35 @@ import { CnvChartDirective } from './cnv-chart.directive.component';
 
 export function main() {
   describe('Cnv chart component', () => {
+    let component: CnvChartDirective;
+    let fixture: ComponentFixture<CnvChartDirective>;
+    let de: DebugElement;
+    let el: HTMLElement;
+
+    let ccwwServiceStub: {
+      CW: { ccww: string }
+    };
 
     beforeEach(() => {
+
       TestBed.configureTestingModule({
         declarations: [CnvChartDirective, nvD3],
         providers: [
           {provide: MockPatientApiService, useClass: MockPatientApiServiceError},
+          {provide: ccwwServiceStub, useClass: MockPatientApiServiceError},
           {provide: MockPatientOptionsService, useClass: MockPatientOptionsServiceError},
           {provide: PatientApiService, useClass: PatientApiServiceMock },
         ],
       });
+      // spyOn(localStorage, 'ViewChild("ccww")').and.returnValue(JSON.stringify({"ccww":{}}));
     });
 
-    it('should work by calling Cnv chart ngOnInit',
+    it('should work by calling Cnv chart ngOnInit --> ngOnChanges',
       async((done:any) => {
+
+        // ccwwServiceStub = {
+        //   CW: { ccww: 'ViewChild' }
+        // };
 
         TestBed
           .compileComponents()
@@ -48,8 +64,46 @@ export function main() {
             fixture.componentInstance.cnvdata = PatientApiServiceStub.makeCnvData();
 
             fixture.componentInstance.ngOnInit();
+            fixture.componentInstance.ngOnChanges();
+
             expect(fixture.componentInstance.data).toBeDefined();
             expect(fixture.componentInstance.cnvdata).toBeDefined();
+
+            fixture.detectChanges();
+            fixture.destroy();
+
+          });
+      }));
+
+    it('should work by calling Options --> ngAfterViewInit @ViewChild Response',
+      async((done:any) => {
+
+        ccwwServiceStub = {
+          CW: { ccww: 'ViewChild' }
+        };
+
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(CnvChartDirective, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(CnvChartDirective);
+
+            fixture.componentInstance.data = PatientApiServiceStub.makeRawVcftData();
+            fixture.componentInstance.cnvdata = PatientApiServiceStub.makeCnvData();
+
+            fixture.componentInstance.ngOnInit();
+            fixture.componentInstance.ngOnChanges();
+            // fixture.componentInstance.ngAfterViewInit();
+
+            fixture.componentInstance.CW = ccwwServiceStub.CW.ccww;
+            expect(fixture.componentInstance.CW).toBeDefined();
+            expect(fixture.componentInstance.CW).toBe('ViewChild');
+            fixture.detectChanges();
+            fixture.destroy();
+
           });
       }));
 
@@ -91,6 +145,8 @@ export function main() {
             fixture.componentInstance.data = PatientApiServiceStub.makeRawVcftData();
 
             fixture.componentInstance.ngOnInit();
+            fixture.componentInstance.ngOnChanges();
+
             expect(fixture.componentInstance.options).toBeDefined();
             fixture.detectChanges();
 
@@ -120,8 +176,9 @@ export function main() {
           });
       }));
 
-    it('should work by calling Options --> Callback Response',
+    xit('should work by calling Options --> Callback Response',
       async((done:any) => {
+
           TestBed
           .compileComponents()
           .then(() => {
@@ -148,6 +205,84 @@ export function main() {
           });
       }));
   });
+
+  xdescribe('WelcomeComponent', () => {
+
+    let comp: CnvChartDirective;
+    let fixture: ComponentFixture<CnvChartDirective>;
+    let componentCWService: PatientApiService; // the actually injected service
+    let userService: PatientApiService; // the TestBed injected service
+    let de: DebugElement;  // the DebugElement with the welcome message
+    let el: HTMLElement; // the DOM element with the welcome message
+
+    let ccwwServiceStub: {
+      // isLoggedIn: boolean;
+      CW: { ccww: string }
+    };
+
+    beforeEach(() => {
+      // stub ccwwService for test purposes
+      ccwwServiceStub = {
+        // isLoggedIn: true,
+        CW: { ccww: 'Test User' }
+      };
+
+      TestBed.configureTestingModule({
+        declarations: [CnvChartDirective, nvD3],
+        // providers:    [ ccwwService ]  // NO! Don't provide the real service!
+        // Provide a test-double instead
+        providers: [{ provide: PatientApiService, useValue: ccwwServiceStub }]
+      });
+
+      fixture = TestBed.createComponent(CnvChartDirective);
+      comp = fixture.componentInstance;
+
+      // ccwwService actually injected into the component
+      userService = fixture.debugElement.injector.get(PatientApiService);
+      componentCWService = userService;
+      // ccwwService from the root injector
+      userService = TestBed.get(PatientApiService);
+      //  get the "welcome" element by CSS selector (e.g., by class name)
+      el = fixture.debugElement.nativeElement; // de.nativeElement;
+
+    });
+
+    // it('should --> "CW"', () => {
+    //   // fixture = TestBed.createComponent(CnvChartDirective);
+    //   userService.CW.ccww = 'Test'; // welcome message hasn't been shown yet
+    //   fixture.detectChanges();
+    //   const content = el.querySelector('div');
+    //   expect(content).toContain('Test');
+    // });
+
+
+  });
+
+  // describe('AmoiDirective', () => {
+  //   let testHost:TestHostComponent;
+  //   let fixture:ComponentFixture<TestHostComponent>;
+  //   let testEl:DebugElement;
+  //
+  //   beforeEach(async(() => {
+  //     TestBed.configureTestingModule({
+  //       declarations: [TestHostComponent, AmoiDirective]
+  //     }).compileComponents();
+  //   }));
+  //
+  //   beforeEach(() => {
+  //     fixture = TestBed.createComponent(TestHostComponent);
+  //     testHost = fixture.componentInstance;
+  //     testEl = fixture.debugElement.query(By.css('span'));
+  //     fixture.detectChanges();
+  //   });
+  //
+  //   it('empty value adds no label class', () => {
+  //     expect(testEl.nativeElement.classList.contains('label-success')).toBe(false);
+  //     expect(testEl.nativeElement.classList.contains('label-info')).toBe(false);
+  //     expect(testEl.nativeElement.classList.contains('label-danger')).toBe(false);
+  //     expect(testEl.nativeElement.classList.contains('label-grey')).toBe(false);
+  //   });
+  // });
 
   @Component({
     selector: 'example-chart',
@@ -198,6 +333,10 @@ export function main() {
           ]
         }
         , 'ChartTestTitle']
+      return testdata;
+    }
+    ngAfterViewInit():Observable<any> {
+      let testdata:any = [{"nativeElement":{}}];
       return testdata;
     }
   }

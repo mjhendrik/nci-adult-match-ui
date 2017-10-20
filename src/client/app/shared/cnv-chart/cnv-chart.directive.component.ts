@@ -4,14 +4,19 @@
 import {
   Component,
   OnInit,
+  OnChanges,
   Input,
   Output,
   animate,
   transition, style,
   trigger,
-  EventEmitter
+  EventEmitter,
+  AfterViewInit,
+  HostListener,
+  ViewChild
 } from '@angular/core';
 import { nvD3 } from 'ng2-nvd3';
+import {DOCUMENT} from '@angular/common';
 
 declare let d3: any;
 
@@ -30,39 +35,40 @@ declare let d3: any;
 
   template://Zoomout panel
   `<div *ngIf="file_name">
-  <div [@dialog] *ngIf="show" class="dialog">
-  
-  <i class="fa fa-search-minus fa-2x" aria-hidden="true" *ngIf="show" (click)="show = !show" style="cursor: pointer; color: gray"></i>
-   <h4 class="pull-right">{{ file_name }}</h4>
-  <ul class="list-group" style="list-style-type: none;">
-  <li>
-  Tumor suppressor genes
-  <i class="fa fa-square" aria-hidden="true" style="color:#CD0000;background-color:#CD0000"></i> </li>
-  <li>Oncogenes
-  <i class="fa fa-square" aria-hidden="true" style="color:#007200;background-color:#007200"></i>
-  </li></ul>
-  <nvd3 id="boxplotchart" config="{deepWatchData: false}" [options]="options" [data]="cnvdata" *ngIf="show"></nvd3>
-  </div>
-  <!--small panel-->
-  <div *ngIf="!show">
-  <i class="fa fa-search-plus fa-2x" aria-hidden="true" *ngIf="!show" (click)="show = !show" style="cursor: pointer; color: gray"></i>
-   <h5 class="pull-right">{{ file_name }}</h5>
-  <ul class="list-group" style="list-style-type: none;">
-  <li>
-  Tumor suppressor genes
-  <i class="fa fa-square" aria-hidden="true" style="color:#CD0000;background-color:#CD0000"></i> </li>
-  <li>Oncogenes
-  <i class="fa fa-square" aria-hidden="true" style="color:#007200;background-color:#007200"></i>
-  </li></ul>
-  <nvd3 id="boxplotchart" config="{deepWatchData: false}" [options]="options" [data]="cnvdata" *ngIf="!show"></nvd3>
-  </div>
+    <div [@dialog] *ngIf="show" class="dialog" #ccww c-w>
+      <i class="fa fa-search-minus fa-2x" aria-hidden="true" *ngIf="show" (click)="show = !show" style="cursor: pointer; color: gray"></i>
+       <h4 class="pull-right">{{ file_name }}</h4>
+        <ul class="list-group" style="list-style-type: none;">
+          <li>Tumor suppressor genes
+          <i class="fa fa-square" aria-hidden="true" style="color:#CD0000;background-color:#CD0000"></i> 
+          </li>
+          <li>Oncogenes
+          <i class="fa fa-square" aria-hidden="true" style="color:#007200;background-color:#007200"></i>
+          </li>
+        </ul>
+    <nvd3 id="boxplotchart" config="{deepWatchData: false}" [options]="options" [data]="cnvdata" *ngIf="show"></nvd3>
+    </div>
+    <!--small panel-->
+    <div *ngIf="!show" #ccww c-w>
+      <i class="fa fa-search-plus fa-2x" aria-hidden="true" *ngIf="!show" (click)="show = !show" style="cursor: pointer; color: gray"></i>
+       <h5 class="pull-right">{{ file_name }}</h5>
+        <ul class="list-group" style="list-style-type: none;">
+          <li>Tumor suppressor genes
+          <i class="fa fa-square" aria-hidden="true" style="color:#CD0000;background-color:#CD0000"></i> </li>
+          <li>Oncogenes
+          <i class="fa fa-square" aria-hidden="true" style="color:#007200;background-color:#007200"></i>
+          </li>
+        </ul>
+      <nvd3 id="boxplotchart" config="{deepWatchData: false}" [options]="options" [data]="cnvdata" *ngIf="!show"></nvd3>
+    </div>
   </div>
   <div *ngIf="!file_name">
-  <span *ngIf="!parsed_vcf_genes">
-  <i class="fa fa-bar-chart text-muted" style="font-size:154px; padding-left: 39px;"></i>
-  <br />
-  <span class="text-muted" style="padding-left: 39px;"> There are no CNV data </span>
-  </span>`
+    <span *ngIf="!parsed_vcf_genes">
+      <i class="fa fa-bar-chart text-muted" style="font-size:154px; padding-left: 39px;"></i>
+      <br />
+      <span class="text-muted" style="padding-left: 39px;"> There are no CNV data </span>
+    </span>
+  </div>`
 })
 
 export class CnvChartDirective implements OnInit {
@@ -72,26 +78,45 @@ export class CnvChartDirective implements OnInit {
   cnvdata: any;
   file_name: string ;
   parseddata:any[] = [];
+  frame: any;
 
   @Input() visible: boolean;
   @Output() visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @ViewChild('ccww') CW:any;
+
+  ngAfterViewInit() {
+
+    let cwElement:any = this.CW;
+
+    this.frame = cwElement.nativeElement.clientWidth;
+
+    this.ngOnChanges();
+  }
 
   ngOnInit() {
+  }
+
+  ngOnChanges() {
     this.getData();
   }
+
   getData() {
     let array:any = this.data[0];
-
-    if (typeof this.data[1] !== 'undefined' && this.data[1] !== null) {
-      this.file_name = "Cnv Chart Test Name";
-      // this.file_name = this.data[1].split('tmp/')[1];
-    }
+    let xr:number = array.length * 24;
     let temp:any[] = [];
     let svg:any;
+
+    // if (typeof this.data !== "undefined" && this.data !== null) {
+      this.file_name = "Cnv Chart Test Name";
+      // this.file_name = this.data[1].split('tmp/')[1];
+    // }
+
+    let frm:any = (typeof this.frame !== 'undefined') ? (this.frame - 100) : 0;
 
     Object.keys(array).forEach((key:any) => {
 
       let gene:string = array[key].gene;
+      let cis:any = array[key].cis;
       let values = array[key].values;
       let median = array[key].raw_copy_number;
       let position:number = array[key].position;
@@ -107,6 +132,9 @@ export class CnvChartDirective implements OnInit {
         this.parseddata.push([gene,chromosome,key,chrnum[1],min,max]);
       }
 
+      let point5:string = parseFloat(cis[1].split(':')[1]).toFixed(2);
+      let point95:string = parseFloat(cis[2].split(':')[1]).toFixed(2);
+
       let Object = {
         x: key,
         label: gene,
@@ -118,17 +146,26 @@ export class CnvChartDirective implements OnInit {
           Q1: parseFloat(min).toFixed(2),
           Q2: parseFloat(median).toFixed(2),
           Q3: parseFloat(max).toFixed(2),
-          whisker_low: (0.95 * parseFloat(min)).toFixed(2),
-          whisker_high: (1.05 * parseFloat(max)).toFixed(2),
-          outliers: [(0.95 * parseFloat(min)).toFixed(2), parseFloat(median).toFixed(2), (1.05 * parseFloat(max)).toFixed(2)]
+          whisker_low: point5,
+          whisker_high: point95,
+          outliers: [point5, parseFloat(median).toFixed(2), point95]
+
+          // whisker_low: 0.95 * point5,
+          // whisker_high: 1.05 * point95,
+          // outliers: [0.95 * point5, parseFloat(median).toFixed(2), 1.05 * point95]
+
+          // whisker_low: (0.95 * parseFloat(min)).toFixed(2),
+          // whisker_high: (1.05 * parseFloat(max)).toFixed(2),
+          // outliers: [(0.95 * parseFloat(min)).toFixed(2), parseFloat(median).toFixed(2), (1.05 * parseFloat(max)).toFixed(2)]
+
         }
       };
       temp.push(Object);
-
     });
 
     let colors:any[] = [];
     let tip:any = 0;
+
     //COLORS
     Object.keys(temp).forEach((key:any) => {
       colors.push(temp[key].status);
@@ -140,7 +177,7 @@ export class CnvChartDirective implements OnInit {
       keys.sort(function (a:any, b:any) {
         return temp[b].values.whisker_high - temp[a].values.whisker_high;
       })
-      tip = (temp[keys[0]].values.whisker_high < 7) ? 7 : (temp[keys[0]].values.whisker_high);
+      tip = (temp[keys[0]].values.whisker_high < 7) ? 8 : (temp[keys[0]].values.whisker_high);
     }
 
     this.cnvdata = temp;
@@ -155,7 +192,7 @@ export class CnvChartDirective implements OnInit {
       return 450;
     };
     let margin:any = function () {
-      return {top: 20, right: 20, bottom: 60, left: 40};
+      return {top: 20, right: 5, bottom: 60, left: 30};
     };
     let showLabels:any = function () {
       return true;
@@ -169,10 +206,15 @@ export class CnvChartDirective implements OnInit {
     let yDomain:any = function () {
       return [0, (tip)];
     };
+    let xRange:any = function () {
+      return [10, xr];
+    };
+    let maxBoxWidth:any = function () {
+        return 0.5;
+      };
     let color:any = function () {
       return colors;
     };
-
     this.options = {
       chart: {
         color: color(),
@@ -184,6 +226,8 @@ export class CnvChartDirective implements OnInit {
         showXAxis: showXAxis(),
         xAxis: xAxis(),
         yDomain: yDomain(),
+        xRange: xRange(),
+        maxBoxWidth: maxBoxWidth(),
         tooltip: {
           contentGenerator: (d:any) => {
             let html:any;
@@ -233,6 +277,7 @@ export class CnvChartDirective implements OnInit {
             return html;
           }
         },
+
         callback: (chart:any) => {
           let height = 370;
           let chr:any;
@@ -243,7 +288,9 @@ export class CnvChartDirective implements OnInit {
           let spot:any = null;
           let gene:any = null;
           let lastspot = 0;
+          let genespot = 0;
           let genes = this.parseddata;
+          let frame:any;
 
           svg = d3.select('#boxplotchart')
             .select('.nv-boxPlotWithAxes')
@@ -314,10 +361,12 @@ export class CnvChartDirective implements OnInit {
               }
             }
           });
-          let max = Math.round(highest / 10) * 3 + lowest  ;
-          lastspot = chart.xScale()(gene) + 35;
-          let y1 = chart.yScale()(max);
-          let y2 = chart.yScale()(7);
+
+          let max = Math.round(highest / 10) * 3 + lowest;
+          lastspot = chart.xScale()(gene) + (frm - 100);
+          genespot = chart.xScale()(gene) + 25;
+          let y1 = chart.yScale()(2);//2.0 line
+          let y2 = chart.yScale()(7);//7.0 line
 
           svg.append('line')
             .attr('x1', 0)
@@ -335,6 +384,16 @@ export class CnvChartDirective implements OnInit {
             .style('stroke-dasharray', ('3, 3'))
             .style('stroke-opacity', 2)
             .style('stroke', 'red');
+
+          svg.append('line')
+            .attr('x1', genespot)
+            .attr('x2', genespot)
+            .attr('y1', height)
+            .style('fill', 'none')
+            .style('stroke', 'gray')
+            .style('stroke-width', 0.5)
+            .style('stroke-dasharray', ('3, 3'));
+            // .style('stroke-linecap', 'line');
 
           svg.append('line')
             .attr('x1', lastspot)
