@@ -173,7 +173,7 @@ services:
       - adult-match
 
   mongo:
-    image: mongo:3.4.0
+    image: fnlcr/nci-adult-match-mongo-seed:latest
     volumes:
       - ./misc/data_setup/match:/backup
     ports:
