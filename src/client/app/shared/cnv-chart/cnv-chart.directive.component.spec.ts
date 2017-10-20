@@ -41,15 +41,10 @@ export function main() {
           {provide: PatientApiService, useClass: PatientApiServiceMock },
         ],
       });
-      // spyOn(localStorage, 'ViewChild("ccww")').and.returnValue(JSON.stringify({"ccww":{}}));
     });
 
     it('should work by calling Cnv chart ngOnInit --> ngOnChanges',
       async((done:any) => {
-
-        // ccwwServiceStub = {
-        //   CW: { ccww: 'ViewChild' }
-        // };
 
         TestBed
           .compileComponents()
@@ -103,10 +98,8 @@ export function main() {
             expect(fixture.componentInstance.CW).toBe('ViewChild');
             fixture.detectChanges();
             fixture.destroy();
-
           });
       }));
-
 
     it('should work by calling Options --> Tooltip Response',
       async((done:any) => {
@@ -246,43 +239,7 @@ export function main() {
       el = fixture.debugElement.nativeElement; // de.nativeElement;
 
     });
-
-    // it('should --> "CW"', () => {
-    //   // fixture = TestBed.createComponent(CnvChartDirective);
-    //   userService.CW.ccww = 'Test'; // welcome message hasn't been shown yet
-    //   fixture.detectChanges();
-    //   const content = el.querySelector('div');
-    //   expect(content).toContain('Test');
-    // });
-
-
   });
-
-  // describe('AmoiDirective', () => {
-  //   let testHost:TestHostComponent;
-  //   let fixture:ComponentFixture<TestHostComponent>;
-  //   let testEl:DebugElement;
-  //
-  //   beforeEach(async(() => {
-  //     TestBed.configureTestingModule({
-  //       declarations: [TestHostComponent, AmoiDirective]
-  //     }).compileComponents();
-  //   }));
-  //
-  //   beforeEach(() => {
-  //     fixture = TestBed.createComponent(TestHostComponent);
-  //     testHost = fixture.componentInstance;
-  //     testEl = fixture.debugElement.query(By.css('span'));
-  //     fixture.detectChanges();
-  //   });
-  //
-  //   it('empty value adds no label class', () => {
-  //     expect(testEl.nativeElement.classList.contains('label-success')).toBe(false);
-  //     expect(testEl.nativeElement.classList.contains('label-info')).toBe(false);
-  //     expect(testEl.nativeElement.classList.contains('label-danger')).toBe(false);
-  //     expect(testEl.nativeElement.classList.contains('label-grey')).toBe(false);
-  //   });
-  // });
 
   @Component({
     selector: 'example-chart',

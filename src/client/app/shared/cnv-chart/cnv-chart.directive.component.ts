@@ -85,16 +85,12 @@ export class CnvChartDirective implements OnInit {
   @ViewChild('ccww') CW:any;
 
   ngAfterViewInit() {
-
     let cwElement:any = this.CW;
-
     this.frame = cwElement.nativeElement.clientWidth;
-
     this.ngOnChanges();
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   ngOnChanges() {
     this.getData();
@@ -149,15 +145,6 @@ export class CnvChartDirective implements OnInit {
           whisker_low: point5,
           whisker_high: point95,
           outliers: [point5, parseFloat(median).toFixed(2), point95]
-
-          // whisker_low: 0.95 * point5,
-          // whisker_high: 1.05 * point95,
-          // outliers: [0.95 * point5, parseFloat(median).toFixed(2), 1.05 * point95]
-
-          // whisker_low: (0.95 * parseFloat(min)).toFixed(2),
-          // whisker_high: (1.05 * parseFloat(max)).toFixed(2),
-          // outliers: [(0.95 * parseFloat(min)).toFixed(2), parseFloat(median).toFixed(2), (1.05 * parseFloat(max)).toFixed(2)]
-
         }
       };
       temp.push(Object);
