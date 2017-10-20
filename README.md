@@ -62,7 +62,7 @@ vcf.converter.path=/usr/local/bin
 For front-end developers running the front-end code in node, run everything __but__ the front-end:
 
 ```
-docker-compose up patient-api treatment-arm-api ion-reporters-api sample-controls-api aliquots-api ir-processor-api message-api
+docker-compose up patient-api treatment-arm-api message-api
 ```
 
 Full list of services included in `docker-compose.yml`
