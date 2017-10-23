@@ -1,8 +1,8 @@
 <div class="modal-header">
   <h4 class="modal-title pull-left">Upload BAM files and Variant ZIP files</h4>
-  <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+  <a [ngClass]="{true:'disabled'}[isDisabled]" type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
     <span aria-hidden="true">&times;</span>
-  </button>
+  </a>
 </div>
 <div class="modal-body">
   <div class="form-group has-feedback" [ngClass]="{true:'has-error',false:'has-success'}[!analysisIdValid]">
