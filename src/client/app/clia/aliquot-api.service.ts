@@ -82,13 +82,13 @@ export class AliquotApiService extends ApiService {
       });
   }
 
-  uploadFile(url: string, file: any) {
+  uploadFile(url: string, file: any): Observable<any> {
     return this.http.put(url, file)
       .map(this.extractData)
       .catch(this.handleError);
   }
 
-  notifyAfterUpload(msn: string, body: any) {
+  notifyAfterUpload(msn: string, body: any): Observable<any> {
     return this.http.put(`${this.baseApiUrl}/message/clia/aliquot/` + msn, body)
       .map(this.extractData)
       .catch(this.handleError);
