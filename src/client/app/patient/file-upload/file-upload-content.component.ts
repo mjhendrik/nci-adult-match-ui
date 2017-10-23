@@ -8,6 +8,10 @@ import {
   ApplicationRef
 } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import {
+  HttpEventType,
+  HttpResponse
+} from '@angular/common/http';
 
 import { AliquotApiService } from '../../clia/aliquot-api.service';
 
@@ -28,6 +32,7 @@ export class FileUploadContentComponent implements OnInit {
   analysisIdPrev: string = this.analysisId;
   message: string = 'Enter a valid Analysis ID to add Variant ZIP file, DNA BAM file and cDNA BAM file';
   uploadNotification: any;
+  xhr: XMLHttpRequest = new XMLHttpRequest();
 
   hasVariantZipFile: boolean = false;
   hasDnaBamFile: boolean = false;
@@ -137,12 +142,20 @@ export class FileUploadContentComponent implements OnInit {
   }
 
   uploadFile(url: string, file: any): void {
-    this.api.uploadFile(url, file).subscribe();
+    this.api.uploadFile(url, file).subscribe(event => {
+      if (event.type === HttpEventType.UploadProgress) {
+        const percentDone = Math.round(100 * event.loaded / event.total);
+        console.log(percentDone);
+      } else if (event instanceof HttpResponse) {
+        console.log('success');
+        this.notifyAfterUpload();
+      }
+    });
   }
 
-  notifyAfterUpload(evt: any): void {
+  notifyAfterUpload(): void {
 
-    console.log('success');
+    console.log('notify');
 
     this.uploadNotification = {
       'ion_reporter_id': null,
