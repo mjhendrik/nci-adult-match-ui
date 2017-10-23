@@ -32,7 +32,7 @@ export class FileUploadContentComponent implements OnInit {
   analysisIdPrev: string = this.analysisId;
   message: string = 'Enter a valid Analysis ID to add Variant ZIP file, DNA BAM file and cDNA BAM file';
   uploadNotification: any;
-  xhr: XMLHttpRequest = new XMLHttpRequest();
+  isDisabled: boolean = false;
 
   hasVariantZipFile: boolean = false;
   hasDnaBamFile: boolean = false;
@@ -124,6 +124,7 @@ export class FileUploadContentComponent implements OnInit {
   }
 
   upload(): void {
+    this.isDisabled = true;
     this.api.getPresignedUrls(
       this.msn,
       this.analysisId,
@@ -147,6 +148,7 @@ export class FileUploadContentComponent implements OnInit {
         const percentDone = Math.round(100 * event.loaded / event.total);
         console.log(percentDone);
       } else if (event instanceof HttpResponse) {
+        this.isDisabled = false;
         console.log('success');
         this.notifyAfterUpload();
       }
