@@ -106,6 +106,10 @@ export class ProjectConfig extends SeedConfig {
       {
         name: 'ng2-toastr',
         path: 'node_modules/ng2-toastr/bundles/ng2-toastr.min.js'
+      },
+      {
+        name: 'tslib',
+        path: 'node_modules/tslib/tslib.js'
       }
     ];
 
