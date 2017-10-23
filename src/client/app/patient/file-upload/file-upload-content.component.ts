@@ -130,14 +130,14 @@ export class FileUploadContentComponent implements OnInit {
         this.variantZipFileUrl = data[0];
         this.dnaBamFileUrl = data[1];
         this.cdnaBamFileUrl = data[2];
-        this.uploadFile(this.variantZipFileUrl, this.variantZipFile);
-        this.uploadFile(this.dnaBamFileUrl, this.dnaBamFile);
-        this.uploadFile(this.cdnaBamFileUrl, this.cdnaBamFile);
       });
+    this.uploadFile();
   }
 
-  uploadFile(url: string, file: any): void {
-    this.api.uploadFile(url, file);
+  uploadFile(): void {
+    this.api.uploadFile(this.variantZipFileUrl, this.variantZipFile);
+    this.api.uploadFile(this.dnaBamFileUrl, this.dnaBamFile);
+    this.api.uploadFile(this.cdnaBamFileUrl, this.cdnaBamFile);
   }
 
   notifyAfterUpload(evt: any): void {
@@ -145,7 +145,7 @@ export class FileUploadContentComponent implements OnInit {
     console.log('success');
 
     this.uploadNotification = {
-      'ion_reporter_id': 'BDD',
+      'ion_reporter_id': null,
       'molecular_sequence_number': this.msn,
       'analysis_id': this.analysisId,
       'site': 'BDD',
