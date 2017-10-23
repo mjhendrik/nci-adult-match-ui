@@ -69,9 +69,9 @@ export class AliquotApiService extends ApiService {
 
   getPresignedUrls(msn: string, analysisId: string, zipFile: string, dnaFile: string, cdnaFile: string): Observable<[string, string, string]> {
     return Observable.forkJoin(
-      this.http.put(`${this.baseApiUrl}/message/clia/aliquot/presign_url`, { molecularSequenceNumber: msn, analysisId: analysisId, filename: zipFile }),
-      this.http.put(`${this.baseApiUrl}/message/clia/aliquot/presign_url`, { molecularSequenceNumber: msn, analysisId: analysisId, filename: dnaFile }),
-      this.http.put(`${this.baseApiUrl}/message/clia/aliquot/presign_url`, { molecularSequenceNumber: msn, analysisId: analysisId, filename: cdnaFile })
+      this.http.post(`${this.baseApiUrl}/message/clia/aliquot/presign_url`, { molecularSequenceNumber: msn, analysisId: analysisId, filename: zipFile }),
+      this.http.post(`${this.baseApiUrl}/message/clia/aliquot/presign_url`, { molecularSequenceNumber: msn, analysisId: analysisId, filename: dnaFile }),
+      this.http.post(`${this.baseApiUrl}/message/clia/aliquot/presign_url`, { molecularSequenceNumber: msn, analysisId: analysisId, filename: cdnaFile })
     ).map(
       data => {
         return [
@@ -83,7 +83,7 @@ export class AliquotApiService extends ApiService {
   }
 
   uploadFile(url: string, file: any): Observable<any> {
-    return this.http.put(url, file)
+    return this.http.post(url, file)
       .map(this.extractData)
       .catch(this.handleError);
   }
