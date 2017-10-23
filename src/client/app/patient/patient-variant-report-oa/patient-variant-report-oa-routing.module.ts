@@ -52,8 +52,13 @@ class DataResolver implements Resolve<VariantReportComparisonData> {
         report, cnvDataOutside, ocpDataOutside, cnvDataMatch, ocpDataMatch, isOutsideAssayReport);
 
         transformedReport.psn = psn;
+
+        //TODO: debug-only
         transformedReport.outsideData.isVariantReportEditable = true;
+        transformedReport.outsideData.isAssignmentReportEditable = true;
+
         transformedReport.matchData.isVariantReportEditable = true;
+        transformedReport.matchData.isAssignmentReportEditable = true;
 
       return transformedReport;
     });
