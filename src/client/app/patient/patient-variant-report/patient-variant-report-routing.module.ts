@@ -64,7 +64,9 @@ class DataResolver implements Resolve<VariantReportData> {
           showPools: showPools,
           assays: analysis.assays,
           // isEditable: this.transformer.getVariantReportEditable(analysis.variantReport)
-          isEditable: true
+          //TODO: debug-only
+          isVariantReportEditable: true,
+          isAssignmentReportEditable: true
         };
       }
       );
