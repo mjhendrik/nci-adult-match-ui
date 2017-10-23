@@ -101,18 +101,26 @@ export class CnvChartDirective implements OnInit {
     let xr:number = array.length * 24;
     let temp:any[] = [];
     let svg:any;
+    let point5:string = "";
+    let point95:string = "";
 
     // if (typeof this.data !== "undefined" && this.data !== null) {
       this.file_name = "Cnv Chart Test Name";
       // this.file_name = this.data[1].split('tmp/')[1];
     // }
 
-    let frm:any = (typeof this.frame !== 'undefined') ? (this.frame - 100) : 0;
+    let frm:any = (typeof this.frame !== 'undefined') ? (this.frame - 45) : 0;
 
     Object.keys(array).forEach((key:any) => {
 
       let gene:string = array[key].gene;
-      let cis:any = array[key].cis;
+      let cis:any = (typeof array[key].cis === 'undefined') ? 0 : array[key].cis;
+
+      if(cis !== 0) {
+         point5 = parseFloat(cis[1].split(':')[1]).toFixed(2);
+         point95 = parseFloat(cis[2].split(':')[1]).toFixed(2);
+      }
+
       let values = array[key].values;
       let median = array[key].raw_copy_number;
       let position:number = array[key].position;
@@ -128,9 +136,6 @@ export class CnvChartDirective implements OnInit {
         this.parseddata.push([gene,chromosome,key,chrnum[1],min,max]);
       }
 
-      let point5:string = parseFloat(cis[1].split(':')[1]).toFixed(2);
-      let point95:string = parseFloat(cis[2].split(':')[1]).toFixed(2);
-
       let Object = {
         x: key,
         label: gene,
@@ -145,6 +150,11 @@ export class CnvChartDirective implements OnInit {
           whisker_low: point5,
           whisker_high: point95,
           outliers: [point5, parseFloat(median).toFixed(2), point95]
+
+          // whisker_low: (0.95 * parseFloat(min)).toFixed(2),
+          // whisker_high: (1.05 * parseFloat(max)).toFixed(2),
+          // outliers: [(0.95 * parseFloat(min)).toFixed(2), parseFloat(median).toFixed(2), (1.05 * parseFloat(max)).toFixed(2)]
+
         }
       };
       temp.push(Object);
@@ -350,10 +360,22 @@ export class CnvChartDirective implements OnInit {
           });
 
           let max = Math.round(highest / 10) * 3 + lowest;
-          lastspot = chart.xScale()(gene) + (frm - 100);
+
+          lastspot = chart.xScale()(gene) + (frm);
           genespot = chart.xScale()(gene) + 25;
           let y1 = chart.yScale()(2);//2.0 line
           let y2 = chart.yScale()(7);//7.0 line
+
+          // svg.append("rect")
+          //   .attr("x1", 0)
+          //   .attr("x2", genespot)
+          //   .attr("y1", 0)
+          //   .attr("y2", y2)
+          //   .attr("width", genespot)
+          //   .attr("height", height)
+          //   .style('fill', 'yellow')
+          //   .style('fill-opacity', 0.1)
+          //   .style('z-index', -100);
 
           svg.append('line')
             .attr('x1', 0)
@@ -377,19 +399,63 @@ export class CnvChartDirective implements OnInit {
             .attr('x2', genespot)
             .attr('y1', height)
             .style('fill', 'none')
-            .style('stroke', 'gray')
+            .style('stroke', 'green')
             .style('stroke-width', 0.5)
             .style('stroke-dasharray', ('3, 3'));
             // .style('stroke-linecap', 'line');
+
+          // svg.append("rect")
+          //   .attr("width", chart.xAxis.scale().range()[1])
+          //   .attr("height", chart.yAxis.scale().range()[0])
+          //   .style("fill", "none")
+          //   .style("stroke", "red");
+
+
+          // svg.append("rect")
+          //   .attr("x1", 0)
+          //   .attr("x2", genespot)
+          //   .attr("y1", 0)
+          //   .attr("y2", y2)
+          //   .attr("width", genespot)
+          //   .attr("height", height)
+          //   .style('fill', 'yellow')
+          //   .style('fill-opacity', 0.1)
+          //   .style('z-index', -100);
+
+          // svg.append("rect")
+          //   .attr('x1', 0)
+          //   .attr('x2', genespot)
+          //   .attr('y1', height)
+          //   // .attr("width", 50)
+          //   .attr("height", height)
+          //   .style('fill', 'yellow');
+
+
+          if(frm === 0) return;
 
           svg.append('line')
             .attr('x1', lastspot)
             .attr('x2', lastspot)
             .attr('y1', height)
             .style('fill', 'none')
-            .style('stroke', 'gray')
+            .style('stroke', 'blue')
             .style('stroke-width', 0.5)
             .style('stroke-linecap', 'line');
+
+
+
+          // svg.append('area')
+          //   .attr('x1', 0)
+          //   .attr('x2', lastspot)
+          //   .attr('y1', height)
+          //   .style('fill', 'lightsteelblue')
+          //   .style('stroke-width', 1)
+
+          // .area {
+          //   fill: lightsteelblue;
+          //   stroke-width: 0;
+          // }
+
         }
       }
     }
