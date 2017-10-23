@@ -12,6 +12,10 @@ import {
   HttpEventType,
   HttpResponse
 } from '@angular/common/http';
+import {
+  BsModalRef,
+  BsModalService
+} from 'ngx-bootstrap';
 
 import { AliquotApiService } from '../../clia/aliquot-api.service';
 
@@ -26,6 +30,9 @@ import 'rxjs/add/observable/fromEvent';
   styleUrls: ['file-upload-content.component.css']
 })
 export class FileUploadContentComponent implements OnInit {
+
+  public modalRefFileUpload: BsModalRef;
+
   msn: string;
   analysisId: string = '';
   analysisIdValid: boolean = false;
@@ -52,7 +59,8 @@ export class FileUploadContentComponent implements OnInit {
     private changeDetector: ChangeDetectorRef,
     private ngzone: NgZone,
     private appref: ApplicationRef,
-    private api: AliquotApiService) { }
+    private api: AliquotApiService,
+    private modalService: BsModalService) { }
 
   ngOnInit() {
     this.onInputChanged('');
@@ -171,6 +179,10 @@ export class FileUploadContentComponent implements OnInit {
 
     this.api.notifyAfterUpload(this.msn, this.uploadNotification).subscribe();
 
+  }
+
+  closeUploadDialog() {
+    this.modalRefFileUpload.hide();
   }
 
 }
