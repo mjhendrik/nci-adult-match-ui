@@ -34,7 +34,8 @@ export interface VariantReportData {
   mapd: string;
   cellularity: any;
   showPools: boolean;
-  isEditable: boolean;
+  isVariantReportEditable: boolean;
+  isAssignmentReportEditable: boolean;
 }
 
 @NgModule({

@@ -110,7 +110,7 @@ export class ViewDataTransformer {
     report.variantReport.variantReportStatus = updatedStatus.status;
     report.variantReport.comments = updatedStatus.comments;
     report.variantReport.statusUser = updatedStatus.user;
-    report.isEditable = this.getVariantReportEditable(report);
+    report.isVariantReportEditable = this.getVariantReportEditable(report);
   }
 
   updateVariantStatus(report: VariantReportData, updatedStatus: VariantReportStatus): void {
@@ -119,10 +119,10 @@ export class ViewDataTransformer {
 
   updateOutsidePatientReport(report: VariantReportComparisonData): void {
     if (report.outsideData) {
-      report.outsideData.isEditable = this.getVariantReportEditable(report.outsideData);
+      report.outsideData.isVariantReportEditable = this.getVariantReportEditable(report.outsideData);
     }
     if (report.matchData) {
-      report.matchData.isEditable = this.getVariantReportEditable(report.matchData);
+      report.matchData.isVariantReportEditable = this.getVariantReportEditable(report.matchData);
     }
     report.showComparison = report.outsideData.variantReport.variantReportStatus
       && report.outsideData.variantReport.variantReportStatus !== 'PENDING'

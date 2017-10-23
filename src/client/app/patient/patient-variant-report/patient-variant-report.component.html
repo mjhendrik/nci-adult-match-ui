@@ -162,12 +162,12 @@
   </div>
   <div class="panel panel-white panel-accent-sides-purple overflow-hidden">
     <div class="panel-heading">
-      <sd-variant-report-simple-table-snv-indels [items]="variantReport.singleNucleotideVariantAndIndels" [isEditable]="isEditable" (onVariantConfirmed)="onVariantConfirmed($event)" [title]="'Single Nucleotide Variants and Indels'"></sd-variant-report-simple-table-snv-indels>
-      <sd-variant-report-simple-table-cnv [items]="variantReport.copyNumberVariants" [isEditable]="isEditable" (onVariantConfirmed)="onVariantConfirmed($event)"></sd-variant-report-simple-table-cnv>
-      <sd-variant-report-simple-table-gf [items]="variantReport.unifiedGeneFusions" [isEditable]="isEditable" (onVariantConfirmed)="onVariantConfirmed($event)"></sd-variant-report-simple-table-gf>
+      <sd-variant-report-simple-table-snv-indels [items]="variantReport.singleNucleotideVariantAndIndels" [isEditable]="isVariantReportEditable" (onVariantConfirmed)="onVariantConfirmed($event)" [title]="'Single Nucleotide Variants and Indels'"></sd-variant-report-simple-table-snv-indels>
+      <sd-variant-report-simple-table-cnv [items]="variantReport.copyNumberVariants" [isEditable]="isVariantReportEditable" (onVariantConfirmed)="onVariantConfirmed($event)"></sd-variant-report-simple-table-cnv>
+      <sd-variant-report-simple-table-gf [items]="variantReport.unifiedGeneFusions" [isEditable]="isVariantReportEditable" (onVariantConfirmed)="onVariantConfirmed($event)"></sd-variant-report-simple-table-gf>
     </div>
 
-    <div class="text-center m-b-20" *ngIf="isEditable">
+    <div class="text-center m-b-20" *ngIf="isVariantReportEditable">
       <button class="btn btn-danger" (click)="rejectVariantReport()"><i class="fa fa-times"></i> Reject Variant Report</button>
       <button class="btn btn-lime" (click)="confirmVariantReport()"><i class="fa fa-check"></i> Confirm Variant Report</button>
     </div>
@@ -178,7 +178,7 @@
       <sd-assignment-reason-table [reasons]="assignmentReport.reasons"></sd-assignment-reason-table>
     </div>
 
-    <div class="text-center m-b-20" *ngIf="isEditable">
+    <div class="text-center m-b-20" *ngIf="isAssignmentReportEditable">
       <button class="btn btn-lime" (click)="confirmAssignmentReport()"><i class="fa fa-check"></i> Confirm Assignment</button>
     </div>
   </div>

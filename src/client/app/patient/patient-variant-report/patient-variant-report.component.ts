@@ -44,7 +44,7 @@ export class PatientVariantReportComponent implements OnInit, VariantReportData 
   cellularity: any;
   showPools: boolean;
   assays: any[] = [];
-  isEditable: boolean;
+  isVariantReportEditable: boolean;
 
   public modalRef: BsModalRef;
   public dialogSubscription: Subscription;

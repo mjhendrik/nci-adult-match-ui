@@ -230,7 +230,7 @@ export class PatientApiServiceStub {
                 mapd: 'dummy-value',
                 cellularity: {},
                 showPools: false,
-                isEditable: false
+                isVariantReportEditable: false
             },
             matchData: {
                 patient: {},
@@ -254,7 +254,7 @@ export class PatientApiServiceStub {
                 mapd: 'dummy-value',
                 cellularity: {},
                 showPools: false,
-                isEditable: false
+                isVariantReportEditable: false
             },
             comparisonVariantReport: {
                 singleNucleotideVariantAndIndels: [],
@@ -2798,7 +2798,7 @@ export class PatientApiServiceStub {
                 mapd: 'value',
                 cellularity: 'value',
                 showPools: false,
-                isEditable: false
+                isVariantReportEditable: false
             },
             matchData: {
                 patient: {},
@@ -2822,7 +2822,7 @@ export class PatientApiServiceStub {
                 mapd: 'value',
                 cellularity: 'value',
                 showPools: false,
-                isEditable: false
+                isVariantReportEditable: false
             },
             comparisonVariantReport: {
                 singleNucleotideVariantAndIndels: [{ value: 'value' }],
