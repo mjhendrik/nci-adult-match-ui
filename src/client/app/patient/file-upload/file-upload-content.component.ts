@@ -143,13 +143,16 @@ export class FileUploadContentComponent implements OnInit {
   notifyAfterUpload(uploaded: boolean): void {
 
     this.uploadNotification = {
-      'molecularSequenceNumber': this.msn,
-      'analysisId': this.analysisId,
-      // 'filename': this.variantZipFile.name,
-      'uploaded': uploaded
+      'ion_reporter_id': 'BDD',
+      'molecular_sequence_number': this.msn,
+      'analysis_id': this.analysisId,
+      'site': 'BDD',
+      'zip_name': this.variantZipFile.name,
+      'dna_bam_name': this.dnaBamFile.name,
+      'cdna_bam_name': this.cdnaBamFile.name
     };
 
-    this.api.notifyAfterUpload(this.uploadNotification);
+    this.api.notifyAfterUpload(this.msn, this.uploadNotification);
 
   }
 
@@ -162,4 +165,5 @@ export class FileUploadContentComponent implements OnInit {
     console.log('failure');
     this.notifyAfterUpload(false);
   }
+
 }

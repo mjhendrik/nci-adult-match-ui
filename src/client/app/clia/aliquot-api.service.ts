@@ -88,8 +88,8 @@ export class AliquotApiService extends ApiService {
       .catch(this.handleError);
   }
 
-  notifyAfterUpload(body: any) {
-    return this.http.put(`${this.baseApiUrl}/message/clia/aliquot/presign_url`, body)
+  notifyAfterUpload(msn: string, body: any) {
+    return this.http.put(`${this.baseApiUrl}/message/clia/aliquot/` + msn, body)
       .map(this.extractData)
       .catch(this.handleError);
   }
