@@ -72,7 +72,7 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, Varian
     this.patientApi.downloadPatientFile(this.psn, file);
   }
 
-  confirmOutsideReport(): void {
+  confirmOutsideVariantReport(): void {
     const action = () => {
       console.info('Confirming outside lab variant report: ' + this.outsideData.analysisId);
       this.patientApi.updateVariantReport(this.psn, this.outsideData.bsn, this.outsideData.analysisId, true).subscribe(
@@ -89,7 +89,7 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, Varian
     );
   }
 
-  rejectOutsideReport(): void {
+  rejectOutsideVariantReport(): void {
     const action = () => {
       console.info('Rejecting outside lab variant report: ' + this.outsideData.analysisId);
       this.patientApi.updateVariantReport(this.psn, this.outsideData.bsn, this.outsideData.analysisId, false).subscribe(
@@ -106,7 +106,24 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, Varian
     );
   }
 
-  confirmMatchReport(): void {
+  confirmOutsideAssignmentReport(): void {
+    const action = () => {
+      console.info('Confirming outside lab assignment report: ' + this.outsideData.analysisId);
+      this.patientApi.updateAssignmentReport(this.psn, true).subscribe(
+        (x: any) => { this.transformer.updateVariantReportStatus(this.outsideData, x); }
+      );
+    };
+
+    this.showConfirmation(
+      'Assignment Report Confirmation',
+      `Are you sure you want to confirm Outside Lab Assignment Report ${this.outsideData.analysisId}?`,
+      'Confirm',
+      'Don\'t Confirm',
+      action
+    );
+  }
+
+  confirmMatchVariantReport(): void {
     const action = () => {
       console.info('Confirming MATCH variant report: ' + this.matchData.analysisId);
       this.patientApi.updateVariantReport(this.psn, this.matchData.bsn, this.matchData.analysisId, true).subscribe(
@@ -123,7 +140,7 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, Varian
     );
   }
 
-  rejectMatchReport(): void {
+  rejectMatchVariantReport(): void {
     const action = () => {
       console.info('Rejecting MATCH variant report: ' + this.matchData.analysisId);
       this.patientApi.updateVariantReport(this.psn, this.matchData.bsn, this.matchData.analysisId, false).subscribe(
@@ -136,6 +153,23 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, Varian
       `Are you sure you want to reject MATCH Variant Report ${this.matchData.analysisId}?`,
       'Reject',
       'Don\'t Reject',
+      action
+    );
+  }
+
+  confirmMatchAssignmentReport(): void {
+    const action = () => {
+      console.info('Confirming MATCH assignment report: ' + this.matchData.analysisId);
+      this.patientApi.updateAssignmentReport(this.psn, true).subscribe(
+        (x: any) => { this.transformer.updateVariantReportStatus(this.matchData, x); }
+      );
+    };
+
+    this.showConfirmation(
+      'Assignment Report Confirmation',
+      `Are you sure you want to confirm MATCH Assignment Report ${this.matchData.analysisId}?`,
+      'Confirm',
+      'Don\'t Confirm',
       action
     );
   }

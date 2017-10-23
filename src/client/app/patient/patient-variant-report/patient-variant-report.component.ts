@@ -66,7 +66,7 @@ export class PatientVariantReportComponent implements OnInit, VariantReportData 
     this.patientApi.downloadPatientFile(this.psn, file);
   }
 
-  confirmReport(): void {
+  confirmVariantReport(): void {
     const action = () => {
       console.info('Confirming variant report: ' + this.analysisId);
       this.patientApi.updateVariantReport(this.psn, this.bsn, this.analysisId, true).subscribe(
@@ -83,7 +83,7 @@ export class PatientVariantReportComponent implements OnInit, VariantReportData 
     );
   }
 
-  rejectReport(): void {
+  rejectVariantReport(): void {
     const action = () => {
       console.info('Rejecting variant report: ' + this.analysisId);
       this.patientApi.updateVariantReport(this.psn, this.bsn, this.analysisId, false).subscribe(
@@ -112,6 +112,23 @@ export class PatientVariantReportComponent implements OnInit, VariantReportData 
       item.comment
     ).subscribe(
       (x: any) => { this.transformer.updateVariantStatus(this, x); }
+    );
+  }
+
+  confirmAssignmentReport(): void {
+    const action = () => {
+      console.info('Confirming assignment report: ' + this.analysisId);
+      this.patientApi.updateAssignmentReport(this.psn, true).subscribe(
+        (x: any) => { this.transformer.updateVariantReportStatus(this, x); }
+      );
+    };
+
+    this.showConfirmation(
+      'Assignment Report Confirmation',
+      `Are you sure you want to confirm Assignment Report ${this.analysisId}?`,
+      'Confirm',
+      'Don\'t Confirm',
+      action
     );
   }
 

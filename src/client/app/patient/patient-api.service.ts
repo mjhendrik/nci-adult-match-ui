@@ -134,4 +134,14 @@ export class PatientApiService extends ApiService {
       .map((res: Response) => res)
       .catch(this.handleError);
   }
+
+  updateAssignmentReport(psn: string, confirmed: boolean): Observable<VariantReportStatus> {
+    const patch = {
+      'status': confirmed ? 'CONFIRMED' : 'REJECTED'
+    };
+
+    return this.http.patch(`${Config.API.MESSAGE}/ecog/patient/${psn}/assignment`, patch)
+      .map((res: Response) => res)
+      .catch(this.handleError);
+  }
 }

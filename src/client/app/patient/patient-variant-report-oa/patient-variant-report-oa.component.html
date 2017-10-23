@@ -184,13 +184,17 @@
 
         <div class="row" *ngIf="outsideData && outsideData.isEditable">
           <div class="col-md-12 text-center m-t-20">
-            <button class="btn btn-danger" (click)="rejectOutsideReport()"><i class="fa fa-times"></i> Reject Report</button>
-            <button class="btn btn-lime" (click)="confirmOutsideReport()"><i class="fa fa-check"></i> Confirm Report</button>
+            <button class="btn btn-danger" (click)="rejectOutsideVariantReport()"><i class="fa fa-times"></i> Reject Report</button>
+            <button class="btn btn-lime" (click)="confirmOutsideVariantReport()"><i class="fa fa-check"></i> Confirm Report</button>
           </div>
         </div>
 
         <div *ngIf="outsideData.assignmentReport && outsideData.assignmentReport.reasons" id="outside-assignment-details">
           <sd-assignment-reason-table [reasons]="outsideData.assignmentReport.reasons"></sd-assignment-reason-table>
+
+          <div class="text-center m-b-20" *ngIf="isEditable">
+            <button class="btn btn-lime" (click)="confirmOutsideAssignmentReport()"><i class="fa fa-check"></i> Confirm Assignment</button>
+          </div>
         </div>
 
         <p *ngIf="!outsideData.assignmentReport || !outsideData.assignmentReport.reasons" class="empty-data-panel">No Treatment Report Assignment data</p>
@@ -366,13 +370,17 @@
 
         <div class="row" *ngIf="matchData && matchData.isEditable">
           <div class="col-md-12 text-center m-t-20">
-            <button class="btn btn-danger" (click)="rejectMatchReport()"><i class="fa fa-times"></i> Reject Report</button>
-            <button class="btn btn-lime" (click)="confirmMatchReport()"><i class="fa fa-check"></i> Confirm Report</button>
+            <button class="btn btn-danger" (click)="rejectMatchVariantReport()"><i class="fa fa-times"></i> Reject Report</button>
+            <button class="btn btn-lime" (click)="confirmMatchVariantReport()"><i class="fa fa-check"></i> Confirm Report</button>
           </div>
         </div>
 
         <div *ngIf="matchData.assignmentReport && matchData.assignmentReport.reasons" id="match-assignment-details">
           <sd-assignment-reason-table [reasons]="matchData.assignmentReport.reasons"></sd-assignment-reason-table>
+
+          <div class="text-center m-b-20" *ngIf="isEditable">
+            <button class="btn btn-lime" (click)="confirmMatchAssignmentReport()"><i class="fa fa-check"></i> Confirm Assignment</button>
+          </div>
         </div>
 
         <p *ngIf="!matchData.assignmentReport || !matchData.assignmentReport.reasons" class="empty-data-panel">No Confirmation Report Assignment data</p>
