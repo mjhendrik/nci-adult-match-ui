@@ -130,14 +130,14 @@ export class FileUploadContentComponent implements OnInit {
         this.variantZipFileUrl = data[0];
         this.dnaBamFileUrl = data[1];
         this.cdnaBamFileUrl = data[2];
+        this.uploadFile(this.variantZipFileUrl, this.variantZipFile);
+        this.uploadFile(this.dnaBamFileUrl, this.dnaBamFile);
+        this.uploadFile(this.cdnaBamFileUrl, this.cdnaBamFile);
       });
-    this.uploadFile();
   }
 
-  uploadFile(): void {
-    this.api.uploadFile(this.variantZipFileUrl, this.variantZipFile);
-    this.api.uploadFile(this.dnaBamFileUrl, this.dnaBamFile);
-    this.api.uploadFile(this.cdnaBamFileUrl, this.cdnaBamFile);
+  uploadFile(url: string, file: any): void {
+    this.api.uploadFile(url, file).subscribe();
   }
 
   notifyAfterUpload(evt: any): void {
@@ -154,7 +154,7 @@ export class FileUploadContentComponent implements OnInit {
       'cdna_bam_name': this.cdnaBamFile.name
     };
 
-    this.api.notifyAfterUpload(this.msn, this.uploadNotification);
+    this.api.notifyAfterUpload(this.msn, this.uploadNotification).subscribe();
 
   }
 
