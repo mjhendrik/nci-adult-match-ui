@@ -140,7 +140,9 @@ export class FileUploadContentComponent implements OnInit {
     this.api.uploadFile(url, file);
   }
 
-  notifyAfterUpload(uploaded: boolean): void {
+  notifyAfterUpload(evt: any): void {
+
+    console.log('success');
 
     this.uploadNotification = {
       'ion_reporter_id': 'BDD',
@@ -154,16 +156,6 @@ export class FileUploadContentComponent implements OnInit {
 
     this.api.notifyAfterUpload(this.msn, this.uploadNotification);
 
-  }
-
-  onUploadSuccess(evt: any): void {
-    console.log('success');
-    this.notifyAfterUpload(true);
-  }
-
-  onUploadError(evt: any): void {
-    console.log('failure');
-    this.notifyAfterUpload(false);
   }
 
 }
