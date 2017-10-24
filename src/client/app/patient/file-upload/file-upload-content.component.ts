@@ -197,8 +197,9 @@ export class FileUploadContentComponent implements OnInit {
 
   }
 
-  closeUploadDialog() {
+  closeUploadDialog(nested: boolean) {
     this.modalRefFileUpload.hide();
+    if (nested === true) { }
   }
 
 }

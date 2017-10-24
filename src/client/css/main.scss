@@ -79,6 +79,13 @@ body {
   box-shadow: 0 1px $dark-purple-color;
 }
 
+.btn.btn-danger-light {
+  color: #fff;
+  background: $light-danger-color;
+  -webkit-box-shadow: 0 1px $dark-danger-color;
+  box-shadow: 0 1px $dark-danger-color;
+}
+
 .table>thead>tr.purple-light>th {
   color: #fff;
   background-color: $light-purple-color !important;
