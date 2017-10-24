@@ -1,10 +1,6 @@
-import {
-  Injectable,
-  Inject
-} from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { AuthHttp } from 'angular2-jwt';
-import { Http } from '@angular/http';
 
 import { Config } from '../shared/config/env.config';
 import { ApiService } from '../shared/api/api.service';
@@ -92,11 +88,4 @@ export class AliquotApiService extends ApiService {
       .catch(this.handleError);
   }
 
-}
-
-export class S3ApiService {
-  constructor( @Inject(Http) private http: Http) { }
-  uploadFile(url: string, file: any): Observable<any> {
-    return this.http.put(url, file);
-  }
 }

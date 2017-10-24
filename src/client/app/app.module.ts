@@ -1,4 +1,7 @@
-import { NgModule, ErrorHandler } from '@angular/core';
+import {
+  NgModule,
+  ErrorHandler
+} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { APP_BASE_HREF } from '@angular/common';
@@ -9,6 +12,7 @@ import {
   XHRBackend
 } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { AUTH_PROVIDERS } from 'angular2-jwt';
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
 
@@ -74,6 +78,7 @@ import { ModalDialogConfirmationComponent } from './shared/modal-dialogs/modal-d
     VariantReportFilteredTableModule,
     VariantReportSimpleTableModule,
     PopoverModule,
+    HttpClientModule,
     ToastModule.forRoot(),
     ModalModule.forRoot(),
     ErrorModule // This needs to be at the bottom of the list for ErrorComponent to work properly
@@ -96,7 +101,7 @@ import { ModalDialogConfirmationComponent } from './shared/modal-dialogs/modal-d
     AuthGuard,
     LoginGuard,
     ToastrService,
-    {provide: ErrorHandler, useClass: ErrorHandlingService}
+    { provide: ErrorHandler, useClass: ErrorHandlingService }
   ],
   bootstrap: [AppComponent],
   entryComponents: [

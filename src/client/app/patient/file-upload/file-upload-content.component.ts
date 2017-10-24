@@ -10,17 +10,16 @@ import {
 import { Observable } from 'rxjs/Observable';
 import {
   HttpEventType,
-  HttpResponse
+  HttpResponse,
+  HttpClient,
+  HttpRequest
 } from '@angular/common/http';
 import {
   BsModalRef,
   BsModalService
 } from 'ngx-bootstrap';
 
-import {
-  AliquotApiService,
-  S3ApiService
-} from '../../clia/aliquot-api.service';
+import { AliquotApiService } from '../../clia/aliquot-api.service';
 
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/throttleTime';
@@ -30,8 +29,7 @@ import 'rxjs/add/observable/fromEvent';
   moduleId: module.id,
   selector: 'sd-file-upload-content',
   templateUrl: 'file-upload-content.component.html',
-  styleUrls: ['file-upload-content.component.css'],
-  providers: [S3ApiService]
+  styleUrls: ['file-upload-content.component.css']
 })
 export class FileUploadContentComponent implements OnInit {
 
@@ -64,8 +62,8 @@ export class FileUploadContentComponent implements OnInit {
     private ngzone: NgZone,
     private appref: ApplicationRef,
     private api: AliquotApiService,
-    private s3Api: S3ApiService,
-    private modalService: BsModalService) { }
+    private modalService: BsModalService,
+    private http: HttpClient) { }
 
   ngOnInit() {
     this.onInputChanged('');
@@ -156,16 +154,22 @@ export class FileUploadContentComponent implements OnInit {
   }
 
   uploadFile(url: string, file: any): void {
-    this.s3Api.uploadFile(url, file).subscribe(event => {
+
+    const uploadFile = new HttpRequest('PUT', url, file, {
+      reportProgress: true,
+    });
+
+    this.http.request(uploadFile).subscribe(event => {
       if (event.type === HttpEventType.UploadProgress) {
         const percentDone = Math.round(100 * event.loaded / event.total);
-        console.log(percentDone);
+        console.log(`File is ${percentDone}% uploaded.`);
       } else if (event instanceof HttpResponse) {
         this.isDisabled = false;
-        console.log('success');
+        console.log('File is completely uploaded!');
         this.notifyAfterUpload();
       }
     });
+
   }
 
   notifyAfterUpload(): void {
@@ -176,7 +180,7 @@ export class FileUploadContentComponent implements OnInit {
       'ion_reporter_id': null,
       'molecular_sequence_number': this.msn,
       'analysis_id': this.analysisId,
-      'site': 'BDD',
+      'site': null,
       'zip_name': this.variantZipFile.name,
       'dna_bam_name': this.dnaBamFile.name,
       'cdna_bam_name': this.cdnaBamFile.name
