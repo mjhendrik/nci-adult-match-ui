@@ -97,7 +97,7 @@ export class CnvChartDirective implements OnInit {
   }
 
   getData() {
-    let array:any = this.data[0];
+    let array:any = this.data[0] || {};
     let xr:number = array.length * 24;
     let temp:any[] = [];
     let svg:any;
@@ -237,8 +237,7 @@ export class CnvChartDirective implements OnInit {
               html = "<span class='list-group' style='font-size: 18px'><strong>" +
                 series.key +
                 "</strong></span>";
-            }
-            else {
+            } else {
               rows =
                 "<tr>" +
                 "<td class='key'>" + 'Position: ' + "</td>" +
@@ -343,8 +342,7 @@ export class CnvChartDirective implements OnInit {
                   .style('font-size', '12px');
 
                 prespot = spot;
-              }
-              else {
+              } else {
                 svg.append('text')
                   .attr('class', 'nv-zeroLine')
                   .attr('x', 5)

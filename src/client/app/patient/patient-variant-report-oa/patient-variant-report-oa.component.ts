@@ -186,7 +186,7 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, Varian
       item.comment
     ).subscribe(
       (x: any) => { this.transformer.updateVariantStatus(reportData.variantReport, x); }
-      );
+    );
   }
 
   private showConfirmation(

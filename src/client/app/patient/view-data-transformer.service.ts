@@ -136,9 +136,9 @@ export class ViewDataTransformer {
   }
 
   updateVariantReportStatus(report: VariantReportData, updatedStatus: VariantReportStatus): void {
-    report.variantReport.variantReportStatus = updatedStatus.status;
-    report.variantReport.comments = updatedStatus.comments;
-    report.variantReport.statusUser = updatedStatus.user;
+    report.variantReportStatus = updatedStatus.status;
+    report.comments = updatedStatus.comments;
+    report.statusUser = updatedStatus.user;
     report.isVariantReportEditable = this.getVariantReportEditable(report);
   }
 
@@ -192,7 +192,7 @@ export class ViewDataTransformer {
     return !!tvcVersion && tvcVersion.startsWith('5.2');
   }
 
-  getVariantReportEditable(variantReport: any): boolean {
+  getVariantReportEditable(variantReport: VariantReportData): boolean {
     if (!variantReport && !variantReport.variantReportStatus) {
       return false;
     }
