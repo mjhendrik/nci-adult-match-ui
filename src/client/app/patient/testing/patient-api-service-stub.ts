@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs/Observable';
-import { VariantReportComparisonData } from '../patient-variant-report-oa/variant-report-comparison-data';
+import { VariantReportComparisonData } from '../variant-report-comparison-data';
 
 export class PatientApiServiceStub {
     static makeParsedVcftData = () => {
@@ -216,7 +216,13 @@ export class PatientApiServiceStub {
                 assays: [],
                 variantReport: {
                     molecularSequenceNumber: 'outside-msn',
-                    moiSummary: {},
+                    variantReportFileReceivedDate: 'fake-file-date',
+                    moiSummary: {
+                        totalaMOIs: 0,
+                        totalMOIs: 0,
+                        confirmedaMOIs: 0,
+                        confirmedMOIs: 0
+                    },
                     variantReportStatus: 'PENDING',
                     comments: '',
                     statusUser: ''
@@ -231,7 +237,8 @@ export class PatientApiServiceStub {
                 cellularity: {},
                 showPools: false,
                 isVariantReportEditable: false,
-                isAssignmentReportEditable: false
+                isAssignmentReportEditable: false,
+                isOutsideAssayWorkflow: false
             },
             matchData: {
                 patient: {},
@@ -241,7 +248,13 @@ export class PatientApiServiceStub {
                 assays: [],
                 variantReport: {
                     molecularSequenceNumber: 'match-msn',
-                    moiSummary: {},
+                    variantReportFileReceivedDate: 'fake-file-date',
+                    moiSummary: {
+                        totalaMOIs: 0,
+                        totalMOIs: 0,
+                        confirmedaMOIs: 0,
+                        confirmedMOIs: 0
+                    },
                     variantReportStatus: 'PENDING',
                     comments: '',
                     statusUser: ''
@@ -256,7 +269,8 @@ export class PatientApiServiceStub {
                 cellularity: {},
                 showPools: false,
                 isVariantReportEditable: false,
-                isAssignmentReportEditable: false
+                isAssignmentReportEditable: false,
+                isOutsideAssayWorkflow: false
             },
             comparisonVariantReport: {
                 singleNucleotideVariantAndIndels: [],
@@ -2771,7 +2785,13 @@ export class PatientApiServiceStub {
                 assays: [{ value: 'value' }],
                 variantReport: {
                     molecularSequenceNumber: 'outside-msn',
-                    moiSummary: {},
+                    variantReportFileReceivedDate: 'fake-file-date',
+                    moiSummary: {
+                        totalaMOIs: 0,
+                        totalMOIs: 0,
+                        confirmedaMOIs: 0,
+                        confirmedMOIs: 0
+                    },
                     variantReportStatus: 'PENDING',
                     comments: '',
                     statusUser: ''
@@ -2801,7 +2821,8 @@ export class PatientApiServiceStub {
                 cellularity: 'value',
                 showPools: false,
                 isVariantReportEditable: false,
-                isAssignmentReportEditable: false
+                isAssignmentReportEditable: false,
+                isOutsideAssayWorkflow: false
             },
             matchData: {
                 patient: {},
@@ -2811,7 +2832,13 @@ export class PatientApiServiceStub {
                 assays: [{ value: 'value' }],
                 variantReport: {
                     molecularSequenceNumber: 'match-msn',
-                    moiSummary: {},
+                    variantReportFileReceivedDate: 'fake-file-date',
+                    moiSummary: {
+                        totalaMOIs: 0,
+                        totalMOIs: 0,
+                        confirmedaMOIs: 0,
+                        confirmedMOIs: 0
+                    },
                     variantReportStatus: 'PENDING',
                     comments: '',
                     statusUser: ''
@@ -2826,7 +2853,8 @@ export class PatientApiServiceStub {
                 cellularity: 'value',
                 showPools: false,
                 isVariantReportEditable: false,
-                isAssignmentReportEditable: false
+                isAssignmentReportEditable: false,
+                isOutsideAssayWorkflow: false
             },
             comparisonVariantReport: {
                 singleNucleotideVariantAndIndels: [{ value: 'value' }],
@@ -3021,9 +3049,6 @@ export class PatientApiServiceMock {
         ];
         return Observable.of(testData);
     }
-
-
-
 
     getPatientCount(): Observable<any> {
         return Observable.of(150);

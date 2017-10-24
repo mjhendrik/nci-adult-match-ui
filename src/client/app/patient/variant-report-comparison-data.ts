@@ -1,4 +1,4 @@
-import { VariantReportData } from '../patient-variant-report/patient-variant-report.module';
+import { VariantReportData } from './variant-report-data';
 
 export interface VariantReportComparisonData {
     psn: string;

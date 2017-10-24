@@ -8,13 +8,13 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 
 import { routerTransition } from './../../shared/router.animations';
 import { PatientApiService } from '../patient-api.service';
-import { VariantReportComparisonData } from './variant-report-comparison-data';
 import { ScrollService } from '../../shared/utils/scroll.to.service';
 import { ViewDataTransformer } from '../view-data-transformer.service';
 import { ConfirmableItem } from '../../shared/check-box-with-confirm/check-box-with-confirm.component';
-import { VariantReportData } from '../patient-variant-report/patient-variant-report.module';
 import { DialogResults } from '../../shared/modal-dialogs/modal-dialog-results';
 import { ModalDialogConfirmationComponent } from '../../shared/modal-dialogs/modal-dialog-confirmation.component';
+import { VariantReportComparisonData } from '../variant-report-comparison-data';
+import { VariantReportData } from '../variant-report-data';
 
 /**
  * PatientVariantReportOutsideAssayComponent.

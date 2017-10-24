@@ -8,12 +8,12 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { routerTransition } from './../../shared/router.animations';
 import { PatientApiService } from '../patient-api.service';
-import { VariantReportData } from './patient-variant-report.module';
 import { ScrollService } from '../../shared/utils/scroll.to.service';
 import { ConfirmableItem } from '../../shared/check-box-with-confirm/check-box-with-confirm.component';
 import { ViewDataTransformer } from '../view-data-transformer.service';
 import { DialogResults } from '../../shared/modal-dialogs/modal-dialog-results';
 import { ModalDialogConfirmationComponent } from '../../shared/modal-dialogs/modal-dialog-confirmation.component';
+import { VariantReportData } from '../variant-report-data';
 
 /**
  * PatientVariantReportComponent.
@@ -46,6 +46,7 @@ export class PatientVariantReportComponent implements OnInit, VariantReportData 
   assays: any[] = [];
   isVariantReportEditable: boolean;
   isAssignmentReportEditable: boolean;
+  isOutsideAssayWorkflow: boolean;
 
   public modalRef: BsModalRef;
   public dialogSubscription: Subscription;

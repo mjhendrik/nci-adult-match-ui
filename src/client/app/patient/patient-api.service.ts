@@ -4,10 +4,10 @@ import { Observable } from 'rxjs/Observable';
 import { AuthHttp } from 'angular2-jwt';
 
 import { Config } from '../shared/config/env.config';
-import { VariantReportComparisonData } from './patient-variant-report-oa/variant-report-comparison-data';
 import { DownloadService } from '../shared/utils/download.service';
 import { ApiService } from '../shared/api/api.service';
 import { VariantReportStatus } from './variant-report-status';
+import { VariantReportComparisonData } from './variant-report-comparison-data';
 
 @Injectable()
 export class PatientApiService extends ApiService {

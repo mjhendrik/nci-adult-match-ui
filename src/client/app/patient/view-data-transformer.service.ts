@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 
 import { AssignmentReasonSection } from './assignment-reason-table/assignment-reason-table.component';
-import { VariantReportComparisonData } from './patient-variant-report-oa/variant-report-comparison-data';
 import { AssignmentReportData } from './assignment-report/assignment-report.module';
 import { VariantReportComparisonSummary } from './patient-variant-report-oa/variant-report-comparison-summary';
 import { VariantReportStatus } from './variant-report-status';
-import { VariantReportData } from './patient-variant-report/patient-variant-report.module';
+import { VariantReportComparisonData } from './variant-report-comparison-data';
+import { VariantReportData } from './variant-report-data';
 
 const variantTables: Array<string> = [
   'geneFusions',
@@ -64,7 +64,7 @@ export class ViewDataTransformer {
       return null;
     }
 
-    const transformedReport: any = { ...report }; // Deep-copy the source
+    const transformedReport: VariantReportComparisonData = { ...report }; // Deep-copy the source
 
     cnvDataOutside = cnvDataOutside || {};
     ocpDataOutside = ocpDataOutside || {};
@@ -77,9 +77,6 @@ export class ViewDataTransformer {
     transformedReport.matchData.cellularity = cnvDataMatch.cellularity;
     transformedReport.matchData.tvc_version = cnvDataMatch.tvc_version;
     transformedReport.matchData.showPools = this.showPools(cnvDataMatch.tvc_version);
-    transformedReport.matchData.variantReport = transformedReport.matchData.variantReport || {};
-    transformedReport.matchData.variantReport.moiSummary = transformedReport.matchData.variantReport.moiSummary || {};
-    transformedReport.matchData.isEditable = this.getVariantReportEditable(transformedReport.matchData.variantReport);
 
     transformedReport.outsideData.pool1 = ocpDataOutside.pool1;
     transformedReport.outsideData.pool2 = ocpDataOutside.pool2;
@@ -87,9 +84,6 @@ export class ViewDataTransformer {
     transformedReport.outsideData.cellularity = cnvDataOutside.cellularity;
     transformedReport.outsideData.tvc_version = cnvDataOutside.tvc_version;
     transformedReport.outsideData.showPools = this.showPools(cnvDataOutside.tvc_version);
-    transformedReport.outsideData.variantReport = transformedReport.outsideData.variantReport || {};
-    transformedReport.outsideData.variantReport.moiSummary = transformedReport.outsideData.variantReport.moiSummary || {};
-    transformedReport.outsideData.isEditable = this.getVariantReportEditable(transformedReport.outsideData.variantReport);
 
     this.transformAssignmentLogic(transformedReport.matchData.assignmentReport);
     this.transformAssignmentLogic(transformedReport.outsideData.assignmentReport);
@@ -98,10 +92,26 @@ export class ViewDataTransformer {
 
     transformedReport.showOutsideAssay = isOutsideAssayReport;
 
+    transformedReport.outsideData.isVariantReportEditable =
+      transformedReport.outsideData.variantReport.variantReportStatus &&
+      transformedReport.outsideData.variantReport.variantReportStatus !== 'PENDING';
+
+    transformedReport.outsideData.isAssignmentReportEditable =
+      transformedReport.outsideData.assignmentReport.patientAssignmentStatus &&
+      transformedReport.outsideData.assignmentReport.patientAssignmentStatus !== 'PENDING';
+
+    transformedReport.matchData.isVariantReportEditable =
+      transformedReport.matchData.variantReport.variantReportStatus &&
+      transformedReport.matchData.variantReport.variantReportStatus !== 'PENDING';
+
+    transformedReport.matchData.isAssignmentReportEditable =
+      transformedReport.matchData.assignmentReport.patientAssignmentStatus &&
+      transformedReport.matchData.assignmentReport.patientAssignmentStatus !== 'PENDING';
+
     transformedReport.showComparison = transformedReport.outsideData.variantReport.variantReportStatus
-      && transformedReport.outsideData.variantReport.variantReportStatus !== 'PENDING'
+      && transformedReport.outsideData.variantReport.variantReportStatus === 'CONFIRMED'
       && transformedReport.matchData.variantReport.variantReportStatus
-      && transformedReport.matchData.variantReport.variantReportStatus !== 'PENDING';
+      && transformedReport.matchData.variantReport.variantReportStatus === 'CONFIRMED';
 
     return transformedReport;
   }
@@ -303,7 +313,7 @@ export class ViewDataTransformer {
       analysis.variantReportStatus = message.status;
       analysis.variantReportCreatedDate = message.ionReporterResults.variantReport
         ? message.ionReporterResults.variantReport.createdDate : null;
-      analysis.variantReporterFileReceivedDate = message.dateReceived;
+      analysis.variantReportFileReceivedDate = message.dateReceived;
       analysis.variantReporterRejectedOrConfirmedDate = message.dateVerified;
 
       if (!message.ionReporterResults.variantReport) {
@@ -313,13 +323,13 @@ export class ViewDataTransformer {
 
       transformedPatient.analyses = transformedPatient.analyses || {};
 
-      let variantReport = message.ionReporterResults.variantReport;
+      let variantReport = message.ionReporterResults.variantReport as VariantReportData;
 
       analysis.variantReport = variantReport;
       variantReport.isOutsideAssayWorkflow = transformedBiopsy.isOutsideAssayWorkflow;
-      variantReport.variantReporterFileReceivedDate = analysis.variantReporterFileReceivedDate;
+      variantReport.variantReportFileReceivedDate = analysis.variantReportFileReceivedDate;
 
-      variantReport.moiSummary = {
+      variantReport.variantReport.moiSummary = {
         totalaMOIs: 0,
         totalMOIs: 0,
         confirmedaMOIs: 0,
@@ -327,14 +337,14 @@ export class ViewDataTransformer {
       };
 
       for (let table of variantTables) {
-        this.calculateMoiSummary(variantReport[table], variantReport.moiSummary);
+        this.calculateMoiSummary(variantReport[table], variantReport.variantReport.moiSummary);
       }
 
       transformedPatient.analyses[message.ionReporterResults.jobName] = analysis;
 
       variantReport.variantReportStatus = analysis.variantReportStatus;
       variantReport.variantReportCreatedDate = analysis.variantReportCreatedDate;
-      variantReport.variantReporterFileReceivedDate = analysis.variantReporterFileReceivedDate;
+      variantReport.variantReportFileReceivedDate = analysis.variantReportFileReceivedDate;
       variantReport.variantReporterRejectedOrConfirmedDate = analysis.variantReporterRejectedOrConfirmedDate;
 
       variantReport.biopsySequenceNumber = transformedBiopsy.biopsySequenceNumber;

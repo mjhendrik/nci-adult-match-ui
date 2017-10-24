@@ -16,7 +16,7 @@ import { VariantReportSimpleTableModule } from '../../shared/variant-report-simp
 
 import { PatientApiService } from '../patient-api.service';
 import { ViewDataTransformer } from '../view-data-transformer.service';
-import { VariantReportComparisonData } from './variant-report-comparison-data';
+import { VariantReportComparisonData } from '../variant-report-comparison-data';
 
 @Injectable()
 class DataResolver implements Resolve<VariantReportComparisonData> {

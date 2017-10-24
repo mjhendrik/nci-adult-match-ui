@@ -14,30 +14,6 @@ import { VariantReportSimpleTableModule } from '../../shared/variant-report-simp
 import { SharedModule } from '../../shared/shared.module';
 import { ScrollService } from '../../shared/utils/scroll.to.service';
 
-export interface VariantReportData {
-  psn: string;
-  bsn: string;
-  analysisId: string;
-  patient: any;
-  assays: any[];
-  variantReport: {
-    variantReportStatus: string;
-    comments: string;
-    statusUser: string;
-  };
-  assignmentReport: any;
-  assignmentHistory: any;
-  parsed_vcf_genes: any;
-  tvc_version: string;
-  pool1: number;
-  pool2: number;
-  mapd: string;
-  cellularity: any;
-  showPools: boolean;
-  isVariantReportEditable: boolean;
-  isAssignmentReportEditable: boolean;
-}
-
 @NgModule({
   imports: [
     CommonModule,

@@ -16,7 +16,7 @@ import { VariantReportSimpleTableModule } from '../../shared/variant-report-simp
 
 import { PatientApiService } from '../patient-api.service';
 import { ViewDataTransformer } from '../view-data-transformer.service';
-import { VariantReportData } from './patient-variant-report.module';
+import { VariantReportData } from '../variant-report-data';
 
 @Injectable()
 class DataResolver implements Resolve<VariantReportData> {
@@ -66,7 +66,8 @@ class DataResolver implements Resolve<VariantReportData> {
           // isEditable: this.transformer.getVariantReportEditable(analysis.variantReport)
           //TODO: debug-only
           isVariantReportEditable: true,
-          isAssignmentReportEditable: true
+          isAssignmentReportEditable: true,
+          isOutsideAssayWorkflow: false
         };
       }
       );
