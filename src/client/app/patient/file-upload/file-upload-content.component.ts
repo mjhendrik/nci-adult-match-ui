@@ -42,6 +42,7 @@ export class FileUploadContentComponent implements OnInit {
   message: string = 'Enter a valid Analysis ID to add Variant ZIP file, DNA BAM file and cDNA BAM file';
   uploadNotification: any;
   isDisabled: boolean = false;
+  count: number = 0;
 
   hasVariantZipFile: boolean = false;
   hasDnaBamFile: boolean = false;
@@ -164,17 +165,17 @@ export class FileUploadContentComponent implements OnInit {
         const percentDone = Math.round(100 * event.loaded / event.total);
         console.log(`File is ${percentDone}% uploaded.`);
       } else if (event instanceof HttpResponse) {
-        this.isDisabled = false;
-        console.log('File is completely uploaded!');
-        this.notifyAfterUpload();
+        this.count++;
+        if (this.count === 3) {
+          this.isDisabled = false;
+          this.notifyAfterUpload();
+        }
       }
     });
 
   }
 
   notifyAfterUpload(): void {
-
-    console.log('notify');
 
     this.uploadNotification = {
       'ion_reporter_id': null,
