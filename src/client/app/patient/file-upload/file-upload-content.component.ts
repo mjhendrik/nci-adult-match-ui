@@ -42,7 +42,7 @@ export class FileUploadContentComponent implements OnInit {
   message: string = 'Enter a valid Analysis ID to add Variant ZIP file, DNA BAM file and cDNA BAM file';
   uploadNotification: any;
   isDisabled: boolean = false;
-  count: number = 0;
+  fileCount: number = 0;
 
   percentDoneVariantZipFile: number = 0;
   percentDoneDnaBamFile: number = 0;
@@ -171,8 +171,8 @@ export class FileUploadContentComponent implements OnInit {
         if (file === this.dnaBamFile) this.percentDoneDnaBamFile = percentDone;
         if (file === this.cdnaBamFile) this.percentDoneCdnaBamFile = percentDone;
       } else if (event instanceof HttpResponse) {
-        this.count++;
-        if (this.count === 3) {
+        this.fileCount++;
+        if (this.fileCount === 3) {
           this.isDisabled = false;
           this.notifyAfterUpload();
         }
