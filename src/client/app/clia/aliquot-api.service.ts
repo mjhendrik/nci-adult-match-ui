@@ -1,6 +1,10 @@
-import { Injectable } from '@angular/core';
+import {
+  Injectable,
+  Inject
+} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { AuthHttp } from 'angular2-jwt';
+import { Http } from '@angular/http';
 
 import { Config } from '../shared/config/env.config';
 import { ApiService } from '../shared/api/api.service';
@@ -82,16 +86,17 @@ export class AliquotApiService extends ApiService {
       });
   }
 
-  uploadFile(url: string, file: any): Observable<any> {
-    return this.http.put(url, file)
-      .map(this.extractData)
-      .catch(this.handleError);
-  }
-
   notifyAfterUpload(msn: string, body: any): Observable<any> {
     return this.http.put(`${this.baseApiUrl}/message/clia/aliquot/` + msn, body)
       .map(this.extractData)
       .catch(this.handleError);
   }
 
+}
+
+export class S3ApiService {
+  constructor( @Inject(Http) private http: Http) { }
+  uploadFile(url: string, file: any): Observable<any> {
+    return this.http.put(url, file);
+  }
 }

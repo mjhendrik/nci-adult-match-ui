@@ -17,7 +17,10 @@ import {
   BsModalService
 } from 'ngx-bootstrap';
 
-import { AliquotApiService } from '../../clia/aliquot-api.service';
+import {
+  AliquotApiService,
+  S3ApiService
+} from '../../clia/aliquot-api.service';
 
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/throttleTime';
@@ -27,7 +30,8 @@ import 'rxjs/add/observable/fromEvent';
   moduleId: module.id,
   selector: 'sd-file-upload-content',
   templateUrl: 'file-upload-content.component.html',
-  styleUrls: ['file-upload-content.component.css']
+  styleUrls: ['file-upload-content.component.css'],
+  providers: [S3ApiService]
 })
 export class FileUploadContentComponent implements OnInit {
 
@@ -60,6 +64,7 @@ export class FileUploadContentComponent implements OnInit {
     private ngzone: NgZone,
     private appref: ApplicationRef,
     private api: AliquotApiService,
+    private s3Api: S3ApiService,
     private modalService: BsModalService) { }
 
   ngOnInit() {
@@ -151,7 +156,7 @@ export class FileUploadContentComponent implements OnInit {
   }
 
   uploadFile(url: string, file: any): void {
-    this.api.uploadFile(url, file).subscribe(event => {
+    this.s3Api.uploadFile(url, file).subscribe(event => {
       if (event.type === HttpEventType.UploadProgress) {
         const percentDone = Math.round(100 * event.loaded / event.total);
         console.log(percentDone);
