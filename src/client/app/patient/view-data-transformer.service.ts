@@ -72,19 +72,28 @@ export class ViewDataTransformer {
     cnvDataMatch = cnvDataMatch || {};
     ocpDataMatch = ocpDataMatch || {};
 
+    transformedReport.matchData = transformedReport.matchData || {};
     transformedReport.matchData.pool1 = ocpDataMatch.pool1;
     transformedReport.matchData.pool2 = ocpDataMatch.pool2;
     transformedReport.matchData.mapd = cnvDataMatch.mapd;
     transformedReport.matchData.cellularity = cnvDataMatch.cellularity;
     transformedReport.matchData.tvc_version = cnvDataMatch.tvc_version;
     transformedReport.matchData.showPools = this.showPools(cnvDataMatch.tvc_version);
+    transformedReport.matchData.assignmentReport = transformedReport.matchData.assignmentReport || {};
+    transformedReport.matchData.moiSummary = transformedReport.matchData.moiSummary
+      || { totalaMOIs: 0, totalMOIs: 0, confirmedaMOIs: 0, confirmedMOIs: 0 };
 
+    transformedReport.outsideData = transformedReport.outsideData || {};
     transformedReport.outsideData.pool1 = ocpDataOutside.pool1;
     transformedReport.outsideData.pool2 = ocpDataOutside.pool2;
     transformedReport.outsideData.mapd = cnvDataOutside.mapd;
     transformedReport.outsideData.cellularity = cnvDataOutside.cellularity;
     transformedReport.outsideData.tvc_version = cnvDataOutside.tvc_version;
     transformedReport.outsideData.showPools = this.showPools(cnvDataOutside.tvc_version);
+    transformedReport.outsideData.assignmentReport = transformedReport.outsideData.assignmentReport || {};
+    transformedReport.outsideData.assignmentReport = transformedReport.outsideData.assignmentReport || {};
+    transformedReport.outsideData.moiSummary = transformedReport.outsideData.moiSummary
+      || { totalaMOIs: 0, totalMOIs: 0, confirmedaMOIs: 0, confirmedMOIs: 0 };
 
     this.transformAssignmentLogic(transformedReport.matchData.assignmentReport);
     this.transformAssignmentLogic(transformedReport.outsideData.assignmentReport);
