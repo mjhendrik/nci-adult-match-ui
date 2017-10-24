@@ -52,3 +52,11 @@
     font-family: inherit;
     z-index: 2000;
 }
+
+.modal-header {
+  border-bottom: none;
+}
+
+.modal-footer {
+  border-top: none;
+}

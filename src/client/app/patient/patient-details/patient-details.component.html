@@ -71,7 +71,7 @@
     <div class="col-md-12">
       <div class="panel">
         <tabset class="nav-tabs-purple">
-          <tab heading="Summary" [active]="summaryData" id="summary">
+          <tab heading="Summary" [active]="summaryData" id="summary" index="0">
             <div *ngIf="patient" class="row" matchHeight="panel-height-top">
               <div class="row">
                 <div class="col-md-6 ut-patient-timeline" *ngIf="patient.patientTriggers">
@@ -309,7 +309,7 @@
               </div>
             </div>
           </tab>
-          <tab heading="Documents" id="documents">
+          <tab heading="Documents" id="documents" index="patient.biopsies.length">
             <div class="table-responsive">
               <table class="table table-td-valign-middle">
                 <thead>
