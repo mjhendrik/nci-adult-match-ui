@@ -40,7 +40,7 @@ let ta_list_data = {
     dateCreated: '2-12-2016',
   }]]
 };
-
+//No Test
 export function main() {
   describe('treatment arms list component', () => {
 
@@ -80,11 +80,10 @@ export function main() {
           },
         ]
       });
-
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
     });
 
-    it('should work by calling ngOnInit',
+    it('should work by calling Treatment Arm List --> ngOnInit',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -233,9 +232,13 @@ export function main() {
     // inject([MockBackend], (mockBackend: MockBackend)
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [RouterTestingModule.withRoutes(config), DirectivesModule,
-          PipesModule, FormsModule, SharedModule,
-          DataTableModule, ChartsModule],
+        imports: [RouterTestingModule.withRoutes(config),
+          DirectivesModule,
+          PipesModule,
+          FormsModule,
+          SharedModule,
+          DataTableModule,
+          ChartsModule],
         declarations: [TreatmentArmListComponent],
         providers: [
           { provide: TreatmentArmApiService, useClass: MockTAListApiServiceError },
