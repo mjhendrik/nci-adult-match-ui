@@ -49,16 +49,7 @@ class DataResolver implements Resolve<VariantReportComparisonData> {
       let [report, cnvDataOutside, ocpDataOutside, cnvDataMatch, ocpDataMatch] = x;
 
       const transformedReport = this.transformer.transformOutsidePatientReport(
-        report, cnvDataOutside, ocpDataOutside, cnvDataMatch, ocpDataMatch, isOutsideAssayReport);
-
-        transformedReport.psn = psn;
-
-        //TODO: debug-only
-        transformedReport.outsideData.isVariantReportEditable = true;
-        transformedReport.outsideData.isAssignmentReportEditable = true;
-
-        transformedReport.matchData.isVariantReportEditable = true;
-        transformedReport.matchData.isAssignmentReportEditable = true;
+        report, cnvDataOutside, ocpDataOutside, cnvDataMatch, ocpDataMatch, isOutsideAssayReport, psn);
 
       return transformedReport;
     });

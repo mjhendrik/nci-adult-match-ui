@@ -15,10 +15,10 @@ import { AuthHttp } from 'angular2-jwt';
 import { Observable } from 'rxjs/Observable';
 
 import { PatientApiService } from './patient-api.service';
-import { VariantReportComparisonData } from './patient-variant-report-oa/variant-report-comparison-data';
 import { DownloadService } from '../shared/utils/download.service';
 import { WindowStub } from './testing/window-stub';
 import { PatientApiServiceStub } from './testing/patient-api-service-stub';
+import { VariantReportComparisonData } from './variant-report-comparison-data';
 
 export function main() {
   describe('PatientApiService (mockBackend)', () => {

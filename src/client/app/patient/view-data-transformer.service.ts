@@ -58,7 +58,8 @@ export class ViewDataTransformer {
     ocpDataOutside: any,
     cnvDataMatch: any,
     ocpDataMatch: any,
-    isOutsideAssayReport: boolean): VariantReportComparisonData {
+    isOutsideAssayReport: boolean,
+    patientSequenceNumber: string): VariantReportComparisonData {
 
     if (!report) {
       return null;
@@ -93,25 +94,34 @@ export class ViewDataTransformer {
     transformedReport.showOutsideAssay = isOutsideAssayReport;
 
     transformedReport.outsideData.isVariantReportEditable =
-      transformedReport.outsideData.variantReport.variantReportStatus &&
-      transformedReport.outsideData.variantReport.variantReportStatus !== 'PENDING';
+      transformedReport.outsideData.variantReportStatus &&
+      transformedReport.outsideData.variantReportStatus !== 'PENDING';
 
     transformedReport.outsideData.isAssignmentReportEditable =
       transformedReport.outsideData.assignmentReport.patientAssignmentStatus &&
       transformedReport.outsideData.assignmentReport.patientAssignmentStatus !== 'PENDING';
 
     transformedReport.matchData.isVariantReportEditable =
-      transformedReport.matchData.variantReport.variantReportStatus &&
-      transformedReport.matchData.variantReport.variantReportStatus !== 'PENDING';
+      transformedReport.matchData.variantReportStatus &&
+      transformedReport.matchData.variantReportStatus !== 'PENDING';
 
     transformedReport.matchData.isAssignmentReportEditable =
       transformedReport.matchData.assignmentReport.patientAssignmentStatus &&
       transformedReport.matchData.assignmentReport.patientAssignmentStatus !== 'PENDING';
 
-    transformedReport.showComparison = transformedReport.outsideData.variantReport.variantReportStatus
-      && transformedReport.outsideData.variantReport.variantReportStatus === 'CONFIRMED'
-      && transformedReport.matchData.variantReport.variantReportStatus
-      && transformedReport.matchData.variantReport.variantReportStatus === 'CONFIRMED';
+    transformedReport.showComparison = transformedReport.outsideData.variantReportStatus
+      && transformedReport.outsideData.variantReportStatus === 'CONFIRMED'
+      && transformedReport.matchData.variantReportStatus
+      && transformedReport.matchData.variantReportStatus === 'CONFIRMED';
+
+      transformedReport.patientSequenceNumber = patientSequenceNumber;
+
+      //TODO: debug-only
+      transformedReport.outsideData.isVariantReportEditable = true;
+      transformedReport.outsideData.isAssignmentReportEditable = true;
+
+      transformedReport.matchData.isVariantReportEditable = true;
+      transformedReport.matchData.isAssignmentReportEditable = true;
 
     return transformedReport;
   }
@@ -178,6 +188,65 @@ export class ViewDataTransformer {
       return false;
     }
     return variantReport.variantReportStatus === 'PENDING';
+  }
+
+  transformPatientVariantReport(transformedPatient: any,
+    copyNumberData: any,
+    oncominePanelData: any,
+    biopsySequenceNumber: string,
+    analysisId: string): VariantReportData {
+
+    const analysis = transformedPatient.analyses[analysisId] || {};
+    const tvc_version = copyNumberData.tvc_version;
+    const showPools: boolean = this.showPools(tvc_version);
+
+    let variantReport = analysis.variantReport as VariantReportData;
+
+    // psn: psn,
+    // bsn: bsn,
+    // analysisId: route.params.analysisId,
+    // patient: patient,
+    // analysis: analysis,
+    // variantReport: analysis.variantReport,
+    // assignmentReport: analysis.assignmentReport,
+    // assignmentHistory: patient.patientAssignments,
+    // parsed_vcf_genes: [data[1].parsed_vcf_genes, data[1].file_name],
+    // tvc_version: tvc_version,
+    // pool1: data[2].pool1,
+    // pool2: data[2].pool2,
+    // mapd: data[1].mapd,
+    // cellularity: data[1].cellularity,
+    // showPools: showPools,
+    // assays: analysis.assays,
+    // // isEditable: this.transformer.getVariantReportEditable(analysis.variantReport)
+    // //TODO: debug-only
+    // isVariantReportEditable: true,
+    // isAssignmentReportEditable: true,
+    // isOutsideAssayWorkflow: false
+
+    variantReport.patientSequenceNumber = transformedPatient.patientSequenceNumber;
+    variantReport.biopsySequenceNumber = biopsySequenceNumber;
+    variantReport.analysisId = analysisId;
+    variantReport.patient = transformedPatient;
+    variantReport.analysis = analysis;
+    variantReport.variantReport = analysis.variantReport;
+    variantReport.assignmentReport = analysis.assignmentReport;
+    variantReport.assignmentHistory = transformedPatient.patientAssignments;
+    variantReport.parsed_vcf_genes = [copyNumberData.parsed_vcf_genes, copyNumberData.file_name];
+    variantReport.tvc_version = tvc_version;
+    variantReport.pool1 = oncominePanelData.pool1;
+    variantReport.pool2 = oncominePanelData.pool2;
+    variantReport.mapd = copyNumberData.mapd;
+    variantReport.cellularity = copyNumberData.cellularity;
+    variantReport.showPools = showPools;
+    variantReport.assays = analysis.assays;
+
+    // TODO: for debug only, replace with `this.getVariantReportEditable(analysis.variantReport)`
+    variantReport.isVariantReportEditable = true;
+    variantReport.isAssignmentReportEditable = true;
+    variantReport.isOutsideAssayWorkflow = false;
+
+    return variantReport;
   }
 
   private precessPassFailVariants(comparisonVariantReport: any): void {
@@ -329,7 +398,7 @@ export class ViewDataTransformer {
       variantReport.isOutsideAssayWorkflow = transformedBiopsy.isOutsideAssayWorkflow;
       variantReport.variantReportFileReceivedDate = analysis.variantReportFileReceivedDate;
 
-      variantReport.variantReport.moiSummary = {
+      variantReport.moiSummary = {
         totalaMOIs: 0,
         totalMOIs: 0,
         confirmedaMOIs: 0,
@@ -337,7 +406,7 @@ export class ViewDataTransformer {
       };
 
       for (let table of variantTables) {
-        this.calculateMoiSummary(variantReport[table], variantReport.variantReport.moiSummary);
+        this.calculateMoiSummary(variantReport[table], variantReport.moiSummary);
       }
 
       transformedPatient.analyses[message.ionReporterResults.jobName] = analysis;

@@ -5,11 +5,9 @@ import {
 import {
   async,
   TestBed,
-  ComponentFixture,
-  fakeAsync,
-  tick
+  ComponentFixture
 } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
+
 import { ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';

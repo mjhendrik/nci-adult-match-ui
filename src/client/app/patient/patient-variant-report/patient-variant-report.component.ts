@@ -29,11 +29,26 @@ import { VariantReportData } from '../variant-report-data';
 export class PatientVariantReportComponent implements OnInit, VariantReportData {
   scrollTo: (id: string) => void;
 
-  psn: string;
-  bsn: string;
+  biopsySequenceNumber: string;
+  patientSequenceNumber: string;
+  molecularSequenceNumber: string;
   analysisId: string;
   patient: any;
-  variantReport: any;
+  assays: any[] = [];
+  variantReportFileReceivedDate: string;
+  variantReportCreatedDate: string;
+  variantReporterRejectedOrConfirmedDate: string;
+  variantReportStatus: string;
+  comments: string;
+  statusUser: string;
+
+  moiSummary: {
+      totalaMOIs: number;
+      totalMOIs: number;
+      confirmedaMOIs: number;
+      confirmedMOIs: number;
+  };
+
   assignmentReport: any;
   assignmentHistory: any;
   parsed_vcf_genes: any;
@@ -43,7 +58,14 @@ export class PatientVariantReportComponent implements OnInit, VariantReportData 
   mapd: string;
   cellularity: any;
   showPools: boolean;
-  assays: any[] = [];
+  tvcVersion: string;
+  dnaBamFilePath: string;
+  rnaBamFilePath: string;
+  dnaBaiFilePath: string;
+  rnaBaiFilePath: string;
+  vcfFilePath: string;
+  qcFile: string;
+
   isVariantReportEditable: boolean;
   isAssignmentReportEditable: boolean;
   isOutsideAssayWorkflow: boolean;
@@ -65,13 +87,13 @@ export class PatientVariantReportComponent implements OnInit, VariantReportData 
   }
 
   download(file: string) {
-    this.patientApi.downloadPatientFile(this.psn, file);
+    this.patientApi.downloadPatientFile(this.patientSequenceNumber, file);
   }
 
   confirmVariantReport(): void {
     const action = () => {
       console.info('Confirming variant report: ' + this.analysisId);
-      this.patientApi.updateVariantReport(this.psn, this.bsn, this.analysisId, true).subscribe(
+      this.patientApi.updateVariantReport(this.patientSequenceNumber, this.biopsySequenceNumber, this.analysisId, true).subscribe(
         (x: any) => { this.transformer.updateVariantReportStatus(this, x); }
       );
     };
@@ -88,7 +110,7 @@ export class PatientVariantReportComponent implements OnInit, VariantReportData 
   rejectVariantReport(): void {
     const action = () => {
       console.info('Rejecting variant report: ' + this.analysisId);
-      this.patientApi.updateVariantReport(this.psn, this.bsn, this.analysisId, false).subscribe(
+      this.patientApi.updateVariantReport(this.patientSequenceNumber, this.biopsySequenceNumber, this.analysisId, false).subscribe(
         (x: any) => { this.transformer.updateVariantReportStatus(this, x); }
       );
     };
@@ -106,8 +128,8 @@ export class PatientVariantReportComponent implements OnInit, VariantReportData 
     console.info('Confirming variant: ' + JSON.stringify(item));
 
     this.patientApi.updateVariant(
-      this.psn,
-      this.bsn,
+      this.patientSequenceNumber,
+      this.biopsySequenceNumber,
       this.analysisId,
       (item as any).metadata._id,
       item.confirmed,
@@ -120,7 +142,7 @@ export class PatientVariantReportComponent implements OnInit, VariantReportData 
   confirmAssignmentReport(): void {
     const action = () => {
       console.info('Confirming assignment report: ' + this.analysisId);
-      this.patientApi.updateAssignmentReport(this.psn, true).subscribe(
+      this.patientApi.updateAssignmentReport(this.patientSequenceNumber, true).subscribe(
         (x: any) => { this.transformer.updateVariantReportStatus(this, x); }
       );
     };

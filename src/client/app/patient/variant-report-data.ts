@@ -1,22 +1,26 @@
 export interface VariantReportData {
     [name: string]: any;
-    psn: string;
-    bsn: string;
+
+    patientSequenceNumber: string;
+    biopsySequenceNumber: string;
+    molecularSequenceNumber: string;
     analysisId: string;
     patient: any;
     assays: any[];
-    variantReport: {
-        variantReportFileReceivedDate: string;
-        variantReportStatus: string;
-        comments: string;
-        statusUser: string;
-        moiSummary: {
-            totalaMOIs: number;
-            totalMOIs: number;
-            confirmedaMOIs: number;
-            confirmedMOIs: number;
-        }
+    variantReportFileReceivedDate: string;
+    variantReportCreatedDate: string;
+    variantReporterRejectedOrConfirmedDate: string;
+    variantReportStatus: string;
+    comments: string;
+    statusUser: string;
+
+    moiSummary: {
+        totalaMOIs: number;
+        totalMOIs: number;
+        confirmedaMOIs: number;
+        confirmedMOIs: number;
     };
+
     assignmentReport: any;
     assignmentHistory: any;
     parsed_vcf_genes: any;
@@ -26,6 +30,14 @@ export interface VariantReportData {
     mapd: string;
     cellularity: any;
     showPools: boolean;
+    tvcVersion: string;
+    dnaBamFilePath: string;
+    rnaBamFilePath: string;
+    dnaBaiFilePath: string;
+    rnaBaiFilePath: string;
+    vcfFilePath: string;
+    qcFile: string;
+
     isVariantReportEditable: boolean;
     isAssignmentReportEditable: boolean;
     isOutsideAssayWorkflow: boolean;

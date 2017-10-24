@@ -33,7 +33,7 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, Varian
   showOutsideAssay: boolean;
   isOutsideAssayValue: boolean = null;
 
-  psn: string;
+  patientSequenceNumber: string;
   currentPatientStatus: string;
   currentStepNumber: string;
   concordance: string;
@@ -69,13 +69,13 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, Varian
   }
 
   download(file: string) {
-    this.patientApi.downloadPatientFile(this.psn, file);
+    this.patientApi.downloadPatientFile(this.patientSequenceNumber, file);
   }
 
   confirmOutsideVariantReport(): void {
     const action = () => {
       console.info('Confirming outside lab variant report: ' + this.outsideData.analysisId);
-      this.patientApi.updateVariantReport(this.psn, this.outsideData.bsn, this.outsideData.analysisId, true).subscribe(
+      this.patientApi.updateVariantReport(this.patientSequenceNumber, this.outsideData.biopsySequenceNumber, this.outsideData.analysisId, true).subscribe(
         (x: any) => { this.transformer.updateVariantReportStatus(this.outsideData, x); }
       );
     };
@@ -92,7 +92,7 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, Varian
   rejectOutsideVariantReport(): void {
     const action = () => {
       console.info('Rejecting outside lab variant report: ' + this.outsideData.analysisId);
-      this.patientApi.updateVariantReport(this.psn, this.outsideData.bsn, this.outsideData.analysisId, false).subscribe(
+      this.patientApi.updateVariantReport(this.patientSequenceNumber, this.outsideData.biopsySequenceNumber, this.outsideData.analysisId, false).subscribe(
         (x: any) => { this.transformer.updateVariantReportStatus(this.outsideData, x); }
       );
     };
@@ -109,7 +109,7 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, Varian
   confirmOutsideAssignmentReport(): void {
     const action = () => {
       console.info('Confirming outside lab assignment report: ' + this.outsideData.analysisId);
-      this.patientApi.updateAssignmentReport(this.psn, true).subscribe(
+      this.patientApi.updateAssignmentReport(this.patientSequenceNumber, true).subscribe(
         (x: any) => { this.transformer.updateVariantReportStatus(this.outsideData, x); }
       );
     };
@@ -126,7 +126,7 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, Varian
   confirmMatchVariantReport(): void {
     const action = () => {
       console.info('Confirming MATCH variant report: ' + this.matchData.analysisId);
-      this.patientApi.updateVariantReport(this.psn, this.matchData.bsn, this.matchData.analysisId, true).subscribe(
+      this.patientApi.updateVariantReport(this.patientSequenceNumber, this.matchData.biopsySequenceNumber, this.matchData.analysisId, true).subscribe(
         (x: any) => { this.transformer.updateVariantReportStatus(this.matchData, x); }
       );
     };
@@ -143,7 +143,7 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, Varian
   rejectMatchVariantReport(): void {
     const action = () => {
       console.info('Rejecting MATCH variant report: ' + this.matchData.analysisId);
-      this.patientApi.updateVariantReport(this.psn, this.matchData.bsn, this.matchData.analysisId, false).subscribe(
+      this.patientApi.updateVariantReport(this.patientSequenceNumber, this.matchData.biopsySequenceNumber, this.matchData.analysisId, false).subscribe(
         (x: any) => { this.transformer.updateVariantReportStatus(this.matchData, x); }
       );
     };
@@ -160,7 +160,7 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, Varian
   confirmMatchAssignmentReport(): void {
     const action = () => {
       console.info('Confirming MATCH assignment report: ' + this.matchData.analysisId);
-      this.patientApi.updateAssignmentReport(this.psn, true).subscribe(
+      this.patientApi.updateAssignmentReport(this.patientSequenceNumber, true).subscribe(
         (x: any) => { this.transformer.updateVariantReportStatus(this.matchData, x); }
       );
     };
@@ -178,7 +178,7 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, Varian
     console.info('Confirming variant: ' + JSON.stringify(item));
 
     this.patientApi.updateVariant(
-      this.psn,
+      this.patientSequenceNumber,
       reportData.biopsySequenceNumber,
       reportData.analysisId,
       (item as any).metadata._id,

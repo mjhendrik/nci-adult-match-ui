@@ -2,7 +2,7 @@ import { inject, async, TestBed } from '@angular/core/testing';
 
 import { ViewDataTransformer } from './view-data-transformer.service';
 import { PatientApiServiceStub } from './testing/patient-api-service-stub';
-import { VariantReportComparisonData } from './patient-variant-report-oa/variant-report-comparison-data';
+import { VariantReportComparisonData } from './variant-report-comparison-data';
 
 export function main() {
   describe('ViewDataTransformer', () => {
@@ -149,6 +149,7 @@ export function main() {
 
     });
 
+
     describe('with transformOutsidePatientReport', () => {
       beforeEach(() => {
         service = new ViewDataTransformer();
@@ -161,6 +162,7 @@ export function main() {
         let cnvDataMatch: any = null;
         let ocpDataMatch: any = null;
         let isOutsideAssay: boolean;
+        let patientSequenceNumber: string;
 
         let transformed = service.transformOutsidePatientReport(
           report,
@@ -168,7 +170,8 @@ export function main() {
           ocpDataOutside,
           cnvDataMatch,
           ocpDataMatch,
-          isOutsideAssay);
+          isOutsideAssay,
+          patientSequenceNumber);
 
         expect(transformed).toBeNull();
       });
@@ -180,6 +183,7 @@ export function main() {
         let cnvDataMatch: any = null;
         let ocpDataMatch: any = null;
         let isOutsideAssay: boolean;
+        let patientSequenceNumber: string;
 
         expect(() => {
           service.transformOutsidePatientReport(
@@ -188,7 +192,8 @@ export function main() {
             ocpDataOutside,
             cnvDataMatch,
             ocpDataMatch,
-            isOutsideAssay);
+            isOutsideAssay,
+            patientSequenceNumber);
         }
         ).not.toThrow();
       });
@@ -201,6 +206,7 @@ export function main() {
         let ocpDataMatch: any = {};
         let isOutsideAssay: boolean;
         let transformed: VariantReportComparisonData;
+        let patientSequenceNumber: string;
 
         expect(() => {
           transformed = service.transformOutsidePatientReport(
@@ -209,7 +215,8 @@ export function main() {
             ocpDataOutside,
             cnvDataMatch,
             ocpDataMatch,
-            isOutsideAssay);
+            isOutsideAssay,
+            patientSequenceNumber);
         }
         ).not.toThrow();
 

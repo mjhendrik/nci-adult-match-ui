@@ -41,36 +41,10 @@ class DataResolver implements Resolve<VariantReportData> {
         // getPatientVariantReportOcp => data[2]
 
         const patient = this.transformer.transformPatient(data[0]) || {};
-        const analysis = patient.analyses[route.params.analysisId] || {};
 
-        let tvc_version = data[1].tvc_version;
-        let showPools: boolean = this.transformer.showPools(tvc_version);
-
-        return {
-          psn: psn,
-          bsn: bsn,
-          analysisId: route.params.analysisId,
-          patient: patient,
-          analysis: analysis,
-          variantReport: analysis.variantReport,
-          assignmentReport: analysis.assignmentReport,
-          assignmentHistory: patient.patientAssignments,
-          parsed_vcf_genes: [data[1].parsed_vcf_genes, data[1].file_name],
-          tvc_version: tvc_version,
-          pool1: data[2].pool1,
-          pool2: data[2].pool2,
-          mapd: data[1].mapd,
-          cellularity: data[1].cellularity,
-          showPools: showPools,
-          assays: analysis.assays,
-          // isEditable: this.transformer.getVariantReportEditable(analysis.variantReport)
-          //TODO: debug-only
-          isVariantReportEditable: true,
-          isAssignmentReportEditable: true,
-          isOutsideAssayWorkflow: false
-        };
+        return this.transformer.transformPatientVariantReport(patient, data[1], data[2], bsn, analysisId);
       }
-      );
+    );
   }
 }
 
