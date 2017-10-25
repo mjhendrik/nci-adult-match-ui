@@ -62,8 +62,8 @@ declare let d3: any;
       <nvd3 id="boxplotchart" config="{deepWatchData: false}" [options]="options" [data]="cnvdata" *ngIf="!show"></nvd3>
     </div>
   </div>
-  <div *ngIf="!file_name">
-    <span *ngIf="!parsed_vcf_genes">
+  <div >
+    <span *ngIf="parsed_vcf_genes===null">
       <i class="fa fa-bar-chart text-muted" style="font-size:154px; padding-left: 39px;"></i>
       <br />
       <span class="text-muted" style="padding-left: 39px;"> There are no CNV data </span>
@@ -86,7 +86,10 @@ export class CnvChartDirective implements OnInit {
 
   ngAfterViewInit() {
     let cwElement:any = this.CW;
-    this.frame = cwElement.nativeElement.clientWidth;
+
+    if(typeof cwElement === 'undefined') {return;}
+    else {this.frame = cwElement.nativeElement.clientWidth};
+
     this.ngOnChanges();
   }
 
@@ -97,6 +100,9 @@ export class CnvChartDirective implements OnInit {
   }
 
   getData() {
+
+    if(this.data===null) return;
+
     let array:any = this.data[0] || {};
     let xr:number = array.length * 24;
     let temp:any[] = [];
