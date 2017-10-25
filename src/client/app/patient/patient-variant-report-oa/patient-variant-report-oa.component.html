@@ -10,6 +10,8 @@
 
   <div class="panel">
     <tabset class="nav-tabs-purple">
+
+      <!-- #region Treatment Report Tab -->
       <tab heading="Treatment Report" [active]="showOutsideAssay">
         <div *ngIf="outsideData && outsideData.analysisId" class="row" matchHeight="panel-height-top">
           <div class="col-md-6">
@@ -62,13 +64,13 @@
 
           <div *ngIf="outsideData && outsideData.analysisId" class="col-md-6">
             <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top"  id="trAssignmentReport">
-              <div class="panel-heading" *ngIf="!outsideData.assignmentReport">
+              <div class="panel-heading" *ngIf="!hasAssignment(outsideData)">
                 <h4>Latest Assignment</h4>
               </div>
-              <div class="panel-heading" *ngIf="!outsideData.assignmentReport">
+              <div class="panel-heading" *ngIf="!hasAssignment(outsideData)">
                 <p class="text-muted">No Assignment data yet</p>
               </div>
-              <div class="panel-heading" *ngIf="outsideData.assignmentReport">
+              <div class="panel-heading" *ngIf="hasAssignment(outsideData)">
                 <h4>Latest Assignment</h4>
                 <dl class="dl-horizontal widest-dt">
                   <dt>Status</dt>
@@ -176,7 +178,7 @@
           </div>
         </div>
 
-        <div *ngIf="outsideData.assignmentReport && outsideData.assignmentReport.reasons" id="outside-assignment-details">
+        <div *ngIf="hasAssignment(outsideData)" id="outside-assignment-details">
           <sd-assignment-reason-table [reasons]="outsideData.assignmentReport.reasons"></sd-assignment-reason-table>
 
           <div class="text-center m-b-20" *ngIf="outsideData.isAssignmentReportEditable">
@@ -184,9 +186,11 @@
           </div>
         </div>
 
-        <p *ngIf="!outsideData.assignmentReport || !outsideData.assignmentReport.reasons" class="empty-data-panel">No Treatment Report Assignment data</p>
+        <p *ngIf="!hasAssignment(outsideData)" class="empty-data-panel">No Treatment Report Assignment data</p>
       </tab>
+      <!-- #endregion Treatment Report Tab -->
 
+      <!-- #region Confirmation Report Tab -->
       <tab heading="Confirmation Report" [active]="!showOutsideAssay" *ngIf="!showComparison">
         <div *ngIf="matchData && matchData.analysisId" class="row" matchHeight="panel-height-top">
           <div class="col-md-6">
@@ -250,13 +254,13 @@
 
           <div *ngIf="matchData && matchData.analysisId" class="col-md-6">
             <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
-              <div class="panel-heading" *ngIf="!matchData.assignmentReport" >
+              <div class="panel-heading" *ngIf="!hasAssignment(matchData)" >
                 <h4>Latest Assignment</h4>
               </div>
-              <div class="panel-heading" *ngIf="!matchData.assignmentReport">
+              <div class="panel-heading" *ngIf="!hasAssignment(matchData)">
                 <p class="text-muted">No Assignment data yet</p>
               </div>
-              <div class="panel-heading" *ngIf="matchData.assignmentReport" id="crAssignmentReport">
+              <div class="panel-heading" *ngIf="hasAssignment(matchData)" id="crAssignmentReport">
                 <h4>Latest Assignment</h4>
                 <dl class="dl-horizontal widest-dt">
                   <dt>Status</dt>
@@ -362,7 +366,7 @@
           </div>
         </div>
 
-        <div *ngIf="matchData.assignmentReport && matchData.assignmentReport.reasons" id="match-assignment-details">
+        <div *ngIf="hasAssignment(matchData)" id="match-assignment-details">
           <sd-assignment-reason-table [reasons]="matchData.assignmentReport.reasons"></sd-assignment-reason-table>
 
           <div class="text-center m-b-20" *ngIf="matchData.isAssignmentReportEditable">
@@ -370,9 +374,11 @@
           </div>
         </div>
 
-        <p *ngIf="!matchData.assignmentReport || !matchData.assignmentReport.reasons" class="empty-data-panel">No Confirmation Report Assignment data</p>
+        <p *ngIf="!hasAssignment(matchData)" class="empty-data-panel">No Confirmation Report Assignment data</p>
       </tab>
+      <!-- #endregion Confirmation Report Tab -->
 
+      <!-- #region Comparison Report Tab -->
       <tab heading="Confirmation Report" [active]="!showOutsideAssay" *ngIf="showComparison">
         <div *ngIf="matchData && matchData.analysisId" class="row" matchHeight="panel-height-top">
           <div class="col-md-6">
@@ -424,13 +430,13 @@
 
           <div class="col-md-6">
             <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
-              <div class="panel-heading" *ngIf="!matchData.assignmentReport">
+              <div class="panel-heading" *ngIf="!hasAssignment(matchData) && !hasAssignment(outsideData)">
                 <h4>Latest Assignment</h4>
               </div>
-              <div class="panel-heading" *ngIf="!matchData.assignmentReport">
+              <div class="panel-heading" *ngIf="!hasAssignment(matchData) && !hasAssignment(outsideData)">
                 <p class="text-muted">No Assignment data yet</p>
               </div>
-              <div class="panel-heading" *ngIf="matchData.assignmentReport">
+              <div class="panel-heading" *ngIf="hasAssignment(matchData) && hasAssignment(outsideData)">
                 <h4>Assignment</h4>
                 <div class="row">
                   <div class="col-md-6">
@@ -497,14 +503,16 @@
 
         <sd-variant-report-comparison-table-gf [items]="comparisonVariantReport.unifiedGeneFusions" [title]="'Gene Fusions'"></sd-variant-report-comparison-table-gf>
 
-        <div *ngIf="matchData.assignmentReport && matchData.assignmentReport.reasons" id="assignment-details">
+        <div *ngIf="hasAssignment(matchData)" id="assignment-details">
           <sd-assignment-reason-table [reasons]="matchData.assignmentReport.reasons"></sd-assignment-reason-table>
         
         </div>
 
-        <p *ngIf="!matchData.assignmentReport || !matchData.assignmentReport.reasons" class="empty-data-panel">No Confirmation Report Assignment data</p>
+        <p *ngIf="!hasAssignment(matchData)" class="empty-data-panel">No Confirmation Report Assignment data</p>
 
       </tab>
+      <!-- #endregion Comparison Report Tab -->
+
     </tabset>
   </div>
 

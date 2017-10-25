@@ -189,6 +189,12 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, Varian
     );
   }
 
+  hasAssignment(data: VariantReportData): boolean {
+    return data.assignmentReport
+      && data.assignmentReport.reasons
+      && data.assignmentReport.reasons.length;
+  }
+
   private showConfirmation(
     confirmTitle: string,
     confirmMessage: string,
