@@ -114,11 +114,11 @@ export class CnvChartDirective implements OnInit {
     Object.keys(array).forEach((key:any) => {
 
       let gene:string = array[key].gene;
-      let cis:any = (typeof array[key].cis === 'undefined') ? 0 : array[key].cis;
+      let cis:any = (typeof array[key].confidence_intervals === 'undefined') ? 0 : array[key].confidence_intervals;
 
       if(cis !== 0) {
-         point5 = parseFloat(cis[1].split(':')[1]).toFixed(2);
-         point95 = parseFloat(cis[2].split(':')[1]).toFixed(2);
+         point5 = parseFloat(cis[0].split(':')[1]).toFixed(2);
+         point95 = parseFloat(cis[1].split(':')[1]).toFixed(2);
       }
 
       let values = array[key].values;

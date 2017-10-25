@@ -209,7 +209,7 @@ export class ViewDataTransformer {
     variantReport.variantReport = analysis.variantReport;
     variantReport.assignmentReport = analysis.assignmentReport;
     variantReport.assignmentHistory = transformedPatient.patientAssignments;
-    variantReport.parsed_vcf_genes = [copyNumberData.parsed_vcf_genes, copyNumberData.file_name];
+    variantReport.parsed_vcf_genes = [copyNumberData.copy_number_variant_genes, copyNumberData.file_name];
     variantReport.tvc_version = tvc_version;
     variantReport.pool1 = oncominePanelData.pool1;
     variantReport.pool2 = oncominePanelData.pool2;
