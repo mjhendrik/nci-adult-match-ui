@@ -173,6 +173,11 @@ module.exports = function (config) {
         included: false,
         watched: true
       },
+      {
+        pattern: 'node_modules/tslib/tslib.js',
+        included: false,
+        watched: true
+      },
       'test-config.js',
       'dist/dev/app/system-config.js',
       'test-main.js'
