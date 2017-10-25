@@ -63,7 +63,7 @@
     "@types/gulp-load-plugins": "^0.0.28",
     "@types/gulp-protractor": "^1.0.29",
     "@types/gulp-sass": "^0.0.29",
-    "@types/gulp-util": "^3.0.29",
+    "@types/gulp-util": "3.0.31",
     "@types/jasmine": "2.5.41",
     "@types/lodash": "^4.14.53",
     "@types/node": "^6.0.45",
@@ -109,7 +109,7 @@
     "gulp-tslint": "7.0.1",
     "gulp-typescript": "^3.0.2",
     "gulp-uglify": "^2.0.0",
-    "gulp-util": "^3.0.7",
+    "gulp-util": "^3.0.8",
     "gulp-watch": "^4.3.10",
     "is-ci": "^1.0.9",
     "isstream": "^0.1.2",
@@ -175,7 +175,7 @@
     "ngx-bootstrap": "^1.9.3",
     "ngx-popover": "0.0.16",
     "nvd3": "^1.8.2",
-    "rxjs": "^5.2.0",
+    "rxjs": "5.2.0",
     "systemjs": "0.19.41",
     "zone.js": "^0.8.12"
   }

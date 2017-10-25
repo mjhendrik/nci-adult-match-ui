@@ -118,7 +118,7 @@ export class PatientApiService extends ApiService {
       'status': confirmed ? 'CONFIRMED' : 'REJECTED'
     };
 
-    return this.http.patch(`${Config.API.MESSAGE}/clia/patient/${psn}/biopsy/${bsn}/variant_reports/${analysisId}`, patch)
+    return this.http.patch(`${Config.API.MESSAGE}/message/clia/patient/${psn}/biopsy/${bsn}/variant_reports/${analysisId}`, patch)
       .map((res: Response) => res)
       .catch(this.handleError);
   }
@@ -130,7 +130,7 @@ export class PatientApiService extends ApiService {
       'comment': comment
     };
 
-    return this.http.patch(`${Config.API.MESSAGE}/clia/patient/${psn}/biopsy/${bsn}/variant_reports/${analysisId}/variants/${variantId}`, patch)
+    return this.http.patch(`${Config.API.MESSAGE}/message/clia/patient/${psn}/biopsy/${bsn}/variant_reports/${analysisId}/variants/${variantId}`, patch)
       .map((res: Response) => res)
       .catch(this.handleError);
   }

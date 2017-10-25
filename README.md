@@ -30,6 +30,7 @@ Make sure you have the following environment variables:
     AUTH0_DOMAIN
     AUTH0_MANAGEMENT_ID
     AUTH0_MANAGEMENT_SECRET
+    AWS_REGION
     AWS_ACCESS_KEY_ID
     AWS_SECRET_ACCESS_KEY
     AWS_SMTP_PASSWORD
