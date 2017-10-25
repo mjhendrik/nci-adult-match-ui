@@ -11,7 +11,7 @@
     <li>
       <a href [routerLink]="['/treatments']" class="link-none">Treatment Arms</a>
     </li>
-    <li class="active">Treatment Arm {{tableData[versionIndex].treatmentArmId | dashify}}</li>
+    <li class="active">Treatment Arm <span class="entity-name">{{tableData[versionIndex].treatmentArmId | dashify}}</span></li>
   </ul>
   <h1 class="page-header">Treatment Arm {{tableData[versionIndex].treatmentArmId | dashify}}</h1>
   <div class="row" matchHeight="panel-height-ta-details">

@@ -1,9 +1,9 @@
 <div id="content" class="content">
   <ul class="breadcrumb pull-right">
     <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
-    <li><a href [routerLink]="['/clia_'+cliaType]" class="link-none">CLIA Lab: {{cliaTypeName}}</a></li>
+    <li><a href [routerLink]="['/clia_'+cliaType]" class="link-none">CLIA Lab {{cliaTypeName}}</a></li>
     <li><a href [routerLink]="['/clia_'+cliaType+'/variant_reports_'+tabType]" class="link-none">{{tabTypeName}}</a></li>
-    <li class="active">{{tabTypeHeaderName}}</li>
+    <li class="active"><span class="entity-name">{{tabTypeHeaderName}}</span></li>
   </ul>
   <h1 class="page-header">{{tabTypeHeaderName}}</h1>
   <div class="row" matchHeight="panel-height-top">

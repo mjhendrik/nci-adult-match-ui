@@ -6,7 +6,7 @@
     <li>
       <a href [routerLink]="['/patients']" class="link-none">Patients</a>
     </li>
-    <li class="active">Patient {{patient.patientSequenceNumber | dashify}}</li>
+    <li class="active">Patient <span class="entity-name">{{patient.patientSequenceNumber | dashify}}</span></li>
   </ul>
   <h1 class="page-header">Patient {{patient.patientSequenceNumber | dashify}}</h1>
   <div class="row" matchHeight="panel-height">
