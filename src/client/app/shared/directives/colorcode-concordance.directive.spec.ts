@@ -51,6 +51,22 @@ export function main() {
             expect(testEl.nativeElement.classList.contains('text-warning-light')).toBe(false);
         });
 
+        it('"YES" adds "text-success-light" color class', () => {
+            testHost.testStatus = 'YES';
+            fixture.detectChanges();
+            expect(testEl.nativeElement.classList.contains('text-success-light')).toBe(true);
+            expect(testEl.nativeElement.classList.contains('text-danger-light')).toBe(false);
+            expect(testEl.nativeElement.classList.contains('text-warning-light')).toBe(false);
+        });
+
+        it('"NO" adds "text-warning-light" color class', () => {
+            testHost.testStatus = 'NO';
+            fixture.detectChanges();
+            expect(testEl.nativeElement.classList.contains('text-success-light')).toBe(false);
+            expect(testEl.nativeElement.classList.contains('text-danger-light')).toBe(true);
+            expect(testEl.nativeElement.classList.contains('text-warning-light')).toBe(false);
+        });
+
         it('"N" adds "text-warning-light" color class', () => {
             testHost.testStatus = 'N';
             fixture.detectChanges();
@@ -67,5 +83,12 @@ export function main() {
             expect(testEl.nativeElement.classList.contains('text-warning-light')).toBe(true);
         });
 
+        it('"UNKNOWN" adds "text-muted" color class', () => {
+            testHost.testStatus = 'UNKNOWN';
+            fixture.detectChanges();
+            expect(testEl.nativeElement.classList.contains('text-success-light')).toBe(false);
+            expect(testEl.nativeElement.classList.contains('text-danger-light')).toBe(false);
+            expect(testEl.nativeElement.classList.contains('text-warning-light')).toBe(true);
+        });
     });
 }

@@ -17,9 +17,9 @@ export class ColorCodeConcordanceDirective extends ConditionalCssDirective<strin
     constructor(protected el: ElementRef) {
         super(el,
             [
-                { evaluate: (x) => x === 'Y', cssClass: 'text-success-light' },
-                { evaluate: (x) => x === 'N', cssClass: 'text-danger-light' },
-                { evaluate: (x) => x === 'U', cssClass: 'text-warning-light' }
+                { evaluate: (x) => (x === 'Y' || x === 'YES'), cssClass: 'text-success-light' },
+                { evaluate: (x) => (x === 'N' || x === 'NO'), cssClass: 'text-danger-light' },
+                { evaluate: (x) => (x === 'U' || x === 'UNKNOWN'), cssClass: 'text-warning-light' }
             ]);
     }
 }

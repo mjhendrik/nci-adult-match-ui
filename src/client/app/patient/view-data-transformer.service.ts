@@ -29,6 +29,8 @@ export class ViewDataTransformer {
 
     transformedPatient.disease = source.diseases && source.diseases.length ? source.diseases[0] : {};
 
+    transformedPatient.concordance = this.transformConcordance(transformedPatient.concordance);
+
     transformedPatient.isOutsideAssayWorkflow = false;
     if (transformedPatient.patientTriggers && transformedPatient.patientTriggers.length) {
       transformedPatient.patientTriggers = transformedPatient.patientTriggers.reverse();
@@ -531,5 +533,18 @@ export class ViewDataTransformer {
     if (!assay || (typeof assay !== 'string'))
       return assay;
     return assay.replace(regExp, replacer);
+  }
+
+  private transformConcordance(patient: any): string {
+    if (!patient || ! patient.concordance) {
+      return 'UNKNOWN';
+    }
+
+    switch (patient.concordance) {
+      case 'Y': return 'YES';
+      case 'N': return 'NO';
+      case 'U': return 'UNKNOWN';
+      default: return patient.concordance;
+    }
   }
 }
