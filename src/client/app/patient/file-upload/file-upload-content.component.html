@@ -23,16 +23,14 @@
     </div>
     <div class="col-md-12 form-group has-feedback" [ngClass]="{true:'has-success',false:'has-error'}[hasDnaBamFile]">
       <label class="control-label">DNA BAM File</label>
-      <input type="file" accept=".zip" (change)="fileSelectedDnaBam($event.target.files[0])" id="dnaUploadButton" [ngClass]="{true:'disable-div'}[!analysisIdValid]">
-      <!-- .bam -->
+      <input type="file" accept=".bam" (change)="fileSelectedDnaBam($event.target.files[0])" id="dnaUploadButton" [ngClass]="{true:'disable-div'}[!analysisIdValid]">
       <div *ngIf="isDisabled" class="progress progress-striped active m-t-10 m-b-0">
         <div class="progress-bar progress-bar-purple active" [style.width.%]="percentDoneDnaBamFile">{{percentDoneDnaBamFile}}%</div>
       </div>
     </div>
     <div class="col-md-12 form-group has-feedback" [ngClass]="{true:'has-success',false:'has-error'}[hasCdnaBamFile]">
       <label class="control-label">cDNA BAM File</label>
-      <input type="file" accept=".zip" (change)="fileSelectedCdnaBam($event.target.files[0])" id="cdnaUploadButton" [ngClass]="{true:'disable-div'}[!analysisIdValid]">
-      <!-- .bam -->
+      <input type="file" accept=".bam" (change)="fileSelectedCdnaBam($event.target.files[0])" id="cdnaUploadButton" [ngClass]="{true:'disable-div'}[!analysisIdValid]">
       <div *ngIf="isDisabled" class="progress progress-striped active m-t-10 m-b-0">
         <div class="progress-bar progress-bar-purple active" [style.width.%]="percentDoneCdnaBamFile">{{percentDoneCdnaBamFile}}%</div>
       </div>
