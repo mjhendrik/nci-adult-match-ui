@@ -29,7 +29,7 @@ export class ViewDataTransformer {
 
     transformedPatient.disease = source.diseases && source.diseases.length ? source.diseases[0] : {};
 
-    transformedPatient.concordance = this.transformConcordance(transformedPatient.concordance);
+    transformedPatient.concordance = this.transformConcordance(transformedPatient);
 
     transformedPatient.isOutsideAssayWorkflow = false;
     if (transformedPatient.patientTriggers && transformedPatient.patientTriggers.length) {

@@ -3,7 +3,7 @@
     <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
     <li><a href [routerLink]="['/patients']" class="link-none">Patients</a></li>
     <li><a href [routerLink]="['/patients', patient.patientSequenceNumber]" class="link-none">Patient {{patient.patientSequenceNumber}}</a></li>
-    <li class="active">Variant Report</li>
+    <li class="active">Variant Report <span class="entity-name">{{analysisId}}</span></li>
   </ul>
   <h1 class="page-header">Variant and Assignment Report <span class="entity-name">{{analysisId}}</span></h1>
   <div class="row" matchHeight="panel-height-top">
