@@ -157,8 +157,6 @@ export function main() {
 
       it('should return null if source report is falsy', () => {
         let report: VariantReportComparisonData = null;
-        let cnvDataOutside: any = null;
-        let ocpDataOutside: any = null;
         let cnvDataMatch: any = null;
         let ocpDataMatch: any = null;
         let isOutsideAssay: boolean;
@@ -166,8 +164,6 @@ export function main() {
 
         let transformed = service.transformOutsidePatientReport(
           report,
-          cnvDataOutside,
-          ocpDataOutside,
           cnvDataMatch,
           ocpDataMatch,
           isOutsideAssay,
@@ -178,8 +174,6 @@ export function main() {
 
       it('should not throw error if OCP or CNV data is missing', () => {
         let report: VariantReportComparisonData = PatientApiServiceStub.makeOutsideAssayComparisonVariantReportData();
-        let cnvDataOutside: any = null;
-        let ocpDataOutside: any = null;
         let cnvDataMatch: any = null;
         let ocpDataMatch: any = null;
         let isOutsideAssay: boolean;
@@ -188,8 +182,6 @@ export function main() {
         expect(() => {
           service.transformOutsidePatientReport(
             report,
-            cnvDataOutside,
-            ocpDataOutside,
             cnvDataMatch,
             ocpDataMatch,
             isOutsideAssay,
@@ -200,8 +192,6 @@ export function main() {
 
       it('should return view data for comparison report when all parameters are passed', () => {
         let report: VariantReportComparisonData = PatientApiServiceStub.makeOutsideAssayComparisonVariantReportData();
-        let cnvDataOutside: any = {};
-        let ocpDataOutside: any = {};
         let cnvDataMatch: any = {};
         let ocpDataMatch: any = {};
         let isOutsideAssay: boolean;
@@ -211,8 +201,6 @@ export function main() {
         expect(() => {
           transformed = service.transformOutsidePatientReport(
             report,
-            cnvDataOutside,
-            ocpDataOutside,
             cnvDataMatch,
             ocpDataMatch,
             isOutsideAssay,

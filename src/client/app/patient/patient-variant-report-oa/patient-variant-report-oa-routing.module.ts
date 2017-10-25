@@ -41,15 +41,13 @@ class DataResolver implements Resolve<VariantReportComparisonData> {
     */
     return reportObservable.flatMap(x => Observable.forkJoin(
       Observable.of(x),
-      this.api.getPatientCopyNumberReport(psn, x.outsideData.analysisId),
-      this.api.getPatientVariantReportOcp(psn, x.outsideData.analysisId),
       this.api.getPatientCopyNumberReport(psn, x.matchData.analysisId),
       this.api.getPatientVariantReportOcp(psn, x.matchData.analysisId)
     )).map(x => {
-      let [report, cnvDataOutside, ocpDataOutside, cnvDataMatch, ocpDataMatch] = x;
+      let [report, cnvDataMatch, ocpDataMatch] = x;
 
       const transformedReport = this.transformer.transformOutsidePatientReport(
-        report, cnvDataOutside, ocpDataOutside, cnvDataMatch, ocpDataMatch, isOutsideAssayReport, psn);
+        report, cnvDataMatch, ocpDataMatch, isOutsideAssayReport, psn);
 
       return transformedReport;
     });

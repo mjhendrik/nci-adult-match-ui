@@ -54,8 +54,6 @@ export class ViewDataTransformer {
 
   transformOutsidePatientReport(
     report: VariantReportComparisonData,
-    cnvDataOutside: any,
-    ocpDataOutside: any,
     cnvDataMatch: any,
     ocpDataMatch: any,
     isOutsideAssayReport: boolean,
@@ -67,8 +65,10 @@ export class ViewDataTransformer {
 
     const transformedReport: VariantReportComparisonData = { ...report }; // Deep-copy the source
 
-    cnvDataOutside = cnvDataOutside || {};
-    ocpDataOutside = ocpDataOutside || {};
+    transformedReport.patientSequenceNumber = patientSequenceNumber;
+
+    let cnvDataOutside: any = {};
+    let ocpDataOutside: any = {};
     cnvDataMatch = cnvDataMatch || {};
     ocpDataMatch = ocpDataMatch || {};
 
@@ -102,35 +102,16 @@ export class ViewDataTransformer {
 
     transformedReport.showOutsideAssay = isOutsideAssayReport;
 
-    transformedReport.outsideData.isVariantReportEditable =
-      transformedReport.outsideData.variantReportStatus &&
-      transformedReport.outsideData.variantReportStatus !== 'PENDING';
+    transformedReport.outsideData.isVariantReportEditable = this.getVariantReportEditable(transformedReport.outsideData);
+    transformedReport.outsideData.isAssignmentReportEditable = this.getAssignmentReportEditable(transformedReport.outsideData);
 
-    transformedReport.outsideData.isAssignmentReportEditable =
-      transformedReport.outsideData.assignmentReport.patientAssignmentStatus &&
-      transformedReport.outsideData.assignmentReport.patientAssignmentStatus !== 'PENDING';
+    transformedReport.matchData.isVariantReportEditable = this.getVariantReportEditable(transformedReport.matchData);
+    transformedReport.matchData.isAssignmentReportEditable = this.getAssignmentReportEditable(transformedReport.matchData);
 
-    transformedReport.matchData.isVariantReportEditable =
+    transformedReport.showComparison = transformedReport.outsideData.variantReportStatus &&
+      transformedReport.outsideData.variantReportStatus === 'CONFIRMED' &&
       transformedReport.matchData.variantReportStatus &&
-      transformedReport.matchData.variantReportStatus !== 'PENDING';
-
-    transformedReport.matchData.isAssignmentReportEditable =
-      transformedReport.matchData.assignmentReport.patientAssignmentStatus &&
-      transformedReport.matchData.assignmentReport.patientAssignmentStatus !== 'PENDING';
-
-    transformedReport.showComparison = transformedReport.outsideData.variantReportStatus
-      && transformedReport.outsideData.variantReportStatus === 'CONFIRMED'
-      && transformedReport.matchData.variantReportStatus
-      && transformedReport.matchData.variantReportStatus === 'CONFIRMED';
-
-      transformedReport.patientSequenceNumber = patientSequenceNumber;
-
-      //TODO: debug-only
-      transformedReport.outsideData.isVariantReportEditable = true;
-      transformedReport.outsideData.isAssignmentReportEditable = true;
-
-      transformedReport.matchData.isVariantReportEditable = true;
-      transformedReport.matchData.isAssignmentReportEditable = true;
+      transformedReport.matchData.variantReportStatus === 'CONFIRMED';
 
     return transformedReport;
   }
@@ -192,6 +173,13 @@ export class ViewDataTransformer {
     return !!tvcVersion && tvcVersion.startsWith('5.2');
   }
 
+  getAssignmentReportEditable(assignmentReport: any): boolean {
+    if (!assignmentReport && !assignmentReport.variantReportStatus) {
+      return false;
+    }
+    return assignmentReport.variantReportStatus === 'PENDING';
+  }
+
   getVariantReportEditable(variantReport: VariantReportData): boolean {
     if (!variantReport && !variantReport.variantReportStatus) {
       return false;
@@ -211,28 +199,6 @@ export class ViewDataTransformer {
 
     let variantReport = analysis.variantReport as VariantReportData;
 
-    // psn: psn,
-    // bsn: bsn,
-    // analysisId: route.params.analysisId,
-    // patient: patient,
-    // analysis: analysis,
-    // variantReport: analysis.variantReport,
-    // assignmentReport: analysis.assignmentReport,
-    // assignmentHistory: patient.patientAssignments,
-    // parsed_vcf_genes: [data[1].parsed_vcf_genes, data[1].file_name],
-    // tvc_version: tvc_version,
-    // pool1: data[2].pool1,
-    // pool2: data[2].pool2,
-    // mapd: data[1].mapd,
-    // cellularity: data[1].cellularity,
-    // showPools: showPools,
-    // assays: analysis.assays,
-    // // isEditable: this.transformer.getVariantReportEditable(analysis.variantReport)
-    // //TODO: debug-only
-    // isVariantReportEditable: true,
-    // isAssignmentReportEditable: true,
-    // isOutsideAssayWorkflow: false
-
     variantReport.patientSequenceNumber = transformedPatient.patientSequenceNumber;
     variantReport.biopsySequenceNumber = biopsySequenceNumber;
     variantReport.analysisId = analysisId;
@@ -250,8 +216,7 @@ export class ViewDataTransformer {
     variantReport.showPools = showPools;
     variantReport.assays = analysis.assays;
 
-    // TODO: for debug only, replace with `this.getVariantReportEditable(analysis.variantReport)`
-    variantReport.isVariantReportEditable = true;
+    variantReport.isVariantReportEditable = this.getVariantReportEditable(analysis.variantReport);
     variantReport.isAssignmentReportEditable = true;
     variantReport.isOutsideAssayWorkflow = false;
 
