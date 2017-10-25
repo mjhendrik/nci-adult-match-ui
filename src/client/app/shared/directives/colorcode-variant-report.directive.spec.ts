@@ -32,7 +32,7 @@ export function main() {
 
         it('empty value adds no color class', () => {
             expect(testEl.nativeElement.classList.contains('text-success-light')).toBe(false);
-            expect(testEl.nativeElement.classList.contains('text-info-light')).toBe(false);
+            expect(testEl.nativeElement.classList.contains('text-warning-light')).toBe(false);
             expect(testEl.nativeElement.classList.contains('text-danger-light')).toBe(false);
         });
 
@@ -40,15 +40,15 @@ export function main() {
             testHost.testStatus = 'CONFIRMED';
             fixture.detectChanges();
             expect(testEl.nativeElement.classList.contains('text-success-light')).toBe(true);
-            expect(testEl.nativeElement.classList.contains('text-info-light')).toBe(false);
+            expect(testEl.nativeElement.classList.contains('text-warning-light')).toBe(false);
             expect(testEl.nativeElement.classList.contains('text-danger-light')).toBe(false);
         });
 
-        it('"PENDING" adds "text-info-light" color class', () => {
+        it('"PENDING" adds "text-warning-light" color class', () => {
             testHost.testStatus = 'PENDING';
             fixture.detectChanges();
             expect(testEl.nativeElement.classList.contains('text-success-light')).toBe(false);
-            expect(testEl.nativeElement.classList.contains('text-info-light')).toBe(true);
+            expect(testEl.nativeElement.classList.contains('text-warning-light')).toBe(true);
             expect(testEl.nativeElement.classList.contains('text-danger-light')).toBe(false);
         });
 
@@ -56,7 +56,7 @@ export function main() {
             testHost.testStatus = 'REJECTED';
             fixture.detectChanges();
             expect(testEl.nativeElement.classList.contains('text-success-light')).toBe(false);
-            expect(testEl.nativeElement.classList.contains('text-info-light')).toBe(false);
+            expect(testEl.nativeElement.classList.contains('text-warning-light')).toBe(false);
             expect(testEl.nativeElement.classList.contains('text-danger-light')).toBe(true);
         });
     });

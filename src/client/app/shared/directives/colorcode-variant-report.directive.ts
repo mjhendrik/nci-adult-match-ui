@@ -14,7 +14,7 @@ export class ColorCodeVariantReportDirective extends ConditionalCssDirective<str
         super(el,
             [
                 { evaluate: (x) => x && (x === 'CONFIRMED'), cssClass: 'text-success-light' },
-                { evaluate: (x) => x && (x === 'PENDING'), cssClass: 'text-info-light' },
+                { evaluate: (x) => x && (x === 'PENDING'), cssClass: 'text-warning-light' },
                 { evaluate: (x) => x && (x === 'REJECTED'), cssClass: 'text-danger-light' },
             ]);
     }
