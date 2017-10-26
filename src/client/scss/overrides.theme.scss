@@ -1,16 +1,14 @@
 @import "variables";
 @import "colors";
-
 @media (min-width: 768px) {
-  .dl-horizontal{
+  .dl-horizontal {
     dt {
       width: 190px;
     }
     dd {
       margin-left: 205px;
     }
-  } 
-
+  }
   .dl-horizontal.wider-dt {
     dt {
       width: 215px;
@@ -18,8 +16,7 @@
     dd {
       margin-left: 230px;
     }
-  } 
-
+  }
   .dl-horizontal.widest-dt {
     dt {
       width: 230px;
@@ -27,7 +24,7 @@
     dd {
       margin-left: 245px;
     }
-  } 
+  }
 }
 
 .table>thead>tr>th {
@@ -49,8 +46,8 @@
 }
 
 .popover {
-    font-family: inherit;
-    z-index: 2000;
+  font-family: inherit;
+  z-index: 2000;
 }
 
 .modal-header {
@@ -59,4 +56,9 @@
 
 .modal-footer {
   border-top: none;
+}
+
+.modal-content {
+  -webkit-box-shadow: 2px 2px 6px 0px #8d8e8e;
+  box-shadow: 2px 2px 6px 0px #8d8e8e;
 }

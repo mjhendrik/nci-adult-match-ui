@@ -203,7 +203,7 @@ export class FileUploadContentComponent implements OnInit {
 
   closeUploadDialog(nested: boolean, template: TemplateRef<any>) {
     if (nested === false) this.bsModalRef.hide();
-    if (nested === true) this.modalRef2 = this.modalService.show(template, Object.assign({}, this.config, { class: 'modal-sm' }));
+    if (nested === true) this.modalRef2 = this.modalService.show(template, this.config);
   }
 
   closeWarningDialog(cancel: boolean) {
