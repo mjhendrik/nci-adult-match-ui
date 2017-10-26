@@ -27,4 +27,7 @@ export class VariantReportSimpleTableGeneFusionComponent {
       this.onVariantConfirmed.emit(item);
     }
   }
+
+  editComment(item: ConfirmableItem) {
+  }
 }

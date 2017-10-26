@@ -3,6 +3,7 @@
   <thead>
     <tr>
       <th>Confirm</th>
+      <th>Comment</th>
       <th>ID</th>
       <th>aMOI</th>
       <th>Chrom</th>
@@ -27,6 +28,12 @@
           [promptOnlyIf]="true" [isEnabled]="isEditable" (onItemConfirmed)="onItemConfirmed(item)">
         </sd-check-box-with-confirm>
       </td>
+      <td>
+        <a *ngIf="item.comment" href ng-click="editComment(item)">
+            <i class="fa fa-file-text-o"></i>
+        </a>
+        <p *ngIf="!item.comment"> - </p>
+      </td>      
       <td><cosmic-link [linkType]="'cosmicId'" [linkId]="item.identifier"></cosmic-link></td>
       <td>{{item.aMoi | dashify}}</td>
       <td>{{item.chromosome | dashify}}</td>

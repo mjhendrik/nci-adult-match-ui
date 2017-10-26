@@ -27,4 +27,7 @@ export class VariantReportSimpleTableSnvIndelsComponent {
       this.onVariantConfirmed.emit(item);
     }
   }
+
+  editComment(item: ConfirmableItem) {
+  }
 }
