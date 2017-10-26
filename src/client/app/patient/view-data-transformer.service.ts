@@ -133,6 +133,7 @@ export class ViewDataTransformer {
   }
 
   updateVariantStatus(report: VariantReportData, updatedStatus: ApiStatusUpdateSuccess): void {
+    console.log(updatedStatus);
     //TODO: complete this
   }
 

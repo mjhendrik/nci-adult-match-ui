@@ -15,7 +15,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { Observable } from 'rxjs/Observable';
 import { PatientApiServiceMock } from '../testing/patient-api-service-stub';
-// import { FileUploadService } from '../file-upload/file-upload.service';
+import { BsModalService } from 'ngx-bootstrap';
 
 import { DirectivesModule } from './../../shared/directives/directives.module';
 import { PipesModule } from './../../shared/pipes/pipes.module';
@@ -29,6 +29,9 @@ import { PatientApiServiceStub } from '../testing/patient-api-service-stub';
 import { ActivatedRouteStub } from '../testing/activated-route-stub';
 import { UtilsModule } from '../../shared/utils/utils.module';
 import { VariantReportComparisonTableModule } from '../variant-report-comparison-table/variant-report-comparison-table.module';
+import { BsModalServiceStub } from '../testing/bs-modal.service-stub';
+import { ToastrService } from '../../shared/error-handling/toastr.service';
+import { ToastrServiceStub } from '../testing/toastr-service-stub';
 
 export function main() {
   describe('PatientVariantReportOutsideAssayComponent (templateUrl)', () => {
@@ -64,7 +67,8 @@ export function main() {
         providers: [
           { provide: ActivatedRoute, useValue: activatedRouteStub },
           { provide: PatientApiService, useClass: PatientApiServiceMock },
-          // { provide: FileUploadService, useClass: MockFileUploadService },
+          { provide: BsModalService, useClass: BsModalServiceStub },
+          { provide: ToastrService, useClass: ToastrServiceStub },
           ChangeDetectorRef,
           ViewDataTransformer
         ]

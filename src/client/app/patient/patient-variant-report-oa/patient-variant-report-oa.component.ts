@@ -7,7 +7,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 
 import { routerTransition } from './../../shared/router.animations';
-import { PatientApiService } from '../patient-api.service';
+import { PatientApiService, ApiStatusUpdateSuccess, ApiStatusUpdateError } from '../patient-api.service';
 import { ScrollService } from '../../shared/utils/scroll.to.service';
 import { ViewDataTransformer } from '../view-data-transformer.service';
 import { ConfirmableItem } from '../../shared/check-box-with-confirm/check-box-with-confirm.component';
@@ -15,6 +15,7 @@ import { DialogResults } from '../../shared/modal-dialogs/modal-dialog-results';
 import { ModalDialogConfirmationComponent } from '../../shared/modal-dialogs/modal-dialog-confirmation.component';
 import { VariantReportComparisonData } from '../variant-report-comparison-data';
 import { VariantReportData } from '../variant-report-data';
+import { ToastrService } from '../../shared/error-handling/toastr.service';
 
 /**
  * PatientVariantReportOutsideAssayComponent.
@@ -55,7 +56,8 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, Varian
     private patientApi: PatientApiService,
     private scrollService: ScrollService,
     private transformer: ViewDataTransformer,
-    private modalService: BsModalService) {
+    private modalService: BsModalService,
+    private toastrService: ToastrService) {
     this.scrollTo = scrollService.scrollToElement;
   }
 
@@ -76,7 +78,16 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, Varian
     const action = () => {
       console.info('Confirming outside lab variant report: ' + this.outsideData.analysisId);
       this.patientApi.updateVariantReport(this.patientSequenceNumber, this.outsideData.biopsySequenceNumber, this.outsideData.analysisId, true).subscribe(
-        (x: any) => { this.transformer.updateVariantReportStatus(this.outsideData, x); }
+        (x: ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
+          switch (x.kind) {
+            case 'error':
+              this.showError(x.message);
+              break;
+            case 'success':
+              this.transformer.updateVariantReportStatus(this.outsideData, x);
+              break;
+          }
+        }
       );
     };
 
@@ -93,7 +104,16 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, Varian
     const action = () => {
       console.info('Rejecting outside lab variant report: ' + this.outsideData.analysisId);
       this.patientApi.updateVariantReport(this.patientSequenceNumber, this.outsideData.biopsySequenceNumber, this.outsideData.analysisId, false).subscribe(
-        (x: any) => { this.transformer.updateVariantReportStatus(this.outsideData, x); }
+        (x: ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
+          switch (x.kind) {
+            case 'error':
+              this.showError(x.message);
+              break;
+            case 'success':
+              this.transformer.updateVariantReportStatus(this.outsideData, x);
+              break;
+          }
+        }
       );
     };
 
@@ -110,7 +130,16 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, Varian
     const action = () => {
       console.info('Confirming outside lab assignment report: ' + this.outsideData.analysisId);
       this.patientApi.updateAssignmentReport(this.patientSequenceNumber, true).subscribe(
-        (x: any) => { this.transformer.updateVariantReportStatus(this.outsideData, x); }
+        (x: ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
+          switch (x.kind) {
+            case 'error':
+              this.showError(x.message);
+              break;
+            case 'success':
+              this.transformer.updateAssignmentReportStatus(this.outsideData, x);
+              break;
+          }
+        }
       );
     };
 
@@ -127,7 +156,16 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, Varian
     const action = () => {
       console.info('Confirming MATCH variant report: ' + this.matchData.analysisId);
       this.patientApi.updateVariantReport(this.patientSequenceNumber, this.matchData.biopsySequenceNumber, this.matchData.analysisId, true).subscribe(
-        (x: any) => { this.transformer.updateVariantReportStatus(this.matchData, x); }
+        (x: ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
+          switch (x.kind) {
+            case 'error':
+              this.showError(x.message);
+              break;
+            case 'success':
+              this.transformer.updateVariantReportStatus(this.matchData, x);
+              break;
+          }
+        }
       );
     };
 
@@ -144,7 +182,16 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, Varian
     const action = () => {
       console.info('Rejecting MATCH variant report: ' + this.matchData.analysisId);
       this.patientApi.updateVariantReport(this.patientSequenceNumber, this.matchData.biopsySequenceNumber, this.matchData.analysisId, false).subscribe(
-        (x: any) => { this.transformer.updateVariantReportStatus(this.matchData, x); }
+        (x: ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
+          switch (x.kind) {
+            case 'error':
+              this.showError(x.message);
+              break;
+            case 'success':
+              this.transformer.updateVariantReportStatus(this.matchData, x);
+              break;
+          }
+        }
       );
     };
 
@@ -161,7 +208,16 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, Varian
     const action = () => {
       console.info('Confirming MATCH assignment report: ' + this.matchData.analysisId);
       this.patientApi.updateAssignmentReport(this.patientSequenceNumber, true).subscribe(
-        (x: any) => { this.transformer.updateVariantReportStatus(this.matchData, x); }
+        (x: ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
+          switch (x.kind) {
+            case 'error':
+              this.showError(x.message);
+              break;
+            case 'success':
+              this.transformer.updateAssignmentReportStatus(this.matchData, x);
+              break;
+          }
+        }
       );
     };
 
@@ -174,7 +230,7 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, Varian
     );
   }
 
-  onVariantConfirmed(reportData: any, item: ConfirmableItem) {
+  onVariantConfirmed(reportData: VariantReportData, item: ConfirmableItem) {
     console.info('Confirming variant: ' + JSON.stringify(item));
 
     this.patientApi.updateVariant(
@@ -185,7 +241,16 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, Varian
       item.confirmed,
       item.comment
     ).subscribe(
-      (x: any) => { this.transformer.updateVariantStatus(reportData.variantReport, x); }
+      (x: ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
+        switch (x.kind) {
+          case 'error':
+            this.showError(x.message);
+            break;
+          case 'success':
+            this.transformer.updateVariantStatus(reportData, x);
+            break;
+        }
+      }
     );
   }
 
@@ -223,5 +288,12 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, Varian
     }
     this.dialogSubscription.unsubscribe();
     this.dialogSubscription = null;
+  }
+
+  private showError(message: string): void {
+    console.error(message);
+    if (this.toastrService && this.toastrService.toastr) {
+      this.toastrService.toastr.error(message);
+    }
   }
 }

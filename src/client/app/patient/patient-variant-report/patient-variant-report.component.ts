@@ -14,6 +14,7 @@ import { ViewDataTransformer } from '../view-data-transformer.service';
 import { DialogResults } from '../../shared/modal-dialogs/modal-dialog-results';
 import { ModalDialogConfirmationComponent } from '../../shared/modal-dialogs/modal-dialog-confirmation.component';
 import { VariantReportData } from '../variant-report-data';
+import { ToastrService } from '../../shared/error-handling/toastr.service';
 
 /**
  * PatientVariantReportComponent.
@@ -78,7 +79,8 @@ export class PatientVariantReportComponent implements OnInit, VariantReportData 
     private patientApi: PatientApiService,
     private scrollService: ScrollService,
     private transformer: ViewDataTransformer,
-    private modalService: BsModalService) {
+    private modalService: BsModalService,
+    private toastrService: ToastrService) {
       this.scrollTo = scrollService.scrollToElement;
   }
 
@@ -153,7 +155,16 @@ export class PatientVariantReportComponent implements OnInit, VariantReportData 
       item.confirmed,
       item.comment
     ).subscribe(
-      (x: any) => { this.transformer.updateVariantStatus(this, x); }
+      (x: ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
+        switch (x.kind) {
+          case 'error':
+            this.showError(x.message);
+            break;
+          case 'success':
+            this.transformer.updateVariantStatus(this, x);
+            break;
+        }
+      }
     );
   }
 
@@ -215,5 +226,8 @@ export class PatientVariantReportComponent implements OnInit, VariantReportData 
 
   private showError(message: string): void {
     console.error(message);
+    if (this.toastrService && this.toastrService.toastr) {
+        this.toastrService.toastr.error(message);
+    }
   }
 }

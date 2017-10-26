@@ -27,6 +27,8 @@ import { PatientApiServiceStub, PatientApiServiceMock } from '../testing/patient
 import { ActivatedRouteStub } from '../testing/activated-route-stub';
 import { UtilsModule } from '../../shared/utils/utils.module';
 import { BsModalServiceStub } from '../testing/bs-modal.service-stub';
+import { ToastrService } from '../../shared/error-handling/toastr.service';
+import { ToastrServiceStub } from '../testing/toastr-service-stub';
 
 export function main() {
   describe('PatientVariantReportComponent (templateUrl)', () => {
@@ -62,6 +64,7 @@ export function main() {
           { provide: ActivatedRoute, useValue: activatedRouteStub },
           { provide: PatientApiService, useClass: PatientApiServiceMock },
           { provide: BsModalService, useClass: BsModalServiceStub },
+          { provide: ToastrService, useClass: ToastrServiceStub },
           ChangeDetectorRef,
           ViewDataTransformer
         ]
