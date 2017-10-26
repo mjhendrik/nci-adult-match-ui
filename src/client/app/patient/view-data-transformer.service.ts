@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 import { AssignmentReasonSection } from './assignment-reason-table/assignment-reason-table.component';
 import { AssignmentReportData } from './assignment-report/assignment-report.module';
 import { VariantReportComparisonSummary } from './patient-variant-report-oa/variant-report-comparison-summary';
-import { VariantReportStatus } from './variant-report-status';
 import { VariantReportComparisonData } from './variant-report-comparison-data';
 import { VariantReportData } from './variant-report-data';
+import { ApiStatusUpdateSuccess } from './patient-api.service';
 
 const variantTables: Array<string> = [
   'geneFusions',
@@ -118,14 +118,21 @@ export class ViewDataTransformer {
     return transformedReport;
   }
 
-  updateVariantReportStatus(report: VariantReportData, updatedStatus: VariantReportStatus): void {
+  updateVariantReportStatus(report: VariantReportData, updatedStatus: ApiStatusUpdateSuccess): void {
     report.variantReportStatus = updatedStatus.status;
     report.comments = updatedStatus.comments;
-    report.statusUser = updatedStatus.user;
+    report.statusUser = updatedStatus.commenter;
     report.isVariantReportEditable = this.getVariantReportEditable(report);
   }
 
-  updateVariantStatus(report: VariantReportData, updatedStatus: VariantReportStatus): void {
+  updateAssignmentReportStatus(report: VariantReportData, updatedStatus: ApiStatusUpdateSuccess): void {
+    report.variantReportStatus = updatedStatus.status;
+    report.comments = updatedStatus.comments;
+    report.statusUser = updatedStatus.commenter;
+    report.isAssignmentReportEditable = this.getAssignmentReportEditable(report);
+  }
+
+  updateVariantStatus(report: VariantReportData, updatedStatus: ApiStatusUpdateSuccess): void {
     //TODO: complete this
   }
 
@@ -176,10 +183,10 @@ export class ViewDataTransformer {
   }
 
   getAssignmentReportEditable(assignmentReport: any): boolean {
-    if (!assignmentReport && !assignmentReport.variantReportStatus) {
+    if (!assignmentReport && !assignmentReport.assignmentReportStatus) {
       return false;
     }
-    return assignmentReport.variantReportStatus === 'PENDING_CONFIRMATION';
+    return assignmentReport.assignmentReportStatus === 'PENDING_CONFIRMATION';
   }
 
   getVariantReportEditable(variantReport: VariantReportData): boolean {
@@ -209,7 +216,9 @@ export class ViewDataTransformer {
     variantReport.variantReport = analysis.variantReport;
     variantReport.assignmentReport = analysis.assignmentReport;
     variantReport.assignmentHistory = transformedPatient.patientAssignments;
-    variantReport.parsed_vcf_genes = (typeof copyNumberData.copy_number_variant_genes==='undefined') ? null : [copyNumberData.copy_number_variant_genes, copyNumberData.file_name];
+    variantReport.parsed_vcf_genes = (typeof copyNumberData.copy_number_variant_genes==='undefined')
+      ? null
+      : [copyNumberData.copy_number_variant_genes, copyNumberData.file_name];
     variantReport.tvc_version = tvc_version;
     variantReport.pool1 = oncominePanelData.pool1;
     variantReport.pool2 = oncominePanelData.pool2;

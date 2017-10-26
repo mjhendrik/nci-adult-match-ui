@@ -6,8 +6,21 @@ import { AuthHttp } from 'angular2-jwt';
 import { Config } from '../shared/config/env.config';
 import { DownloadService } from '../shared/utils/download.service';
 import { ApiService } from '../shared/api/api.service';
-import { VariantReportStatus } from './variant-report-status';
 import { VariantReportComparisonData } from './variant-report-comparison-data';
+
+export interface ApiStatusUpdateError {
+  kind: 'error';
+  code?: number;
+  message: string;
+}
+
+export interface ApiStatusUpdateSuccess {
+  kind: 'success';
+  status: string;
+  comments: string;
+  commenter: string;
+  timeStamp: string;
+}
 
 @Injectable()
 export class PatientApiService extends ApiService {
@@ -113,17 +126,26 @@ export class PatientApiService extends ApiService {
       .catch(this.handleError);
   }
 
-  updateVariantReport(psn: string, bsn: string, analysisId: string, confirmed: boolean): Observable<VariantReportStatus> {
+  updateVariantReport(psn: string, bsn: string, analysisId: string, confirmed: boolean): Observable<ApiStatusUpdateSuccess | ApiStatusUpdateError> {
     const patch = {
       'status': confirmed ? 'CONFIRMED' : 'REJECTED'
     };
 
     return this.http.patch(`${Config.API.MESSAGE}/message/clia/patient/${psn}/biopsy/${bsn}/variant_reports/${analysisId}`, patch)
-      .map((res: Response) => res)
-      .catch(this.handleError);
+      .map((res: Response) => {
+        const data = res.json();
+        return { commenter: data.commenter, status: data.status } as ApiStatusUpdateSuccess;
+      })
+      .catch((err: string) => Observable.of({ message: err } as ApiStatusUpdateError));
   }
 
-  updateVariant(psn: string, bsn: string, analysisId: string, variantId: string, confirmed: boolean, comment: string): Observable<VariantReportStatus> {
+  updateVariant(
+    psn: string,
+    bsn: string,
+    analysisId: string,
+    variantId: string,
+    confirmed: boolean,
+    comment: string): Observable<ApiStatusUpdateSuccess | ApiStatusUpdateError> {
 
     const patch = {
       'status': confirmed ? 'CONFIRMED' : 'REJECTED',
@@ -131,17 +153,20 @@ export class PatientApiService extends ApiService {
     };
 
     return this.http.patch(`${Config.API.MESSAGE}/message/clia/patient/${psn}/biopsy/${bsn}/variant_reports/${analysisId}/variants/${variantId}`, patch)
-      .map((res: Response) => res)
-      .catch(this.handleError);
-  }
+      .map((res: Response) => {
+        const data = res.json();
+        return { commenter: data.commenter, status: data.status } as ApiStatusUpdateSuccess;
+      })
+      .catch((err: string) => Observable.of({ message: err } as ApiStatusUpdateError));
+}
 
-  updateAssignmentReport(psn: string, confirmed: boolean): Observable<VariantReportStatus> {
+  updateAssignmentReport(psn: string, confirmed: boolean): Observable<ApiStatusUpdateSuccess | ApiStatusUpdateError> {
     const patch = {
       'status': confirmed ? 'CONFIRMED' : 'REJECTED'
     };
 
     return this.http.patch(`${Config.API.MESSAGE}/ecog/patient/${psn}/assignment`, patch)
       .map((res: Response) => res)
-      .catch(this.handleError);
+      .catch((err: string) => Observable.of({ message: err } as ApiStatusUpdateError));
   }
 }

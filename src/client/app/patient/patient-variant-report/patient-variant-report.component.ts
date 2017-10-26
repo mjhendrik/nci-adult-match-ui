@@ -7,7 +7,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { Subscription } from 'rxjs/Subscription';
 
 import { routerTransition } from './../../shared/router.animations';
-import { PatientApiService } from '../patient-api.service';
+import { PatientApiService, ApiStatusUpdateError, ApiStatusUpdateSuccess } from '../patient-api.service';
 import { ScrollService } from '../../shared/utils/scroll.to.service';
 import { ConfirmableItem } from '../../shared/check-box-with-confirm/check-box-with-confirm.component';
 import { ViewDataTransformer } from '../view-data-transformer.service';
@@ -94,7 +94,16 @@ export class PatientVariantReportComponent implements OnInit, VariantReportData 
     const action = () => {
       console.info('Confirming variant report: ' + this.analysisId);
       this.patientApi.updateVariantReport(this.patientSequenceNumber, this.biopsySequenceNumber, this.analysisId, true).subscribe(
-        (x: any) => { this.transformer.updateVariantReportStatus(this, x); }
+        (x: ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
+          switch (x.kind) {
+            case 'error':
+              this.showError(x.message);
+              break;
+            case 'success':
+              this.transformer.updateVariantReportStatus(this, x);
+              break;
+          }
+        }
       );
     };
 
@@ -111,7 +120,16 @@ export class PatientVariantReportComponent implements OnInit, VariantReportData 
     const action = () => {
       console.info('Rejecting variant report: ' + this.analysisId);
       this.patientApi.updateVariantReport(this.patientSequenceNumber, this.biopsySequenceNumber, this.analysisId, false).subscribe(
-        (x: any) => { this.transformer.updateVariantReportStatus(this, x); }
+        (x: ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
+          switch (x.kind) {
+            case 'error':
+              this.showError(x.message);
+              break;
+            case 'success':
+              this.transformer.updateVariantReportStatus(this, x);
+              break;
+          }
+        }
       );
     };
 
@@ -143,7 +161,16 @@ export class PatientVariantReportComponent implements OnInit, VariantReportData 
     const action = () => {
       console.info('Confirming assignment report: ' + this.analysisId);
       this.patientApi.updateAssignmentReport(this.patientSequenceNumber, true).subscribe(
-        (x: any) => { this.transformer.updateVariantReportStatus(this, x); }
+        (x: ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
+          switch (x.kind) {
+            case 'error':
+              this.showError(x.message);
+              break;
+            case 'success':
+              this.transformer.updateAssignmentReportStatus(this, x);
+              break;
+          }
+        }
       );
     };
 
@@ -184,5 +211,9 @@ export class PatientVariantReportComponent implements OnInit, VariantReportData 
     }
     this.dialogSubscription.unsubscribe();
     this.dialogSubscription = null;
+  }
+
+  private showError(message: string): void {
+    console.error(message);
   }
 }
