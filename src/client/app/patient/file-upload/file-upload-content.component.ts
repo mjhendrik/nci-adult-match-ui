@@ -183,10 +183,8 @@ export class FileUploadContentComponent implements OnInit {
   notifyAfterUpload(): void {
 
     this.uploadNotification = {
-      'ion_reporter_id': null,
       'molecular_sequence_number': this.msn,
       'analysis_id': this.analysisId,
-      'site': null,
       'zip_name': this.variantZipFile.name,
       'dna_bam_name': this.dnaBamFile.name,
       'cdna_bam_name': this.cdnaBamFile.name
