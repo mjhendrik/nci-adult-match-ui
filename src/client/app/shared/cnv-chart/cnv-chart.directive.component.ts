@@ -115,7 +115,7 @@ export class CnvChartDirective implements OnInit {
       // this.file_name = this.data[1].split('tmp/')[1];
     // }
 
-    let frm:any = (typeof this.frame !== 'undefined') ? (this.frame - 45) : 0;
+    let frm:any = (typeof this.frame !== 'undefined') ? (this.frame) : 0;
 
     Object.keys(array).forEach((key:any) => {
 
@@ -365,7 +365,7 @@ export class CnvChartDirective implements OnInit {
 
           let max = Math.round(highest / 10) * 3 + lowest;
 
-          lastspot = chart.xScale()(gene) + (frm);
+          lastspot = chart.xScale()(gene) + (1.7 * frm);
           genespot = chart.xScale()(gene) + 25;
           let y1 = chart.yScale()(2);//2.0 line
           let y2 = chart.yScale()(7);//7.0 line
@@ -403,37 +403,10 @@ export class CnvChartDirective implements OnInit {
             .attr('x2', genespot)
             .attr('y1', height)
             .style('fill', 'none')
-            .style('stroke', 'green')
+            .style('stroke', 'gray')
             .style('stroke-width', 0.5)
             .style('stroke-dasharray', ('3, 3'));
             // .style('stroke-linecap', 'line');
-
-          // svg.append("rect")
-          //   .attr("width", chart.xAxis.scale().range()[1])
-          //   .attr("height", chart.yAxis.scale().range()[0])
-          //   .style("fill", "none")
-          //   .style("stroke", "red");
-
-
-          // svg.append("rect")
-          //   .attr("x1", 0)
-          //   .attr("x2", genespot)
-          //   .attr("y1", 0)
-          //   .attr("y2", y2)
-          //   .attr("width", genespot)
-          //   .attr("height", height)
-          //   .style('fill', 'yellow')
-          //   .style('fill-opacity', 0.1)
-          //   .style('z-index', -100);
-
-          // svg.append("rect")
-          //   .attr('x1', 0)
-          //   .attr('x2', genespot)
-          //   .attr('y1', height)
-          //   // .attr("width", 50)
-          //   .attr("height", height)
-          //   .style('fill', 'yellow');
-
 
           if(frm === 0) return;
 
@@ -442,23 +415,9 @@ export class CnvChartDirective implements OnInit {
             .attr('x2', lastspot)
             .attr('y1', height)
             .style('fill', 'none')
-            .style('stroke', 'blue')
+            .style('stroke', 'black')
             .style('stroke-width', 0.5)
             .style('stroke-linecap', 'line');
-
-
-
-          // svg.append('area')
-          //   .attr('x1', 0)
-          //   .attr('x2', lastspot)
-          //   .attr('y1', height)
-          //   .style('fill', 'lightsteelblue')
-          //   .style('stroke-width', 1)
-
-          // .area {
-          //   fill: lightsteelblue;
-          //   stroke-width: 0;
-          // }
 
         }
       }

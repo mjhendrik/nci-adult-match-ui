@@ -1,6 +1,3 @@
-/**
- * Created by hendrikssonm on 6/26/17.
- */
 import {
   Component,
   DebugElement
@@ -101,6 +98,38 @@ export function main() {
           });
       }));
 
+    it('should work by calling Options --> ngAfterViewInit @ViewChild NULL Response',
+      async((done:any) => {
+
+        ccwwServiceStub = {
+          CW: { ccww: null }
+        };
+
+
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(CnvChartDirective, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(CnvChartDirective);
+
+            fixture.componentInstance.data = PatientApiServiceStub.makeRawVcftData();
+            fixture.componentInstance.cnvdata = PatientApiServiceStub.makeCnvData();
+
+            fixture.componentInstance.ngOnInit();
+            fixture.componentInstance.ngOnChanges();
+            // fixture.componentInstance.ngAfterViewInit();
+
+            fixture.componentInstance.CW = ccwwServiceStub.CW;
+            expect(fixture.componentInstance.CW).toBeDefined();
+            expect(fixture.componentInstance.CW.ccww).toBe(null);
+            fixture.detectChanges();
+            fixture.destroy();
+          });
+      }));
+
     it('should work by calling Options --> Tooltip Response',
       async((done:any) => {
 
@@ -168,77 +197,6 @@ export function main() {
             fixture.destroy();
           });
       }));
-
-    xit('should work by calling Options --> Callback Response',
-      async((done:any) => {
-
-          TestBed
-          .compileComponents()
-          .then(() => {
-            let fixture = TestBed.overrideComponent(CnvChartDirective, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CnvChartDirective);
-
-            fixture.componentInstance.data = PatientApiServiceStub.makeRawVcftData();
-
-            fixture.componentInstance.ngOnInit();
-
-            expect(fixture.componentInstance.options).toBeDefined();
-            fixture.detectChanges();
-
-            expect(fixture.componentInstance.data).toBeDefined();
-            fixture.detectChanges();
-
-            expect(fixture.componentInstance.options.chart.callback).toBeDefined();
-            fixture.detectChanges();
-
-            fixture.destroy();
-          });
-      }));
-  });
-
-  xdescribe('WelcomeComponent', () => {
-
-    let comp: CnvChartDirective;
-    let fixture: ComponentFixture<CnvChartDirective>;
-    let componentCWService: PatientApiService; // the actually injected service
-    let userService: PatientApiService; // the TestBed injected service
-    let de: DebugElement;  // the DebugElement with the welcome message
-    let el: HTMLElement; // the DOM element with the welcome message
-
-    let ccwwServiceStub: {
-      // isLoggedIn: boolean;
-      CW: { ccww: string }
-    };
-
-    beforeEach(() => {
-      // stub ccwwService for test purposes
-      ccwwServiceStub = {
-        // isLoggedIn: true,
-        CW: { ccww: 'Test User' }
-      };
-
-      TestBed.configureTestingModule({
-        declarations: [CnvChartDirective, nvD3],
-        // providers:    [ ccwwService ]  // NO! Don't provide the real service!
-        // Provide a test-double instead
-        providers: [{ provide: PatientApiService, useValue: ccwwServiceStub }]
-      });
-
-      fixture = TestBed.createComponent(CnvChartDirective);
-      comp = fixture.componentInstance;
-
-      // ccwwService actually injected into the component
-      userService = fixture.debugElement.injector.get(PatientApiService);
-      componentCWService = userService;
-      // ccwwService from the root injector
-      userService = TestBed.get(PatientApiService);
-      //  get the "welcome" element by CSS selector (e.g., by class name)
-      el = fixture.debugElement.nativeElement; // de.nativeElement;
-
-    });
   });
 
   @Component({
