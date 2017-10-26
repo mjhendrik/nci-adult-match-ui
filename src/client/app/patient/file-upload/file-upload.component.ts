@@ -35,4 +35,5 @@ export class FileUploadComponent {
     this.modalRef = this.modalService.show(FileUploadContentComponent, this.config);
     this.modalRef.content.msn = this.msn;
   }
+
 }

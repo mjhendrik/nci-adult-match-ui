@@ -41,9 +41,22 @@
   </div>
 </div>
 <div class="modal-footer">
-  <a *ngIf="!isDisabled" type="button" id="close-dialog" class="btn btn-default" (click)="closeUploadDialog(false)">Close</a>
-  <a *ngIf="isDisabled" type="button" id="stop-and-close-dialog" class="btn btn-default" (click)="closeUploadDialog(true)">Stop Upload and Close</a>
+  <a *ngIf="!isDisabled" type="button" id="close-dialog" class="btn btn-default" (click)="closeUploadDialog(true, warning)">Close</a>
+  <a *ngIf="isDisabled" type="button" id="stop-and-close-dialog" class="btn btn-default" (click)="closeUploadDialog(true, warning)">Stop Upload and Close</a>
   <a [ngClass]="{false:'disabled'}[(hasVariantZipFile && hasDnaBamFile && hasCdnaBamFile && analysisIdValid) || (isDisabled)]"
     (click)="upload()" id="upload-files" class="btn btn-purple-light" aria-hidden="true">
     <i class="fa fa-cloud-upload"></i> Upload Files</a>
 </div>
+
+<ng-template #warning>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Are you sure?</h4>
+  </div>
+  <div class="modal-body">
+    Are you sure you want to Stop Upload and Close?
+  </div>
+  <div class="modal-footer">
+    <a type="button" id="no-dialog" class="btn btn-danger" (click)="closeWarningDialog(false)">No</a>
+    <a type="button" id="yes-dialog" class="btn btn-success" (click)="closeWarningDialog(true)">Yes</a>
+  </div>
+</ng-template>

@@ -5,7 +5,8 @@ import {
   NgZone,
   OnInit,
   ElementRef,
-  ApplicationRef
+  ApplicationRef,
+  TemplateRef
 } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import {
@@ -32,6 +33,12 @@ import 'rxjs/add/observable/fromEvent';
   styleUrls: ['file-upload-content.component.css']
 })
 export class FileUploadContentComponent implements OnInit {
+
+  public modalRef2: BsModalRef;
+  public config = {
+    keyboard: false,
+    ignoreBackdropClick: true
+  };
 
   msn: string;
   analysisId: string = '';
@@ -194,9 +201,14 @@ export class FileUploadContentComponent implements OnInit {
 
   }
 
-  closeUploadDialog(nested: boolean) {
-    this.bsModalRef.hide();
-    // if (nested === true) { }
+  closeUploadDialog(nested: boolean, template: TemplateRef<any>) {
+    if (nested === false) this.bsModalRef.hide();
+    if (nested === true) this.modalRef2 = this.modalService.show(template, Object.assign({}, this.config, { class: 'modal-sm' }));
+  }
+
+  closeWarningDialog(cancel: boolean) {
+    this.modalRef2.hide();
+    if (cancel === true) this.bsModalRef.hide();
   }
 
 }
