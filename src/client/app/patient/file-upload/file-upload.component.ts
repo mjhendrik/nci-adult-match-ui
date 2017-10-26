@@ -11,6 +11,10 @@ import { FileUploadContentComponent } from './file-upload-content.component';
 })
 export class FileUploadComponent {
   public modalRef: BsModalRef;
+  public config = {
+    keyboard: false,
+    ignoreBackdropClick: true
+  };
 
   @Input() msn: string;
 
@@ -28,7 +32,7 @@ export class FileUploadComponent {
   }
 
   openUploadDialog() {
-    this.modalRef = this.modalService.show(FileUploadContentComponent);
+    this.modalRef = this.modalService.show(FileUploadContentComponent, this.config);
     this.modalRef.content.msn = this.msn;
   }
 }
