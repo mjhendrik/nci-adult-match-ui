@@ -15,7 +15,9 @@ export class ModalDialogConfirmationComponent {
   cancelButtonText = 'Cancel';
   closeButtonText = 'Cancel';
 
-  constructor(public bsModalRef: BsModalRef, private modalService: BsModalService) { }
+  constructor(
+    public bsModalRef: BsModalRef,
+    private modalService: BsModalService) { }
 
   ok() {
     this.modalService.setDismissReason(

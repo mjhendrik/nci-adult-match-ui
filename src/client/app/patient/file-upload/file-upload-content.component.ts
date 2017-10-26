@@ -33,8 +33,6 @@ import 'rxjs/add/observable/fromEvent';
 })
 export class FileUploadContentComponent implements OnInit {
 
-  public modalRefFileUpload: BsModalRef;
-
   msn: string;
   analysisId: string = '';
   analysisIdValid: boolean = false;
@@ -63,6 +61,7 @@ export class FileUploadContentComponent implements OnInit {
   @ViewChild('input') inputElRef: ElementRef;
 
   constructor(
+    public bsModalRef: BsModalRef,
     private changeDetector: ChangeDetectorRef,
     private ngzone: NgZone,
     private appref: ApplicationRef,
@@ -198,8 +197,8 @@ export class FileUploadContentComponent implements OnInit {
   }
 
   closeUploadDialog(nested: boolean) {
-    this.modalRefFileUpload.hide();
-    if (nested === true) { }
+    this.bsModalRef.hide();
+    // if (nested === true) { }
   }
 
 }
