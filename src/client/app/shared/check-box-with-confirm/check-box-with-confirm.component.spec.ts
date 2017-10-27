@@ -24,7 +24,7 @@ import { DialogResults } from '../modal-dialogs/modal-dialog-results';
   selector: 'test-cmp',
   template: `
   <sd-check-box-with-confirm [item]="item" [confirmTitle]="confirmTitle" [confirmMessage]="'Please enter a reason:'"
-    [promptOnlyIf]="true" [isEnabled]="isEditable" (onItemConfirmed)="onItemConfirmed(item)">
+    [promptOnlyIf]="true" [isEnabled]="isEditable" (onItemUpdated)="onItemUpdated(item)">
   </sd-check-box-with-confirm>
   `
 })
@@ -41,11 +41,11 @@ class TestComponent {
   };
   @Input() isEditable: boolean;
 
-  @Output() onVariantConfirmed: EventEmitter<ConfirmableItem> = new EventEmitter();
+  @Output() onVariantUpdated: EventEmitter<ConfirmableItem> = new EventEmitter();
 
-  onItemConfirmed(item: ConfirmableItem) {
-    if (this.onVariantConfirmed) {
-      this.onVariantConfirmed.emit(item);
+  onItemUpdated(item: ConfirmableItem) {
+    if (this.onVariantUpdated) {
+      this.onVariantUpdated.emit(item);
     }
   }
 }

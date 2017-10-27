@@ -237,7 +237,7 @@ export class PatientVariantReportOutsideAssayComponent
     );
   }
 
-  onVariantConfirmed(reportData: VariantReportData, item: ConfirmableItem) {
+  onVariantUpdated(reportData: VariantReportData, item: ConfirmableItem) {
     console.info('Confirming variant: ' + JSON.stringify(item));
 
     this.patientApi.updateVariant(

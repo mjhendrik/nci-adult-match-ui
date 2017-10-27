@@ -149,7 +149,7 @@ export class PatientVariantReportComponent implements OnInit, OnDestroy, Variant
     );
   }
 
-  onVariantConfirmed(item: ConfirmableItem) {
+  onVariantUpdated(item: ConfirmableItem) {
     console.info('Confirming variant: ' + JSON.stringify(item));
 
     this.patientApi.updateVariant(

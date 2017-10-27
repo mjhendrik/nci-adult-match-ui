@@ -29,7 +29,7 @@ export abstract class VariantReportSimpleTableComponent implements OnDestroy {
   @Input() title: string = 'Copy Number Variants';
   @Input() isEditable: boolean;
 
-  @Output() onVariantConfirmed: EventEmitter<ConfirmableItem> = new EventEmitter();
+  @Output() onVariantUpdated: EventEmitter<ConfirmableItem> = new EventEmitter();
 
   constructor(private modalService: BsModalService) {
   }
@@ -38,9 +38,9 @@ export abstract class VariantReportSimpleTableComponent implements OnDestroy {
     this.unsubscribe();
   }
 
-  onItemConfirmed(item: ConfirmableItem) {
-    if (this.onVariantConfirmed) {
-      this.onVariantConfirmed.emit(item);
+  onItemUpdated(item: ConfirmableItem) {
+    if (this.onVariantUpdated) {
+      this.onVariantUpdated.emit(item);
     }
   }
 
@@ -49,6 +49,7 @@ export abstract class VariantReportSimpleTableComponent implements OnDestroy {
       const modalResults = DialogResults.fromString(results);
       if (modalResults.success) {
         item.comment = modalResults.comment;
+        this.onItemUpdated(item);
       }
       this.unsubscribe();
     });

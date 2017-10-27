@@ -33,7 +33,7 @@ export class CheckBoxWithConfirmComponent implements OnDestroy {
   @Input() isEnabled: boolean;
   @Input() item: ConfirmableItem;
 
-  @Output() onItemConfirmed: EventEmitter<ConfirmableItem> = new EventEmitter();
+  @Output() onItemUpdated: EventEmitter<ConfirmableItem> = new EventEmitter();
 
   constructor(private modalService: BsModalService) { }
 
@@ -65,8 +65,8 @@ export class CheckBoxWithConfirmComponent implements OnDestroy {
   private toggle(comment: string) {
     this.item.confirmed = !this.item.confirmed;
     this.item.comment = comment;
-    if (this.onItemConfirmed) {
-      this.onItemConfirmed.emit(this.item);
+    if (this.onItemUpdated) {
+      this.onItemUpdated.emit(this.item);
     }
   }
 
