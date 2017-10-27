@@ -2,7 +2,8 @@ import {
   Component,
   Input,
   Output,
-  EventEmitter
+  EventEmitter,
+  OnDestroy
 } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
@@ -22,7 +23,7 @@ export interface ConfirmableItem {
   styleUrls: ['check-box-with-confirm.component.css'],
   templateUrl: 'check-box-with-confirm.component.html'
 })
-export class CheckBoxWithConfirmComponent {
+export class CheckBoxWithConfirmComponent implements OnDestroy {
   public modalRef: BsModalRef;
   public dialogSubscription: Subscription;
 
@@ -35,6 +36,10 @@ export class CheckBoxWithConfirmComponent {
   @Output() onItemConfirmed: EventEmitter<ConfirmableItem> = new EventEmitter();
 
   constructor(private modalService: BsModalService) { }
+
+  ngOnDestroy(): void {
+    this.unsubscribe();
+  }
 
   confirm() {
     if (this.promptOnlyIf !== null && this.item.confirmed !== this.promptOnlyIf) {

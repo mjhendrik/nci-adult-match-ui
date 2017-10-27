@@ -1,6 +1,7 @@
 import {
   Component,
-  OnInit
+  OnInit,
+  OnDestroy
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
@@ -27,7 +28,7 @@ import { ToastrService } from '../../shared/error-handling/toastr.service';
   animations: [routerTransition()],
   host: { '[@routerTransition]': '' }
 })
-export class PatientVariantReportComponent implements OnInit, VariantReportData {
+export class PatientVariantReportComponent implements OnInit, OnDestroy, VariantReportData {
   scrollTo: (id: string) => void;
 
   biopsySequenceNumber: string;
@@ -86,6 +87,10 @@ export class PatientVariantReportComponent implements OnInit, VariantReportData 
 
   ngOnInit() {
     Object.assign(this, this.route.snapshot.data['data']);
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe();
   }
 
   download(file: string) {

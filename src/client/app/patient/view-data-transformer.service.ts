@@ -20,6 +20,7 @@ const variantTables: Array<string> = [
 */
 @Injectable()
 export class ViewDataTransformer {
+
   transformPatient(source: any): any {
     const transformedPatient: any = { ...source }; // Deep-copy the source
 
@@ -40,7 +41,8 @@ export class ViewDataTransformer {
     }
 
     if (transformedPatient.biopsies && transformedPatient.biopsies.length) {
-      transformedPatient.biopsies = transformedPatient.biopsies.reverse().map((x: any) => this.transformBiopsy(transformedPatient, x));
+      transformedPatient.biopsies = transformedPatient.biopsies.reverse()
+        .map((x: any) => this.transformBiopsy(transformedPatient, x));
     } else {
       transformedPatient.biopsies = [];
     }
@@ -441,6 +443,8 @@ export class ViewDataTransformer {
       } else if (item.confirmed) {
         moiSummary.confirmedMOIs += 1;
       }
+
+      item.comment = 'test test';
     }
   }
 

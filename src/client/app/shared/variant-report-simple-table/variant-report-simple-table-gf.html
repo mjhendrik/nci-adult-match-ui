@@ -21,7 +21,7 @@
         </sd-check-box-with-confirm>
       </td>
       <td>
-        <a *ngIf="item.comment" href ng-click="editComment(item)">
+        <a *ngIf="item.comment" href (click)="editComment(item)">
             <i class="fa fa-file-text-o"></i>
         </a>
         <p *ngIf="!item.comment"> - </p>

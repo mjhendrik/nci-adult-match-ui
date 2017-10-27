@@ -1,11 +1,5 @@
-import {
-  Component,
-  Input,
-  Output,
-  EventEmitter
-} from '@angular/core';
-
-import { ConfirmableItem } from '../check-box-with-confirm/check-box-with-confirm.component';
+import { Component } from '@angular/core';
+import { VariantReportSimpleTableComponent } from './variant-report-simple-table.component';
 
 /**
  * VariantReportSimpleTableGeneFusionComponent.
@@ -15,19 +9,5 @@ import { ConfirmableItem } from '../check-box-with-confirm/check-box-with-confir
   selector: 'sd-variant-report-simple-table-gf',
   templateUrl: 'variant-report-simple-table-gf.html'
 })
-export class VariantReportSimpleTableGeneFusionComponent {
-  @Input() items: any[];
-  @Input() title: string = 'Gene Fusions';
-  @Input() isEditable: boolean;
-
-  @Output() onVariantConfirmed: EventEmitter<ConfirmableItem> = new EventEmitter();
-
-  onItemConfirmed(item: ConfirmableItem) {
-    if (this.onVariantConfirmed) {
-      this.onVariantConfirmed.emit(item);
-    }
-  }
-
-  editComment(item: ConfirmableItem) {
-  }
+export class VariantReportSimpleTableGeneFusionComponent extends VariantReportSimpleTableComponent {
 }

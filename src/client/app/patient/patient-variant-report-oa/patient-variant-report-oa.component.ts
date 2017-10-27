@@ -1,6 +1,7 @@
 import {
   Component,
-  OnInit
+  OnInit,
+  OnDestroy
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
@@ -28,7 +29,9 @@ import { ToastrService } from '../../shared/error-handling/toastr.service';
   animations: [routerTransition()],
   host: { '[@routerTransition]': '' }
 })
-export class PatientVariantReportOutsideAssayComponent implements OnInit, VariantReportComparisonData {
+export class PatientVariantReportOutsideAssayComponent
+  implements OnInit, OnDestroy, VariantReportComparisonData {
+
   scrollTo: (id: string) => void;
   showComparison: boolean;
   showOutsideAssay: boolean;
@@ -59,6 +62,10 @@ export class PatientVariantReportOutsideAssayComponent implements OnInit, Varian
     private modalService: BsModalService,
     private toastrService: ToastrService) {
     this.scrollTo = scrollService.scrollToElement;
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe();
   }
 
   openOutsideAssignmentReason(elementId: string, isOutsideAssay: boolean) {
