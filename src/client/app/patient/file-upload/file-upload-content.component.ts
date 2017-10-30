@@ -168,6 +168,7 @@ export class FileUploadContentComponent implements OnInit {
 
     const uploadFile = new HttpRequest('PUT', url, file, {
       reportProgress: true,
+      responseType: 'text'
     });
 
     this.http.request(uploadFile).subscribe(event => {
