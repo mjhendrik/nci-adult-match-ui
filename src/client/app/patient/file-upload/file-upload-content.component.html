@@ -13,37 +13,37 @@
   <div class="row">
     <div class="col-md-12 form-group has-feedback">
       <label class="control-label">Variant ZIP File
-        <span *ngIf="isDisabled" class="text-purple-light">{{percentDoneVariantZipFile}}%</span>
+        <span *ngIf="isUploading" class="text-purple-light">{{percentDoneVariantZipFile}}%</span>
       </label>
       <input type="file" accept=".zip" (change)="fileSelectedVariantZip($event.target.files[0])" id="variantUploadButton" [ngClass]="{true:'disable-div'}[!analysisIdValid]">
-      <div *ngIf="isDisabled" class="progress progress-striped progress-xs active m-t-10 m-b-0">
+      <div *ngIf="isUploading" class="progress progress-striped progress-xs active m-t-10 m-b-0">
         <div class="progress-bar progress-bar-success active" [style.width.%]="percentDoneVariantZipFile"></div>
       </div>
     </div>
     <div class="col-md-12 form-group has-feedback">
       <label class="control-label">DNA BAM File
-        <span *ngIf="isDisabled" class="text-purple-light">{{percentDoneDnaBamFile}}%</span>
+        <span *ngIf="isUploading" class="text-purple-light">{{percentDoneDnaBamFile}}%</span>
       </label>
       <input type="file" accept=".bam" (change)="fileSelectedDnaBam($event.target.files[0])" id="dnaUploadButton" [ngClass]="{true:'disable-div'}[!analysisIdValid]">
-      <div *ngIf="isDisabled" class="progress progress-striped progress-xs active m-t-10 m-b-0">
+      <div *ngIf="isUploading" class="progress progress-striped progress-xs active m-t-10 m-b-0">
         <div class="progress-bar progress-bar-success active" [style.width.%]="percentDoneDnaBamFile"></div>
       </div>
     </div>
     <div class="col-md-12 form-group has-feedback">
       <label class="control-label">cDNA BAM File
-        <span *ngIf="isDisabled" class="text-purple-light">{{percentDoneCdnaBamFile}}%</span>
+        <span *ngIf="isUploading" class="text-purple-light">{{percentDoneCdnaBamFile}}%</span>
       </label>
       <input type="file" accept=".bam" (change)="fileSelectedCdnaBam($event.target.files[0])" id="cdnaUploadButton" [ngClass]="{true:'disable-div'}[!analysisIdValid]">
-      <div *ngIf="isDisabled" class="progress progress-striped progress-xs active m-t-10 m-b-0">
+      <div *ngIf="isUploading" class="progress progress-striped progress-xs active m-t-10 m-b-0">
         <div class="progress-bar progress-bar-success active" [style.width.%]="percentDoneCdnaBamFile"></div>
       </div>
     </div>
   </div>
 </div>
 <div class="modal-footer">
-  <a *ngIf="!isDisabled" type="button" id="close-dialog" class="btn btn-default" (click)="closeUploadDialog(false)">Close</a>
-  <a *ngIf="isDisabled" type="button" id="stop-and-close-dialog" class="btn btn-default" (click)="closeUploadDialog(true, warning)">Stop Upload and Close</a>
-  <a [ngClass]="{false:'disabled'}[(hasVariantZipFile && hasDnaBamFile && hasCdnaBamFile && analysisIdValid) || (isDisabled)]"
+  <a *ngIf="!isUploading" type="button" id="close-dialog" class="btn btn-default" (click)="closeUploadDialog(false)">Close</a>
+  <a *ngIf="isUploading" type="button" id="stop-and-close-dialog" class="btn btn-default" (click)="closeUploadDialog(true, warning)">Stop Upload and Close</a>
+  <a [ngClass]="{false:'disabled'}[(hasVariantZipFile && hasDnaBamFile && hasCdnaBamFile && analysisIdValid) || (isUploading)]"
     (click)="upload()" id="upload-files" class="btn btn-purple-light" aria-hidden="true">
     <i class="fa fa-cloud-upload"></i> Upload Files</a>
 </div>

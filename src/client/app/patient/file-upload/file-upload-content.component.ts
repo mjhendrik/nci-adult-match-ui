@@ -46,7 +46,7 @@ export class FileUploadContentComponent implements OnInit {
   analysisIdPrev: string = this.analysisId;
   message: string = 'Enter a valid Analysis ID to add Variant ZIP file, DNA BAM file and cDNA BAM file';
   uploadNotification: any;
-  isDisabled: boolean = false;
+  isUploading: boolean = false;
   fileCount: number = 0;
 
   percentDoneVariantZipFile: number = 0;
@@ -146,7 +146,7 @@ export class FileUploadContentComponent implements OnInit {
   }
 
   upload(): void {
-    this.isDisabled = true;
+    this.isUploading = true;
     this.api.getPresignedUrls(
       this.msn,
       this.analysisId,
@@ -179,7 +179,7 @@ export class FileUploadContentComponent implements OnInit {
       } else if (event instanceof HttpResponse) {
         this.fileCount++;
         if (this.fileCount === 3) {
-          this.isDisabled = false;
+          this.isUploading = false;
           this.notifyAfterUpload();
         }
       }
