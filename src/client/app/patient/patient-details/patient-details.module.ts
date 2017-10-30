@@ -1,9 +1,12 @@
-import { NgModule } from '@angular/core';
-
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { DropzoneModule } from 'ngx-dropzone-wrapper';
+import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+
 import { PatientDetailsComponent } from './patient-details.component';
 import { PatientDetailsRoutingModule } from './patient-details-routing.module';
-import { FormsModule } from '@angular/forms';
 import { DataTableModule } from '../../shared/datatables/index';
 import { PipesModule } from '../../shared/pipes/pipes.module';
 import { DirectivesModule } from '../../shared/directives/directives.module';
@@ -11,10 +14,6 @@ import { PatientApiService } from '../patient-api.service';
 import { PatientTimelineModule } from './../patient-timeline/patient-timeline.module';
 import { ViewDataTransformer } from './../view-data-transformer.service';
 import { SharedModule } from '../../shared/shared.module';
-import { TabsModule } from 'ngx-bootstrap/tabs';
-
-import { DropzoneModule } from 'ngx-dropzone-wrapper';
-import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 import { FileUploadModule } from '../file-upload/file-upload.module';
 
 export interface PatientData {

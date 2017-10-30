@@ -66,7 +66,7 @@ export function main() {
         it('should have expected Dashboard AR details (then)', async(inject([], () => {
           backend.connections.subscribe((c:MockConnection) => c.mockRespond(response));
 
-          service.getDashboardAR().toPromise()
+          service.getPendingAssignmentReports().toPromise()
             .then(dash => {
               expect(dash).toEqual(fakeDashBoard);
             });
@@ -75,7 +75,7 @@ export function main() {
         it('should have expected Dashboard VR details (then)', async(inject([], () => {
           backend.connections.subscribe((c:MockConnection) => c.mockRespond(response));
 
-          service.getDashboardVR().toPromise()
+          service.getPendingVariantReports().toPromise()
             .then(dash => {
               expect(dash).toEqual(fakeDashBoard);
             });
@@ -102,7 +102,7 @@ export function main() {
         it('should have expected Dashboard Patients Awaiting details (then)', async(inject([], () => {
           backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
-          service.getDashboardPatientsAwaiting().toPromise()
+          service.getPatientsAwaiting().toPromise()
             .then(dash => {
               expect(dash).toEqual(fakeDashBoard);
             });
@@ -130,7 +130,7 @@ export function main() {
         it('should have expected Dashboard Patients Awaiting details (then)', async(inject([], () => {
           backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
-          service.getDashboardOverviewTa().toPromise()
+          service.getOverviewTa().toPromise()
             .then(dash => {
               expect(dash).toEqual(fakeDashBoard);
             });
@@ -158,7 +158,7 @@ export function main() {
         it('should have expected Dashboard Patients Awaiting details (then)', async(inject([], () => {
           backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
-          service.getDashboardOverviewPatients().toPromise()
+          service.getOverviewPatients().toPromise()
             .then(dash => {
               expect(dash).toEqual(fakeDashBoard);
             });
@@ -186,7 +186,7 @@ export function main() {
         it('should have expected Dashboard Bt Awaiting details (then)', async(inject([], () => {
           backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
-          service.getDashboardOverviewBt().toPromise()
+          service.getOverviewBt().toPromise()
             .then(dash => {
               expect(dash).toEqual(fakeDashBoard);
             });

@@ -13,5 +13,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['loading-spinner.component.css']
 })
 export class LoadingSpinnerComponent {
-  @Input() isLoading: boolean = true;
+  @Input() isLoading: boolean;
 }

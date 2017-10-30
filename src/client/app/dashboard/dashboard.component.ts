@@ -37,9 +37,9 @@ export class DashboardComponent implements OnInit {
 
   timestamp: any = new Date();
 
-  patients: any;
-  treatmentArms: any;
-  biopsyTracking: any;
+  patientSummary: any = {};
+  treatmentArmSummary: any = {};
+  biopsyTrackingSummary: any = {};
 
   tableARData: any[] = [];
   tableVRData: any[] = [];
@@ -77,7 +77,7 @@ export class DashboardComponent implements OnInit {
 
   getDataAR() {
     let gmt = new GmtPipe();
-    this.dashboardApi.getDashboardAR()
+    this.dashboardApi.getPendingAssignmentReports()
       .subscribe(itemList => {
         this.tableARData = itemList.map(x => {
           x.dateAssigned = gmt.transform(x.dateAssigned);
@@ -88,7 +88,7 @@ export class DashboardComponent implements OnInit {
 
   getDataVR() {
     let gmt = new GmtPipe();
-    this.dashboardApi.getDashboardVR()
+    this.dashboardApi.getPendingVariantReports()
       .subscribe(itemList => {
         this.tableVRData = itemList.map(x => {
           x.specimenReceivedDate = gmt.transform(x.specimenReceivedDate);
@@ -100,7 +100,7 @@ export class DashboardComponent implements OnInit {
 
   getDataPatientsAwaiting() {
 
-    this.dashboardApi.getDashboardPatientsAwaiting()
+    this.dashboardApi.getPatientsAwaiting()
       .subscribe(itemList => {
 
         if (this.isOutsideAssayValue === null) {
@@ -184,23 +184,23 @@ export class DashboardComponent implements OnInit {
   }
 
   getOverviewDataTa() {
-    this.dashboardApi.getDashboardOverviewTa()
+    this.dashboardApi.getOverviewTa()
       .subscribe(itemList => {
-        this.treatmentArms = itemList;
+        this.treatmentArmSummary = itemList;
       });
   }
 
   getOverviewDataPatients() {
-    this.dashboardApi.getDashboardOverviewPatients()
+    this.dashboardApi.getOverviewPatients()
       .subscribe(itemList => {
-        this.patients = itemList;
+        this.patientSummary = itemList;
       });
   }
 
   getOverviewDataBt() {
-    this.dashboardApi.getDashboardOverviewBt()
+    this.dashboardApi.getOverviewBt()
       .subscribe(itemList => {
-        this.biopsyTracking = itemList;
+        this.biopsyTrackingSummary = itemList;
       });
   }
 

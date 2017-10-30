@@ -12,7 +12,6 @@ import { Config } from '../shared/config/env.config';
  */
 @Injectable()
 export class DashboardApiService {
-
   /**
    * Creates a new DashboardApiService with the injected AuthHttp.
    * @param {AuthHttp} http - The injected AuthHttp.
@@ -20,21 +19,13 @@ export class DashboardApiService {
    */
   constructor(private http: AuthHttp) { }
 
-  /**
-   * Returns an Observable for the HTTP GET request for the JSON resource.
-   * @return {string[]} The Observable for the HTTP request.
-   */
-  getDashboardAR(): Observable<any[]> {
-
-    // return this.http.get('assets/mock-data/dashboard-ar.json')
-
+  getPendingAssignmentReports(): Observable<any[]> {
     return this.http.get(Config.API.PATIENT + '/patients/dashboard/assignment_reports')
       .map((res: Response) => res.json())
-      //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
   }
 
-  getDashboardVR(): Observable<any[]> {
+  getPendingVariantReports(): Observable<any[]> {
 
     // return this.http.get('assets/mock-data/dashboard-vr.json')
 
@@ -44,7 +35,7 @@ export class DashboardApiService {
       .catch(this.handleError);
   }
 
-  getDashboardPatientsAwaiting(): Observable<any[]> {
+  getPatientsAwaiting(): Observable<any[]> {
 
     // return this.http.get('assets/mock-data/dashboard-pa.json')
 
@@ -54,7 +45,7 @@ export class DashboardApiService {
       .catch(this.handleError);
   }
 
-  getDashboardOverviewTa(): Observable<any> {
+  getOverviewTa(): Observable<any> {
 
     // return this.http.get('assets/mock-data/dashboard-overview.json')
 
@@ -64,7 +55,7 @@ export class DashboardApiService {
       .catch(this.handleError);
   }
 
-  getDashboardOverviewPatients(): Observable<any> {
+  getOverviewPatients(): Observable<any> {
 
     // return this.http.get('assets/mock-data/dashboard-overview.json')
 
@@ -74,7 +65,7 @@ export class DashboardApiService {
       .catch(this.handleError);
   }
 
-  getDashboardOverviewBt(): Observable<any> {
+  getOverviewBt(): Observable<any> {
     return this.http.get(Config.API.PATIENT + '/patients/tracking/dashboard/overview')
       .map((res: Response) => res.json())
       //              .do(data => console.log('server data:', data))  // debug
