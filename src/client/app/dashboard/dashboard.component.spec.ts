@@ -5,13 +5,15 @@ import {
 } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
+import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+
 import { DirectivesModule } from './../shared/directives/directives.module';
 import { PipesModule } from './../shared/pipes/pipes.module';
 import { DataTableModule } from './../shared/datatables/DataTableModule';
 import { DashboardComponent } from './dashboard.component';
 import { DashboardApiService } from './dashboard-api.service';
-import { ActivatedRoute } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 
 let dashboard_data = {
@@ -130,12 +132,15 @@ export function main() {
 
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [RouterTestingModule.withRoutes(config),
+        imports: [
+          RouterTestingModule.withRoutes(config),
           DirectivesModule,
           PipesModule,
           FormsModule,
           DataTableModule,
-          SharedModule],
+          SharedModule,
+          TabsModule.forRoot()
+        ],
         declarations: [DashboardComponent],
         providers: [
           { provide: DashboardApiService, useClass: MockDashboardService },
@@ -181,8 +186,8 @@ export function main() {
               }
             }).createComponent(DashboardComponent);
             fixture.componentInstance.getDataAR();
-            expect(fixture.componentInstance.tableARData[0].patientSequenceNumber).toEqual( '1031' );
-            expect(fixture.componentInstance.tableARData[0].dateAssigned).toEqual('March 2, 2017 1:38 PM GMT');
+            expect(fixture.componentInstance.pendingAssignmentReports[0].patientSequenceNumber).toEqual( '1031' );
+            expect(fixture.componentInstance.pendingAssignmentReports[0].dateAssigned).toEqual('March 2, 2017 1:38 PM GMT');
           });
       }));
 
@@ -197,8 +202,8 @@ export function main() {
               }
             }).createComponent(DashboardComponent);
             fixture.componentInstance.getDataVR();
-            expect(fixture.componentInstance.tableVRData[0].patientSequenceNumber).toEqual( '1001re' );
-            expect(fixture.componentInstance.tableVRData[0].analysisId).toEqual('JOB-1001re');
+            expect(fixture.componentInstance.pendingVariantReports[0].patientSequenceNumber).toEqual( '1001re' );
+            expect(fixture.componentInstance.pendingVariantReports[0].analysisId).toEqual('JOB-1001re');
           });
       }));
 
@@ -213,7 +218,7 @@ export function main() {
               }
             }).createComponent(DashboardComponent);
             fixture.componentInstance.getDataPatientsAwaiting();
-            expect(fixture.componentInstance.tablePatientsAwaitingData[0].outsideBiopsy.messages).not.toBe("");
+            expect(fixture.componentInstance.patientsAwaiting[0].outsideBiopsy.messages).not.toBe("");
           });
       }));
 
@@ -230,7 +235,7 @@ export function main() {
 
             fixture.componentInstance.isOutsideAssayWorkflow = true;
             fixture.componentInstance.getDataPatientsAwaiting();
-            expect(fixture.componentInstance.tablePatientsAwaitingData[0].outsideBiopsy.messages).not.toBe("");
+            expect(fixture.componentInstance.patientsAwaiting[0].outsideBiopsy.messages).not.toBe("");
           });
       }));
 
@@ -247,7 +252,7 @@ export function main() {
 
             fixture.componentInstance.isOutsideAssayWorkflow = false;
             fixture.componentInstance.getDataPatientsAwaiting();
-            expect(fixture.componentInstance.tablePatientsAwaitingData).toEqual([]);
+            expect(fixture.componentInstance.patientsAwaiting).toEqual([]);
           });
       }));
 

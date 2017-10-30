@@ -1,20 +1,19 @@
-import { Component } from '@angular/core';
 import {
   async,
   TestBed,
   inject
 } from '@angular/core/testing';
-import { DashboardApiService } from './dashboard-api.service';
 import {
   HttpModule,
   Http,
   Response,
   ResponseOptions,
   XHRBackend,
-  BaseRequestOptions
 } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { AuthHttp } from 'angular2-jwt';
+
+import { DashboardApiService } from './dashboard-api.service';
 import { PatientApiServiceStub } from '../patient/testing/patient-api-service-stub';
 
 export function main() {

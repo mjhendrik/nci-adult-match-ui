@@ -6,6 +6,11 @@ import { routerTransition } from './../shared/router.animations';
 import { GmtPipe } from './../shared/pipes/gmt.pipe';
 import { DashboardApiService } from './dashboard-api.service';
 
+interface LoadableData<T> {
+  isLoaded: boolean;
+  data: T;
+}
+
 /**
  * DashboardComponent.
  */
@@ -37,13 +42,28 @@ export class DashboardComponent implements OnInit {
 
   timestamp: any = new Date();
 
-  patientSummary: any = {};
-  treatmentArmSummary: any = {};
-  biopsyTrackingSummary: any = {};
+  patientSummary: any = {
+    TOTAL: 0,
+    ON_TREATMENT_ARM: 0,
+    OFF_TRIAL: 0
+  };
 
-  tableARData: any[] = [];
-  tableVRData: any[] = [];
-  tablePatientsAwaitingData: any[] = [];
+  treatmentArmSummary: any = {
+    TOTAL: 0,
+    OPEN: 0,
+    SUSPENDED: 0,
+    CLOSED: 0
+  };
+
+  biopsyTrackingSummary: any = {
+    TOTAL: 0,
+    BIOPSY_SEQUENCES: 0,
+    MOLECULAR_SEQUENCES: 0
+  };
+
+  pendingAssignmentReports: LoadableData<any[]> = { isLoaded: false, data: [] };
+  pendingVariantReports: LoadableData<any[]> = { isLoaded: false, data: [] };
+  patientsAwaiting: LoadableData<any[]> = { isLoaded: false, data: [] };
 
   showRow: any = {};
 
@@ -72,14 +92,14 @@ export class DashboardComponent implements OnInit {
     this.getOverviewDataPatients();
     this.getOverviewDataBt();
     // this.autoLoadOverviewData();
-    this.tablePatientsAwaitingDataInitial = this.tablePatientsAwaitingData.length;
+    this.tablePatientsAwaitingDataInitial = this.patientsAwaiting.data.length;
   }
 
   getDataAR() {
     let gmt = new GmtPipe();
     this.dashboardApi.getPendingAssignmentReports()
       .subscribe(itemList => {
-        this.tableARData = itemList.map(x => {
+        this.pendingAssignmentReports.data = itemList.map(x => {
           x.dateAssigned = gmt.transform(x.dateAssigned);
           return x;
         });
@@ -90,7 +110,7 @@ export class DashboardComponent implements OnInit {
     let gmt = new GmtPipe();
     this.dashboardApi.getPendingVariantReports()
       .subscribe(itemList => {
-        this.tableVRData = itemList.map(x => {
+        this.pendingVariantReports.data = itemList.map(x => {
           x.specimenReceivedDate = gmt.transform(x.specimenReceivedDate);
           x.dateVariantReportReceived = gmt.transform(x.dateVariantReportReceived);
           return x;
@@ -104,7 +124,7 @@ export class DashboardComponent implements OnInit {
       .subscribe(itemList => {
 
         if (this.isOutsideAssayValue === null) {
-          this.tablePatientsAwaitingData = itemList.map(x => {
+          this.patientsAwaiting.data = itemList.map(x => {
 
             if (x.diseases) x.diseases.shortName = x.diseases.length ? x.diseases.map((y: any) => y.shortName).join(', ') : '';
 
@@ -142,7 +162,7 @@ export class DashboardComponent implements OnInit {
         }
 
         if (this.isOutsideAssayValue === true) {
-          this.tablePatientsAwaitingData = itemList.filter((x: any) => x.isOutsideAssay).map(x => {
+          this.patientsAwaiting.data = itemList.filter((x: any) => x.isOutsideAssay).map(x => {
 
             x.daysWaiting = x.outsideBiopsy ? x.outsideBiopsy.daysWaiting : x.confirmationBiopsy.daysWaiting;
 
@@ -174,7 +194,7 @@ export class DashboardComponent implements OnInit {
         }
 
         if (this.isOutsideAssayValue === false) {
-          this.tablePatientsAwaitingData = itemList.filter((x: any) => !x.isOutsideAssay).map(x => {
+          this.patientsAwaiting.data = itemList.filter((x: any) => !x.isOutsideAssay).map(x => {
             if (x.diseases) x.diseases.shortName = x.diseases.length ? x.diseases.map((y: any) => y.shortName).join(', ') : '';
             return x;
           });
