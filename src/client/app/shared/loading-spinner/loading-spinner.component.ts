@@ -1,0 +1,17 @@
+import { Component, Input } from '@angular/core';
+
+@Component({
+  moduleId: module.id,
+  selector: 'sd-load-spinner',
+  template: `
+  <div *ngIf="isLoading" class="loading-spinner-panel">
+    <i class="fa fa-cog fa-spin fa-fw"></i>
+    <span class="sr-only">Loading...</span>
+    <span>Loading...</span>
+  </div>
+  `,
+  styleUrls: ['loading-spinner.component.css']
+})
+export class LoadingSpinnerComponent {
+  @Input() isLoading: boolean = true;
+}

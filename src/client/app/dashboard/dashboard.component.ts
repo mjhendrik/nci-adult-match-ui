@@ -47,13 +47,6 @@ export class DashboardComponent implements OnInit {
 
   showRow: any = {};
 
-  dataAvailableAR: boolean = false; // use emit
-  dataAvailableVR: boolean = false; // use emit
-  dataAvailablePA: boolean = false; // use emit
-  dataAvailableOverviewTa: boolean = false; // use emit
-  dataAvailableOverviewPatients: boolean = false; // use emit
-  dataAvailableOverviewBt: boolean = false; // use emit
-
   tablePatientsAwaitingDataInitial: number = 0;
 
   private isOutsideAssayValue?: boolean = null;
@@ -90,7 +83,6 @@ export class DashboardComponent implements OnInit {
           x.dateAssigned = gmt.transform(x.dateAssigned);
           return x;
         });
-        this.dataAvailableAR = true; // use emit
       });
   }
 
@@ -103,7 +95,6 @@ export class DashboardComponent implements OnInit {
           x.dateVariantReportReceived = gmt.transform(x.dateVariantReportReceived);
           return x;
         });
-        this.dataAvailableVR = true; // use emit
       });
   }
 
@@ -189,16 +180,13 @@ export class DashboardComponent implements OnInit {
           });
         }
 
-        this.dataAvailablePA = true; // use emit
       });
-
   }
 
   getOverviewDataTa() {
     this.dashboardApi.getDashboardOverviewTa()
       .subscribe(itemList => {
         this.treatmentArms = itemList;
-        this.dataAvailableOverviewTa = true; // use emit
       });
   }
 
@@ -206,7 +194,6 @@ export class DashboardComponent implements OnInit {
     this.dashboardApi.getDashboardOverviewPatients()
       .subscribe(itemList => {
         this.patients = itemList;
-        this.dataAvailableOverviewPatients = true; // use emit
       });
   }
 
@@ -214,7 +201,6 @@ export class DashboardComponent implements OnInit {
     this.dashboardApi.getDashboardOverviewBt()
       .subscribe(itemList => {
         this.biopsyTracking = itemList;
-        this.dataAvailableOverviewBt = true; // use emit
       });
   }
 
