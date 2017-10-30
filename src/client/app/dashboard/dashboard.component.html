@@ -380,13 +380,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngIf="mftablePatientsAwaiting.isLoaded && mftablePatientsAwaiting.data.length == 0">
+            <tr *ngIf="patientsAwaiting.isLoaded && mftablePatientsAwaiting.data.length == 0">
               <td class="text-muted" colspan="6">
                 <span *ngIf="searchtermPatientsAwaiting">No matching search results found for "{{searchtermPatientsAwaiting}}"</span>
                 <span *ngIf="!searchtermPatientsAwaiting">There are no patients awaiting further action or information</span>
               </td>
             </tr>
-            <tr *ngIf="!mftablePatientsAwaiting.isLoaded">
+            <tr *ngIf="!patientsAwaiting.isLoaded">
               <td class="text-muted" colspan="8">
                 <sd-loading-spinner></sd-loading-spinner>
               </td>

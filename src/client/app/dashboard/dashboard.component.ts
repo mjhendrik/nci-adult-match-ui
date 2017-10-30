@@ -6,7 +6,7 @@ import { routerTransition } from './../shared/router.animations';
 import { GmtPipe } from './../shared/pipes/gmt.pipe';
 import { DashboardApiService } from './dashboard-api.service';
 
-interface LoadableData<T> {
+export interface LoadableData<T> {
   isLoaded: boolean;
   data: T;
 }
@@ -73,29 +73,29 @@ export class DashboardComponent implements OnInit {
 
   set isOutsideAssayWorkflow(value: boolean) {
     this.isOutsideAssayValue = value;
-    this.getDataPatientsAwaiting();
+    this.getPatientsAwaitingData();
   }
 
   get isOutsideAssayWorkflow(): boolean {
     return this.isOutsideAssayValue;
   }
 
-  constructor(private dashboardApi: DashboardApiService) {
-
-  }
+  constructor(private dashboardApi: DashboardApiService) { }
 
   ngOnInit() {
-    this.getOverviewDataPatients();
-    this.getOverviewDataTa();
-    this.getOverviewDataBt();
-    this.getDataAR();
-    this.getDataVR();
-    this.getDataPatientsAwaiting();
+    this.getPatientSummaryData();
+    this.getTreatmentArmSummaryData();
+    this.getBiopsyTrackingSummaryData();
+
+    this.getPendingAssignmentReportsData();
+    this.getPendingVariantReportsData();
+    this.getPatientsAwaitingData();
+
     // this.autoLoadOverviewData();
     this.tablePatientsAwaitingDataInitial = this.patientsAwaiting.data.length;
   }
 
-  getDataAR() {
+  getPendingAssignmentReportsData() {
     let gmt = new GmtPipe();
     this.dashboardApi.getPendingAssignmentReports()
       .subscribe(itemList => {
@@ -107,7 +107,7 @@ export class DashboardComponent implements OnInit {
       });
   }
 
-  getDataVR() {
+  getPendingVariantReportsData() {
     let gmt = new GmtPipe();
     this.dashboardApi.getPendingVariantReports()
       .subscribe(itemList => {
@@ -120,7 +120,7 @@ export class DashboardComponent implements OnInit {
       });
   }
 
-  getDataPatientsAwaiting() {
+  getPatientsAwaitingData() {
 
     this.dashboardApi.getPatientsAwaiting()
       .subscribe(itemList => {
@@ -206,21 +206,21 @@ export class DashboardComponent implements OnInit {
       });
   }
 
-  getOverviewDataTa() {
+  getTreatmentArmSummaryData() {
     this.dashboardApi.getOverviewTa()
       .subscribe(itemList => {
         this.treatmentArmSummary = itemList;
       });
   }
 
-  getOverviewDataPatients() {
+  getPatientSummaryData() {
     this.dashboardApi.getOverviewPatients()
       .subscribe(itemList => {
         this.patientSummary = itemList;
       });
   }
 
-  getOverviewDataBt() {
+  getBiopsyTrackingSummaryData() {
     this.dashboardApi.getOverviewBt()
       .subscribe(itemList => {
         this.biopsyTrackingSummary = itemList;
