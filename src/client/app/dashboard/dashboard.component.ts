@@ -85,12 +85,12 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getOverviewDataPatients();
+    this.getOverviewDataTa();
+    this.getOverviewDataBt();
     this.getDataAR();
     this.getDataVR();
     this.getDataPatientsAwaiting();
-    this.getOverviewDataTa();
-    this.getOverviewDataPatients();
-    this.getOverviewDataBt();
     // this.autoLoadOverviewData();
     this.tablePatientsAwaitingDataInitial = this.patientsAwaiting.data.length;
   }
@@ -103,6 +103,7 @@ export class DashboardComponent implements OnInit {
           x.dateAssigned = gmt.transform(x.dateAssigned);
           return x;
         });
+        this.pendingAssignmentReports.isLoaded = true;
       });
   }
 
@@ -115,6 +116,7 @@ export class DashboardComponent implements OnInit {
           x.dateVariantReportReceived = gmt.transform(x.dateVariantReportReceived);
           return x;
         });
+        this.pendingVariantReports.isLoaded = true;
       });
   }
 
@@ -200,6 +202,7 @@ export class DashboardComponent implements OnInit {
           });
         }
 
+        this.patientsAwaiting.isLoaded = true;
       });
   }
 

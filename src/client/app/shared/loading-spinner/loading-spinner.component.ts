@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 
 @Component({
   moduleId: module.id,
-  selector: 'sd-load-spinner',
+  selector: 'sd-loading-spinner',
   template: `
   <div *ngIf="isLoading" class="loading-spinner-panel">
     <i class="fa fa-cog fa-spin fa-fw"></i>
@@ -13,5 +13,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['loading-spinner.component.css']
 })
 export class LoadingSpinnerComponent {
-  @Input() isLoading: boolean;
+  @Input() isLoading: boolean = true;
 }
