@@ -206,7 +206,7 @@
                                 "$date": 1504013756558
                             },
                             "metadata": {
-                                "_id": "569fa559-b02f-4167-979d-b8f1bb290667"
+                                "_id": "9d2804f9-29f2-4210-af10-9b6e6aaf4a7a"
                             }
                         }
                     },
@@ -255,6 +255,13 @@
                     "reportedDate": {
                         "$date": 1504013756003
                     },
+                    "molecularSequenceNumber": "MSN-UIConfirmVariantReport",
+                    "destinationSite": "Boston",
+                    "trackingNumber": "TN-UIConfirmVariantReport",
+                    "dnaConcentration": "",
+                    "dnaVolume": "",
+                    "cDnaConcentration": "",
+                    "cDnaVolume": "",
                     "patientSequenceNumber": "UIConfirmVariantReport",
                     "type": "SPECIMEN"
                 }

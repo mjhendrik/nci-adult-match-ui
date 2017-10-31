@@ -432,6 +432,9 @@ export class ViewDataTransformer {
   }
 
   private calculateMoiSummary(table: any[], moiSummary: any): void {
+    if (!table)
+      return;
+
     for (let item of table) {
       moiSummary.totalMOIs += 1;
 
@@ -443,8 +446,6 @@ export class ViewDataTransformer {
       } else if (item.confirmed) {
         moiSummary.confirmedMOIs += 1;
       }
-
-      item.comment = 'test test';
     }
   }
 

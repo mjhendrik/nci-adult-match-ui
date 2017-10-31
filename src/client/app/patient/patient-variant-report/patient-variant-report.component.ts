@@ -13,9 +13,10 @@ import { ScrollService } from '../../shared/utils/scroll.to.service';
 import { ConfirmableItem } from '../../shared/check-box-with-confirm/check-box-with-confirm.component';
 import { ViewDataTransformer } from '../view-data-transformer.service';
 import { DialogResults } from '../../shared/modal-dialogs/modal-dialog-results';
-import { ModalDialogConfirmationComponent } from '../../shared/modal-dialogs/modal-dialog-confirmation.component';
 import { VariantReportData } from '../variant-report-data';
 import { ToastrService } from '../../shared/error-handling/toastr.service';
+import { ModalDialogConfirmationComponent } from '../../shared/modal-dialogs/modal-dialog-confirmation.component';
+import { ModalDialogWithCommentsComponent } from '../../shared/modal-dialogs/modal-dialog-with-comments.component';
 
 /**
  * PatientVariantReportComponent.
@@ -115,6 +116,7 @@ export class PatientVariantReportComponent implements OnInit, OnDestroy, Variant
     };
 
     this.showConfirmation(
+      true,
       'Variant Report Confirmation',
       `Are you sure you want to confirm Variant Report ${this.analysisId}?`,
       'Confirm',
@@ -141,6 +143,7 @@ export class PatientVariantReportComponent implements OnInit, OnDestroy, Variant
     };
 
     this.showConfirmation(
+      true,
       'Variant Report Rejection',
       `Are you sure you want to reject Variant Report ${this.analysisId}?`,
       'Reject',
@@ -191,6 +194,7 @@ export class PatientVariantReportComponent implements OnInit, OnDestroy, Variant
     };
 
     this.showConfirmation(
+      false,
       'Assignment Report Confirmation',
       `Are you sure you want to confirm Assignment Report ${this.analysisId}?`,
       'Confirm',
@@ -200,6 +204,7 @@ export class PatientVariantReportComponent implements OnInit, OnDestroy, Variant
   }
 
   private showConfirmation(
+    withComment: boolean,
     confirmTitle: string,
     confirmMessage: string,
     okButtonText: string,
@@ -214,7 +219,10 @@ export class PatientVariantReportComponent implements OnInit, OnDestroy, Variant
       this.unsubscribe();
     });
 
-    this.modalRef = this.modalService.show(ModalDialogConfirmationComponent);
+    this.modalRef = withComment
+      ? this.modalService.show(ModalDialogWithCommentsComponent)
+      : this.modalService.show(ModalDialogConfirmationComponent);
+
     this.modalRef.content.title = confirmTitle;
     this.modalRef.content.message = confirmMessage;
     this.modalRef.content.okButtonText = okButtonText;
