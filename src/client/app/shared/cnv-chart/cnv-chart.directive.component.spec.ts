@@ -67,13 +67,37 @@ export function main() {
           });
       }));
 
+    it('should work by calling Cnv chart ngOnInit --> ngOnChanges with endX as "-"',
+      async((done:any) => {
+        let endX = '-';
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(CnvChartDirective, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(CnvChartDirective);
+
+            fixture.componentInstance.data = PatientApiServiceStub.makeBrokenRawVcftData();
+            fixture.componentInstance.cnvdata = PatientApiServiceStub.makeCnvData();
+
+            fixture.componentInstance.ngOnInit();
+            fixture.componentInstance.ngOnChanges();
+            expect(fixture.componentInstance.data).toBeDefined();
+            expect(fixture.componentInstance.cnvdata).toBeDefined();
+
+            fixture.detectChanges();
+            fixture.destroy();
+
+          });
+      }));
+
     it('should work by calling Options --> ngAfterViewInit @ViewChild Response',
       async((done:any) => {
-
         ccwwServiceStub = {
           CW: { ccww: 'ViewChild' }
         };
-
         TestBed
           .compileComponents()
           .then(() => {
