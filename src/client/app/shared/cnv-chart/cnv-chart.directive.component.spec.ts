@@ -129,6 +129,35 @@ export function main() {
           CW: { ccww: null }
         };
 
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(CnvChartDirective, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(CnvChartDirective);
+
+            fixture.componentInstance.data = PatientApiServiceStub.makeRawVcftData();
+            fixture.componentInstance.cnvdata = PatientApiServiceStub.makeCnvData();
+
+            fixture.componentInstance.ngOnInit();
+            fixture.componentInstance.ngOnChanges();
+
+            fixture.componentInstance.CW = ccwwServiceStub.CW;
+            expect(fixture.componentInstance.CW).toBeDefined();
+            expect(fixture.componentInstance.CW.ccww).toBe(null);
+            fixture.detectChanges();
+            fixture.destroy();
+          });
+      }));
+
+    it('should work by calling Options --> ngAfterViewInit @ViewChild "undefined" Response',
+      async((done:any) => {
+
+        ccwwServiceStub = {
+          CW: { ccww: 'undefined' }
+        };
 
         TestBed
           .compileComponents()
@@ -144,11 +173,11 @@ export function main() {
 
             fixture.componentInstance.ngOnInit();
             fixture.componentInstance.ngOnChanges();
-            // fixture.componentInstance.ngAfterViewInit();
+            fixture.componentInstance.ngAfterViewInit();
 
             fixture.componentInstance.CW = ccwwServiceStub.CW;
             expect(fixture.componentInstance.CW).toBeDefined();
-            expect(fixture.componentInstance.CW.ccww).toBe(null);
+            expect(fixture.componentInstance.CW.ccww).toBe('undefined');
             fixture.detectChanges();
             fixture.destroy();
           });
