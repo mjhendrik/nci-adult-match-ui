@@ -169,7 +169,7 @@ export class PatientVariantReportComponent implements OnInit, OnDestroy, Variant
             this.showError(x.message);
             break;
           case 'success':
-            this.transformer.updateVariantStatus(this, x);
+            this.transformer.updateVariantStatus(item, x);
             break;
         }
       }

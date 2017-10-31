@@ -6,6 +6,7 @@ import { VariantReportComparisonSummary } from './patient-variant-report-oa/vari
 import { VariantReportComparisonData } from './variant-report-comparison-data';
 import { VariantReportData } from './variant-report-data';
 import { ApiStatusUpdateSuccess } from './patient-api.service';
+import { ConfirmableItem } from '../shared/check-box-with-confirm/check-box-with-confirm.component';
 
 const variantTables: Array<string> = [
   'geneFusions',
@@ -134,9 +135,8 @@ export class ViewDataTransformer {
     report.isAssignmentReportEditable = this.getAssignmentReportEditable(report);
   }
 
-  updateVariantStatus(report: VariantReportData, updatedStatus: ApiStatusUpdateSuccess): void {
-    console.log(updatedStatus);
-    //TODO: complete this
+  updateVariantStatus(item: ConfirmableItem, updatedStatus: ApiStatusUpdateSuccess): void {
+    item.comment = updatedStatus.comments;
   }
 
   updateOutsidePatientReport(report: VariantReportComparisonData): void {
@@ -445,6 +445,10 @@ export class ViewDataTransformer {
         }
       } else if (item.confirmed) {
         moiSummary.confirmedMOIs += 1;
+      }
+
+      if (item.metadata) {
+        item.comment = item.metadata.comment;
       }
     }
   }
