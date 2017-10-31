@@ -44,7 +44,7 @@ export class FileUploadContentComponent implements OnInit {
   analysisId: string = '';
   analysisIdValid: boolean = false;
   analysisIdPrev: string = this.analysisId;
-  message: string = 'Enter a valid Analysis ID to add Variant ZIP file, DNA BAM file and cDNA BAM file';
+  message: string = 'Enter Analysis ID to add Variant ZIP file, DNA BAM file and cDNA BAM file';
   uploadNotification: any;
   isUploading: boolean = false;
   fileCount: number = 0;
@@ -81,6 +81,9 @@ export class FileUploadContentComponent implements OnInit {
   }
 
   validateAnalysisId(): void {
+
+    this.analysisId = this.analysisId.replace(/^\s+|\s+$/g, '');
+
     this.api.validateAnalysisId(this.msn, this.analysisId)
       .subscribe(itemList => {
         this.analysisIdValid = !itemList;
@@ -89,6 +92,7 @@ export class FileUploadContentComponent implements OnInit {
           this.message = 'Analysis ID entered already exists';
         }
       });
+
   }
 
   onInputChanged(val: any) {
@@ -97,9 +101,11 @@ export class FileUploadContentComponent implements OnInit {
       .distinctUntilChanged()
       .subscribe((val: any) => {
 
+        val.target.value = val.target.value.replace(/^\s+|\s+$/g, '');
+
         this.changeDetector.detectChanges();
 
-        if (this.analysisIdPrev !== val.target.value && this.analysisId !== '' && !this.analysisId.startsWith(' ')) {
+        if (this.analysisIdPrev !== val.target.value && this.analysisId !== '') {
           this.analysisIdPrev = val.target.value;
           this.validateAnalysisId();
         }
@@ -109,13 +115,7 @@ export class FileUploadContentComponent implements OnInit {
         if (this.analysisId === '') {
           delete this.message;
           this.analysisIdValid = false;
-          this.message = 'Enter a valid Analysis ID to add Variant ZIP file, DNA BAM file and cDNA BAM file';
-        }
-
-        if (this.analysisId.startsWith(' ')) {
-          delete this.message;
-          this.analysisIdValid = false;
-          this.message = 'Analysis ID entered starts with a space';
+          this.message = 'Enter Analysis ID to add Variant ZIP file, DNA BAM file and cDNA BAM file';
         }
 
       });
