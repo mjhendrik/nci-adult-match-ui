@@ -120,88 +120,84 @@ export class DashboardComponent implements OnInit {
   }
 
   getPatientsAwaitingData() {
+    const convertMessages: (x: any) => any = (x => {
+      if (x.confirmationBiopsy && x.outsideBiopsy) {
+        return x.confirmationBiopsy.messages.concat(x.outsideBiopsy.messages);
+      } else if (x.confirmationBiopsy) {
+        return x.confirmationBiopsy.messages;
+      } else if (x.outsideBiopsy) {
+        return x.outsideBiopsy.messages;
+      }
+    });
+
+    const convertOutsideBiopsy: (x: any) => void = (x => {
+      x.diseases = x.outsideBiopsy.diseases;
+      x.MLH1 = x.outsideBiopsy.MLH1;
+      x.MSH2 = x.outsideBiopsy.MSH2;
+      x.PTEN = x.outsideBiopsy.PTEN;
+      x.RB = x.outsideBiopsy.RB;
+      x.amoi = x.outsideBiopsy.amoi;
+      x.variantReportConfirmedDate = x.outsideBiopsy.variantReportConfirmedDate;
+      x.biopsySequenceNumber = x.outsideBiopsy.biopsySequenceNumber;
+      x.dateSpecimenCollected = x.outsideBiopsy.dateSpecimenCollected;
+      x.molecularSequenceNumber = x.outsideBiopsy.molecularSequenceNumber;
+      x.lab = x.outsideBiopsy.lab;
+      x.analysisId = x.outsideBiopsy.analysisId;
+      x.dateMsnShipped = x.outsideBiopsy.dateMsnShipped;
+    });
+
+    const convertAnyItem: (x: any) => any = (x => {
+      if (x.diseases) {
+        x.diseases.shortName = x.diseases.length ? x.diseases.map((y: any) => y.shortName).join(', ') : '';
+      }
+
+      if (x.isOutsideAssay) {
+        x.daysWaiting = x.outsideBiopsy ? x.outsideBiopsy.daysWaiting : x.confirmationBiopsy.daysWaiting;
+        x.messages = convertMessages(x);
+
+        if (x.outsideBiopsy) {
+          convertOutsideBiopsy(x);
+        }
+      }
+
+      return x;
+    });
+
+    const convertOaItem: (x: any) => any = (x => {
+      x.daysWaiting = x.outsideBiopsy ? x.outsideBiopsy.daysWaiting : x.confirmationBiopsy.daysWaiting;
+      x.messages = convertMessages(x);
+
+      if (x.outsideBiopsy) {
+        convertOutsideBiopsy(x);
+      }
+
+      return x;
+    });
+
+    const convertRegularItem: (x: any) => any = (x => {
+      if (x.diseases) {
+        x.diseases.shortName = x.diseases.length ? x.diseases.map((y: any) => y.shortName).join(', ') : '';
+      }
+      return x;
+    });
 
     this.dashboardApi.getPatientsAwaiting()
       .subscribe(itemList => {
 
         if (this.isOutsideAssayValue === null) {
-          this.patientsAwaiting.data = itemList.map(x => {
-
-            console.log('x.diseases');
-            console.log(x.diseases);
-
-            if (x.diseases) x.diseases.shortName = x.diseases.length ? x.diseases.map((y: any) => y.shortName).join(', ') : '';
-
-            if (x.isOutsideAssay) {
-
-              x.daysWaiting = x.outsideBiopsy ? x.outsideBiopsy.daysWaiting : x.confirmationBiopsy.daysWaiting;
-
-              if (x.confirmationBiopsy && x.outsideBiopsy) x.messages = x.confirmationBiopsy.messages.concat(x.outsideBiopsy.messages);
-              else if (x.confirmationBiopsy) x.messages = x.confirmationBiopsy.messages;
-              else if (x.outsideBiopsy) x.messages = x.outsideBiopsy.messages;
-
-              if (x.outsideBiopsy) {
-
-                x.diseases = x.outsideBiopsy.diseases;
-                x.MLH1 = x.outsideBiopsy.MLH1;
-                x.MSH2 = x.outsideBiopsy.MSH2;
-                x.PTEN = x.outsideBiopsy.PTEN;
-                x.RB = x.outsideBiopsy.RB;
-                x.amoi = x.outsideBiopsy.amoi;
-                x.variantReportConfirmedDate = x.outsideBiopsy.variantReportConfirmedDate;
-                x.biopsySequenceNumber = x.outsideBiopsy.biopsySequenceNumber;
-                x.dateSpecimenCollected = x.outsideBiopsy.dateSpecimenCollected;
-                x.molecularSequenceNumber = x.outsideBiopsy.molecularSequenceNumber;
-                x.lab = x.outsideBiopsy.lab;
-                x.analysisId = x.outsideBiopsy.analysisId;
-                x.dateMsnShipped = x.outsideBiopsy.dateMsnShipped;
-
-              }
-
-            }
-
-            return x;
-
-          });
+          this.patientsAwaiting.data = itemList.map(convertAnyItem);
         }
 
         if (this.isOutsideAssayValue === true) {
-          this.patientsAwaiting.data = itemList.filter((x: any) => x.isOutsideAssay).map(x => {
-
-            x.daysWaiting = x.outsideBiopsy ? x.outsideBiopsy.daysWaiting : x.confirmationBiopsy.daysWaiting;
-
-            if (x.confirmationBiopsy && x.outsideBiopsy) x.messages = x.confirmationBiopsy.messages.concat(x.outsideBiopsy.messages);
-            else if (x.confirmationBiopsy) x.messages = x.confirmationBiopsy.messages;
-            else if (x.outsideBiopsy) x.messages = x.outsideBiopsy.messages;
-
-            if (x.outsideBiopsy) {
-
-              x.diseases = x.outsideBiopsy.diseases;
-              x.MLH1 = x.outsideBiopsy.MLH1;
-              x.MSH2 = x.outsideBiopsy.MSH2;
-              x.PTEN = x.outsideBiopsy.PTEN;
-              x.RB = x.outsideBiopsy.RB;
-              x.amoi = x.outsideBiopsy.amoi;
-              x.variantReportConfirmedDate = x.outsideBiopsy.variantReportConfirmedDate;
-              x.biopsySequenceNumber = x.outsideBiopsy.biopsySequenceNumber;
-              x.dateSpecimenCollected = x.outsideBiopsy.dateSpecimenCollected;
-              x.molecularSequenceNumber = x.outsideBiopsy.molecularSequenceNumber;
-              x.lab = x.outsideBiopsy.lab;
-              x.analysisId = x.outsideBiopsy.analysisId;
-              x.dateMsnShipped = x.outsideBiopsy.dateMsnShipped;
-
-            }
-
-            return x;
-
-          });
+          this.patientsAwaiting.data = itemList
+            .filter((x: any) => x.isOutsideAssay)
+            .map(convertOaItem);
         }
 
         if (this.isOutsideAssayValue === false) {
-          this.patientsAwaiting.data = itemList.filter((x: any) => !x.isOutsideAssay).map(x => {
-            if (x.diseases) x.diseases.shortName = x.diseases.length ? x.diseases.map((y: any) => y.shortName).join(', ') : '';
-            return x;
-          });
+          this.patientsAwaiting.data = itemList
+            .filter((x: any) => !x.isOutsideAssay)
+            .map(convertRegularItem);
         }
 
         this.patientsAwaiting.isLoaded = true;

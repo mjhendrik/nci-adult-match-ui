@@ -4,8 +4,6 @@ import {
   ComponentFixture
 } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { Observable } from 'rxjs/Observable';
-import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 
@@ -16,13 +14,14 @@ import { DashboardComponent } from './dashboard.component';
 import { DashboardApiService } from './dashboard-api.service';
 import { SharedModule } from '../shared/shared.module';
 import { LoadingSpinnerModule } from '../shared/loading-spinner/loading-spinner.module';
+import { DashboardServiceMock } from './testing/dashboard-service-mock';
 
 const config: any[] = [
   { path: 'dashboard', component: 'DashboardComponent' }
 ];
 
 export function main() {
-  fdescribe('dashboard component', () => {
+  describe('dashboard component', () => {
 
     let component: DashboardComponent;
     let fixture: ComponentFixture<DashboardComponent>;
@@ -42,7 +41,7 @@ export function main() {
         ],
         declarations: [DashboardComponent],
         providers: [
-          { provide: DashboardApiService, useClass: MockDashboardService }
+          { provide: DashboardApiService, useClass: DashboardServiceMock }
         ]
       }).compileComponents();  // compile template and css
     }));
@@ -83,7 +82,7 @@ export function main() {
       expect(fixture.componentInstance.pendingVariantReports.data[0].analysisId).toEqual('JOB-1001re');
     });
 
-    fit('should test getPatientsAwaitingData when isOutsideAssayValue null', () => {
+    it('should test getPatientsAwaitingData when isOutsideAssayValue null', () => {
       fixture.componentInstance.isOutsideAssayWorkflow = null;
       fixture.componentInstance.getPatientsAwaitingData();
       expect(fixture.componentInstance.patientsAwaiting.data[0].outsideBiopsy.messages).not.toBe('');
@@ -116,7 +115,6 @@ export function main() {
       expect(fixture.componentInstance.biopsyTrackingSummary).not.toBeNull();
     });
 
-
     it('should refresh Patients Awaiting data when isOutsideAssayWorkflow is changed', () => {
       let spy = spyOn(fixture.componentInstance, 'getPatientsAwaitingData');
       fixture.componentInstance.isOutsideAssayWorkflow = !fixture.componentInstance.isOutsideAssayWorkflow;
@@ -125,3 +123,4 @@ export function main() {
 
   });
 }
+

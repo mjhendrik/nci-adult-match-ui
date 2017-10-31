@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs/Observable';
 
-export class MockDashboardService {
+export class DashboardServiceMock{
   getPendingAssignmentReports(): Observable<any> {
     let testData = [
       {
