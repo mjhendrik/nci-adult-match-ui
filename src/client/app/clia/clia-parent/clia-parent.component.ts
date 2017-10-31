@@ -92,7 +92,7 @@ export class CliaParentComponent implements OnInit {
   }
 
   getDataPC() {
-    this.apiSample.getCliaDetailsPC(this.cliaType)
+    this.apiSample.getCliaDetailsPC(this.cliaTypeName)
       .subscribe(details => {
         let gmt = new GmtPipe();
         this.tablePCData = details.map((x: any) => {
@@ -106,7 +106,7 @@ export class CliaParentComponent implements OnInit {
   };
 
   getDataNTC() {
-    this.apiSample.getCliaDetailsNTC(this.cliaType)
+    this.apiSample.getCliaDetailsNTC(this.cliaTypeName)
       .subscribe(details => {
         let gmt = new GmtPipe();
         this.tableNTCData = details.map((x: any) => {
@@ -120,7 +120,7 @@ export class CliaParentComponent implements OnInit {
   };
 
   getDataPACC() {
-    this.apiSample.getCliaDetailsPACC(this.cliaType)
+    this.apiSample.getCliaDetailsPACC(this.cliaTypeName)
       .subscribe(details => {
         let gmt = new GmtPipe();
         this.tablePACCData = details.map((x: any) => {
@@ -134,7 +134,7 @@ export class CliaParentComponent implements OnInit {
   };
 
   getDataIon() {
-    this.apiIon.getCliaIon(this.cliaType)
+    this.apiIon.getCliaIon(this.cliaTypeName)
       .subscribe(details => {
         let gmt = new GmtPipe();
         this.ionReportersData = details.map((x: any) => {

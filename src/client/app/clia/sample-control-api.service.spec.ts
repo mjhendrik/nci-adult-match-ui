@@ -62,7 +62,7 @@ export function main() {
       it('should have expected fake items total count (then)', async(inject([], () => {
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
-        service.getCliaDetailsNTC('mocha').toPromise()
+        service.getCliaDetailsNTC('MoCha').toPromise()
           .then(items => {
             expect(items.length).toBe(fakeData.length, 'should have expected no. of items');
           });
@@ -71,7 +71,7 @@ export function main() {
       it('should have expected fake items total count count (Observable.do)', async(inject([], () => {
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
-        service.getCliaDetailsNTC('mocha')
+        service.getCliaDetailsNTC('MoCha')
           .do(items => {
             expect(items.length).toBe(fakeData.length, 'should have expected no. of items');
           })
@@ -82,7 +82,7 @@ export function main() {
         let resp = new Response(new ResponseOptions({ status: 200, body: [] }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
-        service.getCliaDetailsNTC('mocha')
+        service.getCliaDetailsNTC('MoCha')
           .do(items => {
             expect(items.length).toBe(0, 'should have no items');
           })
@@ -93,7 +93,7 @@ export function main() {
         let resp = new Response(new ResponseOptions({ status: 404 }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
-        service.getCliaDetailsNTC('mocha')
+        service.getCliaDetailsNTC('MoCha')
           .do(items => {
             console.log('items');
             console.log(items);
@@ -125,7 +125,7 @@ export function main() {
       it('should have expected fake items total count (then)', async(inject([], () => {
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
-        service.getCliaDetailsPACC('mocha').toPromise()
+        service.getCliaDetailsPACC('MoCha').toPromise()
           .then(items => {
             expect(items.length).toBe(fakeData.length, 'should have expected no. of items');
           });
@@ -134,7 +134,7 @@ export function main() {
       it('should have expected fake items total count count (Observable.do)', async(inject([], () => {
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
-        service.getCliaDetailsPACC('mocha')
+        service.getCliaDetailsPACC('MoCha')
           .do(items => {
             expect(items.length).toBe(fakeData.length, 'should have expected no. of items');
           })
@@ -145,7 +145,7 @@ export function main() {
         let resp = new Response(new ResponseOptions({ status: 200, body: [] }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
-        service.getCliaDetailsPACC('mocha')
+        service.getCliaDetailsPACC('MoCha')
           .do(items => {
             expect(items.length).toBe(0, 'should have no items');
           })
@@ -156,7 +156,7 @@ export function main() {
         let resp = new Response(new ResponseOptions({ status: 404 }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
-        service.getCliaDetailsPACC('mocha')
+        service.getCliaDetailsPACC('MoCha')
           .do(items => {
             console.log('items');
             console.log(items);
@@ -188,7 +188,7 @@ export function main() {
       it('should have expected fake items total count (then)', async(inject([], () => {
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
-        service.getCliaDetailsPC('mocha').toPromise()
+        service.getCliaDetailsPC('MoCha').toPromise()
           .then(items => {
             expect(items.length).toBe(fakeData.length, 'should have expected no. of items');
           });
@@ -197,7 +197,7 @@ export function main() {
       it('should have expected fake items total count count (Observable.do)', async(inject([], () => {
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
-        service.getCliaDetailsPC('mocha')
+        service.getCliaDetailsPC('MoCha')
           .do(items => {
             expect(items.length).toBe(fakeData.length, 'should have expected no. of items');
           })
@@ -208,7 +208,7 @@ export function main() {
         let resp = new Response(new ResponseOptions({ status: 200, body: [] }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
-        service.getCliaDetailsPC('mocha')
+        service.getCliaDetailsPC('MoCha')
           .do(items => {
             expect(items.length).toBe(0, 'should have no items');
           })
@@ -219,7 +219,7 @@ export function main() {
         let resp = new Response(new ResponseOptions({ status: 404 }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
-        service.getCliaDetailsPC('mocha')
+        service.getCliaDetailsPC('MoCha')
           .do(items => {
             console.log('items');
             console.log(items);

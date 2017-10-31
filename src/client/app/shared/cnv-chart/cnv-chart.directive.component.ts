@@ -92,7 +92,6 @@ export class CnvChartDirective implements AfterViewInit {
   constructor() { }
 
   ngAfterViewInit() {
-
     let cwElement:any = this.CW;
     if(typeof cwElement === 'undefined') {return;}
     else {this.frame = cwElement.nativeElement.clientWidth};
@@ -135,13 +134,15 @@ export class CnvChartDirective implements AfterViewInit {
       }
 
       let values = array[key].values;
-      let median = array[key].raw_copy_number;
+      let width:number = values.length;
+
+      let median:any = array[key].raw_copy_number;
       let position:number = array[key].position;
       let chromosome:string = array[key].chromosome;
       let status:string = !array[key].tsg_gene ? '#CD0000' : '#007200';
 
       let min = values[0];
-      let max = values[10];
+      let max = values[(width - 1)];
       let chrnum:any[] = [];
       let error:number = 0;
       endX = ((chromosome !== 'chrX') ? '-' : 'x');
@@ -149,8 +150,8 @@ export class CnvChartDirective implements AfterViewInit {
       if(frm > 0) {
 
         if (typeof chromosome !== 'undefined') {
-          error = (median > max) ? 1 : 0;
-          status = (median > max) ? "#756f6f" : status;
+          error = (parseFloat(median) > parseFloat(max)) ? 1 : 0;
+          status = status;
           chrnum = chromosome.split('chr');
           this.parseddata.push([gene, chromosome, key, chrnum[1], min, max, error]);
         }
@@ -160,6 +161,7 @@ export class CnvChartDirective implements AfterViewInit {
         x: key,
         label: gene,
         status: status,
+        error: error,
         chr: chromosome,
         values: {
           position: position,
@@ -170,8 +172,7 @@ export class CnvChartDirective implements AfterViewInit {
           whisker_low: point5,
           whisker_high: point95,
           outliers: [point5, parseFloat(median).toFixed(2), point95]
-        },
-        error: error
+        }
       };
 
       temp.push(Object);
@@ -182,7 +183,7 @@ export class CnvChartDirective implements AfterViewInit {
 
     //COLORS
     Object.keys(temp).forEach((key:any) => {
-      colors.push(temp[key].status);
+      (temp[key].error === 1) ? colors.push("#595851") : colors.push(temp[key].status);
     });
 
     //Y MARGINS

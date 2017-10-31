@@ -26,7 +26,7 @@ export abstract class VariantReportSimpleTableComponent implements OnDestroy {
   @Input() confirmMessage = 'Please enter a reason:';
 
   @Input() items: any[];
-  @Input() title: string = 'Copy Number Variants';
+  @Input() title: string;
   @Input() isEditable: boolean;
 
   @Output() onVariantUpdated: EventEmitter<ConfirmableItem> = new EventEmitter();
