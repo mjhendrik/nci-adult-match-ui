@@ -91,7 +91,6 @@ export class DashboardComponent implements OnInit {
     this.getPendingVariantReportsData();
     this.getPatientsAwaitingData();
 
-    // this.autoLoadOverviewData();
     this.tablePatientsAwaitingDataInitial = this.patientsAwaiting.data.length;
   }
 
@@ -208,32 +207,23 @@ export class DashboardComponent implements OnInit {
 
   getTreatmentArmSummaryData() {
     this.dashboardApi.getOverviewTa()
-      .subscribe(itemList => {
-        this.treatmentArmSummary = itemList;
+      .subscribe(data => {
+        this.treatmentArmSummary = data;
       });
   }
 
   getPatientSummaryData() {
     this.dashboardApi.getOverviewPatients()
-      .subscribe(itemList => {
-        this.patientSummary = itemList;
+      .subscribe(data => {
+        this.patientSummary = data;
       });
   }
 
   getBiopsyTrackingSummaryData() {
     this.dashboardApi.getOverviewBt()
-      .subscribe(itemList => {
-        this.biopsyTrackingSummary = itemList;
+      .subscribe(data => {
+        this.biopsyTrackingSummary = data;
       });
   }
-
-  // autoLoadOverviewData() {
-  //   setInterval(() => {
-  //     this.getOverviewDataTa();
-  //     this.getOverviewDataPatients();
-  //     this.getOverviewDataBt();
-  //     this.timestamp = new Date();
-  //   }, 1000 * 30);
-  // }
 
 }
