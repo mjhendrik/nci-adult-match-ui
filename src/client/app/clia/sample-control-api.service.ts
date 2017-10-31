@@ -127,7 +127,7 @@ export class SampleControlApiService extends ApiService {
     if (control_type === 'no_template') control_type = 'ntc_control';
     if (control_type === 'proficiency_competency') control_type = 'proficiency_competency_control';
 
-    return this.http.post(Config.API.MESSAGE + 'message/clia/' + control_type + '/generateMolecularId/' + site, '') // message
+    return this.http.post(Config.API.MESSAGE + '/message/clia/' + control_type + '/generateMolecularId/' + site, '') // message
       .map(this.extractData)
       .catch(this.handleError);
   }
