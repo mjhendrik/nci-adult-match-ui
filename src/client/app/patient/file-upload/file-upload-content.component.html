@@ -13,7 +13,7 @@
   <div class="row">
     <div class="col-md-12 form-group has-feedback">
       <label class="control-label">Variant ZIP File
-        <span *ngIf="isUploading" class="text-purple-light">{{percentDoneVariantZipFile}}%</span>
+        <span *ngIf="isUploading" class="text-success-light">{{percentDoneVariantZipFile}}%</span>
       </label>
       <input type="file" accept=".zip" (change)="fileSelectedVariantZip($event.target.files[0])" id="variantUploadButton" [ngClass]="{true:'disable-div'}[!analysisIdValid]">
       <div *ngIf="isUploading" class="progress progress-striped progress-xs active m-t-10 m-b-0">
@@ -22,7 +22,7 @@
     </div>
     <div class="col-md-12 form-group has-feedback">
       <label class="control-label">DNA BAM File
-        <span *ngIf="isUploading" class="text-purple-light">{{percentDoneDnaBamFile}}%</span>
+        <span *ngIf="isUploading" class="text-success-light">{{percentDoneDnaBamFile}}%</span>
       </label>
       <input type="file" accept=".bam" (change)="fileSelectedDnaBam($event.target.files[0])" id="dnaUploadButton" [ngClass]="{true:'disable-div'}[!analysisIdValid]">
       <div *ngIf="isUploading" class="progress progress-striped progress-xs active m-t-10 m-b-0">
@@ -31,7 +31,7 @@
     </div>
     <div class="col-md-12 form-group has-feedback">
       <label class="control-label">cDNA BAM File
-        <span *ngIf="isUploading" class="text-purple-light">{{percentDoneCdnaBamFile}}%</span>
+        <span *ngIf="isUploading" class="text-success-light">{{percentDoneCdnaBamFile}}%</span>
       </label>
       <input type="file" accept=".bam" (change)="fileSelectedCdnaBam($event.target.files[0])" id="cdnaUploadButton" [ngClass]="{true:'disable-div'}[!analysisIdValid]">
       <div *ngIf="isUploading" class="progress progress-striped progress-xs active m-t-10 m-b-0">
