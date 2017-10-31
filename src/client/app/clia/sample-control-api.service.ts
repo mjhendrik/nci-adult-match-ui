@@ -58,7 +58,7 @@ export class SampleControlApiService extends ApiService {
     //   + '?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,torrent_variant_caller_version,oncomine_control_panel_summary',
     // sample control
 
-    return this.http.get(this.url('message/ecog/patient/' + molecular_id + '/variant_reports/' + analysisId + '/qc_report'
+    return this.http.get(this.url('/message/ecog/patient/' + molecular_id + '/variant_reports/' + analysisId + '/qc_report'
       // analysisId might not be readily available
       + '?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,torrent_variant_caller_version,oncomine_control_panel_summary', // message
       'assets/mock-data/clia-variant-report-qc-WHAT_SHOULD_BE_HERE.json'))
@@ -67,7 +67,7 @@ export class SampleControlApiService extends ApiService {
   }
 
   getCliaVariantReportVCF(molecular_id: string, analysisId: string): Observable<CliaVariantReportsQCViewData> {
-    return this.http.get(this.url('message/ecog/patient/' + molecular_id + '/variant_reports/' + analysisId + '/vcf_graph', // message
+    return this.http.get(this.url('/message/ecog/patient/' + molecular_id + '/variant_reports/' + analysisId + '/vcf_graph', // message
       // analysisId might not be readily available
       'assets/mock-data/clia-variant-report-qc-WHAT_SHOULD_BE_HERE_FOR_GRAPH.json'))
       .map(this.extractData)
@@ -133,7 +133,7 @@ export class SampleControlApiService extends ApiService {
   }
 
   rejectReport(molecular_id: string, type: string): Observable<any> {
-    return this.http.post(Config.API.MESSAGE + 'message/clia/' + type + '/status',
+    return this.http.post(Config.API.MESSAGE + '/message/clia/' + type + '/status',
       {
         'molecularSequenceNumber': molecular_id,
         'confirmation': false,
@@ -144,7 +144,7 @@ export class SampleControlApiService extends ApiService {
   }
 
   confirmReport(molecular_id: string, type: string): Observable<any> {
-    return this.http.post(Config.API.MESSAGE + 'message/clia/' + type + '/status',
+    return this.http.post(Config.API.MESSAGE + '/message/clia/' + type + '/status',
       {
         'molecularSequenceNumber': molecular_id,
         'confirmation': true,
