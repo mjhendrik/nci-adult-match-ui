@@ -127,6 +127,9 @@ export class DashboardComponent implements OnInit {
         if (this.isOutsideAssayValue === null) {
           this.patientsAwaiting.data = itemList.map(x => {
 
+            console.log('x.diseases');
+            console.log(x.diseases);
+
             if (x.diseases) x.diseases.shortName = x.diseases.length ? x.diseases.map((y: any) => y.shortName).join(', ') : '';
 
             if (x.isOutsideAssay) {
