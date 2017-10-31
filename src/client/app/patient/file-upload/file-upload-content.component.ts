@@ -35,6 +35,7 @@ import 'rxjs/add/observable/fromEvent';
 export class FileUploadContentComponent implements OnInit {
 
   public modalRef2: BsModalRef;
+  public modalRef3: BsModalRef;
   public config = {
     keyboard: false,
     ignoreBackdropClick: true
@@ -198,7 +199,9 @@ export class FileUploadContentComponent implements OnInit {
       'cdna_bam_name': this.cdnaBamFile.name
     };
 
-    this.api.notifyAfterUpload(this.msn, this.uploadNotification).subscribe();
+    this.api.notifyAfterUpload(this.msn, this.uploadNotification).subscribe(itemList => {
+      // this.showSuccessDialog('success');
+    });
 
   }
 
@@ -212,4 +215,14 @@ export class FileUploadContentComponent implements OnInit {
     if (cancel === true) this.bsModalRef.hide();
   }
 
+  showSuccessDialog(template: TemplateRef<any>) {
+    this.modalRef3 = this.modalService.show(template, this.config);
+  }
+
+  closeSuccessDialog() {
+    this.modalRef3.hide();
+    this.modalRef2.hide();
+    this.bsModalRef.hide();
+  }
+  
 }

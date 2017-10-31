@@ -60,3 +60,15 @@
     <a type="button" id="stop-dialog" class="btn btn-danger" (click)="closeWarningDialog(true)">Stop Upload and Close</a>
   </div>
 </ng-template>
+
+<ng-template #success>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">The BAM files and Variant ZIP files have been successfully uploaded!</h4>
+  </div>
+  <div class="modal-body">
+    <img src="/assets/img/checkmark.gif" alt="checkmark" height="180px">
+  </div>
+  <div class="modal-footer">
+    <a type="button" id="close-dialog" class="btn btn-default" (click)="closeSuccessDialog()">Close</a>
+  </div>
+</ng-template>
