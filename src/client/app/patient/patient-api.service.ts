@@ -158,7 +158,7 @@ export class PatientApiService extends ApiService {
         return { commenter: data.commenter, status: data.status } as ApiStatusUpdateSuccess;
       })
       .catch((err: string) => Observable.of({ message: err } as ApiStatusUpdateError));
-}
+  }
 
   updateAssignmentReport(psn: string, confirmed: boolean): Observable<ApiStatusUpdateSuccess | ApiStatusUpdateError> {
     const patch = {
@@ -166,7 +166,11 @@ export class PatientApiService extends ApiService {
     };
 
     return this.http.patch(`${Config.API.MESSAGE}/ecog/patient/${psn}/assignment`, patch)
-      .map((res: Response) => res)
+      .map((res: Response) => {
+        const data = res.json();
+        return { commenter: data.commenter, status: data.status } as ApiStatusUpdateSuccess;
+      })
       .catch((err: string) => Observable.of({ message: err } as ApiStatusUpdateError));
   }
+
 }
