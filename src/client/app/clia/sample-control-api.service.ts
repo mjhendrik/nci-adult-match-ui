@@ -42,9 +42,13 @@ export class SampleControlApiService extends ApiService {
   }
 
   getCliaDetailsPC(type: string): Observable<any[]> {
+
+    // return this.http.get(this.url('/sample_controls?site=' + type
+    //   + '&control_type=positive&projection=molecular_id,date_molecular_id_created,date_variant_received,report_status', // sample control
+
     return this.http.get(this.url('/message/clia/sample_control?site=' + type
-        + '&projection=molecular_id,date_molecular_id_created,date_variant_received,report_status', // message
-        ''))
+      + '&projection=molecular_id,date_molecular_id_created,date_variant_received,report_status', // message
+      ''))
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -53,8 +57,8 @@ export class SampleControlApiService extends ApiService {
 
     // getCliaVariantReportQC(molecular_id: string): Observable<CliaVariantReportsQCViewData> {
     // return this.http.get(this.url('/sample_controls/quality_control/' + molecular_id
-    //   + '?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,torrent_variant_caller_version,oncomine_control_panel_summary',
-    // sample control
+    // tslint:disable-next-line:max-line-length
+    //   + '?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,torrent_variant_caller_version,oncomine_control_panel_summary', // sample control
 
     return this.http.get(this.url('/message/ecog/patient/' + molecular_id + '/variant_reports/' + analysisId + '/qc_report'
       // analysisId might not be readily available
@@ -126,7 +130,6 @@ export class SampleControlApiService extends ApiService {
     if (control_type === 'proficiency_competency') control_type = 'proficiency_competency_control';
 
     return this.http.post(Config.API.MESSAGE + '/message/clia/' + control_type + '/generateMolecularId/' + site, '') // message
-      .map(this.extractData)
       .catch(this.handleError);
   }
 
