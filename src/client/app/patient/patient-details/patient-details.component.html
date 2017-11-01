@@ -71,37 +71,41 @@
   <div class="panel">
     <tabset class="nav-tabs-purple">
       <tab heading="Summary" [active]="summaryData" id="summary" index="0">
-
+      
         <div *ngIf="pendingVariantReport && pendingVariantReport.daysPending" class="row">
           <div class="col-md-6">
-            <div class="widget widget-stat {{getVrPendingDaysColor(pendingVariantReport)}} text-white">
-              <div class="widget-stat-icon">
-                <i class="fa fa-table"></i>
+            <a href [routerLink]="[getVariantReportLink(pendingVariantReport)]" [queryParams]="getVariantReportQueryParams(pendingVariantReport)">
+              <div class="widget widget-stat {{getVrPendingDaysColor(pendingVariantReport)}} text-white">
+                <div class="widget-stat-icon">
+                  <i class="fa fa-table"></i>
+                </div>
+                <div class="widget-stat-info">
+                  <div class="widget-stat-title">Variant Report</div>
+                  <div class="widget-stat-number">Pending for {{pendingVariantReport.daysPending}} days</div>
+                  <div class="widget-stat-text">File Received Date: {{pendingVariantReport.variantReportFileReceivedDate | gmt}}</div>
+                </div>
               </div>
-              <div class="widget-stat-info">
-                <div class="widget-stat-title">Variant Report</div>
-                <div class="widget-stat-number">Pending for {{pendingVariantReport.daysPending}} days</div>
-                <div class="widget-stat-text">File Received Date: {{pendingVariantReport.variantReportFileReceivedDate | gmt}}</div>
-              </div>
-            </div>
+            </a>
           </div>
         </div>
-
+      
         <div *ngIf="pendingAssignmentReport && pendingAssignmentReport.hoursPending" class="row">
           <div class="col-md-6">
-            <div class="widget widget-stat {{getAPendingHoursColor(pendingAssignmentReport)}} text-white">
-              <div class="widget-stat-icon">
-                <i class="fa fa-table"></i>
+            <a href [routerLink]="[getVariantReportLink(pendingVariantReport)]" [queryParams]="getVariantReportQueryParams(pendingVariantReport)">
+              <div class="widget widget-stat {{getAPendingHoursColor(pendingAssignmentReport)}} text-white">
+                <div class="widget-stat-icon">
+                  <i class="fa fa-table"></i>
+                </div>
+                <div class="widget-stat-info">
+                  <div class="widget-stat-title">Assignment Report</div>
+                  <div class="widget-stat-number">Pending for {{pendingAssignmentReport.hoursPending}} hours</div>
+                  <div class="widget-stat-text">File Received Date: {{pendingAssignmentReport.dateAssigned | gmt}}</div>
+                </div>
               </div>
-              <div class="widget-stat-info">
-                <div class="widget-stat-title">Assignment Report</div>
-                <div class="widget-stat-number">Pending for {{pendingAssignmentReport.hoursPending}} hours</div>
-                <div class="widget-stat-text">File Received Date: {{pendingAssignmentReport.dateAssigned | gmt}}</div>
-              </div>
-            </div>
+            </a>
           </div>
         </div>
-          
+      
         <div class="row">
           <div class="col-md-6 ut-patient-timeline" *ngIf="patient && patient.patientTriggers">
             <sd-patient-timeline [items]="patient.patientTriggers"></sd-patient-timeline>

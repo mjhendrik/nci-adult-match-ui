@@ -25,3 +25,9 @@ a.disabled {
 .m-t-n6 {
   margin-top: -6px;
 }
+
+a > .widget {
+  :hover {
+    text-decoration: none;
+  }
+}
