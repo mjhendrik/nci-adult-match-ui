@@ -12,8 +12,8 @@ const variantTables: Array<string> = [
   'geneFusions',
   'copyNumberVariants',
   'indels',
-  'nonHotspotRules',
-  'unifiedGeneFusions'
+  'unifiedGeneFusions',
+  'singleNucleotideVariants'
 ];
 
 /*
