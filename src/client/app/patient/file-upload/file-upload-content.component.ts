@@ -216,13 +216,12 @@ export class FileUploadContentComponent implements OnInit {
   }
 
   showSuccessDialog(template: TemplateRef<any>) {
-    this.modalRef3 = this.modalService.show(template, this.config);
+    this.modalRef3 = this.modalService.show(template,Object.assign({}, this.config, {class: 'modal-sm'}));
   }
 
   closeSuccessDialog() {
     this.modalRef3.hide();
-    this.modalRef2.hide();
     this.bsModalRef.hide();
   }
-  
+
 }

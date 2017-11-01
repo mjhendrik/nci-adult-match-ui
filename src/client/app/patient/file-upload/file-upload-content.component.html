@@ -46,6 +46,7 @@
   <a [ngClass]="{false:'disabled'}[hasVariantZipFile && hasDnaBamFile && hasCdnaBamFile && analysisIdValid && !isUploading]"
     (click)="upload()" id="upload-files" class="btn btn-purple-light" aria-hidden="true">
     <i class="fa fa-cloud-upload"></i> Upload Files</a>
+  <!-- <a type="button" class="btn btn-lime" (click)="showSuccessDialog(success)">Success</a> -->
 </div>
 
 <ng-template #warning>
@@ -66,7 +67,7 @@
     <h4 class="modal-title pull-left">The BAM files and Variant ZIP files have been successfully uploaded!</h4>
   </div>
   <div class="modal-body">
-    <img src="/assets/img/checkmark.gif" alt="checkmark" height="180px">
+    <img class="center-block" src="/assets/img/checkmark.gif" alt="checkmark" width="260px">
   </div>
   <div class="modal-footer">
     <a type="button" id="close-dialog" class="btn btn-default" (click)="closeSuccessDialog()">Close</a>
