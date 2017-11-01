@@ -116,7 +116,7 @@ export class PatientVariantReportComponent implements OnInit, OnDestroy, Variant
     };
 
     this.showConfirmation(
-      true,
+      false,
       'Variant Report Confirmation',
       `Are you sure you want to confirm Variant Report ${this.analysisId}?`,
       'Confirm',
@@ -143,7 +143,7 @@ export class PatientVariantReportComponent implements OnInit, OnDestroy, Variant
     };
 
     this.showConfirmation(
-      true,
+      false,
       'Variant Report Rejection',
       `Are you sure you want to reject Variant Report ${this.analysisId}?`,
       'Reject',

@@ -254,7 +254,7 @@ export class PatientVariantReportOutsideAssayComponent
             this.showError(x.message);
             break;
           case 'success':
-            this.transformer.updateVariantStatus(reportData, x);
+            this.transformer.updateVariantStatus(item, x);
             break;
         }
       }
