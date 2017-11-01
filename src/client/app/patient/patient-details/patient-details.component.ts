@@ -85,4 +85,29 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
       }, 226);
     }
   }
+
+  getVrPendingDaysColor(variantReport: any): string {
+    if (variantReport.daysPending < 7) {
+      return 'bg-success-light';
+    } else if (variantReport.daysPending < 14) {
+      return 'bg-warning-light';
+    } else if (variantReport.daysPending >= 14) {
+      return 'bg-danger-light';
+    } else {
+      return 'bg-info-light';
+    }
+  }
+
+
+  getAPendingHoursColor(assignmentReport: any): string {
+    if (assignmentReport.hoursPending < 8) {
+      return 'bg-success-light';
+    } else if (assignmentReport.hoursPending < 14) {
+      return 'bg-warning-light';
+    } else if (assignmentReport.hoursPending >= 14) {
+      return 'bg-danger-light';
+    } else {
+      return 'bg-info-light';
+    }
+  }
 }

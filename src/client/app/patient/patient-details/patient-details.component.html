@@ -72,9 +72,9 @@
     <tabset class="nav-tabs-purple">
       <tab heading="Summary" [active]="summaryData" id="summary" index="0">
 
-        <div *ngIf="pendingVariantReport" class="row">
+        <div *ngIf="pendingVariantReport && pendingVariantReport.daysPending" class="row">
           <div class="col-md-6">
-            <div class="widget widget-stat bg-danger text-white">
+            <div class="widget widget-stat {{getVrPendingDaysColor(pendingVariantReport)}} text-white">
               <div class="widget-stat-icon">
                 <i class="fa fa-table"></i>
               </div>
@@ -87,9 +87,9 @@
           </div>
         </div>
 
-        <div *ngIf="pendingAssignmentReport" class="row">
+        <div *ngIf="pendingAssignmentReport && pendingAssignmentReport.hoursPending" class="row">
           <div class="col-md-6">
-            <div class="widget widget-stat bg-danger text-white">
+            <div class="widget widget-stat {{getAPendingHoursColor(pendingAssignmentReport)}} text-white">
               <div class="widget-stat-icon">
                 <i class="fa fa-table"></i>
               </div>

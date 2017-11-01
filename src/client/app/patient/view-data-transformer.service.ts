@@ -7,6 +7,7 @@ import { VariantReportComparisonData } from './variant-report-comparison-data';
 import { VariantReportData } from './variant-report-data';
 import { ApiStatusUpdateSuccess } from './patient-api.service';
 import { ConfirmableItem } from '../shared/check-box-with-confirm/check-box-with-confirm.component';
+import { GmtPipe } from '../shared/pipes/gmt.pipe';
 
 const variantTables: Array<string> = [
   'geneFusions',
@@ -129,7 +130,7 @@ export class ViewDataTransformer {
   }
 
   updateAssignmentReportStatus(report: VariantReportData, updatedStatus: ApiStatusUpdateSuccess): void {
-    report.variantReportStatus = updatedStatus.status;
+    report.patientAssignmentStatus = updatedStatus.status;
     report.comments = updatedStatus.comments;
     report.statusUser = updatedStatus.commenter;
     report.isAssignmentReportEditable = this.getAssignmentReportEditable(report);
@@ -422,6 +423,15 @@ export class ViewDataTransformer {
       variantReport.singleNucleotideVariantAndIndels
         = (variantReport.singleNucleotideVariants || [])
           .concat(variantReport.indels || []);
+
+      if (variantReport.variantReportStatus === 'PENDING_CONFIRMATION' && message.dateReceived) {
+        const gmt = new GmtPipe();
+        let dateReceivedString = gmt.transform(message.dateReceived);
+        let dateReceived = Date.parse(dateReceivedString);
+        let now = new Date().getMilliseconds();
+        variantReport.daysPending = Math.abs(now - dateReceived) / 6e5;
+        transformedPatient.pendingVariantReport = variantReport;
+      }
     }
   }
 
@@ -472,12 +482,22 @@ export class ViewDataTransformer {
       return;
     }
 
+    const gmt = new GmtPipe();
+
     for (let assignment of transformedPatient.patientAssignments) {
       let bsn = assignment.biopsySequenceNumber;
       let biopsy = transformedPatient.biopsies.find((x: any) => x.biopsySequenceNumber === bsn);
 
       if (!biopsy || !biopsy.nucleicAcidSendouts || !biopsy.nucleicAcidSendouts.length) {
         continue;
+      }
+
+      if (assignment.patientAssignmentStatus === 'PENDING' && assignment.dateAssigned) {
+        let dateAssignedString = gmt.transform(assignment.dateAssigned);
+        let dateAssigned = Date.parse(dateAssignedString);
+        let now = new Date().getMilliseconds();
+        assignment.hoursPending = Math.abs(now - dateAssigned) / 36e5;
+        transformedPatient.pendingAssignmentReport = assignment;
       }
 
       // Flatten the biopsies' analyses into one array, and look for confirmed ones
