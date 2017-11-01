@@ -9,7 +9,7 @@ import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 import { routerTransition } from './../../shared/router.animations';
 import { PatientApiService } from '../patient-api.service';
 import { ViewDataTransformer } from './../view-data-transformer.service';
-import { PatientData, Tabs } from './patient-details.module';
+import { PatientData } from './patient-details.module';
 
 @Component({
   moduleId: module.id,
@@ -28,12 +28,10 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
   entityId: string = '';
   section: string = '';
   roles: any[] = [];
-  tabs: Tabs;
   enableFileUpload = false;
   dzConfigDocuments: DropzoneConfigInterface;
-
-  pendingVariantReport={};
-  pendingAssignmentReport={};
+  pendingVariantReport: any;
+  pendingAssignmentReport: any;
 
   constructor(
     private route: ActivatedRoute,

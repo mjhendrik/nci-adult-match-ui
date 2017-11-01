@@ -56,7 +56,8 @@ class DataResolver implements Resolve<PatientData> {
             entityId,
             needToScroll: patient.needToScroll,
             biopsy: patient.biopsies,
-            tabs: null
+            pendingVariantReport: patient.pendingVariantReport,
+            pendingAssignmentReport: patient.pendingAssignmentReport
           };
         }
       );

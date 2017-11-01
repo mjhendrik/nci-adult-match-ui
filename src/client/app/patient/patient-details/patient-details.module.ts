@@ -23,7 +23,8 @@ export interface PatientData {
   section: string;
   entityId: string;
   needToScroll: boolean;
-  tabs: Tabs;
+  pendingVariantReport: any;
+  pendingAssignmentReport: any;
 }
 
 export class Tabs {

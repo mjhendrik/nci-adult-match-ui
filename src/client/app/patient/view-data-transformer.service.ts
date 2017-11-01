@@ -424,12 +424,12 @@ export class ViewDataTransformer {
         = (variantReport.singleNucleotideVariants || [])
           .concat(variantReport.indels || []);
 
-      if (variantReport.variantReportStatus === 'PENDING_CONFIRMATION' && message.dateReceived) {
+      if (variantReport.variantReportStatus === 'PENDING' && message.dateReceived) {
         const gmt = new GmtPipe();
         let dateReceivedString = gmt.transform(message.dateReceived);
-        let dateReceived = Date.parse(dateReceivedString);
-        let now = new Date().getMilliseconds();
-        variantReport.daysPending = Math.abs(now - dateReceived) / 6e5;
+        let dateReceived = new Date(Date.parse(dateReceivedString)) as any;
+        let now = new Date() as any;
+        variantReport.daysPending = Math.floor(Math.abs(now - dateReceived) / 864e5); // 864e5 = 1000 * 60 * 60 * 24
         transformedPatient.pendingVariantReport = variantReport;
       }
     }
@@ -492,11 +492,11 @@ export class ViewDataTransformer {
         continue;
       }
 
-      if (assignment.patientAssignmentStatus === 'PENDING' && assignment.dateAssigned) {
+      if (assignment.patientAssignmentStatus === 'PENDING_CONFIRMATION' && assignment.dateAssigned) {
         let dateAssignedString = gmt.transform(assignment.dateAssigned);
         let dateAssigned = Date.parse(dateAssignedString);
         let now = new Date().getMilliseconds();
-        assignment.hoursPending = Math.abs(now - dateAssigned) / 36e5;
+        assignment.hoursPending = Math.floor(Math.abs(now - dateAssigned) / 36e5); //36e5 = 1000 * 60 * 60
         transformedPatient.pendingAssignmentReport = assignment;
       }
 

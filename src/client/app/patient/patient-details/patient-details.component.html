@@ -80,8 +80,8 @@
               </div>
               <div class="widget-stat-info">
                 <div class="widget-stat-title">Variant Report</div>
-                <div class="widget-stat-number">Pending 982 days</div>
-                <div class="widget-stat-text">File Received Date: 1/1/2017</div>
+                <div class="widget-stat-number">Pending for {{pendingVariantReport.daysPending}} days</div>
+                <div class="widget-stat-text">File Received Date: {{pendingVariantReport.variantReportFileReceivedDate | gmt}}</div>
               </div>
             </div>
           </div>
@@ -95,8 +95,8 @@
               </div>
               <div class="widget-stat-info">
                 <div class="widget-stat-title">Assignment Report</div>
-                <div class="widget-stat-number">Pending 982 days</div>
-                <div class="widget-stat-text">File Received Date: 1/1/2017</div>
+                <div class="widget-stat-number">Pending for {{pendingAssignmentReport.hoursPending}} hours</div>
+                <div class="widget-stat-text">File Received Date: {{pendingAssignmentReport.dateAssigned | gmt}}</div>
               </div>
             </div>
           </div>
