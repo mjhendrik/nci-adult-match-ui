@@ -67,279 +67,308 @@
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="panel">
-        <tabset class="nav-tabs-purple">
-          <tab heading="Summary" [active]="summaryData" id="summary" index="0">
-            <div *ngIf="patient" class="row" matchHeight="panel-height-top">
-              <div class="row">
-                <div class="col-md-6 ut-patient-timeline" *ngIf="patient.patientTriggers">
-                  <sd-patient-timeline [items]="patient.patientTriggers"></sd-patient-timeline>
+
+  <div class="panel">
+    <tabset class="nav-tabs-purple">
+      <tab heading="Summary" [active]="summaryData" id="summary" index="0">
+
+        <div *ngIf="pendingVariantReport" class="row">
+          <div class="col-md-6">
+            <div class="widget widget-stat bg-danger text-white">
+              <div class="widget-stat-icon">
+                <i class="fa fa-table"></i>
+              </div>
+              <div class="widget-stat-info">
+                <div class="widget-stat-title">Variant Report</div>
+                <div class="widget-stat-number">Pending 982 days</div>
+                <div class="widget-stat-text">File Received Date: 1/1/2017</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="pendingAssignmentReport" class="row">
+          <div class="col-md-6">
+            <div class="widget widget-stat bg-danger text-white">
+              <div class="widget-stat-icon">
+                <i class="fa fa-table"></i>
+              </div>
+              <div class="widget-stat-info">
+                <div class="widget-stat-title">Assignment Report</div>
+                <div class="widget-stat-number">Pending 982 days</div>
+                <div class="widget-stat-text">File Received Date: 1/1/2017</div>
+              </div>
+            </div>
+          </div>
+        </div>
+          
+        <div class="row">
+          <div class="col-md-6 ut-patient-timeline" *ngIf="patient && patient.patientTriggers">
+            <sd-patient-timeline [items]="patient.patientTriggers"></sd-patient-timeline>
+          </div>
+        </div>
+      
+      </tab>
+
+      <tab *ngFor="let biopsy of patient.biopsies; first as isFirst">
+        <ng-template tabHeading>
+          <i *ngIf="isFirst" class="fa fa-bell-o" aria-hidden="true"></i> Biopsy {{biopsy.biopsySequenceNumber}}, {{biopsy.dateCreated | gmt: 'YYYY-MM-DD'}}
+        </ng-template>
+        <div id="{{biopsy.biopsySequenceNumber}}">
+          <h4 class="panel-title f-s-18">Biopsy: {{biopsy.biopsySequenceNumber}}</h4>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="panel panel-white overflow-hidden biopsy-panel-height panel-accent-bottom-purple" id="biopsy_panel_left">
+                <div class="panel-heading">
+                  <dl class="dl-horizontal">
+                    <dt>Specimen Collection Date</dt>
+                    <dd>{{biopsy.specimenCollectionDate | gmt | dashify}}</dd>
+                    <dt>Specimen Received Date</dt>
+                    <dd>{{biopsy.specimenReceivedDate | gmt | dashify}}</dd>
+                    <dt>Specimen Failure Date</dt>
+                    <dd>{{biopsy.specimenFailureDate | gmt | dashify}}</dd>
+                    <dt>Is Outside Assay</dt>
+                    <dd>{{biopsy.isOutsideAssay ? 'YES' : 'NO'}}</dd>
+                  </dl>
                 </div>
               </div>
             </div>
-          </tab>
-          <tab *ngFor="let biopsy of patient.biopsies; first as isFirst">
-            <ng-template tabHeading>
-              <i *ngIf="isFirst" class="fa fa-bell-o" aria-hidden="true"></i> Biopsy {{biopsy.biopsySequenceNumber}}, {{biopsy.dateCreated | gmt: 'YYYY-MM-DD'}}
-            </ng-template>
-            <div id="{{biopsy.biopsySequenceNumber}}">
-              <h4 class="panel-title f-s-18">Biopsy: {{biopsy.biopsySequenceNumber}}</h4>
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="panel panel-white overflow-hidden biopsy-panel-height panel-accent-bottom-purple" id="biopsy_panel_left">
-                    <div class="panel-heading">
-                      <dl class="dl-horizontal">
-                        <dt>Specimen Collection Date</dt>
-                        <dd>{{biopsy.specimenCollectionDate | gmt | dashify}}</dd>
-                        <dt>Specimen Received Date</dt>
-                        <dd>{{biopsy.specimenReceivedDate | gmt | dashify}}</dd>
-                        <dt>Specimen Failure Date</dt>
-                        <dd>{{biopsy.specimenFailureDate | gmt | dashify}}</dd>
-                        <dt>Is Outside Assay</dt>
-                        <dd>{{biopsy.isOutsideAssay ? 'YES' : 'NO'}}</dd>
-                      </dl>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="panel panel-white overflow-hidden biopsy-panel-height panel-accent-bottom-purple" id="biopsy_panel_right">
-                    <div class="panel-heading">
-                      <dl class="dl-horizontal">
-                        <dt>Pathology Status</dt>
-                        <dd>{{biopsy.pathologyStatus | dashify}}</dd>
-                        <dt>Pathology Received Date</dt>
-                        <dd>{{biopsy.pathologyReceivedDate | gmt | dashify}}</dd>
-                        <dt>Concordance</dt>
-                        <dd [colorCodeConcordance]="biopsy.concordance">{{biopsy.concordance | dashify}}</dd>
-                        <dt>Comment</dt>
-                        <dd>{{biopsy.comment | dashify}}</dd>
-                      </dl>
-                    </div>
-                  </div>
+            <div class="col-md-6">
+              <div class="panel panel-white overflow-hidden biopsy-panel-height panel-accent-bottom-purple" id="biopsy_panel_right">
+                <div class="panel-heading">
+                  <dl class="dl-horizontal">
+                    <dt>Pathology Status</dt>
+                    <dd>{{biopsy.pathologyStatus | dashify}}</dd>
+                    <dt>Pathology Received Date</dt>
+                    <dd>{{biopsy.pathologyReceivedDate | gmt | dashify}}</dd>
+                    <dt>Concordance</dt>
+                    <dd [colorCodeConcordance]="biopsy.concordance">{{biopsy.concordance | dashify}}</dd>
+                    <dt>Comment</dt>
+                    <dd>{{biopsy.comment | dashify}}</dd>
+                  </dl>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="panel panel-accent-bottom-purple">
-                    <div class="panel-heading">
-                      <h4 class="panel-title f-s-18">Assay History</h4>
-                    </div>
-                    <div class="table-responsive">
-                      <table class="table table-td-valign-middle" id="assay_table">
-                        <thead>
-                          <tr>
-                            <th>Type</th>
-                            <th>Gene</th>
-                            <th>Order Date</th>
-                            <th>Result Date</th>
-                            <th>Result</th>
-                            <th>Comment</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr *ngFor="let item of biopsy.assayMessages">
-                            <td>IHC</td>
-                            <td>{{item.gene | dashify}}</td>
-                            <td>{{item.orderedDate | gmt}}</td>
-                            <td>{{item.reportedDate | gmt}}</td>
-                            <td [colorCodeAssay]="item.result">{{item.result | dashify}}</td>
-                            <td>{{item.comment | dashify}}</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="panel panel-accent-bottom-purple">
+                <div class="panel-heading">
+                  <h4 class="panel-title f-s-18">Assay History</h4>
+                </div>
+                <div class="table-responsive">
+                  <table class="table table-td-valign-middle" id="assay_table">
+                    <thead>
+                      <tr>
+                        <th>Type</th>
+                        <th>Gene</th>
+                        <th>Order Date</th>
+                        <th>Result Date</th>
+                        <th>Result</th>
+                        <th>Comment</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of biopsy.assayMessages">
+                        <td>IHC</td>
+                        <td>{{item.gene | dashify}}</td>
+                        <td>{{item.orderedDate | gmt}}</td>
+                        <td>{{item.reportedDate | gmt}}</td>
+                        <td [colorCodeAssay]="item.result">{{item.result | dashify}}</td>
+                        <td>{{item.comment | dashify}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="panel panel-accent-bottom-purple">
-                    <div class="panel-heading">
-                      <h4 class="panel-title f-s-18">Nucleic Acid Sendout
-                      </h4>
-                    </div>
-                    <div class="table-responsive">
-                      <table class="table table-td-valign-middle" id="msn">
-                        <thead>
-                          <tr>
-                            <th>Molecular Sequence Number</th>
-                            <th>Destination Site</th>
-                            <th>Tracking Number</th>
-                            <th>DNA Conc</th>
-                            <th>DNA Vol</th>
-                            <th>Reported Date</th>
-                            <th>Comment</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <ng-template ngFor let-sendout [ngForOf]="biopsy.nucleicAcidSendouts">
-                            <tr id="{{sendout.molecularSequenceNumber}}">
-                              <td>
-                                <i class="fa fa-share-alt"></i> {{sendout.molecularSequenceNumber | dashify}}</td>
-                              <td>{{sendout.destinationSite | dashify}}</td>
-                              <td>
-                                <span *ngIf="sendout.trackingNumber!==null && sendout.trackingNumber!=='Local'">
-                                  <a href="https://www.fedex.com/apps/fedextrack/?tracknumbers={{sendout.trackingNumber}}" class="link-none" target="_blank">
-                                    <i class="fa fa-truck"></i> {{sendout.trackingNumber | dashify}}</a>
-                                </span>
-                                <span *ngIf="sendout.trackingNumber===null || sendout.trackingNumber==='Local'">{{sendout.trackingNumber | dashify}}</span>
-                              </td>
-                              <td>{{sendout.dnaConcentration | dashify}}</td>
-                              <td>{{sendout.dnaVolume | dashify}}</td>
-                              <td>{{sendout.reportedDate | gmt}}</td>
-                              <td>{{sendout.comment | dashify}}</td>
-                            </tr>
-                            <tr *ngFor="let analysis of sendout.analyses; let last = last" id="{{analysis.analysisId}}">
-                              <td colspan="7" class="bg-body">
-                                <div class="panel panel-with-tabs panel-accent-sides-purple panel-details-row">
-                                  <div class="panel-heading">
-                                    <ul id="panel-tab" class="nav nav-tabs pull-right nav-tabs-purple">
-                                      <li class="active">
-                                        <a href="#panel-tab-info" data-toggle="tab" aria-expanded="true">
-                                          <i class="fa fa-align-left"></i>
-                                          <span class="hidden-xs"> Info</span>
-                                        </a>
-                                      </li>
-                                      <li class="">
-                                        <a href="#panel-tab-files" data-toggle="tab" aria-expanded="false">
-                                          <i class="fa fa-file-archive-o"></i>
-                                          <span class="hidden-xs"> Files</span>
-                                        </a>
-                                      </li>
-                                    </ul>
-                                    <h4 class="panel-title f-s-18">Analysis ID: {{analysis.analysisId}}</h4>
-                                    <h5>
-                                      <a *ngIf="!biopsy.isOutsideAssayWorkflow" href [routerLink]="['/patients/' + patient.patientSequenceNumber + '/biopsies/' + biopsy.biopsySequenceNumber + '/variant_reports/' + analysis.analysisId]">
-                                        <i class="fa fa-file-text-o"></i> Variant and Assignment Reports</a>
-                                    </h5>
-                                    <h5>
-                                      <a *ngIf="biopsy.isOutsideAssayWorkflow" href [routerLink]="['/patients/' + patient.patientSequenceNumber + '/variant_reports_oa/' + analysis.analysisId]"
-                                        [queryParams]="{isOutsideAssay: biopsy.isOutsideAssay}">
-                                        <i class="fa fa-file-text-o"></i> Variant and Assignment Reports</a>
-                                    </h5>
-                                  </div>
-                                  <div id="panel-tab-content" class="tab-content p-t-0">
-                                    <div class="tab-pane fade active in" id="panel-tab-info">
-                                      <div class="row">
-                                        <div class="col-md-6" id="variant-report-{{analysis.analysisId}}">
-                                          <dl class="dl-horizontal m-b-4">
-                                            <dt>
-                                              <h4>Variant Report</h4>
-                                            </dt>
-                                            <dd></dd>
-                                          </dl>
-                                          <dl class="dl-horizontal">
-                                            <dt>Status</dt>
-                                            <dd [colorCodeVariantReport]="analysis.variantReportStatus">{{analysis.variantReportStatus | dashify}}</dd>
-                                            <dt>File Received Date</dt>
-                                            <dd>{{analysis.variantReportFileReceivedDate | gmt}}</dd>
-                                            <dt>Rejected/Confirmed Date</dt>
-                                            <dd>{{analysis.variantReporterRejectedOrConfirmedDate | gmt}}</dd>
-                                            <dt>MOIs (Confirmed/Total)</dt>
-                                            <dd *ngIf="analysis.variantReport && analysis.variantReport.moiSummary">{{analysis.variantReport.moiSummary.confirmedMOIs | dashify}} / {{analysis.variantReport.moiSummary.totalMOIs
-                                              | dashify}}</dd>
-                                            <dd *ngIf="!analysis.variantReport || !analysis.variantReport.moiSummary">-</dd>
-                                            <dt>aMOIs (Confirmed/Total)</dt>
-                                            <dd *ngIf="analysis.variantReport && analysis.variantReport.moiSummary">{{analysis.variantReport.moiSummary.confirmedaMOIs | dashify}} / {{analysis.variantReport.moiSummary.totalaMOIs
-                                              | dashify}}</dd>
-                                            <dd *ngIf="!analysis.variantReport || !analysis.variantReport.moiSummary">-</dd>
-                                          </dl>
-                                        </div>
-                                        <div class="col-md-6" id="assignment-report-{{biopsy.biopsySequenceNumber}}">
-                                          <dl class="dl-horizontal m-b-4">
-                                            <dt>
-                                              <h4>Assignment Report</h4>
-                                            </dt>
-                                            <dd></dd>
-                                          </dl>
-                                          <dl *ngIf="analysis.assignmentReport" class="dl-horizontal">
-                                            <dt>Status</dt>
-                                            <dd [colorCodeAssignment]="analysis.assignmentReport.patientAssignmentStatus">{{analysis.assignmentReport.patientAssignmentStatus}}</dd>
-                                            <dt>Generation Date</dt>
-                                            <dd>{{analysis.assignmentReport.dateAssigned | gmt}}</dd>
-                                            <dt>Confirmed Date</dt>
-                                            <dd>{{analysis.assignmentReport.dateConfirmed | gmt}}</dd>
-                                            <dt>Sent to ECOG Date</dt>
-                                            <dd>{{analysis.assignmentReport.dateSentToECOG | gmt}}</dd>
-                                            <dt>Received by ECOG Date</dt>
-                                            <dd>{{analysis.assignmentReport.dateReceivedByECOG | gmt}}</dd>
-                                            <dt>Assignment Logic</dt>
-                                            <dd>{{analysis.assignmentReport.patientAssignmentStatusMessage | dashify}}</dd>
-                                          </dl>
-                                          <dl *ngIf="!analysis.assignmentReport" class="dl-horizontal">
-                                            <dt class="text-muted f-w-400">No Assignment data yet</dt>
-                                            <dd></dd>
-                                          </dl>
-                                        </div>
-                                      </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="panel panel-accent-bottom-purple">
+                <div class="panel-heading">
+                  <h4 class="panel-title f-s-18">Nucleic Acid Sendout
+                  </h4>
+                </div>
+                <div class="table-responsive">
+                  <table class="table table-td-valign-middle" id="msn">
+                    <thead>
+                      <tr>
+                        <th>Molecular Sequence Number</th>
+                        <th>Destination Site</th>
+                        <th>Tracking Number</th>
+                        <th>DNA Conc</th>
+                        <th>DNA Vol</th>
+                        <th>Reported Date</th>
+                        <th>Comment</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <ng-template ngFor let-sendout [ngForOf]="biopsy.nucleicAcidSendouts">
+                        <tr id="{{sendout.molecularSequenceNumber}}">
+                          <td>
+                            <i class="fa fa-share-alt"></i> {{sendout.molecularSequenceNumber | dashify}}</td>
+                          <td>{{sendout.destinationSite | dashify}}</td>
+                          <td>
+                            <span *ngIf="sendout.trackingNumber!==null && sendout.trackingNumber!=='Local'">
+                              <a href="https://www.fedex.com/apps/fedextrack/?tracknumbers={{sendout.trackingNumber}}" class="link-none" target="_blank">
+                                <i class="fa fa-truck"></i> {{sendout.trackingNumber | dashify}}</a>
+                            </span>
+                            <span *ngIf="sendout.trackingNumber===null || sendout.trackingNumber==='Local'">{{sendout.trackingNumber | dashify}}</span>
+                          </td>
+                          <td>{{sendout.dnaConcentration | dashify}}</td>
+                          <td>{{sendout.dnaVolume | dashify}}</td>
+                          <td>{{sendout.reportedDate | gmt}}</td>
+                          <td>{{sendout.comment | dashify}}</td>
+                        </tr>
+                        <tr *ngFor="let analysis of sendout.analyses; let last = last" id="{{analysis.analysisId}}">
+                          <td colspan="7" class="bg-body">
+                            <div class="panel panel-with-tabs panel-accent-sides-purple panel-details-row">
+                              <div class="panel-heading">
+                                <ul id="panel-tab" class="nav nav-tabs pull-right nav-tabs-purple">
+                                  <li class="active">
+                                    <a href="#panel-tab-info" data-toggle="tab" aria-expanded="true">
+                                      <i class="fa fa-align-left"></i>
+                                      <span class="hidden-xs"> Info</span>
+                                    </a>
+                                  </li>
+                                  <li class="">
+                                    <a href="#panel-tab-files" data-toggle="tab" aria-expanded="false">
+                                      <i class="fa fa-file-archive-o"></i>
+                                      <span class="hidden-xs"> Files</span>
+                                    </a>
+                                  </li>
+                                </ul>
+                                <h4 class="panel-title f-s-18">Analysis ID: {{analysis.analysisId}}</h4>
+                                <h5>
+                                  <a *ngIf="!biopsy.isOutsideAssayWorkflow" href [routerLink]="['/patients/' + patient.patientSequenceNumber + '/biopsies/' + biopsy.biopsySequenceNumber + '/variant_reports/' + analysis.analysisId]">
+                                    <i class="fa fa-file-text-o"></i> Variant and Assignment Reports</a>
+                                </h5>
+                                <h5>
+                                  <a *ngIf="biopsy.isOutsideAssayWorkflow" href [routerLink]="['/patients/' + patient.patientSequenceNumber + '/variant_reports_oa/' + analysis.analysisId]"
+                                    [queryParams]="{isOutsideAssay: biopsy.isOutsideAssay}">
+                                    <i class="fa fa-file-text-o"></i> Variant and Assignment Reports</a>
+                                </h5>
+                              </div>
+                              <div id="panel-tab-content" class="tab-content p-t-0">
+                                <div class="tab-pane fade active in" id="panel-tab-info">
+                                  <div class="row">
+                                    <div class="col-md-6" id="variant-report-{{analysis.analysisId}}">
+                                      <dl class="dl-horizontal m-b-4">
+                                        <dt>
+                                          <h4>Variant Report</h4>
+                                        </dt>
+                                        <dd></dd>
+                                      </dl>
+                                      <dl class="dl-horizontal">
+                                        <dt>Status</dt>
+                                        <dd [colorCodeVariantReport]="analysis.variantReportStatus">{{analysis.variantReportStatus | dashify}}</dd>
+                                        <dt>File Received Date</dt>
+                                        <dd>{{analysis.variantReportFileReceivedDate | gmt}}</dd>
+                                        <dt>Rejected/Confirmed Date</dt>
+                                        <dd>{{analysis.variantReporterRejectedOrConfirmedDate | gmt}}</dd>
+                                        <dt>MOIs (Confirmed/Total)</dt>
+                                        <dd *ngIf="analysis.variantReport && analysis.variantReport.moiSummary">{{analysis.variantReport.moiSummary.confirmedMOIs | dashify}} / {{analysis.variantReport.moiSummary.totalMOIs
+                                          | dashify}}</dd>
+                                        <dd *ngIf="!analysis.variantReport || !analysis.variantReport.moiSummary">-</dd>
+                                        <dt>aMOIs (Confirmed/Total)</dt>
+                                        <dd *ngIf="analysis.variantReport && analysis.variantReport.moiSummary">{{analysis.variantReport.moiSummary.confirmedaMOIs | dashify}} / {{analysis.variantReport.moiSummary.totalaMOIs
+                                          | dashify}}</dd>
+                                        <dd *ngIf="!analysis.variantReport || !analysis.variantReport.moiSummary">-</dd>
+                                      </dl>
                                     </div>
-                                    <div class="tab-pane fade" id="panel-tab-files">
-                                      <p>
-                                        <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!analysis.variantReport.dnaBamFilePath"
-                                          (click)="download(analysis.variantReport.dnaBamFilePath)">
-                                          <i class="fa fa-download"></i> DNA BAM</button>
-                                        <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!analysis.variantReport.dnaBaiFilePath"
-                                          (click)="download(analysis.variantReport.dnaBaiFilePath)">
-                                          <i class="fa fa-download"></i> DNA BAI</button>
-                                        <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!analysis.variantReport.rnaBamFilePath"
-                                          (click)="download(analysis.variantReport.rnaBamFilePath)">
-                                          <i class="fa fa-download"></i> RNA BAM</button>
-                                        <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!analysis.variantReport.rnaBaiFilePath"
-                                          (click)="download(analysis.variantReport.rnaBaiFilePath)">
-                                          <i class="fa fa-download"></i> RNA BAI</button>
-                                        <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!analysis.variantReport.vcfFilePath"
-                                          (click)="download(analysis.variantReport.vcfFilePath)">
-                                          <i class="fa fa-download"></i> VCF</button>
-                                      </p>
+                                    <div class="col-md-6" id="assignment-report-{{biopsy.biopsySequenceNumber}}">
+                                      <dl class="dl-horizontal m-b-4">
+                                        <dt>
+                                          <h4>Assignment Report</h4>
+                                        </dt>
+                                        <dd></dd>
+                                      </dl>
+                                      <dl *ngIf="analysis.assignmentReport" class="dl-horizontal">
+                                        <dt>Status</dt>
+                                        <dd [colorCodeAssignment]="analysis.assignmentReport.patientAssignmentStatus">{{analysis.assignmentReport.patientAssignmentStatus}}</dd>
+                                        <dt>Generation Date</dt>
+                                        <dd>{{analysis.assignmentReport.dateAssigned | gmt}}</dd>
+                                        <dt>Confirmed Date</dt>
+                                        <dd>{{analysis.assignmentReport.dateConfirmed | gmt}}</dd>
+                                        <dt>Sent to ECOG Date</dt>
+                                        <dd>{{analysis.assignmentReport.dateSentToECOG | gmt}}</dd>
+                                        <dt>Received by ECOG Date</dt>
+                                        <dd>{{analysis.assignmentReport.dateReceivedByECOG | gmt}}</dd>
+                                        <dt>Assignment Logic</dt>
+                                        <dd>{{analysis.assignmentReport.patientAssignmentStatusMessage | dashify}}</dd>
+                                      </dl>
+                                      <dl *ngIf="!analysis.assignmentReport" class="dl-horizontal">
+                                        <dt class="text-muted f-w-400">No Assignment data yet</dt>
+                                        <dd></dd>
+                                      </dl>
                                     </div>
                                   </div>
                                 </div>
-                                <sd-file-upload [msn]="sendout.molecularSequenceNumber"></sd-file-upload>
-                                <!-- <sd-file-upload *ngIf="last && enableFileUpload" [msn]="sendout.molecularSequenceNumber"></sd-file-upload> -->
-                              </td>
-                            </tr>
-                          </ng-template>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
+                                <div class="tab-pane fade" id="panel-tab-files">
+                                  <p>
+                                    <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!analysis.variantReport.dnaBamFilePath"
+                                      (click)="download(analysis.variantReport.dnaBamFilePath)">
+                                      <i class="fa fa-download"></i> DNA BAM</button>
+                                    <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!analysis.variantReport.dnaBaiFilePath"
+                                      (click)="download(analysis.variantReport.dnaBaiFilePath)">
+                                      <i class="fa fa-download"></i> DNA BAI</button>
+                                    <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!analysis.variantReport.rnaBamFilePath"
+                                      (click)="download(analysis.variantReport.rnaBamFilePath)">
+                                      <i class="fa fa-download"></i> RNA BAM</button>
+                                    <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!analysis.variantReport.rnaBaiFilePath"
+                                      (click)="download(analysis.variantReport.rnaBaiFilePath)">
+                                      <i class="fa fa-download"></i> RNA BAI</button>
+                                    <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!analysis.variantReport.vcfFilePath"
+                                      (click)="download(analysis.variantReport.vcfFilePath)">
+                                      <i class="fa fa-download"></i> VCF</button>
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <sd-file-upload [msn]="sendout.molecularSequenceNumber"></sd-file-upload>
+                            <!-- <sd-file-upload *ngIf="last && enableFileUpload" [msn]="sendout.molecularSequenceNumber"></sd-file-upload> -->
+                          </td>
+                        </tr>
+                      </ng-template>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
-          </tab>
-          <tab heading="Documents" id="documents" index="99">
-            <div class="table-responsive">
-              <table class="table table-td-valign-middle">
-                <thead>
-                  <tr>
-                    <th>Document</th>
-                    <th>Comment</th>
-                    <th>Uploaded Date</th>
-                    <th>User</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td colspan="4" class="text-muted">No Documents Available</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div [dropzone]="dzConfigDocuments" (error)="onUploadError($event)" (success)="onUploadSuccess($event)">
-              <div class="dz-message" data-dz-message>
-                <!-- start bdd tests -->
-                <input style="display: none" type="file" id="documents_upload" name="documents_upload" multiple>
-                <!-- end bdd tests -->
-                <span>
-                  Click or drop files here to upload
-                </span>
-              </div>
-            </div>
-          </tab>
-        </tabset>
-      </div>
-    </div>
+          </div>
+        </div>
+      </tab>
+
+      <tab heading="Documents" id="documents" index="99">
+        <div class="table-responsive">
+          <table class="table table-td-valign-middle">
+            <thead>
+              <tr>
+                <th>Document</th>
+                <th>Comment</th>
+                <th>Uploaded Date</th>
+                <th>User</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colspan="4" class="text-muted">No Documents Available</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div [dropzone]="dzConfigDocuments" (error)="onUploadError($event)" (success)="onUploadSuccess($event)">
+          <div class="dz-message" data-dz-message>
+            <!-- start bdd tests -->
+            <input style="display: none" type="file" id="documents_upload" name="documents_upload" multiple>
+            <!-- end bdd tests -->
+            <span>
+              Click or drop files here to upload
+            </span>
+          </div>
+        </div>
+      </tab>
+    </tabset>
   </div>
 </div>

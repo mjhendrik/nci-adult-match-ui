@@ -32,6 +32,9 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
   enableFileUpload = false;
   dzConfigDocuments: DropzoneConfigInterface;
 
+  pendingVariantReport={};
+  pendingAssignmentReport={};
+
   constructor(
     private route: ActivatedRoute,
     private patientApi: PatientApiService,
