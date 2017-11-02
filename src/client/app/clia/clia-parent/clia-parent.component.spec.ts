@@ -28,7 +28,9 @@ import {
   MockBackend,
   MockConnection
 } from '@angular/http/testing';
+
 import { SampleControlApiService } from '../sample-control-api.service';
+import { IonReportersApiService } from '../ion-reporters-api.service';
 
 
 export function main() {
@@ -73,10 +75,15 @@ export function main() {
     // inject([MockBackend], (mockBackend: MockBackend)
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [RouterTestingModule.withRoutes(config), DirectivesModule, PipesModule, FormsModule, DataTableModule],
+        imports: [RouterTestingModule.withRoutes(config),
+          DirectivesModule,
+          PipesModule,
+          FormsModule,
+          DataTableModule],
         declarations: [CliaParentComponent],
         providers: [
           { provide: SampleControlApiService, useClass: MockCliaApiService },
+          { provide: IonReportersApiService, useClass: MockCliaIonApiService },
           {
             provide: ActivatedRoute, useValue: {
               snapshot:
@@ -89,30 +96,13 @@ export function main() {
               }
             }
           },
-          // MockBackend,
-          // BaseRequestOptions,
-          // { provide: XHRBackend, useClass: MockBackend },
-          // {
-          //   provide: Http,
-          //   useFactory: (backend: MockBackend, options: BaseRequestOptions) => new Http(backend, options),
-          //   deps: [MockBackend, BaseRequestOptions]
-          // },
         ]
       });
-
-      // mockBackend.connections.subscribe((connection: MockConnection) => {
-      //   connection.mockRespond(new Response(new ResponseOptions(this.spyConnection({
-      //     body: connection.request.text(),
-      //     method: connection.request.method,
-      //     url: connection.request.url
-      //   }))));
-      // });
-
 
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
     });
 
-    xit('should work',
+    it('Clia Parent componenet should work',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -122,23 +112,11 @@ export function main() {
                 templateUrl: ''
               }
             }).createComponent(CliaParentComponent);
-            // console.log(fixture);
             fixture.componentInstance.ngOnInit();
-            // let interval = setInterval(() => {
-            //   // expect(1).toBe(1);
-            //   // done();
-            //   // fixture.detectChanges();
-            // }, 1000 * 60);
-            // clearInterval(interval);
-
-            // Observable.interval(1000 * 60).subscribe(() => {
-            //   fixture.detectChanges();
-            // });
-
           });
       }));
 
-    xit('should test setControlType',
+    it('should test setControlType',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -154,7 +132,7 @@ export function main() {
           });
       }));
 
-    xit('should test generateMsn with control type positive',
+    it('should test generateMsn with control type positive',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -166,10 +144,11 @@ export function main() {
             }).createComponent(CliaParentComponent);
             fixture.componentInstance.control_type = 'positive';
             fixture.componentInstance.generateMsn();
+            expect(fixture.componentInstance.control_type).toBe('positive');
           });
       }));
 
-    xit('should test generateMsn with control type no_template',
+    it('should test generateMsn with control type no_template',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -181,10 +160,11 @@ export function main() {
             }).createComponent(CliaParentComponent);
             fixture.componentInstance.control_type = 'no_template';
             fixture.componentInstance.generateMsn();
+            expect(fixture.componentInstance.control_type).toBe('no_template');
           });
       }));
 
-    xit('should test generateMsn with control type proficiency_competency',
+    it('should test generateMsn with control type proficiency_competency',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -196,9 +176,9 @@ export function main() {
             }).createComponent(CliaParentComponent);
             fixture.componentInstance.control_type = 'proficiency_competency';
             fixture.componentInstance.generateMsn();
+            expect(fixture.componentInstance.control_type).toBe('proficiency_competency');
           });
       }));
-
   });
 
   describe('clia parent component with clia type dartmouth', () => {
@@ -213,6 +193,7 @@ export function main() {
         declarations: [CliaParentComponent],
         providers: [
           { provide: SampleControlApiService, useClass: MockCliaApiService },
+          { provide: IonReportersApiService, useClass: MockCliaIonApiService },
           {
             provide: ActivatedRoute, useValue: {
               snapshot: {
@@ -229,7 +210,7 @@ export function main() {
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
     });
 
-    xit('should work for clia_dartmouth',
+    it('should work for clia_dartmouth',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -257,6 +238,7 @@ export function main() {
         declarations: [CliaParentComponent],
         providers: [
           { provide: SampleControlApiService, useClass: MockCliaApiService },
+          { provide: IonReportersApiService, useClass: MockCliaIonApiService },
           {
             provide: ActivatedRoute, useValue: {
               snapshot: {
@@ -273,7 +255,7 @@ export function main() {
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
     });
 
-    xit('should work for clia_yale',
+    it('should work for clia_yale',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -301,6 +283,7 @@ export function main() {
         declarations: [CliaParentComponent],
         providers: [
           { provide: SampleControlApiService, useClass: MockCliaApiService },
+          { provide: IonReportersApiService, useClass: MockCliaIonApiService },
           {
             provide: ActivatedRoute, useValue: {
               snapshot: {
@@ -316,7 +299,7 @@ export function main() {
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
     });
 
-    xit('should work for clia_mgh',
+    it('should work for clia_mgh',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -344,6 +327,7 @@ export function main() {
         declarations: [CliaParentComponent],
         providers: [
           { provide: SampleControlApiService, useClass: MockCliaApiService },
+          { provide: IonReportersApiService, useClass: MockCliaIonApiService },
           {
             provide: ActivatedRoute, useValue: {
               snapshot: {
@@ -359,7 +343,7 @@ export function main() {
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['ADMIN'] }));
     });
 
-    xit('should work for clia_mda',
+    it('should work for clia_mda',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -372,9 +356,7 @@ export function main() {
             fixture.componentInstance.ngOnInit();
           });
       }));
-
   });
-
 }
 
 
@@ -432,6 +414,16 @@ class MockCliaApiService {
       date_variant_received: '2-12-2016',
     }];
     return Observable.of(testdata);
+  }
+}
+
+class MockCliaIonApiService {
+  getCliaIon():Observable<any> {
+    let testData;
+    testData = [{
+      lastContactDate: '2-12-2015'
+    }];
+    return Observable.of(testData);
   }
 }
 
