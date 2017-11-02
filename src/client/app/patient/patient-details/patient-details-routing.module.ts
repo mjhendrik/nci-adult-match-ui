@@ -46,7 +46,6 @@ class DataResolver implements Resolve<PatientData> {
           let patient = this.transformer.transformPatient(data);
           patient.section = section;
           patient.entityId = entityId;
-          // let tabs = this.createTabs(patient);
 
           return {
             psn: psn,

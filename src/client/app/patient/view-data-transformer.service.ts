@@ -86,8 +86,13 @@ export class ViewDataTransformer {
     transformedReport.matchData.tvc_version = cnvDataMatch.tvc_version;
     transformedReport.matchData.showPools = this.showPools(cnvDataMatch.tvc_version);
     transformedReport.matchData.assignmentReport = transformedReport.matchData.assignmentReport || {};
+    transformedReport.matchData.assignmentReport.isOutsideAssayWorkflow = true;
+    transformedReport.matchData.assignmentReport.isOutsideAssay = true;
+    transformedReport.matchData.assignmentReport.biopsySequenceNumber = transformedReport.matchData.biopsySequenceNumber;
     transformedReport.matchData.moiSummary = transformedReport.matchData.moiSummary
       || { totalaMOIs: 0, totalMOIs: 0, confirmedaMOIs: 0, confirmedMOIs: 0 };
+    transformedReport.matchData.isOutsideAssayWorkflow = true;
+    transformedReport.matchData.isOutsideAssay = false;
 
     transformedReport.outsideData = transformedReport.outsideData || {};
     transformedReport.outsideData.pool1 = ocpDataOutside.pool1;
@@ -98,8 +103,13 @@ export class ViewDataTransformer {
     transformedReport.outsideData.showPools = this.showPools(cnvDataOutside.tvc_version);
     transformedReport.outsideData.assignmentReport = transformedReport.outsideData.assignmentReport || {};
     transformedReport.outsideData.assignmentReport = transformedReport.outsideData.assignmentReport || {};
+    transformedReport.outsideData.assignmentReport.isOutsideAssayWorkflow = true;
+    transformedReport.outsideData.assignmentReport.isOutsideAssay = true;
+    transformedReport.outsideData.assignmentReport.biopsySequenceNumber = transformedReport.outsideData.biopsySequenceNumber;
     transformedReport.outsideData.moiSummary = transformedReport.outsideData.moiSummary
       || { totalaMOIs: 0, totalMOIs: 0, confirmedaMOIs: 0, confirmedMOIs: 0 };
+    transformedReport.outsideData.isOutsideAssayWorkflow = true;
+    transformedReport.outsideData.isOutsideAssay = true;
 
     this.transformAssignmentLogic(transformedReport.matchData.assignmentReport);
     this.transformAssignmentLogic(transformedReport.outsideData.assignmentReport);
@@ -385,8 +395,9 @@ export class ViewDataTransformer {
 
       analysis.variantReport = variantReport;
       variantReport.isOutsideAssayWorkflow = transformedBiopsy.isOutsideAssayWorkflow;
+      variantReport.isOutsideAssay = transformedBiopsy.isOutsideAssay;
       variantReport.variantReportFileReceivedDate = analysis.variantReportFileReceivedDate;
-
+  
       variantReport.moiSummary = {
         totalaMOIs: 0,
         totalMOIs: 0,
@@ -491,6 +502,9 @@ export class ViewDataTransformer {
       if (!biopsy || !biopsy.nucleicAcidSendouts || !biopsy.nucleicAcidSendouts.length) {
         continue;
       }
+
+      assignment.isOutsideAssayWorkflow = biopsy.isOutsideAssayWorkflow;
+      assignment.isOutsideAssay = biopsy.isOutsideAssay;
 
       if (assignment.patientAssignmentStatus === 'PENDING_CONFIRMATION' && assignment.dateAssigned) {
         let dateAssignedString = gmt.transform(assignment.dateAssigned);
