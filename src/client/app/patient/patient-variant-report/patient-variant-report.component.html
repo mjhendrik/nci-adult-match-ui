@@ -35,13 +35,13 @@
             <dt>Disease Concordance</dt>
             <dd><span [colorCodeConcordance]="patient.concordance">{{patient.concordance | dashify}}</span></dd>
             <dt>Status</dt>
-            <dd><span [colorCodeVariantReport]="variantReport.variantReportStatus">{{variantReport.variantReportStatus | dashify}}</span> on {{variantReport.variantReporterRejectedOrConfirmedDate | gmt}} by {{variantReport.user | dashify}}</dd>
+            <dd><span [colorCodeVariantReport]="variantReportStatus">{{variantReportStatus | dashify}}</span> on {{variantReporterRejectedOrConfirmedDate | gmt}} by {{statusUser | dashify}}</dd>
             <dt>MAPD</dt>
             <dd>{{mapd | dashify}}</dd>
             <dt>Cellularity</dt>
             <dd>{{cellularity | dashify}}</dd>
             <dt>File Received Date</dt>
-            <dd>{{variantReport.variantReportFileReceivedDate | gmt}}</dd>
+            <dd>{{variantReportFileReceivedDate | gmt}}</dd>
             <dt *ngIf="!showPools">Torrent Variant Caller Version</dt>
             <dd *ngIf="!showPools">{{tvc_version | dashify}}</dd>
             <dt *ngIf="showPools">Pool 1</dt>
