@@ -17,7 +17,6 @@
         </div>
       </a>
     </div>
-
     <div class="col-md-4" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" id="treatment_arm_summary">
       <a class="link-none" href="javascript:void(0)" [routerLink]="['/treatments']">
         <div class="widget widget-stat bg-success-light text-white">
@@ -36,7 +35,6 @@
         </div>
       </a>
     </div>
-
     <div class="col-md-4" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" id="biopsy_summary">
       <a class="link-none" href="javascript:void(0)" [routerLink]="['/tracking']">
         <div class="widget widget-stat bg-info-light text-white">
@@ -55,9 +53,7 @@
       </a>
     </div>
   </div>
-
   <h1 class="page-header">Pending Review</h1>
-
   <div class="panel">
     <tabset class="nav-tabs-purple">
       <tab heading="Assignment Reports" id="pandingArTab">
@@ -297,11 +293,8 @@
         </div>
       </tab>
     </tabset>
-
   </div>
-
   <h1 class="page-header">Patients Awaiting Further Action Or Information</h1>
-
   <div class="panel" id="limbo_panel">
     <div class="col-md-12 bg-purple-light">
       <div class="col-md-6 p-l-5">
@@ -341,8 +334,7 @@
         </div>
       </div>
     </div>
-
-    <div class="row">        
+    <div class="row">
       <div class="table-responsive col-lg-12">
         <table class="table table-striped table-col-width" [mfData]="patientsAwaiting.data | filterByText: searchtermPatientsAwaiting"
           #mftablePatientsAwaiting="mfDataTable" [(mfSortBy)]="tablePatientsAwaitingDefaultSort" [(mfSortOrder)]="sortByDescPatientsAwaiting"
