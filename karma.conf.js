@@ -192,7 +192,8 @@ module.exports = function (config) {
 
     // list of files to exclude
     exclude: [
-      'node_modules/**/*spec.js'
+      'node_modules/**/*spec.js',
+      'dist/dev/app/clia-ir/**'
     ],
 
 
