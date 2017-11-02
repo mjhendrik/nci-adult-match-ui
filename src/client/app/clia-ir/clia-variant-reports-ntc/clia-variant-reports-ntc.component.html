@@ -1,0 +1,192 @@
+<div id="content" class="content">
+  <ul class="breadcrumb pull-right">
+    <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
+    <li><a href [routerLink]="['/clia_'+ntcType]" class="link-none">CLIA Lab {{cliaTypeName}}</a></li>
+    <li>No Template Control Variant Report</li>
+  </ul>
+  <h1 class="page-header">No Template Control Variant Report</h1>
+  <div class="row" matchHeight="ntc">
+    <div class="col-md-6">
+      <div class="panel panel-white panel-accent-sides-orangeshade overflow-hidden ntc">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-md-10">
+              <h4>No Template Control Variant Report</h4>
+            </div>
+            <div class="col-md-2 text-right">
+              <a class="btn btn-sm btn-link" role="button" href [routerLink]="['/clia_'+ntcType+'/variant_reports_ntc/qc',molecular_id]"><i class="fa fa-file-text-o"></i> QC Report</a>
+            </div>
+          </div>
+        </div>
+        <div class="tab-content m-b-0">
+          <div class="tab-pane fade active in" id="panel-tab-info">
+            <dl class="dl-horizontal">
+              <dt>Molecular Sequence Number</dt>
+              <dd>{{molecular_id | dashify}}</dd>
+              <dt>Analysis Id</dt>
+              <dd>{{analysis_id | dashify}}</dd>
+              <dt>Total Variants</dt>
+              <dd>{{total_variants | dashify}}</dd>
+              <dt>MAPD</dt>
+              <dd>{{mapd | dashify}}</dd>
+              <dt>Cellularity</dt>
+              <dd>{{cellularity | dashify}}</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="panel panel-white panel-accent-sides-orangeshade overflow-hidden ntc">
+        <div class="panel-heading">
+          <div class="tab-content m-b-0">
+            <div class="tab-pane fade active in">
+              <dl class="dl-horizontal">
+                <dt>File Received Date</dt>
+                <dd>{{date_variant_received | gmt | dashify}}</dd>
+                <dt>Torrent Variant Caller Version</dt>
+                <dd>{{torrent_variant_caller_version | dashify}}</dd>
+                <dt>Status</dt>
+                <dd [colorCodeClia]="report_status">{{report_status | dashify}}</dd>
+                <dt>Comment</dt>
+                <dd>-</dd>
+              </dl>
+              <div class="m-b-5">
+                <button type="button" class="btn btn-orangeshade-light" (click)="downloadDnaBam()"><i class="fa fa-download"></i> DNA BAM</button>
+                <button type="button" class="btn btn-orangeshade-light" (click)="downloadDnaBai()"><i class="fa fa-download"></i> DNA BAI</button>
+                <button type="button" class="btn btn-orangeshade-light" (click)="downloadRnaBam()"><i class="fa fa-download"></i> RNA BAM</button>
+                <button type="button" class="btn btn-orangeshade-light" (click)="downloadRnaBai()"><i class="fa fa-download"></i> RNA BAI</button>
+                <button type="button" class="btn btn-orangeshade-light" (click)="downloadVcf()"><i class="fa fa-download"></i> VCF</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-white panel-accent-sides-orangeshade overflow-hidden">
+    <div class="panel-heading">
+      <div class="row">
+        <div class="col-md-12">
+          <h4>Single Nucleotide Variants and Indels</h4>
+          <table class="table table-condensed">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Chrom</th>
+                <th>Position</th>
+                <th>Reference</th>
+                <th>Alternative</th>
+                <th>Allele Freq</th>
+                <th>Gene</th>
+                <th>Oncomine Variant Class</th>
+                <th>Function</th>
+                <th>HGVS</th>
+                <th>Read Depth</th>
+                <th>Transcript</th>
+                <th>Protein</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of snv_indels">
+                <td>
+                  <cosmic-link [linkType]="'cosmicId'" [linkId]="item.identifier"></cosmic-link>
+                </td>
+                <td>{{item.chromosome | dashify}}</td>
+                <td>{{item.position | dashify}}</td>
+                <td>{{item.ocp_reference | dashify}}</td>
+                <td>{{item.ocp_alternative | dashify}}</td>
+                <td>{{item.allele_frequency | dashify}}</td>
+                <td>
+                  <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.func_gene"></cosmic-link>
+                </td>
+                <td>{{item.oncomine_variant_class | dashify}}</td>
+                <td>{{item.function | dashify}}</td>
+                <td>{{item.hgvs | dashify}}</td>
+                <td>{{item.read_depth | dashify}}</td>
+                <td>{{item.transcript | dashify}}</td>
+                <td>{{item.protein | dashify}}</td>
+              </tr>
+              <tr *ngIf="snv_indels.length===0">
+                <td colspan="13" class="text-muted">There are no single nucleotide variants or indels.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <h4>Copy Number Variants</h4>
+          <table class="table table-condensed">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Chrom</th>
+                <th>Position</th>
+                <th>Raw CN</th>
+                <th>CN</th>
+                <th>CI 5%</th>
+                <th>CI 95%</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of copy_number_variants">
+                <td>{{item.identifier | dashify}}</td>
+                <!--<td>{{item.chromosome | dashify}}</td>-->
+                <td>-</td>
+                <!--<td>{{item.position | dashify}}</td>-->
+                <td>-</td>
+                <td>{{item.raw_copy_number | dashify}}</td>
+                <td>{{item.copy_number | dashify}}</td>
+                <td>{{item.confidence_interval_5_percent | dashify}}</td>
+                <td>{{item.confidence_interval_95_percent | dashify}}</td>
+              </tr>
+              <tr *ngIf="copy_number_variants.length===0">
+                <td colspan="7" class="text-muted">There are no copy number variants.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <h4>Gene Fusions</h4>
+          <table class="table table-condensed">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Driver Gene</th>
+                <th>Driver Count</th>
+                <th>Partner Gene</th>
+                <th>Partner Count</th>
+                <th>Annotation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of gene_fusions">
+                <td>{{item.identifier | dashify}}</td>
+                <td>
+                  <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.driver_gene"></cosmic-link>
+                </td>
+                <td>{{item.driver_read_count | dashify}}</td>
+                <td>
+                  <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.partner_gene"></cosmic-link>
+                </td>
+                <td>{{item.partner_read_count | dashify}}</td>
+                <td>{{item.annotation | dashify}}</td>
+              </tr>
+              <tr *ngIf="gene_fusions.length===0">
+                <td colspan="6" class="text-muted">There are no gene fusions.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-center m-t-20">
+          <button (click)="confirmReport()" class="btn btn-lime"><i class="fa fa-check"></i> Confirm Report</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

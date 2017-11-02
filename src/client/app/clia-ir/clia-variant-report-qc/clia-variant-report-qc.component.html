@@ -1,0 +1,107 @@
+<div id="content" class="content">
+  <ul class="breadcrumb pull-right">
+    <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
+    <li><a href [routerLink]="['/clia_'+cliaType]" class="link-none">CLIA Lab {{cliaTypeName}}</a></li>
+    <li><a href [routerLink]="['/clia_'+cliaType+'/variant_reports_'+tabType]" class="link-none">{{tabTypeName}}</a></li>
+    <li class="active"><span class="entity-name">{{tabTypeHeaderName}}</span></li>
+  </ul>
+  <h1 class="page-header">{{tabTypeHeaderName}}</h1>
+  <div class="row" matchHeight="panel-height-top">
+    <div class="col-md-6">
+      <div class="panel panel-white panel-accent-sides-orangeshade overflow-hidden panel-height-top">
+        <div class="panel-heading">
+          <div class="panel-heading">
+            <div class="row">
+              <h4>{{tabTypeHeaderName}}</h4>
+            </div>
+          </div>
+        </div>
+        <div id="panel-tab-content" class="tab-content">
+          <div class="tab-pane fade active in" id="panel-tab-info">
+            <dl class="dl-horizontal">
+              <dt>Molecular Sequence Number</dt>
+              <dd>{{molecular_id | dashify}}</dd>
+              <dt>Analysis ID</dt>
+              <dd>{{analysis_id | dashify}}</dd>
+              <dt>Total Variants</dt>
+              <dd>{{total_variants | dashify}}</dd>
+              <dt>MAPD</dt>
+              <dd>{{mapd | dashify}}</dd>
+              <dt>Cellularity</dt>
+              <dd>{{cellularity | dashify}}</dd>
+              <dt>File Received Date</dt>
+              <dd>-</dd>
+              <dt>Torrent Variant Caller Version</dt>
+              <dd>{{torrent_variant_caller_version | dashify}}</dd>
+            </dl>
+            <dl class="dl-horizontal">
+              <h4>Oncomine Control Panel Summary</h4>
+              <table class="table table-condensed white-header">
+                <thead>
+                  <tr>
+                    <th *ngIf="tabType=='pc'"><cosmic-link [linkType]="'cosmicGene'" [linkId]="'LRP1'"></cosmic-link></th>
+                    <th *ngIf="tabType!='pc'"><cosmic-link [linkType]="'cosmicGene'" [linkId]="'LMNA'"></cosmic-link></th>
+                    <th><cosmic-link [linkType]="'cosmicGene'" [linkId]="'TBP'"></cosmic-link></th>
+                    <th><cosmic-link [linkType]="'cosmicGene'" [linkId]="'MYC'"></cosmic-link></th>
+                    <th><cosmic-link [linkType]="'cosmicGene'" [linkId]="'HMBS'"></cosmic-link></th>
+                    <th><cosmic-link [linkType]="'cosmicGene'" [linkId]="'ITGB7'"></cosmic-link></th>
+                    <th>SUM</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngIf="oncomine_control_panel_summary; else emptyRow">
+                    <td *ngIf="tabType=='pc'">{{oncomine_control_panel_summary.lrp1 | dashify}}</td>
+                    <td *ngIf="tabType!='pc'">{{oncomine_control_panel_summary.lmna | dashify}}</td>
+                    <td>{{oncomine_control_panel_summary.tbp | dashify}}</td>
+                    <td>{{oncomine_control_panel_summary.myc | dashify}}</td>
+                    <td>{{oncomine_control_panel_summary.hmbs | dashify}}</td>
+                    <td>{{oncomine_control_panel_summary.itgb7 | dashify}}</td>
+                    <td>{{sum | dashify}}</td>
+                  </tr>
+                  <ng-template #emptyRow>
+                    <tr>
+                      <td colspan="6" class="text-muted">No Oncomine Control Panel data</td>
+                    </tr>
+                  </ng-template>
+                </tbody>
+              </table>
+            </dl>
+            <div class="m-b-5">
+              <button type="button" class="btn btn-orangeshade-light" (click)="downloadDnaBam()"><i class="fa fa-download"></i> DNA BAM</button>
+              <button *ngIf="tabType=='ntc'" type="button" class="btn btn-orangeshade-light" (click)="downloadDnaBai()"><i class="fa fa-download"></i> DNA BAI</button>
+              <button type="button" class="btn btn-orangeshade-light" (click)="downloadRnaBam()"><i class="fa fa-download"></i> RNA BAM</button>
+              <button *ngIf="tabType=='ntc'" type="button" class="btn btn-orangeshade-light" (click)="downloadRnaBai()"><i class="fa fa-download"></i> RNA BAI</button>
+              <button type="button" class="btn btn-orangeshade-light" (click)="downloadVcf()"><i class="fa fa-download"></i> VCF</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="panel panel-white panel-accent-sides-orangeshade overflow-hidden panel-height-top">
+        <div class="panel-heading">
+          <a href="javascript:alert('Opens CNV chart full screen')"><img src="/assets/mock-data/cnv_chart.png" alt="CNV Chart" style="width:100%"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-white panel-accent-sides-orangeshade overflow-hidden">
+    <div class="panel-heading">
+      <div class="row">
+        <div class="col-md-12">
+          <sd-variant-report-filtered-table-snv-indels [items]="snv_indels"></sd-variant-report-filtered-table-snv-indels>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <sd-variant-report-filtered-table-cnv [items]="copy_number_variants"></sd-variant-report-filtered-table-cnv>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <sd-variant-report-filtered-table-gf [items]="gene_fusions"></sd-variant-report-filtered-table-gf>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

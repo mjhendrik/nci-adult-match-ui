@@ -1,0 +1,188 @@
+<div id="content" class="content">
+  <ul class="breadcrumb pull-right">
+    <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
+    <li><a href [routerLink]="['/clia_'+pcType]" class="link-none">CLIA Lab {{cliaTypeName}}</a></li>
+    <li>Positive Control Variant Report</li>
+  </ul>
+  <h1 class="page-header">Positive Control Variant Report</h1>
+  <div class="row" matchHeight="pc">
+    <div class="col-md-6">
+      <div class="panel panel-white panel-accent-sides-orangeshade overflow-hidden pc">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-md-10">
+              <h4>Positive Control Variant Report</h4>
+            </div>
+            <div class="col-md-2 text-right">
+              <a class="btn btn-sm btn-link" role="button" href [routerLink]="['/clia_'+pcType+'/variant_reports_pc/qc',molecular_id]"><i class="fa fa-file-text-o"></i> QC Report</a>
+            </div>
+          </div>
+        </div>
+        <div id="panel-tab-content" class="tab-content m-b-0">
+          <div class="tab-pane fade active in" id="panel-tab-info">
+            <dl class="dl-horizontal">
+              <dt>Molecular Sequence Number</dt>
+              <dd>{{molecular_id | dashify}}</dd>
+              <dt>Analysis Id</dt>
+              <dd>{{analysis_id | dashify}}</dd>
+              <dt>Total Variants</dt>
+              <dd>{{total_variants | dashify}}</dd>
+              <dt>MAPD</dt>
+              <dd>{{mapd | dashify}}</dd>
+              <dt>Cellularity</dt>
+              <dd>{{cellularity | dashify}}</dd>
+              <dt>Positive Control Version</dt>
+              <dd>{{positive_control_version | dashify}}</dd>
+              <dt>Positive Control Loaded Date</dt>
+              <dd>{{date_molecular_id_created | gmt | dashify}}</dd>
+              <dt>File Received Date</dt>
+              <dd>{{date_variant_received | gmt | dashify}}</dd>
+              <dt>Torrent Variant Caller Version</dt>
+              <dd>{{torrent_variant_caller_version | dashify}}</dd>
+              <dt>Status</dt>
+              <dd [colorCodeClia]="report_status">{{report_status | dashify}}</dd>
+            </dl>
+            <div class="m-b-5">
+              <button type="button" class="btn btn-orangeshade-light" (click)="downloadDnaBam()"><i class="fa fa-download"></i> DNA BAM</button>
+              <button type="button" class="btn btn-orangeshade-light" (click)="downloadRnaBam()"><i class="fa fa-download"></i> RNA BAM</button>
+              <button type="button" class="btn btn-orangeshade-light" (click)="downloadVcf()"><i class="fa fa-download"></i> VCF</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="panel panel-white panel-accent-sides-orangeshade overflow-hidden pc">
+        <div class="panel-heading">
+          <dl class="dl-horizontal">
+            <h4>Positive Controls Legend</h4>
+            <table class="table table-condensed white-header">
+              <thead>
+                <tr>
+                  <th>Variant Type</th>
+                  <th>Matching Criteria</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Indel</td>
+                  <td>Chromosone, Position, Reference and Alternative.</td>
+                </tr>
+                <tr>
+                  <td>SNV</td>
+                  <td>Chromosone, Position, Reference and Alternative.</td>
+                </tr>
+                <tr>
+                  <td>CNV</td>
+                  <td>Gene</td>
+                </tr>
+                <tr>
+                  <td>Fusion</td>
+                  <td>HGVS</td>
+                </tr>
+              </tbody>
+            </table>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-white panel-accent-sides-orangeshade overflow-hidden">
+    <div class="panel-heading">
+      <div class="row">
+        <div class="col-md-12">
+          <h4>Positive Controls</h4>
+          <table class="table table-condensed">
+            <thead>
+              <tr>
+                <th class="text-center">Present</th>
+                <th>ID</th>
+                <th>Chromosome</th>
+                <th>Position</th>
+                <th>Gene</th>
+                <th>Variant Type</th>
+                <th>Reference</th>
+                <th>Alternative</th>
+                <th>HGVS</th>
+                <th>Protein</th>
+                <th>Function</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of positive_variants">
+                <td class="text-center">
+                  <span *ngIf="item.match===true"><i class="fa fa-check-circle text-success-light"></i></span>
+                  <span *ngIf="item.match===false"><i class="fa fa-times-circle text-danger-light"></i></span>
+                </td>
+                <td>
+                  <cosmic-link [linkType]="'cosmicId'" [linkId]="item.identifier"></cosmic-link>
+                </td>
+                <td>{{item.chromosome | dashify}}</td>
+                <td>{{item.position | dashify}}</td>
+                <td>
+                  <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.gene"></cosmic-link>
+                </td>
+                <td>{{item.variant_type | dashify}}</td>
+                <td>{{item.ocp_reference | dashify}}</td>
+                <td>{{item.ocp_alternative | dashify}}</td>
+                <td>{{item.hgvs | dashify}}</td>
+                <td>{{item.protein | dashify}}</td>
+                <td>{{item.function | dashify}}</td>
+              </tr>
+              <tr *ngIf="positive_variants.length===0">
+                <td colspan="11" class="text-muted">No false positive variants were detected.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <h4>False Positive Variants</h4>
+          <table class="table table-condensed">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Chromosome</th>
+                <th>Position</th>
+                <th>Gene</th>
+                <th>Variant Type</th>
+                <th>Reference</th>
+                <th>Alternative</th>
+                <th>HGVS</th>
+                <th>Protein</th>
+                <th>Function</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of false_positive_variants">
+                <td>
+                  <cosmic-link [linkType]="'cosmicId'" [linkId]="item.identifier"></cosmic-link>
+                </td>
+                <td>{{item.chromosome | dashify}}</td>
+                <td>{{item.position | dashify}}</td>
+                <td>
+                  <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.gene"></cosmic-link>
+                </td>
+                <td>{{item.variant_type | dashify}}</td>
+                <td>{{item.ocp_reference | dashify}}</td>
+                <td>{{item.ocp_alternative | dashify}}</td>
+                <td>{{item.hgvs | dashify}}</td>
+                <td>{{item.protein | dashify}}</td>
+                <td>{{item.function | dashify}}</td>
+              </tr>
+              <tr *ngIf="false_positive_variants.length===0">
+                <td colspan="10" class="text-muted">No false positive variants were detected.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-center m-t-20">
+          <button (click)="rejectReport()" class="btn btn-danger"><i class="fa fa-times"></i> Reject Report</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
