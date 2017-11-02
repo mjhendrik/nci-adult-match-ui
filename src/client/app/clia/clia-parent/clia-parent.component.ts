@@ -96,7 +96,6 @@ export class CliaParentComponent implements OnInit {
       .subscribe(details => {
         let gmt = new GmtPipe();
         this.tablePCData = details.map((x: any) => {
-
           x.molecular_id = x.molecularSequenceNumber;
           x.date_molecular_id_created = gmt.transform(x.dateCreated);
           x.date_variant_received = gmt.transform(x.date_variant_received);
@@ -113,8 +112,10 @@ export class CliaParentComponent implements OnInit {
       .subscribe(details => {
         let gmt = new GmtPipe();
         this.tableNTCData = details.map((x: any) => {
-          x.date_molecular_id_created = gmt.transform(x.date_molecular_id_created);
+          x.molecular_id = x.molecularSequenceNumber;
+          x.date_molecular_id_created = gmt.transform(x.dateCreated);
           x.date_variant_received = gmt.transform(x.date_variant_received);
+          x.report_status = x.passed;
           return x;
         });
         // this.tableNTCData.splice(-1, 1); --> Check if you need this in the new message-api implementation
@@ -127,8 +128,10 @@ export class CliaParentComponent implements OnInit {
       .subscribe(details => {
         let gmt = new GmtPipe();
         this.tablePACCData = details.map((x: any) => {
-          x.date_molecular_id_created = gmt.transform(x.date_molecular_id_created);
+          x.molecular_id = x.molecularSequenceNumber;
+          x.date_molecular_id_created = gmt.transform(x.dateCreated);
           x.date_variant_received = gmt.transform(x.date_variant_received);
+          x.report_status = x.passed;
           return x;
         });
         // this.tablePACCData.splice(-1, 1); --> Check if you need this in the new message-api implementation

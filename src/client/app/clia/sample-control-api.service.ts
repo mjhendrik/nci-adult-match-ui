@@ -35,8 +35,8 @@ export class SampleControlApiService extends ApiService {
     //   + '&control_type=proficiency_competency&projection=molecular_id,date_molecular_id_created,date_variant_received,report_status', // sample control
 
     return this.http.get(this.url('/message/clia/proficiency_competency_control?site=' + type
-      + '&projection=molecular_id,date_molecular_id_created,date_variant_received,report_status', // message
-      'assets/mock-data/clia-' + type + '-pacc.json'))
+      + '', // message
+      ''))
       .map(this.extractData)
       .catch(this.handleError);
   }
