@@ -86,7 +86,7 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
 
   getVrPendingDaysColor(variantReport: any): string {
     if (variantReport.daysPending < 7) {
-      return 'bg-success-light';
+      return 'bg-lime-light';
     } else if (variantReport.daysPending < 14) {
       return 'bg-warning-light';
     } else if (variantReport.daysPending >= 14) {
@@ -96,10 +96,9 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
     }
   }
 
-
   getAPendingHoursColor(assignmentReport: any): string {
     if (assignmentReport.hoursPending < 8) {
-      return 'bg-success-light';
+      return 'bg-lime-light';
     } else if (assignmentReport.hoursPending < 14) {
       return 'bg-warning-light';
     } else if (assignmentReport.hoursPending >= 14) {
