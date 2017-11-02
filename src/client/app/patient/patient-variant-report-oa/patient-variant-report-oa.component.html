@@ -167,9 +167,9 @@
         <sd-variant-report-simple-table-snv-indels *ngIf="outsideData && outsideData.variantReport" [items]="outsideData.variantReport.singleNucleotideVariantAndIndels" [isEditable]="outsideData.isVariantReportEditable" (onVariantUpdated)="onVariantUpdated(outsideData, $event)"
           [title]="'Single Nucleotide Variants and Indels'"></sd-variant-report-simple-table-snv-indels>
 
-        <sd-variant-report-simple-table-cnv *ngIf="outsideData && outsideData.variantReport" [items]="outsideData.variantReport.copyNumberVariants" [isEditable]="outsideData.isVariantReportEditable" (onVariantUpdated)="onVariantUpdated(outsideData, $event)"></sd-variant-report-simple-table-cnv>
+        <sd-variant-report-simple-table-cnv *ngIf="outsideData && outsideData.variantReport" [items]="outsideData.variantReport.copyNumberVariants" [isEditable]="outsideData.isVariantReportEditable" (onVariantUpdated)="onVariantUpdated(outsideData, $event)" [title]="'Copy Number Variants'"></sd-variant-report-simple-table-cnv>
 
-        <sd-variant-report-simple-table-gf *ngIf="outsideData && outsideData.variantReport" [items]="outsideData.variantReport.unifiedGeneFusions" [isEditable]="outsideData.isVariantReportEditable" (onVariantUpdated)="onVariantUpdated(outsideData, $event)"></sd-variant-report-simple-table-gf>
+        <sd-variant-report-simple-table-gf *ngIf="outsideData && outsideData.variantReport" [items]="outsideData.variantReport.unifiedGeneFusions" [isEditable]="outsideData.isVariantReportEditable" (onVariantUpdated)="onVariantUpdated(outsideData, $event)" [title]="'Gene Fusions'"></sd-variant-report-simple-table-gf>
 
         <div class="row" *ngIf="outsideData && outsideData.isVariantReportEditable">
           <div class="col-md-12 text-center m-t-20">
@@ -355,9 +355,9 @@
         <sd-variant-report-simple-table-snv-indels *ngIf="matchData && matchData.variantReport" [items]="matchData.variantReport.singleNucleotideVariantAndIndels" [isEditable]="matchData.isVariantReportEditable" (onVariantUpdated)="onVariantUpdated(matchData, $event)"
           [title]="'Single Nucleotide Variants and Indels'"></sd-variant-report-simple-table-snv-indels>
 
-        <sd-variant-report-simple-table-cnv *ngIf="matchData && matchData.variantReport" [items]="matchData.variantReport.copyNumberVariants" [isEditable]="matchData.isVariantReportEditable" (onVariantUpdated)="onVariantUpdated(matchData, $event)"></sd-variant-report-simple-table-cnv>
+        <sd-variant-report-simple-table-cnv *ngIf="matchData && matchData.variantReport" [items]="matchData.variantReport.copyNumberVariants" [isEditable]="matchData.isVariantReportEditable" (onVariantUpdated)="onVariantUpdated(matchData, $event)" [title]="'Copy Number Variants'"></sd-variant-report-simple-table-cnv>
 
-        <sd-variant-report-simple-table-gf *ngIf="matchData && matchData.variantReport" [items]="matchData.variantReport.unifiedGeneFusions" [isEditable]="matchData.isVariantReportEditable" (onVariantUpdated)="onVariantUpdated(matchData, $event)"></sd-variant-report-simple-table-gf>
+        <sd-variant-report-simple-table-gf *ngIf="matchData && matchData.variantReport" [items]="matchData.variantReport.unifiedGeneFusions" [isEditable]="matchData.isVariantReportEditable" (onVariantUpdated)="onVariantUpdated(matchData, $event)" [title]="'Gene Fusions'"></sd-variant-report-simple-table-gf>
 
         <div class="row" *ngIf="matchData && matchData.isVariantReportEditable">
           <div class="col-md-12 text-center m-t-20">
