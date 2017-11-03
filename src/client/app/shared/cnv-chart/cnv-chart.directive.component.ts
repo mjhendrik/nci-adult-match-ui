@@ -67,11 +67,13 @@ declare let d3: any;
     </div>
   </div>
   <div >
-    <span *ngIf="parsed_vcf_genes===undefined">
+  
+    <span *ngIf="cnvdata===undefined">
       <i class="fa fa-bar-chart text-muted" style="font-size:154px; padding-left: 39px;"></i>
       <br />
       <span class="text-muted" style="padding-left: 39px;"> There are no CNV data </span>
     </span>
+    
   </div>`
 })
 
@@ -240,6 +242,7 @@ export class CnvChartDirective implements AfterViewInit {
     let noData:any = function () {
       return 'There are no CNV data';
     };
+
     this.options = {
       chart: {
         noData: noData(),
