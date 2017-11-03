@@ -72,7 +72,7 @@ class DataResolver implements Resolve<QcVariantReportData> {
           ocpSummary: ocpSummary,
           mapd: data[2].mapd,
           cellularity: data[2].cellularity,
-          parsed_vcf_genes: [data[2].parsed_vcf_genes,data[2].file_name],
+          parsed_vcf_genes: [data[2].copy_number_variant_genes,data[2].file_name],
           dnaBamFilePath: data[3].dnaBamFilePath,
           rnaBamFilePath: data[3].rnaBamFilePath,
           vcfFilePath: data[3].vcfFilePath,
