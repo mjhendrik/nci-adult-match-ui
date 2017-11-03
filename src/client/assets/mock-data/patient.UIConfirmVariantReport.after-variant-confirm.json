@@ -1,61 +1,58 @@
 {
     "_id": {
-        "$oid": "58b81fbbb0c8df2c86126c0d"
+        "$oid": "58b81fbdb0c8df2c86126c10"
     },
-    "_class": "gov.nih.nci.matchbox.model.Patient",
-    "stateToken": "9486ceb9-5134-4c8e-97ff-ec545a22b4bc",
-    "patientSequenceNumber": "UIConfirmVariantReport",
+    "_class": "gov.match.model.Patient",
+    "patientSequenceNumber": "UIRejectVariantReport",
     "gender": "UNKNOWN",
     "ethnicity": "UNKNOWN",
     "races": [],
     "patientRejoinTriggers": [],
     "patientTriggers": [
         {
+            "studyId": "EAY131",
+            "patientSequenceNumber": "UIRejectVariantReport",
             "stepNumber": "0",
             "patientStatus": "REGISTRATION",
             "message": "Patient trigger",
+            "accrualGroupId": "22334a2sr",
             "dateCreated": {
-                "$date": 1504013755917
+                "$date": 1504013757036
             },
             "auditDate": {
-                "$date": 1504013755926
-            },
-            "studyId": "EAY131",
-            "patientSequenceNumber": "UIConfirmVariantReport",
-            "type": "TRIGGER"
+                "$date": 1504013757046
+            }
         }
     ],
     "biopsies": [
         {
-            "biopsySequenceNumber": "BSN-UIConfirmVariantReport",
             "dateCreated": {
-                "$date": 1504013755976
+                "$date": 1504013757102
             },
+            "biopsySequenceNumber": "BSN-UIRejectVariantReport",
             "nextGenerationSequences": [
                 {
                     "ngsRunNumber": "1",
                     "dateReceived": {
-                        "$date": 1504013756559
+                        "$date": 1504013757677
                     },
                     "status": "PENDING",
                     "ionReporterResults": {
-                        "jobName": "JOB-UIConfirmVariantReport",
-                        "molecularSequenceNumber": "MSN-UIConfirmVariantReport",
-                        "dnaBamFilePath": "s3://BDD/MSN-UIConfirmVariantReport/JOB-UIConfirmVariantReport/sample1.bam",
-                        "rnaBamFilePath": "s3://BDD/MSN-UIConfirmVariantReport/JOB-UIConfirmVariantReport/sample2.bam",
-                        "vcfFilePath": "s3://BDD/MSN-UIConfirmVariantReport/JOB-UIConfirmVariantReport/test.vcf",
+                        "jobName": "JOB-UIRejectVariantReport",
+                        "molecularSequenceNumber": "MSN-UIRejectVariantReport",
+                        "dnaBamFilePath": "s3://BDD/MSN-UIRejectVariantReport/JOB-UIRejectVariantReport/sample1.bam",
+                        "rnaBamFilePath": "s3://BDD/MSN-UIRejectVariantReport/JOB-UIRejectVariantReport/sample2.bam",
+                        "vcfFilePath": "s3://BDD/MSN-UIRejectVariantReport/JOB-UIRejectVariantReport/test.vcf",
                         "variantReport": {
                             "singleNucleotideVariants": [
                                 {
+                                    "confirmed": false,
                                     "gene": "MTOR",
                                     "oncominevariantclass": "",
                                     "exon": "47",
                                     "metadata": {
-                                        "_id": "7ca791c6-f658-44da-8f0e-78da329d882e",
-                                        "commenter": "rick.zakharov@nih.gov",
-                                        "status": "CONFIRMED"
+                                        "_id": "2bfe971b-7e52-4dad-bbc2-7264f2199bcd"
                                     },
-                                    "confirmed": true,
                                     "geneName": "",
                                     "chromosome": "chr1",
                                     "position": "11184573",
@@ -71,7 +68,9 @@
                                     "flowAlternativeAlleleObservationCount": "350",
                                     "flowReferenceAlleleObservations": "1625",
                                     "referenceAlleleObservations": 1623,
-                                    "alternativeAlleleObservationCount": 0
+                                    "alternativeAlleleObservationCount": 0,
+                                    "inclusion": true,
+                                    "armSpecific": false
                                 }
                             ],
                             "indels": [],
@@ -82,12 +81,12 @@
                                     "copyNumber": 7.1,
                                     "confidenceInterval95percent": 2.46082,
                                     "confidenceInterval5percent": 1.79208,
+                                    "confirmed": false,
                                     "gene": "MYCL",
                                     "exon": "",
                                     "metadata": {
-                                        "_id": "80fffa98-2580-477e-9a3a-91b6133f853a"
+                                        "_id": "84f9ce5a-0e02-443f-9b5c-8fb700dfed59"
                                     },
-                                    "confirmed": false,
                                     "geneName": "",
                                     "chromosome": "chr1",
                                     "position": "40361592",
@@ -97,15 +96,20 @@
                                     "filter": "PASS",
                                     "rare": false,
                                     "flowAlternativeAlleleObservationCount": "",
-                                    "flowReferenceAlleleObservations": ""
+                                    "flowReferenceAlleleObservations": "",
+                                    "inclusion": true,
+                                    "armSpecific": false
                                 }
                             ],
                             "geneFusions": [
                                 {
-                                    "metadata": {
-                                        "_id": "e86db008-3915-4e3a-b06c-fd0501dd1a56"
-                                    },
                                     "confirmed": false,
+                                    "gene": "TPM3",
+                                    "oncominevariantclass": "Fusion",
+                                    "exon": "7",
+                                    "metadata": {
+                                        "_id": "4b29285e-4914-49b4-98cd-2493521efa15"
+                                    },
                                     "geneName": "TPM3",
                                     "chromosome": "chr1",
                                     "position": "154142875",
@@ -117,13 +121,18 @@
                                     "readDepth": 1180,
                                     "rare": false,
                                     "flowAlternativeAlleleObservationCount": "",
-                                    "flowReferenceAlleleObservations": ""
+                                    "flowReferenceAlleleObservations": "",
+                                    "inclusion": true,
+                                    "armSpecific": false
                                 },
                                 {
-                                    "metadata": {
-                                        "_id": "71706139-47b4-4f60-98c4-1500a73fa1a6"
-                                    },
                                     "confirmed": false,
+                                    "gene": "NTRK1",
+                                    "oncominevariantclass": "Fusion",
+                                    "exon": "10",
+                                    "metadata": {
+                                        "_id": "40a4db4a-479a-43f2-82c7-e50c6bec3bcf"
+                                    },
                                     "geneName": "NTRK1",
                                     "chromosome": "chr1",
                                     "position": "156844362",
@@ -135,13 +144,18 @@
                                     "readDepth": 1180,
                                     "rare": false,
                                     "flowAlternativeAlleleObservationCount": "",
-                                    "flowReferenceAlleleObservations": ""
+                                    "flowReferenceAlleleObservations": "",
+                                    "inclusion": true,
+                                    "armSpecific": false
                                 },
                                 {
-                                    "metadata": {
-                                        "_id": "3e34adcc-85f0-4974-bfa2-6bf0bf87fd4e"
-                                    },
                                     "confirmed": false,
+                                    "gene": "FGFR2",
+                                    "oncominevariantclass": "Fusion",
+                                    "exon": "17",
+                                    "metadata": {
+                                        "_id": "4f52fd02-baa9-4c46-91b3-ef61bdbc6db9"
+                                    },
                                     "geneName": "FGFR2",
                                     "chromosome": "chr10",
                                     "position": "123243211",
@@ -153,13 +167,18 @@
                                     "readDepth": 1480,
                                     "rare": false,
                                     "flowAlternativeAlleleObservationCount": "",
-                                    "flowReferenceAlleleObservations": ""
+                                    "flowReferenceAlleleObservations": "",
+                                    "inclusion": true,
+                                    "armSpecific": false
                                 },
                                 {
-                                    "metadata": {
-                                        "_id": "c4f98767-979a-4f7d-a7b0-e8a239309ade"
-                                    },
                                     "confirmed": false,
+                                    "gene": "OFD1",
+                                    "oncominevariantclass": "Fusion",
+                                    "exon": "27",
+                                    "metadata": {
+                                        "_id": "4b1bd201-c768-4409-ab86-c3d0ccc9f21e"
+                                    },
                                     "geneName": "FGFR2",
                                     "chromosome": "chr10",
                                     "position": "123243211",
@@ -171,7 +190,9 @@
                                     "readDepth": 1480,
                                     "rare": false,
                                     "flowAlternativeAlleleObservationCount": "",
-                                    "flowReferenceAlleleObservations": ""
+                                    "flowReferenceAlleleObservations": "",
+                                    "inclusion": true,
+                                    "armSpecific": false
                                 }
                             ],
                             "unifiedGeneFusions": [
@@ -181,12 +202,14 @@
                                     "driverGene": "NTRK1",
                                     "partnerGene": "TPM3",
                                     "annotation": "COSF1318",
-                                    "metadata": {
-                                        "_id": "11de99f7-8a9c-4630-9375-d31e2a423ad6"
-                                    },
                                     "confirmed": false,
+                                    "metadata": {
+                                        "_id": "c08b46e3-c0ce-497b-a1e6-0418d34e07ec"
+                                    },
                                     "identifier": "TPM3-NTRK1.T7N10.COSF1318",
-                                    "rare": false
+                                    "rare": false,
+                                    "inclusion": true,
+                                    "armSpecific": false
                                 },
                                 {
                                     "driverReadCount": 1480,
@@ -194,19 +217,19 @@
                                     "driverGene": "OFD1",
                                     "partnerGene": "FGFR2",
                                     "annotation": "-",
-                                    "metadata": {
-                                        "_id": "d675817b-bd76-4077-b8d1-8705c8f509e8"
-                                    },
                                     "confirmed": false,
+                                    "metadata": {
+                                        "_id": "7696055e-5050-4ebf-ac22-0281cf77dbde"
+                                    },
                                     "identifier": "FGFR2-OFD1.F17O3",
-                                    "rare": false
+                                    "rare": false,
+                                    "inclusion": true,
+                                    "armSpecific": false
                                 }
                             ],
+                            "nonHotspotRules": [],
                             "createdDate": {
-                                "$date": 1504013756558
-                            },
-                            "metadata": {
-                                "_id": "9d2804f9-29f2-4210-af10-9b6e6aaf4a7a"
+                                "$date": 1504013757676
                             }
                         }
                     },
@@ -216,54 +239,51 @@
             ],
             "assayMessages": [
                 {
-                    "biopsySequenceNumber": "BSN-UIConfirmVariantReport",
+                    "patientSequenceNumber": "UIRejectVariantReport",
+                    "biopsySequenceNumber": "BSN-UIRejectVariantReport",
                     "biomarker": "ICCPTENs",
                     "orderedDate": {
-                        "$date": 1504013756380
-                    },
-                    "patientSequenceNumber": "UIConfirmVariantReport",
-                    "type": "ASSAY"
+                        "$date": 1504013757494
+                    }
                 },
                 {
-                    "biopsySequenceNumber": "BSN-UIConfirmVariantReport",
+                    "patientSequenceNumber": "UIRejectVariantReport",
+                    "biopsySequenceNumber": "BSN-UIRejectVariantReport",
                     "biomarker": "ICCPTENs",
                     "result": "NEGATIVE",
                     "orderedDate": {
-                        "$date": 1504013756380
+                        "$date": 1504013757494
                     },
                     "reportedDate": {
-                        "$date": 1504013756450
-                    },
-                    "patientSequenceNumber": "UIConfirmVariantReport",
-                    "type": "ASSAY"
+                        "$date": 1504013757572
+                    }
                 }
             ],
             "pathologyReportMessages": [],
             "mdAndersonMessages": [
                 {
-                    "biopsySequenceNumber": "BSN-UIConfirmVariantReport",
-                    "message": "SPECIMEN_RECEIVED",
+                    "patientSequenceNumber": "UIRejectVariantReport",
+                    "biopsySequenceNumber": "BSN-UIRejectVariantReport",
                     "reportedDate": {
-                        "$date": 1504013755963
+                        "$date": 1504013757089
                     },
-                    "patientSequenceNumber": "UIConfirmVariantReport",
-                    "type": "SPECIMEN"
+                    "message": "SPECIMEN_RECEIVED"
                 },
                 {
-                    "biopsySequenceNumber": "BSN-UIConfirmVariantReport",
-                    "message": "NUCLEIC_ACID_SENDOUT",
-                    "reportedDate": {
-                        "$date": 1504013756003
-                    },
-                    "molecularSequenceNumber": "MSN-UIConfirmVariantReport",
+                    "molecularSequenceNumber": "MSN-UIRejectVariantReport",
                     "destinationSite": "Boston",
-                    "trackingNumber": "TN-UIConfirmVariantReport",
+                    "trackingNumber": "TN-UIRejectVariantReport",
                     "dnaConcentration": "",
                     "dnaVolume": "",
                     "cDnaConcentration": "",
                     "cDnaVolume": "",
-                    "patientSequenceNumber": "UIConfirmVariantReport",
-                    "type": "SPECIMEN"
+                    "patientSequenceNumber": "UIRejectVariantReport",
+                    "biopsySequenceNumber": "BSN-UIRejectVariantReport",
+                    "reportedDate": {
+                        "$date": 1504013757126
+                    },
+                    "message": "NUCLEIC_ACID_SENDOUT",
+                    "_class": "gov.match.model.message.NucleicAcidsShippingMessage"
                 }
             ],
             "failure": false,
@@ -276,7 +296,9 @@
     "diseases": [],
     "concordance": "U",
     "priorDrugs": [],
+    "exclusionCriterias": [],
     "registrationDate": {
-        "$date": 1504013755917
-    }
+        "$date": 1504013757036
+    },
+    "stateToken": "0f79ed56-2331-4a7c-925f-472f7a304861"
 }
