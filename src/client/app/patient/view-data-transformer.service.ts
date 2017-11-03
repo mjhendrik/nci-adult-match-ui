@@ -137,7 +137,7 @@ export class ViewDataTransformer {
     report.comments = updatedStatus.comments;
     report.statusUser = updatedStatus.commenter;
     report.isVariantReportEditable = this.getVariantReportEditable(report);
-    report.variantReporterRejectedOrConfirmedDate = updatedStatus.dateTime || new Date();
+    report.variantReporterRejectedOrConfirmedDate = updatedStatus.dateTime || new Date().toString();
   }
 
   updateAssignmentReportStatus(report: VariantReportData, updatedStatus: ApiStatusUpdateSuccess): void {

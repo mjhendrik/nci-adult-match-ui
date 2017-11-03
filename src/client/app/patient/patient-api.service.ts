@@ -19,7 +19,7 @@ export interface ApiStatusUpdateSuccess {
   status: string;
   comments: string;
   commenter: string;
-  timeStamp: string;
+  dateTime: string;
 }
 
 @Injectable()
