@@ -58,6 +58,10 @@ kie.wb.fs.filepath=/gov/nih/nci/matchbox/TreatmentArmAssignmentLogic.drl
 kie.wb.fs.package=gov/nih/nci/matchbox/TreatmentArmAssignmentLogic.drl
 queue.name=message-api-dev-{REPLACE_WITH_YOUR_QUEUE_NAME}-queue.fifo
 vcf.converter.path=/usr/local/bin
+
+ecog.api.scheme=http
+ecog.api.hostname=mock-ecog
+ecog.api.port=3000
 ```
 
 For front-end developers running the front-end code in node, run everything __but__ the front-end:
@@ -76,6 +80,7 @@ Full list of services included in `docker-compose.yml`
 * `aliquots-api`
 * `ir-processor-api`
 * `message-api`
+* `mock-ecog`
 * `mongo`
 * `dynamo`
 
