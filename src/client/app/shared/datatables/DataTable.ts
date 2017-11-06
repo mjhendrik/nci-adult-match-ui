@@ -96,8 +96,7 @@ export class DataTable implements OnChanges, DoCheck {
         }
         if (changes['sortBy'] || changes['sortOrder']) {
             if (!_.includes(['asc', 'desc'], this.sortOrder)) {
-                // tslint:disable-next-line:quotemark
-                console.warn("angular2-datatable: value for input mfSortOrder must be one of ['asc', 'desc'], but is:", this.sortOrder);
+                console.warn('angular2-datatable: value for input mfSortOrder must be one of ["asc", "desc"], but is:', this.sortOrder);
                 this.sortOrder = 'asc';
             }
             if (this.sortBy) {
