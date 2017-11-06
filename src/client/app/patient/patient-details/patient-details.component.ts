@@ -10,6 +10,7 @@ import { routerTransition } from './../../shared/router.animations';
 import { PatientApiService } from '../patient-api.service';
 import { ViewDataTransformer } from './../view-data-transformer.service';
 import { PatientData } from './patient-details.module';
+import { UserProfileService } from '../../shared/user-profile/user-profile.service';
 
 @Component({
   moduleId: module.id,
@@ -27,7 +28,6 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
   summaryData: any = {};
   entityId: string = '';
   section: string = '';
-  roles: any[] = [];
   enableFileUpload = false;
   dzConfigDocuments: DropzoneConfigInterface;
   pendingVariantReport: any;
@@ -37,7 +37,8 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
     private route: ActivatedRoute,
     private patientApi: PatientApiService,
     private transformer: ViewDataTransformer,
-    private router: Router) {
+    private router: Router,
+    private profile: UserProfileService) {
 
     this.dzConfigDocuments = {
       // Change this to your upload POST address:
@@ -59,10 +60,8 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
   ngOnInit() {
     Object.assign(this, this.route.snapshot.data['data']);
 
-    this.roles = JSON.parse(localStorage.getItem('profile')).roles;
-
-    let roles = this.roles.filter(function (arrayElement) {
-      return arrayElement.indexOf('CLIA_') !== -1 || arrayElement === 'SYSTEM' || arrayElement === 'ADMIN';
+    let roles = this.profile.roles().filter(x => {
+      return x.indexOf('CLIA_') !== -1 || x.indexOf('SYSTEM') !== -1 || x === 'ADMIN';
     });
 
     if (roles.indexOf('ADMIN') !== -1

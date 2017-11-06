@@ -15,8 +15,8 @@ import { CliaVariantReportsNTCViewData } from '../clia-data-interfaces';
 
 export function main() {
   describe('clia variant reports ntc component with clia type mocha', () => {
-    // Setting module for testing
-    // Disable old forms
+    
+    
     let config: any[] = [
       { path: 'clia_variant_reports_ntc', component: 'CliaVariantReportsNtcComponent' }
     ];
@@ -82,8 +82,8 @@ export function main() {
   });
 
   describe('clia variant reports ntc component with clia type dartmouth', () => {
-    // Setting module for testing
-    // Disable old forms
+    
+    
     let config: any[] = [
       { path: 'clia_variant_reports_ntc', component: 'CliaVariantReportsNtcComponent' }
     ];
@@ -144,8 +144,8 @@ export function main() {
   });
 
   describe('clia variant reports ntc component with clia type yale', () => {
-    // Setting module for testing
-    // Disable old forms
+    
+    
     let config: any[] = [
       { path: 'clia_variant_reports_ntc', component: 'CliaVariantReportsNtcComponent' }
     ];
@@ -206,8 +206,8 @@ export function main() {
   });
 
   describe('clia variant reports ntc component with clia type mgh', () => {
-    // Setting module for testing
-    // Disable old forms
+    
+    
     let config: any[] = [
       { path: 'clia_variant_reports_ntc', component: 'CliaVariantReportsNtcComponent' }
     ];
@@ -268,8 +268,8 @@ export function main() {
   });
 
   describe('clia variant reports ntc component with clia type mda', () => {
-    // Setting module for testing
-    // Disable old forms
+    
+    
     let config: any[] = [
       { path: 'clia_variant_reports_ntc', component: 'CliaVariantReportsNtcComponent' }
     ];

@@ -8,8 +8,8 @@ import { VariantReportComparisonTableCnvComponent } from './variant-report-compa
 
 export function main() {
   describe('variant-report-comparison-table-cnv component', () => {
-    // Setting module for testing
-    // Disable old forms
+    
+    
 
     beforeEach(() => {
       TestBed.configureTestingModule({

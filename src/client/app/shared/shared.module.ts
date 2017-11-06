@@ -12,10 +12,11 @@ import { TreatmentArmLinkComponent } from './treatment-arm-link/treatment-arm-li
 import { PipesModule } from './pipes/pipes.module';
 import { CosmicLinkComponent } from './cosmic-link/cosmic-link.component';
 import { FooterComponent } from './footer/footer.component';
+import { UserProfileService } from './user-profile/user-profile.service';
+
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.
  */
-
 @NgModule({
   imports: [
     CommonModule,
@@ -37,7 +38,7 @@ import { FooterComponent } from './footer/footer.component';
     CosmicLinkComponent,
     FooterComponent
   ],
-  providers: [ConfigApiService]
+  providers: [ConfigApiService, UserProfileService]
 })
 export class SharedModule {
   static forRoot(): ModuleWithProviders {

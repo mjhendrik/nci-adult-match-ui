@@ -88,8 +88,8 @@ export function main() {
 
     let component: BiopsyTrackingListComponent;
     let fixture: ComponentFixture<BiopsyTrackingListComponent>;
-    // Setting module for testing
-    // Disable old forms
+    
+    
 
     let config: any[] = [
       { path: 'tracking', component: 'BiopsyTrackingListComponent' }
@@ -262,7 +262,7 @@ export function main() {
 
     let component: BiopsyTrackingListComponent;
     let fixture: ComponentFixture<BiopsyTrackingListComponent>;
-    // Setting module for testing
+    
     // Disable old form
 
     let config: any[] = [

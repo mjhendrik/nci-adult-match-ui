@@ -47,8 +47,8 @@ export function main() {
     let component: TreatmentArmListComponent;
     let fixture: ComponentFixture<TreatmentArmListComponent>;
 
-    // Setting module for testing
-    // Disable old forms
+    
+    
     let config: any[] = [
       { path: 'treatments/details/:id/:version', component: 'TreatmentArmListComponent' },
       { path: 'treatmentsdetails/:id/:version', component: TreatmentArmListComponent }
@@ -223,8 +223,8 @@ export function main() {
   });
 
   describe('treatment arms list component', () => {
-    // Setting module for testing
-    // Disable old forms
+    
+    
     let config: any[] = [
       { path: 'treatments/details/:id/:version', component: TreatmentArmListComponent },
       { path: 'treatmentsdetails/:id/:version', component: TreatmentArmListComponent }

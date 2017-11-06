@@ -8,8 +8,8 @@ import { VariantReportSimpleTableSnvIndelsComponent } from './variant-report-sim
 
 export function main() {
   xdescribe('variant-report-simple-table-snv-indels component', () => {
-    // Setting module for testing
-    // Disable old forms
+    
+    
 
     beforeEach(() => {
       TestBed.configureTestingModule({

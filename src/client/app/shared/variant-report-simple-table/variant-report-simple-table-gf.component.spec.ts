@@ -8,8 +8,8 @@ import { VariantReportSimpleTableGeneFusionComponent } from './variant-report-si
 
 export function main() {
   xdescribe('variant-report-simple-table-gf component', () => {
-    // Setting module for testing
-    // Disable old forms
+    
+    
 
     beforeEach(() => {
       TestBed.configureTestingModule({

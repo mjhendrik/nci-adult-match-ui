@@ -5,8 +5,8 @@ import { LoginModule } from './login.module';
 
 export function main() {
   describe('login component', () => {
-    // Setting module for testing
-    // Disable old forms
+    
+    
 
     beforeEach(() => {
       TestBed.configureTestingModule({

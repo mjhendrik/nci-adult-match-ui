@@ -9,6 +9,7 @@ import { routerTransition } from './../../shared/router.animations';
 import { GmtPipe } from './../../shared/pipes/gmt.pipe';
 import { SampleControlApiService } from '../sample-control-api.service';
 import { IonReportersApiService } from '../ion-reporters-api.service';
+import { UserProfileService } from '../../shared/user-profile/user-profile.service';
 
 /**
  * CliaParentComponent.
@@ -55,12 +56,15 @@ export class CliaParentComponent implements OnInit {
   cliaTypeName: string;
   control_type: string = 'positive';
 
-  roles: any[] = [];
   generateMsnBtn: boolean = false;
 
   dataAvailable: boolean = false;
 
-  constructor(private apiSample: SampleControlApiService, private apiIon: IonReportersApiService, private route: ActivatedRoute) {
+  constructor(
+    private apiSample: SampleControlApiService,
+    private apiIon: IonReportersApiService,
+    private route: ActivatedRoute,
+    private profile: UserProfileService) {
   }
 
   ngOnInit() {
@@ -81,14 +85,13 @@ export class CliaParentComponent implements OnInit {
     // TO_DO: Error: Timeout - Async callback was not invoked within timeout specified by jasmine.DEFAULT_TIMEOUT_INTERVAL.
     // (https://github.com/angular/angular/issues/8280#issue-151377567)
 
-    this.roles = JSON.parse(localStorage.getItem('profile')).roles;
-
-    let roles = this.roles.filter(function (arrayElement) {
-      return arrayElement.indexOf('_SENDER') !== -1 || arrayElement.indexOf('_REVIEWER') !== -1 || arrayElement === 'ADMIN';
+    let roles = this.profile.roles().filter(x => {
+      return x.indexOf('_SENDER') !== -1 || x.indexOf('_REVIEWER') !== -1 || x === 'ADMIN';
     });
 
-    if (roles.indexOf('ADMIN') !== -1 || roles.join().toLowerCase().indexOf(this.cliaType) !== -1) this.generateMsnBtn = true;
-
+    if (roles.indexOf('ADMIN') !== -1 || roles.join().toLowerCase().indexOf(this.cliaType) !== -1) {
+      this.generateMsnBtn = true;
+    }
   }
 
   getDataPC() {

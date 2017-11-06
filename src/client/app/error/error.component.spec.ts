@@ -8,8 +8,8 @@ import { ErrorModule } from './error.module';
 
 export function main() {
   describe('error component', () => {
-    // Setting module for testing
-    // Disable old forms
+    
+    
 
     beforeEach(() => {
       TestBed.configureTestingModule({

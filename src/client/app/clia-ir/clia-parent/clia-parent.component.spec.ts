@@ -1,39 +1,21 @@
 // import { Component } from '@angular/core';
 import {
   async,
-  TestBed,
-  tick,
-  fakeAsync,
-  inject
+  TestBed
 } from '@angular/core/testing';
 import { Observable } from 'rxjs/Observable';
 import { FormsModule } from '@angular/forms';
-import { DataTableModule } from '../../shared/datatables/index';
-// import { CliaVariantReportsNtcModule } from './clia-variant-reports-ntc.module';
-import { CliaParentComponent } from './clia-parent.component';
-// import { CliaVariantReportsNtcRoutingModule } from './clia-variant-reports-ntc-routing.module';
 import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+
+import { DataTableModule } from '../../shared/datatables/index';
+import { CliaParentComponent } from './clia-parent.component';
 import { PipesModule } from './../../shared/pipes/pipes.module';
 import { DirectivesModule } from './../../shared/directives/directives.module';
-import {
-  HttpModule,
-  Http,
-  Response,
-  ResponseOptions,
-  XHRBackend,
-  BaseRequestOptions
-} from '@angular/http';
-import {
-  MockBackend,
-  MockConnection
-} from '@angular/http/testing';
 import { SampleControlApiService } from '../sample-control-api.service';
-
+import { UserProfileService } from '../../shared/user-profile/user-profile.service';
 
 export function main() {
-
-
   let resolved_data = {
     PCData: [{
       copy_number_variants: ['test'],
@@ -61,12 +43,11 @@ export function main() {
       date_molecular_id_created: '2-12-2016',
       date_variant_received: '2-12-2016',
     }]
-  }
-
+  };
 
   describe('clia parent component with clia type mocha', () => {
-    // Setting module for testing
-    // Disable old forms
+    
+    
     let config: any[] = [
       { path: 'clia_variant_reports_ntc', component: 'CliaParentComponent' }
     ];
@@ -89,6 +70,7 @@ export function main() {
               }
             }
           },
+          UserProfileService
           // MockBackend,
           // BaseRequestOptions,
           // { provide: XHRBackend, useClass: MockBackend },
@@ -202,8 +184,8 @@ export function main() {
   });
 
   describe('clia parent component with clia type dartmouth', () => {
-    // Setting module for testing
-    // Disable old forms
+    
+    
     let config: any[] = [
       { path: 'clia_variant_reports_ntc', component: 'CliaParentComponent' }
     ];
@@ -224,6 +206,7 @@ export function main() {
               }
             }
           },
+          UserProfileService
         ]
       });
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
@@ -246,8 +229,8 @@ export function main() {
   });
 
   describe('clia parent component with clia type yale', () => {
-    // Setting module for testing
-    // Disable old forms
+    
+    
     let config: any[] = [
       { path: 'clia_variant_reports_ntc', component: 'CliaParentComponent' }
     ];
@@ -268,6 +251,7 @@ export function main() {
               }
             }
           },
+          UserProfileService
         ]
       });
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
@@ -290,8 +274,8 @@ export function main() {
   });
 
   describe('clia parent component with clia type mgh', () => {
-    // Setting module for testing
-    // Disable old forms
+    
+    
     let config: any[] = [
       { path: 'clia_variant_reports_ntc', component: 'CliaParentComponent' }
     ];
@@ -311,6 +295,7 @@ export function main() {
               }
             }
           },
+          UserProfileService
         ]
       });
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
@@ -333,8 +318,8 @@ export function main() {
   });
 
   describe('clia parent component with clia type mda', () => {
-    // Setting module for testing
-    // Disable old forms
+    
+    
     let config: any[] = [
       { path: 'clia_variant_reports_ntc', component: 'CliaParentComponent' }
     ];
@@ -354,6 +339,7 @@ export function main() {
               }
             }
           },
+          UserProfileService
         ]
       });
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['ADMIN'] }));

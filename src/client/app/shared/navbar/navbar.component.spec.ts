@@ -14,8 +14,8 @@ import { NavbarComponent } from './navbar.component';
 
 export function main() {
   describe('sd-navbar component', () => {
-    // Setting module for testing
-    // Disable old forms
+    
+    
 
     beforeEach(() => {
       TestBed.configureTestingModule({

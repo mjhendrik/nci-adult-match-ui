@@ -28,6 +28,7 @@ import { PatientApiServiceMock } from '../testing/patient-api-service-stub';
 import { ActivatedRouteStub } from '../testing/activated-route-stub';
 import { ViewDataTransformerStub } from '../testing/view-data-transformer-stubs';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { UserProfileService } from '../../shared/user-profile/user-profile.service';
 
 export function main() {
   describe('PatientDetailsComponent (templateUrl)', () => {
@@ -63,7 +64,8 @@ export function main() {
           { provide: ActivatedRoute, useValue: activatedRouteStub },
           { provide: PatientApiService, useClass: PatientApiServiceMock },
           ChangeDetectorRef,
-          ViewDataTransformer
+          ViewDataTransformer,
+          UserProfileService
         ]
       }).compileComponents();  // compile template and css
 
@@ -84,8 +86,6 @@ export function main() {
             }).createComponent(PatientDetailsComponent);
             fixture.componentInstance.ngOnInit();
             expect(fixture.componentInstance).toBeDefined();
-            expect(fixture.componentInstance.roles).toBeDefined();
-            expect(fixture.componentInstance.roles).toEqual([ 'ADMIN' ]);
           });
       }));
 

@@ -8,8 +8,8 @@ import { VariantReportSimpleTableCnvComponent } from './variant-report-simple-ta
 
 export function main() {
   xdescribe('variant-report-simple-table-cnv component', () => {
-    // Setting module for testing
-    // Disable old forms
+    
+    
 
     beforeEach(() => {
       TestBed.configureTestingModule({

@@ -343,8 +343,8 @@ let ta_resolved_data = {
 
 export function main() {
   describe('treatment arms details component', () => {
-    // Setting module for testing
-    // Disable old forms
+    
+    
     let config: any[] = [
       { path: 'treatments/details/:id/:version', component: TreatmentArmDetailsComponent },
       { path: 'treatmentsdetails/:id/:version', component: TreatmentArmDetailsComponent }

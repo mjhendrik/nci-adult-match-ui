@@ -35,8 +35,8 @@ export function main() {
   ];
 
   describe('clia variant report qc component clia type mocha', () => {
-    // Setting module for testing
-    // Disable old forms
+    
+    
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [
@@ -99,8 +99,8 @@ export function main() {
   });
 
   describe('clia variant report qc component clia type dartmouth', () => {
-    // Setting module for testing
-    // Disable old forms
+    
+    
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [
@@ -157,8 +157,8 @@ export function main() {
   });
 
   describe('clia variant report qc component clia type yale', () => {
-    // Setting module for testing
-    // Disable old forms
+    
+    
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [
@@ -215,8 +215,8 @@ export function main() {
   });
 
   describe('clia variant report qc component clia type mgh', () => {
-    // Setting module for testing
-    // Disable old forms
+    
+    
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [
@@ -273,8 +273,8 @@ export function main() {
   });
 
   describe('clia variant report qc component clia type mda', () => {
-    // Setting module for testing
-    // Disable old forms
+    
+    
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [

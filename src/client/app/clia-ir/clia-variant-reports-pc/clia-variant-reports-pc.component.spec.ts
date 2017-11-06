@@ -14,8 +14,8 @@ import { CliaVariantReportsPCViewData } from '../clia-data-interfaces';
 
 export function main() {
   describe('clia variant reports pc component with clia type mocha', () => {
-    // Setting module for testing
-    // Disable old forms
+    
+    
     let config: any[] = [
       { path: 'clia_variant_reports_pc', component: 'CliaVariantReportsPcComponent' }
     ];
@@ -77,8 +77,8 @@ export function main() {
   });
 
   describe('clia variant reports pc component with clia type dartmouth', () => {
-    // Setting module for testing
-    // Disable old forms
+    
+    
     let config: any[] = [
       { path: 'clia_variant_reports_pc', component: 'CliaVariantReportsPcComponent' }
     ];
@@ -137,8 +137,8 @@ export function main() {
   });
 
   describe('clia variant reports pc component with clia type yale', () => {
-    // Setting module for testing
-    // Disable old forms
+    
+    
     let config: any[] = [
       { path: 'clia_variant_reports_pc', component: 'CliaVariantReportsPcComponent' }
     ];
@@ -197,8 +197,8 @@ export function main() {
   });
 
   describe('clia variant reports pc component with clia type mgh', () => {
-    // Setting module for testing
-    // Disable old forms
+    
+    
     let config: any[] = [
       { path: 'clia_variant_reports_pc', component: 'CliaVariantReportsPcComponent' }
     ];
@@ -257,8 +257,8 @@ export function main() {
   });
 
   describe('clia variant reports pc component with clia type mda', () => {
-    // Setting module for testing
-    // Disable old forms
+    
+    
     let config: any[] = [
       { path: 'clia_variant_reports_pc', component: 'CliaVariantReportsPcComponent' }
     ];

@@ -67,8 +67,8 @@ export function main() {
 
 
   describe('clia parent component with clia type mocha', () => {
-    // Setting module for testing
-    // Disable old forms
+    
+    
     let config: any[] = [
       { path: 'clia_variant_reports_ntc', component: 'CliaParentComponent' }
     ];
@@ -182,8 +182,8 @@ export function main() {
   });
 
   describe('clia parent component with clia type dartmouth', () => {
-    // Setting module for testing
-    // Disable old forms
+    
+    
     let config: any[] = [
       { path: 'clia_variant_reports_ntc', component: 'CliaParentComponent' }
     ];
@@ -227,8 +227,8 @@ export function main() {
   });
 
   describe('clia parent component with clia type yale', () => {
-    // Setting module for testing
-    // Disable old forms
+    
+    
     let config: any[] = [
       { path: 'clia_variant_reports_ntc', component: 'CliaParentComponent' }
     ];
@@ -272,8 +272,8 @@ export function main() {
   });
 
   describe('clia parent component with clia type mgh', () => {
-    // Setting module for testing
-    // Disable old forms
+    
+    
     let config: any[] = [
       { path: 'clia_variant_reports_ntc', component: 'CliaParentComponent' }
     ];
@@ -316,8 +316,8 @@ export function main() {
   });
 
   describe('clia parent component with clia type mda', () => {
-    // Setting module for testing
-    // Disable old forms
+    
+    
     let config: any[] = [
       { path: 'clia_variant_reports_ntc', component: 'CliaParentComponent' }
     ];
