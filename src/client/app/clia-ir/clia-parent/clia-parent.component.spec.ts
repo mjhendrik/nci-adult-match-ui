@@ -14,6 +14,7 @@ import { PipesModule } from './../../shared/pipes/pipes.module';
 import { DirectivesModule } from './../../shared/directives/directives.module';
 import { SampleControlApiService } from '../sample-control-api.service';
 import { UserProfileService } from '../../shared/user-profile/user-profile.service';
+import { UserProfileMockService } from '../../shared/testing/user-profile-mock.service';
 
 export function main() {
   let resolved_data = {
@@ -70,7 +71,7 @@ export function main() {
               }
             }
           },
-          UserProfileService
+          { provide: UserProfileService, useClass: UserProfileMockService }
           // MockBackend,
           // BaseRequestOptions,
           // { provide: XHRBackend, useClass: MockBackend },
@@ -206,7 +207,7 @@ export function main() {
               }
             }
           },
-          UserProfileService
+          { provide: UserProfileService, useClass: UserProfileMockService }
         ]
       });
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
@@ -251,7 +252,7 @@ export function main() {
               }
             }
           },
-          UserProfileService
+          { provide: UserProfileService, useClass: UserProfileMockService }
         ]
       });
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
@@ -295,7 +296,7 @@ export function main() {
               }
             }
           },
-          UserProfileService
+          { provide: UserProfileService, useClass: UserProfileMockService }
         ]
       });
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
@@ -339,7 +340,7 @@ export function main() {
               }
             }
           },
-          UserProfileService
+          { provide: UserProfileService, useClass: UserProfileMockService }
         ]
       });
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['ADMIN'] }));

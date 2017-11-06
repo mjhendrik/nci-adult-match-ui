@@ -29,6 +29,7 @@ import { ActivatedRouteStub } from '../testing/activated-route-stub';
 import { ViewDataTransformerStub } from '../testing/view-data-transformer-stubs';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { UserProfileService } from '../../shared/user-profile/user-profile.service';
+import { UserProfileMockService } from '../../shared/testing/user-profile-mock.service';
 
 export function main() {
   describe('PatientDetailsComponent (templateUrl)', () => {
@@ -63,9 +64,9 @@ export function main() {
         providers: [
           { provide: ActivatedRoute, useValue: activatedRouteStub },
           { provide: PatientApiService, useClass: PatientApiServiceMock },
+          { provide: UserProfileService, useClass: UserProfileMockService },
           ChangeDetectorRef,
-          ViewDataTransformer,
-          UserProfileService
+          ViewDataTransformer
         ]
       }).compileComponents();  // compile template and css
 
