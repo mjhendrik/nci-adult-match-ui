@@ -2,36 +2,20 @@
 import {
   async,
   TestBed,
-  tick,
-  fakeAsync,
-  inject
 } from '@angular/core/testing';
 import { Observable } from 'rxjs/Observable';
 import { FormsModule } from '@angular/forms';
-import { DataTableModule } from '../../shared/datatables/index';
-// import { CliaVariantReportsNtcModule } from './clia-variant-reports-ntc.module';
-import { CliaParentComponent } from './clia-parent.component';
-// import { CliaVariantReportsNtcRoutingModule } from './clia-variant-reports-ntc-routing.module';
 import { ActivatedRoute } from '@angular/router';
+
+import { DataTableModule } from '../../shared/datatables/index';
+import { CliaParentComponent } from './clia-parent.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { PipesModule } from './../../shared/pipes/pipes.module';
 import { DirectivesModule } from './../../shared/directives/directives.module';
-import {
-  HttpModule,
-  Http,
-  Response,
-  ResponseOptions,
-  XHRBackend,
-  BaseRequestOptions
-} from '@angular/http';
-import {
-  MockBackend,
-  MockConnection
-} from '@angular/http/testing';
-
 import { SampleControlApiService } from '../sample-control-api.service';
 import { IonReportersApiService } from '../ion-reporters-api.service';
-
+import { UserProfileService } from '../../shared/user-profile/user-profile.service';
+import { UserProfileMockService } from '../../shared/testing/user-profile-mock.service';
 
 export function main() {
 
@@ -63,12 +47,11 @@ export function main() {
       date_molecular_id_created: '2-12-2016',
       date_variant_received: '2-12-2016',
     }]
-  }
-
+  };
 
   describe('clia parent component with clia type mocha', () => {
-    
-    
+
+
     let config: any[] = [
       { path: 'clia_variant_reports_ntc', component: 'CliaParentComponent' }
     ];
@@ -91,11 +74,12 @@ export function main() {
                 url: [{ path: 'clia_mocha' }],
                 data: {
                   cliaType: 'mocha',
-                  data: resolved_data
+                  adata: resolved_data
                 }
               }
             }
           },
+          { provide: UserProfileService, useClass: UserProfileMockService }
         ]
       });
 
@@ -182,8 +166,8 @@ export function main() {
   });
 
   describe('clia parent component with clia type dartmouth', () => {
-    
-    
+
+
     let config: any[] = [
       { path: 'clia_variant_reports_ntc', component: 'CliaParentComponent' }
     ];
@@ -205,6 +189,7 @@ export function main() {
               }
             }
           },
+          { provide: UserProfileService, useClass: UserProfileMockService }
         ]
       });
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
@@ -227,8 +212,8 @@ export function main() {
   });
 
   describe('clia parent component with clia type yale', () => {
-    
-    
+
+
     let config: any[] = [
       { path: 'clia_variant_reports_ntc', component: 'CliaParentComponent' }
     ];
@@ -250,6 +235,7 @@ export function main() {
               }
             }
           },
+          { provide: UserProfileService, useClass: UserProfileMockService }
         ]
       });
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
@@ -272,8 +258,8 @@ export function main() {
   });
 
   describe('clia parent component with clia type mgh', () => {
-    
-    
+
+
     let config: any[] = [
       { path: 'clia_variant_reports_ntc', component: 'CliaParentComponent' }
     ];
@@ -294,6 +280,7 @@ export function main() {
               }
             }
           },
+          { provide: UserProfileService, useClass: UserProfileMockService }
         ]
       });
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['MOCHA_VARIANT_REPORT_REVIEWER'] }));
@@ -316,8 +303,8 @@ export function main() {
   });
 
   describe('clia parent component with clia type mda', () => {
-    
-    
+
+
     let config: any[] = [
       { path: 'clia_variant_reports_ntc', component: 'CliaParentComponent' }
     ];
@@ -338,6 +325,7 @@ export function main() {
               }
             }
           },
+          { provide: UserProfileService, useClass: UserProfileMockService }
         ]
       });
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['ADMIN'] }));
@@ -418,7 +406,7 @@ class MockCliaApiService {
 }
 
 class MockCliaIonApiService {
-  getCliaIon():Observable<any> {
+  getCliaIon(): Observable<any> {
     let testData;
     testData = [{
       lastContactDate: '2-12-2015'
