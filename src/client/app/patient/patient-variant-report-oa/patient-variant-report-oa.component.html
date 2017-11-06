@@ -181,7 +181,7 @@
         <div *ngIf="hasAssignment(outsideData)" id="outside-assignment-details">
           <sd-assignment-reason-table [reasons]="outsideData.assignmentReport.reasons"></sd-assignment-reason-table>
 
-          <div class="text-center m-b-20" *ngIf="outsideData.isAssignmentReportEditable">
+          <div class="text-center m-b-20" *ngIf="outsideData.isAssignmentReportEditable && allowAssignmentReportEdit">
             <button class="btn btn-lime" (click)="confirmOutsideAssignmentReport()"><i class="fa fa-check"></i> Confirm Assignment</button>
           </div>
         </div>
@@ -369,7 +369,7 @@
         <div *ngIf="hasAssignment(matchData)" id="match-assignment-details">
           <sd-assignment-reason-table [reasons]="matchData.assignmentReport.reasons"></sd-assignment-reason-table>
 
-          <div class="text-center m-b-20" *ngIf="matchData.isAssignmentReportEditable">
+          <div class="text-center m-b-20" *ngIf="matchData.isAssignmentReportEditable && allowAssignmentReportEdit">
             <button class="btn btn-lime" (click)="confirmMatchAssignmentReport()"><i class="fa fa-check"></i> Confirm Assignment</button>
           </div>
         </div>
