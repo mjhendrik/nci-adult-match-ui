@@ -155,7 +155,7 @@ export class PatientApiService extends ApiService {
     return this.http.patch(`${Config.API.MESSAGE}/message/clia/patient/${psn}/biopsy/${bsn}/variant_reports/${analysisId}/variants/${variantId}`, patch)
       .map((res: Response) => {
         const data = res.json();
-        return { kind: 'success', commenter: data.commenter, status: data.status, dateTime: data.dateTime } as ApiStatusUpdateSuccess;
+        return { kind: 'success', commenter: data.commenter, status: data.status, dateTime: data.dateTime, comments: data.comment } as ApiStatusUpdateSuccess;
       })
       .catch((err: string) => Observable.of({ kind: 'error', message: err } as ApiStatusUpdateError));
   }

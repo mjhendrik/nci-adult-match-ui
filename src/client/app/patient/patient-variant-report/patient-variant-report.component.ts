@@ -19,6 +19,23 @@ import { ModalDialogConfirmationComponent } from '../../shared/modal-dialogs/mod
 import { ModalDialogWithCommentsComponent } from '../../shared/modal-dialogs/modal-dialog-with-comments.component';
 import { UserProfileService } from '../../shared/user-profile/user-profile.service';
 
+const roles = {
+  variantReportEdit: [
+    'SYSTEM',
+    'ADMIN',
+    'DARTMOUTH_VARIANT_REPORT_REVIEWER',
+    'MDA_VARIANT_REPORT_REVIEWER',
+    'MGH_VARIANT_REPORT_REVIEWER',
+    'MOCHA_VARIANT_REPORT_REVIEWER',
+    'YALE_VARIANT_REPORT_REVIEWER'
+  ],
+  assignmentReportEdit: [
+  'SYSTEM',
+  'ADMIN',
+  'ASSIGNMENT_REPORT_REVIEWER'
+  ]
+};
+
 /**
  * PatientVariantReportComponent.
  */
@@ -80,22 +97,6 @@ export class PatientVariantReportComponent implements OnInit, OnDestroy, Variant
   public modalRef: BsModalRef;
   public dialogSubscription: Subscription;
 
-  private variantReportEditRoles: [
-    'SYSTEM',
-    'ADMIN',
-    'DARTMOUTH_VARIANT_REPORT_REVIEWER',
-    'MDA_VARIANT_REPORT_REVIEWER',
-    'MGH_VARIANT_REPORT_REVIEWER',
-    'MOCHA_VARIANT_REPORT_REVIEWER',
-    'YALE_VARIANT_REPORT_REVIEWER'
-  ];
-
-  private assignmentReportEditRoles: [
-    'SYSTEM',
-    'ADMIN',
-    'ASSIGNMENT_REPORT_REVIEWER'
-  ];
-
   constructor(
     private route: ActivatedRoute,
     private patientApi: PatientApiService,
@@ -110,8 +111,8 @@ export class PatientVariantReportComponent implements OnInit, OnDestroy, Variant
   ngOnInit() {
     Object.assign(this, this.route.snapshot.data['data']);
 
-    this.allowVariantReportEdit = this.profile.checkRoles(this.variantReportEditRoles);
-    this.allowAssignmentReportEdit = this.profile.checkRoles(this.assignmentReportEditRoles);
+    this.allowVariantReportEdit = this.profile.checkRoles(roles.variantReportEdit);
+    this.allowAssignmentReportEdit = this.profile.checkRoles(roles.assignmentReportEdit);
   }
 
   ngOnDestroy(): void {

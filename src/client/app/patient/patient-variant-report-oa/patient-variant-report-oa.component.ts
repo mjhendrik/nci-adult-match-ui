@@ -19,6 +19,23 @@ import { VariantReportData } from '../variant-report-data';
 import { ToastrService } from '../../shared/error-handling/toastr.service';
 import { UserProfileService } from '../../shared/user-profile/user-profile.service';
 
+const roles = {
+  variantReportEdit: [
+    'SYSTEM',
+    'ADMIN',
+    'DARTMOUTH_VARIANT_REPORT_REVIEWER',
+    'MDA_VARIANT_REPORT_REVIEWER',
+    'MGH_VARIANT_REPORT_REVIEWER',
+    'MOCHA_VARIANT_REPORT_REVIEWER',
+    'YALE_VARIANT_REPORT_REVIEWER'
+  ],
+  assignmentReportEdit: [
+  'SYSTEM',
+  'ADMIN',
+  'ASSIGNMENT_REPORT_REVIEWER'
+  ]
+};
+
 /**
  * PatientVariantReportOutsideAssayComponent.
  */
@@ -54,25 +71,9 @@ export class PatientVariantReportOutsideAssayComponent
 
   allowVariantReportEdit: boolean;
   allowAssignmentReportEdit: boolean;
-  
+
   public modalRef: BsModalRef;
   public dialogSubscription: Subscription;
-
-  private variantReportEditRoles: [
-    'SYSTEM',
-    'ADMIN',
-    'DARTMOUTH_VARIANT_REPORT_REVIEWER',
-    'MDA_VARIANT_REPORT_REVIEWER',
-    'MGH_VARIANT_REPORT_REVIEWER',
-    'MOCHA_VARIANT_REPORT_REVIEWER',
-    'YALE_VARIANT_REPORT_REVIEWER'
-  ];
-
-  private assignmentReportEditRoles: [
-    'SYSTEM',
-    'ADMIN',
-    'ASSIGNMENT_REPORT_REVIEWER'
-  ];
 
   constructor(
     private route: ActivatedRoute,
@@ -97,8 +98,8 @@ export class PatientVariantReportOutsideAssayComponent
   ngOnInit() {
     Object.assign(this, this.route.snapshot.data['data']);
 
-    this.allowVariantReportEdit = this.profile.checkRoles(this.variantReportEditRoles);
-    this.allowAssignmentReportEdit = this.profile.checkRoles(this.assignmentReportEditRoles);
+    this.allowVariantReportEdit = this.profile.checkRoles(roles.variantReportEdit);
+    this.allowAssignmentReportEdit = this.profile.checkRoles(roles.assignmentReportEdit);
   }
 
   download(file: string) {
