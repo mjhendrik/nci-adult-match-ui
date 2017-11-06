@@ -19,17 +19,17 @@ export function main() {
   let config: any[] = [
     { path: 'clia_mocha/variant_reports_pc/qc/:id', component: CliaVariantReportQcComponent },
     { path: 'clia_mgh/variant_reports_pc/qc/:id', component: CliaVariantReportQcComponent },
-    { path: 'clia_dartmount/variant_reports_pc/qc/:id', component: CliaVariantReportQcComponent },
+    { path: 'clia_dartmouth/variant_reports_pc/qc/:id', component: CliaVariantReportQcComponent },
     { path: 'clia_yale/variant_reports_pc/qc/:id', component: CliaVariantReportQcComponent },
     { path: 'clia_mda/variant_reports_pc/qc/:id', component: CliaVariantReportQcComponent },
     { path: 'clia_mocha/variant_reports_ntc/qc/:id', component: CliaVariantReportQcComponent },
     { path: 'clia_mgh/variant_reports_ntc/qc/:id', component: CliaVariantReportQcComponent },
-    { path: 'clia_dartmount/variant_reports_ntc/qc/:id', component: CliaVariantReportQcComponent },
+    { path: 'clia_dartmouth/variant_reports_ntc/qc/:id', component: CliaVariantReportQcComponent },
     { path: 'clia_yale/variant_reports_ntc/qc/:id', component: CliaVariantReportQcComponent },
     { path: 'clia_mda/variant_reports_ntc/qc/:id', component: CliaVariantReportQcComponent },
     { path: 'clia_mocha/variant_reports_pacc/qc/:id', component: CliaVariantReportQcComponent },
     { path: 'clia_mgh/variant_reports_pacc/qc/:id', component: CliaVariantReportQcComponent },
-    { path: 'clia_dartmount/variant_reports_pacc/qc/:id', component: CliaVariantReportQcComponent },
+    { path: 'clia_dartmouth/variant_reports_pacc/qc/:id', component: CliaVariantReportQcComponent },
     { path: 'clia_yale/variant_reports_pacc/qc/:id', component: CliaVariantReportQcComponent },
     { path: 'clia_mda/variant_reports_pacc/qc/:id', component: CliaVariantReportQcComponent }
   ];

@@ -44,7 +44,7 @@ class DataResolver implements Resolve<any> {
         resolve: { data: DataResolver }
       },
       {
-        path: 'clia_dartmount/variant_reports_pc/:id',
+        path: 'clia_dartmouth/variant_reports_pc/:id',
         component: CliaVariantReportsPcComponent,
         canActivate: [AuthGuard],
         resolve: { data: DataResolver }
