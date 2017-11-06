@@ -6,4 +6,7 @@ export class UserProfileMockService {
     roles(): any[] {
         return [];
     }
+    checkRoles(rolesToCheck: string[]): boolean {
+        return true;
+    }
 }

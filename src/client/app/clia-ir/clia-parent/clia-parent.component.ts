@@ -85,7 +85,7 @@ export class CliaParentComponent implements OnInit {
     // TO_DO: Error: Timeout - Async callback was not invoked within timeout specified by jasmine.DEFAULT_TIMEOUT_INTERVAL.
     // (https://github.com/angular/angular/issues/8280#issue-151377567)
 
-    let roles = this.profile.roles().filter(x => {
+    const roles = this.profile.roles().filter(x => {
       return x.indexOf('_SENDER') !== -1 || x.indexOf('_REVIEWER') !== -1 || x === 'ADMIN';
     });
 

@@ -17,6 +17,7 @@ import { VariantReportData } from '../variant-report-data';
 import { ToastrService } from '../../shared/error-handling/toastr.service';
 import { ModalDialogConfirmationComponent } from '../../shared/modal-dialogs/modal-dialog-confirmation.component';
 import { ModalDialogWithCommentsComponent } from '../../shared/modal-dialogs/modal-dialog-with-comments.component';
+import { UserProfileService } from '../../shared/user-profile/user-profile.service';
 
 /**
  * PatientVariantReportComponent.
@@ -73,8 +74,27 @@ export class PatientVariantReportComponent implements OnInit, OnDestroy, Variant
   isAssignmentReportEditable: boolean;
   isOutsideAssayWorkflow: boolean;
 
+  allowVariantReportEdit: boolean;
+  allowAssignmentReportEdit: boolean;
+
   public modalRef: BsModalRef;
   public dialogSubscription: Subscription;
+
+  private variantReportEditRoles: [
+    'SYSTEM',
+    'ADMIN',
+    'DARTMOUTH_VARIANT_REPORT_REVIEWER',
+    'MDA_VARIANT_REPORT_REVIEWER',
+    'MGH_VARIANT_REPORT_REVIEWER',
+    'MOCHA_VARIANT_REPORT_REVIEWER',
+    'YALE_VARIANT_REPORT_REVIEWER'
+  ];
+
+  private assignmentReportEditRoles: [
+    'SYSTEM',
+    'ADMIN',
+    'ASSIGNMENT_REPORT_REVIEWER'
+  ];
 
   constructor(
     private route: ActivatedRoute,
@@ -82,12 +102,16 @@ export class PatientVariantReportComponent implements OnInit, OnDestroy, Variant
     private scrollService: ScrollService,
     private transformer: ViewDataTransformer,
     private modalService: BsModalService,
-    private toastrService: ToastrService) {
+    private toastrService: ToastrService,
+    private profile: UserProfileService) {
       this.scrollTo = scrollService.scrollToElement;
   }
 
   ngOnInit() {
     Object.assign(this, this.route.snapshot.data['data']);
+
+    this.allowVariantReportEdit = this.profile.checkRoles(this.variantReportEditRoles);
+    this.allowAssignmentReportEdit = this.profile.checkRoles(this.assignmentReportEditRoles);
   }
 
   ngOnDestroy(): void {

@@ -164,14 +164,14 @@
 
         <p *ngIf="!outsideData || !outsideData.analysisId" class="empty-data-panel">No Treatment Variant Report data</p>
         
-        <sd-variant-report-simple-table-snv-indels *ngIf="outsideData && outsideData.variantReport" [items]="outsideData.variantReport.singleNucleotideVariantAndIndels" [isEditable]="outsideData.isVariantReportEditable" (onVariantUpdated)="onVariantUpdated(outsideData, $event)"
+        <sd-variant-report-simple-table-snv-indels *ngIf="outsideData && outsideData.variantReport" [items]="outsideData.variantReport.singleNucleotideVariantAndIndels" [isEditable]="outsideData.isVariantReportEditable && allowVariantReportEdit" (onVariantUpdated)="onVariantUpdated(outsideData, $event)"
           [title]="'Single Nucleotide Variants and Indels'"></sd-variant-report-simple-table-snv-indels>
 
-        <sd-variant-report-simple-table-cnv *ngIf="outsideData && outsideData.variantReport" [items]="outsideData.variantReport.copyNumberVariants" [isEditable]="outsideData.isVariantReportEditable" (onVariantUpdated)="onVariantUpdated(outsideData, $event)" [title]="'Copy Number Variants'"></sd-variant-report-simple-table-cnv>
+        <sd-variant-report-simple-table-cnv *ngIf="outsideData && outsideData.variantReport" [items]="outsideData.variantReport.copyNumberVariants" [isEditable]="outsideData.isVariantReportEditable && allowVariantReportEdit" (onVariantUpdated)="onVariantUpdated(outsideData, $event)" [title]="'Copy Number Variants'"></sd-variant-report-simple-table-cnv>
 
-        <sd-variant-report-simple-table-gf *ngIf="outsideData && outsideData.variantReport" [items]="outsideData.variantReport.unifiedGeneFusions" [isEditable]="outsideData.isVariantReportEditable" (onVariantUpdated)="onVariantUpdated(outsideData, $event)" [title]="'Gene Fusions'"></sd-variant-report-simple-table-gf>
+        <sd-variant-report-simple-table-gf *ngIf="outsideData && outsideData.variantReport" [items]="outsideData.variantReport.unifiedGeneFusions" [isEditable]="outsideData.isVariantReportEditable && allowVariantReportEdit" (onVariantUpdated)="onVariantUpdated(outsideData, $event)" [title]="'Gene Fusions'"></sd-variant-report-simple-table-gf>
 
-        <div class="row" *ngIf="outsideData && outsideData.isVariantReportEditable">
+        <div class="row" *ngIf="outsideData && outsideData.isVariantReportEditable && allowVariantReportEdit">
           <div class="col-md-12 text-center m-t-20">
             <button class="btn btn-danger" (click)="rejectOutsideVariantReport()"><i class="fa fa-times"></i> Reject Report</button>
             <button class="btn btn-lime" (click)="confirmOutsideVariantReport()"><i class="fa fa-check"></i> Confirm Report</button>
@@ -352,14 +352,14 @@
 
         <p *ngIf="!matchData || !matchData.analysisId" class="empty-data-panel">No Confirmation Variant Report data</p>
         
-        <sd-variant-report-simple-table-snv-indels *ngIf="matchData && matchData.variantReport" [items]="matchData.variantReport.singleNucleotideVariantAndIndels" [isEditable]="matchData.isVariantReportEditable" (onVariantUpdated)="onVariantUpdated(matchData, $event)"
+        <sd-variant-report-simple-table-snv-indels *ngIf="matchData && matchData.variantReport" [items]="matchData.variantReport.singleNucleotideVariantAndIndels" [isEditable]="matchData.isVariantReportEditable && allowVariantReportEdit" (onVariantUpdated)="onVariantUpdated(matchData, $event)"
           [title]="'Single Nucleotide Variants and Indels'"></sd-variant-report-simple-table-snv-indels>
 
-        <sd-variant-report-simple-table-cnv *ngIf="matchData && matchData.variantReport" [items]="matchData.variantReport.copyNumberVariants" [isEditable]="matchData.isVariantReportEditable" (onVariantUpdated)="onVariantUpdated(matchData, $event)" [title]="'Copy Number Variants'"></sd-variant-report-simple-table-cnv>
+        <sd-variant-report-simple-table-cnv *ngIf="matchData && matchData.variantReport" [items]="matchData.variantReport.copyNumberVariants" [isEditable]="matchData.isVariantReportEditable && allowVariantReportEdit" (onVariantUpdated)="onVariantUpdated(matchData, $event)" [title]="'Copy Number Variants'"></sd-variant-report-simple-table-cnv>
 
-        <sd-variant-report-simple-table-gf *ngIf="matchData && matchData.variantReport" [items]="matchData.variantReport.unifiedGeneFusions" [isEditable]="matchData.isVariantReportEditable" (onVariantUpdated)="onVariantUpdated(matchData, $event)" [title]="'Gene Fusions'"></sd-variant-report-simple-table-gf>
+        <sd-variant-report-simple-table-gf *ngIf="matchData && matchData.variantReport" [items]="matchData.variantReport.unifiedGeneFusions" [isEditable]="matchData.isVariantReportEditable && allowVariantReportEdit" (onVariantUpdated)="onVariantUpdated(matchData, $event)" [title]="'Gene Fusions'"></sd-variant-report-simple-table-gf>
 
-        <div class="row" *ngIf="matchData && matchData.isVariantReportEditable">
+        <div class="row" *ngIf="matchData && matchData.isVariantReportEditable && allowVariantReportEdit">
           <div class="col-md-12 text-center m-t-20">
             <button class="btn btn-danger" (click)="rejectMatchVariantReport()"><i class="fa fa-times"></i> Reject Report</button>
             <button class="btn btn-lime" (click)="confirmMatchVariantReport()"><i class="fa fa-check"></i> Confirm Report</button>

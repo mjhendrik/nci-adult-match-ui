@@ -60,7 +60,7 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
   ngOnInit() {
     Object.assign(this, this.route.snapshot.data['data']);
 
-    let roles = this.profile.roles().filter(x => {
+    const roles = this.profile.roles().filter(x => {
       return x.indexOf('CLIA_') !== -1 || x.indexOf('SYSTEM') !== -1 || x === 'ADMIN';
     });
 
