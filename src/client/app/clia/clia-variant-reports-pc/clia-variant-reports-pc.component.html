@@ -129,7 +129,7 @@
                 <td>{{item.protein | dashify}}</td>
                 <td>{{item.function | dashify}}</td>
               </tr>
-              <tr *ngIf="positive_variants.length===0">
+              <tr *ngIf="positive_variants===undefined">
                 <td colspan="11" class="text-muted">No false positive variants were detected.</td>
               </tr>
             </tbody>
@@ -171,7 +171,7 @@
                 <td>{{item.protein | dashify}}</td>
                 <td>{{item.function | dashify}}</td>
               </tr>
-              <tr *ngIf="false_positive_variants.length===0">
+              <tr *ngIf="false_positive_variants===undefined">
                 <td colspan="10" class="text-muted">No false positive variants were detected.</td>
               </tr>
             </tbody>

@@ -25,10 +25,7 @@ export class AliquotApiService extends ApiService {
     // tslint:disable-next-line:max-line-length
     //   + '?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,date_variant_received,torrent_variant_caller_version,report_status,snv_indels,copy_number_variants,gene_fusions', // aliquot
 
-    return this.http.get(this.url('/message/clia/ntc_control/' + molecular_id
-      // tslint:disable-next-line:max-line-length
-      + '?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,date_variant_received,torrent_variant_caller_version,report_status,snv_indels,copy_number_variants,gene_fusions', // message
-      'assets/mock-data/clia-variant-reports-ntc-WHAT_SHOULD_BE_HERE.json'))
+    return this.http.get(this.url('/message/clia/ntc_control?molecularSequenceNumber=' + molecular_id, ''))
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -39,10 +36,7 @@ export class AliquotApiService extends ApiService {
     // tslint:disable-next-line:max-line-length
     //   + '?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,date_variant_received,torrent_variant_caller_version,report_status,snv_indels,copy_number_variants,gene_fusions', // aliquot
 
-    return this.http.get(this.url('/message/clia/proficiency_competency_control/' + molecular_id
-      // tslint:disable-next-line:max-line-length
-      + '?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,date_variant_received,torrent_variant_caller_version,report_status,snv_indels,copy_number_variants,gene_fusions', // message
-      'assets/mock-data/clia-variant-reports-pacc-WHAT_SHOULD_BE_HERE.json'))
+    return this.http.get(this.url('/message/clia/proficiency_competency_control?molecularSequenceNumber=' + molecular_id, ''))
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -53,12 +47,16 @@ export class AliquotApiService extends ApiService {
     // tslint:disable-next-line:max-line-length
     //   + '?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,positive_control_version,date_molecular_id_created,date_variant_received,torrent_variant_caller_version,report_status,positive_variants,false_positive_variants', // aliquot
 
-    return this.http.get(this.url('/message/clia/sample_control/' + molecular_id
-      // tslint:disable-next-line:max-line-length
-      + '?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,positive_control_version,date_molecular_id_created,date_variant_received,torrent_variant_caller_version,report_status,positive_variants,false_positive_variants', // message
-      'assets/mock-data/clia-variant-reports-pc-WHAT_SHOULD_BE_HERE.json'))
+    return this.http.get(this.url('/message/clia/sample_control?molecularSequenceNumber=' + molecular_id, ''))
       .map(this.extractData)
       .catch(this.handleError);
+
+    // MOCK
+    // return this.http.get('assets/mock-data/clia-variant-reports-pc-mocha.json')
+    //   .map(this.extractData)
+    //   // .do(data => console.log('server data:', data))  // debug
+    //   .catch(this.handleError);
+
   }
 
   validateAnalysisId(msn: string, analysisId: string) {
