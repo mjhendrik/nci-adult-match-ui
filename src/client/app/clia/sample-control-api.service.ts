@@ -15,8 +15,6 @@ export class SampleControlApiService extends ApiService {
     super(http);
   }
 
-  // http://localhost:8282/api/v1/message/clia/sample_control
-
   getCliaDetailsNTC(type: string): Observable<any[]> {
 
     // return this.http.get(this.url('/sample_controls?site=' + type
