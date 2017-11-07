@@ -43,22 +43,22 @@ export class DashboardComponent implements OnInit {
   timestamp: any = new Date();
 
   patientSummary: any = {
-    TOTAL: null,
-    ON_TREATMENT_ARM: null,
-    OFF_TRIAL: null
+    TOTAL: 0,
+    ON_TREATMENT_ARM: 0,
+    OFF_TRIAL: 0
   };
 
   treatmentArmSummary: any = {
-    TOTAL: null,
-    OPEN: null,
-    SUSPENDED: null,
-    CLOSED: null
+    TOTAL: 0,
+    OPEN: 0,
+    SUSPENDED: 0,
+    CLOSED: 0
   };
 
   biopsyTrackingSummary: any = {
-    TOTAL: null,
-    BIOPSY_SEQUENCES: null,
-    MOLECULAR_SEQUENCES: null
+    TOTAL: 0,
+    BIOPSY_SEQUENCES: 0,
+    MOLECULAR_SEQUENCES: 0
   };
 
   pendingAssignmentReports: LoadableData<any[]> = { isLoaded: false, data: [] };
