@@ -20,7 +20,7 @@ import { TreatmentArmApiService } from '../treatment-arm-api.service';
 export class TreatmentArmListComponent implements OnInit {
 
   searchtermTA: string = '';
-  recordsPerPageTA: number = 10;
+  recordsPerPageTA: number = 100;
   tableTADefaultSort: string = 'treatmentArmId';
   tableTAData: any[] = [];
   dataAvailable: boolean = false; // use emit

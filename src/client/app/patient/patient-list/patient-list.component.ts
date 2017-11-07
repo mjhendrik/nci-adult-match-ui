@@ -28,7 +28,7 @@ import 'rxjs/add/observable/fromEvent';
 export class PatientListComponent implements OnInit {
 
   searchTerm: string = '';
-  recordsPerPagePatients: number = 10;
+  recordsPerPagePatients: number = 100;
   tablePatientsDefaultSort: string = 'patientSequenceNumber';
   tablePatientsData: any[] = [];
   errorMessage: string;
