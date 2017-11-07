@@ -233,5 +233,46 @@ export function main() {
       })));
     });
 
+    describe('when getCliaVariantReportQC', () => {
+      let backend: MockBackend;
+      let service: SampleControlApiService;
+      let fakeData: any[];
+      let response: Response;
+
+      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
+        backend = be;
+        service = new SampleControlApiService(http);
+        fakeData = CliaApiServiceStub.makeCliaDetailsPCData();
+        let options = new ResponseOptions({ status: 200, body: fakeData });
+        response = new Response(options);
+      }));
+
+      xit('should have expected fake items total count (then)', async(inject([], () => {
+        backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
+
+        service.getCliaVariantReportQC('Sample_MoCha_1', 'Analyses_MoCha_1').toPromise()
+          .then(items => {
+            expect(items).toBe(fakeData, 'should have expected no. of items');
+          });
+      })));
+
+      it('should treat 404 as an Observable error', async(inject([], () => {
+        let resp = new Response(new ResponseOptions({ status: 404 }));
+        backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
+
+        service.getCliaVariantReportQC('Sample_MoCha_1', 'Analyses_MoCha_1')
+          .do(items => {
+            console.log('items');
+            console.log(items);
+            fail('should not respond with items');
+          })
+          .catch(err => {
+            expect(err).toMatch(/Bad response status/, 'should catch bad response status code');
+            return Observable.of(null); // failure is the expected test result
+          })
+          .toPromise();
+      })));
+    });
+
   });
 }
