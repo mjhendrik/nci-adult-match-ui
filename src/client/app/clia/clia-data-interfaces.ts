@@ -37,8 +37,11 @@ export interface CliaVariantReportsPCViewData {
   date_variant_received: {};
   torrent_variant_caller_version: {};
   report_status: {};
+  positiveControlVersion: {};
+  positiveControlLoadedDate: {};
   false_positive_variants: any[];
   positive_variants: any[];
+  positiveControls: any[];
 }
 
 export interface CliaVariantReportsQCViewData {
@@ -52,4 +55,6 @@ export interface CliaVariantReportsQCViewData {
   copy_number_variants: any[];
   gene_fusions: any[];
   snv_indels: any[];
+  copy_number_variant_genes: any[];
+  file_name: any;
 }
