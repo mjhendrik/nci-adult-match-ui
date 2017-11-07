@@ -67,7 +67,7 @@ ecog.api.port=3000
 For front-end developers running the front-end code in node, run everything __but__ the front-end:
 
 ```
-docker-compose up patient-api treatment-arm-api message-api
+docker-compose up patient-api treatment-arm-api message-api mock-ecog
 ```
 
 Full list of services included in `docker-compose.yml`
