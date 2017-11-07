@@ -44,8 +44,7 @@ export class SampleControlApiService extends ApiService {
     // return this.http.get(this.url('/sample_controls?site=' + type
     //   + '&control_type=positive&projection=molecular_id,date_molecular_id_created,date_variant_received,report_status', // sample control
 
-    return this.http.get(this.url('/message/clia/sample_control?site=' + type
-      + '', // message
+    return this.http.get(this.url('/message/clia/sample_control?site=' + type + '', // message
       ''))
       .map(this.extractData)
       .catch(this.handleError);
@@ -57,13 +56,11 @@ export class SampleControlApiService extends ApiService {
     // return this.http.get(this.url('/sample_controls/quality_control/' + molecular_id
     // tslint:disable-next-line:max-line-length
     //   + '?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,torrent_variant_caller_version,oncomine_control_panel_summary', // sample control
-
-    return this.http.get(this.url('/message/ecog/patient/' + molecular_id + '/variant_reports/' + analysisId + '/qc_report'
-      // analysisId might not be readily available
-      + '?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,torrent_variant_caller_version,oncomine_control_panel_summary', // message
-      'assets/mock-data/clia-variant-report-qc-WHAT_SHOULD_BE_HERE.json'))
+    
+    return this.http.get(this.url('/message/ecog/patient/' + molecular_id + '/variant_reports/' + analysisId + '/qc_report', ''))
       .map(this.extractData)
       .catch(this.handleError);
+
   }
 
   getCliaVariantReportVCF(molecular_id: string, analysisId: string): Observable<CliaVariantReportsQCViewData> {

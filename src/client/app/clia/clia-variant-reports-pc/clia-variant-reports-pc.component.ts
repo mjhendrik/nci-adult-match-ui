@@ -56,7 +56,7 @@ export class CliaVariantReportsPcComponent implements OnInit {
   }
 
   getData(itemList: CliaVariantReportsPCViewData) {
-    this.molecular_id = itemList.molecular_id;
+    // this.molecular_id = itemList.molecular_id;
     this.analysis_id = itemList.analysis_id;
     this.total_variants = itemList.total_variants;
     this.mapd = itemList.mapd;
