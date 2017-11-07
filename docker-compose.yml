@@ -154,7 +154,7 @@ services:
     image: "fnlcr/nci-adult-match-message-api:latest"
     ports:
       - "10250:10250"
-      - "8282:8080"
+      - "8080:8080"
     depends_on:
       - mongo
     environment:
@@ -171,6 +171,15 @@ services:
       - SECURITY_LOG_LEVEL=WARN
     volumes:
       - $HOME/config/nci-adult-match/nci-adult-match-message-api.properties:/matchbox-dev.properties
+    networks:
+      - adult-match
+  
+  mock-ecog:
+    image: fnlcr/nci-adult-mock-ecog
+    ports:
+      - "3000:3000"
+    environment:
+      - MONGODB_URI=mongodb://mongo:27017/Match
     networks:
       - adult-match
 

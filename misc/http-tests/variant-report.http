@@ -2,7 +2,7 @@
 
 
 // Confirm/refect variant
-PUT http://localhost:8282/api/v1/message/patient/{patient_id}/variant_report/{analysis_id}/variant/{variant_guid}
+PUT http://localhost:8080/api/v1/message/patient/{patient_id}/variant_report/{analysis_id}/variant/{variant_guid}
 content-type: application/json
 
 {
@@ -14,7 +14,7 @@ content-type: application/json
 ###
 
 // Confirm/refect variant report
-PUT http://localhost:8282/api/v1/message/patient/{patient_id}/variant_report/{analysis_id}
+PUT http://localhost:8080/api/v1/message/patient/{patient_id}/variant_report/{analysis_id}
 content-type: application/json
 
 {
@@ -26,7 +26,7 @@ content-type: application/json
 ###
 
 // Confirm/refect assignment report
-PUT http://localhost:8282/api/v1/message/patient/{patient_id}/assignment_report/{analysis_id}
+PUT http://localhost:8080/api/v1/message/patient/{patient_id}/assignment_report/{analysis_id}
 content-type: application/json
 
 {
