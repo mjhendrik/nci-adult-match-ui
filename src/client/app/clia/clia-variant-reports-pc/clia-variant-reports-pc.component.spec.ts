@@ -14,8 +14,8 @@ import { CliaVariantReportsPCViewData } from '../clia-data-interfaces';
 
 export function main() {
   describe('clia variant reports pc component with clia type mocha', () => {
-    
-    
+
+
     let config: any[] = [
       { path: 'clia_variant_reports_pc', component: 'CliaVariantReportsPcComponent' }
     ];
@@ -77,8 +77,8 @@ export function main() {
   });
 
   describe('clia variant reports pc component with clia type dartmouth', () => {
-    
-    
+
+
     let config: any[] = [
       { path: 'clia_variant_reports_pc', component: 'CliaVariantReportsPcComponent' }
     ];
@@ -137,8 +137,8 @@ export function main() {
   });
 
   describe('clia variant reports pc component with clia type yale', () => {
-    
-    
+
+
     let config: any[] = [
       { path: 'clia_variant_reports_pc', component: 'CliaVariantReportsPcComponent' }
     ];
@@ -197,8 +197,8 @@ export function main() {
   });
 
   describe('clia variant reports pc component with clia type mgh', () => {
-    
-    
+
+
     let config: any[] = [
       { path: 'clia_variant_reports_pc', component: 'CliaVariantReportsPcComponent' }
     ];
@@ -257,8 +257,8 @@ export function main() {
   });
 
   describe('clia variant reports pc component with clia type mda', () => {
-    
-    
+
+
     let config: any[] = [
       { path: 'clia_variant_reports_pc', component: 'CliaVariantReportsPcComponent' }
     ];
@@ -319,24 +319,24 @@ export function main() {
 
 
 class MockCliaApiService {
-  getCliaVariantReportsPC(): Observable<CliaVariantReportsPCViewData> {
-    let testData: CliaVariantReportsPCViewData;
-    testData = {
-      false_positive_variants: ['test'],
-      positive_variants: ['test'],
-      molecular_id: { 'test': 'test' },
-      analysis_id: { 'test': 'test' },
-      total_variants: { 'test': 'test' },
-      mapd: { 'test': 'test' },
-      cellularity: { 'test': 'test' },
-      positive_control_version: { 'test': 'test' },
-      date_molecular_id_created: { 'test': 'test' },
-      date_variant_received: { 'test': 'test' },
-      torrent_variant_caller_version: { 'test': 'test' },
-      report_status: { 'test': 'test' }
-    };
-    return Observable.of(testData);
-  }
+  // getCliaVariantReportsPC(): Observable<CliaVariantReportsPCViewData> {
+  //   let testData: CliaVariantReportsPCViewData;
+  //   testData = {
+  //     false_positive_variants: ['test'],
+  //     positive_variants: ['test'],
+  //     molecular_id: { 'test': 'test' },
+  //     analysis_id: { 'test': 'test' },
+  //     total_variants: { 'test': 'test' },
+  //     mapd: { 'test': 'test' },
+  //     cellularity: { 'test': 'test' },
+  //     positive_control_version: { 'test': 'test' },
+  //     date_molecular_id_created: { 'test': 'test' },
+  //     date_variant_received: { 'test': 'test' },
+  //     torrent_variant_caller_version: { 'test': 'test' },
+  //     report_status: { 'test': 'test' }
+  //   };
+  //   return Observable.of(testData);
+  // }
   downloadCliaDnaBam(): Observable<any> {
     let testdata = {
       s3_download_file_url: 'javascript:void(0)'
@@ -358,24 +358,24 @@ class MockCliaApiService {
 }
 
 class MockCliaApiServiceWithErrors {
-  getCliaVariantReportsPC(): Observable<CliaVariantReportsPCViewData> {
-    let testData: CliaVariantReportsPCViewData;
-    testData = {
-      false_positive_variants: ['test'],
-      positive_variants: ['test'],
-      molecular_id: { 'test': 'test' },
-      analysis_id: { 'test': 'test' },
-      total_variants: { 'test': 'test' },
-      mapd: { 'test': 'test' },
-      cellularity: { 'test': 'test' },
-      positive_control_version: { 'test': 'test' },
-      date_molecular_id_created: { 'test': 'test' },
-      date_variant_received: { 'test': 'test' },
-      torrent_variant_caller_version: { 'test': 'test' },
-      report_status: { 'test': 'test' }
-    };
-    return Observable.throw(testData);
-  }
+  // getCliaVariantReportsPC(): Observable<CliaVariantReportsPCViewData> {
+  //   let testData: CliaVariantReportsPCViewData;
+  //   testData = {
+  //     false_positive_variants: ['test'],
+  //     positive_variants: ['test'],
+  //     molecular_id: { 'test': 'test' },
+  //     analysis_id: { 'test': 'test' },
+  //     total_variants: { 'test': 'test' },
+  //     mapd: { 'test': 'test' },
+  //     cellularity: { 'test': 'test' },
+  //     positive_control_version: { 'test': 'test' },
+  //     date_molecular_id_created: { 'test': 'test' },
+  //     date_variant_received: { 'test': 'test' },
+  //     torrent_variant_caller_version: { 'test': 'test' },
+  //     report_status: { 'test': 'test' }
+  //   };
+  //   return Observable.throw(testData);
+  // }
   downloadCliaDnaBam(): Observable<any> {
     let testdata = {
       s3_download_file_url: 'javascript:void(0)'
