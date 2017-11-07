@@ -34,3 +34,196 @@ content-type: application/json
     "comment": "comment text",
     "comment_user": "comment user"
 }
+
+
+###
+
+// Get AMOIs for a variant report
+PATCH http://localhost:5010/api/v1/treatment_arms/amois
+content-type: application/json
+Accept:application/json
+Authorization:Bearer {CODE}
+
+{
+    "singleNucleotideVariants": [
+        {
+            "gene": "MTOR",
+            "oncominevariantclass": "",
+            "exon": "47",
+            "metadata": {
+                "_id": "7ca791c6-f658-44da-8f0e-78da329d882e",
+                "commenter": "rick.zakharov@nih.gov",
+                "status": "CONFIRMED"
+            },
+            "confirmed": true,
+            "geneName": "",
+            "chromosome": "chr1",
+            "position": "11184573",
+            "identifier": "COSM1686998",
+            "reference": "G",
+            "alternative": "A",
+            "filter": "PASS",
+            "transcript": "NM_004958.3",
+            "location": "exonic",
+            "readDepth": 1625,
+            "rare": false,
+            "alleleFrequency": 1.0,
+            "flowAlternativeAlleleObservationCount": "350",
+            "flowReferenceAlleleObservations": "1625",
+            "referenceAlleleObservations": 1623,
+            "alternativeAlleleObservationCount": 0
+        }
+    ],
+    "indels": [],
+    "copyNumberVariants": [
+        {
+            "refCopyNumber": 2.0,
+            "rawCopyNumber": 2.1,
+            "copyNumber": 7.1,
+            "confidenceInterval95percent": 2.46082,
+            "confidenceInterval5percent": 1.79208,
+            "metadata": {
+                "_id": "80fffa98-2580-477e-9a3a-91b6133f853a",
+                "commenter": "rick.zakharov@nih.gov",
+                "status": "CONFIRMED"
+            },
+            "confirmed": true,
+            "geneName": "",
+            "chromosome": "chr1",
+            "position": "40361592",
+            "identifier": "MYCL",
+            "reference": "A",
+            "alternative": "<CNV>",
+            "filter": "PASS",
+            "rare": false,
+            "flowAlternativeAlleleObservationCount": "",
+            "flowReferenceAlleleObservations": ""
+        }
+    ],
+    "geneFusions": [
+        {
+            "gene": "TPM3",
+            "oncominevariantclass": "Fusion",
+            "exon": "7",
+            "metadata": {
+                "_id": "e86db008-3915-4e3a-b06c-fd0501dd1a56"
+            },
+            "confirmed": false,
+            "geneName": "TPM3",
+            "chromosome": "chr1",
+            "position": "154142875",
+            "identifier": "TPM3-NTRK1.T7N10.COSF1318_1",
+            "reference": "C",
+            "alternative": "C[chr1:156844362[",
+            "filter": "PASS",
+            "location": "",
+            "readDepth": 1180,
+            "rare": false,
+            "flowAlternativeAlleleObservationCount": "",
+            "flowReferenceAlleleObservations": ""
+        },
+        {
+            "gene": "NTRK1",
+            "oncominevariantclass": "Fusion",
+            "exon": "10",
+            "metadata": {
+                "_id": "71706139-47b4-4f60-98c4-1500a73fa1a6"
+            },
+            "confirmed": false,
+            "geneName": "NTRK1",
+            "chromosome": "chr1",
+            "position": "156844362",
+            "identifier": "TPM3-NTRK1.T7N10.COSF1318_2",
+            "reference": "G",
+            "alternative": "[chr1:154142875[G",
+            "filter": "PASS",
+            "location": "",
+            "readDepth": 1180,
+            "rare": false,
+            "flowAlternativeAlleleObservationCount": "",
+            "flowReferenceAlleleObservations": ""
+        },
+        {
+            "gene": "FGFR2",
+            "oncominevariantclass": "Fusion",
+            "exon": "17",
+            "metadata": {
+                "_id": "3e34adcc-85f0-4974-bfa2-6bf0bf87fd4e"
+            },
+            "confirmed": false,
+            "geneName": "FGFR2",
+            "chromosome": "chr10",
+            "position": "123243211",
+            "identifier": "FGFR2-OFD1.F17O3_1",
+            "reference": "C",
+            "alternative": "C[chrX:13754596[",
+            "filter": "PASS",
+            "location": "",
+            "readDepth": 1480,
+            "rare": false,
+            "flowAlternativeAlleleObservationCount": "",
+            "flowReferenceAlleleObservations": ""
+        },
+        {
+            "gene": "OFD1",
+            "oncominevariantclass": "Fusion",
+            "exon": "27",
+            "metadata": {
+                "_id": "c4f98767-979a-4f7d-a7b0-e8a239309ade"
+            },
+            "confirmed": false,
+            "geneName": "FGFR2",
+            "chromosome": "chr10",
+            "position": "123243211",
+            "identifier": "FGFR2-OFD1.F17O3_2",
+            "reference": "C",
+            "alternative": "C[chrX:13754596[",
+            "filter": "PASS",
+            "location": "",
+            "readDepth": 1480,
+            "rare": false,
+            "flowAlternativeAlleleObservationCount": "",
+            "flowReferenceAlleleObservations": ""
+        }
+    ],
+    "unifiedGeneFusions": [
+        {
+            "driverReadCount": 1180,
+            "partnerReadCount": 1180,
+            "driverGene": "NTRK1",
+            "partnerGene": "TPM3",
+            "annotation": "COSF1318",
+            "metadata": {
+                "_id": "11de99f7-8a9c-4630-9375-d31e2a423ad6",
+                "commenter": "rick.zakharov@nih.gov",
+                "status": "CONFIRMED"
+            },
+            "confirmed": true,
+            "identifier": "TPM3-NTRK1.T7N10.COSF1318",
+            "rare": false
+        },
+        {
+            "driverReadCount": 1480,
+            "partnerReadCount": 1480,
+            "driverGene": "OFD1",
+            "partnerGene": "FGFR2",
+            "annotation": "-",
+            "metadata": {
+                "_id": "d675817b-bd76-4077-b8d1-8705c8f509e8",
+                "commenter": "rick.zakharov@nih.gov",
+                "status": "CONFIRMED"
+            },
+            "confirmed": true,
+            "identifier": "FGFR2-OFD1.F17O3",
+            "rare": false
+        }
+    ],
+    "createdDate": {
+        "$date": 1504013756558
+    },
+    "metadata": {
+        "_id": "0d6a3b81-eba8-4079-a452-068755ad0871",
+        "commenter": "rick.zakharov@nih.gov",
+        "status": "CONFIRMED"
+    }
+}
