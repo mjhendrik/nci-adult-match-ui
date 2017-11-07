@@ -64,8 +64,8 @@ export class CliaVariantReportsPcComponent implements OnInit {
     this.total_variants = itemList.total_variants;
     this.mapd = itemList.mapd;
     this.cellularity = itemList.cellularity;
-    this.positive_control_version = itemList.positive_control_version;
-    this.date_molecular_id_created = itemList.date_molecular_id_created;
+    this.positive_control_version = itemList.positiveControlVersion;
+    this.date_molecular_id_created = itemList.positiveControlLoadedDate;
     this.date_variant_received = itemList.date_variant_received;
     this.torrent_variant_caller_version = itemList.torrent_variant_caller_version;
     this.report_status = itemList.report_status;
