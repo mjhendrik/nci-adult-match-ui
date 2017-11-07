@@ -25,7 +25,7 @@ export class AliquotApiService extends ApiService {
     // tslint:disable-next-line:max-line-length
     //   + '?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,date_variant_received,torrent_variant_caller_version,report_status,snv_indels,copy_number_variants,gene_fusions', // aliquot
 
-    return this.http.get(this.url('/message/clia/ntc_control?molecularSequenceNumber=' + molecular_id, ''))
+    return this.http.get(this.url('/message/clia/ntc_control/variant_report/' + molecular_id, ''))
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -36,7 +36,7 @@ export class AliquotApiService extends ApiService {
     // tslint:disable-next-line:max-line-length
     //   + '?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,date_variant_received,torrent_variant_caller_version,report_status,snv_indels,copy_number_variants,gene_fusions', // aliquot
 
-    return this.http.get(this.url('/message/clia/proficiency_competency_control?molecularSequenceNumber=' + molecular_id, ''))
+    return this.http.get(this.url('/message/clia/proficiency_competency_control/variant_report/' + molecular_id, ''))
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -47,7 +47,7 @@ export class AliquotApiService extends ApiService {
     // tslint:disable-next-line:max-line-length
     //   + '?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,positive_control_version,date_molecular_id_created,date_variant_received,torrent_variant_caller_version,report_status,positive_variants,false_positive_variants', // aliquot
 
-    return this.http.get(this.url('/message/clia/sample_control?molecularSequenceNumber=' + molecular_id, ''))
+    return this.http.get(this.url('/message/clia/sample_control/variant_report/' + molecular_id, ''))
       .map(this.extractData)
       .catch(this.handleError);
 

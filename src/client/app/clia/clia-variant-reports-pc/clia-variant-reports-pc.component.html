@@ -113,23 +113,23 @@
             <tbody>
               <tr *ngFor="let item of positive_variants">
                 <td class="text-center">
-                  <span *ngIf="item.match===true"><i class="fa fa-check-circle text-success-light"></i></span>
-                  <span *ngIf="item.match===false"><i class="fa fa-times-circle text-danger-light"></i></span>
+                  <span *ngIf="item.positiveControl.match===true"><i class="fa fa-check-circle text-success-light"></i></span>
+                  <span *ngIf="item.positiveControl.match===false"><i class="fa fa-times-circle text-danger-light"></i></span>
                 </td>
                 <td>
-                  <cosmic-link [linkType]="'cosmicId'" [linkId]="item.identifier"></cosmic-link>
+                  <cosmic-link [linkType]="'cosmicId'" [linkId]="item.positiveControl.identifier"></cosmic-link>
                 </td>
-                <td>{{item.chromosome | dashify}}</td>
-                <td>{{item.position | dashify}}</td>
+                <td>{{item.positiveControl.chromosome | dashify}}</td>
+                <td>{{item.positiveControl.position | dashify}}</td>
                 <td>
-                  <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.gene"></cosmic-link>
+                  <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.positiveControl.gene"></cosmic-link>
                 </td>
-                <td>{{item.variant_type | dashify}}</td>
-                <td>{{item.ocp_reference | dashify}}</td>
-                <td>{{item.ocp_alternative | dashify}}</td>
-                <td>{{item.hgvs | dashify}}</td>
-                <td>{{item.protein | dashify}}</td>
-                <td>{{item.function | dashify}}</td>
+                <td>{{item.positiveControl.variant_type | dashify}}</td>
+                <td>{{item.positiveControl.ocp_reference | dashify}}</td>
+                <td>{{item.positiveControl.ocp_alternative | dashify}}</td>
+                <td>{{item.positiveControl.hgvs | dashify}}</td>
+                <td>{{item.positiveControl.protein | dashify}}</td>
+                <td>{{item.positiveControl.function | dashify}}</td>
               </tr>
               <tr *ngIf="positive_variants===undefined">
                 <td colspan="11" class="text-muted">No false positive variants were detected.</td>

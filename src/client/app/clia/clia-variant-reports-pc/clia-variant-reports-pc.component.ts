@@ -57,6 +57,9 @@ export class CliaVariantReportsPcComponent implements OnInit {
 
   getData(itemList: CliaVariantReportsPCViewData) {
     // this.molecular_id = itemList.molecular_id;
+    this.positive_variants = itemList.positiveControls;
+    // this.positive_variants = itemList.positive_variants;
+
     this.analysis_id = itemList.analysis_id;
     this.total_variants = itemList.total_variants;
     this.mapd = itemList.mapd;
@@ -67,7 +70,8 @@ export class CliaVariantReportsPcComponent implements OnInit {
     this.torrent_variant_caller_version = itemList.torrent_variant_caller_version;
     this.report_status = itemList.report_status;
     this.false_positive_variants = itemList.false_positive_variants;
-    this.positive_variants = itemList.positive_variants;
+
+
   };
 
   downloadDnaBam(): void {
