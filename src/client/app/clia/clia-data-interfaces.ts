@@ -39,9 +39,11 @@ export interface CliaVariantReportsPCViewData {
   report_status: {};
   positiveControlVersion: {};
   positiveControlLoadedDate: {};
+  matchingCriteria: {};
   false_positive_variants: any[];
   positive_variants: any[];
   positiveControls: any[];
+ 
 }
 
 export interface CliaVariantReportsQCViewData {

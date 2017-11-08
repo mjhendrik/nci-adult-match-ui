@@ -41,6 +41,7 @@ export class CliaVariantReportQcComponent implements OnInit {
   tabTypeName: string;
   tabTypeHeaderName: string;
   graphData: any;
+  parsed_vcf_genes: any[];
 
   constructor(private cliaApi: SampleControlApiService, private route: ActivatedRoute) { }
 
@@ -75,7 +76,7 @@ export class CliaVariantReportQcComponent implements OnInit {
     this.molecular_id = this.route.snapshot.params['id'];
 
     this.getData(this.route.snapshot.data['data'].data);
-    this.getGraph(this.route.snapshot.data['graph'].data);
+    // this.getGraph(this.route.snapshot.data['graph'].data);
 
   }
 
@@ -95,11 +96,12 @@ export class CliaVariantReportQcComponent implements OnInit {
     this.copy_number_variants = itemList.copy_number_variants;
     this.gene_fusions = itemList.gene_fusions;
     this.snv_indels = itemList.snv_indels;
+    this.parsed_vcf_genes = itemList.copy_number_variant_genes;
   };
 
-  getGraph(itemList: CliaVariantReportsQCViewData) {
-    this.graphData = itemList;
-  }
+  // getGraph(itemList: CliaVariantReportsQCViewData) {
+  //   this.graphData = itemList;
+  // }
 
   downloadDnaBam(): void {
     this.cliaApi.downloadCliaDnaBam(this.molecular_id)
