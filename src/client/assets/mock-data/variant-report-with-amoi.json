@@ -1,0 +1,34 @@
+{
+    "singleNucleotideVariants": [
+        {
+            "confirmed": true,
+            "gene": "EFGR",
+            "amois": {
+                "CURRENT": [
+                    {
+                        "treatmentArmId": "EAY131-A",
+                        "type": "Both",
+                        "inclusions": [
+                            "2017-09-31"
+                        ],
+                        "exclusions": []
+                    }
+                ],
+                "PRIOR": [
+                    {
+                        "treatmentArmId": "EAY131-A",
+                        "type": "Both",
+                        "inclusions": [
+                            "2016-05-31",
+                            "2016-12-15"
+                        ],
+                        "exclusions": [
+                            "2016-04-31",
+                            "2016-8-15"
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}
