@@ -122,11 +122,11 @@
                 <td>{{item.positiveControl.chromosome | dashify}}</td>
                 <td>{{item.positiveControl.position | dashify}}</td>
                 <td>
-                  <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.positiveControl.gene"></cosmic-link>
+                  <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.positiveControl.geneName"></cosmic-link>
                 </td>
-                <td>{{item.positiveControl.variant_type | dashify}}</td>
-                <td>{{item.positiveControl.ocp_reference | dashify}}</td>
-                <td>{{item.positiveControl.ocp_alternative | dashify}}</td>
+                <td>{{item.positiveControl.variantType | dashify}}</td>
+                <td>{{item.positiveControl.reference | dashify}}</td>
+                <td>{{item.positiveControl.alternative | dashify}}</td>
                 <td>{{item.positiveControl.hgvs | dashify}}</td>
                 <td>{{item.positiveControl.protein | dashify}}</td>
                 <td>{{item.positiveControl.function | dashify}}</td>
