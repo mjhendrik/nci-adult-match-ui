@@ -221,6 +221,7 @@ export class FileUploadContentComponent implements OnInit {
 
   closeSuccessDialog() {
     this.modalRef3.hide();
+    if (this.modalRef2) this.modalRef2.hide();
     this.bsModalRef.hide();
   }
 
