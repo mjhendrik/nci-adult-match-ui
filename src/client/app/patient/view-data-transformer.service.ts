@@ -249,6 +249,28 @@ export class ViewDataTransformer {
     return variantReport;
   }
 
+  findVariantReport(patient: any, analysisId: string): any {
+    if (!patient)
+      return null;
+
+    // The path: patient.biopsies[k].nucleicAcidSendouts[m].analyses[n].variantReport
+    for (let biopsy of patient.biopsies || []) {
+      for (let nucleicAcidSendout of biopsy.nucleicAcidSendouts || []) {
+        for (let analysis of nucleicAcidSendout.analyses || []) {
+          if (analysis.analysisId === analysisId) {
+            return analysis.variantReport || {};
+          }
+        }
+      }
+    }
+
+    return null;
+  }
+
+  replaceVariantReport(patient: any, variantReport: any): any {
+    return patient;
+  }
+
   private precessPassFailVariants(comparisonVariantReport: any): void {
     const summary: VariantReportComparisonSummary = {
       totalVariants: 0,
@@ -398,7 +420,7 @@ export class ViewDataTransformer {
       variantReport.isOutsideAssayWorkflow = transformedBiopsy.isOutsideAssayWorkflow;
       variantReport.isOutsideAssay = transformedBiopsy.isOutsideAssay;
       variantReport.variantReportFileReceivedDate = analysis.variantReportFileReceivedDate;
-  
+
       variantReport.moiSummary = {
         totalaMOIs: 0,
         totalMOIs: 0,

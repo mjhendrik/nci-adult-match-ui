@@ -7,9 +7,7 @@ import {
 import { ErrorModule } from './error.module';
 
 export function main() {
-  describe('error component', () => {
-    
-    
+  xdescribe('error component', () => {
 
     beforeEach(() => {
       TestBed.configureTestingModule({

@@ -28,9 +28,9 @@ export class TreatmentArmApiService {
     // return this.http.get('assets/mock-data/treatment-arm-details-new.json')
 
     return this.http.get(Config.API.TREATMENT_ARM + '/treatment_arms/' + treatmentArmId
+      // tslint:disable-next-line:max-line-length
       + '?active=true&projection=treatmentArmId,name,version,treatmentArmDrugs,gene,numPatientsAssigned,treatmentArmStatus,statusLog,assayResults,exclusionDiseases,exclusionDrugs,variantReport,summaryReport,maxPatientsAllowed,dateArchived')
       .map((res: Response) => res.json())
-      //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
   }
 
@@ -39,9 +39,9 @@ export class TreatmentArmApiService {
     // return this.http.get('assets/mock-data/treatment-arm-details-new-previous.json')
 
     return this.http.get(Config.API.TREATMENT_ARM + '/treatment_arms/' + treatmentArmId
+      // tslint:disable-next-line:max-line-length
       + '?projection=treatmentArmId,name,version,treatmentArmDrugs,gene,numPatientsAssigned,treatmentArmStatus,statusLog,assayResults,exclusionDiseases,exclusionDrugs,variantReport,dateArchived,summaryReport,maxPatientsAllowed')
       .map((res: Response) => res.json())
-      //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
   }
 
@@ -51,7 +51,6 @@ export class TreatmentArmApiService {
 
     return this.http.get(Config.API.TREATMENT_ARM + '/treatment_arms/' + treatmentArmId + '?projection=dateArchived,version')
       .map((res: Response) => res.json())
-      //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
   }
 
@@ -62,8 +61,16 @@ export class TreatmentArmApiService {
     return this.http.get(Config.API.TREATMENT_ARM
       + '/treatment_arms?active=true&projection=treatmentArmId,name,treatmentArmStatus,dateCreated,statusLog,summaryReport,version')
       .map((res: Response) => res.json())
-      //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
+  }
+
+  getAmois(variantReport: any): Observable<any> {
+    return this.http.patch(Config.API.TREATMENT_ARM + '/treatment_arms/amois', variantReport)
+      .map((res: Response) => res.json())
+      .catch((err: string) => {
+        variantReport.amoiError = err;
+        return variantReport;
+      });
   }
 
   /**

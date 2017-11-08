@@ -36,8 +36,8 @@ class DataResolver implements Resolve<VariantReportComparisonData> {
     /  `forkJoin` causes parallel "execution" of the observables
     /  What is happening here, in plain English:
     /  First, request the Outside Assay Comparison Report data, then after the request has returned the data,
-    /  execute the 4 OCP and CNV requests in parallel.
-    /  After all 4 requests have returned data, `map` the resulting 5 elements to process further
+    /  execute the 2 OCP and CNV requests in parallel.
+    /  After all 2 requests have returned data, `map` the resulting 3 elements to process further
     */
     return reportObservable.flatMap(x => Observable.forkJoin(
       Observable.of(x),

@@ -42,7 +42,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { VariantReportSimpleTableModule } from './shared/variant-report-simple-table/variant-report-simple-table.module';
 import { VariantReportFilteredTableModule } from './shared/variant-report-filtered-table/variant-report-filtered-table.module';
 import { PopoverModule } from 'ngx-popover';
-import { HttpInterceptor } from './shared/http.interceptor';
+import { ErrorPageHttpInterceptor } from './shared/http.interceptor';
 import { Router } from '@angular/router';
 import { ErrorHandlingService } from './shared/error-handling/error-handling.service';
 import { ToastrService } from './shared/error-handling/toastr.service';
@@ -92,7 +92,7 @@ import { ModalDialogConfirmationComponent } from './shared/modal-dialogs/modal-d
     {
       provide: Http,
       useFactory: (backend: XHRBackend, options: RequestOptions, router: Router) => {
-        return new HttpInterceptor(backend, options, router);
+        return new ErrorPageHttpInterceptor(backend, options, router);
       },
       deps: [XHRBackend, RequestOptions, Router]
     },

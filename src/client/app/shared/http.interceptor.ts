@@ -16,11 +16,12 @@ const anyParamRe = '([-a-zA-Z0-9:%_\+.~#?&//=]+)';
 const excludedFromHandlingUrlPatterns = [
     RegExp(Config.API.PATIENT + '/patients/' + anyParamRe + '/variant_reports/' + anyParamRe + '/copy_number_report'),
     RegExp(Config.API.PATIENT + '/patients/' + anyParamRe + '/variant_reports/' + anyParamRe + '/oncomine_control_panel'),
-    RegExp(Config.API.PATIENT + '/patients/' + anyParamRe + '/variant_reports/' + anyParamRe + '/quality_control_report')
+    RegExp(Config.API.PATIENT + '/patients/' + anyParamRe + '/variant_reports/' + anyParamRe + '/quality_control_report'),
+    RegExp(Config.API.TREATMENT_ARM + '/treatment_arms/amois')
 ];
 
 @Injectable()
-export class HttpInterceptor extends Http {
+export class ErrorPageHttpInterceptor extends Http {
     excludedFromErrorHandling(url: string): any {
         if (!url)
             return false;

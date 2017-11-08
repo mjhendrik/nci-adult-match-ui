@@ -17,10 +17,11 @@ import { VariantReportSimpleTableModule } from '../../shared/variant-report-simp
 import { PatientApiService } from '../patient-api.service';
 import { ViewDataTransformer } from '../view-data-transformer.service';
 import { VariantReportData } from '../variant-report-data';
+import { TreatmentArmApiService } from '../../treatment-arm/treatment-arm-api.service';
 
 @Injectable()
 class DataResolver implements Resolve<VariantReportData> {
-  constructor(private api: PatientApiService, private transformer: ViewDataTransformer) { }
+  constructor(private patientApi: PatientApiService, private treatmentArmApi: TreatmentArmApiService, private transformer: ViewDataTransformer) { }
 
   resolve(
     route: ActivatedRouteSnapshot,
@@ -31,16 +32,22 @@ class DataResolver implements Resolve<VariantReportData> {
     const analysisId: string = route.params.analysisId;
 
     return Observable.forkJoin(
-      this.api.getPatientDetails(psn),
-      this.api.getPatientCopyNumberReport(psn, analysisId),
-      this.api.getPatientVariantReportOcp(psn, analysisId)
+      this.patientApi.getPatientDetails(psn).flatMap(patientData => {
+        let patient = this.transformer.transformPatient(patientData) || {};
+        let variantReport = this.transformer.findVariantReport(patient, analysisId);
+        return this.treatmentArmApi
+          .getAmois(variantReport)
+          .map(x => this.transformer.replaceVariantReport(patient, x));
+      }),
+      this.patientApi.getPatientCopyNumberReport(psn, analysisId),
+      this.patientApi.getPatientVariantReportOcp(psn, analysisId)
     ).map(
       data => {
         // getPatientDetails => data[0]
         // getPatientCopyNumberReport => data[1]
         // getPatientVariantReportOcp => data[2]
 
-        const patient = this.transformer.transformPatient(data[0]) || {};
+        const patient = data[0];
 
         return this.transformer.transformPatientVariantReport(patient, data[1], data[2], bsn, analysisId);
       }
