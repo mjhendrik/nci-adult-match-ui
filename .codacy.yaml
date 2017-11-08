@@ -29,7 +29,6 @@ ratings:
 exclude_paths:
 - "Gulpfile.js"
 - "karma.conf.js"
-- "protractor.conf.js"
 - "test-config.js"
 - "test-main.js"
 - "tools/**/*"

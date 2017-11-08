@@ -23,6 +23,7 @@ import {DOCUMENT} from '@angular/common';
 declare let d3: any;
 
 @Component({
+  moduleId: module.id,
   selector: 'cnv-chart',
   animations: [
     trigger('dialog', [
@@ -33,8 +34,8 @@ declare let d3: any;
       transition('* => void', [])
     ])
   ],
+  styleUrls: ['cnv-chart.directive.component.css'],
   providers: [nvD3],
-
   template://Zoomout panel
   `<div *ngIf="file_name">
     <div [@dialog] *ngIf="show" id="zoom" class="dialog" #ccww c-w>
