@@ -42,7 +42,6 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { VariantReportSimpleTableModule } from './shared/variant-report-simple-table/variant-report-simple-table.module';
 import { VariantReportFilteredTableModule } from './shared/variant-report-filtered-table/variant-report-filtered-table.module';
 import { PopoverModule } from 'ngx-popover';
-import { ErrorPageHttpInterceptor } from './shared/http.interceptor';
 import { Router } from '@angular/router';
 import { ErrorHandlingService } from './shared/error-handling/error-handling.service';
 import { ToastrService } from './shared/error-handling/toastr.service';
@@ -50,6 +49,7 @@ import { ModalModule } from 'ngx-bootstrap';
 import { FileUploadContentComponent } from './patient/file-upload/file-upload-content.component';
 import { ModalDialogWithCommentsComponent } from './shared/modal-dialogs/modal-dialog-with-comments.component';
 import { ModalDialogConfirmationComponent } from './shared/modal-dialogs/modal-dialog-confirmation.component';
+import { ErrorPageHttpInterceptor } from './shared/error-handling/error-page-http.interceptor';
 
 @NgModule({
   imports: [

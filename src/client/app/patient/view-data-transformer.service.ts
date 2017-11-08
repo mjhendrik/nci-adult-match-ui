@@ -267,7 +267,7 @@ export class ViewDataTransformer {
     return null;
   }
 
-  replaceVariantReport(patient: any, variantReport: any): any {
+  replaceVariantReportTables(patient: any, variantReport: any): any {
     return patient;
   }
 
