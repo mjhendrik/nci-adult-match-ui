@@ -138,9 +138,6 @@ Please note each time you run `docker-compose down` the data volumes for the doc
 git clone https://github.com/CBIIT/nci-adult-match-ui.git
 cd nci-adult-match-ui
 
-# install global dependencies
-npm install -g cucumber
-
 # install the project's dependencies
 npm install
 

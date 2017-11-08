@@ -31,14 +31,14 @@ before_install:
 before_script:
   - npm install
   - sh -e /etc/init.d/xvfb start
-  - nohup bash -c "webdriver-manager start 2>&1 &"  # Protractor CI
 
 script:
-    - npm run build.deploy
-    # - cat coverage/lcov.info | ./node_modules/.bin/codacy-coverage -d -v -l typescript # For codacy-coverage debugging
-    - cat coverage/lcov.info | ./node_modules/.bin/codacy-coverage -l typescript # Regular codacy-coverage command
-    - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-    - docker build -f .docker/dockerfile.httpd -t $DOCKER_IMAGE:$DATE -t $DOCKER_IMAGE:latest .
+  - npm run build.deploy
+  # - cat coverage/lcov.info | ./node_modules/.bin/codacy-coverage -d -v -l typescript # For codacy-coverage debugging
+  - cat coverage/lcov.info | ./node_modules/.bin/codacy-coverage -l typescript # Regular codacy-coverage command
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - docker build -f .docker/dockerfile.httpd -t $DOCKER_IMAGE:$DATE -t $DOCKER_IMAGE:latest .
+
 after_failure:
   - cat npm-debug.log
 

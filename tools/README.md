@@ -45,7 +45,6 @@ The seed provides the following tasks:
 | `build.index.dev.ts`   | Builds the `index.html` for the `dev` environment |
 | `build.index.prod.ts`  | Builds the `index.html` for the `prod` environment |
 | `build.js.dev.ts`      | Transpiles the TypeScript files (excluding specs and e2e specs) for the `dev` environment |
-| `build.js.e2e.ts`      | Transpiles the TypeScript files (excluding specs and e2e specs) for the `e2e` environment |
 | `build.js.prod.ts`     | Transpiles the TypeScript files (excluding specs and e2e specs) for the `prod` environment |
 | `build.js.test.ts`     | Transpiles the TypeScript files (excluding specs and e2e specs) for the `test` environment |
 | `build.tools.ts`       | Transpiles the TypeScript files located in `/tools` + `/gulpfile.ts` |
@@ -58,7 +57,6 @@ The seed provides the following tasks:
 | `clean.tools.ts`       | Cleans all JavaScript files which were transpiled by the build.tools task  |
 | `copy.js.prod.ts`      | Copies all TypeScript files (excluding specs and e2e specs) over to the `/tmp` dir |
 | `css-lint.ts`          | Lints all `css` files using `stylelint` |
-| `e2e.ts`               | Runs all e2e specs using `protractor` |
 | `generate.manifest.ts` | Generates a `manifest` file for the application |
 | `karma.start.ts`       | Starts the unit tests using `karma` |
 | `serve.coverage.ts`    | Serves the unit test coverage report using an `express` server |
@@ -67,9 +65,7 @@ The seed provides the following tasks:
 | `server.start.ts`      | Serves the files from `/dist/dev` using an `express` server |
 | `tslint.ts`            | Lints the TypeScript files using `codelyzer` |
 | `watch.dev.ts`         | Watches for code changes and rebuilds the files in `/dist/dev` |
-| `watch.e2e.ts`         | Watches for code changes and rebuilds the files in `/dist/e2e` |
 | `watch.test.ts`        | Watches for code changes and rebuilds the files in `/dist/test` |
-| `webdriver.ts`         | Installs the Selenium webdriver used for the Protractor e2e specs |
 
 ## Utilities
 
