@@ -10,7 +10,7 @@ import {
 } from '@angular/http';
 
 import { Observable } from 'rxjs/Rx';
-import { Config } from './config/env.config';
+import { Config } from '../config/env.config';
 
 const anyParamRe = '([-a-zA-Z0-9:%_\+.~#?&//=]+)';
 const excludedFromHandlingUrlPatterns = [
