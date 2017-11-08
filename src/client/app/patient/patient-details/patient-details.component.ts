@@ -61,7 +61,7 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
     Object.assign(this, this.route.snapshot.data['data']);
 
     const roles = this.profile.roles().filter(x => {
-      return x.indexOf('CLIA_') !== -1 || x.indexOf('SYSTEM') !== -1 || x === 'ADMIN';
+      return x.indexOf('CLIA_') !== -1 || x.indexOf('SYSTEM') !== -1 || x.indexOf('ADMIN') !== -1;
     });
 
     if (roles.indexOf('ADMIN') !== -1
@@ -117,7 +117,7 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
 
   getVariantReportQueryParams(report: any): any {
     if (report.isOutsideAssayWorkflow) {
-      return {isOutsideAssay: report.isOutsideAssay};
+      return { isOutsideAssay: report.isOutsideAssay };
     } else {
       return null;
     }
