@@ -25,7 +25,7 @@ docker network create adult-match-net
 Make sure you have the following environment variables:
 
     AUTH0_CLIENT_ID
-    AUTH0_CLIENT_SECRET # should be base-64 encoded
+    AUTH0_CLIENT_SECRET
     AUTH0_DATABASE
     AUTH0_DOMAIN
     AUTH0_MANAGEMENT_ID
