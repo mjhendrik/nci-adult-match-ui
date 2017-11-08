@@ -6,9 +6,13 @@
     <li>
       <a href [routerLink]="['/patients']" class="link-none">Patients</a>
     </li>
-    <li class="active">Patient <span class="entity-name">{{patient.patientSequenceNumber | dashify}}</span></li>
+    <li class="active">Patient
+      <span class="entity-name">{{patient.patientSequenceNumber | dashify}}</span>
+    </li>
   </ul>
-  <h1 class="page-header">Patient <span class="entity-name">{{patient.patientSequenceNumber | dashify}}</span></h1>
+  <h1 class="page-header">Patient
+    <span class="entity-name">{{patient.patientSequenceNumber | dashify}}</span>
+  </h1>
   <div class="row" matchHeight="panel-height">
     <div class="col-md-6">
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height">
@@ -67,11 +71,9 @@
       </div>
     </div>
   </div>
-
   <div class="panel">
     <tabset class="nav-tabs-purple">
       <tab heading="Summary" [active]="summaryData" id="summary" index="0">
-      
         <div *ngIf="pendingVariantReport && pendingVariantReport.daysPending" class="row">
           <div class="col-md-6">
             <a class="link-none" href [routerLink]="[getVariantReportLink(pendingVariantReport)]" [queryParams]="getVariantReportQueryParams(pendingVariantReport)">
@@ -88,7 +90,6 @@
             </a>
           </div>
         </div>
-      
         <div *ngIf="pendingAssignmentReport && pendingAssignmentReport.hoursPending" class="row">
           <div class="col-md-6">
             <a class="link-none" href [routerLink]="[getVariantReportLink(pendingVariantReport)]" [queryParams]="getVariantReportQueryParams(pendingVariantReport)">
@@ -105,15 +106,12 @@
             </a>
           </div>
         </div>
-      
         <div class="row">
           <div class="col-md-6 ut-patient-timeline" *ngIf="patient && patient.patientTriggers">
             <sd-patient-timeline [items]="patient.patientTriggers"></sd-patient-timeline>
           </div>
         </div>
-      
       </tab>
-
       <tab *ngFor="let biopsy of patient.biopsies; first as isFirst">
         <ng-template tabHeading>
           <i *ngIf="isFirst" class="fa fa-bell-o" aria-hidden="true"></i> Biopsy {{biopsy.biopsySequenceNumber}}, {{biopsy.dateCreated | gmt: 'YYYY-MM-DD'}}
@@ -245,8 +243,8 @@
                                 </ul>
                                 <h4 class="panel-title f-s-18">Analysis ID: {{analysis.analysisId}}</h4>
                                 <h5>
-                                    <a href [routerLink]="[getVariantReportLink(analysis.variantReport)]" [queryParams]="getVariantReportQueryParams(analysis.variantReport)">
-                                      <i class="fa fa-file-text-o"></i> Variant and Assignment Reports</a>
+                                  <a href [routerLink]="[getVariantReportLink(analysis.variantReport)]" [queryParams]="getVariantReportQueryParams(analysis.variantReport)">
+                                    <i class="fa fa-file-text-o"></i> Variant and Assignment Reports</a>
                                 </h5>
                               </div>
                               <div id="panel-tab-content" class="tab-content p-t-0">
@@ -338,7 +336,6 @@
           </div>
         </div>
       </tab>
-
       <tab heading="Documents" id="documents" index="99">
         <div class="table-responsive">
           <table class="table table-td-valign-middle">
