@@ -30,7 +30,7 @@ import 'rxjs/add/observable/fromEvent';
 export class BiopsyTrackingListComponent implements OnInit {
 
   searchtermBiopsyTrackingList: string = '';
-  recordsPerPageBiopsyTrackingList: number = 10;
+  recordsPerPageBiopsyTrackingList: number = 100;
   tableBiopsyTrackingListDefaultSort: string = 'biopsySequenceNumber';
   tableBiopsyTrackingListData: any[] = [];
   biopsyCount: number;
