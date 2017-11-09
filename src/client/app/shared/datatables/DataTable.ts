@@ -73,7 +73,9 @@ export class DataTable implements OnChanges, DoCheck {
     public setPage(activePage: number, rowsOnPage: number): void {
         if (this.rowsOnPage !== rowsOnPage || this.activePage !== activePage) {
             if (this.totalLength === undefined) {
-                this.totalLength = this.inputData.length;
+              this.totalLength = this.inputData!==undefined ? this.inputData.length: 0 ;
+              
+                // this.totalLength = this.inputData.length;
             }
             this.activePage = this.activePage !== activePage ? activePage : this.calculateNewActivePage(this.rowsOnPage, rowsOnPage);
             this.rowsOnPage = rowsOnPage;

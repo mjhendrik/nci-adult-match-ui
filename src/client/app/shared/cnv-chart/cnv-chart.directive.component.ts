@@ -113,8 +113,7 @@ export class CnvChartDirective implements AfterViewInit {
     if(this.data===null) return;
 
     let array:any = this.data[0] || {};
-
-
+    let version:any = this.data[1] || {};
     let xr:number = array.length * 24;
     let temp:any[] = [];
     let svg:any;
@@ -123,10 +122,9 @@ export class CnvChartDirective implements AfterViewInit {
     let endX:string = "";
 
     // if (typeof this.data !== "undefined" && this.data !== null) {
-      this.file_name = "Cnv Chart Test Name";
+      this.file_name = "Cnv Chart Test Name. Version: " + version;
       // this.file_name = this.data[1].split('tmp/')[1];
     // }
-
 
     let frm:any = (typeof this.frame !== 'undefined') ? (this.frame) : 0;
 
@@ -142,10 +140,15 @@ export class CnvChartDirective implements AfterViewInit {
       let values = array[key].values;
       let width:number = values.length;
 
-      let median:any = array[key].raw_copy_number;
+      let median:any = ("raw_copy_number" in array[key])===true ? array[key].raw_copy_number : array[key].rawCopyNumber;
+      let tsg:any = ("tsg_gene" in array[key])===true ? array[key].tsg_gene : array[key].tsgGene;
+
+      let status:string = !tsg ? '#CD0000' : '#007200';
+
+      // let median:any = array[key].raw_copy_number;
       let position:number = array[key].position;
       let chromosome:string = array[key].chromosome;
-      let status:string = !array[key].tsg_gene ? '#CD0000' : '#007200';
+      // let status:string = !array[key].tsg_gene ? '#CD0000' : '#007200';
 
       let min = values[0];
       let max = values[(width - 1)];
@@ -154,7 +157,6 @@ export class CnvChartDirective implements AfterViewInit {
       endX = ((chromosome !== 'chrX') ? '-' : 'x');
 
       if(frm > 0) {
-
         if (typeof chromosome !== 'undefined') {
           error = (parseFloat(median) > parseFloat(max)) ? 1 : 0;
           status = status;

@@ -43,7 +43,7 @@ export interface CliaVariantReportsPCViewData {
   false_positive_variants: any[];
   positive_variants: any[];
   positiveControls: any[];
- 
+
 }
 
 export interface CliaVariantReportsQCViewData {
@@ -58,5 +58,11 @@ export interface CliaVariantReportsQCViewData {
   gene_fusions: any[];
   snv_indels: any[];
   copy_number_variant_genes: any[];
+  parsed_vcf_genes: {};
   file_name: any;
+  body: {};
+  statusCode: string;
+  header: {};
+  parsedVCFGenes: any[];
+  tvcVersion: any[];
 }

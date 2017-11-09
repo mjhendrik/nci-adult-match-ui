@@ -80,12 +80,13 @@
     <div class="col-md-6">
       <div class="panel panel-white panel-accent-sides-orangeshade overflow-hidden panel-height-top">
         <div class="panel-heading">
-          <a href="javascript:alert('Opens CNV chart full screen')"><img src="/assets/mock-data/cnv_chart.png" alt="CNV Chart" style="width:100%"></a>
+          <cnv-chart [data]="parsed_vcf_genes"></cnv-chart>
         </div>
       </div>
     </div>
   </div>
   <div class="panel panel-white panel-accent-sides-orangeshade overflow-hidden">
+
     <div class="panel-heading">
       <div class="row">
         <div class="col-md-12">
@@ -103,5 +104,6 @@
         </div>
       </div>
     </div>
+
   </div>
 </div>

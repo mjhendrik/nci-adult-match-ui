@@ -32,7 +32,7 @@ class DataResolver implements Resolve<any> {
       data => {
         return {
           data: data[0],
-          graph: data[1]
+          graph: data[1].body
         };
       }
       );

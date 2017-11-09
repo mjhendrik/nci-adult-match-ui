@@ -33,6 +33,7 @@ export class CliaVariantReportsPcComponent implements OnInit {
   report_status: any;
   false_positive_variants: any[];
   positive_variants: any[];
+  matchingCriteria: any;
   errorMessage: string;
   pcType: string;
   cliaTypeName: string;
@@ -51,27 +52,26 @@ export class CliaVariantReportsPcComponent implements OnInit {
     if (this.pcType === 'mda') this.cliaTypeName = 'MD Anderson';
 
     this.molecular_id = this.route.snapshot.params['id'];
-
     this.getData(this.route.snapshot.data['data'].data);
   }
 
   getData(itemList: CliaVariantReportsPCViewData) {
     // this.molecular_id = itemList.molecular_id;
-    this.positive_variants = itemList.positiveControls;
     // this.positive_variants = itemList.positive_variants;
+
+    this.matchingCriteria = itemList.matchingCriteria;
+    this.positive_variants = itemList.positiveControls;
+    this.positive_control_version = itemList.positiveControlVersion;
+    this.date_molecular_id_created = itemList.positiveControlLoadedDate;
 
     this.analysis_id = itemList.analysis_id;
     this.total_variants = itemList.total_variants;
     this.mapd = itemList.mapd;
     this.cellularity = itemList.cellularity;
-    this.positive_control_version = itemList.positiveControlVersion;
-    this.date_molecular_id_created = itemList.positiveControlLoadedDate;
     this.date_variant_received = itemList.date_variant_received;
     this.torrent_variant_caller_version = itemList.torrent_variant_caller_version;
     this.report_status = itemList.report_status;
     this.false_positive_variants = itemList.false_positive_variants;
-
-
   };
 
   downloadDnaBam(): void {
