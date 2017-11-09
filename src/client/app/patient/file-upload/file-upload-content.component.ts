@@ -36,6 +36,7 @@ export class FileUploadContentComponent implements OnInit {
 
   public modalRef2: BsModalRef;
   public modalRef3: BsModalRef;
+  public modalRef4: BsModalRef;
   public config = {
     keyboard: false,
     ignoreBackdropClick: true
@@ -49,6 +50,7 @@ export class FileUploadContentComponent implements OnInit {
   uploadNotification: any;
   isUploading: boolean = false;
   fileCount: number = 0;
+  notifyMessage: string = '';
 
   percentDoneVariantZipFile: number = 0;
   percentDoneDnaBamFile: number = 0;
@@ -200,7 +202,9 @@ export class FileUploadContentComponent implements OnInit {
     };
 
     this.api.notifyAfterUpload(this.msn, this.uploadNotification).subscribe(itemList => {
-      // this.showSuccessDialog('success');
+      this.notifyMessage = itemList.message;
+      // if (itemList.status === 'success') this.showSuccessDialog('success');
+      // if (itemList.status === 'failure') this.showSuccessDialog('failure');
     });
 
   }
@@ -221,6 +225,16 @@ export class FileUploadContentComponent implements OnInit {
 
   closeSuccessDialog() {
     this.modalRef3.hide();
+    if (this.modalRef2) this.modalRef2.hide();
+    this.bsModalRef.hide();
+  }
+
+  showFailureDialog(template: TemplateRef<any>) {
+    this.modalRef4 = this.modalService.show(template, Object.assign({}, this.config, { class: 'modal-sm' }));
+  }
+
+  closeFailureDialog() {
+    this.modalRef4.hide();
     if (this.modalRef2) this.modalRef2.hide();
     this.bsModalRef.hide();
   }
