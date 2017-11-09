@@ -136,7 +136,10 @@ export class PatientApiService extends ApiService {
         const data = res.json();
         return { kind: 'success', commenter: data.commenter, status: data.status, dateTime: data.dateTime } as ApiStatusUpdateSuccess;
       })
-      .catch((err: string) => Observable.of({ kind: 'error', message: err } as ApiStatusUpdateError));
+      .catch((err: Response) => {
+        const data = err.json();
+        return Observable.of({ kind: 'error', message: data.message } as ApiStatusUpdateError);
+      });
   }
 
   updateVariant(
@@ -157,7 +160,10 @@ export class PatientApiService extends ApiService {
         const data = res.json();
         return { kind: 'success', commenter: data.commenter, status: data.status, dateTime: data.dateTime, comments: data.comment } as ApiStatusUpdateSuccess;
       })
-      .catch((err: string) => Observable.of({ kind: 'error', message: err } as ApiStatusUpdateError));
+      .catch((err: Response) => {
+        const data = err.json();
+        return Observable.of({ kind: 'error', message: data.message } as ApiStatusUpdateError);
+      });
   }
 
   updateAssignmentReport(psn: string, confirmed: boolean): Observable<ApiStatusUpdateSuccess | ApiStatusUpdateError> {
@@ -170,7 +176,9 @@ export class PatientApiService extends ApiService {
         const data = res.json();
         return { kind: 'success', commenter: data.commenter, status: data.status, dateTime: data.dateTime } as ApiStatusUpdateSuccess;
       })
-      .catch((err: string) => Observable.of({ kind: 'error', message: err } as ApiStatusUpdateError));
+      .catch((err: Response) => {
+        const data = err.json();
+        return Observable.of({ kind: 'error', message: data.message } as ApiStatusUpdateError);
+      });
   }
-
 }
