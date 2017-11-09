@@ -1,4 +1,4 @@
-<h4>{{title}}</h4>
+<h4>Single Nucleotide Variants and Indels</h4>
 <div class="row">
   <div class="col-md-6">
     <div class="dataTables_length form-inline p-t-15 p-b-10" id="data-table_length">
@@ -15,15 +15,20 @@
   <div class="col-md-6 p-r-5">
     <div id="data-table_filter" class="dataTables_filter pull-right form-inline p-t-15 p-b-10">
       <label>Search:
-        <input type="text" [(ngModel)]="searchTerm" class="form-control input-sm" placeholder="" aria-controls="data-table">                      
+        <input type="text" [(ngModel)]="searchTerm" class="form-control input-sm" placeholder="" aria-controls="data-table">
       </label>
     </div>
   </div>
 </div>
 <div class="row">
   <div class="table-responsive col-lg-12">
-    <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="items | filterByText: searchTerm" #mfTable="mfDataTable"
+    <table class="table table-td-valign-middle table-striped table-col-width"
+      [mfData]="items | filterByText: searchTerm" #mfTable="mfDataTable"
       [(mfSortBy)]="defaultSort" [mfRowsOnPage]="recordsPerPage">
+
+
+
+
       <thead>
         <tr [ngClass]="{true:'purple-light',false:'orangeshade-light'}[type=='patient']">
           <th><mfDefaultSorter by="identifier"><span class="table-header">ID</span></mfDefaultSorter></th>
