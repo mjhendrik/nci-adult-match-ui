@@ -130,10 +130,11 @@ export class PatientVariantReportComponent implements OnInit, OnDestroy, Variant
         (x: ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
           switch (x.kind) {
             case 'error':
-              this.showError(x.message);
+              this.showToast(x.message, true);
               break;
             case 'success':
               this.transformer.updateVariantReportStatus(this, x);
+              this.showToast(`Variant Report ${this.analysisId} has been confirmed`, false);
               break;
           }
         }
@@ -157,10 +158,11 @@ export class PatientVariantReportComponent implements OnInit, OnDestroy, Variant
         (x: ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
           switch (x.kind) {
             case 'error':
-              this.showError(x.message);
+              this.showToast(x.message, true);
               break;
             case 'success':
               this.transformer.updateVariantReportStatus(this, x);
+              this.showToast(`Variant Report ${this.analysisId} has been rejected`, false);
               break;
           }
         }
@@ -191,10 +193,11 @@ export class PatientVariantReportComponent implements OnInit, OnDestroy, Variant
       (x: ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
         switch (x.kind) {
           case 'error':
-            this.showError(x.message);
+            this.showToast(x.message, true);
             break;
           case 'success':
             this.transformer.updateVariantStatus(item, x);
+            this.showToast(`Variant has been ${item.confirmed ? 'confirmed' : 'rejected'}`, false);
             break;
         }
       }
@@ -208,10 +211,11 @@ export class PatientVariantReportComponent implements OnInit, OnDestroy, Variant
         (x: ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
           switch (x.kind) {
             case 'error':
-              this.showError(x.message);
+              this.showToast(x.message, true);
               break;
             case 'success':
               this.transformer.updateAssignmentReportStatus(this, x);
+              this.showToast(`Assignment Report ${this.analysisId} has been confirmed`, false);
               break;
           }
         }
@@ -262,10 +266,14 @@ export class PatientVariantReportComponent implements OnInit, OnDestroy, Variant
     this.dialogSubscription = null;
   }
 
-  private showError(message: string): void {
+  private showToast(message: string, isError: boolean): void {
     console.error(message);
     if (this.toastrService && this.toastrService.toastr) {
+      if (isError) {
         this.toastrService.toastr.error(message);
+      } else {
+        this.toastrService.toastr.success(message);
+      }
     }
   }
 }

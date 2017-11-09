@@ -113,10 +113,11 @@ export class PatientVariantReportOutsideAssayComponent
         (x: ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
           switch (x.kind) {
             case 'error':
-              this.showError(x.message);
+              this.showToast(x.message, true);
               break;
             case 'success':
               this.transformer.updateVariantReportStatus(this.outsideData, x);
+              this.showToast(`Variant Report ${this.outsideData.analysisId} has been confirmed`, false);
               break;
           }
         }
@@ -139,10 +140,11 @@ export class PatientVariantReportOutsideAssayComponent
         (x: ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
           switch (x.kind) {
             case 'error':
-              this.showError(x.message);
+              this.showToast(x.message, true);
               break;
             case 'success':
               this.transformer.updateVariantReportStatus(this.outsideData, x);
+              this.showToast(`Variant Report ${this.outsideData.analysisId} has been rejected`, false);
               break;
           }
         }
@@ -165,10 +167,11 @@ export class PatientVariantReportOutsideAssayComponent
         (x: ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
           switch (x.kind) {
             case 'error':
-              this.showError(x.message);
+              this.showToast(x.message, true);
               break;
             case 'success':
               this.transformer.updateAssignmentReportStatus(this.outsideData, x);
+              this.showToast(`Assignment Report ${this.outsideData.analysisId} has been confirmed`, false);
               break;
           }
         }
@@ -191,10 +194,11 @@ export class PatientVariantReportOutsideAssayComponent
         (x: ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
           switch (x.kind) {
             case 'error':
-              this.showError(x.message);
+              this.showToast(x.message, true);
               break;
             case 'success':
               this.transformer.updateVariantReportStatus(this.matchData, x);
+              this.showToast(`Variant Report ${this.matchData.analysisId} has been confirmed`, false);
               break;
           }
         }
@@ -217,10 +221,11 @@ export class PatientVariantReportOutsideAssayComponent
         (x: ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
           switch (x.kind) {
             case 'error':
-              this.showError(x.message);
+              this.showToast(x.message, true);
               break;
             case 'success':
               this.transformer.updateVariantReportStatus(this.matchData, x);
+              this.showToast(`Variant Report ${this.matchData.analysisId} has been rejected`, false);
               break;
           }
         }
@@ -243,10 +248,11 @@ export class PatientVariantReportOutsideAssayComponent
         (x: ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
           switch (x.kind) {
             case 'error':
-              this.showError(x.message);
+              this.showToast(x.message, true);
               break;
             case 'success':
               this.transformer.updateAssignmentReportStatus(this.matchData, x);
+              this.showToast(`Assignment Report ${this.matchData.analysisId} has been confirmed`, false);
               break;
           }
         }
@@ -276,10 +282,11 @@ export class PatientVariantReportOutsideAssayComponent
       (x: ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
         switch (x.kind) {
           case 'error':
-            this.showError(x.message);
+            this.showToast(x.message, true);
             break;
           case 'success':
             this.transformer.updateVariantStatus(item, x);
+            this.showToast(`Variant has been ${item.confirmed ? 'confirmed' : 'rejected'}`, false);
             break;
         }
       }
@@ -322,10 +329,14 @@ export class PatientVariantReportOutsideAssayComponent
     this.dialogSubscription = null;
   }
 
-  private showError(message: string): void {
+  private showToast(message: string, isError: boolean): void {
     console.error(message);
     if (this.toastrService && this.toastrService.toastr) {
-      this.toastrService.toastr.error(message);
+      if (isError) {
+        this.toastrService.toastr.error(message);
+      } else {
+        this.toastrService.toastr.success(message);
+      }
     }
   }
 }
