@@ -330,11 +330,12 @@ export class PatientVariantReportOutsideAssayComponent
   }
 
   private showToast(message: string, isError: boolean): void {
-    console.error(message);
     if (this.toastrService && this.toastrService.toastr) {
       if (isError) {
+        console.error(message);
         this.toastrService.toastr.error(message);
       } else {
+        console.info(message);
         this.toastrService.toastr.success(message);
       }
     }
