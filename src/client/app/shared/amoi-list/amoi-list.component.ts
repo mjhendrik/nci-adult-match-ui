@@ -1,75 +1,91 @@
 import { Component, Input } from '@angular/core';
 
+interface Amoi {
+  status: string;
+  treatmentArmId: string;
+  treatmentArmVersion: string;
+  exclusion: boolean;
+}
+
 @Component({
-    moduleId: module.id,
-    selector: 'amoi-list',
-    styleUrls: ['amoi-list.component.css'],
-    template: `
-    <div *ngIf="isAmoi" class="amoi-status">\
-        <div *ngFor="amoi of amoiList">\
-            <span class="label {{getBadgeColorStyle(amoi)}}" title="{{getTreatmentStatus(amoi)}}"> {{getTreatmentLabel(amoi)}}</span>\
-            <treatment-arm-title treatment-arm-id="amoi.treatment_arm_id" stratum-id="amoi.stratum_id"></treatment-arm-title>\
-        </div>\
-    </div>\
+  moduleId: module.id,
+  selector: 'amoi-list',
+  styleUrls: ['amoi-list.component.css'],
+  template: `
+    <div *ngIf="isAmoi" class="amoi-status">
+        <div *ngFor="let amoi of amoiList">
+            <span class="label {{getBadgeColorStyle(amoi)}}" title="{{getTreatmentStatus(amoi)}}"> {{getTreatmentLabel(amoi)}}</span>
+            <treatment-arm-link *ngIf="amoi.treatmentArmId" [treatmentArmId]="amoi.treatmentArmId" [version]="amoi.treatmentArmVersion"
+            [removePrefix]="true"></treatment-arm-link>
+        </div>
+    </div>
     <div *ngIf="!isAmoi" class="amoi-status"> - </div>
     `
 })
 export class AmoiListComponent {
-    // tslint:disable-next-line:member-ordering
-    amoiList: any[];
-    private amoi: any;
+  // tslint:disable-next-line:member-ordering
+  amoiList: Amoi[];
+  private amoi: any;
 
-    @Input()
-    set amois(amoi: any) {
-        this.amoi = amoi;
-        this.amoiList = this.extractList(amoi);
-    }
-    get amois(): any {
-        return this.amoi;
-    }
+  @Input()
+  set amois(amoi: any) {
+    this.amoi = amoi;
+    this.amoiList = this.extractList(amoi);
+    console.log(this.amoiList);
+  }
+  get amois(): any {
+    return this.amoi;
+  }
 
-    get isAmoi(): boolean {
-        return this.amoiList && this.amoiList.length > 0;
-    }
+  get isAmoi(): boolean {
+    return this.amoiList && this.amoiList.length > 0;
+  }
 
-    getInclusion(amoi: any) {
-        return amoi.exclusion ? 'E' : 'I';
-    }
+  getInclusion(amoi: Amoi) {
+    return amoi.exclusion ? 'E' : 'I';
+  }
 
-    getDisplayText(amoi: any) {
-        return amoi.amoi_status;
-    }
+  getDisplayText(amoi: Amoi) {
+    return amoi.status;
+  }
 
-    getBadgeColorStyle(amoi: any) {
-        if (amoi.exclusion)
-            return 'label-danger';
+  getBadgeColorStyle(amoi: Amoi) {
+    if (amoi.exclusion)
+      return 'label-danger';
 
-        var status = (amoi.amoi_status || '').toLowerCase();
+    var status = (amoi.status || '').toLowerCase();
 
-        if (status === 'prior')
-            return 'label-danger';
+    if (status === 'prior')
+      return 'label-danger';
 
-        if (status === 'future' && !amoi.exclusion)
-            return 'label-lightblue';
+    if (status === 'future' && !amoi.exclusion)
+      return 'label-lightblue';
 
-        if (status === 'current' && !amoi.exclusion)
-            return 'label-lightgreen';
+    if (status === 'current' && !amoi.exclusion)
+      return 'label-lightgreen';
 
-        return '';
-    }
+    return '';
+  }
 
-    getTreatmentStatus(amoi: any) {
-        return amoi.amoi_status + (amoi.exclusion ? ' - EXCLUSION' : ' - INCLUSION');
-    }
+  getTreatmentStatus(amoi: Amoi) {
+    return amoi.status + (amoi.exclusion ? ' - EXCLUSION' : ' - INCLUSION');
+  }
 
-    getTreatmentLabel(amoi: any) {
-        return (amoi.amoi_status ? amoi.amoi_status.substring(0, 1) : '') + (amoi.exclusion ? ' - E' : ' - I');
-    }
+  getTreatmentLabel(amoi: Amoi) {
+    return (amoi.status ? amoi.status.substring(0, 1) : '') + (amoi.exclusion ? ' - E' : ' - I');
+  }
 
-    private extractList(amoi: any): any[] {
-        if (!amoi)
-            return [];
+  private extractList(amoi: any): Amoi[] {
+    if (!amoi)
+      return [];
 
-        Object.keys(amoi).map(x => x);
-    }
+    return Object.keys(amoi).map(x => {
+      return {
+        status: x,
+        treatmentArmId: '',
+        treatmentArmVersion: '',
+        exclusion: true
+      };
+    });
+  }
 }

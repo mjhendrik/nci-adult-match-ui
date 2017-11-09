@@ -37,7 +37,10 @@ class DataResolver implements Resolve<VariantReportData> {
         let variantReport = this.transformer.findVariantReport(patient, analysisId);
         return this.treatmentArmApi
           .getAmois(variantReport)
-          .map(x => this.transformer.replaceVariantReportTables(patient, x));
+          .map(updatedVariantReport => {
+            this.transformer.replaceVariantReportTables(variantReport, updatedVariantReport);
+            return patient;
+          });
       }),
       this.patientApi.getPatientCopyNumberReport(psn, analysisId),
       this.patientApi.getPatientVariantReportOcp(psn, analysisId)

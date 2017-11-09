@@ -267,8 +267,17 @@ export class ViewDataTransformer {
     return null;
   }
 
-  replaceVariantReportTables(patient: any, variantReport: any): any {
-    return patient;
+  replaceVariantReportTables(sourceVariantReport: any, updatedVariantReport: any): any {
+    for (let table of variantTables) {
+      sourceVariantReport[table] = updatedVariantReport[table];
+    }
+
+    sourceVariantReport.singleNucleotideVariantAndIndels
+      = (sourceVariantReport.singleNucleotideVariants || [])
+        .concat(sourceVariantReport.indels || []);
+
+    this.precessPassFailVariants(sourceVariantReport);
+    return sourceVariantReport;
   }
 
   private precessPassFailVariants(comparisonVariantReport: any): void {
