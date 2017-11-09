@@ -112,6 +112,9 @@ export class CnvChartDirective implements AfterViewInit {
   getData() {
     if(this.data===null) return;
 
+
+
+
     let array:any = this.data[0] || {};
     let version:any = this.data[1] || {};
     let xr:number = array.length * 24;
@@ -120,6 +123,8 @@ export class CnvChartDirective implements AfterViewInit {
     let point5:string = "";
     let point95:string = "";
     let endX:string = "";
+
+    if(array.length===0) return;
 
     // if (typeof this.data !== "undefined" && this.data !== null) {
       this.file_name = "Cnv Chart Test Name. Version: " + version;
@@ -260,6 +265,14 @@ export class CnvChartDirective implements AfterViewInit {
         yDomain: yDomain(),
         xRange: xRange(),
         maxBoxWidth: maxBoxWidth(),
+        legend: {
+          margin: {
+            top: 5,
+            right: 70,
+            bottom: 5,
+            left: 0
+          }
+        },
         tooltip: {
           contentGenerator: (d:any) => {
             let html:any;
