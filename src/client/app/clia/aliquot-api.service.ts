@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { AuthHttp } from 'angular2-jwt';
 
@@ -9,6 +10,12 @@ import {
   CliaVariantReportsPACCViewData,
   CliaVariantReportsPCViewData
 } from './clia-data-interfaces';
+
+export interface ApiStatusUpdateError {
+  kind: 'error';
+  code?: number;
+  message: string;
+}
 
 @Injectable()
 export class AliquotApiService extends ApiService {
@@ -80,10 +87,13 @@ export class AliquotApiService extends ApiService {
       });
   }
 
-  notifyAfterUpload(msn: string, body: any): Observable<any> {
+  notifyAfterUpload(msn: string, body: any): Observable<any | ApiStatusUpdateError> {
     return this.http.put(`${this.baseApiUrl}/message/clia/aliquot/` + msn, body)
       .map(this.extractData)
-      .catch(this.handleError);
+      .catch((err: Response) => {
+        const data = err.json();
+        return Observable.of({ kind: 'error', message: data.message } as ApiStatusUpdateError);
+      });
   }
 
 }
