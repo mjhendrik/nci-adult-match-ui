@@ -1,33 +1,20 @@
 import {
-    Component,
-    Input,
-    DebugElement
-} from '@angular/core';
-import {
     async,
-    TestBed,
-    ComponentFixture
+    TestBed
 } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router/router';
-
-import { TreatmentArmLinkComponent } from './treatment-arm-link.component';
-
 import { FormsModule } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
+import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+
+import { TreatmentArmLinkComponent } from './treatment-arm-link.component';
 import { DirectivesModule } from './../../shared/directives/directives.module';
 import { PipesModule } from './../../shared/pipes/pipes.module';
 import { DataTableModule } from './../../shared/datatables/DataTableModule';
 import { TreatmentArmApiService } from './../../treatment-arm/treatment-arm-api.service';
-import { ActivatedRoute } from '@angular/router';
-import { PatientApiServiceStub } from './../../patient/testing/patient-api-service-stub';
 
 export function main() {
-    describe('tratment-arm-link component', () => {
-
-      let component: TreatmentArmLinkComponent;
-      let fixture: ComponentFixture<TreatmentArmLinkComponent>;
+    describe('treatment-arm-link component', () => {
 
       let config: any[] = [
         { path: 'tracking', component: 'TreatmentArmLinkComponent' }
@@ -89,8 +76,8 @@ export function main() {
 class TestComponent { }
 class MockTALinkService {
   id(): Observable<any> {
-    let testdata = "MockId"
-    return Observable.of(testdata);
+    let testData = "MockId"
+    return Observable.of(testData);
   }
 }
 
