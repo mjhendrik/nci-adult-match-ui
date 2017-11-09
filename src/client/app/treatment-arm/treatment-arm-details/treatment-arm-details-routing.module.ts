@@ -39,8 +39,12 @@ class DataResolver implements Resolve<any> {
 @NgModule({
   imports: [
     RouterModule.forChild([
-      { path: 'treatments/:id', component: TreatmentArmDetailsComponent, canActivate: [AuthGuard], resolve: { data: DataResolver } }
-      // /:version
+      {
+        path: 'treatments/:id',
+        component: TreatmentArmDetailsComponent,
+        canActivate: [AuthGuard],
+        resolve: { data: DataResolver }
+      }
     ])
   ],
   exports: [RouterModule],
