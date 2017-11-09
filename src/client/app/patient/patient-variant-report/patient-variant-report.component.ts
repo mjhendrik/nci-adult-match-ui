@@ -273,7 +273,7 @@ export class PatientVariantReportComponent implements OnInit, OnDestroy, Variant
         this.toastrService.toastr.error(message);
       } else {
         console.info(message);
-        this.toastrService.toastr.success(message);
+        this.toastrService.toastr.info(message);
       }
     }
   }
