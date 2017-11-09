@@ -28,7 +28,7 @@
         <p *ngIf="!item.comment"> - </p>
       </td>      
       <td><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.identifier"></cosmic-link></td>
-      <td>{{item.aMoi | dashify}}</td>
+      <td><amoi-list [amois]="item.amois"></amoi-list></td>
       <td>{{item.chromosome | dashify}}</td>
       <td>{{item.position | dashify}}</td>
       <td>{{item.rawCopyNumber | dashify}}</td>

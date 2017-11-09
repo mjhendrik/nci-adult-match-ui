@@ -5,35 +5,31 @@ import { Component, Input } from '@angular/core';
     selector: 'amoi-list',
     styleUrls: ['amoi-list.component.css'],
     template: `
-    <div ng-if='isAmoi' class='amoi-status'>\
-        <div *ngFor='amoi of amois'>\
-            <span class='label {{getBadgeColorStyle(amoi)}}' data-placement='top' title='{{getTreatmentStatus(amoi)}}' onmouseenter='$(this).tooltip(\'show\')'> {{getTreatmentLabel(amoi)}}</span>\
-            <treatment-arm-title treatment-arm-id='amoi.treatment_arm_id' stratum-id='amoi.stratum_id'></treatment-arm-title>\
+    <div *ngIf="isAmoi" class="amoi-status">\
+        <div *ngFor="amoi of amoiList">\
+            <span class="label {{getBadgeColorStyle(amoi)}}" title="{{getTreatmentStatus(amoi)}}"> {{getTreatmentLabel(amoi)}}</span>\
+            <treatment-arm-title treatment-arm-id="amoi.treatment_arm_id" stratum-id="amoi.stratum_id"></treatment-arm-title>\
         </div>\
     </div>\
-    <div ng-if='!isAmoi' class='amoi-status'> - </div>
+    <div *ngIf="!isAmoi" class="amoi-status"> - </div>
     `
 })
 export class AmoiListComponent {
+    // tslint:disable-next-line:member-ordering
+    amoiList: any[];
+    private amoi: any;
 
-    @Input() dimPrefix: boolean = true;
-    @Input() removePrefix: boolean;
-    @Input() textColor: string;
-    @Input() version: string;
-
-    suffix: string;
-    prefix: string;
-
-    private standardPrefix: string = 'EAY131-';
-
-    private id: string;
     @Input()
-    set treatmentArmId(id: string) {
-        this.id = id;
-        [this.prefix, this.suffix] = this.splitId();
+    set amois(amoi: any) {
+        this.amoi = amoi;
+        this.amoiList = this.extractList(amoi);
     }
-    get treatmentArmId(): string {
-        return this.id;
+    get amois(): any {
+        return this.amoi;
+    }
+
+    get isAmoi(): boolean {
+        return this.amoiList && this.amoiList.length > 0;
     }
 
     getInclusion(amoi: any) {
@@ -70,14 +66,10 @@ export class AmoiListComponent {
         return (amoi.amoi_status ? amoi.amoi_status.substring(0, 1) : '') + (amoi.exclusion ? ' - E' : ' - I');
     }
 
-    private splitId(): [string, string] {
-        if (!this.id)
-            return ['', ''];
+    private extractList(amoi: any): any[] {
+        if (!amoi)
+            return [];
 
-        if (this.id.toUpperCase().startsWith(this.standardPrefix)) {
-            return [this.standardPrefix, this.id.substring(this.standardPrefix.length)];
-        }
-
-        return ['', this.id];
+        Object.keys(amoi).map(x => x);
     }
 }

@@ -27,7 +27,7 @@
         <p *ngIf="!item.comment"> - </p>
       </td>      
       <td><cosmic-link [linkType]="'cosmicFusionId'" [linkId]="item.identifier"></cosmic-link></td>
-      <td>{{item.aMoi | dashify}}</td>
+      <td><amoi-list [amois]="item.amois"></amoi-list></td>
       <td><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.driverGene"></cosmic-link></td>
       <td>{{item.driverReadCount | dashify}}</td>
       <td><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.partnerGene"></cosmic-link></td>
