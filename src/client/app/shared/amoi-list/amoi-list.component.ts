@@ -59,10 +59,10 @@ export class AmoiListComponent {
       return 'label-danger';
 
     if (status === 'future' && !amoi.exclusion)
-      return 'label-lightblue';
+      return 'label-primary';
 
     if (status === 'current' && !amoi.exclusion)
-      return 'label-lightgreen';
+      return 'label-success';
 
     return '';
   }
@@ -79,13 +79,32 @@ export class AmoiListComponent {
     if (!amoi)
       return [];
 
-    return Object.keys(amoi).map(x => {
-      return {
-        status: x,
-        treatmentArmId: '',
-        treatmentArmVersion: '',
-        exclusion: true
-      };
+    let result: Amoi[] = [];
+
+    Object.keys(amoi).forEach(key => {
+      let amoiItems = amoi[key] || [];
+
+      for (let item of amoiItems) {
+        for (let x of item.inclusions) {
+          result.push({
+            status: key,
+            treatmentArmId: item.treatmentArmId,
+            treatmentArmVersion: x,
+            exclusion: false
+          });
+
+          for (let x of item.exclusions) {
+            result.push({
+              status: key,
+              treatmentArmId: item.treatmentArmId,
+              treatmentArmVersion: x,
+              exclusion: true
+            });
+          }
+        }
+      }
     });
+
+    return result;
   }
 }
