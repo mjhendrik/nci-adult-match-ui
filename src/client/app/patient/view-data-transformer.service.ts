@@ -10,7 +10,7 @@ import { ConfirmableItem } from '../shared/check-box-with-confirm/check-box-with
 import { GmtPipe } from '../shared/pipes/gmt.pipe';
 
 const variantTables: Array<string> = [
-  'geneFusions',
+  // 'geneFusions', // geneFusions is never used, unifiedGeneFusions is used instead
   'copyNumberVariants',
   'indels',
   'unifiedGeneFusions',
@@ -231,7 +231,7 @@ export class ViewDataTransformer {
     variantReport.variantReport = analysis.variantReport;
     variantReport.assignmentReport = analysis.assignmentReport;
     variantReport.assignmentHistory = transformedPatient.patientAssignments;
-    variantReport.parsed_vcf_genes = (typeof copyNumberData.copy_number_variant_genes==='undefined')
+    variantReport.parsed_vcf_genes = (typeof copyNumberData.copy_number_variant_genes === 'undefined')
       ? null
       : [copyNumberData.copy_number_variant_genes, copyNumberData.file_name];
     variantReport.tvc_version = tvc_version;
@@ -612,7 +612,7 @@ export class ViewDataTransformer {
   }
 
   private transformConcordance(patient: any): string {
-    if (!patient || ! patient.concordance) {
+    if (!patient || !patient.concordance) {
       return 'UNKNOWN';
     }
 
