@@ -8,11 +8,21 @@
           </div>
           <div class="widget-stat-info">
             <div class="widget-stat-title text-right">Patients</div>
-            <div class="widget-stat-number text-right">
+            <div *ngIf="!isLoadedPatientSummary" class="widget-stat-number text-right">
+              <span>
+                <sd-loading-spinner></sd-loading-spinner>
+              </span>
+            </div>
+            <div *ngIf="isLoadedPatientSummary" class="widget-stat-number text-right">
               <span *ngIf="!patientSummary.TOTAL">0</span>
               <span *ngIf="patientSummary.TOTAL">{{patientSummary.TOTAL}}</span>
             </div>
-            <div class="widget-stat-text text-right">
+            <div *ngIf="!isLoadedPatientSummary" class="widget-stat-text text-right">
+              <span>
+                <sd-loading-spinner></sd-loading-spinner>
+              </span>
+            </div>
+            <div *ngIf="isLoadedPatientSummary" class="widget-stat-text text-right">
               <span *ngIf="!patientSummary.ON_TREATMENT_ARM">0</span>
               <span *ngIf="patientSummary.ON_TREATMENT_ARM">{{patientSummary.ON_TREATMENT_ARM}}</span> On Treatment Arm&nbsp;&nbsp;|&nbsp;
               <span *ngIf="!patientSummary.OFF_TRIAL">0</span>
@@ -30,11 +40,21 @@
           </div>
           <div class="widget-stat-info">
             <div class="widget-stat-title text-right">Treatment Arms</div>
-            <div class="widget-stat-number text-right">
+            <div *ngIf="!isLoadedtreatmentArmSummary" class="widget-stat-number text-right">
+              <span>
+                <sd-loading-spinner></sd-loading-spinner>
+              </span>
+            </div>
+            <div *ngIf="isLoadedtreatmentArmSummary" class="widget-stat-number text-right">
               <span *ngIf="!treatmentArmSummary.TOTAL">0</span>
               <span *ngIf="treatmentArmSummary.TOTAL">{{treatmentArmSummary.TOTAL}}</span>
             </div>
-            <div class="widget-stat-text text-right">
+            <div *ngIf="!isLoadedtreatmentArmSummary" class="widget-stat-text text-right">
+              <span>
+                <sd-loading-spinner></sd-loading-spinner>
+              </span>
+            </div>
+            <div *ngIf="isLoadedtreatmentArmSummary" class="widget-stat-text text-right">
               <span *ngIf="!treatmentArmSummary.OPEN">0</span>
               <span *ngIf="treatmentArmSummary.OPEN">{{treatmentArmSummary.OPEN}}</span> Open&nbsp;&nbsp;|&nbsp;
               <span *ngIf="!treatmentArmSummary.SUSPENDED">0</span>
@@ -54,11 +74,21 @@
           </div>
           <div class="widget-stat-info">
             <div class="widget-stat-title text-right">Biopsy Tracking</div>
-            <div class="widget-stat-number text-right">
+            <div *ngIf="!isLoadedbiopsyTrackingSummary" class="widget-stat-number text-right">
+              <span>
+                <sd-loading-spinner></sd-loading-spinner>
+              </span>
+            </div>
+            <div *ngIf="isLoadedbiopsyTrackingSummary" class="widget-stat-number text-right">
               <span *ngIf="!biopsyTrackingSummary.TOTAL">0</span>
               <span *ngIf="biopsyTrackingSummary.TOTAL">{{biopsyTrackingSummary.TOTAL}}</span>
             </div>
-            <div class="widget-stat-text text-right">
+            <div *ngIf="!isLoadedbiopsyTrackingSummary" class="widget-stat-text text-right">
+              <span>
+                <sd-loading-spinner></sd-loading-spinner>
+              </span>
+            </div>
+            <div *ngIf="isLoadedbiopsyTrackingSummary" class="widget-stat-text text-right">
               <span *ngIf="!biopsyTrackingSummary.BIOPSY_SEQUENCES">0</span>
               <span *ngIf="biopsyTrackingSummary.BIOPSY_SEQUENCES">{{biopsyTrackingSummary.BIOPSY_SEQUENCES}}</span> Biopsy Sequences&nbsp;&nbsp;|&nbsp;
               <span *ngIf="!biopsyTrackingSummary.MOLECULAR_SEQUENCES">0</span>
