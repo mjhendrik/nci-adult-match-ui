@@ -9,8 +9,7 @@ import { Component, Input } from '@angular/core';
     <span class="sr-only">Loading...</span>
     <span>Loading...</span>
   </div>
-  `,
-  styleUrls: ['loading-spinner.component.css']
+  `
 })
 export class LoadingSpinnerComponent {
   @Input() isLoading: boolean = true;
