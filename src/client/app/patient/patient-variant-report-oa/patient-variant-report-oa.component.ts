@@ -98,6 +98,9 @@ export class PatientVariantReportOutsideAssayComponent
   ngOnInit() {
     Object.assign(this, this.route.snapshot.data['data']);
 
+    //TODO: DEBUG only
+    this.showComparison = true;
+
     this.allowVariantReportEdit = this.profile.checkRoles(roles.variantReportEdit);
     this.allowAssignmentReportEdit = this.profile.checkRoles(roles.assignmentReportEdit);
   }

@@ -17,16 +17,16 @@
       <tr *ngIf="item.outsideData" class="outside-data-row">
         <td rowspan="2" class="bg-reset text-center">
           <div class="m-t-13">
-            <span class="badge badge-lime" *ngIf="item.pass">Pass</span>
-            <span class="badge badge-danger" *ngIf="!item.pass">Fail</span>
+            <span class="badge badge-lime" *ngIf="item.status==='PASS' ">Pass</span>
+            <span class="badge badge-danger" *ngIf="item.status!=='PASS'">Fail</span>
           </div>
         </td>
 
         <td [ngClass]="{'has-diff':item && item.hasDifference && item.hasDifference['identifier']}">
           <span class="outside-data"><cosmic-link [linkType]="'cosmicFusionId'" [linkId]="item.outsideData.identifier"></cosmic-link></span>
         </td>
-        <td [ngClass]="{'has-diff':item && item.hasDifference && item.hasDifference['aMoi']}">
-          <span class="outside-data">{{item.outsideData.aMoi | dashify}}</span>
+        <td [ngClass]="{'has-diff':item && item.hasDifference && item.hasDifference['is_amoi']}">
+          <span class="outside-data">{{item.outsideData.is_amoi | dashify}}</span>
         </td>
         <td [ngClass]="{'has-diff':item && item.hasDifference && item.hasDifference['driverGene']}">
           <span class="outside-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.outsideData.driverGene"></cosmic-link></span>
@@ -48,8 +48,8 @@
       <tr *ngIf="!item.outsideData" class="outside-data-row">
         <td rowspan="2" class="bg-reset text-center">
           <div class="m-t-13">
-            <span class="badge badge-lime" *ngIf="item.pass">Pass</span>
-            <span class="badge badge-danger" *ngIf="!item.pass">Fail</span>
+            <span class="badge badge-lime" *ngIf="item.status==='PASS' ">Pass</span>
+            <span class="badge badge-danger" *ngIf="item.status!=='PASS'">Fail</span>
           </div>
         </td>
         <td colspan="7"><span class="text-muted">No Outside Lab row</span></td>
@@ -59,8 +59,8 @@
         <td [ngClass]="{'has-diff':item && item.hasDifference && item.hasDifference['identifier']}">
           <span class="match-data"><cosmic-link [linkType]="'cosmicFusionId'" [linkId]="item.matchData.identifier"></cosmic-link></span>
         </td>
-        <td [ngClass]="{'has-diff':item && item.hasDifference && item.hasDifference['aMoi']}">
-          <span class="match-data">{{item.matchData.aMoi | dashify}}</span>
+        <td [ngClass]="{'has-diff':item && item.hasDifference && item.hasDifference['is_amoi']}">
+          <span class="match-data">{{item.matchData.is_amoi | dashify}}</span>
         </td>
         <td [ngClass]="{'has-diff':item && item.hasDifference && item.hasDifference['driverGene']}">
           <span class="match-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.matchData.driverGene"></cosmic-link></span>
