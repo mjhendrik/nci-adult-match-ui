@@ -42,28 +42,18 @@ export class DashboardComponent implements OnInit {
 
   timestamp: any = new Date();
 
-  patientSummary: any = {
-    TOTAL: 0,
-    ON_TREATMENT_ARM: 0,
-    OFF_TRIAL: 0
-  };
+  patientSummary: any = {};
+  treatmentArmSummary: any = {};
+  biopsyTrackingSummary: any = {};
 
-  treatmentArmSummary: any = {
-    TOTAL: 0,
-    OPEN: 0,
-    SUSPENDED: 0,
-    CLOSED: 0
-  };
-
-  biopsyTrackingSummary: any = {
-    TOTAL: 0,
-    BIOPSY_SEQUENCES: 0,
-    MOLECULAR_SEQUENCES: 0
-  };
+  isLoadedPatientSummary: boolean = false;
+  isLoadedtreatmentArmSummary: boolean = false;
+  isLoadedbiopsyTrackingSummary: boolean = false;
 
   pendingAssignmentReports: LoadableData<any[]> = { isLoaded: false, data: [] };
   pendingVariantReports: LoadableData<any[]> = { isLoaded: false, data: [] };
   patientsAwaiting: LoadableData<any[]> = { isLoaded: false, data: [] };
+  // patientsAwaitingCall: any[] = [];
 
   showRow: any = {};
 
@@ -124,6 +114,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getPatientsAwaitingData() {
+
     const convertMessages: (x: any) => any = (x => {
       if (x.confirmationBiopsy && x.outsideBiopsy) {
         return x.confirmationBiopsy.messages.concat(x.outsideBiopsy.messages);
@@ -206,12 +197,14 @@ export class DashboardComponent implements OnInit {
 
         this.patientsAwaiting.isLoaded = true;
       });
+
   }
 
   getTreatmentArmSummaryData() {
     this.dashboardApi.getOverviewTa()
       .subscribe(data => {
         this.treatmentArmSummary = data;
+        this.isLoadedPatientSummary = true;
       });
   }
 
@@ -219,6 +212,7 @@ export class DashboardComponent implements OnInit {
     this.dashboardApi.getOverviewPatients()
       .subscribe(data => {
         this.patientSummary = data;
+        this.isLoadedtreatmentArmSummary = true;
       });
   }
 
@@ -226,6 +220,7 @@ export class DashboardComponent implements OnInit {
     this.dashboardApi.getOverviewBt()
       .subscribe(data => {
         this.biopsyTrackingSummary = data;
+        this.isLoadedbiopsyTrackingSummary = true;
       });
   }
 
