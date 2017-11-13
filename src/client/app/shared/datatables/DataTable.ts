@@ -1,6 +1,13 @@
 import {
-    Directive, Input, EventEmitter, SimpleChange, OnChanges, DoCheck, IterableDiffers,
-    IterableDiffer, Output
+    Directive,
+    Input,
+    EventEmitter,
+    SimpleChange,
+    OnChanges,
+    DoCheck,
+    IterableDiffers,
+    IterableDiffer,
+    Output
 } from '@angular/core';
 import * as _ from 'lodash';
 import { ReplaySubject } from 'rxjs/Rx';
@@ -65,7 +72,9 @@ export class DataTable implements OnChanges, DoCheck {
 
     public getPage(): PageEvent {
         return {
-            activePage: this.activePage, rowsOnPage: this.rowsOnPage, dataLength: this.inputData ? this.inputData.length : 0,
+            activePage: this.activePage,
+            rowsOnPage: this.rowsOnPage,
+            dataLength: this.inputData ? this.inputData.length : 0,
             totalLength: this.totalLength
         };
     }
@@ -73,9 +82,7 @@ export class DataTable implements OnChanges, DoCheck {
     public setPage(activePage: number, rowsOnPage: number): void {
         if (this.rowsOnPage !== rowsOnPage || this.activePage !== activePage) {
             if (this.totalLength === undefined) {
-              this.totalLength = this.inputData!==undefined ? this.inputData.length: 0 ;
-              
-                // this.totalLength = this.inputData.length;
+                this.totalLength = this.inputData !== undefined ? this.inputData.length : 0;
             }
             this.activePage = this.activePage !== activePage ? activePage : this.calculateNewActivePage(this.rowsOnPage, rowsOnPage);
             this.rowsOnPage = rowsOnPage;
@@ -156,7 +163,7 @@ export class DataTable implements OnChanges, DoCheck {
         } else {
             data = _.orderBy(data, sortBy, [this.sortOrder]);
         }
-        if (this.totalLength === this.inputData.length)
+        if (this.totalLength === this.inputData.length || data.length > this.rowsOnPage)
             data = _.slice(data, offset, offset + this.rowsOnPage);
         this.data = data;
     }
