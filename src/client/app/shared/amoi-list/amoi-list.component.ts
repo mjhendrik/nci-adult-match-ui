@@ -9,7 +9,7 @@ interface Amoi {
 
 @Component({
   moduleId: module.id,
-  selector: 'amoi-list',
+  selector: 'sd-amoi-list',
   styleUrls: ['amoi-list.component.css'],
   template: `
     <div *ngIf="isAmoi" class="amoi-status">
@@ -33,20 +33,9 @@ export class AmoiListComponent {
     this.amoiList = this.extractList(amoi);
     console.log(this.amoiList);
   }
-  get amois(): any {
-    return this.amoi;
-  }
 
   get isAmoi(): boolean {
     return this.amoiList && this.amoiList.length > 0;
-  }
-
-  getInclusion(amoi: Amoi) {
-    return amoi.exclusion ? 'E' : 'I';
-  }
-
-  getDisplayText(amoi: Amoi) {
-    return amoi.status;
   }
 
   getBadgeColorStyle(amoi: Amoi) {
@@ -85,7 +74,7 @@ export class AmoiListComponent {
       let amoiItems = amoi[key] || [];
 
       for (let item of amoiItems) {
-        for (let x of item.inclusions) {
+        for (let x of item.inclusions || []) {
           result.push({
             status: key,
             treatmentArmId: item.treatmentArmId,
@@ -94,7 +83,7 @@ export class AmoiListComponent {
           });
         }
 
-        for (let x of item.exclusions) {
+        for (let x of item.exclusions || []) {
           result.push({
             status: key,
             treatmentArmId: item.treatmentArmId,
