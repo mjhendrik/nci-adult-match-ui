@@ -119,7 +119,7 @@ export function main() {
           });
       }));
 
-    it('should instantiate cosmicFusionId -> cosmicFusionId getLinkUrl',
+    xit('should instantiate cosmicFusionId -> cosmicFusionId getLinkUrl',
       async((done: any) => {
         TestBed
           .compileComponents()
