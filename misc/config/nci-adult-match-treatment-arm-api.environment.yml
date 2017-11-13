@@ -1,9 +1,0 @@
-development:
-  port: 5010
-  region: "us-east-1"
-  bucket: "adultmatch-dev"
-  tmp_file_dir: "/tmp"
-  polling_interval: 5
-  sqs_queue_name: 'treatment-arm-api-uidev-queue'
-  patient_api_url: "http://patient-api:5000/api/v1/patients"
-  logger_level: "WARN"

@@ -24,9 +24,10 @@ services:
       - AUTH0_CLIENT_SECRET=${AUTH0_CLIENT_SECRET}
       - AUTH0_DATABASE=${AUTH0_DATABASE}
       - AUTH0_DOMAIN=${AUTH0_DOMAIN}
-    volumes:
-      - ./misc/config/nci-adult-match-patient-api.environment.yml:/usr/app/config/environment.yml
-      # - ./misc/config/nci-adult-match-patient-api-assay_activation_rules.json:/usr/app/config/assay_activation_rules.json # this config is to override the default Patient API assay rules config. Normally commented out.
+      - LOGGER_LEVEL=WARN
+    # Uncomment the volumes section below to override the default Patient API assay rules config. Normally commented out.
+    #volumes:
+      # - ./misc/config/nci-adult-match-patient-api-assay_activation_rules.json:/usr/app/config/assay_activation_rules.json
     networks:
       - adult-match
 
@@ -44,9 +45,8 @@ services:
       - AUTH0_CLIENT_SECRET=${AUTH0_CLIENT_SECRET}
       - AUTH0_DATABASE=${AUTH0_DATABASE}
       - AUTH0_DOMAIN=${AUTH0_DOMAIN}
-      # - SQS_QUEUE_NAME=treatment-arm-api-${USER}-queue
-    volumes:
-      - ./misc/config/nci-adult-match-treatment-arm-api.environment.yml:/usr/app/config/environment.yml
+      - LOGGER_LEVEL=WARN
+      - SQS_QUEUE_NAME=treatment-arm-api-${USER}-queue
     networks:
       - adult-match
 
