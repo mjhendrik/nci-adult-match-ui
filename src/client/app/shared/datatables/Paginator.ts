@@ -14,7 +14,7 @@ import {
 
 @Component({
     selector: 'mfPaginator',
-    template: '<ng-content></ng-content>'
+    template: `<ng-content></ng-content>`
 })
 export class Paginator implements OnChanges {
 
@@ -50,7 +50,10 @@ export class Paginator implements OnChanges {
         this.rowsOnPage = event.rowsOnPage;
         this.dataLength = event.dataLength;
         this.totalLength = event.totalLength;
-        this.lastPage = Math.ceil(this.totalLength / this.rowsOnPage);
+        if (this.dataLength === this.rowsOnPage)
+            this.lastPage = Math.ceil(this.totalLength / this.rowsOnPage);
+        else
+            this.lastPage = Math.ceil(this.dataLength / this.rowsOnPage);
         this.currentlyActive.emit(this.activePage + ',' + this.rowsOnPage + ',' + this.mfTable.sortOrder + ',' + this.mfTable.sortBy);
     }
 
