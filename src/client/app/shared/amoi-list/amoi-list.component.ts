@@ -92,15 +92,15 @@ export class AmoiListComponent {
             treatmentArmVersion: x,
             exclusion: false
           });
+        }
 
-          for (let x of item.exclusions) {
-            result.push({
-              status: key,
-              treatmentArmId: item.treatmentArmId,
-              treatmentArmVersion: x,
-              exclusion: true
-            });
-          }
+        for (let x of item.exclusions) {
+          result.push({
+            status: key,
+            treatmentArmId: item.treatmentArmId,
+            treatmentArmVersion: x,
+            exclusion: true
+          });
         }
       }
     });
