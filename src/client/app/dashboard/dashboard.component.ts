@@ -67,6 +67,8 @@ export class DashboardComponent implements OnInit {
 
   showRow: any = {};
 
+  tablePendingAssignmentReportsDataInitial: number = 0;
+  tablePendingVariantReportsDataInitial: number = 0;
   tablePatientsAwaitingDataInitial: number = 0;
 
   private isOutsideAssayValue?: boolean = null;
@@ -102,6 +104,7 @@ export class DashboardComponent implements OnInit {
           x.dateAssigned = gmt.transform(x.dateAssigned);
           return x;
         });
+        this.tablePendingAssignmentReportsDataInitial = this.pendingAssignmentReports.data.length;
         this.pendingAssignmentReports.isLoaded = true;
       });
   }
@@ -115,6 +118,7 @@ export class DashboardComponent implements OnInit {
           x.dateVariantReportReceived = gmt.transform(x.dateVariantReportReceived);
           return x;
         });
+        this.tablePendingVariantReportsDataInitial = this.pendingVariantReports.data.length;
         this.pendingVariantReports.isLoaded = true;
       });
   }

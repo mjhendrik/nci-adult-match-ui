@@ -181,7 +181,8 @@
               <tfoot>
                 <tr>
                   <td class="tfoot-padding" colspan="7">
-                    <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermAR" [totallength]="pendingAssignmentReports.data.length"></mfBootstrapPaginator>
+                    <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermAR" [totallength]="pendingAssignmentReports.data.length"
+                      [totalPageCount]="tablePendingAssignmentReportsDataInitial" [paginationType]="'dashboard'"></mfBootstrapPaginator>
                   </td>
                 </tr>
               </tfoot>
@@ -300,7 +301,8 @@
               <tfoot>
                 <tr>
                   <td class="tfoot-padding" colspan="8">
-                    <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermVR" [totallength]="pendingVariantReports.data.length"></mfBootstrapPaginator>
+                    <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermVR" [totallength]="pendingVariantReports.data.length"
+                      [totalPageCount]="tablePendingVariantReportsDataInitial" [paginationType]="'dashboard'"></mfBootstrapPaginator>
                   </td>
                 </tr>
               </tfoot>
