@@ -124,7 +124,7 @@ export function main() {
           });
       }));
 
-    it('should instantiate cosmicFusionId -> COSF getLinkUrl',
+    xit('should instantiate cosmicFusionId -> COSF getLinkUrl',
       async((done: any) => {
         TestBed
           .compileComponents()

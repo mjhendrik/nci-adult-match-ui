@@ -115,6 +115,9 @@ export class DashboardComponent implements OnInit {
 
   getPatientsAwaitingData() {
 
+    this.patientsAwaiting.data = [];
+    this.patientsAwaiting.isLoaded = false;
+
     const convertMessages: (x: any) => any = (x => {
       if (x.confirmationBiopsy && x.outsideBiopsy) {
         return x.confirmationBiopsy.messages.concat(x.outsideBiopsy.messages);
