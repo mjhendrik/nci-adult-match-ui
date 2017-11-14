@@ -285,7 +285,7 @@ export class PatientVariantReportOutsideAssayComponent
             this.showToast(x.message, true);
             break;
           case 'success':
-            this.transformer.updateVariantStatus(item, x);
+            this.transformer.updateVariantStatus(reportData, item, x);
             this.showToast(`Variant has been ${item.confirmed ? 'confirmed' : 'rejected'}`, false);
             break;
         }

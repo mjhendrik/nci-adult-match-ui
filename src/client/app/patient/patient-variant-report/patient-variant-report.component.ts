@@ -196,7 +196,7 @@ export class PatientVariantReportComponent implements OnInit, OnDestroy, Variant
             this.showToast(x.message, true);
             break;
           case 'success':
-            this.transformer.updateVariantStatus(item, x);
+            this.transformer.updateVariantStatus(this, item, x);
             this.showToast(`Variant has been ${item.confirmed ? 'confirmed' : 'rejected'}`, false);
             break;
         }
