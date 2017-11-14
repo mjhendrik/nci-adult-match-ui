@@ -648,5 +648,64 @@ export function main() {
 
     });
 
+
+    fdescribe('when updateVariantReport', () => {
+      let backend: MockBackend;
+      let service: PatientApiService;
+      let fakeData: any;
+      let response: Response;
+      let restCallSpy: jasmine.Spy;
+
+      beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
+        backend = be;
+        service = new PatientApiService(http, download);
+        fakeData = {download_url:'fake-url'};
+        let options = new ResponseOptions({
+          status: 200,
+          body: {
+            commenter: 'fake-commenter',
+            status: 'fake-status',
+            dateTime: 'fake-dateTime',
+          }
+        });
+        response = new Response(options);
+        restCallSpy = spyOn(download, 'downloadFile').and.callFake(() => { ; });
+      }));
+
+      it('should have expected fake download url', async(inject([], () => {
+        backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
+
+        service.updateVariantReport('fake-psn', 'fake-bsn', 'fake-analysis-id', true);
+
+        expect(restCallSpy).toHaveBeenCalled();
+
+      })));
+
+      it('should be ok if GET download_url endpoint fails and should not call downloadFile', async(inject([], () => {
+        let resp = new Response(new ResponseOptions({ status: 404 }));
+        backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
+
+        service.updateVariantReport('fake-psn', 'fake-bsn', 'fake-analysis-id', true);
+
+        expect(restCallSpy).not.toHaveBeenCalled();
+      })));
+
+      it('should treat 404 as an Observable error', async(inject([], () => {
+        let resp = new Response(new ResponseOptions({ status: 404 }));
+        backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
+
+        service.updateVariantReport('fake-psn', 'fake-bsn', 'fake-analysis-id', true)
+          .do(count => {
+            fail('should not respond with patients');
+          })
+          .catch(err => {
+            expect(err).toMatch(/Bad response status/, 'should catch bad response status code');
+            return Observable.of(null); // failure is the expected test result
+          })
+          .toPromise();
+      })));
+    });
+
+
   });
 }

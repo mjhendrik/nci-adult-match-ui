@@ -120,12 +120,6 @@ export class PatientApiService extends ApiService {
       });
   }
 
-  getUrl(fileName: string, psn: string): Observable<string> {
-    return this.http.post(Config.API.MESSAGE + '/patients/' + psn + '/documents/presign_url', null)
-      .map(this.extractData)
-      .catch(this.handleError);
-  }
-
   updateVariantReport(psn: string, bsn: string, analysisId: string, confirmed: boolean): Observable<ApiStatusUpdateSuccess | ApiStatusUpdateError> {
     const patch = {
       'status': confirmed ? 'CONFIRMED' : 'REJECTED'
