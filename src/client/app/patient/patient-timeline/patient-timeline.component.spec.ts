@@ -64,13 +64,13 @@ export function main() {
       expect((noDataElement.nativeElement as HTMLElement).innerText).toContain('No Patient timeline data yet');
     });
 
-    xit('should show 2 items', () => {
+    it('should show 2 items', () => {
       fixture.detectChanges();
       let itemElements = fixture.debugElement.queryAll(By.css('li'));
       expect(itemElements.length).toBe(2);
     });
 
-    xit('should show 1 items if another is removed', () => {
+    it('should show 1 items if another is removed', () => {
       hostComponent.items.pop();
       fixture.detectChanges();
       let itemElements = fixture.debugElement.queryAll(By.css('li'));

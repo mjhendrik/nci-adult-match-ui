@@ -309,6 +309,18 @@ body {
   color: $dark-orangeshade-color;
 }
 
+.text-purple-invisible {
+  color: $light-purple-color;
+}
+
+.text-success-invisible {
+  color: $light-success-color;
+}
+
+.text-info-invisible {
+  color: $light-info-color;
+}
+
 .footer {
   .build-info {
     margin-left: 4px;
@@ -434,7 +446,7 @@ td.long-text-wrap {
   margin-top: 13px !important;
 }
 
-.breadcrumb > .active {
+.breadcrumb>.active {
   .entity-name {
     font-weight: bold;
   }

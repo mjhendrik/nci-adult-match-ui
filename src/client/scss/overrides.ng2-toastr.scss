@@ -1,15 +1,17 @@
 @import "variables";
 @import "colors";
-
 .toast-success {
-    background-color: $bg-success-color;
+  background-color: $success-color;
 }
+
 .toast-error {
-    background-color: $bg-danger-color;
+  background-color: $bg-danger-color;
 }
+
 .toast-info {
-    background-color: $bg-info-color;
+  background-color: $bg-info-color;
 }
+
 .toast-warning {
-    background-color: $bg-warning-color;
+  background-color: $bg-warning-color;
 }
