@@ -211,7 +211,7 @@ export function main() {
           });
       }));
 
-    xit('should test onSearchChanged',
+    it('should test onSearchChanged',
       async((done: any) => {
 
         let input:any;

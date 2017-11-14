@@ -247,7 +247,7 @@ export function main() {
         response = new Response(options);
       }));
 
-      xit('should have expected fake items total count (then)', async(inject([], () => {
+      it('should have expected fake items total count (then)', async(inject([], () => {
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
         service.getCliaVariantReportQC('Sample_MoCha_1', 'Analyses_MoCha_1').toPromise()

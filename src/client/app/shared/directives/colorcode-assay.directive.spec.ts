@@ -71,8 +71,8 @@ export function main() {
             expect(testEl.nativeElement.classList.contains('text-muted')).toBe(false);
         });
 
-        xit('"UNKNOWN" adds "text-muted" color class', () => {
-            testHost.testStatus = 'NEGATIVE';
+        it('"UNKNOWN" adds "text-muted" color class', () => {
+            testHost.testStatus = 'UNKNOWN';
             fixture.detectChanges();
             expect(testEl.nativeElement.classList.contains('text-success-light')).toBe(false);
             expect(testEl.nativeElement.classList.contains('text-danger-light')).toBe(false);
