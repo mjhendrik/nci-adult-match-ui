@@ -82,7 +82,7 @@ export function main() {
           });
       }));
 
-    xit('should instantiate cosmicId -> COSM getLinkUrl',
+    it('should instantiate cosmicId -> COSM getLinkUrl',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -103,7 +103,7 @@ export function main() {
           });
       }));
 
-    xit('should instantiate cosmicFusionId -> cosmicFusionId getLinkUrl',
+    it('should instantiate cosmicFusionId -> cosmicFusionId getLinkUrl',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -124,7 +124,7 @@ export function main() {
           });
       }));
 
-    xit('should instantiate cosmicFusionId -> COSF getLinkUrl',
+    it('should instantiate cosmicFusionId -> COSF getLinkUrl',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -145,7 +145,7 @@ export function main() {
           });
       }));
 
-    xit('should instantiate cosmicGene getLinkUrl',
+    it('should instantiate cosmicGene getLinkUrl',
       async((done: any) => {
         TestBed
           .compileComponents()

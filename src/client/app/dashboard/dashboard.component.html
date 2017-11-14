@@ -9,8 +9,8 @@
           <div class="widget-stat-info">
             <div class="widget-stat-title text-right">Patients</div>
             <div *ngIf="!isLoadedPatientSummary" class="widget-stat-number text-right">
-              <span>
-                <sd-loading-spinner></sd-loading-spinner>
+              <span class="text-purple-invisible">
+                .
               </span>
             </div>
             <div *ngIf="isLoadedPatientSummary" class="widget-stat-number text-right">
@@ -41,8 +41,8 @@
           <div class="widget-stat-info">
             <div class="widget-stat-title text-right">Treatment Arms</div>
             <div *ngIf="!isLoadedtreatmentArmSummary" class="widget-stat-number text-right">
-              <span>
-                <sd-loading-spinner></sd-loading-spinner>
+              <span class="text-success-invisible">
+                .
               </span>
             </div>
             <div *ngIf="isLoadedtreatmentArmSummary" class="widget-stat-number text-right">
@@ -75,8 +75,8 @@
           <div class="widget-stat-info">
             <div class="widget-stat-title text-right">Biopsy Tracking</div>
             <div *ngIf="!isLoadedbiopsyTrackingSummary" class="widget-stat-number text-right">
-              <span>
-                <sd-loading-spinner></sd-loading-spinner>
+              <span class="text-info-invisible">
+                .
               </span>
             </div>
             <div *ngIf="isLoadedbiopsyTrackingSummary" class="widget-stat-number text-right">

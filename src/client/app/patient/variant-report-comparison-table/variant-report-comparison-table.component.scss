@@ -1,5 +1,4 @@
 @import "./../../../scss/colors.scss";
-
 .pass-fail-column {
   width: 50px;
 }
@@ -34,7 +33,7 @@
   }
 }
 
-.table > tbody > tr.outside-data-row > td {
-  border-color: $bg-purple-light !important;
+.table>tbody>tr.outside-data-row>td {
+  border-color: $light-purple-color !important;
   border-width: 1px;
 }
