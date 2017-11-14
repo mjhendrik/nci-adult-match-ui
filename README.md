@@ -157,3 +157,22 @@ To run the docker locally use port 5555 because Auth0 is configured to use it.
 ```
 docker run --name "nci-adult-match-ui" -it -p 5555:80  "fnlcr/nci-adult-match-ui:latest"
 ```
+
+
+## Trouble shooting
+### Mongo connection refused  ( ex: mongo:27017: [Errno 111] Connection refused )
+
+Following solutions are tested.  One solution works. ( Good Luck :-))
+
+1. docker-compose down
+   docker system prune
+   docker-compose up ...
+
+2. docker-compose down
+   Docker Engine RESTART
+   docker-compose up ...
+   
+3. docker-compose down
+   Docker Engine hard RESET ( Go to Docker Engine Preferences ) select --> 'Reset to factory defaults'
+   docker login <-- Log in the terminal to docker hub
+   docker-compose up ...
