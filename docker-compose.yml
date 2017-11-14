@@ -174,10 +174,10 @@ services:
       - AUTH0_CLIENT_ID=${AUTH0_CLIENT_ID}
       - AUTH0_CLIENT_SECRET=${AUTH0_CLIENT_SECRET}
       - MATCH_LOG_LEVEL=INFO
+      - ECOG_API_HOSTNAME=mock-ecog
+      - ION_REPORTER_ECOSYSTEM_API_HOSTNAME=aliquots-api
       - SECURITY_LOG_LEVEL=WARN
       - MESSAGE_QUEUE_NAME=message-api-${USER}-dev-queue.fifo
-    volumes:
-      - ./misc/config/nci-adult-match-message-api.properties:/var/lib/jetty/target/api/WEB-INF/classes/matchbox-dev.properties
     networks:
       - adult-match
   
