@@ -82,7 +82,7 @@ export function main() {
           });
       }));
 
-    it('should instantiate cosmicId -> COSM getLinkUrl',
+    xit('should instantiate cosmicId -> COSM getLinkUrl',
       async((done: any) => {
         TestBed
           .compileComponents()
