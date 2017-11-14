@@ -1,89 +1,82 @@
-<div class="modal-header">
-  <h4 class="modal-title pull-left">Upload BAM files and Variant ZIP files</h4>
-</div>
-<div class="modal-body">
-  <div class="form-group has-feedback" [ngClass]="{true:'has-error',false:'has-success'}[!analysisIdValid]">
-    <label class="">Analysis ID</label>
-    <input type="text" #input class="form-control" placeholder="Enter Analysis ID" [(ngModel)]="analysisId" (ngModelChange)="onInputChanged($event)">
-    <span class="fa form-control-feedback" [ngClass]="{true:'fa-times',false:'fa-check'}[!analysisIdValid]"></span>
+<div *ngIf="!isUploaded" class="modal-header">
+    <h4 class="modal-title pull-left">Upload BAM files and Variant ZIP files</h4>
   </div>
-  <div *ngIf="!analysisIdValid" class="text-danger m-b-10 m-t-n10">
-    {{message}}
-  </div>
-  <div class="row">
-    <div class="col-md-12 form-group has-feedback">
-      <label class="control-label">Variant ZIP File
-        <span *ngIf="isUploading" class="text-success-light">{{percentDoneVariantZipFile}}%</span>
-      </label>
-      <input type="file" accept=".zip" (change)="fileSelectedVariantZip($event.target.files[0])" id="variantUploadButton" [ngClass]="{true:'disable-div'}[!analysisIdValid]">
-      <div *ngIf="isUploading" class="progress progress-striped progress-xs active m-t-10 m-b-0">
-        <div class="progress-bar progress-bar-success active" [style.width.%]="percentDoneVariantZipFile"></div>
-      </div>
-    </div>
-    <div class="col-md-12 form-group has-feedback">
-      <label class="control-label">DNA BAM File
-        <span *ngIf="isUploading" class="text-success-light">{{percentDoneDnaBamFile}}%</span>
-      </label>
-      <input type="file" accept=".bam" (change)="fileSelectedDnaBam($event.target.files[0])" id="dnaUploadButton" [ngClass]="{true:'disable-div'}[!analysisIdValid]">
-      <div *ngIf="isUploading" class="progress progress-striped progress-xs active m-t-10 m-b-0">
-        <div class="progress-bar progress-bar-success active" [style.width.%]="percentDoneDnaBamFile"></div>
-      </div>
-    </div>
-    <div class="col-md-12 form-group has-feedback">
-      <label class="control-label">cDNA BAM File
-        <span *ngIf="isUploading" class="text-success-light">{{percentDoneCdnaBamFile}}%</span>
-      </label>
-      <input type="file" accept=".bam" (change)="fileSelectedCdnaBam($event.target.files[0])" id="cdnaUploadButton" [ngClass]="{true:'disable-div'}[!analysisIdValid]">
-      <div *ngIf="isUploading" class="progress progress-striped progress-xs active m-t-10 m-b-0">
-        <div class="progress-bar progress-bar-success active" [style.width.%]="percentDoneCdnaBamFile"></div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal-footer">
-  <a *ngIf="!isUploading" type="button" id="close-dialog" class="btn btn-default" (click)="closeUploadDialog(false)">Close</a>
-  <a *ngIf="isUploading" type="button" id="stop-and-close-dialog" class="btn btn-default" (click)="closeUploadDialog(true, warning)">Stop Upload and Close</a>
-  <a [ngClass]="{false:'disabled'}[hasVariantZipFile && hasDnaBamFile && hasCdnaBamFile && analysisIdValid && !isUploading]"
-    (click)="upload()" id="upload-files" class="btn btn-purple-light" aria-hidden="true">
-    <i class="fa fa-cloud-upload"></i> Upload Files</a>
-  <!-- <a type="button" class="btn btn-lime" (click)="showSuccessDialog(success)">Success</a>
-  <a type="button" class="btn btn-inverse" (click)="showFailureDialog(failure)">Failure</a> -->
-</div>
-
-<ng-template #warning>
-  <div class="modal-header">
-    <h4 class="modal-title pull-left">Stop Upload and Close</h4>
-  </div>
-  <div class="modal-body">
-    Are you sure you want to Stop Upload and Close?
-  </div>
-  <div class="modal-footer">
-    <a type="button" id="continue-dialog" class="btn btn-success" (click)="closeWarningDialog(false)">Continue Uploading</a>
-    <a type="button" id="stop-dialog" class="btn btn-danger" (click)="closeWarningDialog(true)">Stop Upload and Close</a>
-  </div>
-</ng-template>
-
-<ng-template #success>
-  <div class="modal-header">
+  <div *ngIf="isUploaded && isSuccessful" class="modal-header">
     <h4 class="modal-title pull-left">The BAM files and Variant ZIP files have been successfully uploaded</h4>
   </div>
-  <div class="modal-body">
-    <img class="center-block" src="/assets/img/checkmark.gif" alt="checkmark" width="260px">
-  </div>
-  <div class="modal-footer">
-    <a type="button" id="close-dialog" class="btn btn-default" (click)="closeSuccessDialog()">Close</a>
-  </div>
-</ng-template>
-
-<ng-template #failure>
-  <div class="modal-header">
+  <div *ngIf="isUploaded && !isSuccessful" class="modal-header">
     <h4 class="modal-title pull-left">The BAM files and Variant ZIP files have failed to upload</h4>
   </div>
-  <div class="modal-body">
+  <div *ngIf="!isUploaded" class="modal-body">
+    <div class="form-group has-feedback" [ngClass]="{true:'has-error',false:'has-success'}[!analysisIdValid]">
+      <label class="">Analysis ID</label>
+      <input type="text" #input class="form-control" placeholder="Enter Analysis ID" [(ngModel)]="analysisId" (ngModelChange)="onInputChanged($event)">
+      <span class="fa form-control-feedback" [ngClass]="{true:'fa-times',false:'fa-check'}[!analysisIdValid]"></span>
+    </div>
+    <div *ngIf="!analysisIdValid" class="text-danger m-b-10 m-t-n10">
+      {{message}}
+    </div>
+    <div class="row">
+      <div class="col-md-12 form-group has-feedback">
+        <label class="control-label">Variant ZIP File
+          <span *ngIf="isUploading" class="text-success-light">{{percentDoneVariantZipFile}}%</span>
+        </label>
+        <input type="file" accept=".zip" (change)="fileSelectedVariantZip($event.target.files[0])" id="variantUploadButton" [ngClass]="{true:'disable-div'}[!analysisIdValid]">
+        <div *ngIf="isUploading" class="progress progress-striped progress-xs active m-t-10 m-b-0">
+          <div class="progress-bar progress-bar-success active" [style.width.%]="percentDoneVariantZipFile"></div>
+        </div>
+      </div>
+      <div class="col-md-12 form-group has-feedback">
+        <label class="control-label">DNA BAM File
+          <span *ngIf="isUploading" class="text-success-light">{{percentDoneDnaBamFile}}%</span>
+        </label>
+        <input type="file" accept=".bam" (change)="fileSelectedDnaBam($event.target.files[0])" id="dnaUploadButton" [ngClass]="{true:'disable-div'}[!analysisIdValid]">
+        <div *ngIf="isUploading" class="progress progress-striped progress-xs active m-t-10 m-b-0">
+          <div class="progress-bar progress-bar-success active" [style.width.%]="percentDoneDnaBamFile"></div>
+        </div>
+      </div>
+      <div class="col-md-12 form-group has-feedback">
+        <label class="control-label">cDNA BAM File
+          <span *ngIf="isUploading" class="text-success-light">{{percentDoneCdnaBamFile}}%</span>
+        </label>
+        <input type="file" accept=".bam" (change)="fileSelectedCdnaBam($event.target.files[0])" id="cdnaUploadButton" [ngClass]="{true:'disable-div'}[!analysisIdValid]">
+        <div *ngIf="isUploading" class="progress progress-striped progress-xs active m-t-10 m-b-0">
+          <div class="progress-bar progress-bar-success active" [style.width.%]="percentDoneCdnaBamFile"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="isUploaded && isSuccessful" class="modal-body">
+    <img class="center-block" src="/assets/img/checkmark.gif" alt="checkmark" width="260px">
+  </div>
+  <div *ngIf="isUploaded && !isSuccessful" class="modal-body">
     Failure message:
     <span class="text-danger-light">{{notifyMessage}}</span>
   </div>
-  <div class="modal-footer">
-    <a type="button" id="close-dialog" class="btn btn-default" (click)="closeFailureDialog()">Close</a>
+  <div *ngIf="!isUploaded" class="modal-footer">
+    <a *ngIf="!isUploading" type="button" id="close-dialog" class="btn btn-default" (click)="closeUploadDialog(false)">Close</a>
+    <a *ngIf="isUploading" type="button" id="stop-and-close-dialog" class="btn btn-default" (click)="closeUploadDialog(true, warning)">Stop Upload and Close</a>
+    <a [ngClass]="{false:'disabled'}[hasVariantZipFile && hasDnaBamFile && hasCdnaBamFile && analysisIdValid && !isUploading]"
+      (click)="upload()" id="upload-files" class="btn btn-purple-light" aria-hidden="true">
+      <i class="fa fa-cloud-upload"></i> Upload Files</a>
   </div>
-</ng-template>
+  <div *ngIf="isUploaded && isSuccessful" class="modal-footer">
+    <a type="button" id="close-dialog" class="btn btn-default" (click)="closeUploadDialog(false)">Close</a>
+  </div>
+  <div *ngIf="isUploaded && !isSuccessful" class="modal-footer">
+    <a type="button" id="close-dialog" class="btn btn-default" (click)="closeUploadDialog(false)">Close</a>
+  </div>
+  
+  <ng-template #warning>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Stop Upload and Close</h4>
+    </div>
+    <div class="modal-body">
+      Are you sure you want to Stop Upload and Close?
+    </div>
+    <div class="modal-footer">
+      <a type="button" id="continue-dialog" class="btn btn-success" (click)="closeWarningDialog(false)">Continue Uploading</a>
+      <a type="button" id="stop-dialog" class="btn btn-danger" (click)="closeWarningDialog(true)">Stop Upload and Close</a>
+    </div>
+  </ng-template>
+  

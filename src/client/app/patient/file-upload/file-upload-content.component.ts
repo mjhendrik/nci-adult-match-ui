@@ -35,8 +35,6 @@ import 'rxjs/add/observable/fromEvent';
 export class FileUploadContentComponent implements OnInit {
 
   public modalRef2: BsModalRef;
-  public modalRef3: BsModalRef;
-  public modalRef4: BsModalRef;
   public config = {
     keyboard: false,
     ignoreBackdropClick: true
@@ -51,6 +49,8 @@ export class FileUploadContentComponent implements OnInit {
   isUploading: boolean = false;
   fileCount: number = 0;
   notifyMessage: string = '';
+  isUploaded: boolean = false;
+  isSuccessful: boolean;
 
   percentDoneVariantZipFile: number = 0;
   percentDoneDnaBamFile: number = 0;
@@ -99,29 +99,31 @@ export class FileUploadContentComponent implements OnInit {
   }
 
   onInputChanged(val: any) {
-    Observable.fromEvent(this.inputElRef.nativeElement, 'input')
-      .debounceTime(400)
-      .distinctUntilChanged()
-      .subscribe((val: any) => {
+    if (this.inputElRef) {
+      Observable.fromEvent(this.inputElRef.nativeElement, 'input')
+        .debounceTime(400)
+        .distinctUntilChanged()
+        .subscribe((val: any) => {
 
-        val.target.value = val.target.value.replace(/^\s+|\s+$/g, '');
+          val.target.value = val.target.value.replace(/^\s+|\s+$/g, '');
 
-        this.changeDetector.detectChanges();
+          this.changeDetector.detectChanges();
 
-        if (this.analysisIdPrev !== val.target.value && this.analysisId !== '') {
+          if (this.analysisIdPrev !== val.target.value && this.analysisId !== '') {
+            this.analysisIdPrev = val.target.value;
+            this.validateAnalysisId();
+          }
+
           this.analysisIdPrev = val.target.value;
-          this.validateAnalysisId();
-        }
 
-        this.analysisIdPrev = val.target.value;
+          if (this.analysisId === '') {
+            delete this.message;
+            this.analysisIdValid = false;
+            this.message = 'Enter Analysis ID to add Variant ZIP file, DNA BAM file and cDNA BAM file';
+          }
 
-        if (this.analysisId === '') {
-          delete this.message;
-          this.analysisIdValid = false;
-          this.message = 'Enter Analysis ID to add Variant ZIP file, DNA BAM file and cDNA BAM file';
-        }
-
-      });
+        });
+    }
   }
 
   fileSelectedVariantZip(file: any): void {
@@ -203,8 +205,9 @@ export class FileUploadContentComponent implements OnInit {
 
     this.api.notifyAfterUpload(this.msn, this.uploadNotification).subscribe(itemList => {
       this.notifyMessage = itemList.message;
-      // if (itemList.status === 'success') this.showSuccessDialog('success');
-      // if (itemList.status === 'failure') this.showSuccessDialog('failure');
+      this.isUploaded = true;
+      if (itemList.status === 'SUCCESS') this.isSuccessful = true;
+      if (itemList.status === 'FAILURE') this.isSuccessful = false;
     });
 
   }
@@ -217,26 +220,6 @@ export class FileUploadContentComponent implements OnInit {
   closeWarningDialog(cancel: boolean) {
     this.modalRef2.hide();
     if (cancel === true) this.bsModalRef.hide();
-  }
-
-  showSuccessDialog(template: TemplateRef<any>) {
-    this.modalRef3 = this.modalService.show(template, Object.assign({}, this.config, { class: 'modal-sm' }));
-  }
-
-  closeSuccessDialog() {
-    this.modalRef3.hide();
-    if (this.modalRef2) this.modalRef2.hide();
-    this.bsModalRef.hide();
-  }
-
-  showFailureDialog(template: TemplateRef<any>) {
-    this.modalRef4 = this.modalService.show(template, Object.assign({}, this.config, { class: 'modal-sm' }));
-  }
-
-  closeFailureDialog() {
-    this.modalRef4.hide();
-    if (this.modalRef2) this.modalRef2.hide();
-    this.bsModalRef.hide();
   }
 
 }
