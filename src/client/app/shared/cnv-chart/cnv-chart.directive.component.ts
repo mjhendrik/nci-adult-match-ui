@@ -40,7 +40,7 @@ declare let d3: any;
   `<div *ngIf="file_name">
     <div [@dialog] *ngIf="show" id="zoom" class="dialog" #ccww c-w>
       <i class="fa fa-search-minus fa-2x" aria-hidden="true" *ngIf="show" (click)="show = !show"
-      style="cursor: pointer; color: gray"></i>
+      style="cursor: pointer; color: gray;"></i>
        <h4 class="pull-right">{{ file_name }}</h4>
         <ul class="list-group" style="list-style-type: none;">
           <li>Tumor suppressor genes
@@ -55,7 +55,7 @@ declare let d3: any;
     <!--small panel-->
     <div *ngIf="!show" #ccww c-w>
       <i class="fa fa-search-plus fa-2x" aria-hidden="true" *ngIf="!show" (click)="show = !show"
-      style="cursor: pointer; color: gray"></i>
+      style="cursor: pointer; color: gray; visibility:{{zoomable}}"></i>
        <h5 class="pull-right">{{ file_name }}</h5>
         <ul class="list-group" style="list-style-type: none;">
           <li>Tumor suppressor genes
@@ -64,6 +64,9 @@ declare let d3: any;
           <i class="fa fa-square" aria-hidden="true" style="color:#007200;background-color:#007200"></i>
           </li>
         </ul>
+        
+        <span class="pull-left alert-danger" style="font-size: large">{{ file_errored }}</span>
+        
       <nvd3 id="boxplotchart" config="{deepWatchData: false}" [options]="options" [data]="cnvdata" *ngIf="!show"></nvd3>
     </div>
   </div>
@@ -84,6 +87,8 @@ export class CnvChartDirective implements AfterViewInit {
   errorMessage: string;
   cnvdata: any;
   file_name: string ;
+  file_errored: string ;
+  zoomable: string ;
   parseddata:any[] = [];
   frame: any;
   chartfrm: any;
@@ -111,9 +116,6 @@ export class CnvChartDirective implements AfterViewInit {
 
   getData() {
     if(this.data===null) return;
-
-
-
 
     let array:any = this.data[0] || {};
     let version:any = this.data[1] || {};
@@ -199,6 +201,8 @@ export class CnvChartDirective implements AfterViewInit {
     //COLORS
     Object.keys(temp).forEach((key:any) => {
       (temp[key].error === 1) ? colors.push("#595851") : colors.push(temp[key].status);
+      (temp[key].error === 1) ? this.file_errored = 'Error occured in plot rendering' : this.file_errored = '';
+      (temp[key].error === 1) ? this.zoomable = 'hidden' : this.zoomable = 'visiable';
     });
 
     //Y MARGINS
