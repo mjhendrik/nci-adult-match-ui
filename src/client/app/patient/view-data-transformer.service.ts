@@ -149,7 +149,7 @@ export class ViewDataTransformer {
 
   updateVariantStatus(variantReport: VariantReportData, item: ConfirmableItem, updatedStatus: ApiStatusUpdateSuccess): void {
     item.comment = updatedStatus.comments;
-    this.calculateMoiSummary(variantReport);
+    this.calculateMoiSummary(variantReport.variantReport);
   }
 
   updateOutsidePatientReport(report: VariantReportComparisonData): void {
@@ -478,8 +478,10 @@ export class ViewDataTransformer {
   }
 
   private calculateMoiSummary(variantReport: any): void {
-    let report = variantReport.variantReport || {};
-    report.moiSummary = {
+    if (!variantReport)
+      return;
+
+    variantReport.moiSummary = {
       totalaMOIs: 0,
       totalMOIs: 0,
       confirmedaMOIs: 0,
@@ -487,22 +489,22 @@ export class ViewDataTransformer {
     };
 
     for (let tableName of variantTables ) {
-      let table = report[tableName];
+      let table = variantReport[tableName];
 
       if (!table) {
         continue;
       }
 
       for (let item of table) {
-        report.moiSummary.totalMOIs += 1;
+        variantReport.moiSummary.totalMOIs += 1;
 
         if (item.isAMoi) {
-          report.moiSummary.totalaMOIs += 1;
+          variantReport.moiSummary.totalaMOIs += 1;
           if (item.confirmed) {
-            report.moiSummary.confirmedaMOIs += 1;
+            variantReport.moiSummary.confirmedaMOIs += 1;
           }
         } else if (item.confirmed) {
-          report.moiSummary.confirmedMOIs += 1;
+          variantReport.moiSummary.confirmedMOIs += 1;
         }
 
         if (item.metadata) {
