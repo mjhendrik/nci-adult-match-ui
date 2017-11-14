@@ -150,10 +150,8 @@ export class CnvChartDirective implements AfterViewInit {
 
       let status:string = !tsg ? '#CD0000' : '#007200';
 
-      // let median:any = array[key].raw_copy_number;
       let position:number = array[key].position;
       let chromosome:string = array[key].chromosome;
-      // let status:string = !array[key].tsg_gene ? '#CD0000' : '#007200';
 
       let min = values[0];
       let max = values[(width - 1)];
@@ -170,21 +168,25 @@ export class CnvChartDirective implements AfterViewInit {
         }
       }
 
+      let pMin:string = parseFloat(min).toFixed(2);
+      let pMax:string = parseFloat(max).toFixed(2);
+
       let Object:any = {
         x: key,
         label: gene,
+        // label: '<a href>' + gene + '</a>',
         status: status,
         error: error,
         chr: chromosome,
         values: {
           position: position,
           cn: median,
-          Q1: parseFloat(min).toFixed(2),
+          Q1: parseFloat(point5).toFixed(2),
           Q2: parseFloat(median).toFixed(2),
-          Q3: parseFloat(max).toFixed(2),
-          whisker_low: point5,
-          whisker_high: point95,
-          outliers: [point5, parseFloat(median).toFixed(2), point95]
+          Q3: parseFloat(point95).toFixed(2),
+          whisker_low: pMin,
+          whisker_high: pMax,
+          outliers: [pMin, parseFloat(median).toFixed(2), pMax]
         }
       };
 
@@ -312,7 +314,7 @@ export class CnvChartDirective implements AfterViewInit {
                 "</tr>" +
                 "</thead>";
 
-              return "<table style='font-size: 18px'>" +
+              return "<table id='" + d.data.label + "' style='font-size: 18px'>" +
                 header +
                 "<tbody>" + rows + "</tbody>" +
                 "</table>";
@@ -335,6 +337,7 @@ export class CnvChartDirective implements AfterViewInit {
           let genes = this.parseddata;
           let frame:any;
           let marker:any = [];
+          let name:any = 'test';
 
           svg = d3.select('#boxplotchart')
             .select('.nv-boxPlotWithAxes')
