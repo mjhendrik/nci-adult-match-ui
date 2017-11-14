@@ -147,8 +147,9 @@ export class ViewDataTransformer {
     report.isAssignmentReportEditable = this.getAssignmentReportEditable(report);
   }
 
-  updateVariantStatus(item: ConfirmableItem, updatedStatus: ApiStatusUpdateSuccess): void {
+  updateVariantStatus(variantReport: VariantReportData, item: ConfirmableItem, updatedStatus: ApiStatusUpdateSuccess): void {
     item.comment = updatedStatus.comments;
+    this.calculateMoiSummary(variantReport.variantReport);
   }
 
   updateOutsidePatientReport(report: VariantReportComparisonData): void {
@@ -277,6 +278,7 @@ export class ViewDataTransformer {
         .concat(sourceVariantReport.indels || []);
 
     this.precessPassFailVariants(sourceVariantReport);
+
     return sourceVariantReport;
   }
 
@@ -430,16 +432,7 @@ export class ViewDataTransformer {
       variantReport.isOutsideAssay = transformedBiopsy.isOutsideAssay;
       variantReport.variantReportFileReceivedDate = analysis.variantReportFileReceivedDate;
 
-      variantReport.moiSummary = {
-        totalaMOIs: 0,
-        totalMOIs: 0,
-        confirmedaMOIs: 0,
-        confirmedMOIs: 0
-      };
-
-      for (let table of variantTables) {
-        this.calculateMoiSummary(variantReport[table], variantReport.moiSummary);
-      }
+      this.calculateMoiSummary(variantReport);
 
       transformedPatient.analyses[message.ionReporterResults.jobName] = analysis;
 
@@ -484,24 +477,39 @@ export class ViewDataTransformer {
     }
   }
 
-  private calculateMoiSummary(table: any[], moiSummary: any): void {
-    if (!table)
+  private calculateMoiSummary(variantReport: any): void {
+    if (!variantReport)
       return;
 
-    for (let item of table) {
-      moiSummary.totalMOIs += 1;
+    variantReport.moiSummary = {
+      totalaMOIs: 0,
+      totalMOIs: 0,
+      confirmedaMOIs: 0,
+      confirmedMOIs: 0
+    };
 
-      if (item.isAMoi) {
-        moiSummary.totalaMOIs += 1;
-        if (item.confirmed) {
-          moiSummary.confirmedaMOIs += 1;
-        }
-      } else if (item.confirmed) {
-        moiSummary.confirmedMOIs += 1;
+    for (let tableName of variantTables ) {
+      let table = variantReport[tableName];
+
+      if (!table) {
+        continue;
       }
 
-      if (item.metadata) {
-        item.comment = item.metadata.comment;
+      for (let item of table) {
+        variantReport.moiSummary.totalMOIs += 1;
+
+        if (item.isAMoi) {
+          variantReport.moiSummary.totalaMOIs += 1;
+          if (item.confirmed) {
+            variantReport.moiSummary.confirmedaMOIs += 1;
+          }
+        } else if (item.confirmed) {
+          variantReport.moiSummary.confirmedMOIs += 1;
+        }
+
+        if (item.metadata) {
+          item.comment = item.metadata.comment;
+        }
       }
     }
   }
