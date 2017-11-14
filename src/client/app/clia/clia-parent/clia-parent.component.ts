@@ -11,6 +11,8 @@ import { SampleControlApiService } from '../sample-control-api.service';
 import { IonReportersApiService } from '../ion-reporters-api.service';
 import { UserProfileService } from '../../shared/user-profile/user-profile.service';
 
+import { Observable } from 'rxjs/Rx';
+
 /**
  * CliaParentComponent.
  */
@@ -81,7 +83,7 @@ export class CliaParentComponent implements OnInit {
     this.getDataNTC();
     this.getDataPACC();
     this.getDataIon();
-    // this.autoLoadDataIon();
+    this.autoLoadDataIon();
     // TO_DO: Error: Timeout - Async callback was not invoked within timeout specified by jasmine.DEFAULT_TIMEOUT_INTERVAL.
     // (https://github.com/angular/angular/issues/8280#issue-151377567)
 
@@ -154,25 +156,25 @@ export class CliaParentComponent implements OnInit {
       });
   };
 
-  // autoLoadDataIon() {
-  //   setInterval(() => {
-  //
-  //     this.apiIon.getCliaIon(this.cliaType)
-  //       .subscribe(details => {
-  //
-  //         let gmt = new GmtPipe();
-  //
-  //         this.ionReportersData = details.map(x => {
-  //           x.lastContactDate = gmt.transform(x.lastContactDate);
-  //           return x;
-  //         });
-  //
-  //       });
-  //
-  //     this.timestamp = new Date();
-  //
-  //   }, 1000 * 60);
-  // };
+  autoLoadDataIon() {
+    // Observable.interval(1000 * 60).subscribe(x => {
+
+      this.apiIon.getCliaIon(this.cliaType)
+        .subscribe(details => {
+
+          let gmt = new GmtPipe();
+
+          this.ionReportersData = details.map(x => {
+            x.lastContactDate = gmt.transform(x.lastContactDate);
+            return x;
+          });
+
+        });
+
+      this.timestamp = new Date();
+
+    // });
+  };
 
   setControlType(type: string): void {
     this.control_type = type;
