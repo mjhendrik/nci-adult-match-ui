@@ -35,12 +35,11 @@ class DataResolver implements Resolve<VariantReportData> {
       this.patientApi.getPatientDetails(psn).flatMap(patientData => {
         let patient = this.transformer.transformPatient(patientData) || {};
         let variantReport = this.transformer.findVariantReport(patient, analysisId);
-        let rawVariantReport = variantReport.variantReport;
-        delete rawVariantReport.singleNucleotideVariantAndIndels;
+        delete variantReport.singleNucleotideVariantAndIndels;
         return this.treatmentArmApi
-          .getAmois(variantReport.variantReport)
+          .getAmois(variantReport)
           .map(updatedVariantReport => {
-            this.transformer.replaceVariantReportTables(rawVariantReport, updatedVariantReport);
+            this.transformer.replaceVariantReportTables(variantReport, updatedVariantReport);
             return patient;
           });
       }),
