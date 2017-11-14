@@ -112,9 +112,6 @@ export class CnvChartDirective implements AfterViewInit {
   getData() {
     if(this.data===null) return;
 
-
-
-
     let array:any = this.data[0] || {};
     let version:any = this.data[1] || {};
     let xr:number = array.length * 24;
@@ -174,7 +171,6 @@ export class CnvChartDirective implements AfterViewInit {
       let Object:any = {
         x: key,
         label: gene,
-        // label: '<a href>' + gene + '</a>',
         status: status,
         error: error,
         chr: chromosome,
