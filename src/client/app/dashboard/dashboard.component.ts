@@ -5,6 +5,7 @@ import {
 import { routerTransition } from './../shared/router.animations';
 import { GmtPipe } from './../shared/pipes/gmt.pipe';
 import { DashboardApiService } from './dashboard-api.service';
+import { Observable } from 'rxjs/Rx';
 
 export interface LoadableData<T> {
   isLoaded: boolean;
@@ -53,7 +54,6 @@ export class DashboardComponent implements OnInit {
   pendingAssignmentReports: LoadableData<any[]> = { isLoaded: false, data: [] };
   pendingVariantReports: LoadableData<any[]> = { isLoaded: false, data: [] };
   patientsAwaiting: LoadableData<any[]> = { isLoaded: false, data: [] };
-  // patientsAwaitingCall: any[] = [];
 
   showRow: any = {};
 
@@ -83,6 +83,7 @@ export class DashboardComponent implements OnInit {
     this.getPendingVariantReportsData();
     this.getPatientsAwaitingData();
 
+    this.autoLoadOverviewData();
     this.tablePatientsAwaitingDataInitial = this.patientsAwaiting.data.length;
   }
 
@@ -225,6 +226,15 @@ export class DashboardComponent implements OnInit {
         this.biopsyTrackingSummary = data;
         this.isLoadedbiopsyTrackingSummary = true;
       });
+  }
+
+  autoLoadOverviewData() {
+    Observable.interval(1000 * 30).subscribe(x => {
+      this.getTreatmentArmSummaryData();
+      this.getPatientSummaryData();
+      this.getBiopsyTrackingSummaryData();
+      this.timestamp = new Date();
+    });
   }
 
 }
