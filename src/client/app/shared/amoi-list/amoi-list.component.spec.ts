@@ -124,7 +124,6 @@ export function main() {
       hostComponent.testAmois = fakeData;
       fixture.detectChanges();
       let listDiv = fixture.debugElement.query(By.css('div.amoi-status'));
-      console.log((listDiv.nativeElement as HTMLElement).outerHTML);
       let rows = listDiv.queryAll(By.css('div'));
       expect(rows.length).toEqual(5);
     });
