@@ -14,11 +14,15 @@ import { MockBackend, MockConnection } from '@angular/http/testing';
 import { AuthHttp } from 'angular2-jwt';
 import { Observable } from 'rxjs/Observable';
 
-import { PatientApiService } from './patient-api.service';
 import { DownloadService } from '../shared/utils/download.service';
 import { WindowStub } from './testing/window-stub';
 import { PatientApiServiceStub } from './testing/patient-api-service-stub';
 import { VariantReportComparisonData } from './variant-report-comparison-data';
+import {
+  PatientApiService,
+  ApiStatusUpdateSuccess,
+  ApiStatusUpdateError
+} from './patient-api.service';
 
 export function main() {
   describe('PatientApiService (mockBackend)', () => {
@@ -37,9 +41,9 @@ export function main() {
 
     it('can provide the mockBackend as XHRBackend and DownloadService',
       inject([XHRBackend, DownloadService], (backend: MockBackend, download: DownloadService) => {
-      expect(backend).not.toBeNull('backend should be provided');
-      expect(download).not.toBeNull('download should be provided');
-    }));
+        expect(backend).not.toBeNull('backend should be provided');
+        expect(download).not.toBeNull('download should be provided');
+      }));
 
     it('can instantiate service with "new"', inject([AuthHttp, DownloadService], (http: AuthHttp, download: DownloadService) => {
       expect(http).not.toBeNull('http should be provided');
@@ -622,7 +626,7 @@ export function main() {
       beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http, download);
-        fakeData = {download_url:'fake-url'};
+        fakeData = { download_url: 'fake-url' };
         let options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
         downloadFileSpy = spyOn(download, 'downloadFile').and.callFake(() => { ; });
@@ -649,63 +653,66 @@ export function main() {
     });
 
 
-    fdescribe('when updateVariantReport', () => {
-      let backend: MockBackend;
-      let service: PatientApiService;
-      let fakeData: any;
-      let response: Response;
-      let restCallSpy: jasmine.Spy;
+    // fdescribe('when updateVariantReport', () => {
+    //   let backend: MockBackend;
+    //   let service: PatientApiService;
+    //   let response: Response;
+    //   let restCallSpy: jasmine.Spy;
+    //   let fakeData: {
+    //     commenter: 'fake-commenter',
+    //     status: 'fake-status',
+    //     dateTime: 'fake-dateTime',
+    //   };
 
-      beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
-        backend = be;
-        service = new PatientApiService(http, download);
-        fakeData = {download_url:'fake-url'};
-        let options = new ResponseOptions({
-          status: 200,
-          body: {
-            commenter: 'fake-commenter',
-            status: 'fake-status',
-            dateTime: 'fake-dateTime',
-          }
-        });
-        response = new Response(options);
-        restCallSpy = spyOn(download, 'downloadFile').and.callFake(() => { ; });
-      }));
+    //   let fakeErrorData: {
+    //     code: 404,
+    //     message: 'fake-error',
+    //   };
 
-      it('should have expected fake download url', async(inject([], () => {
-        backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
+    //   beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
+    //     backend = be;
+    //     service = new PatientApiService(http, download);
+    //     let options = new ResponseOptions({
+    //       status: 200,
+    //       body: fakeData
+    //     });
+    //     response = new Response(options);
+    //     restCallSpy = spyOn(download, 'downloadFile').and.callFake(() => { ; });
+    //   }));
 
-        service.updateVariantReport('fake-psn', 'fake-bsn', 'fake-analysis-id', true);
+    //   fit('should have expected fake response (then)', async(inject([], () => {
+    //     backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
-        expect(restCallSpy).toHaveBeenCalled();
+    //     service.updateVariantReport('fake-psn', 'fake-bsn', 'fake-analysis-id', true).toPromise()
+    //       .then(resp => {
+    //         switch (resp.kind) {
+    //           case 'error':
+    //             expect(resp.kind).toBe('error');
+    //             let errorRes = resp as ApiStatusUpdateError;
+    //             expect(errorRes.message).toBe(fakeErrorData.message);
+    //             break;
+    //           case 'success':
+    //             expect(resp.kind).toBe('success');
+    //             let successRes = resp as ApiStatusUpdateSuccess;
+    //             expect(successRes.commenter).toBe(fakeData.commenter);
+    //             break;
+    //         }
+    //       });
+    //   })));
 
-      })));
+    //   it('should have expected fake response (Observable.do)', async(inject([], () => {
+    //     backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
-      it('should be ok if GET download_url endpoint fails and should not call downloadFile', async(inject([], () => {
-        let resp = new Response(new ResponseOptions({ status: 404 }));
-        backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
+    //     service.updateVariantReport('fake-psn', 'fake-bsn', 'fake-analysis-id', true)
+    //       .do(resp => {
+    //         expect(resp.kind).toBe('success');
+    //         let successRes = resp as ApiStatusUpdateSuccess;
+    //         expect(successRes.commenter).toBe(fakeData.commenter);
+    //       })
+    //       .toPromise();
+    //   })));
 
-        service.updateVariantReport('fake-psn', 'fake-bsn', 'fake-analysis-id', true);
-
-        expect(restCallSpy).not.toHaveBeenCalled();
-      })));
-
-      it('should treat 404 as an Observable error', async(inject([], () => {
-        let resp = new Response(new ResponseOptions({ status: 404 }));
-        backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
-
-        service.updateVariantReport('fake-psn', 'fake-bsn', 'fake-analysis-id', true)
-          .do(count => {
-            fail('should not respond with patients');
-          })
-          .catch(err => {
-            expect(err).toMatch(/Bad response status/, 'should catch bad response status code');
-            return Observable.of(null); // failure is the expected test result
-          })
-          .toPromise();
-      })));
-    });
-
+    // });
 
   });
 }
