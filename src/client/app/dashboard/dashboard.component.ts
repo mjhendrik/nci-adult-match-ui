@@ -5,6 +5,7 @@ import {
 import { routerTransition } from './../shared/router.animations';
 import { GmtPipe } from './../shared/pipes/gmt.pipe';
 import { DashboardApiService } from './dashboard-api.service';
+import { Observable } from 'rxjs/Rx';
 
 export interface LoadableData<T> {
   isLoaded: boolean;
@@ -228,12 +229,12 @@ export class DashboardComponent implements OnInit {
   }
 
   autoLoadOverviewData() {
-    setInterval(() => {
+    Observable.interval(1000 * 30).subscribe(x => {
       this.getTreatmentArmSummaryData();
       this.getPatientSummaryData();
       this.getBiopsyTrackingSummaryData();
       this.timestamp = new Date();
-    }, 1000 * 30);
+    });
   }
 
 }
