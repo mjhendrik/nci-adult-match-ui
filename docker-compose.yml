@@ -7,6 +7,8 @@ services:
     image: "fnlcr/nci-adult-match-ui-dev"
     ports:
       - '5555:5555'
+    networks:
+      - adult-match
 
   patient-api:
     image: "fnlcr/nci-adult-match-patient-api"
@@ -211,5 +213,3 @@ volumes:
 
 networks:
   adult-match:
-    external:
-      name: adult-match-net

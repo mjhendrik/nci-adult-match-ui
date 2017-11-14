@@ -16,12 +16,6 @@ Login into docker using your docker account (needed only once)
 docker login
 ```
 
-Create external Docker network
-
-```
-docker network create adult-match-net
-```
-
 Make sure you have the following environment variables:
 
     AUTH0_CLIENT_ID
@@ -47,22 +41,6 @@ Wait for all of the services to start, then open your browser at [http://localho
 To run only some of the services (for example only the `ui` and `patient-api`, with their dependencies)
 
 *NOTE: Each time you run `docker-compose down` the data volumes for the docker containers are removed and you'll have to restore the database backups again.*
-
-*You need to have your own Message API configuration file located at `$HOME/config/nci-adult-match/nci-adult-match-message-api.properties`. You will need to configure your own queue name. Replace `{REPLACE_WITH_YOUR_QUEUE_NAME}` with your user name for example.*
-
-Example of the properties file:
-
-```
-bucket.name=adultmatch-dev
-kie.wb.fs.filepath=/gov/nih/nci/matchbox/TreatmentArmAssignmentLogic.drl
-kie.wb.fs.package=gov/nih/nci/matchbox/TreatmentArmAssignmentLogic.drl
-queue.name=message-api-dev-{REPLACE_WITH_YOUR_QUEUE_NAME}-queue.fifo
-vcf.converter.path=/usr/local/bin
-
-ecog.api.scheme=http
-ecog.api.hostname=mock-ecog
-ecog.api.port=3000
-```
 
 For front-end developers running the front-end code in node, run everything __but__ the front-end:
 
