@@ -40,7 +40,8 @@
                           <dt>Treatment Arm Approval Date</dt>
                           <dd>
                             <div class="btn-group m-b-5 m-r-5">
-                              <a href="javascript:;" data-toggle="dropdown" class="btn btn-success-light dropdown-toggle" aria-expanded="false">{{tableData[versionIndex].version | dashify}}
+                              <a href [routerLink]="['/treatments/'+tableData[versionIndex].treatmentArmId+'/'+tableData[versionIndex].version]" data-toggle="dropdown"
+                                class="btn btn-success-light dropdown-toggle" aria-expanded="false">{{tableData[versionIndex].version | dashify}}
                                 <span *ngIf="tableData[versionIndex].dateArchived===null">*</span>&nbsp;&nbsp;
                                 <span class="caret"></span>
                               </a>
@@ -137,1346 +138,1349 @@
       <!-- end panel -->
     </div>
   </div>
-  <tabset class="nav-tabs-success">
-    <tab heading="Drugs & Diseases" id="drugs_diseases">
-      <div class="row" matchHeight="panel-height-top">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="col-md-12 p-l-0 p-r-0" id="exclDrugs-header">
-              <div class="panel-heading">
-                <h4 class="panel-title f-s-18">Exclusionary Drugs</h4>
-              </div>
-              <div class="col-md-6 bg-success-light">
-                <div class="dataTables_length text-white form-inline p-t-15 p-b-10 p-l-5" id="data-table_length">
-                  <label>
-                    Show
-                    <select [disabled]="tableData[versionIndex].exclusionDrugs.length == 0" name="data-table_length" [(ngModel)]="recordsPerPageExdr"
-                      aria-controls="data-table" class="form-control form-control-success input-sm">
-                      <option value=10>10</option>
-                      <option value=25>25</option>
-                      <option value=50>50</option>
-                      <option value=100>100</option>
-                    </select>
-                    entries
-                  </label>
+  <div class="panel">
+    <tabset class="nav-tabs-success">
+      <tab heading="Drugs & Diseases" id="drugs_diseases">
+        <div class="row" matchHeight="panel-height-top">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="col-md-12 p-l-0 p-r-0" id="exclDrugs-header">
+                <div class="panel-heading">
+                  <h4 class="panel-title f-s-18">Exclusionary Drugs</h4>
+                </div>
+                <div class="col-md-6 bg-success-light">
+                  <div class="dataTables_length text-white form-inline p-t-15 p-b-10 p-l-5" id="data-table_length">
+                    <label>
+                      Show
+                      <select [disabled]="tableData[versionIndex].exclusionDrugs.length == 0" name="data-table_length" [(ngModel)]="recordsPerPageExdr"
+                        aria-controls="data-table" class="form-control form-control-success input-sm">
+                        <option value=10>10</option>
+                        <option value=25>25</option>
+                        <option value=50>50</option>
+                        <option value=100>100</option>
+                      </select>
+                      entries
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-6 bg-success-light">
+                  <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10 p-r-5">
+                    <label>Search:
+                      <input [disabled]="tableData[versionIndex].exclusionDrugs.length == 0" type="text" [(ngModel)]="searchtermExdr" class="form-control form-control-success input-sm"
+                        placeholder="" aria-controls="data-table">
+                    </label>
+                  </div>
                 </div>
               </div>
-              <div class="col-md-6 bg-success-light">
-                <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10 p-r-5">
-                  <label>Search:
-                    <input [disabled]="tableData[versionIndex].exclusionDrugs.length == 0" type="text" [(ngModel)]="searchtermExdr" class="form-control form-control-success input-sm"
-                      placeholder="" aria-controls="data-table">
-                  </label>
+              <div class="row">
+                <!-- table exdr -->
+                <div class="table-responsive col-lg-12">
+                  <table *ngIf="tableData[versionIndex].exclusionDrugs.length == 0" class="table table-td-valign-middle table-striped table-col-width">
+                    <thead>
+                      <tr class="success-light">
+                        <th>
+                          ID
+                        </th>
+                        <th>
+                          Name
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="text-muted" colspan="2">There are no exclusionary drugs for treatment arm "{{tableData[versionIndex].treatmentArmId | dashify}}"
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table *ngIf="tableData[versionIndex].exclusionDrugs.length!=0" class="table table-td-valign-middle table-striped table-col-width"
+                    [mfData]="tableData[versionIndex].exclusionDrugs | filterByText: searchtermExdr" #mftableExdr="mfDataTable"
+                    [(mfSortBy)]="tableExdrDefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPageExdr" id="exclDrugs-table">
+                    <thead>
+                      <tr class="success-light">
+                        <th>
+                          <mfDefaultSorter by="drugs[0].drugId">
+                            <span class="table-header">ID</span>
+                          </mfDefaultSorter>
+                        </th>
+                        <th>
+                          <mfDefaultSorter by="drugs[0].name">
+                            <span class="table-header">Name</span>
+                          </mfDefaultSorter>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of mftableExdr.data">
+                        <td>{{item.drugs[0].drugId | dashify}}</td>
+                        <td>{{item.drugs[0].name | dashify}}</td>
+                      </tr>
+                      <tr *ngIf="mftableExdr.data.length == 0">
+                        <td class="text-muted" colspan="2">No matching search results found for "{{searchtermExdr}}"</td>
+                      </tr>
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <td class="tfoot-padding" colspan="2">
+                          <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermExdr" [totallength]="tableData[versionIndex].exclusionDrugs.length"></mfBootstrapPaginator>
+                        </td>
+                      </tr>
+                    </tfoot>
+                  </table>
                 </div>
               </div>
             </div>
-            <div class="row">
-              <!-- table exdr -->
-              <div class="table-responsive col-lg-12">
-                <table *ngIf="tableData[versionIndex].exclusionDrugs.length == 0" class="table table-td-valign-middle table-striped table-col-width">
-                  <thead>
-                    <tr class="success-light">
-                      <th>
-                        ID
-                      </th>
-                      <th>
-                        Name
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td class="text-muted" colspan="2">There are no exclusionary drugs for treatment arm "{{tableData[versionIndex].treatmentArmId | dashify}}"
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-                <table *ngIf="tableData[versionIndex].exclusionDrugs.length!=0" class="table table-td-valign-middle table-striped table-col-width"
-                  [mfData]="tableData[versionIndex].exclusionDrugs | filterByText: searchtermExdr" #mftableExdr="mfDataTable"
-                  [(mfSortBy)]="tableExdrDefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPageExdr" id="exclDrugs-table">
-                  <thead>
-                    <tr class="success-light">
-                      <th>
-                        <mfDefaultSorter by="drugs[0].drugId">
-                          <span class="table-header">ID</span>
-                        </mfDefaultSorter>
-                      </th>
-                      <th>
-                        <mfDefaultSorter by="drugs[0].name">
-                          <span class="table-header">Name</span>
-                        </mfDefaultSorter>
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let item of mftableExdr.data">
-                      <td>{{item.drugs[0].drugId | dashify}}</td>
-                      <td>{{item.drugs[0].name | dashify}}</td>
-                    </tr>
-                    <tr *ngIf="mftableExdr.data.length == 0">
-                      <td class="text-muted" colspan="2">No matching search results found for "{{searchtermExdr}}"</td>
-                    </tr>
-                  </tbody>
-                  <tfoot>
-                    <tr>
-                      <td class="tfoot-padding" colspan="2">
-                        <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermExdr" [totallength]="tableData[versionIndex].exclusionDrugs.length"></mfBootstrapPaginator>
-                      </td>
-                    </tr>
-                  </tfoot>
-                </table>
+            <div class="col-md-6">
+              <div class="col-md-12 p-l-0 p-r-0" id="exclDiseases-header">
+                <div class="panel-heading">
+                  <h4 class="panel-title f-s-18">Exclusionary Diseases</h4>
+                </div>
+                <div class="col-md-6 bg-success-light">
+                  <div class="dataTables_length text-white form-inline p-t-15 p-b-10 p-l-5" id="data-table_length">
+                    <label>Show
+                      <select [disabled]="tableData[versionIndex].exclusionDiseases.length == 0" name="data-table_length" [(ngModel)]="recordsPerPageExdz"
+                        aria-controls="data-table" class="form-control form-control-success input-sm">
+                        <option value=10>10</option>
+                        <option value=25>25</option>
+                        <option value=50>50</option>
+                        <option value=100>100</option>
+                      </select>
+                      entries</label>
+                  </div>
+                </div>
+                <div class="col-md-6 bg-success-light">
+                  <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10 p-r-5">
+                    <label>Search:
+                      <input [disabled]="tableData[versionIndex].exclusionDiseases.length == 0" type="text" [(ngModel)]="searchtermExdz" class="form-control form-control-success input-sm"
+                        placeholder="" aria-controls="data-table">
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <!-- table exdz -->
+                <div class="table-responsive col-lg-12">
+                  <table *ngIf="tableData[versionIndex].exclusionDiseases.length == 0" class="table table-td-valign-middle table-striped table-col-width">
+                    <thead>
+                      <tr class="success-light">
+                        <th>
+                          CTEP Category
+                        </th>
+                        <th>
+                          CTEP Term
+                        </th>
+                        <th>
+                          MedDRA Code
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="text-muted" colspan="3">There are no exclusionary diseases for treatment arm "{{tableData[versionIndex].treatmentArmId |
+                          dashify}}"
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table *ngIf="tableData[versionIndex].exclusionDiseases.length!=0" class="table table-td-valign-middle table-striped table-col-width"
+                    [mfData]="tableData[versionIndex].exclusionDiseases | filterByText: searchtermExdz" #mftableExdz="mfDataTable"
+                    [(mfSortBy)]="tableExdzDefaultSort" [mfRowsOnPage]="recordsPerPageExdz" id="exclDiseases-table">
+                    <thead>
+                      <tr class="success-light">
+                        <th>
+                          <mfDefaultSorter by="ctepCategory">
+                            <span class="table-header">CTEP Category</span>
+                          </mfDefaultSorter>
+                        </th>
+                        <th>
+                          <mfDefaultSorter by="shortName">
+                            <span class="table-header">CTEP Term</span>
+                          </mfDefaultSorter>
+                        </th>
+                        <th>
+                          <mfDefaultSorter by="_id">
+                            <span class="table-header">MedDRA Code</span>
+                          </mfDefaultSorter>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of mftableExdz.data">
+                        <td>{{item.ctepCategory | dashify}}</td>
+                        <td>{{item.shortName | dashify}}</td>
+                        <td>{{item._id | dashify}}</td>
+                      </tr>
+                      <tr *ngIf="mftableExdz.data.length == 0">
+                        <td class="text-muted" colspan="3">No matching search results found for "{{searchtermExdz}}"</td>
+                      </tr>
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <td class="tfoot-padding" colspan="3">
+                          <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermExdz" [totallength]="tableData[versionIndex].exclusionDiseases.length"></mfBootstrapPaginator>
+                        </td>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="col-md-12 p-l-0 p-r-0" id="exclDiseases-header">
-              <div class="panel-heading">
-                <h4 class="panel-title f-s-18">Exclusionary Diseases</h4>
-              </div>
-              <div class="col-md-6 bg-success-light">
-                <div class="dataTables_length text-white form-inline p-t-15 p-b-10 p-l-5" id="data-table_length">
-                  <label>Show
-                    <select [disabled]="tableData[versionIndex].exclusionDiseases.length == 0" name="data-table_length" [(ngModel)]="recordsPerPageExdz"
-                      aria-controls="data-table" class="form-control form-control-success input-sm">
-                      <option value=10>10</option>
-                      <option value=25>25</option>
-                      <option value=50>50</option>
-                      <option value=100>100</option>
-                    </select>
-                    entries</label>
+        </div>
+      </tab>
+      <tab heading="SNVs and Indels" id="svn_indels">
+        <div class="row" matchHeight="panel-height-top">
+          <div class="row">
+            <div class="col-md-12">
+              <!-- table snv -->
+              <div class="row">
+                <!-- begin panel -->
+                <div>
+                  <div class="panel-heading">
+                    <h4 class="panel-title f-s-18">Inclusions</h4>
+                  </div>
+                  <div class="col-md-12 bg-success-light">
+                    <div class="col-md-6 p-l-5">
+                      <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
+                        <label>Show
+                          <select [disabled]="snvIn.length == 0"  name="data-table_length" [(ngModel)]="recordsPerPageSnvIn" aria-controls="data-table"
+                            class="form-control form-control-success input-sm">
+                            <option value=5>5</option>
+                            <option value=10>10</option>
+                            <option value=25>25</option>
+                            <option value=50>50</option>
+                          </select>
+                          entries</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 p-r-5">
+                      <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
+                        <label>Search:
+                          <input [disabled]="snvIn.length == 0"  type="text" [(ngModel)]="searchtermSnvIn" class="form-control form-control-success input-sm"
+                            placeholder="" aria-controls="data-table">
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="table-responsive col-lg-12">
+                      <table *ngIf="snvIn.length == 0" class="table table-td-valign-middle table-striped table-col-width">
+                        <thead>
+                          <tr class="success-light">
+                            <th>
+                              ID
+                            </th>
+                            <th>
+                              Chrom
+                            </th>
+                            <th>
+                              Position
+                            </th>
+                            <th>
+                              OCP Ref
+                            </th>
+                            <th>
+                              OCP Alt
+                            </th>
+                            <th>
+                              LOE
+                            </th>
+                            <th>
+                              Lit
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="text-muted" colspan="7">There are no included single nucleotide variants or indels for treatment arm "{{tableData[versionIndex].treatmentArmId
+                              | dashify}}"</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <table *ngIf="snvIn.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="snvIn | filterByText: searchtermSnvIn"
+                        #mftableSnvIn="mfDataTable" [(mfSortBy)]="tableSnvInDefaultSort" [mfRowsOnPage]="recordsPerPageSnvIn">
+                        <thead>
+                          <tr class="success-light">
+                            <th>
+                              <mfDefaultSorter by="identifier">
+                                <span class="table-header">ID</span>
+                              </mfDefaultSorter>
+                            </th>
+                            <th>
+                              <mfDefaultSorter by="chromosome">
+                                <span class="table-header">Chrom</span>
+                              </mfDefaultSorter>
+                            </th>
+                            <th>
+                              <mfDefaultSorter by="position">
+                                <span class="table-header">Position</span>
+                              </mfDefaultSorter>
+                            </th>
+                            <th>
+                              <mfDefaultSorter by="reference">
+                                <span class="table-header">OCP Ref</span>
+                              </mfDefaultSorter>
+                            </th>
+                            <th>
+                              <mfDefaultSorter by="alternative">
+                                <span class="table-header">OCP Alt</span>
+                              </mfDefaultSorter>
+                            </th>
+                            <th>
+                              <mfDefaultSorter by="levelOfEvidence">
+                                <span class="table-header">LOE</span>
+                              </mfDefaultSorter>
+                            </th>
+                            <th>
+                              <span class="table-header">Lit</span>
+                              <!--<mfDefaultSorter by="publicMedIds"></mfDefaultSorter>-->
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let item of mftableSnvIn.data">
+                            <td>
+                              <cosmic-link [linkType]="'cosmicId'" [linkId]="item.identifier"></cosmic-link>
+                            </td>
+                            <td>{{item.chromosome | dashify}}</td>
+                            <td>{{item.position | dashify}}</td>
+                            <td>{{item.reference | dashify}}</td>
+                            <td>{{item.alternative | dashify}}</td>
+                            <td>{{item.levelOfEvidence | dashify}}</td>
+                            <td>
+                              <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
+                                <span *ngFor="let items of item.publicMedIds; let last=last">
+                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
+                                  <span *ngIf="!last">, </span>
+                                </span>
+                              </span>
+                              <span *ngIf="item.publicMedIds==null || item.publicMedIds==0">-</span>
+                            </td>
+                          </tr>
+                          <tr *ngIf="mftableSnvIn.data.length == 0">
+                            <td class="text-muted" colspan="7">No matching search results found for "{{searchtermSnvIn}}"</td>
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <td class="tfoot-padding" colspan="7">
+                              <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermSnvIn" [totallength]="snvIn.length"></mfBootstrapPaginator>
+                            </td>
+                          </tr>
+                        </tfoot>
+                      </table>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-6 bg-success-light">
-                <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10 p-r-5">
-                  <label>Search:
-                    <input [disabled]="tableData[versionIndex].exclusionDiseases.length == 0" type="text" [(ngModel)]="searchtermExdz" class="form-control form-control-success input-sm"
-                      placeholder="" aria-controls="data-table">
-                  </label>
+                <div>
+                  <div class="panel-heading">
+                    <h4 class="panel-title f-s-18">Exclusions</h4>
+                  </div>
+                  <div class="col-md-12 bg-success-light">
+                    <div class="col-md-6 p-l-5">
+                      <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
+                        <label>Show
+                          <select [disabled]="snvEx.length == 0"  name="data-table_length" [(ngModel)]="recordsPerPageSnvEx" aria-controls="data-table"
+                            class="form-control form-control-success input-sm">
+                            <option value=5>5</option>
+                            <option value=10>10</option>
+                            <option value=25>25</option>
+                            <option value=50>50</option>
+                          </select>
+                          entries</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 p-r-5">
+                      <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
+                        <label>Search:
+                          <input [disabled]="snvEx.length == 0"  type="text" [(ngModel)]="searchtermSnvEx" class="form-control form-control-success input-sm"
+                            placeholder="" aria-controls="data-table">
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="table-responsive col-lg-12">
+                      <table *ngIf="snvEx.length == 0" class="table table-td-valign-middle table-striped table-col-width">
+                        <thead>
+                          <tr class="success-light">
+                            <th>
+                              ID
+                            </th>
+                            <th>
+                              Chrom
+                            </th>
+                            <th>
+                              Position
+                            </th>
+                            <th>
+                              OCP Ref
+                            </th>
+                            <th>
+                              OCP Alt
+                            </th>
+                            <th>
+                              Lit
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="text-muted" colspan="7">There are no excluded single nucleotide variants or indels for treatment arm "{{tableData[versionIndex].treatmentArmId
+                              | dashify}}"</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <table *ngIf="snvEx.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="snvEx | filterByText: searchtermSnvEx"
+                        #mftableSnvEx="mfDataTable" [(mfSortBy)]="tableSnvExDefaultSort" [mfRowsOnPage]="recordsPerPageSnvEx">
+                        <thead>
+                          <tr class="success-light">
+                            <th>
+                              <mfDefaultSorter by="identifier">
+                                <span class="table-header">ID</span>
+                              </mfDefaultSorter>
+                            </th>
+                            <th>
+                              <mfDefaultSorter by="chromosome">
+                                <span class="table-header">Chrom</span>
+                              </mfDefaultSorter>
+                            </th>
+                            <th>
+                              <mfDefaultSorter by="position">
+                                <span class="table-header">Position</span>
+                              </mfDefaultSorter>
+                            </th>
+                            <th>
+                              <mfDefaultSorter by="reference">
+                                <span class="table-header">OCP Ref</span>
+                              </mfDefaultSorter>
+                            </th>
+                            <th>
+                              <mfDefaultSorter by="alternative">
+                                <span class="table-header">OCP Alt</span>
+                              </mfDefaultSorter>
+                            </th>
+                            <th>
+                              <span class="table-header">Lit</span>
+                              <!--<mfDefaultSorter by="publicMedIds"></mfDefaultSorter>-->
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let item of mftableSnvEx.data">
+                            <td>
+                              <cosmic-link [linkType]="'cosmicId'" [linkId]="item.identifier"></cosmic-link>
+                            </td>
+                            <td>{{item.chromosome | dashify}}</td>
+                            <td>{{item.position | dashify}}</td>
+                            <td>{{item.reference | dashify}}</td>
+                            <td>{{item.alternative | dashify}}</td>
+                            <td>
+                              <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
+                                <span *ngFor="let items of item.publicMedIds; let last=last">
+                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
+                                  <span *ngIf="!last">, </span>
+                                </span>
+                              </span>
+                              <span *ngIf="item.publicMedIds==null || item.publicMedIds==0">-</span>
+                            </td>
+                          </tr>
+                          <tr *ngIf="mftableSnvEx.data.length == 0">
+                            <td class="text-muted" colspan="7">No matching search results found for "{{searchtermSnvEx}}"</td>
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <td class="tfoot-padding" colspan="7">
+                              <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermSnvEx" [totallength]="snvEx.length"></mfBootstrapPaginator>
+                            </td>
+                          </tr>
+                        </tfoot>
+                      </table>
+                    </div>
+                  </div>
                 </div>
+                <!-- end panel -->
               </div>
-            </div>
-            <div class="row">
-              <!-- table exdz -->
-              <div class="table-responsive col-lg-12">
-                <table *ngIf="tableData[versionIndex].exclusionDiseases.length == 0" class="table table-td-valign-middle table-striped table-col-width">
-                  <thead>
-                    <tr class="success-light">
-                      <th>
-                        CTEP Category
-                      </th>
-                      <th>
-                        CTEP Term
-                      </th>
-                      <th>
-                        MedDRA Code
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td class="text-muted" colspan="3">There are no exclusionary diseases for treatment arm "{{tableData[versionIndex].treatmentArmId | dashify}}"
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-                <table *ngIf="tableData[versionIndex].exclusionDiseases.length!=0" class="table table-td-valign-middle table-striped table-col-width"
-                  [mfData]="tableData[versionIndex].exclusionDiseases | filterByText: searchtermExdz" #mftableExdz="mfDataTable"
-                  [(mfSortBy)]="tableExdzDefaultSort" [mfRowsOnPage]="recordsPerPageExdz" id="exclDiseases-table">
-                  <thead>
-                    <tr class="success-light">
-                      <th>
-                        <mfDefaultSorter by="ctepCategory">
-                          <span class="table-header">CTEP Category</span>
-                        </mfDefaultSorter>
-                      </th>
-                      <th>
-                        <mfDefaultSorter by="shortName">
-                          <span class="table-header">CTEP Term</span>
-                        </mfDefaultSorter>
-                      </th>
-                      <th>
-                        <mfDefaultSorter by="_id">
-                          <span class="table-header">MedDRA Code</span>
-                        </mfDefaultSorter>
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let item of mftableExdz.data">
-                      <td>{{item.ctepCategory | dashify}}</td>
-                      <td>{{item.shortName | dashify}}</td>
-                      <td>{{item._id | dashify}}</td>
-                    </tr>
-                    <tr *ngIf="mftableExdz.data.length == 0">
-                      <td class="text-muted" colspan="3">No matching search results found for "{{searchtermExdz}}"</td>
-                    </tr>
-                  </tbody>
-                  <tfoot>
-                    <tr>
-                      <td class="tfoot-padding" colspan="3">
-                        <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermExdz" [totallength]="tableData[versionIndex].exclusionDiseases.length"></mfBootstrapPaginator>
-                      </td>
-                    </tr>
-                  </tfoot>
-                </table>
-              </div>
+              <!-- table snv -->
             </div>
           </div>
         </div>
-      </div>
-    </tab>
-    <tab heading="SNVs and Indels" id="svn_indels">
-      <div class="row" matchHeight="panel-height-top">
-        <div class="row">
-          <div class="col-md-12">
-            <!-- table snv -->
-            <div class="row">
-              <!-- begin panel -->
-              <div>
-                <div class="panel-heading">
-                  <h4 class="panel-title f-s-18">Inclusions</h4>
-                </div>
-                <div class="col-md-12 bg-success-light">
-                  <div class="col-md-6 p-l-5">
-                    <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
-                      <label>Show
-                        <select [disabled]="snvIn.length == 0"  name="data-table_length" [(ngModel)]="recordsPerPageSnvIn" aria-controls="data-table"
-                          class="form-control form-control-success input-sm">
-                          <option value=5>5</option>
-                          <option value=10>10</option>
-                          <option value=25>25</option>
-                          <option value=50>50</option>
-                        </select>
-                        entries</label>
+      </tab>
+      <tab heading="CNVs" id="cnvs">
+        <div class="row" matchHeight="panel-height-top">
+          <div class="row">
+            <div class="col-md-12">
+              <!-- table cnv -->
+              <div class="row">
+                <!-- begin panel -->
+                <div>
+                  <div class="panel-heading">
+                    <h4 class="panel-title f-s-18">Inclusions</h4>
+                  </div>
+                  <div class="col-md-12 bg-success-light">
+                    <div class="col-md-6 p-l-5">
+                      <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
+                        <label>Show
+                          <select [disabled]="cnvIn.length == 0"  name="data-table_length" [(ngModel)]="recordsPerPageCnvIn" aria-controls="data-table"
+                            class="form-control form-control-success input-sm">
+                            <option value=5>5</option>
+                            <option value=10>10</option>
+                            <option value=25>25</option>
+                            <option value=50>50</option>
+                          </select>
+                          entries</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 p-r-5">
+                      <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
+                        <label>Search:
+                          <input [disabled]="cnvIn.length == 0"  type="text" [(ngModel)]="searchtermCnvIn" class="form-control form-control-success input-sm"
+                            placeholder="" aria-controls="data-table">
+                        </label>
+                      </div>
                     </div>
                   </div>
-                  <div class="col-md-6 p-r-5">
-                    <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
-                      <label>Search:
-                        <input [disabled]="snvIn.length == 0"  type="text" [(ngModel)]="searchtermSnvIn" class="form-control form-control-success input-sm"
-                          placeholder="" aria-controls="data-table">
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="table-responsive col-lg-12">
-                    <table *ngIf="snvIn.length == 0" class="table table-td-valign-middle table-striped table-col-width">
-                      <thead>
-                        <tr class="success-light">
-                          <th>
-                            ID
-                          </th>
-                          <th>
-                            Chrom
-                          </th>
-                          <th>
-                            Position
-                          </th>
-                          <th>
-                            OCP Ref
-                          </th>
-                          <th>
-                            OCP Alt
-                          </th>
-                          <th>
-                            LOE
-                          </th>
-                          <th>
-                            Lit
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td class="text-muted" colspan="7">There are no included single nucleotide variants or indels for treatment arm "{{tableData[versionIndex].treatmentArmId
-                            | dashify}}"</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <table *ngIf="snvIn.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="snvIn | filterByText: searchtermSnvIn"
-                      #mftableSnvIn="mfDataTable" [(mfSortBy)]="tableSnvInDefaultSort" [mfRowsOnPage]="recordsPerPageSnvIn">
-                      <thead>
-                        <tr class="success-light">
-                          <th>
-                            <mfDefaultSorter by="identifier">
-                              <span class="table-header">ID</span>
-                            </mfDefaultSorter>
-                          </th>
-                          <th>
-                            <mfDefaultSorter by="chromosome">
-                              <span class="table-header">Chrom</span>
-                            </mfDefaultSorter>
-                          </th>
-                          <th>
-                            <mfDefaultSorter by="position">
-                              <span class="table-header">Position</span>
-                            </mfDefaultSorter>
-                          </th>
-                          <th>
-                            <mfDefaultSorter by="reference">
-                              <span class="table-header">OCP Ref</span>
-                            </mfDefaultSorter>
-                          </th>
-                          <th>
-                            <mfDefaultSorter by="alternative">
-                              <span class="table-header">OCP Alt</span>
-                            </mfDefaultSorter>
-                          </th>
-                          <th>
-                            <mfDefaultSorter by="levelOfEvidence">
-                              <span class="table-header">LOE</span>
-                            </mfDefaultSorter>
-                          </th>
-                          <th>
-                            <span class="table-header">Lit</span>
-                            <!--<mfDefaultSorter by="publicMedIds"></mfDefaultSorter>-->
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr *ngFor="let item of mftableSnvIn.data">
-                          <td>
-                            <cosmic-link [linkType]="'cosmicId'" [linkId]="item.identifier"></cosmic-link>
-                          </td>
-                          <td>{{item.chromosome | dashify}}</td>
-                          <td>{{item.position | dashify}}</td>
-                          <td>{{item.reference | dashify}}</td>
-                          <td>{{item.alternative | dashify}}</td>
-                          <td>{{item.levelOfEvidence | dashify}}</td>
-                          <td>
-                            <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
-                              <span *ngFor="let items of item.publicMedIds; let last=last">
-                                <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
-                                <span *ngIf="!last">, </span>
+                  <div class="row">
+                    <div class="table-responsive col-lg-12">
+                      <table *ngIf="cnvIn.length == 0" class="table table-td-valign-middle table-striped table-col-width">
+                        <thead>
+                          <tr class="success-light">
+                            <th>
+                              Gene
+                            </th>
+                            <th>
+                              Chrom
+                            </th>
+                            <th>
+                              Position
+                            </th>
+                            <th>
+                              LOE
+                            </th>
+                            <th>
+                              Lit
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="text-muted" colspan="5">There are no included copy number variants for treatment arm "{{tableData[versionIndex].treatmentArmId
+                              | dashify}}"
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <table *ngIf="cnvIn.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="cnvIn | filterByText: searchtermCnvIn"
+                        #mftableCnvIn="mfDataTable" [(mfSortBy)]="tableCnvInDefaultSort" [mfRowsOnPage]="recordsPerPageCnvIn">
+                        <thead>
+                          <tr class="success-light">
+                            <!--inclusion-->
+                            <th>
+                              <mfDefaultSorter by="geneName">
+                                <span class="table-header">Gene</span>
+                              </mfDefaultSorter>
+                            </th>
+                            <th>
+                              <mfDefaultSorter by="chromosome">
+                                <span class="table-header">Chrom</span>
+                              </mfDefaultSorter>
+                            </th>
+                            <th>
+                              <mfDefaultSorter by="position">
+                                <span class="table-header">Position</span>
+                              </mfDefaultSorter>
+                            </th>
+                            <th>
+                              <mfDefaultSorter by="levelOfEvidence">
+                                <span class="table-header">LOE</span>
+                              </mfDefaultSorter>
+                            </th>
+                            <th>
+                              <span class="table-header">Lit</span>
+                              <!--<mfDefaultSorter by="publicMedIds"></mfDefaultSorter>-->
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let item of mftableCnvIn.data">
+                            <td>
+                              <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.geneName"></cosmic-link>
+                            </td>
+                            <td>{{item.chromosome | dashify}}</td>
+                            <td>{{item.position | dashify}}</td>
+                            <td>{{item.levelOfEvidence | dashify}}</td>
+                            <td>
+                              <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
+                                <span *ngFor="let items of item.publicMedIds; let last=last">
+                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
+                                  <span *ngIf="!last">, </span>
+                                </span>
                               </span>
-                            </span>
-                            <span *ngIf="item.publicMedIds==null || item.publicMedIds==0">-</span>
-                          </td>
-                        </tr>
-                        <tr *ngIf="mftableSnvIn.data.length == 0">
-                          <td class="text-muted" colspan="7">No matching search results found for "{{searchtermSnvIn}}"</td>
-                        </tr>
-                      </tbody>
-                      <tfoot>
-                        <tr>
-                          <td class="tfoot-padding" colspan="7">
-                            <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermSnvIn" [totallength]="snvIn.length"></mfBootstrapPaginator>
-                          </td>
-                        </tr>
-                      </tfoot>
-                    </table>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div class="panel-heading">
-                  <h4 class="panel-title f-s-18">Exclusions</h4>
-                </div>
-                <div class="col-md-12 bg-success-light">
-                  <div class="col-md-6 p-l-5">
-                    <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
-                      <label>Show
-                        <select [disabled]="snvEx.length == 0"  name="data-table_length" [(ngModel)]="recordsPerPageSnvEx" aria-controls="data-table"
-                          class="form-control form-control-success input-sm">
-                          <option value=5>5</option>
-                          <option value=10>10</option>
-                          <option value=25>25</option>
-                          <option value=50>50</option>
-                        </select>
-                        entries</label>
-                    </div>
-                  </div>
-                  <div class="col-md-6 p-r-5">
-                    <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
-                      <label>Search:
-                        <input [disabled]="snvEx.length == 0"  type="text" [(ngModel)]="searchtermSnvEx" class="form-control form-control-success input-sm"
-                          placeholder="" aria-controls="data-table">
-                      </label>
+                              <span *ngIf="item.publicMedIds==null || item.publicMedIds==0">-</span>
+                            </td>
+                          </tr>
+                          <tr *ngIf="mftableCnvIn.data.length == 0">
+                            <td class="text-muted" colspan="5">No matching search results found for "{{searchtermCnvIn}}"</td>
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <td class="tfoot-padding" colspan="5">
+                              <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermCnvIn" [totallength]="cnvIn.length"></mfBootstrapPaginator>
+                            </td>
+                          </tr>
+                        </tfoot>
+                      </table>
                     </div>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="table-responsive col-lg-12">
-                    <table *ngIf="snvEx.length == 0" class="table table-td-valign-middle table-striped table-col-width">
-                      <thead>
-                        <tr class="success-light">
-                          <th>
-                            ID
-                          </th>
-                          <th>
-                            Chrom
-                          </th>
-                          <th>
-                            Position
-                          </th>
-                          <th>
-                            OCP Ref
-                          </th>
-                          <th>
-                            OCP Alt
-                          </th>
-                          <th>
-                            Lit
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td class="text-muted" colspan="7">There are no excluded single nucleotide variants or indels for treatment arm "{{tableData[versionIndex].treatmentArmId
-                            | dashify}}"</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <table *ngIf="snvEx.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="snvEx | filterByText: searchtermSnvEx"
-                      #mftableSnvEx="mfDataTable" [(mfSortBy)]="tableSnvExDefaultSort" [mfRowsOnPage]="recordsPerPageSnvEx">
-                      <thead>
-                        <tr class="success-light">
-                          <th>
-                            <mfDefaultSorter by="identifier">
-                              <span class="table-header">ID</span>
-                            </mfDefaultSorter>
-                          </th>
-                          <th>
-                            <mfDefaultSorter by="chromosome">
-                              <span class="table-header">Chrom</span>
-                            </mfDefaultSorter>
-                          </th>
-                          <th>
-                            <mfDefaultSorter by="position">
-                              <span class="table-header">Position</span>
-                            </mfDefaultSorter>
-                          </th>
-                          <th>
-                            <mfDefaultSorter by="reference">
-                              <span class="table-header">OCP Ref</span>
-                            </mfDefaultSorter>
-                          </th>
-                          <th>
-                            <mfDefaultSorter by="alternative">
-                              <span class="table-header">OCP Alt</span>
-                            </mfDefaultSorter>
-                          </th>
-                          <th>
-                            <span class="table-header">Lit</span>
-                            <!--<mfDefaultSorter by="publicMedIds"></mfDefaultSorter>-->
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr *ngFor="let item of mftableSnvEx.data">
-                          <td>
-                            <cosmic-link [linkType]="'cosmicId'" [linkId]="item.identifier"></cosmic-link>
-                          </td>
-                          <td>{{item.chromosome | dashify}}</td>
-                          <td>{{item.position | dashify}}</td>
-                          <td>{{item.reference | dashify}}</td>
-                          <td>{{item.alternative | dashify}}</td>
-                          <td>
-                            <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
-                              <span *ngFor="let items of item.publicMedIds; let last=last">
-                                <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
-                                <span *ngIf="!last">, </span>
+                <div>
+                  <div class="panel-heading">
+                    <h4 class="panel-title f-s-18">Exclusions</h4>
+                  </div>
+                  <div class="col-md-12 bg-success-light">
+                    <div class="col-md-6 p-l-5">
+                      <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
+                        <label>Show
+                          <select [disabled]="cnvEx.length == 0"  name="data-table_length" [(ngModel)]="recordsPerPageCnvEx" aria-controls="data-table"
+                            class="form-control form-control-success input-sm">
+                            <option value=5>5</option>
+                            <option value=10>10</option>
+                            <option value=25>25</option>
+                            <option value=50>50</option>
+                          </select>
+                          entries</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 p-r-5">
+                      <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
+                        <label>Search:
+                          <input [disabled]="cnvEx.length == 0"  type="text" [(ngModel)]="searchtermCnvEx" class="form-control form-control-success input-sm"
+                            placeholder="" aria-controls="data-table">
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="table-responsive col-lg-12">
+                      <table *ngIf="cnvEx.length == 0" class="table table-td-valign-middle table-striped table-col-width">
+                        <thead>
+                          <tr class="success-light">
+                            <th>
+                              Gene
+                            </th>
+                            <th>
+                              Chrom
+                            </th>
+                            <th>
+                              Position
+                            </th>
+                            <th>
+                              Lit
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="text-muted" colspan="5">There are no excluded copy number variants for treatment arm "{{tableData[versionIndex].treatmentArmId
+                              | dashify}}"
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <table *ngIf="cnvEx.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="cnvEx | filterByText: searchtermCnvEx"
+                        #mftableCnvEx="mfDataTable" [(mfSortBy)]="tableCnvExDefaultSort" [mfRowsOnPage]="recordsPerPageCnvEx">
+                        <thead>
+                          <tr class="success-light">
+                            <!--inclusion-->
+                            <th>
+                              <mfDefaultSorter by="geneName">
+                                <span class="table-header">Gene</span>
+                              </mfDefaultSorter>
+                            </th>
+                            <th>
+                              <mfDefaultSorter by="chromosome">
+                                <span class="table-header">Chrom</span>
+                              </mfDefaultSorter>
+                            </th>
+                            <th>
+                              <mfDefaultSorter by="position">
+                                <span class="table-header">Position</span>
+                              </mfDefaultSorter>
+                            </th>
+                            <th>
+                              <span class="table-header">Lit</span>
+                              <!--<mfDefaultSorter by="publicMedIds"></mfDefaultSorter>-->
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let item of mftableCnvEx.data">
+                            <td>
+                              <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.geneName"></cosmic-link>
+                            </td>
+                            <!--same as id-->
+                            <td>{{item.chromosome | dashify}}</td>
+                            <td>{{item.position | dashify}}</td>
+                            <td>
+                              <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
+                                <span *ngFor="let items of item.publicMedIds; let last=last">
+                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
+                                  <span *ngIf="!last">, </span>
+                                </span>
                               </span>
-                            </span>
-                            <span *ngIf="item.publicMedIds==null || item.publicMedIds==0">-</span>
-                          </td>
-                        </tr>
-                        <tr *ngIf="mftableSnvEx.data.length == 0">
-                          <td class="text-muted" colspan="7">No matching search results found for "{{searchtermSnvEx}}"</td>
-                        </tr>
-                      </tbody>
-                      <tfoot>
-                        <tr>
-                          <td class="tfoot-padding" colspan="7">
-                            <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermSnvEx" [totallength]="snvEx.length"></mfBootstrapPaginator>
-                          </td>
-                        </tr>
-                      </tfoot>
-                    </table>
+                              <span *ngIf="item.publicMedIds==null || item.publicMedIds==0">-</span>
+                            </td>
+                          </tr>
+                          <tr *ngIf="mftableCnvEx.data.length == 0">
+                            <td class="text-muted" colspan="5">No matching search results found for "{{searchtermCnvEx}}"</td>
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <td class="tfoot-padding" colspan="5">
+                              <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermCnvEx" [totallength]="cnvEx.length"></mfBootstrapPaginator>
+                            </td>
+                          </tr>
+                        </tfoot>
+                      </table>
+                    </div>
                   </div>
                 </div>
+                <!-- end panel -->
               </div>
-              <!-- end panel -->
+              <!-- table cnv -->
             </div>
-            <!-- table snv -->
           </div>
         </div>
-      </div>
-    </tab>
-    <tab heading="CNVs" id="cnvs">
-      <div class="row" matchHeight="panel-height-top">
-        <div class="row">
-          <div class="col-md-12">
-            <!-- table cnv -->
-            <div class="row">
-              <!-- begin panel -->
-              <div>
-                <div class="panel-heading">
-                  <h4 class="panel-title f-s-18">Inclusions</h4>
-                </div>
-                <div class="col-md-12 bg-success-light">
-                  <div class="col-md-6 p-l-5">
-                    <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
-                      <label>Show
-                        <select [disabled]="cnvIn.length == 0"  name="data-table_length" [(ngModel)]="recordsPerPageCnvIn" aria-controls="data-table"
-                          class="form-control form-control-success input-sm">
-                          <option value=5>5</option>
-                          <option value=10>10</option>
-                          <option value=25>25</option>
-                          <option value=50>50</option>
-                        </select>
-                        entries</label>
+      </tab>
+      <tab heading="Gene Fusions" id="gene_fusions">
+        <div class="row" matchHeight="panel-height-top">
+          <div class="row">
+            <div class="col-md-12">
+              <!-- table gene -->
+              <div class="row">
+                <!-- begin panel -->
+                <div>
+                  <div class="panel-heading">
+                    <h4 class="panel-title f-s-18">Inclusions</h4>
+                  </div>
+                  <div class="col-md-12 bg-success-light">
+                    <div class="col-md-6 p-l-5">
+                      <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
+                        <label>Show
+                          <select [disabled]="geneIn.length == 0"  name="data-table_length" [(ngModel)]="recordsPerPageGeneIn" aria-controls="data-table"
+                            class="form-control form-control-success input-sm">
+                            <option value=5>5</option>
+                            <option value=10>10</option>
+                            <option value=25>25</option>
+                            <option value=50>50</option>
+                          </select>
+                          entries</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 p-r-5">
+                      <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
+                        <label>Search:
+                          <input [disabled]="geneIn.length == 0"  type="text" [(ngModel)]="searchtermGeneIn" class="form-control form-control-success input-sm"
+                            placeholder="" aria-controls="data-table">
+                        </label>
+                      </div>
                     </div>
                   </div>
-                  <div class="col-md-6 p-r-5">
-                    <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
-                      <label>Search:
-                        <input [disabled]="cnvIn.length == 0"  type="text" [(ngModel)]="searchtermCnvIn" class="form-control form-control-success input-sm"
-                          placeholder="" aria-controls="data-table">
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="table-responsive col-lg-12">
-                    <table *ngIf="cnvIn.length == 0" class="table table-td-valign-middle table-striped table-col-width">
-                      <thead>
-                        <tr class="success-light">
-                          <th>
-                            Gene
-                          </th>
-                          <th>
-                            Chrom
-                          </th>
-                          <th>
-                            Position
-                          </th>
-                          <th>
-                            LOE
-                          </th>
-                          <th>
-                            Lit
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td class="text-muted" colspan="5">There are no included copy number variants for treatment arm "{{tableData[versionIndex].treatmentArmId
-                            | dashify}}"
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <table *ngIf="cnvIn.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="cnvIn | filterByText: searchtermCnvIn"
-                      #mftableCnvIn="mfDataTable" [(mfSortBy)]="tableCnvInDefaultSort" [mfRowsOnPage]="recordsPerPageCnvIn">
-                      <thead>
-                        <tr class="success-light">
-                          <!--inclusion-->
-                          <th>
-                            <mfDefaultSorter by="geneName">
-                              <span class="table-header">Gene</span>
-                            </mfDefaultSorter>
-                          </th>
-                          <th>
-                            <mfDefaultSorter by="chromosome">
-                              <span class="table-header">Chrom</span>
-                            </mfDefaultSorter>
-                          </th>
-                          <th>
-                            <mfDefaultSorter by="position">
-                              <span class="table-header">Position</span>
-                            </mfDefaultSorter>
-                          </th>
-                          <th>
-                            <mfDefaultSorter by="levelOfEvidence">
-                              <span class="table-header">LOE</span>
-                            </mfDefaultSorter>
-                          </th>
-                          <th>
-                            <span class="table-header">Lit</span>
-                            <!--<mfDefaultSorter by="publicMedIds"></mfDefaultSorter>-->
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr *ngFor="let item of mftableCnvIn.data">
-                          <td>
-                            <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.geneName"></cosmic-link>
-                          </td>
-                          <td>{{item.chromosome | dashify}}</td>
-                          <td>{{item.position | dashify}}</td>
-                          <td>{{item.levelOfEvidence | dashify}}</td>
-                          <td>
-                            <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
-                              <span *ngFor="let items of item.publicMedIds; let last=last">
-                                <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
-                                <span *ngIf="!last">, </span>
+                  <div class="row">
+                    <div class="table-responsive col-lg-12">
+                      <table *ngIf="geneIn.length == 0" class="table table-td-valign-middle table-striped table-col-width">
+                        <thead>
+                          <tr class="success-light">
+                            <th>
+                              ID
+                            </th>
+                            <th>
+                              Gene 1
+                            </th>
+                            <th>
+                              Gene 2
+                            </th>
+                            <th>
+                              LOE
+                            </th>
+                            <th>
+                              Lit
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="text-muted" colspan="5">There are no included gene fusions for treatment arm "{{tableData[versionIndex].treatmentArmId
+                              | dashify}}"</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <table *ngIf="geneIn.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="geneIn | filterByText: searchtermGeneIn"
+                        #mftableGeneIn="mfDataTable" [(mfSortBy)]="tableGeneInDefaultSort" [mfRowsOnPage]="recordsPerPageGeneIn">
+                        <thead>
+                          <tr class="success-light">
+                            <th>
+                              <mfDefaultSorter by="identifier">
+                                <span class="table-header">ID</span>
+                              </mfDefaultSorter>
+                            </th>
+                            <th>
+                              <mfDefaultSorter by="gene1">
+                                <span class="table-header">Gene 1</span>
+                              </mfDefaultSorter>
+                            </th>
+                            <th>
+                              <mfDefaultSorter by="gene2">
+                                <span class="table-header">Gene 2</span>
+                              </mfDefaultSorter>
+                            </th>
+                            <th>
+                              <mfDefaultSorter by="levelOfEvidence">
+                                <span class="table-header">LOE</span>
+                              </mfDefaultSorter>
+                            </th>
+                            <th>
+                              <span class="table-header">Lit</span>
+                              <!--<mfDefaultSorter by="publicMedIds"></mfDefaultSorter>-->
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let item of mftableGeneIn.data">
+                            <td>
+                              <cosmic-link [linkType]="'cosmicFusionId'" [linkId]="item.identifier"></cosmic-link>
+                            </td>
+                            <td>
+                              <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.gene1"></cosmic-link>
+                            </td>
+                            <td>
+                              <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.gene2"></cosmic-link>
+                            </td>
+                            <td>{{item.levelOfEvidence | dashify}}</td>
+                            <td>
+                              <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
+                                <span *ngFor="let items of item.publicMedIds; let last=last">
+                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
+                                  <span *ngIf="!last">, </span>
+                                </span>
                               </span>
-                            </span>
-                            <span *ngIf="item.publicMedIds==null || item.publicMedIds==0">-</span>
-                          </td>
-                        </tr>
-                        <tr *ngIf="mftableCnvIn.data.length == 0">
-                          <td class="text-muted" colspan="5">No matching search results found for "{{searchtermCnvIn}}"</td>
-                        </tr>
-                      </tbody>
-                      <tfoot>
-                        <tr>
-                          <td class="tfoot-padding" colspan="5">
-                            <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermCnvIn" [totallength]="cnvIn.length"></mfBootstrapPaginator>
-                          </td>
-                        </tr>
-                      </tfoot>
-                    </table>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div class="panel-heading">
-                  <h4 class="panel-title f-s-18">Exclusions</h4>
-                </div>
-                <div class="col-md-12 bg-success-light">
-                  <div class="col-md-6 p-l-5">
-                    <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
-                      <label>Show
-                        <select [disabled]="cnvEx.length == 0"  name="data-table_length" [(ngModel)]="recordsPerPageCnvEx" aria-controls="data-table"
-                          class="form-control form-control-success input-sm">
-                          <option value=5>5</option>
-                          <option value=10>10</option>
-                          <option value=25>25</option>
-                          <option value=50>50</option>
-                        </select>
-                        entries</label>
-                    </div>
-                  </div>
-                  <div class="col-md-6 p-r-5">
-                    <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
-                      <label>Search:
-                        <input [disabled]="cnvEx.length == 0"  type="text" [(ngModel)]="searchtermCnvEx" class="form-control form-control-success input-sm"
-                          placeholder="" aria-controls="data-table">
-                      </label>
+                              <span *ngIf="item.publicMedIds==null || item.publicMedIds==0">-</span>
+                            </td>
+                          </tr>
+                          <tr *ngIf="mftableGeneIn.data.length == 0">
+                            <td class="text-muted" colspan="5">No matching search results found for "{{searchtermGeneIn}}"</td>
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <td class="tfoot-padding" colspan="5">
+                              <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermGeneIn" [totallength]="geneIn.length"></mfBootstrapPaginator>
+                            </td>
+                          </tr>
+                        </tfoot>
+                      </table>
                     </div>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="table-responsive col-lg-12">
-                    <table *ngIf="cnvEx.length == 0" class="table table-td-valign-middle table-striped table-col-width">
-                      <thead>
-                        <tr class="success-light">
-                          <th>
-                            Gene
-                          </th>
-                          <th>
-                            Chrom
-                          </th>
-                          <th>
-                            Position
-                          </th>
-                          <th>
-                            Lit
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td class="text-muted" colspan="5">There are no excluded copy number variants for treatment arm "{{tableData[versionIndex].treatmentArmId
-                            | dashify}}"
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <table *ngIf="cnvEx.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="cnvEx | filterByText: searchtermCnvEx"
-                      #mftableCnvEx="mfDataTable" [(mfSortBy)]="tableCnvExDefaultSort" [mfRowsOnPage]="recordsPerPageCnvEx">
-                      <thead>
-                        <tr class="success-light">
-                          <!--inclusion-->
-                          <th>
-                            <mfDefaultSorter by="geneName">
-                              <span class="table-header">Gene</span>
-                            </mfDefaultSorter>
-                          </th>
-                          <th>
-                            <mfDefaultSorter by="chromosome">
-                              <span class="table-header">Chrom</span>
-                            </mfDefaultSorter>
-                          </th>
-                          <th>
-                            <mfDefaultSorter by="position">
-                              <span class="table-header">Position</span>
-                            </mfDefaultSorter>
-                          </th>
-                          <th>
-                            <span class="table-header">Lit</span>
-                            <!--<mfDefaultSorter by="publicMedIds"></mfDefaultSorter>-->
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr *ngFor="let item of mftableCnvEx.data">
-                          <td>
-                            <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.geneName"></cosmic-link>
-                          </td>
-                          <!--same as id-->
-                          <td>{{item.chromosome | dashify}}</td>
-                          <td>{{item.position | dashify}}</td>
-                          <td>
-                            <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
-                              <span *ngFor="let items of item.publicMedIds; let last=last">
-                                <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
-                                <span *ngIf="!last">, </span>
+                <div>
+                  <div class="panel-heading">
+                    <h4 class="panel-title f-s-18">Exclusions</h4>
+                  </div>
+                  <div class="col-md-12 bg-success-light">
+                    <div class="col-md-6 p-l-5">
+                      <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
+                        <label>Show
+                          <select [disabled]="geneEx.length == 0"  name="data-table_length" [(ngModel)]="recordsPerPageGeneEx" aria-controls="data-table"
+                            class="form-control form-control-success input-sm">
+                            <option value=5>5</option>
+                            <option value=10>10</option>
+                            <option value=25>25</option>
+                            <option value=50>50</option>
+                          </select>
+                          entries</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 p-r-5">
+                      <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
+                        <label>Search:
+                          <input [disabled]="geneEx.length == 0"  type="text" [(ngModel)]="searchtermGeneEx" class="form-control form-control-success input-sm"
+                            placeholder="" aria-controls="data-table">
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="table-responsive col-lg-12">
+                      <table *ngIf="geneEx.length == 0" class="table table-td-valign-middle table-striped table-col-width">
+                        <thead>
+                          <tr class="success-light">
+                            <th>
+                              ID
+                            </th>
+                            <th>
+                              Gene 1
+                            </th>
+                            <th>
+                              Gene 2
+                            </th>
+                            <th>
+                              Lit
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="text-muted" colspan="5">There are no excluded gene fusions for treatment arm "{{tableData[versionIndex].treatmentArmId
+                              | dashify}}"</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <table *ngIf="geneEx.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="geneEx | filterByText: searchtermGeneEx"
+                        #mftableGeneEx="mfDataTable" [(mfSortBy)]="tableGeneExDefaultSort" [mfRowsOnPage]="recordsPerPageGeneEx">
+                        <thead>
+                          <tr class="success-light">
+                            <th>
+                              <mfDefaultSorter by="identifier">
+                                <span class="table-header">ID</span>
+                              </mfDefaultSorter>
+                            </th>
+                            <th>
+                              <mfDefaultSorter by="gene1">
+                                <span class="table-header">Gene 1</span>
+                              </mfDefaultSorter>
+                            </th>
+                            <th>
+                              <mfDefaultSorter by="gene2">
+                                <span class="table-header">Gene 2</span>
+                              </mfDefaultSorter>
+                            </th>
+                            <th>
+                              <span class="table-header">Lit</span>
+                              <!--<mfDefaultSorter by="publicMedIds"></mfDefaultSorter>-->
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let item of mftableGeneEx.data">
+                            <td>
+                              <cosmic-link [linkType]="'cosmicFusionId'" [linkId]="item.identifier"></cosmic-link>
+                            </td>
+                            <td>
+                              <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.gene1"></cosmic-link>
+                            </td>
+                            <td>
+                              <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.gene2"></cosmic-link>
+                            </td>
+                            <td>
+                              <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
+                                <span *ngFor="let items of item.publicMedIds; let last=last">
+                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
+                                  <span *ngIf="!last">, </span>
+                                </span>
                               </span>
-                            </span>
-                            <span *ngIf="item.publicMedIds==null || item.publicMedIds==0">-</span>
-                          </td>
-                        </tr>
-                        <tr *ngIf="mftableCnvEx.data.length == 0">
-                          <td class="text-muted" colspan="5">No matching search results found for "{{searchtermCnvEx}}"</td>
-                        </tr>
-                      </tbody>
-                      <tfoot>
-                        <tr>
-                          <td class="tfoot-padding" colspan="5">
-                            <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermCnvEx" [totallength]="cnvEx.length"></mfBootstrapPaginator>
-                          </td>
-                        </tr>
-                      </tfoot>
-                    </table>
+                              <span *ngIf="item.publicMedIds==null || item.publicMedIds==0">-</span>
+                            </td>
+                          </tr>
+                          <tr *ngIf="mftableGeneEx.data.length == 0">
+                            <td class="text-muted" colspan="5">No matching search results found for "{{searchtermGeneEx}}"</td>
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <td class="tfoot-padding" colspan="5">
+                              <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermGeneEx" [totallength]="geneEx.length"></mfBootstrapPaginator>
+                            </td>
+                          </tr>
+                        </tfoot>
+                      </table>
+                    </div>
                   </div>
                 </div>
+                <!-- end panel -->
               </div>
-              <!-- end panel -->
+              <!-- table gene -->
             </div>
-            <!-- table cnv -->
           </div>
         </div>
-      </div>
-    </tab>
-    <tab heading="Gene Fusions" id="gene_fusions">
-      <div class="row" matchHeight="panel-height-top">
-        <div class="row">
-          <div class="col-md-12">
-            <!-- table gene -->
-            <div class="row">
-              <!-- begin panel -->
-              <div>
-                <div class="panel-heading">
-                  <h4 class="panel-title f-s-18">Inclusions</h4>
-                </div>
-                <div class="col-md-12 bg-success-light">
-                  <div class="col-md-6 p-l-5">
-                    <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
-                      <label>Show
-                        <select [disabled]="geneIn.length == 0"  name="data-table_length" [(ngModel)]="recordsPerPageGeneIn" aria-controls="data-table"
-                          class="form-control form-control-success input-sm">
-                          <option value=5>5</option>
-                          <option value=10>10</option>
-                          <option value=25>25</option>
-                          <option value=50>50</option>
-                        </select>
-                        entries</label>
+      </tab>
+      <tab heading="Non-Hotspot Rules" id="non-hotspot_rules">
+        <div class="row" matchHeight="panel-height-top">
+          <div class="row">
+            <div class="col-md-12">
+              <!-- table nhs rule -->
+              <div class="row">
+                <!-- begin panel -->
+                <div>
+                  <div class="panel-heading">
+                    <h4 class="panel-title f-s-18">Inclusions</h4>
+                  </div>
+                  <div class="col-md-12 bg-success-light">
+                    <div class="col-md-6 p-l-5">
+                      <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
+                        <label>Show
+                          <select [disabled]="ruleIn.length == 0"  name="data-table_length" [(ngModel)]="recordsPerPageRuleIn" aria-controls="data-table"
+                            class="form-control form-control-success input-sm">
+                            <option value=5>5</option>
+                            <option value=10>10</option>
+                            <option value=25>25</option>
+                            <option value=50>50</option>
+                          </select>
+                          entries</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 p-r-5">
+                      <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
+                        <label>Search:
+                          <input [disabled]="ruleIn.length == 0"  type="text" [(ngModel)]="searchtermRuleIn" class="form-control form-control-success input-sm"
+                            placeholder="" aria-controls="data-table">
+                        </label>
+                      </div>
                     </div>
                   </div>
-                  <div class="col-md-6 p-r-5">
-                    <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
-                      <label>Search:
-                        <input [disabled]="geneIn.length == 0"  type="text" [(ngModel)]="searchtermGeneIn" class="form-control form-control-success input-sm"
-                          placeholder="" aria-controls="data-table">
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="table-responsive col-lg-12">
-                    <table *ngIf="geneIn.length == 0" class="table table-td-valign-middle table-striped table-col-width">
-                      <thead>
-                        <tr class="success-light">
-                          <th>
-                            ID
-                          </th>
-                          <th>
-                            Gene 1
-                          </th>
-                          <th>
-                            Gene 2
-                          </th>
-                          <th>
-                            LOE
-                          </th>
-                          <th>
-                            Lit
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td class="text-muted" colspan="5">There are no included gene fusions for treatment arm "{{tableData[versionIndex].treatmentArmId
-                            | dashify}}"</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <table *ngIf="geneIn.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="geneIn | filterByText: searchtermGeneIn"
-                      #mftableGeneIn="mfDataTable" [(mfSortBy)]="tableGeneInDefaultSort" [mfRowsOnPage]="recordsPerPageGeneIn">
-                      <thead>
-                        <tr class="success-light">
-                          <th>
-                            <mfDefaultSorter by="identifier">
-                              <span class="table-header">ID</span>
-                            </mfDefaultSorter>
-                          </th>
-                          <th>
-                            <mfDefaultSorter by="gene1">
-                              <span class="table-header">Gene 1</span>
-                            </mfDefaultSorter>
-                          </th>
-                          <th>
-                            <mfDefaultSorter by="gene2">
-                              <span class="table-header">Gene 2</span>
-                            </mfDefaultSorter>
-                          </th>
-                          <th>
-                            <mfDefaultSorter by="levelOfEvidence">
-                              <span class="table-header">LOE</span>
-                            </mfDefaultSorter>
-                          </th>
-                          <th>
-                            <span class="table-header">Lit</span>
-                            <!--<mfDefaultSorter by="publicMedIds"></mfDefaultSorter>-->
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr *ngFor="let item of mftableGeneIn.data">
-                          <td>
-                            <cosmic-link [linkType]="'cosmicFusionId'" [linkId]="item.identifier"></cosmic-link>
-                          </td>
-                          <td>
-                            <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.gene1"></cosmic-link>
-                          </td>
-                          <td>
-                            <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.gene2"></cosmic-link>
-                          </td>
-                          <td>{{item.levelOfEvidence | dashify}}</td>
-                          <td>
-                            <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
-                              <span *ngFor="let items of item.publicMedIds; let last=last">
-                                <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
-                                <span *ngIf="!last">, </span>
+                  <div class="row">
+                    <div class="table-responsive col-lg-12">
+                      <table *ngIf="ruleIn.length == 0" class="table table-td-valign-middle table-striped table-col-width">
+                        <thead>
+                          <tr class="success-light">
+                            <th>
+                              Gene
+                            </th>
+                            <th>
+                              Exon
+                            </th>
+                            <th>
+                              Oncomine Variant Class
+                            </th>
+                            <th>
+                              Function
+                            </th>
+                            <th>
+                              LOE
+                            </th>
+                            <th>
+                              Lit
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="text-muted" colspan="6">There are no included non-hotspot rules for treatment arm "{{tableData[versionIndex].treatmentArmId
+                              | dashify}}"</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <table *ngIf="ruleIn.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="ruleIn | filterByText: searchtermRuleIn"
+                        #mftableRuleIn="mfDataTable" [(mfSortBy)]="tableRuleInDefaultSort" [mfRowsOnPage]="recordsPerPageRuleIn">
+                        <thead>
+                          <tr class="success-light">
+                            <th>
+                              <mfDefaultSorter by="gene">
+                                <span class="table-header">Gene</span>
+                              </mfDefaultSorter>
+                            </th>
+                            <th>
+                              <mfDefaultSorter by="exon">
+                                <span class="table-header">Exon</span>
+                              </mfDefaultSorter>
+                            </th>
+                            <th>
+                              <mfDefaultSorter by="oncominevariantclass">
+                                <span class="table-header">Oncomine Variant Class</span>
+                              </mfDefaultSorter>
+                            </th>
+                            <th>
+                              <mfDefaultSorter by="function">
+                                <span class="table-header">Function</span>
+                              </mfDefaultSorter>
+                            </th>
+                            <th>
+                              <mfDefaultSorter by="levelOfEvidence">
+                                <span class="table-header">LOE</span>
+                              </mfDefaultSorter>
+                            </th>
+                            <th>
+                              <span class="table-header">Lit</span>
+                              <!--<mfDefaultSorter by="publicMedIds"></mfDefaultSorter>-->
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let item of mftableRuleIn.data">
+                            <td>
+                              <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.gene"></cosmic-link>
+                            </td>
+                            <td>{{item.exon | dashify}}</td>
+                            <td>{{item.oncominevariantclass | dashify}}</td>
+                            <td>{{item.function | dashify}}</td>
+                            <td>{{item.levelOfEvidence | dashify}}</td>
+                            <td>
+                              <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
+                                <span *ngFor="let items of item.publicMedIds; let last=last">
+                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
+                                  <span *ngIf="!last">, </span>
+                                </span>
                               </span>
-                            </span>
-                            <span *ngIf="item.publicMedIds==null || item.publicMedIds==0">-</span>
-                          </td>
-                        </tr>
-                        <tr *ngIf="mftableGeneIn.data.length == 0">
-                          <td class="text-muted" colspan="5">No matching search results found for "{{searchtermGeneIn}}"</td>
-                        </tr>
-                      </tbody>
-                      <tfoot>
-                        <tr>
-                          <td class="tfoot-padding" colspan="5">
-                            <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermGeneIn" [totallength]="geneIn.length"></mfBootstrapPaginator>
-                          </td>
-                        </tr>
-                      </tfoot>
-                    </table>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div class="panel-heading">
-                  <h4 class="panel-title f-s-18">Exclusions</h4>
-                </div>
-                <div class="col-md-12 bg-success-light">
-                  <div class="col-md-6 p-l-5">
-                    <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
-                      <label>Show
-                        <select [disabled]="geneEx.length == 0"  name="data-table_length" [(ngModel)]="recordsPerPageGeneEx" aria-controls="data-table"
-                          class="form-control form-control-success input-sm">
-                          <option value=5>5</option>
-                          <option value=10>10</option>
-                          <option value=25>25</option>
-                          <option value=50>50</option>
-                        </select>
-                        entries</label>
-                    </div>
-                  </div>
-                  <div class="col-md-6 p-r-5">
-                    <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
-                      <label>Search:
-                        <input [disabled]="geneEx.length == 0"  type="text" [(ngModel)]="searchtermGeneEx" class="form-control form-control-success input-sm"
-                          placeholder="" aria-controls="data-table">
-                      </label>
+                              <span *ngIf="item.publicMedIds==null || item.publicMedIds==0">-</span>
+                            </td>
+                          </tr>
+                          <tr *ngIf="mftableRuleIn.data.length == 0">
+                            <td class="text-muted" colspan="6">No matching search results found for "{{searchtermRuleIn}}"</td>
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <td class="tfoot-padding" colspan="6">
+                              <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermRuleIn" [totallength]="ruleIn.length"></mfBootstrapPaginator>
+                            </td>
+                          </tr>
+                        </tfoot>
+                      </table>
                     </div>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="table-responsive col-lg-12">
-                    <table *ngIf="geneEx.length == 0" class="table table-td-valign-middle table-striped table-col-width">
-                      <thead>
-                        <tr class="success-light">
-                          <th>
-                            ID
-                          </th>
-                          <th>
-                            Gene 1
-                          </th>
-                          <th>
-                            Gene 2
-                          </th>
-                          <th>
-                            Lit
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td class="text-muted" colspan="5">There are no excluded gene fusions for treatment arm "{{tableData[versionIndex].treatmentArmId
-                            | dashify}}"</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <table *ngIf="geneEx.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="geneEx | filterByText: searchtermGeneEx"
-                      #mftableGeneEx="mfDataTable" [(mfSortBy)]="tableGeneExDefaultSort" [mfRowsOnPage]="recordsPerPageGeneEx">
-                      <thead>
-                        <tr class="success-light">
-                          <th>
-                            <mfDefaultSorter by="identifier">
-                              <span class="table-header">ID</span>
-                            </mfDefaultSorter>
-                          </th>
-                          <th>
-                            <mfDefaultSorter by="gene1">
-                              <span class="table-header">Gene 1</span>
-                            </mfDefaultSorter>
-                          </th>
-                          <th>
-                            <mfDefaultSorter by="gene2">
-                              <span class="table-header">Gene 2</span>
-                            </mfDefaultSorter>
-                          </th>
-                          <th>
-                            <span class="table-header">Lit</span>
-                            <!--<mfDefaultSorter by="publicMedIds"></mfDefaultSorter>-->
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr *ngFor="let item of mftableGeneEx.data">
-                          <td>
-                            <cosmic-link [linkType]="'cosmicFusionId'" [linkId]="item.identifier"></cosmic-link>
-                          </td>
-                          <td>
-                            <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.gene1"></cosmic-link>
-                          </td>
-                          <td>
-                            <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.gene2"></cosmic-link>
-                          </td>
-                          <td>
-                            <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
-                              <span *ngFor="let items of item.publicMedIds; let last=last">
-                                <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
-                                <span *ngIf="!last">, </span>
+                <div>
+                  <div class="panel-heading">
+                    <h4 class="panel-title f-s-18">Exclusions</h4>
+                  </div>
+                  <div class="col-md-12 bg-success-light">
+                    <div class="col-md-6 p-l-5">
+                      <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
+                        <label>Show
+                          <select [disabled]="ruleEx.length == 0"  name="data-table_length" [(ngModel)]="recordsPerPageRuleEx" aria-controls="data-table"
+                            class="form-control form-control-success input-sm">
+                            <option value=5>5</option>
+                            <option value=10>10</option>
+                            <option value=25>25</option>
+                            <option value=50>50</option>
+                          </select>
+                          entries</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 p-r-5">
+                      <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
+                        <label>Search:
+                          <input [disabled]="ruleEx.length == 0"  type="text" [(ngModel)]="searchtermRuleEx" class="form-control form-control-success input-sm"
+                            placeholder="" aria-controls="data-table">
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="table-responsive col-lg-12">
+                      <table *ngIf="ruleEx.length == 0" class="table table-td-valign-middle table-striped table-col-width">
+                        <thead>
+                          <tr class="success-light">
+                            <th>
+                              Gene
+                            </th>
+                            <th>
+                              Exon
+                            </th>
+                            <th>
+                              Oncomine Variant Class
+                            </th>
+                            <th>
+                              Function
+                            </th>
+                            <th>
+                              Lit
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="text-muted" colspan="6">There are no excluded non-hotspot rules for treatment arm "{{tableData[versionIndex].treatmentArmId
+                              | dashify}}"</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <table *ngIf="ruleEx.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="ruleEx | filterByText: searchtermRuleEx"
+                        #mftableRuleEx="mfDataTable" [(mfSortBy)]="tableRuleExDefaultSort" [mfRowsOnPage]="recordsPerPageRuleEx">
+                        <thead>
+                          <tr class="success-light">
+                            <th>
+                              <mfDefaultSorter by="gene">
+                                <span class="table-header">Gene</span>
+                              </mfDefaultSorter>
+                            </th>
+                            <th>
+                              <mfDefaultSorter by="exon">
+                                <span class="table-header">Exon</span>
+                              </mfDefaultSorter>
+                            </th>
+                            <th>
+                              <mfDefaultSorter by="oncominevariantclass">
+                                <span class="table-header">Oncomine Variant Class</span>
+                              </mfDefaultSorter>
+                            </th>
+                            <th>
+                              <mfDefaultSorter by="function">
+                                <span class="table-header">Function</span>
+                              </mfDefaultSorter>
+                            </th>
+                            <th>
+                              <span class="table-header">Lit</span>
+                              <!--<mfDefaultSorter by="publicMedIds"></mfDefaultSorter>-->
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let item of mftableRuleEx.data">
+                            <td>
+                              <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.gene"></cosmic-link>
+                            </td>
+                            <td>{{item.exon | dashify}}</td>
+                            <td>{{item.oncominevariantclass | dashify}}</td>
+                            <td>{{item.function | dashify}}</td>
+                            <td>
+                              <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
+                                <span *ngFor="let items of item.publicMedIds; let last=last">
+                                  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
+                                  <span *ngIf="!last">, </span>
+                                </span>
                               </span>
-                            </span>
-                            <span *ngIf="item.publicMedIds==null || item.publicMedIds==0">-</span>
-                          </td>
-                        </tr>
-                        <tr *ngIf="mftableGeneEx.data.length == 0">
-                          <td class="text-muted" colspan="5">No matching search results found for "{{searchtermGeneEx}}"</td>
-                        </tr>
-                      </tbody>
-                      <tfoot>
-                        <tr>
-                          <td class="tfoot-padding" colspan="5">
-                            <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermGeneEx" [totallength]="geneEx.length"></mfBootstrapPaginator>
-                          </td>
-                        </tr>
-                      </tfoot>
-                    </table>
+                              <span *ngIf="item.publicMedIds==null || item.publicMedIds==0">-</span>
+                            </td>
+                          </tr>
+                          <tr *ngIf="mftableRuleEx.data.length == 0">
+                            <td class="text-muted" colspan="6">No matching search results found for "{{searchtermRuleEx}}"</td>
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <td class="tfoot-padding" colspan="6">
+                              <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermRuleEx" [totallength]="ruleEx.length"></mfBootstrapPaginator>
+                            </td>
+                          </tr>
+                        </tfoot>
+                      </table>
+                    </div>
                   </div>
                 </div>
+                <!-- end panel -->
               </div>
-              <!-- end panel -->
+              <!-- table nhs rule -->
             </div>
-            <!-- table gene -->
           </div>
         </div>
-      </div>
-    </tab>
-    <tab heading="Non-Hotspot Rules" id="non-hotspot_rules">
-      <div class="row" matchHeight="panel-height-top">
-        <div class="row">
-          <div class="col-md-12">
-            <!-- table nhs rule -->
-            <div class="row">
-              <!-- begin panel -->
-              <div>
-                <div class="panel-heading">
-                  <h4 class="panel-title f-s-18">Inclusions</h4>
-                </div>
-                <div class="col-md-12 bg-success-light">
-                  <div class="col-md-6 p-l-5">
-                    <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
-                      <label>Show
-                        <select [disabled]="ruleIn.length == 0"  name="data-table_length" [(ngModel)]="recordsPerPageRuleIn" aria-controls="data-table"
-                          class="form-control form-control-success input-sm">
-                          <option value=5>5</option>
-                          <option value=10>10</option>
-                          <option value=25>25</option>
-                          <option value=50>50</option>
-                        </select>
-                        entries</label>
+      </tab>
+      <tab heading="Assays" id="assays">
+        <div class="row" matchHeight="panel-height-top">
+          <div class="row">
+            <div class="col-md-12">
+              <!-- table assay -->
+              <div class="row">
+                <!-- begin panel -->
+                <div>
+                  <div class="col-md-12 bg-success-light">
+                    <div class="col-md-6 p-l-5">
+                      <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
+                        <label>Show
+                          <select [disabled]="tableData[versionIndex].assayResults.length == 0"  name="data-table_length" [(ngModel)]="recordsPerPageAssay"
+                            aria-controls="data-table" class="form-control form-control-success input-sm">
+                            <option value=10>10</option>
+                            <option value=25>25</option>
+                            <option value=50>50</option>
+                            <option value=100>100</option>
+                          </select>
+                          entries</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 p-r-5">
+                      <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
+                        <label>Search:
+                          <input [disabled]="tableData[versionIndex].assayResults.length == 0"  type="text" [(ngModel)]="searchtermAssay" class="form-control form-control-success input-sm"
+                            placeholder="" aria-controls="data-table">
+                        </label>
+                      </div>
                     </div>
                   </div>
-                  <div class="col-md-6 p-r-5">
-                    <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
-                      <label>Search:
-                        <input [disabled]="ruleIn.length == 0"  type="text" [(ngModel)]="searchtermRuleIn" class="form-control form-control-success input-sm"
-                          placeholder="" aria-controls="data-table">
-                      </label>
+                  <div class="row">
+                    <div class="table-responsive col-lg-12">
+                      <table *ngIf="tableData[versionIndex].assayResults.length == 0" class="table table-td-valign-middle table-striped table-col-width">
+                        <thead>
+                          <tr class="success-light">
+                            <th>
+                              Gene
+                            </th>
+                            <th>
+                              Result
+                            </th>
+                            <th>
+                              Variant Association
+                            </th>
+                            <th>
+                              LOE
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="text-muted" colspan="4">There are no assay results for treatment arm "{{tableData[versionIndex].treatmentArmId | dashify}}"</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <table *ngIf="tableData[versionIndex].assayResults.length!=0" class="table table-td-valign-middle table-striped table-col-width"
+                        [mfData]="tableData[versionIndex].assayResults | filterByText: searchtermAssay" #mftableAssay="mfDataTable"
+                        [(mfSortBy)]="tableAssayDefaultSort" [mfRowsOnPage]="recordsPerPageAssay">
+                        <thead>
+                          <tr class="success-light">
+                            <th>
+                              <mfDefaultSorter by="gene">
+                                <span class="table-header">Gene</span>
+                              </mfDefaultSorter>
+                            </th>
+                            <th>
+                              <mfDefaultSorter by="assayResultStatus">
+                                <span class="table-header">Result</span>
+                              </mfDefaultSorter>
+                            </th>
+                            <th>
+                              <mfDefaultSorter by="assayVariant">
+                                <span class="table-header">Variant Association</span>
+                              </mfDefaultSorter>
+                            </th>
+                            <th>
+                              <mfDefaultSorter by="levelOfEvidence">
+                                <span class="table-header">LOE</span>
+                              </mfDefaultSorter>
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let item of mftableAssay.data">
+                            <td>{{item.gene | dashify}}</td>
+                            <td>{{item.assayResultStatus | dashify}}</td>
+                            <td>{{item.assayVariant | dashify}}</td>
+                            <td>{{item.levelOfEvidence | dashify}}</td>
+                          </tr>
+                          <tr *ngIf="mftableAssay.data.length == 0">
+                            <td class="text-muted" colspan="4">No matching search results found for "{{searchtermAssay}}"</td>
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <td class="tfoot-padding" colspan="4">
+                              <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermAssay" [totallength]="tableData[versionIndex].assayResults.length"></mfBootstrapPaginator>
+                            </td>
+                          </tr>
+                        </tfoot>
+                      </table>
                     </div>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="table-responsive col-lg-12">
-                    <table *ngIf="ruleIn.length == 0" class="table table-td-valign-middle table-striped table-col-width">
-                      <thead>
-                        <tr class="success-light">
-                          <th>
-                            Gene
-                          </th>
-                          <th>
-                            Exon
-                          </th>
-                          <th>
-                            Oncomine Variant Class
-                          </th>
-                          <th>
-                            Function
-                          </th>
-                          <th>
-                            LOE
-                          </th>
-                          <th>
-                            Lit
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td class="text-muted" colspan="6">There are no included non-hotspot rules for treatment arm "{{tableData[versionIndex].treatmentArmId
-                            | dashify}}"</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <table *ngIf="ruleIn.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="ruleIn | filterByText: searchtermRuleIn"
-                      #mftableRuleIn="mfDataTable" [(mfSortBy)]="tableRuleInDefaultSort" [mfRowsOnPage]="recordsPerPageRuleIn">
-                      <thead>
-                        <tr class="success-light">
-                          <th>
-                            <mfDefaultSorter by="gene">
-                              <span class="table-header">Gene</span>
-                            </mfDefaultSorter>
-                          </th>
-                          <th>
-                            <mfDefaultSorter by="exon">
-                              <span class="table-header">Exon</span>
-                            </mfDefaultSorter>
-                          </th>
-                          <th>
-                            <mfDefaultSorter by="oncominevariantclass">
-                              <span class="table-header">Oncomine Variant Class</span>
-                            </mfDefaultSorter>
-                          </th>
-                          <th>
-                            <mfDefaultSorter by="function">
-                              <span class="table-header">Function</span>
-                            </mfDefaultSorter>
-                          </th>
-                          <th>
-                            <mfDefaultSorter by="levelOfEvidence">
-                              <span class="table-header">LOE</span>
-                            </mfDefaultSorter>
-                          </th>
-                          <th>
-                            <span class="table-header">Lit</span>
-                            <!--<mfDefaultSorter by="publicMedIds"></mfDefaultSorter>-->
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr *ngFor="let item of mftableRuleIn.data">
-                          <td>
-                            <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.gene"></cosmic-link>
-                          </td>
-                          <td>{{item.exon | dashify}}</td>
-                          <td>{{item.oncominevariantclass | dashify}}</td>
-                          <td>{{item.function | dashify}}</td>
-                          <td>{{item.levelOfEvidence | dashify}}</td>
-                          <td>
-                            <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
-                              <span *ngFor="let items of item.publicMedIds; let last=last">
-                                <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
-                                <span *ngIf="!last">, </span>
-                              </span>
-                            </span>
-                            <span *ngIf="item.publicMedIds==null || item.publicMedIds==0">-</span>
-                          </td>
-                        </tr>
-                        <tr *ngIf="mftableRuleIn.data.length == 0">
-                          <td class="text-muted" colspan="6">No matching search results found for "{{searchtermRuleIn}}"</td>
-                        </tr>
-                      </tbody>
-                      <tfoot>
-                        <tr>
-                          <td class="tfoot-padding" colspan="6">
-                            <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermRuleIn" [totallength]="ruleIn.length"></mfBootstrapPaginator>
-                          </td>
-                        </tr>
-                      </tfoot>
-                    </table>
-                  </div>
-                </div>
+                <!-- end panel -->
               </div>
-              <div>
-                <div class="panel-heading">
-                  <h4 class="panel-title f-s-18">Exclusions</h4>
-                </div>
-                <div class="col-md-12 bg-success-light">
-                  <div class="col-md-6 p-l-5">
-                    <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
-                      <label>Show
-                        <select [disabled]="ruleEx.length == 0"  name="data-table_length" [(ngModel)]="recordsPerPageRuleEx" aria-controls="data-table"
-                          class="form-control form-control-success input-sm">
-                          <option value=5>5</option>
-                          <option value=10>10</option>
-                          <option value=25>25</option>
-                          <option value=50>50</option>
-                        </select>
-                        entries</label>
-                    </div>
-                  </div>
-                  <div class="col-md-6 p-r-5">
-                    <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
-                      <label>Search:
-                        <input [disabled]="ruleEx.length == 0"  type="text" [(ngModel)]="searchtermRuleEx" class="form-control form-control-success input-sm"
-                          placeholder="" aria-controls="data-table">
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="table-responsive col-lg-12">
-                    <table *ngIf="ruleEx.length == 0" class="table table-td-valign-middle table-striped table-col-width">
-                      <thead>
-                        <tr class="success-light">
-                          <th>
-                            Gene
-                          </th>
-                          <th>
-                            Exon
-                          </th>
-                          <th>
-                            Oncomine Variant Class
-                          </th>
-                          <th>
-                            Function
-                          </th>
-                          <th>
-                            Lit
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td class="text-muted" colspan="6">There are no excluded non-hotspot rules for treatment arm "{{tableData[versionIndex].treatmentArmId
-                            | dashify}}"</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <table *ngIf="ruleEx.length!=0" class="table table-td-valign-middle table-striped table-col-width" [mfData]="ruleEx | filterByText: searchtermRuleEx"
-                      #mftableRuleEx="mfDataTable" [(mfSortBy)]="tableRuleExDefaultSort" [mfRowsOnPage]="recordsPerPageRuleEx">
-                      <thead>
-                        <tr class="success-light">
-                          <th>
-                            <mfDefaultSorter by="gene">
-                              <span class="table-header">Gene</span>
-                            </mfDefaultSorter>
-                          </th>
-                          <th>
-                            <mfDefaultSorter by="exon">
-                              <span class="table-header">Exon</span>
-                            </mfDefaultSorter>
-                          </th>
-                          <th>
-                            <mfDefaultSorter by="oncominevariantclass">
-                              <span class="table-header">Oncomine Variant Class</span>
-                            </mfDefaultSorter>
-                          </th>
-                          <th>
-                            <mfDefaultSorter by="function">
-                              <span class="table-header">Function</span>
-                            </mfDefaultSorter>
-                          </th>
-                          <th>
-                            <span class="table-header">Lit</span>
-                            <!--<mfDefaultSorter by="publicMedIds"></mfDefaultSorter>-->
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr *ngFor="let item of mftableRuleEx.data">
-                          <td>
-                            <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.gene"></cosmic-link>
-                          </td>
-                          <td>{{item.exon | dashify}}</td>
-                          <td>{{item.oncominevariantclass | dashify}}</td>
-                          <td>{{item.function | dashify}}</td>
-                          <td>
-                            <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
-                              <span *ngFor="let items of item.publicMedIds; let last=last">
-                                <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term={{items}}" class="link-none" target="_blank">{{items | dashify}}</a>
-                                <span *ngIf="!last">, </span>
-                              </span>
-                            </span>
-                            <span *ngIf="item.publicMedIds==null || item.publicMedIds==0">-</span>
-                          </td>
-                        </tr>
-                        <tr *ngIf="mftableRuleEx.data.length == 0">
-                          <td class="text-muted" colspan="6">No matching search results found for "{{searchtermRuleEx}}"</td>
-                        </tr>
-                      </tbody>
-                      <tfoot>
-                        <tr>
-                          <td class="tfoot-padding" colspan="6">
-                            <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermRuleEx" [totallength]="ruleEx.length"></mfBootstrapPaginator>
-                          </td>
-                        </tr>
-                      </tfoot>
-                    </table>
-                  </div>
-                </div>
-              </div>
-              <!-- end panel -->
+              <!-- table assay -->
             </div>
-            <!-- table nhs rule -->
           </div>
         </div>
-      </div>
-    </tab>
-    <tab heading="Assays" id="assays">
-      <div class="row" matchHeight="panel-height-top">
-        <div class="row">
-          <div class="col-md-12">
-            <!-- table assay -->
-            <div class="row">
-              <!-- begin panel -->
-              <div>
-                <div class="col-md-12 bg-success-light">
-                  <div class="col-md-6 p-l-5">
-                    <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
-                      <label>Show
-                        <select [disabled]="tableData[versionIndex].assayResults.length == 0"  name="data-table_length" [(ngModel)]="recordsPerPageAssay"
-                          aria-controls="data-table" class="form-control form-control-success input-sm">
-                          <option value=10>10</option>
-                          <option value=25>25</option>
-                          <option value=50>50</option>
-                          <option value=100>100</option>
-                        </select>
-                        entries</label>
-                    </div>
-                  </div>
-                  <div class="col-md-6 p-r-5">
-                    <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
-                      <label>Search:
-                        <input [disabled]="tableData[versionIndex].assayResults.length == 0"  type="text" [(ngModel)]="searchtermAssay" class="form-control form-control-success input-sm"
-                          placeholder="" aria-controls="data-table">
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="table-responsive col-lg-12">
-                    <table *ngIf="tableData[versionIndex].assayResults.length == 0" class="table table-td-valign-middle table-striped table-col-width">
-                      <thead>
-                        <tr class="success-light">
-                          <th>
-                            Gene
-                          </th>
-                          <th>
-                            Result
-                          </th>
-                          <th>
-                            Variant Association
-                          </th>
-                          <th>
-                            LOE
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td class="text-muted" colspan="4">There are no assay results for treatment arm "{{tableData[versionIndex].treatmentArmId | dashify}}"</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <table *ngIf="tableData[versionIndex].assayResults.length!=0" class="table table-td-valign-middle table-striped table-col-width"
-                      [mfData]="tableData[versionIndex].assayResults | filterByText: searchtermAssay" #mftableAssay="mfDataTable"
-                      [(mfSortBy)]="tableAssayDefaultSort" [mfRowsOnPage]="recordsPerPageAssay">
-                      <thead>
-                        <tr class="success-light">
-                          <th>
-                            <mfDefaultSorter by="gene">
-                              <span class="table-header">Gene</span>
-                            </mfDefaultSorter>
-                          </th>
-                          <th>
-                            <mfDefaultSorter by="assayResultStatus">
-                              <span class="table-header">Result</span>
-                            </mfDefaultSorter>
-                          </th>
-                          <th>
-                            <mfDefaultSorter by="assayVariant">
-                              <span class="table-header">Variant Association</span>
-                            </mfDefaultSorter>
-                          </th>
-                          <th>
-                            <mfDefaultSorter by="levelOfEvidence">
-                              <span class="table-header">LOE</span>
-                            </mfDefaultSorter>
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr *ngFor="let item of mftableAssay.data">
-                          <td>{{item.gene | dashify}}</td>
-                          <td>{{item.assayResultStatus | dashify}}</td>
-                          <td>{{item.assayVariant | dashify}}</td>
-                          <td>{{item.levelOfEvidence | dashify}}</td>
-                        </tr>
-                        <tr *ngIf="mftableAssay.data.length == 0">
-                          <td class="text-muted" colspan="4">No matching search results found for "{{searchtermAssay}}"</td>
-                        </tr>
-                      </tbody>
-                      <tfoot>
-                        <tr>
-                          <td class="tfoot-padding" colspan="4">
-                            <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchtermAssay" [totallength]="tableData[versionIndex].assayResults.length"></mfBootstrapPaginator>
-                          </td>
-                        </tr>
-                      </tfoot>
-                    </table>
-                  </div>
-                </div>
-              </div>
-              <!-- end panel -->
-            </div>
-            <!-- table assay -->
-          </div>
-        </div>
-      </div>
-    </tab>
-  </tabset>
+      </tab>
+    </tabset>
+  </div>
   <div class="row">
     <div class="col-md-12" id="all-patients-panel">
       <!-- begin panel -->
