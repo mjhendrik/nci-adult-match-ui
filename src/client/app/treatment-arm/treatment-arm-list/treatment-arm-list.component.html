@@ -1,10 +1,14 @@
 <div class="load-content" *ngIf="!dataAvailable">
-  <div id="page-loader" class="page-loader fade in"><span class="spinner">Loading...</span></div>
+  <div id="page-loader" class="page-loader fade in">
+    <span class="spinner">Loading...</span>
+  </div>
 </div>
 <!-- use emit -->
 <div *ngIf="dataAvailable" id="content" class="content">
   <ul class="breadcrumb pull-right">
-    <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
+    <li>
+      <a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a>
+    </li>
     <li class="active">Treatment Arms</li>
   </ul>
   <h1 class="page-header">Treatment Arms</h1>
@@ -24,20 +28,20 @@
                       <div class="col-md-6 p-l-5">
                         <div class="dataTables_length text-white form-inline p-t-15 p-b-10" id="data-table_length">
                           <label>Show
-                        <select name="data-table_length" [(ngModel)]="recordsPerPageTA" aria-controls="data-table" class="form-control form-control-success input-sm">
-                          <option [ngValue]=10>10</option>
-                          <option [ngValue]=25>25</option>
-                          <option [ngValue]=50>50</option>
-                          <option [ngValue]=100>100</option>
-                        </select>
-                      entries</label>
+                            <select name="data-table_length" [(ngModel)]="recordsPerPageTA" aria-controls="data-table" class="form-control form-control-success input-sm">
+                              <option [ngValue]=10>10</option>
+                              <option [ngValue]=25>25</option>
+                              <option [ngValue]=50>50</option>
+                              <option [ngValue]=100>100</option>
+                            </select>
+                            entries</label>
                         </div>
                       </div>
                       <div class="col-md-6 p-r-5">
                         <div id="data-table_filter" class="dataTables_filter pull-right text-white form-inline p-t-15 p-b-10">
                           <label>Search:
-                        <input type="text" [(ngModel)]="searchtermTA" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">
-                        </label>
+                            <input type="text" [(ngModel)]="searchtermTA" class="form-control form-control-success input-sm" placeholder="" aria-controls="data-table">
+                          </label>
                         </div>
                       </div>
                     </div>
@@ -48,41 +52,61 @@
                           <thead>
                             <tr class="success-light">
                               <th style="min-width:13em">
-                                <mfDefaultSorter by="treatmentArmId"><span class="table-header">ID</span></mfDefaultSorter>
+                                <mfDefaultSorter by="treatmentArmId">
+                                  <span class="table-header">ID</span>
+                                </mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="name"><span class="table-header">Name</span></mfDefaultSorter>
+                                <mfDefaultSorter by="name">
+                                  <span class="table-header">Name</span>
+                                </mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="summaryReport.numCurrentPatientsOnArm"><span class="table-header">Current Patients</span></mfDefaultSorter>
+                                <mfDefaultSorter by="summaryReport.numCurrentPatientsOnArm">
+                                  <span class="table-header">Current Patients</span>
+                                </mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="summaryReport.numFormerPatients"><span class="table-header">Former Patient</span></mfDefaultSorter>
+                                <mfDefaultSorter by="summaryReport.numFormerPatients">
+                                  <span class="table-header">Former Patient</span>
+                                </mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="summaryReport.numPendingArmApproval"><span class="table-header">Pending Arm Approval</span></mfDefaultSorter>
+                                <mfDefaultSorter by="summaryReport.numPendingArmApproval">
+                                  <span class="table-header">Pending Arm Approval</span>
+                                </mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="summaryReport.numNotEnrolledPatient"><span class="table-header">Not Enrolled Patients</span></mfDefaultSorter>
+                                <mfDefaultSorter by="summaryReport.numNotEnrolledPatient">
+                                  <span class="table-header">Not Enrolled Patients</span>
+                                </mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="treatmentArmStatus"><span class="table-header">Status</span></mfDefaultSorter>
+                                <mfDefaultSorter by="treatmentArmStatus">
+                                  <span class="table-header">Status</span>
+                                </mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="dateCreated"><span class="table-header">Created Date</span></mfDefaultSorter>
+                                <mfDefaultSorter by="dateCreated">
+                                  <span class="table-header">Created Date</span>
+                                </mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="dateOpen"><span class="table-header">Open Date</span></mfDefaultSorter>
+                                <mfDefaultSorter by="dateOpen">
+                                  <span class="table-header">Open Date</span>
+                                </mfDefaultSorter>
                               </th>
                               <th>
-                                <mfDefaultSorter by="dateClosedOrSuspended"><span class="table-header">Suspended/Closed Date</span></mfDefaultSorter>
+                                <mfDefaultSorter by="dateClosedOrSuspended">
+                                  <span class="table-header">Suspended/Closed Date</span>
+                                </mfDefaultSorter>
                               </th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mftableTA.data">
                               <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                                <treatment-arm-link [treatmentArmId]="item.treatmentArmId"></treatment-arm-link>
+                                <treatment-arm-link [treatmentArmId]="item.treatmentArmId" [version]="item.version" [hideVersion]="true"></treatment-arm-link>
                               </td>
                               <td>{{item.name | dashify}}</td>
                               <td>{{item.summaryReport.numCurrentPatientsOnArm | dashify}}</td>

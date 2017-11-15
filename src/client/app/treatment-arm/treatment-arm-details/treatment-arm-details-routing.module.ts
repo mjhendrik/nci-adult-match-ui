@@ -40,7 +40,7 @@ class DataResolver implements Resolve<any> {
   imports: [
     RouterModule.forChild([
       {
-        path: 'treatments/:id',
+        path: 'treatments/:id/:version',
         component: TreatmentArmDetailsComponent,
         canActivate: [AuthGuard],
         resolve: { data: DataResolver }

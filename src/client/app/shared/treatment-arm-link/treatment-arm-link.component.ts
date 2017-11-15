@@ -5,7 +5,7 @@ import { Component, Input } from '@angular/core';
     selector: 'treatment-arm-link',
     styleUrls: ['treatment-arm-link.component.css'],
     template: `
-    <a *ngIf="treatmentArmId; else noData" href [routerLink]="['/treatments', treatmentArmId]" class="link-none ta-link">
+    <a *ngIf="treatmentArmId; else noData" href [routerLink]="['/treatments/'+treatmentArmId+'/'+version]" class="link-none ta-link">
         <span *ngIf="removePrefix; else showPrefix" [style.color]="textColor"><i class="fa fa-medkit"></i> {{suffix | dashify}}</span>
 
         <ng-template #showPrefix>
@@ -13,7 +13,7 @@ import { Component, Input } from '@angular/core';
             <span *ngIf="!dimPrefix" [style.color]="textColor"><i class="fa fa-medkit"></i> <span>{{prefix}}</span><span>{{suffix}}</span></span>
         </ng-template>
 
-        <span *ngIf="version" class="version" [style.color]="textColor">({{version}})</span>
+        <span *ngIf="version && !hideVersion" class="version" [style.color]="textColor">({{version}})</span>
     </a>
     <ng-template #noData>-</ng-template>
     `
@@ -24,6 +24,7 @@ export class TreatmentArmLinkComponent {
     @Input() removePrefix: boolean;
     @Input() textColor: string;
     @Input() version: string;
+    @Input() hideVersion: boolean;
 
     suffix: string;
     prefix: string;
