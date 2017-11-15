@@ -54,8 +54,8 @@ declare let d3: any;
     </div>
     <!--small panel-->
     <div *ngIf="!show" #ccww c-w>
-      <i class="fa fa-search-plus fa-2x" aria-hidden="true" *ngIf="!show" (click)="show = !show"
-      style="cursor: pointer; color: gray"></i>
+      <i class="fa fa-search-plus fa-2x" aria-hidden="true" *ngIf="!show  && (file_zoom === true)" (click)="show = !show"
+      style="cursor: pointer; color: gray;"></i>
        <h5 class="pull-right">{{ file_name }}</h5>
         <ul class="list-group" style="list-style-type: none;">
           <li>Tumor suppressor genes
@@ -64,10 +64,11 @@ declare let d3: any;
           <i class="fa fa-square" aria-hidden="true" style="color:#007200;background-color:#007200"></i>
           </li>
         </ul>
+        <h5 class="pull-left alert-danger">{{ file_error }}</h5>
       <nvd3 id="boxplotchart" config="{deepWatchData: false}" [options]="options" [data]="cnvdata" *ngIf="!show"></nvd3>
     </div>
   </div>
-  <div >
+  <div>
   
     <span *ngIf="cnvdata===undefined">
       <i class="fa fa-bar-chart text-muted" style="font-size:154px; padding-left: 39px;"></i>
@@ -84,6 +85,8 @@ export class CnvChartDirective implements AfterViewInit {
   errorMessage: string;
   cnvdata: any;
   file_name: string ;
+  file_error: string ;
+  file_zoom: boolean ;
   parseddata:any[] = [];
   frame: any;
   chartfrm: any;
@@ -195,6 +198,8 @@ export class CnvChartDirective implements AfterViewInit {
     //COLORS
     Object.keys(temp).forEach((key:any) => {
       (temp[key].error === 1) ? colors.push("#595851") : colors.push(temp[key].status);
+      (temp[key].error === 1) ? this.file_error = "Error occured in chart rendering." : this.file_error = "";
+      (temp[key].error === 1) ? this.file_zoom = false : this.file_zoom = true;
     });
 
     //Y MARGINS
@@ -202,7 +207,7 @@ export class CnvChartDirective implements AfterViewInit {
       let keys:any = Object.keys(temp);
       keys.sort(function (a:any, b:any) {
         return temp[b].values.whisker_high - temp[a].values.whisker_high;
-      })
+      });
       tip = (temp[keys[0]].values.whisker_high < 7) ? 8 : (temp[keys[0]].values.whisker_high);
     }
 
