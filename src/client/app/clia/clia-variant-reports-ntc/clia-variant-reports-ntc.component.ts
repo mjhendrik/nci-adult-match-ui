@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { routerTransition } from './../../shared/router.animations';
 import { SampleControlApiService } from '../sample-control-api.service';
 import { CliaVariantReportsNTCViewData } from '../clia-data-interfaces';
+import { UserProfileService } from '../../shared/user-profile/user-profile.service';
 
 
 /**
@@ -37,11 +38,15 @@ export class CliaVariantReportsNtcComponent implements OnInit {
   errorMessage: string;
   ntcType: string;
   cliaTypeName: string;
+  isReviewer: boolean = false;
 
-  constructor(private api: SampleControlApiService, private route: ActivatedRoute) {
+  constructor(private api: SampleControlApiService,
+    private route: ActivatedRoute,
+    private profile: UserProfileService) {
   }
 
   ngOnInit() {
+
     this.ntcType = this.route.snapshot.url[0].path;
     this.ntcType = this.ntcType.substring(this.ntcType.indexOf('_') + 1).trim();
 
@@ -54,6 +59,14 @@ export class CliaVariantReportsNtcComponent implements OnInit {
     this.molecular_id = this.route.snapshot.params['id'];
 
     this.getData(this.route.snapshot.data['data'].data);
+
+    const roles = this.profile.roles().filter(x => {
+      return x.indexOf('_VARIANT_REPORT_REVIEWER') !== -1 || x === 'ADMIN';
+    });
+
+    if (roles.indexOf('ADMIN') !== -1 || roles.join().toLowerCase().indexOf(this.ntcType) !== -1) {
+      this.isReviewer = true;
+    }
   }
 
   getData(itemList: CliaVariantReportsNTCViewData) {

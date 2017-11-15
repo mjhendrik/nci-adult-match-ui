@@ -1,7 +1,11 @@
 <div id="content" class="content">
   <ul class="breadcrumb pull-right">
-    <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
-    <li><a href [routerLink]="['/clia_'+pcType]" class="link-none">CLIA Lab {{cliaTypeName}}</a></li>
+    <li>
+      <a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a>
+    </li>
+    <li>
+      <a href [routerLink]="['/clia_'+pcType]" class="link-none">CLIA Lab {{cliaTypeName}}</a>
+    </li>
     <li>Positive Control Variant Report</li>
   </ul>
   <h1 class="page-header">Positive Control Variant Report</h1>
@@ -14,7 +18,8 @@
               <h4>Positive Control Variant Report</h4>
             </div>
             <div class="col-md-2 text-right">
-              <a class="btn btn-sm btn-link" role="button" href [routerLink]="['/clia_'+pcType+'/variant_reports_pc/qc',molecular_id]"><i class="fa fa-file-text-o"></i> QC Report</a>
+              <a class="btn btn-sm btn-link" role="button" href [routerLink]="['/clia_'+pcType+'/variant_reports_pc/qc',molecular_id]">
+                <i class="fa fa-file-text-o"></i> QC Report</a>
             </div>
           </div>
         </div>
@@ -43,9 +48,12 @@
               <dd [colorCodeClia]="report_status">{{report_status | dashify}}</dd>
             </dl>
             <div class="m-b-5">
-              <button type="button" class="btn btn-orangeshade-light" (click)="downloadDnaBam()"><i class="fa fa-download"></i> DNA BAM</button>
-              <button type="button" class="btn btn-orangeshade-light" (click)="downloadRnaBam()"><i class="fa fa-download"></i> RNA BAM</button>
-              <button type="button" class="btn btn-orangeshade-light" (click)="downloadVcf()"><i class="fa fa-download"></i> VCF</button>
+              <button type="button" class="btn btn-orangeshade-light" (click)="downloadDnaBam()">
+                <i class="fa fa-download"></i> DNA BAM</button>
+              <button type="button" class="btn btn-orangeshade-light" (click)="downloadRnaBam()">
+                <i class="fa fa-download"></i> RNA BAM</button>
+              <button type="button" class="btn btn-orangeshade-light" (click)="downloadVcf()">
+                <i class="fa fa-download"></i> VCF</button>
             </div>
           </div>
         </div>
@@ -111,8 +119,12 @@
             <tbody>
               <tr *ngFor="let item of positive_variants">
                 <td class="text-center">
-                  <span *ngIf="item.match===true"><i class="fa fa-check-circle text-success-light"></i></span>
-                  <span *ngIf="item.match===false"><i class="fa fa-times-circle text-danger-light"></i></span>
+                  <span *ngIf="item.match===true">
+                    <i class="fa fa-check-circle text-success-light"></i>
+                  </span>
+                  <span *ngIf="item.match===false">
+                    <i class="fa fa-times-circle text-danger-light"></i>
+                  </span>
                 </td>
                 <td>
                   <cosmic-link [linkType]="'cosmicId'" [linkId]="item.identifier"></cosmic-link>
@@ -178,9 +190,10 @@
           </table>
         </div>
       </div>
-      <div class="row">
+      <div *ngIf="isReviewer" class="row">
         <div class="col-md-12 text-center m-t-20">
-          <button (click)="rejectReport()" class="btn btn-danger"><i class="fa fa-times"></i> Reject Report</button>
+          <button (click)="rejectReport()" class="btn btn-danger">
+            <i class="fa fa-times"></i> Reject Report</button>
         </div>
       </div>
     </div>

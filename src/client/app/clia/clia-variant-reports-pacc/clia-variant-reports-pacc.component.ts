@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { routerTransition } from './../../shared/router.animations';
 import { CliaVariantReportsPACCViewData } from '../clia-data-interfaces';
 import { SampleControlApiService } from '../sample-control-api.service';
+import { UserProfileService } from '../../shared/user-profile/user-profile.service';
 
 /**
  * CLIAVariantReportsPaccComponent.
@@ -35,11 +36,15 @@ export class CliaVariantReportsPaccComponent implements OnInit {
   errorMessage: string;
   paccType: string;
   cliaTypeName: string;
+  isReviewer: boolean = false;
 
-  constructor(private api: SampleControlApiService, private route: ActivatedRoute) {
+  constructor(private api: SampleControlApiService,
+    private route: ActivatedRoute,
+    private profile: UserProfileService) {
   }
 
   ngOnInit() {
+
     this.paccType = this.route.snapshot.url[0].path;
     this.paccType = this.paccType.substring(this.paccType.indexOf('_') + 1).trim();
 
@@ -52,6 +57,15 @@ export class CliaVariantReportsPaccComponent implements OnInit {
     this.molecular_id = this.route.snapshot.params['id'];
 
     this.getData(this.route.snapshot.data['data'].data);
+
+    const roles = this.profile.roles().filter(x => {
+      return x.indexOf('_VARIANT_REPORT_REVIEWER') !== -1 || x === 'ADMIN';
+    });
+
+    if (roles.indexOf('ADMIN') !== -1 || roles.join().toLowerCase().indexOf(this.paccType) !== -1) {
+      this.isReviewer = true;
+    }
+
   }
 
   getData(itemList: CliaVariantReportsPACCViewData) {

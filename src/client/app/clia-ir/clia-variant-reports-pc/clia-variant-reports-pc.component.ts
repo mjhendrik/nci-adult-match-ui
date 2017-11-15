@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { routerTransition } from './../../shared/router.animations';
 import { SampleControlApiService } from '../sample-control-api.service';
 import { CliaVariantReportsPCViewData } from '../clia-data-interfaces';
+import { UserProfileService } from '../../shared/user-profile/user-profile.service';
 
 /**
  * This class represents the lazy loaded CLIAVariantReportsPcComponent.
@@ -36,11 +37,15 @@ export class CliaVariantReportsPcComponent implements OnInit {
   errorMessage: string;
   pcType: string;
   cliaTypeName: string;
+  isReviewer: boolean = false;
 
-  constructor(private api: SampleControlApiService, private route: ActivatedRoute) {
+  constructor(private api: SampleControlApiService,
+    private route: ActivatedRoute,
+    private profile: UserProfileService) {
   }
 
   ngOnInit() {
+
     this.pcType = this.route.snapshot.url[0].path;
     this.pcType = this.pcType.substring(this.pcType.indexOf('_') + 1).trim();
 
@@ -53,6 +58,15 @@ export class CliaVariantReportsPcComponent implements OnInit {
     this.molecular_id = this.route.snapshot.params['id'];
 
     this.getData(this.route.snapshot.data['data'].data);
+
+    const roles = this.profile.roles().filter(x => {
+      return x.indexOf('_VARIANT_REPORT_REVIEWER') !== -1 || x === 'ADMIN';
+    });
+
+    if (roles.indexOf('ADMIN') !== -1 || roles.join().toLowerCase().indexOf(this.pcType) !== -1) {
+      this.isReviewer = true;
+    }
+
   }
 
   getData(itemList: CliaVariantReportsPCViewData) {
