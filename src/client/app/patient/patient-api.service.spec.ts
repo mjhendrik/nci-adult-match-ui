@@ -714,7 +714,7 @@ export function main() {
 
         service.updateVariantReport('fake-psn', 'fake-bsn', 'fake-analysis-id', true)
           .do(resp => {
-            expect(resp.kind).toBe('error');
+            expect(resp.kind).toBe('Error: fake-error');
             let errorRes = resp as ApiStatusUpdateError;
             expect(errorRes.message).toEqual(fakeErrorData.message);
           })
