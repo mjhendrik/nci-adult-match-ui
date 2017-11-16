@@ -14,9 +14,37 @@ import { SampleControlApiService } from '../sample-control-api.service';
 import { CliaVariantReportsNTCViewData } from '../clia-data-interfaces';
 
 export function main() {
+
+  let parsedVCFGenes = [{
+    "gene": "ARID1A",
+    "values": [
+      1.859241,
+      1.886604,
+      1.910464,
+      1.938356,
+      1.972687,
+      1.985888,
+      2.04,
+      2.095586,
+      2.10961,
+      2.146974,
+      2.178319,
+      2.205869,
+      2.238333
+    ],
+    "chromosome": "chr1",
+    "position": "27022976",
+    "tsgGene": true,
+    "rawCopyNumber": 2.04,
+    "confidence_intervals": [
+      "0.05:1.91046",
+      "0.95:2.17832"
+    ]
+  }];
+
   describe('clia variant reports ntc component with clia type mocha', () => {
-    
-    
+
+
     let config: any[] = [
       { path: 'clia_variant_reports_ntc', component: 'CliaVariantReportsNtcComponent' }
     ];
@@ -45,8 +73,9 @@ export function main() {
                       total_variants: { 'test': 'test' },
                       mapd: { 'test': 'test' },
                       cellularity: { 'test': 'test' },
+                      date_variant_received: { 'test': 'test' },
                       torrent_variant_caller_version: { 'test': 'test' },
-                      oncomine_control_panel_summary: ['test'],
+                      report_status: { 'test': 'test' },
                       copy_number_variants: ['test'],
                       gene_fusions: ['test'],
                       snv_indels: ['test']
@@ -58,9 +87,10 @@ export function main() {
           }
         ]
       });
+      spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['ADMIN'] }));
     });
 
-    xit('should work for clia_mocha',
+    it('should work for clia_mocha',
       async(() => {
         TestBed
           .compileComponents()
@@ -76,14 +106,15 @@ export function main() {
             fixture.componentInstance.downloadRnaBam();
             fixture.componentInstance.downloadRnaBai();
             fixture.componentInstance.downloadVcf();
+            // fixture.componentInstance.confirmReport();
           });
       }));
 
   });
 
   describe('clia variant reports ntc component with clia type dartmouth', () => {
-    
-    
+
+
     let config: any[] = [
       { path: 'clia_variant_reports_ntc', component: 'CliaVariantReportsNtcComponent' }
     ];
@@ -107,16 +138,16 @@ export function main() {
                 data: {
                   data: {
                     data: {
-                      molecular_id: { 'test': 'test' },
-                      analysis_id: { 'test': 'test' },
-                      total_variants: { 'test': 'test' },
-                      mapd: { 'test': 'test' },
-                      cellularity: { 'test': 'test' },
-                      torrent_variant_caller_version: { 'test': 'test' },
-                      oncomine_control_panel_summary: ['test'],
-                      copy_number_variants: ['test'],
+                      molecular_id: {'test': 'test_mocha'},
+                      analysis_id: {'test': 'test'},
+                      total_variants: {'test': 'test'},
+                      mapd: {'test': 'test'},
+                      cellularity: {'test': 'test'},
+                      torrent_variant_caller_version: {'test': 'test'},
+                      copy_number_variants: parsedVCFGenes,
                       gene_fusions: ['test'],
-                      snv_indels: ['test']
+                      snv_indels: ['test'],
+                      date_variant_received: ['test']
                     }
                   }
                 }
@@ -125,9 +156,12 @@ export function main() {
           }
         ]
       });
+
+      spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['ADMIN'] }));
+
     });
 
-    xit('should work for clia_dartmouth',
+    it('should work for clia_dartmouth',
       async(() => {
         TestBed
           .compileComponents()
@@ -138,14 +172,15 @@ export function main() {
               }
             }).createComponent(CliaVariantReportsNtcComponent);
             fixture.componentInstance.ngOnInit();
+            expect(fixture.componentInstance.molecular_id).toEqual({"test":"test_mocha"})
           });
       }));
 
   });
 
   describe('clia variant reports ntc component with clia type yale', () => {
-    
-    
+
+
     let config: any[] = [
       { path: 'clia_variant_reports_ntc', component: 'CliaVariantReportsNtcComponent' }
     ];
@@ -169,13 +204,12 @@ export function main() {
                 data: {
                   data: {
                     data: {
-                      molecular_id: { 'test': 'test' },
+                      molecular_id: { 'test': 'test_yale' },
                       analysis_id: { 'test': 'test' },
                       total_variants: { 'test': 'test' },
                       mapd: { 'test': 'test' },
                       cellularity: { 'test': 'test' },
                       torrent_variant_caller_version: { 'test': 'test' },
-                      oncomine_control_panel_summary: ['test'],
                       copy_number_variants: ['test'],
                       gene_fusions: ['test'],
                       snv_indels: ['test']
@@ -187,9 +221,12 @@ export function main() {
           }
         ]
       });
+
+      spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['ADMIN'] }));
+
     });
 
-    xit('should work for clia_yale',
+    it('should work for clia_yale',
       async(() => {
         TestBed
           .compileComponents()
@@ -200,14 +237,15 @@ export function main() {
               }
             }).createComponent(CliaVariantReportsNtcComponent);
             fixture.componentInstance.ngOnInit();
+            expect(fixture.componentInstance.molecular_id).toEqual({"test":"test_yale"})
           });
       }));
 
   });
 
   describe('clia variant reports ntc component with clia type mgh', () => {
-    
-    
+
+
     let config: any[] = [
       { path: 'clia_variant_reports_ntc', component: 'CliaVariantReportsNtcComponent' }
     ];
@@ -231,13 +269,12 @@ export function main() {
                 data: {
                   data: {
                     data: {
-                      molecular_id: { 'test': 'test' },
+                      molecular_id: { 'test': 'test_mgh' },
                       analysis_id: { 'test': 'test' },
                       total_variants: { 'test': 'test' },
                       mapd: { 'test': 'test' },
                       cellularity: { 'test': 'test' },
                       torrent_variant_caller_version: { 'test': 'test' },
-                      oncomine_control_panel_summary: ['test'],
                       copy_number_variants: ['test'],
                       gene_fusions: ['test'],
                       snv_indels: ['test']
@@ -249,9 +286,12 @@ export function main() {
           }
         ]
       });
+
+      spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['ADMIN'] }));
+
     });
 
-    xit('should work for clia_mgh',
+    it('should work for clia_mgh',
       async(() => {
         TestBed
           .compileComponents()
@@ -262,14 +302,15 @@ export function main() {
               }
             }).createComponent(CliaVariantReportsNtcComponent);
             fixture.componentInstance.ngOnInit();
+            expect(fixture.componentInstance.molecular_id).toEqual({"test":"test_mgh"})
           });
       }));
 
   });
 
   describe('clia variant reports ntc component with clia type mda', () => {
-    
-    
+
+
     let config: any[] = [
       { path: 'clia_variant_reports_ntc', component: 'CliaVariantReportsNtcComponent' }
     ];
@@ -293,13 +334,12 @@ export function main() {
                 data: {
                   data: {
                     data: {
-                      molecular_id: { 'test': 'test' },
+                      molecular_id: { 'test': 'test_mda' },
                       analysis_id: { 'test': 'test' },
                       total_variants: { 'test': 'test' },
                       mapd: { 'test': 'test' },
                       cellularity: { 'test': 'test' },
                       torrent_variant_caller_version: { 'test': 'test' },
-                      oncomine_control_panel_summary: ['test'],
                       copy_number_variants: ['test'],
                       gene_fusions: ['test'],
                       snv_indels: ['test']
@@ -311,9 +351,12 @@ export function main() {
           }
         ]
       });
+
+      spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['ADMIN'] }));
+
     });
 
-    xit('should work for clia_mda',
+    it('should work for clia_mda',
       async(() => {
         TestBed
           .compileComponents()
@@ -324,11 +367,7 @@ export function main() {
               }
             }).createComponent(CliaVariantReportsNtcComponent);
             fixture.componentInstance.ngOnInit();
-            fixture.componentInstance.downloadDnaBam();
-            fixture.componentInstance.downloadDnaBai();
-            fixture.componentInstance.downloadRnaBam();
-            fixture.componentInstance.downloadRnaBai();
-            fixture.componentInstance.downloadVcf();
+            expect(fixture.componentInstance.molecular_id).toEqual({"test":"test_mda"})
           });
       }));
 
@@ -341,17 +380,17 @@ class MockCliaApiService {
   getCliaVariantReportsNTC(type: any): Observable<CliaVariantReportsNTCViewData> {
     let testData: CliaVariantReportsNTCViewData;
     testData = {
-      copy_number_variants: ['test'],
-      gene_fusions: ['test'],
-      snv_indels: ['test'],
       molecular_id: { 'test': 'test' },
       analysis_id: { 'test': 'test' },
       total_variants: { 'test': 'test' },
       mapd: { 'test': 'test' },
       cellularity: { 'test': 'test' },
-      date_variant_received: { 'test': 'test' },
+      date_variant_received: ['test'],
       torrent_variant_caller_version: { 'test': 'test' },
-      report_status: { 'test': 'test' }
+      report_status: { 'test': 'test' },
+      copy_number_variants: ['test'],
+      gene_fusions: ['test'],
+      snv_indels: ['test']
     };
     return Observable.of(testData);
   }
@@ -392,17 +431,17 @@ class MockCliaApiServiceWithError {
   getCliaVariantReportsNTC(type: any): Observable<CliaVariantReportsNTCViewData> {
     let testData: CliaVariantReportsNTCViewData;
     testData = {
-      copy_number_variants: ['test'],
-      gene_fusions: ['test'],
-      snv_indels: ['test'],
       molecular_id: { 'test': 'test' },
       analysis_id: { 'test': 'test' },
       total_variants: { 'test': 'test' },
       mapd: { 'test': 'test' },
       cellularity: { 'test': 'test' },
-      date_variant_received: { 'test': 'test' },
+      date_variant_received: ['test'],
       torrent_variant_caller_version: { 'test': 'test' },
-      report_status: { 'test': 'test' }
+      report_status: { 'test': 'test' },
+      copy_number_variants: ['test'],
+      gene_fusions: ['test'],
+      snv_indels: ['test']
     };
     return Observable.throw(testData);
   }
