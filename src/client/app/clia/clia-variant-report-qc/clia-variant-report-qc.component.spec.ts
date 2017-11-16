@@ -531,6 +531,76 @@ export function main() {
       }));
 
   });
+
+  describe('clia variant report qc component cdownloads', () => {
+    beforeEach(() => {
+      TestBed.configureTestingModule({
+        imports: [
+          RouterTestingModule.withRoutes(config),
+          DirectivesModule,
+          PipesModule,
+          VariantReportFilteredTableModule,
+          SharedModule
+        ],
+        declarations: [CliaVariantReportQcComponent],
+        providers: [
+          { provide: SampleControlApiService, useClass: MockCliaApiService },
+          {
+            provide: ActivatedRoute, useValue: {
+            snapshot: {
+              url: [{path: 'clia_mocha'}, {path: 'pc'}],
+              params: {id: 1234},
+              data: {
+                data: {
+                  data: {
+                    molecular_id: {'test': 'test_mocha'},
+                    analysis_id: {'test': 'test'},
+                    total_variants: {'test': 'test'},
+                    mapd: {'test': 'test'},
+                    cellularity: {'test': 'test'},
+                    torrent_variant_caller_version: {'test': 'test'},
+                    oncomine_control_panel_summary: ['test'],
+                    copy_number_variants: parsedVCFGenes,
+                    parsedVCFGenes: parsedVCFGenes,
+                    gene_fusions: ['test'],
+                    snv_indels: ['test'],
+                    sum: 0
+                  },
+                  graph: {
+                    parsedVCFGenes: parsedVCFGenes,
+                    tvcVersion: ['test']
+                  }
+                }
+              }
+            }
+          }
+          }
+        ]
+      });
+    });
+
+    it('should work for all downloads',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(CliaVariantReportQcComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(CliaVariantReportQcComponent);
+
+            fixture.componentInstance.ngOnInit();
+            fixture.componentInstance.downloadDnaBam();
+            fixture.componentInstance.downloadDnaBai();
+            fixture.componentInstance.downloadRnaBam();
+            fixture.componentInstance.downloadRnaBai();
+            fixture.componentInstance.downloadVcf();
+          });
+      }));
+
+  });
+
 }
 
 
