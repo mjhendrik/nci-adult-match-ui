@@ -13,6 +13,7 @@ import { VariantReportFilteredTableModule } from '../../shared/variant-report-fi
 import { SharedModule } from '../../shared/shared.module';
 import { SampleControlApiService } from '../sample-control-api.service';
 import { CliaVariantReportsQCViewData } from '../clia-data-interfaces';
+import { PatientApiServiceStub, PatientApiServiceMock } from '../../patient/testing/patient-api-service-stub';
 
 export function main() {
 
@@ -34,9 +35,35 @@ export function main() {
     { path: 'clia_mda/variant_reports_pacc/qc/:id', component: CliaVariantReportQcComponent }
   ];
 
+
+  let parsedVCFGenes = [{
+      "gene": "ARID1A",
+      "values": [
+        1.859241,
+        1.886604,
+        1.910464,
+        1.938356,
+        1.972687,
+        1.985888,
+        2.04,
+        2.095586,
+        2.10961,
+        2.146974,
+        2.178319,
+        2.205869,
+        2.238333
+      ],
+      "chromosome": "chr1",
+      "position": "27022976",
+      "tsgGene": true,
+      "rawCopyNumber": 2.04,
+      "confidence_intervals": [
+        "0.05:1.91046",
+        "0.95:2.17832"
+      ]
+    }];
+
   describe('clia variant report qc component clia type mocha', () => {
-
-
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [
@@ -52,21 +79,27 @@ export function main() {
           {
             provide: ActivatedRoute, useValue: {
               snapshot: {
-                url: [{ path: 'clia_mocha' }, { path: 'pc' }],
-                params: { id: 1234 },
+                url: [{path: 'clia_mocha'}, {path: 'pc'}],
+                params: {id: 1234},
                 data: {
                   data: {
                     data: {
-                      molecular_id: { 'test': 'test' },
-                      analysis_id: { 'test': 'test' },
-                      total_variants: { 'test': 'test' },
-                      mapd: { 'test': 'test' },
-                      cellularity: { 'test': 'test' },
-                      torrent_variant_caller_version: { 'test': 'test' },
+                      molecular_id: {'test': 'test_mocha'},
+                      analysis_id: {'test': 'test'},
+                      total_variants: {'test': 'test'},
+                      mapd: {'test': 'test'},
+                      cellularity: {'test': 'test'},
+                      torrent_variant_caller_version: {'test': 'test'},
                       oncomine_control_panel_summary: ['test'],
-                      copy_number_variants: ['test'],
+                      copy_number_variants: parsedVCFGenes,
+                      parsedVCFGenes: parsedVCFGenes,
                       gene_fusions: ['test'],
-                      snv_indels: ['test']
+                      snv_indels: ['test'],
+                      sum: 0
+                    },
+                    graph: {
+                      parsedVCFGenes: parsedVCFGenes,
+                      tvcVersion: ['test']
                     }
                   }
                 }
@@ -77,8 +110,8 @@ export function main() {
       });
     });
 
-    xit('should work for clia_mocha',
-      async(() => {
+    it('should work for clia_mocha',
+      async((done: any) => {
         TestBed
           .compileComponents()
           .then(() => {
@@ -87,19 +120,44 @@ export function main() {
                 templateUrl: ''
               }
             }).createComponent(CliaVariantReportQcComponent);
+
+            let comp: CliaVariantReportQcComponent = fixture.componentInstance;
+            comp.parsedVCFGenes = {'parsedVCFGenes':[
+              {
+                "gene": "ARID1A",
+                "values": [
+                  1.859241,
+                  1.886604,
+                  1.910464,
+                  1.938356,
+                  1.972687,
+                  1.985888,
+                  2.04,
+                  2.095586,
+                  2.10961,
+                  2.146974,
+                  2.178319,
+                  2.205869,
+                  2.238333
+                ],
+                "chromosome": "chr1",
+                "position": "27022976",
+                "tsgGene": true,
+                "rawCopyNumber": 2.04,
+                "confidence_intervals": [
+                  "0.05:1.91046",
+                  "0.95:2.17832"
+                ]
+              }
+            ]};
             fixture.componentInstance.ngOnInit();
-            fixture.componentInstance.downloadDnaBam();
-            fixture.componentInstance.downloadDnaBai();
-            fixture.componentInstance.downloadRnaBam();
-            fixture.componentInstance.downloadRnaBai();
-            fixture.componentInstance.downloadVcf();
+            expect(comp.molecular_id).toEqual({ test: 'test_mocha' });
           });
       }));
 
   });
 
   describe('clia variant report qc component clia type dartmouth', () => {
-
 
     beforeEach(() => {
       TestBed.configureTestingModule({
@@ -120,16 +178,22 @@ export function main() {
                 data: {
                   data: {
                     data: {
-                      molecular_id: { 'test': 'test' },
-                      analysis_id: { 'test': 'test' },
-                      total_variants: { 'test': 'test' },
-                      mapd: { 'test': 'test' },
-                      cellularity: { 'test': 'test' },
-                      torrent_variant_caller_version: { 'test': 'test' },
+                      molecular_id: {'test': 'dartmouth_test'},
+                      analysis_id: {'test': 'test'},
+                      total_variants: {'test': 'test'},
+                      mapd: {'test': 'test'},
+                      cellularity: {'test': 'test'},
+                      torrent_variant_caller_version: {'test': 'test'},
                       oncomine_control_panel_summary: ['test'],
-                      copy_number_variants: ['test'],
+                      copy_number_variants: parsedVCFGenes,
+                      parsedVCFGenes: parsedVCFGenes,
                       gene_fusions: ['test'],
-                      snv_indels: ['test']
+                      snv_indels: ['test'],
+                      sum: 0
+                    },
+                    graph: {
+                      parsedVCFGenes: parsedVCFGenes,
+                      tvcVersion: ['test']
                     }
                   }
                 }
@@ -140,8 +204,8 @@ export function main() {
       });
     });
 
-    xit('should work for clia_dartmouth',
-      async(() => {
+    it('should work for clia_dartmouth',
+      async((done: any) => {
         TestBed
           .compileComponents()
           .then(() => {
@@ -150,7 +214,37 @@ export function main() {
                 templateUrl: ''
               }
             }).createComponent(CliaVariantReportQcComponent);
+            let comp: CliaVariantReportQcComponent = fixture.componentInstance;
+            comp.parsedVCFGenes = {'parsedVCFGenes':[
+              {
+                "gene": "ARID1A",
+                "values": [
+                  1.859241,
+                  1.886604,
+                  1.910464,
+                  1.938356,
+                  1.972687,
+                  1.985888,
+                  2.04,
+                  2.095586,
+                  2.10961,
+                  2.146974,
+                  2.178319,
+                  2.205869,
+                  2.238333
+                ],
+                "chromosome": "chr1",
+                "position": "27022976",
+                "tsgGene": true,
+                "rawCopyNumber": 2.04,
+                "confidence_intervals": [
+                  "0.05:1.91046",
+                  "0.95:2.17832"
+                ]
+              }
+            ]};
             fixture.componentInstance.ngOnInit();
+            expect(comp.molecular_id).toEqual({ test: 'dartmouth_test' });
           });
       }));
 
@@ -178,16 +272,22 @@ export function main() {
                 data: {
                   data: {
                     data: {
-                      molecular_id: { 'test': 'test' },
-                      analysis_id: { 'test': 'test' },
-                      total_variants: { 'test': 'test' },
-                      mapd: { 'test': 'test' },
-                      cellularity: { 'test': 'test' },
-                      torrent_variant_caller_version: { 'test': 'test' },
+                      molecular_id: {'test': 'yale_test'},
+                      analysis_id: {'test': 'test'},
+                      total_variants: {'test': 'test'},
+                      mapd: {'test': 'test'},
+                      cellularity: {'test': 'test'},
+                      torrent_variant_caller_version: {'test': 'test'},
                       oncomine_control_panel_summary: ['test'],
-                      copy_number_variants: ['test'],
+                      copy_number_variants: parsedVCFGenes,
+                      parsedVCFGenes: parsedVCFGenes,
                       gene_fusions: ['test'],
-                      snv_indels: ['test']
+                      snv_indels: ['test'],
+                      sum: 0
+                    },
+                    graph: {
+                      parsedVCFGenes: parsedVCFGenes,
+                      tvcVersion: ['test']
                     }
                   }
                 }
@@ -198,7 +298,7 @@ export function main() {
       });
     });
 
-    xit('should work for clia_yale',
+    it('should work for clia_yale',
       async(() => {
         TestBed
           .compileComponents()
@@ -208,7 +308,37 @@ export function main() {
                 templateUrl: ''
               }
             }).createComponent(CliaVariantReportQcComponent);
+            let comp: CliaVariantReportQcComponent = fixture.componentInstance;
+            comp.parsedVCFGenes = {'parsedVCFGenes':[
+              {
+                "gene": "ARID1A",
+                "values": [
+                  1.859241,
+                  1.886604,
+                  1.910464,
+                  1.938356,
+                  1.972687,
+                  1.985888,
+                  2.04,
+                  2.095586,
+                  2.10961,
+                  2.146974,
+                  2.178319,
+                  2.205869,
+                  2.238333
+                ],
+                "chromosome": "chr1",
+                "position": "27022976",
+                "tsgGene": true,
+                "rawCopyNumber": 2.04,
+                "confidence_intervals": [
+                  "0.05:1.91046",
+                  "0.95:2.17832"
+                ]
+              }
+            ]};
             fixture.componentInstance.ngOnInit();
+            expect(comp.molecular_id).toEqual({ test: 'yale_test' });
           });
       }));
 
@@ -236,16 +366,22 @@ export function main() {
                 data: {
                   data: {
                     data: {
-                      molecular_id: { 'test': 'test' },
-                      analysis_id: { 'test': 'test' },
-                      total_variants: { 'test': 'test' },
-                      mapd: { 'test': 'test' },
-                      cellularity: { 'test': 'test' },
-                      torrent_variant_caller_version: { 'test': 'test' },
+                      molecular_id: {'test': 'mgh_test'},
+                      analysis_id: {'test': 'test'},
+                      total_variants: {'test': 'test'},
+                      mapd: {'test': 'test'},
+                      cellularity: {'test': 'test'},
+                      torrent_variant_caller_version: {'test': 'test'},
                       oncomine_control_panel_summary: ['test'],
-                      copy_number_variants: ['test'],
+                      copy_number_variants: parsedVCFGenes,
+                      parsedVCFGenes: parsedVCFGenes,
                       gene_fusions: ['test'],
-                      snv_indels: ['test']
+                      snv_indels: ['test'],
+                      sum: 0
+                    },
+                    graph: {
+                      parsedVCFGenes: parsedVCFGenes,
+                      tvcVersion: ['test']
                     }
                   }
                 }
@@ -256,7 +392,7 @@ export function main() {
       });
     });
 
-    xit('should work for clia_mgh',
+    it('should work for clia_mgh',
       async(() => {
         TestBed
           .compileComponents()
@@ -266,13 +402,43 @@ export function main() {
                 templateUrl: ''
               }
             }).createComponent(CliaVariantReportQcComponent);
+            let comp: CliaVariantReportQcComponent = fixture.componentInstance;
+            comp.parsedVCFGenes = {'parsedVCFGenes':[
+              {
+                "gene": "ARID1A",
+                "values": [
+                  1.859241,
+                  1.886604,
+                  1.910464,
+                  1.938356,
+                  1.972687,
+                  1.985888,
+                  2.04,
+                  2.095586,
+                  2.10961,
+                  2.146974,
+                  2.178319,
+                  2.205869,
+                  2.238333
+                ],
+                "chromosome": "chr1",
+                "position": "27022976",
+                "tsgGene": true,
+                "rawCopyNumber": 2.04,
+                "confidence_intervals": [
+                  "0.05:1.91046",
+                  "0.95:2.17832"
+                ]
+              }
+            ]};
             fixture.componentInstance.ngOnInit();
+            expect(comp.molecular_id).toEqual({ test: 'mgh_test' });
           });
       }));
 
   });
 
-  xdescribe('clia variant report qc component clia type mda', () => {
+  describe('clia variant report qc component clia type mda', () => {
 
 
     beforeEach(() => {
@@ -294,16 +460,22 @@ export function main() {
                 data: {
                   data: {
                     data: {
-                      molecular_id: { 'test': 'test' },
-                      analysis_id: { 'test': 'test' },
-                      total_variants: { 'test': 'test' },
-                      mapd: { 'test': 'test' },
-                      cellularity: { 'test': 'test' },
-                      torrent_variant_caller_version: { 'test': 'test' },
+                      molecular_id: {'test': 'mda_test'},
+                      analysis_id: {'test': 'test'},
+                      total_variants: {'test': 'test'},
+                      mapd: {'test': 'test'},
+                      cellularity: {'test': 'test'},
+                      torrent_variant_caller_version: {'test': 'test'},
                       oncomine_control_panel_summary: ['test'],
-                      copy_number_variants: ['test'],
+                      copy_number_variants: parsedVCFGenes,
+                      parsedVCFGenes: parsedVCFGenes,
                       gene_fusions: ['test'],
-                      snv_indels: ['test']
+                      snv_indels: ['test'],
+                      sum: 0
+                    },
+                    graph: {
+                      parsedVCFGenes: parsedVCFGenes,
+                      tvcVersion: ['test']
                     }
                   }
                 }
@@ -314,7 +486,7 @@ export function main() {
       });
     });
 
-    xit('should work for clia_mda',
+    it('should work for clia_mda',
       async(() => {
         TestBed
           .compileComponents()
@@ -324,7 +496,37 @@ export function main() {
                 templateUrl: ''
               }
             }).createComponent(CliaVariantReportQcComponent);
+            let comp: CliaVariantReportQcComponent = fixture.componentInstance;
+            comp.parsedVCFGenes = {'parsedVCFGenes':[
+              {
+                "gene": "ARID1A",
+                "values": [
+                  1.859241,
+                  1.886604,
+                  1.910464,
+                  1.938356,
+                  1.972687,
+                  1.985888,
+                  2.04,
+                  2.095586,
+                  2.10961,
+                  2.146974,
+                  2.178319,
+                  2.205869,
+                  2.238333
+                ],
+                "chromosome": "chr1",
+                "position": "27022976",
+                "tsgGene": true,
+                "rawCopyNumber": 2.04,
+                "confidence_intervals": [
+                  "0.05:1.91046",
+                  "0.95:2.17832"
+                ]
+              }
+            ]};
             fixture.componentInstance.ngOnInit();
+            expect(comp.molecular_id).toEqual({ test: 'mda_test' });
           });
       }));
 
@@ -333,23 +535,80 @@ export function main() {
 
 
 class MockCliaApiService {
-  // getCliaVariantReportQC(): Observable<CliaVariantReportsQCViewData> {
-  //   let testData: CliaVariantReportsQCViewData;
-  //   testData = {
-  //     molecular_id: { 'test': 'test' },
-  //     analysis_id: { 'test': 'test' },
-  //     total_variants: { 'test': 'test' },
-  //     mapd: { 'test': 'test' },
-  //     cellularity: { 'test': 'test' },
-  //     torrent_variant_caller_version: { 'test': 'test' },
-  //     oncomine_control_panel_summary: ['test'],
-  //     copy_number_variants: ['test'],
-  //     gene_fusions: ['test'],
-  //     snv_indels: ['test']
-  //   };
-  //   return Observable.of(testData);
-  // }
-
+  getGraph(): Observable<CliaVariantReportsQCViewData> {
+    let testData: CliaVariantReportsQCViewData;
+    testData = {
+      molecular_id: { 'test': 'test' },
+      analysis_id: { 'test': 'test' },
+      total_variants: { 'test': 'test' },
+      mapd: { 'test': 'test' },
+      cellularity: { 'test': 'test' },
+      torrent_variant_caller_version: { 'test': 'test' },
+      oncomine_control_panel_summary: ['test'],
+      copy_number_variants: [{
+        "gene": "ARID1A",
+        "values": [
+          1.859241,
+          1.886604,
+          1.910464,
+          1.938356,
+          1.972687,
+          1.985888,
+          2.04,
+          2.095586,
+          2.10961,
+          2.146974,
+          2.178319,
+          2.205869,
+          2.238333
+        ],
+        "chromosome": "chr1",
+        "position": "27022976",
+        "tsgGene": true,
+        "rawCopyNumber": 2.04,
+        "confidence_intervals": [
+          "0.05:1.91046",
+          "0.95:2.17832"
+        ]
+      }],
+      gene_fusions: ['test'],
+      snv_indels: ['test'],
+      parsedVCFGenes: [{
+        "gene": "ARID1A",
+        "values": [
+          1.859241,
+          1.886604,
+          1.910464,
+          1.938356,
+          1.972687,
+          1.985888,
+          2.04,
+          2.095586,
+          2.10961,
+          2.146974,
+          2.178319,
+          2.205869,
+          2.238333
+        ],
+        "chromosome": "chr1",
+        "position": "27022976",
+        "tsgGene": true,
+        "rawCopyNumber": 2.04,
+        "confidence_intervals": [
+          "0.05:1.91046",
+          "0.95:2.17832"
+        ]
+      }],
+      copy_number_variant_genes: ['test'],
+      parsed_vcf_genes: { 'test': 'test' },
+      file_name: 'test',
+      body: { 'test': 'test' },
+      statusCode: 'test',
+      header: { 'test': 'test' },
+      tvcVersion: ['test']
+    };
+    return Observable.of(testData);
+  }
   downloadCliaDnaBam(): Observable<any> {
     let testdata = {
       s3_download_file_url: 'javascript:void(0)'
