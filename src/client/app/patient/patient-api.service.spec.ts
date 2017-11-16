@@ -653,66 +653,65 @@ export function main() {
     });
 
 
-    // fdescribe('when updateVariantReport', () => {
-    //   let backend: MockBackend;
-    //   let service: PatientApiService;
-    //   let response: Response;
-    //   let restCallSpy: jasmine.Spy;
-    //   let fakeData: {
-    //     commenter: 'fake-commenter',
-    //     status: 'fake-status',
-    //     dateTime: 'fake-dateTime',
-    //   };
+    describe('when updateVariantReport', () => {
+      let backend: MockBackend;
+      let service: PatientApiService;
+      let response: Response;
+      let fakeData: {
+        commenter: 'fake-commenter',
+        status: 'fake-status',
+        dateTime: 'fake-dateTime',
+      };
 
-    //   let fakeErrorData: {
-    //     code: 404,
-    //     message: 'fake-error',
-    //   };
+      let fakeErrorData: {
+        code: 404,
+        message: 'fake-error',
+      };
 
-    //   beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
-    //     backend = be;
-    //     service = new PatientApiService(http, download);
-    //     let options = new ResponseOptions({
-    //       status: 200,
-    //       body: fakeData
-    //     });
-    //     response = new Response(options);
-    //     restCallSpy = spyOn(download, 'downloadFile').and.callFake(() => { ; });
-    //   }));
+      beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
+        backend = be;
+        service = new PatientApiService(http, download);
+        let options = new ResponseOptions({
+          status: 200,
+          body: fakeData
+        });
+        response = new Response(options);
+      }));
 
-    //   fit('should have expected fake response (then)', async(inject([], () => {
-    //     backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
+      fit('should have expected fake response (then)', async(inject([], () => {
+        backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
-    //     service.updateVariantReport('fake-psn', 'fake-bsn', 'fake-analysis-id', true).toPromise()
-    //       .then(resp => {
-    //         switch (resp.kind) {
-    //           case 'error':
-    //             expect(resp.kind).toBe('error');
-    //             let errorRes = resp as ApiStatusUpdateError;
-    //             expect(errorRes.message).toBe(fakeErrorData.message);
-    //             break;
-    //           case 'success':
-    //             expect(resp.kind).toBe('success');
-    //             let successRes = resp as ApiStatusUpdateSuccess;
-    //             expect(successRes.commenter).toBe(fakeData.commenter);
-    //             break;
-    //         }
-    //       });
-    //   })));
+        service.updateVariantReport('fake-psn', 'fake-bsn', 'fake-analysis-id', true).toPromise()
+          .then(resp => {
+            expect(resp).toBeDefined();
+            switch (resp.kind) {
+              case 'error':
+                expect(resp.kind).toBe('error');
+                let errorRes = resp as ApiStatusUpdateError;
+                expect(errorRes.message).toBe(fakeErrorData.message);
+                break;
+              case 'success':
+                expect(resp.kind).toBe('success');
+                let successRes = resp as ApiStatusUpdateSuccess;
+                expect(successRes.commenter).toBe(fakeData.commenter);
+                break;
+            }
+          });
+      })));
 
-    //   it('should have expected fake response (Observable.do)', async(inject([], () => {
-    //     backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
+      it('should have expected fake response (Observable.do)', async(inject([], () => {
+        backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
-    //     service.updateVariantReport('fake-psn', 'fake-bsn', 'fake-analysis-id', true)
-    //       .do(resp => {
-    //         expect(resp.kind).toBe('success');
-    //         let successRes = resp as ApiStatusUpdateSuccess;
-    //         expect(successRes.commenter).toBe(fakeData.commenter);
-    //       })
-    //       .toPromise();
-    //   })));
+        service.updateVariantReport('fake-psn', 'fake-bsn', 'fake-analysis-id', true)
+          .do(resp => {
+            expect(resp.kind).toBe('success');
+            let successRes = resp as ApiStatusUpdateSuccess;
+            expect(successRes.commenter).toBe(fakeData.commenter);
+          })
+          .toPromise();
+      })));
 
-    // });
+    });
 
   });
 }

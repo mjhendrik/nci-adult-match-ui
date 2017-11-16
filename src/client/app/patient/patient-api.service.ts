@@ -131,7 +131,7 @@ export class PatientApiService extends ApiService {
         return { kind: 'success', commenter: data.commenter, status: data.status, dateTime: data.dateTime } as ApiStatusUpdateSuccess;
       })
       .catch((err: Response) => {
-        const data = err.json();
+        const data = err && err.json ? err.json() : {message: err};
         return Observable.of({ kind: 'error', message: data.message } as ApiStatusUpdateError);
       });
   }
@@ -155,7 +155,7 @@ export class PatientApiService extends ApiService {
         return { kind: 'success', commenter: data.commenter, status: data.status, dateTime: data.dateTime, comments: data.comment } as ApiStatusUpdateSuccess;
       })
       .catch((err: Response) => {
-        const data = err.json();
+        const data = err && err.json ? err.json() : {message: err};
         return Observable.of({ kind: 'error', message: data.message } as ApiStatusUpdateError);
       });
   }
@@ -171,7 +171,7 @@ export class PatientApiService extends ApiService {
         return { kind: 'success', commenter: data.commenter, status: data.status, dateTime: data.dateTime } as ApiStatusUpdateSuccess;
       })
       .catch((err: Response) => {
-        const data = err.json();
+        const data = err && err.json ? err.json() : {message: err};
         return Observable.of({ kind: 'error', message: data.message } as ApiStatusUpdateError);
       });
   }
