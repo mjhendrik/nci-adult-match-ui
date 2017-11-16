@@ -97,7 +97,7 @@ export function main() {
     it('should test getPatientsAwaitingData when isOutsideAssayValue false', () => {
       fixture.componentInstance.isOutsideAssayWorkflow = false;
       fixture.componentInstance.getPatientsAwaitingData();
-      expect(fixture.componentInstance.patientsAwaiting).toEqual({ isLoaded: true, data: [] });
+      expect(fixture.componentInstance.patientsAwaiting).not.toEqual({ isLoaded: false, data: [] });
     });
 
     it('should test getTreatmentArmSummaryData', () => {
