@@ -1,6 +1,7 @@
 import { Observable } from 'rxjs/Observable';
 
 export class DashboardServiceMock {
+
   getPendingAssignmentReports(): Observable<any> {
     let testData = [
       {
@@ -336,6 +337,13 @@ export class DashboardServiceMock {
             'ctepSubCategory': 'Skin Neoplasm, Miscellaneous',
             'ctepTerm': 'Skin cancer, NOS',
             'shortName': 'Skin cancer, NOS'
+          },
+          {
+            '_id': 10040811,
+            'ctepCategory': 'Skin Neoplasm',
+            'ctepSubCategory': 'Skin Neoplasm, Miscellaneous',
+            'ctepTerm': 'Skin cancer, NOS',
+            'shortName': 'Skin cancer, NOS'
           }
         ],
         'amoi': [''],
@@ -492,6 +500,48 @@ export class DashboardServiceMock {
       'currentPatientStatus': 'PENDING_APPROVAL',
       'concordance': 'U',
       'isOutsideAssay': true
+    },
+    {
+      'messages': [
+        'Variant report missing',
+        'Required assay result missing: MLH1, MSH2, PTEN'
+      ],
+      'PTEN': {
+        'applicable': true
+      },
+      'MLH1': {
+        'applicable': true
+      },
+      'MSH2': {
+        'applicable': true
+      },
+      'RB': {
+        'applicable': false
+      },
+      'molecularSequenceNumber': 'MSN-170re-1',
+      'dateMsnShipped': {
+        '$date': 1504403996659
+      },
+      'lab': 'Boston',
+      'dateSpecimenCollected': {
+        '$date': 1504403996617
+      },
+      'daysWaiting': 74,
+      'diseases': [
+        {
+          '_id': '10040811',
+          'ctepCategory': 'Skin Neoplasm',
+          'ctepSubCategory': 'Skin Neoplasm, Miscellaneous',
+          'ctepTerm': 'Skin cancer, NOS',
+          'shortName': 'Skin cancer, NOS'
+        }
+      ],
+      'amoi': [''],
+      'biopsySequenceNumber': 'N-14-000005-4',
+      'patientSequenceNumber': '170re',
+      'currentPatientStatus': 'PROGRESSION_REBIOPSY',
+      'concordance': 'Y',
+      'isOutsideAssay': false
     }
     ];
 
@@ -512,4 +562,5 @@ export class DashboardServiceMock {
     let testData = [{ 'BIOPSY_SEQUENCES': 201, 'TOTAL': 233, 'MOLECULAR_SEQUENCES': 219 }];
     return Observable.of(testData);;
   }
+
 }
