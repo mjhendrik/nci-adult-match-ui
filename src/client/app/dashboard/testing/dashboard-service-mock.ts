@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs/Observable';
 
-export class DashboardServiceMock{
+export class DashboardServiceMock {
   getPendingAssignmentReports(): Observable<any> {
     let testData = [
       {
@@ -346,23 +346,170 @@ export class DashboardServiceMock{
       'currentPatientStatus': 'PROGRESSION_REBIOPSY',
       'concordance': 'Y',
       'isOutsideAssay': true
-    }];
+    },
+    {
+      'outsideBiopsy': {
+        'messages': [
+          'No confirmed variant report',
+          'No diseases',
+          'Awaiting confirmation biopsy assay result'
+        ],
+        'analysisId': 'ee53b98a-45e8-4208-a66f-50b7183a7ddb',
+        'PTEN': {
+          'applicable': false
+        },
+        'MLH1': {
+          'applicable': true,
+          'result': 'UNKNOWN'
+        },
+        'MSH2': {
+          'applicable': true,
+          'result': 'UNKNOWN'
+        },
+        'RB': {
+          'applicable': true,
+          'result': 'UNKNOWN'
+        },
+        'molecularSequenceNumber': '0d082b74-5970-4987-9118-f1a0501b740e',
+        'dateMsnShipped': {
+          '$date': 1503348596194
+        },
+        'dateSpecimenCollected': {
+          '$date': 1503348596146
+        },
+        'daysWaiting': 86,
+        'lab': 'CARIS',
+        'amoi': [''],
+        'biopsySequenceNumber': 'CARIS-case1'
+      },
+      'patientSequenceNumber': '1121',
+      'currentPatientStatus': 'REGISTRATION_OUTSIDE_ASSAY',
+      'concordance': 'U',
+      'isOutsideAssay': true
+    },
+    {
+      'confirmationBiopsy': {
+        'messages': [
+          'No confirmed variant report',
+          'No diseases'
+        ],
+        'analysisId': 'job-1113',
+        'PTEN': {
+          'applicable': false
+        },
+        'MLH1': {
+          'applicable': false
+        },
+        'MSH2': {
+          'applicable': false
+        },
+        'RB': {
+          'applicable': false
+        },
+        'molecularSequenceNumber': 'MSN-1113',
+        'dateMsnShipped': {
+          '$date': 1505582597213
+        },
+        'lab': 'Boston',
+        'dateSpecimenCollected': {
+          '$date': 1505582597154
+        },
+        'daysWaiting': 61,
+        'amoi': [''],
+        'biopsySequenceNumber': 'BSN-1113'
+      },
+      'patientSequenceNumber': '1113',
+      'currentPatientStatus': 'PENDING_APPROVAL',
+      'concordance': 'U',
+      'isOutsideAssay': true
+    },
+    {
+      'outsideBiopsy': {
+        'messages': [
+          'No confirmed variant report',
+          'No diseases',
+          'Awaiting confirmation biopsy assay result'
+        ],
+        'analysisId': 'ee53b98a-45e8-4208-a66f-50b7183a7ddb',
+        'PTEN': {
+          'applicable': false
+        },
+        'MLH1': {
+          'applicable': true,
+          'result': 'UNKNOWN'
+        },
+        'MSH2': {
+          'applicable': true,
+          'result': 'UNKNOWN'
+        },
+        'RB': {
+          'applicable': true,
+          'result': 'UNKNOWN'
+        },
+        'molecularSequenceNumber': '0d082b74-5970-4987-9118-f1a0501b740e',
+        'dateMsnShipped': {
+          '$date': 1503348596194
+        },
+        'dateSpecimenCollected': {
+          '$date': 1503348596146
+        },
+        'daysWaiting': 86,
+        'lab': 'CARIS',
+        'amoi': [''],
+        'biopsySequenceNumber': 'CARIS-case1'
+      },
+      'confirmationBiopsy': {
+        'messages': [
+          'No confirmed variant report',
+          'No diseases'
+        ],
+        'analysisId': 'job-1113',
+        'PTEN': {
+          'applicable': false
+        },
+        'MLH1': {
+          'applicable': false
+        },
+        'MSH2': {
+          'applicable': false
+        },
+        'RB': {
+          'applicable': false
+        },
+        'molecularSequenceNumber': 'MSN-1113',
+        'dateMsnShipped': {
+          '$date': 1505582597213
+        },
+        'lab': 'Boston',
+        'dateSpecimenCollected': {
+          '$date': 1505582597154
+        },
+        'daysWaiting': 61,
+        'amoi': [''],
+        'biopsySequenceNumber': 'BSN-1113'
+      },
+      'patientSequenceNumber': '1113',
+      'currentPatientStatus': 'PENDING_APPROVAL',
+      'concordance': 'U',
+      'isOutsideAssay': true
+    }
+    ];
 
     return Observable.of(testData);
   }
 
   getOverviewTa(): Observable<any> {
-    let testData = [{ 'TOTAL': 105, 'READY': 1, 'CLOSED': 1, 'OPEN': 94, 'PENDING': 9 }]
+    let testData = [{ 'TOTAL': 105, 'READY': 1, 'CLOSED': 1, 'OPEN': 94, 'PENDING': 9 }];
     return Observable.of(testData);
   }
 
   getOverviewPatients(): Observable<any> {
-    let testData = [{ 'TOTAL': 238, 'ON_TREATMENT_ARM': 4, 'OFF_TRIAL': 2 }]
+    let testData = [{ 'TOTAL': 238, 'ON_TREATMENT_ARM': 4, 'OFF_TRIAL': 2 }];
     return Observable.of(testData);
   }
 
   getOverviewBt(): Observable<any> {
-    let testData = [{ 'BIOPSY_SEQUENCES': 201, 'TOTAL': 233, 'MOLECULAR_SEQUENCES': 219 }]
+    let testData = [{ 'BIOPSY_SEQUENCES': 201, 'TOTAL': 233, 'MOLECULAR_SEQUENCES': 219 }];
     return Observable.of(testData);;
   }
 }
