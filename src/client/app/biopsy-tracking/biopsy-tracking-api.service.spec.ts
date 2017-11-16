@@ -15,22 +15,25 @@ import {
 } from '@angular/http';
 import { AuthHttp } from 'angular2-jwt';
 import { Observable } from 'rxjs/Observable';
-import { MockBackend, MockConnection } from '@angular/http/testing';
+import {
+  MockBackend,
+  MockConnection
+} from '@angular/http/testing';
 import { PatientApiServiceStub } from '../patient/testing/patient-api-service-stub';
 
 export function main() {
-    describe('BiopsyTrackingApiService (mockBackend)', () => {
-      beforeEach(async(() => {
-        TestBed.configureTestingModule({
-          imports: [HttpModule],
-          providers: [
-            BiopsyTrackingApiService,
-            // { provide: Window, useClass: WindowStub },
-            { provide: XHRBackend, useClass: MockBackend },
-            { provide: AuthHttp, useExisting: Http },
-          ]
-        });
-      }));
+  describe('BiopsyTrackingApiService (mockBackend)', () => {
+    beforeEach(async(() => {
+      TestBed.configureTestingModule({
+        imports: [HttpModule],
+        providers: [
+          BiopsyTrackingApiService,
+          // { provide: Window, useClass: WindowStub },
+          { provide: XHRBackend, useClass: MockBackend },
+          { provide: AuthHttp, useExisting: Http },
+        ]
+      });
+    }));
 
     it('can instantiate service with "new"', inject([AuthHttp], (http: AuthHttp) => {
       expect(http).not.toBeNull('http should be provided');
@@ -101,6 +104,7 @@ export function main() {
       })));
 
     });
-      
+
   });
+
 }
