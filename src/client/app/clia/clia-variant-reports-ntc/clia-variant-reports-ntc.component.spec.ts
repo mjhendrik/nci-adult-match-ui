@@ -106,7 +106,7 @@ export function main() {
             fixture.componentInstance.downloadRnaBam();
             fixture.componentInstance.downloadRnaBai();
             fixture.componentInstance.downloadVcf();
-            // fixture.componentInstance.confirmReport();
+            fixture.componentInstance.confirmReport();
           });
       }));
 
@@ -420,6 +420,12 @@ class MockCliaApiService {
     return Observable.of(testdata);
   }
   downloadCliaVcf(): Observable<any> {
+    let testdata = {
+      s3_download_file_url: 'javascript:void(0)'
+    };
+    return Observable.of(testdata);
+  }
+  confirmReport(): Observable<any> {
     let testdata = {
       s3_download_file_url: 'javascript:void(0)'
     };
