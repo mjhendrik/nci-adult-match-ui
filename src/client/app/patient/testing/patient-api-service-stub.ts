@@ -2971,152 +2971,9 @@ export class PatientApiServiceStub {
             'daysPending': 216
         }
     ]
-}
 
-export class PatientApiServiceMock {
-    getPatientList(page: number,
-        size: number,
-        sortOrder: string,
-        sortBy: string,
-        filter: string,
-        isOutsideAssayWorkflow?: boolean): Observable<any[]> {
-        let testData: any = [
-            {
-                'currentPatientStatus': 'REGISTRATION',
-                'currentStepNumber': '0',
-                'diseases': [] as any[],
-                'isOutsideAssayWorkflow': false,
-                'offTrialDate': null,
-                'patientSequenceNumber': '1001re',
-                'registrationDate': {
-                    '$date': 1488461754641
-                }
-            },
-            {
-                'currentPatientStatus': 'REGISTRATION',
-                'currentStepNumber': '0',
-                'diseases': [] as any[],
-                'isOutsideAssayWorkflow': false,
-                'offTrialDate': null,
-                'patientSequenceNumber': '1006',
-                'registrationDate': {
-                    '$date': 1488585127999
-                }
-            },
-            {
-                'currentPatientStatus': 'REGISTRATION',
-                'currentStepNumber': '0',
-                'diseases': [] as any[],
-                'isOutsideAssayWorkflow': false,
-                'offTrialDate': null,
-                'patientSequenceNumber': '1007',
-                'registrationDate': {
-                    '$date': 1488585132732
-                }
-            },
-            {
-                'currentPatientStatus': 'REGISTRATION',
-                'currentStepNumber': '0',
-                'diseases': [] as any[],
-                'isOutsideAssayWorkflow': false,
-                'offTrialDate': null,
-                'patientSequenceNumber': '1008',
-                'registrationDate': {
-                    '$date': 1489417580128
-                }
-            },
-            {
-                'currentPatientStatus': 'REGISTRATION',
-                'currentStepNumber': '0',
-                'diseases': [] as any[],
-                'isOutsideAssayWorkflow': false,
-                'offTrialDate': null,
-                'patientSequenceNumber': '1009',
-                'registrationDate': {
-                    '$date': 1488585122475
-                }
-            },
-            {
-                'currentPatientStatus': 'REGISTRATION',
-                'currentStepNumber': '0',
-                'diseases': [] as any[],
-                'isOutsideAssayWorkflow': false,
-                'offTrialDate': null,
-                'patientSequenceNumber': '1010re',
-                'registrationDate': {
-                    '$date': 1488461958276
-                }
-            },
-            {
-                'currentPatientStatus': 'REGISTRATION',
-                'currentStepNumber': '0',
-                'diseases': [] as any[],
-                'isOutsideAssayWorkflow': false,
-                'offTrialDate': null,
-                'patientSequenceNumber': '1011re',
-                'registrationDate': {
-                    '$date': 1488461959694
-                }
-            },
-            {
-                'currentPatientStatus': 'REGISTRATION',
-                'currentStepNumber': '0',
-                'diseases': [] as any[],
-                'isOutsideAssayWorkflow': false,
-                'offTrialDate': null,
-                'patientSequenceNumber': '1012',
-                'registrationDate': {
-                    '$date': 1488585138447
-                }
-            },
-            {
-                'currentPatientStatus': 'REGISTRATION',
-                'currentStepNumber': '0',
-                'diseases': [] as any[],
-                'isOutsideAssayWorkflow': false,
-                'offTrialDate': null,
-                'patientSequenceNumber': '1013',
-                'registrationDate': {
-                    '$date': 1488461945524
-                }
-            },
-            {
-                'currentPatientStatus': 'REGISTRATION',
-                'currentStepNumber': '0',
-                'diseases': [] as any[],
-                'isOutsideAssayWorkflow': false,
-                'offTrialDate': null,
-                'patientSequenceNumber': '1014',
-                'registrationDate': {
-                    '$date': 1488461947169
-                }
-            }
-        ];
-        return Observable.of(testData);
-    }
-
-    getPatientCount(): Observable<any> {
-        return Observable.of(150);
-    }
-
-    getPatientTotal(): Observable<any> {
-        return Observable.of(350);
-    }
-
-    downloadPatientFile(psn: string, url: string): void {
-        ;
-    }
-
-    getPendingAssignmentReports(): Observable<any> {
-        return Observable.of(PatientApiServiceStub.makePendingAssignmentReports());
-    }
-
-    getPendingVariantReports(): Observable<any> {
-        return Observable.of(PatientApiServiceStub.makePendingVariantReports());
-    }
-
-    getPatientsAwaiting(): Observable<any> {
-        let testData = [{
+    static makePatientsAwaiting = () => [
+        {
             'outsideBiopsy': {
                 'messages': [
                     'Variant report missing,Required assay result missing: MLH1, MSH2, PTEN'
@@ -3343,18 +3200,169 @@ export class PatientApiServiceMock {
             'concordance': 'Y',
             'isOutsideAssay': false
         }
-        ];
+    ]
 
+    static makeOverviewPatients = () => [
+        { 'TOTAL': 238, 'ON_TREATMENT_ARM': 4, 'OFF_TRIAL': 2 }
+    ]
+
+    static makeOverviewBt = () => [
+        { 'BIOPSY_SEQUENCES': 201, 'TOTAL': 233, 'MOLECULAR_SEQUENCES': 219 }
+    ]
+}
+
+export class PatientApiServiceMock {
+    getPatientList(page: number,
+        size: number,
+        sortOrder: string,
+        sortBy: string,
+        filter: string,
+        isOutsideAssayWorkflow?: boolean): Observable<any[]> {
+        let testData: any = [
+            {
+                'currentPatientStatus': 'REGISTRATION',
+                'currentStepNumber': '0',
+                'diseases': [] as any[],
+                'isOutsideAssayWorkflow': false,
+                'offTrialDate': null,
+                'patientSequenceNumber': '1001re',
+                'registrationDate': {
+                    '$date': 1488461754641
+                }
+            },
+            {
+                'currentPatientStatus': 'REGISTRATION',
+                'currentStepNumber': '0',
+                'diseases': [] as any[],
+                'isOutsideAssayWorkflow': false,
+                'offTrialDate': null,
+                'patientSequenceNumber': '1006',
+                'registrationDate': {
+                    '$date': 1488585127999
+                }
+            },
+            {
+                'currentPatientStatus': 'REGISTRATION',
+                'currentStepNumber': '0',
+                'diseases': [] as any[],
+                'isOutsideAssayWorkflow': false,
+                'offTrialDate': null,
+                'patientSequenceNumber': '1007',
+                'registrationDate': {
+                    '$date': 1488585132732
+                }
+            },
+            {
+                'currentPatientStatus': 'REGISTRATION',
+                'currentStepNumber': '0',
+                'diseases': [] as any[],
+                'isOutsideAssayWorkflow': false,
+                'offTrialDate': null,
+                'patientSequenceNumber': '1008',
+                'registrationDate': {
+                    '$date': 1489417580128
+                }
+            },
+            {
+                'currentPatientStatus': 'REGISTRATION',
+                'currentStepNumber': '0',
+                'diseases': [] as any[],
+                'isOutsideAssayWorkflow': false,
+                'offTrialDate': null,
+                'patientSequenceNumber': '1009',
+                'registrationDate': {
+                    '$date': 1488585122475
+                }
+            },
+            {
+                'currentPatientStatus': 'REGISTRATION',
+                'currentStepNumber': '0',
+                'diseases': [] as any[],
+                'isOutsideAssayWorkflow': false,
+                'offTrialDate': null,
+                'patientSequenceNumber': '1010re',
+                'registrationDate': {
+                    '$date': 1488461958276
+                }
+            },
+            {
+                'currentPatientStatus': 'REGISTRATION',
+                'currentStepNumber': '0',
+                'diseases': [] as any[],
+                'isOutsideAssayWorkflow': false,
+                'offTrialDate': null,
+                'patientSequenceNumber': '1011re',
+                'registrationDate': {
+                    '$date': 1488461959694
+                }
+            },
+            {
+                'currentPatientStatus': 'REGISTRATION',
+                'currentStepNumber': '0',
+                'diseases': [] as any[],
+                'isOutsideAssayWorkflow': false,
+                'offTrialDate': null,
+                'patientSequenceNumber': '1012',
+                'registrationDate': {
+                    '$date': 1488585138447
+                }
+            },
+            {
+                'currentPatientStatus': 'REGISTRATION',
+                'currentStepNumber': '0',
+                'diseases': [] as any[],
+                'isOutsideAssayWorkflow': false,
+                'offTrialDate': null,
+                'patientSequenceNumber': '1013',
+                'registrationDate': {
+                    '$date': 1488461945524
+                }
+            },
+            {
+                'currentPatientStatus': 'REGISTRATION',
+                'currentStepNumber': '0',
+                'diseases': [] as any[],
+                'isOutsideAssayWorkflow': false,
+                'offTrialDate': null,
+                'patientSequenceNumber': '1014',
+                'registrationDate': {
+                    '$date': 1488461947169
+                }
+            }
+        ];
         return Observable.of(testData);
     }
 
-    getOverviewPatients(): Observable<any> {
-        let testData = [{ 'TOTAL': 238, 'ON_TREATMENT_ARM': 4, 'OFF_TRIAL': 2 }];
-        return Observable.of(testData);
+    getPatientCount(): Observable<any> {
+        return Observable.of(150);
+    }
+
+    getPatientTotal(): Observable<any> {
+        return Observable.of(350);
+    }
+
+    downloadPatientFile(psn: string, url: string): void {
+        ;
+    }
+
+    getPendingAssignmentReports(): Observable<any[]> {
+        return Observable.of(PatientApiServiceStub.makePendingAssignmentReports());
+    }
+
+    getPendingVariantReports(): Observable<any[]> {
+        return Observable.of(PatientApiServiceStub.makePendingVariantReports());
+    }
+
+    getPatientsAwaiting(): Observable<any[]> {
+        return Observable.of(PatientApiServiceStub.makePatientsAwaiting());
+    }
+
+    getOverviewPatients(): Observable<any[]> {
+        return Observable.of(PatientApiServiceStub.makeOverviewPatients());
     }
 
     getOverviewBt(): Observable<any> {
-        let testData = [{ 'BIOPSY_SEQUENCES': 201, 'TOTAL': 233, 'MOLECULAR_SEQUENCES': 219 }];
-        return Observable.of(testData);;
+        return Observable.of(PatientApiServiceStub.makeOverviewBt());
     }
 }
+

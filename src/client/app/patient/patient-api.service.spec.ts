@@ -985,5 +985,188 @@ export function main() {
 
     });
 
+
+    describe('when getPatientsAwaiting', () => {
+      let backend: MockBackend;
+      let service: PatientApiService;
+      let fakePatient: any;
+      let response: Response;
+
+      beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
+        backend = be;
+        service = new PatientApiService(http, download);
+        fakePatient = PatientApiServiceStub.makePatientsAwaiting();
+        let options = new ResponseOptions({ status: 200, body: fakePatient });
+        response = new Response(options);
+      }));
+
+      it('should have expected fake patient details (then)', async(inject([], () => {
+        backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
+
+        service.getPatientsAwaiting().toPromise()
+          .then(patient => {
+            expect(patient).toBe(fakePatient);
+          });
+      })));
+
+      it('should have expected fake patient details (Observable.do)', async(inject([], () => {
+        backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
+
+        service.getPatientsAwaiting()
+          .do(patient => {
+            expect(patient).toBe(fakePatient, 'should have expected patient details');
+          })
+          .toPromise();
+      })));
+
+      it('should be OK returning no patient details', async(inject([], () => {
+        let resp = new Response(new ResponseOptions({ status: 200, body: {} }));
+        backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
+
+        service.getPatientsAwaiting()
+          .do(patient => {
+            expect(patient).toEqual({}, 'should have no patient details');
+          })
+          .toPromise();
+      })));
+
+      it('should treat 404 as an Observable error', async(inject([], () => {
+        backend.connections.subscribe((c: MockConnection) => c.mockError(new Error('fake-error')));
+
+        service.getPatientsAwaiting()
+          .do(patient => {
+            fail('should not respond with patient details');
+          })
+          .catch(err => {
+            expect(err).toMatch('fake-error', 'should catch bad response status code');
+            return Observable.of(null); // failure is the expected test result
+          })
+          .toPromise();
+      })));
+
+    });
+
+
+    describe('when getOverviewPatients', () => {
+      let backend: MockBackend;
+      let service: PatientApiService;
+      let fakePatient: any;
+      let response: Response;
+
+      beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
+        backend = be;
+        service = new PatientApiService(http, download);
+        fakePatient = PatientApiServiceStub.makeOverviewPatients();
+        let options = new ResponseOptions({ status: 200, body: fakePatient });
+        response = new Response(options);
+      }));
+
+      it('should have expected fake patient details (then)', async(inject([], () => {
+        backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
+
+        service.getOverviewPatients().toPromise()
+          .then(patient => {
+            expect(patient).toBe(fakePatient);
+          });
+      })));
+
+      it('should have expected fake patient details (Observable.do)', async(inject([], () => {
+        backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
+
+        service.getOverviewPatients()
+          .do(patient => {
+            expect(patient).toBe(fakePatient, 'should have expected patient details');
+          })
+          .toPromise();
+      })));
+
+      it('should be OK returning no patient details', async(inject([], () => {
+        let resp = new Response(new ResponseOptions({ status: 200, body: {} }));
+        backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
+
+        service.getOverviewPatients()
+          .do(patient => {
+            expect(patient).toEqual({}, 'should have no patient details');
+          })
+          .toPromise();
+      })));
+
+      it('should treat 404 as an Observable error', async(inject([], () => {
+        backend.connections.subscribe((c: MockConnection) => c.mockError(new Error('fake-error')));
+
+        service.getOverviewPatients()
+          .do(patient => {
+            fail('should not respond with patient details');
+          })
+          .catch(err => {
+            expect(err).toMatch('fake-error', 'should catch bad response status code');
+            return Observable.of(null); // failure is the expected test result
+          })
+          .toPromise();
+      })));
+
+    });
+
+
+    describe('when getOverviewBt', () => {
+      let backend: MockBackend;
+      let service: PatientApiService;
+      let fakePatient: any;
+      let response: Response;
+
+      beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
+        backend = be;
+        service = new PatientApiService(http, download);
+        fakePatient = PatientApiServiceStub.makeOverviewBt();
+        let options = new ResponseOptions({ status: 200, body: fakePatient });
+        response = new Response(options);
+      }));
+
+      it('should have expected fake patient details (then)', async(inject([], () => {
+        backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
+
+        service.getOverviewBt().toPromise()
+          .then(patient => {
+            expect(patient).toBe(fakePatient);
+          });
+      })));
+
+      it('should have expected fake patient details (Observable.do)', async(inject([], () => {
+        backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
+
+        service.getOverviewBt()
+          .do(patient => {
+            expect(patient).toBe(fakePatient, 'should have expected patient details');
+          })
+          .toPromise();
+      })));
+
+      it('should be OK returning no patient details', async(inject([], () => {
+        let resp = new Response(new ResponseOptions({ status: 200, body: {} }));
+        backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
+
+        service.getOverviewBt()
+          .do(patient => {
+            expect(patient).toEqual({}, 'should have no patient details');
+          })
+          .toPromise();
+      })));
+
+      it('should treat 404 as an Observable error', async(inject([], () => {
+        backend.connections.subscribe((c: MockConnection) => c.mockError(new Error('fake-error')));
+
+        service.getOverviewBt()
+          .do(patient => {
+            fail('should not respond with patient details');
+          })
+          .catch(err => {
+            expect(err).toMatch('fake-error', 'should catch bad response status code');
+            return Observable.of(null); // failure is the expected test result
+          })
+          .toPromise();
+      })));
+
+    });
+
   });
 }
