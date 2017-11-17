@@ -12,7 +12,7 @@ import {
 import { FormsModule } from '@angular/forms';
 import { APP_BASE_HREF } from '@angular/common';
 import { RouterTestingModule } from '@angular/router/testing';
-import { TestBed, async, ComponentFixture } from '@angular/core/testing';
+import { TestBed, async, ComponentFixture, inject } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule, By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -133,11 +133,14 @@ export function main() {
     // private router: Router,
     // private toastrService: ToastrService
 
-    // it('can instantiate component with "new"', inject([AuthHttp, DownloadService], (http: AuthHttp, download: DownloadService) => {
-    //   expect(http).not.toBeNull('http should be provided');
-    //   let service = new PatientApiService(http, download);
-    //   expect(service instanceof PatientApiService).toBe(true, 'new service should be ok');
-    // }));
+    it('can instantiate component with "new"', inject(
+      [ViewContainerRef, ToastsManager, Router, ToastrService],
+      (vcr: ViewContainerRef, toastr: ToastsManager, router: Router, toastrService: ToastrService) => {
+        expect(http).not.toBeNull('http should be provided');
+        let comp = new AppComponent(vcr, toastr, router, toastrService);
+        expect(comp instanceof AppComponent).toBe(true, 'new component should be ok');
+      }
+    ));
 
     // it('should build without a problem',
     //   async(() => {
