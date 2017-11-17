@@ -31,6 +31,63 @@ import { ToastrService } from '../../shared/error-handling/toastr.service';
 import { ToastrServiceStub } from '../testing/toastr-service-stub';
 
 export function main() {
+
+  describe('PatientVariantReportComponent Init', () => {
+
+    let config: any[] = [
+      { path: 'patients/1234', component: 'PatientVariantReportComponent' }
+    ];
+
+    let activatedRouteStub: ActivatedRouteStub = new ActivatedRouteStub();
+    activatedRouteStub.snapshot.data['data'] = PatientApiServiceStub.makeVariantReportData();
+
+    beforeEach(() => {
+      TestBed.configureTestingModule({
+        imports: [
+          RouterTestingModule.withRoutes(config),
+          DirectivesModule,
+          PipesModule,
+          FormsModule,
+          DataTableModule,
+          SharedModule,
+          NoopAnimationsModule,
+          VariantReportSimpleTableModule,
+          AssignmentReasonTableModule,
+          UtilsModule
+        ],
+        declarations: [PatientVariantReportComponent],
+        providers: [
+          { provide: ActivatedRoute, useValue: activatedRouteStub },
+          { provide: PatientApiService, useClass: PatientApiServiceMock },
+          { provide: BsModalService, useClass: BsModalServiceStub },
+          { provide: ToastrService, useClass: ToastrServiceStub },
+          ChangeDetectorRef,
+          ViewDataTransformer
+        ]
+      });
+      spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['ADMIN'] }));
+    });
+
+    it('should work for ngOnInit  --> allowVariantReportEdit, allowAssignmentReportEdit',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(PatientVariantReportComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(PatientVariantReportComponent);
+
+            fixture.componentInstance.ngOnInit();
+            expect(fixture.componentInstance.allowVariantReportEdit).toBe(true);
+            expect(fixture.componentInstance.allowAssignmentReportEdit).toBe(true);
+          });
+      }));
+
+  });
+
+
   describe('PatientVariantReportComponent (templateUrl)', () => {
 
     let component: PatientVariantReportComponent;
