@@ -7,7 +7,8 @@ import {
 import {
   Component,
   ErrorHandler,
-  DebugElement
+  DebugElement,
+  ViewContainerRef
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { APP_BASE_HREF } from '@angular/common';
@@ -19,7 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PopoverModule } from 'ngx-popover';
 import { Router } from '@angular/router';
 import { ModalModule } from 'ngx-bootstrap';
-import { ToastModule } from 'ng2-toastr/ng2-toastr';
+import { ToastModule, ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { AUTH_PROVIDERS } from 'angular2-jwt';
 
 import { AppComponent } from './app.component';
@@ -56,7 +57,7 @@ export function main() {
     { path: 'dashboard', component: 'DashboardComponent' }
   ];
 
-  describe('App component', () => {
+  fdescribe('App component', () => {
     let component: AppComponent;
     let fixture: ComponentFixture<AppComponent>;
     let de: DebugElement;
@@ -67,10 +68,9 @@ export function main() {
       TestBed.configureTestingModule({
         imports: [FormsModule, RouterTestingModule.withRoutes(config)],
         declarations: [
-          BrowserModule,
-          BrowserAnimationsModule,
-          HttpModule,
-          FormsModule,
+          // BrowserModule,
+          // BrowserAnimationsModule,
+          // FormsModule,
           SharedModule.forRoot(),
           AppRoutingModule,
           LoginModule,
@@ -136,7 +136,10 @@ export function main() {
     it('can instantiate component with "new"', inject(
       [ViewContainerRef, ToastsManager, Router, ToastrService],
       (vcr: ViewContainerRef, toastr: ToastsManager, router: Router, toastrService: ToastrService) => {
-        expect(http).not.toBeNull('http should be provided');
+        expect(vcr).not.toBeNull('vcr should be provided');
+        expect(toastr).not.toBeNull('toastr should be provided');
+        expect(router).not.toBeNull('router should be provided');
+        expect(toastrService).not.toBeNull('toastrService should be provided');
         let comp = new AppComponent(vcr, toastr, router, toastrService);
         expect(comp instanceof AppComponent).toBe(true, 'new component should be ok');
       }
