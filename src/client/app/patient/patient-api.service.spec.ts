@@ -909,15 +909,14 @@ export function main() {
       })));
 
       it('should treat 404 as an Observable error', async(inject([], () => {
-        let resp = new Response(new ResponseOptions({ status: 404 }));
-        backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
+        backend.connections.subscribe((c: MockConnection) => c.mockError(new Error('fake-error')));
 
         service.getPendingAssignmentReports()
           .do(patient => {
             fail('should not respond with patient details');
           })
           .catch(err => {
-            expect(err).toMatch(/Bad response status/, 'should catch bad response status code');
+            expect(err).toMatch('fake-error', 'should catch bad response status code');
             return Observable.of(null); // failure is the expected test result
           })
           .toPromise();
@@ -971,15 +970,14 @@ export function main() {
       })));
 
       it('should treat 404 as an Observable error', async(inject([], () => {
-        let resp = new Response(new ResponseOptions({ status: 404 }));
-        backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
+        backend.connections.subscribe((c: MockConnection) => c.mockError(new Error('fake-error')));
 
         service.getPendingVariantReports()
           .do(patient => {
             fail('should not respond with patient details');
           })
           .catch(err => {
-            expect(err).toMatch(/Bad response status/, 'should catch bad response status code');
+            expect(err).toMatch('fake-error', 'should catch bad response status code');
             return Observable.of(null); // failure is the expected test result
           })
           .toPromise();

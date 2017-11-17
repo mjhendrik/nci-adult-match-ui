@@ -75,8 +75,8 @@ export function main() {
 
     it('should test getPendingAssignmentReportsData', () => {
       fixture.componentInstance.getPendingAssignmentReportsData();
-      expect(fixture.componentInstance.pendingAssignmentReports.data[0].patientSequenceNumber).toEqual('1031');
-      expect(fixture.componentInstance.pendingAssignmentReports.data[0].dateAssigned).toEqual('March 2, 2017 1:38 PM GMT');
+      expect(fixture.componentInstance.pendingAssignmentReports.data[0].patientSequenceNumber).toEqual('1001re');
+      expect(fixture.componentInstance.pendingAssignmentReports.data[0].dateAssigned).toEqual('-');
     });
 
     it('should test getPendingVariantReportsData', () => {
