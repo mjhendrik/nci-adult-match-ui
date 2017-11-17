@@ -177,7 +177,7 @@ services:
       - ECOG_API_HOSTNAME=mock-ecog
       - ION_REPORTER_ECOSYSTEM_API_HOSTNAME=aliquots-api
       - SECURITY_LOG_LEVEL=WARN
-      - QUEUE_NAME=message-api-${USER}-dev-queue.fifo
+      - MESSAGE_QUEUE_NAME=message-api-${USER}-dev-queue.fifo
     networks:
       - adult-match
   
