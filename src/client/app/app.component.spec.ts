@@ -1,8 +1,8 @@
 import {
-  HttpModule,
   Http,
   RequestOptions,
-  XHRBackend
+  XHRBackend,
+  HttpModule
 } from '@angular/http';
 import {
   Component,
@@ -66,11 +66,11 @@ export function main() {
     // async beforeEach
     beforeEach(async(() => {
       TestBed.configureTestingModule({
-        imports: [FormsModule, RouterTestingModule.withRoutes(config)],
-        declarations: [
-          // BrowserModule,
-          // BrowserAnimationsModule,
-          // FormsModule,
+        imports: [
+          BrowserModule,
+          BrowserAnimationsModule,
+          HttpModule,
+          FormsModule,
           SharedModule.forRoot(),
           AppRoutingModule,
           LoginModule,
@@ -127,11 +127,6 @@ export function main() {
       de = fixture.debugElement.query(By.css('.page-header'));
       el = de.nativeElement;
     });
-
-    // vcr: ViewContainerRef,
-    // public toastr: ToastsManager,
-    // private router: Router,
-    // private toastrService: ToastrService
 
     it('can instantiate component with "new"', inject(
       [ViewContainerRef, ToastsManager, Router, ToastrService],
