@@ -11,10 +11,12 @@ import { DirectivesModule } from './../shared/directives/directives.module';
 import { PipesModule } from './../shared/pipes/pipes.module';
 import { DataTableModule } from './../shared/datatables/DataTableModule';
 import { DashboardComponent } from './dashboard.component';
-import { DashboardApiService } from './dashboard-api.service';
 import { SharedModule } from '../shared/shared.module';
 import { LoadingSpinnerModule } from '../shared/loading-spinner/loading-spinner.module';
-import { DashboardServiceMock } from './testing/dashboard-service-mock';
+import { PatientApiService } from '../patient/patient-api.service';
+import { TreatmentArmApiService } from '../treatment-arm/treatment-arm-api.service';
+import { PatientApiServiceMock } from '../patient/testing/patient-api-service-stub';
+import { TreatmentArmApiServiceMock } from '../treatment-arm/testing/treatment-arm-api-mock.service';
 
 const config: any[] = [
   { path: 'dashboard', component: 'DashboardComponent' }
@@ -41,7 +43,8 @@ export function main() {
         ],
         declarations: [DashboardComponent],
         providers: [
-          { provide: DashboardApiService, useClass: DashboardServiceMock }
+          { provide: PatientApiService, useClass: PatientApiServiceMock },
+          { provide: TreatmentArmApiService, useClass: TreatmentArmApiServiceMock }
         ]
       }).compileComponents();  // compile template and css
     }));

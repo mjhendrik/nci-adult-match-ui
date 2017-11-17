@@ -27,11 +27,11 @@ export class PatientApiServiceStub {
             '/tmp/MSN3699_v2_MSN3699_RNA_v2.vcf']
     }
 
-  static makeBrokenRawVcftData = () => {
-    return [[
-      { 'chromosome': 'chr1', 'confidence_intervals': ['FALSE', '0.05:1.55518', '0.95:1.96923'], 'gene': 'MYCL', 'position': '40361592', 'raw_copy_number': '7.0', 'tsg_gene': false, 'values': ['1.480967', '1.52041', '1.555179', '1.596265', '1.647487', '1.667375', '1.75', '1.83672', '1.858892', '1.918542', '1.969227', '2.01426', '2.067905'] }, { 'chromosome': 'chr1', 'confidence_intervals': ['FALSE', '0.05:1.49768', '0.95:1.88452'], 'gene': 'BCL9', 'position': '147022100', 'raw_copy_number': '1.68', 'tsg_gene': false, 'values': ['1.428072', '1.465078', '1.497679', '1.536177', '1.584136', '1.602746', '1.68', '1.760978', '1.781666', '1.837289', '1.884516', '1.92645', '1.976371'] }, { 'chromosome': 'chr1', 'confidence_intervals': ['FALSE', '0.05:1.45245', '0.95:1.85177'], 'gene': 'MCL1', 'position': '150547017', 'raw_copy_number': '1.64', 'tsg_gene': false, 'values': ['1.381178', '1.419043', '1.452446', '1.491946', '1.541231', '1.560379', '1.64', '1.723684', '1.745099', '1.802747', '1.851772', '1.895361', '1.947324'] }, { 'chromosome': 'chr1', 'confidence_intervals': ['FALSE', '0.05:1.58251', '0.95:1.97971'], 'gene': 'MDM4', 'position': '204490598', 'raw_copy_number': '1.77', 'tsg_gene': false, 'values': ['1.510778', '1.548924', '1.582508', '1.622144', '1.671485', '1.690621', '1.77', '1.853106', '1.874322', '1.931333', '1.979706', '2.02263', '2.073699'] }, { 'chromosome': 'chr2', 'confidence_intervals': ['FALSE', '0.05:1.47522', '0.95:1.84549'], 'gene': 'MYCN', 'position': '16080662', 'raw_copy_number': '1.65', 'tsg_gene': false, 'values': ['1.408353', '1.443912', '1.475219', '1.512168', '1.558164', '1.576003', '1.65', '1.727471', '1.747249', '1.800395', '1.845488', '1.885503', '1.93311'] }, { 'chromosome': 'chr2', 'confidence_intervals': ['FALSE', '0.05:2.01222', '0.95:2.34015'], 'gene': 'MSH2', 'position': '47630308', 'raw_copy_number': '2.17', 'tsg_gene': true, 'values': ['1.950264', '1.983328', '2.012219', '2.04606', '2.087814', '2.1039', '2.17', '2.238177', '2.255421', '2.301447', '2.340153', '2.374242', '2.414494'] }, { 'chromosome': 'chr3', 'confidence_intervals': ['FALSE', '0.05:1.67169', '0.95:2.44088'], 'gene': 'VHL', 'position': '10183523', 'raw_copy_number': '2.02', 'tsg_gene': true, 'values': ['1.545627', '1.612165', '1.671692', '1.743074', '1.833631', '1.869256', '2.02', '2.182901', '2.225311', '2.340922', '2.440881', '2.531006', '2.639965'] }, { 'chromosome': 'chr3', 'confidence_intervals': ['FALSE', '0.05:2.05468', '0.95:2.61958'], 'gene': 'PPARG', 'position': '12333702', 'raw_copy_number': '2.32', 'tsg_gene': false, 'values': ['1.953861', '2.007427', '2.05468', '2.110557', '2.180278', '2.207365', '2.32', '2.438382', '2.468677', '2.550227', '2.61958', '2.681243', '2.754751'] }, { 'chromosome': 'chr3', 'confidence_intervals': ['FALSE', '0.05:1.79396', '0.95:2.14141'], 'gene': 'BAP1', 'position': '52436208', 'raw_copy_number': '1.96', 'tsg_gene': true, 'values': ['1.729365', '1.763794', '1.79396', '1.82939', '1.873242', '1.890177', '1.96', '2.032402', '2.050776', '2.099935', '2.141408', '2.178032', '2.221394'] }, { 'chromosome': 'chr3', 'confidence_intervals': ['FALSE', '0.05:1.71107', '0.95:2.02189'], 'gene': 'PIK3CA', 'position': '178870451', 'raw_copy_number': '1.86', 'tsg_gene': false, 'values': ['1.652924', '1.683932', '1.711072', '1.742914', '1.782277', '1.797464', '1.86', '1.924711', '1.941112', '1.984952', '2.02189', '2.054477', '2.093018'] }, { 'chromosome': 'chr3', 'confidence_intervals': ['FALSE', '0.05:1.75176', '0.95:2.06078'], 'gene': 'SOX2', 'position': '181429683', 'raw_copy_number': '1.9', 'tsg_gene': false, 'values': ['1.693795', '1.724714', '1.751764', '1.783486', '1.82268', '1.837795', '1.9', '1.96431', '1.9806', '2.024126', '2.06078', '2.0931', '2.131309'] }, { 'chromosome': 'chr4', 'confidence_intervals': ['FALSE', '0.05:1.85967', '0.95:2.32643'], 'gene': 'FGFR3', 'position': '1797210', 'raw_copy_number': '2.08', 'tsg_gene': false, 'values': ['1.775378', '1.820204', '1.859671', '1.906248', '1.964231', '1.986719', '2.08', '2.177661', '2.202593', '2.269589', '2.326434', '2.376876', '2.43689'] }, { 'chromosome': 'chr4', 'confidence_intervals': ['FALSE', '0.05:1.59078', '0.95:1.96942'], 'gene': 'PDGFRA', 'position': '55096971', 'raw_copy_number': '1.77', 'tsg_gene': false, 'values': ['1.521953', '1.558571', '1.590776', '1.628742', '1.675945', '1.694235', '1.77', '1.849153', '1.869333', '1.923509', '1.969417', '2.01011', '2.058474'] }, { 'chromosome': 'chr4', 'confidence_intervals': ['FALSE', '0.05:1.80701', '0.95:2.16955'], 'gene': 'KIT', 'position': '55529116', 'raw_copy_number': '1.98', 'tsg_gene': false, 'values': ['1.739853', '1.775639', '1.807012', '1.843882', '1.889549', '1.907194', '1.98', '2.055585', '2.07478', '2.126167', '2.169548', '2.207881', '2.253293'] }, { 'chromosome': 'chr4', 'confidence_intervals': ['FALSE', '0.05:1.86576', '0.95:2.10123'], 'gene': 'TET2', 'position': '106155065', 'raw_copy_number': '1.98', 'tsg_gene': true, 'values': ['1.82039', '1.844642', '1.865763', '1.890421', '1.920725', '1.932365', '1.98', '2.02881', '2.041105', '2.073824', '2.101231', '2.12529', '2.153604'] }, { 'chromosome': 'chr4', 'confidence_intervals': ['FALSE', '0.05:2.32339', '0.95:2.73325'], 'gene': 'FBXW7', 'position': '153243998', 'raw_copy_number': '2.52', 'tsg_gene': true, 'values': ['2.246507', '2.287516', '2.323392', '2.365466', '2.417449', '2.437497', '2.52', '2.605296', '2.626901', '2.68463', '2.733245', '2.776112', '2.826789'] }, { 'chromosome': 'chr5', 'confidence_intervals': ['FALSE', '0.05:1.67835', '0.95:2.17362'], 'gene': 'TERT', 'position': '1258799', 'raw_copy_number': '1.91', 'tsg_gene': false, 'values': ['1.590822', '1.637293', '1.678353', '1.726986', '1.787784', '1.811439', '1.91', '2.013924', '2.040571', '2.112409', '2.173619', '2.228129', '2.293216'] }, { 'chromosome': 'chr5', 'confidence_intervals': ['FALSE', '0.05:1.88281', '0.95:2.21031'], 'gene': 'PIK3R1', 'position': '67522497', 'raw_copy_number': '2.04', 'tsg_gene': true, 'values': ['1.821299', '1.854113', '1.882814', '1.916465', '1.958032', '1.974059', '2.04', '2.108143', '2.125399', '2.171498', '2.210309', '2.244523', '2.284963'] }, { 'chromosome': 'chr5', 'confidence_intervals': ['FALSE', '0.05:2.08097', '0.95:2.28375'], 'gene': 'APC', 'position': '112043350', 'raw_copy_number': '2.18', 'tsg_gene': true, 'values': ['2.041269', '2.062514', '2.080967', '2.102452', '2.128773', '2.13886', '2.18', '2.221932', '2.232459', '2.260409', '2.283746', '2.304178', '2.32816'] }, { 'chromosome': 'chr5', 'confidence_intervals': ['FALSE', '0.05:1.68489', '0.95:2.12008'], 'gene': 'FGFR4', 'position': '176516567', 'raw_copy_number': '1.89', 'tsg_gene': false, 'values': ['1.606581', '1.648213', '1.684889', '1.728199', '1.782153', '1.803089', '1.89', '1.9811', '2.004374', '2.06695', '2.120081', '2.167256', '2.223417'] }, { 'chromosome': 'chr7', 'confidence_intervals': ['FALSE', '0.05:1.38526', '0.95:1.77937'], 'gene': 'IL6', 'position': '22766817', 'raw_copy_number': '1.57', 'tsg_gene': false, 'values': ['1.315254', '1.352438', '1.385264', '1.424112', '1.472629', '1.491491', '1.57', '1.652641', '1.67381', '1.730833', '1.779372', '1.822561', '1.874087'] }, { 'chromosome': 'chr7', 'confidence_intervals': ['FALSE', '0.05:1.70473', '0.95:2.02941'], 'gene': 'EGFR', 'position': '55092604', 'raw_copy_number': '1.86', 'tsg_gene': false, 'values': ['1.644272', '1.676503', '1.704734', '1.737882', '1.778898', '1.794733', '1.86', '1.927641', '1.9448', '1.990699', '2.029408', '2.063582', '2.104032'] }, { 'chromosome': 'chr7', 'confidence_intervals': ['FALSE', '0.05:1.59927', '0.95:2.0712'], 'gene': 'CDK6', 'position': '92243170', 'raw_copy_number': '1.82', 'tsg_gene': false, 'values': ['1.515862', '1.560143', '1.599269', '1.64561', '1.703543', '1.726083', '1.82', '1.919027', '1.944419', '2.012871', '2.071197', '2.123139', '2.185159'] }, { 'chromosome': 'chr7', 'confidence_intervals': ['FALSE', '0.05:1.97225', '0.95:2.40963'], 'gene': 'MET', 'position': '116313479', 'raw_copy_number': '2.18', 'tsg_gene': false, 'values': ['1.892102', '1.934775', '1.972254', '2.016379', '2.071149', '2.092345', '2.18', '2.271327', '2.294572', '2.356899', '2.409629', '2.456306', '2.511704'] }, { 'chromosome': 'chr8', 'confidence_intervals': ['FALSE', '0.05:1.66747', '0.95:2.07476'], 'gene': 'FGFR1', 'position': '38271444', 'raw_copy_number': '1.86', 'tsg_gene': false, 'values': ['1.593668', '1.632925', '1.667468', '1.708213', '1.758901', '1.778551', '1.86', '1.945179', '1.96691', '2.025274', '2.074762', '2.118652', '2.170841'] }, { 'chromosome': 'chr8', 'confidence_intervals': ['FALSE', '0.05:1.51337', '0.95:2.04683'], 'gene': 'MYC', 'position': '128748884', 'raw_copy_number': '1.76', 'tsg_gene': false, 'values': ['1.421608', '1.470219', '1.513365', '1.564696', '1.629209', '1.65441', '1.76', '1.872329', '1.901291', '1.979682', '2.04683', '2.106897', '2.178941'] }, { 'chromosome': 'chr9', 'confidence_intervals': ['FALSE', '0.05:1.73291', '0.95:2.19428'], 'gene': 'CD274', 'position': '5451200', 'raw_copy_number': '1.95', 'tsg_gene': false, 'values': ['1.650221', '1.694171', '1.732914', '1.778695', '1.835771', '1.857932', '1.95', '2.046631', '2.071337', '2.137803', '2.194281', '2.244461', '2.304237'] }, { 'chromosome': 'chr9', 'confidence_intervals': ['FALSE', '0.05:1.74471', '0.95:2.22438'], 'gene': 'PDCD1LG2', 'position': '5510907', 'raw_copy_number': '1.97', 'tsg_gene': false, 'values': ['1.659098', '1.704583', '1.744707', '1.792154', '1.851356', '1.874357', '1.97', '2.070523', '2.096247', '2.165495', '2.224385', '2.276745', '2.339163'] }, { 'chromosome': 'chr9', 'confidence_intervals': ['FALSE', '0.05:2.25872', '0.95:3.01591'], 'gene': 'CDKN2A', 'position': '21968185', 'raw_copy_number': '2.61', 'tsg_gene': true, 'values': ['2.127431', '2.197031', '2.258723', '2.332022', '2.423999', '2.459886', '2.61', '2.769275', '2.810274', '2.921114', '3.015908', '3.100593', '3.202031'] }, { 'chromosome': 'chr9', 'confidence_intervals': ['FALSE', '0.05:2.17192', '0.95:2.45686'], 'gene': 'PTCH1', 'position': '98209088', 'raw_copy_number': '2.31', 'tsg_gene': true, 'values': ['2.117161', '2.146423', '2.171918', '2.201697', '2.238314', '2.252385', '2.31', '2.369089', '2.383982', '2.42363', '2.45686', '2.486043', '2.520403'] }, { 'chromosome': 'chr9', 'confidence_intervals': ['FALSE', '0.05:2.06818', '0.95:2.36155'], 'gene': 'TSC1', 'position': '135771565', 'raw_copy_number': '2.21', 'tsg_gene': true, 'values': ['2.012125', '2.042066', '2.068178', '2.098707', '2.136289', '2.150743', '2.21', '2.270889', '2.286254', '2.327195', '2.361547', '2.391745', '2.427334'] }, { 'chromosome': 'chr9', 'confidence_intervals': ['FALSE', '0.05:1.80675', '0.95:1.99807'], 'gene': 'NOTCH1', 'position': '139390440', 'raw_copy_number': '1.9', 'tsg_gene': true, 'values': ['1.769468', '1.789411', '1.806747', '1.826947', '1.851719', '1.861217', '1.9', '1.939591', '1.94954', '1.975974', '1.998067', '2.017424', '2.040162'] }, { 'chromosome': 'chr10', 'confidence_intervals': ['FALSE', '0.05:2.07348', '0.95:2.66339'], 'gene': 'GATA3', 'position': '8097506', 'raw_copy_number': '2.35', 'tsg_gene': true, 'values': ['1.968692', '2.024349', '2.073485', '2.131633', '2.204253', '2.232487', '2.35', '2.473699', '2.505384', '2.590737', '2.663391', '2.728037', '2.805162']}],
-      '/tmp/MSN3699_v2_MSN3699_RNA_v2.vcf']
-  }
+    static makeBrokenRawVcftData = () => {
+        return [[
+            { 'chromosome': 'chr1', 'confidence_intervals': ['FALSE', '0.05:1.55518', '0.95:1.96923'], 'gene': 'MYCL', 'position': '40361592', 'raw_copy_number': '7.0', 'tsg_gene': false, 'values': ['1.480967', '1.52041', '1.555179', '1.596265', '1.647487', '1.667375', '1.75', '1.83672', '1.858892', '1.918542', '1.969227', '2.01426', '2.067905'] }, { 'chromosome': 'chr1', 'confidence_intervals': ['FALSE', '0.05:1.49768', '0.95:1.88452'], 'gene': 'BCL9', 'position': '147022100', 'raw_copy_number': '1.68', 'tsg_gene': false, 'values': ['1.428072', '1.465078', '1.497679', '1.536177', '1.584136', '1.602746', '1.68', '1.760978', '1.781666', '1.837289', '1.884516', '1.92645', '1.976371'] }, { 'chromosome': 'chr1', 'confidence_intervals': ['FALSE', '0.05:1.45245', '0.95:1.85177'], 'gene': 'MCL1', 'position': '150547017', 'raw_copy_number': '1.64', 'tsg_gene': false, 'values': ['1.381178', '1.419043', '1.452446', '1.491946', '1.541231', '1.560379', '1.64', '1.723684', '1.745099', '1.802747', '1.851772', '1.895361', '1.947324'] }, { 'chromosome': 'chr1', 'confidence_intervals': ['FALSE', '0.05:1.58251', '0.95:1.97971'], 'gene': 'MDM4', 'position': '204490598', 'raw_copy_number': '1.77', 'tsg_gene': false, 'values': ['1.510778', '1.548924', '1.582508', '1.622144', '1.671485', '1.690621', '1.77', '1.853106', '1.874322', '1.931333', '1.979706', '2.02263', '2.073699'] }, { 'chromosome': 'chr2', 'confidence_intervals': ['FALSE', '0.05:1.47522', '0.95:1.84549'], 'gene': 'MYCN', 'position': '16080662', 'raw_copy_number': '1.65', 'tsg_gene': false, 'values': ['1.408353', '1.443912', '1.475219', '1.512168', '1.558164', '1.576003', '1.65', '1.727471', '1.747249', '1.800395', '1.845488', '1.885503', '1.93311'] }, { 'chromosome': 'chr2', 'confidence_intervals': ['FALSE', '0.05:2.01222', '0.95:2.34015'], 'gene': 'MSH2', 'position': '47630308', 'raw_copy_number': '2.17', 'tsg_gene': true, 'values': ['1.950264', '1.983328', '2.012219', '2.04606', '2.087814', '2.1039', '2.17', '2.238177', '2.255421', '2.301447', '2.340153', '2.374242', '2.414494'] }, { 'chromosome': 'chr3', 'confidence_intervals': ['FALSE', '0.05:1.67169', '0.95:2.44088'], 'gene': 'VHL', 'position': '10183523', 'raw_copy_number': '2.02', 'tsg_gene': true, 'values': ['1.545627', '1.612165', '1.671692', '1.743074', '1.833631', '1.869256', '2.02', '2.182901', '2.225311', '2.340922', '2.440881', '2.531006', '2.639965'] }, { 'chromosome': 'chr3', 'confidence_intervals': ['FALSE', '0.05:2.05468', '0.95:2.61958'], 'gene': 'PPARG', 'position': '12333702', 'raw_copy_number': '2.32', 'tsg_gene': false, 'values': ['1.953861', '2.007427', '2.05468', '2.110557', '2.180278', '2.207365', '2.32', '2.438382', '2.468677', '2.550227', '2.61958', '2.681243', '2.754751'] }, { 'chromosome': 'chr3', 'confidence_intervals': ['FALSE', '0.05:1.79396', '0.95:2.14141'], 'gene': 'BAP1', 'position': '52436208', 'raw_copy_number': '1.96', 'tsg_gene': true, 'values': ['1.729365', '1.763794', '1.79396', '1.82939', '1.873242', '1.890177', '1.96', '2.032402', '2.050776', '2.099935', '2.141408', '2.178032', '2.221394'] }, { 'chromosome': 'chr3', 'confidence_intervals': ['FALSE', '0.05:1.71107', '0.95:2.02189'], 'gene': 'PIK3CA', 'position': '178870451', 'raw_copy_number': '1.86', 'tsg_gene': false, 'values': ['1.652924', '1.683932', '1.711072', '1.742914', '1.782277', '1.797464', '1.86', '1.924711', '1.941112', '1.984952', '2.02189', '2.054477', '2.093018'] }, { 'chromosome': 'chr3', 'confidence_intervals': ['FALSE', '0.05:1.75176', '0.95:2.06078'], 'gene': 'SOX2', 'position': '181429683', 'raw_copy_number': '1.9', 'tsg_gene': false, 'values': ['1.693795', '1.724714', '1.751764', '1.783486', '1.82268', '1.837795', '1.9', '1.96431', '1.9806', '2.024126', '2.06078', '2.0931', '2.131309'] }, { 'chromosome': 'chr4', 'confidence_intervals': ['FALSE', '0.05:1.85967', '0.95:2.32643'], 'gene': 'FGFR3', 'position': '1797210', 'raw_copy_number': '2.08', 'tsg_gene': false, 'values': ['1.775378', '1.820204', '1.859671', '1.906248', '1.964231', '1.986719', '2.08', '2.177661', '2.202593', '2.269589', '2.326434', '2.376876', '2.43689'] }, { 'chromosome': 'chr4', 'confidence_intervals': ['FALSE', '0.05:1.59078', '0.95:1.96942'], 'gene': 'PDGFRA', 'position': '55096971', 'raw_copy_number': '1.77', 'tsg_gene': false, 'values': ['1.521953', '1.558571', '1.590776', '1.628742', '1.675945', '1.694235', '1.77', '1.849153', '1.869333', '1.923509', '1.969417', '2.01011', '2.058474'] }, { 'chromosome': 'chr4', 'confidence_intervals': ['FALSE', '0.05:1.80701', '0.95:2.16955'], 'gene': 'KIT', 'position': '55529116', 'raw_copy_number': '1.98', 'tsg_gene': false, 'values': ['1.739853', '1.775639', '1.807012', '1.843882', '1.889549', '1.907194', '1.98', '2.055585', '2.07478', '2.126167', '2.169548', '2.207881', '2.253293'] }, { 'chromosome': 'chr4', 'confidence_intervals': ['FALSE', '0.05:1.86576', '0.95:2.10123'], 'gene': 'TET2', 'position': '106155065', 'raw_copy_number': '1.98', 'tsg_gene': true, 'values': ['1.82039', '1.844642', '1.865763', '1.890421', '1.920725', '1.932365', '1.98', '2.02881', '2.041105', '2.073824', '2.101231', '2.12529', '2.153604'] }, { 'chromosome': 'chr4', 'confidence_intervals': ['FALSE', '0.05:2.32339', '0.95:2.73325'], 'gene': 'FBXW7', 'position': '153243998', 'raw_copy_number': '2.52', 'tsg_gene': true, 'values': ['2.246507', '2.287516', '2.323392', '2.365466', '2.417449', '2.437497', '2.52', '2.605296', '2.626901', '2.68463', '2.733245', '2.776112', '2.826789'] }, { 'chromosome': 'chr5', 'confidence_intervals': ['FALSE', '0.05:1.67835', '0.95:2.17362'], 'gene': 'TERT', 'position': '1258799', 'raw_copy_number': '1.91', 'tsg_gene': false, 'values': ['1.590822', '1.637293', '1.678353', '1.726986', '1.787784', '1.811439', '1.91', '2.013924', '2.040571', '2.112409', '2.173619', '2.228129', '2.293216'] }, { 'chromosome': 'chr5', 'confidence_intervals': ['FALSE', '0.05:1.88281', '0.95:2.21031'], 'gene': 'PIK3R1', 'position': '67522497', 'raw_copy_number': '2.04', 'tsg_gene': true, 'values': ['1.821299', '1.854113', '1.882814', '1.916465', '1.958032', '1.974059', '2.04', '2.108143', '2.125399', '2.171498', '2.210309', '2.244523', '2.284963'] }, { 'chromosome': 'chr5', 'confidence_intervals': ['FALSE', '0.05:2.08097', '0.95:2.28375'], 'gene': 'APC', 'position': '112043350', 'raw_copy_number': '2.18', 'tsg_gene': true, 'values': ['2.041269', '2.062514', '2.080967', '2.102452', '2.128773', '2.13886', '2.18', '2.221932', '2.232459', '2.260409', '2.283746', '2.304178', '2.32816'] }, { 'chromosome': 'chr5', 'confidence_intervals': ['FALSE', '0.05:1.68489', '0.95:2.12008'], 'gene': 'FGFR4', 'position': '176516567', 'raw_copy_number': '1.89', 'tsg_gene': false, 'values': ['1.606581', '1.648213', '1.684889', '1.728199', '1.782153', '1.803089', '1.89', '1.9811', '2.004374', '2.06695', '2.120081', '2.167256', '2.223417'] }, { 'chromosome': 'chr7', 'confidence_intervals': ['FALSE', '0.05:1.38526', '0.95:1.77937'], 'gene': 'IL6', 'position': '22766817', 'raw_copy_number': '1.57', 'tsg_gene': false, 'values': ['1.315254', '1.352438', '1.385264', '1.424112', '1.472629', '1.491491', '1.57', '1.652641', '1.67381', '1.730833', '1.779372', '1.822561', '1.874087'] }, { 'chromosome': 'chr7', 'confidence_intervals': ['FALSE', '0.05:1.70473', '0.95:2.02941'], 'gene': 'EGFR', 'position': '55092604', 'raw_copy_number': '1.86', 'tsg_gene': false, 'values': ['1.644272', '1.676503', '1.704734', '1.737882', '1.778898', '1.794733', '1.86', '1.927641', '1.9448', '1.990699', '2.029408', '2.063582', '2.104032'] }, { 'chromosome': 'chr7', 'confidence_intervals': ['FALSE', '0.05:1.59927', '0.95:2.0712'], 'gene': 'CDK6', 'position': '92243170', 'raw_copy_number': '1.82', 'tsg_gene': false, 'values': ['1.515862', '1.560143', '1.599269', '1.64561', '1.703543', '1.726083', '1.82', '1.919027', '1.944419', '2.012871', '2.071197', '2.123139', '2.185159'] }, { 'chromosome': 'chr7', 'confidence_intervals': ['FALSE', '0.05:1.97225', '0.95:2.40963'], 'gene': 'MET', 'position': '116313479', 'raw_copy_number': '2.18', 'tsg_gene': false, 'values': ['1.892102', '1.934775', '1.972254', '2.016379', '2.071149', '2.092345', '2.18', '2.271327', '2.294572', '2.356899', '2.409629', '2.456306', '2.511704'] }, { 'chromosome': 'chr8', 'confidence_intervals': ['FALSE', '0.05:1.66747', '0.95:2.07476'], 'gene': 'FGFR1', 'position': '38271444', 'raw_copy_number': '1.86', 'tsg_gene': false, 'values': ['1.593668', '1.632925', '1.667468', '1.708213', '1.758901', '1.778551', '1.86', '1.945179', '1.96691', '2.025274', '2.074762', '2.118652', '2.170841'] }, { 'chromosome': 'chr8', 'confidence_intervals': ['FALSE', '0.05:1.51337', '0.95:2.04683'], 'gene': 'MYC', 'position': '128748884', 'raw_copy_number': '1.76', 'tsg_gene': false, 'values': ['1.421608', '1.470219', '1.513365', '1.564696', '1.629209', '1.65441', '1.76', '1.872329', '1.901291', '1.979682', '2.04683', '2.106897', '2.178941'] }, { 'chromosome': 'chr9', 'confidence_intervals': ['FALSE', '0.05:1.73291', '0.95:2.19428'], 'gene': 'CD274', 'position': '5451200', 'raw_copy_number': '1.95', 'tsg_gene': false, 'values': ['1.650221', '1.694171', '1.732914', '1.778695', '1.835771', '1.857932', '1.95', '2.046631', '2.071337', '2.137803', '2.194281', '2.244461', '2.304237'] }, { 'chromosome': 'chr9', 'confidence_intervals': ['FALSE', '0.05:1.74471', '0.95:2.22438'], 'gene': 'PDCD1LG2', 'position': '5510907', 'raw_copy_number': '1.97', 'tsg_gene': false, 'values': ['1.659098', '1.704583', '1.744707', '1.792154', '1.851356', '1.874357', '1.97', '2.070523', '2.096247', '2.165495', '2.224385', '2.276745', '2.339163'] }, { 'chromosome': 'chr9', 'confidence_intervals': ['FALSE', '0.05:2.25872', '0.95:3.01591'], 'gene': 'CDKN2A', 'position': '21968185', 'raw_copy_number': '2.61', 'tsg_gene': true, 'values': ['2.127431', '2.197031', '2.258723', '2.332022', '2.423999', '2.459886', '2.61', '2.769275', '2.810274', '2.921114', '3.015908', '3.100593', '3.202031'] }, { 'chromosome': 'chr9', 'confidence_intervals': ['FALSE', '0.05:2.17192', '0.95:2.45686'], 'gene': 'PTCH1', 'position': '98209088', 'raw_copy_number': '2.31', 'tsg_gene': true, 'values': ['2.117161', '2.146423', '2.171918', '2.201697', '2.238314', '2.252385', '2.31', '2.369089', '2.383982', '2.42363', '2.45686', '2.486043', '2.520403'] }, { 'chromosome': 'chr9', 'confidence_intervals': ['FALSE', '0.05:2.06818', '0.95:2.36155'], 'gene': 'TSC1', 'position': '135771565', 'raw_copy_number': '2.21', 'tsg_gene': true, 'values': ['2.012125', '2.042066', '2.068178', '2.098707', '2.136289', '2.150743', '2.21', '2.270889', '2.286254', '2.327195', '2.361547', '2.391745', '2.427334'] }, { 'chromosome': 'chr9', 'confidence_intervals': ['FALSE', '0.05:1.80675', '0.95:1.99807'], 'gene': 'NOTCH1', 'position': '139390440', 'raw_copy_number': '1.9', 'tsg_gene': true, 'values': ['1.769468', '1.789411', '1.806747', '1.826947', '1.851719', '1.861217', '1.9', '1.939591', '1.94954', '1.975974', '1.998067', '2.017424', '2.040162'] }, { 'chromosome': 'chr10', 'confidence_intervals': ['FALSE', '0.05:2.07348', '0.95:2.66339'], 'gene': 'GATA3', 'position': '8097506', 'raw_copy_number': '2.35', 'tsg_gene': true, 'values': ['1.968692', '2.024349', '2.073485', '2.131633', '2.204253', '2.232487', '2.35', '2.473699', '2.505384', '2.590737', '2.663391', '2.728037', '2.805162'] }],
+            '/tmp/MSN3699_v2_MSN3699_RNA_v2.vcf']
+    }
 
     static makeCnvData = () => {
         return [
@@ -3057,5 +3057,561 @@ export class PatientApiServiceMock {
 
     downloadPatientFile(psn: string, url: string): void {
         ;
+    }
+
+    getPendingAssignmentReports(): Observable<any> {
+        let testData = [
+            {
+                'patientSequenceNumber': '1031',
+                'dateAssigned': {
+                    '$date': 1488461903558
+                },
+                'biopsySequenceNumber': 'bsn-1031',
+                'treatmentArmId': 'rejoinTest6',
+                'treatmentArmVersion': '2016-02-01',
+                'hoursPending': 5184,
+                'molecularSequenceNumber': 'msn-1031',
+                'analysisId': 'job-1031'
+            },
+            {
+                'patientSequenceNumber': '105re',
+                'dateAssigned': {
+                    '$date': 1488462008463
+                },
+                'biopsySequenceNumber': 'bsn-105re',
+                'hoursPending': 5184,
+                'molecularSequenceNumber': 'MSN-105re',
+                'analysisId': 'JOB-105re'
+            },
+            {
+                'patientSequenceNumber': '106re',
+                'dateAssigned': {
+                    '$date': 1488462027293
+                },
+                'biopsySequenceNumber': 'BSN-106re',
+                'hoursPending': 5184,
+                'molecularSequenceNumber': 'MSN-106re',
+                'analysisId': 'JOB-106re'
+            },
+            {
+                'patientSequenceNumber': '111re',
+                'dateAssigned': {
+                    '$date': 1488462377826
+                },
+                'biopsySequenceNumber': 'bsn-111re',
+                'hoursPending': 5184,
+                'molecularSequenceNumber': 'msn-111re',
+                'analysisId': 'job-111re'
+            },
+            {
+                'patientSequenceNumber': '1055',
+                'dateAssigned': {
+                    '$date': 1489181874843
+                },
+                'biopsySequenceNumber': 'BSN-1055',
+                'treatmentArmId': 'CukeTest-1055',
+                'treatmentArmVersion': '2015-08-06',
+                'hoursPending': 4984,
+                'molecularSequenceNumber': 'MSN-1055',
+                'analysisId': 'JOB-1055'
+            },
+            {
+                'patientSequenceNumber': '1056',
+                'dateAssigned': {
+                    '$date': 1489181898876
+                },
+                'biopsySequenceNumber': 'BSN-1056',
+                'treatmentArmId': 'CukeTest-1056',
+                'treatmentArmVersion': '2015-08-06',
+                'hoursPending': 4984,
+                'molecularSequenceNumber': 'MSN-1056',
+                'analysisId': 'JOB-1056'
+            },
+            {
+                'patientSequenceNumber': '1057',
+                'dateAssigned': {
+                    '$date': 1489181921727
+                },
+                'biopsySequenceNumber': 'BSN-1057',
+                'treatmentArmId': 'CukeTest-1057',
+                'treatmentArmVersion': '2015-08-06',
+                'hoursPending': 4984,
+                'molecularSequenceNumber': 'MSN-1057',
+                'analysisId': 'JOB-1057'
+            },
+            {
+                'patientSequenceNumber': '1058',
+                'dateAssigned': {
+                    '$date': 1489181950923
+                },
+                'biopsySequenceNumber': 'BSN-1058',
+                'treatmentArmId': 'CukeTest-1057',
+                'treatmentArmVersion': '2015-08-06',
+                'hoursPending': 4984,
+                'molecularSequenceNumber': 'MSN-1058',
+                'analysisId': 'JOB-1058'
+            },
+            {
+                'patientSequenceNumber': '1059',
+                'dateAssigned': {
+                    '$date': 1489181981085
+                },
+                'biopsySequenceNumber': 'BSN-1059',
+                'treatmentArmId': 'CukeTest-1057',
+                'treatmentArmVersion': '2015-08-06',
+                'hoursPending': 4984,
+                'molecularSequenceNumber': 'MSN-1059',
+                'analysisId': 'JOB-1059'
+            },
+            {
+                'patientSequenceNumber': '1060',
+                'dateAssigned': {
+                    '$date': 1489182013585
+                },
+                'biopsySequenceNumber': 'BSN-1060',
+                'treatmentArmId': 'CukeTest-1057',
+                'treatmentArmVersion': '2015-08-06',
+                'hoursPending': 4984,
+                'molecularSequenceNumber': 'MSN-1060',
+                'analysisId': 'JOB-1060'
+            },
+            {
+                'patientSequenceNumber': '1061',
+                'dateAssigned': {
+                    '$date': 1489182034862
+                },
+                'biopsySequenceNumber': 'BSN-1061',
+                'treatmentArmId': 'CukeTest-1057',
+                'treatmentArmVersion': '2015-08-06',
+                'hoursPending': 4984,
+                'molecularSequenceNumber': 'MSN-1061',
+                'analysisId': 'JOB-1061'
+            },
+            {
+                'patientSequenceNumber': '1062',
+                'dateAssigned': {
+                    '$date': 1489182057322
+                },
+                'biopsySequenceNumber': 'BSN-1062',
+                'treatmentArmId': 'CukeTest-1057',
+                'treatmentArmVersion': '2015-08-06',
+                'hoursPending': 4984,
+                'molecularSequenceNumber': 'MSN-1062',
+                'analysisId': 'JOB-1062'
+            },
+            {
+                'patientSequenceNumber': '1063',
+                'dateAssigned': {
+                    '$date': 1489182084100
+                },
+                'biopsySequenceNumber': 'BSN-1063',
+                'treatmentArmId': 'CukeTest-1078',
+                'treatmentArmVersion': '2015-08-06',
+                'hoursPending': 4984,
+                'molecularSequenceNumber': 'MSN-1063',
+                'analysisId': 'JOB-1063'
+            },
+            {
+                'patientSequenceNumber': '1064',
+                'dateAssigned': {
+                    '$date': 1489187046378
+                },
+                'biopsySequenceNumber': 'BSN-1064',
+                'treatmentArmId': 'CukeTest-1064',
+                'treatmentArmVersion': '2015-08-06',
+                'hoursPending': 4983,
+                'molecularSequenceNumber': 'MSN-1064',
+                'analysisId': 'JOB-1064'
+            },
+            {
+                'patientSequenceNumber': '1065',
+                'dateAssigned': {
+                    '$date': 1489187075335
+                },
+                'biopsySequenceNumber': 'BSN-1065',
+                'treatmentArmId': 'CukeTest-1065',
+                'treatmentArmVersion': '2015-08-06',
+                'hoursPending': 4983,
+                'molecularSequenceNumber': 'MSN-1065',
+                'analysisId': 'JOB-1065'
+            },
+            {
+                'patientSequenceNumber': '1066',
+                'dateAssigned': {
+                    '$date': 1489187103365
+                },
+                'biopsySequenceNumber': 'BSN-1066',
+                'treatmentArmId': 'CukeTest-1066',
+                'treatmentArmVersion': '2015-08-06',
+                'hoursPending': 4983,
+                'molecularSequenceNumber': 'MSN-1066',
+                'analysisId': 'JOB-1066'
+            },
+            {
+                'patientSequenceNumber': '1067',
+                'dateAssigned': {
+                    '$date': 1489187127209
+                },
+                'biopsySequenceNumber': 'BSN-1067',
+                'treatmentArmId': 'CukeTest-1066',
+                'treatmentArmVersion': '2015-08-06',
+                'hoursPending': 4983,
+                'molecularSequenceNumber': 'MSN-1067',
+                'analysisId': 'JOB-1067'
+            },
+            {
+                'patientSequenceNumber': '1068',
+                'dateAssigned': {
+                    '$date': 1489187152061
+                },
+                'biopsySequenceNumber': 'BSN-1068',
+                'treatmentArmId': 'CukeTest-1066',
+                'treatmentArmVersion': '2015-08-06',
+                'hoursPending': 4983,
+                'molecularSequenceNumber': 'MSN-1068',
+                'analysisId': 'JOB-1068'
+            },
+            {
+                'patientSequenceNumber': '1069',
+                'dateAssigned': {
+                    '$date': 1489187182158
+                },
+                'biopsySequenceNumber': 'BSN-1069',
+                'treatmentArmId': 'CukeTest-1066',
+                'treatmentArmVersion': '2015-08-06',
+                'hoursPending': 4983,
+                'molecularSequenceNumber': 'MSN-1069',
+                'analysisId': 'JOB-1069'
+            },
+            {
+                'patientSequenceNumber': '1070',
+                'dateAssigned': {
+                    '$date': 1489187213388
+                },
+                'biopsySequenceNumber': 'BSN-1070',
+                'treatmentArmId': 'CukeTest-1066',
+                'treatmentArmVersion': '2015-08-06',
+                'hoursPending': 4983,
+                'molecularSequenceNumber': 'MSN-1070',
+                'analysisId': 'JOB-1070'
+            },
+            {
+                'patientSequenceNumber': '1071',
+                'dateAssigned': {
+                    '$date': 1489187249202
+                },
+                'biopsySequenceNumber': 'BSN-1071',
+                'treatmentArmId': 'CukeTest-1066',
+                'treatmentArmVersion': '2015-08-06',
+                'hoursPending': 4983,
+                'molecularSequenceNumber': 'MSN-1071',
+                'analysisId': 'JOB-1071'
+            },
+            {
+                'patientSequenceNumber': '1072',
+                'dateAssigned': {
+                    '$date': 1489187272808
+                },
+                'biopsySequenceNumber': 'BSN-1072',
+                'hoursPending': 4983,
+                'molecularSequenceNumber': 'MSN-1072',
+                'analysisId': 'JOB-1072'
+            },
+            {
+                'patientSequenceNumber': '1078',
+                'dateAssigned': {
+                    '$date': 1489195129523
+                },
+                'biopsySequenceNumber': 'BSN-1078',
+                'treatmentArmId': 'CukeTest-1078',
+                'treatmentArmVersion': '2015-08-06',
+                'hoursPending': 4980,
+                'molecularSequenceNumber': 'MSN-1078',
+                'analysisId': 'JOB-1078'
+            },
+            {
+                'patientSequenceNumber': '160re',
+                'dateAssigned': {
+                    '$date': 1489416149287
+                },
+                'biopsySequenceNumber': 'bsn-160re',
+                'treatmentArmId': 'EAY131-F',
+                'treatmentArmVersion': '2015-08-06',
+                'hoursPending': 4919,
+                'molecularSequenceNumber': 'msn-160re',
+                'analysisId': 'job-160'
+            }
+        ];
+        return Observable.of(testData);
+    }
+
+    getPendingVariantReports(): Observable<any> {
+        let testData = [
+            {
+                'patientSequenceNumber': '1001re',
+                'biopsySequenceNumber': 'BSN-1001re',
+                'molecularSequenceNumber': 'MSN-1001re',
+                'location': 'Boston',
+                'specimenReceivedDate': { '$date': 1488461755963 },
+                'dateVariantReportReceived': { '$date': 1488461756559 },
+                'analysisId': 'JOB-1001re',
+                'daysPending': 216
+            },
+            {
+
+                'patientSequenceNumber': 'UIConfirmVariantReport',
+                'biopsySequenceNumber': 'BSN-UIConfirmVariantReport',
+                'molecularSequenceNumber': 'MSN-UIConfirmVariantReport',
+                'location': 'Boston',
+                'specimenReceivedDate': { '$date': 1488461755963 },
+                'dateVariantReportReceived': { '$date': 1488461756559 },
+                'analysisId': 'JOB-UIConfirmVariantReport',
+                'daysPending': 216
+            }
+        ];
+        return Observable.of(testData);
+    }
+
+    getPatientsAwaiting(): Observable<any> {
+        let testData = [{
+            'outsideBiopsy': {
+                'messages': [
+                    'Variant report missing,Required assay result missing: MLH1, MSH2, PTEN'
+                ],
+                'PTEN': { 'applicable': true },
+                'MLH1': { 'applicable': true },
+                'MSH2': { 'applicable': true },
+                'RB': { 'applicable': false },
+                'molecularSequenceNumber': 'MSN-170re-1',
+                'dateMsnShipped': { '$date': 1489409094505 },
+                'lab': 'Boston',
+                'dateSpecimenCollected': { '$date': 1489409094505 },
+                'daysWaiting': 211,
+                'diseases': [
+                    {
+                        '_id': 10040811,
+                        'ctepCategory': 'Skin Neoplasm',
+                        'ctepSubCategory': 'Skin Neoplasm, Miscellaneous',
+                        'ctepTerm': 'Skin cancer, NOS',
+                        'shortName': 'Skin cancer, NOS'
+                    },
+                    {
+                        '_id': 10040811,
+                        'ctepCategory': 'Skin Neoplasm',
+                        'ctepSubCategory': 'Skin Neoplasm, Miscellaneous',
+                        'ctepTerm': 'Skin cancer, NOS',
+                        'shortName': 'Skin cancer, NOS'
+                    }
+                ],
+                'amoi': [''],
+                'biopsySequenceNumber': 'N-14-000005-4'
+            },
+
+            'patientSequenceNumber': '170re',
+            'currentPatientStatus': 'PROGRESSION_REBIOPSY',
+            'concordance': 'Y',
+            'isOutsideAssay': true
+        },
+        {
+            'outsideBiopsy': {
+                'messages': [
+                    'No confirmed variant report',
+                    'No diseases',
+                    'Awaiting confirmation biopsy assay result'
+                ],
+                'analysisId': 'ee53b98a-45e8-4208-a66f-50b7183a7ddb',
+                'PTEN': {
+                    'applicable': false
+                },
+                'MLH1': {
+                    'applicable': true,
+                    'result': 'UNKNOWN'
+                },
+                'MSH2': {
+                    'applicable': true,
+                    'result': 'UNKNOWN'
+                },
+                'RB': {
+                    'applicable': true,
+                    'result': 'UNKNOWN'
+                },
+                'molecularSequenceNumber': '0d082b74-5970-4987-9118-f1a0501b740e',
+                'dateMsnShipped': {
+                    '$date': 1503348596194
+                },
+                'dateSpecimenCollected': {
+                    '$date': 1503348596146
+                },
+                'daysWaiting': 86,
+                'lab': 'CARIS',
+                'amoi': [''],
+                'biopsySequenceNumber': 'CARIS-case1'
+            },
+            'patientSequenceNumber': '1121',
+            'currentPatientStatus': 'REGISTRATION_OUTSIDE_ASSAY',
+            'concordance': 'U',
+            'isOutsideAssay': true
+        },
+        {
+            'confirmationBiopsy': {
+                'messages': [
+                    'No confirmed variant report',
+                    'No diseases'
+                ],
+                'analysisId': 'job-1113',
+                'PTEN': {
+                    'applicable': false
+                },
+                'MLH1': {
+                    'applicable': false
+                },
+                'MSH2': {
+                    'applicable': false
+                },
+                'RB': {
+                    'applicable': false
+                },
+                'molecularSequenceNumber': 'MSN-1113',
+                'dateMsnShipped': {
+                    '$date': 1505582597213
+                },
+                'lab': 'Boston',
+                'dateSpecimenCollected': {
+                    '$date': 1505582597154
+                },
+                'daysWaiting': 61,
+                'amoi': [''],
+                'biopsySequenceNumber': 'BSN-1113'
+            },
+            'patientSequenceNumber': '1113',
+            'currentPatientStatus': 'PENDING_APPROVAL',
+            'concordance': 'U',
+            'isOutsideAssay': true
+        },
+        {
+            'outsideBiopsy': {
+                'messages': [
+                    'No confirmed variant report',
+                    'No diseases',
+                    'Awaiting confirmation biopsy assay result'
+                ],
+                'analysisId': 'ee53b98a-45e8-4208-a66f-50b7183a7ddb',
+                'PTEN': {
+                    'applicable': false
+                },
+                'MLH1': {
+                    'applicable': true,
+                    'result': 'UNKNOWN'
+                },
+                'MSH2': {
+                    'applicable': true,
+                    'result': 'UNKNOWN'
+                },
+                'RB': {
+                    'applicable': true,
+                    'result': 'UNKNOWN'
+                },
+                'molecularSequenceNumber': '0d082b74-5970-4987-9118-f1a0501b740e',
+                'dateMsnShipped': {
+                    '$date': 1503348596194
+                },
+                'dateSpecimenCollected': {
+                    '$date': 1503348596146
+                },
+                'daysWaiting': 86,
+                'lab': 'CARIS',
+                'amoi': [''],
+                'biopsySequenceNumber': 'CARIS-case1'
+            },
+            'confirmationBiopsy': {
+                'messages': [
+                    'No confirmed variant report',
+                    'No diseases'
+                ],
+                'analysisId': 'job-1113',
+                'PTEN': {
+                    'applicable': false
+                },
+                'MLH1': {
+                    'applicable': false
+                },
+                'MSH2': {
+                    'applicable': false
+                },
+                'RB': {
+                    'applicable': false
+                },
+                'molecularSequenceNumber': 'MSN-1113',
+                'dateMsnShipped': {
+                    '$date': 1505582597213
+                },
+                'lab': 'Boston',
+                'dateSpecimenCollected': {
+                    '$date': 1505582597154
+                },
+                'daysWaiting': 61,
+                'amoi': [''],
+                'biopsySequenceNumber': 'BSN-1113'
+            },
+            'patientSequenceNumber': '1113',
+            'currentPatientStatus': 'PENDING_APPROVAL',
+            'concordance': 'U',
+            'isOutsideAssay': true
+        },
+        {
+            'messages': [
+                'Variant report missing',
+                'Required assay result missing: MLH1, MSH2, PTEN'
+            ],
+            'PTEN': {
+                'applicable': true
+            },
+            'MLH1': {
+                'applicable': true
+            },
+            'MSH2': {
+                'applicable': true
+            },
+            'RB': {
+                'applicable': false
+            },
+            'molecularSequenceNumber': 'MSN-170re-1',
+            'dateMsnShipped': {
+                '$date': 1504403996659
+            },
+            'lab': 'Boston',
+            'dateSpecimenCollected': {
+                '$date': 1504403996617
+            },
+            'daysWaiting': 74,
+            'diseases': [
+                {
+                    '_id': '10040811',
+                    'ctepCategory': 'Skin Neoplasm',
+                    'ctepSubCategory': 'Skin Neoplasm, Miscellaneous',
+                    'ctepTerm': 'Skin cancer, NOS',
+                    'shortName': 'Skin cancer, NOS'
+                }
+            ],
+            'amoi': [''],
+            'biopsySequenceNumber': 'N-14-000005-4',
+            'patientSequenceNumber': '170re',
+            'currentPatientStatus': 'PROGRESSION_REBIOPSY',
+            'concordance': 'Y',
+            'isOutsideAssay': false
+        }
+        ];
+
+        return Observable.of(testData);
+    }
+
+    getOverviewPatients(): Observable<any> {
+        let testData = [{ 'TOTAL': 238, 'ON_TREATMENT_ARM': 4, 'OFF_TRIAL': 2 }];
+        return Observable.of(testData);
+    }
+
+    getOverviewBt(): Observable<any> {
+        let testData = [{ 'BIOPSY_SEQUENCES': 201, 'TOTAL': 233, 'MOLECULAR_SEQUENCES': 219 }];
+        return Observable.of(testData);;
     }
 }
