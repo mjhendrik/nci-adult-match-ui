@@ -32,7 +32,7 @@ export abstract class ApiService {
     return (typeof body !== 'undefined') ? body : null;
   }
 
-  protected url(endpoint: string, defaultUrl: string): string {
+  protected url(endpoint: string, defaultUrl?: string): string {
     return this.baseApiUrl && this.baseApiUrl !== '[TBD]' ? this.baseApiUrl + endpoint : defaultUrl;
   }
 }

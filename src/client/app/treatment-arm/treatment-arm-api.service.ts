@@ -73,6 +73,12 @@ export class TreatmentArmApiService {
       });
   }
 
+  getOverviewTa(): Observable<any> {
+    return this.http.get(Config.API.TREATMENT_ARM + '/treatment_arms/dashboard/overview')
+      .map((res: Response) => res.json())
+      .catch(this.handleError);
+  }
+
   /**
     * Handle HTTP error
     */

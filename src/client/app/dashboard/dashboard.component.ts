@@ -2,10 +2,12 @@ import {
   Component,
   OnInit
 } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
+
 import { routerTransition } from './../shared/router.animations';
 import { GmtPipe } from './../shared/pipes/gmt.pipe';
-import { DashboardApiService } from './dashboard-api.service';
-import { Observable } from 'rxjs/Rx';
+import { PatientApiService } from '../patient/patient-api.service';
+import { TreatmentArmApiService } from '../treatment-arm/treatment-arm-api.service';
 
 export interface LoadableData<T> {
   isLoaded: boolean;
@@ -72,7 +74,9 @@ export class DashboardComponent implements OnInit {
     return this.isOutsideAssayValue;
   }
 
-  constructor(private dashboardApi: DashboardApiService) { }
+  constructor(
+    private patientApi: PatientApiService,
+    private treatmentArmApi: TreatmentArmApiService) { }
 
   ngOnInit() {
     this.getPatientSummaryData();
@@ -89,7 +93,7 @@ export class DashboardComponent implements OnInit {
 
   getPendingAssignmentReportsData() {
     let gmt = new GmtPipe();
-    this.dashboardApi.getPendingAssignmentReports()
+    this.patientApi.getPendingAssignmentReports()
       .subscribe(itemList => {
         this.pendingAssignmentReports.data = itemList.map(x => {
           x.dateAssigned = gmt.transform(x.dateAssigned);
@@ -102,7 +106,7 @@ export class DashboardComponent implements OnInit {
 
   getPendingVariantReportsData() {
     let gmt = new GmtPipe();
-    this.dashboardApi.getPendingVariantReports()
+    this.patientApi.getPendingVariantReports()
       .subscribe(itemList => {
         this.pendingVariantReports.data = itemList.map(x => {
           x.specimenReceivedDate = gmt.transform(x.specimenReceivedDate);
@@ -180,7 +184,7 @@ export class DashboardComponent implements OnInit {
       return x;
     });
 
-    this.dashboardApi.getPatientsAwaiting()
+    this.patientApi.getPatientsAwaiting()
       .subscribe(itemList => {
 
         if (this.isOutsideAssayValue === null) {
@@ -205,7 +209,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getTreatmentArmSummaryData() {
-    this.dashboardApi.getOverviewTa()
+    this.treatmentArmApi.getOverviewTa()
       .subscribe(data => {
         this.treatmentArmSummary = data;
         this.isLoadedPatientSummary = true;
@@ -213,7 +217,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getPatientSummaryData() {
-    this.dashboardApi.getOverviewPatients()
+    this.patientApi.getOverviewPatients()
       .subscribe(data => {
         this.patientSummary = data;
         this.isLoadedtreatmentArmSummary = true;
@@ -221,7 +225,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getBiopsyTrackingSummaryData() {
-    this.dashboardApi.getOverviewBt()
+    this.patientApi.getOverviewBt()
       .subscribe(data => {
         this.biopsyTrackingSummary = data;
         this.isLoadedbiopsyTrackingSummary = true;

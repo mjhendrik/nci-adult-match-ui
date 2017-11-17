@@ -9,7 +9,6 @@ import { SharedModule } from '../shared/shared.module';
 import { DirectivesModule } from '../shared/directives/directives.module';
 import { DataTableModule } from '../shared/datatables/index';
 import { PipesModule } from '../shared/pipes/pipes.module';
-import { DashboardApiService } from './dashboard-api.service';
 import { LoadingSpinnerModule } from '../shared/loading-spinner/loading-spinner.module';
 
 @NgModule({
@@ -25,7 +24,6 @@ import { LoadingSpinnerModule } from '../shared/loading-spinner/loading-spinner.
     TabsModule.forRoot()
   ],
   declarations: [DashboardComponent],
-  exports: [DashboardComponent],
-  providers: [DashboardApiService]
+  exports: [DashboardComponent]
 })
 export class DashboardModule { }
