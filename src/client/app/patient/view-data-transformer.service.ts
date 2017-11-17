@@ -202,7 +202,7 @@ export class ViewDataTransformer {
     if (!assignmentReport && !assignmentReport.assignmentReportStatus) {
       return false;
     }
-    return assignmentReport.assignmentReportStatus === 'PENDING_CONFIRMATION';
+    return assignmentReport.patientAssignmentStatus === 'PENDING_CONFIRMATION';
   }
 
   getVariantReportEditable(variantReport: VariantReportData): boolean {

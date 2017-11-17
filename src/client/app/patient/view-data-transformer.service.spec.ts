@@ -274,5 +274,49 @@ export function main() {
       });
     });
 
+
+    describe('with updateAssignmentReportStatus', () => {
+      let report: VariantReportData;
+      let updatedStatus: ApiStatusUpdateSuccess;
+
+      beforeEach(() => {
+        service = new ViewDataTransformer();
+
+        report = PatientApiServiceStub.makeVariantReportData();
+        updatedStatus = PatientApiServiceStub.makeApiStatusUpdateSuccess();
+      });
+
+      it('should return throw error if either of the arguments isn\'t passed', () => {
+        expect(() => {
+          service.updateAssignmentReportStatus(report, null);
+        }).toThrow();
+
+        expect(() => {
+          service.updateAssignmentReportStatus(null, updatedStatus);
+        }).toThrow();
+
+        expect(() => {
+          service.updateAssignmentReportStatus(null, null);
+        }).toThrow();
+      });
+
+      it('should update the variant report status', () => {
+        updatedStatus.status = 'some-very-fake-status';
+        service.updateAssignmentReportStatus(report, updatedStatus);
+        expect(report.patientAssignmentStatus).toEqual('some-very-fake-status');
+      });
+
+      it('setting status to "CONFIRMED" should make the report not editable', () => {
+        updatedStatus.status = 'CONFIRMED';
+        service.updateAssignmentReportStatus(report, updatedStatus);
+        expect(report.isAssignmentReportEditable).toEqual(false);
+      });
+
+      it('setting status to "PENDING_CONFIRMATION" should make the report editable', () => {
+        updatedStatus.status = 'PENDING_CONFIRMATION';
+        service.updateAssignmentReportStatus(report, updatedStatus);
+        expect(report.isAssignmentReportEditable).toEqual(true);
+      });
+    });
   });
 }
