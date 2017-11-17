@@ -670,14 +670,14 @@ export function main() {
           dateTime: 'fake-dateTime',
         };
         fakeErrorData = {
-          message: 'fake-error',
+          message: 'Error: fake-error',
         };
         let options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
       }));
 
-      fit('should have expected fake response (then)', async(inject([], () => {
-        backend.connections.subscribe((c: MockConnection) => {c.mockRespond(response);});
+      it('should have expected fake response (then)', async(inject([], () => {
+        backend.connections.subscribe((c: MockConnection) => { c.mockRespond(response); });
 
         service.updateVariantReport('fake-psn', 'fake-bsn', 'fake-analysis-id', true).toPromise()
           .then(resp => {
@@ -697,7 +697,7 @@ export function main() {
           });
       })));
 
-      fit('should have expected fake response (Observable.do)', async(inject([], () => {
+      it('should have expected fake response (Observable.do)', async(inject([], () => {
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
         service.updateVariantReport('fake-psn', 'fake-bsn', 'fake-analysis-id', true)
@@ -709,12 +709,152 @@ export function main() {
           .toPromise();
       })));
 
-      fit('should have expected fake error (Observable.do)', async(inject([], () => {
+      it('should have expected fake error (Observable.do)', async(inject([], () => {
         backend.connections.subscribe((c: MockConnection) => c.mockError(new Error('fake-error')));
 
         service.updateVariantReport('fake-psn', 'fake-bsn', 'fake-analysis-id', true)
           .do(resp => {
-            expect(resp.kind).toBe('Error: fake-error');
+            expect(resp.kind).toBe('error');
+            let errorRes = resp as ApiStatusUpdateError;
+            expect(errorRes.message).toEqual(fakeErrorData.message);
+          })
+          .toPromise();
+      })));
+
+    });
+
+
+    describe('when updateVariant', () => {
+      let backend: MockBackend;
+      let service: PatientApiService;
+      let fakeData: any;
+      let fakeErrorData: any;
+      let response: Response;
+
+      beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
+        backend = be;
+        service = new PatientApiService(http, download);
+        fakeData = {
+          commenter: 'fake-commenter',
+          status: 'fake-status',
+          dateTime: 'fake-dateTime',
+        };
+        fakeErrorData = {
+          message: 'Error: fake-error',
+        };
+        let options = new ResponseOptions({ status: 200, body: fakeData });
+        response = new Response(options);
+      }));
+
+      it('should have expected fake response (then)', async(inject([], () => {
+        backend.connections.subscribe((c: MockConnection) => { c.mockRespond(response); });
+
+        service.updateVariant('fake-psn', 'fake-bsn', 'fake-analysis-id', 'fake-variant-id', true, 'fake-comment').toPromise()
+          .then(resp => {
+            expect(resp).toBeDefined();
+            switch (resp.kind) {
+              case 'error':
+                expect(resp.kind).toBe('error');
+                let errorRes = resp as ApiStatusUpdateError;
+                expect(errorRes.message).toBe(fakeErrorData.message);
+                break;
+              case 'success':
+                expect(resp.kind).toBe('success');
+                let successRes = resp as ApiStatusUpdateSuccess;
+                expect(successRes.commenter).toBe(fakeData.commenter);
+                break;
+            }
+          });
+      })));
+
+      it('should have expected fake response (Observable.do)', async(inject([], () => {
+        backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
+
+        service.updateVariant('fake-psn', 'fake-bsn', 'fake-analysis-id', 'fake-variant-id', true, 'fake-comment')
+          .do(resp => {
+            expect(resp.kind).toBe('success');
+            let successRes = resp as ApiStatusUpdateSuccess;
+            expect(successRes.commenter).toBe(fakeData.commenter);
+          })
+          .toPromise();
+      })));
+
+      it('should have expected fake error (Observable.do)', async(inject([], () => {
+        backend.connections.subscribe((c: MockConnection) => c.mockError(new Error('fake-error')));
+
+        service.updateVariant('fake-psn', 'fake-bsn', 'fake-analysis-id', 'fake-variant-id', true, 'fake-comment')
+          .do(resp => {
+            expect(resp.kind).toBe('error');
+            let errorRes = resp as ApiStatusUpdateError;
+            expect(errorRes.message).toEqual(fakeErrorData.message);
+          })
+          .toPromise();
+      })));
+
+    });
+
+
+    describe('when updateAssignmentReport', () => {
+      let backend: MockBackend;
+      let service: PatientApiService;
+      let fakeData: any;
+      let fakeErrorData: any;
+      let response: Response;
+
+      beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
+        backend = be;
+        service = new PatientApiService(http, download);
+        fakeData = {
+          commenter: 'fake-commenter',
+          status: 'fake-status',
+          dateTime: 'fake-dateTime',
+        };
+        fakeErrorData = {
+          message: 'Error: fake-error',
+        };
+        let options = new ResponseOptions({ status: 200, body: fakeData });
+        response = new Response(options);
+      }));
+
+      it('should have expected fake response (then)', async(inject([], () => {
+        backend.connections.subscribe((c: MockConnection) => { c.mockRespond(response); });
+
+        service.updateAssignmentReport('fake-psn', true).toPromise()
+          .then(resp => {
+            expect(resp).toBeDefined();
+            switch (resp.kind) {
+              case 'error':
+                expect(resp.kind).toBe('error');
+                let errorRes = resp as ApiStatusUpdateError;
+                expect(errorRes.message).toBe(fakeErrorData.message);
+                break;
+              case 'success':
+                expect(resp.kind).toBe('success');
+                let successRes = resp as ApiStatusUpdateSuccess;
+                expect(successRes.commenter).toBe(fakeData.commenter);
+                break;
+            }
+          });
+      })));
+
+      it('should have expected fake response (Observable.do)', async(inject([], () => {
+        backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
+
+        service.updateAssignmentReport('fake-psn', true)
+          .do(resp => {
+            expect(resp.kind).toBe('success');
+            let successRes = resp as ApiStatusUpdateSuccess;
+            expect(successRes.commenter).toBe(fakeData.commenter);
+          })
+          .toPromise();
+      })));
+
+      it('should have expected fake error (Observable.do)', async(inject([], () => {
+        backend.connections.subscribe((c: MockConnection) => c.mockError(new Error('fake-error')));
+
+        service.updateAssignmentReport('fake-psn', true)
+          .do(resp => {
+            expect(resp.kind).toBe('error');
             let errorRes = resp as ApiStatusUpdateError;
             expect(errorRes.message).toEqual(fakeErrorData.message);
           })
