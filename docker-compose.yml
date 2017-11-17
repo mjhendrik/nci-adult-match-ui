@@ -165,7 +165,7 @@ services:
       - mongo
     environment:
       - ENVIRONMENT=dev 
-      - JAVA_OPTIONS=-Dmatch.properties.file=./matchbox-dev.properties -Dorg.kie.demo=false -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=512m -XX:PermSize=128m -XX:MaxPermSize=512m -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n -Decog.api.hostname=mock-ecog -Dqueue.name=blah
+      - JAVA_OPTIONS=-Dmatch.properties.file=./matchbox-dev.properties -Dorg.kie.demo=false -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=512m -XX:PermSize=128m -XX:MaxPermSize=512m -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n -Decog.api.hostname=mock-ecog -Dqueue.name=message-api-${USER}-dev-queue.fifo
       - MONGODB_URI=mongodb://mongo:27017/Match
       - AWS_REGION=${AWS_REGION}
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
