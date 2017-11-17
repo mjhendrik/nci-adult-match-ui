@@ -1,90 +1,143 @@
-import { Component } from '@angular/core';
+import {
+  HttpModule,
+  Http,
+  RequestOptions,
+  XHRBackend
+} from '@angular/http';
+import {
+  Component,
+  ErrorHandler,
+  DebugElement
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { TestBed } from '@angular/core/testing';
 import { APP_BASE_HREF } from '@angular/common';
-
-import { async } from '@angular/core/testing';
-import { Route } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule, By } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PopoverModule } from 'ngx-popover';
+import { Router } from '@angular/router';
+import { ModalModule } from 'ngx-bootstrap';
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
+import { AUTH_PROVIDERS } from 'angular2-jwt';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { ErrorComponent } from './error/error.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { PatientListComponent } from './patient/patient-list/patient-list.component';
-import { TreatmentArmListComponent } from './treatment-arm/treatment-arm-list/treatment-arm-list.component';
-import { PatientDetailsComponent } from './patient/patient-details/patient-details.component';
-import { PatientVariantReportComponent } from './patient/patient-variant-report/patient-variant-report.component';
-import { TreatmentArmDetailsComponent } from './treatment-arm/treatment-arm-details/treatment-arm-details.component';
-import { BiopsyTrackingListComponent } from './biopsy-tracking/biopsy-tracking.component';
-import { CliaParentComponent } from './clia/clia-parent/clia-parent.component';
-import { CliaVariantReportsNtcComponent } from './clia/clia-variant-reports-ntc/clia-variant-reports-ntc.component';
-import { CliaVariantReportsPaccComponent } from './clia/clia-variant-reports-pacc/clia-variant-reports-pacc.component';
-import { CliaVariantReportsPcComponent } from './clia/clia-variant-reports-pc/clia-variant-reports-pc.component';
-import { CliaVariantReportQcComponent } from './clia/clia-variant-report-qc/clia-variant-report-qc.component';
-import { CnvChartDirective } from './shared/cnv-chart/cnv-chart.directive.component';
-import { TreatmentArmLinkComponent } from './shared/treatment-arm-link/treatment-arm-link.component';
-import { NavbarComponent } from './shared/navbar/navbar.component';
-import { nvD3 } from 'ng2-nvd3';
-
+import { Auth } from './shared/auth/auth.service';
+import { AuthGuard } from './shared/auth/auth.guard.service';
+import { LoginGuard } from './shared/auth/login.guard.service';
+import { AppRoutingModule } from './app-routing.module';
+import { SharedModule } from './shared/shared.module';
+import { LoginModule } from './login/login.module';
+import { ErrorModule } from './error/error.module';
+import { CliaParentModule } from './clia/clia-parent/clia-parent.module';
+import { CliaVariantReportsNtcModule } from './clia/clia-variant-reports-ntc/clia-variant-reports-ntc.module';
+import { CliaVariantReportsPaccModule } from './clia/clia-variant-reports-pacc/clia-variant-reports-pacc.module';
+import { CliaVariantReportsPcModule } from './clia/clia-variant-reports-pc/clia-variant-reports-pc.module';
+import { BiopsyTrackingListModule } from './biopsy-tracking/biopsy-tracking.module';
+import { TreatmentArmListModule } from './treatment-arm/treatment-arm-list/treatment-arm-list.module';
+import { TreatmentArmDetailsModule } from './treatment-arm/treatment-arm-details/treatment-arm-details.module';
+import { PatientListModule } from './patient/patient-list/patient-list.module';
+import { PatientDetailsModule } from './patient/patient-details/patient-details.module';
+import { PatientVariantReportModule } from './patient/patient-variant-report/patient-variant-report.module';
+import { PatientVariantReportOutsideAssayModule } from './patient/patient-variant-report-oa/patient-variant-report-oa.module';
+import { PatientVariantReportQcModule } from './patient/patient-variant-report-qc/patient-variant-report-qc.module';
+import { CliaVariantReportQcModule } from './clia/clia-variant-report-qc/clia-variant-report-qc.module';
+import { AssignmentReportModule } from './patient/assignment-report/assignment-report.module';
+import { DashboardModule } from './dashboard/dashboard.module';
+import { VariantReportSimpleTableModule } from './shared/variant-report-simple-table/variant-report-simple-table.module';
+import { VariantReportFilteredTableModule } from './shared/variant-report-filtered-table/variant-report-filtered-table.module';
+import { ErrorHandlingService } from './shared/error-handling/error-handling.service';
+import { ToastrService } from './shared/error-handling/toastr.service';
+import { ErrorPageHttpInterceptor } from './shared/error-handling/error-page-http.interceptor';
 
 export function main() {
-
+  let config: any[] = [
+    { path: 'dashboard', component: 'DashboardComponent' }
+  ];
 
   describe('App component', () => {
+    let component: AppComponent;
+    let fixture: ComponentFixture<AppComponent>;
+    let de: DebugElement;
+    let el: HTMLElement;
 
-    let config: Route[] = [
-      { path: '', component: LoginComponent },
-      { path: 'error', component: ErrorComponent },
-      { path: 'dashboard', component: DashboardComponent },
-      { path: 'patients', component: PatientListComponent },
-      { path: 'patients/details', component: PatientDetailsComponent },
-      { path: 'patients/details/variant_reports', component: PatientVariantReportComponent },
-      { path: 'treatments', component: TreatmentArmListComponent },
-      { path: 'treatments/details', component: TreatmentArmDetailsComponent },
-      { path: 'tracking', component: BiopsyTrackingListComponent },
-      { path: 'clia_dartmouth', component: CliaParentComponent },
-      { path: 'clia_yale', component: CliaParentComponent },
-      { path: 'clia_mocha', component: CliaParentComponent },
-      { path: 'clia_mgh', component: CliaParentComponent },
-      { path: 'clia_mda', component: CliaParentComponent },
-      { path: 'clia_variant_reports_ntc', component: CliaVariantReportsNtcComponent },
-      { path: 'clia_variant_reports_pacc', component: CliaVariantReportsPaccComponent },
-      { path: 'clia_variant_reports_pc', component: CliaVariantReportsPcComponent },
-      { path: 'clia_variant_reports_qc', component: CliaVariantReportQcComponent },
-      { path: 'cnv_chart_directive', component: CnvChartDirective },
-      { path: 'nvd3', component: nvD3 }
-    ];
-    beforeEach(() => {
+    // async beforeEach
+    beforeEach(async(() => {
       TestBed.configureTestingModule({
         imports: [FormsModule, RouterTestingModule.withRoutes(config)],
         declarations: [
-          TestComponent,
-          AppComponent,
-          NavbarComponent,
-          LoginComponent,
-          DashboardComponent,
-          PatientListComponent,
-          TreatmentArmListComponent,
-          TreatmentArmDetailsComponent,
-          TreatmentArmLinkComponent,
-          BiopsyTrackingListComponent,
-          CliaParentComponent,
-          CliaVariantReportsNtcComponent,
-          CliaVariantReportsPaccComponent,
-          CliaVariantReportsPcComponent,
-          CliaVariantReportQcComponent,
-          PatientDetailsComponent,
-          PatientVariantReportComponent,
-          CnvChartDirective,
-          nvD3,
-          ErrorComponent
+          BrowserModule,
+          BrowserAnimationsModule,
+          HttpModule,
+          FormsModule,
+          SharedModule.forRoot(),
+          AppRoutingModule,
+          LoginModule,
+          DashboardModule,
+          CliaParentModule,
+          CliaVariantReportsNtcModule,
+          CliaVariantReportsPaccModule,
+          CliaVariantReportsPcModule,
+          BiopsyTrackingListModule,
+          TreatmentArmListModule,
+          TreatmentArmDetailsModule,
+          PatientListModule,
+          PatientDetailsModule,
+          PatientVariantReportModule,
+          PatientVariantReportOutsideAssayModule,
+          PatientVariantReportQcModule,
+          CliaVariantReportQcModule,
+          AssignmentReportModule,
+          VariantReportFilteredTableModule,
+          VariantReportSimpleTableModule,
+          PopoverModule,
+          HttpClientModule,
+          ToastModule.forRoot(),
+          ModalModule.forRoot(),
+          ErrorModule // This needs to be at the bottom of the list for ErrorComponent to work properly
         ],
         providers: [
-          { provide: APP_BASE_HREF, useValue: '' }
+          {
+            provide: APP_BASE_HREF,
+            useValue: '<%= APP_BASE %>'
+          },
+          {
+            provide: Http,
+            useFactory: (backend: XHRBackend, options: RequestOptions, router: Router) => {
+              return new ErrorPageHttpInterceptor(backend, options, router);
+            },
+            deps: [XHRBackend, RequestOptions, Router]
+          },
+          AUTH_PROVIDERS,
+          Auth,
+          AuthGuard,
+          LoginGuard,
+          ToastrService,
+          { provide: ErrorHandler, useClass: ErrorHandlingService }
         ]
-      });
+      }).compileComponents();  // compile template and css
+    }));
+
+    // synchronous beforeEach
+    beforeEach(() => {
+      fixture = TestBed.createComponent(AppComponent);
+      component = fixture.componentInstance; // AppComponent test instance
+      // query for the title 'page-header' by CSS element selector
+      de = fixture.debugElement.query(By.css('.page-header'));
+      el = de.nativeElement;
     });
+
+    // vcr: ViewContainerRef,
+    // public toastr: ToastsManager,
+    // private router: Router,
+    // private toastrService: ToastrService
+
+    // it('can instantiate component with "new"', inject([AuthHttp, DownloadService], (http: AuthHttp, download: DownloadService) => {
+    //   expect(http).not.toBeNull('http should be provided');
+    //   let service = new PatientApiService(http, download);
+    //   expect(service instanceof PatientApiService).toBe(true, 'new service should be ok');
+    // }));
 
     // it('should build without a problem',
     //   async(() => {

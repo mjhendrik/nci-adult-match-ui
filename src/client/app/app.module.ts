@@ -15,6 +15,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AUTH_PROVIDERS } from 'angular2-jwt';
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
+import { PopoverModule } from 'ngx-popover';
+import { Router } from '@angular/router';
+import { ModalModule } from 'ngx-bootstrap';
 
 import { AppComponent } from './app.component';
 import { Auth } from './shared/auth/auth.service';
@@ -41,11 +44,8 @@ import { AssignmentReportModule } from './patient/assignment-report/assignment-r
 import { DashboardModule } from './dashboard/dashboard.module';
 import { VariantReportSimpleTableModule } from './shared/variant-report-simple-table/variant-report-simple-table.module';
 import { VariantReportFilteredTableModule } from './shared/variant-report-filtered-table/variant-report-filtered-table.module';
-import { PopoverModule } from 'ngx-popover';
-import { Router } from '@angular/router';
 import { ErrorHandlingService } from './shared/error-handling/error-handling.service';
 import { ToastrService } from './shared/error-handling/toastr.service';
-import { ModalModule } from 'ngx-bootstrap';
 import { FileUploadContentComponent } from './patient/file-upload/file-upload-content.component';
 import { ModalDialogWithCommentsComponent } from './shared/modal-dialogs/modal-dialog-with-comments.component';
 import { ModalDialogConfirmationComponent } from './shared/modal-dialogs/modal-dialog-confirmation.component';
