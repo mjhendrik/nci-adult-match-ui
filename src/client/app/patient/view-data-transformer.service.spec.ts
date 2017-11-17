@@ -3,6 +3,8 @@ import { inject, async, TestBed } from '@angular/core/testing';
 import { ViewDataTransformer } from './view-data-transformer.service';
 import { PatientApiServiceStub } from './testing/patient-api-service-stub';
 import { VariantReportComparisonData } from './variant-report-comparison-data';
+import { VariantReportData } from './variant-report-data';
+import { ApiStatusUpdateSuccess } from './patient-api.service';
 
 export function main() {
   describe('ViewDataTransformer', () => {
@@ -224,6 +226,51 @@ export function main() {
         expect(transformed.outsideData.variantReport).not.toBeNull();
         expect(transformed.matchData.assignmentReport).not.toBeNull();
         expect(transformed.outsideData.assignmentReport).not.toBeNull();
+      });
+    });
+
+
+    describe('with updateVariantReportStatus', () => {
+      let report: VariantReportData;
+      let updatedStatus: ApiStatusUpdateSuccess;
+
+      beforeEach(() => {
+        service = new ViewDataTransformer();
+
+        report = PatientApiServiceStub.makeVariantReportData();
+        updatedStatus = PatientApiServiceStub.makeApiStatusUpdateSuccess();
+      });
+
+      it('should return throw error if either of the arguments isn\'t passed', () => {
+        expect(() => {
+          service.updateVariantReportStatus(report, null);
+        }).toThrow();
+
+        expect(() => {
+          service.updateVariantReportStatus(null, updatedStatus);
+        }).toThrow();
+
+        expect(() => {
+          service.updateVariantReportStatus(null, null);
+        }).toThrow();
+      });
+
+      it('should update the variant report status', () => {
+        updatedStatus.status = 'some-very-fake-status';
+        service.updateVariantReportStatus(report, updatedStatus);
+        expect(report.variantReportStatus).toEqual('some-very-fake-status');
+      });
+
+      it('setting status to "CONFIRMED" should make the report not editable', () => {
+        updatedStatus.status = 'CONFIRMED';
+        service.updateVariantReportStatus(report, updatedStatus);
+        expect(report.isVariantReportEditable).toEqual(false);
+      });
+
+      it('setting status to "PENDING" should make the report editable', () => {
+        updatedStatus.status = 'PENDING';
+        service.updateVariantReportStatus(report, updatedStatus);
+        expect(report.isVariantReportEditable).toEqual(true);
       });
     });
 

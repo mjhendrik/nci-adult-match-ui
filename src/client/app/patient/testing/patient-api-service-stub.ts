@@ -1,5 +1,7 @@
 import { Observable } from 'rxjs/Observable';
 import { VariantReportComparisonData } from '../variant-report-comparison-data';
+import { VariantReportData } from '../variant-report-data';
+import { ApiStatusUpdateSuccess } from '../patient-api.service';
 
 export class PatientApiServiceStub {
     static makeParsedVcftData = () => {
@@ -187,8 +189,10 @@ export class PatientApiServiceStub {
 
     static makeVariantReportData = () => {
         return {
-            psn: '11276',
-            analysisId: 'ABCD',
+            patientSequenceNumber: 'fake-patientSequenceNumber',
+            biopsySequenceNumber: 'fake-biopsySequenceNumber',
+            molecularSequenceNumber: 'fake-molecularSequenceNumber',
+            analysisId: 'fake-analysisId',
             patient: {},
             analysis: {},
             variantReport: { moiSummary: {} },
@@ -196,14 +200,24 @@ export class PatientApiServiceStub {
             assignmentHistory: {},
             parsed_vcf_genes: PatientApiServiceStub.makeParsedVcftData(),
             tvc_version: 'tvc_version',
-            pool1: 'pool1',
-            pool2: 'pool2',
+            pool1: 1,
+            pool2: 2,
             mapd: 'mapd',
             cellularity: 'cellularity',
             showPools: false,
             assays: [],
             isEditable: false
-        } as any;
+        } as VariantReportData;
+    }
+
+    static makeApiStatusUpdateSuccess = () => {
+        return {
+            kind: 'success',
+            status: 'fake-status',
+            comments: 'fake-comments',
+            commenter: 'fake-commenter',
+            dateTime: 'fake-dateTime',
+        } as ApiStatusUpdateSuccess;
     }
 
     static makeOutsideAssayVariantReportData = () => {
