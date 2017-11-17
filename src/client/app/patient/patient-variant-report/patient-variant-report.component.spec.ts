@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { BsModalService } from 'ngx-bootstrap';
+import { Observable } from 'rxjs/Observable';
 
 import { DirectivesModule } from './../../shared/directives/directives.module';
 import { PipesModule } from './../../shared/pipes/pipes.module';
@@ -29,6 +30,8 @@ import { UtilsModule } from '../../shared/utils/utils.module';
 import { BsModalServiceStub } from '../testing/bs-modal.service-stub';
 import { ToastrService } from '../../shared/error-handling/toastr.service';
 import { ToastrServiceStub } from '../testing/toastr-service-stub';
+import { ConfirmableItem } from '../../shared/check-box-with-confirm/check-box-with-confirm.component';
+
 
 export function main() {
 
@@ -58,7 +61,7 @@ export function main() {
         declarations: [PatientVariantReportComponent],
         providers: [
           { provide: ActivatedRoute, useValue: activatedRouteStub },
-          { provide: PatientApiService, useClass: PatientApiServiceMock },
+          { provide: PatientApiService, useClass: MockPatientApiService },
           { provide: BsModalService, useClass: BsModalServiceStub },
           { provide: ToastrService, useClass: ToastrServiceStub },
           ChangeDetectorRef,
@@ -82,6 +85,40 @@ export function main() {
             fixture.componentInstance.ngOnInit();
             expect(fixture.componentInstance.allowVariantReportEdit).toBe(true);
             expect(fixture.componentInstance.allowAssignmentReportEdit).toBe(true);
+          });
+      }));
+
+    it('should work for confirmVariantReport / rejectVariantReport  ',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(PatientVariantReportComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(PatientVariantReportComponent);
+
+            fixture.componentInstance.confirmVariantReport();
+
+            fixture.componentInstance.rejectVariantReport();
+
+          });
+      }));
+
+    it('should work for confirmAssignmentReport  ',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            let fixture = TestBed.overrideComponent(PatientVariantReportComponent, {
+              set: {
+                templateUrl: ''
+              }
+            }).createComponent(PatientVariantReportComponent);
+
+            fixture.componentInstance.confirmAssignmentReport();
+
           });
       }));
 
@@ -154,4 +191,15 @@ export function main() {
       expect(spy).toHaveBeenCalled();
     });
   });
+}
+
+class MockPatientApiService {
+  updateVariantReport():Observable<any> {
+    let testdata:any = [{"showConfirmation":{}}];
+    return testdata;
+  }
+  ngAfterViewInit():Observable<any> {
+    let testdata:any = [{"nativeElement":{}}];
+    return testdata;
+  }
 }
