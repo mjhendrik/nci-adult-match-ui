@@ -2923,6 +2923,30 @@ export class PatientApiServiceStub {
             }
         } as any;
     }
+
+    static makePendingAssignmentReports = () => [
+        {
+            'patientSequenceNumber': '1001re',
+            'biopsySequenceNumber': 'BSN-1001re',
+            'molecularSequenceNumber': 'MSN-1001re',
+            'location': 'Boston',
+            'specimenReceivedDate': { '$date': 1488461755963 },
+            'dateVariantReportReceived': { '$date': 1488461756559 },
+            'analysisId': 'JOB-1001re',
+            'daysPending': 216
+        },
+        {
+
+            'patientSequenceNumber': 'UIConfirmVariantReport',
+            'biopsySequenceNumber': 'BSN-UIConfirmVariantReport',
+            'molecularSequenceNumber': 'MSN-UIConfirmVariantReport',
+            'location': 'Boston',
+            'specimenReceivedDate': { '$date': 1488461755963 },
+            'dateVariantReportReceived': { '$date': 1488461756559 },
+            'analysisId': 'JOB-UIConfirmVariantReport',
+            'daysPending': 216
+        }
+    ] as any[];
 }
 
 export class PatientApiServiceMock {
