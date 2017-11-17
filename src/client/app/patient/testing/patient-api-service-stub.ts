@@ -2946,7 +2946,31 @@ export class PatientApiServiceStub {
             'analysisId': 'JOB-UIConfirmVariantReport',
             'daysPending': 216
         }
-    ] as any[];
+    ] as any[]
+
+    static makePendingVariantReports = () => [
+        {
+            'patientSequenceNumber': '1001re',
+            'biopsySequenceNumber': 'BSN-1001re',
+            'molecularSequenceNumber': 'MSN-1001re',
+            'location': 'Boston',
+            'specimenReceivedDate': { '$date': 1488461755963 },
+            'dateVariantReportReceived': { '$date': 1488461756559 },
+            'analysisId': 'JOB-1001re',
+            'daysPending': 216
+        },
+        {
+
+            'patientSequenceNumber': 'UIConfirmVariantReport',
+            'biopsySequenceNumber': 'BSN-UIConfirmVariantReport',
+            'molecularSequenceNumber': 'MSN-UIConfirmVariantReport',
+            'location': 'Boston',
+            'specimenReceivedDate': { '$date': 1488461755963 },
+            'dateVariantReportReceived': { '$date': 1488461756559 },
+            'analysisId': 'JOB-UIConfirmVariantReport',
+            'daysPending': 216
+        }
+    ]
 }
 
 export class PatientApiServiceMock {
@@ -3084,316 +3108,11 @@ export class PatientApiServiceMock {
     }
 
     getPendingAssignmentReports(): Observable<any> {
-        let testData = [
-            {
-                'patientSequenceNumber': '1031',
-                'dateAssigned': {
-                    '$date': 1488461903558
-                },
-                'biopsySequenceNumber': 'bsn-1031',
-                'treatmentArmId': 'rejoinTest6',
-                'treatmentArmVersion': '2016-02-01',
-                'hoursPending': 5184,
-                'molecularSequenceNumber': 'msn-1031',
-                'analysisId': 'job-1031'
-            },
-            {
-                'patientSequenceNumber': '105re',
-                'dateAssigned': {
-                    '$date': 1488462008463
-                },
-                'biopsySequenceNumber': 'bsn-105re',
-                'hoursPending': 5184,
-                'molecularSequenceNumber': 'MSN-105re',
-                'analysisId': 'JOB-105re'
-            },
-            {
-                'patientSequenceNumber': '106re',
-                'dateAssigned': {
-                    '$date': 1488462027293
-                },
-                'biopsySequenceNumber': 'BSN-106re',
-                'hoursPending': 5184,
-                'molecularSequenceNumber': 'MSN-106re',
-                'analysisId': 'JOB-106re'
-            },
-            {
-                'patientSequenceNumber': '111re',
-                'dateAssigned': {
-                    '$date': 1488462377826
-                },
-                'biopsySequenceNumber': 'bsn-111re',
-                'hoursPending': 5184,
-                'molecularSequenceNumber': 'msn-111re',
-                'analysisId': 'job-111re'
-            },
-            {
-                'patientSequenceNumber': '1055',
-                'dateAssigned': {
-                    '$date': 1489181874843
-                },
-                'biopsySequenceNumber': 'BSN-1055',
-                'treatmentArmId': 'CukeTest-1055',
-                'treatmentArmVersion': '2015-08-06',
-                'hoursPending': 4984,
-                'molecularSequenceNumber': 'MSN-1055',
-                'analysisId': 'JOB-1055'
-            },
-            {
-                'patientSequenceNumber': '1056',
-                'dateAssigned': {
-                    '$date': 1489181898876
-                },
-                'biopsySequenceNumber': 'BSN-1056',
-                'treatmentArmId': 'CukeTest-1056',
-                'treatmentArmVersion': '2015-08-06',
-                'hoursPending': 4984,
-                'molecularSequenceNumber': 'MSN-1056',
-                'analysisId': 'JOB-1056'
-            },
-            {
-                'patientSequenceNumber': '1057',
-                'dateAssigned': {
-                    '$date': 1489181921727
-                },
-                'biopsySequenceNumber': 'BSN-1057',
-                'treatmentArmId': 'CukeTest-1057',
-                'treatmentArmVersion': '2015-08-06',
-                'hoursPending': 4984,
-                'molecularSequenceNumber': 'MSN-1057',
-                'analysisId': 'JOB-1057'
-            },
-            {
-                'patientSequenceNumber': '1058',
-                'dateAssigned': {
-                    '$date': 1489181950923
-                },
-                'biopsySequenceNumber': 'BSN-1058',
-                'treatmentArmId': 'CukeTest-1057',
-                'treatmentArmVersion': '2015-08-06',
-                'hoursPending': 4984,
-                'molecularSequenceNumber': 'MSN-1058',
-                'analysisId': 'JOB-1058'
-            },
-            {
-                'patientSequenceNumber': '1059',
-                'dateAssigned': {
-                    '$date': 1489181981085
-                },
-                'biopsySequenceNumber': 'BSN-1059',
-                'treatmentArmId': 'CukeTest-1057',
-                'treatmentArmVersion': '2015-08-06',
-                'hoursPending': 4984,
-                'molecularSequenceNumber': 'MSN-1059',
-                'analysisId': 'JOB-1059'
-            },
-            {
-                'patientSequenceNumber': '1060',
-                'dateAssigned': {
-                    '$date': 1489182013585
-                },
-                'biopsySequenceNumber': 'BSN-1060',
-                'treatmentArmId': 'CukeTest-1057',
-                'treatmentArmVersion': '2015-08-06',
-                'hoursPending': 4984,
-                'molecularSequenceNumber': 'MSN-1060',
-                'analysisId': 'JOB-1060'
-            },
-            {
-                'patientSequenceNumber': '1061',
-                'dateAssigned': {
-                    '$date': 1489182034862
-                },
-                'biopsySequenceNumber': 'BSN-1061',
-                'treatmentArmId': 'CukeTest-1057',
-                'treatmentArmVersion': '2015-08-06',
-                'hoursPending': 4984,
-                'molecularSequenceNumber': 'MSN-1061',
-                'analysisId': 'JOB-1061'
-            },
-            {
-                'patientSequenceNumber': '1062',
-                'dateAssigned': {
-                    '$date': 1489182057322
-                },
-                'biopsySequenceNumber': 'BSN-1062',
-                'treatmentArmId': 'CukeTest-1057',
-                'treatmentArmVersion': '2015-08-06',
-                'hoursPending': 4984,
-                'molecularSequenceNumber': 'MSN-1062',
-                'analysisId': 'JOB-1062'
-            },
-            {
-                'patientSequenceNumber': '1063',
-                'dateAssigned': {
-                    '$date': 1489182084100
-                },
-                'biopsySequenceNumber': 'BSN-1063',
-                'treatmentArmId': 'CukeTest-1078',
-                'treatmentArmVersion': '2015-08-06',
-                'hoursPending': 4984,
-                'molecularSequenceNumber': 'MSN-1063',
-                'analysisId': 'JOB-1063'
-            },
-            {
-                'patientSequenceNumber': '1064',
-                'dateAssigned': {
-                    '$date': 1489187046378
-                },
-                'biopsySequenceNumber': 'BSN-1064',
-                'treatmentArmId': 'CukeTest-1064',
-                'treatmentArmVersion': '2015-08-06',
-                'hoursPending': 4983,
-                'molecularSequenceNumber': 'MSN-1064',
-                'analysisId': 'JOB-1064'
-            },
-            {
-                'patientSequenceNumber': '1065',
-                'dateAssigned': {
-                    '$date': 1489187075335
-                },
-                'biopsySequenceNumber': 'BSN-1065',
-                'treatmentArmId': 'CukeTest-1065',
-                'treatmentArmVersion': '2015-08-06',
-                'hoursPending': 4983,
-                'molecularSequenceNumber': 'MSN-1065',
-                'analysisId': 'JOB-1065'
-            },
-            {
-                'patientSequenceNumber': '1066',
-                'dateAssigned': {
-                    '$date': 1489187103365
-                },
-                'biopsySequenceNumber': 'BSN-1066',
-                'treatmentArmId': 'CukeTest-1066',
-                'treatmentArmVersion': '2015-08-06',
-                'hoursPending': 4983,
-                'molecularSequenceNumber': 'MSN-1066',
-                'analysisId': 'JOB-1066'
-            },
-            {
-                'patientSequenceNumber': '1067',
-                'dateAssigned': {
-                    '$date': 1489187127209
-                },
-                'biopsySequenceNumber': 'BSN-1067',
-                'treatmentArmId': 'CukeTest-1066',
-                'treatmentArmVersion': '2015-08-06',
-                'hoursPending': 4983,
-                'molecularSequenceNumber': 'MSN-1067',
-                'analysisId': 'JOB-1067'
-            },
-            {
-                'patientSequenceNumber': '1068',
-                'dateAssigned': {
-                    '$date': 1489187152061
-                },
-                'biopsySequenceNumber': 'BSN-1068',
-                'treatmentArmId': 'CukeTest-1066',
-                'treatmentArmVersion': '2015-08-06',
-                'hoursPending': 4983,
-                'molecularSequenceNumber': 'MSN-1068',
-                'analysisId': 'JOB-1068'
-            },
-            {
-                'patientSequenceNumber': '1069',
-                'dateAssigned': {
-                    '$date': 1489187182158
-                },
-                'biopsySequenceNumber': 'BSN-1069',
-                'treatmentArmId': 'CukeTest-1066',
-                'treatmentArmVersion': '2015-08-06',
-                'hoursPending': 4983,
-                'molecularSequenceNumber': 'MSN-1069',
-                'analysisId': 'JOB-1069'
-            },
-            {
-                'patientSequenceNumber': '1070',
-                'dateAssigned': {
-                    '$date': 1489187213388
-                },
-                'biopsySequenceNumber': 'BSN-1070',
-                'treatmentArmId': 'CukeTest-1066',
-                'treatmentArmVersion': '2015-08-06',
-                'hoursPending': 4983,
-                'molecularSequenceNumber': 'MSN-1070',
-                'analysisId': 'JOB-1070'
-            },
-            {
-                'patientSequenceNumber': '1071',
-                'dateAssigned': {
-                    '$date': 1489187249202
-                },
-                'biopsySequenceNumber': 'BSN-1071',
-                'treatmentArmId': 'CukeTest-1066',
-                'treatmentArmVersion': '2015-08-06',
-                'hoursPending': 4983,
-                'molecularSequenceNumber': 'MSN-1071',
-                'analysisId': 'JOB-1071'
-            },
-            {
-                'patientSequenceNumber': '1072',
-                'dateAssigned': {
-                    '$date': 1489187272808
-                },
-                'biopsySequenceNumber': 'BSN-1072',
-                'hoursPending': 4983,
-                'molecularSequenceNumber': 'MSN-1072',
-                'analysisId': 'JOB-1072'
-            },
-            {
-                'patientSequenceNumber': '1078',
-                'dateAssigned': {
-                    '$date': 1489195129523
-                },
-                'biopsySequenceNumber': 'BSN-1078',
-                'treatmentArmId': 'CukeTest-1078',
-                'treatmentArmVersion': '2015-08-06',
-                'hoursPending': 4980,
-                'molecularSequenceNumber': 'MSN-1078',
-                'analysisId': 'JOB-1078'
-            },
-            {
-                'patientSequenceNumber': '160re',
-                'dateAssigned': {
-                    '$date': 1489416149287
-                },
-                'biopsySequenceNumber': 'bsn-160re',
-                'treatmentArmId': 'EAY131-F',
-                'treatmentArmVersion': '2015-08-06',
-                'hoursPending': 4919,
-                'molecularSequenceNumber': 'msn-160re',
-                'analysisId': 'job-160'
-            }
-        ];
-        return Observable.of(testData);
+        return Observable.of(PatientApiServiceStub.makePendingAssignmentReports());
     }
 
     getPendingVariantReports(): Observable<any> {
-        let testData = [
-            {
-                'patientSequenceNumber': '1001re',
-                'biopsySequenceNumber': 'BSN-1001re',
-                'molecularSequenceNumber': 'MSN-1001re',
-                'location': 'Boston',
-                'specimenReceivedDate': { '$date': 1488461755963 },
-                'dateVariantReportReceived': { '$date': 1488461756559 },
-                'analysisId': 'JOB-1001re',
-                'daysPending': 216
-            },
-            {
-
-                'patientSequenceNumber': 'UIConfirmVariantReport',
-                'biopsySequenceNumber': 'BSN-UIConfirmVariantReport',
-                'molecularSequenceNumber': 'MSN-UIConfirmVariantReport',
-                'location': 'Boston',
-                'specimenReceivedDate': { '$date': 1488461755963 },
-                'dateVariantReportReceived': { '$date': 1488461756559 },
-                'analysisId': 'JOB-UIConfirmVariantReport',
-                'daysPending': 216
-            }
-        ];
-        return Observable.of(testData);
+        return Observable.of(PatientApiServiceStub.makePendingVariantReports());
     }
 
     getPatientsAwaiting(): Observable<any> {
