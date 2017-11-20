@@ -165,7 +165,7 @@ export class PatientApiService extends ApiService {
       'status': confirmed ? 'CONFIRMED' : 'REJECTED'
     };
 
-    return this.http.patch(`${Config.API.MESSAGE}/ecog/patient/${psn}/assignment`, patch)
+    return this.http.patch(`${Config.API.MESSAGE}/message/ecog/patient/${psn}/assignment`, patch)
       .map((res: Response) => {
         const data = res.json();
         return { kind: 'success', commenter: data.commenter, status: data.status, dateTime: data.dateTime } as ApiStatusUpdateSuccess;
