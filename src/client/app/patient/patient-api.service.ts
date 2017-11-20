@@ -131,7 +131,13 @@ export class PatientApiService extends ApiService {
         return { kind: 'success', commenter: data.commenter, status: data.status, dateTime: data.dateTime } as ApiStatusUpdateSuccess;
       })
       .catch((err: any) => {
-        const message = (typeof err === 'string') ? err : err.toString();
+        let message: string;
+        if (err instanceof Response) {
+          const errResp = err.json();
+          message = errResp.message;
+        } else {
+          message = (typeof err === 'string') ? err : err.toString();
+        }
         return Observable.of({ kind: 'error', message: message } as ApiStatusUpdateError);
       });
   }
@@ -155,7 +161,13 @@ export class PatientApiService extends ApiService {
         return { kind: 'success', commenter: data.commenter, status: data.status, dateTime: data.dateTime, comments: data.comment } as ApiStatusUpdateSuccess;
       })
       .catch((err: any) => {
-        const message = (typeof err === 'string') ? err : err.toString();
+        let message: string;
+        if (err instanceof Response) {
+          const errResp = err.json();
+          message = errResp.message;
+        } else {
+          message = (typeof err === 'string') ? err : err.toString();
+        }
         return Observable.of({ kind: 'error', message: message } as ApiStatusUpdateError);
       });
   }
@@ -171,7 +183,13 @@ export class PatientApiService extends ApiService {
         return { kind: 'success', commenter: data.commenter, status: data.status, dateTime: data.dateTime } as ApiStatusUpdateSuccess;
       })
       .catch((err: any) => {
-        const message = (typeof err === 'string') ? err : err.toString();
+        let message: string;
+        if (err instanceof Response) {
+          const errResp = err.json();
+          message = errResp.message;
+        } else {
+          message = (typeof err === 'string') ? err : err.toString();
+        }
         return Observable.of({ kind: 'error', message: message } as ApiStatusUpdateError);
       });
   }

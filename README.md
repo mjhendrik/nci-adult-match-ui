@@ -74,40 +74,6 @@ To rebuild the latest UI docker image:
 docker-compose build
 ```
 
-## Restoring Data to MongoDB for Local Development
-
-*NOTE: the `docker-compose` system needs to be up*
-
-```
-docker exec -it nciadultmatchui_mongo_1 bash
-mongo Match --eval "db.dropDatabase()"
-mongorestore --db Match ./backup
-```
-
-After you've restored the backup you may check the restored data (while still attached to the mongo container)
-
-```
-mongo shell
-show dbs
-use Match
-show collections
-db.patient.count()
-```
-
-Exit from MongoDB shell by pressing `Ctrl+C` or typing `exit`.
-
-## Backing up MongoDB data
-
-```
-docker exec -it nciadultmatchui_mongo_1 bash
-mongodump --db Match -o /backup
-exit
-```
-
-Exit from MongoDB shell by pressing `Ctrl+C`
-
-Please note each time you run `docker-compose down` the data volumes for the docker containers are removed and you'll have to import the backups again.
-
 ## For front-end developers
 
 *NOTE: that this project requires node v6.5.x or higher and npm 3.10.3*
