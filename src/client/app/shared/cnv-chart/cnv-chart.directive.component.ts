@@ -237,13 +237,13 @@ export class CnvChartDirective implements AfterViewInit {
     let yDomain:any = function () {
       return [0, (tip)];
     };
-    let xRange:any = function () {
-      if(endX === '-') {
-        let seq:number = (temp.length < 10) ? (temp.length * 25) : frm;
-        return [10, seq];
-      }
-      return null;
-    };
+    // let xRange:any = function () {
+    //   if(endX === '-') {
+    //     let seq:number = (temp.length < 10) ? (temp.length * 25) : frm;
+    //     return [10, seq];
+    //   }
+    //   return null;
+    // };
     let maxBoxWidth:any = function () {
         return 0.5;
       };
@@ -266,7 +266,7 @@ export class CnvChartDirective implements AfterViewInit {
         showXAxis: showXAxis(),
         xAxis: xAxis(),
         yDomain: yDomain(),
-        xRange: xRange(),
+        // xRange: xRange(),
         maxBoxWidth: maxBoxWidth(),
         legend: {
           margin: {
@@ -290,6 +290,10 @@ export class CnvChartDirective implements AfterViewInit {
                 "</strong></span>";
             } else {
               rows =
+                "<tr>" +
+                "<td class='key'>" + 'CHR: ' + "</td>" +
+                "<td class='x-value'><strong>" + d.data.chr + "</strong></td>" +
+                "</tr>" +
                 "<tr>" +
                 "<td class='key'>" + 'Position: ' + "</td>" +
                 "<td class='x-value'><strong>" + d.data.values.position + "</strong></td>" +
@@ -339,6 +343,8 @@ export class CnvChartDirective implements AfterViewInit {
           let frame:any;
           let marker:any = [];
           let name:any = 'test';
+          let indx:number;
+          let prechrnum:number;
 
           svg = d3.select('#boxplotchart')
             .select('.nv-boxPlotWithAxes')
@@ -374,43 +380,73 @@ export class CnvChartDirective implements AfterViewInit {
 
 
             if (temp !== chr && typeof temp !== 'undefined') {
-              spot = (chart.xScale()(gene)).toFixed(2) - 1;
-              chr = temp;
+              // spot = (chart.xScale()(gene)).toFixed(2) - 1;
+              // chr = temp;
+              // indx = (parseInt(prespot + spot) / 2) - 1;
 
               if (x > 0) {
 
-                svg.append('line')
-                  .attr('x1', spot)
-                  .attr('x2', spot)
-                  .attr('y1', height)
-                  .style('fill', 'none')
-                  .style('stroke', 'gray')
-                  .style('stroke-width', 0.5)
-                  .style('stroke-linecap', 'round');
+                spot = (chart.xScale()(gene)).toFixed(2) - 1;
+                chr = temp;
+                indx = (parseInt(prespot + spot) / 2) - 1;
 
-                svg.append('text')
-                  .attr('class', 'nv-zeroLine')
-                  .attr('x', parseFloat(spot) + 1)
-                  .attr('y', 365)
-                  .text(chrnum)
-                  .style('fill', '#c70505')
-                  .style('font-weight', 'bold')
-                  .style('font-size', '12px');
+                if(prechrnum !== chrnum) {
+                  svg.append('line')
+                    .attr('x1', spot)
+                    .attr('x2', spot)
+                    .attr('y1', height)
+                    .style('fill', 'none')
+                    .style('stroke', 'gray')
+                    .style('stroke-width', 0.5)
+                    .style('stroke-linecap', 'round');
+                  svg.append('text')
+                    .attr('class', 'nv-zeroLine')
+                    .attr('x', indx)
+                    .attr('y', 365)
+                    .text(prechrnum)
+                    .style('fill', '#c70505')
+                    .style('font-weight', 'bold')
+                    .style('font-size', '12px');
 
-                prespot = spot;
+                  prespot = spot;
+                }
 
               } else {
-                svg.append('text')
-                  .attr('class', 'nv-zeroLine')
-                  .attr('x', 5)
-                  .attr('y', 365)
-                  .text(chrnum)
-                  .style('fill', '#c70505')
-                  .style('font-weight', 'bold')
-                  .style('font-size', '12px');
 
-                prespot = spot;
+                spot = (chart.xScale()(gene)).toFixed(2) - 1;
+                chr = temp;
+                indx = (parseInt(prespot + spot) / 2) - 1;
+
+                if (prechrnum !== chrnum) {
+                  // svg.append('line')
+                  //   .attr('x1', spot)
+                  //   .attr('x2', spot)
+                  //   .attr('y1', height)
+                  //   .style('fill', 'none')
+                  //   .style('stroke', 'green')
+                  //   .style('stroke-width', 0.5)
+                  //   .style('stroke-linecap', 'round');
+
+
+                  // svg.append('text')
+                  //   .attr('class', 'nv-zeroLine')
+                  //   .attr('x', indx)
+                  //   .attr('y', 365)
+                  //   .text(chrnum)
+                  //   .style('fill', '#c70505')
+                  //   .style('font-weight', 'bold')
+                  //   .style('font-size', '12px');
+
+                  prespot = spot;
+                }
               }
+
+
+
+              prechrnum = chrnum;
+
+
+
             }
           });
 
