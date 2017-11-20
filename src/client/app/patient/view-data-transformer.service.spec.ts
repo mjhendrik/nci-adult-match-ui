@@ -303,7 +303,7 @@ export function main() {
       it('should update the variant report status', () => {
         updatedStatus.status = 'some-very-fake-status';
         service.updateAssignmentReportStatus(report, updatedStatus);
-        expect(report.patientAssignmentStatus).toEqual('some-very-fake-status');
+        expect(report.derivedStatus).toEqual('some-very-fake-status');
       });
 
       it('setting status to "CONFIRMED" should make the report not editable', () => {

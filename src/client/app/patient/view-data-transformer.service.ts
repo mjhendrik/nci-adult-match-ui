@@ -141,7 +141,7 @@ export class ViewDataTransformer {
   }
 
   updateAssignmentReportStatus(report: VariantReportData, updatedStatus: ApiStatusUpdateSuccess): void {
-    report.patientAssignmentStatus = updatedStatus.status;
+    report.derivedStatus = updatedStatus.dateTime ? 'CONFIRMED' : 'PENDING';
     report.comments = updatedStatus.comments;
     report.statusUser = updatedStatus.commenter;
     report.isAssignmentReportEditable = this.getAssignmentReportEditable(report);
@@ -202,14 +202,14 @@ export class ViewDataTransformer {
     if (!assignmentReport && !assignmentReport.assignmentReportStatus) {
       return false;
     }
-    return assignmentReport.patientAssignmentStatus === 'PENDING_CONFIRMATION';
+    return assignmentReport.derivedStatus === 'PENDING';
   }
 
   getVariantReportEditable(variantReport: VariantReportData): boolean {
-    if (!variantReport && !variantReport.variantReportStatus) {
+    if (!variantReport && !variantReport.derivedStatus) {
       return false;
     }
-    return variantReport.variantReportStatus === 'PENDING';
+    return variantReport.derivedStatus === 'PENDING';
   }
 
   transformPatientVariantReport(transformedPatient: any,
@@ -561,11 +561,13 @@ export class ViewDataTransformer {
         .filter((x: any) => x && x.variantReportStatus === 'CONFIRMED');
 
       if (confirmedVariantReports && confirmedVariantReports.length) {
-        let lastVariantReportAnalys = confirmedVariantReports[confirmedVariantReports.length - 1];
-        lastVariantReportAnalys.assignmentReport = assignment;
+        let lastVariantReportAnalysis = confirmedVariantReports[confirmedVariantReports.length - 1];
+        lastVariantReportAnalysis.assignmentReport = assignment;
 
         this.transformAssignmentLogic(assignment);
       }
+
+      assignment.derivedStatus = assignment.dateConfirmed ? 'CONFIRMED' : 'PENDING';
     }
   }
 

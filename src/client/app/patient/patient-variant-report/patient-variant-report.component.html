@@ -78,8 +78,8 @@
             <h4 class="f-w-700">Latest Assignment</h4>
             <dt>Status</dt>
             <dd>
-              <span [colorCodeAssignment]="assignmentReport.patientAssignmentStatus"> 
-              {{assignmentReport.patientAssignmentStatus | dashify}}</span>                   
+              <span [colorCodeAssignment]="assignmentReport.derivedStatus"> 
+              {{assignmentReport.derivedStatus | dashify}}</span>                   
               on {{assignmentReport.dateConfirmed | gmt}} by {{(assignmentReport.commenter || 'Steering Committee') | dashify}}
             </dd>
             <dt>Generation Date</dt>
@@ -210,7 +210,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let item of assignmentHistory">
-            <td [colorCodeAssignment]="item.status"><a [ngClass]="{true:'disabled'}[item.patientAssignmentMessages.length==0]" href [routerLink]="['/patients/' + patient.patientSequenceNumber + '/variant_reports/' + variantReport.analysisId + '/assignment/' + item.dateAssigned.$date]">{{item.patientAssignmentStatus | dashify}}</a></td>
+            <td [colorCodeAssignment]="item.status"><a [ngClass]="{true:'disabled'}[item.patientAssignmentMessages.length==0]" href [routerLink]="['/patients/' + patient.patientSequenceNumber + '/variant_reports/' + variantReport.analysisId + '/assignment/' + item.dateAssigned.$date]">{{item.derivedStatus | dashify}}</a></td>
             <td>{{item.dateAssigned | gmt}}</td>
             <td>{{item.dateConfirmed | gmt}}</td>
             <td>{{item.dateSentToECOG | gmt}}</td>

@@ -22,8 +22,8 @@
             <dd>{{assignmentReport.biopsySequenceNumber | dashify}}</dd>
             <dt>Analysis ID</dt>
             <dd>{{analysisId | dashify}}</dd>
-            <dt>Status</dt>
-            <dd><span [colorCodeAssignment]="assignmentReport.patientAssignmentStatus"> {{assignmentReport.patientAssignmentStatus | dashify}}</span> on {{assignmentReport.dateConfirmed | gmt}} by {{(assignmentReport.user||'System User') | dashify}}</dd>
+            <dt>getConfirmedOrRejectedLabel(assignmentReport)</dt>
+            <dd>getConfirmedOrRejectedValue(assignmentReport)</dd>
           </dl>
         </div>
       </div>
@@ -33,7 +33,7 @@
         <div class="panel-heading">
           <dl class="dl-horizontal widest-dt">
             <dt>Assignment Report Status</dt>
-            <dd>{{assignmentReport.patientAssignmentStatus | dashify}}</dd>
+            <dd><span [colorCodeAssignment]="assignmentReport.derivedStatus"> {{assignmentReport.derivedStatus | dashify}}</span></dd>
             <dt>Assignment Report Generation Date</dt>
             <dd>{{assignmentReport.dateAssigned | gmt }}</dd>
             <dt>Assignment Report Confirmed Date</dt>

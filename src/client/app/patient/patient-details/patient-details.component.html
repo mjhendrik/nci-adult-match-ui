@@ -283,7 +283,7 @@
                                       </dl>
                                       <dl *ngIf="analysis.assignmentReport" class="dl-horizontal">
                                         <dt>Status</dt>
-                                        <dd [colorCodeAssignment]="analysis.assignmentReport.patientAssignmentStatus">{{analysis.assignmentReport.patientAssignmentStatus}}</dd>
+                                        <dd [colorCodeAssignment]="analysis.assignmentReport.derivedStatus">{{analysis.assignmentReport.derivedStatus}}</dd>
                                         <dt>Generation Date</dt>
                                         <dd>{{analysis.assignmentReport.dateAssigned | gmt}}</dd>
                                         <dt>Confirmed Date</dt>
