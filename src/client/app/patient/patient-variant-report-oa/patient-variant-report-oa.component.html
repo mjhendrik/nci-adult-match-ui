@@ -19,7 +19,7 @@
               <div class="panel-heading" id="trVariantReport">
                 <div class="row">
                   <div class="col-md-8">
-                    <h4>Variant Report</h4>
+                    <h4 class="f-w-700">Variant Report</h4>
                   </div>
                   <div class="col-md-4 text-right">
                     <a href="javascript:;" class="btn btn-sm btn-link"><i class="fa fa-file-excel-o"></i> Excel</a>
@@ -40,7 +40,9 @@
                   <dt>Disease Concordance</dt>
                   <dd><span [colorCodeConcordance]="concordance">{{concordance | dashify}}</span></dd>
                   <dt>Status</dt>
-                  <dd><span [colorCodeVariantReport]="outsideData.variantReport.variantReportStatus">{{outsideData.variantReport.variantReportStatus | dashify}}</span>                    on {{outsideData.variantReport.variantReportCreatedDate | gmt}} by {{outsideData.variantReport.user |
+                  <dd><span [colorCodeVariantReport]="outsideData.variantReport.variantReportStatus">
+                    {{outsideData.variantReport.variantReportStatus | dashify}}</span>
+                    on {{outsideData.variantReport.variantReportCreatedDate | gmt}} by {{outsideData.variantReport.commenter || 'Unknown User'}}
                   </dd>
                   <dt>File Received Date</dt>
                   <dd>{{outsideData.variantReport.createdDate | gmt}}</dd>
@@ -64,17 +66,19 @@
           <div *ngIf="outsideData && outsideData.analysisId" class="col-md-6" id="trAssignmentReport" >
             <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
               <div class="panel-heading" *ngIf="!hasAssignment(outsideData)">
-                <h4>Latest Assignment</h4>
+                <h4 class="f-w-700">Latest Assignment</h4>
               </div>
               <div class="panel-heading" *ngIf="!hasAssignment(outsideData)">
                 <p class="text-muted">No Assignment data yet</p>
               </div>
               <div class="panel-heading" *ngIf="hasAssignment(outsideData)">
-                <h4>Latest Assignment</h4>
+                <h4 class="f-w-700">Latest Assignment</h4>
                 <dl class="dl-horizontal widest-dt">
                   <dt>Status</dt>
-                  <dd><span [colorCodeAssignment]="outsideData.assignmentReport.patientAssignmentStatus"> {{outsideData.assignmentReport.patientAssignmentStatus | dashify}}</span>                    on {{outsideData.assignmentReport.dateConfirmed | gmt}} by {{(outsideData.assignmentReport.user||'System
-                    User') | dashify}}</dd>
+                  <dd><span [colorCodeAssignment]="outsideData.assignmentReport.patientAssignmentStatus"> 
+                    {{outsideData.assignmentReport.patientAssignmentStatus | dashify}}</span>                   
+                    on {{outsideData.assignmentReport.dateConfirmed | gmt}} by {{(outsideData.assignmentReport.commenter || 'Steering Committee') | dashify}}
+                  </dd>
                   <dt>Generation Date</dt>
                   <dd>{{outsideData.assignmentReport.dateAssigned | gmt}}</dd>
                   <dt>Assignment Sent to ECOG Date</dt>
@@ -110,7 +114,7 @@
             <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-middle">
               <div class="panel-heading" id="trMoiSummary">
                 <dl class="dl-horizontal">
-                  <h4>MOI/aMOI Summary</h4>
+                  <h4 class="f-w-700">MOI/aMOI Summary</h4>
                   <dt>Total aMOIs</dt>
                   <dd>{{outsideData.moiSummary.totalaMOIs | dashify}}</dd>
                   <dt>Total MOIs</dt>
@@ -127,7 +131,7 @@
           <div class="col-md-6">
             <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-middle">
               <div class="panel-heading" id="trAssay">
-                <h4>Assays</h4>
+                <h4 class="f-w-700">Assays</h4>
                 <table class="table table-condensed white-header">
                   <thead>
                     <tr>
@@ -197,7 +201,7 @@
               <div class="panel-heading" id="crVariantReport">
                 <div class="row">
                   <div class="col-md-8">
-                    <h4>Variant Report</h4>
+                    <h4 class="f-w-700">Variant Report</h4>
                   </div>
                   <div class="col-md-4 text-right">
                     <a href="javascript:;" class="btn btn-sm btn-link"><i class="fa fa-file-excel-o"></i> Excel</a>
@@ -218,9 +222,10 @@
                   <dt>Disease Concordance</dt>
                   <dd><span [colorCodeConcordance]="concordance">{{concordance | dashify}}</span></dd>
                   <dt>Status</dt>
-                  <dd><span [colorCodeVariantReport]="matchData.variantReport.variantReportStatus">{{matchData.variantReport.variantReportStatus | dashify}}</span>                    on {{matchData.variantReport.variantReportCreatedDate | gmt}} by {{matchData.variantReport.user |
-                    dashify}}
-                  </dd>
+                  <dd><span [colorCodeVariantReport]="matchData.variantReport.variantReportStatus">
+                    {{matchData.variantReport.variantReportStatus | dashify}}</span>
+                    on {{matchData.variantReport.variantReportCreatedDate | gmt}} by {{matchData.variantReport.commenter || 'Unknown User'}}
+                  </dd>  
                   <dt>MAPD</dt>
                   <dd>{{matchData.mapd | dashify}}</dd>
                   <dt>Cellularity</dt>
@@ -254,17 +259,19 @@
           <div *ngIf="matchData && matchData.analysisId" class="col-md-6" id="crAssignmentReport">
             <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
               <div class="panel-heading" *ngIf="!hasAssignment(matchData)" >
-                <h4>Latest Assignment</h4>
+                <h4 class="f-w-700">Latest Assignment</h4>
               </div>
               <div class="panel-heading" *ngIf="!hasAssignment(matchData)">
                 <p class="text-muted">No Assignment data yet</p>
               </div>
               <div class="panel-heading" *ngIf="hasAssignment(matchData)" >
-                <h4>Latest Assignment</h4>
+                <h4 class="f-w-700">Latest Assignment</h4>
                 <dl class="dl-horizontal widest-dt">
                   <dt>Status</dt>
-                  <dd><span [colorCodeAssignment]="matchData.assignmentReport.patientAssignmentStatus"> {{matchData.assignmentReport.patientAssignmentStatus | dashify}}</span>                    on {{matchData.assignmentReport.dateConfirmed | gmt}} by {{(matchData.assignmentReport.user||'System
-                    User') | dashify}}</dd>
+                  <dd><span [colorCodeAssignment]="matchData.assignmentReport.patientAssignmentStatus"> 
+                    {{matchData.assignmentReport.patientAssignmentStatus | dashify}}</span>                   
+                    on {{matchData.assignmentReport.dateConfirmed | gmt}} by {{(matchData.assignmentReport.commenter || 'Steering Committee') | dashify}}
+                  </dd>
                   <dt>Generation Date</dt>
                   <dd>{{matchData.assignmentReport.dateAssigned | gmt}}</dd>
                   <dt>Assignment Sent to ECOG Date</dt>
@@ -298,7 +305,7 @@
             <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-middle">
               <div class="panel-heading" id="crMoiSummary">
                 <dl class="dl-horizontal">
-                  <h4>MOI/aMOI Summary</h4>
+                  <h4 class="f-w-700">MOI/aMOI Summary</h4>
                   <dt>Total aMOIs</dt>
                   <dd>{{matchData.moiSummary.totalaMOIs | dashify}}</dd>
                   <dt>Total MOIs</dt>
@@ -315,7 +322,7 @@
           <div class="col-md-6">
             <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-middle">
               <div class="panel-heading" id="crAssay">
-                <h4>Assays</h4>
+                <h4 class="f-w-700">Assays</h4>
                 <table class="table table-condensed white-header">
                   <thead>
                     <tr>
@@ -385,7 +392,7 @@
               <div class="panel-heading">
                 <div class="row">
                   <div class="col-md-8">
-                    <h4>Variant Report</h4>
+                    <h4 class="f-w-700">Variant Report</h4>
                   </div>
                   <div class="col-md-4 text-right">
                     <a class="btn btn-sm btn-link" role="button" href [routerLink]="['/patients/' + patientSequenceNumber + '/variant_reports/' + matchData.analysisId +'/qc']"><i class="fa fa-file-text-o"></i> QC Report</a>
@@ -430,13 +437,13 @@
           <div class="col-md-6">
             <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
               <div class="panel-heading" *ngIf="!hasAssignment(matchData) && !hasAssignment(outsideData)">
-                <h4>Latest Assignment</h4>
+                <h4 class="f-w-700">Latest Assignment</h4>
               </div>
               <div class="panel-heading" *ngIf="!hasAssignment(matchData) && !hasAssignment(outsideData)">
                 <p class="text-muted">No Assignment data yet</p>
               </div>
               <div class="panel-heading" *ngIf="hasAssignment(matchData) && hasAssignment(outsideData)">
-                <h4>Assignment</h4>
+                <h4 class="f-w-700">Assignment</h4>
                 <div class="row">
                   <div class="col-md-6">
                     <div *ngIf="outsideData.assignmentReport.hasSelectedTreatmentArm">
@@ -485,7 +492,7 @@
         <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-middle">
           <div class="panel-heading">
             <dl class="dl-horizontal">
-              <h4>Comparison Summary: <span class="badge outside-data-text">Treatment Report Data</span> vs <span class="badge match-data-text">Confirmation Report Data</span></h4>
+              <h4 class="f-w-700">Comparison Summary: <span class="badge outside-data-text">Treatment Report Data</span> vs <span class="badge match-data-text">Confirmation Report Data</span></h4>
               <dt>Total Variants</dt>
               <dd><span class="badge badge-info">{{comparisonVariantReport.summary.totalVariants}}</span></dd>
               <dt>Passed Variants</dt>

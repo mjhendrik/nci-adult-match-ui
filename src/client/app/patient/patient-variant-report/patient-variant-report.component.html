@@ -5,14 +5,16 @@
     <li><a href [routerLink]="['/patients', patient.patientSequenceNumber]" class="link-none">Patient {{patient.patientSequenceNumber}}</a></li>
     <li class="active">Variant Report <span class="entity-name">{{analysisId}}</span></li>
   </ul>
+
   <h1 class="page-header">Variant and Assignment Report <span class="entity-name">{{analysisId}}</span></h1>
+
   <div class="row" matchHeight="panel-height-top">
     <div class="col-md-6" id="variant-report-tile">
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-top">
         <div class="panel-heading">
           <div class="row">
             <div class="col-md-8">
-              <h4>Variant Report</h4>
+              <h4 class="f-w-700">Variant Report</h4>
             </div>
             <div class="col-md-4 text-right">
               <a class="btn btn-sm btn-link" role="button" href [routerLink]="['/patients/' + patient.patientSequenceNumber + '/variant_reports/' + variantReport.analysisId +'/qc']"><i class="fa fa-file-text-o"></i> QC Report</a>
@@ -35,7 +37,11 @@
             <dt>Disease Concordance</dt>
             <dd><span [colorCodeConcordance]="patient.concordance">{{patient.concordance | dashify}}</span></dd>
             <dt>Status</dt>
-            <dd><span [colorCodeVariantReport]="variantReportStatus">{{variantReportStatus | dashify}}</span> on {{variantReporterRejectedOrConfirmedDate | gmt}} by {{statusUser | dashify}}</dd>
+            <dd>
+              <span [colorCodeVariantReport]="variantReportStatus.variantReportStatus">
+              {{variantReportStatus.variantReportStatus | dashify}}</span>
+              on {{variantReportStatus.variantReportCreatedDate | gmt}} by {{variantReportStatus.commenter || 'Unknown User'}}
+            </dd>  
             <dt>MAPD</dt>
             <dd>{{mapd | dashify}}</dd>
             <dt>Cellularity</dt>
@@ -62,16 +68,20 @@
     <div class="col-md-6" id="latest-assignment-tile">
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-top">
         <div class="panel-heading" *ngIf="!assignmentReport">
-          <h4>Latest Assignment</h4>
+          <h4 class="f-w-700">Latest Assignment</h4>
         </div>
         <div class="panel-heading" *ngIf="!assignmentReport">
           <p class="text-muted">No Assignment data yet</p>
         </div>
         <div class="panel-heading" *ngIf="assignmentReport">
           <dl class="dl-horizontal widest-dt">
-            <h4>Latest Assignment</h4>
+            <h4 class="f-w-700">Latest Assignment</h4>
             <dt>Status</dt>
-            <dd><span [colorCodeAssignment]="assignmentReport.patientAssignmentStatus"> {{assignmentReport.patientAssignmentStatus | dashify}}</span> on {{assignmentReport.dateConfirmed | gmt}} by {{(assignmentReport.user||'System User') | dashify}}</dd>
+            <dd>
+              <span [colorCodeAssignment]="assignmentReport.patientAssignmentStatus"> 
+              {{assignmentReport.patientAssignmentStatus | dashify}}</span>                   
+              on {{assignmentReport.dateConfirmed | gmt}} by {{(assignmentReport.commenter || 'Steering Committee') | dashify}}
+            </dd>
             <dt>Generation Date</dt>
             <dd>{{assignmentReport.dateAssigned | gmt}}</dd>
             <dt>Assignment Sent to ECOG Date</dt>
@@ -101,12 +111,13 @@
       </div>
     </div>
   </div>
+
   <div class="row" matchHeight="panel-height-middle">
     <div class="col-md-6 panel-height-middle" id="assays-tile">
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-middle">
         <div class="panel-heading">
           <dl class="dl-horizontal">
-            <h4>Assays</h4>
+            <h4 class="f-w-700">Assays</h4>
             <table class="table table-condensed white-header">
               <thead>
                 <tr>
@@ -139,7 +150,7 @@
         </div>
         <div class="panel-heading">
           <dl class="dl-horizontal">
-            <h4>MOI/aMOI Summary</h4>
+            <h4 class="f-w-700">MOI/aMOI Summary</h4>
             <dt>Total aMOIs</dt>
             <dd>{{variantReport.moiSummary.totalaMOIs | dashify}}</dd>
             <dt>Total MOIs</dt>
@@ -160,6 +171,7 @@
       </div>
     </div>
   </div>
+
   <div class="panel panel-white panel-accent-sides-purple overflow-hidden">
     <div class="panel-heading">
       <sd-variant-report-simple-table-snv-indels [items]="variantReport.singleNucleotideVariantAndIndels" [isEditable]="isVariantReportEditable && allowVariantReportEdit" (onVariantUpdated)="onVariantUpdated($event)" [title]="'Single Nucleotide Variants and Indels'"></sd-variant-report-simple-table-snv-indels>
@@ -185,7 +197,7 @@
 
   <div *ngIf="assignmentHistory && assignmentHistory.length > 1" id="assignment-history" class="panel panel-white panel-accent-sides-purple overflow-hidden">
     <div class="panel-heading">
-      <h4>Assignment History</h4>
+      <h4 class="f-w-700">Assignment History</h4>
       <table class="table table-condensed">
         <thead>
           <tr>
