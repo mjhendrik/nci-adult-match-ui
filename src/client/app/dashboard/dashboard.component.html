@@ -527,10 +527,10 @@
                           <dd *ngIf="item.diseases">
                             <i class="fa fa-check-circle text-success-light"></i> {{item.diseases.shortName | dashify}}</dd>
                           <dt>Concordance</dt>
-                          <dd *ngIf="!item.concordance || item.concordance==='U'" [colorCodeConcordance]="item.concordance">
+                          <dd *ngIf="!item.concordance || item.concordance!=='Y'" [colorCodeConcordance]="item.concordance">
                             <i class="fa fa-times-circle text-danger-light"></i> {{item.concordance | dashify}}
                           </dd>
-                          <dd *ngIf="item.concordance && item.concordance!=='U'" [colorCodeConcordance]="item.concordance">
+                          <dd *ngIf="item.concordance && item.concordance==='Y'" [colorCodeConcordance]="item.concordance">
                             <i class="fa fa-check-circle text-success-light"></i> {{item.concordance | dashify}}
                           </dd>
                         </dl>
@@ -632,10 +632,10 @@
                           <dd *ngIf="item.confirmationBiopsy.diseases">
                             <i class="fa fa-check-circle text-success-light"></i> {{item.confirmationBiopsy.diseases.shortName | dashify}}</dd>
                           <dt>Concordance</dt>
-                          <dd *ngIf="!item.concordance || item.concordance==='U'" [colorCodeConcordance]="item.concordance">
+                          <dd *ngIf="!item.concordance || item.concordance!=='Y'" [colorCodeConcordance]="item.concordance">
                             <i class="fa fa-times-circle text-danger-light"></i> {{item.concordance | dashify}}
                           </dd>
-                          <dd *ngIf="item.concordance && item.concordance!=='U'" [colorCodeConcordance]="item.concordance">
+                          <dd *ngIf="item.concordance && item.concordance==='Y'" [colorCodeConcordance]="item.concordance">
                             <i class="fa fa-check-circle text-success-light"></i> {{item.concordance | dashify}}
                           </dd>
                         </dl>

@@ -312,9 +312,7 @@ OFF_TRIAL`.indexOf(element.assignmentStatusOutcome) !== -1) {
 
         this.dataAvailable = true;
 
-      },
-      error => this.errorMessage = <any>error
-      );
+      });
   }
 
   setVersionIndex(i: number): void {
