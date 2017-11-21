@@ -446,7 +446,7 @@
                             <td>{{item.position | dashify}}</td>
                             <td>{{item.reference | dashify}}</td>
                             <td>{{item.alternative | dashify}}</td>
-                            <td>{{item.levelOfEvidence | dashify}}</td>
+                            <td>{{item.levelOfEvidence | round | dashify}}</td>
                             <td>
                               <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
                                 <span *ngFor="let items of item.publicMedIds; let last=last">
@@ -709,7 +709,7 @@
                             </td>
                             <td>{{item.chromosome | dashify}}</td>
                             <td>{{item.position | dashify}}</td>
-                            <td>{{item.levelOfEvidence | dashify}}</td>
+                            <td>{{item.levelOfEvidence | round | dashify}}</td>
                             <td>
                               <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
                                 <span *ngFor="let items of item.publicMedIds; let last=last">
@@ -959,7 +959,7 @@
                             <td>
                               <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.gene2"></cosmic-link>
                             </td>
-                            <td>{{item.levelOfEvidence | dashify}}</td>
+                            <td>{{item.levelOfEvidence | round | dashify}}</td>
                             <td>
                               <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
                                 <span *ngFor="let items of item.publicMedIds; let last=last">
@@ -1215,7 +1215,7 @@
                             <td>{{item.exon | dashify}}</td>
                             <td>{{item.oncominevariantclass | dashify}}</td>
                             <td>{{item.function | dashify}}</td>
-                            <td>{{item.levelOfEvidence | dashify}}</td>
+                            <td>{{item.levelOfEvidence | round | dashify}}</td>
                             <td>
                               <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
                                 <span *ngFor="let items of item.publicMedIds; let last=last">
@@ -1455,7 +1455,7 @@
                             <td>{{item.gene | dashify}}</td>
                             <td>{{item.assayResultStatus | dashify}}</td>
                             <td>{{item.assayVariant | dashify}}</td>
-                            <td>{{item.levelOfEvidence | dashify}}</td>
+                            <td>{{item.levelOfEvidence | round | dashify}}</td>
                           </tr>
                           <tr *ngIf="mftableAssay.data.length == 0">
                             <td class="text-muted" colspan="4">No matching search results found for "{{searchtermAssay}}"</td>
