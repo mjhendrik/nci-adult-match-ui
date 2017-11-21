@@ -57,7 +57,7 @@ export function main() {
             expect(comp.isValidLink()).toBe(false);
             fixture.componentInstance.getLinkUrl();
             fixture.detectChanges();
-            fixture.destroy();
+            //fixture.destroy();
           });
       }));
 
@@ -78,7 +78,7 @@ export function main() {
             expect(comp.text).toBe("cosmicId");
             fixture.componentInstance.getLinkUrl();
             fixture.detectChanges();
-            fixture.destroy();
+            //fixture.destroy();
           });
       }));
 
@@ -99,7 +99,7 @@ export function main() {
             expect(comp.text).toBe("COSM123");
             fixture.componentInstance.getLinkUrl();
             fixture.detectChanges();
-            fixture.destroy();
+            // fixture.destroy();
           });
       }));
 
@@ -120,7 +120,7 @@ export function main() {
             expect(comp.text).toBe("cosmicFusionId");
             fixture.componentInstance.getLinkUrl();
             fixture.detectChanges();
-            fixture.destroy();
+            // fixture.destroy();
           });
       }));
 
@@ -141,7 +141,7 @@ export function main() {
             expect(comp.text).toBe("COSF123");
             fixture.componentInstance.getLinkUrl();
             fixture.detectChanges();
-            fixture.destroy();
+            // fixture.destroy();
           });
       }));
 
@@ -162,7 +162,7 @@ export function main() {
             expect(comp.text).toBe("cosmicGene");
             fixture.componentInstance.getLinkUrl();
             fixture.detectChanges();
-            fixture.destroy();
+            // fixture.destroy();
           });
       }));
 

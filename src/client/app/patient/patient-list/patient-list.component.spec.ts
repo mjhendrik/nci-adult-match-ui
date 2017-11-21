@@ -92,9 +92,9 @@ export function main() {
               }).createComponent(PatientListComponent);
               console.log(fixture.componentInstance);
               let spy = spyOn(fixture.componentInstance, 'getData');
-              let init:any = fixture.componentInstance.ngOnInit();
+              let init: any = fixture.componentInstance.ngOnInit();
 
-              fixture.componentInstance.recordsPerPagePatients= 300;
+              fixture.componentInstance.recordsPerPagePatients = 300;
               fixture.detectChanges();
 
               expect(spy).toHaveBeenCalled();
@@ -119,26 +119,26 @@ export function main() {
         }));
 
       it('should test currentPageActive',
-          async((done: any) => {
-            TestBed
-              .compileComponents()
-              .then(() => {
-                let fixture = TestBed.overrideComponent(PatientListComponent, {
-                  set: {
-                    templateUrl: ''
-                  }
-                }).createComponent(PatientListComponent);
+        async((done: any) => {
+          TestBed
+            .compileComponents()
+            .then(() => {
+              let fixture = TestBed.overrideComponent(PatientListComponent, {
+                set: {
+                  templateUrl: ''
+                }
+              }).createComponent(PatientListComponent);
 
-                fixture.componentInstance.onSearchChanged('1,300,asc,patientSequenceNumber');
-                fixture.componentInstance.onSearchChanged(null);
-              });
-          }));
+              fixture.componentInstance.onSearchChanged('1,300,asc,patientSequenceNumber');
+              fixture.componentInstance.onSearchChanged(null);
+            });
+        }));
     }));
 
 
     xdescribe('with sort', () => {
       it('should sort by first column in ASC order', async((done: any) => {
-        component.sortStatus({'Subhash,':'what should we pass here? :)'});
+        component.sortStatus({ 'Subhash,': 'what should we pass here? :)' });
 
         fixture.whenStable().then(() => { // wait for async getPatientList
           let rows = tbodyDebugElement.queryAll(By.css('tr'));
@@ -146,8 +146,9 @@ export function main() {
         });
       }));
 
-      it('should sort by first column in DESC order', async((done: any) => {
-      }));
+      // it('should sort by first column in DESC order', async((done: any) => {
+      // }));
+
     });
 
     xdescribe('with pagination', () => {
