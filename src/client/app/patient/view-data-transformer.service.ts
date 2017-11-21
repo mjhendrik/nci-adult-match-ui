@@ -144,6 +144,7 @@ export class ViewDataTransformer {
     report.derivedStatus = updatedStatus.dateTime ? 'CONFIRMED' : 'PENDING';
     report.comments = updatedStatus.comments;
     report.statusUser = updatedStatus.commenter;
+    report.confirmedDate = updatedStatus.dateTime;
     report.isAssignmentReportEditable = this.getAssignmentReportEditable(report);
   }
 
@@ -206,10 +207,11 @@ export class ViewDataTransformer {
   }
 
   getVariantReportEditable(variantReport: VariantReportData): boolean {
-    if (!variantReport && !variantReport.derivedStatus) {
+    if (!variantReport && !variantReport.variantReportStatus) {
       return false;
     }
-    return variantReport.derivedStatus === 'PENDING';
+
+    return variantReport.variantReportStatus === 'PENDING';
   }
 
   transformPatientVariantReport(transformedPatient: any,

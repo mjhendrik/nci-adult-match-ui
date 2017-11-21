@@ -206,7 +206,8 @@ export class PatientApiServiceStub {
             cellularity: 'cellularity',
             showPools: false,
             assays: [],
-            isEditable: false
+            isEditable: false,
+            variantReportStatus: 'PENDING'
         } as VariantReportData;
     }
 

@@ -300,10 +300,11 @@ export function main() {
         }).toThrow();
       });
 
-      it('should update the variant report status', () => {
-        updatedStatus.status = 'some-very-fake-status';
+      it('should update the assignment report status and confirmed date', () => {
+        updatedStatus.dateTime = 'some-very-fake-date';
         service.updateAssignmentReportStatus(report, updatedStatus);
-        expect(report.derivedStatus).toEqual('some-very-fake-status');
+        expect(report.derivedStatus).toEqual('CONFIRMED');
+        expect(report.confirmedDate).toEqual('some-very-fake-date');
       });
 
       it('setting status to "CONFIRMED" should make the report not editable', () => {
