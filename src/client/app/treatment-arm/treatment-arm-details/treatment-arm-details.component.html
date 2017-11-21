@@ -34,7 +34,9 @@
                       <div class="table-responsive col-lg-12" id="treatment-arm-details">
                         <dl class="dl-horizontal m-t-20">
                           <dt>ID</dt>
-                          <dd>{{tableData[versionIndex].treatmentArmId | dashify}}</dd>
+                          <dd>
+                            <treatment-arm-link style="pointer-events: none" [treatmentArmId]="tableData[versionIndex].treatmentArmId" [hideIcon]="true"></treatment-arm-link>
+                          </dd>
                           <dt>Description</dt>
                           <dd>{{tableData[versionIndex].name | dashify}}</dd>
                           <dt>Treatment Arm Approval Date</dt>
@@ -60,7 +62,9 @@
                           <dt>Drug Name</dt>
                           <dd>{{tableData[versionIndex].treatmentArmDrugs[0].name | dashify}}</dd>
                           <dt>Genes</dt>
-                          <dd>{{tableData[versionIndex].gene | dashify}}</dd>
+                          <dd>
+                            <cosmic-link [linkType]="'cosmicGene'" [linkId]="tableData[versionIndex].gene"></cosmic-link>
+                          </dd>
                           <dt>Patients Assigned</dt>
                           <dd>{{tableData[versionIndex].numPatientsAssigned | dashify}} of {{tableData[versionIndex].maxPatientsAllowed
                             | dashify}}</dd>
@@ -446,7 +450,7 @@
                             <td>{{item.position | dashify}}</td>
                             <td>{{item.reference | dashify}}</td>
                             <td>{{item.alternative | dashify}}</td>
-                            <td>{{item.levelOfEvidence | dashify}}</td>
+                            <td>{{item.levelOfEvidence | round | dashify}}</td>
                             <td>
                               <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
                                 <span *ngFor="let items of item.publicMedIds; let last=last">
@@ -709,7 +713,7 @@
                             </td>
                             <td>{{item.chromosome | dashify}}</td>
                             <td>{{item.position | dashify}}</td>
-                            <td>{{item.levelOfEvidence | dashify}}</td>
+                            <td>{{item.levelOfEvidence | round | dashify}}</td>
                             <td>
                               <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
                                 <span *ngFor="let items of item.publicMedIds; let last=last">
@@ -959,7 +963,7 @@
                             <td>
                               <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.gene2"></cosmic-link>
                             </td>
-                            <td>{{item.levelOfEvidence | dashify}}</td>
+                            <td>{{item.levelOfEvidence | round | dashify}}</td>
                             <td>
                               <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
                                 <span *ngFor="let items of item.publicMedIds; let last=last">
@@ -1215,7 +1219,7 @@
                             <td>{{item.exon | dashify}}</td>
                             <td>{{item.oncominevariantclass | dashify}}</td>
                             <td>{{item.function | dashify}}</td>
-                            <td>{{item.levelOfEvidence | dashify}}</td>
+                            <td>{{item.levelOfEvidence | round | dashify}}</td>
                             <td>
                               <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
                                 <span *ngFor="let items of item.publicMedIds; let last=last">
@@ -1455,7 +1459,7 @@
                             <td>{{item.gene | dashify}}</td>
                             <td>{{item.assayResultStatus | dashify}}</td>
                             <td>{{item.assayVariant | dashify}}</td>
-                            <td>{{item.levelOfEvidence | dashify}}</td>
+                            <td>{{item.levelOfEvidence | round | dashify}}</td>
                           </tr>
                           <tr *ngIf="mftableAssay.data.length == 0">
                             <td class="text-muted" colspan="4">No matching search results found for "{{searchtermAssay}}"</td>
