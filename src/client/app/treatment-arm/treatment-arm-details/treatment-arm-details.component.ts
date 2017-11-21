@@ -231,7 +231,6 @@ OFF_TRIAL`.indexOf(element.assignmentStatusOutcome) !== -1) {
 
       Object.keys(result).forEach((key: any) => {
         if (result[key].offtrail === 0 && result[key].onta === 0 && result[key].pending === 0) {
-
         } else {
           this.barChartData[0].data.push(10);
           this.barChartData[1].data.push(result[key].offtrail);
