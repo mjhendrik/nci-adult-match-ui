@@ -300,7 +300,7 @@ export function main() {
         }).toThrow();
       });
 
-      it('should update the assignment report status and confirmed date', () => {
+      it('should update the assignment report status and confirmedDate', () => {
         updatedStatus.dateTime = 'some-very-fake-date';
         service.updateAssignmentReportStatus(report, updatedStatus);
         expect(report.derivedStatus).toEqual('CONFIRMED');
@@ -313,8 +313,8 @@ export function main() {
         expect(report.isAssignmentReportEditable).toEqual(false);
       });
 
-      it('setting status to "PENDING_CONFIRMATION" should make the report editable', () => {
-        updatedStatus.status = 'PENDING_CONFIRMATION';
+      it('setting confirmedDate to null should make the report editable', () => {
+        updatedStatus.dateTime = null;
         service.updateAssignmentReportStatus(report, updatedStatus);
         expect(report.isAssignmentReportEditable).toEqual(true);
       });
