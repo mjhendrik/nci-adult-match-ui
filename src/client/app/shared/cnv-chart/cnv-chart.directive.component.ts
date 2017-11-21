@@ -380,10 +380,6 @@ export class CnvChartDirective implements AfterViewInit {
 
 
             if (temp !== chr && typeof temp !== 'undefined') {
-              // spot = (chart.xScale()(gene)).toFixed(2) - 1;
-              // chr = temp;
-              // indx = (parseInt(prespot + spot) / 2) - 1;
-
               if (x > 0) {
 
                 spot = (chart.xScale()(gene)).toFixed(2) - 1;
@@ -418,35 +414,10 @@ export class CnvChartDirective implements AfterViewInit {
                 indx = (parseInt(prespot + spot) / 2) - 1;
 
                 if (prechrnum !== chrnum) {
-                  // svg.append('line')
-                  //   .attr('x1', spot)
-                  //   .attr('x2', spot)
-                  //   .attr('y1', height)
-                  //   .style('fill', 'none')
-                  //   .style('stroke', 'green')
-                  //   .style('stroke-width', 0.5)
-                  //   .style('stroke-linecap', 'round');
-
-
-                  // svg.append('text')
-                  //   .attr('class', 'nv-zeroLine')
-                  //   .attr('x', indx)
-                  //   .attr('y', 365)
-                  //   .text(chrnum)
-                  //   .style('fill', '#c70505')
-                  //   .style('font-weight', 'bold')
-                  //   .style('font-size', '12px');
-
                   prespot = spot;
                 }
               }
-
-
-
               prechrnum = chrnum;
-
-
-
             }
           });
 

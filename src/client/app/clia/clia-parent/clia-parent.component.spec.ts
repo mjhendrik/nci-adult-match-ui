@@ -413,5 +413,19 @@ class MockCliaIonApiService {
     }];
     return Observable.of(testData);
   }
+  getDataIon(): Observable<any> {
+    let testData;
+    testData = [{
+      lastContactDate: '2-12-2015'
+    }];
+    return Observable.of(testData);
+  }
+  autoLoadDataIon(): Observable<any> {
+    let testData;
+    testData = [{
+      lastContactDate: '2-12-2015'
+    }];
+    return Observable.of(testData);
+  }
 }
 
