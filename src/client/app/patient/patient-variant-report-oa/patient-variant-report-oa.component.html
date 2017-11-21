@@ -76,9 +76,9 @@
                 <h4 class="f-w-700">Latest Assignment</h4>
                 <dl class="dl-horizontal widest-dt">
                   <dt>Status</dt>
-                  <dd><span [colorCodeAssignment]="outsideData.assignmentReport.derivedStatus"> 
-                    {{outsideData.assignmentReport.derivedStatus | dashify}}</span>                   
-                    on {{outsideData.assignmentReport.dateConfirmed | gmt}} by {{(outsideData.assignmentReport.commenter || 'Steering Committee') | dashify}}
+                  <dd>
+                    <span [colorCodeAssignment]="outsideData.assignmentReport.derivedStatus">{{outsideData.assignmentReport.derivedStatus | dashify}}</span>
+                    <span *ngIf="outsideData.assignmentReport.derivedStatus==='CONFIRMED'"> on {{outsideData.assignmentReport.dateConfirmed | gmt}} by {{(outsideData.assignmentReport.commenter || 'Steering Committee') | dashify}}</span>
                   </dd>
                   <dt>Generation Date</dt>
                   <dd>{{outsideData.assignmentReport.dateAssigned | gmt}}</dd>
@@ -270,9 +270,9 @@
                 <h4 class="f-w-700">Latest Assignment</h4>
                 <dl class="dl-horizontal widest-dt">
                   <dt>Status</dt>
-                  <dd><span [colorCodeAssignment]="matchData.assignmentReport.derivedStatus"> 
-                    {{matchData.assignmentReport.derivedStatus | dashify}}</span>                   
-                    on {{matchData.assignmentReport.dateConfirmed | gmt}} by {{(matchData.assignmentReport.commenter || 'Steering Committee') | dashify}}
+                  <dd>
+                    <span [colorCodeAssignment]="matchData.assignmentReport.derivedStatus">{{matchData.assignmentReport.derivedStatus | dashify}}</span>
+                    <span *ngIf="matchData.assignmentReport.derivedStatus==='CONFIRMED'"> on {{matchData.assignmentReport.dateConfirmed | gmt}} by {{(matchData.assignmentReport.commenter || 'Steering Committee') | dashify}}</span>
                   </dd>
                   <dt>Generation Date</dt>
                   <dd>{{matchData.assignmentReport.dateAssigned | gmt}}</dd>

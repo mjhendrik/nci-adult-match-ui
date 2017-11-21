@@ -93,7 +93,7 @@ export class ViewDataTransformer {
       || { totalaMOIs: 0, totalMOIs: 0, confirmedaMOIs: 0, confirmedMOIs: 0 };
     transformedReport.matchData.isOutsideAssayWorkflow = true;
     transformedReport.matchData.isOutsideAssay = false;
-    transformedReport.matchData.variantReporterRejectedOrConfirmedDate = transformedReport.matchData.variantReport.dateVerified;
+    transformedReport.matchData.variantReporterRejectedOrConfirmedDate = transformedReport.matchData.dateVerified;
 
     transformedReport.outsideData = transformedReport.outsideData || {};
     transformedReport.outsideData.pool1 = ocpDataOutside.pool1;
@@ -111,7 +111,7 @@ export class ViewDataTransformer {
       || { totalaMOIs: 0, totalMOIs: 0, confirmedaMOIs: 0, confirmedMOIs: 0 };
     transformedReport.outsideData.isOutsideAssayWorkflow = true;
     transformedReport.outsideData.isOutsideAssay = true;
-    transformedReport.outsideData.variantReporterRejectedOrConfirmedDate = transformedReport.outsideData.variantReport.dateVerified;
+    transformedReport.outsideData.variantReporterRejectedOrConfirmedDate = transformedReport.outsideData.dateVerified;
 
     this.transformAssignmentLogic(transformedReport.matchData.assignmentReport);
     this.transformAssignmentLogic(transformedReport.outsideData.assignmentReport);
