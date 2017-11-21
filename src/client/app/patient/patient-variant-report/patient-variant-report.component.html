@@ -38,10 +38,9 @@
             <dd><span [colorCodeConcordance]="patient.concordance">{{patient.concordance | dashify}}</span></dd>
             <dt>Status</dt>
             <dd>
-              <span [colorCodeVariantReport]="variantReportStatus.variantReportStatus">
-                {{variantReportStatus.variantReportStatus | dashify}}</span>
-              <span *ngIf="variantReportStatus.variantReportStatus==='CONFIRMED' || variantReportStatus.variantReportStatus==='REJECTED'"> on {{variantReportStatus.variantReporterRejectedOrConfirmedDate | gmt}} by {{variantReportStatus.commenter || 'Unknown
-                User'}}</span>
+              <span [colorCodeVariantReport]="variantReport.variantReportStatus">
+                {{variantReport.variantReportStatus | dashify}}</span>
+              <span *ngIf="variantReport.variantReportStatus==='CONFIRMED' || variantReport.variantReportStatus==='REJECTED'"> on {{variantReport.variantReporterRejectedOrConfirmedDate | gmt}} by {{variantReport.commenter || 'unknown user'}}</span>
             </dd>
             <dt>MAPD</dt>
             <dd>{{mapd | dashify}}</dd>

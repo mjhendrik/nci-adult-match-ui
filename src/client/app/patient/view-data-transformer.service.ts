@@ -443,7 +443,7 @@ export class ViewDataTransformer {
       variantReport.variantReportStatus = analysis.variantReportStatus;
       variantReport.variantReportCreatedDate = analysis.variantReportCreatedDate;
       variantReport.variantReportFileReceivedDate = analysis.variantReportFileReceivedDate;
-      variantReport.variantReporterRejectedOrConfirmedDate = variantReport.dateVerified;
+      variantReport.variantReporterRejectedOrConfirmedDate = analysis.variantReporterRejectedOrConfirmedDate;
 
       variantReport.biopsySequenceNumber = transformedBiopsy.biopsySequenceNumber;
       variantReport.analysisId = message.ionReporterResults.jobName;
