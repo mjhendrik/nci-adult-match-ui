@@ -39,9 +39,10 @@
             <dt>Status</dt>
             <dd>
               <span [colorCodeVariantReport]="variantReportStatus.variantReportStatus">
-              {{variantReportStatus.variantReportStatus | dashify}}</span>
-              on {{variantReportStatus.variantReportCreatedDate | gmt}} by {{variantReportStatus.commenter || 'Unknown User'}}
-            </dd>  
+                {{variantReportStatus.variantReportStatus | dashify}}</span>
+              <span *ngIf="variantReportStatus.variantReportStatus==='CONFIRMED' || variantReportStatus.variantReportStatus==='REJECTED'"> on {{variantReportStatus.variantReporterRejectedOrConfirmedDate | gmt}} by {{variantReportStatus.commenter || 'Unknown
+                User'}}</span>
+            </dd>
             <dt>MAPD</dt>
             <dd>{{mapd | dashify}}</dd>
             <dt>Cellularity</dt>

@@ -93,6 +93,7 @@ export class ViewDataTransformer {
       || { totalaMOIs: 0, totalMOIs: 0, confirmedaMOIs: 0, confirmedMOIs: 0 };
     transformedReport.matchData.isOutsideAssayWorkflow = true;
     transformedReport.matchData.isOutsideAssay = false;
+    transformedReport.matchData.variantReporterRejectedOrConfirmedDate = transformedReport.matchData.variantReport.dateVerified;
 
     transformedReport.outsideData = transformedReport.outsideData || {};
     transformedReport.outsideData.pool1 = ocpDataOutside.pool1;
@@ -110,6 +111,7 @@ export class ViewDataTransformer {
       || { totalaMOIs: 0, totalMOIs: 0, confirmedaMOIs: 0, confirmedMOIs: 0 };
     transformedReport.outsideData.isOutsideAssayWorkflow = true;
     transformedReport.outsideData.isOutsideAssay = true;
+    transformedReport.outsideData.variantReporterRejectedOrConfirmedDate = transformedReport.outsideData.variantReport.dateVerified;
 
     this.transformAssignmentLogic(transformedReport.matchData.assignmentReport);
     this.transformAssignmentLogic(transformedReport.outsideData.assignmentReport);
@@ -441,7 +443,7 @@ export class ViewDataTransformer {
       variantReport.variantReportStatus = analysis.variantReportStatus;
       variantReport.variantReportCreatedDate = analysis.variantReportCreatedDate;
       variantReport.variantReportFileReceivedDate = analysis.variantReportFileReceivedDate;
-      variantReport.variantReporterRejectedOrConfirmedDate = analysis.variantReporterRejectedOrConfirmedDate;
+      variantReport.variantReporterRejectedOrConfirmedDate = variantReport.dateVerified;
 
       variantReport.biopsySequenceNumber = transformedBiopsy.biopsySequenceNumber;
       variantReport.analysisId = message.ionReporterResults.jobName;
