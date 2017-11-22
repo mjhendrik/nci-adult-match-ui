@@ -258,6 +258,7 @@ export class ViewDataTransformer {
     variantReport.isVariantReportEditable = this.getVariantReportEditable(analysis.variantReport);
     variantReport.isAssignmentReportEditable = true;
     variantReport.isOutsideAssayWorkflow = false;
+    variantReport.disease = transformedPatient.disease;
 
     return variantReport;
   }
