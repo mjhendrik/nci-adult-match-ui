@@ -1,0 +1,76 @@
+{
+    "_id": {
+        "$oid": "5a15cf48e4b09aca51ad2e20"
+    },
+    "_class": "gov.nih.nci.matchbox.model.Patient",
+    "stateToken": "283307fd-e2ab-48b5-89be-e973aabf70d4",
+    "patientSequenceNumber": "UAT_AssayMessage",
+    "gender": "UNKNOWN",
+    "ethnicity": "UNKNOWN",
+    "races": [],
+    "patientRejoinTriggers": [],
+    "patientTriggers": [
+        {
+            "stepNumber": "0",
+            "patientStatus": "REGISTRATION",
+            "message": "Registering a new patient",
+            "dateCreated": {
+                "$date": 1509551042962
+            },
+            "studyId": "EAY131",
+            "patientSequenceNumber": "UAT_AssayMessage",
+            "type": "TRIGGER"
+        }
+    ],
+    "biopsies": [
+        {
+            "biopsySequenceNumber": "BSN-UAT_AssayMessage",
+            "dateCreated": {
+                "$date": 1511378777453
+            },
+            "nextGenerationSequences": [],
+            "assayMessages": [],
+            "pathologyReportMessages": [],
+            "mdAndersonMessages": [
+                {
+                    "biopsySequenceNumber": "BSN-UAT_AssayMessage",
+                    "message": "SPECIMEN_RECEIVED",
+                    "reportedDate": {
+                        "$date": 1509554642962
+                    },
+                    "studyId": "EAY131",
+                    "patientSequenceNumber": "UAT_AssayMessage",
+                    "type": "SPECIMEN"
+                },
+                {
+                    "biopsySequenceNumber": "BSN-UAT_AssayMessage",
+                    "message": "NUCLEIC_ACID_SENDOUT",
+                    "reportedDate": {
+                        "$date": 1509558245948
+                    },
+                    "comment": "This is a comment for the sendout",
+                    "molecularSequenceNumber": "MSN-UAT_AssayMessage",
+                    "destinationSite": "Boston",
+                    "trackingNumber": "TN-UI_UAT_AssayMessage",
+                    "dnaConcentration": "",
+                    "dnaVolume": "",
+                    "cDnaConcentration": "",
+                    "cDnaVolume": "",
+                    "studyId": "EAY131",
+                    "patientSequenceNumber": "UAT_AssayMessage",
+                    "type": "SPECIMEN"
+                }
+            ],
+            "failure": false
+        }
+    ],
+    "currentStepNumber": "0",
+    "currentPatientStatus": "REGISTRATION",
+    "patientAssignments": [],
+    "diseases": [],
+    "concordance": "U",
+    "priorDrugs": [],
+    "registrationDate": {
+        "$date": 1509551042962
+    }
+}
