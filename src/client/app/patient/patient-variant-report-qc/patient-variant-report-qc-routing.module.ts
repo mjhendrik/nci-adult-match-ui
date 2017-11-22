@@ -35,6 +35,7 @@ class DataResolver implements Resolve<QcVariantReportData> {
   ): Observable<QcVariantReportData> | Promise<QcVariantReportData> | QcVariantReportData {
 
     const psn: string = route.params['patientSequenceNumber'];
+    const bsn: string = route.params['biopsySequenceNumber'];
     const analysisId: string = route.params['analysisId'];
 
     return Observable.forkJoin(
@@ -59,6 +60,7 @@ class DataResolver implements Resolve<QcVariantReportData> {
 
         return {
           psn: psn,
+          bsn: bsn,
           analysisId: analysisId,
           molecularSequenceNumber: data[0].molecularSequenceNumber,
           dateReceived: data[0].dateReceived,
@@ -87,7 +89,7 @@ class DataResolver implements Resolve<QcVariantReportData> {
   imports: [
     RouterModule.forChild([
       {
-        path: 'patients/:patientSequenceNumber/variant_reports/:analysisId/qc',
+        path: 'patients/:patientSequenceNumber/biopsies/:biopsySequenceNumber/variant_reports/:analysisId/qc',
         component: PatientVariantReportQcComponent, canActivate: [AuthGuard],
         resolve: { data: DataResolver }
       }

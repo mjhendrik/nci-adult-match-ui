@@ -57,4 +57,20 @@ export class PatientVariantReportQcComponent implements OnInit, QcVariantReportD
   download(file: string) {
     this.patientApi.downloadPatientFile(this.psn, file);
   }
+
+  getVariantReportLink(report: any): string {
+    if (report.isOutsideAssayWorkflow) {
+      return `/patients/${this.patient.patientSequenceNumber}/variant_reports_oa/${report.analysisId}`;
+    } else {
+      return `/patients/${this.patient.patientSequenceNumber}/biopsies/${report.biopsySequenceNumber}/variant_reports/${report.analysisId}`;
+    }
+  }
+
+  getVariantReportQueryParams(report: any): any {
+    if (report.isOutsideAssayWorkflow) {
+      return { isOutsideAssay: report.isOutsideAssay };
+    } else {
+      return null;
+    }
+  }
 }

@@ -3,7 +3,7 @@
     <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
     <li><a href [routerLink]="['/patients']" class="link-none">Patients</a></li>
     <li><a href [routerLink]="['/patients/', psn]" class="link-none">Patient {{psn}}</a></li>
-    <li><a href [routerLink]="['/patients/' + psn + '/variant_reports/' + analysisId]" class="link-none">Variant Report</a></li>
+    <li><a href [routerLink]="['/patients/' + psn + '/biopsies/' + biopsySequenceNumber + '/variant_reports/' + analysisId]" class="link-none">Variant Report</a></li>
     <li class="active">Quality Control Report</li>
   </ul>
   <h1 class="page-header">Quality Control Report <span class="entity-name">{{analysisId}}</span></h1>
