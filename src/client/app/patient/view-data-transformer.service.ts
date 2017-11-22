@@ -30,8 +30,6 @@ export class ViewDataTransformer {
       return transformedPatient;
     }
 
-    transformedPatient.disease = source.diseases && source.diseases.length ? source.diseases[0] : {};
-
     transformedPatient.concordance = this.transformConcordance(transformedPatient);
 
     transformedPatient.isOutsideAssayWorkflow = false;
@@ -40,6 +38,16 @@ export class ViewDataTransformer {
       transformedPatient.isOutsideAssayWorkflow = transformedPatient.patientTriggers.some(
         (x: any) => x.patientStatus === 'REGISTRATION_OUTSIDE_ASSAY'
       );
+    }
+
+    transformedPatient.disease = {};
+    if (source.diseases && source.diseases.length) {
+      if (transformedPatient.isOutsideAssayWorkflow) {
+        transformedPatient.disease.outsideData = source.diseases.length > 0 ? source.diseases[0] : {};
+        transformedPatient.disease.matchData = source.diseases.length > 1 ? source.diseases[1] : {};
+      } else {
+        transformedPatient.disease = source.diseases && source.diseases.length ? source.diseases[0] : {};
+      }
     }
 
     if (transformedPatient.biopsies && transformedPatient.biopsies.length) {

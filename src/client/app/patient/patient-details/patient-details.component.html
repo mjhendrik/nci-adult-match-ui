@@ -51,7 +51,45 @@
     <div class="col-md-6">
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height">
         <div class="panel-heading" id="patient_detail_right">
-          <dl class="dl-horizontal">
+          <div class="row" *ngIf="patient.isOutsideAssayWorkflow">
+            <div class="col-md-6">
+              <dl class="dl-horizontal narrow-dt">
+                <dt>Concordance</dt>
+                <dd [colorCodeConcordance]="patient.concordance">{{patient.concordance | dashify}}</dd>
+                <dt>Outside Lab Disease</dt>
+                <dd>{{patient.disease.outsideData.name | dashify}}</dd>
+                <dt>Short Name</dt>
+                <dd>{{patient.disease.outsideData.shortName | dashify}}</dd>
+                <dt>CTEP Category</dt>
+                <dd>{{patient.disease.outsideData.ctepCategory | dashify}}</dd>
+                <dt>CTEP Sub Category</dt>
+                <dd>{{patient.disease.outsideData.ctepSubCategory | dashify}}</dd>
+                <dt>CTEP Term</dt>
+                <dd>{{patient.disease.outsideData.ctepTerm | dashify}}</dd>
+                <dt>MedDRA Code</dt>
+                <dd>{{patient.disease.outsideData.medDRACode | dashify}}</dd>
+              </dl>
+            </div>
+            <div class="col-md-6">
+              <dl class="dl-horizontal narrow-dt">
+                <dt>Concordance</dt>
+                <dd [colorCodeConcordance]="patient.concordance">{{patient.concordance | dashify}}</dd>
+                <dt>MATCH Disease</dt>
+                <dd>{{patient.disease.matchData.name | dashify}}</dd>
+                <dt>Short Name</dt>
+                <dd>{{patient.disease.matchData.shortName | dashify}}</dd>
+                <dt>CTEP Category</dt>
+                <dd>{{patient.disease.matchData.ctepCategory | dashify}}</dd>
+                <dt>CTEP Sub Category</dt>
+                <dd>{{patient.disease.matchData.ctepSubCategory | dashify}}</dd>
+                <dt>CTEP Term</dt>
+                <dd>{{patient.disease.matchData.ctepTerm | dashify}}</dd>
+                <dt>MedDRA Code</dt>
+                <dd>{{patient.disease.matchData.medDRACode | dashify}}</dd>
+              </dl>
+            </div>
+          </div>
+          <dl class="dl-horizontal" *ngIf="!patient.isOutsideAssayWorkflow">
             <dt>Concordance</dt>
             <dd [colorCodeConcordance]="patient.concordance">{{patient.concordance | dashify}}</dd>
             <dt>Disease</dt>
@@ -66,7 +104,7 @@
             <dd>{{patient.disease.ctepTerm | dashify}}</dd>
             <dt>MedDRA Code</dt>
             <dd>{{patient.disease.medDRACode | dashify}}</dd>
-          </dl>
+          </dl>        
         </div>
       </div>
     </div>
