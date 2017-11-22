@@ -64,47 +64,68 @@
             </div>
           </div>
 
-          <div *ngIf="outsideData && outsideData.analysisId" class="col-md-6" id="trAssignmentReport" >
+          <div *ngIf="outsideData && outsideData.analysisId" class="col-md-6" id="trAssignmentReport">
             <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
-              <div class="panel-heading" *ngIf="!hasAssignment(outsideData)">
-                <h4 class="f-w-700">Latest Assignment</h4>
-              </div>
-              <div class="panel-heading" *ngIf="!hasAssignment(outsideData)">
-                <p class="text-muted">No Assignment data yet</p>
-              </div>
-              <div class="panel-heading" *ngIf="hasAssignment(outsideData)">
-                <h4 class="f-w-700">Latest Assignment</h4>
-                <dl class="dl-horizontal widest-dt">
-                  <dt>Status</dt>
-                  <dd>
-                    <span [colorCodeAssignment]="outsideData.assignmentReport.derivedStatus">{{outsideData.assignmentReport.derivedStatus | dashify}}</span>
-                    <span *ngIf="outsideData.assignmentReport.derivedStatus==='CONFIRMED'"> on {{outsideData.assignmentReport.dateConfirmed | gmt}} by {{(outsideData.assignmentReport.commenter || 'Steering Committee') | dashify}}</span>
-                  </dd>
-                  <dt>Generation Date</dt>
-                  <dd>{{outsideData.assignmentReport.dateAssigned | gmt}}</dd>
-                  <dt>Assignment Sent to ECOG Date</dt>
-                  <dd>{{outsideData.assignmentReport.dateSentToECOG | gmt}}</dd>
-                  <dt>Assignment Received by ECOG Date</dt>
-                  <dd>{{outsideData.assignmentReport.dateReceivedByECOG | gmt}}</dd>
-                </dl>
-
-                <div *ngIf="outsideData.assignmentReport.hasSelectedTreatmentArm">
-                  <h5>Selected Treatment Arm</h5>
-                  <h5>
-                    <treatment-arm-link *ngIf="outsideData.assignmentReport" [treatmentArmId]="outsideData.assignmentReport.treatmentArm.treatmentArmId"
-                      [version]="outsideData.assignmentReport.treatmentArm.version" [removePrefix]="true"></treatment-arm-link>
-                    <span *ngIf="!outsideData.assignmentReport">-</span>
-                  </h5>
-                </div>
-
-                <div *ngIf="outsideData.assignmentReport.hasSelectedTreatmentArm" class="panel panel-success overflow-hidden">
-                  <div class="panel-heading">
-                    <p>
-                      {{outsideData.assignmentReport.patientAssignmentStatusMessage | dashify}}
-                      <a (click)="scrollTo('outside-assignment-details')" class="text-white text-underlined white-link"><br><br><i class="fa fa-arrow-down" aria-hidden="true"></i> Click for details...</a>
-                    </p>
+              <div class="panel-heading">
+                <h4 class="f-w-700" *ngIf="!hasAssignment(outsideData)">Latest Assignment</h4>
+                <p class="text-muted" *ngIf="!hasAssignment(outsideData)">No Assignment data yet</p>
+                <div *ngIf="hasAssignment(outsideData)">
+                  <h4 class="f-w-700">Latest Assignment</h4>
+                  <dl class="dl-horizontal widest-dt">
+                    <dt>Status</dt>
+                    <dd>
+                      <span [colorCodeAssignment]="outsideData.assignmentReport.derivedStatus">{{outsideData.assignmentReport.derivedStatus | dashify}}</span>
+                      <span *ngIf="outsideData.assignmentReport.derivedStatus==='CONFIRMED'"> on {{outsideData.assignmentReport.dateConfirmed | gmt}} by {{(outsideData.assignmentReport.commenter || 'Steering
+                        Committee') | dashify}}</span>
+                    </dd>
+                    <dt>Generation Date</dt>
+                    <dd>{{outsideData.assignmentReport.dateAssigned | gmt}}</dd>
+                    <dt>Assignment Sent to ECOG Date</dt>
+                    <dd>{{outsideData.assignmentReport.dateSentToECOG | gmt}}</dd>
+                    <dt>Assignment Received by ECOG Date</dt>
+                    <dd>{{outsideData.assignmentReport.dateReceivedByECOG | gmt}}</dd>
+                  </dl>
+          
+                  <div *ngIf="outsideData.assignmentReport.hasSelectedTreatmentArm">
+                    <h5>Selected Treatment Arm</h5>
+                    <h5>
+                      <treatment-arm-link *ngIf="outsideData.assignmentReport" [treatmentArmId]="outsideData.assignmentReport.treatmentArm.treatmentArmId"
+                        [version]="outsideData.assignmentReport.treatmentArm.version" [removePrefix]="true"></treatment-arm-link>
+                      <span *ngIf="!outsideData.assignmentReport">-</span>
+                    </h5>
+                  </div>
+          
+                  <div *ngIf="outsideData.assignmentReport.hasSelectedTreatmentArm" class="panel panel-success overflow-hidden">
+                    <div class="panel-heading">
+                      <p>
+                        {{outsideData.assignmentReport.patientAssignmentStatusMessage | dashify}}
+                        <a (click)="scrollTo('outside-assignment-details')" class="text-white text-underlined white-link">
+                          <br>
+                          <br>
+                          <i class="fa fa-arrow-down" aria-hidden="true"></i> Click for details...</a>
+                      </p>
+                    </div>
                   </div>
                 </div>
+    
+                <h4 class="f-w-700">Disease</h4>
+                <dl class="dl-horizontal widest-dt">
+                  <dt>Concordance</dt>
+                  <dd [colorCodeConcordance]="outsideData.concordance">{{outsideData.concordance | dashify}}</dd>
+                  <dt>Name</dt>
+                  <dd>{{outsideData.disease.name | dashify}}</dd>
+                  <dt>Short Name</dt>
+                  <dd>{{outsideData.disease.shortName | dashify}}</dd>
+                  <dt>CTEP Category</dt>
+                  <dd>{{outsideData.disease.ctepCategory | dashify}}</dd>
+                  <dt>CTEP Sub Category</dt>
+                  <dd>{{outsideData.disease.ctepSubCategory | dashify}}</dd>
+                  <dt>CTEP Term</dt>
+                  <dd>{{outsideData.disease.ctepTerm | dashify}}</dd>
+                  <dt>MedDRA Code</dt>
+                  <dd>{{outsideData.disease.medDRACode | dashify}}</dd>
+                </dl>
+                      
               </div>
             </div>
           </div>
@@ -260,43 +281,60 @@
 
           <div *ngIf="matchData && matchData.analysisId" class="col-md-6" id="crAssignmentReport">
             <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
-              <div class="panel-heading" *ngIf="!hasAssignment(matchData)" >
-                <h4 class="f-w-700">Latest Assignment</h4>
-              </div>
-              <div class="panel-heading" *ngIf="!hasAssignment(matchData)">
-                <p class="text-muted">No Assignment data yet</p>
-              </div>
-              <div class="panel-heading" *ngIf="hasAssignment(matchData)" >
-                <h4 class="f-w-700">Latest Assignment</h4>
-                <dl class="dl-horizontal widest-dt">
-                  <dt>Status</dt>
-                  <dd>
-                    <span [colorCodeAssignment]="matchData.assignmentReport.derivedStatus">{{matchData.assignmentReport.derivedStatus | dashify}}</span>
-                    <span *ngIf="matchData.assignmentReport.derivedStatus==='CONFIRMED'"> on {{matchData.assignmentReport.dateConfirmed | gmt}} by {{(matchData.assignmentReport.commenter || 'Steering Committee') | dashify}}</span>
-                  </dd>
-                  <dt>Generation Date</dt>
-                  <dd>{{matchData.assignmentReport.dateAssigned | gmt}}</dd>
-                  <dt>Assignment Sent to ECOG Date</dt>
-                  <dd>{{matchData.assignmentReport.dateSentToECOG | gmt}}</dd>
-                  <dt>Assignment Received by ECOG Date</dt>
-                  <dd>{{matchData.assignmentReport.dateReceivedByECOG | gmt}}</dd>
-                </dl>
-                <div *ngIf="matchData.assignmentReport.hasSelectedTreatmentArm">
-                  <h5>Selected Treatment Arm</h5>
-                  <h5>
-                    <treatment-arm-link *ngIf="matchData.assignmentReport" [treatmentArmId]="matchData.assignmentReport.treatmentArm.treatmentArmId"
-                      [version]="matchData.assignmentReport.treatmentArm.version" [removePrefix]="true"></treatment-arm-link>
-                    <span *ngIf="!matchData.assignmentReport">-</span>
-                  </h5>
-                </div>
-                <div *ngIf="matchData.assignmentReport.hasSelectedTreatmentArm" class="panel panel-success overflow-hidden">
-                  <div class="panel-heading">
-                    <p>
-                      {{matchData.assignmentReport.patientAssignmentStatusMessage | dashify}}
-                      <a (click)="scrollTo('match-assignment-details')" class="text-white text-underlined white-link"><br><br><i class="fa fa-arrow-down" aria-hidden="true"></i> Click for details...</a>
-                    </p>
+              <div class="panel-heading">
+                <h4 class="f-w-700" *ngIf="!hasAssignment(matchData)">Latest Assignment</h4>
+                <p class="text-muted" *ngIf="!hasAssignment(matchData)">No Assignment data yet</p>
+                <div *ngIf="hasAssignment(matchData)" >
+                  <h4 class="f-w-700">Latest Assignment</h4>
+                  <dl class="dl-horizontal widest-dt">
+                    <dt>Status</dt>
+                    <dd>
+                      <span [colorCodeAssignment]="matchData.assignmentReport.derivedStatus">{{matchData.assignmentReport.derivedStatus | dashify}}</span>
+                      <span *ngIf="matchData.assignmentReport.derivedStatus==='CONFIRMED'"> on {{matchData.assignmentReport.dateConfirmed | gmt}} by {{(matchData.assignmentReport.commenter || 'Steering Committee') | dashify}}</span>
+                    </dd>
+                    <dt>Generation Date</dt>
+                    <dd>{{matchData.assignmentReport.dateAssigned | gmt}}</dd>
+                    <dt>Assignment Sent to ECOG Date</dt>
+                    <dd>{{matchData.assignmentReport.dateSentToECOG | gmt}}</dd>
+                    <dt>Assignment Received by ECOG Date</dt>
+                    <dd>{{matchData.assignmentReport.dateReceivedByECOG | gmt}}</dd>
+                  </dl>
+                  <div *ngIf="matchData.assignmentReport.hasSelectedTreatmentArm">
+                    <h5>Selected Treatment Arm</h5>
+                    <h5>
+                      <treatment-arm-link *ngIf="matchData.assignmentReport" [treatmentArmId]="matchData.assignmentReport.treatmentArm.treatmentArmId"
+                        [version]="matchData.assignmentReport.treatmentArm.version" [removePrefix]="true"></treatment-arm-link>
+                      <span *ngIf="!matchData.assignmentReport">-</span>
+                    </h5>
+                  </div>
+                  <div *ngIf="matchData.assignmentReport.hasSelectedTreatmentArm" class="panel panel-success overflow-hidden">
+                    <div class="panel-heading">
+                      <p>
+                        {{matchData.assignmentReport.patientAssignmentStatusMessage | dashify}}
+                        <a (click)="scrollTo('match-assignment-details')" class="text-white text-underlined white-link"><br><br><i class="fa fa-arrow-down" aria-hidden="true"></i> Click for details...</a>
+                      </p>
+                    </div>
                   </div>
                 </div>
+    
+                <h4 class="f-w-700">Disease</h4>
+                <dl class="dl-horizontal widest-dt">
+                  <dt>Concordance</dt>
+                  <dd [colorCodeConcordance]="matchData.concordance">{{matchData.concordance | dashify}}</dd>
+                  <dt>Name</dt>
+                  <dd>{{matchData.disease.name | dashify}}</dd>
+                  <dt>Short Name</dt>
+                  <dd>{{matchData.disease.shortName | dashify}}</dd>
+                  <dt>CTEP Category</dt>
+                  <dd>{{matchData.disease.ctepCategory | dashify}}</dd>
+                  <dt>CTEP Sub Category</dt>
+                  <dd>{{matchData.disease.ctepSubCategory | dashify}}</dd>
+                  <dt>CTEP Term</dt>
+                  <dd>{{matchData.disease.ctepTerm | dashify}}</dd>
+                  <dt>MedDRA Code</dt>
+                  <dd>{{matchData.disease.medDRACode | dashify}}</dd>
+                </dl>
+                
               </div>
             </div>
           </div>

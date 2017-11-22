@@ -102,6 +102,7 @@ export class ViewDataTransformer {
     transformedReport.matchData.isOutsideAssayWorkflow = true;
     transformedReport.matchData.isOutsideAssay = false;
     transformedReport.matchData.variantReporterRejectedOrConfirmedDate = transformedReport.matchData.dateVerified;
+    transformedReport.matchData.disease = transformedReport.matchData.disease || {};
 
     transformedReport.outsideData = transformedReport.outsideData || {};
     transformedReport.outsideData.pool1 = ocpDataOutside.pool1;
@@ -120,6 +121,7 @@ export class ViewDataTransformer {
     transformedReport.outsideData.isOutsideAssayWorkflow = true;
     transformedReport.outsideData.isOutsideAssay = true;
     transformedReport.outsideData.variantReporterRejectedOrConfirmedDate = transformedReport.outsideData.dateVerified;
+    transformedReport.outsideData.disease = transformedReport.outsideData.disease || {};
 
     this.transformAssignmentLogic(transformedReport.matchData.assignmentReport);
     this.transformAssignmentLogic(transformedReport.outsideData.assignmentReport);
