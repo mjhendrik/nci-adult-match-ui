@@ -32,6 +32,7 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
   dzConfigDocuments: DropzoneConfigInterface;
   pendingVariantReport: any;
   pendingAssignmentReport: any;
+  activeBiopsyTab: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -69,6 +70,8 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
       || roles.indexOf('CLIA_') !== -1) {
       this.enableFileUpload = true;
     }
+
+    this.navigateToSection();
   }
 
   ngAfterViewInit() {
@@ -121,5 +124,30 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
     } else {
       return null;
     }
+  }
+
+  private navigateToSection(): void {
+    if (!this.section) {
+      return;
+    }
+
+    if (this.section === 'biopsies') {
+      this.activeBiopsyTab = this.entityId;
+    } else if (this.section === 'msn') {
+      this.activeBiopsyTab = this.findBiopsyByMsn(this.entityId);
+      this.needToScroll = !!this.activeBiopsyTab;
+    }
+  }
+
+  private findBiopsyByMsn(msn: string): string {
+    for (let biopsy of this.patient.biopsies || []) {
+      for (let sendout of biopsy.nucleicAcidSendouts || []) {
+        if (sendout.molecularSequenceNumber === msn) {
+          return biopsy.biopsySequenceNumber;
+        }
+      }
+    }
+
+    return null;
   }
 }
