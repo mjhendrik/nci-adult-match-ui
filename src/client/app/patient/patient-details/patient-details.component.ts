@@ -22,12 +22,12 @@ import { UserProfileService } from '../../shared/user-profile/user-profile.servi
 })
 export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientData {
 
-  needToScroll: boolean;
+  needToScroll?: boolean;
   psn: string = '';
   patient: any = {};
   summaryData: any = {};
-  entityId: string = '';
-  section: string = '';
+  entityId?: string = '';
+  section?: string = '';
   enableFileUpload = false;
   dzConfigDocuments: DropzoneConfigInterface;
   pendingVariantReport: any;

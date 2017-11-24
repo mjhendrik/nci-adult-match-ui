@@ -20,9 +20,9 @@ export interface PatientData {
   psn: string;
   patient: any;
   summaryData: any;
-  section: string;
-  entityId: string;
-  needToScroll: boolean;
+  section?: string;
+  entityId?: string;
+  needToScroll?: boolean;
   pendingVariantReport: any;
   pendingAssignmentReport: any;
 }

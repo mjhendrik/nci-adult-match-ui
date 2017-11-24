@@ -53,7 +53,6 @@ class DataResolver implements Resolve<PatientData> {
             summaryData: {},
             section: section,
             entityId,
-            needToScroll: patient.needToScroll,
             biopsy: patient.biopsies,
             pendingVariantReport: patient.pendingVariantReport,
             pendingAssignmentReport: patient.pendingAssignmentReport
