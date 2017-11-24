@@ -1,12 +1,23 @@
 <div id="content" class="content">
   <ul class="breadcrumb pull-right">
-    <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
-    <li><a href [routerLink]="['/patients']" class="link-none">Patients</a></li>
-    <li><a href [routerLink]="['/patients/', psn]" class="link-none">Patient {{psn}}</a></li>
-    <li><a href [routerLink]="['/patients/' + psn + '/biopsies/' + biopsySequenceNumber + '/variant_reports/' + analysisId]" class="link-none">Variant Report</a></li>
+    <li>
+      <a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a>
+    </li>
+    <li>
+      <a href [routerLink]="['/patients']" class="link-none">Patients</a>
+    </li>
+    <li>
+      <a href [routerLink]="['/patients/', psn]" class="link-none">Patient {{psn}}</a>
+    </li>
+    <li>
+      <a href [routerLink]="['/patients/' + psn + '/biopsies/' + biopsySequenceNumber + '/variant_reports/' + analysisId]"
+        class="link-none">Variant Report</a>
+    </li>
     <li class="active">Quality Control Report</li>
   </ul>
-  <h1 class="page-header">Quality Control Report <span class="entity-name">{{analysisId}}</span></h1>
+  <h1 class="page-header">Quality Control Report
+    <span class="entity-name">{{analysisId}}</span>
+  </h1>
   <div class="row" matchHeight="panel-height-top">
     <div class="col-md-6">
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-top" id="qc-report-summary">
@@ -17,7 +28,7 @@
           <dl class="dl-horizontal">
             <dt>Molecular Sequence Number</dt>
             <dd>{{molecularSequenceNumber | dashify}}</dd>
-             <dt>Biopsy Sequence Number</dt>
+            <dt>Biopsy Sequence Number</dt>
             <dd>{{biopsySequenceNumber | dashify}}</dd>
             <dt>Analysis ID</dt>
             <dd>{{analysisId | dashify}}</dd>
@@ -66,16 +77,16 @@
           </dl>
 
           <div class="m-b-5">
-            <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!dnaBamFilePath"
-              (click)="download(dnaBamFilePath)"><i class="fa fa-download"></i> DNA BAM</button>
-            <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!dnaBaiFilePath"
-              (click)="download(dnaBaiFilePath)"><i class="fa fa-download"></i> DNA BAI</button>
-            <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!rnaBamFilePath"
-              (click)="download(rnaBamFilePath)"><i class="fa fa-download"></i> RNA BAM</button>
-            <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!rnaBaiFilePath"
-              (click)="download(rnaBaiFilePath)"><i class="fa fa-download"></i> RNA BAI</button>
-            <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!vcfFilePath"
-              (click)="download(vcfFilePath)"><i class="fa fa-download"></i> VCF</button>
+            <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!dnaBamFilePath" (click)="download(dnaBamFilePath)">
+              <i class="fa fa-download"></i> DNA BAM</button>
+            <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!dnaBaiFilePath" (click)="download(dnaBaiFilePath)">
+              <i class="fa fa-download"></i> DNA BAI</button>
+            <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!rnaBamFilePath" (click)="download(rnaBamFilePath)">
+              <i class="fa fa-download"></i> RNA BAM</button>
+            <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!rnaBaiFilePath" (click)="download(rnaBaiFilePath)">
+              <i class="fa fa-download"></i> RNA BAI</button>
+            <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!vcfFilePath" (click)="download(vcfFilePath)">
+              <i class="fa fa-download"></i> VCF</button>
           </div>
         </div>
       </div>
@@ -83,7 +94,7 @@
     <div class="col-md-6">
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-top">
         <div class="panel-heading">
-           <cnv-chart [data]="parsed_vcf_genes" ></cnv-chart>
+          <cnv-chart [data]="parsed_vcf_genes"></cnv-chart>
         </div>
       </div>
     </div>
@@ -97,7 +108,7 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <sd-variant-report-filtered-table-cnv [items]="cnv" [type]="'patient'"></sd-variant-report-filtered-table-cnv>
+          <sd-variant-report-filtered-table-cnv [items]="copyNumberVariants" [type]="'patient'"></sd-variant-report-filtered-table-cnv>
         </div>
       </div>
       <div class="row">

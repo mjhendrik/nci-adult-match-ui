@@ -14,7 +14,7 @@ export interface QcVariantReportData {
   analysisId: string;
   molecularSequenceNumber: string;
   dateReceived: any;
-  cnv: any[];
+  copyNumberVariants: any[];
   geneFusions: any[];
   snvAndIndels: any[];
   tvc_version: string;

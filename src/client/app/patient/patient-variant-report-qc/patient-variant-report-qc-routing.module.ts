@@ -51,7 +51,7 @@ class DataResolver implements Resolve<QcVariantReportData> {
         // getPatientVariantReportFileInfo => data[3]
 
         let snvAndIndels: any[] = data[0].indels || [];
-        snvAndIndels = snvAndIndels.concat(data[0].single_nucleotide_variants || []);
+        snvAndIndels = snvAndIndels.concat(data[0].singleNucleotideVariants || []);
 
         let ocpSummary: {[key:string]: any} = data[1].genes;
         ocpSummary['SUM'] = this.calculateOcpSum(ocpSummary);
@@ -64,8 +64,8 @@ class DataResolver implements Resolve<QcVariantReportData> {
           analysisId: analysisId,
           molecularSequenceNumber: data[0].molecularSequenceNumber,
           dateReceived: data[0].dateReceived,
-          cnv: data[0].copy_number_variants || [],
-          geneFusions: data[0].gene_fusions || [],
+          copyNumberVariants: data[0].copyNumberVariants || [],
+          geneFusions: data[0].geneFusions || [],
           snvAndIndels: snvAndIndels,
           tvc_version: tvc_version,
           pool1: data[1].pool1,

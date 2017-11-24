@@ -34,7 +34,7 @@ export class PatientVariantReportQcComponent implements OnInit, QcVariantReportD
   variantReport: any;
   assignmentReport: any;
   moiSummary: any;
-  cnv: any[];
+  copyNumberVariants: any[];
   snvAndIndels: any[];
   geneFusions: any[];
   ocpSummary: any;
@@ -60,9 +60,9 @@ export class PatientVariantReportQcComponent implements OnInit, QcVariantReportD
 
   getVariantReportLink(report: any): string {
     if (report.isOutsideAssayWorkflow) {
-      return `/patients/${this.patient.patientSequenceNumber}/variant_reports_oa/${report.analysisId}`;
+      return `/patients/${this.psn}/variant_reports_oa/${report.analysisId}`;
     } else {
-      return `/patients/${this.patient.patientSequenceNumber}/biopsies/${report.biopsySequenceNumber}/variant_reports/${report.analysisId}`;
+      return `/patients/${this.psn}/biopsies/${report.biopsySequenceNumber}/variant_reports/${report.analysisId}`;
     }
   }
 
