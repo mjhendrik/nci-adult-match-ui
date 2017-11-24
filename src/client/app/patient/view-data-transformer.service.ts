@@ -162,6 +162,9 @@ export class ViewDataTransformer {
 
   updateVariantStatus(variantReport: VariantReportData, item: ConfirmableItem, updatedStatus: ApiStatusUpdateSuccess): void {
     item.comment = updatedStatus.comments;
+    let fullItem: any = item;
+    let metadata = fullItem.metadata || {};
+    metadata.comment = item.comment;
     this.calculateMoiSummary(variantReport.variantReport);
   }
 
