@@ -37,9 +37,9 @@
           <th><mfDefaultSorter by="reference"><span class="table-header">Reference</span></mfDefaultSorter></th>
           <th><mfDefaultSorter by="alternative"><span class="table-header">Alternative</span></mfDefaultSorter></th>
           <th><mfDefaultSorter by="filter"><span class="table-header">Filter</span></mfDefaultSorter></th>
-          <th><mfDefaultSorter by="allele_frequency"><span class="table-header">Allele Freq</span></mfDefaultSorter></th>
-          <th><mfDefaultSorter by="func_gene"><span class="table-header">Gene</span></mfDefaultSorter></th>
-          <th><mfDefaultSorter by="oncomine_variant_class"><span class="table-header">Oncomine Variant Class</span></mfDefaultSorter></th>
+          <th><mfDefaultSorter by="alleleFrequency"><span class="table-header">Allele Freq</span></mfDefaultSorter></th>
+          <th><mfDefaultSorter by="funcGene"><span class="table-header">Gene</span></mfDefaultSorter></th>
+          <th><mfDefaultSorter by="oncomineVariantClass"><span class="table-header">Oncomine Variant Class</span></mfDefaultSorter></th>
           <th><mfDefaultSorter by="exon"><span class="table-header">Exon</span></mfDefaultSorter></th>
           <th><mfDefaultSorter by="function"><span class="table-header">Function</span></mfDefaultSorter></th>
           <th><mfDefaultSorter by="hgvs"><span class="table-header">HGVS</span></mfDefaultSorter></th>
@@ -56,9 +56,9 @@
           <td class="long-text-wrap">{{item.reference | dashify}}</td>
           <td class="long-text-wrap">{{item.alternative | dashify}}</td>
           <td>{{item.filter | dashify}}</td>
-          <td>{{item.allele_frequency | dashify}}</td>
-          <td><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.func_gene"></cosmic-link></td>
-          <td>{{item.oncomine_variant_class | dashify}}</td>
+          <td>{{item.alleleFrequency | dashify}}</td>
+          <td><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.funcGene"></cosmic-link></td>
+          <td>{{item.oncomineVariantClass | dashify}}</td>
           <td>{{item.exon | dashify}}</td>
           <td>{{item.function | dashify}}</td>
           <td>{{item.hgvs | dashify}}</td>

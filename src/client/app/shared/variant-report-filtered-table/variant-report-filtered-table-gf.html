@@ -33,11 +33,11 @@
           <th><mfDefaultSorter by="reference"><span class="table-header">Reference</span></mfDefaultSorter></th>
           <th><mfDefaultSorter by="alternative"><span class="table-header">Alternative</span></mfDefaultSorter></th>
           <th><mfDefaultSorter by="filter"><span class="table-header">Filter</span></mfDefaultSorter></th>
-          <th><mfDefaultSorter by="func_gene"><span class="table-header">Gene</span></mfDefaultSorter></th>
-          <th><mfDefaultSorter by="oncomine_variant_class"><span class="table-header">Oncomine Variant Class</span></mfDefaultSorter></th>
+          <th><mfDefaultSorter by="funcGene"><span class="table-header">Gene</span></mfDefaultSorter></th>
+          <th><mfDefaultSorter by="oncomineVariantClass"><span class="table-header">Oncomine Variant Class</span></mfDefaultSorter></th>
           <th><mfDefaultSorter by="exon"><span class="table-header">Exon</span></mfDefaultSorter></th>
           <th><mfDefaultSorter by="function"><span class="table-header">Function</span></mfDefaultSorter></th>
-          <th><mfDefaultSorter by="read_depth"><span class="table-header">Read Count</span></mfDefaultSorter></th>
+          <th><mfDefaultSorter by="readDepth"><span class="table-header">Read Count</span></mfDefaultSorter></th>
         </tr>
       </thead>
       <tbody>
@@ -48,11 +48,11 @@
           <td class="long-text-wrap">{{item.reference | dashify}}</td>
           <td class="long-text-wrap">{{item.alternative | dashify}}</td>
           <td>{{item.filter | dashify}}</td>
-          <td><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.func_gene"></cosmic-link></td>
-          <td>{{item.oncomine_variant_class | dashify}}</td>
+          <td><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.funcGene"></cosmic-link></td>
+          <td>{{item.oncomineVariantClass | dashify}}</td>
           <td>{{item.exon | dashify}}</td>
           <td>{{item.function | dashify}}</td>
-          <td>{{item.read_depth | dashify}}</td>
+          <td>{{item.readDepth | dashify}}</td>
         </tr>
         <tr *ngIf="!items || mfTable.data.length == 0">
           <td class="text-muted" colspan="14">

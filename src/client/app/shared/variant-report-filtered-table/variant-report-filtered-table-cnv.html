@@ -30,10 +30,10 @@
           <th><mfDefaultSorter by="chromosome"><span class="table-header">Chrom</span></mfDefaultSorter></th>
           <th><mfDefaultSorter by="position"><span class="table-header">Position </span></mfDefaultSorter></th>
           <th><mfDefaultSorter by="filter"><span class="table-header">Filter </span></mfDefaultSorter></th>
-          <th><mfDefaultSorter by="raw_copy_number"><span class="table-header">Raw CN</span></mfDefaultSorter></th>
-          <th><mfDefaultSorter by="copy_number"><span class="table-header">CN</span></mfDefaultSorter></th>
-          <th><mfDefaultSorter by="confidence_interval_5_percent"><span class="table-header">CI 5%</span></mfDefaultSorter></th>
-          <th><mfDefaultSorter by="confidence_interval_95_percent"><span class="table-header">CI 95%</span></mfDefaultSorter></th>
+          <th><mfDefaultSorter by="rawCopyNumber"><span class="table-header">Raw CN</span></mfDefaultSorter></th>
+          <th><mfDefaultSorter by="copyNumber"><span class="table-header">CN</span></mfDefaultSorter></th>
+          <th><mfDefaultSorter by="confidenceInterval5Percent"><span class="table-header">CI 5%</span></mfDefaultSorter></th>
+          <th><mfDefaultSorter by="confidenceInterval95Percent"><span class="table-header">CI 95%</span></mfDefaultSorter></th>
         </tr>
       </thead>
       <tbody>
@@ -42,10 +42,10 @@
           <td>{{item.chromosome | dashify}}</td>
           <td>{{item.position | dashify}}</td>
           <td>{{item.filter | dashify}}</td>
-          <td>{{item.raw_copy_number | dashify}}</td>
-          <td>{{item.copy_number | dashify}}</td>
-          <td>{{item.confidence_interval_5_percent | dashify}}</td>
-          <td>{{item.confidence_interval_95_percent | dashify}}</td>
+          <td>{{item.rawCopyNumber | dashify}}</td>
+          <td>{{item.copyNumber | dashify}}</td>
+          <td>{{item.confidenceInterval5Percent | dashify}}</td>
+          <td>{{item.confidenceInterval95Percent | dashify}}</td>
         </tr>
         <tr *ngIf="!items || mfTable.data.length == 0">
           <td class="text-muted" colspan="7">
