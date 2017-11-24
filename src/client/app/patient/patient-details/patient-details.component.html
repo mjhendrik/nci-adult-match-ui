@@ -30,6 +30,8 @@
             <dd>
               <span [colorCodePatients]="patient.currentPatientStatus">{{patient.currentPatientStatus | dashify}}</span>
             </dd>
+            <dt>Concordance</dt>
+            <dd [colorCodeConcordance]="patient.concordance">{{patient.concordance | dashify}}</dd>
             <dt>Assignment Reason</dt>
             <dd>{{(patient.currentPatientAssignmentLogic ? patient.currentPatientAssignmentLogic.reason : '') | dashify}}</dd>
             <dt>Current Step</dt>
@@ -54,8 +56,6 @@
           <div class="row" *ngIf="patient.isOutsideAssayWorkflow">
             <div class="col-md-6">
               <dl class="dl-horizontal narrow-dt">
-                <dt>Concordance</dt>
-                <dd [colorCodeConcordance]="patient.concordance">{{patient.concordance | dashify}}</dd>
                 <dt>Outside Lab Disease</dt>
                 <dd>{{patient.disease.outsideData.name | dashify}}</dd>
                 <dt>Short Name</dt>
@@ -72,8 +72,6 @@
             </div>
             <div class="col-md-6">
               <dl class="dl-horizontal narrow-dt">
-                <dt>Concordance</dt>
-                <dd [colorCodeConcordance]="patient.concordance">{{patient.concordance | dashify}}</dd>
                 <dt>MATCH Disease</dt>
                 <dd>{{patient.disease.matchData.name | dashify}}</dd>
                 <dt>Short Name</dt>
@@ -90,8 +88,6 @@
             </div>
           </div>
           <dl class="dl-horizontal" *ngIf="!patient.isOutsideAssayWorkflow">
-            <dt>Concordance</dt>
-            <dd [colorCodeConcordance]="patient.concordance">{{patient.concordance | dashify}}</dd>
             <dt>Disease</dt>
             <dd>{{patient.disease.name | dashify}}</dd>
             <dt>Short Name</dt>
