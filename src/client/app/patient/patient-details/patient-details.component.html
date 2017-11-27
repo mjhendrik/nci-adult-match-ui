@@ -257,7 +257,7 @@
                           <td>{{sendout.reportedDate | gmt}}</td>
                           <td>{{sendout.comment | dashify}}</td>
                         </tr>
-                        <tr *ngFor="let analysis of sendout.analyses; let last = last" id="{{analysis.analysisId}}">
+                        <tr *ngFor="let analysis of sendout.analyses" id="{{analysis.analysisId}}">
                           <td colspan="7" class="bg-body">
                             <div class="panel panel-with-tabs panel-accent-sides-purple panel-details-row">
                               <div class="panel-heading">
@@ -357,9 +357,10 @@
                                 </div>
                               </div>
                             </div>
-                            <!-- <sd-file-upload [msn]="sendout.molecularSequenceNumber"></sd-file-upload> -->
-                            <sd-file-upload *ngIf="last && enableFileUpload" [msn]="sendout.molecularSequenceNumber"></sd-file-upload>
                           </td>
+                        </tr>
+                        <tr>
+                          <td colspan="7"><sd-file-upload *ngIf="enableFileUpload" [msn]="sendout.molecularSequenceNumber"></sd-file-upload></td>
                         </tr>
                       </ng-template>
                     </tbody>
