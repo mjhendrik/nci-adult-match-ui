@@ -146,7 +146,7 @@
           </div>
         </div>
       </tab>
-      <tab *ngFor="let biopsy of patient.biopsies; first as isFirst">
+      <tab *ngFor="let biopsy of patient.biopsies; first as isFirst"  [active]="biopsy.biopsySequenceNumber === activeBiopsySequenceNumber">
         <ng-template tabHeading>
           <i *ngIf="isFirst" class="fa fa-bell-o" aria-hidden="true"></i> Biopsy {{biopsy.biopsySequenceNumber}}, {{biopsy.dateCreated | gmt: 'YYYY-MM-DD'}}
         </ng-template>

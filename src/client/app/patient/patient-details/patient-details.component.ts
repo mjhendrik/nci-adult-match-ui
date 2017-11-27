@@ -32,7 +32,7 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
   dzConfigDocuments: DropzoneConfigInterface;
   pendingVariantReport: any;
   pendingAssignmentReport: any;
-  activeBiopsyTab: string;
+  activeBiopsySequenceNumber: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -132,10 +132,10 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
     }
 
     if (this.section === 'biopsies') {
-      this.activeBiopsyTab = this.entityId;
+      this.activeBiopsySequenceNumber = this.entityId;
     } else if (this.section === 'msn') {
-      this.activeBiopsyTab = this.findBiopsyByMsn(this.entityId);
-      this.needToScroll = !!this.activeBiopsyTab;
+      this.activeBiopsySequenceNumber = this.findBiopsyByMsn(this.entityId);
+      this.needToScroll = !!this.activeBiopsySequenceNumber;
     }
   }
 
