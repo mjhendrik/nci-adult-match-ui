@@ -42,7 +42,52 @@ export class CliaApiServiceStub {
         'last_contact': '2017-02-01 15:08:26.446499',
         'site': 'mocha',
         'study_id': 'EAY131'
-    }] as any[]
+    }] as any[];
+
+  static makeCliaParentData = () => {
+
+    let details = [{
+
+      "id": "MoCha_1",
+      "molecularSequenceNumber": "SampleControl_MoCha_1",
+      "dateCreated": '2016-10-28 12:56:19.566',
+      "dateReceived": '2016-10-28 12:56:19.566',
+      "site": "MoCha",
+      "siteIpAddress": "0:0:0:0:0:0:0:1",
+      "positiveControlVersion": "2",
+      "positiveControlDateLoaded": '2016-10-28 12:56:19.566',
+      "status": "FAILED",
+      "passed": "false",
+      "nextGenerationSequence": {
+        "ngsRunNumber": "1",
+        "metadata": "",
+        "dateReceived": '2016-10-28 12:56:19.566',
+        "dateVerified": '2016-10-28 12:56:19.566',
+        "status": "PENDING",
+        "ionReporterResults": {
+          "jobName": "job-sc-mocha-1",
+          "molecularSequenceNumber": "SampleControl_MoCha_1",
+          "ionReporterId": "BDD",
+          "ionReporterUrl": "",
+          "singleNucleotideVariantsFileName": "",
+          "indelVariantsFileName": "",
+          "copyNumberVariantsFileName": "",
+          "geneFusionsFileName": "",
+          "nonHotspotRulesFileName": "",
+          "dnaBamFilePath": "s3://BDD/SampleControl_MoCha_1/job-sc-mocha-1/sample1.bam",
+          "rnaBamFilePath": "s3://BDD/SampleControl_MoCha_1/job-sc-mocha-1/sample2.bam",
+          "vcfFilePath": "s3://BDD/SampleControl_MoCha_1/job-sc-mocha-1/4_48_MATCHControl_v1_MATCHControl_RNA_v1.vcf",
+          "qcFilePath": "",
+          "variantReport": {
+            "singleNucleotideVariants": [""]
+          }
+        }
+      }
+
+    }];
+
+    return details as any;
+  }
 
     static makeCliaVariantReportsNTCData = () => {
         return {
@@ -69,7 +114,7 @@ export class CliaApiServiceStub {
             'tsv_name': 'IR_WAO85/NTC_MOCHA_KGPVI/SC_KGPVI_analysis_1/SC_KGPVI_MoCha_12_notemplate_passed.tsv',
             'vcf_name': 'IR_WAO85/NTC_MOCHA_KGPVI/SC_KGPVI_analysis_1/SC_KGPVI_MoCha_12_notemplate_passed.vcf'
         } as CliaVariantReportsNTCViewData;
-    }
+    };
 
     static makeCliaVariantReportsPACCData = () => {
         return {

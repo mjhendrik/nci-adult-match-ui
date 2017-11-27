@@ -78,6 +78,10 @@ export class CliaVariantReportQcComponent implements OnInit {
 
     this.molecular_id = this.route.snapshot.params['id'];
     this.getData(this.route.snapshot.data['data'].data);
+
+    // console.log(" 0 *** ---> " + JSON.stringify(this.route.snapshot.data['data'].graph))
+    
+
     this.getGraph(this.route.snapshot.data['data'].graph);
   }
 
@@ -91,6 +95,7 @@ export class CliaVariantReportQcComponent implements OnInit {
     this.oncomine_control_panel_summary = itemList.oncomine_control_panel_summary;
     this.gene_fusions = itemList.gene_fusions;
     this.snv_indels = itemList.snv_indels;
+
     // Object.keys(itemList.oncomine_control_panel_summary).forEach((key: any, i: number) => {
     //   this.sum += itemList.oncomine_control_panel_summary[key];
     // });

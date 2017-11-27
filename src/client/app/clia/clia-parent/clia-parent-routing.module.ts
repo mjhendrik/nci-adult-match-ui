@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { AuthGuard } from './../../shared/auth/auth.guard.service';
+import { CliaDataService } from './../../shared/clia/clia-data.service';
 import { CliaParentComponent } from './clia-parent.component';
 
 @NgModule({
@@ -39,6 +40,7 @@ import { CliaParentComponent } from './clia-parent.component';
       }
     ])
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [ CliaDataService ],
 })
 export class CliaParentRoutingModule { }

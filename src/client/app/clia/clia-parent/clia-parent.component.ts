@@ -3,6 +3,7 @@ import {
   Input,
   OnInit
 } from '@angular/core';
+
 import { ActivatedRoute } from '@angular/router';
 
 import { routerTransition } from './../../shared/router.animations';
@@ -10,8 +11,10 @@ import { GmtPipe } from './../../shared/pipes/gmt.pipe';
 import { SampleControlApiService } from '../sample-control-api.service';
 import { IonReportersApiService } from '../ion-reporters-api.service';
 import { UserProfileService } from '../../shared/user-profile/user-profile.service';
+import { CliaDataService } from "./../../shared/clia/clia-data.service";
 
 import { Observable } from 'rxjs/Rx';
+import 'rxjs/add/operator/map';
 
 /**
  * CliaParentComponent.
@@ -66,7 +69,8 @@ export class CliaParentComponent implements OnInit {
     private apiSample: SampleControlApiService,
     private apiIon: IonReportersApiService,
     private route: ActivatedRoute,
-    private profile: UserProfileService) {
+    private profile: UserProfileService,
+  private cliaData: CliaDataService ) {
   }
 
   ngOnInit() {
@@ -77,7 +81,8 @@ export class CliaParentComponent implements OnInit {
     if (this.cliaType === 'dartmouth') this.cliaTypeName = 'Dartmouth';
     if (this.cliaType === 'yale') this.cliaTypeName = 'Yale';
     if (this.cliaType === 'mgh') this.cliaTypeName = 'MGH';
-    if (this.cliaType === 'mda') this.cliaTypeName = 'MD Anderson';
+    if (this.cliaType === 'mda') this.cliaTypeName = 'MDA';
+    // if (this.cliaType === 'mda') this.cliaTypeName = 'MD Anderson';
 
     this.getDataPC();
     this.getDataNTC();
@@ -97,14 +102,22 @@ export class CliaParentComponent implements OnInit {
   }
 
   getDataPC() {
+
+    // this.cliaData.transfer_data()
+
     this.apiSample.getCliaDetailsPC(this.cliaTypeName)
       .subscribe(details => {
         let gmt = new GmtPipe();
+        let data:{};
+
         this.tablePCData = details.map((x: any) => {
           x.molecular_id = x.molecularSequenceNumber;
           x.date_molecular_id_created = gmt.transform(x.dateCreated);
           x.date_variant_received = gmt.transform(x.date_variant_received);
           x.report_status = x.passed;
+          x.analysis_id = x.nextGenerationSequence.ionReporterResults.jobName;
+          data = {molecular_id: x.molecular_id, analysis_id: x.analysis_id,status: x.report_status};
+          this.cliaData.transferData = data;
           return x;
         });
         // this.tablePCData.splice(-1, 1); --> Check if you need this in the new message-api implementation

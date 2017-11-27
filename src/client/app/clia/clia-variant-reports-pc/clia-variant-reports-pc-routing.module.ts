@@ -13,6 +13,8 @@ import { Observable } from 'rxjs/Observable';
 import { CliaVariantReportsPcComponent } from './clia-variant-reports-pc.component';
 import { AuthGuard } from './../../shared/auth/auth.guard.service';
 import { AliquotApiService } from '../aliquot-api.service';
+import { CliaDataService } from "./../../shared/clia/clia-data.service";
+// import { CliaDataService } from './../../clia/clia-parent/clia-parent.component';
 
 @Injectable()
 class DataResolver implements Resolve<any> {
@@ -67,9 +69,16 @@ class DataResolver implements Resolve<any> {
         canActivate: [AuthGuard],
         resolve: { data: DataResolver }
       }
-    ])
+    ]),
+    // ParentModule
   ],
   exports: [RouterModule],
-  providers: [DataResolver]
+  providers: [DataResolver, CliaDataService]
 })
-export class CliaVariantReportsPcRoutingModule { }
+export class CliaVariantReportsPcRoutingModule {
+  constructor( private _cliaDataService: CliaDataService) { //<====== INJECT THE SERVICE
+    console.log("this._cliaDataService.getTransferData()--> "
+      + JSON.stringify(this._cliaDataService.transferData))
+    this._cliaDataService.transferData;
+  }
+}

@@ -12,6 +12,7 @@ import { DirectivesModule } from './../../shared/directives/directives.module';
 import { SharedModule } from '../../shared/shared.module';
 import { CliaVariantReportsPCViewData } from '../clia-data-interfaces';
 import { SampleControlApiService } from '../sample-control-api.service';
+import { CliaDataService } from "./../../shared/clia/clia-data.service";
 
 export function main() {
   describe('clia variant reports pc component with clia type mocha --> Download', () => {
@@ -31,6 +32,7 @@ export function main() {
         declarations: [CliaVariantReportsPcComponent],
         providers: [
           { provide: SampleControlApiService, useClass: MockCliaApiService },
+          { provide: CliaDataService, useClass: DataApiService },
           {
             provide: ActivatedRoute, useValue: {
               snapshot: {
@@ -101,6 +103,7 @@ export function main() {
         declarations: [CliaVariantReportsPcComponent],
         providers: [
           { provide: SampleControlApiService, useClass: MockCliaApiService },
+          { provide: CliaDataService, useClass: DataApiService },
           {
             provide: ActivatedRoute, useValue: {
             snapshot: {
@@ -168,6 +171,7 @@ export function main() {
         declarations: [CliaVariantReportsPcComponent],
         providers: [
           { provide: SampleControlApiService, useClass: MockCliaApiService },
+          { provide: CliaDataService, useClass: DataApiService },
           {
             provide: ActivatedRoute, useValue: {
               snapshot: {
@@ -235,6 +239,7 @@ export function main() {
         declarations: [CliaVariantReportsPcComponent],
         providers: [
           { provide: SampleControlApiService, useClass: MockCliaApiService },
+          { provide: CliaDataService, useClass: DataApiService },
           {
             provide: ActivatedRoute, useValue: {
               snapshot: {
@@ -302,6 +307,7 @@ export function main() {
         declarations: [CliaVariantReportsPcComponent],
         providers: [
           { provide: SampleControlApiService, useClass: MockCliaApiService },
+          { provide: CliaDataService, useClass: DataApiService },
           {
             provide: ActivatedRoute, useValue: {
               snapshot: {
@@ -369,6 +375,7 @@ export function main() {
         declarations: [CliaVariantReportsPcComponent],
         providers: [
           { provide: SampleControlApiService, useClass: MockCliaApiService },
+          { provide: CliaDataService, useClass: DataApiService },
           {
             provide: ActivatedRoute, useValue: {
               snapshot: {
@@ -470,25 +477,19 @@ class MockCliaApiService {
   }
 }
 
+class DataApiService {
+  transferData(): Observable<CliaDataService> {
+    let testData: any;
+    testData = {
+      molecular_id: 'molecular_123',
+      analysis_id: 'job_123',
+      status: 'failed'
+    };
+    return Observable.of(testData);
+  }
+}
+
 class MockCliaApiServiceWithErrors {
-  // getCliaVariantReportsPC(): Observable<CliaVariantReportsPCViewData> {
-  //   let testData: CliaVariantReportsPCViewData;
-  //   testData = {
-  //     false_positive_variants: ['test'],
-  //     positive_variants: ['test'],
-  //     molecular_id: { 'test': 'test' },
-  //     analysis_id: { 'test': 'test' },
-  //     total_variants: { 'test': 'test' },
-  //     mapd: { 'test': 'test' },
-  //     cellularity: { 'test': 'test' },
-  //     positive_control_version: { 'test': 'test' },
-  //     date_molecular_id_created: { 'test': 'test' },
-  //     date_variant_received: { 'test': 'test' },
-  //     torrent_variant_caller_version: { 'test': 'test' },
-  //     report_status: { 'test': 'test' }
-  //   };
-  //   return Observable.throw(testData);
-  // }
   downloadCliaDnaBam(): Observable<any> {
     let testdata = {
       s3_download_file_url: 'javascript:void(0)'

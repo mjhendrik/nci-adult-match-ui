@@ -8,6 +8,7 @@ import { routerTransition } from './../../shared/router.animations';
 import { SampleControlApiService } from '../sample-control-api.service';
 import { CliaVariantReportsPCViewData } from '../clia-data-interfaces';
 import { UserProfileService } from '../../shared/user-profile/user-profile.service';
+import { CliaDataService } from "./../../shared/clia/clia-data.service";
 
 /**
  * This class represents the lazy loaded CLIAVariantReportsPcComponent.
@@ -40,12 +41,17 @@ export class CliaVariantReportsPcComponent implements OnInit {
   cliaTypeName: string;
   isReviewer: boolean = false;
 
-  constructor(private api: SampleControlApiService,
+  constructor(
+    private api: SampleControlApiService,
     private route: ActivatedRoute,
-    private profile: UserProfileService) {
-  }
+    private profile: UserProfileService,
+    private cliaData: CliaDataService) {}
 
   ngOnInit() {
+    let array:any;
+    array = this.cliaData.transferData;
+    this.molecular_id = array.molecular_id;
+    this.analysis_id = array.analysis_id;
 
     this.pcType = this.route.snapshot.url[0].path;
     this.pcType = this.pcType.substring(this.pcType.indexOf('_') + 1).trim();
@@ -57,6 +63,7 @@ export class CliaVariantReportsPcComponent implements OnInit {
     if (this.pcType === 'mda') this.cliaTypeName = 'MD Anderson';
 
     this.molecular_id = this.route.snapshot.params['id'];
+    // this.analysis_id = this.route.snapshot.params['analysisid'];
     this.getData(this.route.snapshot.data['data'].data);
 
     const roles = this.profile.roles().filter(x => {
@@ -70,15 +77,12 @@ export class CliaVariantReportsPcComponent implements OnInit {
   }
 
   getData(itemList: CliaVariantReportsPCViewData) {
-    // this.molecular_id = itemList.molecular_id;
-    // this.positive_variants = itemList.positive_variants;
-
     this.matchingCriteria = itemList.matchingCriteria;
     this.positive_variants = itemList.positiveControls;
     this.positive_control_version = itemList.positiveControlVersion;
     this.date_molecular_id_created = itemList.positiveControlLoadedDate;
 
-    this.analysis_id = itemList.analysis_id;
+    // this.analysis_id = itemList.analysis_id;
     this.total_variants = itemList.total_variants;
     this.mapd = itemList.mapd;
     this.cellularity = itemList.cellularity;
