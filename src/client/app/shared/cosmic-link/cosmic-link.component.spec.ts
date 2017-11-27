@@ -13,17 +13,17 @@ import { DataTableModule } from './../../shared/datatables/DataTableModule';
 export function main() {
 
   describe('cosmic-link component', () => {
-    let config:any[] = [
-      {path: 'tracking', component: 'CosmicLinkComponent'}
+    let config: any[] = [
+      { path: 'tracking', component: 'CosmicLinkComponent' }
     ];
 
-    let LinkType:any = {
-      cosmicGene : 'cosmicGene',
-      cosmicId : 'cosmicId',
-      cosmicFusionId : 'cosmicFusionId'
+    let LinkType: any = {
+      cosmicGene: 'cosmicGene',
+      cosmicId: 'cosmicId',
+      cosmicFusionId: 'cosmicFusionId'
     };
 
-    let urls:any = {
+    let urls: any = {
       'cosmicId': 'http://cancer.sanger.ac.uk/cosmic/mutation/overview?id={id}',
       'cosmicFusionId': 'http://cancer.sanger.ac.uk/cosmic/fusion/summary?id={id}',
       'cosmicGene': 'http://grch37-cancer.sanger.ac.uk/cosmic/gene/overview?ln={id}',
@@ -40,7 +40,7 @@ export function main() {
       }).compileComponents();
     });
 
-  it('should instantiate default getLinkUrl',
+    it('should instantiate default getLinkUrl',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -52,7 +52,7 @@ export function main() {
             }).createComponent(CosmicLinkComponent);
 
             let comp: CosmicLinkComponent = fixture.componentInstance;
-            comp.linkId = "unknown";
+            comp.linkId = 'unknown';
             comp.linkType = LinkType;
             expect(comp.isValidLink()).toBe(false);
             fixture.componentInstance.getLinkUrl();
@@ -73,9 +73,9 @@ export function main() {
             }).createComponent(CosmicLinkComponent);
 
             let comp: CosmicLinkComponent = fixture.componentInstance;
-            comp.linkId = "cosmicId";
+            comp.linkId = 'cosmicId';
             comp.linkType = LinkType.cosmicId;
-            expect(comp.text).toBe("cosmicId");
+            expect(comp.text).toBe('cosmicId');
             fixture.componentInstance.getLinkUrl();
             fixture.detectChanges();
             fixture.destroy();
@@ -94,9 +94,9 @@ export function main() {
             }).createComponent(CosmicLinkComponent);
 
             let comp: CosmicLinkComponent = fixture.componentInstance;
-            comp.linkId = "COSM123";
+            comp.linkId = 'COSM123';
             comp.linkType = LinkType.cosmicId;
-            expect(comp.text).toBe("COSM123");
+            expect(comp.text).toBe('COSM123');
             fixture.componentInstance.getLinkUrl();
             fixture.detectChanges();
             fixture.destroy();
@@ -115,9 +115,9 @@ export function main() {
             }).createComponent(CosmicLinkComponent);
 
             let comp: CosmicLinkComponent = fixture.componentInstance;
-            comp.linkId = "cosmicFusionId";
+            comp.linkId = 'cosmicFusionId';
             comp.linkType = LinkType.cosmicFusionId;
-            expect(comp.text).toBe("cosmicFusionId");
+            expect(comp.text).toBe('cosmicFusionId');
             fixture.componentInstance.getLinkUrl();
             fixture.detectChanges();
             fixture.destroy();
@@ -136,9 +136,9 @@ export function main() {
             }).createComponent(CosmicLinkComponent);
 
             let comp: CosmicLinkComponent = fixture.componentInstance;
-            comp.linkId = "COSF123";
+            comp.linkId = 'COSF123';
             comp.linkType = LinkType.cosmicFusionId;
-            expect(comp.text).toBe("COSF123");
+            expect(comp.text).toBe('COSF123');
             fixture.componentInstance.getLinkUrl();
             fixture.detectChanges();
             fixture.destroy();
@@ -157,16 +157,16 @@ export function main() {
             }).createComponent(CosmicLinkComponent);
 
             let comp: CosmicLinkComponent = fixture.componentInstance;
-            comp.linkId = "cosmicGene";
+            comp.linkId = 'cosmicGene';
             comp.linkType = LinkType.cosmicGene;
-            expect(comp.text).toBe("cosmicGene");
+            expect(comp.text).toBe('cosmicGene');
             fixture.componentInstance.getLinkUrl();
             fixture.detectChanges();
             fixture.destroy();
           });
       }));
 
-    xit('should instantiate isValidLink',
+    it('should instantiate isValidLink',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -181,9 +181,8 @@ export function main() {
           });
       }));
 
-    xit('should instantiate getLinkId',
+    it('should instantiate getLinkUrl',
       async((done: any) => {
-
         TestBed
           .compileComponents()
           .then(() => {
@@ -192,8 +191,10 @@ export function main() {
                 templateUrl: ''
               }
             }).createComponent(CosmicLinkComponent);
-            // fixture.componentInstance.getLinkId();
+            fixture.componentInstance.getLinkUrl();
           });
       }));
+
   });
+
 }
