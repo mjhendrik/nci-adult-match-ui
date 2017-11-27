@@ -3,7 +3,14 @@ export class DialogResults {
     comment?: string;
 
     static fromString(value: string): DialogResults {
-        return JSON.parse(value) as DialogResults;
+        try {
+            return JSON.parse(value) as DialogResults;
+        } catch (error) {
+            let defaultRes = new DialogResults();
+            defaultRes.success = false;
+            return defaultRes;
+        }
+
     }
 
     static toString(value: DialogResults): string {
