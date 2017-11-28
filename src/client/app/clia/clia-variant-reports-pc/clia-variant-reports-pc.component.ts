@@ -52,6 +52,7 @@ export class CliaVariantReportsPcComponent implements OnInit {
     array = this.cliaData.transferData;
     this.molecular_id = array.molecular_id;
     this.analysis_id = array.analysis_id;
+    this.report_status = String(array.status);
 
     this.pcType = this.route.snapshot.url[0].path;
     this.pcType = this.pcType.substring(this.pcType.indexOf('_') + 1).trim();
@@ -63,8 +64,8 @@ export class CliaVariantReportsPcComponent implements OnInit {
     if (this.pcType === 'mda') this.cliaTypeName = 'MD Anderson';
 
     this.molecular_id = this.route.snapshot.params['id'];
-    // this.analysis_id = this.route.snapshot.params['analysisid'];
     this.getData(this.route.snapshot.data['data'].data);
+    // this.analysis_id = this.route.snapshot.params['analysisid'];
 
     const roles = this.profile.roles().filter(x => {
       return x.indexOf('_VARIANT_REPORT_REVIEWER') !== -1 || x === 'ADMIN';
@@ -73,7 +74,6 @@ export class CliaVariantReportsPcComponent implements OnInit {
     if (roles.indexOf('ADMIN') !== -1 || roles.join().toLowerCase().indexOf(this.pcType) !== -1) {
       this.isReviewer = true;
     }
-
   }
 
   getData(itemList: CliaVariantReportsPCViewData) {
@@ -81,15 +81,14 @@ export class CliaVariantReportsPcComponent implements OnInit {
     this.positive_variants = itemList.positiveControls;
     this.positive_control_version = itemList.positiveControlVersion;
     this.date_molecular_id_created = itemList.positiveControlLoadedDate;
-
-    // this.analysis_id = itemList.analysis_id;
     this.total_variants = itemList.total_variants;
     this.mapd = itemList.mapd;
     this.cellularity = itemList.cellularity;
     this.date_variant_received = itemList.date_variant_received;
     this.torrent_variant_caller_version = itemList.torrent_variant_caller_version;
-    this.report_status = itemList.report_status;
     this.false_positive_variants = itemList.false_positive_variants;
+    // this.analysis_id = itemList.analysis_id;
+    // this.report_status = itemList.report_status;
   };
 
   downloadDnaBam(): void {
