@@ -103,6 +103,7 @@ export class ViewDataTransformer {
     transformedReport.matchData.isOutsideAssay = false;
     transformedReport.matchData.variantReporterRejectedOrConfirmedDate = transformedReport.matchData.dateVerified;
     transformedReport.matchData.disease = transformedReport.matchData.disease || {};
+    transformedReport.matchData.commenter = transformedReport.matchData.metadata ? transformedReport.matchData.metadata.commenter : null;
 
     transformedReport.outsideData = transformedReport.outsideData || {};
     transformedReport.outsideData.pool1 = ocpDataOutside.pool1;
@@ -122,6 +123,7 @@ export class ViewDataTransformer {
     transformedReport.outsideData.isOutsideAssay = true;
     transformedReport.outsideData.variantReporterRejectedOrConfirmedDate = transformedReport.outsideData.dateVerified;
     transformedReport.outsideData.disease = transformedReport.outsideData.disease || {};
+    transformedReport.outsideData.commenter = transformedReport.outsideData.metadata ? transformedReport.outsideData.metadata.commenter : null;
 
     this.transformAssignmentLogic(transformedReport.matchData.assignmentReport);
     this.transformAssignmentLogic(transformedReport.outsideData.assignmentReport);
@@ -264,6 +266,7 @@ export class ViewDataTransformer {
     variantReport.isAssignmentReportEditable = true;
     variantReport.isOutsideAssayWorkflow = false;
     variantReport.disease = transformedPatient.disease || {};
+    variantReport.commenter = variantReport.metadata ? variantReport.metadata.commenter : null;
 
     return variantReport;
   }
