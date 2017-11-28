@@ -77,8 +77,6 @@ class DataResolver implements Resolve<any> {
 })
 export class CliaVariantReportsPcRoutingModule {
   constructor( private _cliaDataService: CliaDataService) { //<====== INJECT THE SERVICE
-    console.log("this._cliaDataService.getTransferData()--> "
-      + JSON.stringify(this._cliaDataService.transferData))
     this._cliaDataService.transferData;
   }
 }
