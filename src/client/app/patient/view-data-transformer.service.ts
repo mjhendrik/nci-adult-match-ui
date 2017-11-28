@@ -162,18 +162,11 @@ export class ViewDataTransformer {
   }
 
   updateAssignmentReportStatus(report: VariantReportData, updatedStatus: ApiStatusUpdateSuccess): void {
-    report.derivedStatus = updatedStatus.dateTime ? 'CONFIRMED' : 'PENDING';
-    report.comments = updatedStatus.comments;
-    report.commenter = updatedStatus.commenter;
-    report.confirmedDate = updatedStatus.dateTime;
+    report.assignmentReport.dateConfirmed = updatedStatus.dateTime || new Date().toString();
+    report.assignmentReport.derivedStatus = report.assignmentReport.dateConfirmed ? 'CONFIRMED' : 'PENDING';
+    report.assignmentReport.comments = updatedStatus.comments;
+    report.assignmentReport.commenter = updatedStatus.commenter;
     report.isAssignmentReportEditable = this.getAssignmentReportEditable(report);
-    if (report.assignmentReport) {
-      // Need to really cleanup the data model
-      report.assignmentReport.derivedStatus = report.derivedStatus;
-      report.assignmentReport.comments = report.comments;
-      report.assignmentReport.commenter = report.commenter;
-      report.assignmentReport.confirmedDate = report.confirmedDate;
-    }
   }
 
   updateVariantStatus(variantReport: VariantReportData, item: ConfirmableItem, updatedStatus: ApiStatusUpdateSuccess): void {
