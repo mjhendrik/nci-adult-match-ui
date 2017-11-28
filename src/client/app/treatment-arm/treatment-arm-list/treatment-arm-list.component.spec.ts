@@ -830,8 +830,64 @@ class MockTAListApiService {
   getTreatmentArmList(): Observable<any> {
     let testdata = [
       {
-        date_molecular_id_created: '2-12-2016',
-        date_variant_received: '2-12-2016',
+        'name': 'CukeTest-1034',
+        'version': '2015-08-06',
+        'treatmentArmStatus': 'OPEN',
+        'statusLog': [
+          {
+            'date': '1488461537494',
+            'status': 'PENDING'
+          },
+          {
+            'date': '1488461581',
+            'status': 'OPEN'
+          },
+          {
+            'date': '1488461581910',
+            'status': 'READY'
+          }
+        ],
+        'dateCreated': {
+          '$date': 1488461537494
+        },
+        'treatmentArmId': 'CukeTest-1034',
+        'summaryReport': {
+          'numCurrentPatientsOnArm': 0,
+          'numFormerPatients': 0,
+          'numPendingArmApproval': 0,
+          'numNotEnrolledPatient': 0,
+          'assignmentRecords': ['']
+        }
+      },
+      {
+        'name': 'CukeTest-1034',
+        'version': '2015-08-06',
+        'treatmentArmStatus': 'OPEN',
+        'statusLog': [
+          {
+            'date': '1488461537494',
+            'status': 'PENDING'
+          },
+          {
+            'date': '1488461581',
+            'status': 'OPEN'
+          },
+          {
+            'date': '1488461581910',
+            'status': 'CLOSED'
+          }
+        ],
+        'dateCreated': {
+          '$date': 1488461537494
+        },
+        'treatmentArmId': 'CukeTest-1034',
+        'summaryReport': {
+          'numCurrentPatientsOnArm': 0,
+          'numFormerPatients': 0,
+          'numPendingArmApproval': 0,
+          'numNotEnrolledPatient': 0,
+          'assignmentRecords': ['']
+        }
       }
     ];
     return Observable.of(testdata);
