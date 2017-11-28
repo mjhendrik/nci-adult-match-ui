@@ -1,8 +1,9 @@
 import {
   Component,
-  OnInit
+  OnInit,
+  OnDestroy
 } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
+import { Observable, Subscription } from 'rxjs/Rx';
 
 import { routerTransition } from './../shared/router.animations';
 import { GmtPipe } from './../shared/pipes/gmt.pipe';
@@ -25,7 +26,7 @@ export interface LoadableData<T> {
   animations: [routerTransition()],
   host: { '[@routerTransition]': '' }
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
 
   searchtermVR: string = '';
   searchtermAR: string = '';
@@ -64,6 +65,7 @@ export class DashboardComponent implements OnInit {
   tablePatientsAwaitingDataInitial: number = 0;
 
   private isOutsideAssayValue?: boolean = null;
+  private autoRefreshSubscription: Subscription;
 
   set isOutsideAssayWorkflow(value: boolean) {
     this.isOutsideAssayValue = value;
@@ -89,6 +91,10 @@ export class DashboardComponent implements OnInit {
 
     this.autoLoadOverviewData();
     this.tablePatientsAwaitingDataInitial = this.patientsAwaiting.data.length;
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe();
   }
 
   getPendingAssignmentReportsData() {
@@ -233,7 +239,7 @@ export class DashboardComponent implements OnInit {
   }
 
   autoLoadOverviewData() {
-    Observable.interval(1000 * 30).subscribe(x => {
+    this.autoRefreshSubscription = Observable.interval(1000 * 30).subscribe(x => {
       this.getTreatmentArmSummaryData();
       this.getPatientSummaryData();
       this.getBiopsyTrackingSummaryData();
@@ -241,4 +247,11 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  private unsubscribe() {
+    if (!this.autoRefreshSubscription) {
+      return;
+    }
+    this.autoRefreshSubscription.unsubscribe();
+    this.autoRefreshSubscription = null;
+  }
 }
