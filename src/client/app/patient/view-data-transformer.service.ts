@@ -101,7 +101,7 @@ export class ViewDataTransformer {
       || { totalaMOIs: 0, totalMOIs: 0, confirmedaMOIs: 0, confirmedMOIs: 0 };
     transformedReport.matchData.isOutsideAssayWorkflow = true;
     transformedReport.matchData.isOutsideAssay = false;
-    transformedReport.matchData.variantReporterRejectedOrConfirmedDate = transformedReport.matchData.dateVerified;
+    transformedReport.matchData.variantReportRejectedOrConfirmedDate = transformedReport.matchData.dateVerified;
     transformedReport.matchData.disease = transformedReport.matchData.disease || {};
     transformedReport.matchData.commenter = transformedReport.matchData.metadata ? transformedReport.matchData.metadata.commenter : null;
 
@@ -121,7 +121,7 @@ export class ViewDataTransformer {
       || { totalaMOIs: 0, totalMOIs: 0, confirmedaMOIs: 0, confirmedMOIs: 0 };
     transformedReport.outsideData.isOutsideAssayWorkflow = true;
     transformedReport.outsideData.isOutsideAssay = true;
-    transformedReport.outsideData.variantReporterRejectedOrConfirmedDate = transformedReport.outsideData.dateVerified;
+    transformedReport.outsideData.variantReportRejectedOrConfirmedDate = transformedReport.outsideData.dateVerified;
     transformedReport.outsideData.disease = transformedReport.outsideData.disease || {};
     transformedReport.outsideData.commenter = transformedReport.outsideData.metadata ? transformedReport.outsideData.metadata.commenter : null;
 
@@ -151,7 +151,14 @@ export class ViewDataTransformer {
     report.comments = updatedStatus.comments;
     report.commenter = updatedStatus.commenter;
     report.isVariantReportEditable = this.getVariantReportEditable(report);
-    report.variantReporterRejectedOrConfirmedDate = updatedStatus.dateTime || new Date().toString();
+    report.variantReportRejectedOrConfirmedDate = updatedStatus.dateTime || new Date().toString();
+    if (report.variantReport) {
+      // Need to really cleanup the data model
+      report.variantReport.variantReportStatus = report.variantReportStatus;
+      report.variantReport.comments = report.comments;
+      report.variantReport.commenter = report.commenter;
+      report.variantReport.variantReportRejectedOrConfirmedDate = report.variantReportRejectedOrConfirmedDate;
+    }
   }
 
   updateAssignmentReportStatus(report: VariantReportData, updatedStatus: ApiStatusUpdateSuccess): void {
@@ -160,6 +167,13 @@ export class ViewDataTransformer {
     report.commenter = updatedStatus.commenter;
     report.confirmedDate = updatedStatus.dateTime;
     report.isAssignmentReportEditable = this.getAssignmentReportEditable(report);
+    if (report.assignmentReport) {
+      // Need to really cleanup the data model
+      report.assignmentReport.derivedStatus = report.derivedStatus;
+      report.assignmentReport.comments = report.comments;
+      report.assignmentReport.commenter = report.commenter;
+      report.assignmentReport.confirmedDate = report.confirmedDate;
+    }
   }
 
   updateVariantStatus(variantReport: VariantReportData, item: ConfirmableItem, updatedStatus: ApiStatusUpdateSuccess): void {
@@ -437,7 +451,7 @@ export class ViewDataTransformer {
       analysis.variantReportCreatedDate = message.ionReporterResults.variantReport
         ? message.ionReporterResults.variantReport.createdDate : null;
       analysis.variantReportFileReceivedDate = message.dateReceived;
-      analysis.variantReporterRejectedOrConfirmedDate = message.dateVerified;
+      analysis.variantReportRejectedOrConfirmedDate = message.dateVerified;
 
       if (!message.ionReporterResults.variantReport) {
         console.warn('No ionReporterResults.variantReport found in the nextGenerationSequences item');
@@ -460,7 +474,7 @@ export class ViewDataTransformer {
       variantReport.variantReportStatus = analysis.variantReportStatus;
       variantReport.variantReportCreatedDate = analysis.variantReportCreatedDate;
       variantReport.variantReportFileReceivedDate = analysis.variantReportFileReceivedDate;
-      variantReport.variantReporterRejectedOrConfirmedDate = analysis.variantReporterRejectedOrConfirmedDate;
+      variantReport.variantReportRejectedOrConfirmedDate = analysis.variantReportRejectedOrConfirmedDate;
 
       variantReport.biopsySequenceNumber = transformedBiopsy.biopsySequenceNumber;
       variantReport.analysisId = message.ionReporterResults.jobName;

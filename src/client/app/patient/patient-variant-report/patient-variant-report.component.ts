@@ -58,7 +58,7 @@ export class PatientVariantReportComponent implements OnInit, OnDestroy, Variant
   assays: any[] = [];
   variantReportFileReceivedDate: string;
   variantReportCreatedDate: string;
-  variantReporterRejectedOrConfirmedDate: string;
+  variantReportRejectedOrConfirmedDate: string;
   variantReportStatus: string;
   comments: string;
   commenter: string;

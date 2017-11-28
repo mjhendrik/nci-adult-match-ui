@@ -43,7 +43,7 @@
                   <dd>
                     <span [colorCodeVariantReport]="outsideData.variantReport.variantReportStatus">
                       {{outsideData.variantReport.variantReportStatus | dashify}}</span>
-                    <span *ngIf="outsideData.variantReport.variantReportStatus==='CONFIRMED' || outsideData.variantReport.variantReportStatus==='REJECTED'"> on {{outsideData.variantReport.variantReporterRejectedOrConfirmedDate | gmt}} by {{outsideData.variantReport.commenter || 'unknown user'}}</span>
+                    <span *ngIf="outsideData.variantReport.variantReportStatus==='CONFIRMED' || outsideData.variantReport.variantReportStatus==='REJECTED'"> on {{outsideData.variantReport.variantReportRejectedOrConfirmedDate | gmt}} by {{outsideData.variantReport.commenter || 'unknown user'}}</span>
                   </dd>
                   <dt>File Received Date</dt>
                   <dd>{{outsideData.variantReport.createdDate | gmt}}</dd>
@@ -245,7 +245,7 @@
                   <dd>
                     <span [colorCodeVariantReport]="matchData.variantReport.variantReportStatus">
                       {{matchData.variantReport.variantReportStatus | dashify}}</span>
-                    <span *ngIf="matchData.variantReport.variantReportStatus==='CONFIRMED' || matchData.variantReport.variantReportStatus==='REJECTED'"> on {{matchData.variantReport.variantReporterRejectedOrConfirmedDate | gmt}} by {{matchData.variantReport.commenter || 'unknown user'}}</span>
+                    <span *ngIf="matchData.variantReport.variantReportStatus==='CONFIRMED' || matchData.variantReport.variantReportStatus==='REJECTED'"> on {{matchData.variantReport.variantReportRejectedOrConfirmedDate | gmt}} by {{matchData.variantReport.commenter || 'unknown user'}}</span>
                   </dd>                    
                   <dt>MAPD</dt>
                   <dd>{{matchData.mapd | dashify}}</dd>

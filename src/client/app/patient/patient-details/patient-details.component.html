@@ -297,7 +297,7 @@
                                         <dt>File Received Date</dt>
                                         <dd>{{analysis.variantReportFileReceivedDate | gmt}}</dd>
                                         <dt>Rejected/Confirmed Date</dt>
-                                        <dd>{{analysis.variantReporterRejectedOrConfirmedDate | gmt}}</dd>
+                                        <dd>{{analysis.variantReportRejectedOrConfirmedDate | gmt}}</dd>
                                         <dt>MOIs (Confirmed/Total)</dt>
                                         <dd *ngIf="analysis.variantReport && analysis.variantReport.moiSummary">{{analysis.variantReport.moiSummary.confirmedMOIs | dashify}} / {{analysis.variantReport.moiSummary.totalMOIs
                                           | dashify}}</dd>

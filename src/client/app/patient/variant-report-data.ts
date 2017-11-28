@@ -9,7 +9,7 @@ export interface VariantReportData {
     assays?: any[];
     variantReportFileReceivedDate?: string;
     variantReportCreatedDate?: string;
-    variantReporterRejectedOrConfirmedDate?: string;
+    variantReportRejectedOrConfirmedDate?: string;
     variantReportStatus?: string;
     comments?: string;
     commenter?: string;
