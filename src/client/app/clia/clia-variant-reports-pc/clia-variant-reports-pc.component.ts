@@ -53,6 +53,8 @@ export class CliaVariantReportsPcComponent implements OnInit {
     this.molecular_id = array.molecular_id;
     this.analysis_id = array.analysis_id;
     this.report_status = String(array.status);
+    this.torrent_variant_caller_version = array.torrent_variant_caller_version;
+    this.date_variant_received = array.date_variant_received;
 
     this.pcType = this.route.snapshot.url[0].path;
     this.pcType = this.pcType.substring(this.pcType.indexOf('_') + 1).trim();
@@ -84,9 +86,9 @@ export class CliaVariantReportsPcComponent implements OnInit {
     this.total_variants = itemList.total_variants;
     this.mapd = itemList.mapd;
     this.cellularity = itemList.cellularity;
-    this.date_variant_received = itemList.date_variant_received;
-    this.torrent_variant_caller_version = itemList.torrent_variant_caller_version;
     this.false_positive_variants = itemList.false_positive_variants;
+    // this.date_variant_received = itemList.date_variant_received;
+    // this.torrent_variant_caller_version = itemList.torrent_variant_caller_version;
     // this.analysis_id = itemList.analysis_id;
     // this.report_status = itemList.report_status;
   };

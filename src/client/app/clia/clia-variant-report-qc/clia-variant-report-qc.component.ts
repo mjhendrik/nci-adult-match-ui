@@ -78,10 +78,6 @@ export class CliaVariantReportQcComponent implements OnInit {
 
     this.molecular_id = this.route.snapshot.params['id'];
     this.getData(this.route.snapshot.data['data'].data);
-
-    // console.log(" 0 *** ---> " + JSON.stringify(this.route.snapshot.data['data'].graph))
-    
-
     this.getGraph(this.route.snapshot.data['data'].graph);
   }
 
