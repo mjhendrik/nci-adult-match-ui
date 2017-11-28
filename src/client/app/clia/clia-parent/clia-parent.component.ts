@@ -110,11 +110,17 @@ export class CliaParentComponent implements OnInit {
         this.tablePCData = details.map((x: any) => {
           x.molecular_id = x.molecularSequenceNumber;
           x.date_molecular_id_created = gmt.transform(x.dateCreated);
-          x.date_variant_received = gmt.transform(x.date_variant_received);
+          x.date_variant_received = gmt.transform(x.dateReceived);
           x.report_status = x.status;
           x.tvc_version = x.nextGenerationSequence.tvcVersion;
           x.analysis_id = x.nextGenerationSequence.ionReporterResults.jobName;
-          data = {molecular_id: x.molecular_id, analysis_id: x.analysis_id, status: x.report_status, torrent_variant_caller_version: x.tvc_version};
+          data = {
+            molecular_id: x.molecular_id,
+            analysis_id: x.analysis_id,
+            status: x.report_status,
+            date_variant_received: x.dateReceived,
+            torrent_variant_caller_version: x.tvc_version
+          };
 
           this.cliaData.transferData = data;
           return x;
