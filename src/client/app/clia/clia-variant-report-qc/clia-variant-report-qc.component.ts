@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { routerTransition } from './../../shared/router.animations';
 import { SampleControlApiService } from '../sample-control-api.service';
 import { CliaVariantReportsQCViewData } from '../clia-data-interfaces';
-
+import { CliaDataService } from "./../../shared/clia/clia-data.service";
 /**
  * CliaVariantReportQcComponent.
  */
@@ -45,10 +45,21 @@ export class CliaVariantReportQcComponent implements OnInit {
   tabTypeHeaderName: string;
   graphData: any;
   parsed_vcf_genes: any;
+  date_variant_received: any;
 
-  constructor(private cliaApi: SampleControlApiService, private route: ActivatedRoute) { }
+  constructor(private cliaApi: SampleControlApiService,
+              private route: ActivatedRoute,
+              private cliaData: CliaDataService) { }
 
   ngOnInit() {
+    let array:any;
+    array = this.cliaData.transferData;
+    this.molecular_id = array.molecular_id;
+    this.analysis_id = array.analysis_id;
+    // this.report_status = String(array.status);
+    this.torrent_variant_caller_version = array.torrent_variant_caller_version;
+    this.date_variant_received = array.date_variant_received;
+
     this.cliaType = this.route.snapshot.url[0].path;
     this.cliaType = this.cliaType.substring(this.cliaType.indexOf('_') + 1).trim();
 
@@ -82,12 +93,12 @@ export class CliaVariantReportQcComponent implements OnInit {
   }
 
   getData(itemList: CliaVariantReportsQCViewData) {
-    this.molecular_id = itemList.molecular_id;
-    this.analysis_id = itemList.analysis_id;
+    // this.molecular_id = itemList.molecular_id;
+    // this.analysis_id = itemList.analysis_id;
     this.total_variants = itemList.total_variants;
     this.mapd = itemList.mapd;
     this.cellularity = itemList.cellularity;
-    this.torrent_variant_caller_version = itemList.torrent_variant_caller_version;
+    // this.torrent_variant_caller_version = itemList.torrent_variant_caller_version;
     this.oncomine_control_panel_summary = itemList.oncomine_control_panel_summary;
     this.gene_fusions = itemList.gene_fusions;
     this.snv_indels = itemList.snv_indels;

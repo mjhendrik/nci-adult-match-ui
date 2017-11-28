@@ -14,6 +14,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { SampleControlApiService } from '../sample-control-api.service';
 import { CliaVariantReportsQCViewData } from '../clia-data-interfaces';
 import { PatientApiServiceStub, PatientApiServiceMock } from '../../patient/testing/patient-api-service-stub';
+import { CliaDataService } from "./../../shared/clia/clia-data.service";
 
 export function main() {
 
@@ -76,6 +77,7 @@ export function main() {
         declarations: [CliaVariantReportQcComponent],
         providers: [
           { provide: SampleControlApiService, useClass: MockCliaApiService },
+          { provide: CliaDataService, useClass: DataApiService },
           {
             provide: ActivatedRoute, useValue: {
               snapshot: {
@@ -151,7 +153,7 @@ export function main() {
               }
             ]};
             fixture.componentInstance.ngOnInit();
-            expect(comp.molecular_id).toEqual({ test: 'test_mocha' });
+            expect(comp.molecular_id).toEqual(1234);
           });
       }));
 
@@ -171,6 +173,7 @@ export function main() {
         declarations: [CliaVariantReportQcComponent],
         providers: [
           { provide: SampleControlApiService, useClass: MockCliaApiService },
+          { provide: CliaDataService, useClass: DataApiService },
           {
             provide: ActivatedRoute, useValue: {
               snapshot: {
@@ -244,7 +247,7 @@ export function main() {
               }
             ]};
             fixture.componentInstance.ngOnInit();
-            expect(comp.molecular_id).toEqual({ test: 'dartmouth_test' });
+            expect(comp.molecular_id).toEqual(1234);
           });
       }));
 
@@ -265,6 +268,7 @@ export function main() {
         declarations: [CliaVariantReportQcComponent],
         providers: [
           { provide: SampleControlApiService, useClass: MockCliaApiServiceWithErrors },
+          { provide: CliaDataService, useClass: DataApiService },
           {
             provide: ActivatedRoute, useValue: {
               snapshot: {
@@ -338,7 +342,7 @@ export function main() {
               }
             ]};
             fixture.componentInstance.ngOnInit();
-            expect(comp.molecular_id).toEqual({ test: 'yale_test' });
+            expect(comp.molecular_id).toEqual(1234);
           });
       }));
 
@@ -359,6 +363,7 @@ export function main() {
         declarations: [CliaVariantReportQcComponent],
         providers: [
           { provide: SampleControlApiService, useClass: MockCliaApiService },
+          { provide: CliaDataService, useClass: DataApiService },
           {
             provide: ActivatedRoute, useValue: {
               snapshot: {
@@ -432,7 +437,7 @@ export function main() {
               }
             ]};
             fixture.componentInstance.ngOnInit();
-            expect(comp.molecular_id).toEqual({ test: 'mgh_test' });
+            expect(comp.molecular_id).toEqual(1234);
           });
       }));
 
@@ -453,6 +458,7 @@ export function main() {
         declarations: [CliaVariantReportQcComponent],
         providers: [
           { provide: SampleControlApiService, useClass: MockCliaApiService },
+          { provide: CliaDataService, useClass: DataApiService },
           {
             provide: ActivatedRoute, useValue: {
               snapshot: {
@@ -526,7 +532,7 @@ export function main() {
               }
             ]};
             fixture.componentInstance.ngOnInit();
-            expect(comp.molecular_id).toEqual({ test: 'mda_test' });
+            expect(comp.molecular_id).toEqual(1234);
           });
       }));
 
@@ -545,6 +551,7 @@ export function main() {
         declarations: [CliaVariantReportQcComponent],
         providers: [
           { provide: SampleControlApiService, useClass: MockCliaApiService },
+          { provide: CliaDataService, useClass: DataApiService },
           {
             provide: ActivatedRoute, useValue: {
             snapshot: {
@@ -710,6 +717,19 @@ class MockCliaApiService {
     return Observable.of(testdata);
   }
 }
+
+class DataApiService {
+  transferData(): Observable<CliaDataService> {
+    let testData: any;
+    testData = {
+      molecular_id: 'molecular_123',
+      analysis_id: 'job_123',
+      status: 'failed'
+    };
+    return Observable.of(testData);
+  }
+}
+
 
 class MockCliaApiServiceWithErrors {
   // getCliaVariantReportQC(): Observable<CliaVariantReportsQCViewData> {
