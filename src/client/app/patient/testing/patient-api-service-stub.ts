@@ -245,7 +245,7 @@ export class PatientApiServiceStub {
                 },
                 variantReportStatus: 'PENDING',
                 comments: '',
-                statusUser: '',
+                commenter: '',
                 assignmentReport: {},
                 assignmentHistory: {},
                 parsed_vcf_genes: PatientApiServiceStub.makeParsedVcftData(),
@@ -275,7 +275,7 @@ export class PatientApiServiceStub {
                 },
                 variantReportStatus: 'PENDING',
                 comments: '',
-                statusUser: '',
+                commenter: '',
                 assignmentReport: {},
                 assignmentHistory: {},
                 parsed_vcf_genes: PatientApiServiceStub.makeParsedVcftData(),
@@ -321,7 +321,7 @@ export class PatientApiServiceStub {
                 },
                 variantReportStatus: 'PENDING',
                 comments: '',
-                statusUser: '',
+                commenter: '',
                 assignmentReport: {
                     patientAssignmentLogic: [
                         {
@@ -366,7 +366,7 @@ export class PatientApiServiceStub {
                 },
                 variantReportStatus: 'PENDING',
                 comments: '',
-                statusUser: '',
+                commenter: '',
                 parsed_vcf_genes: PatientApiServiceStub.makeParsedVcftData(),
                 assignmentHistory: {},
                 assignmentReport: {},

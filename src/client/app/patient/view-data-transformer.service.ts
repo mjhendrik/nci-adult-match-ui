@@ -149,7 +149,7 @@ export class ViewDataTransformer {
   updateVariantReportStatus(report: VariantReportData, updatedStatus: ApiStatusUpdateSuccess): void {
     report.variantReportStatus = updatedStatus.status;
     report.comments = updatedStatus.comments;
-    report.statusUser = updatedStatus.commenter;
+    report.commenter = updatedStatus.commenter;
     report.isVariantReportEditable = this.getVariantReportEditable(report);
     report.variantReporterRejectedOrConfirmedDate = updatedStatus.dateTime || new Date().toString();
   }
@@ -157,7 +157,7 @@ export class ViewDataTransformer {
   updateAssignmentReportStatus(report: VariantReportData, updatedStatus: ApiStatusUpdateSuccess): void {
     report.derivedStatus = updatedStatus.dateTime ? 'CONFIRMED' : 'PENDING';
     report.comments = updatedStatus.comments;
-    report.statusUser = updatedStatus.commenter;
+    report.commenter = updatedStatus.commenter;
     report.confirmedDate = updatedStatus.dateTime;
     report.isAssignmentReportEditable = this.getAssignmentReportEditable(report);
   }

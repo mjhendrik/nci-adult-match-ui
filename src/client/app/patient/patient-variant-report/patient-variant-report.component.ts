@@ -61,7 +61,7 @@ export class PatientVariantReportComponent implements OnInit, OnDestroy, Variant
   variantReporterRejectedOrConfirmedDate: string;
   variantReportStatus: string;
   comments: string;
-  statusUser: string;
+  commenter: string;
 
   moiSummary: {
       totalaMOIs: number;

@@ -12,7 +12,7 @@ export interface VariantReportData {
     variantReporterRejectedOrConfirmedDate?: string;
     variantReportStatus?: string;
     comments?: string;
-    statusUser?: string;
+    commenter?: string;
 
     moiSummary?: {
         totalaMOIs: number;
