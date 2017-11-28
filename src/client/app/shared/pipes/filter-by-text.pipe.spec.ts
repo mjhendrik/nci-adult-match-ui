@@ -16,7 +16,7 @@ export function main() {
       const items = ['someValue1', 'some Value 2'];
       const filterText = ['someValue1'];
       pipe.transform(items, filterText);
-      // expect(pipe.transform(items, filterText)).toEqual(items);
+      // expect(pipe.transform(input, null)).toEqual(expected);
     });
   });
 }
