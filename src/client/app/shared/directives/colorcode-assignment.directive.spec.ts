@@ -44,6 +44,14 @@ export function main() {
             expect(testEl.nativeElement.classList.contains('text-danger-light')).toBe(false);
         });
 
+        it('"PENDING" adds "text-warning-light" color class', () => {
+            testHost.testStatus = 'PENDING';
+            fixture.detectChanges();
+            expect(testEl.nativeElement.classList.contains('text-success-light')).toBe(false);
+            expect(testEl.nativeElement.classList.contains('text-warning-light')).toBe(true);
+            expect(testEl.nativeElement.classList.contains('text-danger-light')).toBe(false);
+        });
+
         it('"PENDING_CONFIRMATION" adds "text-warning-light" color class', () => {
             testHost.testStatus = 'PENDING_CONFIRMATION';
             fixture.detectChanges();

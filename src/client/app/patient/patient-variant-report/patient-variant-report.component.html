@@ -77,9 +77,8 @@
               <h4 class="f-w-700">Latest Assignment</h4>
               <dt>Status</dt>
               <dd>
-                <span [colorCodeAssignment]="assignmentReport.derivedStatus">
-                  {{assignmentReport.derivedStatus | dashify}}</span>
-                on {{assignmentReport.dateConfirmed | gmt}} by {{(assignmentReport.commenter || 'Steering Committee') | dashify}}
+                <span [colorCodeAssignment]="assignmentReport.derivedStatus">{{assignmentReport.derivedStatus | dashify}}</span>
+                <span *ngIf="assignmentReport.derivedStatus==='CONFIRMED'"> on {{assignmentReport.dateConfirmed | gmt}} by {{(assignmentReport.commenter || 'Steering Committee') | dashify}}</span>
               </dd>
               <dt>Generation Date</dt>
               <dd>{{assignmentReport.dateAssigned | gmt}}</dd>

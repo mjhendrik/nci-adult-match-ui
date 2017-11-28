@@ -485,7 +485,7 @@ export class ViewDataTransformer {
         = (variantReport.singleNucleotideVariants || [])
           .concat(variantReport.indels || []);
 
-      if (variantReport.variantReportStatus === 'PENDING' && message.dateReceived) {
+      if (variantReport.variantReportStatus === 'PENDING') {
         const gmt = new GmtPipe();
         let dateReceivedString = gmt.transform(message.dateReceived);
         let dateReceived = new Date(Date.parse(dateReceivedString)) as any;
@@ -571,14 +571,6 @@ export class ViewDataTransformer {
       assignment.isOutsideAssayWorkflow = biopsy.isOutsideAssayWorkflow;
       assignment.isOutsideAssay = biopsy.isOutsideAssay;
 
-      if (assignment.patientAssignmentStatus === 'PENDING_CONFIRMATION' && assignment.dateAssigned) {
-        let dateAssignedString = gmt.transform(assignment.dateAssigned);
-        let dateAssigned = Date.parse(dateAssignedString);
-        let now = new Date().getMilliseconds();
-        assignment.hoursPending = Math.floor(Math.abs(now - dateAssigned) / 36e5); //36e5 = 1000 * 60 * 60
-        transformedPatient.pendingAssignmentReport = assignment;
-      }
-
       // Flatten the biopsies' analyses into one array, and look for confirmed ones
       let confirmedVariantReports = biopsy.nucleicAcidSendouts
         .map((x: any) => x.analyses)
@@ -593,6 +585,14 @@ export class ViewDataTransformer {
       }
 
       assignment.derivedStatus = assignment.dateConfirmed ? 'CONFIRMED' : 'PENDING';
+
+      if (assignment.derivedStatus === 'PENDING') {
+        let dateAssignedString = gmt.transform(assignment.dateAssigned);
+        let dateAssigned = Date.parse(dateAssignedString);
+        let now = new Date().getMilliseconds();
+        assignment.hoursPending = Math.floor(Math.abs(now - dateAssigned) / 36e5); //36e5 = 1000 * 60 * 60
+        transformedPatient.pendingAssignmentReport = assignment;
+      }
     }
   }
 

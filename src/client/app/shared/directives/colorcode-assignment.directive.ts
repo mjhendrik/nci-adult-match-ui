@@ -13,6 +13,7 @@ export class ColorCodeAssignmentDirective extends ConditionalCssDirective<string
         super(el,
             [
                 { evaluate: (x) => x === 'CONFIRMED', cssClass: 'text-success-light' },
+                { evaluate: (x) => x === 'PENDING', cssClass: 'text-warning-light' },
                 { evaluate: (x) => x === 'PENDING_CONFIRMATION', cssClass: 'text-warning-light' },
                 { evaluate: (x) => x === 'REJECTED', cssClass: 'text-danger-light' },
                 { evaluate: (x) => x === 'NO_ARM_ASSIGNED', cssClass: 'text-danger-light' },
