@@ -231,9 +231,6 @@ export class ViewDataTransformer {
   }
 
   getAssignmentReportEditable(assignmentReport: any): boolean {
-    if (!assignmentReport && !assignmentReport.assignmentReportStatus) {
-      return false;
-    }
     return assignmentReport.derivedStatus === 'PENDING';
   }
 
