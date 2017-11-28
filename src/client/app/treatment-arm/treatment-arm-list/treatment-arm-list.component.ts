@@ -41,9 +41,12 @@ export class TreatmentArmListComponent implements OnInit {
       .subscribe(itemList => {
         this.tableTAData = itemList.map(x => {
           x.dateCreated = this.gmt.transform(x.dateCreated);
-          for (let i = 0; i < x.statusLog.length; i++) {
-            if (x.statusLog[i].status === 'OPEN') x.dateOpen = this.gmt.transform(x.statusLog[i].date);
-            if (x.statusLog[i].status === 'CLOSED' || x.statusLog[i].status === 'SUSPENDED') x.dateClosedOrSuspended = this.gmt.transform(x.statusLog[i].date);
+          if (x.statusLog) {
+            for (let i = 0; i < x.statusLog.length; i++) {
+              if (x.statusLog[i].status === 'OPEN') x.dateOpen = this.gmt.transform(x.statusLog[i].date);
+              if (x.statusLog[i].status === 'CLOSED' || x.statusLog[i].status === 'SUSPENDED')
+                x.dateClosedOrSuspended = this.gmt.transform(x.statusLog[i].date);
+            }
           }
           return x;
         });
