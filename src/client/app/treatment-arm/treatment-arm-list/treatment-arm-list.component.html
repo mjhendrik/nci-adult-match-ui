@@ -115,8 +115,8 @@
                               <td>{{item.summaryReport.numNotEnrolledPatient | dashify}}</td>
                               <td [colorCodeTa]="item.treatmentArmStatus">{{item.treatmentArmStatus | dashify}}</td>
                               <td>{{item.dateCreated | dashify}}</td>
-                              <td>{{dateStatusLog(item.statusLog,'OPEN',item) | dashify}}</td>
-                              <td>{{dateStatusLog(item.statusLog,'CLOSED,SUSPENDED',item) | dashify}}</td>
+                              <td>{{item.dateOpen | dashify}}</td>
+                              <td>{{item.dateClosedOrSuspended | dashify}}</td>
                             </tr>
                             <tr *ngIf="mftableTA.data.length == 0">
                               <td class="text-muted" colspan="10">

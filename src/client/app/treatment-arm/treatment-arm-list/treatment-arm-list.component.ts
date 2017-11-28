@@ -41,34 +41,14 @@ export class TreatmentArmListComponent implements OnInit {
       .subscribe(itemList => {
         this.tableTAData = itemList.map(x => {
           x.dateCreated = this.gmt.transform(x.dateCreated);
+          for (let i = 0; i < x.statusLog.length; i++) {
+            if (x.statusLog[i].status === 'OPEN') x.dateOpen = this.gmt.transform(x.statusLog[i].date);
+            if (x.statusLog[i].status === 'CLOSED' || x.statusLog[i].status === 'SUSPENDED') x.dateClosedOrSuspended = this.gmt.transform(x.statusLog[i].date);
+          }
           return x;
         });
         this.dataAvailable = true; // use emit
       });
-  };
-
-  dateStatusLog(statusLog: any, type: string, item: any): string {
-
-    let keys = Object.keys(statusLog).map(x => {
-      return parseInt(x);
-    });
-
-    const maxValue = keys.reduce((prev, curr) => {
-      return curr > prev ? curr : prev;
-    }, 0);
-
-    let key = Object.keys(statusLog).filter((dateStatusLog: string) => {
-      if (type === 'OPEN') return type.indexOf(statusLog[dateStatusLog]) !== -1;
-      else return maxValue === parseInt(dateStatusLog) && type.indexOf(statusLog[dateStatusLog]) !== -1;
-    });
-
-    if (key.length === 0) return '-';
-
-    if (type.indexOf(',') !== -1) item.dateClosedOrSuspended = this.gmt.transform(parseInt(key[0]));
-    else item.dateOpen = this.gmt.transform(parseInt(key[0]));
-
-    return this.gmt.transform(parseInt(key[0]));
-
   };
 
 }

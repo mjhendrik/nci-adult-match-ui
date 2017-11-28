@@ -8,16 +8,16 @@ export class PatientApiServiceStub {
         return [
             {
                 'values':
-                [{
-                    'position': '25',
-                    'cn': '0.92',
-                    'Q1': '0.781879',
-                    'Q2': '0.92',
-                    'Q3': '1.032146',
-                    'whisker_low': '0.74278505',
-                    'whisker_high': '1.0837533000000001',
-                    'outliers': ['0.74278505', '0.92', '1.0837533000000001']
-                }]
+                    [{
+                        'position': '25',
+                        'cn': '0.92',
+                        'Q1': '0.781879',
+                        'Q2': '0.92',
+                        'Q3': '1.032146',
+                        'whisker_low': '0.74278505',
+                        'whisker_high': '1.0837533000000001',
+                        'outliers': ['0.74278505', '0.92', '1.0837533000000001']
+                    }]
             },
             'tmp/ChartTitle'
         ];
@@ -43,16 +43,16 @@ export class PatientApiServiceStub {
                 'status': '#CD0000',
                 'chr': 'chrX',
                 'values':
-                {
-                    'position': '66773856',
-                    'cn': '0.92',
-                    'Q1': '0.781879',
-                    'Q2': '0.92',
-                    'Q3': '1.032146',
-                    'whisker_low': '0.74278505',
-                    'whisker_high': '1.0837533000000001',
-                    'outliers': ['0.74278505', '0.92', '1.0837533000000001']
-                }
+                    {
+                        'position': '66773856',
+                        'cn': '0.92',
+                        'Q1': '0.781879',
+                        'Q2': '0.92',
+                        'Q3': '1.032146',
+                        'whisker_low': '0.74278505',
+                        'whisker_high': '1.0837533000000001',
+                        'outliers': ['0.74278505', '0.92', '1.0837533000000001']
+                    }
             }
         ];
     }
@@ -1010,11 +1010,20 @@ export class PatientApiServiceStub {
                 'maxPatientsAllowed': 35,
                 'name': 'CukeTest113',
                 'numPatientsAssigned': 6,
-                'statusLog': {
-                    '1488461499519': 'PENDING',
-                    '1488461581': 'OPEN',
-                    '1488461581759': 'READY'
-                },
+                'statusLog': [
+                    {
+                        'date': '1488461537494',
+                        'status': 'PENDING'
+                    },
+                    {
+                        'date': '1488461581',
+                        'status': 'OPEN'
+                    },
+                    {
+                        'date': '1488461581910',
+                        'status': 'READY'
+                    }
+                ],
                 'targetId': '113',
                 'targetName': 'Crizotinib',
                 'treatmentArmDrugs': [
@@ -1883,11 +1892,20 @@ export class PatientApiServiceStub {
                         'maxPatientsAllowed': 35,
                         'name': 'CukeTest113',
                         'numPatientsAssigned': 6,
-                        'statusLog': {
-                            '1488461499519': 'PENDING',
-                            '1488461581': 'OPEN',
-                            '1488461581759': 'READY'
-                        },
+                        'statusLog': [
+                            {
+                                'date': '1488461537494',
+                                'status': 'PENDING'
+                            },
+                            {
+                                'date': '1488461581',
+                                'status': 'OPEN'
+                            },
+                            {
+                                'date': '1488461581910',
+                                'status': 'READY'
+                            }
+                        ],
                         'targetId': '113',
                         'targetName': 'Crizotinib',
                         'treatmentArmDrugs': [
@@ -2737,11 +2755,20 @@ export class PatientApiServiceStub {
                         'maxPatientsAllowed': 35,
                         'name': 'CukeTest113',
                         'numPatientsAssigned': 6,
-                        'statusLog': {
-                            '1488461499519': 'PENDING',
-                            '1488461581': 'OPEN',
-                            '1488461581759': 'READY'
-                        },
+                        'statusLog': [
+                            {
+                                'date': '1488461537494',
+                                'status': 'PENDING'
+                            },
+                            {
+                                'date': '1488461581',
+                                'status': 'OPEN'
+                            },
+                            {
+                                'date': '1488461581910',
+                                'status': 'READY'
+                            }
+                        ],
                         'targetId': '113',
                         'targetName': 'Crizotinib',
                         'treatmentArmDrugs': [
