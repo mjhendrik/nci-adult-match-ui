@@ -34,27 +34,27 @@ export function main() {
           { provide: SampleControlApiService, useClass: MockCliaApiService },
           {
             provide: ActivatedRoute, useValue: {
-            snapshot: {
-              url: [{ path: 'clia_mocha' }],
-              params: { id: 1234 },
-              data: {
+              snapshot: {
+                url: [{ path: 'clia_mocha' }],
+                params: { id: 1234 },
                 data: {
                   data: {
-                    molecular_id: { 'test': 'test_mocha' },
-                    analysis_id: { 'test': 'test' },
-                    total_variants: { 'test': 'test' },
-                    mapd: { 'test': 'test' },
-                    cellularity: { 'test': 'test' },
-                    torrent_variant_caller_version: { 'test': 'test' },
-                    oncomine_control_panel_summary: ['test'],
-                    copy_number_variants: ['test'],
-                    gene_fusions: ['test'],
-                    snv_indels: ['test']
+                    data: {
+                      molecular_id: { 'test': 'test_mocha' },
+                      analysis_id: { 'test': 'test' },
+                      total_variants: { 'test': 'test' },
+                      mapd: { 'test': 'test' },
+                      cellularity: { 'test': 'test' },
+                      torrent_variant_caller_version: { 'test': 'test' },
+                      oncomine_control_panel_summary: ['test'],
+                      copy_number_variants: ['test'],
+                      gene_fusions: ['test'],
+                      snv_indels: ['test']
+                    }
                   }
                 }
               }
             }
-          }
           }
         ]
       });
@@ -66,11 +66,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportsPaccComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportsPaccComponent);
+            let fixture = TestBed.createComponent(CliaVariantReportsPaccComponent);
             fixture.componentInstance.ngOnInit();
             fixture.componentInstance.downloadDnaBam();
             fixture.componentInstance.downloadRnaBam();
@@ -133,13 +129,9 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportsPaccComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportsPaccComponent);
+            let fixture = TestBed.createComponent(CliaVariantReportsPaccComponent);
             fixture.componentInstance.ngOnInit();
-            expect(fixture.componentInstance.molecular_id).toEqual({"test":"test_mocha"})
+            expect(fixture.componentInstance.molecular_id).toEqual({ "test": "test_mocha" })
           });
       }));
 
@@ -197,13 +189,9 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportsPaccComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportsPaccComponent);
+            let fixture = TestBed.createComponent(CliaVariantReportsPaccComponent);
             fixture.componentInstance.ngOnInit();
-            expect(fixture.componentInstance.molecular_id).toEqual({"test":"test_dartmouth"})
+            expect(fixture.componentInstance.molecular_id).toEqual({ "test": "test_dartmouth" })
           });
       }));
 
@@ -260,13 +248,9 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportsPaccComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportsPaccComponent);
+            let fixture = TestBed.createComponent(CliaVariantReportsPaccComponent);
             fixture.componentInstance.ngOnInit();
-            expect(fixture.componentInstance.molecular_id).toEqual({"test":"test_yale"})
+            expect(fixture.componentInstance.molecular_id).toEqual({ "test": "test_yale" })
           });
       }));
 
@@ -323,13 +307,9 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportsPaccComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportsPaccComponent);
+            let fixture = TestBed.createComponent(CliaVariantReportsPaccComponent);
             fixture.componentInstance.ngOnInit();
-            expect(fixture.componentInstance.molecular_id).toEqual({"test":"test_mgh"})
+            expect(fixture.componentInstance.molecular_id).toEqual({ "test": "test_mgh" })
           });
       }));
 
@@ -386,13 +366,9 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportsPaccComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportsPaccComponent);
+            let fixture = TestBed.createComponent(CliaVariantReportsPaccComponent);
             fixture.componentInstance.ngOnInit();
-            expect(fixture.componentInstance.molecular_id).toEqual({"test":"test_mda"})
+            expect(fixture.componentInstance.molecular_id).toEqual({ "test": "test_mda" })
           });
       }));
 

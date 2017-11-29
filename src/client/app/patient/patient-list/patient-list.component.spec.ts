@@ -85,11 +85,7 @@ export function main() {
           TestBed
             .compileComponents()
             .then(() => {
-              let fixture = TestBed.overrideComponent(PatientListComponent, {
-                set: {
-                  templateUrl: ''
-                },
-              }).createComponent(PatientListComponent);
+              let fixture = TestBed.createComponent(PatientListComponent);
               console.log(fixture.componentInstance);
               let spy = spyOn(fixture.componentInstance, 'getData');
               let init: any = fixture.componentInstance.ngOnInit();
@@ -106,11 +102,7 @@ export function main() {
           TestBed
             .compileComponents()
             .then(() => {
-              let fixture = TestBed.overrideComponent(PatientListComponent, {
-                set: {
-                  templateUrl: ''
-                }
-              }).createComponent(PatientListComponent);
+              let fixture = TestBed.createComponent(PatientListComponent);
               console.log(fixture.componentInstance);
               fixture.componentInstance.previous = 500;
               fixture.componentInstance.sortStatus("1,100,asc,patientSequenceNumber");
@@ -123,11 +115,7 @@ export function main() {
           TestBed
             .compileComponents()
             .then(() => {
-              let fixture = TestBed.overrideComponent(PatientListComponent, {
-                set: {
-                  templateUrl: ''
-                }
-              }).createComponent(PatientListComponent);
+              let fixture = TestBed.createComponent(PatientListComponent);
 
               fixture.componentInstance.onSearchChanged('1,300,asc,patientSequenceNumber');
               fixture.componentInstance.onSearchChanged(null);
@@ -192,11 +180,7 @@ export function main() {
   //       TestBed
   //         .compileComponents()
   //         .then(() => {
-  //           let fixture = TestBed.overrideComponent(PatientListComponent, {
-  //             set: {
-  //               templateUrl: ''
-  //             }
-  //           }).createComponent(PatientListComponent);
+  //           let fixture = TestBed.createComponent(PatientListComponent);
   //           fixture.componentInstance.previous = '1,100,asc,patientSequenceNumber';
   //           fixture.componentInstance.ngOnInit();
   //         });
@@ -207,11 +191,7 @@ export function main() {
   //       TestBed
   //         .compileComponents()
   //         .then(() => {
-  //           let fixture = TestBed.overrideComponent(PatientListComponent, {
-  //             set: {
-  //               templateUrl: ''
-  //             }
-  //           }).createComponent(PatientListComponent);
+  //           let fixture = TestBed.createComponent(PatientListComponent);
   //           fixture.componentInstance.previous = '1,100,asc,patientSequenceNumber';
   //           fixture.componentInstance.currentPageActive('1,10,asc,patientSequenceNumber');
   //         });
@@ -222,11 +202,7 @@ export function main() {
   //       TestBed
   //         .compileComponents()
   //         .then(() => {
-  //           let fixture = TestBed.overrideComponent(PatientListComponent, {
-  //             set: {
-  //               templateUrl: ''
-  //             }
-  //           }).createComponent(PatientListComponent);
+  //           let fixture = TestBed.createComponent(PatientListComponent);
   //           fixture.componentInstance.previous = '1,10,asc,patientSequenceNumber';
   //           fixture.componentInstance.currentPageActive('1,10,asc,patientSequenceNumber');
   //         });
@@ -237,11 +213,7 @@ export function main() {
   //       TestBed
   //         .compileComponents()
   //         .then(() => {
-  //           let fixture = TestBed.overrideComponent(PatientListComponent, {
-  //             set: {
-  //               templateUrl: ''
-  //             }
-  //           }).createComponent(PatientListComponent);
+  //           let fixture = TestBed.createComponent(PatientListComponent);
   //           fixture.componentInstance.previous = '1,100,asc,patientSequenceNumber';
   //           fixture.componentInstance.sortStatus('1,10,asc,patientSequenceNumber');
   //         });
@@ -252,11 +224,7 @@ export function main() {
   //       TestBed
   //         .compileComponents()
   //         .then(() => {
-  //           let fixture = TestBed.overrideComponent(PatientListComponent, {
-  //             set: {
-  //               templateUrl: ''
-  //             }
-  //           }).createComponent(PatientListComponent);
+  //           let fixture = TestBed.createComponent(PatientListComponent);
   //           fixture.componentInstance.previous = '1,100,asc,patientSequenceNumber,test';
   //           fixture.componentInstance.searchTermPatients = 'test';
   //           fixture.componentInstance.sortStatus('1,100,asc,patientSequenceNumber');
@@ -268,11 +236,7 @@ export function main() {
   //       TestBed
   //         .compileComponents()
   //         .then(() => {
-  //           let fixture = TestBed.overrideComponent(PatientListComponent, {
-  //             set: {
-  //               templateUrl: ''
-  //             }
-  //           }).createComponent(PatientListComponent);
+  //           let fixture = TestBed.createComponent(PatientListComponent);
   //           fixture.componentInstance.previous = '1,100,asc,patientSequenceNumber';
   //           fixture.componentInstance.onSearchChanged('test');
   //         });
@@ -283,11 +247,7 @@ export function main() {
   //       TestBed
   //         .compileComponents()
   //         .then(() => {
-  //           let fixture = TestBed.overrideComponent(PatientListComponent, {
-  //             set: {
-  //               templateUrl: ''
-  //             }
-  //           }).createComponent(PatientListComponent);
+  //           let fixture = TestBed.createComponent(PatientListComponent);
   //           fixture.componentInstance.previous = '1,100,asc,patientSequenceNumber';
   //           fixture.componentInstance.searchTermPatients = 'test';
   //           fixture.componentInstance.onSearchChanged('test');

@@ -80,13 +80,13 @@ export function main() {
           {
             provide: ActivatedRoute, useValue: {
               snapshot:
-              {
-                url: [{ path: 'clia_mocha' }],
-                data: {
-                  cliaTypeName: 'mocha',
-                  adata: resolved_data
+                {
+                  url: [{ path: 'clia_mocha' }],
+                  data: {
+                    cliaTypeName: 'mocha',
+                    adata: resolved_data
+                  }
                 }
-              }
             }
           },
           { provide: UserProfileService, useClass: UserProfileMockService }
@@ -101,11 +101,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaParentComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaParentComponent);
+            let fixture = TestBed.createComponent(CliaParentComponent);
 
             let comp: CliaParentComponent = fixture.componentInstance;
             // comp.tablePCData = [{"nextGenerationSequence": {
@@ -187,11 +183,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaParentComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaParentComponent);
+            let fixture = TestBed.createComponent(CliaParentComponent);
             // console.log(fixture);
             fixture.componentInstance.setControlType('test');
             expect(fixture.componentInstance.control_type).toBe('test');
@@ -203,11 +195,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaParentComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaParentComponent);
+            let fixture = TestBed.createComponent(CliaParentComponent);
             fixture.componentInstance.control_type = 'positive';
             fixture.componentInstance.generateMsn();
             expect(fixture.componentInstance.control_type).toBe('positive');
@@ -219,11 +207,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaParentComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaParentComponent);
+            let fixture = TestBed.createComponent(CliaParentComponent);
             fixture.componentInstance.control_type = 'no_template';
             fixture.componentInstance.generateMsn();
             expect(fixture.componentInstance.control_type).toBe('no_template');
@@ -235,11 +219,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaParentComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaParentComponent);
+            let fixture = TestBed.createComponent(CliaParentComponent);
             fixture.componentInstance.control_type = 'proficiency_competency';
             fixture.componentInstance.generateMsn();
             expect(fixture.componentInstance.control_type).toBe('proficiency_competency');
@@ -283,11 +263,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaParentComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaParentComponent);
+            let fixture = TestBed.createComponent(CliaParentComponent);
             fixture.componentInstance.ngOnInit();
           });
       }));
@@ -330,11 +306,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaParentComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaParentComponent);
+            let fixture = TestBed.createComponent(CliaParentComponent);
             fixture.componentInstance.ngOnInit();
           });
       }));
@@ -376,11 +348,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaParentComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaParentComponent);
+            let fixture = TestBed.createComponent(CliaParentComponent);
             fixture.componentInstance.ngOnInit();
           });
       }));
@@ -422,11 +390,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaParentComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaParentComponent);
+            let fixture = TestBed.createComponent(CliaParentComponent);
             fixture.componentInstance.ngOnInit();
           });
       }));

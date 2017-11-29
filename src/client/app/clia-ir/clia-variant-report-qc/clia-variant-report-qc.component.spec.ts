@@ -35,8 +35,8 @@ export function main() {
   ];
 
   describe('clia variant report qc component clia type mocha', () => {
-    
-    
+
+
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [
@@ -82,11 +82,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportQcComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportQcComponent);
+            let fixture = TestBed.createComponent(CliaVariantReportQcComponent);
             fixture.componentInstance.ngOnInit();
             fixture.componentInstance.downloadDnaBam();
             fixture.componentInstance.downloadDnaBai();
@@ -99,8 +95,8 @@ export function main() {
   });
 
   describe('clia variant report qc component clia type dartmouth', () => {
-    
-    
+
+
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [
@@ -145,11 +141,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportQcComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportQcComponent);
+            let fixture = TestBed.createComponent(CliaVariantReportQcComponent);
             fixture.componentInstance.ngOnInit();
           });
       }));
@@ -157,8 +149,8 @@ export function main() {
   });
 
   describe('clia variant report qc component clia type yale', () => {
-    
-    
+
+
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [
@@ -203,11 +195,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportQcComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportQcComponent);
+            let fixture = TestBed.createComponent(CliaVariantReportQcComponent);
             fixture.componentInstance.ngOnInit();
           });
       }));
@@ -215,8 +203,8 @@ export function main() {
   });
 
   describe('clia variant report qc component clia type mgh', () => {
-    
-    
+
+
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [
@@ -261,11 +249,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportQcComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportQcComponent);
+            let fixture = TestBed.createComponent(CliaVariantReportQcComponent);
             fixture.componentInstance.ngOnInit();
           });
       }));
@@ -273,8 +257,8 @@ export function main() {
   });
 
   describe('clia variant report qc component clia type mda', () => {
-    
-    
+
+
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [
@@ -319,11 +303,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportQcComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportQcComponent);
+            let fixture = TestBed.createComponent(CliaVariantReportQcComponent);
             fixture.componentInstance.ngOnInit();
           });
       }));

@@ -51,7 +51,7 @@ export function main() {
                       copy_number_variants: ['test'],
                       gene_fusions: ['test'],
                       snv_indels: ['test'],
-                     positiveControlVersion: { 'test': 'test' },
+                      positiveControlVersion: { 'test': 'test' },
                       positiveControlLoadedDate: { 'test': 'test' },
                       matchingCriteria: { 'test': 'test' },
                       positiveControls: ['test']
@@ -71,11 +71,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportsPcComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportsPcComponent);
+            let fixture = TestBed.createComponent(CliaVariantReportsPcComponent);
             fixture.componentInstance.ngOnInit();
             fixture.componentInstance.downloadDnaBam();
             fixture.componentInstance.downloadRnaBam();
@@ -106,31 +102,31 @@ export function main() {
           { provide: CliaDataService, useClass: DataApiService },
           {
             provide: ActivatedRoute, useValue: {
-            snapshot: {
-              url: [{ path: 'clia_mocha' }],
-              params: { id: 1234 },
-              data: {
+              snapshot: {
+                url: [{ path: 'clia_mocha' }],
+                params: { id: 1234 },
                 data: {
                   data: {
-                    molecular_id: { 'test': 'test_mocha' },
-                    analysis_id: { 'test': 'test' },
-                    total_variants: { 'test': 'test' },
-                    mapd: { 'test': 'test' },
-                    cellularity: { 'test': 'test' },
-                    torrent_variant_caller_version: { 'test': 'test' },
-                    oncomine_control_panel_summary: ['test'],
-                    copy_number_variants: ['test'],
-                    gene_fusions: ['test'],
-                    snv_indels: ['test'],
-                   positiveControlVersion: { 'test': 'test' },
-                    positiveControlLoadedDate: { 'test': 'test' },
-                    matchingCriteria: { 'test': 'test' },
-                    positiveControls: ['test']
+                    data: {
+                      molecular_id: { 'test': 'test_mocha' },
+                      analysis_id: { 'test': 'test' },
+                      total_variants: { 'test': 'test' },
+                      mapd: { 'test': 'test' },
+                      cellularity: { 'test': 'test' },
+                      torrent_variant_caller_version: { 'test': 'test' },
+                      oncomine_control_panel_summary: ['test'],
+                      copy_number_variants: ['test'],
+                      gene_fusions: ['test'],
+                      snv_indels: ['test'],
+                      positiveControlVersion: { 'test': 'test' },
+                      positiveControlLoadedDate: { 'test': 'test' },
+                      matchingCriteria: { 'test': 'test' },
+                      positiveControls: ['test']
+                    }
                   }
                 }
               }
             }
-          }
           }
         ]
       });
@@ -142,11 +138,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportsPcComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportsPcComponent);
+            let fixture = TestBed.createComponent(CliaVariantReportsPcComponent);
             fixture.componentInstance.ngOnInit();
             expect(fixture.componentInstance.molecular_id).toEqual(1234)
           });
@@ -190,7 +182,7 @@ export function main() {
                       copy_number_variants: ['test'],
                       gene_fusions: ['test'],
                       snv_indels: ['test'],
-                     positiveControlVersion: { 'test': 'test' },
+                      positiveControlVersion: { 'test': 'test' },
                       positiveControlLoadedDate: { 'test': 'test' },
                       matchingCriteria: { 'test': 'test' },
                       positiveControls: ['test']
@@ -210,11 +202,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportsPcComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportsPcComponent);
+            let fixture = TestBed.createComponent(CliaVariantReportsPcComponent);
             fixture.componentInstance.ngOnInit();
             expect(fixture.componentInstance.molecular_id).toEqual(1234);
           });
@@ -258,7 +246,7 @@ export function main() {
                       copy_number_variants: ['test'],
                       gene_fusions: ['test'],
                       snv_indels: ['test'],
-                     positiveControlVersion: { 'test': 'test' },
+                      positiveControlVersion: { 'test': 'test' },
                       positiveControlLoadedDate: { 'test': 'test' },
                       matchingCriteria: { 'test': 'test' },
                       positiveControls: ['test']
@@ -278,11 +266,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportsPcComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportsPcComponent);
+            let fixture = TestBed.createComponent(CliaVariantReportsPcComponent);
             fixture.componentInstance.ngOnInit();
             expect(fixture.componentInstance.molecular_id).toEqual(1234);
           });
@@ -326,7 +310,7 @@ export function main() {
                       copy_number_variants: ['test'],
                       gene_fusions: ['test'],
                       snv_indels: ['test'],
-                     positiveControlVersion: { 'test': 'test' },
+                      positiveControlVersion: { 'test': 'test' },
                       positiveControlLoadedDate: { 'test': 'test' },
                       matchingCriteria: { 'test': 'test' },
                       positiveControls: ['test']
@@ -346,11 +330,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportsPcComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportsPcComponent);
+            let fixture = TestBed.createComponent(CliaVariantReportsPcComponent);
             fixture.componentInstance.ngOnInit();
             expect(fixture.componentInstance.molecular_id).toEqual(1234);
           });
@@ -394,7 +374,7 @@ export function main() {
                       copy_number_variants: ['test'],
                       gene_fusions: ['test'],
                       snv_indels: ['test'],
-                     positiveControlVersion: { 'test': 'test' },
+                      positiveControlVersion: { 'test': 'test' },
                       positiveControlLoadedDate: { 'test': 'test' },
                       matchingCriteria: { 'test': 'test' },
                       positiveControls: ['test']
@@ -414,11 +394,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportsPcComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportsPcComponent);
+            let fixture = TestBed.createComponent(CliaVariantReportsPcComponent);
             fixture.componentInstance.ngOnInit();
             expect(fixture.componentInstance.molecular_id).toEqual(1234);
           });

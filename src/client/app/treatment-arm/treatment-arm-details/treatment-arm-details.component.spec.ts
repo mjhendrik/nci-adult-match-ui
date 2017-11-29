@@ -396,11 +396,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(TreatmentArmDetailsComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(TreatmentArmDetailsComponent);
+            let fixture = TestBed.createComponent(TreatmentArmDetailsComponent);
             fixture.componentInstance.ngOnInit();
             expect(fixture.componentInstance).toBeDefined();
             fixture.componentInstance.getVersionsData(id);
@@ -414,11 +410,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(TreatmentArmDetailsComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(TreatmentArmDetailsComponent);
+            let fixture = TestBed.createComponent(TreatmentArmDetailsComponent);
             fixture.componentInstance.setVersionIndex(0);
             expect(fixture.componentInstance).toBeDefined();
             expect(fixture.componentInstance.versionIndex).toBe(0);
@@ -430,11 +422,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(TreatmentArmDetailsComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(TreatmentArmDetailsComponent);
+            let fixture = TestBed.createComponent(TreatmentArmDetailsComponent);
 
             let temp: any = PatientApiServiceStub.treatmentArmData();
             fixture.componentInstance.getDetailsData(temp);

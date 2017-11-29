@@ -84,11 +84,7 @@ export function main() {
     //     TestBed
     //       .compileComponents()
     //       .then(() => {
-    //         let fixture = TestBed.overrideComponent(PatientVariantReportOutsideAssayComponent, {
-    //           set: {
-    //             templateUrl: ''
-    //           }
-    //         }).createComponent(PatientVariantReportOutsideAssayComponent);
+    //         let fixture = TestBed.createComponent(PatientVariantReportOutsideAssayComponent);
     //         fixture.componentInstance.ngOnInit();
     //         expect(fixture.componentInstance).toBeDefined();
     //

@@ -15,8 +15,8 @@ import { CliaVariantReportsPACCViewData } from '../clia-data-interfaces';
 
 export function main() {
   describe('clia variant reports pacc component with clia type mocha', () => {
-    
-    
+
+
     let config: any[] = [
       { path: 'clia_variant_reports_pacc', component: 'CliaVariantReportsPaccComponent' }
     ];
@@ -64,11 +64,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportsPaccComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportsPaccComponent);
+            let fixture = TestBed.createComponent(CliaVariantReportsPaccComponent);
             fixture.componentInstance.ngOnInit();
             fixture.componentInstance.downloadDnaBam();
             fixture.componentInstance.downloadRnaBam();
@@ -78,8 +74,8 @@ export function main() {
 
   });
   describe('clia variant reports pacc component with clia type dartmouth', () => {
-    
-    
+
+
     let config: any[] = [
       { path: 'clia_variant_reports_pacc', component: 'CliaVariantReportsPaccComponent' }
     ];
@@ -128,19 +124,15 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportsPaccComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportsPaccComponent);
+            let fixture = TestBed.createComponent(CliaVariantReportsPaccComponent);
             fixture.componentInstance.ngOnInit();
           });
       }));
 
   });
   describe('clia variant reports pacc component with clia type yale', () => {
-    
-    
+
+
     let config: any[] = [
       { path: 'clia_variant_reports_pacc', component: 'CliaVariantReportsPaccComponent' }
     ];
@@ -189,19 +181,15 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportsPaccComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportsPaccComponent);
+            let fixture = TestBed.createComponent(CliaVariantReportsPaccComponent);
             fixture.componentInstance.ngOnInit();
           });
       }));
 
   });
   describe('clia variant reports pacc component with clia type mgh', () => {
-    
-    
+
+
     let config: any[] = [
       { path: 'clia_variant_reports_pacc', component: 'CliaVariantReportsPaccComponent' }
     ];
@@ -250,19 +238,15 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportsPaccComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportsPaccComponent);
+            let fixture = TestBed.createComponent(CliaVariantReportsPaccComponent);
             fixture.componentInstance.ngOnInit();
           });
       }));
 
   });
   describe('clia variant reports pacc component with clia type mda', () => {
-    
-    
+
+
     let config: any[] = [
       { path: 'clia_variant_reports_pacc', component: 'CliaVariantReportsPaccComponent' }
     ];
@@ -311,11 +295,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportsPaccComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportsPaccComponent);
+            let fixture = TestBed.createComponent(CliaVariantReportsPaccComponent);
             fixture.componentInstance.ngOnInit();
           });
       }));

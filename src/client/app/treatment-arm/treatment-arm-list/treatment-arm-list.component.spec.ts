@@ -90,11 +90,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(TreatmentArmListComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(TreatmentArmListComponent);
+            let fixture = TestBed.createComponent(TreatmentArmListComponent);
             fixture.componentInstance.ngOnInit();
             fixture.componentInstance.gmt = new GmtPipe();
             expect(fixture.componentInstance).toBeDefined();
@@ -144,11 +140,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(TreatmentArmListComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(TreatmentArmListComponent);
+            let fixture = TestBed.createComponent(TreatmentArmListComponent);
             fixture.componentInstance.ngOnInit();
           });
       }));

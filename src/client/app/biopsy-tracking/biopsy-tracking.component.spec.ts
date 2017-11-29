@@ -119,11 +119,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(BiopsyTrackingListComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(BiopsyTrackingListComponent);
+            let fixture = TestBed.createComponent(BiopsyTrackingListComponent);
             fixture.componentInstance.ngOnInit();
             expect(fixture.componentInstance).toBeDefined();
           });
@@ -134,11 +130,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(BiopsyTrackingListComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(BiopsyTrackingListComponent);
+            let fixture = TestBed.createComponent(BiopsyTrackingListComponent);
             fixture.componentInstance.previous = '1,100,asc,biopsySequenceNumber';
             fixture.componentInstance.currentPageActive('1,10,asc,biopsySequenceNumber');
             expect(fixture.componentInstance).toBeDefined();
@@ -155,11 +147,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(BiopsyTrackingListComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(BiopsyTrackingListComponent);
+            let fixture = TestBed.createComponent(BiopsyTrackingListComponent);
             fixture.componentInstance.searchtermBiopsyTrackingList = '';
             fixture.componentInstance.previous = '1,10,asc,biopsySequenceNumber,';
             fixture.componentInstance.currentPageActive('1,10,asc,biopsySequenceNumber');
@@ -175,11 +163,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(BiopsyTrackingListComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(BiopsyTrackingListComponent);
+            let fixture = TestBed.createComponent(BiopsyTrackingListComponent);
             fixture.componentInstance.previous = '1,100,asc,biopsySequenceNumber';
             fixture.componentInstance.SortStatus('1,10,asc,biopsySequenceNumber');
             expect(fixture.componentInstance).toBeDefined();
@@ -194,11 +178,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(BiopsyTrackingListComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(BiopsyTrackingListComponent);
+            let fixture = TestBed.createComponent(BiopsyTrackingListComponent);
             fixture.componentInstance.searchtermBiopsyTrackingList = 'test';
             fixture.componentInstance.previous = '1,100,asc,biopsySequenceNumber,test';
             fixture.componentInstance.SortStatus('1,100,asc,biopsySequenceNumber');
@@ -220,13 +200,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(BiopsyTrackingListComponent, {
-              set: {
-                templateUrl: ''
-
-
-              }
-            }).createComponent(BiopsyTrackingListComponent);
+            let fixture = TestBed.createComponent(BiopsyTrackingListComponent);
             fixture.componentInstance.previous = '1,100,asc,biopsySequenceNumber';
             fixture.componentInstance.onSearchChanged('test');
             // fixture.componentInstance.onSearchChanged()
@@ -242,11 +216,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(BiopsyTrackingListComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(BiopsyTrackingListComponent);
+            let fixture = TestBed.createComponent(BiopsyTrackingListComponent);
             fixture.componentInstance.searchtermBiopsyTrackingList = 'test';
             fixture.componentInstance.onSearchChanged('test');
 
@@ -293,11 +263,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(BiopsyTrackingListComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(BiopsyTrackingListComponent);
+            let fixture = TestBed.createComponent(BiopsyTrackingListComponent);
             // fixture.componentInstance.getData();
             // expect(fixture.componentInstance).toBeDefined();
           });
@@ -308,11 +274,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(BiopsyTrackingListComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(BiopsyTrackingListComponent);
+            let fixture = TestBed.createComponent(BiopsyTrackingListComponent);
             fixture.componentInstance.getBiopsyCount();
           });
       }));
@@ -322,11 +284,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(BiopsyTrackingListComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(BiopsyTrackingListComponent);
+            let fixture = TestBed.createComponent(BiopsyTrackingListComponent);
             fixture.componentInstance.getBiopsyTotal();
           });
       }));
