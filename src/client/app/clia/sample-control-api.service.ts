@@ -58,8 +58,6 @@ export class SampleControlApiService extends ApiService {
 
     // api/v1/message/ecog/patient/{molecularSequenceNumber}/variant_reports/{analysisId}/qc_report
 
-    analysisId = 'job-sc-dartmouth-1';
-
     return this.http.get(this.url('/message/ecog/patient/' + molecular_id + '/variant_reports/' + analysisId + '/qc_report', ''))
       .map(this.extractData)
       .catch(this.handleError);
@@ -67,8 +65,6 @@ export class SampleControlApiService extends ApiService {
   }
 
   getCliaVariantReportVCF(molecular_id: string, analysisId: string): Observable<CliaVariantReportsQCViewData> {
-
-    analysisId = 'job-sc-dartmouth-1';
 
     return this.http.get(this.url('/message/ecog/patient/' + molecular_id + '/variant_reports/' + analysisId + '/vcf_graph', ''))
       .map(this.extractData)
