@@ -3,17 +3,7 @@ import {
   Input
 } from '@angular/core';
 
-export class DiseaseInfo {
-  name: string;
-  shortName: string;
-  ctepCategory: string;
-  ctepSubCategory: string;
-  ctepTerm: string;
-  medDRACode: string;
-
-  outsideData?: DiseaseInfo;
-  matchData?: DiseaseInfo;
-}
+import { DiseaseInfo } from './disease-info.module';
 
 /**
  * DiseaseInfoComponent.

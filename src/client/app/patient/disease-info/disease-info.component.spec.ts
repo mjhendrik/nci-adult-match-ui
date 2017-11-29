@@ -10,8 +10,8 @@ import {
 import { By } from '@angular/platform-browser';
 
 import { PipesModule } from './../../shared/pipes/pipes.module';
-import { SharedModule } from '../../shared/shared.module';
-import { DiseaseInfoComponent, DiseaseInfo } from './disease-info.component';
+import { DiseaseInfoComponent } from './disease-info.component';
+import { DiseaseInfo } from './disease-info.module';
 
 @Component({
   selector: 'test-cmp',
@@ -33,7 +33,6 @@ export function main() {
       TestBed.configureTestingModule({
         imports: [
           PipesModule,
-          SharedModule
         ],
         declarations: [DiseaseInfoComponent, TestComponent]
       }).compileComponents();  // compile template and css

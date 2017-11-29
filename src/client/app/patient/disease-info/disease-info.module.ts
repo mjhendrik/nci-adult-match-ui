@@ -1,21 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 
-import { DiseaseInfoComponent, DiseaseInfo } from './disease-info.component';
+import { DiseaseInfoComponent } from './disease-info.component';
 import { PipesModule } from '../../shared/pipes/pipes.module';
-import { DirectivesModule } from '../../shared/directives/directives.module';
-import { SharedModule } from '../../shared/shared.module';
+
+export class DiseaseInfo {
+  name: string;
+  shortName: string;
+  ctepCategory: string;
+  ctepSubCategory: string;
+  ctepTerm: string;
+  medDRACode: string;
+
+  outsideData?: DiseaseInfo;
+  matchData?: DiseaseInfo;
+}
 
 @NgModule({
   imports: [
-    RouterModule,
     CommonModule,
     PipesModule,
-    DirectivesModule,
-    SharedModule
   ],
   declarations: [DiseaseInfoComponent],
-  exports: [DiseaseInfoComponent, DiseaseInfo]
+  exports: [DiseaseInfoComponent]
 })
 export class DiseaseInfoModule { }
