@@ -80,11 +80,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(PatientDetailsComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(PatientDetailsComponent);
+            let fixture = TestBed.createComponent(PatientDetailsComponent);
             fixture.componentInstance.ngOnInit();
             expect(fixture.componentInstance).toBeDefined();
           });
@@ -95,13 +91,9 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(PatientDetailsComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(PatientDetailsComponent);
+            let fixture = TestBed.createComponent(PatientDetailsComponent);
 
-            fixture.componentInstance.download("File");
+            fixture.componentInstance.download('File');
           });
       }));
 
@@ -110,11 +102,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(PatientDetailsComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(PatientDetailsComponent);
+            let fixture = TestBed.createComponent(PatientDetailsComponent);
 
             fixture.componentInstance.ngAfterViewInit();
             fixture.componentInstance.entityId = 'li';
@@ -125,7 +113,7 @@ export function main() {
 
 class MockFileUploadService {
   downloadPatientFile(): Observable<any> {
-    return Observable.of("Psn","File");
+    return Observable.of('Psn', 'File');
   }
 }
 

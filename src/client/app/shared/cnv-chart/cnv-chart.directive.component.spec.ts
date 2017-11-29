@@ -32,25 +32,21 @@ export function main() {
       TestBed.configureTestingModule({
         declarations: [CnvChartDirective, nvD3],
         providers: [
-          {provide: MockPatientApiService, useClass: MockPatientApiServiceError},
-          {provide: ccwwServiceStub, useClass: MockPatientApiServiceError},
-          {provide: MockPatientOptionsService, useClass: MockPatientOptionsServiceError},
-          {provide: PatientApiService, useClass: PatientApiServiceMock },
+          { provide: MockPatientApiService, useClass: MockPatientApiServiceError },
+          { provide: ccwwServiceStub, useClass: MockPatientApiServiceError },
+          { provide: MockPatientOptionsService, useClass: MockPatientOptionsServiceError },
+          { provide: PatientApiService, useClass: PatientApiServiceMock },
         ],
       });
     });
 
     it('should work by calling Cnv chart ngOnInit --> ngOnChanges',
-      async((done:any) => {
+      async((done: any) => {
 
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CnvChartDirective, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CnvChartDirective);
+            let fixture = TestBed.createComponent(CnvChartDirective);
 
             fixture.componentInstance.data = PatientApiServiceStub.makeRawVcftData();
             fixture.componentInstance.cnvdata = PatientApiServiceStub.makeCnvData();
@@ -68,16 +64,12 @@ export function main() {
       }));
 
     it('should work by calling Cnv chart ngOnInit --> ngOnChanges with endX as "-"',
-      async((done:any) => {
+      async((done: any) => {
         let endX = '-';
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CnvChartDirective, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CnvChartDirective);
+            let fixture = TestBed.createComponent(CnvChartDirective);
 
             fixture.componentInstance.data = PatientApiServiceStub.makeBrokenRawVcftData();
             fixture.componentInstance.cnvdata = PatientApiServiceStub.makeCnvData();
@@ -94,18 +86,14 @@ export function main() {
       }));
 
     it('should work by calling Options --> ngAfterViewInit @ViewChild Response',
-      async((done:any) => {
+      async((done: any) => {
         ccwwServiceStub = {
           CW: { ccww: 'ViewChild' }
         };
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CnvChartDirective, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CnvChartDirective);
+            let fixture = TestBed.createComponent(CnvChartDirective);
 
             fixture.componentInstance.data = PatientApiServiceStub.makeRawVcftData();
             fixture.componentInstance.cnvdata = PatientApiServiceStub.makeCnvData();
@@ -123,7 +111,7 @@ export function main() {
       }));
 
     it('should work by calling Options --> ngAfterViewInit @ViewChild NULL Response',
-      async((done:any) => {
+      async((done: any) => {
 
         ccwwServiceStub = {
           CW: { ccww: null }
@@ -132,11 +120,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CnvChartDirective, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CnvChartDirective);
+            let fixture = TestBed.createComponent(CnvChartDirective);
 
             fixture.componentInstance.data = PatientApiServiceStub.makeRawVcftData();
             fixture.componentInstance.cnvdata = PatientApiServiceStub.makeCnvData();
@@ -153,7 +137,7 @@ export function main() {
       }));
 
     it('should work by calling Options --> ngAfterViewInit @ViewChild "undefined" Response',
-      async((done:any) => {
+      async((done: any) => {
 
         ccwwServiceStub = {
           CW: { ccww: 'undefined' }
@@ -162,11 +146,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CnvChartDirective, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CnvChartDirective);
+            let fixture = TestBed.createComponent(CnvChartDirective);
 
             fixture.componentInstance.data = PatientApiServiceStub.makeRawVcftData();
             fixture.componentInstance.cnvdata = PatientApiServiceStub.makeCnvData();
@@ -184,13 +164,13 @@ export function main() {
       }));
 
     it('should work by calling Options --> Tooltip Response',
-      async((done:any) => {
+      async((done: any) => {
 
         let d = {
           "key": "RPS6KB1", "value": "RPS6KB1",
-          "series": [{"key": "Q3", "value": "9.99", "color": "#CD0000"},
-            {"key": "Q2", "value": "8.53", "color": "#CD0000"},
-            {"key": "Q1", "value": "6.82", "color": "#CD0000"}],
+          "series": [{ "key": "Q3", "value": "9.99", "color": "#CD0000" },
+          { "key": "Q2", "value": "8.53", "color": "#CD0000" },
+          { "key": "Q1", "value": "6.82", "color": "#CD0000" }],
           "data": {
             "x": "61", "label": "RPS6KB1", "status": "#CD0000", "chr": "chr17",
             "values": {
@@ -203,19 +183,15 @@ export function main() {
               "whisker_high": "10.49",
               "outliers": ["6.48", "8.53", "10.49"]
             }
-          }, "index": 61, "e": {"isTrusted": true}
+          }, "index": 61, "e": { "isTrusted": true }
         };
 
-        let s = {"series":[{"key":"4.49","color":"#CD0000"}],"e":{"isTrusted":true}};
+        let s = { "series": [{ "key": "4.49", "color": "#CD0000" }], "e": { "isTrusted": true } };
 
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CnvChartDirective, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CnvChartDirective);
+            let fixture = TestBed.createComponent(CnvChartDirective);
 
             fixture.componentInstance.data = PatientApiServiceStub.makeRawVcftData();
 
@@ -228,7 +204,7 @@ export function main() {
             expect(fixture.componentInstance.options.chart.tooltip).toBeDefined();
             fixture.detectChanges();
 
-            let html:any = fixture.componentInstance.options.chart.tooltip.contentGenerator(d);
+            let html: any = fixture.componentInstance.options.chart.tooltip.contentGenerator(d);
             expect(html).toBeDefined();
             fixture.detectChanges();
 
@@ -240,7 +216,7 @@ export function main() {
             // expect(html).toContain('<li>Cl 5%: 6.48</li>');
             fixture.detectChanges();
 
-            let series:any = fixture.componentInstance.options.chart.tooltip.contentGenerator(s);
+            let series: any = fixture.componentInstance.options.chart.tooltip.contentGenerator(s);
             expect(series).toBeDefined();
             fixture.detectChanges();
 
@@ -256,33 +232,33 @@ export function main() {
     selector: 'example-chart',
     providers: [nvD3],
     template: '<div> ' +
-    '<h1 class="type">{{options.chart.type}}</h1>' +
-    '<h1 class="height">{{options.chart.height}}</h1>' +
-    '<h1 class="margin">{{options.chart.margin}}</h1>' +
-    '<h1 class="outliers">{{options.chart.outliers}}</h1>' +
-    '<h1 class="chart">{{chart}}</h1>' +
-    '<h1 class="x">{{x}}</h1>' +
-    '<i class="fa fa-search-minus fa-2x icon-pointer" aria-hidden="true"></i>' +
-    '<nvd3 id="boxplotchart" [options]="options" [data]="data"></nvd3>' +
-    '</div>'
+      '<h1 class="type">{{options.chart.type}}</h1>' +
+      '<h1 class="height">{{options.chart.height}}</h1>' +
+      '<h1 class="margin">{{options.chart.margin}}</h1>' +
+      '<h1 class="outliers">{{options.chart.outliers}}</h1>' +
+      '<h1 class="chart">{{chart}}</h1>' +
+      '<h1 class="x">{{x}}</h1>' +
+      '<i class="fa fa-search-minus fa-2x icon-pointer" aria-hidden="true"></i>' +
+      '<nvd3 id="boxplotchart" [options]="options" [data]="data"></nvd3>' +
+      '</div>'
   })
 
   class MockPatientApiServiceError {
-    getData():Observable<any> {
+    getData(): Observable<any> {
       return Observable.throw("error");
     }
   }
 
   class MockPatientOptionsServiceError {
-    getOptions():Observable<any> {
+    getOptions(): Observable<any> {
       return Observable.throw("error");
     }
   }
 
   class MockPatientApiService {
-    getData():Observable<any> {
+    getData(): Observable<any> {
 
-      let testdata:any = [
+      let testdata: any = [
         {
           'values': [
             1.916932,
@@ -303,15 +279,15 @@ export function main() {
         , 'ChartTestTitle']
       return testdata;
     }
-    ngAfterViewInit():Observable<any> {
-      let testdata:any = [{"nativeElement":{}}];
+    ngAfterViewInit(): Observable<any> {
+      let testdata: any = [{ "nativeElement": {} }];
       return testdata;
     }
   }
 
   class MockPatientOptionsService {
-    getOptions():Observable<any> {
-      let testoptions:any =
+    getOptions(): Observable<any> {
+      let testoptions: any =
         [
           {
             chart: [{

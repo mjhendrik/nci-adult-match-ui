@@ -95,11 +95,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportsNtcComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportsNtcComponent);
+            let fixture = TestBed.createComponent(CliaVariantReportsNtcComponent);
             fixture.componentInstance.ngOnInit();
             fixture.componentInstance.downloadDnaBam();
             fixture.componentInstance.downloadDnaBai();
@@ -138,12 +134,12 @@ export function main() {
                 data: {
                   data: {
                     data: {
-                      molecular_id: {'test': 'test_mocha'},
-                      analysis_id: {'test': 'test'},
-                      total_variants: {'test': 'test'},
-                      mapd: {'test': 'test'},
-                      cellularity: {'test': 'test'},
-                      torrent_variant_caller_version: {'test': 'test'},
+                      molecular_id: { 'test': 'test_mocha' },
+                      analysis_id: { 'test': 'test' },
+                      total_variants: { 'test': 'test' },
+                      mapd: { 'test': 'test' },
+                      cellularity: { 'test': 'test' },
+                      torrent_variant_caller_version: { 'test': 'test' },
                       copy_number_variants: parsedVCFGenes,
                       gene_fusions: ['test'],
                       snv_indels: ['test'],
@@ -166,13 +162,9 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportsNtcComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportsNtcComponent);
+            let fixture = TestBed.createComponent(CliaVariantReportsNtcComponent);
             fixture.componentInstance.ngOnInit();
-            expect(fixture.componentInstance.molecular_id).toEqual({"test":"test_mocha"})
+            expect(fixture.componentInstance.molecular_id).toEqual({ "test": "test_mocha" })
           });
       }));
 
@@ -231,13 +223,9 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportsNtcComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportsNtcComponent);
+            let fixture = TestBed.createComponent(CliaVariantReportsNtcComponent);
             fixture.componentInstance.ngOnInit();
-            expect(fixture.componentInstance.molecular_id).toEqual({"test":"test_yale"})
+            expect(fixture.componentInstance.molecular_id).toEqual({ "test": "test_yale" })
           });
       }));
 
@@ -296,13 +284,9 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportsNtcComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportsNtcComponent);
+            let fixture = TestBed.createComponent(CliaVariantReportsNtcComponent);
             fixture.componentInstance.ngOnInit();
-            expect(fixture.componentInstance.molecular_id).toEqual({"test":"test_mgh"})
+            expect(fixture.componentInstance.molecular_id).toEqual({ "test": "test_mgh" })
           });
       }));
 
@@ -361,13 +345,9 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaVariantReportsNtcComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaVariantReportsNtcComponent);
+            let fixture = TestBed.createComponent(CliaVariantReportsNtcComponent);
             fixture.componentInstance.ngOnInit();
-            expect(fixture.componentInstance.molecular_id).toEqual({"test":"test_mda"})
+            expect(fixture.componentInstance.molecular_id).toEqual({ "test": "test_mda" })
           });
       }));
 

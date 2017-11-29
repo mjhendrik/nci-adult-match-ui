@@ -12,8 +12,8 @@ import { FooterComponent } from './footer.component';
 
 export function main() {
   describe('sd-navbar component', () => {
-    
-    
+
+
 
     beforeEach(() => {
       TestBed.configureTestingModule({
@@ -34,14 +34,10 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(FooterComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(FooterComponent);
+            let fixture = TestBed.createComponent(FooterComponent);
             fixture.componentInstance.ngOnInit();
             let comp: FooterComponent = fixture.componentInstance;
-            expect(comp.buildInfo).toEqual({"buildInfo":"mock_build"});
+            expect(comp.buildInfo).toEqual({ 'buildInfo': 'mock_build' });
           });
       }));
   });

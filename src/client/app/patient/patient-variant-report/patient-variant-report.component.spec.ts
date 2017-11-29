@@ -76,11 +76,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(PatientVariantReportComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(PatientVariantReportComponent);
+            let fixture = TestBed.createComponent(PatientVariantReportComponent);
 
             fixture.componentInstance.ngOnInit();
             expect(fixture.componentInstance.allowVariantReportEdit).toBe(true);
@@ -93,11 +89,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(PatientVariantReportComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(PatientVariantReportComponent);
+            let fixture = TestBed.createComponent(PatientVariantReportComponent);
 
             fixture.componentInstance.confirmVariantReport();
 
@@ -111,11 +103,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(PatientVariantReportComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(PatientVariantReportComponent);
+            let fixture = TestBed.createComponent(PatientVariantReportComponent);
 
             fixture.componentInstance.confirmAssignmentReport();
 
@@ -194,12 +182,12 @@ export function main() {
 }
 
 class MockPatientApiService {
-  updateVariantReport():Observable<any> {
-    let testdata:any = [{"showConfirmation":{}}];
+  updateVariantReport(): Observable<any> {
+    let testdata: any = [{ "showConfirmation": {} }];
     return testdata;
   }
-  ngAfterViewInit():Observable<any> {
-    let testdata:any = [{"nativeElement":{}}];
+  ngAfterViewInit(): Observable<any> {
+    let testdata: any = [{ "nativeElement": {} }];
     return testdata;
   }
 }

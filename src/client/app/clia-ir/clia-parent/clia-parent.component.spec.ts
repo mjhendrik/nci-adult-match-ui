@@ -47,8 +47,8 @@ export function main() {
   };
 
   describe('clia parent component with clia type mocha', () => {
-    
-    
+
+
     let config: any[] = [
       { path: 'clia_variant_reports_ntc', component: 'CliaParentComponent' }
     ];
@@ -62,13 +62,13 @@ export function main() {
           {
             provide: ActivatedRoute, useValue: {
               snapshot:
-              {
-                url: [{ path: 'clia_mocha' }],
-                data: {
-                  cliaType: 'mocha',
-                  data: resolved_data
+                {
+                  url: [{ path: 'clia_mocha' }],
+                  data: {
+                    cliaType: 'mocha',
+                    data: resolved_data
+                  }
                 }
-              }
             }
           },
           { provide: UserProfileService, useClass: UserProfileMockService }
@@ -100,11 +100,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaParentComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaParentComponent);
+            let fixture = TestBed.createComponent(CliaParentComponent);
             // console.log(fixture);
             fixture.componentInstance.ngOnInit();
             // let interval = setInterval(() => {
@@ -126,11 +122,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaParentComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaParentComponent);
+            let fixture = TestBed.createComponent(CliaParentComponent);
             // console.log(fixture);
             fixture.componentInstance.setControlType('test');
             expect(fixture.componentInstance.control_type).toBe('test');
@@ -142,11 +134,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaParentComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaParentComponent);
+            let fixture = TestBed.createComponent(CliaParentComponent);
             fixture.componentInstance.control_type = 'positive';
             fixture.componentInstance.generateMsn();
           });
@@ -157,11 +145,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaParentComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaParentComponent);
+            let fixture = TestBed.createComponent(CliaParentComponent);
             fixture.componentInstance.control_type = 'no_template';
             fixture.componentInstance.generateMsn();
           });
@@ -172,11 +156,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaParentComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaParentComponent);
+            let fixture = TestBed.createComponent(CliaParentComponent);
             fixture.componentInstance.control_type = 'proficiency_competency';
             fixture.componentInstance.generateMsn();
           });
@@ -185,8 +165,8 @@ export function main() {
   });
 
   describe('clia parent component with clia type dartmouth', () => {
-    
-    
+
+
     let config: any[] = [
       { path: 'clia_variant_reports_ntc', component: 'CliaParentComponent' }
     ];
@@ -218,11 +198,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaParentComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaParentComponent);
+            let fixture = TestBed.createComponent(CliaParentComponent);
             fixture.componentInstance.ngOnInit();
           });
       }));
@@ -230,8 +206,8 @@ export function main() {
   });
 
   describe('clia parent component with clia type yale', () => {
-    
-    
+
+
     let config: any[] = [
       { path: 'clia_variant_reports_ntc', component: 'CliaParentComponent' }
     ];
@@ -263,11 +239,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaParentComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaParentComponent);
+            let fixture = TestBed.createComponent(CliaParentComponent);
             fixture.componentInstance.ngOnInit();
           });
       }));
@@ -275,8 +247,8 @@ export function main() {
   });
 
   describe('clia parent component with clia type mgh', () => {
-    
-    
+
+
     let config: any[] = [
       { path: 'clia_variant_reports_ntc', component: 'CliaParentComponent' }
     ];
@@ -307,11 +279,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaParentComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaParentComponent);
+            let fixture = TestBed.createComponent(CliaParentComponent);
             fixture.componentInstance.ngOnInit();
           });
       }));
@@ -319,8 +287,8 @@ export function main() {
   });
 
   describe('clia parent component with clia type mda', () => {
-    
-    
+
+
     let config: any[] = [
       { path: 'clia_variant_reports_ntc', component: 'CliaParentComponent' }
     ];
@@ -351,11 +319,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CliaParentComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CliaParentComponent);
+            let fixture = TestBed.createComponent(CliaParentComponent);
             fixture.componentInstance.ngOnInit();
           });
       }));

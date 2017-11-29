@@ -45,11 +45,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CosmicLinkComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CosmicLinkComponent);
+            let fixture = TestBed.createComponent(CosmicLinkComponent);
 
             let comp: CosmicLinkComponent = fixture.componentInstance;
             comp.linkId = 'unknown';
@@ -66,11 +62,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CosmicLinkComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CosmicLinkComponent);
+            let fixture = TestBed.createComponent(CosmicLinkComponent);
 
             let comp: CosmicLinkComponent = fixture.componentInstance;
             comp.linkId = 'cosmicId';
@@ -87,11 +79,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CosmicLinkComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CosmicLinkComponent);
+            let fixture = TestBed.createComponent(CosmicLinkComponent);
 
             let comp: CosmicLinkComponent = fixture.componentInstance;
             comp.linkId = 'COSM123';
@@ -108,11 +96,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CosmicLinkComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CosmicLinkComponent);
+            let fixture = TestBed.createComponent(CosmicLinkComponent);
 
             let comp: CosmicLinkComponent = fixture.componentInstance;
             comp.linkId = 'cosmicFusionId';
@@ -129,11 +113,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CosmicLinkComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CosmicLinkComponent);
+            let fixture = TestBed.createComponent(CosmicLinkComponent);
 
             let comp: CosmicLinkComponent = fixture.componentInstance;
             comp.linkId = 'COSF123';
@@ -150,11 +130,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CosmicLinkComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CosmicLinkComponent);
+            let fixture = TestBed.createComponent(CosmicLinkComponent);
 
             let comp: CosmicLinkComponent = fixture.componentInstance;
             comp.linkId = 'cosmicGene';
@@ -171,11 +147,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CosmicLinkComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CosmicLinkComponent);
+            let fixture = TestBed.createComponent(CosmicLinkComponent);
             fixture.componentInstance.isValidLink();
             fixture.detectChanges();
           });
@@ -186,11 +158,7 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.overrideComponent(CosmicLinkComponent, {
-              set: {
-                templateUrl: ''
-              }
-            }).createComponent(CosmicLinkComponent);
+            let fixture = TestBed.createComponent(CosmicLinkComponent);
             fixture.componentInstance.getLinkUrl();
           });
       }));
