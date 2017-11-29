@@ -1,4 +1,3 @@
-import { Tabs } from '../patient-details/patient-details.module';
 
 export class ViewDataTransformerStub {
   static makePatientData = () => {
@@ -19,7 +18,6 @@ export class ViewDataTransformerStub {
       section: 'fake-section',
       entityId: 'patient-timeline',
       needToScroll: () => { ; },
-      tabs: new Tabs(),
     };
   }
 

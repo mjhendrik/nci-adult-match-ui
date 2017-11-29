@@ -15,6 +15,7 @@ import { PatientTimelineModule } from './../patient-timeline/patient-timeline.mo
 import { ViewDataTransformer } from './../view-data-transformer.service';
 import { SharedModule } from '../../shared/shared.module';
 import { FileUploadModule } from '../file-upload/file-upload.module';
+import { DiseaseInfoModule } from '../disease-info/disease-info.module';
 
 export interface PatientData {
   psn: string;
@@ -25,25 +26,6 @@ export interface PatientData {
   needToScroll?: boolean;
   pendingVariantReport: any;
   pendingAssignmentReport: any;
-}
-
-export class Tabs {
-  activeTab: string;
-  hasActive: boolean;
-
-  private tabs: { [key: string]: boolean } = {};
-
-  set(key: string, active: boolean): void {
-    this.tabs[key] = active;
-    this.hasActive = this.hasActive || active;
-    if (active) {
-      this.activeTab = key;
-    }
-  }
-
-  get(key: string, subKey?: string): boolean {
-    return this.tabs[key + (subKey || '')] || false;
-  }
 }
 
 const DROPZONE_CONFIG: DropzoneConfigInterface = {
@@ -62,6 +44,7 @@ const DROPZONE_CONFIG: DropzoneConfigInterface = {
     PatientTimelineModule,
     SharedModule,
     FileUploadModule,
+    DiseaseInfoModule,
     TabsModule.forRoot(),
     DropzoneModule.forRoot(DROPZONE_CONFIG)
   ],
@@ -70,3 +53,4 @@ const DROPZONE_CONFIG: DropzoneConfigInterface = {
   providers: [PatientApiService, ViewDataTransformer]
 })
 export class PatientDetailsModule { }
+
