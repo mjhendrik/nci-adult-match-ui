@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+
 import { PatientVariantReportOutsideAssayComponent } from './patient-variant-report-oa.component';
 import { PatientVariantReportOutsideAssayRoutingModule } from './patient-variant-report-oa-routing.module';
-import { FormsModule } from '@angular/forms';
 import { DataTableModule } from '../../shared/datatables/index';
 import { PipesModule } from '../../shared/pipes/pipes.module';
 import { DirectivesModule } from '../../shared/directives/directives.module';
@@ -12,8 +14,7 @@ import { ViewDataTransformer } from './../view-data-transformer.service';
 import { VariantReportSimpleTableModule } from '../../shared/variant-report-simple-table/variant-report-simple-table.module';
 import { VariantReportComparisonTableModule } from '../variant-report-comparison-table/variant-report-comparison-table.module';
 import { SharedModule } from '../../shared/shared.module';
-import { TabsModule } from 'ngx-bootstrap/tabs';
-
+import { DiseaseInfoModule } from '../disease-info/disease-info.module';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
     VariantReportSimpleTableModule,
     VariantReportComparisonTableModule,
     SharedModule,
+    DiseaseInfoModule,
     TabsModule.forRoot()
   ],
   declarations: [PatientVariantReportOutsideAssayComponent],
