@@ -108,7 +108,7 @@
   <div class="panel">
     <tabset class="nav-tabs-purple">
       <tab heading="Summary" [active]="summaryData" id="summary" index="0">
-        <div *ngIf="pendingVariantReport && pendingVariantReport.daysPending" class="row">
+        <div *ngIf="pendingVariantReport" class="row">
           <div class="col-md-6">
             <a class="link-none" href [routerLink]="[getVariantReportLink(pendingVariantReport)]" [queryParams]="getVariantReportQueryParams(pendingVariantReport)">
               <div class="widget widget-stat {{getVrPendingDaysColor(pendingVariantReport)}} text-white">
@@ -124,9 +124,9 @@
             </a>
           </div>
         </div>
-        <div *ngIf="pendingAssignmentReport && pendingAssignmentReport.hoursPending" class="row">
+        <div *ngIf="pendingAssignmentReport" class="row">
           <div class="col-md-6">
-            <a class="link-none" href [routerLink]="[getVariantReportLink(pendingVariantReport)]" [queryParams]="getVariantReportQueryParams(pendingVariantReport)">
+            <a class="link-none" href [routerLink]="[getVariantReportLink(pendingAssignmentReport)]" [queryParams]="getVariantReportQueryParams(pendingAssignmentReport)">
               <div class="widget widget-stat {{getAPendingHoursColor(pendingAssignmentReport)}} text-white">
                 <div class="widget-stat-icon">
                   <i class="fa fa-table"></i>

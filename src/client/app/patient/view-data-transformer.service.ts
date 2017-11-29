@@ -492,7 +492,7 @@ export class ViewDataTransformer {
         let dateReceivedString = gmt.transform(message.dateReceived);
         let dateReceived = new Date(Date.parse(dateReceivedString)) as any;
         let now = new Date() as any;
-        variantReport.daysPending = Math.floor(Math.abs(now - dateReceived) / 864e5); // 864e5 = 1000 * 60 * 60 * 24
+        variantReport.daysPending = Math.round(Math.abs(now - dateReceived) / 864e5); // 864e5 = 1000 * 60 * 60 * 24
         transformedPatient.pendingVariantReport = variantReport;
       }
     }
@@ -591,8 +591,8 @@ export class ViewDataTransformer {
       if (assignment.derivedStatus === 'PENDING') {
         let dateAssignedString = gmt.transform(assignment.dateAssigned);
         let dateAssigned = Date.parse(dateAssignedString);
-        let now = new Date().getMilliseconds();
-        assignment.hoursPending = Math.floor(Math.abs(now - dateAssigned) / 36e5); //36e5 = 1000 * 60 * 60
+        let now = new Date() as any;
+        assignment.hoursPending = Math.round(Math.abs(now - dateAssigned) / 36e5); //36e5 = 1000 * 60 * 60
         transformedPatient.pendingAssignmentReport = assignment;
       }
     }
