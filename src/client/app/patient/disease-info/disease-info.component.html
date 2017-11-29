@@ -1,0 +1,30 @@
+<h4 id="assignment-reason">Assignment Reason</h4>
+
+<table class="table table-condensed table-th-valign-top">
+  <thead>
+    <tr>
+      <th style="min-width:17em">Treatment Arm</th>
+      <th>Reason</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="reasons" class="ut-tbody">
+    <ng-template ngFor let-section let-index="index" [ngForOf]="reasons">
+      <tr>
+        <td colspan="2">
+          <h5>{{index + 1}} - {{section.name}}</h5>
+        </td>
+      </tr>
+      <tr *ngFor="let item of section.items">
+        <td class="detail-cell">
+          <treatment-arm-link [treatmentArmId]="item.treatmentArmId" [version]="item.treatmentArmVersion" [removePrefix]="true"></treatment-arm-link>
+        </td>
+        <td>{{item.reason | dashify}}</td>
+      </tr>
+    </ng-template>
+  </tbody>
+  <tbody *ngIf="!reasons" class="ut-tbody">
+    <tr>
+      <td colspan="3" class="text-muted">No Assignment data</td>
+    </tr>
+  </tbody>
+</table>
