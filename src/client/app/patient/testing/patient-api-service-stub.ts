@@ -196,7 +196,7 @@ export class PatientApiServiceStub {
             patient: {},
             analysis: {},
             variantReport: { moiSummary: {} },
-            assignmentReport: {},
+            assignmentReport: { derivedStatus: 'PENDING'},
             assignmentHistory: {},
             parsed_vcf_genes: PatientApiServiceStub.makeParsedVcftData(),
             tvc_version: 'tvc_version',

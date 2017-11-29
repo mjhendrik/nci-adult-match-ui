@@ -223,8 +223,10 @@ export class ViewDataTransformer {
     return !!tvcVersion && tvcVersion.startsWith('5.2');
   }
 
-  getAssignmentReportEditable(assignmentReport: any): boolean {
-    return assignmentReport.derivedStatus === 'PENDING';
+  getAssignmentReportEditable(report: any): boolean {
+    if (!report || !report.assignmentReport)
+      return false;
+    return report.assignmentReport.derivedStatus === 'PENDING';
   }
 
   getVariantReportEditable(variantReport: VariantReportData): boolean {

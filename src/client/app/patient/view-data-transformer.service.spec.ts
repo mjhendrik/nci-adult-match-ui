@@ -300,22 +300,16 @@ export function main() {
         }).toThrow();
       });
 
-      xit('should update the assignment report status and dateConfirmed', () => {
+      it('should update the assignment report status and dateConfirmed', () => {
         updatedStatus.dateTime = 'some-very-fake-date';
         service.updateAssignmentReportStatus(report, updatedStatus);
-        expect(report.derivedStatus).toEqual('CONFIRMED');
-        expect(report.dateConfirmed).toEqual('some-very-fake-date');
+        expect(report.assignmentReport.derivedStatus).toEqual('CONFIRMED');
+        expect(report.assignmentReport.dateConfirmed).toEqual('some-very-fake-date');
       });
 
-      it('setting status to "CONFIRMED" should make the report not editable', () => {
-        updatedStatus.status = 'CONFIRMED';
-        service.updateAssignmentReportStatus(report, updatedStatus);
-        expect(report.isAssignmentReportEditable).toEqual(false);
-      });
-
-      xit('setting dateConfirmed to null should make the report editable', () => {
-        updatedStatus.dateTime = null;
-        service.updateAssignmentReportStatus(report, updatedStatus);
+      it('expect the assignment report to be editable when there is no dateConfirmed', () => {
+        report.assignmentReport.dateConfirmed = null;
+        report.isAssignmentReportEditable = service.getAssignmentReportEditable(report);
         expect(report.isAssignmentReportEditable).toEqual(true);
       });
     });
