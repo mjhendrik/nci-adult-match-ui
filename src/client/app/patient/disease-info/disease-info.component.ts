@@ -3,11 +3,14 @@ import {
   Input
 } from '@angular/core';
 
-export class AssignmentReasonSection {
+export class DiseaseInfo {
   name: string;
-  items: any[] = [];
+  shortName: string;
+  ctepCategory: string;
+  ctepSubCategory: string;
+  ctepTerm: string;
+  medDRACode: string;
 }
-
 
 /**
  * DiseaseInfoComponent.
@@ -19,5 +22,5 @@ export class AssignmentReasonSection {
   templateUrl: 'disease-info.component.html'
 })
 export class DiseaseInfoComponent {
-  @Input() reasons: AssignmentReasonSection[];
+  @Input() disease: DiseaseInfo[];
 }
