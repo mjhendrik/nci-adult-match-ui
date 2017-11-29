@@ -112,8 +112,9 @@ export class CliaParentComponent implements OnInit {
           x.date_molecular_id_created = gmt.transform(x.dateCreated);
           x.date_variant_received = gmt.transform(x.dateReceived);
           x.report_status = x.status;
-          x.tvc_version = x.nextGenerationSequence.tvcVersion;
-          x.analysis_id = x.nextGenerationSequence.ionReporterResults.jobName;
+          x.tvc_version = (typeof x.nextGenerationSequence !== 'undefined') ? x.nextGenerationSequence.tvcVersion : null;
+          x.analysis_id = (typeof x.nextGenerationSequence !== 'undefined') ? x.nextGenerationSequence.ionReporterResults.jobName : null;
+
           data = {
             molecular_id: x.molecular_id,
             analysis_id: x.analysis_id,
