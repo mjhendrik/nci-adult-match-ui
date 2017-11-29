@@ -22,6 +22,7 @@ class DataResolver implements Resolve<any> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<any> | Promise<any> | any {
+
     console.log(route.params['id']);
     console.log(route.params['analysisId']); // analysisId might not be readily available
     return Observable.forkJoin(
@@ -43,7 +44,7 @@ class DataResolver implements Resolve<any> {
   imports: [
     RouterModule.forChild([
       {
-        path: 'clia_mocha/variant_reports_pc/qc/:id',
+        path: 'clia_mocha/variant_reports_pc/qc/:id/:analysisId',
         component: CliaVariantReportQcComponent,
         canActivate: [AuthGuard],
         resolve: { data: DataResolver }
@@ -55,7 +56,7 @@ class DataResolver implements Resolve<any> {
         resolve: { data: DataResolver }
       },
       {
-        path: 'clia_dartmouth/variant_reports_pc/qc/:id',
+        path: 'clia_dartmouth/variant_reports_pc/qc/:id/:analysisId',
         component: CliaVariantReportQcComponent,
         canActivate: [AuthGuard],
         resolve: { data: DataResolver }
@@ -67,7 +68,7 @@ class DataResolver implements Resolve<any> {
         resolve: { data: DataResolver }
       },
       {
-        path: 'clia_mda/variant_reports_pc/qc/:id',
+        path: 'clia_mda/variant_reports_pc/qc/:id/:analysisId',
         component: CliaVariantReportQcComponent,
         canActivate: [AuthGuard],
         resolve: { data: DataResolver }
