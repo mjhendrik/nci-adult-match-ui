@@ -15,6 +15,7 @@ import { PatientTimelineModule } from './../patient-timeline/patient-timeline.mo
 import { ViewDataTransformer } from './../view-data-transformer.service';
 import { SharedModule } from '../../shared/shared.module';
 import { FileUploadModule } from '../file-upload/file-upload.module';
+import { DocumentUploadModule } from '../document-upload/document-upload.module';
 import { DiseaseInfoModule } from '../disease-info/disease-info.module';
 
 export interface PatientData {
@@ -44,6 +45,7 @@ const DROPZONE_CONFIG: DropzoneConfigInterface = {
     PatientTimelineModule,
     SharedModule,
     FileUploadModule,
+    DocumentUploadModule,
     DiseaseInfoModule,
     TabsModule.forRoot(),
     DropzoneModule.forRoot(DROPZONE_CONFIG)
