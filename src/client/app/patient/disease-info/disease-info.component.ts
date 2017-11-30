@@ -15,6 +15,8 @@ import { DiseaseInfo } from './disease-info.module';
   templateUrl: 'disease-info.component.html'
 })
 export class DiseaseInfoComponent {
-  @Input() disease: DiseaseInfo;
+  @Input() disease: DiseaseInfo = DiseaseInfo.default();
+  @Input() diseaseMatchData: DiseaseInfo = DiseaseInfo.default();
+  @Input() diseaseOutsideData: DiseaseInfo = DiseaseInfo.default();
   @Input() isOutsideAssayWorkflow: boolean;
 }

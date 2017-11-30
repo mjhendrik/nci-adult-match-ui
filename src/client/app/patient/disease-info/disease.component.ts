@@ -6,7 +6,7 @@ import {
 import { DiseaseInfo } from './disease-info.module';
 
 /**
- * DiseaseInfoComponent.
+ * DiseaseComponent.
  */
 @Component({
   moduleId: module.id,
@@ -28,7 +28,7 @@ import { DiseaseInfo } from './disease-info.module';
     <dd>{{disease.matchData.medDRACode | dashify}}</dd>
   </dl>`
 })
-export class DiseaseInfoComponent {
+export class DiseaseComponent {
   @Input() disease: DiseaseInfo;
   @Input() isOutsideAssayWorkflow: boolean;
 }

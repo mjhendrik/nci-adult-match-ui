@@ -1,48 +1,11 @@
 <div class="row" *ngIf="isOutsideAssayWorkflow">
   <div class="col-md-6">
-    <dl class="dl-horizontal narrow-dt">
-      <dt>Outside Lab Disease</dt>
-      <dd>{{disease.outsideData.name | dashify}}</dd>
-      <dt>Short Name</dt>
-      <dd>{{disease.outsideData.shortName | dashify}}</dd>
-      <dt>CTEP Category</dt>
-      <dd>{{disease.outsideData.ctepCategory | dashify}}</dd>
-      <dt>CTEP Sub Category</dt>
-      <dd>{{disease.outsideData.ctepSubCategory | dashify}}</dd>
-      <dt>CTEP Term</dt>
-      <dd>{{disease.outsideData.ctepTerm | dashify}}</dd>
-      <dt>MedDRA Code</dt>
-      <dd>{{disease.outsideData.medDRACode | dashify}}</dd>
-    </dl>
+    <sd-disease [disease]="diseaseOutsideData" [isOutsideAssayWorkflow]="isOutsideAssayWorkflow"></sd-disease>
   </div>
   <div class="col-md-6">
-    <dl class="dl-horizontal narrow-dt">
-      <dt>MATCH Disease</dt>
-      <dd>{{disease.matchData.name | dashify}}</dd>
-      <dt>Short Name</dt>
-      <dd>{{disease.matchData.shortName | dashify}}</dd>
-      <dt>CTEP Category</dt>
-      <dd>{{disease.matchData.ctepCategory | dashify}}</dd>
-      <dt>CTEP Sub Category</dt>
-      <dd>{{disease.matchData.ctepSubCategory | dashify}}</dd>
-      <dt>CTEP Term</dt>
-      <dd>{{disease.matchData.ctepTerm | dashify}}</dd>
-      <dt>MedDRA Code</dt>
-      <dd>{{disease.matchData.medDRACode | dashify}}</dd>
-    </dl>
+    <sd-disease [disease]="diseaseMatchData" [isOutsideAssayWorkflow]="isOutsideAssayWorkflow"></sd-disease>
   </div>
 </div>
 <dl class="dl-horizontal" *ngIf="!isOutsideAssayWorkflow">
-  <dt>Disease</dt>
-  <dd>{{disease.name | dashify}}</dd>
-  <dt>Short Name</dt>
-  <dd>{{disease.shortName | dashify}}</dd>
-  <dt>CTEP Category</dt>
-  <dd>{{disease.ctepCategory | dashify}}</dd>
-  <dt>CTEP Sub Category</dt>
-  <dd>{{disease.ctepSubCategory | dashify}}</dd>
-  <dt>CTEP Term</dt>
-  <dd>{{disease.ctepTerm | dashify}}</dd>
-  <dt>MedDRA Code</dt>
-  <dd>{{disease.medDRACode | dashify}}</dd>
-</dl>        
+    <sd-disease [disease]="disease" [isOutsideAssayWorkflow]="isOutsideAssayWorkflow"></sd-disease>
+  </dl>        

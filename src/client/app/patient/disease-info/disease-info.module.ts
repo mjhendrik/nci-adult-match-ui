@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { DiseaseInfoComponent } from './disease-info.component';
 import { PipesModule } from '../../shared/pipes/pipes.module';
+import { DiseaseComponent } from './disease.component';
 
 export class DiseaseInfo {
   name: string;
@@ -12,8 +13,16 @@ export class DiseaseInfo {
   ctepTerm: string;
   medDRACode: string;
 
-  outsideData?: DiseaseInfo;
-  matchData?: DiseaseInfo;
+  static default(): DiseaseInfo {
+    return {
+      name: null,
+      shortName: null,
+      ctepCategory: null,
+      ctepSubCategory: null,
+      ctepTerm: null,
+      medDRACode: null
+    };
+  }
 }
 
 @NgModule({
@@ -21,7 +30,7 @@ export class DiseaseInfo {
     CommonModule,
     PipesModule,
   ],
-  declarations: [DiseaseInfoComponent],
+  declarations: [DiseaseInfoComponent, DiseaseComponent],
   exports: [DiseaseInfoComponent]
 })
 export class DiseaseInfoModule { }
