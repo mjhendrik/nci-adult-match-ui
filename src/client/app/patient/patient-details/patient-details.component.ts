@@ -126,6 +126,9 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
     }
   }
 
+  openPathologyReport(reports: any) {
+  }
+
   private navigateToSection(): void {
     if (!this.section) {
       return;

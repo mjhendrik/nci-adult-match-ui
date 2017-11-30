@@ -19,12 +19,12 @@ interface StringToStringMap {
   styleUrls: ['disease-info.component.css'],
   template: `
   <dl class="dl-horizontal" [ngClass]="{true:'narrow-dt',false:''}[isNarrow]">
-    <dt>{{diseasePrefix}}Disease</dt>
+    <dt>{{diseasePrefix}} Disease</dt>
     <dd>{{disease.name | dashify}}</dd>
     <dt>Short Name</dt>
     <dd>{{disease.shortName | dashify}}</dd>
-    <dt *ngIf="details.length" class="text-muted f-w-500 f-s-smlr">More</dt>
-    <dd *ngIf="details.length" class="text-muted text-ellipsis f-s-smlr" [ngClass]="{true:'width-100',false:'width-150'}[isNarrow]">
+    <dt *ngIf="details.length" class="text-muted f-w-500">More</dt>
+    <dd *ngIf="details.length" class="text-muted text-ellipsis" [ngClass]="{true:'width-100',false:'width-150'}[isNarrow]">
       <sd-inline-pairs [items]="details"></sd-inline-pairs>
     </dd>
   </dl>`

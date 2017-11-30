@@ -144,6 +144,12 @@
                     <dd [colorCodeConcordance]="biopsy.concordance">{{biopsy.concordance | dashify}}</dd>
                     <dt>Comment</dt>
                     <dd>{{biopsy.comment | dashify}}</dd>
+                    <dt *ngIf="biopsy.pathologyReportMessages && biopsy.pathologyReportMessages.length">Pathology Report</dt>
+                    <dd *ngIf="biopsy.pathologyReportMessages && biopsy.pathologyReportMessages.length">
+                      <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10"
+                      (click)="openPathologyReport(biopsy.pathologyReportMessages[0])">
+                      <i class="fa fa-report"></i>View Report</button>
+                    </dd>                    
                   </dl>
                 </div>
               </div>
