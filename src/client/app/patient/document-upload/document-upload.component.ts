@@ -6,7 +6,7 @@ import { DocumentUploadContentComponent } from './document-upload-content.compon
   moduleId: module.id,
   selector: 'sd-document-upload',
   template: `
-  <button type="button" class="btn btn-purple-light pull-right" (click)="openUploadDialog()">Upload ##</button>
+  <button type="button" class="btn btn-purple-light pull-right" (click)="openUploadDialog()">Upload</button>
   `
 })
 export class DocumentUploadComponent {
