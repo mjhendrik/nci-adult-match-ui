@@ -47,6 +47,7 @@ import { VariantReportFilteredTableModule } from './shared/variant-report-filter
 import { ErrorHandlingService } from './shared/error-handling/error-handling.service';
 import { ToastrService } from './shared/error-handling/toastr.service';
 import { FileUploadContentComponent } from './patient/file-upload/file-upload-content.component';
+import { DocumentUploadContentComponent } from './patient/document-upload/document-upload-content.component';
 import { ModalDialogWithCommentsComponent } from './shared/modal-dialogs/modal-dialog-with-comments.component';
 import { ModalDialogConfirmationComponent } from './shared/modal-dialogs/modal-dialog-confirmation.component';
 import { ErrorPageHttpInterceptor } from './shared/error-handling/error-page-http.interceptor';
@@ -106,6 +107,7 @@ import { ErrorPageHttpInterceptor } from './shared/error-handling/error-page-htt
   bootstrap: [AppComponent],
   entryComponents: [
     FileUploadContentComponent,
+    DocumentUploadContentComponent,
     ModalDialogWithCommentsComponent,
     ModalDialogConfirmationComponent
   ]

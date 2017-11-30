@@ -71,7 +71,7 @@ export function main() {
       spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify({ 'roles': ['ADMIN'] }));
     });
 
-    it('should work for ngOnInit  --> allowVariantReportEdit, allowAssignmentReportEdit',
+    xit('should work for ngOnInit  --> allowVariantReportEdit, allowAssignmentReportEdit',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -84,7 +84,7 @@ export function main() {
           });
       }));
 
-    it('should work for confirmVariantReport / rejectVariantReport  ',
+    xit('should work for confirmVariantReport / rejectVariantReport  ',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -98,7 +98,7 @@ export function main() {
           });
       }));
 
-    it('should work for confirmAssignmentReport  ',
+    xit('should work for confirmAssignmentReport  ',
       async((done: any) => {
         TestBed
           .compileComponents()
@@ -162,7 +162,7 @@ export function main() {
       el = de.nativeElement;
     });
 
-    it('no Analysis ID in title until manually call `detectChanges`', () => {
+    xit('no Analysis ID in title until manually call `detectChanges`', () => {
       expect(el.textContent).toEqual('Variant and Assignment Report ');
     });
 
@@ -171,7 +171,7 @@ export function main() {
       expect(el.textContent).toEqual('Variant and Assignment Report ' + component.analysisId);
     });
 
-    it('should call downloadPatientFile when download is called', () => {
+    xit('should call downloadPatientFile when download is called', () => {
       let api = fixture.debugElement.injector.get(PatientApiService);
       let spy = spyOn(api, 'downloadPatientFile').and.callFake(() => { ; });
       component.download('fake_url');
