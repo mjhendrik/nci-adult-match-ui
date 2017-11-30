@@ -1,5 +1,5 @@
 <div *ngIf="!isUploaded" class="modal-header">
-    <h4 class="modal-title pull-left">Upload BAM files and Variant ZIP files</h4>
+    <h4 class="modal-title pull-left">Upload Document files</h4>
   </div>
   <div *ngIf="isUploaded && isSuccessful" class="modal-header">
     <h4 class="modal-title pull-left">The BAM files and Variant ZIP files have been successfully uploaded</h4>
@@ -9,7 +9,7 @@
   </div>
   <div *ngIf="!isUploaded" class="modal-body">
     <div class="form-group has-feedback" [ngClass]="{true:'has-error',false:'has-success'}[!analysisIdValid]">
-      <label class="">Analysis ID</label>
+      <label class="">File Name</label>
       <input type="text" #input class="form-control" placeholder="Enter Document Name" [(ngModel)]="analysisId" (ngModelChange)="onInputChanged($event)">
       <span class="fa form-control-feedback" [ngClass]="{true:'fa-times',false:'fa-check'}[!analysisIdValid]"></span>
     </div>
