@@ -53,8 +53,17 @@
     <div class="col-md-6">
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height">
         <div class="panel-heading" id="patient_detail_right">
-          <sd-disease-info [isOutsideAssayWorkflow]="patient.isOutsideAssayWorkflow" [disease]="patient.disease">
-          </sd-disease-info>
+          <div class="row" *ngIf="isOutsideAssayWorkflow">
+            <div class="col-md-6">
+              <sd-disease [disease]="patient.disease.outsideData" [isNarrow]="patient.isOutsideAssayWorkflow"></sd-disease>
+            </div>
+            <div class="col-md-6">
+              <sd-disease [disease]="patient.disease.matchData" [isNarrow]="patient.isOutsideAssayWorkflow"></sd-disease>
+            </div>
+          </div>
+          <dl class="dl-horizontal" *ngIf="!patient.isOutsideAssayWorkflow">
+            <sd-disease [disease]="patient.disease" [isNarrow]="patient.isOutsideAssayWorkflow"></sd-disease>
+          </dl>
         </div>
       </div>
     </div>

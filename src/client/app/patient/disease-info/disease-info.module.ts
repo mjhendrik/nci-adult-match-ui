@@ -31,6 +31,6 @@ export class DiseaseInfo {
     PipesModule,
   ],
   declarations: [DiseaseInfoComponent, DiseaseComponent],
-  exports: [DiseaseInfoComponent]
+  exports: [DiseaseInfoComponent, DiseaseComponent]
 })
 export class DiseaseInfoModule { }

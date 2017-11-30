@@ -13,22 +13,22 @@ import { DiseaseInfo } from './disease-info.module';
   selector: 'sd-disease',
   styleUrls: ['disease.component.css'],
   template: `
-  <dl class="dl-horizontal" [ngClass]="{true:'narrow-dt',false:''}[isOutsideAssayWorkflow]">
+  <dl class="dl-horizontal" [ngClass]="{true:'narrow-dt',false:''}[isNarrow]">
     <dt>MATCH Disease</dt>
-    <dd>{{disease.matchData.name | dashify}}</dd>
+    <dd>{{disease.name | dashify}}</dd>
     <dt>Short Name</dt>
-    <dd>{{disease.matchData.shortName | dashify}}</dd>
+    <dd>{{disease.shortName | dashify}}</dd>
     <dt>CTEP Category</dt>
-    <dd>{{disease.matchData.ctepCategory | dashify}}</dd>
+    <dd>{{disease.ctepCategory | dashify}}</dd>
     <dt>CTEP Sub Category</dt>
-    <dd>{{disease.matchData.ctepSubCategory | dashify}}</dd>
+    <dd>{{disease.ctepSubCategory | dashify}}</dd>
     <dt>CTEP Term</dt>
-    <dd>{{disease.matchData.ctepTerm | dashify}}</dd>
+    <dd>{{disease.ctepTerm | dashify}}</dd>
     <dt>MedDRA Code</dt>
-    <dd>{{disease.matchData.medDRACode | dashify}}</dd>
+    <dd>{{disease.medDRACode | dashify}}</dd>
   </dl>`
 })
 export class DiseaseComponent {
-  @Input() disease: DiseaseInfo;
-  @Input() isOutsideAssayWorkflow: boolean;
+  @Input() disease: DiseaseInfo = DiseaseInfo.default();
+  @Input() isNarrow: boolean;
 }

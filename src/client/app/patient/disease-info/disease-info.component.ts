@@ -18,5 +18,5 @@ export class DiseaseInfoComponent {
   @Input() disease: DiseaseInfo = DiseaseInfo.default();
   @Input() diseaseMatchData: DiseaseInfo = DiseaseInfo.default();
   @Input() diseaseOutsideData: DiseaseInfo = DiseaseInfo.default();
-  @Input() isOutsideAssayWorkflow: boolean;
+  @Input() isOutsideAssayWorkflow: boolean = false;
 }
