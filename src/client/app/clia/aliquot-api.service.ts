@@ -87,6 +87,17 @@ export class AliquotApiService extends ApiService {
       });
   }
 
+  getDocumentPresignedUrls(msn: string, analysisId: string, documentFile: string): Observable<[string]> {
+    return Observable.forkJoin(
+      this.http.put(`${this.baseApiUrl}/message/clia/aliquot/presign_url`, { molecularSequenceNumber: msn, analysisId: analysisId, filename: documentFile }),
+    ).map(
+      data => {
+        return [
+          this.extractData(data[0])
+        ] as [string];
+      });
+  }
+
   notifyAfterUpload(msn: string, body: any): Observable<any | ApiStatusUpdateError> {
     return this.http.put(`${this.baseApiUrl}/message/clia/aliquot/` + msn, body)
       .map(this.extractData)

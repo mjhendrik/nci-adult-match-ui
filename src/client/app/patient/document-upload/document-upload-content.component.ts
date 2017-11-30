@@ -44,7 +44,7 @@ export class DocumentUploadContentComponent implements OnInit {
   analysisId: string = '';
   analysisIdValid: boolean = false;
   analysisIdPrev: string = this.analysisId;
-  message: string = 'Enter Analysis ID to add Variant ZIP file, DNA BAM file and cDNA BAM file';
+  message: string = 'Enter Document Name to add Document file';
   uploadNotification: any;
   isUploading: boolean = false;
   fileCount: number = 0;
@@ -57,16 +57,16 @@ export class DocumentUploadContentComponent implements OnInit {
   percentDoneCdnaBamFile: number = 0;
 
   hasVariantZipFile: boolean = false;
-  hasDnaBamFile: boolean = false;
-  hasCdnaBamFile: boolean = false;
+  // hasDnaBamFile: boolean = false;
+  // hasCdnaBamFile: boolean = false;
 
   variantZipFile: any;
-  dnaBamFile: any;
-  cdnaBamFile: any;
+  // dnaBamFile: any;
+  // cdnaBamFile: any;
 
   variantZipFileUrl: string;
-  dnaBamFileUrl: string;
-  cdnaBamFileUrl: string;
+  // dnaBamFileUrl: string;
+  // cdnaBamFileUrl: string;
 
   @ViewChild('input') inputElRef: ElementRef;
 
@@ -134,38 +134,38 @@ export class DocumentUploadContentComponent implements OnInit {
     }
   }
 
-  fileSelectedDnaBam(file: any): void {
-    this.hasDnaBamFile = false;
-    if (file !== undefined) {
-      this.hasDnaBamFile = true;
-      this.dnaBamFile = file;
-    }
-  }
+  // fileSelectedDnaBam(file: any): void {
+  //   this.hasDnaBamFile = false;
+  //   if (file !== undefined) {
+  //     this.hasDnaBamFile = true;
+  //     this.dnaBamFile = file;
+  //   }
+  // }
 
-  fileSelectedCdnaBam(file: any): void {
-    this.hasCdnaBamFile = false;
-    if (file !== undefined) {
-      this.hasCdnaBamFile = true;
-      this.cdnaBamFile = file;
-    }
-  }
+  // fileSelectedCdnaBam(file: any): void {
+  //   this.hasCdnaBamFile = false;
+  //   if (file !== undefined) {
+  //     this.hasCdnaBamFile = true;
+  //     this.cdnaBamFile = file;
+  //   }
+  // }
 
   upload(): void {
     this.isUploading = true;
-    this.api.getPresignedUrls(
+    this.api.getDocumentPresignedUrls(
       this.msn,
       this.analysisId,
-      this.variantZipFile.name,
-      this.dnaBamFile.name,
-      this.cdnaBamFile.name
+      this.variantZipFile.name
+      // this.dnaBamFile.name,
+      // this.cdnaBamFile.name
     ).subscribe(
       (data: [string, string, string]) => {
         this.variantZipFileUrl = data[0];
-        this.dnaBamFileUrl = data[1];
-        this.cdnaBamFileUrl = data[2];
+        // this.dnaBamFileUrl = data[1];
+        // this.cdnaBamFileUrl = data[2];
         this.uploadFile(this.variantZipFileUrl, this.variantZipFile);
-        this.uploadFile(this.dnaBamFileUrl, this.dnaBamFile);
-        this.uploadFile(this.cdnaBamFileUrl, this.cdnaBamFile);
+        // this.uploadFile(this.dnaBamFileUrl, this.dnaBamFile);
+        // this.uploadFile(this.cdnaBamFileUrl, this.cdnaBamFile);
       });
   }
 
@@ -180,11 +180,11 @@ export class DocumentUploadContentComponent implements OnInit {
       if (event.type === HttpEventType.UploadProgress) {
         const percentDone = Math.round(100 * event.loaded / event.total);
         if (file === this.variantZipFile) this.percentDoneVariantZipFile = percentDone;
-        if (file === this.dnaBamFile) this.percentDoneDnaBamFile = percentDone;
-        if (file === this.cdnaBamFile) this.percentDoneCdnaBamFile = percentDone;
+        // if (file === this.dnaBamFile) this.percentDoneDnaBamFile = percentDone;
+        // if (file === this.cdnaBamFile) this.percentDoneCdnaBamFile = percentDone;
       } else if (event instanceof HttpResponse) {
         this.fileCount++;
-        if (this.fileCount === 3) {
+        if (this.fileCount === 1) {
           this.isUploading = false;
           this.notifyAfterUpload();
         }
@@ -198,9 +198,9 @@ export class DocumentUploadContentComponent implements OnInit {
     this.uploadNotification = {
       'molecular_sequence_number': this.msn,
       'analysis_id': this.analysisId,
-      'zip_name': this.variantZipFile.name,
-      'dna_bam_name': this.dnaBamFile.name,
-      'cdna_bam_name': this.cdnaBamFile.name
+      'zip_name': this.variantZipFile.name
+      // 'dna_bam_name': this.dnaBamFile.name,
+      // 'cdna_bam_name': this.cdnaBamFile.name
     };
 
     this.api.notifyAfterUpload(this.msn, this.uploadNotification).subscribe(itemList => {
