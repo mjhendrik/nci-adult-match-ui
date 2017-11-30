@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { DiseaseInfoComponent } from './disease-info.component';
 import { PipesModule } from '../../shared/pipes/pipes.module';
-import { DiseaseComponent } from './disease.component';
+import { DiseaseInfoComponent } from './disease-info.component';
 
 export class DiseaseInfo {
   name: string;
@@ -30,7 +29,7 @@ export class DiseaseInfo {
     CommonModule,
     PipesModule,
   ],
-  declarations: [DiseaseInfoComponent, DiseaseComponent],
-  exports: [DiseaseInfoComponent, DiseaseComponent]
+  declarations: [DiseaseInfoComponent],
+  exports: [DiseaseInfoComponent]
 })
 export class DiseaseInfoModule { }
