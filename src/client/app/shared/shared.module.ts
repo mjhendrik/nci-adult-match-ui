@@ -14,6 +14,7 @@ import { CosmicLinkComponent } from './cosmic-link/cosmic-link.component';
 import { FooterComponent } from './footer/footer.component';
 import { UserProfileService } from './user-profile/user-profile.service';
 import { AmoiListComponent } from './amoi-list/amoi-list.component';
+import { InlinePairsComponent } from './inline-pairs/inline-pairs.component';
 
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.
@@ -29,7 +30,8 @@ import { AmoiListComponent } from './amoi-list/amoi-list.component';
     TreatmentArmLinkComponent,
     CosmicLinkComponent,
     FooterComponent,
-    AmoiListComponent
+    AmoiListComponent,
+    InlinePairsComponent
   ],
   exports: [
     NavbarComponent,
@@ -39,7 +41,8 @@ import { AmoiListComponent } from './amoi-list/amoi-list.component';
     TreatmentArmLinkComponent,
     CosmicLinkComponent,
     FooterComponent,
-    AmoiListComponent
+    AmoiListComponent,
+    InlinePairsComponent
   ],
   providers: [ConfigApiService, UserProfileService]
 })

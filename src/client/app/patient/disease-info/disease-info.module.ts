@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { PipesModule } from '../../shared/pipes/pipes.module';
 import { DiseaseInfoComponent } from './disease-info.component';
+import { SharedModule } from '../../shared/shared.module';
 
 export class DiseaseInfo {
   name: string;
@@ -28,6 +29,7 @@ export class DiseaseInfo {
   imports: [
     CommonModule,
     PipesModule,
+    SharedModule,
   ],
   declarations: [DiseaseInfoComponent],
   exports: [DiseaseInfoComponent]
