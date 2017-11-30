@@ -18,12 +18,12 @@ export class Pair {
         <span class="pair-label">{{item.label}}:</span><span class="pair-data">{{item.data}}</span><span class="pair-delimiter" *ngIf="!last">;</span>
     </span>
     <template #poDetails>
-        <dl>
-            <ng-template ngFor let-item [ngForOf]="items">
-                <dt>{{items.label}}</dt>
-                <dd>{{item.data}}</dd>
-            </ng-template>
-        </dl>
+        <ul class="details-expanded width-250">
+            <li *ngFor="let item of items">
+                <span class="pair-label">{{item.label}}:</span>
+                <span class="pair-data">{{item.data}}</span>
+            </li>
+        </ul>
     </template>   
     `
 })
