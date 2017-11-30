@@ -89,10 +89,6 @@ export class ProjectConfig extends SeedConfig {
         name: 'ngx-dropzone-wrapper',
         path: 'node_modules/ngx-dropzone-wrapper/bundles/ngx-dropzone-wrapper.umd.js'
       },
-      {
-        name: 'ngx-popover',
-        path: 'node_modules/ngx-popover/index.js'
-      },
       // required for dev build
       {
         name: 'ngx-bootstrap',

@@ -17,7 +17,6 @@ import { TestBed, async, ComponentFixture, inject } from '@angular/core/testing'
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule, By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PopoverModule } from 'ngx-popover';
 import { Router } from '@angular/router';
 import { ModalModule } from 'ngx-bootstrap';
 import { ToastModule, ToastsManager } from 'ng2-toastr/ng2-toastr';
@@ -92,7 +91,6 @@ export function main() {
           AssignmentReportModule,
           VariantReportFilteredTableModule,
           VariantReportSimpleTableModule,
-          PopoverModule,
           HttpClientModule,
           ToastModule.forRoot(),
           ModalModule.forRoot(),

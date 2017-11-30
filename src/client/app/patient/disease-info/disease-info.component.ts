@@ -23,8 +23,10 @@ interface StringToStringMap {
     <dd>{{disease.name | dashify}}</dd>
     <dt>Short Name</dt>
     <dd>{{disease.shortName | dashify}}</dd>
-    <dt class="text-muted f-w-500 f-s-smlr">More</dt>
-    <dd class="text-muted text-ellipsis f-s-smlr" [ngClass]="{true:'width-100',false:'width-150'}[isNarrow]"><sd-inline-pairs [items]="details"></sd-inline-pairs></dd>
+    <dt *ngIf="details.length" class="text-muted f-w-500 f-s-smlr">More</dt>
+    <dd *ngIf="details.length" class="text-muted text-ellipsis f-s-smlr" [ngClass]="{true:'width-100',false:'width-150'}[isNarrow]">
+      <sd-inline-pairs [items]="details"></sd-inline-pairs>
+    </dd>
   </dl>`
 })
 export class DiseaseInfoComponent {

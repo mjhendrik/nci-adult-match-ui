@@ -15,6 +15,7 @@ import { FooterComponent } from './footer/footer.component';
 import { UserProfileService } from './user-profile/user-profile.service';
 import { AmoiListComponent } from './amoi-list/amoi-list.component';
 import { InlinePairsComponent } from './inline-pairs/inline-pairs.component';
+import { PopoverModule } from 'ngx-bootstrap';
 
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.
@@ -23,7 +24,8 @@ import { InlinePairsComponent } from './inline-pairs/inline-pairs.component';
   imports: [
     CommonModule,
     RouterModule,
-    PipesModule
+    PipesModule,
+    PopoverModule
   ],
   declarations: [
     NavbarComponent,

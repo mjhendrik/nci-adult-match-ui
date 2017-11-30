@@ -15,9 +15,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AUTH_PROVIDERS } from 'angular2-jwt';
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
-import { PopoverModule } from 'ngx-popover';
 import { Router } from '@angular/router';
-import { ModalModule } from 'ngx-bootstrap';
+import { ModalModule, PopoverModule } from 'ngx-bootstrap';
 
 import { AppComponent } from './app.component';
 import { Auth } from './shared/auth/auth.service';
@@ -78,10 +77,10 @@ import { ErrorPageHttpInterceptor } from './shared/error-handling/error-page-htt
     AssignmentReportModule,
     VariantReportFilteredTableModule,
     VariantReportSimpleTableModule,
-    PopoverModule,
     HttpClientModule,
     ToastModule.forRoot(),
     ModalModule.forRoot(),
+    PopoverModule.forRoot(),
     ErrorModule // This needs to be at the bottom of the list for ErrorComponent to work properly
   ],
   declarations: [AppComponent],
