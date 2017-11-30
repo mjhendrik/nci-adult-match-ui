@@ -16,7 +16,7 @@ interface StringToStringMap {
 @Component({
   moduleId: module.id,
   selector: 'sd-disease',
-  styleUrls: ['disease.component.css'],
+  styleUrls: ['disease-info.component.css'],
   template: `
   <dl class="dl-horizontal" [ngClass]="{true:'narrow-dt',false:''}[isNarrow]">
     <dt>MATCH Disease</dt>
@@ -25,7 +25,7 @@ interface StringToStringMap {
     <dd>{{disease.shortName | dashify}}</dd>
 
     <dt class="text-muted f-w-500">More</dt>
-    <dd class="text-muted overflow-ellipsis"><sd-inline-pairs [items]="details"></sd-inline-pairs></dd>
+    <dd class="text-muted text-ellipsis"><sd-inline-pairs [items]="details"></sd-inline-pairs></dd>
 
     <dt>CTEP Category</dt>
     <dd>{{disease.ctepCategory | dashify}}</dd>
