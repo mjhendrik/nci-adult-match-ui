@@ -1,0 +1,16 @@
+@import "./../../../scss/colors.scss";
+
+.pair-label {
+  margin-right: 4px;
+  font-weight: 700;
+  color: $dark-text-muted-color;
+}
+
+.pair-data {
+  font-weight: 400;
+  color: $dark-text-muted-color;
+}
+
+.pair-delimiter {
+  margin-right: 12px;
+}

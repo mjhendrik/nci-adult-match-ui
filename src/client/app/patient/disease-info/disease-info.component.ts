@@ -25,7 +25,7 @@ interface StringToStringMap {
     <dd>{{disease.shortName | dashify}}</dd>
 
     <dt class="text-muted f-w-500">More</dt>
-    <dd class="text-muted overflow-ellipsis f-w-500"><sd-inline-pairs [items]="details"></sd-inline-pairs></dd>
+    <dd class="text-muted overflow-ellipsis"><sd-inline-pairs [items]="details"></sd-inline-pairs></dd>
 
     <dt>CTEP Category</dt>
     <dd>{{disease.ctepCategory | dashify}}</dd>
