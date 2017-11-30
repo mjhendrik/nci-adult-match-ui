@@ -14,7 +14,7 @@ export class Pair {
     styleUrls: ['inline-pairs.component.css'],
     template: `
     <span *ngIf="!items || !items.length">{{noDataMessage}}</span>
-    <span *ngFor="let item of items; let last = last"><span class="pair-label">{{item.label}} :</span><span class="pair-data">{{item.data}}</span><span class="pair-delimiter" *ngIf="!last">;</span></span>
+    <span *ngFor="let item of items; let last = last"><span class="pair-label">{{item.label}}:</span><span class="pair-data">{{item.data}}</span><span class="pair-delimiter" *ngIf="!last">;</span></span>
     `
 })
 export class InlinePairsComponent {

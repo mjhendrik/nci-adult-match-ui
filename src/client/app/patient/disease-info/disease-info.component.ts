@@ -19,28 +19,19 @@ interface StringToStringMap {
   styleUrls: ['disease-info.component.css'],
   template: `
   <dl class="dl-horizontal" [ngClass]="{true:'narrow-dt',false:''}[isNarrow]">
-    <dt>MATCH Disease</dt>
+    <dt>{{diseasePrefix}}Disease</dt>
     <dd>{{disease.name | dashify}}</dd>
     <dt>Short Name</dt>
     <dd>{{disease.shortName | dashify}}</dd>
-
-    <dt class="text-muted f-w-500">More</dt>
-    <dd class="text-muted text-ellipsis"><sd-inline-pairs [items]="details"></sd-inline-pairs></dd>
-
-    <dt>CTEP Category</dt>
-    <dd>{{disease.ctepCategory | dashify}}</dd>
-    <dt>CTEP Sub Category</dt>
-    <dd>{{disease.ctepSubCategory | dashify}}</dd>
-    <dt>CTEP Term</dt>
-    <dd>{{disease.ctepTerm | dashify}}</dd>
-    <dt>MedDRA Code</dt>
-    <dd>{{disease.medDRACode | dashify}}</dd>
+    <dt class="text-muted f-w-500 f-s-smlr">More</dt>
+    <dd class="text-muted text-ellipsis f-s-smlr" [ngClass]="{true:'width-100',false:'width-150'}[isNarrow]"><sd-inline-pairs [items]="details"></sd-inline-pairs></dd>
   </dl>`
 })
 export class DiseaseInfoComponent {
   details: Pair[] = [];
 
   @Input() isNarrow: boolean;
+  @Input() diseasePrefix: string;
 
   private diseaseValue: DiseaseInfo = DiseaseInfo.default();
   @Input()

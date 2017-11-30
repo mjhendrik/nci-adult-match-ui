@@ -55,10 +55,10 @@
         <div class="panel-heading" id="patient_detail_right">
           <div class="row" *ngIf="patient.isOutsideAssayWorkflow">
             <div class="col-md-6">
-              <sd-disease [disease]="patient.disease.outsideData" [isNarrow]="patient.isOutsideAssayWorkflow"></sd-disease>
+              <sd-disease [disease]="patient.disease.outsideData" [isNarrow]="patient.isOutsideAssayWorkflow" [diseasePrefix]="'MATCH'"></sd-disease>
             </div>
             <div class="col-md-6">
-              <sd-disease [disease]="patient.disease.matchData" [isNarrow]="patient.isOutsideAssayWorkflow"></sd-disease>
+              <sd-disease [disease]="patient.disease.matchData" [isNarrow]="patient.isOutsideAssayWorkflow" [diseasePrefix]="'Outside Lab'"></sd-disease>
             </div>
           </div>
           <dl class="dl-horizontal" *ngIf="!patient.isOutsideAssayWorkflow">
