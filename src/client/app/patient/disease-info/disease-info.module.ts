@@ -6,7 +6,6 @@ import { DiseaseInfoComponent } from './disease-info.component';
 import { SharedModule } from '../../shared/shared.module';
 
 export class DiseaseInfo {
-  name: string;
   shortName: string;
   ctepCategory: string;
   ctepSubCategory: string;
@@ -15,7 +14,6 @@ export class DiseaseInfo {
 
   static default(): DiseaseInfo {
     return {
-      name: null,
       shortName: null,
       ctepCategory: null,
       ctepSubCategory: null,
