@@ -19,7 +19,7 @@ interface StringToStringMap {
   styleUrls: ['disease-info.component.css'],
   template: `
   <dl class="dl-horizontal" [ngClass]="{true:'narrow-dt',false:''}[isNarrow]">
-    <dt>Short Name</dt>
+    <dt>{{diseasePrefix}} Disease</dt>
     <dd>{{disease.shortName | dashify}}</dd>
     <dt *ngIf="details.length" class="text-muted f-w-500">More</dt>
     <dd *ngIf="details.length" class="text-muted text-ellipsis" [ngClass]="{true:'width-100',false:'width-150'}[isNarrow]">

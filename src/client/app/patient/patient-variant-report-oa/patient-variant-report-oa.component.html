@@ -26,7 +26,7 @@
                   </div>
                 </div>
 
-                <dl class="dl-horizontal">
+                <dl class="dl-horizontal m-b-0">
                   <dt>Molecular Sequence Number</dt>
                   <dd class="ut-outside-msn">{{outsideData.variantReport.molecularSequenceNumber | dashify}}</dd>
                   <dt>Biopsy Sequence Number</dt>
@@ -48,6 +48,9 @@
                   <dt>File Received Date</dt>
                   <dd>{{outsideData.variantReport.createdDate | gmt}}</dd>
                 </dl>
+
+                <sd-disease [disease]="outsideData.disease"></sd-disease>
+                
                 <div class="m-b-5">
                   <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!outsideData.variantReport.dnaBamFilePath"
                     (click)="download(outsideData.variantReport.dnaBamFilePath)"><i class="fa fa-download"></i> DNA BAM</button>
@@ -60,6 +63,7 @@
                   <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!outsideData.variantReport.vcfFilePath"
                     (click)="download(outsideData.variantReport.vcfFilePath)"><i class="fa fa-download"></i> VCF</button>
                 </div>
+
               </div>
             </div>
           </div>
@@ -107,9 +111,6 @@
                     </div>
                   </div>
                 </div>
-    
-                <h4 class="f-w-700">Disease</h4>
-                <sd-disease [disease]="outsideData.disease"></sd-disease>
               </div>
             </div>
           </div>
@@ -214,7 +215,7 @@
                   </div>
                 </div>
 
-                <dl class="dl-horizontal">
+                <dl class="dl-horizontal m-b-0">
                   <dt>Molecular Sequence Number</dt>
                   <dd class="ut-outside-msn">{{matchData.variantReport.molecularSequenceNumber | dashify}}</dd>
                   <dt>Biopsy Sequence Number</dt>
@@ -247,6 +248,9 @@
                   <dt *ngIf="showPools">Pool 2</dt>
                   <dd *ngIf="showPools">{{matchData.pool2 | dashify}}</dd>
                 </dl>
+
+                <sd-disease [disease]="matchData.disease"></sd-disease>
+                
                 <div class="m-b-5">
                   <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!matchData.variantReport.dnaBamFilePath"
                     (click)="download(matchData.variantReport.dnaBamFilePath)"><i class="fa fa-download"></i> DNA BAM</button>
@@ -259,6 +263,7 @@
                   <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!matchData.variantReport.vcfFilePath"
                     (click)="download(matchData.variantReport.vcfFilePath)"><i class="fa fa-download"></i> VCF</button>
                 </div>
+
               </div>
             </div>
           </div>
@@ -300,9 +305,6 @@
                     </div>
                   </div>
                 </div>
-    
-                <h4 class="f-w-700">Disease</h4>
-                <sd-disease [disease]="matchData.disease"></sd-disease>
               </div>
             </div>
           </div>
