@@ -247,12 +247,6 @@ body {
   color: $text-muted-color;
 }
 
-// Fixed Panel Heights
-.biopsy-panel-height {
-  height: 120px;
-}
-
-
 /* CLIA Labs - Theme Styles */
 
 .nav.nav-tabs.nav-tabs-orangeshade>li.active:after,
@@ -468,4 +462,15 @@ td.long-text-wrap {
 
 .f-s-smlr {
   font-size: smaller;
+}
+
+ul.no-bullets {
+  list-style-type: none;
+  padding: 0px;
+  li {
+    a:focus, a:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
 }
