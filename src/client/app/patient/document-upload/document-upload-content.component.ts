@@ -90,10 +90,10 @@ export class DocumentUploadContentComponent implements OnInit {
     this.api.validateAnalysisId(this.msn, this.analysisId)
       .subscribe(itemList => {
         this.analysisIdValid = !itemList;
-        if (!this.analysisIdValid) {
-          delete this.message;
-          this.message = 'Analysis ID entered already exists';
-        }
+        // if (!this.analysisIdValid) {
+        //   delete this.message;
+        //   this.message = 'Analysis ID entered already exists';
+        // }
       });
 
   }
@@ -116,11 +116,11 @@ export class DocumentUploadContentComponent implements OnInit {
 
           this.analysisIdPrev = val.target.value;
 
-          if (this.analysisId === '') {
-            delete this.message;
-            this.analysisIdValid = false;
-            this.message = 'Enter Analysis ID to add Variant ZIP file, DNA BAM file and cDNA BAM file';
-          }
+          // if (this.analysisId === '') {
+          //   delete this.message;
+          //   this.analysisIdValid = false;
+          //   this.message = 'Enter Analysis ID to add Variant ZIP file, DNA BAM file and cDNA BAM file';
+          // }
 
         });
     }
@@ -141,7 +141,7 @@ export class DocumentUploadContentComponent implements OnInit {
   //     this.dnaBamFile = file;
   //   }
   // }
-
+  
   // fileSelectedCdnaBam(file: any): void {
   //   this.hasCdnaBamFile = false;
   //   if (file !== undefined) {
@@ -152,6 +152,9 @@ export class DocumentUploadContentComponent implements OnInit {
 
   upload(): void {
     this.isUploading = true;
+
+    console.log("this.msn--> " + this.msn)
+
     this.api.getDocumentPresignedUrls(
       this.msn,
       this.analysisId,

@@ -1,28 +1,22 @@
 <div *ngIf="!isUploaded" class="modal-header">
     <h4 class="modal-title pull-left">Upload Document files</h4>
   </div>
-  <div *ngIf="isUploaded && isSuccessful" class="modal-header">
-    <h4 class="modal-title pull-left">The BAM files and Variant ZIP files have been successfully uploaded</h4>
-  </div>
-  <div *ngIf="isUploaded && !isSuccessful" class="modal-header">
-    <h4 class="modal-title pull-left">The BAM files and Variant ZIP files have failed to upload</h4>
-  </div>
   <div *ngIf="!isUploaded" class="modal-body">
-    <div class="form-group has-feedback" [ngClass]="{true:'has-error',false:'has-success'}[!analysisIdValid]">
-      <label class="">File Name</label>
-      <input type="text" #input class="form-control" placeholder="Enter Document Name" [(ngModel)]="analysisId" (ngModelChange)="onInputChanged($event)">
-      <span class="fa form-control-feedback" [ngClass]="{true:'fa-times',false:'fa-check'}[!analysisIdValid]"></span>
-    </div>
-    <div *ngIf="!analysisIdValid" class="text-danger m-b-10 m-t-n10">
-      {{message}}
-    </div>
+    <!--<div class="form-group has-feedback" [ngClass]="{true:'has-error',false:'has-success'}[!analysisIdValid]">-->
+      <!--<label class="">File Name</label>-->
+      <!--<input type="text" #input class="form-control" placeholder="Enter Document Name" [(ngModel)]="analysisId" (ngModelChange)="onInputChanged($event)">-->
+      <!--<span class="fa form-control-feedback" [ngClass]="{true:'fa-times',false:'fa-check'}[!analysisIdValid]"></span>-->
+    <!--</div>-->
+    <!--<div *ngIf="!analysisIdValid" class="text-danger m-b-10 m-t-n10">-->
+      <!--{{message}}-->
+    <!--</div>-->
     <div class="row">
       <div class="col-md-12 form-group has-feedback">
         <label class="control-label">Document File
           <span *ngIf="isUploading" class="text-success-light">{{percentDoneVariantZipFile}}%</span>
         </label>
-        <input type="file" accept="" (change)="fileSelectedVariantZip($event.target.files[0])" id="variantUploadButton"
-               [ngClass]="{true:'disable-div'}[!analysisIdValid]">
+        <input type="file" accept="" (change)="fileSelectedVariantZip($event.target.files[0])" id="variantUploadButton">
+               <!--[ngClass]="{true:'disable-div'}[!analysisIdValid]">-->
         <div *ngIf="isUploading" class="progress progress-striped progress-xs active m-t-10 m-b-0">
           <div class="progress-bar progress-bar-success active" [style.width.%]="percentDoneVariantZipFile"></div>
         </div>
@@ -39,8 +33,7 @@
   <div *ngIf="!isUploaded" class="modal-footer">
     <a *ngIf="!isUploading" type="button" id="close-dialog" class="btn btn-default" (click)="closeUploadDialog(false)">Close</a>
     <a *ngIf="isUploading" type="button" id="stop-and-close-dialog" class="btn btn-default" (click)="closeUploadDialog(true, warning)">Stop Upload and Close</a>
-    <a [ngClass]="{false:'disabled'}[hasVariantZipFile && hasDnaBamFile && hasCdnaBamFile && analysisIdValid && !isUploading]"
-      (click)="upload()" id="upload-files" class="btn btn-purple-light" aria-hidden="true">
+    <a (click)="upload()" id="upload-files" class="btn btn-purple-light" aria-hidden="true">
       <i class="fa fa-cloud-upload"></i> Upload Files</a>
   </div>
   <div *ngIf="isUploaded && isSuccessful" class="modal-footer">
