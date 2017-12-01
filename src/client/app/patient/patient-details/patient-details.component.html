@@ -149,7 +149,7 @@
                       <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10"
                       (click)="openPathologyReport(biopsy.biopsySequenceNumber, biopsy.pathologyReportMessages[0])">
                       <i class="fa fa-report"></i>View</button>
-                    </dd>                    
+                    </dd>
                   </dl>
                 </div>
               </div>
@@ -358,17 +358,23 @@
             </tbody>
           </table>
         </div>
-        <div [dropzone]="dzConfigDocuments" (error)="onUploadError($event)" (success)="onUploadSuccess($event)">
-          <div class="dz-message" data-dz-message>
-            <!-- start bdd tests -->
-            <input style="display: none" type="file" id="documents_upload" name="documents_upload" multiple>
-            <!-- end bdd tests -->
-            <span>
-              Click or drop files here to upload
-            </span>
-          </div>
-          <sd-document-upload ></sd-document-upload>
+
+        <div class="table-responsive">
+          <sd-document-upload [msn]="patient.patientSequenceNumber"></sd-document-upload>
         </div>
+        <!--<div [dropzone]="dzConfigDocuments" (error)="onUploadError($event)" (success)="onUploadSuccess($event)">-->
+          <!--<div class="dz-message" data-dz-message>-->
+            <!--&lt;!&ndash; start bdd tests &ndash;&gt;-->
+            <!--<input style="display: none" type="file" id="documents_upload" name="documents_upload" multiple>-->
+            <!--&lt;!&ndash; end bdd tests &ndash;&gt;-->
+            <!--<span>-->
+              <!--Click or drop files here to upload-->
+            <!--</span>-->
+          <!--</div>-->
+          <!---->
+          <!---->
+          <!---->
+        <!--</div>-->
       </tab>
     </tabset>
   </div>
