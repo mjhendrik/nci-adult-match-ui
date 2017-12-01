@@ -5,12 +5,15 @@ import {
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { Subscription } from 'rxjs/Subscription';
 
 import { routerTransition } from './../../shared/router.animations';
 import { PatientApiService } from '../patient-api.service';
 import { ViewDataTransformer } from './../view-data-transformer.service';
 import { PatientData } from './patient-details.module';
 import { UserProfileService } from '../../shared/user-profile/user-profile.service';
+import { ModalDialogPathologyReportComponent } from '../../shared/modal-dialogs/modal-dialog-pathology-report.component';
 
 @Component({
   moduleId: module.id,
@@ -34,12 +37,16 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
   pendingAssignmentReport: any;
   activeBiopsySequenceNumber: string;
 
+  public modalRef: BsModalRef;
+  public dialogSubscription: Subscription;
+
   constructor(
     private route: ActivatedRoute,
     private patientApi: PatientApiService,
     private transformer: ViewDataTransformer,
     private router: Router,
-    private profile: UserProfileService) {
+    private profile: UserProfileService,
+    private modalService: BsModalService) {
 
     this.dzConfigDocuments = {
       // Change this to your upload POST address:
@@ -126,7 +133,25 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
     }
   }
 
-  openPathologyReport(reports: any) {
+  openPathologyReport(biopsySequenceNumber:string, report: any) {
+    this.dialogSubscription = this.modalService.onHidden.subscribe(() => {
+      this.unsubscribe();
+    });
+
+    this.modalRef = this.modalService.show(ModalDialogPathologyReportComponent);
+
+    this.modalRef.content.biopsySequenceNumber = report.biopsySequenceNumber;
+    this.modalRef.content.receivedDate = report.receivedDate;
+    this.modalRef.content.signedOutDate = report.signedOutDate;
+    this.modalRef.content.message = report.message;
+  }
+
+  private unsubscribe() {
+    if (!this.dialogSubscription) {
+      return;
+    }
+    this.dialogSubscription.unsubscribe();
+    this.dialogSubscription = null;
   }
 
   private navigateToSection(): void {

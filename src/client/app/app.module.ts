@@ -50,6 +50,7 @@ import { DocumentUploadContentComponent } from './patient/document-upload/docume
 import { ModalDialogWithCommentsComponent } from './shared/modal-dialogs/modal-dialog-with-comments.component';
 import { ModalDialogConfirmationComponent } from './shared/modal-dialogs/modal-dialog-confirmation.component';
 import { ErrorPageHttpInterceptor } from './shared/error-handling/error-page-http.interceptor';
+import { ModalDialogPathologyReportComponent } from './shared/modal-dialogs/modal-dialog-pathology-report.component';
 
 @NgModule({
   imports: [
@@ -108,7 +109,8 @@ import { ErrorPageHttpInterceptor } from './shared/error-handling/error-page-htt
     FileUploadContentComponent,
     DocumentUploadContentComponent,
     ModalDialogWithCommentsComponent,
-    ModalDialogConfirmationComponent
+    ModalDialogConfirmationComponent,
+    ModalDialogPathologyReportComponent
   ]
 })
 export class AppModule { }
