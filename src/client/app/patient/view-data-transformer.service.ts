@@ -353,9 +353,6 @@ export class ViewDataTransformer {
     this.transformNgsMessages(transformedPatient, transformedBiopsy);
     this.transformAssayMessages(transformedPatient, transformedBiopsy);
 
-    // TODO: delete after seed data is updated
-    this.addDummyPathologyReport(transformedBiopsy);
-
     return transformedBiopsy;
   }
 
@@ -671,20 +668,5 @@ export class ViewDataTransformer {
       case 'U': return 'UNKNOWN';
       default: return patient.concordance;
     }
-  }
-
-  private addDummyPathologyReport(biopsy: any) {
-    biopsy.pathologyReportMessages = biopsy.pathologyReportMessages || [];
-    biopsy.pathologyReportMessages.push(
-      {
-          'studyId' : 'EAY131',
-          'patientSequenceNumber' : '10650',
-          'biopsySequenceNumber' : 'T-17-000042',
-          // tslint:disable-next-line:max-line-length
-          'pathologyReport' : 'DQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS1SRVNVTFRTLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQ0KSW1tdW5vaGlzdG9jaGVtaXN0cnkgUmVzdWx0cw0KUFRFTiBJbW11bm9oaXN0b2NoZW1pc3RyeToJTm90IHBlcmZvcm1lZCAoaW5zdWZmaWNpZW50IG1hdGVyaWFsKQ0KIA0KDQoiU29tZSB0ZXN0cyByZXBvcnRlZCBoZXJlIG1heSBoYXZlIGJlZW4gZGV2ZWxvcGVkIGFuZCBwZXJmb3JtYW5jZSBjaGFyYWN0ZXJpc3RpY3MgZGV0ZXJtaW5lZCBieSBVVCBNRCBBbmRlcnNvbiBQYXRob2xvZ3kgYW5kIExhYm9yYXRvcnkgTWVkaWNpbmUuIFRoZXNlIHRlc3RzIGhhdmUgbm90IGJlZW4gc3BlY2lmaWNhbGx5IGNsZWFyZWQgb3IgYXBwcm92ZWQgYnkgdGhlIFUuUy4gRm9vZCBhbmQgRHJ1ZyBBZG1pbmlzdHJhdGlvbi4i',
-          'signedOutDate' : '2017-06-13T15:33:51.077Z',
-          'receivedDate' : '2017-06-13T20:34:15.622Z'
-      }
-    );
   }
 }

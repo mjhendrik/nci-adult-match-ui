@@ -5,11 +5,13 @@ import { FormsModule } from '@angular/forms';
 import { ModalDialogWithCommentsComponent } from './modal-dialog-with-comments.component';
 import { ModalDialogConfirmationComponent } from './modal-dialog-confirmation.component';
 import { ModalDialogPathologyReportComponent } from './modal-dialog-pathology-report.component';
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    PipesModule
   ],
   declarations: [
     ModalDialogWithCommentsComponent,

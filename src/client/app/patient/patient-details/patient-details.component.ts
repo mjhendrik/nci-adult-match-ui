@@ -143,7 +143,7 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
     this.modalRef.content.biopsySequenceNumber = report.biopsySequenceNumber;
     this.modalRef.content.receivedDate = report.receivedDate;
     this.modalRef.content.signedOutDate = report.signedOutDate;
-    this.modalRef.content.message = report.message;
+    this.modalRef.content.message = atob(report.pathologyReport);
   }
 
   private unsubscribe() {

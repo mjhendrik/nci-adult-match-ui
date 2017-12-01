@@ -1,22 +1,22 @@
 <div class="modal-header">
-  <h3 class="modal-title">{{ title }}</h3>
+  <h3 class="modal-title">{{ biopsySequenceNumber }} Pathology Report</h3>
 </div>
+
 <div class="modal-body">
   <div class="form-group">
-    <label for="message">Message</label>
-    <input type="textarea" name="message" id="message" [ngModel]="message" class="form-control" ng-disabled="true">
+    <label for="receivedDate">Received Date</label>
+    <span class="form-control">{{receivedDate | gmt}}</span>
   </div>
 
   <div class="form-group">
-    <label for="receivedDate">Signed-out Date</label>
-    <input type="textarea" name="receivedDate" id="receivedDate" [ngModel]="receivedDate" class="form-control" ng-disabled="true">
+    <label for="signedOutDate">Signed-out Date</label>
+    <span class="form-control">{{signedOutDate | gmt}}</span>
   </div>
 
   <div class="form-group">
-      <label for="signedOutDate">Signed-out Date</label>
-      <input type="textarea" name="signedOutDate" id="signedOutDate" [ngModel]="signedOutDate" class="form-control" ng-disabled="true">
+    <label for="message">Report</label>
+    <textarea name="message" id="message" [ngModel]="message" class="form-control" ng-disabled="true" rows="15"></textarea>
   </div>
-
 </div>
 <div class="modal-footer">
   <button class="btn btn-outline btn-default" type="button" (click)="close()">
