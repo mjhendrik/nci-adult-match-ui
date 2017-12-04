@@ -95,8 +95,8 @@ export function main() {
 
         service.getCliaDetailsNTC('MoCha')
           .do(items => {
-            console.log('items');
-            console.log(items);
+            // console.log('items');
+            // console.log(items);
             fail('should not respond with items');
           })
           .catch(err => {
@@ -158,8 +158,8 @@ export function main() {
 
         service.getCliaDetailsPACC('MoCha')
           .do(items => {
-            console.log('items');
-            console.log(items);
+            // console.log('items');
+            // console.log(items);
             fail('should not respond with items');
           })
           .catch(err => {
@@ -221,8 +221,8 @@ export function main() {
 
         service.getCliaDetailsPC('MoCha')
           .do(items => {
-            console.log('items');
-            console.log(items);
+            // console.log('items');
+            // console.log(items);
             fail('should not respond with items');
           })
           .catch(err => {

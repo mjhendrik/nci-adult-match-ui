@@ -242,7 +242,6 @@ export class PatientVariantReportComponent implements OnInit, OnDestroy, Variant
     this.dialogSubscription = this.modalService.onHidden.subscribe((results: string) => {
       const modalResults = DialogResults.fromString(results);
       if (modalResults.success) {
-        console.log('comments = ' + modalResults.comment);
         action();
       }
       this.unsubscribe();

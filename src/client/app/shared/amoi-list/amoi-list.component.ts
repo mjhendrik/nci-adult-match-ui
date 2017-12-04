@@ -31,7 +31,6 @@ export class AmoiListComponent {
   set amois(amoi: any) {
     this.amoi = amoi;
     this.amoiList = this.extractList(amoi);
-    console.log(this.amoiList);
   }
 
   get isAmoi(): boolean {

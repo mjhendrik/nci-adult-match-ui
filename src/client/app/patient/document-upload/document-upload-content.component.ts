@@ -153,7 +153,7 @@ export class DocumentUploadContentComponent implements OnInit {
   upload(): void {
     this.isUploading = true;
 
-    console.log("this.msn--> " + this.msn)
+    // console.log("this.msn--> " + this.msn_;
 
     this.api.getDocumentPresignedUrls(
       this.msn,

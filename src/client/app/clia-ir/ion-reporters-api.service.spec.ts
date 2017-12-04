@@ -95,8 +95,8 @@ export function main() {
 
         service.getCliaIon('mocha')
           .do(items => {
-            console.log('items');
-            console.log(items);
+            // console.log('items');
+            // console.log(items);
             fail('should not respond with items');
           })
           .catch(err => {

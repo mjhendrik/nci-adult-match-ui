@@ -78,7 +78,7 @@ export function main() {
             // spyOn(fixture.componentInstance.options.chart, 'x').and.callThrough();
             let innerComponent = innerElements[0].componentInstance;
             expect(innerComponent).toBeDefined();
-            console.log(innerElements[0]);
+            // console.log(innerElements[0]);
             let spy = spyOn(innerComponent, 'adjust').and.callThrough();
             testElement.triggerEventHandler('click', null);
             fixture.detectChanges();
