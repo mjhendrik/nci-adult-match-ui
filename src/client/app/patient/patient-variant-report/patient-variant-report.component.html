@@ -20,7 +20,7 @@
               <a class="btn btn-sm btn-link" role="button" href [routerLink]="['/patients/' + patient.patientSequenceNumber + '/biopsies/' + biopsySequenceNumber + '/variant_reports/' + variantReport.analysisId +'/qc']">
                 <i class="fa fa-file-text-o"></i> QC Report
               </a>
-              <a href="javascript:;" class="btn btn-sm btn-link">
+              <a *ngIf="false" href="javascript:;" class="btn btn-sm btn-link">
                 <i class="fa fa-file-excel-o"></i> Excel</a>
             </div>
           </div>
