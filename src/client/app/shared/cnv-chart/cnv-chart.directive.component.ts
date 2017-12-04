@@ -25,16 +25,21 @@ declare let d3: any;
 @Component({
   moduleId: module.id,
   selector: 'cnv-chart',
+  styleUrls: ['cnv-chart.directive.component.css'],
   animations: [
     trigger('dialog', [
       transition('void => *', [
-        style({ perspective: '800px', transform: 'scale3d(1.5, 1.5, 1.5)', backgroundColor: 'gray', translateZ: '100px' }),
+
+        style({ perspective: '1200px',
+          transform: 'scale3d(1.5, 1.5, 0.5)',
+          backgroundColor: 'gray',
+          translateZ: '500px' }),
         animate(100)
+
       ]),
       transition('* => void', [])
     ])
   ],
-  styleUrls: ['cnv-chart.directive.component.css'],
   providers: [nvD3],
   template://Zoomout panel
   `<div *ngIf="file_name">
