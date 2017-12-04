@@ -361,7 +361,7 @@ export class CnvChartDirective implements AfterViewInit {
           highest = tip[5];
 
           Object.keys(genes).forEach((key:any) => {
-
+            let len: number = genes.length;
             gene = genes[key][0];
             let temp = genes[key][1];
             let x = genes[key][2];
@@ -418,6 +418,19 @@ export class CnvChartDirective implements AfterViewInit {
                 }
               }
               prechrnum = chrnum;
+            }
+
+            //Last valus set as X
+            if((parseInt(key) + 1) === len){
+              indx = (parseInt(spot) + 8);
+              svg.append('text')
+                .attr('class', 'nv-zeroLine')
+                .attr('x', indx)
+                .attr('y', 365)
+                .text('X')
+                .style('fill', '#c70505')
+                .style('font-weight', 'bold')
+                .style('font-size', '12px');
             }
           });
 
