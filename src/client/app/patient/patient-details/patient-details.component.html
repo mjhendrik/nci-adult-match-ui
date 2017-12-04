@@ -276,8 +276,12 @@
                                         <dd>{{analysis.assignmentReport.dateSentToECOG | gmt}}</dd>
                                         <dt>Received by ECOG Date</dt>
                                         <dd>{{analysis.assignmentReport.dateReceivedByECOG | gmt}}</dd>
-                                        <dt>Assignment Logic</dt>
-                                        <dd>{{analysis.assignmentReport.patientAssignmentStatusMessage | dashify}}</dd>
+                                        <dt>Treatment Arm</dt>
+                                        <dd>
+                                          <treatment-arm-link *ngIf="analysis.assignmentReport && analysis.assignmentReport.treatmentArm" [treatmentArmId]="analysis.assignmentReport.treatmentArm.treatmentArmId" [version]="analysis.assignmentReport.treatmentArm.version"
+                                            [removePrefix]="true"></treatment-arm-link>
+                                          <span *ngIf="!analysis.assignmentReport || !analysis.assignmentReport.treatmentArm">-</span>
+                                        </dd>
                                       </dl>
                                       <dl *ngIf="!analysis.assignmentReport" class="dl-horizontal">
                                         <dt class="text-muted f-w-400">No Assignment data yet</dt>
