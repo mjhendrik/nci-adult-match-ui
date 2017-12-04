@@ -238,6 +238,22 @@ export class DashboardComponent implements OnInit, OnDestroy {
       });
   }
 
+  getVariantReportLink(report: any): string {
+    if (report.isOutsideAssayWorkflow) {
+      return `/patients/${report.patientSequenceNumber}/variant_reports_oa/${report.analysisId}`;
+    } else {
+      return `/patients/${report.patientSequenceNumber}/biopsies/${report.biopsySequenceNumber}/variant_reports/${report.analysisId}`;
+    }
+  }
+
+  getVariantReportQueryParams(report: any): any {
+    if (report.isOutsideAssayWorkflow) {
+      return { isOutsideAssay: report.isOutsideAssay };
+    } else {
+      return null;
+    }
+  }
+
   autoLoadOverviewData() {
     this.autoRefreshSubscription = Observable.interval(1000 * 30).subscribe(x => {
       this.getTreatmentArmSummaryData();
@@ -254,4 +270,5 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.autoRefreshSubscription.unsubscribe();
     this.autoRefreshSubscription = null;
   }
+
 }
