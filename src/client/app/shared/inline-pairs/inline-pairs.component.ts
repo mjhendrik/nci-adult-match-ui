@@ -17,14 +17,14 @@ export class Pair {
     <span *ngFor="let item of items; let last = last" [popover]="poDetails" triggers="mouseenter:mouseleave" placement="bottom">
         <span class="pair-label">{{item.label}}:</span><span class="pair-data">{{item.data}}</span><span class="pair-delimiter" *ngIf="!last">;</span>
     </span>
-    <template #poDetails>
+    <ng-template #poDetails>
         <ul class="details-expanded width-250">
             <li *ngFor="let item of items">
                 <span class="pair-label">{{item.label}}:</span>
                 <span class="pair-data">{{item.data}}</span>
             </li>
         </ul>
-    </template>   
+    </ng-template>   
     `
 })
 export class InlinePairsComponent {
