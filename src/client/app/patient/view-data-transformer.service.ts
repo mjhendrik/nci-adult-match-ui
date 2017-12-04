@@ -104,6 +104,7 @@ export class ViewDataTransformer {
     transformedReport.matchData.variantReportRejectedOrConfirmedDate = transformedReport.matchData.dateVerified;
     transformedReport.matchData.disease = transformedReport.matchData.disease || {};
     transformedReport.matchData.commenter = transformedReport.matchData.metadata ? transformedReport.matchData.metadata.commenter : null;
+    this.transformAssayMessages(transformedReport.matchData.assayMessages);
 
     transformedReport.outsideData = transformedReport.outsideData || {};
     transformedReport.outsideData.pool1 = ocpDataOutside.pool1;
@@ -124,6 +125,7 @@ export class ViewDataTransformer {
     transformedReport.outsideData.variantReportRejectedOrConfirmedDate = transformedReport.outsideData.dateVerified;
     transformedReport.outsideData.disease = transformedReport.outsideData.disease || {};
     transformedReport.outsideData.commenter = transformedReport.outsideData.metadata ? transformedReport.outsideData.metadata.commenter : null;
+    this.transformAssayMessages(transformedReport.outsideData.assayMessages);
 
     this.transformAssignmentLogic(transformedReport.matchData.assignmentReport);
     this.transformAssignmentLogic(transformedReport.outsideData.assignmentReport);
@@ -266,7 +268,8 @@ export class ViewDataTransformer {
     variantReport.mapd = copyNumberData.mapd;
     variantReport.cellularity = copyNumberData.cellularity;
     variantReport.showPools = showPools;
-    variantReport.assays = analysis.assays;
+    variantReport.assayMessages = analysis.assayMessages || [];
+    this.transformAssayMessages(variantReport.assayMessages);
 
     variantReport.isVariantReportEditable = this.getVariantReportEditable(analysis.variantReport);
     variantReport.isAssignmentReportEditable = true;
@@ -351,7 +354,7 @@ export class ViewDataTransformer {
 
     this.transformMdaMessages(transformedBiopsy);
     this.transformNgsMessages(transformedPatient, transformedBiopsy);
-    this.transformAssayMessages(transformedPatient, transformedBiopsy);
+    this.transformAssayMessages(transformedBiopsy.assayMessages);
 
     return transformedBiopsy;
   }
@@ -437,7 +440,8 @@ export class ViewDataTransformer {
 
       analysis.analysisId = message.ionReporterResults.jobName;
 
-      analysis.assays = transformedBiopsy.assayMessages;
+      analysis.assayMessages = transformedBiopsy.assayMessages || [];
+      this.transformAssayMessages(analysis.assayMessages);
 
       analysis.variantReportStatus = message.status;
       analysis.variantReportCreatedDate = message.ionReporterResults.variantReport
@@ -498,8 +502,8 @@ export class ViewDataTransformer {
     }
   }
 
-  private transformAssayMessages(transformedPatient: any, transformedBiopsy: any): void {
-    for (let assay of (transformedBiopsy.assayMessages || [])) {
+  private transformAssayMessages(assayMessages: any[]): void {
+    for (let assay of (assayMessages || [])) {
       assay.gene = this.parseGeneFromAssay(assay.biomarker);
     }
   }

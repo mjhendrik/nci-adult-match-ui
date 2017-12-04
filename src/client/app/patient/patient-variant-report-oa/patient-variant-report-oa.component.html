@@ -139,34 +139,8 @@
             <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-middle">
               <div class="panel-heading" id="trAssay">
                 <h4 class="f-w-700">Assays</h4>
-                <table class="table table-condensed white-header">
-                  <thead>
-                    <tr>
-                      <th>IHC</th>
-                      <th>Result</th>
-                      <th>Order Date</th>
-                      <th>Result Date</th>
-                      <th>Comment</th>
-                    </tr>
-                  </thead>
-                  <tbody *ngIf="outsideData.assignmentReport">
-                    <tr *ngFor="let item of outsideData.assayMessages">
-                      <td><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.biomarker"></cosmic-link></td>
-                      <td>{{item.result | dashify}}</td>
-                      <td>{{item.orderedDate | gmt}}</td>
-                      <td>{{item.reportedDate | gmt}}</td>
-                      <td>{{item.comment | dashify}}</td>
-                    </tr>
-                    <tr *ngIf="!outsideData.assayMessages || !outsideData.assayMessages.length">
-                      <td colspan="3" class="text-muted">No Assay data</td>
-                    </tr>
-                  </tbody>
-                  <tbody *ngIf="!outsideData.assignmentReport">
-                    <tr>
-                      <td colspan="3" class="text-muted">No Assay data</td>
-                    </tr>
-                  </tbody>
-                </table>
+                <sd-assay-history-table [items]="outsideData ? outsideData.assayMessages: []" [tableCssClasses]="'table-condensed white-header'">
+                </sd-assay-history-table>
               </div>
             </div>
           </div>
@@ -333,34 +307,8 @@
             <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-middle">
               <div class="panel-heading" id="crAssay">
                 <h4 class="f-w-700">Assays</h4>
-                <table class="table table-condensed white-header">
-                  <thead>
-                    <tr>
-                      <th>IHC</th>
-                      <th>Result</th>
-                      <th>Order Date</th>
-                      <th>Result Date</th>
-                      <th>Comment</th>
-                    </tr>
-                  </thead>
-                  <tbody *ngIf="matchData.assignmentReport">
-                    <tr *ngFor="let item of matchData.assayMessages">
-                      <td><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.biomarker"></cosmic-link></td>
-                      <td>{{item.result | dashify}}</td>
-                      <td>{{item.orderedDate | gmt}}</td>
-                      <td>{{item.reportedDate | gmt}}</td>
-                      <td>{{item.comment | dashify}}</td>
-                    </tr>
-                    <tr *ngIf="!matchData.assayMessages || !matchData.assayMessages.length">
-                      <td colspan="3" class="text-muted">No Assay data</td>
-                    </tr>
-                  </tbody>
-                  <tbody *ngIf="!matchData.assignmentReport">
-                    <tr>
-                      <td colspan="3" class="text-muted">No Assay data</td>
-                    </tr>
-                  </tbody>
-                </table>
+                <sd-assay-history-table [items]="matchData ? matchData.assayMessages: []" [tableCssClasses]="'table-condensed white-header'">
+                </sd-assay-history-table>
               </div>
             </div>
           </div>

@@ -123,34 +123,8 @@
         <div class="panel-heading">
           <dl class="dl-horizontal">
             <h4 class="f-w-700">Assays History</h4>
-            <table class="table table-condensed white-header">
-              <thead>
-                <tr>
-                  <th>IHC</th>
-                  <th>Result</th>
-                  <th>Order Date</th>
-                  <th>Result Date</th>
-                  <th>Comment</th>
-                </tr>
-              </thead>
-              <tbody *ngIf="assignmentReport">
-                <tr *ngFor="let item of assays">
-                  <td><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.biomarker"></cosmic-link></td>
-                  <td [colorCodeAssay]="item.result">{{item.result | dashify}}</td>
-                  <td>{{item.orderedDate | gmt}}</td>
-                  <td>{{item.reportedDate | gmt}}</td>
-                  <td>{{item.comment | dashify}}</td>
-                </tr>
-                <tr *ngIf="assignmentReport.assay && assignmentReport.assay.length">
-                  <td colspan="3" class="text-muted">No Assay data</td>
-                </tr>
-              </tbody>
-              <tbody *ngIf="!assignmentReport">
-                <tr>
-                  <td colspan="3" class="text-muted">No Assay data</td>
-                </tr>
-              </tbody>
-            </table>
+            <sd-assay-history-table [items]="assayMessages" [tableCssClasses]="'table-condensed white-header'">
+            </sd-assay-history-table>
           </dl>
 
           <dl class="dl-horizontal">
