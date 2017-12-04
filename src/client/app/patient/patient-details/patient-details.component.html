@@ -140,8 +140,6 @@
                     <dd>{{biopsy.pathologyStatus | dashify}}</dd>
                     <dt>Pathology Received Date</dt>
                     <dd>{{biopsy.pathologyReceivedDate | gmt | dashify}}</dd>
-                    <dt>Concordance</dt>
-                    <dd [colorCodeConcordance]="biopsy.concordance">{{biopsy.concordance | dashify}}</dd>
                     <dt>Comment</dt>
                     <dd>{{biopsy.comment | dashify}}</dd>
                     <dt *ngIf="biopsy.pathologyReportMessages && biopsy.pathologyReportMessages.length">
