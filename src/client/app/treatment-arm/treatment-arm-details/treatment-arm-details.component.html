@@ -182,7 +182,7 @@
                   <table *ngIf="tableData[versionIndex].exclusionDrugs.length == 0" class="table table-td-valign-middle table-striped table-col-width">
                     <thead>
                       <tr class="success-light">
-                        <th>
+                        <th style="max-width:10em">
                           ID
                         </th>
                         <th>
@@ -202,7 +202,7 @@
                     [(mfSortBy)]="tableExdrDefaultSort" [(mfSortOrder)]="sortByDesc" [mfRowsOnPage]="recordsPerPageExdr" id="exclDrugs-table">
                     <thead>
                       <tr class="success-light">
-                        <th>
+                        <th style="width:140px">
                           <mfDefaultSorter by="drugs[0].drugId">
                             <span class="table-header">ID</span>
                           </mfDefaultSorter>
