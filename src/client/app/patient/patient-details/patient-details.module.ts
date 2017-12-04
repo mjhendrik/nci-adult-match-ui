@@ -17,6 +17,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { FileUploadModule } from '../file-upload/file-upload.module';
 import { DocumentUploadModule } from '../document-upload/document-upload.module';
 import { DiseaseInfoModule } from '../disease-info/disease-info.module';
+import { AssayHistoryTableModule } from '../assay-history-table/assay-history-table.module';
 
 export interface PatientData {
   psn: string;
@@ -47,6 +48,7 @@ const DROPZONE_CONFIG: DropzoneConfigInterface = {
     FileUploadModule,
     DocumentUploadModule,
     DiseaseInfoModule,
+    AssayHistoryTableModule,
     TabsModule.forRoot(),
     DropzoneModule.forRoot(DROPZONE_CONFIG)
   ],

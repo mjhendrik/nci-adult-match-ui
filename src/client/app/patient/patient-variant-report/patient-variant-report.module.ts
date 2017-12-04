@@ -14,6 +14,7 @@ import { VariantReportSimpleTableModule } from '../../shared/variant-report-simp
 import { SharedModule } from '../../shared/shared.module';
 import { ScrollService } from '../../shared/utils/scroll.to.service';
 import { DiseaseInfoModule } from '../disease-info/disease-info.module';
+import { AssayHistoryTableModule } from '../assay-history-table/assay-history-table.module';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { DiseaseInfoModule } from '../disease-info/disease-info.module';
     DirectivesModule,
     VariantReportSimpleTableModule,
     SharedModule,
-    DiseaseInfoModule    
+    AssayHistoryTableModule,
+    DiseaseInfoModule
   ],
   declarations: [PatientVariantReportComponent],
   exports: [PatientVariantReportComponent],

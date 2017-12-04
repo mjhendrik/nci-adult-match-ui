@@ -15,6 +15,7 @@ import { VariantReportSimpleTableModule } from '../../shared/variant-report-simp
 import { VariantReportComparisonTableModule } from '../variant-report-comparison-table/variant-report-comparison-table.module';
 import { SharedModule } from '../../shared/shared.module';
 import { DiseaseInfoModule } from '../disease-info/disease-info.module';
+import { AssayHistoryTableModule } from '../assay-history-table/assay-history-table.module';
 
 @NgModule({
   imports: [
@@ -29,6 +30,8 @@ import { DiseaseInfoModule } from '../disease-info/disease-info.module';
     VariantReportComparisonTableModule,
     SharedModule,
     DiseaseInfoModule,
+    AssayHistoryTableModule,
+    AssayHistoryTableModule,
     TabsModule.forRoot()
   ],
   declarations: [PatientVariantReportOutsideAssayComponent],

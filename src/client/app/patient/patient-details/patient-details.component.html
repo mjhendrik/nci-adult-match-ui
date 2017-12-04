@@ -167,6 +167,8 @@
                 <div class="panel-heading">
                   <h4 class="panel-title f-s-18">Assay History</h4>
                 </div>
+                <sd-assay-history-table [items]="biopsy.assayMessages"></sd-assay-history-table>
+                
                 <div class="table-responsive">
                   <table class="table table-td-valign-middle" id="assay_table">
                     <thead>
@@ -182,7 +184,7 @@
                     <tbody>
                       <tr *ngFor="let item of biopsy.assayMessages">
                         <td>IHC</td>
-                        <td>{{item.gene | dashify}}</td>
+                        <td><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.gene"></cosmic-link></td>
                         <td>{{item.orderedDate | gmt}}</td>
                         <td>{{item.reportedDate | gmt}}</td>
                         <td [colorCodeAssay]="item.result">{{item.result | dashify}}</td>
