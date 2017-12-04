@@ -43,7 +43,7 @@ declare let d3: any;
       style="cursor: pointer; color: gray"></i>
        <h4 class="pull-right">{{ file_name }}</h4>
         <ul class="list-group" style="list-style-type: none;">
-          <li>Tumor suppressor genes
+          <li>Tumor Suppressor Genes
           <i class="fa fa-square" aria-hidden="true" style="color:#CD0000;background-color:#CD0000"></i> 
           </li>
           <li>Oncogenes
@@ -58,7 +58,7 @@ declare let d3: any;
       style="cursor: pointer; color: gray;"></i>
        <h5 class="pull-right">{{ file_name }}</h5>
         <ul class="list-group" style="list-style-type: none;">
-          <li>Tumor suppressor genes
+          <li>Tumor Suppressor Genes
           <i class="fa fa-square" aria-hidden="true" style="color:#CD0000;background-color:#CD0000"></i> </li>
           <li>Oncogenes
           <i class="fa fa-square" aria-hidden="true" style="color:#007200;background-color:#007200"></i>
