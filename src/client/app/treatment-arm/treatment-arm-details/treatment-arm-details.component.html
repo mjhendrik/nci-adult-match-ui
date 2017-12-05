@@ -1629,11 +1629,11 @@
                                   <i class="fa fa-user"></i> {{item.patientSequenceNumber | dashify}}</a>
                               </td>
                               <td>
-                                <span *ngIf="item.treatmentArmVersion!=version">
+                                <span *ngIf="item.treatmentArmVersion!=tableData[versionIndex].version">
                                   <a href [routerLink]="['/treatments/'+tableData[versionIndex].treatmentArmId+'/'+item.treatmentArmVersion]" class="link-none">
                                     <i class="fa fa-medkit"></i> {{item.treatmentArmVersion | dashify}}</a>
                                 </span>
-                                <span *ngIf="item.treatmentArmVersion == version">
+                                <span *ngIf="item.treatmentArmVersion == tableData[versionIndex].version">
                                   <i class="fa fa-medkit"></i> {{item.treatmentArmVersion | dashify}}</span>
                               </td>
                               <td [colorCodePatients]="item.assignmentStatusOutcome">{{item.assignmentStatusOutcome | dashify}}</td>
