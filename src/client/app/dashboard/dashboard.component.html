@@ -102,7 +102,9 @@
       </a>
     </div>
   </div>
-  <h1 class="page-header">Pending Review</h1>
+  <h1 class="page-header">Pending Review
+    <i (click)="refreshPendingReview()" class="fa fa-refresh pointer-cursor"></i>
+  </h1>
   <div class="panel">
     <tabset class="nav-tabs-purple">
       <tab heading="Assignment Reports" id="pandingArTab">
@@ -345,7 +347,9 @@
       </tab>
     </tabset>
   </div>
-  <h1 class="page-header">Patients Awaiting Further Action Or Information</h1>
+  <h1 class="page-header">Patients Awaiting Further Action Or Information
+    <i (click)="getPatientsAwaitingData()" class="fa fa-refresh pointer-cursor"></i>
+  </h1>
   <div class="panel" id="limbo_panel">
     <div class="col-md-12 bg-purple-light">
       <div class="col-md-6 p-l-5">

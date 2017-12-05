@@ -97,6 +97,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.unsubscribe();
   }
 
+  refreshPendingReview() {
+    this.getPendingAssignmentReportsData();
+    this.getPendingVariantReportsData();
+  }
+
   getPendingAssignmentReportsData() {
     let gmt = new GmtPipe();
     this.patientApi.getPendingAssignmentReports()
