@@ -298,6 +298,16 @@ export class ViewDataTransformer {
     return null;
   }
 
+  getVariantReportStatusDateLabel(variantReportStatus: string): string {
+    if (variantReportStatus === 'CONFIRMED')
+      return 'Confirmed Date';
+
+    if (variantReportStatus === 'REJECTED')
+      return 'Rejected Date';
+
+    return 'Status Date';
+  }
+
   replaceVariantReportTables(sourceVariantReport: any, updatedVariantReport: any): any {
     for (let table of variantTables) {
       sourceVariantReport[table] = updatedVariantReport[table];

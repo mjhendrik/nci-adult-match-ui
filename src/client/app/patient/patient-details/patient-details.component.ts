@@ -52,9 +52,9 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
   public dialogSubscription: Subscription;
 
   constructor(
+    public transformer: ViewDataTransformer,
     private route: ActivatedRoute,
     private patientApi: PatientApiService,
-    private transformer: ViewDataTransformer,
     private router: Router,
     private profile: UserProfileService,
     private modalService: BsModalService) {
