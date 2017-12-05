@@ -321,9 +321,23 @@ OFF_TRIAL`.indexOf(element.assignmentStatusOutcome) !== -1) {
   }
 
   getVersionsData(itemList: any) {
-
     this.versionData = itemList;
+  }
 
+  getVariantReportLink(report: any): string {
+    if (report.isOutsideAssayWorkflow) {
+      return `/patients/${report.patientSequenceNumber}/variant_reports_oa/${report.analysisId}`;
+    } else {
+      return `/patients/${report.patientSequenceNumber}/biopsies/${report.biopsySequenceNumber}/variant_reports/${report.analysisId}`;
+    }
+  }
+
+  getVariantReportQueryParams(report: any): any {
+    if (report.isOutsideAssayWorkflow) {
+      return { isOutsideAssay: report.isOutsideAssay };
+    } else {
+      return null;
+    }
   }
 
 }
