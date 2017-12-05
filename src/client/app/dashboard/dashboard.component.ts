@@ -240,9 +240,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   getVariantReportLink(report: any): string {
     if (report.isOutsideAssayWorkflow) {
-      return `/patients/${report.patientSequenceNumber}/variant_reports_oa/${report.analysisId}`;
+      return `/patients/${report.patientSequenceNumber}/variant_reports_oa/${report.analysisId ? report.analysisId : report.confirmationBiopsy.analysisId}`;
     } else {
-      return `/patients/${report.patientSequenceNumber}/biopsies/${report.biopsySequenceNumber}/variant_reports/${report.analysisId}`;
+      // tslint:disable-next-line:max-line-length
+      return `/patients/${report.patientSequenceNumber}/biopsies/${report.biopsySequenceNumber}/variant_reports/${report.analysisId ? report.analysisId : report.confirmationBiopsy.analysisId}`;
     }
   }
 

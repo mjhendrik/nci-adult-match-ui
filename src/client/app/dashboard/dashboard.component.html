@@ -522,7 +522,10 @@
                             <i class="fa fa-times-circle text-danger-light"></i> No Confirmed Variant Report
                           </dd>
                           <dd *ngIf="item.variantReportConfirmedDate">
-                            <i class="fa fa-check-circle text-success-light"></i> {{item.variantReportConfirmedDate | gmt}}
+                            <i class="fa fa-check-circle text-success-light"></i>
+                            <a href [routerLink]="[getVariantReportLink(item)]" [queryParams]="getVariantReportQueryParams(item)" class="link-none">
+                              &nbsp;{{item.variantReportConfirmedDate | gmt}}
+                            </a>
                           </dd>
                           <dt>Disease</dt>
                           <dd class="text-muted" *ngIf="!item.diseases">
@@ -631,7 +634,10 @@
                             <i class="fa fa-times-circle text-danger-light"></i> No Confirmed Variant Report
                           </dd>
                           <dd *ngIf="item.confirmationBiopsy.variantReportConfirmedDate">
-                            <i class="fa fa-check-circle text-success-light"></i> {{item.confirmationBiopsy.variantReportConfirmedDate | gmt}}
+                            <i class="fa fa-check-circle text-success-light"></i>
+                            <a href [routerLink]="[getVariantReportLink(item)]" [queryParams]="getVariantReportQueryParams(item)" class="link-none">
+                              &nbsp;{{item.confirmationBiopsy.variantReportConfirmedDate | gmt}}
+                            </a>
                           </dd>
                           <dt>Disease</dt>
                           <dd class="text-muted" *ngIf="!item.confirmationBiopsy.diseases">
