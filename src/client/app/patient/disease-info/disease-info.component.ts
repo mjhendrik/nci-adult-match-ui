@@ -43,6 +43,8 @@ export class DiseaseInfoComponent {
 
   private extractPairs(obj: any) {
     let list: Pair[] = [];
+    if (!obj)
+      return list;
 
     const extras: StringToStringMap = {
       'ctepCategory': 'CTEP Category',
