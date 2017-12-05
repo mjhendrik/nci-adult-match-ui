@@ -42,11 +42,11 @@ declare let d3: any;
   ],
   providers: [nvD3],
   template://Zoomout panel
-  `<div *ngIf="file_name">
+  `<div *ngIf="file_name_version">
     <div [@dialog] *ngIf="show" id="zoom" class="dialog" #ccww c-w>
       <i class="fa fa-search-minus fa-2x" aria-hidden="true" *ngIf="show" (click)="show = !show"
       style="cursor: pointer; color: gray"></i>
-       <h4 class="pull-right">{{ file_name }}</h4>
+       <h4 class="pull-right">{{ file_name_version }}</h4>
         <ul class="list-group" style="list-style-type: none;">
           <li>Tumor Suppressor Genes
           <i class="fa fa-square" aria-hidden="true" style="color:#CD0000;background-color:#CD0000"></i> 
@@ -61,7 +61,7 @@ declare let d3: any;
     <div *ngIf="!show" #ccww c-w>
       <i class="fa fa-search-plus fa-2x" aria-hidden="true" *ngIf="!show  && (file_zoom === true)" (click)="show = !show"
       style="cursor: pointer; color: gray;"></i>
-       <h5 class="pull-right">{{ file_name }}</h5>
+       <h5 class="pull-right">{{ file_name_version }}</h5>
         <ul class="list-group" style="list-style-type: none;">
           <li>Tumor Suppressor Genes
           <i class="fa fa-square" aria-hidden="true" style="color:#CD0000;background-color:#CD0000"></i> </li>
@@ -89,7 +89,7 @@ export class CnvChartDirective implements AfterViewInit {
   options: any;
   errorMessage: string;
   cnvdata: any;
-  file_name: string ;
+  file_name_version: string ;
   file_error: string ;
   file_zoom: boolean ;
   parseddata:any[] = [];
@@ -121,7 +121,8 @@ export class CnvChartDirective implements AfterViewInit {
     if(this.data===null) return;
 
     let array:any = this.data[0] || {};
-    let version:any = this.data[1] || {};
+    let filename:any = this.data[1];
+    let version:any = this.data[2];
     let xr:number = array.length * 24;
     let temp:any[] = [];
     let svg:any;
@@ -131,10 +132,8 @@ export class CnvChartDirective implements AfterViewInit {
 
     if(array.length===0) return;
 
-    // if (typeof this.data !== "undefined" && this.data !== null) {
-      this.file_name = "Cnv Chart Test Name. Version: " + version;
-      // this.file_name = this.data[1].split('tmp/')[1];
-    // }
+    filename = (typeof filename!=='undefined') ? filename.split('/tmp/') : "N/A";
+    this.file_name_version = "Filename: " + filename + ". Version: " + version;
 
     let frm:any = (typeof this.frame !== 'undefined') ? (this.frame) : 0;
 

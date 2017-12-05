@@ -50,9 +50,7 @@ class DataResolver implements Resolve<VariantReportData> {
         // getPatientDetails => data[0]
         // getPatientCopyNumberReport => data[1]
         // getPatientVariantReportOcp => data[2]
-
         const patient = data[0];
-
         return this.transformer.transformPatientVariantReport(patient, data[1], data[2], bsn, analysisId);
       }
     );

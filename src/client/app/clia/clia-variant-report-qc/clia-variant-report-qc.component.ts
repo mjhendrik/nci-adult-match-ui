@@ -111,7 +111,7 @@ export class CliaVariantReportQcComponent implements OnInit {
   };
 
   getGraph(itemList: CliaVariantReportsQCViewData) {
-    this.parsed_vcf_genes = [itemList.parsedVCFGenes, itemList.tvcVersion];
+    this.parsed_vcf_genes = [itemList.parsedVCFGenes, itemList.file_name, itemList.tvcVersion];
   }
 
   getOncomine(itemList: CliaVariantReportsQCViewData) {

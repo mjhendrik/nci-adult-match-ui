@@ -261,7 +261,7 @@ export class ViewDataTransformer {
     variantReport.assignmentHistory = transformedPatient.patientAssignments;
     variantReport.parsed_vcf_genes = (typeof copyNumberData.copy_number_variant_genes === 'undefined')
       ? null
-      : [copyNumberData.copy_number_variant_genes, copyNumberData.file_name];
+      : [copyNumberData.copy_number_variant_genes, copyNumberData.file_name, tvc_version];
     variantReport.tvc_version = tvc_version;
     variantReport.pool1 = oncominePanelData.pool1;
     variantReport.pool2 = oncominePanelData.pool2;
