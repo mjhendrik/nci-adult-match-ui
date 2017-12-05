@@ -104,10 +104,10 @@
   </div>
   <h1 class="page-header">Pending Review
     <span *ngIf="!isRefreshedPendingAssignmentData || !isRefreshedPendingVariantData">
-      <i class="fa fa-refresh fa-spin"></i>
+      <i class="fa fa-refresh f-s-13 fa-spin"></i>
     </span>
     <span *ngIf="isRefreshedPendingAssignmentData && isRefreshedPendingVariantData" (click)="refreshPendingReviewData()">
-      <i class="fa fa-refresh pointer-cursor"></i>
+      <i class="fa fa-refresh f-s-13 pointer-cursor"></i>
     </span>
   </h1>
   <div class="panel">
@@ -354,10 +354,10 @@
   </div>
   <h1 class="page-header">Patients Awaiting Further Action Or Information
     <span *ngIf="!isRefreshedPatientsAwaitingData">
-      <i class="fa fa-refresh fa-spin"></i>
+      <i class="fa fa-refresh f-s-13 fa-spin"></i>
     </span>
     <span *ngIf="isRefreshedPatientsAwaitingData" (click)="refreshPatientsAwaitingData()">
-      <i class="fa fa-refresh pointer-cursor"></i>
+      <i class="fa fa-refresh f-s-13 pointer-cursor"></i>
     </span>
   </h1>
   <div class="panel" id="limbo_panel">
