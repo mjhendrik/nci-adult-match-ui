@@ -103,7 +103,12 @@
     </div>
   </div>
   <h1 class="page-header">Pending Review
-    <i (click)="refreshPendingReview()" class="fa fa-refresh pointer-cursor"></i>
+    <span *ngIf="!isRefreshedPendingAssignmentData || !isRefreshedPendingVariantData">
+      <i class="fa fa-refresh fa-spin"></i>
+    </span>
+    <span *ngIf="isRefreshedPendingAssignmentData && isRefreshedPendingVariantData" (click)="refreshPendingReviewData()">
+      <i class="fa fa-refresh pointer-cursor"></i>
+    </span>
   </h1>
   <div class="panel">
     <tabset class="nav-tabs-purple">
@@ -348,7 +353,12 @@
     </tabset>
   </div>
   <h1 class="page-header">Patients Awaiting Further Action Or Information
-    <i (click)="getPatientsAwaitingData()" class="fa fa-refresh pointer-cursor"></i>
+    <span *ngIf="!isRefreshedPatientsAwaitingData">
+      <i class="fa fa-refresh fa-spin"></i>
+    </span>
+    <span *ngIf="isRefreshedPatientsAwaitingData" (click)="refreshPatientsAwaitingData()">
+      <i class="fa fa-refresh pointer-cursor"></i>
+    </span>
   </h1>
   <div class="panel" id="limbo_panel">
     <div class="col-md-12 bg-purple-light">

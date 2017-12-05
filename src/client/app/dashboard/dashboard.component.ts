@@ -54,6 +54,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
   isLoadedtreatmentArmSummary: boolean = false;
   isLoadedbiopsyTrackingSummary: boolean = false;
 
+  isRefreshedPendingAssignmentData: boolean = true;
+  isRefreshedPendingVariantData: boolean = true;
+  isRefreshedPatientsAwaitingData: boolean = true;
+
   pendingAssignmentReports: LoadableData<any[]> = { isLoaded: false, data: [] };
   pendingVariantReports: LoadableData<any[]> = { isLoaded: false, data: [] };
   patientsAwaiting: LoadableData<any[]> = { isLoaded: false, data: [] };
@@ -97,8 +101,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.unsubscribe();
   }
 
-  refreshPendingReview() {
+  refreshPendingReviewData() {
+    this.isRefreshedPendingAssignmentData = false;
     this.getPendingAssignmentReportsData();
+    this.isRefreshedPendingVariantData = false;
     this.getPendingVariantReportsData();
   }
 
@@ -112,6 +118,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
         });
         this.tablePendingAssignmentReportsDataInitial = this.pendingAssignmentReports.data.length;
         this.pendingAssignmentReports.isLoaded = true;
+        this.isRefreshedPendingAssignmentData = true;
       });
   }
 
@@ -126,7 +133,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
         });
         this.tablePendingVariantReportsDataInitial = this.pendingVariantReports.data.length;
         this.pendingVariantReports.isLoaded = true;
+        this.isRefreshedPendingVariantData = true;
       });
+  }
+
+  refreshPatientsAwaitingData() {
+    this.isRefreshedPatientsAwaitingData = false;
+    this.getPatientsAwaitingData();
   }
 
   getPatientsAwaitingData() {
@@ -215,6 +228,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
         }
 
         this.patientsAwaiting.isLoaded = true;
+        this.isRefreshedPatientsAwaitingData = true;
       });
 
   }
