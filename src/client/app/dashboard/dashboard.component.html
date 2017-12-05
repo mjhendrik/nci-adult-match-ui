@@ -107,7 +107,9 @@
       <i class="fa fa-refresh f-s-13 fa-spin"></i>
     </span>
     <span *ngIf="isRefreshedPendingAssignmentData && isRefreshedPendingVariantData" (click)="refreshPendingReviewData()">
-      <i class="fa fa-refresh f-s-13 pointer-cursor"></i>
+      <i class="tooltip_refresh fa fa-refresh f-s-13 pointer-cursor">
+        <span class="tooltiptext">Refresh Data</span>
+      </i>
     </span>
   </h1>
   <div class="panel">
@@ -357,7 +359,9 @@
       <i class="fa fa-refresh f-s-13 fa-spin"></i>
     </span>
     <span *ngIf="isRefreshedPatientsAwaitingData" (click)="refreshPatientsAwaitingData()">
-      <i class="fa fa-refresh f-s-13 pointer-cursor"></i>
+      <i class="tooltip_refresh fa fa-refresh f-s-13 pointer-cursor">
+        <span class="tooltiptext">Refresh Data</span>
+      </i>
     </span>
   </h1>
   <div class="panel" id="limbo_panel">
