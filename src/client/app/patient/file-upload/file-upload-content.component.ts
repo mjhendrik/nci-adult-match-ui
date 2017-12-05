@@ -6,7 +6,9 @@ import {
   OnInit,
   ElementRef,
   ApplicationRef,
-  TemplateRef
+  TemplateRef,
+  Output,
+  EventEmitter
 } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import {
@@ -15,16 +17,15 @@ import {
   HttpClient,
   HttpRequest
 } from '@angular/common/http';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/throttleTime';
+import 'rxjs/add/observable/fromEvent';
 import {
   BsModalRef,
   BsModalService
 } from 'ngx-bootstrap';
 
 import { AliquotApiService } from '../../clia/aliquot-api.service';
-
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/throttleTime';
-import 'rxjs/add/observable/fromEvent';
 
 @Component({
   moduleId: module.id,
@@ -69,6 +70,7 @@ export class FileUploadContentComponent implements OnInit {
   cdnaBamFileUrl: string;
 
   @ViewChild('input') inputElRef: ElementRef;
+  @Output() uploaded: EventEmitter<boolean> = new EventEmitter();
 
   constructor(
     public bsModalRef: BsModalRef,
@@ -194,7 +196,6 @@ export class FileUploadContentComponent implements OnInit {
   }
 
   notifyAfterUpload(): void {
-
     this.uploadNotification = {
       'molecular_sequence_number': this.msn,
       'analysis_id': this.analysisId,
@@ -203,13 +204,12 @@ export class FileUploadContentComponent implements OnInit {
       'cdna_bam_name': this.cdnaBamFile.name
     };
 
-    this.api.notifyAfterUpload(this.msn, this.uploadNotification).subscribe(itemList => {
-      this.notifyMessage = itemList.message;
+    this.api.notifyAfterUpload(this.msn, this.uploadNotification).subscribe(resp => {
+      this.notifyMessage = resp.message;
       this.isUploaded = true;
-      if (itemList.status === 'SUCCESS') this.isSuccessful = true;
-      if (itemList.status === 'FAILURE') this.isSuccessful = false;
+      this.isSuccessful = resp.status === 'SUCCESS';
+      this.uploaded.emit(this.isSuccessful);
     });
-
   }
 
   closeUploadDialog(nested: boolean, template: TemplateRef<any>) {
@@ -221,5 +221,4 @@ export class FileUploadContentComponent implements OnInit {
     this.modalRef2.hide();
     if (cancel === true) this.bsModalRef.hide();
   }
-
 }

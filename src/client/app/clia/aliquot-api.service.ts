@@ -67,7 +67,8 @@ export class AliquotApiService extends ApiService {
   }
 
   validateAnalysisId(msn: string, analysisId: string) {
-    return this.http.get(this.url('/message/clia/aliquot/presign_url/IR_WAO85/' + msn + '/' + analysisId, 'assets/mock-data/WHAT_SHOULD_BE_HERE.json'))
+    return this.http.get(this.url(`/message/clia/aliquot/presign_url/IR_WAO85/${msn}/${analysisId}`,
+      'assets/mock-data/WHAT_SHOULD_BE_HERE?.json'))
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -88,9 +89,9 @@ export class AliquotApiService extends ApiService {
   }
 
   getDocumentPresignedUrls(msn: string, analysisId: string, documentFile: string): Observable<[string]> {
-
     return Observable.forkJoin(
-      this.http.put(`${this.baseApiUrl}/message/clia/aliquot/`+'MSN-'+msn, { molecularSequenceNumber: 'MSN-'+msn, analysisId: analysisId, filename: documentFile }),
+      this.http.put(`${this.baseApiUrl}/message/clia/aliquot/MSN-${msn}`,
+        { molecularSequenceNumber: 'MSN-' + msn, analysisId: analysisId, filename: documentFile }),
     ).map(
       data => {
         return [

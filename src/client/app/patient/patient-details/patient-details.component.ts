@@ -178,6 +178,10 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
     return true;
   }
 
+  onUploaded(success: boolean) {
+    console.info('Successfully uploaded VR files? '+ success);
+  }
+
   private unsubscribe() {
     if (!this.dialogSubscription) {
       return;
