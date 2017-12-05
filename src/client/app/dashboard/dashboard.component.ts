@@ -116,9 +116,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
           x.dateAssigned = gmt.transform(x.dateAssigned);
           return x;
         });
+
         this.tablePendingAssignmentReportsDataInitial = this.pendingAssignmentReports.data.length;
         this.pendingAssignmentReports.isLoaded = true;
-        this.isRefreshedPendingAssignmentData = true;
+
+        setTimeout(() => {
+          this.isRefreshedPendingAssignmentData = true;
+        }, 895);
+
       });
   }
 
@@ -131,9 +136,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
           x.dateVariantReportReceived = gmt.transform(x.dateVariantReportReceived);
           return x;
         });
+
         this.tablePendingVariantReportsDataInitial = this.pendingVariantReports.data.length;
         this.pendingVariantReports.isLoaded = true;
-        this.isRefreshedPendingVariantData = true;
+
+        setTimeout(() => {
+          this.isRefreshedPendingVariantData = true;
+        }, 895);
+
       });
   }
 
@@ -228,7 +238,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
         }
 
         this.patientsAwaiting.isLoaded = true;
-        this.isRefreshedPatientsAwaitingData = true;
+
+        setTimeout(() => {
+          this.isRefreshedPatientsAwaitingData = true;
+        }, 895);
+
       });
 
   }
