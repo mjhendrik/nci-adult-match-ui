@@ -15,6 +15,18 @@ import { PatientData } from './patient-details.module';
 import { UserProfileService } from '../../shared/user-profile/user-profile.service';
 import { ModalDialogPathologyReportComponent } from '../../shared/modal-dialogs/modal-dialog-pathology-report.component';
 
+const roles = {
+  variantReportUpload: [
+    'SYSTEM',
+    'ADMIN',
+    'CLIA_MOCHA',
+    'CLIA_YALE',
+    'CLIA_MGH',
+    'CLIA_MDA',
+    'CLIA_DARTMOUTH'
+  ]
+};
+
 @Component({
   moduleId: module.id,
   selector: 'sd-patient-details',
@@ -31,7 +43,6 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
   summaryData: any = {};
   entityId?: string = '';
   section?: string = '';
-  enableFileUpload = false;
   dzConfigDocuments: DropzoneConfigInterface;
   pendingVariantReport: any;
   pendingAssignmentReport: any;
@@ -67,17 +78,6 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
 
   ngOnInit() {
     Object.assign(this, this.route.snapshot.data['data']);
-
-    const roles = this.profile.roles().filter(x => {
-      return x.indexOf('CLIA_') !== -1 || x.indexOf('SYSTEM') !== -1 || x.indexOf('ADMIN') !== -1;
-    });
-
-    if (roles.indexOf('ADMIN') !== -1
-      || roles.indexOf('SYSTEM') !== -1
-      || roles.indexOf('CLIA_') !== -1) {
-      this.enableFileUpload = true;
-    }
-
     this.navigateToSection();
   }
 
@@ -144,6 +144,38 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
     this.modalRef.content.receivedDate = report.receivedDate;
     this.modalRef.content.signedOutDate = report.signedOutDate;
     this.modalRef.content.message = atob(report.pathologyReport);
+  }
+
+  isUploadEnabled(biopsy: any, sendout: any): boolean {
+    const hasPermissions = this.profile.checkRoles(roles.variantReportUpload);
+
+    if (!hasPermissions)
+      return false;
+
+    if (this.patient.currentPatientStatus === 'OFF_STUDY')
+      return false;
+
+    for (let nucleicAcidSendout of biopsy.nucleicAcidSendouts || []) {
+      for (let analysis of nucleicAcidSendout.analyses || []) {
+        if (analysis.variantReport && analysis.variantReport.variantReportStatus === 'CONFIRMED') {
+          return false;
+        }
+      }
+    }
+
+    if (this.patient.biopsies && this.patient.biopsies.length > 1) {
+      const latestBiopsy = this.patient.biopsies[0];
+      if (biopsy !== latestBiopsy)
+        return false;
+    }
+
+    if (biopsy.nucleicAcidSendouts && biopsy.nucleicAcidSendouts.length > 1) {
+      const latestSendout = biopsy.nucleicAcidSendouts[biopsy.nucleicAcidSendouts.length - 1];
+      if (latestSendout !== sendout)
+        return false;
+    }
+
+    return true;
   }
 
   private unsubscribe() {

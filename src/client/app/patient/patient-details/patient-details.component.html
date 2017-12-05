@@ -314,7 +314,7 @@
                           </td>
                         </tr>
                         <tr>
-                          <td colspan="7"><sd-file-upload *ngIf="enableFileUpload" [msn]="sendout.molecularSequenceNumber"></sd-file-upload></td>
+                          <td colspan="7"><sd-file-upload *ngIf="isUploadEnabled(biopsy, sendout)" [msn]="sendout.molecularSequenceNumber"></sd-file-upload></td>
                         </tr>
                       </ng-template>
                     </tbody>
