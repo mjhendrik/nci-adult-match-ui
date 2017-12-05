@@ -49,6 +49,15 @@ export class SampleControlApiService extends ApiService {
       .catch(this.handleError);
   }
 
+  getCliaOncomineValues(molecular_id: string): Observable<CliaVariantReportsQCViewData> {
+    // http://localhost:8080/api/v1/message/clia/sample_control/ocp_summary/SampleControl_Dartmouth_1
+
+    return this.http.get(this.url('/message/clia/sample_control/ocp_summary/' + molecular_id, ''))
+      .map(this.extractData)
+      .catch(this.handleError);
+
+  }
+
   getCliaVariantReportQC(molecular_id: string, analysisId: string): Observable<CliaVariantReportsQCViewData> {
 
     // getCliaVariantReportQC(molecular_id: string): Observable<CliaVariantReportsQCViewData> {

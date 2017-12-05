@@ -92,7 +92,7 @@ export function main() {
                       mapd: { 'test': 'test' },
                       cellularity: { 'test': 'test' },
                       torrent_variant_caller_version: { 'test': 'test' },
-                      oncomine_control_panel_summary: ['test'],
+                      oncomine_control_panel_summary: { 'vcfVersion': '5.2-25' },
                       copy_number_variants: parsedVCFGenes,
                       parsedVCFGenes: parsedVCFGenes,
                       gene_fusions: ['test'],
@@ -185,7 +185,7 @@ export function main() {
                       mapd: { 'test': 'test' },
                       cellularity: { 'test': 'test' },
                       torrent_variant_caller_version: { 'test': 'test' },
-                      oncomine_control_panel_summary: ['test'],
+                      oncomine_control_panel_summary: { 'vcfVersion': '5.2-25' },
                       copy_number_variants: parsedVCFGenes,
                       parsedVCFGenes: parsedVCFGenes,
                       gene_fusions: ['test'],
@@ -278,7 +278,7 @@ export function main() {
                       mapd: { 'test': 'test' },
                       cellularity: { 'test': 'test' },
                       torrent_variant_caller_version: { 'test': 'test' },
-                      oncomine_control_panel_summary: ['test'],
+                      oncomine_control_panel_summary: { 'vcfVersion': '5.2-25' },
                       copy_number_variants: parsedVCFGenes,
                       parsedVCFGenes: parsedVCFGenes,
                       gene_fusions: ['test'],
@@ -371,7 +371,7 @@ export function main() {
                       mapd: { 'test': 'test' },
                       cellularity: { 'test': 'test' },
                       torrent_variant_caller_version: { 'test': 'test' },
-                      oncomine_control_panel_summary: ['test'],
+                      oncomine_control_panel_summary: { 'vcfVersion': '5.2-25' },
                       copy_number_variants: parsedVCFGenes,
                       parsedVCFGenes: parsedVCFGenes,
                       gene_fusions: ['test'],
@@ -464,7 +464,7 @@ export function main() {
                       mapd: { 'test': 'test' },
                       cellularity: { 'test': 'test' },
                       torrent_variant_caller_version: { 'test': 'test' },
-                      oncomine_control_panel_summary: ['test'],
+                      oncomine_control_panel_summary: { 'vcfVersion': '5.2-25' },
                       copy_number_variants: parsedVCFGenes,
                       parsedVCFGenes: parsedVCFGenes,
                       gene_fusions: ['test'],
@@ -556,7 +556,7 @@ export function main() {
                       mapd: { 'test': 'test' },
                       cellularity: { 'test': 'test' },
                       torrent_variant_caller_version: { 'test': 'test' },
-                      oncomine_control_panel_summary: ['test'],
+                      oncomine_control_panel_summary: { 'vcfVersion': '5.2-25' },
                       copy_number_variants: parsedVCFGenes,
                       parsedVCFGenes: parsedVCFGenes,
                       gene_fusions: ['test'],
@@ -607,7 +607,7 @@ class MockCliaApiService {
       mapd: { 'test': 'test' },
       cellularity: { 'test': 'test' },
       torrent_variant_caller_version: { 'test': 'test' },
-      oncomine_control_panel_summary: ['test'],
+      oncomine_control_panel_summary: { 'vcfVersion': '5.2-25' },
       copy_number_variants: [{
         "gene": "ARID1A",
         "values": [
@@ -670,6 +670,34 @@ class MockCliaApiService {
       header: { 'test': 'test' },
       tvcVersion: ['test']
     };
+    return Observable.of(testData);
+  }
+  getOncomine(): Observable<any> {
+    let testData = [{
+    'vcfVersion': '5.2-25',
+    "lmna": 0,
+    "tbp": 62922,
+    "myc": 68909,
+    "hmbs": 32698,
+    "itgb7": 78824,
+    "lrp1": 1250,
+    "mappedReads": 1124270,
+    "gePool": {
+    "pool2": 154588,
+        "pool1": 614777
+    },
+    "fPool": {
+      "pool2": 88,
+          "pool1": 21842
+      },
+    "ecPool": {
+      "pool2": 152381,
+          "pool1": 180431
+      },
+    "pool1Total": 817050,
+      "pool2Total": 307057,
+      "valid": true
+  }];
     return Observable.of(testData);
   }
   downloadCliaDnaBam(): Observable<any> {

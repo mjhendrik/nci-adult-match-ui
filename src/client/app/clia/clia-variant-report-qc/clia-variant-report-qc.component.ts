@@ -26,7 +26,7 @@ export class CliaVariantReportQcComponent implements OnInit {
   mapd: any;
   cellularity: any;
   torrent_variant_caller_version: any;
-  oncomine_control_panel_summary: any[];
+  oncomine_control_panel_summary: any;
   copy_number_variants: any[];
   gene_fusions: any[];
   snv_indels: any[];
@@ -90,6 +90,7 @@ export class CliaVariantReportQcComponent implements OnInit {
     this.molecular_id = this.route.snapshot.params['id'];
     this.getData(this.route.snapshot.data['data'].data);
     this.getGraph(this.route.snapshot.data['data'].graph);
+    this.getOncomine(this.route.snapshot.data['data'].oncomine);
   }
 
   getData(itemList: CliaVariantReportsQCViewData) {
@@ -97,13 +98,12 @@ export class CliaVariantReportQcComponent implements OnInit {
     this.total_variants = itemList.total_variants;
     this.mapd = itemList.mapd;
     this.cellularity = itemList.cellularity;
-    this.oncomine_control_panel_summary = itemList.oncomine_control_panel_summary;
     this.gene_fusions = itemList.gene_fusions;
     this.snv_indels = itemList.snv_indels;
+    // this.oncomine_control_panel_summary = itemList.oncomine_control_panel_summary;
     // this.molecular_id = itemList.molecular_id;
     // this.analysis_id = itemList.analysis_id;
     // this.torrent_variant_caller_version = itemList.torrent_variant_caller_version;
-
     // Object.keys(itemList.oncomine_control_panel_summary).forEach((key: any, i: number) => {
     //   this.sum += itemList.oncomine_control_panel_summary[key];
     // });
@@ -112,6 +112,10 @@ export class CliaVariantReportQcComponent implements OnInit {
 
   getGraph(itemList: CliaVariantReportsQCViewData) {
     this.parsed_vcf_genes = [itemList.parsedVCFGenes, itemList.tvcVersion];
+  }
+
+  getOncomine(itemList: CliaVariantReportsQCViewData) {
+    this.oncomine_control_panel_summary = itemList;
   }
 
   downloadDnaBam(): void {

@@ -53,7 +53,7 @@ export interface CliaVariantReportsQCViewData {
   mapd: {};
   cellularity: {};
   torrent_variant_caller_version: {};
-  oncomine_control_panel_summary: any[];
+  oncomine_control_panel_summary: any;
   copy_number_variants: any[];
   gene_fusions: any[];
   snv_indels: any[];
