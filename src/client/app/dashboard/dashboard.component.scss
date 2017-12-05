@@ -11,3 +11,41 @@ ul {
   padding: 0 0 0 8px;
   margin-bottom: 0;
 }
+
+.tooltip_refresh {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip_refresh .tooltiptext {
+  opacity: 0.75;
+  visibility: hidden;
+  width: 95px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 4px 0;
+  position: absolute;
+  z-index: 1;
+  font-size: 13px;
+  left: 180%;
+  top: -40%;
+  font-family: 'Nunito', sans-serif;
+}
+
+.tooltip_refresh .tooltiptext::after {
+  opacity: 0.75;
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent black transparent transparent;
+}
+
+.tooltip_refresh:hover .tooltiptext {
+  visibility: visible;
+}
