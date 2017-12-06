@@ -13,6 +13,23 @@ import { PatientApiService } from '../patient-api.service';
 import { PatientData } from './patient-details.module';
 import { ViewDataTransformer } from '../view-data-transformer.service';
 
+export class DataLoader {
+  static loadData(data: any, transformer: ViewDataTransformer, psn: string, section: string, entityId: string): PatientData {
+    let patient = transformer.transformPatient(data);
+    patient.section = section;
+    patient.entityId = entityId;
+
+    return {
+      psn: psn,
+      patient: patient,
+      summaryData: {},
+      section: section,
+      entityId,
+      pendingVariantReport: patient.pendingVariantReport,
+      pendingAssignmentReport: patient.pendingAssignmentReport
+    };
+  }
+}
 
 @Injectable()
 class DataResolver implements Resolve<PatientData> {
@@ -41,24 +58,9 @@ class DataResolver implements Resolve<PatientData> {
     const entityId: string = route.queryParamMap.get('entityId');
 
     return this.api.getPatientDetails(psn)
-      .map(
-        data => {
-          let patient = this.transformer.transformPatient(data);
-          patient.section = section;
-          patient.entityId = entityId;
-
-          return {
-            psn: psn,
-            patient: patient,
-            summaryData: {},
-            section: section,
-            entityId,
-            biopsy: patient.biopsies,
-            pendingVariantReport: patient.pendingVariantReport,
-            pendingAssignmentReport: patient.pendingAssignmentReport
-          };
-        }
-      );
+      .map(data => {
+        return DataLoader.loadData(data, this.transformer, psn, section, entityId);
+      });
   }
 }
 

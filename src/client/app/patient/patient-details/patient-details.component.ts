@@ -15,6 +15,7 @@ import { PatientData } from './patient-details.module';
 import { UserProfileService } from '../../shared/user-profile/user-profile.service';
 import { ModalDialogPathologyReportComponent } from '../../shared/modal-dialogs/modal-dialog-pathology-report.component';
 import { FileUploadNotificationService } from '../file-upload/file-upload-notification.service';
+import { DataLoader } from './patient-details-routing.module';
 
 const roles = {
   variantReportUpload: [
@@ -182,7 +183,10 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
   }
 
   onUploaded(success: boolean) {
-    console.info('Successfully uploaded VR files? '+ success);
+    console.info('Successfully uploaded VR files: '+ success);
+    if (success) {
+      this.reloadData();
+    }
   }
 
   private unsubscribe() {
@@ -219,5 +223,9 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
   }
 
   private reloadData(): void {
+    // this.patientApi.getPatientDetails(this.psn).subscribe(data=>{
+    //   const updated = DataLoader.loadData(data, this.transformer, this.psn, this.section, this.entityId);
+    //   Object.assign(this, updated);
+    // });
   }
 }
