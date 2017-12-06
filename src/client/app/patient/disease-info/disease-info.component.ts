@@ -50,7 +50,7 @@ export class DiseaseInfoComponent {
       'ctepCategory': 'CTEP Category',
       'ctepSubCategory': 'CTEP Sub Category',
       'ctepTerm': 'CTEP Term',
-      'medDRACode': 'MedDRA Code'
+      '_id': 'MedDRA Code'
     };
 
     Object.keys(extras).forEach(
