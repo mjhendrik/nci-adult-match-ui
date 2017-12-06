@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { FileUploadContentComponent } from './file-upload-content.component';
 
@@ -6,7 +6,7 @@ import { FileUploadContentComponent } from './file-upload-content.component';
   moduleId: module.id,
   selector: 'sd-file-upload',
   template: `
-  <button type="button" class="btn btn-purple-light pull-right" (click)="openUploadDialog()" (uploaded)="onUploaded($event)">Upload</button>
+  <button type="button" class="btn btn-purple-light pull-right" (click)="openUploadDialog()">Upload</button>
   `
 })
 export class FileUploadComponent {
@@ -17,7 +17,6 @@ export class FileUploadComponent {
   };
 
   @Input() msn: string;
-  @Output() uploaded: EventEmitter<boolean> = new EventEmitter();
 
   uploadedFiles: any[];
   fileCount: number = 0;
@@ -35,9 +34,5 @@ export class FileUploadComponent {
   openUploadDialog() {
     this.modalRef = this.modalService.show(FileUploadContentComponent, this.config);
     this.modalRef.content.msn = this.msn;
-  }
-
-  onUploaded(success: boolean) {
-    this.uploaded.emit(success);
   }
 }

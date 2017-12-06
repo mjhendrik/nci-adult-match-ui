@@ -14,6 +14,7 @@ import { ViewDataTransformer } from './../view-data-transformer.service';
 import { PatientData } from './patient-details.module';
 import { UserProfileService } from '../../shared/user-profile/user-profile.service';
 import { ModalDialogPathologyReportComponent } from '../../shared/modal-dialogs/modal-dialog-pathology-report.component';
+import { FileUploadNotificationService } from '../file-upload/file-upload-notification.service';
 
 const roles = {
   variantReportUpload: [
@@ -57,7 +58,8 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
     private patientApi: PatientApiService,
     private router: Router,
     private profile: UserProfileService,
-    private modalService: BsModalService) {
+    private modalService: BsModalService,
+    private uploadNotifications: FileUploadNotificationService) {
 
     this.dzConfigDocuments = {
       // Change this to your upload POST address:
@@ -70,6 +72,7 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
       addRemoveLinks: true
     };
 
+    this.uploadNotifications.onDone.subscribe(this.onUploaded);
   }
 
   download(file: string) {
@@ -213,5 +216,8 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
     }
 
     return null;
+  }
+
+  private reloadData(): void {
   }
 }

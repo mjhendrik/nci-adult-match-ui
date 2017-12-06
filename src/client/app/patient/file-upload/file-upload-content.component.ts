@@ -6,9 +6,7 @@ import {
   OnInit,
   ElementRef,
   ApplicationRef,
-  TemplateRef,
-  Output,
-  EventEmitter
+  TemplateRef
 } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import {
@@ -26,6 +24,7 @@ import {
 } from 'ngx-bootstrap';
 
 import { AliquotApiService } from '../../clia/aliquot-api.service';
+import { FileUploadNotificationService } from './file-upload-notification.service';
 
 @Component({
   moduleId: module.id,
@@ -46,7 +45,6 @@ export class FileUploadContentComponent implements OnInit {
   analysisIdValid: boolean = false;
   analysisIdPrev: string = this.analysisId;
   message: string = 'Enter Analysis ID to add Variant ZIP file, DNA BAM file and cDNA BAM file';
-  uploadNotification: any;
   isUploading: boolean = false;
   fileCount: number = 0;
   notifyMessage: string = '';
@@ -70,7 +68,6 @@ export class FileUploadContentComponent implements OnInit {
   cdnaBamFileUrl: string;
 
   @ViewChild('input') inputElRef: ElementRef;
-  @Output() uploaded: EventEmitter<boolean> = new EventEmitter();
 
   constructor(
     public bsModalRef: BsModalRef,
@@ -79,7 +76,8 @@ export class FileUploadContentComponent implements OnInit {
     private appref: ApplicationRef,
     private api: AliquotApiService,
     private modalService: BsModalService,
-    private http: HttpClient) { }
+    private http: HttpClient,
+    private uploadNotifications: FileUploadNotificationService) { }
 
   ngOnInit() {
     this.onInputChanged('');
@@ -196,7 +194,7 @@ export class FileUploadContentComponent implements OnInit {
   }
 
   notifyAfterUpload(): void {
-    this.uploadNotification = {
+    const uploadNotification = {
       'molecular_sequence_number': this.msn,
       'analysis_id': this.analysisId,
       'zip_name': this.variantZipFile.name,
@@ -204,11 +202,11 @@ export class FileUploadContentComponent implements OnInit {
       'cdna_bam_name': this.cdnaBamFile.name
     };
 
-    this.api.notifyAfterUpload(this.msn, this.uploadNotification).subscribe(resp => {
+    this.api.notifyAfterUpload(this.msn, uploadNotification).subscribe(resp => {
       this.notifyMessage = resp.message;
       this.isUploaded = true;
       this.isSuccessful = resp.status === 'SUCCESS';
-      this.uploaded.emit(this.isSuccessful);
+      this.uploadNotifications.done(this.isSuccessful);
     });
   }
 
