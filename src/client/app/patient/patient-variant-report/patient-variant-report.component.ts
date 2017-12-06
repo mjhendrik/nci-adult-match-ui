@@ -18,6 +18,7 @@ import { ToastrService } from '../../shared/error-handling/toastr.service';
 import { ModalDialogConfirmationComponent } from '../../shared/modal-dialogs/modal-dialog-confirmation.component';
 import { ModalDialogWithCommentsComponent } from '../../shared/modal-dialogs/modal-dialog-with-comments.component';
 import { UserProfileService } from '../../shared/user-profile/user-profile.service';
+import { ModalDialogPathologyReportComponent } from '../../shared/modal-dialogs/modal-dialog-pathology-report.component';
 
 const roles = {
   variantReportEdit: [
@@ -230,6 +231,19 @@ export class PatientVariantReportComponent implements OnInit, OnDestroy, Variant
       'Don\'t Confirm',
       action
     );
+  }
+
+  openPathologyReport(biopsySequenceNumber: string, report: any) {
+    this.dialogSubscription = this.modalService.onHidden.subscribe(() => {
+      this.unsubscribe();
+    });
+
+    this.modalRef = this.modalService.show(ModalDialogPathologyReportComponent);
+
+    this.modalRef.content.biopsySequenceNumber = report.biopsySequenceNumber;
+    this.modalRef.content.receivedDate = report.receivedDate;
+    this.modalRef.content.signedOutDate = report.signedOutDate;
+    this.modalRef.content.message = atob(report.pathologyReport);
   }
 
   private showConfirmation(

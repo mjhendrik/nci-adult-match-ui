@@ -497,6 +497,8 @@ export class ViewDataTransformer {
       variantReport.vcfFilePath = message.ionReporterResults.vcfFilePath;
       variantReport.qcFile = message.ionReporterResults.qcFile;
 
+      variantReport.pathologyReportMessages = transformedBiopsy.pathologyReportMessages;
+
       variantReport.singleNucleotideVariantAndIndels
         = (variantReport.singleNucleotideVariants || [])
           .concat(variantReport.indels || []);
