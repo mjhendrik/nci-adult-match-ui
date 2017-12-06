@@ -15,7 +15,6 @@ import { PatientData } from './patient-details.module';
 import { UserProfileService } from '../../shared/user-profile/user-profile.service';
 import { ModalDialogPathologyReportComponent } from '../../shared/modal-dialogs/modal-dialog-pathology-report.component';
 import { FileUploadNotificationService } from '../file-upload/file-upload-notification.service';
-import { DataLoader } from './patient-details-routing.module';
 
 const roles = {
   variantReportUpload: [
@@ -72,8 +71,6 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
       // acceptedFiles: '.zip,.bam',
       addRemoveLinks: true
     };
-
-    this.uploadNotifications.onDone.subscribe(this.onUploaded);
   }
 
   download(file: string) {
@@ -83,6 +80,28 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
   ngOnInit() {
     Object.assign(this, this.route.snapshot.data['data']);
     this.navigateToSection();
+    this.uploadNotifications.onDone.subscribe(success => {
+      console.info('Successfully uploaded VR files: ' + success);
+      if (success) {
+        this.patientApi.getPatientDetails(this.psn).subscribe(data => {
+          let patient = this.transformer.transformPatient(data);
+          patient.section = this.section;
+          patient.entityId = this.entityId;
+
+          let updated = {
+            psn: this.psn,
+            patient: patient,
+            summaryData: {},
+            section: this.section,
+            entityId: this.entityId,
+            pendingVariantReport: patient.pendingVariantReport,
+            pendingAssignmentReport: patient.pendingAssignmentReport
+          };
+
+          Object.assign(this, updated);
+        });
+      }
+    });
   }
 
   ngAfterViewInit() {
@@ -137,7 +156,7 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
     }
   }
 
-  openPathologyReport(biopsySequenceNumber:string, report: any) {
+  openPathologyReport(biopsySequenceNumber: string, report: any) {
     this.dialogSubscription = this.modalService.onHidden.subscribe(() => {
       this.unsubscribe();
     });
@@ -182,13 +201,6 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
     return true;
   }
 
-  onUploaded(success: boolean) {
-    console.info('Successfully uploaded VR files: '+ success);
-    if (success) {
-      this.reloadData();
-    }
-  }
-
   private unsubscribe() {
     if (!this.dialogSubscription) {
       return;
@@ -220,12 +232,5 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
     }
 
     return null;
-  }
-
-  private reloadData(): void {
-    // this.patientApi.getPatientDetails(this.psn).subscribe(data=>{
-    //   const updated = DataLoader.loadData(data, this.transformer, this.psn, this.section, this.entityId);
-    //   Object.assign(this, updated);
-    // });
   }
 }
