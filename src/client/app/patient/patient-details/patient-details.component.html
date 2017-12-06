@@ -317,6 +317,9 @@
                           <td colspan="7"><sd-file-upload *ngIf="isUploadEnabled(biopsy, sendout)" [msn]="sendout.molecularSequenceNumber" (uploaded)="onUploaded($event)"></sd-file-upload></td>
                         </tr>
                       </ng-template>
+                      <tr *ngIf="!biopsy.nucleicAcidSendouts || !biopsy.nucleicAcidSendouts.length">
+                        <td colspan="7">No Nucleic Acid Sendout data</td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>

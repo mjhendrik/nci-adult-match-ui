@@ -584,6 +584,8 @@ export class ViewDataTransformer {
         continue;
       }
 
+      // const lastSendout = biopsy.nucleicAcidSendouts[biopsy.nucleicAcidSendouts.length - 1];
+
       assignment.isOutsideAssayWorkflow = biopsy.isOutsideAssayWorkflow;
       assignment.isOutsideAssay = biopsy.isOutsideAssay;
 
