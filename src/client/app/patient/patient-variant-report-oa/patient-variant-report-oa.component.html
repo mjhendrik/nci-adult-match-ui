@@ -102,7 +102,7 @@
                   <div *ngIf="outsideData.assignmentReport.hasSelectedTreatmentArm" class="panel panel-success overflow-hidden">
                     <div class="panel-heading">
                       <p>
-                        {{outsideData.assignmentReport.patientAssignmentStatusMessage | dashify}}
+                        {{outsideData.assignmentReport.selected.reason | dashify}}
                         <a (click)="scrollTo('outside-assignment-details')" class="text-white text-underlined white-link">
                           <br>
                           <br>
@@ -273,7 +273,7 @@
                   <div *ngIf="matchData.assignmentReport.hasSelectedTreatmentArm" class="panel panel-success overflow-hidden">
                     <div class="panel-heading">
                       <p>
-                        {{matchData.assignmentReport.patientAssignmentStatusMessage | dashify}}
+                        {{matchData.assignmentReport.selected.reason | dashify}}
                         <a (click)="scrollTo('match-assignment-details')" class="text-white text-underlined white-link"><br><br><i class="fa fa-arrow-down" aria-hidden="true"></i> Click for details...</a>
                       </p>
                     </div>
@@ -415,7 +415,7 @@
                     <div *ngIf="outsideData.assignmentReport.hasSelectedTreatmentArm" class="panel panel-success overflow-hidden">
                       <div class="panel-heading">
                         <p>
-                          {{outsideData.assignmentReport.patientAssignmentStatusMessage | dashify}}
+                          {{outsideData.assignmentReport.selected.reason | dashify}}
                           <a (click)="openOutsideAssignmentReason('outside-assignment-details', true)" class="text-white text-underlined white-link"><br><br><i class="fa fa-arrow-down" aria-hidden="true"></i> Click for details...</a>
                         </p>
                       </div>
@@ -433,7 +433,7 @@
                     <div *ngIf="matchData.assignmentReport.hasSelectedTreatmentArm" class="panel panel-success overflow-hidden">
                       <div class="panel-heading">
                         <p>
-                          {{matchData.assignmentReport.patientAssignmentStatusMessage | dashify}}
+                          {{matchData.assignmentReport.selected.reason | dashify}}
                           <a (click)="scrollTo('assignment-details')" class="text-white text-underlined white-link"><br><br><i class="fa fa-arrow-down" aria-hidden="true"></i> Click for details...</a>
                         </p>
                       </div>

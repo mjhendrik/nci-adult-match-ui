@@ -115,7 +115,7 @@
             <div *ngIf="assignmentReport.hasSelectedTreatmentArm" class="panel panel-success overflow-hidden">
               <div class="panel-heading">
                 <p>
-                  {{assignmentReport.patientAssignmentStatusMessage | dashify}}
+                  {{assignmentReport.selected.reason | dashify}}
                   <a (click)="scrollTo('assignment-details')" class="text-white text-underlined white-link">
                     <br>
                     <br>

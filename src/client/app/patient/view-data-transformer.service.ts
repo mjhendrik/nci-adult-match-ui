@@ -622,6 +622,7 @@ export class ViewDataTransformer {
 
     let selected = assignment.patientAssignmentLogic.find((x: any) => x.patientAssignmentReasonCategory === 'SELECTED');
     assignment.hasSelectedTreatmentArm = !!selected;
+    assignment.selected = selected;
     assignment.reasons = this.transformAssignmentReason(assignment.patientAssignmentLogic);
   }
 
