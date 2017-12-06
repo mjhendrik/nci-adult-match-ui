@@ -16,11 +16,13 @@ interface StringToStringMap {
 @Component({
   moduleId: module.id,
   selector: 'sd-disease',
-  styleUrls: ['disease-info.component.css'],
   template: `
   <dl class="dl-horizontal" [ngClass]="{true:'narrow-dt',false:''}[isNarrow]">
-    <dt>{{diseasePrefix}} Disease</dt>
-    <dd>{{disease.shortName | dashify}}</dd>
+    <dt *ngIf="hasOutsideTitle && !hasData" class="text-muted f-w-400"> No Disease data</dt>
+    <dd *ngIf="hasOutsideTitle && !hasData"></dd>
+
+    <dt *ngIf="!hasOutsideTitle">{{diseasePrefix}} Disease</dt>
+    <dd *ngIf="!hasOutsideTitle">{{disease.shortName | dashify}}</dd>
     <dt *ngIf="details.length" class="text-muted f-w-500">More</dt>
     <dd *ngIf="details.length" class="text-muted text-ellipsis" [ngClass]="{true:'width-100',false:'width-150'}[isNarrow]">
       <sd-inline-pairs [items]="details"></sd-inline-pairs>
@@ -29,13 +31,16 @@ interface StringToStringMap {
 })
 export class DiseaseInfoComponent {
   details: Pair[] = [];
+  hasData: boolean;
 
   @Input() isNarrow: boolean;
+  @Input() hasOutsideTitle: boolean;
   @Input() diseasePrefix: string;
 
   private diseaseValue: DiseaseInfo = DiseaseInfo.default();
   @Input()
   set disease(value: DiseaseInfo) {
+      this.hasData = !!value && Object.keys(value).length > 0;
       this.diseaseValue = value || DiseaseInfo.default();
       this.details = this.extractPairs(value);
   }

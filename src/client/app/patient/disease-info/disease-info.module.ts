@@ -11,6 +11,7 @@ export class DiseaseInfo {
   ctepSubCategory: string;
   ctepTerm: string;
   medDRACode: string;
+  isEmpty: boolean;
 
   static default(): DiseaseInfo {
     return {
@@ -18,7 +19,8 @@ export class DiseaseInfo {
       ctepCategory: null,
       ctepSubCategory: null,
       ctepTerm: null,
-      medDRACode: null
+      medDRACode: null,
+      isEmpty: true
     };
   }
 }
