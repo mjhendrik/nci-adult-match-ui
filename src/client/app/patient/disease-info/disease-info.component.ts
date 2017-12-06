@@ -36,7 +36,7 @@ export class DiseaseInfoComponent {
   private diseaseValue: DiseaseInfo = DiseaseInfo.default();
   @Input()
   set disease(value: DiseaseInfo) {
-      this.diseaseValue = value;
+      this.diseaseValue = value || DiseaseInfo.default();
       this.details = this.extractPairs(value);
   }
   get disease(): DiseaseInfo { return this.diseaseValue; }
