@@ -4,7 +4,7 @@
 <div class="modal-body">
   <div class="form-group">
     <label for="comment">{{ message }}</label>
-    <input type="textarea" name="comment" id="comment" [(ngModel)]="comment" required class="form-control" autofocus="autofocus" ng-disabled="!isEnabled" #commentModel="ngModel" >
+    <input type="textarea" name="comment" id="comment" [(ngModel)]="comment" required class="form-control" autofocus="autofocus" [attr.disabled]="!isEnabled" #commentModel="ngModel" >
 
     <div *ngIf="commentModel.invalid && (commentModel.dirty || commentModel.touched)" class="alert alert-danger">
       <div *ngIf="commentModel.errors.required">

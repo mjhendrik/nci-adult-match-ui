@@ -1,3 +1,5 @@
+import { AmoiSummary } from './amoi-summary';
+
 export interface VariantReportData {
     [name: string]: any;
 
@@ -14,12 +16,7 @@ export interface VariantReportData {
     comments?: string;
     commenter?: string;
 
-    moiSummary?: {
-        totalaMOIs: number;
-        totalMOIs: number;
-        confirmedaMOIs: number;
-        confirmedMOIs: number;
-    };
+    moiSummary?: AmoiSummary;
 
     assignmentReport?: any;
     assignmentHistory?: any;

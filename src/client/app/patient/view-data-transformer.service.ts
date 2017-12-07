@@ -8,6 +8,7 @@ import { VariantReportData } from './variant-report-data';
 import { ApiStatusUpdateSuccess } from './patient-api.service';
 import { ConfirmableItem } from '../shared/check-box-with-confirm/check-box-with-confirm.component';
 import { GmtPipe } from '../shared/pipes/gmt.pipe';
+import { AmoiSummary } from './amoi-summary';
 
 const variantTables: Array<string> = [
   // 'geneFusions', // geneFusions is never used, unifiedGeneFusions is used instead
@@ -98,7 +99,7 @@ export class ViewDataTransformer {
     transformedReport.matchData.assignmentReport.isOutsideAssay = true;
     transformedReport.matchData.assignmentReport.biopsySequenceNumber = transformedReport.matchData.biopsySequenceNumber;
     transformedReport.matchData.moiSummary = transformedReport.matchData.moiSummary
-      || { totalaMOIs: 0, totalMOIs: 0, confirmedaMOIs: 0, confirmedMOIs: 0 };
+      || AmoiSummary.default();
     transformedReport.matchData.isOutsideAssayWorkflow = true;
     transformedReport.matchData.isOutsideAssay = false;
     transformedReport.matchData.variantReportRejectedOrConfirmedDate = transformedReport.matchData.dateVerified;
@@ -119,7 +120,7 @@ export class ViewDataTransformer {
     transformedReport.outsideData.assignmentReport.isOutsideAssay = true;
     transformedReport.outsideData.assignmentReport.biopsySequenceNumber = transformedReport.outsideData.biopsySequenceNumber;
     transformedReport.outsideData.moiSummary = transformedReport.outsideData.moiSummary
-      || { totalaMOIs: 0, totalMOIs: 0, confirmedaMOIs: 0, confirmedMOIs: 0 };
+      || AmoiSummary.default();
     transformedReport.outsideData.isOutsideAssayWorkflow = true;
     transformedReport.outsideData.isOutsideAssay = true;
     transformedReport.outsideData.variantReportRejectedOrConfirmedDate = transformedReport.outsideData.dateVerified;
@@ -524,12 +525,7 @@ export class ViewDataTransformer {
     if (!variantReport)
       return;
 
-    variantReport.moiSummary = {
-      totalaMOIs: 0,
-      totalMOIs: 0,
-      confirmedaMOIs: 0,
-      confirmedMOIs: 0
-    };
+    variantReport.moiSummary = AmoiSummary.default();
 
     for (let tableName of variantTables ) {
       let table = variantReport[tableName];

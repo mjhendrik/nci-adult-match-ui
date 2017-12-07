@@ -19,6 +19,7 @@ import { ModalDialogConfirmationComponent } from '../../shared/modal-dialogs/mod
 import { ModalDialogWithCommentsComponent } from '../../shared/modal-dialogs/modal-dialog-with-comments.component';
 import { UserProfileService } from '../../shared/user-profile/user-profile.service';
 import { ModalDialogPathologyReportComponent } from '../../shared/modal-dialogs/modal-dialog-pathology-report.component';
+import { AmoiSummary } from '../amoi-summary';
 
 const roles = {
   variantReportEdit: [
@@ -64,12 +65,7 @@ export class PatientVariantReportComponent implements OnInit, OnDestroy, Variant
   comments: string;
   commenter: string;
 
-  moiSummary: {
-      totalaMOIs: number;
-      totalMOIs: number;
-      confirmedaMOIs: number;
-      confirmedMOIs: number;
-  };
+  moiSummary: AmoiSummary;
 
   assignmentReport: any;
   assignmentHistory: any;
