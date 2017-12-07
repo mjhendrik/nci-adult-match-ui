@@ -21,7 +21,10 @@ import { TreatmentArmApiService } from '../../treatment-arm/treatment-arm-api.se
 
 @Injectable()
 class DataResolver implements Resolve<VariantReportData> {
-  constructor(private patientApi: PatientApiService, private treatmentArmApi: TreatmentArmApiService, private transformer: ViewDataTransformer) { }
+  constructor(
+    private patientApi: PatientApiService,
+    private treatmentArmApi: TreatmentArmApiService,
+    private transformer: ViewDataTransformer) { }
 
   resolve(
     route: ActivatedRouteSnapshot,
@@ -50,8 +53,7 @@ class DataResolver implements Resolve<VariantReportData> {
         // getPatientDetails => data[0]
         // getPatientCopyNumberReport => data[1]
         // getPatientVariantReportOcp => data[2]
-        const patient = data[0];
-        return this.transformer.transformPatientVariantReport(patient, data[1], data[2], bsn, analysisId);
+        return this.transformer.transformPatientVariantReport(data[0], data[1], data[2], bsn, analysisId);
       }
     );
   }

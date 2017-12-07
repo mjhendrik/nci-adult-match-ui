@@ -126,9 +126,10 @@ docker run --name "nci-adult-match-ui" -it -p 5555:80  "fnlcr/nci-adult-match-ui
 
 
 ## Trouble shooting
-### Mongo connection refused  ( ex: mongo:27017: [Errno 111] Connection refused )
 
-Following solutions are tested.  One solution works. ( Good Luck :-))
+### Mongo connection refused  (ex: mongo:27017: [Errno 111] Connection refused)
+
+Following solutions are tested.  One solution works. (Good Luck :-))
 
 1. docker-compose down
    docker system prune
@@ -139,6 +140,6 @@ Following solutions are tested.  One solution works. ( Good Luck :-))
    docker-compose up ...
    
 3. docker-compose down
-   Docker Engine hard RESET ( Go to Docker Engine Preferences ) select --> 'Reset to factory defaults'
+   Docker Engine hard RESET (Go to Docker Engine Preferences) select --> 'Reset to factory defaults'
    docker login <-- Log in the terminal to docker hub
    docker-compose up ...

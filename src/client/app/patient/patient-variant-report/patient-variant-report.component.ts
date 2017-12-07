@@ -147,7 +147,7 @@ export class PatientVariantReportComponent implements OnInit, OnDestroy, Variant
       'Variant Report Confirmation',
       `Are you sure you want to confirm Variant Report ${this.analysisId}?`,
       'Confirm',
-      'Don\'t Confirm',
+      `Don't Confirm`,
       action
     );
   }
@@ -175,7 +175,7 @@ export class PatientVariantReportComponent implements OnInit, OnDestroy, Variant
       'Variant Report Rejection',
       `Are you sure you want to reject Variant Report ${this.analysisId}?`,
       'Reject',
-      'Don\'t Reject',
+      `Don't Reject`,
       action
     );
   }
@@ -228,7 +228,7 @@ export class PatientVariantReportComponent implements OnInit, OnDestroy, Variant
       'Assignment Report Confirmation',
       `Are you sure you want to confirm Assignment Report ${this.analysisId}?`,
       'Confirm',
-      'Don\'t Confirm',
+      `Don't Confirm`,
       action
     );
   }
