@@ -184,6 +184,9 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
     if (this.patient.currentPatientStatus === 'OFF_STUDY')
       return false;
 
+    if (biopsy.isOutsideAssay)
+      return false;
+
     for (let nucleicAcidSendout of biopsy.nucleicAcidSendouts || []) {
       for (let analysis of nucleicAcidSendout.analyses || []) {
         if (analysis.variantReport && analysis.variantReport.variantReportStatus === 'CONFIRMED') {
