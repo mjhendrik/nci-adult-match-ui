@@ -111,10 +111,10 @@
       </tab>
       <tab *ngFor="let biopsy of patient.biopsies; first as isFirst"  [active]="biopsy.biopsySequenceNumber === activeBiopsySequenceNumber">
         <ng-template tabHeading>
-          <i *ngIf="isFirst" class="fa fa-bell-o" aria-hidden="true"></i> Biopsy {{biopsy.biopsySequenceNumber}}, {{biopsy.dateCreated | gmt: 'YYYY-MM-DD'}}
+          <i *ngIf="isFirst" class="fa fa-bell-o" aria-hidden="true"></i>{{getBiopsyTitlePrefix(biopsy)}} Biopsy {{biopsy.biopsySequenceNumber}}, {{biopsy.dateCreated | gmt: 'YYYY-MM-DD'}}
         </ng-template>
         <div id="{{biopsy.biopsySequenceNumber}}">
-          <h4 class="panel-title f-s-18">Biopsy: {{biopsy.biopsySequenceNumber}}</h4>
+          <h4 class="panel-title f-s-18">{{getBiopsyTitlePrefix(biopsy)}} Biopsy: {{biopsy.biopsySequenceNumber}}</h4>
           <div class="row" matchHeight="biopsy-panel-height">
             <div class="col-md-6">
               <div class="panel panel-white overflow-hidden biopsy-panel-height panel-accent-bottom-purple" id="biopsy_panel_left">
@@ -126,8 +126,6 @@
                     <dd>{{biopsy.specimenReceivedDate | gmt | dashify}}</dd>
                     <dt>Specimen Failure Date</dt>
                     <dd>{{biopsy.specimenFailureDate | gmt | dashify}}</dd>
-                    <dt>Is Outside Assay</dt>
-                    <dd>{{biopsy.isOutsideAssay ? 'YES' : 'NO'}}</dd>
                   </dl>
                 </div>
               </div>

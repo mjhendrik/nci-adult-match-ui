@@ -140,6 +140,12 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
     }
   }
 
+  getBiopsyTitlePrefix(biopsy: any): string {
+    if (!biopsy.isOutsideAssayWorkflow)
+      return null;
+    return biopsy.isOutsideAssay ? 'Treatment' : 'Confirmation';
+  }
+
   getVariantReportLink(report: any): string {
     if (report.isOutsideAssayWorkflow) {
       return `/patients/${this.patient.patientSequenceNumber}/variant_reports_oa/${report.analysisId}`;
