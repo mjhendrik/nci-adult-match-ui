@@ -99,6 +99,7 @@ export class ViewDataTransformer {
     transformedReport.matchData.assignmentReport.isOutsideAssayWorkflow = true;
     transformedReport.matchData.assignmentReport.isOutsideAssay = true;
     transformedReport.matchData.assignmentReport.biopsySequenceNumber = transformedReport.matchData.biopsySequenceNumber;
+    transformedReport.matchData.assignmentReport.derivedStatus = transformedReport.matchData.assignmentReport.dateConfirmed ? 'CONFIRMED' : 'PENDING';
     transformedReport.matchData.isOutsideAssayWorkflow = true;
     transformedReport.matchData.isOutsideAssay = false;
     transformedReport.matchData.variantReportRejectedOrConfirmedDate = transformedReport.matchData.dateVerified;
@@ -116,10 +117,10 @@ export class ViewDataTransformer {
     transformedReport.outsideData.tvc_version = cnvDataOutside.tvc_version;
     transformedReport.outsideData.showPools = this.showPools(cnvDataOutside.tvc_version);
     transformedReport.outsideData.assignmentReport = transformedReport.outsideData.assignmentReport || {};
-    transformedReport.outsideData.assignmentReport = transformedReport.outsideData.assignmentReport || {};
     transformedReport.outsideData.assignmentReport.isOutsideAssayWorkflow = true;
     transformedReport.outsideData.assignmentReport.isOutsideAssay = true;
     transformedReport.outsideData.assignmentReport.biopsySequenceNumber = transformedReport.outsideData.biopsySequenceNumber;
+    transformedReport.outsideData.assignmentReport.derivedStatus = transformedReport.outsideData.assignmentReport.dateConfirmed ? 'CONFIRMED' : 'PENDING';
     transformedReport.outsideData.isOutsideAssayWorkflow = true;
     transformedReport.outsideData.isOutsideAssay = true;
     transformedReport.outsideData.variantReportRejectedOrConfirmedDate = transformedReport.outsideData.dateVerified;
