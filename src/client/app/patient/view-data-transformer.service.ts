@@ -318,7 +318,8 @@ export class ViewDataTransformer {
       = (sourceVariantReport.singleNucleotideVariants || [])
         .concat(sourceVariantReport.indels || []);
 
-    this.precessPassFailVariants(sourceVariantReport);
+    // this.precessPassFailVariants(sourceVariantReport);
+    this.calculateMoiSummary(sourceVariantReport);
 
     return sourceVariantReport;
   }
@@ -537,7 +538,7 @@ export class ViewDataTransformer {
       for (let item of table) {
         variantReport.moiSummary.totalMOIs += 1;
 
-        if (item.isAMoi) {
+        if (item.amois) {
           variantReport.moiSummary.totalaMOIs += 1;
           if (item.confirmed) {
             variantReport.moiSummary.confirmedaMOIs += 1;
