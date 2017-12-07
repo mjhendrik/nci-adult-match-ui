@@ -318,7 +318,6 @@ export class ViewDataTransformer {
       = (sourceVariantReport.singleNucleotideVariants || [])
         .concat(sourceVariantReport.indels || []);
 
-    // this.precessPassFailVariants(sourceVariantReport);
     this.calculateMoiSummary(sourceVariantReport);
 
     return sourceVariantReport;

@@ -15,18 +15,6 @@ import { ViewDataTransformer } from '../view-data-transformer.service';
 
 @Injectable()
 class DataResolver implements Resolve<PatientData> {
-  calculateOcpSum(ocpSummary: { [key: string]: any }): any {
-    if (!ocpSummary)
-      return null;
-
-    let sum: number = 0;
-    for (let key of Object.keys(ocpSummary)) {
-      sum += Number(ocpSummary[key]);
-    }
-
-    return sum;
-  }
-
   constructor(
     private api: PatientApiService,
     private transformer: ViewDataTransformer) { }

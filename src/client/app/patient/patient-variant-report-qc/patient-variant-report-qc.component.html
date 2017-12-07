@@ -57,7 +57,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngIf="ocpSummary; else emptyRow">
+                <tr *ngIf="ocpSummary && ocpSummary.hasData; else emptyRow">
                   <td>{{ocpSummary['LRP1'] | dashify}}</td>
                   <td>{{ocpSummary['TBP'] | dashify}}</td>
                   <td>{{ocpSummary['MYC'] | dashify}}</td>

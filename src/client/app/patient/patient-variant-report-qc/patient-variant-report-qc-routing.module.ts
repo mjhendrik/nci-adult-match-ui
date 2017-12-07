@@ -15,18 +15,6 @@ import { ViewDataTransformer } from '../view-data-transformer.service';
 
 @Injectable()
 class DataResolver implements Resolve<QcVariantReportData> {
-  calculateOcpSum(ocpSummary: {[key:string]: any}): any {
-    if (!ocpSummary)
-      return null;
-
-    let sum: number = 0;
-    for (let key of Object.keys(ocpSummary)) {
-      sum += Number(ocpSummary[key]);
-    }
-
-    return sum;
-  }
-
   constructor(private api: PatientApiService, private transformer: ViewDataTransformer) { }
 
   resolve(
@@ -54,7 +42,11 @@ class DataResolver implements Resolve<QcVariantReportData> {
         snvAndIndels = snvAndIndels.concat(data[0].singleNucleotideVariants || []);
 
         let ocpSummary: {[key:string]: any} = data[1].genes;
-        ocpSummary['SUM'] = this.calculateOcpSum(ocpSummary);
+        let hasData: boolean;
+        let sum: number;
+        [hasData, sum] = this.calculateOcpSum(ocpSummary);
+        ocpSummary['SUM'] = sum;
+        ocpSummary.hasData = hasData;
         let tvc_version = data[1].tvc_version;
         let showPools: boolean = this.transformer.showPools(tvc_version);
 
@@ -82,6 +74,21 @@ class DataResolver implements Resolve<QcVariantReportData> {
         };
       }
     );
+  }
+
+  private calculateOcpSum(ocpSummary: {[key:string]: any}): [boolean, number] {
+    if (!ocpSummary)
+      return null;
+
+    let hasData: boolean;
+    let sum: number = 0;
+    for (let key of Object.keys(ocpSummary)) {
+      if (!hasData && ocpSummary[key])
+        hasData = true;
+      sum += Number(ocpSummary[key]);
+    }
+
+    return [hasData, sum];
   }
 }
 
