@@ -88,6 +88,7 @@ export class ViewDataTransformer {
     ocpDataMatch = ocpDataMatch || {};
 
     transformedReport.matchData = transformedReport.matchData || {};
+    transformedReport.matchData.variantReport = transformedReport.matchData.variantReport || {};
     transformedReport.matchData.pool1 = ocpDataMatch.pool1;
     transformedReport.matchData.pool2 = ocpDataMatch.pool2;
     transformedReport.matchData.mapd = cnvDataMatch.mapd;
@@ -98,16 +99,16 @@ export class ViewDataTransformer {
     transformedReport.matchData.assignmentReport.isOutsideAssayWorkflow = true;
     transformedReport.matchData.assignmentReport.isOutsideAssay = true;
     transformedReport.matchData.assignmentReport.biopsySequenceNumber = transformedReport.matchData.biopsySequenceNumber;
-    transformedReport.matchData.moiSummary = transformedReport.matchData.moiSummary
-      || AmoiSummary.default();
     transformedReport.matchData.isOutsideAssayWorkflow = true;
     transformedReport.matchData.isOutsideAssay = false;
     transformedReport.matchData.variantReportRejectedOrConfirmedDate = transformedReport.matchData.dateVerified;
     transformedReport.matchData.disease = transformedReport.matchData.disease || {};
     transformedReport.matchData.commenter = transformedReport.matchData.metadata ? transformedReport.matchData.metadata.commenter : null;
     this.transformAssayMessages(transformedReport.matchData.assayMessages);
+    this.calculateMoiSummary(transformedReport.matchData.variantReport);
 
     transformedReport.outsideData = transformedReport.outsideData || {};
+    transformedReport.outsideData.variantReport = transformedReport.outsideData.variantReport || {};
     transformedReport.outsideData.pool1 = ocpDataOutside.pool1;
     transformedReport.outsideData.pool2 = ocpDataOutside.pool2;
     transformedReport.outsideData.mapd = cnvDataOutside.mapd;
@@ -119,14 +120,13 @@ export class ViewDataTransformer {
     transformedReport.outsideData.assignmentReport.isOutsideAssayWorkflow = true;
     transformedReport.outsideData.assignmentReport.isOutsideAssay = true;
     transformedReport.outsideData.assignmentReport.biopsySequenceNumber = transformedReport.outsideData.biopsySequenceNumber;
-    transformedReport.outsideData.moiSummary = transformedReport.outsideData.moiSummary
-      || AmoiSummary.default();
     transformedReport.outsideData.isOutsideAssayWorkflow = true;
     transformedReport.outsideData.isOutsideAssay = true;
     transformedReport.outsideData.variantReportRejectedOrConfirmedDate = transformedReport.outsideData.dateVerified;
     transformedReport.outsideData.disease = transformedReport.outsideData.disease || {};
     transformedReport.outsideData.commenter = transformedReport.outsideData.metadata ? transformedReport.outsideData.metadata.commenter : null;
     this.transformAssayMessages(transformedReport.outsideData.assayMessages);
+    this.calculateMoiSummary(transformedReport.outsideData.variantReport);
 
     this.transformAssignmentLogic(transformedReport.matchData.assignmentReport);
     this.transformAssignmentLogic(transformedReport.outsideData.assignmentReport);
