@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { AuthHttp } from 'angular2-jwt';
+import {Headers, RequestOptions} from '@angular/http';
 
 import { Config } from '../shared/config/env.config';
 import { ApiService } from '../shared/api/api.service';
@@ -57,13 +58,6 @@ export class AliquotApiService extends ApiService {
     return this.http.get(this.url('/message/clia/sample_control/variant_report/' + molecular_id, ''))
       .map(this.extractData)
       .catch(this.handleError);
-
-    // MOCK
-    // return this.http.get('assets/mock-data/clia-variant-reports-pc-mocha.json')
-    //   .map(this.extractData)
-    //   // .do(data => console.log('server data:', data))  // debug
-    //   .catch(this.handleError);
-
   }
 
   validateAnalysisId(msn: string, analysisId: string) {
@@ -88,16 +82,19 @@ export class AliquotApiService extends ApiService {
       });
   }
 
-  getDocumentPresignedUrls(msn: string, analysisId: string, documentFile: string): Observable<[string]> {
-    return Observable.forkJoin(
-      this.http.put(`${this.baseApiUrl}/message/clia/aliquot/MSN-${msn}`,
-        { molecularSequenceNumber: 'MSN-' + msn, analysisId: analysisId, filename: documentFile }),
-    ).map(
-      data => {
-        return [
-          this.extractData(data[0])
-        ] as [string];
-      });
+  getDocumentPresignedUrls(msn: string, analysisId: string, documentFile: string): Observable<string> {
+    let file_url:string = analysisId.slice(0, analysisId.lastIndexOf('/'))+"/"+documentFile;
+
+    let url = Config.API.PATIENT+'/patients/'+msn+'/upload_url';
+    let body = JSON.stringify({ "s3_url": file_url });
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.post(url, body, options).map(data =>  {
+      return [
+        this.extractData(data)
+      ] as any;
+    });
   }
 
   notifyAfterUpload(msn: string, body: any): Observable<any | ApiStatusUpdateError> {
