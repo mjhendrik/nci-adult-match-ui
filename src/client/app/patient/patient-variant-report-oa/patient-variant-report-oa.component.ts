@@ -299,6 +299,10 @@ export class PatientVariantReportOutsideAssayComponent
       && data.assignmentReport.reasons.length;
   }
 
+  hasReportData(data: any): boolean {
+    return !!data && data.analysisId;
+  }
+
   private showConfirmation(
     confirmTitle: string,
     confirmMessage: string,
