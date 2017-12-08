@@ -31,7 +31,7 @@
                     <select [(ngModel)]="isOutsideAssayWorkflow" class="form-control form-control-purple input-sm">
                       <option [ngValue]="null">Any</option>
                       <option [ngValue]="true">Only Outside Assay Patients</option>
-                      <option [ngValue]="false">Only Regular Patients</option>
+                      <option [ngValue]="false">Only Standard Patients</option>
                     </select>
                   </label>
                 </div>
@@ -59,6 +59,11 @@
               <th>
                 <mfDefaultSorter (SortStatus)="sortStatus($event)" by="currentPatientStatus">
                   <span class="table-header">Status</span>
+                </mfDefaultSorter>
+              </th>
+              <th>
+                <mfDefaultSorter (SortStatus)="sortStatus($event)" by="patientType">
+                  <span class="table-header">Patient Type</span>
                 </mfDefaultSorter>
               </th>
               <th>
@@ -95,6 +100,7 @@
                   <i class="fa fa-user"></i> {{item.patientSequenceNumber | dashify}}</a>
               </td>
               <td [colorCodePatients]="item.currentPatientStatus">{{item.currentPatientStatus | dashify}}</td>
+              <td>{{item.patientType | dashify}}</td>
               <td>{{item.currentStepNumber | dashify}}</td>
               <td>{{item.diseases.shortName | dashify}}</td>
               <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
