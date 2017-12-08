@@ -32,35 +32,35 @@ class DataResolver implements Resolve<VariantReportComparisonData> {
     const psn: string = route.params.patientSequenceNumber;
 
     const reportObservable = this.patientApi
-      .getOutsideAssayComparisonVariantReport(psn)
-      .map(comparisonData => {
-        if (comparisonData.outsideData && comparisonData.outsideData.analysisId && comparisonData.outsideData.variantReport) {
-          let outsideVariantReport = comparisonData.outsideData.variantReport;
-          delete outsideVariantReport.singleNucleotideVariantAndIndels;
-          return this.treatmentArmApi
-            .getAmois(outsideVariantReport)
-            .map(updatedVariantReport => {
-              this.transformer.replaceVariantReportTables(outsideVariantReport, updatedVariantReport);
-              return comparisonData;
-            });
-        } else {
-          return comparisonData;
-        }
-      })
-      .map((comparisonData) => {
-        if (comparisonData.matchData && comparisonData.matchData.analysisId && comparisonData.matchData.variantReport) {
-          let matchReport = comparisonData.matchData.variantReport;
-          delete matchReport.singleNucleotideVariantAndIndels;
-          return this.treatmentArmApi
-            .getAmois(matchReport)
-            .map(updatedVariantReport => {
-              this.transformer.replaceVariantReportTables(matchReport, updatedVariantReport);
-              return comparisonData;
-            });
-        } else {
-          return comparisonData;
-        }
-      });
+      .getOutsideAssayComparisonVariantReport(psn);
+      // .map(comparisonData => {
+      //   if (comparisonData.outsideData && comparisonData.outsideData.analysisId && comparisonData.outsideData.variantReport) {
+      //     let outsideVariantReport = comparisonData.outsideData.variantReport;
+      //     delete outsideVariantReport.singleNucleotideVariantAndIndels;
+      //     return this.treatmentArmApi
+      //       .getAmois(outsideVariantReport)
+      //       .map(updatedVariantReport => {
+      //         this.transformer.replaceVariantReportTables(outsideVariantReport, updatedVariantReport);
+      //         return comparisonData;
+      //       });
+      //   } else {
+      //     return comparisonData;
+      //   }
+      // })
+      // .map((comparisonData) => {
+      //   if (comparisonData.matchData && comparisonData.matchData.analysisId && comparisonData.matchData.variantReport) {
+      //     let matchReport = comparisonData.matchData.variantReport;
+      //     delete matchReport.singleNucleotideVariantAndIndels;
+      //     return this.treatmentArmApi
+      //       .getAmois(matchReport)
+      //       .map(updatedVariantReport => {
+      //         this.transformer.replaceVariantReportTables(matchReport, updatedVariantReport);
+      //         return comparisonData;
+      //       });
+      //   } else {
+      //     return comparisonData;
+      //   }
+      // });
 
     const isOutsideAssayReport: boolean = route.queryParamMap.get('isOutsideAssay') === 'true';
 
