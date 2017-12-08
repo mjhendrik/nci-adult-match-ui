@@ -13,7 +13,6 @@ import { Observable } from 'rxjs/Observable';
 import { PatientVariantReportComponent } from './patient-variant-report.component';
 import { AuthGuard } from './../../shared/auth/auth.guard.service';
 import { VariantReportSimpleTableModule } from '../../shared/variant-report-simple-table/variant-report-simple-table.module';
-
 import { PatientApiService } from '../patient-api.service';
 import { ViewDataTransformer } from '../view-data-transformer.service';
 import { VariantReportData } from '../variant-report-data';
@@ -38,13 +37,17 @@ class DataResolver implements Resolve<VariantReportData> {
       this.patientApi.getPatientDetails(psn).flatMap(patientData => {
         let patient = this.transformer.transformPatient(patientData) || {};
         let variantReport = this.transformer.findVariantReport(patient, analysisId);
-        delete variantReport.singleNucleotideVariantAndIndels;
-        return this.treatmentArmApi
-          .getAmois(variantReport)
-          .map(updatedVariantReport => {
-            this.transformer.replaceVariantReportTables(variantReport, updatedVariantReport);
-            return patient;
-          });
+        if (variantReport) {
+          delete variantReport.singleNucleotideVariantAndIndels;
+          return this.treatmentArmApi
+            .getAmois(variantReport)
+            .map(updatedVariantReport => {
+              this.transformer.replaceVariantReportTables(variantReport, updatedVariantReport);
+              return patient;
+            });
+        } else {
+          return patient;
+        }
       }),
       this.patientApi.getPatientCopyNumberReport(psn, analysisId),
       this.patientApi.getPatientVariantReportOcp(psn, analysisId)
