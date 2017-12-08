@@ -34,13 +34,27 @@ class DataResolver implements Resolve<VariantReportComparisonData> {
     const reportObservable = this.patientApi
       .getOutsideAssayComparisonVariantReport(psn)
       .map(comparisonData => {
-        let outsideVariantReport: any;
-        if (outsideVariantReport) {
+        if (comparisonData.outsideData && comparisonData.outsideData.analysisId && comparisonData.outsideData.variantReport) {
+          let outsideVariantReport = comparisonData.outsideData.variantReport;
           delete outsideVariantReport.singleNucleotideVariantAndIndels;
           return this.treatmentArmApi
             .getAmois(outsideVariantReport)
             .map(updatedVariantReport => {
               this.transformer.replaceVariantReportTables(outsideVariantReport, updatedVariantReport);
+              return comparisonData;
+            });
+        } else {
+          return comparisonData;
+        }
+      })
+      .map((comparisonData) => {
+        if (comparisonData.matchData && comparisonData.matchData.analysisId && comparisonData.matchData.variantReport) {
+          let matchReport = comparisonData.matchData.variantReport;
+          delete matchReport.singleNucleotideVariantAndIndels;
+          return this.treatmentArmApi
+            .getAmois(matchReport)
+            .map(updatedVariantReport => {
+              this.transformer.replaceVariantReportTables(matchReport, updatedVariantReport);
               return comparisonData;
             });
         } else {
@@ -58,7 +72,7 @@ class DataResolver implements Resolve<VariantReportComparisonData> {
     /  execute the 2 OCP and CNV requests in parallel.
     /  After all 2 requests have returned data, `map` the resulting 3 elements to process further
     */
-    return reportObservable.flatMap(comparisonData => Observable.forkJoin(
+    return reportObservable.flatMap((comparisonData: VariantReportComparisonData) => Observable.forkJoin(
       Observable.of(comparisonData),
       this.patientApi.getPatientCopyNumberReport(psn, comparisonData.matchData.analysisId),
       this.patientApi.getPatientVariantReportOcp(psn, comparisonData.matchData.analysisId)
