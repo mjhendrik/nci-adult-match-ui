@@ -87,7 +87,8 @@ export class AliquotApiService extends ApiService {
 
     let url = Config.API.PATIENT+'/patients/'+msn+'/upload_url';
     let body = JSON.stringify({ "s3_url": file_url });
-    let headers = new Headers({ 'Content-Type': 'application/json' });
+
+    let headers = new Headers( { 'Content-Type': 'application/json'});
     let options = new RequestOptions({ headers: headers });
 
     return this.http.post(url, body, options).map(data =>  {

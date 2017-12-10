@@ -129,6 +129,9 @@ docker run --name "nci-adult-match-ui" -it -p 5555:80  "fnlcr/nci-adult-match-ui
 
 ### Mongo connection refused  (ex: mongo:27017: [Errno 111] Connection refused)
 
+###Creating network "nciadultmatchui_adult-match" with the default driver
+   ERROR: readlink /var/lib/docker/overlay2: invalid argument
+   
 Following solutions are tested.  One solution works. (Good Luck :-))
 
 1. docker-compose down
@@ -141,5 +144,6 @@ Following solutions are tested.  One solution works. (Good Luck :-))
    
 3. docker-compose down
    Docker Engine hard RESET (Go to Docker Engine Preferences) select --> 'Reset to factory defaults'
+   In question when Docker restarts: 'copy default configuration to new Docker' -->  SKIP
    docker login <-- Log in the terminal to docker hub
    docker-compose up ...

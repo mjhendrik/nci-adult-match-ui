@@ -13,7 +13,8 @@ import {
   HttpEventType,
   HttpResponse,
   HttpClient,
-  HttpRequest
+  HttpRequest,
+  HttpHeaders
 } from '@angular/common/http';
 import {
   BsModalRef,
@@ -125,7 +126,12 @@ export class DocumentUploadContentComponent implements OnInit {
 
   uploadFile(url: string, file: any): void {
 
+    let headers: any = new HttpHeaders(
+      { 'Content-Type': 'application/json' }
+    );
+
     const uploadFile = new HttpRequest('POST', url, file, {
+      headers: headers,
       reportProgress: true,
       responseType: 'text'
     });
