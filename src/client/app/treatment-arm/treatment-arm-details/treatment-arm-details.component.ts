@@ -325,7 +325,7 @@ OFF_TRIAL`.indexOf(element.assignmentStatusOutcome) !== -1) {
   }
 
   getVariantReportLink(report: any): string {
-    if (report.isOutsideAssayWorkflow) {
+    if (report.patientType === 'OUTSIDE_ASSAY') {
       return `/patients/${report.patientSequenceNumber}/variant_reports_oa/${report.analysisId}`;
     } else {
       return `/patients/${report.patientSequenceNumber}/biopsies/${report.biopsySequenceNumber}/variant_reports/${report.analysisId}`;
@@ -333,7 +333,7 @@ OFF_TRIAL`.indexOf(element.assignmentStatusOutcome) !== -1) {
   }
 
   getVariantReportQueryParams(report: any): any {
-    if (report.isOutsideAssayWorkflow) {
+    if (report.patientType === 'OUTSIDE_ASSAY') {
       return { isOutsideAssay: report.isOutsideAssay };
     } else {
       return null;

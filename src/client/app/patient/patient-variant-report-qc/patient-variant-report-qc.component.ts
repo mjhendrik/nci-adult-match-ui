@@ -59,7 +59,7 @@ export class PatientVariantReportQcComponent implements OnInit, QcVariantReportD
   }
 
   getVariantReportLink(report: any): string {
-    if (report.isOutsideAssayWorkflow) {
+    if (report.patientType === 'OUTSIDE_ASSAY') {
       return `/patients/${this.psn}/variant_reports_oa/${report.analysisId}`;
     } else {
       return `/patients/${this.psn}/biopsies/${report.biopsySequenceNumber}/variant_reports/${report.analysisId}`;
@@ -67,7 +67,7 @@ export class PatientVariantReportQcComponent implements OnInit, QcVariantReportD
   }
 
   getVariantReportQueryParams(report: any): any {
-    if (report.isOutsideAssayWorkflow) {
+    if (report.patientType === 'OUTSIDE_ASSAY') {
       return { isOutsideAssay: report.isOutsideAssay };
     } else {
       return null;

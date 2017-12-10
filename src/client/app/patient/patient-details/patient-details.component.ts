@@ -147,7 +147,7 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
   }
 
   getVariantReportLink(report: any): string {
-    if (report.isOutsideAssayWorkflow) {
+    if (report.patientType === 'OUTSIDE_ASSAY') {
       return `/patients/${this.patient.patientSequenceNumber}/variant_reports_oa/${report.analysisId}`;
     } else {
       return `/patients/${this.patient.patientSequenceNumber}/biopsies/${report.biopsySequenceNumber}/variant_reports/${report.analysisId}`;
@@ -155,7 +155,7 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
   }
 
   getVariantReportQueryParams(report: any): any {
-    if (report.isOutsideAssayWorkflow) {
+    if (report.patientType === 'OUTSIDE_ASSAY') {
       return { isOutsideAssay: report.isOutsideAssay };
     } else {
       return null;

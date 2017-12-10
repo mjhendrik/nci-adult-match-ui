@@ -272,7 +272,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   getVariantReportLink(report: any): string {
-    if (report.isOutsideAssayWorkflow) {
+    if (report.patientType === 'OUTSIDE_ASSAY') {
       return `/patients/${report.patientSequenceNumber}/variant_reports_oa/${report.analysisId ? report.analysisId : report.confirmationBiopsy.analysisId}`;
     } else {
       // tslint:disable-next-line:max-line-length
@@ -281,7 +281,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   getVariantReportQueryParams(report: any): any {
-    if (report.isOutsideAssayWorkflow) {
+    if (report.patientType === 'OUTSIDE_ASSAY') {
       return { isOutsideAssay: report.isOutsideAssay };
     } else {
       return null;
