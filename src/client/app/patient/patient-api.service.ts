@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Response } from '@angular/http';
+import { Response, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { AuthHttp } from 'angular2-jwt';
 
@@ -224,4 +224,11 @@ export class PatientApiService extends ApiService {
       .catch(this.handleError);
   }
 
+  getDocumentPresignedUrls(psn: string, documentFile: string): Observable<string> {
+    let documentFileName: string = documentFile.slice(0, documentFile.lastIndexOf('/')) + '/' + documentFile;
+
+    return this.http.put(`${this.baseApiUrl}/patients/presign_url`, { psn: psn, documentFile: documentFileName })
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
 }

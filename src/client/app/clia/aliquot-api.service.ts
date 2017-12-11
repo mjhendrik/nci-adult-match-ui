@@ -82,22 +82,6 @@ export class AliquotApiService extends ApiService {
       });
   }
 
-  getDocumentPresignedUrls(msn: string, analysisId: string, documentFile: string): Observable<string> {
-    let file_url:string = analysisId.slice(0, analysisId.lastIndexOf('/'))+"/"+documentFile;
-
-    let url = Config.API.PATIENT+'/patients/'+msn+'/upload_url';
-    let body = JSON.stringify({ "s3_url": file_url });
-
-    let headers = new Headers( { 'Content-Type': 'application/json'});
-    let options = new RequestOptions({ headers: headers });
-
-    return this.http.post(url, body, options).map(data =>  {
-      return [
-        this.extractData(data)
-      ] as any;
-    });
-  }
-
   notifyAfterUpload(msn: string, body: any): Observable<any | ApiStatusUpdateError> {
     return this.http.put(`${this.baseApiUrl}/message/clia/aliquot/` + msn, body)
       .map(this.extractData)
