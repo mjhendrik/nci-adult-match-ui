@@ -135,27 +135,11 @@ export class CliaParentComponent implements OnInit {
     this.apiSample.getCliaDetailsNTC(this.cliaTypeName)
       .subscribe(details => {
         let gmt = new GmtPipe();
-        let data:{};
-
         this.tableNTCData = details.map((x: any) => {
           x.molecular_id = x.molecularSequenceNumber;
           x.date_molecular_id_created = gmt.transform(x.dateCreated);
-          x.date_variant_received = (typeof x.dateReceived!=='undefined') ? gmt.transform(x.dateReceived) : null;
-          if(x.date_variant_received!==null){
-            x.report_status = (x.passed==false) ? 'FAILED' : 'PASSED';
-            x.tvc_version = (typeof x.nextGenerationSequence !== 'undefined') ? x.nextGenerationSequence.tvcVersion : null;
-            x.analysis_id = (typeof x.nextGenerationSequence !== 'undefined') ? x.nextGenerationSequence.ionReporterResults.jobName : null;
-
-            data = {
-              molecular_id: x.molecular_id,
-              analysis_id: x.analysis_id,
-              status: x.report_status,
-              date_variant_received: x.dateReceived,
-              torrent_variant_caller_version: x.tvc_version
-            };
-
-            this.cliaData.transferData = data;
-          };
+          x.date_variant_received = gmt.transform(x.date_variant_received);
+          x.report_status = x.passed;
           return x;
         });
         // this.tableNTCData.splice(-1, 1); --> Check if you need this in the new message-api implementation
