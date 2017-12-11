@@ -106,7 +106,9 @@ export class ViewDataTransformer {
     transformedReport.matchData.disease = transformedReport.matchData.disease || {};
     transformedReport.matchData.commenter = transformedReport.matchData.metadata ? transformedReport.matchData.metadata.commenter : null;
     this.transformAssayMessages(transformedReport.matchData.assayMessages);
-    this.calculateMoiSummary(transformedReport.matchData.variantReport);
+    transformedReport.matchData.isVariantReportEditable = this.getVariantReportEditable(transformedReport.matchData);
+    transformedReport.matchData.isAssignmentReportEditable = this.getAssignmentReportEditable(transformedReport.matchData);
+    this.postProcessVariantTables(transformedReport.matchData.variantReport);
 
     transformedReport.outsideData = transformedReport.outsideData || {};
     transformedReport.outsideData.variantReport = transformedReport.outsideData.variantReport || {};
@@ -127,7 +129,9 @@ export class ViewDataTransformer {
     transformedReport.outsideData.disease = transformedReport.outsideData.disease || {};
     transformedReport.outsideData.commenter = transformedReport.outsideData.metadata ? transformedReport.outsideData.metadata.commenter : null;
     this.transformAssayMessages(transformedReport.outsideData.assayMessages);
-    this.calculateMoiSummary(transformedReport.outsideData.variantReport);
+    transformedReport.outsideData.isVariantReportEditable = this.getVariantReportEditable(transformedReport.outsideData);
+    transformedReport.outsideData.isAssignmentReportEditable = this.getAssignmentReportEditable(transformedReport.outsideData);
+    this.postProcessVariantTables(transformedReport.outsideData.variantReport);
 
     this.transformAssignmentLogic(transformedReport.matchData.assignmentReport);
     this.transformAssignmentLogic(transformedReport.outsideData.assignmentReport);
@@ -135,12 +139,6 @@ export class ViewDataTransformer {
     this.precessPassFailVariants(transformedReport.comparisonVariantReport);
 
     transformedReport.showOutsideAssay = isOutsideAssayReport;
-
-    transformedReport.outsideData.isVariantReportEditable = this.getVariantReportEditable(transformedReport.outsideData);
-    transformedReport.outsideData.isAssignmentReportEditable = this.getAssignmentReportEditable(transformedReport.outsideData);
-
-    transformedReport.matchData.isVariantReportEditable = this.getVariantReportEditable(transformedReport.matchData);
-    transformedReport.matchData.isAssignmentReportEditable = this.getAssignmentReportEditable(transformedReport.matchData);
 
     transformedReport.showComparison = transformedReport.outsideData.variantReportStatus &&
       transformedReport.outsideData.variantReportStatus === 'CONFIRMED' &&
@@ -178,7 +176,7 @@ export class ViewDataTransformer {
     let fullItem: any = item;
     let metadata = fullItem.metadata || {};
     metadata.comment = item.comment;
-    this.calculateMoiSummary(variantReport.variantReport);
+    this.postProcessVariantTables(variantReport.variantReport);
   }
 
   updateOutsidePatientReport(report: VariantReportComparisonData): void {
@@ -319,7 +317,7 @@ export class ViewDataTransformer {
       = (sourceVariantReport.singleNucleotideVariants || [])
         .concat(sourceVariantReport.indels || []);
 
-    this.calculateMoiSummary(sourceVariantReport);
+    this.postProcessVariantTables(sourceVariantReport);
 
     return sourceVariantReport;
   }
@@ -474,8 +472,9 @@ export class ViewDataTransformer {
       variantReport.isOutsideAssayWorkflow = transformedBiopsy.isOutsideAssayWorkflow;
       variantReport.isOutsideAssay = transformedBiopsy.isOutsideAssay;
       variantReport.variantReportFileReceivedDate = analysis.variantReportFileReceivedDate;
-
-      this.calculateMoiSummary(variantReport);
+      variantReport.isAssignmentReportEditable = this.getAssignmentReportEditable(variantReport);
+  
+      this.postProcessVariantTables(variantReport);
 
       transformedPatient.analyses[message.ionReporterResults.jobName] = analysis;
 
@@ -522,7 +521,7 @@ export class ViewDataTransformer {
     }
   }
 
-  private calculateMoiSummary(variantReport: any): void {
+  private postProcessVariantTables(variantReport: any): void {
     if (!variantReport)
       return;
 
@@ -549,6 +548,11 @@ export class ViewDataTransformer {
 
         if (item.metadata) {
           item.comment = item.metadata.comment;
+        }
+
+        if (variantReport.isAssignmentReportEditable) {
+          // Check all variants by default if the report is in editable mode
+          item.confirmed = !item.comment;
         }
       }
     }
