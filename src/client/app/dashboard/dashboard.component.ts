@@ -281,8 +281,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   getVariantReportQueryParams(report: any): any {
-    if (report.patientType === 'OUTSIDE_ASSAY') {
+    if (report.patientType === 'OUTSIDE_ASSAY' && report.isOutsideAssay !== undefined) {
       return { isOutsideAssay: report.isOutsideAssay };
+    } else if (report.patientType === 'OUTSIDE_ASSAY' && report.isOutsideAssay === undefined) {
+      if (report.patientOutsideAssayLabReport) {
+        return { isOutsideAssay: true };
+      } else {
+        return { isOutsideAssay: false };
+      }
     } else {
       return null;
     }
