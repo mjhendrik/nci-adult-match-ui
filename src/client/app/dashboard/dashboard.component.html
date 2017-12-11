@@ -197,7 +197,7 @@
                   </td>
                   <td routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                     <treatment-arm-link *ngIf="item.treatmentArmId" [treatmentArmId]="item.treatmentArmId" [version]="item.treatmentArmVersion"
-                      [removePrefix]="true"></treatment-arm-link>
+                      [removePrefix]="false"></treatment-arm-link>
                     <span *ngIf="!item.treatmentArmId" class="text-muted">No available treatment arm</span>
                   </td>
                   <td class="text-center">

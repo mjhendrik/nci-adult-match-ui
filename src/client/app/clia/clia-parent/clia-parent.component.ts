@@ -70,7 +70,7 @@ export class CliaParentComponent implements OnInit {
     private apiIon: IonReportersApiService,
     private route: ActivatedRoute,
     private profile: UserProfileService,
-  private cliaData: CliaDataService ) {
+    private cliaData: CliaDataService) {
   }
 
   ngOnInit() {
@@ -105,7 +105,7 @@ export class CliaParentComponent implements OnInit {
     this.apiSample.getCliaDetailsPC(this.cliaTypeName)
       .subscribe(details => {
         let gmt = new GmtPipe();
-        let data:{};
+        let data: {};
 
         this.tablePCData = details.map((x: any) => {
           x.molecular_id = x.molecularSequenceNumber;
@@ -178,19 +178,19 @@ export class CliaParentComponent implements OnInit {
   autoLoadDataIon() {
     // Observable.interval(1000 * 60).subscribe(x => {
 
-      this.apiIon.getCliaIon(this.cliaType)
-        .subscribe(details => {
+    this.apiIon.getCliaIon(this.cliaType)
+      .subscribe(details => {
 
-          let gmt = new GmtPipe();
+        let gmt = new GmtPipe();
 
-          this.ionReportersData = details.map(x => {
-            x.lastContactDate = gmt.transform(x.lastContactDate);
-            return x;
-          });
-
+        this.ionReportersData = details.map(x => {
+          x.lastContactDate = gmt.transform(x.lastContactDate);
+          return x;
         });
 
-      this.timestamp = new Date();
+      });
+
+    this.timestamp = new Date();
 
     // });
   };
