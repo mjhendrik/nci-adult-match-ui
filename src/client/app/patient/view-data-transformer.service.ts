@@ -271,7 +271,8 @@ export class ViewDataTransformer {
     variantReport.assayMessages = analysis.assayMessages || [];
     this.transformAssayMessages(variantReport.assayMessages);
 
-    variantReport.isVariantReportEditable = this.getVariantReportEditable(analysis.variantReport);
+    variantReport.isVariantReportEditable = this.getVariantReportEditable(variantReport);
+    this.postProcessVariantTables(variantReport);
     variantReport.isAssignmentReportEditable = true;
     variantReport.isOutsideAssayWorkflow = false;
     variantReport.disease = transformedPatient.disease || {};
@@ -550,7 +551,7 @@ export class ViewDataTransformer {
           item.comment = item.metadata.comment;
         }
 
-        if (variantReport.isAssignmentReportEditable) {
+        if (variantReport.isVariantReportEditable) {
           // Check all variants by default if the report is in editable mode
           item.confirmed = !item.comment;
         }
