@@ -42,6 +42,7 @@ export class TreatmentArmLinkComponent {
         [this.prefix, this.suffix] = this.splitId();
     }
     get treatmentArmId(): string {
+        if (this.id === 'a') delete this.id; // hack to fix sorting (for some reason only this field has null sorted as desc, it's sorted by asc elsewhere)
         return this.id;
     }
 
