@@ -334,7 +334,7 @@ OFF_TRIAL`.indexOf(element.assignmentStatusOutcome) !== -1) {
 
   getVariantReportQueryParams(report: any): any {
     if (report.patientType === 'OUTSIDE_ASSAY') {
-      return { isOutsideAssay: report.isOutsideAssay };
+      return { isOutsideAssay: true };
     } else {
       return null;
     }
