@@ -109,19 +109,23 @@ export class PatientVariantReportOutsideAssayComponent
   confirmOutsideVariantReport(): void {
     const action = () => {
       console.info('Confirming outside lab variant report: ' + this.outsideData.analysisId);
-      this.patientApi.updateVariantReport(this.patientSequenceNumber, this.outsideData.biopsySequenceNumber, this.outsideData.analysisId, true).subscribe(
-        (x: ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
-          switch (x.kind) {
-            case 'error':
-              this.showToast(x.message, true);
-              break;
-            case 'success':
-              this.transformer.updateVariantReportStatus(this.outsideData, x);
-              this.showToast(`Variant Report ${this.outsideData.analysisId} has been confirmed`, false);
-              break;
+      this.patientApi
+        .updateVariants(this.patientSequenceNumber, this.outsideData.biopsySequenceNumber, this.outsideData.analysisId, this.transformer.getVariants(this))
+        // tslint:disable-next-line:max-line-length
+        .flatMap(() => this.patientApi.updateVariantReportStatus(this.patientSequenceNumber, this.outsideData.biopsySequenceNumber, this.outsideData.analysisId, true))
+        .subscribe(
+          (x: ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
+            switch (x.kind) {
+              case 'error':
+                this.showToast(x.message, true);
+                break;
+              case 'success':
+                this.transformer.updateVariantReportStatus(this, x);
+                this.showToast(`Variant Report ${this.outsideData.analysisId} has been confirmed`, false);
+                break;
+            }
           }
-        }
-      );
+        );
     };
 
     this.showConfirmation(
@@ -136,7 +140,7 @@ export class PatientVariantReportOutsideAssayComponent
   rejectOutsideVariantReport(): void {
     const action = () => {
       console.info('Rejecting outside lab variant report: ' + this.outsideData.analysisId);
-      this.patientApi.updateVariantReport(this.patientSequenceNumber, this.outsideData.biopsySequenceNumber, this.outsideData.analysisId, false).subscribe(
+      this.patientApi.updateVariantReportStatus(this.patientSequenceNumber, this.outsideData.biopsySequenceNumber, this.outsideData.analysisId, false).subscribe(
         (x: ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
           switch (x.kind) {
             case 'error':
@@ -190,19 +194,23 @@ export class PatientVariantReportOutsideAssayComponent
   confirmMatchVariantReport(): void {
     const action = () => {
       console.info('Confirming MATCH variant report: ' + this.matchData.analysisId);
-      this.patientApi.updateVariantReport(this.patientSequenceNumber, this.matchData.biopsySequenceNumber, this.matchData.analysisId, true).subscribe(
-        (x: ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
-          switch (x.kind) {
-            case 'error':
-              this.showToast(x.message, true);
-              break;
-            case 'success':
-              this.transformer.updateVariantReportStatus(this.matchData, x);
-              this.showToast(`Variant Report ${this.matchData.analysisId} has been confirmed`, false);
-              break;
+      this.patientApi
+        .updateVariants(this.patientSequenceNumber, this.matchData.biopsySequenceNumber, this.matchData.analysisId, this.transformer.getVariants(this))
+        // tslint:disable-next-line:max-line-length
+        .flatMap(() => this.patientApi.updateVariantReportStatus(this.patientSequenceNumber, this.matchData.biopsySequenceNumber, this.matchData.analysisId, true))
+        .subscribe(
+          (x: ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
+            switch (x.kind) {
+              case 'error':
+                this.showToast(x.message, true);
+                break;
+              case 'success':
+                this.transformer.updateVariantReportStatus(this, x);
+                this.showToast(`Variant Report ${this.matchData.analysisId} has been confirmed`, false);
+                break;
+            }
           }
-        }
-      );
+        );
     };
 
     this.showConfirmation(
@@ -217,7 +225,7 @@ export class PatientVariantReportOutsideAssayComponent
   rejectMatchVariantReport(): void {
     const action = () => {
       console.info('Rejecting MATCH variant report: ' + this.matchData.analysisId);
-      this.patientApi.updateVariantReport(this.patientSequenceNumber, this.matchData.biopsySequenceNumber, this.matchData.analysisId, false).subscribe(
+      this.patientApi.updateVariantReportStatus(this.patientSequenceNumber, this.matchData.biopsySequenceNumber, this.matchData.analysisId, false).subscribe(
         (x: ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
           switch (x.kind) {
             case 'error':
