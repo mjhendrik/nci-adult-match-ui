@@ -138,7 +138,7 @@ export class TreatmentArmDetailsComponent implements OnInit {
     {
       data: [],
       label: 'Off Trial'
-      // FORMERLY_ON_ARM_OFF_TRIAL, FORMERLY_ON_ARM_PROGRESSED, OFF_TRIAL_DECEASED, OFF_TRIAL
+      // FORMERLY_ON_ARM_OFF_TRIAL, FORMERLY_ON_ARM_PROGRESSED, OFF_TRIAL_DECEASED, OFF_TRIAL, PROGRESSION, PROGRESSION_REBIOPSY
     },
     {
       data: [],
@@ -151,7 +151,7 @@ export class TreatmentArmDetailsComponent implements OnInit {
       // PENDING_APPROVAL, PENDING_CONFIRMATION
     }
   ];
-  // NOT_ELIGIBLE, OFF_TRIAL_NOT_CONSENTED, PROGRESSION, PROGRESSION_REBIOPSY
+  // NOT_ELIGIBLE, OFF_TRIAL_NOT_CONSENTED
 
 
 
@@ -180,8 +180,8 @@ export class TreatmentArmDetailsComponent implements OnInit {
     if (this.tableData[this.versionIndex] !== null) {
       let assignmentRecords = this.tableData[this.versionIndex].summaryReport.assignmentRecords;
 
-      this.barChartLabels = assignmentRecords.filter((x: any) => `FORMERLY_ON_ARM_OFF_TRIAL, FORMERLY_ON_ARM_PROGRESSED, OFF_TRIAL_DECEASED,
-OFF_TRIAL, PENDING_CONFIRMATION, PENDING_APPROVAL, ON_TREATMENT_ARM`.indexOf(x.assignmentStatusOutcome) !== -1).map((x: any) => {
+      this.barChartLabels = assignmentRecords.filter((x: any) => `FORMERLY_ON_ARM_OFF_TRIAL, FORMERLY_ON_ARM_PROGRESSED, PROGRESSION, PROGRESSION_REBIOPSY, 
+OFF_TRIAL_DECEASED, OFF_TRIAL, PENDING_CONFIRMATION, PENDING_APPROVAL, ON_TREATMENT_ARM`.indexOf(x.assignmentStatusOutcome) !== -1).map((x: any) => {
           return x.diseases[0].shortName + ' (' + x.diseases[0]._id + ')';
         });
       this.barChartLabels = Array.from(new Set(this.barChartLabels));
@@ -216,7 +216,7 @@ OFF_TRIAL, PENDING_CONFIRMATION, PENDING_APPROVAL, ON_TREATMENT_ARM`.indexOf(x.a
               tastatus++;
             } else if ('PENDING_APPROVAL,PENDING_CONFIRMATION'.indexOf(element.assignmentStatusOutcome) !== -1) {
               pendingstatus++;
-            } else if (`FORMERLY_ON_ARM_OFF_TRIAL, FORMERLY_ON_ARM_PROGRESSED, OFF_TRIAL_DECEASED, 
+            } else if (`FORMERLY_ON_ARM_OFF_TRIAL, FORMERLY_ON_ARM_PROGRESSED, PROGRESSION, PROGRESSION_REBIOPSY, OFF_TRIAL_DECEASED, 
 OFF_TRIAL`.indexOf(element.assignmentStatusOutcome) !== -1) {
               offtrailstatus++;
             }

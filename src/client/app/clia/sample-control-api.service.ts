@@ -123,18 +123,14 @@ export class SampleControlApiService extends ApiService {
   }
 
   downloadCliaVcf(molecular_id: string): Observable<any> {
-
     //   return this.http.get(Config.API.SAMPLE_CONTROLS + '/sample_controls/files/' + molecular_id + '/vcf_name') // sample control
-
     return this.http.get(Config.API.MESSAGE + '/message/clia/aliquot/sample_control/files/' + molecular_id + '/vcf') // message
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   generateMsn(site: string, control_type: string): Observable<any> {
-
     // return this.http.post(Config.API.SAMPLE_CONTROLS + '/sample_controls?site=' + site + '&control_type=' + control_type, '') // sample control
-
     if (control_type === 'positive') control_type = 'sample_control';
     if (control_type === 'no_template') control_type = 'ntc_control';
     if (control_type === 'proficiency_competency') control_type = 'proficiency_competency_control';
