@@ -123,19 +123,22 @@ export class PatientVariantReportComponent implements OnInit, OnDestroy, Variant
   confirmVariantReport(): void {
     const action = () => {
       console.info('Confirming variant report: ' + this.analysisId);
-      this.patientApi.updateVariantReport(this.patientSequenceNumber, this.biopsySequenceNumber, this.analysisId, true).subscribe(
-        (x: ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
-          switch (x.kind) {
-            case 'error':
-              this.showToast(x.message, true);
-              break;
-            case 'success':
-              this.transformer.updateVariantReportStatus(this, x);
-              this.showToast(`Variant Report ${this.analysisId} has been confirmed`, false);
-              break;
+      this.patientApi
+        .updateVariants(this.patientSequenceNumber, this.biopsySequenceNumber, this.analysisId, this.transformer.getVariants(this))
+        .flatMap(() => this.patientApi.updateVariantReportStatus(this.patientSequenceNumber, this.biopsySequenceNumber, this.analysisId, true))
+        .subscribe(
+          (x: ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
+            switch (x.kind) {
+              case 'error':
+                this.showToast(x.message, true);
+                break;
+              case 'success':
+                this.transformer.updateVariantReportStatus(this, x);
+                this.showToast(`Variant Report ${this.analysisId} has been confirmed`, false);
+                break;
+            }
           }
-        }
-      );
+        );
     };
 
     this.showConfirmation(
@@ -151,7 +154,9 @@ export class PatientVariantReportComponent implements OnInit, OnDestroy, Variant
   rejectVariantReport(): void {
     const action = () => {
       console.info('Rejecting variant report: ' + this.analysisId);
-      this.patientApi.updateVariantReport(this.patientSequenceNumber, this.biopsySequenceNumber, this.analysisId, false).subscribe(
+      this.patientApi
+        .updateVariantReportStatus(this.patientSequenceNumber, this.biopsySequenceNumber, this.analysisId, false)
+        .subscribe(
         (x: ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
           switch (x.kind) {
             case 'error':

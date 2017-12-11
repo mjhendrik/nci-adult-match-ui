@@ -7,6 +7,7 @@ import { Config } from '../shared/config/env.config';
 import { DownloadService } from '../shared/utils/download.service';
 import { ApiService } from '../shared/api/api.service';
 import { VariantReportComparisonData } from './variant-report-comparison-data';
+import { VariantReportData } from "./variant-report-data";
 
 export interface ApiStatusUpdateError {
   kind: 'error';
@@ -120,12 +121,34 @@ export class PatientApiService extends ApiService {
       });
   }
 
-  updateVariantReport(psn: string, bsn: string, analysisId: string, confirmed: boolean): Observable<ApiStatusUpdateSuccess | ApiStatusUpdateError> {
+  updateVariantReportStatus(psn: string, bsn: string, analysisId: string, confirmed: boolean): Observable<ApiStatusUpdateSuccess | ApiStatusUpdateError> {
     const patch = {
       'status': confirmed ? 'CONFIRMED' : 'REJECTED'
     };
 
     return this.http.patch(`${Config.API.MESSAGE}/message/clia/patient/${psn}/biopsy/${bsn}/variant_reports/${analysisId}`, patch)
+      .map((res: Response) => {
+        const data = res.json();
+        return { kind: 'success', commenter: data.commenter, status: data.status, dateTime: data.dateTime } as ApiStatusUpdateSuccess;
+      })
+      .catch((err: any) => {
+        let message: string;
+        if (err instanceof Response) {
+          const errResp = err.json();
+          message = errResp.message;
+        } else {
+          message = (typeof err === 'string') ? err : err.toString();
+        }
+        return Observable.of({ kind: 'error', message: message } as ApiStatusUpdateError);
+      });
+  }
+
+  updateVariants(psn: string, bsn: string, analysisId: string, variants: any): Observable<ApiStatusUpdateSuccess | ApiStatusUpdateError> {
+    return this.http.patch(
+        // tslint:disable-next-line:max-line-length
+        `${Config.API.MESSAGE}/message/clia/patient/${psn}/biopsy/${bsn}/variant_reports/${analysisId}/variants`,
+        variants
+      )
       .map((res: Response) => {
         const data = res.json();
         return { kind: 'success', commenter: data.commenter, status: data.status, dateTime: data.dateTime } as ApiStatusUpdateSuccess;

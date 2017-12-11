@@ -272,8 +272,8 @@ export class ViewDataTransformer {
     this.transformAssayMessages(variantReport.assayMessages);
 
     variantReport.isVariantReportEditable = this.getVariantReportEditable(variantReport);
+    variantReport.isAssignmentReportEditable = this.getVariantReportEditable(variantReport);
     this.postProcessVariantTables(variantReport);
-    variantReport.isAssignmentReportEditable = true;
     variantReport.isOutsideAssayWorkflow = false;
     variantReport.disease = transformedPatient.disease || {};
     variantReport.commenter = variantReport.metadata ? variantReport.metadata.commenter : null;
@@ -321,6 +321,28 @@ export class ViewDataTransformer {
     this.postProcessVariantTables(sourceVariantReport);
 
     return sourceVariantReport;
+  }
+
+  getVariants(variantReport: any): void {
+    if (!variantReport)
+      return null;
+
+    let variants: any = {};
+
+    for (let tableName of variantTables) {
+      let table = variantReport[tableName];
+
+      if (!table) {
+        continue;
+      }
+
+      for (let item of table) {
+        variants[item.variantId] = {
+          comment: item.comment, 
+          status: item.confirmed ? 'CONFIRMED' : 'UNCONFIRMED'
+        };
+      }
+    }
   }
 
   private precessPassFailVariants(comparisonVariantReport: any): void {
@@ -474,7 +496,7 @@ export class ViewDataTransformer {
       variantReport.isOutsideAssay = transformedBiopsy.isOutsideAssay;
       variantReport.variantReportFileReceivedDate = analysis.variantReportFileReceivedDate;
       variantReport.isAssignmentReportEditable = this.getAssignmentReportEditable(variantReport);
-  
+
       this.postProcessVariantTables(variantReport);
 
       transformedPatient.analyses[message.ionReporterResults.jobName] = analysis;
