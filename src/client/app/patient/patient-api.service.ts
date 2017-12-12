@@ -129,6 +129,9 @@ export class PatientApiService extends ApiService {
         if (err instanceof Response) {
           const errResp = err.json ? err.json() : err;
           message = errResp.error_message ? errResp.error_message : errResp.message;
+        } if (err instanceof Error) {
+          const error = err as Error;
+          message = error.message;
         } else {
           message = (typeof err === 'string') ? err : err.toString();
         }
@@ -151,6 +154,9 @@ export class PatientApiService extends ApiService {
         if (err instanceof Response) {
           const errResp = err.json();
           message = errResp.message;
+        } if (err instanceof Error) {
+          const error = err as Error;
+          message = error.message;
         } else {
           message = (typeof err === 'string') ? err : err.toString();
         }
@@ -173,6 +179,9 @@ export class PatientApiService extends ApiService {
         if (err instanceof Response) {
           const errResp = err.json();
           message = errResp.message;
+        } if (err instanceof Error) {
+          const error = err as Error;
+          message = error.message;
         } else {
           message = (typeof err === 'string') ? err : err.toString();
         }
@@ -203,6 +212,9 @@ export class PatientApiService extends ApiService {
         if (err instanceof Response) {
           const errResp = err.json();
           message = errResp.message;
+        } if (err instanceof Error) {
+          const error = err as Error;
+          message = error.message;
         } else {
           message = (typeof err === 'string') ? err : err.toString();
         }
@@ -225,6 +237,9 @@ export class PatientApiService extends ApiService {
         if (err instanceof Response) {
           const errResp = err.json();
           message = errResp.message;
+        } if (err instanceof Error) {
+          const error = err as Error;
+          message = error.message;
         } else {
           message = (typeof err === 'string') ? err : err.toString();
         }

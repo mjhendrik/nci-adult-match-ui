@@ -616,7 +616,7 @@ export function main() {
     });
 
 
-    fdescribe('when downloadPatientFile', () => {
+    describe('when downloadPatientFile', () => {
       let backend: MockBackend;
       let service: PatientApiService;
       let fakeData: any;
@@ -630,7 +630,7 @@ export function main() {
           download_url: 'fake-url',
         };
         fakeErrorData = {
-          error_message: 'Error: fake-error',
+          message: 'fake-error',
         };
         let options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
@@ -645,7 +645,7 @@ export function main() {
             switch (resp.kind) {
               case 'error':
                 expect(resp.kind).toBe('error');
-                let errorRes = resp as ApiStatusUpdateError;
+                let errorRes = resp as ApiError;
                 expect(errorRes.message).toBe(fakeErrorData.message);
                 break;
               case 'success':
@@ -676,6 +676,7 @@ export function main() {
           .do(resp => {
             expect(resp.kind).toBe('error');
             let errorRes = resp as ApiError;
+            console.log(errorRes);
             expect(errorRes.message).toEqual(fakeErrorData.message);
           })
           .toPromise();
@@ -700,7 +701,7 @@ export function main() {
           dateTime: 'fake-dateTime',
         };
         fakeErrorData = {
-          message: 'Error: fake-error',
+          message: 'fake-error',
         };
         let options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
@@ -770,7 +771,7 @@ export function main() {
           dateTime: 'fake-dateTime',
         };
         fakeErrorData = {
-          message: 'Error: fake-error',
+          message: 'fake-error',
         };
         let options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
@@ -840,7 +841,7 @@ export function main() {
           dateTime: 'fake-dateTime',
         };
         fakeErrorData = {
-          message: 'Error: fake-error',
+          message: 'fake-error',
         };
         let options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
