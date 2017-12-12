@@ -111,7 +111,7 @@
                       <td>{{item.location | dashify}}</td>
                       <td>
                         <span *ngIf="item.trackingNumber!==undefined && item.trackingNumber!=='Local'">
-                          <a href="https://www.fedex.com/apps/fedextrack/?tracknumbers={{item.trackingNumber}}" class="link-none" target="_blank">
+                          <a href="https://www.fedex.com/apps/fedextrack/?tracknumbers={{item.trackingNumber}}" class="link-none" target="_blank" rel="noopener noreferrer">
                             <i class="fa fa-truck"></i> {{item.trackingNumber | dashify}}</a>
                         </span>
                         <span *ngIf="item.trackingNumber===undefined || item.trackingNumber==='Local'">{{item.trackingNumber | dashify}}</span>
