@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs/Observable';
 import { VariantReportComparisonData } from '../variant-report-comparison-data';
 import { VariantReportData } from '../variant-report-data';
-import { ApiStatusUpdateSuccess } from '../patient-api.service';
+import { ApiStatusUpdateSuccess, ApiSuccess, ApiError } from '../patient-api.service';
 
 export class PatientApiServiceStub {
     static makeParsedVcftData = () => {
@@ -3383,8 +3383,9 @@ export class PatientApiServiceMock {
         return Observable.of(350);
     }
 
-    downloadPatientFile(psn: string, url: string): void {
-        ;
+    downloadPatientFile(psn: string, url: string): Observable<ApiSuccess | ApiError> {
+        return Observable.of(
+            { kind: 'success', data: { download_url: 'some-fake-s3-url' } } as ApiSuccess);
     }
 
     getPendingAssignmentReports(): Observable<any[]> {

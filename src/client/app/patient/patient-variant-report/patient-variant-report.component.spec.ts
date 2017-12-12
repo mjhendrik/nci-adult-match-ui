@@ -30,8 +30,8 @@ import { UtilsModule } from '../../shared/utils/utils.module';
 import { BsModalServiceStub } from '../testing/bs-modal.service-stub';
 import { ToastrService } from '../../shared/error-handling/toastr.service';
 import { ToastrServiceStub } from '../testing/toastr-service-stub';
-import { ConfirmableItem } from '../../shared/check-box-with-confirm/check-box-with-confirm.component';
-
+import { DownloadService } from '../../shared/utils/download.service';
+import { DownloadMockService } from '../../shared/testing/download-mock.service';
 
 export function main() {
 
@@ -64,6 +64,7 @@ export function main() {
           { provide: PatientApiService, useClass: MockPatientApiService },
           { provide: BsModalService, useClass: BsModalServiceStub },
           { provide: ToastrService, useClass: ToastrServiceStub },
+          { provide: DownloadService, useClass: DownloadMockService },
           ChangeDetectorRef,
           ViewDataTransformer
         ]
@@ -147,6 +148,7 @@ export function main() {
           { provide: PatientApiService, useClass: PatientApiServiceMock },
           { provide: BsModalService, useClass: BsModalServiceStub },
           { provide: ToastrService, useClass: ToastrServiceStub },
+          { provide: DownloadService, useClass: DownloadMockService },
           ChangeDetectorRef,
           ViewDataTransformer
         ]
