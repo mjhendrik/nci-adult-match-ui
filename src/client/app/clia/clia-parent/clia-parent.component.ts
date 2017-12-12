@@ -135,7 +135,7 @@ export class CliaParentComponent implements OnInit {
     this.apiSample.getCliaDetailsNTC(this.cliaTypeName)
       .subscribe(details => {
         let gmt = new GmtPipe();
-        let data:{};
+        let data: {};
 
         this.tableNTCData = details.map((x: any) => {
           x.molecular_id = x.molecularSequenceNumber;
@@ -143,7 +143,7 @@ export class CliaParentComponent implements OnInit {
           x.date_variant_received = null;
           x.report_status = null;
 
-          if(typeof x.dateReceived !== 'undefined') {
+          if (typeof x.dateReceived !== 'undefined') {
 
             x.date_variant_received = gmt.transform(x.dateReceived);
             x.report_status = (x.passed === true) ? 'PASSED' : 'FAILED';

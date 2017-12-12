@@ -34,8 +34,14 @@ export class MatchHeightTabClickDirective {
         });
 
         setTimeout(function () {
+
             Array.from(children)
                 .forEach((x: HTMLElement) => x.style.height = `${maxHeight}px`);
+
+            setTimeout(function () {
+                window.scroll(0, 0);
+            }, 1);
+
         }, 159);
     }
 }
