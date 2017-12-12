@@ -178,24 +178,14 @@ export class FileUploadContentComponent implements OnInit {
 
     this.http.request(uploadFile).subscribe(event => {
       if (event.type === HttpEventType.UploadProgress) {
-
         const percentDone = Math.round(100 * event.loaded / event.total);
         if (file === this.variantZipFile) this.percentDoneVariantZipFile = percentDone;
         if (file === this.dnaBamFile) this.percentDoneDnaBamFile = percentDone;
         if (file === this.cdnaBamFile) this.percentDoneCdnaBamFile = percentDone;
-
       } else if (event instanceof HttpResponse) {
-
         this.fileCount++;
-
         if (this.fileCount === 3) {
-
-          setTimeout(() => {
-            this.isUploading = false;
-          }, 1500);
-
           this.notifyAfterUpload();
-
         }
       }
     });
@@ -214,6 +204,7 @@ export class FileUploadContentComponent implements OnInit {
     this.api.notifyAfterUpload(this.msn, uploadNotification).subscribe(resp => {
       this.notifyMessage = resp.message;
       this.isUploaded = true;
+      this.isUploading = false;
       this.isSuccessful = resp.status === 'SUCCESS';
       this.uploadNotifications.done(this.isSuccessful);
     });
