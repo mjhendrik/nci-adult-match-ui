@@ -23,7 +23,9 @@ import { SharedModule } from '../../shared/shared.module';
 import { PatientApiServiceStub, PatientApiServiceMock } from '../testing/patient-api-service-stub';
 import { ActivatedRouteStub } from '../testing/activated-route-stub';
 import { UtilsModule } from '../../shared/utils/utils.module';
-import { VariantReportFilteredTableModule } from "../../shared/variant-report-filtered-table/variant-report-filtered-table.module";
+import { VariantReportFilteredTableModule } from '../../shared/variant-report-filtered-table/variant-report-filtered-table.module';
+import { ToastrService } from '../../shared/error-handling/toastr.service';
+import { ToastrServiceStub } from '../testing/toastr-service-stub';
 
 export function main() {
   describe('PatientVariantReportQcComponent (templateUrl)', () => {
@@ -57,6 +59,7 @@ export function main() {
         providers: [
           { provide: ActivatedRoute, useValue: activatedRouteStub },
           { provide: PatientApiService, useClass: PatientApiServiceMock },
+          { provide: ToastrService, useClass: ToastrServiceStub },
           ChangeDetectorRef,
           ViewDataTransformer
         ]
