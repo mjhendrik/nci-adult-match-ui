@@ -14,9 +14,7 @@
     </li>
     <li class="active">Quality Control Report</li>
   </ul>
-  <h1 class="page-header">Quality Control Report
-    <span class="entity-name">{{analysisId}}</span>
-  </h1>
+  <h1 class="page-header">Quality Control Report<span class="entity-name"> {{analysisId}}</span></h1>
   <div class="row" matchHeight="panel-height-top">
     <div class="col-md-6">
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-top" id="qc-report-summary">
@@ -74,7 +72,6 @@
               </tbody>
             </table>
           </dl>
-
           <div class="m-b-5">
             <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!dnaBamFilePath" (click)="download(dnaBamFilePath)">
               <i class="fa fa-download"></i> DNA BAM</button>
