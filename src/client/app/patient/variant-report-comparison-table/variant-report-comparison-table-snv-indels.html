@@ -49,7 +49,7 @@
           <span class="outside-data">{{item.outsideData.alternative | dashify}}</span>
         </td>
         <td [ngClass]="{'has-diff':item && item.hasDifference && item.hasDifference['alleleFreq']}">
-          <span class="outside-data">{{item.outsideData.alleleFreq | dashify}}</span>
+          <span class="outside-data">{{item.outsideData.alleleFreq | number:'1.4-4' | dashify}}</span>
         </td>
         <td [ngClass]="{'has-diff':item && item.hasDifference && item.hasDifference['funcGene']}">
           <span class="outside-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.outsideData.funcGene"></cosmic-link></span>
@@ -107,7 +107,7 @@
           <span class="match-data">{{item.matchData.alternative | dashify}}</span>
         </td>
         <td [ngClass]="{'has-diff':item && item.hasDifference && item.hasDifference['alleleFreq']}">
-          <span class="match-data">{{item.matchData.alleleFreq | dashify}}</span>
+          <span class="match-data">{{item.matchData.alleleFreq | number:'1.4-4' | dashify}}</span>
         </td>
         <td [ngClass]="{'has-diff':item && item.hasDifference && item.hasDifference['funcGene']}">
           <span class="match-data"><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.matchData.funcGene"></cosmic-link></span>

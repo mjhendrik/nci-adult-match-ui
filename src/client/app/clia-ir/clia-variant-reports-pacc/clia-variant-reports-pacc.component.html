@@ -99,7 +99,7 @@
                 <td>{{item.position | dashify}}</td>
                 <td>{{item.ocp_reference | dashify}}</td>
                 <td>{{item.ocp_alternative | dashify}}</td>
-                <td>{{item.allele_frequency | dashify}}</td>
+                <td>{{item.allele_frequency | number:'1.4-4' | dashify}}</td>
                 <td>
                   <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.func_gene"></cosmic-link>
                 </td>
