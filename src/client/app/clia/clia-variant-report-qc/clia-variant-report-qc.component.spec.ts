@@ -64,6 +64,32 @@ export function main() {
     ]
   }];
 
+  let getOncomine = [{
+    'vcfVersion': '5.2-25',
+    "lmna": 0,
+    "lrp1": 1250,
+    "tbp": 62922,
+    "myc": 68909,
+    "hmbs": 32698,
+    "itgb7": 78824,
+    "mappedReads": 1124270,
+    "gePool": {
+      "pool2": 154588,
+      "pool1": 614777
+    },
+    "fPool": {
+      "pool2": 88,
+      "pool1": 21842
+    },
+    "ecPool": {
+      "pool2": 152381,
+      "pool1": 180431
+    },
+    "pool1Total": 817050,
+    "pool2Total": 307057,
+    "valid": true
+  }];
+
   describe('clia variant report qc component clia type mocha', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
@@ -102,6 +128,9 @@ export function main() {
                     graph: {
                       parsedVCFGenes: parsedVCFGenes,
                       tvcVersion: ['test']
+                    },
+                    oncomine: {
+                      oncomine: getOncomine
                     }
                   }
                 }
@@ -118,8 +147,8 @@ export function main() {
           .compileComponents()
           .then(() => {
             let fixture = TestBed.createComponent(CliaVariantReportQcComponent);
-
             let comp: CliaVariantReportQcComponent = fixture.componentInstance;
+
             comp.parsedVCFGenes = {
               'parsedVCFGenes': [
                 {
@@ -195,6 +224,9 @@ export function main() {
                     graph: {
                       parsedVCFGenes: parsedVCFGenes,
                       tvcVersion: ['test']
+                    },
+                    oncomine: {
+                      oncomine: getOncomine
                     }
                   }
                 }
@@ -244,6 +276,7 @@ export function main() {
             };
             fixture.componentInstance.ngOnInit();
             expect(comp.molecular_id).toEqual(1234);
+            expect(comp.oncomine_control_panel_summary.oncomine[0].lrp1).toEqual(1250);
           });
       }));
 
@@ -288,6 +321,9 @@ export function main() {
                     graph: {
                       parsedVCFGenes: parsedVCFGenes,
                       tvcVersion: ['test']
+                    },
+                    oncomine: {
+                      oncomine: getOncomine
                     }
                   }
                 }
@@ -337,6 +373,7 @@ export function main() {
             };
             fixture.componentInstance.ngOnInit();
             expect(comp.molecular_id).toEqual(1234);
+            expect(comp.oncomine_control_panel_summary.oncomine[0].hmbs).toEqual(32698);
           });
       }));
 
@@ -381,6 +418,9 @@ export function main() {
                     graph: {
                       parsedVCFGenes: parsedVCFGenes,
                       tvcVersion: ['test']
+                    },
+                    oncomine: {
+                      oncomine: getOncomine
                     }
                   }
                 }
@@ -430,6 +470,7 @@ export function main() {
             };
             fixture.componentInstance.ngOnInit();
             expect(comp.molecular_id).toEqual(1234);
+            expect(comp.oncomine_control_panel_summary.oncomine[0].mappedReads).toEqual(1124270);
           });
       }));
 
@@ -474,6 +515,9 @@ export function main() {
                     graph: {
                       parsedVCFGenes: parsedVCFGenes,
                       tvcVersion: ['test']
+                    },
+                    oncomine: {
+                      oncomine: getOncomine
                     }
                   }
                 }
@@ -523,6 +567,7 @@ export function main() {
             };
             fixture.componentInstance.ngOnInit();
             expect(comp.molecular_id).toEqual(1234);
+            expect(comp.oncomine_control_panel_summary.oncomine[0].tbp).toEqual(62922);
           });
       }));
 
@@ -676,11 +721,11 @@ class MockCliaApiService {
     let testData = [{
     'vcfVersion': '5.2-25',
     "lmna": 0,
+    "lrp1": 1250,
     "tbp": 62922,
     "myc": 68909,
     "hmbs": 32698,
     "itgb7": 78824,
-    "lrp1": 1250,
     "mappedReads": 1124270,
     "gePool": {
     "pool2": 154588,

@@ -115,16 +115,6 @@ export class CliaVariantReportQcComponent implements OnInit {
   }
 
   getOncomine(itemList: CliaVariantReportsQCViewData) {
-    let lmna:number = (typeof itemList.lmna !== 'undefined') ? itemList.lmna : 0;
-    let lrp1:number = (typeof itemList.lrp1 !== 'undefined') ? itemList.lrp1 : 0;
-    this.sum =
-      + lmna
-      + lrp1
-      + itemList.tbp
-      + itemList.myc
-      + itemList.hmbs
-      + itemList.itgb7
-    ;
     this.oncomine_control_panel_summary = itemList;
   }
 
