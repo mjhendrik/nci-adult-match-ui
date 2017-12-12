@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 
 import { routerTransition } from './../../shared/router.animations';
-import { PatientApiService, ApiStatusUpdateSuccess, ApiStatusUpdateError } from '../patient-api.service';
+import { PatientApiService, ApiStatusUpdateSuccess, ApiStatusUpdateError, ApiError, ApiSuccess } from '../patient-api.service';
 import { ScrollService } from '../../shared/utils/scroll.to.service';
 import { ViewDataTransformer } from '../view-data-transformer.service';
 import { ConfirmableItem } from '../../shared/check-box-with-confirm/check-box-with-confirm.component';
@@ -18,6 +18,7 @@ import { VariantReportComparisonData } from '../variant-report-comparison-data';
 import { VariantReportData } from '../variant-report-data';
 import { ToastrService } from '../../shared/error-handling/toastr.service';
 import { UserProfileService } from '../../shared/user-profile/user-profile.service';
+import { DownloadService } from '../../shared/utils/download.service';
 
 const roles = {
   variantReportEdit: [
@@ -82,7 +83,8 @@ export class PatientVariantReportOutsideAssayComponent
     private transformer: ViewDataTransformer,
     private modalService: BsModalService,
     private toastrService: ToastrService,
-    private profile: UserProfileService) {
+    private profile: UserProfileService,
+    private downloadApi: DownloadService) {
     this.scrollTo = scrollService.scrollToElement;
   }
 
@@ -103,7 +105,23 @@ export class PatientVariantReportOutsideAssayComponent
   }
 
   download(file: string) {
-    this.patientApi.downloadPatientFile(this.patientSequenceNumber, file);
+    this.patientApi
+      .downloadPatientFile(this.patientSequenceNumber, file)
+      .subscribe((resp: ApiError | ApiSuccess) => {
+        switch (resp.kind) {
+          case 'error':
+            this.showToast(resp.message, true);
+            break;
+          case 'success':
+            let url = resp.data ? resp.data.download_url : null;
+            if (url) {
+              this.downloadApi.downloadFile(url);
+            } else {
+              this.showToast('Unable to read the file URL', true);
+            }
+            break;
+        }
+      });
   }
 
   confirmOutsideVariantReport(): void {

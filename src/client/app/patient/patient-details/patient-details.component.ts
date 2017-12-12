@@ -9,12 +9,14 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { Subscription } from 'rxjs/Subscription';
 
 import { routerTransition } from './../../shared/router.animations';
-import { PatientApiService } from '../patient-api.service';
+import { PatientApiService, ApiError, ApiSuccess } from '../patient-api.service';
 import { ViewDataTransformer } from './../view-data-transformer.service';
 import { PatientData } from './patient-details.module';
 import { UserProfileService } from '../../shared/user-profile/user-profile.service';
 import { ModalDialogPathologyReportComponent } from '../../shared/modal-dialogs/modal-dialog-pathology-report.component';
 import { FileUploadNotificationService } from '../file-upload/file-upload-notification.service';
+import { DownloadService } from '../../shared/utils/download.service';
+import { ToastrService } from '../../shared/error-handling/toastr.service';
 
 const roles = {
   variantReportUpload: [
@@ -59,7 +61,9 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
     private router: Router,
     private profile: UserProfileService,
     private modalService: BsModalService,
-    private uploadNotifications: FileUploadNotificationService) {
+    private uploadNotifications: FileUploadNotificationService,
+    private toastrService: ToastrService,
+    private downloadApi: DownloadService) {
 
     this.dzConfigDocuments = {
       // Change this to your upload POST address:
@@ -74,7 +78,23 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
   }
 
   download(file: string) {
-    this.patientApi.downloadPatientFile(this.psn, file);
+    this.patientApi
+      .downloadPatientFile(this.psn, file)
+      .subscribe((resp: ApiError | ApiSuccess) => {
+        switch (resp.kind) {
+          case 'error':
+            this.showToast(resp.message, true);
+            break;
+          case 'success':
+            let url = resp.data ? resp.data.download_url : null;
+            if (url) {
+              this.downloadApi.downloadFile(url);
+            } else {
+              this.showToast('Unable to read the file URL', true);
+            }
+            break;
+        }
+      });
   }
 
   ngOnInit() {
@@ -241,5 +261,17 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
     }
 
     return null;
+  }
+
+  private showToast(message: string, isError: boolean): void {
+    if (this.toastrService && this.toastrService.toastr) {
+      if (isError) {
+        console.error(message);
+        this.toastrService.toastr.error(message);
+      } else {
+        console.info(message);
+        this.toastrService.toastr.info(message);
+      }
+    }
   }
 }

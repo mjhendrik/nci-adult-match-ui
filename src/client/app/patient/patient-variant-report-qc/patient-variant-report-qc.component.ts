@@ -5,9 +5,11 @@ import {
 import { ActivatedRoute } from '@angular/router';
 import { routerTransition } from './../../shared/router.animations';
 import {
-  PatientApiService
+  PatientApiService, ApiError, ApiSuccess
 } from '../patient-api.service';
 import { QcVariantReportData } from './patient-variant-report-qc.module';
+import { DownloadService } from '../../shared/utils/download.service';
+import { ToastrService } from '../../shared/error-handling/toastr.service';
 
 /**
  * PatientVariantReportQcComponent.
@@ -48,14 +50,32 @@ export class PatientVariantReportQcComponent implements OnInit, QcVariantReportD
 
   constructor(
     private route: ActivatedRoute,
-    private patientApi: PatientApiService) { }
+    private patientApi: PatientApiService,
+    private toastrService: ToastrService,
+    private downloadApi: DownloadService) { }
 
   ngOnInit() {
     Object.assign(this, this.route.snapshot.data['data']);
   }
 
   download(file: string) {
-    this.patientApi.downloadPatientFile(this.psn, file);
+    this.patientApi
+      .downloadPatientFile(this.psn, file)
+      .subscribe((resp: ApiError | ApiSuccess) => {
+        switch (resp.kind) {
+          case 'error':
+            this.showToast(resp.message, true);
+            break;
+          case 'success':
+            let url = resp.data ? resp.data.download_url : null;
+            if (url) {
+              this.downloadApi.downloadFile(url);
+            } else {
+              this.showToast('Unable to read the file URL', true);
+            }
+            break;
+        }
+      });
   }
 
   getVariantReportLink(report: any): string {
@@ -71,6 +91,18 @@ export class PatientVariantReportQcComponent implements OnInit, QcVariantReportD
       return { isOutsideAssay: report.isOutsideAssay };
     } else {
       return null;
+    }
+  }
+
+  private showToast(message: string, isError: boolean): void {
+    if (this.toastrService && this.toastrService.toastr) {
+      if (isError) {
+        console.error(message);
+        this.toastrService.toastr.error(message);
+      } else {
+        console.info(message);
+        this.toastrService.toastr.info(message);
+      }
     }
   }
 }

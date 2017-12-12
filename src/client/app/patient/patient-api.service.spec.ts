@@ -25,7 +25,7 @@ import {
 } from './patient-api.service';
 
 export function main() {
-  describe('PatientApiService (mockBackend)', () => {
+  fdescribe('PatientApiService (mockBackend)', () => {
     beforeEach(async(() => {
       TestBed.configureTestingModule({
         imports: [HttpModule],

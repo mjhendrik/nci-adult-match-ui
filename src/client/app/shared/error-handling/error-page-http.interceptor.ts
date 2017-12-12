@@ -17,6 +17,7 @@ const excludedFromHandlingUrlPatterns = [
     RegExp(Config.API.PATIENT + '/patients/' + anyParamRe + '/variant_reports/' + anyParamRe + '/copy_number_report'),
     RegExp(Config.API.PATIENT + '/patients/' + anyParamRe + '/variant_reports/' + anyParamRe + '/oncomine_control_panel'),
     RegExp(Config.API.PATIENT + '/patients/' + anyParamRe + '/variant_reports/' + anyParamRe + '/quality_control_report'),
+    RegExp(Config.API.PATIENT + '/patients/' + anyParamRe + '/download_url'),
     RegExp(Config.API.TREATMENT_ARM + '/treatment_arms/amois')
 ];
 

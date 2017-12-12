@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Response, RequestOptions } from '@angular/http';
+import { Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { AuthHttp } from 'angular2-jwt';
 
@@ -7,7 +7,18 @@ import { Config } from '../shared/config/env.config';
 import { DownloadService } from '../shared/utils/download.service';
 import { ApiService } from '../shared/api/api.service';
 import { VariantReportComparisonData } from './variant-report-comparison-data';
-import { VariantReportData } from "./variant-report-data";
+
+export interface ApiError {
+  kind: 'error';
+  code?: number;
+  message: string;
+}
+
+export interface ApiSuccess {
+  kind: 'success';
+  status: string;
+  data: any;
+}
 
 export interface ApiStatusUpdateError {
   kind: 'error';
@@ -109,15 +120,20 @@ export class PatientApiService extends ApiService {
       .catch(this.handleError);
   }
 
-  downloadPatientFile(psn: string, url: string): void {
-    this.http.post(Config.API.PATIENT + '/patients/' + psn + '/download_url', { s3_url: url })
-      .map((res: Response) => res)
-      .catch(this.handleError)
-      .subscribe((resp: Response) => {
-        const data = resp.json();
-        if (data && data.download_url) {
-          this.download.downloadFile(data.download_url);
+  downloadPatientFile(psn: string, url: string): Observable<ApiSuccess | ApiError> {
+    return this.http.post(Config.API.PATIENT + '/patients/' + psn + '/download_url', { s3_url: url })
+      .map((res: Response) => {
+        return { kind: 'success', data: res.json() } as ApiSuccess;
+      })
+      .catch((err: any) => {
+        let message: string;
+        if (err instanceof Response) {
+          const errResp = err.json ? err.json() : err;
+          message = errResp.error_message ? errResp.error_message : errResp.message;
+        } else {
+          message = (typeof err === 'string') ? err : err.toString();
         }
+        return Observable.of({ kind: 'error', message: message } as ApiError);
       });
   }
 

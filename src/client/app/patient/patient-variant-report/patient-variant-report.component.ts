@@ -8,7 +8,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { Subscription } from 'rxjs/Subscription';
 
 import { routerTransition } from './../../shared/router.animations';
-import { PatientApiService, ApiStatusUpdateError, ApiStatusUpdateSuccess } from '../patient-api.service';
+import { PatientApiService, ApiStatusUpdateError, ApiStatusUpdateSuccess, ApiError, ApiSuccess } from '../patient-api.service';
 import { ScrollService } from '../../shared/utils/scroll.to.service';
 import { ConfirmableItem } from '../../shared/check-box-with-confirm/check-box-with-confirm.component';
 import { ViewDataTransformer } from '../view-data-transformer.service';
@@ -20,6 +20,7 @@ import { ModalDialogWithCommentsComponent } from '../../shared/modal-dialogs/mod
 import { UserProfileService } from '../../shared/user-profile/user-profile.service';
 import { ModalDialogPathologyReportComponent } from '../../shared/modal-dialogs/modal-dialog-pathology-report.component';
 import { AmoiSummary } from '../amoi-summary';
+import { DownloadService } from '../../shared/utils/download.service';
 
 const roles = {
   variantReportEdit: [
@@ -101,7 +102,8 @@ export class PatientVariantReportComponent implements OnInit, OnDestroy, Variant
     private transformer: ViewDataTransformer,
     private modalService: BsModalService,
     private toastrService: ToastrService,
-    private profile: UserProfileService) {
+    private profile: UserProfileService,
+    private downloadApi: DownloadService) {
       this.scrollTo = scrollService.scrollToElement;
   }
 
@@ -117,7 +119,23 @@ export class PatientVariantReportComponent implements OnInit, OnDestroy, Variant
   }
 
   download(file: string) {
-    this.patientApi.downloadPatientFile(this.patientSequenceNumber, file);
+    this.patientApi
+      .downloadPatientFile(this.patientSequenceNumber, file)
+      .subscribe((resp: ApiError | ApiSuccess) => {
+        switch (resp.kind) {
+          case 'error':
+            this.showToast(resp.message, true);
+            break;
+          case 'success':
+            let url = resp.data ? resp.data.download_url : null;
+            if (url) {
+              this.downloadApi.downloadFile(url);
+            } else {
+              this.showToast('Unable to read the file URL', true);
+            }
+            break;
+        }
+      });
   }
 
   confirmVariantReport(): void {

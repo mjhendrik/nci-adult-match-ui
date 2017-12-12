@@ -11,7 +11,7 @@ import {
   CliaVariantReportsPCViewData
 } from './clia-data-interfaces';
 
-export interface ApiStatusUpdateError {
+export interface ApiUpdateError {
   kind: 'error';
   code?: number;
   message: string;
@@ -81,12 +81,12 @@ export class AliquotApiService extends ApiService {
       });
   }
 
-  notifyAfterUpload(msn: string, body: any): Observable<any | ApiStatusUpdateError> {
+  notifyAfterUpload(msn: string, body: any): Observable<any | ApiUpdateError> {
     return this.http.put(`${this.baseApiUrl}/message/clia/aliquot/` + msn, body)
       .map(this.extractData)
       .catch((err: Response) => {
         const data = err.json();
-        return Observable.of({ kind: 'error', message: data.message } as ApiStatusUpdateError);
+        return Observable.of({ kind: 'error', message: data.message } as ApiUpdateError);
       });
   }
 
