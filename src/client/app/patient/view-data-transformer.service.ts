@@ -624,6 +624,7 @@ export class ViewDataTransformer {
       if (confirmedVariantReports && confirmedVariantReports.length) {
         let lastVariantReportAnalysis = confirmedVariantReports[confirmedVariantReports.length - 1];
         lastVariantReportAnalysis.assignmentReport = assignment;
+        lastVariantReportAnalysis.assignmentReport.analysisId = lastVariantReportAnalysis.analysisId;
 
         this.transformAssignmentLogic(assignment);
       }
