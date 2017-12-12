@@ -338,7 +338,7 @@ export class ViewDataTransformer {
 
       for (let item of table) {
         variants[item.variantId] = {
-          comment: item.comment, 
+          comment: item.comment,
           status: item.confirmed ? 'CONFIRMED' : 'UNCONFIRMED'
         };
       }

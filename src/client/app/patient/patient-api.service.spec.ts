@@ -446,7 +446,7 @@ export function main() {
       it('should have expected fake OCP data (then)', async(inject([], () => {
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
-        service.getPatientVariantReportOcp('fake-psn', 'faka-analysis-id').toPromise()
+        service.getPatientVariantReportOcp('fake-psn', 'fake-analysis-id').toPromise()
           .then(patient => {
             expect(patient).toBe(fakeData);
           });
@@ -455,7 +455,7 @@ export function main() {
       it('should have expected fake OCP data (Observable.do)', async(inject([], () => {
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
-        service.getPatientVariantReportOcp('fake-psn', 'faka-analysis-id')
+        service.getPatientVariantReportOcp('fake-psn', 'fake-analysis-id')
           .do(patient => {
             expect(patient).toBe(fakeData, 'should have expected OCP data');
           })
@@ -654,7 +654,7 @@ export function main() {
     });
 
 
-    describe('when updateVariantReport', () => {
+    describe('when updateVariantReportStatus', () => {
       let backend: MockBackend;
       let service: PatientApiService;
       let fakeData: any;
@@ -679,7 +679,7 @@ export function main() {
       it('should have expected fake response (then)', async(inject([], () => {
         backend.connections.subscribe((c: MockConnection) => { c.mockRespond(response); });
 
-        service.updateVariantReport('fake-psn', 'fake-bsn', 'fake-analysis-id', true).toPromise()
+        service.updateVariantReportStatus('fake-psn', 'fake-bsn', 'fake-analysis-id', true).toPromise()
           .then(resp => {
             expect(resp).toBeDefined();
             switch (resp.kind) {
@@ -700,7 +700,7 @@ export function main() {
       it('should have expected fake response (Observable.do)', async(inject([], () => {
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
-        service.updateVariantReport('fake-psn', 'fake-bsn', 'fake-analysis-id', true)
+        service.updateVariantReportStatus('fake-psn', 'fake-bsn', 'fake-analysis-id', true)
           .do(resp => {
             expect(resp.kind).toBe('success');
             let successRes = resp as ApiStatusUpdateSuccess;
@@ -712,7 +712,7 @@ export function main() {
       it('should have expected fake error (Observable.do)', async(inject([], () => {
         backend.connections.subscribe((c: MockConnection) => c.mockError(new Error('fake-error')));
 
-        service.updateVariantReport('fake-psn', 'fake-bsn', 'fake-analysis-id', true)
+        service.updateVariantReportStatus('fake-psn', 'fake-bsn', 'fake-analysis-id', true)
           .do(resp => {
             expect(resp.kind).toBe('error');
             let errorRes = resp as ApiStatusUpdateError;
