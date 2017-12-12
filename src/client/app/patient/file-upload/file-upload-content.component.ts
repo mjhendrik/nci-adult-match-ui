@@ -185,7 +185,6 @@ export class FileUploadContentComponent implements OnInit {
       } else if (event instanceof HttpResponse) {
         this.fileCount++;
         if (this.fileCount === 3) {
-          this.isUploading = false;
           this.notifyAfterUpload();
         }
       }
@@ -205,6 +204,7 @@ export class FileUploadContentComponent implements OnInit {
     this.api.notifyAfterUpload(this.msn, uploadNotification).subscribe(resp => {
       this.notifyMessage = resp.message;
       this.isUploaded = true;
+      this.isUploading = false;
       this.isSuccessful = resp.status === 'SUCCESS';
       this.uploadNotifications.done(this.isSuccessful);
     });

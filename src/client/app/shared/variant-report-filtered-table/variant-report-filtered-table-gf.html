@@ -1,14 +1,14 @@
-
-<h4>Gene Fusions</h4>
+<h4>
+  Gene Fusions</h4>
 <div class="row">
   <div class="col-md-6">
     <div class="dataTables_length form-inline p-t-15 p-b-10" id="data-table_length">
       <label>Show
         <select name="data-table_length" [(ngModel)]="recordsPerPage" aria-controls="data-table" class="form-control input-sm">
-        <option [ngValue]=10>10</option>
-        <option [ngValue]=25>25</option>
-        <option [ngValue]=50>50</option>
-        <option [ngValue]=100>100</option>
+          <option [ngValue]=10>10</option>
+          <option [ngValue]=25>25</option>
+          <option [ngValue]=50>50</option>
+          <option [ngValue]=100>100</option>
         </select> entries
       </label>
     </div>
@@ -27,35 +27,83 @@
       [(mfSortBy)]="defaultSort" [mfRowsOnPage]="recordsPerPage">
       <thead>
         <tr [ngClass]="{true:'purple-light',false:'orangeshade-light'}[type=='patient']">
-          <th><mfDefaultSorter by="identifier"><span class="table-header">ID</span></mfDefaultSorter></th>
-          <th><mfDefaultSorter by="chromosome"><span class="table-header">Chrom</span></mfDefaultSorter></th>
-          <th><mfDefaultSorter by="position"><span class="table-header">Position </span></mfDefaultSorter></th>
-          <th><mfDefaultSorter by="reference"><span class="table-header">Reference</span></mfDefaultSorter></th>
-          <th><mfDefaultSorter by="alternative"><span class="table-header">Alternative</span></mfDefaultSorter></th>
-          <th><mfDefaultSorter by="filter"><span class="table-header">Filter</span></mfDefaultSorter></th>
-          <th><mfDefaultSorter by="funcGene"><span class="table-header">Gene</span></mfDefaultSorter></th>
-          <th><mfDefaultSorter by="oncomineVariantClass"><span class="table-header">Oncomine Variant Class</span></mfDefaultSorter></th>
-          <th><mfDefaultSorter by="exon"><span class="table-header">Exon</span></mfDefaultSorter></th>
-          <th><mfDefaultSorter by="function"><span class="table-header">Function</span></mfDefaultSorter></th>
-          <th><mfDefaultSorter by="readDepth"><span class="table-header">Read Count</span></mfDefaultSorter></th>
+          <th>
+            <mfDefaultSorter by="identifier">
+              <span class="table-header">ID</span>
+            </mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="chromosome">
+              <span class="table-header">Chrom</span>
+            </mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="position">
+              <span class="table-header">Position </span>
+            </mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="reference">
+              <span class="table-header">Reference</span>
+            </mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="alternative">
+              <span class="table-header">Alternative</span>
+            </mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="filter">
+              <span class="table-header">Filter</span>
+            </mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="funcGene">
+              <span class="table-header">Gene</span>
+            </mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="oncomineVariantClass">
+              <span class="table-header">Oncomine Variant Class</span>
+            </mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="exon">
+              <span class="table-header">Exon</span>
+            </mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="function">
+              <span class="table-header">Function</span>
+            </mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="readDepth">
+              <span class="table-header">Read Count</span>
+            </mfDefaultSorter>
+          </th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let item of mfTable.data">
-          <td><cosmic-link [linkType]="'cosmicId'" [linkId]="item.identifier"></cosmic-link></td>
+          <td>
+            <cosmic-link [linkType]="'cosmicId'" [linkId]="item.identifier"></cosmic-link>
+          </td>
           <td>{{item.chromosome | chromosome}}</td>
           <td>{{item.position | dashify}}</td>
           <td class="long-text-wrap">{{item.reference | dashify}}</td>
           <td class="long-text-wrap">{{item.alternative | dashify}}</td>
           <td>{{item.filter | dashify}}</td>
-          <td><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.funcGene"></cosmic-link></td>
+          <td>
+            <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.funcGene"></cosmic-link>
+          </td>
           <td>{{item.oncomineVariantClass | dashify}}</td>
           <td>{{item.exon | dashify}}</td>
           <td>{{item.function | dashify}}</td>
           <td>{{item.readDepth | dashify}}</td>
         </tr>
         <tr *ngIf="!items || mfTable.data.length == 0">
-          <td class="text-muted" colspan="14">
+          <td class="text-muted" colspan="11">
             <span *ngIf="searchTerm">No matching search results found for "{{searchTerm}}"</span>
             <span *ngIf="!searchTerm">No Gene Fusion Variant data</span>
           </td>
@@ -63,7 +111,7 @@
       </tbody>
       <tfoot>
         <tr>
-          <td class="tfoot-padding" colspan="14">
+          <td class="tfoot-padding" colspan="11">
             <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchTerm" [totallength]="items ? items.length : 0"></mfBootstrapPaginator>
           </td>
         </tr>
