@@ -178,15 +178,24 @@ export class FileUploadContentComponent implements OnInit {
 
     this.http.request(uploadFile).subscribe(event => {
       if (event.type === HttpEventType.UploadProgress) {
+
         const percentDone = Math.round(100 * event.loaded / event.total);
         if (file === this.variantZipFile) this.percentDoneVariantZipFile = percentDone;
         if (file === this.dnaBamFile) this.percentDoneDnaBamFile = percentDone;
         if (file === this.cdnaBamFile) this.percentDoneCdnaBamFile = percentDone;
+
       } else if (event instanceof HttpResponse) {
+
         this.fileCount++;
+
         if (this.fileCount === 3) {
-          this.isUploading = false;
+
+          setTimeout(() => {
+            this.isUploading = false;
+          }, 1500);
+
           this.notifyAfterUpload();
+
         }
       }
     });
