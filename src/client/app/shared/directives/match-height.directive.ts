@@ -54,9 +54,9 @@ export class MatchHeightDirective implements AfterViewChecked {
         Array.from(children)
             .forEach((x: HTMLElement) => x.style.height = `${maxHeight}px`);
 
-        setTimeout(function () {
-            window.scroll(0, 0);
-        }, 1);
+        // setTimeout(function () {
+        //     window.scroll(0, 0);
+        // }, 1);
 
         // if (document.getElementById('tbody-height') !== null) {
         //     let contentHeight: number = maxHeight - 67;
