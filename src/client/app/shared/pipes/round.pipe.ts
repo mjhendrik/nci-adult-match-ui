@@ -6,7 +6,9 @@ import {
     name: 'round'
 })
 export class RoundPipe implements PipeTransform {
-    transform(value: number): number {
+    transform(value?: number): number {
+        if (typeof value === 'undefined')
+            return null;
         return Math.round(value * 10) / 10;
     }
 }

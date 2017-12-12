@@ -6,6 +6,7 @@ import { DashifyPipe } from './dashify.pipe';
 import { RoundPipe } from './round.pipe';
 import { GmtPipe } from './gmt.pipe';
 import { KeysPipe } from './keys.pipe';
+import { ChromosomePipe } from './chromosome.pipe';
 
 @NgModule({
   imports: [CommonModule],
@@ -14,14 +15,16 @@ import { KeysPipe } from './keys.pipe';
     DashifyPipe,
     RoundPipe,
     GmtPipe,
-    KeysPipe
+    KeysPipe,
+    ChromosomePipe
   ],
   exports: [
     FilterByTextPipe,
     DashifyPipe,
     RoundPipe,
     GmtPipe,
-    KeysPipe
+    KeysPipe,
+    ChromosomePipe
   ]
 })
 export class PipesModule { }

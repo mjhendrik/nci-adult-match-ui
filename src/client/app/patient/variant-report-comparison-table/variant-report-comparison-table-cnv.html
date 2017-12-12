@@ -30,7 +30,7 @@
           <span class="outside-data">{{item.outsideData.outsideData.is_amoi | dashify}}</span>
         </td>
         <td [ngClass]="{'has-diff':item && item.hasDifference && item.hasDifference['chromosome']}">
-          <span class="outside-data">{{item.outsideData.outsideData.chromosome | dashify}}</span>
+          <span class="outside-data">{{item.outsideData.outsideData.chromosome | chromosome}}</span>
         </td>
         <td [ngClass]="{'has-diff':item && item.hasDifference && item.hasDifference['position']}">
           <span class="outside-data">{{item.outsideData.outsideData.position | dashify}}</span>
@@ -67,7 +67,7 @@
           <span class="match-data">{{item.matchData.matchData.is_amoi | dashify}}</span>
         </td>
         <td [ngClass]="{'has-diff':item && item.hasDifference && item.hasDifference['chromosome']}">
-          <span class="match-data">{{item.matchData.matchData.chromosome | dashify}}</span>
+          <span class="match-data">{{item.matchData.matchData.chromosome | chromosome}}</span>
         </td>
         <td [ngClass]="{'has-diff':item && item.hasDifference && item.hasDifference['position']}">
           <span class="match-data">{{item.matchData.matchData.position | dashify}}</span>

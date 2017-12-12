@@ -29,7 +29,7 @@
       </td>      
       <td><cosmic-link [linkType]="'cosmicGene'" [linkId]="item.identifier"></cosmic-link></td>
       <td><sd-amoi-list [amois]="item.amois"></sd-amoi-list></td>
-      <td>{{item.chromosome | dashify}}</td>
+      <td>{{item.chromosome | chromosome}}</td>
       <td>{{item.position | dashify}}</td>
       <td>{{item.rawCopyNumber | dashify}}</td>
       <td>{{item.copyNumber | dashify}}</td>

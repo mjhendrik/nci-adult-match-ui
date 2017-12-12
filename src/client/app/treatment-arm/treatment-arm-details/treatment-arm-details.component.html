@@ -446,7 +446,7 @@
                             <td>
                               <cosmic-link [linkType]="'cosmicId'" [linkId]="item.identifier"></cosmic-link>
                             </td>
-                            <td>{{item.chromosome | dashify}}</td>
+                            <td>{{item.chromosome | chromosome}}</td>
                             <td>{{item.position | dashify}}</td>
                             <td>{{item.reference | dashify}}</td>
                             <td>{{item.alternative | dashify}}</td>
@@ -575,7 +575,7 @@
                             <td>
                               <cosmic-link [linkType]="'cosmicId'" [linkId]="item.identifier"></cosmic-link>
                             </td>
-                            <td>{{item.chromosome | dashify}}</td>
+                            <td>{{item.chromosome | chromosome}}</td>
                             <td>{{item.position | dashify}}</td>
                             <td>{{item.reference | dashify}}</td>
                             <td>{{item.alternative | dashify}}</td>
@@ -711,7 +711,7 @@
                             <td>
                               <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.geneName"></cosmic-link>
                             </td>
-                            <td>{{item.chromosome | dashify}}</td>
+                            <td>{{item.chromosome | chromosome}}</td>
                             <td>{{item.position | dashify}}</td>
                             <td>{{item.levelOfEvidence | round | dashify}}</td>
                             <td>
@@ -825,7 +825,7 @@
                               <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.geneName"></cosmic-link>
                             </td>
                             <!--same as id-->
-                            <td>{{item.chromosome | dashify}}</td>
+                            <td>{{item.chromosome | chromosome}}</td>
                             <td>{{item.position | dashify}}</td>
                             <td>
                               <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">

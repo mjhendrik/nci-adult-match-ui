@@ -129,7 +129,7 @@
                 <td>
                   <cosmic-link [linkType]="'cosmicId'" [linkId]="item.identifier"></cosmic-link>
                 </td>
-                <td>{{item.chromosome | dashify}}</td>
+                <td>{{item.chromosome | chromosome}}</td>
                 <td>{{item.position | dashify}}</td>
                 <td>
                   <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.gene"></cosmic-link>
@@ -171,7 +171,7 @@
                 <td>
                   <cosmic-link [linkType]="'cosmicId'" [linkId]="item.identifier"></cosmic-link>
                 </td>
-                <td>{{item.chromosome | dashify}}</td>
+                <td>{{item.chromosome | chromosome}}</td>
                 <td>{{item.position | dashify}}</td>
                 <td>
                   <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.gene"></cosmic-link>
