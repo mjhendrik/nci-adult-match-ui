@@ -106,8 +106,8 @@ export class ViewDataTransformer {
     transformedReport.matchData.disease = transformedReport.matchData.disease || {};
     transformedReport.matchData.commenter = transformedReport.matchData.metadata ? transformedReport.matchData.metadata.commenter : null;
     this.transformAssayMessages(transformedReport.matchData.assayMessages);
-    transformedReport.matchData.isVariantReportEditable = this.getVariantReportEditable(transformedReport.matchData);
-    transformedReport.matchData.isAssignmentReportEditable = this.getAssignmentReportEditable(transformedReport.matchData);
+    transformedReport.matchData.isVariantReportEditable = this.getVariantReportEditable(transformedReport.matchData.variantReport);
+    transformedReport.matchData.isAssignmentReportEditable = this.getAssignmentReportEditable(transformedReport.matchData.assignmentReport);
     this.postProcessVariantTables(transformedReport.matchData.variantReport);
 
     transformedReport.outsideData = transformedReport.outsideData || {};
@@ -129,8 +129,8 @@ export class ViewDataTransformer {
     transformedReport.outsideData.disease = transformedReport.outsideData.disease || {};
     transformedReport.outsideData.commenter = transformedReport.outsideData.metadata ? transformedReport.outsideData.metadata.commenter : null;
     this.transformAssayMessages(transformedReport.outsideData.assayMessages);
-    transformedReport.outsideData.isVariantReportEditable = this.getVariantReportEditable(transformedReport.outsideData);
-    transformedReport.outsideData.isAssignmentReportEditable = this.getAssignmentReportEditable(transformedReport.outsideData);
+    transformedReport.outsideData.isVariantReportEditable = this.getVariantReportEditable(transformedReport.outsideData.variantReport);
+    transformedReport.outsideData.isAssignmentReportEditable = this.getAssignmentReportEditable(transformedReport.outsideData.assignmentReport);
     this.postProcessVariantTables(transformedReport.outsideData.variantReport);
 
     this.transformAssignmentLogic(transformedReport.matchData.assignmentReport);
