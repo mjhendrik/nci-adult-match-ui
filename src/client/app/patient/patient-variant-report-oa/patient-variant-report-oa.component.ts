@@ -140,6 +140,7 @@ export class PatientVariantReportOutsideAssayComponent
   rejectOutsideVariantReport(): void {
     const action = () => {
       console.info('Rejecting outside lab variant report: ' + this.outsideData.analysisId);
+      // tslint:disable-next-line:max-line-length
       this.patientApi.updateVariantReportStatus(this.patientSequenceNumber, this.outsideData.biopsySequenceNumber, this.outsideData.analysisId, false).subscribe(
         (x: ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
           switch (x.kind) {
