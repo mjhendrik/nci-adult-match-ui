@@ -4,7 +4,6 @@ import { Observable } from 'rxjs/Observable';
 import { AuthHttp } from 'angular2-jwt';
 
 import { Config } from '../shared/config/env.config';
-import { DownloadService } from '../shared/utils/download.service';
 import { ApiService } from '../shared/api/api.service';
 import { VariantReportComparisonData } from './variant-report-comparison-data';
 
@@ -43,7 +42,7 @@ export class PatientApiService extends ApiService {
    * @param {AuthHttp} http - The injected AuthHttp.
    * @constructor
    */
-  constructor(http: AuthHttp, private download: DownloadService) {
+  constructor(http: AuthHttp) {
     super(http);
   }
 

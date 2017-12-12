@@ -14,24 +14,24 @@ import { MockBackend, MockConnection } from '@angular/http/testing';
 import { AuthHttp } from 'angular2-jwt';
 import { Observable } from 'rxjs/Observable';
 
-import { DownloadService } from '../shared/utils/download.service';
 import { WindowStub } from './testing/window-stub';
 import { PatientApiServiceStub } from './testing/patient-api-service-stub';
 import { VariantReportComparisonData } from './variant-report-comparison-data';
 import {
   PatientApiService,
   ApiStatusUpdateSuccess,
-  ApiStatusUpdateError
+  ApiStatusUpdateError,
+  ApiSuccess,
+  ApiError
 } from './patient-api.service';
 
 export function main() {
-  fdescribe('PatientApiService (mockBackend)', () => {
+  describe('PatientApiService (mockBackend)', () => {
     beforeEach(async(() => {
       TestBed.configureTestingModule({
         imports: [HttpModule],
         providers: [
           PatientApiService,
-          DownloadService,
           { provide: Window, useClass: WindowStub },
           { provide: XHRBackend, useClass: MockBackend },
           { provide: AuthHttp, useExisting: Http },
@@ -39,15 +39,14 @@ export function main() {
       });
     }));
 
-    it('can provide the mockBackend as XHRBackend and DownloadService',
-      inject([XHRBackend, DownloadService], (backend: MockBackend, download: DownloadService) => {
+    it('can provide the mockBackend as XHRBackend',
+      inject([XHRBackend], (backend: MockBackend) => {
         expect(backend).not.toBeNull('backend should be provided');
-        expect(download).not.toBeNull('download should be provided');
       }));
 
-    it('can instantiate service with "new"', inject([AuthHttp, DownloadService], (http: AuthHttp, download: DownloadService) => {
+    it('can instantiate service with "new"', inject([AuthHttp], (http: AuthHttp) => {
       expect(http).not.toBeNull('http should be provided');
-      let service = new PatientApiService(http, download);
+      let service = new PatientApiService(http);
       expect(service instanceof PatientApiService).toBe(true, 'new service should be ok');
     }));
 
@@ -62,9 +61,9 @@ export function main() {
       let fakePatients: any[];
       let response: Response;
 
-      beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
+      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
         backend = be;
-        service = new PatientApiService(http, download);
+        service = new PatientApiService(http);
         fakePatients = PatientApiServiceStub.makePatientListData();
         let options = new ResponseOptions({ status: 200, body: fakePatients });
         console.log(options);
@@ -125,9 +124,9 @@ export function main() {
       let fakeCount: number;
       let response: Response;
 
-      beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
+      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
         backend = be;
-        service = new PatientApiService(http, download);
+        service = new PatientApiService(http);
         fakeCount = 4;
         let options = new ResponseOptions({ status: 200, body: fakeCount });
         response = new Response(options);
@@ -187,9 +186,9 @@ export function main() {
       let fakeCount: number;
       let response: Response;
 
-      beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
+      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
         backend = be;
-        service = new PatientApiService(http, download);
+        service = new PatientApiService(http);
         fakeCount = 4;
         let options = new ResponseOptions({ status: 200, body: fakeCount });
         response = new Response(options);
@@ -249,9 +248,9 @@ export function main() {
       let fakePatient: any;
       let response: Response;
 
-      beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
+      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
         backend = be;
-        service = new PatientApiService(http, download);
+        service = new PatientApiService(http);
         fakePatient = PatientApiServiceStub.makePatientData();
         let options = new ResponseOptions({ status: 200, body: fakePatient });
         response = new Response(options);
@@ -311,9 +310,9 @@ export function main() {
       let fakeData: VariantReportComparisonData;
       let response: Response;
 
-      beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
+      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
         backend = be;
-        service = new PatientApiService(http, download);
+        service = new PatientApiService(http);
         fakeData = PatientApiServiceStub.makeOutsideAssayComparisonVariantReportData();
         let options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
@@ -373,9 +372,9 @@ export function main() {
       let fakeData: any;
       let response: Response;
 
-      beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
+      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
         backend = be;
-        service = new PatientApiService(http, download);
+        service = new PatientApiService(http);
         fakeData = PatientApiServiceStub.makeVariantReportQcData();
         let options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
@@ -435,9 +434,9 @@ export function main() {
       let fakeData: any;
       let response: Response;
 
-      beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
+      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
         backend = be;
-        service = new PatientApiService(http, download);
+        service = new PatientApiService(http);
         fakeData = PatientApiServiceStub.makePatientVariantReportOcpData();
         let options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
@@ -497,9 +496,9 @@ export function main() {
       let fakeData: any;
       let response: Response;
 
-      beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
+      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
         backend = be;
-        service = new PatientApiService(http, download);
+        service = new PatientApiService(http);
         fakeData = PatientApiServiceStub.makePatientCopyNumberReportData();
         let options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
@@ -561,9 +560,9 @@ export function main() {
       let fakeData: any;
       let response: Response;
 
-      beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
+      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
         backend = be;
-        service = new PatientApiService(http, download);
+        service = new PatientApiService(http);
         fakeData = PatientApiServiceStub.makePatientVariantReportFileInfoData();
         let options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
@@ -617,38 +616,69 @@ export function main() {
     });
 
 
-    describe('when downloadPatientFile', () => {
+    fdescribe('when downloadPatientFile', () => {
       let backend: MockBackend;
       let service: PatientApiService;
       let fakeData: any;
+      let fakeErrorData: any;
       let response: Response;
-      let downloadFileSpy: jasmine.Spy;
 
-      beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
+      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
         backend = be;
-        service = new PatientApiService(http, download);
-        fakeData = { download_url: 'fake-url' };
+        service = new PatientApiService(http);
+        fakeData = {
+          download_url: 'fake-url',
+        };
+        fakeErrorData = {
+          error_message: 'Error: fake-error',
+        };
         let options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
-        downloadFileSpy = spyOn(download, 'downloadFile').and.callFake(() => { ; });
       }));
 
-      it('should have expected fake download url', async(inject([], () => {
-        backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
+      it('should have expected fake response (then)', async(inject([], () => {
+        backend.connections.subscribe((c: MockConnection) => { c.mockRespond(response); });
 
-        service.downloadPatientFile('fake-psn', 'fake-url');
-
-        expect(downloadFileSpy).toHaveBeenCalled();
-
+        service.downloadPatientFile('fake-psn', 'fake-url').toPromise()
+          .then(resp => {
+            expect(resp).toBeDefined();
+            switch (resp.kind) {
+              case 'error':
+                expect(resp.kind).toBe('error');
+                let errorRes = resp as ApiStatusUpdateError;
+                expect(errorRes.message).toBe(fakeErrorData.message);
+                break;
+              case 'success':
+                expect(resp.kind).toBe('success');
+                let successRes = resp as ApiSuccess;
+                expect(successRes.data.download_url).toBe(fakeData.download_url);
+                break;
+            }
+          });
       })));
 
-      it('should be ok if GET download_url endpoint fails and should not call downloadFile', async(inject([], () => {
-        let resp = new Response(new ResponseOptions({ status: 404 }));
-        backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
+      it('should have expected fake response (Observable.do)', async(inject([], () => {
+        backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
-        service.downloadPatientFile('fake-psn', 'fake-url');
+        service.downloadPatientFile('fake-psn', 'fake-url')
+          .do(resp => {
+            expect(resp.kind).toBe('success');
+            let successRes = resp as ApiSuccess;
+            expect(successRes.data.download_url).toBe(fakeData.download_url);
+          })
+          .toPromise();
+      })));
 
-        expect(downloadFileSpy).not.toHaveBeenCalled();
+      it('should have expected fake error (Observable.do)', async(inject([], () => {
+        backend.connections.subscribe((c: MockConnection) => c.mockError(new Error('fake-error')));
+
+        service.downloadPatientFile('fake-psn', 'fake-url')
+          .do(resp => {
+            expect(resp.kind).toBe('error');
+            let errorRes = resp as ApiError;
+            expect(errorRes.message).toEqual(fakeErrorData.message);
+          })
+          .toPromise();
       })));
 
     });
@@ -661,9 +691,9 @@ export function main() {
       let fakeErrorData: any;
       let response: Response;
 
-      beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
+      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
         backend = be;
-        service = new PatientApiService(http, download);
+        service = new PatientApiService(http);
         fakeData = {
           commenter: 'fake-commenter',
           status: 'fake-status',
@@ -731,9 +761,9 @@ export function main() {
       let fakeErrorData: any;
       let response: Response;
 
-      beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
+      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
         backend = be;
-        service = new PatientApiService(http, download);
+        service = new PatientApiService(http);
         fakeData = {
           commenter: 'fake-commenter',
           status: 'fake-status',
@@ -801,9 +831,9 @@ export function main() {
       let fakeErrorData: any;
       let response: Response;
 
-      beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
+      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
         backend = be;
-        service = new PatientApiService(http, download);
+        service = new PatientApiService(http);
         fakeData = {
           commenter: 'fake-commenter',
           status: 'fake-status',
@@ -870,9 +900,9 @@ export function main() {
       let fakePatient: any;
       let response: Response;
 
-      beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
+      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
         backend = be;
-        service = new PatientApiService(http, download);
+        service = new PatientApiService(http);
         fakePatient = PatientApiServiceStub.makePendingAssignmentReports();
         let options = new ResponseOptions({ status: 200, body: fakePatient });
         response = new Response(options);
@@ -931,9 +961,9 @@ export function main() {
       let fakePatient: any;
       let response: Response;
 
-      beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
+      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
         backend = be;
-        service = new PatientApiService(http, download);
+        service = new PatientApiService(http);
         fakePatient = PatientApiServiceStub.makePendingVariantReports();
         let options = new ResponseOptions({ status: 200, body: fakePatient });
         response = new Response(options);
@@ -992,9 +1022,9 @@ export function main() {
       let fakePatient: any;
       let response: Response;
 
-      beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
+      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
         backend = be;
-        service = new PatientApiService(http, download);
+        service = new PatientApiService(http);
         fakePatient = PatientApiServiceStub.makePatientsAwaiting();
         let options = new ResponseOptions({ status: 200, body: fakePatient });
         response = new Response(options);
@@ -1053,9 +1083,9 @@ export function main() {
       let fakePatient: any;
       let response: Response;
 
-      beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
+      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
         backend = be;
-        service = new PatientApiService(http, download);
+        service = new PatientApiService(http);
         fakePatient = PatientApiServiceStub.makeOverviewPatients();
         let options = new ResponseOptions({ status: 200, body: fakePatient });
         response = new Response(options);
@@ -1114,9 +1144,9 @@ export function main() {
       let fakePatient: any;
       let response: Response;
 
-      beforeEach(inject([AuthHttp, DownloadService, XHRBackend], (http: AuthHttp, download: DownloadService, be: MockBackend) => {
+      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
         backend = be;
-        service = new PatientApiService(http, download);
+        service = new PatientApiService(http);
         fakePatient = PatientApiServiceStub.makeOverviewBt();
         let options = new ResponseOptions({ status: 200, body: fakePatient });
         response = new Response(options);
