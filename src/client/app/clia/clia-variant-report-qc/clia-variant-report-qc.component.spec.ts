@@ -611,6 +611,9 @@ export function main() {
                     graph: {
                       parsedVCFGenes: parsedVCFGenes,
                       tvcVersion: ['test']
+                    },
+                    oncomine: {
+                      oncomine: getOncomine
                     }
                   }
                 }
@@ -627,6 +630,7 @@ export function main() {
           .compileComponents()
           .then(() => {
             let fixture = TestBed.createComponent(CliaVariantReportQcComponent);
+            let comp: CliaVariantReportQcComponent = fixture.componentInstance;
 
             fixture.componentInstance.ngOnInit();
             fixture.componentInstance.downloadDnaBam();
@@ -634,6 +638,7 @@ export function main() {
             fixture.componentInstance.downloadRnaBam();
             fixture.componentInstance.downloadRnaBai();
             fixture.componentInstance.downloadVcf();
+            expect(comp.oncomine_control_panel_summary.oncomine[0].tbp).toEqual(62922);
           });
       }));
 
