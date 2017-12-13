@@ -39,7 +39,7 @@ export class MatchHeightTabClickDirective {
                 .forEach((x: HTMLElement) => x.style.height = `${maxHeight}px`);
 
             setTimeout(function () {
-                window.scroll(0, 0);
+                window.dispatchEvent(new Event('resize'));
             }, 1);
 
         }, 159);
