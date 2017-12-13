@@ -77,7 +77,7 @@ export class AmoiListComponent {
           result.push({
             status: key,
             treatmentArmId: item.treatmentArmId,
-            treatmentArmVersion: x,
+            treatmentArmVersion: x.version,
             exclusion: false
           });
         }
@@ -86,7 +86,7 @@ export class AmoiListComponent {
           result.push({
             status: key,
             treatmentArmId: item.treatmentArmId,
-            treatmentArmVersion: x,
+            treatmentArmVersion: x.version,
             exclusion: true
           });
         }

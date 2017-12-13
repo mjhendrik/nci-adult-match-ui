@@ -313,7 +313,65 @@
                     "rare": false,
                     "rawCopyNumber": 0.0,
                     "refCopyNumber": 0.0,
-                    "reference": "A"
+                    "reference": "A",
+                    "amois": {
+                        "CURRENT": [
+                            {
+                                "treatmentArmId": "CukeTest-623-1",
+                                "inclusions": [
+                                    {
+                                        "version": "2015-08-06",
+                                        "type": "Hotspot"
+                                    }
+                                ],
+                                "exclusions": []
+                            },
+                            {
+                                "treatmentArmId": "CukeTest-623-2",
+                                "inclusions": [],
+                                "exclusions": [
+                                    {
+                                        "version": "2015-08-06",
+                                        "type": "Hotspot"
+                                    }
+                                ]
+                            },
+                            {
+                                "treatmentArmId": "CukeTest-636-1",
+                                "inclusions": [
+                                    {
+                                        "version": "2015-08-06",
+                                        "type": "Hotspot"
+                                    }
+                                ],
+                                "exclusions": []
+                            }
+                        ],
+                        "FUTURE": [
+                            {
+                                "treatmentArmId": "CukeTest-623-1-1",
+                                "inclusions": [
+                                    {
+                                        "version": "2015-08-06",
+                                        "type": "Hotspot"
+                                    }
+                                ],
+                                "exclusions": []
+                            }
+                        ],
+                        "PRIOR": [
+                            {
+                                "treatmentArmId": "CukeTest-PEN-NHR-CLOSED",
+                                "inclusions": [],
+                                "exclusions": [
+                                    {
+                                        "version": "2015-01-01",
+                                        "type": "Hotspot"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
                 }
             ],
             "geneFusions": [
