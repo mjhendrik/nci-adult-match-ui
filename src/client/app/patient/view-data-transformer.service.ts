@@ -534,6 +534,9 @@ export class ViewDataTransformer {
         let now = new Date() as any;
         variantReport.daysPending = Math.round(Math.abs(now - dateReceived) / 864e5); // 864e5 = 1000 * 60 * 60 * 24
         transformedPatient.pendingVariantReport = variantReport;
+        if (transformedBiopsy.isOutsideAssayWorkflow) {
+          transformedPatient.pendingVariantReport.outsideAssayType = transformedBiopsy.isOutsideAssay ? 'Treatment' : 'Confirmation';
+        }
       }
     }
   }
