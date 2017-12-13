@@ -100,14 +100,9 @@ export class CliaVariantReportQcComponent implements OnInit {
     this.cellularity = itemList.cellularity;
     this.gene_fusions = itemList.gene_fusions;
     this.snv_indels = itemList.snv_indels;
-    // this.oncomine_control_panel_summary = itemList.oncomine_control_panel_summary;
     // this.molecular_id = itemList.molecular_id;
     // this.analysis_id = itemList.analysis_id;
     // this.torrent_variant_caller_version = itemList.torrent_variant_caller_version;
-    // Object.keys(itemList.oncomine_control_panel_summary).forEach((key: any, i: number) => {
-    //   this.sum += itemList.oncomine_control_panel_summary[key];
-    // });
-    // this.parsed_vcf_genes = itemList.parsedVCFGenes;
   };
 
   getGraph(itemList: CliaVariantReportsQCViewData) {
@@ -115,7 +110,11 @@ export class CliaVariantReportQcComponent implements OnInit {
   }
 
   getOncomine(itemList: CliaVariantReportsQCViewData) {
+    let array: any[] = ['lrp1','lmna','tbp','myc','hmbs','itgb7'];
     this.oncomine_control_panel_summary = itemList;
+    Object.keys(this.oncomine_control_panel_summary).forEach((key: any, i: number) => {
+      this.sum += array.includes(key) ? parseInt(this.oncomine_control_panel_summary[key]) : 0;
+    });
   }
 
   downloadDnaBam(): void {
