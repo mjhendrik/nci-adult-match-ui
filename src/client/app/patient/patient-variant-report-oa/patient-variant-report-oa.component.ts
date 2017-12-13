@@ -128,9 +128,15 @@ export class PatientVariantReportOutsideAssayComponent
     const action = () => {
       console.info('Confirming outside lab variant report: ' + this.outsideData.analysisId);
       this.patientApi
-        .updateVariants(this.patientSequenceNumber, this.outsideData.biopsySequenceNumber, this.outsideData.analysisId, this.transformer.getVariants(this))
-        // tslint:disable-next-line:max-line-length
-        .flatMap(() => this.patientApi.updateVariantReportStatus(this.patientSequenceNumber, this.outsideData.biopsySequenceNumber, this.outsideData.analysisId, true))
+        .updateVariants(
+          this.patientSequenceNumber,
+          this.outsideData.biopsySequenceNumber,
+          this.outsideData.analysisId,
+          this.transformer.getVariants(this.outsideData.variantReport)
+        )
+        .flatMap(
+          () => this.patientApi.updateVariantReportStatus(this.patientSequenceNumber, this.outsideData.biopsySequenceNumber, this.outsideData.analysisId, true)
+        )
         .subscribe(
           (x: ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
             switch (x.kind) {
@@ -214,21 +220,26 @@ export class PatientVariantReportOutsideAssayComponent
     const action = () => {
       console.info('Confirming MATCH variant report: ' + this.matchData.analysisId);
       this.patientApi
-        .updateVariants(this.patientSequenceNumber, this.matchData.biopsySequenceNumber, this.matchData.analysisId, this.transformer.getVariants(this))
-        // tslint:disable-next-line:max-line-length
-        .flatMap(() => this.patientApi.updateVariantReportStatus(this.patientSequenceNumber, this.matchData.biopsySequenceNumber, this.matchData.analysisId, true))
+        .updateVariants(this.patientSequenceNumber,
+          this.matchData.biopsySequenceNumber,
+          this.matchData.analysisId,
+          this.transformer.getVariants(this.matchData.variantReport)
+        )
+        .flatMap(
+          () => this.patientApi.updateVariantReportStatus(this.patientSequenceNumber, this.matchData.biopsySequenceNumber, this.matchData.analysisId, true)
+        )
         .subscribe(
-          (x: ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
-            switch (x.kind) {
-              case 'error':
-                this.showToast(x.message, true);
-                break;
-              case 'success':
-                this.transformer.updateVariantReportStatus(this, x);
-                this.showToast(`Variant Report ${this.matchData.analysisId} has been confirmed`, false);
-                break;
-            }
+        (x: ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
+          switch (x.kind) {
+            case 'error':
+              this.showToast(x.message, true);
+              break;
+            case 'success':
+              this.transformer.updateVariantReportStatus(this, x);
+              this.showToast(`Variant Report ${this.matchData.analysisId} has been confirmed`, false);
+              break;
           }
+        }
         );
     };
 

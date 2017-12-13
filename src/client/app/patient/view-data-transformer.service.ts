@@ -9,6 +9,7 @@ import { ApiStatusUpdateSuccess } from './patient-api.service';
 import { ConfirmableItem } from '../shared/check-box-with-confirm/check-box-with-confirm.component';
 import { GmtPipe } from '../shared/pipes/gmt.pipe';
 import { AmoiSummary } from './amoi-summary';
+import { retry } from 'rxjs/operator/retry';
 
 const variantTables: Array<string> = [
   // 'geneFusions', // geneFusions is never used, unifiedGeneFusions is used instead
@@ -323,7 +324,7 @@ export class ViewDataTransformer {
     return sourceVariantReport;
   }
 
-  getVariants(variantReport: any): void {
+  getVariants(variantReport: VariantReportData): any {
     if (!variantReport)
       return null;
 
@@ -337,12 +338,15 @@ export class ViewDataTransformer {
       }
 
       for (let item of table) {
-        variants[item.variantId] = {
+        let id = item.metadata._id;
+        variants[id] = {
           comment: item.comment,
-          status: item.confirmed ? 'CONFIRMED' : 'UNCONFIRMED'
+          status: item.confirmed ? 'CONFIRMED' : 'REJECTED'
         };
       }
     }
+
+    return variants;
   }
 
   private precessPassFailVariants(comparisonVariantReport: any): void {
