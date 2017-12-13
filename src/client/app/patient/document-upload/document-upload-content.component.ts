@@ -70,20 +70,34 @@ export class DocumentUploadContentComponent {
     }
   }
 
-  upload(): void {
-    this.isUploading = true;
-    this.api.getDocumentPresignedUrls(
-      this.psn,
-      this.documentFile
-    ).subscribe(
-      (data: any) => {
-        this.fileUrl = data.url;
-        this.uploadFile(this.fileUrl, this.documentFile);
-      });
+  // upload(): void {
+  //   this.isUploading = true;
+  //   this.api.getDocumentPresignedUrls(
+  //     this.psn,
+  //     this.documentFile
+  //   ).subscribe(
+  //     (data: any) => {
+  //       this.fileUrl = data.url;
+  //       this.uploadFile(this.fileUrl, this.documentFile);
+  //     });
+  // }
+
+  upload(): void { 
+    this.isUploading = true; 
+    this.api.getDocumentPresignedUrls( 
+      this.msn, 
+      this.documentFile.name     ).subscribe( 
+      (data: any) => {  
+        console.log("DATA") 
+        console.log(JSON.stringify(data))  
+        this.fileUrl = data[0].url; 
+        this.fileFields = data[0].fields;  
+        this.uploadFile(this.fileUrl, this.documentFile); 
+      }); 
   }
 
   uploadFile(url: string, file: any): void {
-    const uploadFile = new HttpRequest('PUT', url, file, {
+    const uploadFile = new HttpRequest('POST', url, file, {
       reportProgress: true,
       responseType: 'text'
     });

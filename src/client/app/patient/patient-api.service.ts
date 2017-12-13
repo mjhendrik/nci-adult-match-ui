@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Response } from '@angular/http';
+import { Response,RequestOptions,Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { AuthHttp } from 'angular2-jwt';
 
@@ -277,11 +277,23 @@ export class PatientApiService extends ApiService {
       .catch(this.handleError);
   }
 
-  getDocumentPresignedUrls(psn: string, documentFile: string): Observable<string> {
-    let documentFileName: string = documentFile.slice(0, documentFile.lastIndexOf('/')) + '/' + documentFile;
+  // getDocumentPresignedUrls(psn: string, documentFile: string): Observable<string> {
+  //   let documentFileName: string = documentFile.slice(0, documentFile.lastIndexOf('/')) + '/' + documentFile;
+  //
+  //   return this.http.put(`${this.baseApiUrl}/patients/presign_url`, { psn: psn, documentFile: documentFileName })
+  //     .map(this.extractData)
+  //     .catch(this.handleError);
+  // }
 
-    return this.http.put(`${this.baseApiUrl}/patients/presign_url`, { psn: psn, documentFile: documentFileName })
-      .map(this.extractData)
-      .catch(this.handleError);
+  getDocumentPresignedUrls(msn: string, documentFile: string): Observable<string> {      
+    let url = Config.API.PATIENT+'/patients/'+msn+'/upload_url';      
+    let body = { "file_name": documentFile }; 
+    let headers = new Headers( { 'Content-Type': 'application/json'}); 
+    let options = new RequestOptions({ headers: headers });   
+    console.log("1--" + url) 
+    console.log("2--" + body) 
+    console.log("3--" + JSON.stringify(headers))
+    return this.http.post(url, body, options).map(data =>  { 
+      return [ this.extractData(data) ] as any;}); 
   }
 }

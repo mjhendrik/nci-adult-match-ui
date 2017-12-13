@@ -7,7 +7,7 @@
         <label class="control-label">Document File
           <span *ngIf="isUploading" class="text-success-light">{{percentDone}}%</span>
         </label>
-        <input type="file" accept="" (change)="fileSelected($event.target.files)" id="variantUploadButton">
+        <input type="file" accept="" (change)="fileSelected($event.target.files[0])" id="variantUploadButton">
         <div *ngIf="isUploading" class="progress progress-striped progress-xs active m-t-10 m-b-0">
           <div class="progress-bar progress-bar-success active" [style.width.%]="percentDone"></div>
         </div>
