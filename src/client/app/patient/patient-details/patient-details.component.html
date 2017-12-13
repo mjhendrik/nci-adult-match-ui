@@ -111,7 +111,7 @@
           </div>
         </div>
       </tab>
-      <tab *ngFor="let biopsy of patient.biopsies; first as isFirst"  [active]="biopsy.biopsySequenceNumber === activeBiopsySequenceNumber">
+      <tab *ngFor="let biopsy of patient.biopsies; first as isFirst" [active]="biopsy.biopsySequenceNumber === activeBiopsySequenceNumber">
         <ng-template tabHeading>
           <i *ngIf="isFirst" class="fa fa-bell-o" aria-hidden="true"></i>{{getBiopsyTitlePrefix(biopsy)}} Biopsy {{biopsy.biopsySequenceNumber}}, {{biopsy.dateCreated | gmt: 'YYYY-MM-DD'}}
         </ng-template>
@@ -197,7 +197,8 @@
                           <td>{{sendout.destinationSite | dashify}}</td>
                           <td>
                             <span *ngIf="sendout.trackingNumber!==null && sendout.trackingNumber!=='Local'">
-                              <a href="https://www.fedex.com/apps/fedextrack/?tracknumbers={{sendout.trackingNumber}}" class="link-none" target="_blank">
+                              <a href="https://www.fedex.com/apps/fedextrack/?tracknumbers={{sendout.trackingNumber}}" class="link-none" target="_blank"
+                                rel="noopener noreferrer">
                                 <i class="fa fa-truck"></i> {{sendout.trackingNumber | dashify}}</a>
                             </span>
                             <span *ngIf="sendout.trackingNumber===null || sendout.trackingNumber==='Local'">{{sendout.trackingNumber | dashify}}</span>
@@ -278,8 +279,8 @@
                                         <dd>{{analysis.assignmentReport.dateReceivedByECOG | gmt}}</dd>
                                         <dt>Treatment Arm</dt>
                                         <dd>
-                                          <treatment-arm-link *ngIf="analysis.assignmentReport && analysis.assignmentReport.treatmentArm" [treatmentArmId]="analysis.assignmentReport.treatmentArm.treatmentArmId" [version]="analysis.assignmentReport.treatmentArm.version"
-                                            [removePrefix]="true"></treatment-arm-link>
+                                          <treatment-arm-link *ngIf="analysis.assignmentReport && analysis.assignmentReport.treatmentArm" [treatmentArmId]="analysis.assignmentReport.treatmentArm.treatmentArmId"
+                                            [version]="analysis.assignmentReport.treatmentArm.version" [removePrefix]="true"></treatment-arm-link>
                                           <span *ngIf="!analysis.assignmentReport || !analysis.assignmentReport.treatmentArm">-</span>
                                         </dd>
                                       </dl>
@@ -314,7 +315,10 @@
                           </td>
                         </tr>
                         <tr>
-                          <td colspan="7"><sd-file-upload *ngIf="isUploadEnabled(biopsy, sendout)" [msn]="sendout.molecularSequenceNumber" (uploaded)="onUploaded($event)"></sd-file-upload></td>
+                          <td colspan="7">
+                            <sd-file-upload *ngIf="isUploadEnabled(biopsy, sendout)" [msn]="sendout.molecularSequenceNumber"
+                              (uploaded)="onUploaded($event)"></sd-file-upload>
+                          </td>
                         </tr>
                       </ng-template>
                       <tr *ngIf="!biopsy.nucleicAcidSendouts || !biopsy.nucleicAcidSendouts.length">
@@ -351,17 +355,17 @@
           <sd-document-upload [msn]="patient.patientSequenceNumber"></sd-document-upload>
         </div>
         <!--<div [dropzone]="dzConfigDocuments" (error)="onUploadError($event)" (success)="onUploadSuccess($event)">-->
-          <!--<div class="dz-message" data-dz-message>-->
-            <!--&lt;!&ndash; start bdd tests &ndash;&gt;-->
-            <!--<input style="display: none" type="file" id="documents_upload" name="documents_upload" multiple>-->
-            <!--&lt;!&ndash; end bdd tests &ndash;&gt;-->
-            <!--<span>-->
-              <!--Click or drop files here to upload-->
-            <!--</span>-->
-          <!--</div>-->
-          <!---->
-          <!---->
-          <!---->
+        <!--<div class="dz-message" data-dz-message>-->
+        <!--&lt;!&ndash; start bdd tests &ndash;&gt;-->
+        <!--<input style="display: none" type="file" id="documents_upload" name="documents_upload" multiple>-->
+        <!--&lt;!&ndash; end bdd tests &ndash;&gt;-->
+        <!--<span>-->
+        <!--Click or drop files here to upload-->
+        <!--</span>-->
+        <!--</div>-->
+        <!---->
+        <!---->
+        <!---->
         <!--</div>-->
       </tab>
     </tabset>
