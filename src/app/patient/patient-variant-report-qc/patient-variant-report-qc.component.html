@@ -1,0 +1,117 @@
+<div id="content" class="content">
+  <ul class="breadcrumb pull-right">
+    <li>
+      <a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a>
+    </li>
+    <li>
+      <a href [routerLink]="['/patients']" class="link-none">Patients</a>
+    </li>
+    <li>
+      <a href [routerLink]="['/patients/', psn]" class="link-none">Patient {{psn}}</a>
+    </li>
+    <li>
+      <a href [routerLink]="['/patients/' + psn + '/biopsies/' + biopsySequenceNumber + '/variant_reports/' + analysisId]" class="link-none">Variant Report</a>
+    </li>
+    <li class="active">Quality Control Report</li>
+  </ul>
+  <h1 class="page-header">Quality Control Report<span class="entity-name"> {{analysisId}}</span></h1>
+  <div class="row" matchHeight="panel-height-top">
+    <div class="col-md-6">
+      <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-top" id="qc-report-summary">
+        <div class="panel-heading">
+          <h4>Quality Control Report</h4>
+        </div>
+        <div class="panel-heading">
+          <dl class="dl-horizontal">
+            <dt>Molecular Sequence Number</dt>
+            <dd>{{molecularSequenceNumber | dashify}}</dd>
+            <dt>Biopsy Sequence Number</dt>
+            <dd>{{biopsySequenceNumber | dashify}}</dd>
+            <dt>Analysis ID</dt>
+            <dd>{{analysisId | dashify}}</dd>
+            <dt>MAPD</dt>
+            <dd>{{mapd | dashify}}</dd>
+            <dt>Cellularity</dt>
+            <dd>{{cellularity | dashify}}</dd>
+            <dt>File Received Date</dt>
+            <dd>{{dateReceived | gmt | dashify}}</dd>
+            <dt *ngIf="!showPools">Torrent Variant Caller Version</dt>
+            <dd *ngIf="!showPools">{{tvc_version | dashify}}</dd>
+            <dt *ngIf="showPools">Pool 1</dt>
+            <dd *ngIf="showPools">{{pool1 | dashify}}</dd>
+            <dt *ngIf="showPools">Pool 2</dt>
+            <dd *ngIf="showPools">{{pool2 | dashify}}</dd>
+          </dl>
+          <dl class="dl-horizontal">
+            <h4>Oncomine Control Panel Summary</h4>
+            <table class="table table-condensed white-header">
+              <thead>
+                <tr>
+                  <th>LRP1</th>
+                  <th>TBP</th>
+                  <th>MYC</th>
+                  <th>HMBS</th>
+                  <th>ITGB7</th>
+                  <th>SUM</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngIf="ocpSummary && ocpSummary.hasData; else emptyRow">
+                  <td>{{ocpSummary['LRP1'] | dashify}}</td>
+                  <td>{{ocpSummary['TBP'] | dashify}}</td>
+                  <td>{{ocpSummary['MYC'] | dashify}}</td>
+                  <td>{{ocpSummary['HMBS'] | dashify}}</td>
+                  <td>{{ocpSummary['ITGB7'] | dashify}}</td>
+                  <td>{{ocpSummary['SUM'] | dashify}}</td>
+                </tr>
+                <ng-template #emptyRow>
+                  <tr>
+                    <td colspan="6" class="text-muted">No Oncomine Control Panel data</td>
+                  </tr>
+                </ng-template>
+              </tbody>
+            </table>
+          </dl>
+          <div class="m-b-5">
+            <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!dnaBamFilePath" (click)="download(dnaBamFilePath)">
+              <i class="fa fa-download"></i> DNA BAM</button>
+            <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!dnaBaiFilePath" (click)="download(dnaBaiFilePath)">
+              <i class="fa fa-download"></i> DNA BAI</button>
+            <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!rnaBamFilePath" (click)="download(rnaBamFilePath)">
+              <i class="fa fa-download"></i> RNA BAM</button>
+            <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!rnaBaiFilePath" (click)="download(rnaBaiFilePath)">
+              <i class="fa fa-download"></i> RNA BAI</button>
+            <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!vcfFilePath" (click)="download(vcfFilePath)">
+              <i class="fa fa-download"></i> VCF</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-top">
+        <div class="panel-heading">
+          <cnv-chart [data]="parsed_vcf_genes"></cnv-chart>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-white panel-accent-sides-purple overflow-hidden">
+    <div class="panel-heading">
+      <div class="row">
+        <div class="col-md-12">
+          <app-variant-report-filtered-table-snv-indels [items]="snvAndIndels" [type]="'patient'" [title]="'Single Nucleotide Variants and Indels'"></app-variant-report-filtered-table-snv-indels>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <app-variant-report-filtered-table-cnv [items]="copyNumberVariants" [type]="'patient'"></app-variant-report-filtered-table-cnv>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <app-variant-report-filtered-table-gf [items]="geneFusions" [type]="'patient'"></app-variant-report-filtered-table-gf>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
