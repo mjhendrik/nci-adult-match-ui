@@ -353,7 +353,10 @@
                     <div class="panel-heading-btn">
                     </div>
                     <h4 class="panel-title">
-                      <i [colorCodeCliaIon]="item.status" class="fa fa-heartbeat"></i> {{item.ionReporterId}}
+                      <i [colorCodeCliaIon]="item.status" class="fa fa-heartbeat tooltip_heartbeat">
+                        <span *ngIf="item.status && item.status!==null && item.status.indexOf('Contacted')!==-1" class="tooltiptext">Ion Reporter Online</span>
+                        <span *ngIf="!item.status || item.status===null || item.status.indexOf('Contacted')===-1" class="tooltiptext">Ion Reporter Offline</span>
+                      </i> {{item.ionReporterId}}
                     </h4>
                   </div>
                 </a>
