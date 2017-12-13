@@ -273,7 +273,7 @@ export class ViewDataTransformer {
     this.transformAssayMessages(variantReport.assayMessages);
 
     variantReport.isVariantReportEditable = this.getVariantReportEditable(variantReport);
-    variantReport.isAssignmentReportEditable = this.getVariantReportEditable(variantReport);
+    variantReport.isAssignmentReportEditable = this.getAssignmentReportEditable(variantReport);
     this.postProcessVariantTables(variantReport);
     variantReport.isOutsideAssayWorkflow = false;
     variantReport.disease = transformedPatient.disease || {};
