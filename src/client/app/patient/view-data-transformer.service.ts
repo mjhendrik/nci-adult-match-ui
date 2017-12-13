@@ -640,6 +640,9 @@ export class ViewDataTransformer {
         let now = new Date() as any;
         assignment.hoursPending = Math.round(Math.abs(now - dateAssigned) / 36e5); //36e5 = 1000 * 60 * 60
         transformedPatient.pendingAssignmentReport = assignment;
+        if (biopsy.isOutsideAssayWorkflow) {
+          transformedPatient.pendingAssignmentReport.outsideAssayType = biopsy.isOutsideAssay ? 'Treatment' : 'Confirmation';
+        }
       }
     }
   }
