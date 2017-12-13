@@ -39,6 +39,8 @@ export class DocumentUploadContentComponent {
   };
 
   psn: string;
+  msn: string;
+  fileFields: any
   message: string = 'Enter Document Name to add Document file';
   uploadNotification: any;
   isUploading: boolean = false;
@@ -88,8 +90,6 @@ export class DocumentUploadContentComponent {
       this.msn, 
       this.documentFile.name     ).subscribe( 
       (data: any) => {  
-        console.log("DATA") 
-        console.log(JSON.stringify(data))  
         this.fileUrl = data[0].url; 
         this.fileFields = data[0].fields;  
         this.uploadFile(this.fileUrl, this.documentFile); 
