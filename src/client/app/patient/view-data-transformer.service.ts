@@ -563,13 +563,15 @@ export class ViewDataTransformer {
       for (let item of table) {
         variantReport.moiSummary.totalMOIs += 1;
 
-        if (item.amois) {
-          variantReport.moiSummary.totalaMOIs += 1;
-          if (item.confirmed) {
+        if (item.confirmed) {
+          variantReport.moiSummary.confirmedMOIs += 1;
+          if (item.amois) {
             variantReport.moiSummary.confirmedaMOIs += 1;
           }
-        } else if (item.confirmed) {
-          variantReport.moiSummary.confirmedMOIs += 1;
+        }
+
+        if (item.amois) {
+          variantReport.moiSummary.totalaMOIs += 1;
         }
 
         if (item.metadata) {
