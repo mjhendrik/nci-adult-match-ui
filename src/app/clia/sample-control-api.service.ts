@@ -18,6 +18,7 @@ export class SampleControlApiService extends ApiService {
   getCliaDetailsNTC(type: string): Observable<any[]> {
 
     // return this.http.get(this.url('/sample_controls?site=' + type
+    // tslint:disable-next-line:max-line-length
     //   + '&control_type=no_template&projection=molecular_id,date_molecular_id_created,date_variant_received,report_status', // sample control
 
     return this.http.get(this.url('/message/clia/ntc_control?site=' + type
