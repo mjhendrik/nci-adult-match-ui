@@ -15,6 +15,7 @@ export interface VariantReportData {
     variantReportStatus?: string;
     comments?: string;
     commenter?: string;
+    variantReport?: any;
 
     moiSummary?: AmoiSummary;
 

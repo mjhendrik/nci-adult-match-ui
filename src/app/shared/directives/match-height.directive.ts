@@ -54,8 +54,8 @@ export class MatchHeightDirective implements AfterViewChecked {
         Array.from(children)
             .forEach((x: HTMLElement) => x.style.height = `${maxHeight}px`);
 
-        setTimeout(function () {
-            window.dispatchEvent(new Event('resize'));
-        }, 1);
+        // setTimeout(function () {
+        //     window.dispatchEvent(new Event('resize'));
+        // }, 1);
     }
 }

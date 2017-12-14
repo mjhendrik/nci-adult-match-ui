@@ -66,6 +66,8 @@ export class PatientVariantReportComponent implements OnInit, OnDestroy, Variant
   comments: string;
   commenter: string;
 
+  variantReport: any;
+
   moiSummary: AmoiSummary;
 
   assignmentReport: any;
@@ -142,7 +144,7 @@ export class PatientVariantReportComponent implements OnInit, OnDestroy, Variant
     const action = () => {
       console.info('Confirming variant report: ' + this.analysisId);
       this.patientApi
-        .updateVariants(this.patientSequenceNumber, this.biopsySequenceNumber, this.analysisId, this.transformer.getVariants(this))
+        .updateVariants(this.patientSequenceNumber, this.biopsySequenceNumber, this.analysisId, this.transformer.getVariants(this.variantReport))
         .flatMap(() => this.patientApi.updateVariantReportStatus(this.patientSequenceNumber, this.biopsySequenceNumber, this.analysisId, true))
         .subscribe(
           (x: ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
