@@ -38,12 +38,7 @@ export class AliquotApiService extends ApiService {
   }
 
   getCliaVariantReportsPACC(molecular_id: string): Observable<CliaVariantReportsPACCViewData> {
-
-    // return this.http.get(this.url('/aliquot/' + molecular_id
-    // tslint:disable-next-line:max-line-length
-    //   + '?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,date_variant_received,torrent_variant_caller_version,report_status,snv_indels,copy_number_variants,gene_fusions', // aliquot
-
-    return this.http.get(this.url('/message/clia/proficiency_competency_control/variant_report/' + molecular_id, ''))
+    return this.http.get(this.url('/message/clia/proficiency_competency_control?molecularSequenceNumber=' + molecular_id, ''))
       .map(this.extractData)
       .catch(this.handleError);
   }

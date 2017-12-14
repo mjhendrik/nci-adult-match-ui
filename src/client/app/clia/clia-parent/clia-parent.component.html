@@ -307,7 +307,7 @@
                               <td>{{item.date_molecular_id_created | dashify}}</td>
                               <td>{{item.date_variant_received | dashify}}</td>
                               <td class="text-center">
-                                <span *ngIf="item.report_status!==undefined">
+                                <span *ngIf="item.report_status!==null && item.date_variant_received!==null">
                                   <a href [routerLink]="['/clia_'+cliaType+'/variant_reports_pacc',item.molecular_id]" class="link-none">
                                     <i class="fa fa-file-text-o"></i>
                                   </a>

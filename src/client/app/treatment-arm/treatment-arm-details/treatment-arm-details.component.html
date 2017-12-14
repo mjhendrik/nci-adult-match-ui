@@ -448,8 +448,8 @@
                             </td>
                             <td>{{item.chromosome | chromosome}}</td>
                             <td>{{item.position | dashify}}</td>
-                            <td>{{item.reference | dashify}}</td>
-                            <td>{{item.alternative | dashify}}</td>
+                            <td class="long-text-wrap">{{item.reference | dashify}}</td>
+                            <td class="long-text-wrap">{{item.alternative | dashify}}</td>
                             <td>{{item.levelOfEvidence | round | dashify}}</td>
                             <td>
                               <span *ngIf="item.publicMedIds!=null && item.publicMedIds!=0">
