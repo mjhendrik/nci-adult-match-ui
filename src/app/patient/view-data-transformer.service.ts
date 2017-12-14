@@ -393,6 +393,10 @@ export class ViewDataTransformer {
     this.transformNgsMessages(transformedPatient, transformedBiopsy);
     this.transformAssayMessages(transformedBiopsy.assayMessages);
 
+    if (transformedBiopsy.pathologyReportMessages && transformedBiopsy.pathologyReportMessages.length > 1) {
+      transformedBiopsy.pathologyReportMessages = [transformedBiopsy.pathologyReportMessages[transformedBiopsy.pathologyReportMessages.length - 1]];
+    }
+
     return transformedBiopsy;
   }
 
