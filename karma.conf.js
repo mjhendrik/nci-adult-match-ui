@@ -12,6 +12,9 @@ module.exports = function (config) {
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: './',
 
+    jasmineNodeOpts: {
+      defaultTimeoutInterval: 90000
+    },
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
@@ -248,13 +251,13 @@ module.exports = function (config) {
   });
 
   if (process.env.APPVEYOR) {
-    config.browsers = ['IE', 'chromium-browser'];
+    config.browsers = ['IE'];
     config.singleRun = true;
     config.browserNoActivityTimeout = 90000; // Note: default value (10000) is not enough
   }
 
   if (process.env.TRAVIS || process.env.CIRCLECI) {
-    config.browsers = ['Chrome_travis_ci', 'chromium-browser'];
+    config.browsers = ['Chrome_travis_ci'];
     config.singleRun = true;
     config.browserNoActivityTimeout = 90000;
   }
