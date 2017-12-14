@@ -112,7 +112,7 @@
               <td>{{item.offTrialDate}}</td>
             </tr>
             <tr *ngIf="mftablePatients.data.length == 0">
-              <td class="text-muted" colspan="7">
+              <td class="text-muted" colspan="8">
                 <span *ngIf="searchTerm">No matching search results found for "{{searchTerm}}"</span>
                 <span *ngIf="!searchTerm">No Patient data</span>
               </td>
@@ -120,7 +120,7 @@
           </tbody>
           <tfoot>
             <tr>
-              <td class="tfoot-padding" colspan="7">
+              <td class="tfoot-padding" colspan="8">
                 <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchTerm" [totallength]="patientCount ? patientCount.length : 0"
                   [totalPageCount]="patientTotal" [paginationType]="'server'" (CurrentlyActive)="currentPageActive($event)"></mfBootstrapPaginator>
               </td>
