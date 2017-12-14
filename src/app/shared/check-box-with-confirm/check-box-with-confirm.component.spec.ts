@@ -29,7 +29,7 @@ import { DialogResults } from '../modal-dialogs/modal-dialog-results';
   `
 })
 class TestComponent {
-  confirmTitle = 'Confirmation Comments';
+  confirmTitle = 'Variant Rejection Comments';
 
   @ViewChild(CheckBoxWithConfirmComponent)
   checkBoxWithConfirmComponent: CheckBoxWithConfirmComponent;

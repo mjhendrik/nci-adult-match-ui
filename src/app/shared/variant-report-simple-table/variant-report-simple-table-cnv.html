@@ -17,7 +17,7 @@
   <tbody>
     <tr *ngFor="let item of items">
       <td>
-        <app-check-box-with-confirm [item]="item" [confirmTitle]="'Confirmation Comments'" [confirmMessage]="'Please enter a reason:'"
+        <app-check-box-with-confirm [item]="item" [confirmTitle]="'Variant Rejection Comments'" [confirmMessage]="'Please enter a reason:'"
           [promptOnlyIf]="true" [isEnabled]="isEditable" (onItemUpdated)="onItemUpdated(item)">
         </app-check-box-with-confirm>
       </td>
