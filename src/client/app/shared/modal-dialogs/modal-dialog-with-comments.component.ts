@@ -12,6 +12,8 @@ export class ModalDialogWithCommentsComponent {
   message: string;
   isEnabled: boolean;
   comment: string;
+  okButtonText: 'OK';
+  cancelButtonText: 'Cancel';
 
   constructor(public bsModalRef: BsModalRef, private modalService: BsModalService) { }
 

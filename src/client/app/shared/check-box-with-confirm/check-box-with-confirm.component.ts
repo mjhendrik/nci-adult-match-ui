@@ -60,6 +60,8 @@ export class CheckBoxWithConfirmComponent implements OnDestroy {
     this.modalRef.content.title = this.confirmTitle;
     this.modalRef.content.message = this.confirmMessage;
     this.modalRef.content.isEnabled = this.isEnabled;
+    this.modalRef.content.okButtonText = 'Reject';
+    this.modalRef.content.cancelButtonText = 'Don\'t Reject';
   }
 
   private toggle(comment: string) {
