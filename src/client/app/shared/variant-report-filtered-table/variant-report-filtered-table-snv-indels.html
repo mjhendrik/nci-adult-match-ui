@@ -38,7 +38,7 @@
 </div>
 <div class="row">
   <div class="table-responsive col-lg-12">
-    <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="items | filterByText: searchTerm" #mfTable="mfDataTable"
+    <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="itemsDisplayed | filterByText: searchTerm" #mfTable="mfDataTable"
       [(mfSortBy)]="defaultSort" [mfRowsOnPage]="recordsPerPage">
       <thead>
         <tr [ngClass]="{true:'purple-light',false:'orangeshade-light'}[type=='patient']">
@@ -141,7 +141,7 @@
           <td>{{item.transcript | dashify}}</td>
           <td>{{item.protein | dashify}}</td>
         </tr>
-        <tr *ngIf="!items || mfTable.data.length == 0">
+        <tr *ngIf="!itemsDisplayed || mfTable.data.length == 0">
           <td class="text-muted" colspan="15">
             <span *ngIf="searchTerm">No matching search results found for "{{searchTerm}}"</span>
             <span *ngIf="!searchTerm">No {{title}} data</span>
@@ -151,7 +151,7 @@
       <tfoot>
         <tr>
           <td class="tfoot-padding" colspan="15">
-            <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchTerm" [totallength]="items ? items.length : 0"></mfBootstrapPaginator>
+            <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50,100]" [search]="searchTerm" [totallength]="itemsDisplayed ? itemsDisplayed.length : 0"></mfBootstrapPaginator>
           </td>
         </tr>
       </tfoot>
