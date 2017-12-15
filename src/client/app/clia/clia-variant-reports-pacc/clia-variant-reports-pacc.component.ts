@@ -8,6 +8,7 @@ import { routerTransition } from './../../shared/router.animations';
 import { CliaVariantReportsPACCViewData } from '../clia-data-interfaces';
 import { SampleControlApiService } from '../sample-control-api.service';
 import { UserProfileService } from '../../shared/user-profile/user-profile.service';
+// import { CliaDataService } from "./../../shared/clia/clia-data.service";
 
 /**
  * CLIAVariantReportsPaccComponent.
@@ -30,6 +31,7 @@ export class CliaVariantReportsPaccComponent implements OnInit {
   date_variant_received: any;
   torrent_variant_caller_version: any;
   report_status: any;
+  comment: any;
   copy_number_variants: any[];
   gene_fusions: any[];
   snv_indels: any[];
@@ -37,6 +39,7 @@ export class CliaVariantReportsPaccComponent implements OnInit {
   paccType: string;
   cliaTypeName: string;
   isReviewer: boolean = false;
+  next_generation_sequence: any;
 
   constructor(private api: SampleControlApiService,
     private route: ActivatedRoute,
@@ -44,7 +47,8 @@ export class CliaVariantReportsPaccComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    // let array:any;
+    // array = this.cliaData.transferData;
     this.paccType = this.route.snapshot.url[0].path;
     this.paccType = this.paccType.substring(this.paccType.indexOf('_') + 1).trim();
 
@@ -54,9 +58,9 @@ export class CliaVariantReportsPaccComponent implements OnInit {
     if (this.paccType === 'mgh') this.cliaTypeName = 'MGH';
     if (this.paccType === 'mda') this.cliaTypeName = 'MD Anderson';
 
-    this.molecular_id = this.route.snapshot.params['id'];
+    // this.route.snapshot.data['data'].next_generation_sequence;
 
-    this.getData(this.route.snapshot.data['data'].data);
+    this.getData(this.route.snapshot.data['data'].data[0]);
 
     const roles = this.profile.roles().filter(x => {
       return x.indexOf('_VARIANT_REPORT_REVIEWER') !== -1 || x === 'ADMIN';
@@ -65,21 +69,24 @@ export class CliaVariantReportsPaccComponent implements OnInit {
     if (roles.indexOf('ADMIN') !== -1 || roles.join().toLowerCase().indexOf(this.paccType) !== -1) {
       this.isReviewer = true;
     }
-
   }
 
   getData(itemList: CliaVariantReportsPACCViewData) {
-    this.molecular_id = itemList.molecular_id;
-    this.analysis_id = itemList.analysis_id;
+    this.molecular_id = itemList.molecularSequenceNumber;
     this.total_variants = itemList.total_variants;
     this.mapd = itemList.mapd;
     this.cellularity = itemList.cellularity;
-    this.date_variant_received = itemList.date_variant_received;
+    this.date_variant_received = itemList.dateReceived;
     this.torrent_variant_caller_version = itemList.torrent_variant_caller_version;
-    this.report_status = itemList.report_status;
-    this.copy_number_variants = itemList.copy_number_variants;
-    this.gene_fusions = itemList.gene_fusions;
-    this.snv_indels = itemList.snv_indels;
+    this.report_status = itemList.status;
+    this.comment = itemList.comment;
+
+    this.next_generation_sequence = itemList.nextGenerationSequence;
+    this.analysis_id = this.next_generation_sequence.ionReporterResults.jobName;
+    this.copy_number_variants = this.next_generation_sequence.ionReporterResults.variantReport.copyNumberVariants;
+    this.gene_fusions = this.next_generation_sequence.ionReporterResults.variantReport.geneFusions;
+    this.snv_indels = this.next_generation_sequence.ionReporterResults.variantReport.singleNucleotideVariants;
+    // this.indels = this.next_generation_sequence.ionReporterResults.variantReport.indels;
   };
 
   downloadDnaBam(): void {
