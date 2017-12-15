@@ -393,7 +393,15 @@ class MockCliaApiService {
       cellularity: { 'test': 'test' },
       date_variant_received: { 'test': 'test' },
       torrent_variant_caller_version: { 'test': 'test' },
-      report_status: { 'test': 'test' }
+      report_status: { 'test': 'test' },
+      dateReceived: { 'test': 'test' },
+      status: { 'test': 'test' },
+      comment: { 'test': 'test' },
+      molecularSequenceNumber: { 'test': 'test' },
+      nextGenerationSequence: {ionReporterResults: {'test': 'test'}}
+      // parsed_vcf_genes: { 'test': 'test' },
+      // file_name: { 'test': 'test' },
+      // body:{}
     };
     return Observable.of(testData);
   }
@@ -444,7 +452,16 @@ class MockCliaApiServiceWithErrors {
       cellularity: { 'test': 'test' },
       date_variant_received: { 'test': 'test' },
       torrent_variant_caller_version: { 'test': 'test' },
-      report_status: { 'test': 'test' }
+      report_status: { 'test': 'test' },
+      dateReceived: { 'test': 'test' }
+      status: { 'test': 'test' },
+      comment: { 'test': 'test' },
+      molecularSequenceNumber: { 'test': 'test' },
+      nextGenerationSequence: {ionReporterResults: {'test': 'test'}}
+      // parsed_vcf_genes: { 'test': 'test' },
+      // file_name: { 'test': 'test' },
+      // body:{},
+      // statusCode:{ 'test': 'test' }
     };
     return Observable.throw(testData);
   }
