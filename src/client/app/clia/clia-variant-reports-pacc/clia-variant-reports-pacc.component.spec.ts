@@ -15,7 +15,7 @@ import { CliaVariantReportsPACCViewData } from '../clia-data-interfaces';
 
 export function main() {
 
-  describe('clia variant reports pacc component with clia type mocha --> Downloads', () => {
+  xdescribe('clia variant reports pacc component with clia type mocha --> Downloads', () => {
 
 
     let config: any[] = [
@@ -78,7 +78,7 @@ export function main() {
 
   });
 
-  describe('clia variant reports pacc component with clia type mocha', () => {
+  xdescribe('clia variant reports pacc component with clia type mocha', () => {
 
 
     let config: any[] = [
@@ -137,7 +137,8 @@ export function main() {
 
   });
 
-  describe('clia variant reports pacc component with clia type dartmouth', () => {
+
+  xdescribe('clia variant reports pacc component with clia type dartmouth', () => {
 
 
     let config: any[] = [
@@ -196,7 +197,8 @@ export function main() {
       }));
 
   });
-  describe('clia variant reports pacc component with clia type yale', () => {
+
+  xdescribe('clia variant reports pacc component with clia type yale', () => {
 
 
     let config: any[] = [
@@ -255,7 +257,8 @@ export function main() {
       }));
 
   });
-  describe('clia variant reports pacc component with clia type mgh', () => {
+
+  xdescribe('clia variant reports pacc component with clia type mgh', () => {
 
 
     let config: any[] = [
@@ -314,7 +317,8 @@ export function main() {
       }));
 
   });
-  describe('clia variant reports pacc component with clia type mda', () => {
+
+  xdescribe('clia variant reports pacc component with clia type mda', () => {
 
 
     let config: any[] = [
