@@ -131,6 +131,7 @@ export class CnvChartDirective implements AfterViewInit {
     let endX:string = "";
 
     if(array.length===0) return;
+    if(array.length<10) return;
 
     filename = (typeof filename!=='undefined') ? filename.split('/tmp/') : "-";
     this.file_name_version = "Filename: " + filename + ". Version: " + version;
