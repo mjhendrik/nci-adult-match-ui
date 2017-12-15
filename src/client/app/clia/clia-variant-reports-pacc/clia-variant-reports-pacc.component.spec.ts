@@ -379,7 +379,6 @@ export function main() {
   });
 }
 
-
 class MockCliaApiService {
   getCliaVariantReportsPACC(): Observable<CliaVariantReportsPACCViewData> {
     let testData: CliaVariantReportsPACCViewData;
