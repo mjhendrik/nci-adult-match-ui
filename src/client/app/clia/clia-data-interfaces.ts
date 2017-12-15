@@ -19,11 +19,16 @@ export interface CliaVariantReportsPACCViewData {
   mapd: {};
   cellularity: {};
   date_variant_received: {};
+  dateReceived: {};
   torrent_variant_caller_version: {};
   report_status: {};
   copy_number_variants: any[];
   gene_fusions: any[];
   snv_indels: any[];
+  status: {};
+  comment: {};
+  molecularSequenceNumber: {};
+  nextGenerationSequence: any;
 }
 
 export interface CliaVariantReportsPCViewData {
