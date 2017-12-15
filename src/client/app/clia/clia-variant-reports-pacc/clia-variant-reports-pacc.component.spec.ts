@@ -453,7 +453,7 @@ class MockCliaApiServiceWithErrors {
       date_variant_received: { 'test': 'test' },
       torrent_variant_caller_version: { 'test': 'test' },
       report_status: { 'test': 'test' },
-      dateReceived: { 'test': 'test' }
+      dateReceived: { 'test': 'test' },
       status: { 'test': 'test' },
       comment: { 'test': 'test' },
       molecularSequenceNumber: { 'test': 'test' },
