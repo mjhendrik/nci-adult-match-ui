@@ -12,11 +12,14 @@ import {
   HttpResponse,
   HttpClient,
   HttpRequest,
+  HttpHeaders
+
 } from '@angular/common/http';
 import {
   BsModalRef,
   BsModalService
 } from 'ngx-bootstrap';
+import { RequestOptions,Headers } from '@angular/http';
 
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/throttleTime';
@@ -40,7 +43,7 @@ export class DocumentUploadContentComponent {
 
   psn: string;
   msn: string;
-  fileFields: any
+  fileBody: any
   message: string = 'Enter Document Name to add Document file';
   uploadNotification: any;
   isUploading: boolean = false;
@@ -72,35 +75,34 @@ export class DocumentUploadContentComponent {
     }
   }
 
-  // upload(): void {
-  //   this.isUploading = true;
-  //   this.api.getDocumentPresignedUrls(
-  //     this.psn,
-  //     this.documentFile
-  //   ).subscribe(
-  //     (data: any) => {
-  //       this.fileUrl = data.url;
-  //       this.uploadFile(this.fileUrl, this.documentFile);
-  //     });
-  // }
-
   upload(): void { 
-    this.isUploading = true; 
-    this.api.getDocumentPresignedUrls( 
+      this.isUploading = true; 
+      this.api.getDocumentPresignedUrls( 
       this.msn, 
-      this.documentFile.name     ).subscribe( 
-      (data: any) => {  
+      this.documentFile.name
+    ).subscribe( 
+      (data: any) => {
         this.fileUrl = data[0].url; 
-        this.fileFields = data[0].fields;  
-        this.uploadFile(this.fileUrl, this.documentFile); 
+        this.fileBody = data[0].fields;
+        this.uploadFile(this.fileUrl, this.documentFile, this.fileBody); 
       }); 
   }
 
-  uploadFile(url: string, file: any): void {
-    const uploadFile = new HttpRequest('POST', url, file, {
+  uploadFile(url: string, file: any, body: any): void {
+
+    let headers:any = new HttpHeaders( { 'Content-Type': 'application/json'});
+
+    console.log("body")
+    console.log(body)
+    console.log(headers)
+
+    const uploadFile = new HttpRequest('POST', url, body, {
+      headers: headers,
       reportProgress: true,
       responseType: 'text'
     });
+    console.log("uploadFile ")
+    console.log(this.uploadFile)
 
     this.http.request(uploadFile).subscribe(event => {
 

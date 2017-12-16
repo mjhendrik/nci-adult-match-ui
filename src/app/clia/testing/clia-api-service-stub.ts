@@ -118,6 +118,7 @@ export class CliaApiServiceStub {
 
     static makeCliaVariantReportsPACCData = () => {
         return {
+            'molecularSequenceNumber': 'SC_KGPVI',
             'analysis_id': 'SC_KGPVI_analysis_1',
             'cellularity': '1.000000',
             'control_type': 'no_template',
@@ -125,6 +126,7 @@ export class CliaApiServiceStub {
             'copy_number_variants': [],
             'date_molecular_id_created': '2016-10-28 12:56:19.566',
             'date_variant_received': '2016-11-10 17:46:49.401014',
+            'dateReceived': '2016-11-10 17:46:49.401014',
             'editable': 'true',
             'filename': 'SC_KGPVI_MoCha_12_notemplate_passed',
             'gene_fusions': [],
@@ -134,7 +136,10 @@ export class CliaApiServiceStub {
             'molecular_id_type': 'sample_control',
             'oncomine_control_panel_summary': null,
             'report_status': 'PASSED',
+            'status': 'PASSED',
+            'comment': 'This test is PASSED',
             'site': 'mocha',
+            'nextGenerationSequence': {},
             'snv_indels': [],
             'torrent_variant_caller_version': '4.4-8',
             'total_variants': 0,

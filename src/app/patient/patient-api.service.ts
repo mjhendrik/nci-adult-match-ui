@@ -290,9 +290,11 @@ export class PatientApiService extends ApiService {
     let body = { "file_name": documentFile }; 
     let headers = new Headers( { 'Content-Type': 'application/json'}); 
     let options = new RequestOptions({ headers: headers });   
-    console.log("1--" + url) 
-    console.log("2--" + body) 
-    console.log("3--" + JSON.stringify(headers))
+
+    // console.log("1--" + url) 
+    // console.log("2--" + body) 
+    // console.log("3--" + JSON.stringify(headers))
+
     return this.http.post(url, body, options).map(data =>  { 
       return [ this.extractData(data) ] as any;}); 
   }

@@ -218,7 +218,7 @@
                                     <i class="fa fa-file-text-o"></i>
                                   </a>
                                 </span>
-                                <span *ngIf="item.report_status===null">-</span>
+                                <span *ngIf="item.report_status!==undefined">-</span>
                               </td>
                               <td [colorCodeClia]="item.report_status">{{item.report_status | dashify}}</td>
                             </tr>

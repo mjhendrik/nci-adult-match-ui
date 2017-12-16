@@ -176,7 +176,7 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
 
   getVariantReportQueryParams(report: any): any {
     if (this.patient.patientType === 'OUTSIDE_ASSAY') {
-      return { isOutsideAssay: false };
+      return { isOutsideAssay: report.isOutsideAssay };
     } else {
       return null;
     }
