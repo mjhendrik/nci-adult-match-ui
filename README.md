@@ -12,7 +12,7 @@
 
 Login into docker using your docker account (needed only once)
 
-```
+```terminal
 docker login
 ```
 
@@ -32,7 +32,7 @@ Make sure you have the following environment variables:
 
 To run the front-end and all back-end services:
 
-```
+```terminal
 docker-compose up
 ```
 
@@ -44,7 +44,7 @@ To run only some of the services (for example only the `ui` and `patient-api`, w
 
 For front-end developers running the front-end code in node, run everything __but__ the front-end:
 
-```
+```terminal
 docker-compose up patient-api treatment-arm-api message-api mock-ecog
 ```
 
@@ -64,13 +64,13 @@ Full list of services included in `docker-compose.yml`
 
 To pull the latest images:
 
-```
+```terminal
 docker-compose pull
 ```
 
 To rebuild the latest UI docker image:
 
-```
+```terminal
 docker-compose build
 ```
 
@@ -78,7 +78,7 @@ docker-compose build
 
 *NOTE: that this project requires node v6.5.x or higher and npm 3.10.3*
 
-```
+```terminal
 git clone https://github.com/CBIIT/nci-adult-match-ui.git
 cd nci-adult-match-ui
 
@@ -114,36 +114,37 @@ npm run build.dev-docker
 
 To build the image based on Apache run the following command. Please make sure the UI has been built as `dev`, run `npm run build.dev` if necessary.
 
-```
+```terminal
 docker build -f .docker/dockerfile.httpd -t "fnlcr/nci-adult-match-ui:latest" .
 ```
 
 To run the docker locally use port 5555 because Auth0 is configured to use it.
 
-```
+```terminal
 docker run --name "nci-adult-match-ui" -it -p 5555:80  "fnlcr/nci-adult-match-ui:latest"
 ```
 
+## Troubleshooting
 
-## Trouble shooting
-
+```terminal
 ### Mongo connection refused  (ex: mongo:27017: [Errno 111] Connection refused)
 
-###Creating network "nciadultmatchui_adult-match" with the default driver
+### Creating network "nciadultmatchui_adult-match" with the default driver
    ERROR: readlink /var/lib/docker/overlay2: invalid argument
-   
+```
+
 Following solutions are tested.  One solution works. (Good Luck :-))
 
-1. docker-compose down
-   docker system prune
-   docker-compose up ...
+1. `docker-compose down`
+   `docker system prune`
+   `docker-compose up ...`
 
-2. docker-compose down
+2. `docker-compose down`
    Docker Engine RESTART
-   docker-compose up ...
+   `docker-compose up ...`
    
-3. docker-compose down
+3. `docker-compose down`
    Docker Engine hard RESET (Go to Docker Engine Preferences) select --> 'Reset to factory defaults'
    In question when Docker restarts: 'copy default configuration to new Docker' -->  SKIP
-   docker login <-- Log in the terminal to docker hub
-   docker-compose up ...
+   `docker login` <-- Log in the terminal to docker hub
+   `docker-compose up ...`
