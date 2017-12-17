@@ -8,7 +8,8 @@ import { ApiService } from '../shared/api/api.service';
 import {
   CliaVariantReportsNTCViewData,
   CliaVariantReportsPACCViewData,
-  CliaVariantReportsPCViewData
+  CliaVariantReportsPCViewData,
+  CliaVariantReportsQCViewData
 } from './clia-data-interfaces';
 
 export interface ApiUpdateError {
@@ -50,6 +51,13 @@ export class AliquotApiService extends ApiService {
     //   + '?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,positive_control_version,date_molecular_id_created,date_variant_received,torrent_variant_caller_version,report_status,positive_variants,false_positive_variants', // aliquot
 
     return this.http.get(this.url('/message/clia/sample_control/variant_report/' + molecular_id, ''))
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  getCliaVariantReportVCF(molecular_id: string, analysisId: string): Observable<CliaVariantReportsQCViewData> {
+    // console.log(this.url('/message/ecog/patient/' + molecular_id + '/variant_reports/' + analysisId + '/vcf_graph'))
+    return this.http.get(this.url('/message/ecog/patient/' + molecular_id + '/variant_reports/' + analysisId + '/vcf_graph', ''))
       .map(this.extractData)
       .catch(this.handleError);
   }

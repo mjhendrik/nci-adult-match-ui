@@ -118,11 +118,15 @@ export class CnvChartDirective implements AfterViewInit {
   }
 
   getData() {
+
     if(this.data===null) return;
 
-    let array:any = this.data[0] || {};
-    let filename:any = this.data[1];
-    let version:any = this.data[2];
+    let array:any = this.data[0];
+
+    if(typeof array === 'undefined' || array === null) return;
+    let filename:any = (typeof this.data[1] === 'undefined') ? "" : this.data[1];
+    let version:any = (typeof this.data[2] === 'undefined') ? "" : this.data[2];
+
     let xr:number = array.length * 24;
     let temp:any[] = [];
     let svg:any;

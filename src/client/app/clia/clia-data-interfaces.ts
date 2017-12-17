@@ -29,6 +29,13 @@ export interface CliaVariantReportsPACCViewData {
   comment: {};
   molecularSequenceNumber: {};
   nextGenerationSequence: any;
+  parsed_vcf_genes: {};
+  file_name: any;
+  body: {};
+  statusCode: string;
+  header: {};
+  parsedVCFGenes: any[];
+  tvcVersion: any[];
 }
 
 export interface CliaVariantReportsPCViewData {

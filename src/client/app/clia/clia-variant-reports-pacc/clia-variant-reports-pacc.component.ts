@@ -40,6 +40,7 @@ export class CliaVariantReportsPaccComponent implements OnInit {
   cliaTypeName: string;
   isReviewer: boolean = false;
   next_generation_sequence: any;
+  parsed_vcf_genes:any;
 
   constructor(private api: SampleControlApiService,
     private route: ActivatedRoute,
@@ -61,6 +62,7 @@ export class CliaVariantReportsPaccComponent implements OnInit {
     // this.route.snapshot.data['data'].next_generation_sequence;
 
     this.getData(this.route.snapshot.data['data'].data[0]);
+    this.getGraph(this.route.snapshot.data['data'].graph);
 
     const roles = this.profile.roles().filter(x => {
       return x.indexOf('_VARIANT_REPORT_REVIEWER') !== -1 || x === 'ADMIN';
@@ -88,6 +90,10 @@ export class CliaVariantReportsPaccComponent implements OnInit {
     this.snv_indels = this.next_generation_sequence.ionReporterResults.variantReport.singleNucleotideVariants;
     // this.indels = this.next_generation_sequence.ionReporterResults.variantReport.indels;
   };
+
+  getGraph(itemList: CliaVariantReportsPACCViewData) {
+    this.parsed_vcf_genes = [itemList.parsedVCFGenes, itemList.file_name, itemList.tvcVersion];
+  }
 
   downloadDnaBam(): void {
     this.api.downloadCliaDnaBam(this.molecular_id)
