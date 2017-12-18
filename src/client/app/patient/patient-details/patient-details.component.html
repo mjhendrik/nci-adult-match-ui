@@ -208,19 +208,19 @@
                           <td>{{sendout.reportedDate | gmt}}</td>
                           <td>{{sendout.comment | dashify}}</td>
                         </tr>
-                        <tr *ngFor="let analysis of sendout.analyses" id="{{analysis.analysisId}}">
+                        <tr *ngFor="let analysis of sendout.analyses; let index = index;" id="{{analysis.analysisId}}">
                           <td colspan="7" class="bg-body">
                             <div class="panel panel-with-tabs panel-accent-sides-purple panel-details-row">
                               <div class="panel-heading">
                                 <ul id="panel-tab" class="nav nav-tabs pull-right nav-tabs-purple">
                                   <li class="active">
-                                    <a href="#panel-tab-info" data-toggle="tab" aria-expanded="true">
+                                    <a href="#panel-tab-info-{{index}}" data-toggle="tab" aria-expanded="true">
                                       <i class="fa fa-align-left"></i>
                                       <span class="hidden-xs"> Info</span>
                                     </a>
                                   </li>
                                   <li class="">
-                                    <a href="#panel-tab-files" data-toggle="tab" aria-expanded="false">
+                                    <a href="#panel-tab-files-{{index}}" data-toggle="tab" aria-expanded="false">
                                       <i class="fa fa-file-archive-o"></i>
                                       <span class="hidden-xs"> Files</span>
                                     </a>
@@ -233,7 +233,7 @@
                                 </h5>
                               </div>
                               <div id="panel-tab-content" class="tab-content p-t-0">
-                                <div class="tab-pane fade active in" id="panel-tab-info">
+                                <div class="tab-pane fade active in" id="panel-tab-info-{{index}}">
                                   <div class="row">
                                     <div class="col-md-6" id="variant-report-{{analysis.analysisId}}">
                                       <dl class="dl-horizontal m-b-4">
@@ -291,7 +291,7 @@
                                     </div>
                                   </div>
                                 </div>
-                                <div class="tab-pane fade" id="panel-tab-files">
+                                <div class="tab-pane fade" id="panel-tab-files-{{index}}">
                                   <p>
                                     <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!analysis.variantReport.dnaBamFilePath"
                                       (click)="download(analysis.variantReport.dnaBamFilePath)">
@@ -316,8 +316,7 @@
                         </tr>
                         <tr>
                           <td colspan="7">
-                            <sd-file-upload *ngIf="isUploadEnabled(biopsy, sendout)" [msn]="sendout.molecularSequenceNumber"
-                              (uploaded)="onUploaded($event)"></sd-file-upload>
+                            <sd-file-upload *ngIf="isUploadEnabled(biopsy, sendout)" [msn]="sendout.molecularSequenceNumber" (uploaded)="onUploaded($event)"></sd-file-upload>
                           </td>
                         </tr>
                       </ng-template>
@@ -350,7 +349,6 @@
             </tbody>
           </table>
         </div>
-
         <div class="table-responsive">
           <sd-document-upload [psn]="patient.patientSequenceNumber"></sd-document-upload>
         </div>
