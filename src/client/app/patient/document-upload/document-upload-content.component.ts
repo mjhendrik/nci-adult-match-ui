@@ -19,7 +19,6 @@ import {
   BsModalRef,
   BsModalService
 } from 'ngx-bootstrap';
-import { RequestOptions,Headers } from '@angular/http';
 
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/throttleTime';
@@ -43,7 +42,7 @@ export class DocumentUploadContentComponent {
 
   psn: string;
   msn: string;
-  fileBody: any
+  fileBody: any;
   message: string = 'Enter Document Name to add Document file';
   uploadNotification: any;
   isUploading: boolean = false;
@@ -75,34 +74,28 @@ export class DocumentUploadContentComponent {
     }
   }
 
-  upload(): void { 
-      this.isUploading = true; 
-      this.api.getDocumentPresignedUrls( 
-      this.msn, 
+  upload(): void {
+    this.isUploading = true;
+    this.api.getDocumentPresignedUrls(
+    this.msn,
       this.documentFile.name
-    ).subscribe( 
+    ).subscribe(
       (data: any) => {
-        this.fileUrl = data[0].url; 
+        this.fileUrl = data[0].url;
         this.fileBody = data[0].fields;
-        this.uploadFile(this.fileUrl, this.documentFile, this.fileBody); 
-      }); 
+        this.uploadFile(this.fileUrl, this.documentFile, this.fileBody);
+      });
   }
 
   uploadFile(url: string, file: any, body: any): void {
 
     let headers:any = new HttpHeaders( { 'Content-Type': 'application/json'});
 
-    console.log("body")
-    console.log(body)
-    console.log(headers)
-
     const uploadFile = new HttpRequest('POST', url, body, {
       headers: headers,
       reportProgress: true,
       responseType: 'text'
     });
-    console.log("uploadFile ")
-    console.log(this.uploadFile)
 
     this.http.request(uploadFile).subscribe(event => {
 
@@ -113,28 +106,10 @@ export class DocumentUploadContentComponent {
         this.fileCount++;
         if (this.fileCount === 1) {
           this.isUploading = false;
-          // this.notifyAfterUpload(); //TODO: update the list
         }
       }
     });
   }
-
-  // notifyAfterUpload(): void {
-
-  //   this.uploadNotification = {
-  //     'molecular_sequence_number': this.psn,
-  //     'analysis_id': this.analysisId,
-  //     'zip_name': this.documentFile
-  //   };
-
-  //   this.api.notifyAfterUpload(this.psn, this.uploadNotification).subscribe(itemList => {
-  //     this.notifyMessage = itemList.message;
-  //     this.isUploaded = true;
-  //     if (itemList.status === 'SUCCESS') this.isSuccessful = true;
-  //     if (itemList.status === 'FAILURE') this.isSuccessful = false;
-  //   });
-
-  // }
 
   closeUploadDialog(nested: boolean, template: TemplateRef<any>) {
     if (nested === false) this.bsModalRef.hide();
