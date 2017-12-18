@@ -41,7 +41,6 @@ export class DocumentUploadContentComponent {
   };
 
   psn: string;
-  msn: string;
   fileBody: any;
   message: string = 'Enter Document Name to add Document file';
   uploadNotification: any;
@@ -53,7 +52,6 @@ export class DocumentUploadContentComponent {
   percentDone: number = 0;
   hasFile: boolean = false;
   documentFile: any;
-  fileUrl: string;
 
   @ViewChild('input') inputElRef: ElementRef;
 
@@ -76,32 +74,20 @@ export class DocumentUploadContentComponent {
 
   upload(): void {
     this.isUploading = true;
-    this.api.getDocumentPresignedUrls(
-    this.msn,
-      this.documentFile.name
-    ).subscribe(
-      (data: any) => {
-        this.fileUrl = data[0].url;
-        this.fileBody = data[0].fields;
-        this.uploadFile(this.fileUrl, this.documentFile, this.fileBody);
-      });
+    this.api.getDocumentPresignedUrls(this.psn, this.documentFile.name)
+      .subscribe((url) => this.uploadFile(url));
   }
 
-  uploadFile(url: string, file: any, body: any): void {
+  uploadFile(url: string): void {
 
-    let headers:any = new HttpHeaders( { 'Content-Type': 'application/json'});
-
-    const uploadFile = new HttpRequest('POST', url, body, {
-      headers: headers,
+    const uploadFile = new HttpRequest('PUT', url, this.documentFile, {
       reportProgress: true,
       responseType: 'text'
     });
 
     this.http.request(uploadFile).subscribe(event => {
-
       if (event.type === HttpEventType.UploadProgress) {
-        const percentDone = Math.round(100 * event.loaded / event.total);
-        if (file === this.documentFile) this.percentDone = percentDone;
+        this.percentDone = Math.round(100 * event.loaded / event.total);
       } else if (event instanceof HttpResponse) {
         this.fileCount++;
         if (this.fileCount === 1) {

@@ -16,7 +16,7 @@ export class DocumentUploadComponent {
     ignoreBackdropClick: true
   };
 
-  @Input() msn: string;
+  @Input() psn: string;
 
   uploadedFiles: any[];
   fileCount: number = 0;
@@ -33,7 +33,7 @@ export class DocumentUploadComponent {
 
   openUploadDialog() {
     this.modalRef = this.modalService.show(DocumentUploadContentComponent, this.config);
-    this.modalRef.content.msn = this.msn;
+    this.modalRef.content.psn = this.psn;
   }
 
 }
