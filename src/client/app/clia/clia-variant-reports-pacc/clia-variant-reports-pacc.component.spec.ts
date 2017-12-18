@@ -398,10 +398,14 @@ class MockCliaApiService {
       status: { 'test': 'test' },
       comment: { 'test': 'test' },
       molecularSequenceNumber: { 'test': 'test' },
-      nextGenerationSequence: {ionReporterResults: {'test': 'test'}}
-      // parsed_vcf_genes: { 'test': 'test' },
-      // file_name: { 'test': 'test' },
-      // body:{}
+      nextGenerationSequence: {ionReporterResults: {'test': 'test'}},
+      parsed_vcf_genes: { 'test': 'test' },
+      parsedVCFGenes: [ 'test', 'test' ],
+      file_name: { 'test': 'test' },
+      body:{},
+      header:{},
+      statusCode:null,
+      tvcVersion:[ 'test', 'tvcVersion' ]
     };
     return Observable.of(testData);
   }
@@ -457,11 +461,14 @@ class MockCliaApiServiceWithErrors {
       status: { 'test': 'test' },
       comment: { 'test': 'test' },
       molecularSequenceNumber: { 'test': 'test' },
-      nextGenerationSequence: {ionReporterResults: {'test': 'test'}}
-      // parsed_vcf_genes: { 'test': 'test' },
-      // file_name: { 'test': 'test' },
-      // body:{},
-      // statusCode:{ 'test': 'test' }
+      nextGenerationSequence: {ionReporterResults: {'test': 'test'}},
+      parsed_vcf_genes: { 'test': 'test' },
+      parsedVCFGenes: [ 'test', 'test' ],
+      file_name: { 'test': 'test' },
+      body:{},
+      header:{},
+      statusCode:null,
+      tvcVersion:[ 'test', 'tvcVersion' ]
     };
     return Observable.throw(testData);
   }

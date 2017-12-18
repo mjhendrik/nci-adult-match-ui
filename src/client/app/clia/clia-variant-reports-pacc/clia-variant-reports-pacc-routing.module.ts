@@ -23,11 +23,13 @@ class DataResolver implements Resolve<any> {
     state: RouterStateSnapshot
   ): Observable<any> | Promise<any> | any {
     return Observable.forkJoin(
-      this.api.getCliaVariantReportsPACC(route.params['id'])
+      this.api.getCliaVariantReportsPACC(route.params['id']),
+      this.api.getCliaVariantReportVCF(route.params['id'], route.params['analysisId']) // message
     ).map(
       data => {
         return {
-          data: data[0]
+          data: data[0],
+          graph: data[1].body
         };
       }
       );
@@ -44,7 +46,7 @@ class DataResolver implements Resolve<any> {
         resolve: { data: DataResolver }
       },
       {
-        path: 'clia_dartmouth/variant_reports_pacc/:id',
+        path: 'clia_dartmouth/variant_reports_pacc/:id/:analysisId',
         component: CliaVariantReportsPaccComponent,
         canActivate: [AuthGuard],
         resolve: { data: DataResolver }
