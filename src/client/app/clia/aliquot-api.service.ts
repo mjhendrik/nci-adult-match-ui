@@ -28,11 +28,6 @@ export class AliquotApiService extends ApiService {
   }
 
   getCliaVariantReportsNTC(molecular_id: string): Observable<CliaVariantReportsNTCViewData> {
-
-    // return this.http.get(this.url('/aliquot/' + molecular_id
-    // tslint:disable-next-line:max-line-length
-    //   + '?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,date_variant_received,torrent_variant_caller_version,report_status,snv_indels,copy_number_variants,gene_fusions', // aliquot
-
     return this.http.get(this.url('/message/clia/ntc_control/variant_report/' + molecular_id, ''))
       .map(this.extractData)
       .catch(this.handleError);
@@ -45,18 +40,12 @@ export class AliquotApiService extends ApiService {
   }
 
   getCliaVariantReportsPC(molecular_id: string): Observable<CliaVariantReportsPCViewData> {
-
-    // return this.http.get(this.url('/aliquot/' + molecular_id
-    // tslint:disable-next-line:max-line-length
-    //   + '?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,positive_control_version,date_molecular_id_created,date_variant_received,torrent_variant_caller_version,report_status,positive_variants,false_positive_variants', // aliquot
-
     return this.http.get(this.url('/message/clia/sample_control/variant_report/' + molecular_id, ''))
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   getCliaVariantReportVCF(molecular_id: string, analysisId: string): Observable<CliaVariantReportsQCViewData> {
-    // console.log(this.url('/message/ecog/patient/' + molecular_id + '/variant_reports/' + analysisId + '/vcf_graph'))
     return this.http.get(this.url('/message/ecog/patient/' + molecular_id + '/variant_reports/' + analysisId + '/vcf_graph', ''))
       .map(this.extractData)
       .catch(this.handleError);

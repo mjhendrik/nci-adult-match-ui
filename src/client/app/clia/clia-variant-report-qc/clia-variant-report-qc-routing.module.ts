@@ -115,7 +115,7 @@ class DataResolver implements Resolve<any> {
         resolve: { data: DataResolver }
       },
       {
-        path: 'clia_dartmouth/variant_reports_pacc/qc/:id',
+        path: 'clia_dartmouth/variant_reports_pacc/qc/:id/:analysisId',
         component: CliaVariantReportQcComponent,
         canActivate: [AuthGuard],
         resolve: { data: DataResolver }
