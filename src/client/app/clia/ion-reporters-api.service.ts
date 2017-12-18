@@ -17,7 +17,7 @@ export class IonReportersApiService extends ApiService {
 
     // return this.http.get(this.url('/ion_reporters/healthcheck?site=' + type, // ion reporters
 
-    return this.http.get(this.url('/message/clia/ion_reporters/health_check?location=' + type, // message
+    return this.http.get(this.url('/message/clia/ion_reporters/health_check?site=' + type, // message
       'assets/mock-data/clia-' + type + '-ion.json'))
       .map(this.extractData)
       .catch(this.handleError);
