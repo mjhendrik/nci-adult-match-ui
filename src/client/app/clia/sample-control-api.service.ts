@@ -16,35 +16,22 @@ export class SampleControlApiService extends ApiService {
   }
 
   getCliaDetailsNTC(type: string): Observable<any[]> {
-
-    // return this.http.get(this.url('/sample_controls?site=' + type
-    //   + '&control_type=no_template&projection=molecular_id,date_molecular_id_created,date_variant_received,report_status', // sample control
-
-    return this.http.get(this.url('/message/clia/ntc_control?site=' + type
-      + '', // message
-      ''))
+    return this.http.get(this.url('/message/clia/ntc_control?site=' + type + '&projection=molecularSequenceNumber,site,dateCreated,dateReceived,status', ''))
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   getCliaDetailsPACC(type: string): Observable<any[]> {
-
     // return this.http.get(this.url('/sample_controls?site=' + type
     //   + '&control_type=proficiency_competency&projection=molecular_id,date_molecular_id_created,date_variant_received,report_status', // sample control
 
-    return this.http.get(this.url('/message/clia/proficiency_competency_control?site=' + type
-      + '', // message
-      ''))
+    return this.http.get(this.url('/message/clia/proficiency_competency_control?site=' + type + '', ''))
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   getCliaDetailsPC(type: string): Observable<any[]> {
-
-    // return this.http.get(this.url('/sample_controls?site=' + type
-    //   + '&control_type=positive&projection=molecular_id,date_molecular_id_created,date_variant_received,report_status', // sample control
-
-    return this.http.get(this.url('/message/clia/sample_control?site=' + type , ''))
+    return this.http.get(this.url('/message/clia/sample_control?site=' + type + '&projection=molecularSequenceNumber,site,dateCreated,dateReceived,status', ''))
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -59,14 +46,6 @@ export class SampleControlApiService extends ApiService {
   }
 
   getCliaVariantReportQC(molecular_id: string, analysisId: string): Observable<CliaVariantReportsQCViewData> {
-
-    // getCliaVariantReportQC(molecular_id: string): Observable<CliaVariantReportsQCViewData> {
-    // return this.http.get(this.url('/sample_controls/quality_control/' + molecular_id
-    // tslint:disable-next-line:max-line-length
-    //   + '?projection=molecular_id,analysis_id,total_variants,mapd,cellularity,torrent_variant_caller_version,oncomine_control_panel_summary', // sample control
-
-    // api/v1/message/ecog/patient/{molecularSequenceNumber}/variant_reports/{analysisId}/qc_report
-
     return this.http.get(this.url('/message/ecog/patient/' + molecular_id + '/variant_reports/' + analysisId + '/qc_report', ''))
       .map(this.extractData)
       .catch(this.handleError);
@@ -74,7 +53,6 @@ export class SampleControlApiService extends ApiService {
   }
 
   getCliaVariantReportVCF(molecular_id: string, analysisId: string): Observable<CliaVariantReportsQCViewData> {
-
     return this.http.get(this.url('/message/ecog/patient/' + molecular_id + '/variant_reports/' + analysisId + '/vcf_graph', ''))
       .map(this.extractData)
       .catch(this.handleError);
@@ -87,9 +65,6 @@ export class SampleControlApiService extends ApiService {
   }
 
   downloadCliaDnaBam(molecular_id: string): Observable<any> {
-
-    //   return this.http.get(Config.API.SAMPLE_CONTROLS + '/sample_controls/files/' + molecular_id + '/dna_bam_name') // sample control
-
     return this.http.get(Config.API.MESSAGE + '/message/clia/aliquot/sample_control/files/' + molecular_id + '/dna_bam') // message
       .map(this.extractData)
       .catch(this.handleError);
@@ -105,18 +80,12 @@ export class SampleControlApiService extends ApiService {
   }
 
   downloadCliaRnaBam(molecular_id: string): Observable<any> {
-
-    //   return this.http.get(Config.API.SAMPLE_CONTROLS + '/sample_controls/files/' + molecular_id + '/cdna_bam_name') // sample control
-
     return this.http.get(Config.API.MESSAGE + '/message/clia/aliquot/sample_control/files/' + molecular_id + '/rna_bam') // message
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   downloadCliaRnaBai(molecular_id: string): Observable<any> {
-
-    //   return this.http.get(Config.API.SAMPLE_CONTROLS + '/sample_controls/files/' + molecular_id + '/cdna_bai_name') // sample control
-
     return this.http.get(Config.API.MESSAGE + '/message/clia/aliquot/sample_control/files/' + molecular_id + '/rna_bai') // message
       .map(this.extractData)
       .catch(this.handleError);
@@ -140,7 +109,7 @@ export class SampleControlApiService extends ApiService {
   }
 
   rejectReport(molecular_id: string, type: string): Observable<any> {
-    return this.http.post(Config.API.MESSAGE + '/message/clia/' + type + '/status',
+    return this.http.put(Config.API.MESSAGE + '/message/clia/' + type + '/status',
       {
         'molecularSequenceNumber': molecular_id,
         'confirmation': false,
@@ -151,7 +120,7 @@ export class SampleControlApiService extends ApiService {
   }
 
   confirmReport(molecular_id: string, type: string): Observable<any> {
-    return this.http.post(Config.API.MESSAGE + '/message/clia/' + type + '/status',
+    return this.http.put(Config.API.MESSAGE + '/message/clia/' + type + '/status',
       {
         'molecularSequenceNumber': molecular_id,
         'confirmation': true,

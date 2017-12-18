@@ -1,6 +1,7 @@
 import {
   Component,
-  Input
+  Input,
+  OnInit
 } from '@angular/core';
 
 /**
@@ -11,7 +12,7 @@ import {
   selector: 'sd-variant-report-filtered-table-snv-indels',
   templateUrl: 'variant-report-filtered-table-snv-indels.html'
 })
-export class VariantReportFilteredTableSnvIndelsComponent {
+export class VariantReportFilteredTableSnvIndelsComponent implements OnInit {
   @Input() items: any[];
   @Input() type: string;
   @Input() title: string;
@@ -31,6 +32,10 @@ export class VariantReportFilteredTableSnvIndelsComponent {
 
   get filter(): string {
     return this.filterValue;
+  }
+
+  ngOnInit() {
+    this.filterItems();
   }
 
   filterItems() {

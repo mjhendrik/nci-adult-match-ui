@@ -9,12 +9,12 @@ export function main() {
         });
 
         it('should return null if there is no value is supplied', () => {
-            expect(pipe.transform(undefined)).toBeNull();
-            expect(pipe.transform(null)).toBeNull();
+            expect(pipe.transform(undefined)).toEqual('-');
+            expect(pipe.transform(null)).toEqual('-');
         });
 
         it('should return empty string if empty string is supplied', () => {
-            expect(pipe.transform('')).toEqual('');
+            expect(pipe.transform('')).toEqual('-');
         });
 
         it('should return non-string value as is', () => {
