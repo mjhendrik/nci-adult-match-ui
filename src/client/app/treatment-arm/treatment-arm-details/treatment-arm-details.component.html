@@ -1413,12 +1413,6 @@
                             <th>
                               Result
                             </th>
-                            <th>
-                              Variant Association
-                            </th>
-                            <th>
-                              LOE
-                            </th>
                           </tr>
                         </thead>
                         <tbody>
@@ -1442,24 +1436,12 @@
                                 <span class="table-header">Result</span>
                               </mfDefaultSorter>
                             </th>
-                            <th>
-                              <mfDefaultSorter by="assayVariant">
-                                <span class="table-header">Variant Association</span>
-                              </mfDefaultSorter>
-                            </th>
-                            <th>
-                              <mfDefaultSorter by="levelOfEvidence">
-                                <span class="table-header">LOE</span>
-                              </mfDefaultSorter>
-                            </th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr *ngFor="let item of mftableAssay.data">
                             <td>{{item.gene | dashify}}</td>
                             <td>{{item.assayResultStatus | dashify}}</td>
-                            <td>{{item.assayVariant | dashify}}</td>
-                            <td>{{item.levelOfEvidence | round | dashify}}</td>
                           </tr>
                           <tr *ngIf="mftableAssay.data.length == 0">
                             <td class="text-muted" colspan="4">No matching search results found for "{{searchtermAssay}}"</td>
