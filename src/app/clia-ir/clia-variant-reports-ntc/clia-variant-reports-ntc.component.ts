@@ -146,7 +146,10 @@ export class CliaVariantReportsNtcComponent implements OnInit {
   };
 
   confirmReport(): void {
-    this.api.confirmReport(this.molecular_id, 'ntc_control');
+    this.api.confirmReport(this.molecular_id, 'ntc_control')
+      .subscribe((itemList: any) => {
+        console.info('Report Conformed');
+      });
   };
 
 }

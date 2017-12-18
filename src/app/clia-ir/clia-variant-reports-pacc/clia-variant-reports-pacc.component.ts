@@ -119,11 +119,17 @@ export class CliaVariantReportsPaccComponent implements OnInit {
   };
 
   rejectReport(): void {
-    this.api.rejectReport(this.molecular_id, 'proficiency_competency_control');
+    this.api.rejectReport(this.molecular_id, 'proficiency_competency_control')
+      .subscribe((itemList: any) => {
+        console.info('Report Rejected');
+      });
   };
 
   confirmReport(): void {
-    this.api.confirmReport(this.molecular_id, 'proficiency_competency_control');
+    this.api.confirmReport(this.molecular_id, 'proficiency_competency_control')
+      .subscribe((itemList: any) => {
+        console.info('Report Conformed');
+      });
   };
 
 }

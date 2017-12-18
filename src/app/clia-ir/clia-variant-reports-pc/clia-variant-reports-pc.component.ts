@@ -121,7 +121,10 @@ export class CliaVariantReportsPcComponent implements OnInit {
   };
 
   rejectReport(): void {
-    this.api.rejectReport(this.molecular_id, 'sample_control');
+    this.api.rejectReport(this.molecular_id, 'sample_control')
+      .subscribe((itemList: any) => {
+        console.info('Report Rejected');
+      });
   };
 
 }

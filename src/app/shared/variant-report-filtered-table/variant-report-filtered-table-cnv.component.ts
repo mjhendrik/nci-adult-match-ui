@@ -1,6 +1,7 @@
 import {
   Component,
-  Input
+  Input,
+  OnInit
 } from '@angular/core';
 
 /**
@@ -11,7 +12,7 @@ import {
   selector: 'app-variant-report-filtered-table-cnv',
   templateUrl: 'variant-report-filtered-table-cnv.html'
 })
-export class VariantReportFilteredTableCnvComponent {
+export class VariantReportFilteredTableCnvComponent implements OnInit {
   @Input() items: any[];
   @Input() type: string;
 
@@ -30,6 +31,10 @@ export class VariantReportFilteredTableCnvComponent {
 
   get filter(): string {
     return this.filterValue;
+  }
+
+  ngOnInit() {
+    this.filterItems();
   }
 
   filterItems() {

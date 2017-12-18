@@ -39,8 +39,8 @@
 </div>
 <div class="row">
   <div class="table-responsive col-lg-12">
-    <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="itemsDisplayed | filterByText: searchTerm" #mfTable="mfDataTable"
-      [(mfSortBy)]="defaultSort" [mfRowsOnPage]="recordsPerPage">
+    <table class="table table-td-valign-middle table-striped table-col-width" [mfData]="itemsDisplayed | filterByText: searchTerm"
+      #mfTable="mfDataTable" [(mfSortBy)]="defaultSort" [mfRowsOnPage]="recordsPerPage">
       <thead>
         <tr [ngClass]="{true:'purple-light',false:'orangeshade-light'}[type=='patient']">
           <th>
