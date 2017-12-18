@@ -48,6 +48,12 @@ For front-end developers running the front-end code in node, run everything __bu
 docker-compose up patient-api treatment-arm-api message-api mock-ecog
 ```
 
+Pull fresh APIs and reset the seed data:
+
+```terminal
+docker-compose pull patient-api treatment-arm-api message-api mock-ecog mongo && docker-compose down && docker-compose up patient-api treatment-arm-api message-api mock-ecog
+```
+
 Full list of services included in `docker-compose.yml`
 
 * `ui`
