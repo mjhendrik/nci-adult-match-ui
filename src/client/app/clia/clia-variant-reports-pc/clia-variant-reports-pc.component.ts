@@ -45,10 +45,10 @@ export class CliaVariantReportsPcComponent implements OnInit {
     private api: SampleControlApiService,
     private route: ActivatedRoute,
     private profile: UserProfileService,
-    private cliaData: CliaDataService) {}
+    private cliaData: CliaDataService) { }
 
   ngOnInit() {
-    let array:any;
+    let array: any;
     array = this.cliaData.transferData;
     this.molecular_id = array.molecular_id;
     this.analysis_id = array.analysis_id;
@@ -130,7 +130,10 @@ export class CliaVariantReportsPcComponent implements OnInit {
   };
 
   rejectReport(): void {
-    this.api.rejectReport(this.molecular_id, 'sample_control');
+    this.api.rejectReport(this.molecular_id, 'sample_control')
+      .subscribe((itemList: any) => {
+        console.info('Report Rejected');
+      });
   };
 
 }

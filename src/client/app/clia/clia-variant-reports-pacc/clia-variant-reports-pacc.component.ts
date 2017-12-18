@@ -40,7 +40,7 @@ export class CliaVariantReportsPaccComponent implements OnInit {
   cliaTypeName: string;
   isReviewer: boolean = false;
   next_generation_sequence: any;
-  parsed_vcf_genes:any;
+  parsed_vcf_genes: any;
 
   constructor(private api: SampleControlApiService,
     private route: ActivatedRoute,
@@ -132,11 +132,17 @@ export class CliaVariantReportsPaccComponent implements OnInit {
   };
 
   rejectReport(): void {
-    this.api.rejectReport(this.molecular_id, 'proficiency_competency_control');
+    this.api.rejectReport(this.molecular_id, 'proficiency_competency_control')
+      .subscribe((itemList: any) => {
+        console.info('Report Rejected');
+      });
   };
 
   confirmReport(): void {
-    this.api.confirmReport(this.molecular_id, 'proficiency_competency_control');
+    this.api.confirmReport(this.molecular_id, 'proficiency_competency_control')
+      .subscribe((itemList: any) => {
+        console.info('Report Confirmed');
+      });
   };
 
 }

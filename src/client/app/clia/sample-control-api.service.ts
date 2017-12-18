@@ -109,7 +109,7 @@ export class SampleControlApiService extends ApiService {
   }
 
   rejectReport(molecular_id: string, type: string): Observable<any> {
-    return this.http.post(Config.API.MESSAGE + '/message/clia/' + type + '/status',
+    return this.http.put(Config.API.MESSAGE + '/message/clia/' + type + '/status',
       {
         'molecularSequenceNumber': molecular_id,
         'confirmation': false,
@@ -120,7 +120,7 @@ export class SampleControlApiService extends ApiService {
   }
 
   confirmReport(molecular_id: string, type: string): Observable<any> {
-    return this.http.post(Config.API.MESSAGE + '/message/clia/' + type + '/status',
+    return this.http.put(Config.API.MESSAGE + '/message/clia/' + type + '/status',
       {
         'molecularSequenceNumber': molecular_id,
         'confirmation': true,
