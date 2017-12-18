@@ -179,6 +179,14 @@ export class CliaParentComponent implements OnInit {
           x.report_status = null;
           x.date_variant_received = gmt.transform(x.dateReceived);
           x.report_status = x.status;
+          x.analysis_id = typeof x.dateReceived === 'undefined' ? null : x.nextGenerationSequence.ionReporterResults.jobName;
+
+          // console.log("x.nextGenerationSequence")
+          // console.log(x.nextGenerationSequence)
+
+        // if (typeof x.dateReceived !== 'undefined') {
+        //   x.analysis_id = x.nextGenerationSequence.ionReporterResults.jobName;
+        // }
 
           // if (typeof x.dateReceived !== 'undefined') {
           //   x.date_variant_received = gmt.transform(x.dateReceived);
