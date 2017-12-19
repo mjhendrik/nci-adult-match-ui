@@ -299,7 +299,7 @@ export class PatientApiService extends ApiService {
 
   notifyAfterUpload(psn: string, fileName: string): Observable<ApiSuccess | ApiError> {
     const profileData = localStorage.getItem('profile');
-    const profile = profileData?JSON.parse(profileData):{user:'System'};
+    const profile = profileData ? JSON.parse(profileData) : { user: 'System' };
     const body = { file_name: fileName, user: profile.name };
     return this.http.post(`${this.baseApiUrl}/patients/${psn}/documents`, body)
       .map((res: Response) => {
@@ -318,5 +318,11 @@ export class PatientApiService extends ApiService {
         }
         return Observable.of({ kind: 'error', message: message } as ApiError);
       });
+  }
+
+  getPatientDocuments(psn: string): Observable<any[]> {
+    return this.http.get(this.url(`/patients/${psn}/documents`))
+      .map((res: Response) => res.json())
+      .catch(this.handleError);
   }
 }
