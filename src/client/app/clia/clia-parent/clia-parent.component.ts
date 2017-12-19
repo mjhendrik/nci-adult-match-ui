@@ -249,22 +249,17 @@ export class CliaParentComponent implements OnInit, OnDestroy {
   };
 
   autoLoadDataIon() {
+    if (this.cliaTypeName === 'MDA') this.cliaTypeName = 'MDACC';
     this.autoRefreshSubscription = Observable.interval(1000 * 60).subscribe(x => {
-
-      this.apiIon.getCliaIon(this.cliaType)
+      this.apiIon.getCliaIon(this.cliaTypeName)
         .subscribe(details => {
-
           let gmt = new GmtPipe();
-
           this.ionReportersData = details.map(x => {
             x.lastContactDate = gmt.transform(x.lastContactDate);
             return x;
           });
-
         });
-
       this.timestamp = new Date();
-
     });
   };
 
