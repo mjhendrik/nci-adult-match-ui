@@ -64,7 +64,7 @@ export class PatientApiService extends ApiService {
   getPatientCount(filter: string, isOutsideAssayWorkflow?: boolean): Observable<number> {
     return this.http.get(Config.API.PATIENT
       // tslint:disable-next-line:max-line-length
-      + '/patients/count?projection=patientSequenceNumber,currentPatientStatus,currentStepNumber,diseases.shortName,registrationDate,patientAssignments.treatmentArm.name,patientAssignments.treatmentArm.version'
+      + '/patients/count?projection=patientSequenceNumber,patientType,currentPatientStatus,currentStepNumber,diseases.shortName,registrationDate,patientAssignments.treatmentArm.name,patientAssignments.treatmentArm.version'
       + (filter ? '&projfilter=' + filter : '')
       + (isOutsideAssayWorkflow !== null ? '&is-oa=' + isOutsideAssayWorkflow : ''))
       .map(this.extractData)
@@ -299,7 +299,7 @@ export class PatientApiService extends ApiService {
 
   notifyAfterUpload(psn: string, fileName: string): Observable<ApiSuccess | ApiError> {
     const profileData = localStorage.getItem('profile');
-    const profile = profileData?JSON.parse(profileData):{user:'System'};
+    const profile = profileData ? JSON.parse(profileData) : { user: 'System' };
     const body = { file_name: fileName, user: profile.name };
     return this.http.post(`${this.baseApiUrl}/patients/${psn}/documents`, body)
       .map((res: Response) => {
