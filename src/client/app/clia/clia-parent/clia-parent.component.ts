@@ -1,7 +1,8 @@
 import {
   Component,
   Input,
-  OnInit
+  OnInit,
+  OnDestroy
 } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
@@ -11,9 +12,12 @@ import { GmtPipe } from './../../shared/pipes/gmt.pipe';
 import { SampleControlApiService } from '../sample-control-api.service';
 import { IonReportersApiService } from '../ion-reporters-api.service';
 import { UserProfileService } from '../../shared/user-profile/user-profile.service';
-import { CliaDataService } from "./../../shared/clia/clia-data.service";
+import { CliaDataService } from './../../shared/clia/clia-data.service';
 
-import { Observable } from 'rxjs/Rx';
+import {
+  Observable,
+  Subscription
+} from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 
 /**
@@ -28,7 +32,7 @@ import 'rxjs/add/operator/map';
   host: { '[@routerTransition]': '' },
   providers: [GmtPipe]
 })
-export class CliaParentComponent implements OnInit {
+export class CliaParentComponent implements OnInit, OnDestroy {
 
   @Input('cliaType') cliaType: string;
 
@@ -66,6 +70,8 @@ export class CliaParentComponent implements OnInit {
 
   dataAvailable: boolean = false;
 
+  private autoRefreshSubscription: Subscription;
+
   constructor(
     private apiSample: SampleControlApiService,
     private apiIon: IonReportersApiService,
@@ -100,6 +106,10 @@ export class CliaParentComponent implements OnInit {
     if (roles.indexOf('ADMIN') !== -1 || roles.join().toLowerCase().indexOf(this.cliaType) !== -1) {
       this.generateMsnBtn = true;
     }
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe();
   }
 
   getDataPC() {
@@ -170,7 +180,7 @@ export class CliaParentComponent implements OnInit {
     this.apiSample.getCliaDetailsPACC(this.cliaTypeName)
       .subscribe(details => {
         let gmt = new GmtPipe();
-        let data: {};
+        // let data: {};
 
         this.tablePACCData = details.map((x: any) => {
           x.molecular_id = x.molecularSequenceNumber;
@@ -184,9 +194,9 @@ export class CliaParentComponent implements OnInit {
           // console.log("x.nextGenerationSequence")
           // console.log(x.nextGenerationSequence)
 
-        // if (typeof x.dateReceived !== 'undefined') {
-        //   x.analysis_id = x.nextGenerationSequence.ionReporterResults.jobName;
-        // }
+          // if (typeof x.dateReceived !== 'undefined') {
+          //   x.analysis_id = x.nextGenerationSequence.ionReporterResults.jobName;
+          // }
 
           // if (typeof x.dateReceived !== 'undefined') {
           //   x.date_variant_received = gmt.transform(x.dateReceived);
@@ -213,6 +223,7 @@ export class CliaParentComponent implements OnInit {
   };
 
   getDataIon() {
+    if (this.cliaTypeName === 'MDA') this.cliaTypeName = 'MDACC';
     this.apiIon.getCliaIon(this.cliaTypeName)
       .subscribe(details => {
         let gmt = new GmtPipe();
@@ -222,26 +233,6 @@ export class CliaParentComponent implements OnInit {
         });
         this.dataAvailable = true;
       });
-  };
-
-  autoLoadDataIon() {
-    // Observable.interval(1000 * 60).subscribe(x => {
-
-    this.apiIon.getCliaIon(this.cliaType)
-      .subscribe(details => {
-
-        let gmt = new GmtPipe();
-
-        this.ionReportersData = details.map(x => {
-          x.lastContactDate = gmt.transform(x.lastContactDate);
-          return x;
-        });
-
-      });
-
-    this.timestamp = new Date();
-
-    // });
   };
 
   setControlType(type: string): void {
@@ -256,5 +247,28 @@ export class CliaParentComponent implements OnInit {
         if (this.control_type === 'proficiency_competency') this.getDataPACC();
       });
   };
+
+  autoLoadDataIon() {
+    if (this.cliaTypeName === 'MDA') this.cliaTypeName = 'MDACC';
+    this.autoRefreshSubscription = Observable.interval(1000 * 60).subscribe(x => {
+      this.apiIon.getCliaIon(this.cliaTypeName)
+        .subscribe(details => {
+          let gmt = new GmtPipe();
+          this.ionReportersData = details.map(x => {
+            x.lastContactDate = gmt.transform(x.lastContactDate);
+            return x;
+          });
+        });
+      this.timestamp = new Date();
+    });
+  };
+
+  private unsubscribe() {
+    if (!this.autoRefreshSubscription) {
+      return;
+    }
+    this.autoRefreshSubscription.unsubscribe();
+    this.autoRefreshSubscription = null;
+  }
 
 }
