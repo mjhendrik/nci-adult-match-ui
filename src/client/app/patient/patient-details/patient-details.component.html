@@ -337,14 +337,18 @@
             <thead>
               <tr>
                 <th>Document</th>
-                <th>Comment</th>
                 <th>Uploaded Date</th>
                 <th>User</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td colspan="4" class="text-muted">No Documents Available</td>
+              <tr *ngFor="let item of patient.documents">
+                <td>{{item.file_name | dashify}}</td>
+                <td>{{item.uploaded_date | gmt}}</td>
+                <td>{{item.user | dashify}}</td>
+              </tr>
+              <tr *ngIf="!patient.documents || !patient.documents.length">
+                <td colspan="3" class="text-muted">No Documents Available</td>
               </tr>
             </tbody>
           </table>
