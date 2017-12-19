@@ -1,9 +1,17 @@
 <div id="content" class="content">
   <ul class="breadcrumb pull-right">
-    <li><a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a></li>
-    <li><a href [routerLink]="['/clia_'+cliaType]" class="link-none">CLIA Lab {{cliaTypeName}}</a></li>
-    <li><a href [routerLink]="['/clia_'+cliaType+'/variant_reports_'+tabType+'/'+molecular_id]" class="link-none">{{tabTypeName}}</a></li>
-    <li class="active"><span class="entity-name">{{tabTypeHeaderName}}</span></li>
+    <li>
+      <a href [routerLink]="['/dashboard']" class="link-none">Dashboard</a>
+    </li>
+    <li>
+      <a href [routerLink]="['/clia_'+cliaType]" class="link-none">CLIA Lab {{cliaTypeName}}</a>
+    </li>
+    <li>
+      <a href [routerLink]="['/clia_'+cliaType+'/variant_reports_'+tabType+'/'+molecular_id]" class="link-none">{{tabTypeName}}</a>
+    </li>
+    <li class="active">
+      <span class="entity-name">{{tabTypeHeaderName}}</span>
+    </li>
   </ul>
   <h1 class="page-header">{{tabTypeHeaderName}}</h1>
   <div class="row" matchHeight="panel-height-top">
@@ -39,19 +47,31 @@
               <table class="table table-condensed white-header">
                 <thead>
                   <tr>
-                    <th *ngIf="tabType=='pc'"><cosmic-link [linkType]="'cosmicGene'" [linkId]="'LRP1'"></cosmic-link></th>
-                    <th *ngIf="tabType!='pc'"><cosmic-link [linkType]="'cosmicGene'" [linkId]="'LMNA'"></cosmic-link></th>
-                    <th><cosmic-link [linkType]="'cosmicGene'" [linkId]="'TBP'"></cosmic-link></th>
-                    <th><cosmic-link [linkType]="'cosmicGene'" [linkId]="'MYC'"></cosmic-link></th>
-                    <th><cosmic-link [linkType]="'cosmicGene'" [linkId]="'HMBS'"></cosmic-link></th>
-                    <th><cosmic-link [linkType]="'cosmicGene'" [linkId]="'ITGB7'"></cosmic-link></th>
+                    <th *ngIf="oncomine_control_panel_summary.lrp1">
+                      <cosmic-link [linkType]="'cosmicGene'" [linkId]="'LRP1'"></cosmic-link>
+                    </th>
+                    <th *ngIf="oncomine_control_panel_summary.lmna">
+                      <cosmic-link [linkType]="'cosmicGene'" [linkId]="'LMNA'"></cosmic-link>
+                    </th>
+                    <th>
+                      <cosmic-link [linkType]="'cosmicGene'" [linkId]="'TBP'"></cosmic-link>
+                    </th>
+                    <th>
+                      <cosmic-link [linkType]="'cosmicGene'" [linkId]="'MYC'"></cosmic-link>
+                    </th>
+                    <th>
+                      <cosmic-link [linkType]="'cosmicGene'" [linkId]="'HMBS'"></cosmic-link>
+                    </th>
+                    <th>
+                      <cosmic-link [linkType]="'cosmicGene'" [linkId]="'ITGB7'"></cosmic-link>
+                    </th>
                     <th>SUM</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngIf="oncomine_control_panel_summary; else emptyRow">
-                    <td *ngIf="tabType=='pc'">{{oncomine_control_panel_summary.lrp1 | dashify}}</td>
-                    <td *ngIf="tabType!='pc'">{{oncomine_control_panel_summary.lmna | dashify}}</td>
+                    <td *ngIf="oncomine_control_panel_summary.lrp1">{{oncomine_control_panel_summary.lrp1 | dashify}}</td>
+                    <td *ngIf="oncomine_control_panel_summary.lmna">{{oncomine_control_panel_summary.lmna | dashify}}</td>
                     <td>{{oncomine_control_panel_summary.tbp | dashify}}</td>
                     <td>{{oncomine_control_panel_summary.myc | dashify}}</td>
                     <td>{{oncomine_control_panel_summary.hmbs | dashify}}</td>
@@ -67,11 +87,16 @@
               </table>
             </dl>
             <div class="m-b-5">
-              <button type="button" class="btn btn-orangeshade-light" (click)="downloadDnaBam()"><i class="fa fa-download"></i> DNA BAM</button>
-              <button *ngIf="tabType=='ntc'" type="button" class="btn btn-orangeshade-light" (click)="downloadDnaBai()"><i class="fa fa-download"></i> DNA BAI</button>
-              <button type="button" class="btn btn-orangeshade-light" (click)="downloadRnaBam()"><i class="fa fa-download"></i> RNA BAM</button>
-              <button *ngIf="tabType=='ntc'" type="button" class="btn btn-orangeshade-light" (click)="downloadRnaBai()"><i class="fa fa-download"></i> RNA BAI</button>
-              <button type="button" class="btn btn-orangeshade-light" (click)="downloadVcf()"><i class="fa fa-download"></i> VCF</button>
+              <button type="button" class="btn btn-orangeshade-light" (click)="downloadDnaBam()">
+                <i class="fa fa-download"></i> DNA BAM</button>
+              <button *ngIf="tabType=='ntc'" type="button" class="btn btn-orangeshade-light" (click)="downloadDnaBai()">
+                <i class="fa fa-download"></i> DNA BAI</button>
+              <button type="button" class="btn btn-orangeshade-light" (click)="downloadRnaBam()">
+                <i class="fa fa-download"></i> RNA BAM</button>
+              <button *ngIf="tabType=='ntc'" type="button" class="btn btn-orangeshade-light" (click)="downloadRnaBai()">
+                <i class="fa fa-download"></i> RNA BAI</button>
+              <button type="button" class="btn btn-orangeshade-light" (click)="downloadVcf()">
+                <i class="fa fa-download"></i> VCF</button>
             </div>
           </div>
         </div>

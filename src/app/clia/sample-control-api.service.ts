@@ -1,10 +1,37 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { AuthHttp } from 'angular2-jwt';
+import { Response,RequestOptions,Headers } from '@angular/http';
 
 import { Config } from '../shared/config/env.config';
 import { ApiService } from '../shared/api/api.service';
 import { CliaVariantReportsQCViewData } from './clia-data-interfaces';
+
+export interface ApiError {
+  kind: 'error';
+  code?: number;
+  message: string;
+}
+
+export interface ApiSuccess {
+  kind: 'success';
+  status: string;
+  data: any;
+}
+
+export interface ApiStatusUpdateError {
+  kind: 'error';
+  code?: number;
+  message: string;
+}
+
+export interface ApiStatusUpdateSuccess {
+  kind: 'success';
+  status: string;
+  comments: string;
+  commenter: string;
+  dateTime: string;
+}
 
 @Injectable()
 export class SampleControlApiService extends ApiService {
@@ -108,15 +135,36 @@ export class SampleControlApiService extends ApiService {
       .catch(this.handleError);
   }
 
-  rejectReport(molecular_id: string, type: string): Observable<any> {
+  rejectReport(molecular_id: string, type: string): Observable<ApiSuccess | ApiError> {
     return this.http.put(Config.API.MESSAGE + '/message/clia/' + type + '/status',
       {
         'molecularSequenceNumber': molecular_id,
         'confirmation': false,
         'comment': null
       })
-      .map(this.extractData)
-      .catch(this.handleError);
+      .map((res: Response) => {
+        const data = JSON.stringify(res);
+        return { kind: 'success', data: data } as ApiSuccess;
+      })
+      .catch((err: any) => {
+
+        console.log("ERR-->")
+        console.log(JSON.stringify(err))
+
+        let message: string;
+        if (err instanceof Response) {
+          const errResp = err.json();
+          message = errResp.message;
+        } if (err instanceof Error) {
+          const error = err as Error;
+          message = error.message;
+        } else {
+          message = (typeof err === 'string') ? err : err.toString();
+        }
+        return Observable.of({ kind: 'error', message: message } as ApiError);
+      });
+      // .map(this.extractData)
+      // .catch(this.handleError);
   }
 
   confirmReport(molecular_id: string, type: string): Observable<any> {
