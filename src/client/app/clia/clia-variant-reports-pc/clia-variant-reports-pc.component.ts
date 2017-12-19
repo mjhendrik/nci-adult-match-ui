@@ -3,12 +3,20 @@ import {
   OnInit
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { Subscription } from 'rxjs/Subscription';
 
 import { routerTransition } from './../../shared/router.animations';
 import { SampleControlApiService } from '../sample-control-api.service';
 import { CliaVariantReportsPCViewData } from '../clia-data-interfaces';
+import { DialogResults } from '../../shared/modal-dialogs/modal-dialog-results';
 import { UserProfileService } from '../../shared/user-profile/user-profile.service';
 import { CliaDataService } from "./../../shared/clia/clia-data.service";
+import { ToastrService } from '../../shared/error-handling/toastr.service';
+import { ModalDialogConfirmationComponent } from '../../shared/modal-dialogs/modal-dialog-confirmation.component';
+import { ModalDialogWithCommentsComponent } from '../../shared/modal-dialogs/modal-dialog-with-comments.component';
+
+import { ApiStatusUpdateError, ApiStatusUpdateSuccess, ApiError, ApiSuccess } from '../sample-control-api.service';
 
 /**
  * This class represents the lazy loaded CLIAVariantReportsPcComponent.
@@ -41,11 +49,16 @@ export class CliaVariantReportsPcComponent implements OnInit {
   cliaTypeName: string;
   isReviewer: boolean = false;
 
+  public modalRef: BsModalRef;
+  public dialogSubscription: Subscription;
+
   constructor(
     private api: SampleControlApiService,
     private route: ActivatedRoute,
     private profile: UserProfileService,
-    private cliaData: CliaDataService) { }
+    private cliaData: CliaDataService,
+    private modalService: BsModalService,
+    private toastrService: ToastrService) { }
 
   ngOnInit() {
     let array: any;
@@ -131,10 +144,80 @@ export class CliaVariantReportsPcComponent implements OnInit {
   };
 
   rejectReport(): void {
-    this.api.rejectReport(this.molecular_id, 'sample_control')
-      .subscribe((itemList: any) => {
-        console.info('Report Rejected');
-      });
+
+    const action = () => {
+      console.log('Rejecting Positive Control Clia Report: ' + this.molecular_id);
+
+      this.api
+        .rejectReport(this.molecular_id, 'sample_control')
+        .subscribe(
+          (x: ApiSuccess | ApiError) => {
+            switch (x.kind) {
+              case 'error':
+                this.showToast(x.message, true);
+                break;
+              case 'success':
+                // this.transformer.updateVariantReportStatus(this, x);
+                this.showToast(`Positive Control Clia Report ${this.molecular_id} has been rejected`, false);
+                break;
+            }
+          });
+    };
+
+    this.showConfirmation(
+      false,
+      'Positive Control Clia Report Rejection',
+      `Are you sure you want to reject Positive Control Clia Report ${this.molecular_id}?`,
+      'Reject',
+      `Don't Reject`,
+      action
+    );
   };
+
+
+  private showConfirmation(
+    withComment: boolean,
+    confirmTitle: string,
+    confirmMessage: string,
+    okButtonText: string,
+    cancelButtonText: string,
+    action: () => void) {
+    this.dialogSubscription = this.modalService.onHidden.subscribe((results: string) => {
+      const modalResults = DialogResults.fromString(results);
+      if (modalResults.success) {
+        action();
+      }
+      this.unsubscribe();
+    });
+
+    this.modalRef = withComment
+      ? this.modalService.show(ModalDialogWithCommentsComponent)
+      : this.modalService.show(ModalDialogConfirmationComponent);
+
+    this.modalRef.content.title = confirmTitle;
+    this.modalRef.content.message = confirmMessage;
+    this.modalRef.content.okButtonText = okButtonText;
+    this.modalRef.content.cancelButtonText = cancelButtonText;
+  }
+
+  private unsubscribe() {
+    if (!this.dialogSubscription) {
+      return;
+    }
+    this.dialogSubscription.unsubscribe();
+    this.dialogSubscription = null;
+  }
+
+  private showToast(message: string, isError: boolean): void {
+    if (this.toastrService && this.toastrService.toastr) {
+      if (isError) {
+        console.error(message);
+        this.toastrService.toastr.error(message);
+      } else {
+        console.info(message);
+        this.toastrService.toastr.info(message);
+      }
+    }
+  }
 
 }
