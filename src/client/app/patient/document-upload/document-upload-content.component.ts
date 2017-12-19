@@ -73,7 +73,6 @@ export class DocumentUploadContentComponent {
   }
 
   upload(): void {
-    this.isUploading = true;
     this.api.getDocumentPresignedUrls(this.psn, this.documentFile.name)
     .subscribe((resp: ApiError | ApiSuccess) => {
       switch (resp.kind) {
@@ -81,6 +80,7 @@ export class DocumentUploadContentComponent {
           this.showToast(resp.message, true);
           break;
         case 'success':
+          this.isUploading = true;
           this.uploadFile(resp.data);
           break;
       }
@@ -101,6 +101,7 @@ export class DocumentUploadContentComponent {
         this.fileCount++;
         if (this.fileCount === 1) {
           this.isUploading = false;
+          this.notifyAfterUpload(this.documentFile.name);
         }
       }
     });

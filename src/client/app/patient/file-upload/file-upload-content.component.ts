@@ -189,7 +189,6 @@ export class FileUploadContentComponent implements OnInit {
         }
       }
     });
-
   }
 
   notifyAfterUpload(): void {
