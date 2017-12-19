@@ -298,7 +298,9 @@ export class PatientApiService extends ApiService {
   }
 
   notifyAfterUpload(psn: string, fileName: string): Observable<ApiSuccess | ApiError> {
-    const body = { file_name: fileName };
+    const profileData = localStorage.getItem('profile');
+    const profile = profileData?JSON.parse(profileData):{user:'System'};
+    const body = { file_name: fileName, user: profile.name };
     return this.http.post(`${this.baseApiUrl}/patients/${psn}/documents`, body)
       .map((res: Response) => {
         return { kind: 'success', data: res.json() } as ApiSuccess;
