@@ -1,0 +1,15 @@
+// Use "humao.rest-client" VS Code extension to run these
+
+PUT https://adultmatch-dev.s3.amazonaws.com/1001re/Volvo-MY17-XC90-brochure-v2.pdf?AWSAccessKeyId=AKIAIDODFZVEX4LMBCXQ&Signature=xkqpbX%2BLTqBfqsT7%2F17LlmoQmnE%3D&Expires=1513629102
+content-type: application/json
+
+< ./Volvo-MY17-XC90-brochure-v2.pdf
+
+###
+
+// Notify Patient API that file has been uploaded
+POST http://localhost:5000/api/v1/patients/1001re/documents
+content-type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoicmljay56YWtoYXJvdkBuaWguZ292IiwiZW1haWwiOiJyaWNrLnpha2hhcm92QG5paC5nb3YiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwicm9sZXMiOlsiQURNSU4iXSwiaXNzIjoiaHR0cHM6Ly9uY2ltYXRjaC5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NThhNzI3YjZjN2I3NWEwNzc1MGU5YjA3IiwiYXVkIjoiUmpvWVpYVURFelF4TUp3MDRDNkI1ZHNRS3FVQUVZekEiLCJpYXQiOjE1MTM3MDAxNDksImV4cCI6MTUxMzcwNzM0OX0.Lmoe4OvaTyFplKMzW4huzO_EBbvDQvGgn1c8tmLAAwQ
+
+{file_name: "Volvo-MY17-XC90-brochure-v6.pdf"}

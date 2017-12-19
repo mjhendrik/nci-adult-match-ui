@@ -76,6 +76,7 @@ export class CliaVariantReportsPcComponent implements OnInit {
     if (roles.indexOf('ADMIN') !== -1 || roles.join().toLowerCase().indexOf(this.pcType) !== -1) {
       this.isReviewer = true;
     }
+    this.isReviewer = (this.report_status === "PASSED") ? true : false;
   }
 
   getData(itemList: CliaVariantReportsPCViewData) {

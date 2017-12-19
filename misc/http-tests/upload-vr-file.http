@@ -1,6 +1,0 @@
-// Use "humao.rest-client" VS Code extension to run these
-
-PUT https://adultmatch-dev.s3.amazonaws.com/1001re/Volvo-MY17-XC90-brochure-v2.pdf?AWSAccessKeyId=AKIAIDODFZVEX4LMBCXQ&Signature=xkqpbX%2BLTqBfqsT7%2F17LlmoQmnE%3D&Expires=1513629102
-content-type: application/json
-
-< ./Volvo-MY17-XC90-brochure-v2.pdf

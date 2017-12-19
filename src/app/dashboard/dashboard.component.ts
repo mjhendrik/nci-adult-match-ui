@@ -3,7 +3,10 @@ import {
   OnInit,
   OnDestroy
 } from '@angular/core';
-import { Observable, Subscription } from 'rxjs/Rx';
+import {
+  Observable,
+  Subscription
+} from 'rxjs/Rx';
 
 import { routerTransition } from './../shared/router.animations';
 import { GmtPipe } from './../shared/pipes/gmt.pipe';

@@ -74,7 +74,7 @@ export class AliquotApiService extends ApiService {
   }
 
   notifyAfterUpload(msn: string, body: any): Observable<any | ApiUpdateError> {
-    return this.http.put(`${this.baseApiUrl}/message/clia/aliquot/` + msn, body)
+    return this.http.put(`${this.baseApiUrl}/message/clia/aliquot/files/` + msn, body)
       .map(this.extractData)
       .catch((err: Response) => {
         const data = err.json();

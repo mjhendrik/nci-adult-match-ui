@@ -11,9 +11,7 @@ import {
   HttpEventType,
   HttpResponse,
   HttpClient,
-  HttpRequest,
-  HttpHeaders
-
+  HttpRequest
 } from '@angular/common/http';
 import {
   BsModalRef,
@@ -24,7 +22,8 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/throttleTime';
 import 'rxjs/add/observable/fromEvent';
 
-import { PatientApiService } from '../patient-api.service';
+import { PatientApiService, ApiError, ApiSuccess } from '../patient-api.service';
+import { ToastrService } from '../../shared/error-handling/toastr.service';
 
 @Component({
   moduleId: module.id,
@@ -62,6 +61,7 @@ export class DocumentUploadContentComponent {
     private appref: ApplicationRef,
     private api: PatientApiService,
     private modalService: BsModalService,
+    private toastrService: ToastrService,
     private http: HttpClient) { }
 
   fileSelected(file: any): void {
@@ -73,9 +73,18 @@ export class DocumentUploadContentComponent {
   }
 
   upload(): void {
-    this.isUploading = true;
     this.api.getDocumentPresignedUrls(this.psn, this.documentFile.name)
-      .subscribe((url) => this.uploadFile(url));
+    .subscribe((resp: ApiError | ApiSuccess) => {
+      switch (resp.kind) {
+        case 'error':
+          this.showToast(resp.message, true);
+          break;
+        case 'success':
+          this.isUploading = true;
+          this.uploadFile(resp.data);
+          break;
+      }
+    });
   }
 
   uploadFile(url: string): void {
@@ -92,6 +101,7 @@ export class DocumentUploadContentComponent {
         this.fileCount++;
         if (this.fileCount === 1) {
           this.isUploading = false;
+          this.notifyAfterUpload(this.documentFile.name);
         }
       }
     });
@@ -107,4 +117,28 @@ export class DocumentUploadContentComponent {
     if (cancel === true) this.bsModalRef.hide();
   }
 
+  notifyAfterUpload(fileName: string): void {
+    this.api.notifyAfterUpload(this.psn, fileName)
+      .subscribe((resp: ApiError | ApiSuccess) => {
+        switch (resp.kind) {
+          case 'error':
+            this.showToast(resp.message, true);
+            break;
+          case 'success':
+            break;
+        }
+      });
+  }
+
+  private showToast(message: string, isError: boolean): void {
+    if (this.toastrService && this.toastrService.toastr) {
+      if (isError) {
+        console.error(message);
+        this.toastrService.toastr.error(message);
+      } else {
+        console.info(message);
+        this.toastrService.toastr.info(message);
+      }
+    }
+  }
 }
