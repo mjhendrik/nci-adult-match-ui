@@ -129,7 +129,7 @@ export class PatientApiService extends ApiService {
         if (err instanceof Response) {
           const errResp = err.json ? err.json() : err;
           message = errResp.error_message ? errResp.error_message : errResp.message;
-        } if (err instanceof Error) {
+        } else if (err instanceof Error) {
           const error = err as Error;
           message = error.message;
         } else {
@@ -154,7 +154,7 @@ export class PatientApiService extends ApiService {
         if (err instanceof Response) {
           const errResp = err.json();
           message = errResp.message;
-        } if (err instanceof Error) {
+        } else if (err instanceof Error) {
           const error = err as Error;
           message = error.message;
         } else {
@@ -179,7 +179,7 @@ export class PatientApiService extends ApiService {
         if (err instanceof Response) {
           const errResp = err.json();
           message = errResp.message;
-        } if (err instanceof Error) {
+        } else if (err instanceof Error) {
           const error = err as Error;
           message = error.message;
         } else {
@@ -212,7 +212,7 @@ export class PatientApiService extends ApiService {
         if (err instanceof Response) {
           const errResp = err.json();
           message = errResp.message;
-        } if (err instanceof Error) {
+        } else if (err instanceof Error) {
           const error = err as Error;
           message = error.message;
         } else {
@@ -237,7 +237,7 @@ export class PatientApiService extends ApiService {
         if (err instanceof Response) {
           const errResp = err.json();
           message = errResp.message;
-        } if (err instanceof Error) {
+        } else if (err instanceof Error) {
           const error = err as Error;
           message = error.message;
         } else {
@@ -277,9 +277,44 @@ export class PatientApiService extends ApiService {
       .catch(this.handleError);
   }
 
-  getDocumentPresignedUrls(psn: string, fileName: string): Observable<string> {
+  getDocumentPresignedUrls(psn: string, fileName: string): Observable<ApiSuccess | ApiError> {
     return this.http.post(this.url(`/patients/${psn}/upload_url`), { 'file_name': fileName })
-      .map(this.extractData)
-      .catch(this.handleError);
+      .map((res: Response) => {
+        return { kind: 'success', data: res.json() } as ApiSuccess;
+      })
+      .catch((err: any) => {
+        let message: string;
+        if (err instanceof Response) {
+          const errResp = err.json ? err.json() : err;
+          message = errResp.error_message ? errResp.error_message : errResp.message;
+        } else if (err instanceof Error) {
+          const error = err as Error;
+          message = error.message;
+        } else {
+          message = (typeof err === 'string') ? err : err.toString();
+        }
+        return Observable.of({ kind: 'error', message: message } as ApiError);
+      });
+  }
+
+  notifyAfterUpload(psn: string, fileName: string): Observable<ApiSuccess | ApiError> {
+    const body = { file_name: fileName };
+    return this.http.put(`${this.baseApiUrl}/patients/${psn}/documents`, body)
+      .map((res: Response) => {
+        return { kind: 'success', data: res.json() } as ApiSuccess;
+      })
+      .catch((err: any) => {
+        let message: string;
+        if (err instanceof Response) {
+          const errResp = err.json ? err.json() : err;
+          message = errResp.error_message ? errResp.error_message : errResp.message;
+        } else if (err instanceof Error) {
+          const error = err as Error;
+          message = error.message;
+        } else {
+          message = (typeof err === 'string') ? err : err.toString();
+        }
+        return Observable.of({ kind: 'error', message: message } as ApiError);
+      });
   }
 }

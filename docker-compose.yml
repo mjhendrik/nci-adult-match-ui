@@ -26,7 +26,7 @@ services:
       - AUTH0_CLIENT_SECRET=${AUTH0_CLIENT_SECRET}
       - AUTH0_DATABASE=${AUTH0_DATABASE}
       - AUTH0_DOMAIN=${AUTH0_DOMAIN}
-      - LOGGER_LEVEL=WARN
+      - LOGGER_LEVEL=INFO
     # Uncomment the volumes section below to override the default Patient API assay rules config. Normally commented out.
     #volumes:
       # - ./misc/config/nci-adult-match-patient-api-assay_activation_rules.json:/usr/app/config/assay_activation_rules.json
