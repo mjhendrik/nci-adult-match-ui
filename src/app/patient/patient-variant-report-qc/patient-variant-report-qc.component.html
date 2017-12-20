@@ -14,7 +14,9 @@
     </li>
     <li class="active">Quality Control Report</li>
   </ul>
-  <h1 class="page-header">Quality Control Report<span class="entity-name"> {{analysisId}}</span></h1>
+  <h1 class="page-header">Quality Control Report
+    <span class="entity-name"> {{analysisId}}</span>
+  </h1>
   <div class="row" matchHeight="panel-height-top">
     <div class="col-md-6">
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-top" id="qc-report-summary">
@@ -47,7 +49,8 @@
             <table class="table table-condensed white-header">
               <thead>
                 <tr>
-                  <th>LRP1</th>
+                  <th *ngIf="ocpSummary['LRP1']">LRP1</th>
+                  <th *ngIf="ocpSummary['LMNA']">LMNA</th>
                   <th>TBP</th>
                   <th>MYC</th>
                   <th>HMBS</th>
@@ -57,7 +60,8 @@
               </thead>
               <tbody>
                 <tr *ngIf="ocpSummary && ocpSummary.hasData; else emptyRow">
-                  <td>{{ocpSummary['LRP1'] | dashify}}</td>
+                  <td *ngIf="ocpSummary['LRP1']">{{ocpSummary['LRP1'] | dashify}}</td>
+                  <td *ngIf="ocpSummary['LMNA']">{{ocpSummary['LMNA'] | dashify}}</td>
                   <td>{{ocpSummary['TBP'] | dashify}}</td>
                   <td>{{ocpSummary['MYC'] | dashify}}</td>
                   <td>{{ocpSummary['HMBS'] | dashify}}</td>
