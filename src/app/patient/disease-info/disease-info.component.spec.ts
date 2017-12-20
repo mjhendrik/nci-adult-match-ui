@@ -15,7 +15,7 @@ import { DiseaseInfo } from './disease-info.module';
 
 @Component({
   selector: 'test-cmp',
-  template: '<app-disease-info [reasons]="testItems"></app-disease-info>'
+  template: '<sd-disease [reasons]="testItems"></sd-disease>'
 })
 class TestComponent {
   items: DiseaseInfo;

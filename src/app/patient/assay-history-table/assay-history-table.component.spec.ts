@@ -15,7 +15,7 @@ import { AssayHistoryTableComponent, AssayHistoryItem } from './assay-history-ta
 
 @Component({
   selector: 'test-cmp',
-  template: '<app-assay-history-table [reasons]="testItems"></app-assay-history-table>'
+  template: '<sd-assay-history-table [reasons]="testItems"></sd-assay-history-table>'
 })
 class TestComponent {
   items: AssayHistoryItem[] = [];

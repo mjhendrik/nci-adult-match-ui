@@ -16,7 +16,7 @@ export class AssayHistoryItem {
  */
 @Component({
   moduleId: module.id,
-  selector: 'app-assay-history-table',
+  selector: 'sd-assay-history-table',
   templateUrl: 'assay-history-table.component.html'
 })
 export class AssayHistoryTableComponent {
