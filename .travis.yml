@@ -1,8 +1,8 @@
 language: node_js
 node_js: 6
 dist: trusty
-sudo: false
-group: deprecated-2017Q4
+# sudo: false
+# group: deprecated-2017Q4
 
 install: true  # yarn bug
 
@@ -36,7 +36,7 @@ before_script:
 script:
   - npm run build.deploy
   # - cat coverage/lcov.info | ./node_modules/.bin/codacy-coverage -d -v -l typescript # For codacy-coverage debugging
-  - cat coverage/lcov.info | ./node_modules/.bin/codacy-coverage -l typescript # Regular codacy-coverage command
+  # - cat coverage/lcov.info | ./node_modules/.bin/codacy-coverage -l typescript # Regular codacy-coverage command
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
   - docker build -f .docker/dockerfile.httpd -t $DOCKER_IMAGE:$DATE -t $DOCKER_IMAGE:latest .
 

@@ -30,7 +30,7 @@ import { DownloadService } from '../../shared/utils/download.service';
 import { DownloadMockService } from '../../shared/testing/download-mock.service';
 
 export function main() {
-  describe('PatientVariantReportQcComponent (templateUrl)', () => {
+  xdescribe('PatientVariantReportQcComponent (templateUrl)', () => {
 
     let component: PatientVariantReportQcComponent;
     let fixture: ComponentFixture<PatientVariantReportQcComponent>;

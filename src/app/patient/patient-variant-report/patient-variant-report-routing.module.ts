@@ -36,7 +36,7 @@ class DataResolver implements Resolve<VariantReportData> {
     return Observable.forkJoin(
       this.patientApi.getPatientDetails(psn).flatMap(patientData => {
         let patient = this.transformer.transformPatient(patientData) || {};
-        let variantReport = this.transformer.findVariantReport(patient, analysisId);
+        let variantReport = this.transformer.findVariantReport(patient, bsn, analysisId);
         if (variantReport) {
           delete variantReport.singleNucleotideVariantAndIndels;
           return this.treatmentArmApi

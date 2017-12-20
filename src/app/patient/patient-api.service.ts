@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Response, RequestOptions, Headers } from '@angular/http';
+import { Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { AuthHttp } from 'angular2-jwt';
 
@@ -64,7 +64,7 @@ export class PatientApiService extends ApiService {
   getPatientCount(filter: string, isOutsideAssayWorkflow?: boolean): Observable<number> {
     return this.http.get(Config.API.PATIENT
       // tslint:disable-next-line:max-line-length
-      + '/patients/count?projection=patientSequenceNumber,currentPatientStatus,currentStepNumber,diseases.shortName,registrationDate,patientAssignments.treatmentArm.name,patientAssignments.treatmentArm.version'
+      + '/patients/count?projection=patientSequenceNumber,patientType,currentPatientStatus,currentStepNumber,diseases.shortName,registrationDate,patientAssignments.treatmentArm.name,patientAssignments.treatmentArm.version'
       + (filter ? '&projfilter=' + filter : '')
       + (isOutsideAssayWorkflow !== null ? '&is-oa=' + isOutsideAssayWorkflow : ''))
       .map(this.extractData)

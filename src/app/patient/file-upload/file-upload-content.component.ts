@@ -80,7 +80,9 @@ export class FileUploadContentComponent implements OnInit {
     private uploadNotifications: FileUploadNotificationService) { }
 
   ngOnInit() {
-    this.onInputChanged('');
+    setTimeout(() => {
+      this.onInputChanged('');
+    }, 1);
   }
 
   validateAnalysisId(): void {
