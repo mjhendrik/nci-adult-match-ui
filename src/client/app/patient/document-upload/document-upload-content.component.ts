@@ -24,7 +24,6 @@ import 'rxjs/add/observable/fromEvent';
 
 import { PatientApiService, ApiError, ApiSuccess } from '../patient-api.service';
 import { ToastrService } from '../../shared/error-handling/toastr.service';
-import { FileUploadNotificationService } from './../file-upload-notification.service';
 
 @Component({
   moduleId: module.id,
@@ -63,8 +62,7 @@ export class DocumentUploadContentComponent {
     private api: PatientApiService,
     private modalService: BsModalService,
     private toastrService: ToastrService,
-    private http: HttpClient,
-    private uploadNotifications: FileUploadNotificationService) { }
+    private http: HttpClient) { }
 
   fileSelected(file: any): void {
     this.hasFile = false;

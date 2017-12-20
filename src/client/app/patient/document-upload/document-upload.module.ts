@@ -7,7 +7,6 @@ import { PipesModule } from '../../shared/pipes/pipes.module';
 import { DirectivesModule } from '../../shared/directives/directives.module';
 import { DocumentUploadComponent } from './document-upload.component';
 import { DocumentUploadContentComponent } from './document-upload-content.component';
-import { FileUploadNotificationService } from './../file-upload-notification.service';
 
 @NgModule({
   imports: [
@@ -18,7 +17,6 @@ import { FileUploadNotificationService } from './../file-upload-notification.ser
     DropzoneModule.forRoot()
   ],
   declarations: [DocumentUploadComponent, DocumentUploadContentComponent],
-  exports: [DocumentUploadComponent, DocumentUploadContentComponent],
-  providers: [FileUploadNotificationService]
+  exports: [DocumentUploadComponent, DocumentUploadContentComponent]
 })
 export class DocumentUploadModule { }

@@ -2,20 +2,15 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
-export class FileUploadResult {
-    success: boolean;
-    fileType: string;
-}
-
 @Injectable()
 export class FileUploadNotificationService {
-    private _done: BehaviorSubject<FileUploadResult> = new BehaviorSubject({ success: false, fileType: 'none' });
+    private _done: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
-    get onDone(): Observable<FileUploadResult> {
+    get onDone(): Observable<boolean> {
         return this._done.asObservable();
     }
 
-    done(success: FileUploadResult): void {
+    done(success: boolean): void {
         this._done.next(success);
     }
 }
