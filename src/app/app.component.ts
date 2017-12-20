@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import './operators';
+// import './operators';
 import 'd3';
 import 'nvd3';
 import 'ng2-nvd3';
@@ -24,7 +24,8 @@ export class AppComponent implements OnInit {
     public toastr: ToastsManager,
     private router: Router,
     private toastrService: ToastrService) {
-    this.toastrService.toastr = toastr; // A work-around for ToastsManager not being able to be injected into ErrorHandlingService for some reason
+    // A work-around for ToastsManager not being able to be injected into ErrorHandlingService for some reason
+    this.toastrService.toastr = toastr;
     this.toastr.setRootViewContainerRef(vcr);
   }
 
