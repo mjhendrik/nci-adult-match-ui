@@ -37,11 +37,11 @@
   margin-top: -60px;
 }
 
-/deep/ .page-container {
+::ng-deep .page-container {
   // background-color: white;
 }
 
-/deep/ .auth0-lock.auth0-lock .auth0-lock-header-logo {
+::ng-deep .auth0-lock.auth0-lock .auth0-lock-header-logo {
     width: 77%;
     height: audio;
 }
@@ -53,5 +53,5 @@
   left: 0px;
   position: absolute;
   filter: brightness(50%);
-  // background-image: url('src/assets/img/dna_bg.jpg') //TODO:RZ: Fix later
+  background-image: url('/assets/img/dna_bg.jpg') //TODO:RZ: Fix later
 }
