@@ -1,17 +1,14 @@
-// import { EnvConfig } from '../../../../../tools/env/env-config.interface';
-
 export const Config: EnvConfig = {
-    CLIENT_ID: '',
-    AUTH_DOMAIN: '',
     API: {
-        PATIENT: '',
-        TREATMENT_ARM: '',
-        ION_REPORTERS: '',
-        SAMPLE_CONTROLS: '',
-        ALIQUOT: '',
-        MESSAGE: '',
+        PATIENT: 'http://localhost/5000',
+        TREATMENT_ARM: 'http://localhost/5010',
+        ION_REPORTERS: 'http://localhost:3001',
+        SAMPLE_CONTROLS: 'http://localhost:3002',
+        ALIQUOT: 'http://localhost:3003',
+        MESSAGE: 'http://localhost:8080' // 8080 for jetty docker; 10250 for wildfly docker; 8080 for wilfly/maven;
     },
-    ENV: ''
+    CLIENT_ID: 'RjoYZXUDEzQxMJw04C6B5dsQKqUAEYzA', // Dev by default
+    AUTH_DOMAIN: 'ncimatch.auth0.com',
 };
 
 // Feel free to extend this interface
@@ -23,15 +20,11 @@ export interface EnvConfig {
     ENV?: string;
 }
 
-interface EnvApiConfig {
+export interface EnvApiConfig {
     PATIENT: string;
     TREATMENT_ARM: string;
     ION_REPORTERS: string;
     SAMPLE_CONTROLS: string;
     ALIQUOT: string;
     MESSAGE: string;
-}
-
-export class EnvConstants {
-    TBD: 'TBD';
 }

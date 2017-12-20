@@ -6,8 +6,8 @@ import { tokenNotExpired } from 'angular2-jwt';
 import { Router } from '@angular/router';
 import { Config } from '../config/env.config';
 
-// Avoid name not found warnings
-declare var Auth0Lock: any;
+import Auth0Lock from 'auth0-lock';
+import Auth0 from 'auth0-js';
 
 @Injectable()
 export class Auth {
@@ -63,18 +63,18 @@ export class Auth {
   public login() {
     // Call the show method to display the widget.
     this.lock.show();
-  };
+  }
 
   public authenticated() {
     // Check if there's an unexpired JWT
     // It searches for an item in localStorage with key == 'id_token'
     return tokenNotExpired();
-  };
+  }
 
   public logout() {
     // Remove token from localStorage
     localStorage.removeItem('id_token');
     localStorage.removeItem('profile');
     this.userProfile = null;
-  };
+  }
 }
