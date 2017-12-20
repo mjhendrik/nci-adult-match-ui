@@ -27,7 +27,7 @@ import { ToastrService } from '../../shared/error-handling/toastr.service';
 
 @Component({
   moduleId: module.id,
-  selector: 'app-document-upload-content',
+  selector: 'sd-document-upload-content',
   templateUrl: 'document-upload-content.component.html',
   styleUrls: ['document-upload-content.component.scss']
 })

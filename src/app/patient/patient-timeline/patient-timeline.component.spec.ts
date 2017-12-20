@@ -16,7 +16,7 @@ import { PatientTimelineComponent } from './patient-timeline.component';
 
 @Component({
   selector: 'test-cmp',
-  template: '<app-patient-timeline [items]="items"></app-patient-timeline>'
+  template: '<sd-patient-timeline [items]="items"></sd-patient-timeline>'
 })
 class TestComponent {
   items: any[] = [

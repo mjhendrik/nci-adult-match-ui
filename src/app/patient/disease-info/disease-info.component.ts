@@ -15,7 +15,7 @@ interface StringToStringMap {
  */
 @Component({
   moduleId: module.id,
-  selector: 'app-disease',
+  selector: 'sd-disease',
   template: `
   <dl class="dl-horizontal" [ngClass]="{true:'narrow-dt',false:''}[isNarrow]">
     <dt *ngIf="hasOutsideTitle && !hasData" class="text-muted f-w-400"> No Disease data</dt>

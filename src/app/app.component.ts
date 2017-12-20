@@ -15,7 +15,7 @@ declare let d3: any;
  */
 @Component({
   moduleId: module.id,
-  selector: 'app-app',
+  selector: 'sd-app',
   templateUrl: 'app.component.html'
 })
 export class AppComponent implements OnInit {

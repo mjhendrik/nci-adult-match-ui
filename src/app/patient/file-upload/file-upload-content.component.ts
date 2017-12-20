@@ -28,7 +28,7 @@ import { FileUploadNotificationService } from './file-upload-notification.servic
 
 @Component({
   moduleId: module.id,
-  selector: 'app-file-upload-content',
+  selector: 'sd-file-upload-content',
   templateUrl: 'file-upload-content.component.html',
   styleUrls: ['file-upload-content.component.scss']
 })

@@ -66,7 +66,7 @@
                     <dd>{{outsideData.variantReport.createdDate | gmt}}</dd>
                   </dl>
 
-                  <app-disease [disease]="outsideData.disease"></app-disease>
+                  <sd-disease [disease]="outsideData.disease"></sd-disease>
 
                   <div class="m-b-5">
                     <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!outsideData.variantReport.dnaBamFilePath"
@@ -265,7 +265,7 @@
                     <dd *ngIf="showPools">{{matchData.pool2 | dashify}}</dd>
                   </dl>
 
-                  <app-disease [disease]="matchData.disease"></app-disease>
+                  <sd-disease [disease]="matchData.disease"></sd-disease>
 
                   <div class="m-b-5">
                     <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!matchData.variantReport.dnaBamFilePath"
