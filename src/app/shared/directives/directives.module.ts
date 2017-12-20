@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { nvD3 } from 'ng2-nvd3';
 
 import { ColorCodeTaDirective } from './colorcode-ta.directive';
 import { ColorCodePatientsDirective } from './colorcode-patients.directive';
@@ -37,7 +36,6 @@ import { ColorCodeConcordanceDirective } from './colorcode-concordance.directive
     MatchHeightTabClickDirective,
     FaIconDirective,
     AmoiDirective,
-    nvD3,
     CnvChartDirective,
     ColorCodeYesNoDirective,
     ColorCodeConcordanceDirective
@@ -57,7 +55,6 @@ import { ColorCodeConcordanceDirective } from './colorcode-concordance.directive
     MatchHeightTabClickDirective,
     FaIconDirective,
     AmoiDirective,
-    nvD3,
     CnvChartDirective,
     ColorCodeYesNoDirective,
     ColorCodeConcordanceDirective

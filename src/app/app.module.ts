@@ -53,6 +53,12 @@ import { ErrorPageHttpInterceptor } from './shared/error-handling/error-page-htt
 import { ModalDialogPathologyReportComponent } from './shared/modal-dialogs/modal-dialog-pathology-report.component';
 import { TestFeatComponent } from './feat/test-feat/test-feat.component';
 
+import { NvD3Module } from 'ng2-nvd3';
+
+// d3 and nvd3 should be included somewhere
+import 'd3';
+import 'nvd3';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -80,6 +86,7 @@ import { TestFeatComponent } from './feat/test-feat/test-feat.component';
     VariantReportFilteredTableModule,
     VariantReportSimpleTableModule,
     HttpClientModule,
+    NvD3Module,
     ToastModule.forRoot(),
     ModalModule.forRoot(),
     PopoverModule.forRoot(),
