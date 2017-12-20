@@ -4,8 +4,10 @@ import {
   OnInit,
   OnDestroy
 } from '@angular/core';
-
+import 'rxjs/add/operator/map';
+import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 
 import { routerTransition } from './../../shared/router.animations';
 import { GmtPipe } from './../../shared/pipes/gmt.pipe';
@@ -14,11 +16,6 @@ import { IonReportersApiService } from '../ion-reporters-api.service';
 import { UserProfileService } from '../../shared/user-profile/user-profile.service';
 import { CliaDataService } from './../../shared/clia/clia-data.service';
 
-import {
-  Observable,
-  Subscription
-} from 'rxjs/Rx';
-import 'rxjs/add/operator/map';
 
 /**
  * CliaParentComponent.
@@ -27,7 +24,6 @@ import 'rxjs/add/operator/map';
   moduleId: module.id,
   selector: 'app-clia-parent',
   templateUrl: 'clia-parent.component.html',
-  styleUrls: ['clia-parent.component.scss'],
   animations: [routerTransition()],
   host: { '[@routerTransition]': '' },
   providers: [GmtPipe]
@@ -36,9 +32,9 @@ export class CliaParentComponent implements OnInit, OnDestroy {
 
   @Input('cliaType') cliaType: string;
 
-  searchtermPC: string = '';
-  searchtermNTC: string = '';
-  searchtermPACC: string = '';
+  searchtermPC = '';
+  searchtermNTC = '';
+  searchtermPACC = '';
 
   recordsPerPagePC: number = 10;
   recordsPerPageNTC: number = 10;
@@ -115,7 +111,7 @@ export class CliaParentComponent implements OnInit, OnDestroy {
   getDataPC() {
     this.apiSample.getCliaDetailsPC(this.cliaTypeName)
       .subscribe(details => {
-        let gmt = new GmtPipe();
+        const gmt = new GmtPipe();
         let data: {};
 
         this.tablePCData = details.map((x: any) => {
@@ -261,7 +257,7 @@ export class CliaParentComponent implements OnInit, OnDestroy {
         });
       this.timestamp = new Date();
     });
-  };
+  }
 
   private unsubscribe() {
     if (!this.autoRefreshSubscription) {
