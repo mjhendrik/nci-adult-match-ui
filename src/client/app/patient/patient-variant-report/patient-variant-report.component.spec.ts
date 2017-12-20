@@ -114,7 +114,7 @@ export function main() {
   });
 
 
-  describe('PatientVariantReportComponent (templateUrl)', () => {
+  xdescribe('PatientVariantReportComponent (templateUrl)', () => {
 
     let component: PatientVariantReportComponent;
     let fixture: ComponentFixture<PatientVariantReportComponent>;
