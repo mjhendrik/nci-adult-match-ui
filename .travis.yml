@@ -9,8 +9,8 @@ install: true  # yarn bug
 services:
   - docker
 
-# addons:
-#   firefox: "45.0"
+addons:
+  firefox: "45.0"
 
 branches:
   only: master
