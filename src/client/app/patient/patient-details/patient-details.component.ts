@@ -14,9 +14,9 @@ import { ViewDataTransformer } from './../view-data-transformer.service';
 import { PatientData } from './patient-details.module';
 import { UserProfileService } from '../../shared/user-profile/user-profile.service';
 import { ModalDialogPathologyReportComponent } from '../../shared/modal-dialogs/modal-dialog-pathology-report.component';
-import { FileUploadNotificationService } from '../file-upload/file-upload-notification.service';
 import { DownloadService } from '../../shared/utils/download.service';
 import { ToastrService } from '../../shared/error-handling/toastr.service';
+import { FileUploadNotificationService } from './../file-upload-notification.service';
 
 const roles = {
   variantReportUpload: [
@@ -100,26 +100,37 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
   ngOnInit() {
     Object.assign(this, this.route.snapshot.data['data']);
     this.navigateToSection();
-    this.uploadNotifications.onDone.subscribe(success => {
-      console.info('Successfully uploaded VR files: ' + success);
-      if (success) {
-        this.patientApi.getPatientDetails(this.psn).subscribe(data => {
-          let patient = this.transformer.transformPatient(data);
-          patient.section = this.section;
-          patient.entityId = this.entityId;
+    this.uploadNotifications.onDone.subscribe(uploadResult => {
+      if (uploadResult.success) {
+        switch (uploadResult.fileType) {
+          case 'vr':
+            console.info('Successfully uploaded VR file(s)');
+            this.patientApi.getPatientDetails(this.psn).subscribe(data => {
+              let patient = this.transformer.transformPatient(data);
+              patient.section = this.section;
+              patient.entityId = this.entityId;
 
-          let updated = {
-            psn: this.psn,
-            patient: patient,
-            summaryData: {},
-            section: this.section,
-            entityId: this.entityId,
-            pendingVariantReport: patient.pendingVariantReport,
-            pendingAssignmentReport: patient.pendingAssignmentReport
-          };
+              let updated = {
+                psn: this.psn,
+                patient: patient,
+                summaryData: {},
+                section: this.section,
+                entityId: this.entityId,
+                pendingVariantReport: patient.pendingVariantReport,
+                pendingAssignmentReport: patient.pendingAssignmentReport
+              };
 
-          Object.assign(this, updated);
-        });
+              Object.assign(this, updated);
+            });
+            break;
+          case 'document':
+            console.info('Successfully uploaded document file');
+            this.patientApi.getPatientDocuments(this.psn).subscribe(updated => {
+              let documents = updated || [];
+              this.patient.documents = documents;
+            });
+            break;
+        }
       }
     });
   }
