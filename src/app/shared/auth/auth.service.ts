@@ -7,20 +7,19 @@ import { Router } from '@angular/router';
 @Injectable()
 export class AuthService {
   // Create Auth0 web auth instance
-  // @TODO: Update AUTH_CONFIG and remove .example extension in src/app/auth/auth0-variables.ts.example
   auth0 = new auth0.WebAuth({
     clientID: AUTH_CONFIG.CLIENT_ID,
     domain: AUTH_CONFIG.CLIENT_DOMAIN,
-    responseType: 'token id_token openid name email roles',
-    // redirectUri: AUTH_CONFIG.REDIRECT,
+    responseType: 'token id_token',
+    redirectUri: AUTH_CONFIG.REDIRECT,
     audience: AUTH_CONFIG.AUDIENCE,
     scope: AUTH_CONFIG.SCOPE
   });
   userProfile: any;
 
   // Create a stream of logged in status to communicate throughout app
-  loggedIn: boolean;
-  loggedIn$ = new BehaviorSubject<boolean>(this.loggedIn);
+  isLoggedIn: boolean;
+  loggedIn = new BehaviorSubject<boolean>(this.isLoggedIn);
 
   constructor(private router: Router) {
     // If authenticated, set local profile property and update login status subject
@@ -35,8 +34,8 @@ export class AuthService {
 
   setLoggedIn(value: boolean) {
     // Update login status subject
-    this.loggedIn$.next(value);
-    this.loggedIn = value;
+    this.loggedIn.next(value);
+    this.isLoggedIn = value;
   }
 
   login() {
@@ -53,7 +52,7 @@ export class AuthService {
       } else if (err) {
         console.error(`Error: ${err.error}`);
       }
-      this.router.navigate(['/']);
+      this.router.navigate(['/dashboard']);
     });
   }
 
