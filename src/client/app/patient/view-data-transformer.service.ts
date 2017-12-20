@@ -9,7 +9,6 @@ import { ApiStatusUpdateSuccess } from './patient-api.service';
 import { ConfirmableItem } from '../shared/check-box-with-confirm/check-box-with-confirm.component';
 import { GmtPipe } from '../shared/pipes/gmt.pipe';
 import { AmoiSummary } from './amoi-summary';
-import { retry } from 'rxjs/operator/retry';
 
 const variantTables: Array<string> = [
   // 'geneFusions', // geneFusions is never used, unifiedGeneFusions is used instead
@@ -246,7 +245,7 @@ export class ViewDataTransformer {
     biopsySequenceNumber: string,
     analysisId: string): VariantReportData {
 
-    const analysis = transformedPatient.analyses[analysisId] || {};
+    const analysis = this.findAnalysis(transformedPatient, biopsySequenceNumber, analysisId) || {};
     const tvc_version = copyNumberData.tvc_version;
     const showPools: boolean = this.showPools(tvc_version);
 
@@ -282,16 +281,42 @@ export class ViewDataTransformer {
     return variantReport;
   }
 
-  findVariantReport(patient: any, analysisId: string): any {
+  findVariantReport(patient: any, bsn: string, analysisId: string): any {
     if (!patient)
       return null;
 
     // The path: patient.biopsies[k].nucleicAcidSendouts[m].analyses[n].variantReport
     for (let biopsy of patient.biopsies || []) {
+      if (biopsy.biopsySequenceNumber !== bsn) {
+        continue;
+      }
+
       for (let nucleicAcidSendout of biopsy.nucleicAcidSendouts || []) {
         for (let analysis of nucleicAcidSendout.analyses || []) {
           if (analysis.analysisId === analysisId) {
             return analysis.variantReport || {};
+          }
+        }
+      }
+    }
+
+    return null;
+  }
+
+  findAnalysis(patient: any, bsn: string, analysisId: string): any {
+    if (!patient)
+      return null;
+
+    // The path: patient.biopsies[k].nucleicAcidSendouts[m].analyses[n]
+    for (let biopsy of patient.biopsies || []) {
+      if (biopsy.biopsySequenceNumber !== bsn) {
+        continue;
+      }
+
+      for (let nucleicAcidSendout of biopsy.nucleicAcidSendouts || []) {
+        for (let analysis of nucleicAcidSendout.analyses || []) {
+          if (analysis.analysisId === analysisId) {
+            return analysis;
           }
         }
       }
@@ -495,8 +520,6 @@ export class ViewDataTransformer {
         continue;
       }
 
-      transformedPatient.analyses = transformedPatient.analyses || {};
-
       let variantReport = message.ionReporterResults.variantReport as VariantReportData;
 
       analysis.variantReport = variantReport;
@@ -506,8 +529,6 @@ export class ViewDataTransformer {
       variantReport.isAssignmentReportEditable = this.getAssignmentReportEditable(variantReport);
 
       this.postProcessVariantTables(variantReport);
-
-      transformedPatient.analyses[message.ionReporterResults.jobName] = analysis;
 
       variantReport.variantReportStatus = analysis.variantReportStatus;
       variantReport.variantReportCreatedDate = analysis.variantReportCreatedDate;
@@ -561,7 +582,7 @@ export class ViewDataTransformer {
 
     variantReport.moiSummary = AmoiSummary.default();
 
-    for (let tableName of variantTables ) {
+    for (let tableName of variantTables) {
       let table = variantReport[tableName];
 
       if (!table) {

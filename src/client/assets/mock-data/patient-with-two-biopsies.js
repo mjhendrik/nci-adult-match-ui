@@ -17,7 +17,7 @@
             "stepNumber" : "0", 
             "patientStatus" : "REGISTRATION", 
             "message" : "Registering a new patient", 
-            "dateCreated" : ISODate("2017-11-01T15:44:02.962+0000"), 
+            "dateCreated" : ISODate("2017-11-01T15:44:02.962"), 
             "studyId" : "EAY131", 
             "patientSequenceNumber" : "UAT_AssayMessage", 
             "type" : "TRIGGER"
@@ -26,12 +26,12 @@
     "biopsies" : [
         {
             "biopsySequenceNumber" : "BSN-UAT_AssayMessage", 
-            "dateCreated" : ISODate("2017-12-19T18:09:43.406+0000"), 
+            "dateCreated" : ISODate("2017-12-19T18:09:43.406"), 
             "nextGenerationSequences" : [
                 {
                     "ngsRunNumber" : "0", 
-                    "dateReceived" : ISODate("2017-12-19T18:19:04.112+0000"), 
-                    "dateVerified" : ISODate("2017-12-19T18:24:05.943+0000"), 
+                    "dateReceived" : ISODate("2017-12-19T18:19:04.112"), 
+                    "dateVerified" : ISODate("2017-12-19T18:24:05.943"), 
                     "status" : "REJECTED", 
                     "ionReporterResults" : {
                         "jobName" : "JOB-UAT_AssayMessage", 
@@ -93,7 +93,7 @@
                                     "rare" : false
                                 }
                             ], 
-                            "createdDate" : ISODate("2017-12-19T18:19:03.698+0000"), 
+                            "createdDate" : ISODate("2017-12-19T18:19:03.698"), 
                             "metadata" : {
                                 "_id" : "b939b303-b677-4e13-9f1c-d80eb17f0da7"
                             }
@@ -110,9 +110,9 @@
                     "biopsySequenceNumber" : "BSN-UAT_AssayMessage", 
                     "biomarker" : "ICCPTENs", 
                     "result" : "POSITIVE", 
-                    "orderedDate" : ISODate("2017-11-01T22:00:06.033+0000"), 
-                    "reportedDate" : ISODate("2017-11-01T22:10:06.033+0000"), 
-                    "requestedDate" : ISODate("2017-11-01T22:10:06.033+0000"), 
+                    "orderedDate" : ISODate("2017-11-01T22:00:06.033"), 
+                    "reportedDate" : ISODate("2017-11-01T22:10:06.033"), 
+                    "requestedDate" : ISODate("2017-11-01T22:10:06.033"), 
                     "studyId" : "EAY131", 
                     "patientSequenceNumber" : "UAT_AssayMessage", 
                     "type" : "ASSAY"
@@ -121,9 +121,9 @@
                     "biopsySequenceNumber" : "BSN-UAT_AssayMessage", 
                     "biomarker" : "ICCMLH1s", 
                     "result" : "POSITIVE", 
-                    "orderedDate" : ISODate("2017-11-01T21:55:06.033+0000"), 
-                    "reportedDate" : ISODate("2017-11-01T21:55:06.033+0000"), 
-                    "requestedDate" : ISODate("2017-11-01T21:55:06.033+0000"), 
+                    "orderedDate" : ISODate("2017-11-01T21:55:06.033"), 
+                    "reportedDate" : ISODate("2017-11-01T21:55:06.033"), 
+                    "requestedDate" : ISODate("2017-11-01T21:55:06.033"), 
                     "comment" : "Test comment goes here", 
                     "studyId" : "EAY131", 
                     "patientSequenceNumber" : "UAT_AssayMessage", 
@@ -133,9 +133,9 @@
                     "biopsySequenceNumber" : "BSN-UAT_AssayMessage", 
                     "biomarker" : "ICCMSH2s", 
                     "result" : "POSITIVE", 
-                    "orderedDate" : ISODate("2017-11-01T22:44:06.033+0000"), 
-                    "reportedDate" : ISODate("2017-11-01T22:44:06.033+0000"), 
-                    "requestedDate" : ISODate("2017-11-02T22:44:06.033+0000"), 
+                    "orderedDate" : ISODate("2017-11-01T22:44:06.033"), 
+                    "reportedDate" : ISODate("2017-11-01T22:44:06.033"), 
+                    "requestedDate" : ISODate("2017-11-02T22:44:06.033"), 
                     "studyId" : "EAY131", 
                     "patientSequenceNumber" : "UAT_AssayMessage", 
                     "type" : "ASSAY"
@@ -148,7 +148,7 @@
                 {
                     "biopsySequenceNumber" : "BSN-UAT_AssayMessage", 
                     "message" : "SPECIMEN_RECEIVED", 
-                    "reportedDate" : ISODate("2017-11-01T16:44:02.962+0000"), 
+                    "reportedDate" : ISODate("2017-11-01T16:44:02.962"), 
                     "studyId" : "EAY131", 
                     "patientSequenceNumber" : "UAT_AssayMessage", 
                     "type" : "SPECIMEN"
@@ -156,7 +156,7 @@
                 {
                     "biopsySequenceNumber" : "BSN-UAT_AssayMessage", 
                     "message" : "NUCLEIC_ACID_SENDOUT", 
-                    "reportedDate" : ISODate("2017-11-01T17:44:05.948+0000"), 
+                    "reportedDate" : ISODate("2017-11-01T17:44:05.948"), 
                     "status" : "REJECTED", 
                     "comment" : "This is a comment for the sendout", 
                     "molecularSequenceNumber" : "MSN-UAT_AssayMessage", 
@@ -181,11 +181,11 @@
         }, 
         {
             "biopsySequenceNumber" : "BSN-UAT_AssayMessage-2", 
-            "dateCreated" : ISODate("2017-12-19T18:26:44.877+0000"), 
+            "dateCreated" : ISODate("2017-12-19T18:26:44.877"), 
             "nextGenerationSequences" : [
                 {
                     "ngsRunNumber" : "0", 
-                    "dateReceived" : ISODate("2017-12-19T18:29:37.211+0000"), 
+                    "dateReceived" : ISODate("2017-12-19T18:29:37.211"), 
                     "status" : "PENDING", 
                     "ionReporterResults" : {
                         "jobName" : "JOB-UAT_AssayMessage", 
@@ -247,7 +247,7 @@
                                     "rare" : false
                                 }
                             ], 
-                            "createdDate" : ISODate("2017-12-19T18:29:36.941+0000"), 
+                            "createdDate" : ISODate("2017-12-19T18:29:36.941"), 
                             "metadata" : {
                                 "_id" : "724ee133-3699-4e35-9388-861c58b4ef7d"
                             }
@@ -264,9 +264,9 @@
                     "biopsySequenceNumber" : "BSN-UAT_AssayMessage-2", 
                     "biomarker" : "ICCPTENs", 
                     "result" : "POSITIVE", 
-                    "orderedDate" : ISODate("2017-11-01T22:00:06.033+0000"), 
-                    "reportedDate" : ISODate("2017-11-01T22:10:06.033+0000"), 
-                    "requestedDate" : ISODate("2017-11-01T22:10:06.033+0000"), 
+                    "orderedDate" : ISODate("2017-11-01T22:00:06.033"), 
+                    "reportedDate" : ISODate("2017-11-01T22:10:06.033"), 
+                    "requestedDate" : ISODate("2017-11-01T22:10:06.033"), 
                     "studyId" : "EAY131", 
                     "patientSequenceNumber" : "UAT_AssayMessage", 
                     "type" : "ASSAY"
@@ -275,9 +275,9 @@
                     "biopsySequenceNumber" : "BSN-UAT_AssayMessage-2", 
                     "biomarker" : "ICCMLH1s", 
                     "result" : "POSITIVE", 
-                    "orderedDate" : ISODate("2017-11-01T21:55:06.033+0000"), 
-                    "reportedDate" : ISODate("2017-11-01T21:55:06.033+0000"), 
-                    "requestedDate" : ISODate("2017-11-01T21:55:06.033+0000"), 
+                    "orderedDate" : ISODate("2017-11-01T21:55:06.033"), 
+                    "reportedDate" : ISODate("2017-11-01T21:55:06.033"), 
+                    "requestedDate" : ISODate("2017-11-01T21:55:06.033"), 
                     "comment" : "Test comment goes here", 
                     "studyId" : "EAY131", 
                     "patientSequenceNumber" : "UAT_AssayMessage", 
@@ -287,9 +287,9 @@
                     "biopsySequenceNumber" : "BSN-UAT_AssayMessage-2", 
                     "biomarker" : "ICCMSH2s", 
                     "result" : "POSITIVE", 
-                    "orderedDate" : ISODate("2017-11-01T22:44:06.033+0000"), 
-                    "reportedDate" : ISODate("2017-11-01T22:44:06.033+0000"), 
-                    "requestedDate" : ISODate("2017-11-02T22:44:06.033+0000"), 
+                    "orderedDate" : ISODate("2017-11-01T22:44:06.033"), 
+                    "reportedDate" : ISODate("2017-11-01T22:44:06.033"), 
+                    "requestedDate" : ISODate("2017-11-02T22:44:06.033"), 
                     "studyId" : "EAY131", 
                     "patientSequenceNumber" : "UAT_AssayMessage", 
                     "type" : "ASSAY"
@@ -302,7 +302,7 @@
                 {
                     "biopsySequenceNumber" : "BSN-UAT_AssayMessage-2", 
                     "message" : "SPECIMEN_RECEIVED", 
-                    "reportedDate" : ISODate("2017-11-01T16:44:02.962+0000"), 
+                    "reportedDate" : ISODate("2017-11-01T16:44:02.962"), 
                     "studyId" : "EAY131", 
                     "patientSequenceNumber" : "UAT_AssayMessage", 
                     "type" : "SPECIMEN"
@@ -310,7 +310,7 @@
                 {
                     "biopsySequenceNumber" : "BSN-UAT_AssayMessage-2", 
                     "message" : "NUCLEIC_ACID_SENDOUT", 
-                    "reportedDate" : ISODate("2017-11-01T17:44:05.948+0000"), 
+                    "reportedDate" : ISODate("2017-11-01T17:44:05.948"), 
                     "comment" : "This is a comment for the sendout", 
                     "molecularSequenceNumber" : "MSN-UAT_AssayMessage-2", 
                     "destinationSite" : "Boston", 
@@ -339,5 +339,5 @@
     "priorDrugs" : [
 
     ], 
-    "registrationDate" : ISODate("2017-11-01T15:44:02.962+0000")
+    "registrationDate" : ISODate("2017-11-01T15:44:02.962")
 }
