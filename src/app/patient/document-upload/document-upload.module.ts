@@ -14,7 +14,7 @@ import { DocumentUploadContentComponent } from './document-upload-content.compon
     PipesModule,
     DirectivesModule,
     FormsModule,
-    DropzoneModule.forRoot()
+    DropzoneModule
   ],
   declarations: [DocumentUploadComponent, DocumentUploadContentComponent],
   exports: [DocumentUploadComponent, DocumentUploadContentComponent]

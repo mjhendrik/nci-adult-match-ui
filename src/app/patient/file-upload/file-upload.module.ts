@@ -15,7 +15,7 @@ import { FileUploadNotificationService } from './file-upload-notification.servic
     PipesModule,
     DirectivesModule,
     FormsModule,
-    DropzoneModule.forRoot()
+    DropzoneModule
   ],
   declarations: [FileUploadComponent, FileUploadContentComponent],
   exports: [FileUploadComponent, FileUploadContentComponent],

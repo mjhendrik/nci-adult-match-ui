@@ -50,7 +50,7 @@ const DROPZONE_CONFIG: DropzoneConfigInterface = {
     DiseaseInfoModule,
     AssayHistoryTableModule,
     TabsModule.forRoot(),
-    DropzoneModule.forRoot(DROPZONE_CONFIG)
+    DropzoneModule
   ],
   declarations: [PatientDetailsComponent],
   exports: [PatientDetailsComponent],
