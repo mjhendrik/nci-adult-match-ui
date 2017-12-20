@@ -13,7 +13,7 @@ import { TreatmentArmApiService } from '../treatment-arm-api.service';
   moduleId: module.id,
   selector: 'app-treatment-arm-list',
   templateUrl: 'treatment-arm-list.component.html',
-  styleUrls: ['treatment-arm-list.component.css'],
+  styleUrls: ['treatment-arm-list.component.scss'],
   animations: [routerTransition()],
   host: { '[@routerTransition]': '' }
 })

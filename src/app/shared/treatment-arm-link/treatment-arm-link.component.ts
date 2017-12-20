@@ -6,7 +6,7 @@ import {
 @Component({
     moduleId: module.id,
     selector: 'treatment-arm-link',
-    styleUrls: ['treatment-arm-link.component.css'],
+    styleUrls: ['treatment-arm-link.component.scss'],
     template: `
     <a *ngIf="treatmentArmId; else noData" href [routerLink]="['/treatments/'+treatmentArmId+'/'+version]" class="link-none ta-link">
         <span *ngIf="removePrefix; else showPrefix" [style.color]="textColor"><i *ngIf="!hideIcon" class="fa fa-medkit"></i> {{suffix | dashify}}</span>

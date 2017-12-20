@@ -17,7 +17,7 @@ import { UserProfileService } from '../../shared/user-profile/user-profile.servi
   moduleId: module.id,
   selector: 'app-clia-variant-reports-ntc',
   templateUrl: 'clia-variant-reports-ntc.component.html',
-  styleUrls: ['clia-variant-reports-ntc.component.css'],
+  styleUrls: ['clia-variant-reports-ntc.component.scss'],
   animations: [routerTransition()],
   host: { '[@routerTransition]': '' }
 })

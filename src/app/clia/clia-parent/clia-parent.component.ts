@@ -27,7 +27,7 @@ import 'rxjs/add/operator/map';
   moduleId: module.id,
   selector: 'app-clia-parent',
   templateUrl: 'clia-parent.component.html',
-  styleUrls: ['clia-parent.component.css'],
+  styleUrls: ['clia-parent.component.scss'],
   animations: [routerTransition()],
   host: { '[@routerTransition]': '' },
   providers: [GmtPipe]

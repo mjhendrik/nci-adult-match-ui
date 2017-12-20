@@ -20,7 +20,7 @@ export interface ConfirmableItem {
 @Component({
   moduleId: module.id,
   selector: 'app-check-box-with-confirm',
-  styleUrls: ['check-box-with-confirm.component.css'],
+  styleUrls: ['check-box-with-confirm.component.scss'],
   templateUrl: 'check-box-with-confirm.component.html'
 })
 export class CheckBoxWithConfirmComponent implements OnDestroy {

@@ -11,7 +11,7 @@ export class Pair {
 @Component({
     moduleId: module.id,
     selector: 'app-inline-pairs',
-    styleUrls: ['inline-pairs.component.css'],
+    styleUrls: ['inline-pairs.component.scss'],
     template: `
     <span *ngIf="!items || !items.length">{{noDataMessage}}</span>
     <span *ngFor="let item of items; let last = last" [popover]="poDetails" triggers="mouseenter:mouseleave" placement="bottom">

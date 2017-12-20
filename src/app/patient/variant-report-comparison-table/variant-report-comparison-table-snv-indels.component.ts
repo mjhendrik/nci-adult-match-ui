@@ -10,7 +10,7 @@ import {
   moduleId: module.id,
   selector: 'app-variant-report-comparison-table-snv-indels',
   templateUrl: 'variant-report-comparison-table-snv-indels.html',
-  styleUrls: ['variant-report-comparison-table.component.css']
+  styleUrls: ['variant-report-comparison-table.component.scss']
 })
 export class VariantReportComparisonTableSnvIndelsComponent {
   @Input() items: any[];

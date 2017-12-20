@@ -10,7 +10,7 @@ interface Amoi {
 @Component({
   moduleId: module.id,
   selector: 'app-amoi-list',
-  styleUrls: ['amoi-list.component.css'],
+  styleUrls: ['amoi-list.component.scss'],
   template: `
     <div *ngIf="isAmoi" class="amoi-status">
         <div *ngFor="let amoi of amoiList">

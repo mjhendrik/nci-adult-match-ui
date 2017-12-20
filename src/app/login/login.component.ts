@@ -9,7 +9,7 @@ import { Auth } from './../shared/auth/auth.service';
   moduleId: module.id,
   selector: 'app-login',
   templateUrl: 'login.component.html',
-  styleUrls: ['login.component.css']
+  styleUrls: ['login.component.scss']
 })
 export class LoginComponent {
   constructor(private auth: Auth) { }

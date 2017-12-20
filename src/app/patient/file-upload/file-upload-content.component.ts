@@ -30,7 +30,7 @@ import { FileUploadNotificationService } from './file-upload-notification.servic
   moduleId: module.id,
   selector: 'app-file-upload-content',
   templateUrl: 'file-upload-content.component.html',
-  styleUrls: ['file-upload-content.component.css']
+  styleUrls: ['file-upload-content.component.scss']
 })
 export class FileUploadContentComponent implements OnInit {
 

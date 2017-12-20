@@ -16,7 +16,7 @@ import { Tabs } from './treatment-arm-details.module';
   moduleId: module.id,
   selector: 'app-treatment-arm-details',
   templateUrl: 'treatment-arm-details.component.html',
-  styleUrls: ['treatment-arm-details.component.css'],
+  styleUrls: ['treatment-arm-details.component.scss'],
   animations: [routerTransition()],
   host: { '[@routerTransition]': '' }
 })

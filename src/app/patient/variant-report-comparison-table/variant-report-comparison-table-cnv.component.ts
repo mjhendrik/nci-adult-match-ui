@@ -10,7 +10,7 @@ import {
   moduleId: module.id,
   selector: 'app-variant-report-comparison-table-cnv',
   templateUrl: 'variant-report-comparison-table-cnv.html',
-  styleUrls: ['variant-report-comparison-table.component.css']
+  styleUrls: ['variant-report-comparison-table.component.scss']
 })
 export class VariantReportComparisonTableCnvComponent {
   @Input() items: any[];

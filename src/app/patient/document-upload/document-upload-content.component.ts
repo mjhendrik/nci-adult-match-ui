@@ -29,7 +29,7 @@ import { ToastrService } from '../../shared/error-handling/toastr.service';
   moduleId: module.id,
   selector: 'app-document-upload-content',
   templateUrl: 'document-upload-content.component.html',
-  styleUrls: ['document-upload-content.component.css']
+  styleUrls: ['document-upload-content.component.scss']
 })
 export class DocumentUploadContentComponent {
 

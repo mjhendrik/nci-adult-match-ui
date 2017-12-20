@@ -34,7 +34,7 @@ const roles = {
   moduleId: module.id,
   selector: 'app-patient-details',
   templateUrl: 'patient-details.component.html',
-  styleUrls: ['patient-details.component.css'],
+  styleUrls: ['patient-details.component.scss'],
   animations: [routerTransition()],
   host: { '[@routerTransition]': '' }
 })

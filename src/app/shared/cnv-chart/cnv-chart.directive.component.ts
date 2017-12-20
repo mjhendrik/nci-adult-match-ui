@@ -25,7 +25,7 @@ declare let d3: any;
 @Component({
   moduleId: module.id,
   selector: 'cnv-chart',
-  styleUrls: ['cnv-chart.directive.component.css'],
+  styleUrls: ['cnv-chart.directive.component.scss'],
   animations: [
     trigger('dialog', [
       transition('void => *', [

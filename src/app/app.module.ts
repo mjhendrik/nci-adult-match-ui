@@ -51,6 +51,7 @@ import { ModalDialogWithCommentsComponent } from './shared/modal-dialogs/modal-d
 import { ModalDialogConfirmationComponent } from './shared/modal-dialogs/modal-dialog-confirmation.component';
 import { ErrorPageHttpInterceptor } from './shared/error-handling/error-page-http.interceptor';
 import { ModalDialogPathologyReportComponent } from './shared/modal-dialogs/modal-dialog-pathology-report.component';
+import { TestFeatComponent } from './feat/test-feat/test-feat.component';
 
 @NgModule({
   imports: [
@@ -84,7 +85,7 @@ import { ModalDialogPathologyReportComponent } from './shared/modal-dialogs/moda
     PopoverModule.forRoot(),
     ErrorModule // This needs to be at the bottom of the list for ErrorComponent to work properly
   ],
-  declarations: [AppComponent],
+  declarations: [AppComponent, TestFeatComponent],
   providers: [
     {
       provide: APP_BASE_HREF,

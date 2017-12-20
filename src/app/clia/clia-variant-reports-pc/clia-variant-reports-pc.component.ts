@@ -25,7 +25,7 @@ import { ApiStatusUpdateError, ApiStatusUpdateSuccess, ApiError, ApiSuccess } fr
   moduleId: module.id,
   selector: 'app-clia-variant-reports-pc',
   templateUrl: 'clia-variant-reports-pc.component.html',
-  styleUrls: ['clia-variant-reports-pc.component.css'],
+  styleUrls: ['clia-variant-reports-pc.component.scss'],
   animations: [routerTransition()],
   host: { '[@routerTransition]': '' }
 })

@@ -10,6 +10,6 @@ import { Component } from '@angular/core';
   moduleId: module.id,
   selector: 'app-load-indicator',
   templateUrl: 'loading-indicator.component.html',
-  styleUrls: ['loading-indicator.component.css']
+  styleUrls: ['loading-indicator.component.scss']
 })
 export class LoadingIndicatorComponent { }

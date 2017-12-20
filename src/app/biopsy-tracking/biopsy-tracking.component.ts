@@ -23,7 +23,7 @@ import 'rxjs/add/observable/fromEvent';
   moduleId: module.id,
   selector: 'app-biopsy-tracking',
   templateUrl: 'biopsy-tracking.component.html',
-  styleUrls: ['biopsy-tracking.component.css'],
+  styleUrls: ['biopsy-tracking.component.scss'],
   animations: [routerTransition()],
   host: { '[@routerTransition]': '' }
 })

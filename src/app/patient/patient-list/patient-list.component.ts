@@ -21,7 +21,7 @@ import 'rxjs/add/observable/fromEvent';
   moduleId: module.id,
   selector: 'app-patients',
   templateUrl: 'patient-list.component.html',
-  styleUrls: ['patient-list.component.css'],
+  styleUrls: ['patient-list.component.scss'],
   animations: [routerTransition()],
   host: { '[@routerTransition]': '' }
 })

@@ -17,7 +17,7 @@ import { UserProfileService } from '../../shared/user-profile/user-profile.servi
   moduleId: module.id,
   selector: 'sd-clia-variant-reports-pacc',
   templateUrl: 'clia-variant-reports-pacc.component.html',
-  styleUrls: ['clia-variant-reports-pacc.component.css'],
+  styleUrls: ['clia-variant-reports-pacc.component.scss'],
   animations: [routerTransition()],
   host: { '[@routerTransition]': '' }
 })
