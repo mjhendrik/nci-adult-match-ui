@@ -143,7 +143,7 @@ export class PatientDetailsComponent implements OnInit, AfterViewInit, PatientDa
           console.info(`scrolling to ID ${this.entityId}`);
           element.scrollIntoView();
         }
-      }, 226);
+      }, 500);
     }
   }
 
