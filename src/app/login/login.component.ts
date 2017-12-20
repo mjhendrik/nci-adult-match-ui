@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Auth } from './../shared/auth/auth.service';
+import { AuthService } from './../shared/auth/auth.service';
 
 /**
  * LoginComponent.
@@ -12,5 +12,5 @@ import { Auth } from './../shared/auth/auth.service';
   styleUrls: ['login.component.scss']
 })
 export class LoginComponent {
-  constructor(private auth: Auth) { }
+  constructor(private auth: AuthService) { }
 }

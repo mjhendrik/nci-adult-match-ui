@@ -23,9 +23,9 @@ import { ToastModule, ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { AUTH_PROVIDERS } from 'angular2-jwt';
 
 import { AppComponent } from './app.component';
-import { Auth } from './shared/auth/auth.service';
-import { AuthGuard } from './shared/auth/auth.guard.service';
-import { LoginGuard } from './shared/auth/login.guard.service';
+import { AuthService } from './shared/auth/auth.service';
+import { AuthGuard } from './shared/auth/auth.guard';
+import { LoginGuard } from './shared/auth/login.guard';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 import { LoginModule } from './login/login.module';
@@ -98,10 +98,6 @@ export function main() {
         ],
         providers: [
           {
-            provide: APP_BASE_HREF,
-            useValue: '<%= APP_BASE %>'
-          },
-          {
             provide: Http,
             useFactory: (backend: XHRBackend, options: RequestOptions, router: Router) => {
               return new ErrorPageHttpInterceptor(backend, options, router);
@@ -155,7 +151,7 @@ export function main() {
 }
 
 @Component({
-  selector: 'test-cmp',
+  selector: 'app-test-cmp',
   template: '<sd-app></sd-app>'
 })
 class TestComponent {

@@ -1,80 +1,93 @@
-import {
-  Injectable,
-  EventEmitter
-} from '@angular/core';
-import { tokenNotExpired } from 'angular2-jwt';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import * as auth0 from 'auth0-js';
+import { AUTH_CONFIG } from './auth-config';
 import { Router } from '@angular/router';
-import { Config } from '../config/env.config';
-
-import Auth0Lock from 'auth0-lock';
-import Auth0 from 'auth0-js';
 
 @Injectable()
-export class Auth {
-  lockOptions: any = {
-    theme: {
-      logo: 'assets/svg/nci-logo-full.svg',
-      primaryColor: '#2d8ca9' // dark-info-color of the theme
-    },
-    languageDictionary: {
-      title: 'NCI-MATCH'
-    },
-    auth: {
-      redirectUrl: 'http://localhost:5555/dashboard',
-      redirect: false,
-      responseType: 'token',
-      params: {
-        scope: 'openid name email roles'
-      }
-    }
-  };
+export class AuthService {
+  // Create Auth0 web auth instance
+  // @TODO: Update AUTH_CONFIG and remove .example extension in src/app/auth/auth0-variables.ts.example
+  auth0 = new auth0.WebAuth({
+    clientID: AUTH_CONFIG.CLIENT_ID,
+    domain: AUTH_CONFIG.CLIENT_DOMAIN,
+    responseType: 'token id_token openid name email roles',
+    // redirectUri: AUTH_CONFIG.REDIRECT,
+    audience: AUTH_CONFIG.AUDIENCE,
+    scope: AUTH_CONFIG.SCOPE
+  });
+  userProfile: any;
 
-  public loggedIn: EventEmitter<string>;
-
-  // Configure Auth0
-  lock = new Auth0Lock(Config.CLIENT_ID, Config.AUTH_DOMAIN, this.lockOptions);
-
-  private userProfile: any;
+  // Create a stream of logged in status to communicate throughout app
+  loggedIn: boolean;
+  loggedIn$ = new BehaviorSubject<boolean>(this.loggedIn);
 
   constructor(private router: Router) {
-    this.loggedIn = new EventEmitter();
+    // If authenticated, set local profile property and update login status subject
+    // If token is expired, log out to clear any data from localStorage
+    if (this.authenticated) {
+      this.userProfile = JSON.parse(localStorage.getItem('profile'));
+      this.setLoggedIn(true);
+    } else {
+      this.logout();
+    }
+  }
 
-    // Add callback for lock `authenticated` event
-    this.lock.on('authenticated', (authResult: any) => {
-      localStorage.setItem('id_token', authResult.idToken);
+  setLoggedIn(value: boolean) {
+    // Update login status subject
+    this.loggedIn$.next(value);
+    this.loggedIn = value;
+  }
 
-      this.lock.getProfile(authResult.idToken, (error: any, profile: any) => {
-        if (error) {
-          // Handle error
-          alert(error);
-          return;
-        }
+  login() {
+    // Auth0 authorize request
+    this.auth0.authorize();
+  }
 
-        localStorage.setItem('profile', JSON.stringify(profile));
-        this.userProfile = profile;
-
-        this.loggedIn.emit();
-      });
-
-      this.router.navigate(['dashboard']);
+  handleAuth() {
+    // When Auth0 hash parsed, get profile
+    this.auth0.parseHash(window.location.hash, (err, authResult) => {
+      if (authResult && authResult.accessToken && authResult.idToken) {
+        window.location.hash = '';
+        this._getProfile(authResult);
+      } else if (err) {
+        console.error(`Error: ${err.error}`);
+      }
+      this.router.navigate(['/']);
     });
   }
 
-  public login() {
-    // Call the show method to display the widget.
-    this.lock.show();
+  private _getProfile(authResult) {
+    // Use access token to retrieve user's profile and set session
+    this.auth0.client.userInfo(authResult.accessToken, (err, profile) => {
+      this._setSession(authResult, profile);
+    });
   }
 
-  public authenticated() {
-    // Check if there's an unexpired JWT
-    // It searches for an item in localStorage with key == 'id_token'
-    return tokenNotExpired();
+  private _setSession(authResult, profile) {
+    const expTime = authResult.expiresIn * 1000 + Date.now();
+    // Save session data and update login status subject
+    localStorage.setItem('token', authResult.accessToken);
+    localStorage.setItem('id_token', authResult.idToken);
+    localStorage.setItem('profile', JSON.stringify(profile));
+    localStorage.setItem('expires_at', JSON.stringify(expTime));
+    this.userProfile = profile;
+    this.setLoggedIn(true);
   }
 
-  public logout() {
-    // Remove token from localStorage
+  logout() {
+    // Remove tokens and profile and update login status subject
+    localStorage.removeItem('token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('profile');
-    this.userProfile = null;
+    localStorage.removeItem('expires_at');
+    this.userProfile = undefined;
+    this.setLoggedIn(false);
+  }
+
+  get authenticated(): boolean {
+    // Check if current date is greater than expiration
+    const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
+    return Date.now() < expiresAt;
   }
 }

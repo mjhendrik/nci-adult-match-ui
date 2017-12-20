@@ -8,7 +8,7 @@ import {
     Inject,
     OnInit
 } from '@angular/core';
-import { Auth } from './../auth/auth.service';
+import { AuthService } from './../auth/auth.service';
 import { ConfigApiService } from './../config/config-api.service';
 import { DOCUMENT } from '@angular/platform-browser';
 /**
@@ -31,7 +31,7 @@ export class FooterComponent implements OnInit {
     delta = 5;
 
     constructor(location: Location,
-        private auth: Auth,
+        private auth: AuthService,
         private configApi: ConfigApiService,
         @Inject(DOCUMENT) private document: Document) {
         this.location = location;

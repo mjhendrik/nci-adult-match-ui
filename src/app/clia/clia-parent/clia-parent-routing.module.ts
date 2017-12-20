@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { AuthGuard } from './../../shared/auth/auth.guard.service';
+import { AuthGuard } from './../../shared/auth/auth.guard';
 import { CliaDataService } from './../../shared/clia/clia-data.service';
 import { CliaParentComponent } from './clia-parent.component';
 

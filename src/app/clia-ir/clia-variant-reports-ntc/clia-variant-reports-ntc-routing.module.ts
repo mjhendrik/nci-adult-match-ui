@@ -10,7 +10,7 @@ import {
 } from '@angular/router';
 
 import { CliaVariantReportsNtcComponent } from './clia-variant-reports-ntc.component';
-import { AuthGuard } from './../../shared/auth/auth.guard.service';
+import { AuthGuard } from './../../shared/auth/auth.guard';
 import { Observable } from 'rxjs/Observable';
 import { AliquotApiService } from '../aliquot-api.service';
 

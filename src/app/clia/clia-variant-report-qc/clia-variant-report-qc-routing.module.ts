@@ -11,7 +11,7 @@ import {
 import { Observable } from 'rxjs/Observable';
 
 import { CliaVariantReportQcComponent } from './clia-variant-report-qc.component';
-import { AuthGuard } from './../../shared/auth/auth.guard.service';
+import { AuthGuard } from './../../shared/auth/auth.guard';
 import { SampleControlApiService } from '../sample-control-api.service';
 
 @Injectable()

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { BiopsyTrackingListComponent } from './biopsy-tracking.component';
-import { AuthGuard } from './../shared/auth/auth.guard.service';
+import { AuthGuard } from './../shared/auth/auth.guard';
 
 @NgModule({
   imports: [

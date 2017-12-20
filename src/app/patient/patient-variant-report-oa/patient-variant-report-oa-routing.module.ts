@@ -11,7 +11,7 @@ import {
 import { Observable } from 'rxjs/Observable';
 
 import { PatientVariantReportOutsideAssayComponent } from './patient-variant-report-oa.component';
-import { AuthGuard } from './../../shared/auth/auth.guard.service';
+import { AuthGuard } from './../../shared/auth/auth.guard';
 import { VariantReportSimpleTableModule } from '../../shared/variant-report-simple-table/variant-report-simple-table.module';
 import { PatientApiService } from '../patient-api.service';
 import { ViewDataTransformer } from '../view-data-transformer.service';

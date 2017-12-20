@@ -3,7 +3,7 @@ import { RouterModule, Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } fr
 import { Observable } from 'rxjs/Observable';
 
 import { AssignmentReportComponent } from './assignment-report.component';
-import { AuthGuard } from './../../shared/auth/auth.guard.service';
+import { AuthGuard } from './../../shared/auth/auth.guard';
 import { AssignmentReportData } from './assignment-report.module';
 import { PatientApiService } from '../patient-api.service';
 import { ViewDataTransformer } from '../view-data-transformer.service';

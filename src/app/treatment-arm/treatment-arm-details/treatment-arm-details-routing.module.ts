@@ -11,7 +11,7 @@ import {
 
 import { TreatmentArmDetailsComponent } from './treatment-arm-details.component';
 import { Observable } from 'rxjs/Observable';
-import { AuthGuard } from './../../shared/auth/auth.guard.service';
+import { AuthGuard } from './../../shared/auth/auth.guard';
 import { TreatmentArmApiService } from '../treatment-arm-api.service';
 
 @Injectable()

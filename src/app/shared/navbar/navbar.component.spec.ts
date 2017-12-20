@@ -7,7 +7,7 @@ import {
 } from '@angular/core/testing';
 import { Observable } from 'rxjs/Observable';
 
-import { Auth } from './../auth/auth.service';
+import { AuthService } from './../auth/auth.service';
 import { ConfigApiService } from './../config/config-api.service';
 
 import { NavbarComponent } from './navbar.component';

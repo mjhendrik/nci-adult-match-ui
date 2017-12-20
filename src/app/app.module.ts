@@ -19,9 +19,9 @@ import { Router } from '@angular/router';
 import { ModalModule, PopoverModule } from 'ngx-bootstrap';
 
 import { AppComponent } from './app.component';
-import { Auth } from './shared/auth/auth.service';
-import { AuthGuard } from './shared/auth/auth.guard.service';
-import { LoginGuard } from './shared/auth/login.guard.service';
+import { AuthService } from './shared/auth/auth.service';
+import { AuthGuard } from './shared/auth/auth.guard';
+import { LoginGuard } from './shared/auth/login.guard';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 import { LoginModule } from './login/login.module';
@@ -95,10 +95,6 @@ import 'nvd3';
   declarations: [AppComponent, TestFeatComponent],
   providers: [
     {
-      provide: APP_BASE_HREF,
-      useValue: '<%= APP_BASE %>'
-    },
-    {
       provide: Http,
       useFactory: (backend: XHRBackend, options: RequestOptions, router: Router) => {
         return new ErrorPageHttpInterceptor(backend, options, router);
@@ -106,7 +102,7 @@ import 'nvd3';
       deps: [XHRBackend, RequestOptions, Router]
     },
     AUTH_PROVIDERS,
-    Auth,
+    AuthService,
     AuthGuard,
     LoginGuard,
     ToastrService,

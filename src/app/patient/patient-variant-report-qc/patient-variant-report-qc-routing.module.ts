@@ -8,7 +8,7 @@ import {
 import { Observable } from 'rxjs/Observable';
 
 import { PatientVariantReportQcComponent } from './patient-variant-report-qc.component';
-import { AuthGuard } from './../../shared/auth/auth.guard.service';
+import { AuthGuard } from './../../shared/auth/auth.guard';
 import { QcVariantReportData } from './patient-variant-report-qc.module';
 import { PatientApiService } from '../patient-api.service';
 import { ViewDataTransformer } from '../view-data-transformer.service';

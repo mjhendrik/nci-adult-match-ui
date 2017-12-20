@@ -9,7 +9,7 @@ import {
   OnInit,
   HostListener
 } from '@angular/core';
-import { Auth } from './../auth/auth.service';
+import { AuthService } from './../auth/auth.service';
 import { ConfigApiService } from './../config/config-api.service';
 import { DOCUMENT } from '@angular/platform-browser';
 /**
@@ -33,7 +33,7 @@ export class NavbarComponent implements OnInit {
   navBarHeight: any;
 
   constructor(location: Location,
-    private auth: Auth,
+    private auth: AuthService,
     private configApi: ConfigApiService,
     @Inject(DOCUMENT) private document: Document) {
     this.location = location;
@@ -56,8 +56,9 @@ export class NavbarComponent implements OnInit {
   }
 
   stopReload(keycode: number): boolean {
-    if (keycode === 13)
+    if (keycode === 13) {
       return false;
+    }
     return true;
   }
 
@@ -65,8 +66,9 @@ export class NavbarComponent implements OnInit {
   onWindowScroll() {
 
     const navBar = document.getElementById('top-menu');
-    if (!navBar)
+    if (!navBar) {
       return;
+    }
 
     this.navBarHeight = navBar.offsetHeight;
     this.didScroll = true;
@@ -88,11 +90,12 @@ export class NavbarComponent implements OnInit {
 
   hasScrolled() {
 
-    var st: any = (document.body.scrollTop).toFixed();
+    const st: any = (document.body.scrollTop).toFixed();
 
     // Make sure they scroll more than delta
-    if (Math.abs(this.lastScrollTop - st) <= this.delta)
+    if (Math.abs(this.lastScrollTop - st) <= this.delta) {
       return;
+    }
 
     // If they scrolled down and are past the navbar, add class .nav-up.
     // This is necessary so you never see what is 'behind' the navbar.

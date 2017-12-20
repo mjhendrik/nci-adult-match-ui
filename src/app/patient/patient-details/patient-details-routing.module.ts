@@ -8,7 +8,7 @@ import {
 import { Observable } from 'rxjs/Observable';
 
 import { PatientDetailsComponent } from './patient-details.component';
-import { AuthGuard } from './../../shared/auth/auth.guard.service';
+import { AuthGuard } from './../../shared/auth/auth.guard';
 import { PatientApiService } from '../patient-api.service';
 import { PatientData } from './patient-details.module';
 import { ViewDataTransformer } from '../view-data-transformer.service';
