@@ -25,7 +25,7 @@ export class AmoiDirective extends ConditionalCssDirective<string> implements Af
         else if (this.inclusion === 'false') this.renderer.addClass(this.el.nativeElement, 'label-danger');
         else {
             if (this.status === 'CURRENT') this.renderer.addClass(this.el.nativeElement, 'label-success');
-            if (this.status === 'FUTURE') this.renderer.addClass(this.el.nativeElement, 'label-info');
+            if (this.status === 'FUTURE') this.renderer.addClass(this.el.nativeElement, 'label-primary');
             if (this.status === 'PRIOR') this.renderer.addClass(this.el.nativeElement, 'label-danger');
         }
     }
