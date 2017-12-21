@@ -587,7 +587,7 @@
                           <dd *ngIf="item.amoi.length!==0">
                             <ul class="p-0" *ngFor="let items of item.amoi">
                               <li>
-                                <span class="label m-b-5" amoi status="{{items.state}}" inclusion="{{items.inclusion}}">{{items.state | dashify}} - <span *ngIf="items.inclusion==='true'">INCLUSION</span><span *ngIf="items.inclusion==='false'">EXCLUSION</span></span>
+                                <span class="label m-b-5" amoi status="{{items.state}}" inclusion="{{items.inclusion}}"><span *ngIf="items.state==='CURRENT'">C</span><span *ngIf="items.state==='FUTURE'">F</span><span *ngIf="items.state==='PREVIOUS'">PS</span><span *ngIf="items.state==='PRIOR'">PR</span> - <span *ngIf="items.inclusion==='true'">I</span><span *ngIf="items.inclusion==='false'">E</span></span>
                                 <treatment-arm-link [treatmentArmId]="items.treatmentArmId" [version]="items.version" [removePrefix]="true"></treatment-arm-link>
                               </li>
                             </ul>
@@ -699,7 +699,7 @@
                           <dd *ngIf="item.confirmationBiopsy.amoi.length!==0">
                             <ul class="p-0" *ngFor="let items of item.confirmationBiopsy.amoi">
                               <li>
-                                <span class="label m-b-5" amoi status="{{items.state}}" inclusion="{{items.inclusion}}">{{items.state | dashify}} - <span *ngIf="items.inclusion==='true'">INCLUSION</span><span *ngIf="items.inclusion==='false'">EXCLUSION</span></span>
+                                <span class="label m-b-5" amoi status="{{items.state}}" inclusion="{{items.inclusion}}"><span *ngIf="items.state==='CURRENT'">C</span><span *ngIf="items.state==='FUTURE'">F</span><span *ngIf="items.state==='PREVIOUS'">PS</span><span *ngIf="items.state==='PRIOR'">PR</span> - <span *ngIf="items.inclusion==='true'">I</span><span *ngIf="items.inclusion==='false'">E</span></span>
                                 <treatment-arm-link [treatmentArmId]="items.treatmentArmId" [version]="items.version" [removePrefix]="true"></treatment-arm-link>
                               </li>
                             </ul>
