@@ -16,6 +16,7 @@ import { UserProfileService } from './user-profile/user-profile.service';
 import { AmoiListComponent } from './amoi-list/amoi-list.component';
 import { InlinePairsComponent } from './inline-pairs/inline-pairs.component';
 import { PopoverModule } from 'ngx-bootstrap';
+import { CallbackComponent } from './callback/callback.component';
 
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.
@@ -33,7 +34,8 @@ import { PopoverModule } from 'ngx-bootstrap';
     CosmicLinkComponent,
     FooterComponent,
     AmoiListComponent,
-    InlinePairsComponent
+    InlinePairsComponent,
+    CallbackComponent
   ],
   exports: [
     NavbarComponent,

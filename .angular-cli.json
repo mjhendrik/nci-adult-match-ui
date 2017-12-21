@@ -21,10 +21,14 @@
       "styles": [
         "styles.scss"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/auth0-js/build/auth0.min.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
+        "int": "environments/environment.int.ts",
+        "uat": "environments/environment.uat.ts",
         "prod": "environments/environment.prod.ts"
       }
     }
