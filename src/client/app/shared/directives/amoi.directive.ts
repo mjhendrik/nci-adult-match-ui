@@ -21,8 +21,7 @@ export class AmoiDirective extends ConditionalCssDirective<string> implements Af
     constructor(protected el: ElementRef, public renderer: Renderer2) { super(el, []); }
 
     ngAfterViewInit() {
-        if (this.status === 'PREVIOUS') this.renderer.addClass(this.el.nativeElement, 'label-grey');
-        else if (this.inclusion === 'false') this.renderer.addClass(this.el.nativeElement, 'label-danger');
+        if (this.inclusion === 'false') this.renderer.addClass(this.el.nativeElement, 'label-danger');
         else {
             if (this.status === 'CURRENT') this.renderer.addClass(this.el.nativeElement, 'label-success');
             if (this.status === 'FUTURE') this.renderer.addClass(this.el.nativeElement, 'label-primary');

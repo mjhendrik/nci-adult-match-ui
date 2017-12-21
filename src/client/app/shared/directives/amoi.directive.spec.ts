@@ -81,14 +81,5 @@ export function main() {
             expect(testEl.nativeElement.classList.contains('label-grey')).toBe(false);
         });
 
-        xit('"PREVIOUS" adds "label-grey" label class', () => {
-            testHost.testStatus = 'PREVIOUS';
-            fixture.detectChanges();
-            expect(testEl.nativeElement.classList.contains('label-success')).toBe(false);
-            expect(testEl.nativeElement.classList.contains('label-info')).toBe(false);
-            expect(testEl.nativeElement.classList.contains('label-danger')).toBe(false);
-            expect(testEl.nativeElement.classList.contains('label-grey')).toBe(true);
-        });
-
     });
 }
