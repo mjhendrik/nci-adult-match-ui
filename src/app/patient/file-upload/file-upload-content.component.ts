@@ -24,7 +24,7 @@ import {
 } from 'ngx-bootstrap';
 
 import { AliquotApiService } from '../../clia/aliquot-api.service';
-import { FileUploadNotificationService } from './file-upload-notification.service';
+import { FileUploadNotificationService } from './../file-upload-notification.service';
 
 @Component({
   moduleId: module.id,
@@ -207,7 +207,7 @@ export class FileUploadContentComponent implements OnInit {
       this.isUploaded = true;
       this.isUploading = false;
       this.isSuccessful = resp.status === 'SUCCESS';
-      this.uploadNotifications.done(this.isSuccessful);
+      this.uploadNotifications.done({ success: this.isSuccessful, fileType: 'vrFile' });
     });
   }
 

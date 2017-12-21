@@ -3,8 +3,8 @@ import {
   Input
 } from '@angular/core';
 
-import { DiseaseInfo } from './disease-info.module';
 import { Pair } from '../../shared/inline-pairs/inline-pairs.component';
+import { DiseaseInfo } from './disease-info';
 
 interface StringToStringMap {
   [key: string]: string;
@@ -47,9 +47,10 @@ export class DiseaseInfoComponent {
   get disease(): DiseaseInfo { return this.diseaseValue; }
 
   private extractPairs(obj: any) {
-    let list: Pair[] = [];
-    if (!obj)
+    const list: Pair[] = [];
+    if (!obj) {
       return list;
+    }
 
     const extras: StringToStringMap = {
       'ctepCategory': 'CTEP Category',
