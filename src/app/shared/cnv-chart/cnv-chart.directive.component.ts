@@ -17,15 +17,16 @@ import {
   HostListener,
   ViewChild
 } from '@angular/core';
-import { nvD3 } from 'ng2-nvd3';
-import {DOCUMENT} from '@angular/common';
 
-declare let d3: any;
+import { DOCUMENT } from '@angular/common';
+
+import 'd3';
+import 'nvd3';
 
 @Component({
   moduleId: module.id,
   selector: 'cnv-chart',
-  styleUrls: ['cnv-chart.directive.component.css'],
+  styleUrls: ['cnv-chart.directive.component.scss'],
   animations: [
     trigger('dialog', [
       transition('void => *', [
@@ -40,48 +41,47 @@ declare let d3: any;
       transition('* => void', [])
     ])
   ],
-  providers: [nvD3],
-  template://Zoomout panel
-  `<div *ngIf="file_name_version">
-    <div [@dialog] *ngIf="show" id="zoom" class="dialog" #ccww c-w>
-      <i class="fa fa-search-minus fa-2x" aria-hidden="true" *ngIf="show" (click)="show = !show"
-      style="cursor: pointer; color: gray"></i>
-       <h4 class="pull-right">{{ file_name_version }}</h4>
-        <ul class="list-group" style="list-style-type: none;">
-          <li>Tumor Suppressor Genes
-          <i class="fa fa-square" aria-hidden="true" style="color:#CD0000;background-color:#CD0000"></i> 
-          </li>
-          <li>Oncogenes
-          <i class="fa fa-square" aria-hidden="true" style="color:#007200;background-color:#007200"></i>
-          </li>
-        </ul>
-    <nvd3 id="boxplotchart" config="{deepWatchData: false}" [options]="options" [data]="cnvdata" *ngIf="show"></nvd3>
-    </div>
-    <!--small panel-->
-    <div *ngIf="!show" #ccww c-w>
-      <i class="fa fa-search-plus fa-2x" aria-hidden="true" *ngIf="!show  && (file_zoom === true)" (click)="show = !show"
-      style="cursor: pointer; color: gray;"></i>
-       <h5 class="pull-right">{{ file_name_version }}</h5>
-        <ul class="list-group" style="list-style-type: none;">
-          <li>Tumor Suppressor Genes
-          <i class="fa fa-square" aria-hidden="true" style="color:#CD0000;background-color:#CD0000"></i> </li>
-          <li>Oncogenes
-          <i class="fa fa-square" aria-hidden="true" style="color:#007200;background-color:#007200"></i>
-          </li>
-        </ul>
-        <h5 class="pull-left alert-danger">{{ file_error }}</h5>
-      <nvd3 id="boxplotchart" config="{deepWatchData: false}" [options]="options" [data]="cnvdata" *ngIf="!show"></nvd3>
-    </div>
-  </div>
-  <div>
-  
-    <span *ngIf="cnvdata===undefined">
-      <i class="fa fa-bar-chart text-muted" style="font-size:154px; padding-left: 39px;"></i>
-      <br />
-      <span class="text-muted" style="padding-left: 39px;"> There are no CNV data </span>
-    </span>
-    
-  </div>`
+  // providers: [nvD3],
+  template: 'CNV Will Be Here',
+  // template:
+  // `<div *ngIf="file_name_version">
+  //   <div [@dialog] *ngIf="show" id="zoom" class="dialog" #ccww c-w>
+  //     <i class="fa fa-search-minus fa-2x" aria-hidden="true" *ngIf="show" (click)="show = !show"
+  //     style="cursor: pointer; color: gray"></i>
+  //      <h4 class="pull-right">{{ file_name_version }}</h4>
+  //       <ul class="list-group" style="list-style-type: none;">
+  //         <li>Tumor Suppressor Genes
+  //         <i class="fa fa-square" aria-hidden="true" style="color:#CD0000;background-color:#CD0000"></i> 
+  //         </li>
+  //         <li>Oncogenes
+  //         <i class="fa fa-square" aria-hidden="true" style="color:#007200;background-color:#007200"></i>
+  //         </li>
+  //       </ul>
+  //   <nvd3 id="boxplotchart" config="{deepWatchData: false}" [options]="options" [data]="cnvdata" *ngIf="show"></nvd3>
+  //   </div>
+  //   <!--small panel-->
+  //   <div *ngIf="!show" #ccww c-w>
+  //     <i class="fa fa-search-plus fa-2x" aria-hidden="true" *ngIf="!show  && (file_zoom === true)" (click)="show = !show"
+  //     style="cursor: pointer; color: gray;"></i>
+  //      <h5 class="pull-right">{{ file_name_version }}</h5>
+  //       <ul class="list-group" style="list-style-type: none;">
+  //         <li>Tumor Suppressor Genes
+  //         <i class="fa fa-square" aria-hidden="true" style="color:#CD0000;background-color:#CD0000"></i> </li>
+  //         <li>Oncogenes
+  //         <i class="fa fa-square" aria-hidden="true" style="color:#007200;background-color:#007200"></i>
+  //         </li>
+  //       </ul>
+  //       <h5 class="pull-left alert-danger">{{ file_error }}</h5>
+  //     <nvd3 id="boxplotchart" config="{deepWatchData: false}" [options]="options" [data]="cnvdata" *ngIf="!show"></nvd3>
+  //   </div>
+  // </div>
+  // <div>
+  //   <span *ngIf="cnvdata===undefined">
+  //     <i class="fa fa-bar-chart text-muted" style="font-size:154px; padding-left: 39px;"></i>
+  //     <br />
+  //     <span class="text-muted" style="padding-left: 39px;"> There are no CNV data </span>
+  //   </span>
+  // </div>`
 })
 
 export class CnvChartDirective implements AfterViewInit {
