@@ -1,1 +1,478 @@
-/* You can add global styles to this file, and also import other style files */
+@import "/src/css/style.css";
+// replace for production: @import "style.min.css";
+@import "/src/css/dropzone.css";
+// replace for production: @import "dropzone.min.css";
+@import "/src/css/dropzone-overrides.css";
+
+@import "scss/index";
+
+body {
+  background-color: $body-back-color;
+}
+
+.content {
+  padding-top: 44px;
+  padding-bottom: 0 !important;
+}
+
+.form-control-purple {
+  border-color: $border-purple-color;
+}
+
+.form-control-success {
+  border-color: $border-success-color;
+}
+
+.form-control-info {
+  border-color: $border-info-color;
+}
+
+.form-control-orangeshade {
+  border-color: $border-orangeshade-color;
+}
+
+.table-header {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.table-col-width .table-header {
+  white-space: normal;
+}
+
+.link-none {
+  text-decoration: none !important;
+}
+
+.panel-accent-sides-purple {
+  border-left: 2px solid $light-purple-color;
+  border-right: 2px solid $light-purple-color;
+}
+
+.panel-accent-bottom-purple {
+  border-bottom: 2px solid $light-purple-color;
+}
+
+.widget {
+  a {
+    color: white;
+  }
+}
+
+.bg-body {
+  background-color: $body-back-color;
+}
+
+.panel.panel-purple-light .panel-heading {
+  background-color: $light-purple-color;
+}
+
+.panel-details-row {
+  margin-left: 4em;
+}
+
+.btn.btn-purple-light {
+  color: #fff;
+  background: $light-purple-color;
+  -webkit-box-shadow: 0 1px $dark-purple-color;
+  box-shadow: 0 1px $dark-purple-color;
+}
+
+.btn.btn-danger-light {
+  color: #fff;
+  background: $light-danger-color;
+  -webkit-box-shadow: 0 1px $dark-danger-color;
+  box-shadow: 0 1px $dark-danger-color;
+}
+
+.table>thead>tr.purple-light>th {
+  color: #fff;
+  background-color: $light-purple-color !important;
+  border-top-color: $dark-purple-color !important;
+  border-top-style: solid !important;
+  border-top-width: 1px !important;
+}
+
+.panel-accent-sides-success {
+  border-left: 2px solid $success-color;
+  border-right: 2px solid $success-color;
+}
+
+.panel-accent-bottom-success {
+  border-bottom: 2px solid $success-color;
+}
+
+.panel.panel-success-light .panel-heading {
+  background-color: $light-success-color;
+}
+
+.table>thead>tr.success-light>th {
+  color: #fff;
+  background-color: $light-success-color !important;
+  border-top-color: $dark-success-color !important;
+  border-top-style: solid !important;
+  border-top-width: 1px !important;
+}
+
+.table>thead>tr.success-light-no-border>th {
+  color: #fff;
+  background-color: $light-success-color !important;
+}
+
+.btn.btn-success-light {
+  color: #fff;
+  background: $light-success-color;
+  -webkit-box-shadow: 0 1px $dark-success-color;
+  box-shadow: 0 1px $dark-success-color;
+}
+
+.panel.panel-info-light .panel-heading {
+  background-color: $light-info-color;
+}
+
+.table>thead>tr.info-light>th {
+  color: #fff;
+  background-color: $light-info-color !important;
+  border-top-color: $dark-info-color !important;
+  border-top-style: solid !important;
+  border-top-width: 1px !important;
+}
+
+.table>thead>tr.info-light-no-border>th {
+  color: #fff;
+  background-color: $light-info-color !important;
+}
+
+.table>thead>tr.orangeshade-light>th {
+  color: #fff;
+  background-color: $light-orangeshade-color !important;
+  border-top-color: $dark-orangeshade-color !important;
+  border-top-style: solid !important;
+  border-top-width: 1px !important;
+}
+
+.btn.btn-orangeshade-light {
+  padding: 5px 12px;
+  color: #fff;
+  background: $light-orangeshade-color;
+  -webkit-box-shadow: 0 1px $dark-orangeshade-color;
+  box-shadow: 0 1px $dark-orangeshade-color;
+}
+
+.panel-accent-sides-orangeshade {
+  border-left: 2px solid $light-orangeshade-color;
+  border-right: 2px solid $light-orangeshade-color;
+}
+
+
+/* Widget - Timeline */
+
+.match-timeline {
+  position: relative;
+  overflow: hidden;
+}
+
+.match-timeline .widget-header a:hover,
+.match-timeline .widget-header a:focus {
+  color: $text-muted-color;
+  text-decoration: none;
+}
+
+.widget-body .match-timeline-list {
+  margin: -20px;
+}
+
+.match-timeline-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.match-timeline-list li+li {
+  margin-top: -1px;
+}
+
+.match-timeline-list>li:before,
+.match-timeline-list>li:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.match-timeline-list a {
+  color: $text-primary-light-color;
+}
+
+.match-timeline-list .timeline-image {
+  float: left;
+  overflow: hidden;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 15px;
+  margin-right: 15px;
+  color: $text-muted-color;
+}
+
+.match-timeline-list .timeline-info {
+  position: relative;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.match-timeline-list li+li .timeline-info {
+  border-top: 1px solid #ebeced;
+}
+
+.match-timeline-list .timeline-info h4 {
+  margin: 5px 0;
+  font-size: 12px;
+  padding-right: 70px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.match-timeline-list .timeline-info p {
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 5px;
+  color: #8a8f94;
+}
+
+.match-timeline-list .timeline-info .timeline-time {
+  position: absolute;
+  right: 0;
+  top: 15px;
+  font-size: 11px;
+  color: $text-muted-color;
+}
+
+/* CLIA Labs - Theme Styles */
+
+.nav.nav-tabs.nav-tabs-orangeshade>li.active:after,
+.nav.nav-tabs.nav-tabs-orangeshade>li.active:hover:after,
+.nav.nav-tabs.nav-tabs-orangeshade>li.active:focus:after {
+  background: $orangeshade-color;
+}
+
+.bg-orangeshade {
+  background: $orangeshade-color !important;
+}
+
+.bg-orangeshade-light {
+  background: $light-orangeshade-color !important;
+}
+
+.table.white-header>thead>tr>th {
+  background-color: inherit;
+  border-bottom-width: 2px !important;
+  border-bottom-style: solid !important;
+}
+
+.top-menu {
+  .nav>li.active.nav-dashboard>a i {
+    color: #ffffff;
+  }
+  .nav>li.active.nav-patient>a i {
+    color: $light-purple-color;
+  }
+  .nav>li.active.nav-treatments>a i {
+    color: $light-success-color;
+  }
+  .nav>li.active.nav-biopsy-tracking>a i {
+    color: $light-info-color;
+  }
+  .nav>li.active.nav-clia-lab>a i {
+    color: $light-orangeshade-color;
+  }
+}
+
+.text-underlined {
+  text-decoration: underline;
+}
+
+.text-muted-dark {
+  color: $dark-text-muted-color;
+}
+
+.text-pink {
+  color: $pink-color;
+}
+
+.text-orangeshade-dark {
+  color: $dark-orangeshade-color;
+}
+
+.text-purple-invisible {
+  color: $light-purple-color;
+}
+
+.text-success-invisible {
+  color: $light-success-color;
+}
+
+.text-info-invisible {
+  color: $light-info-color;
+}
+
+.footer {
+  .build-info {
+    margin-left: 4px;
+    font-size: xx-small;
+  }
+}
+
+.ir-status {
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-right: 2px;
+  color: #000000;
+  font-weight: bold;
+  cursor: default;
+}
+
+.dashboard-loaded-at {
+  margin-top: -15px;
+  padding-right: 15px;
+}
+
+.m-b-45 {
+  margin-bottom: 45px;
+}
+
+.white-link {
+  cursor: pointer;
+}
+
+.white-link:hover {
+  color: white;
+}
+
+.load-content .page-loader {
+  background: #fff;
+  position: relative;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  font-family: Arial;
+}
+
+.header-up {
+  top: -77px;
+}
+
+.top-menu-up {
+  position: relative;
+  top: -60px;
+}
+
+.header {
+  -webkit-transition: top 0.3s ease-in-out;
+  transition: top 0.3s ease-in-out;
+}
+
+.fixed-top {
+  position: fixed;
+  -webkit-transition: top 0.3s ease-in-out;
+  transition: top 0.3s ease-in-out;
+}
+
+.top-position {
+  top: 75px;
+  z-index: 1025;
+}
+
+.none {
+  display: none;
+  z-index: 1025;
+  -webkit-transition: top 0.3s ease-in-out;
+  transition: top 0.3s ease-in-out;
+}
+
+.display-inline {
+  display: inline !important;
+}
+
+td.long-text-wrap {
+  max-width: 15em;
+  word-wrap: break-word;
+}
+
+.table {
+  .tfoot-padding {
+    padding: 20px;
+  }
+  .pagination {
+    margin-top: 0px;
+  }
+  .dataTables_info {
+    margin-top: 8px;
+  }
+  div.dataTables_info {
+    margin-left: 0px;
+  }
+}
+
+.empty-data-panel {
+  color: $text-muted-color;
+  font-size: 1.1em;
+}
+
+.nav-tabs-purple.tab-container>ul>li.active:after,
+.nav-tabs-purple.tab-container>ul>li.active:hover:after,
+.nav-tabs-purple.tab-container>ul>li.active:focus:after {
+  background: $purple-color;
+}
+
+.nav-tabs-success.tab-container>ul>li.active:after,
+.nav-tabs-success.tab-container>ul>li.active:hover:after,
+.nav-tabs-success.tab-container>ul>li.active:focus:after {
+  background: $success-color;
+}
+
+.nav-tabs-orangeshade.tab-container>ul>li.active:after,
+.nav-tabs-orangeshade.tab-container>ul>li.active:hover:after,
+.nav-tabs-orangeshade.tab-container>ul>li.active:focus:after {
+  background: $orangeshade-color;
+}
+
+.m-t-13 {
+  margin-top: 13px !important;
+}
+
+.breadcrumb>.active {
+  .entity-name {
+    font-weight: bold;
+  }
+}
+
+.page-header {
+  .entity-name {
+    font-weight: bold;
+  }
+}
+
+.pointer-cursor {
+  cursor: pointer;
+}
+
+.overflow-ellipsis {
+  text-overflow: ellipsis;
+}
+
+.f-s-smlr {
+  font-size: smaller;
+}
+
+ul.no-bullets {
+  list-style-type: none;
+  padding: 0px;
+  li {
+    a:focus, a:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+}
