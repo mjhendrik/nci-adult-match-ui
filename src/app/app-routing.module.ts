@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { CallbackComponent } from './shared/callback/callback.component';
 
 @NgModule({
   imports: [

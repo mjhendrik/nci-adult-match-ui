@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Router, NavigationStart } from '@angular/router';
+import 'rxjs/add/operator/filter';
+import Auth0Lock from 'auth0-lock';
 import * as auth0 from 'auth0-js';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+
 import { AUTH_CONFIG } from './auth-config';
-import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
@@ -15,9 +18,27 @@ export class AuthService {
     audience: AUTH_CONFIG.AUDIENCE,
     scope: AUTH_CONFIG.SCOPE
   });
-  userProfile: any;
 
-  // Create a stream of logged in status to communicate throughout app
+  lock = new Auth0Lock(AUTH_CONFIG.CLIENT_ID, AUTH_CONFIG.CLIENT_DOMAIN, {
+    autoclose: true,
+    theme: {
+      logo: 'assets/svg/nci-logo-full.svg',
+      primaryColor: '#2d8ca9' // dark-info-color of the theme
+    },
+    languageDictionary: {
+      title: 'NCI-MATCH'
+    },
+    auth: {
+      redirectUrl: AUTH_CONFIG.REDIRECT,
+      responseType: 'token id_token',
+      audience: `https://${AUTH_CONFIG.CLIENT_DOMAIN}/userinfo`,
+      params: {
+        scope: 'openid name email roles'
+      }
+    }
+  });
+
+  userProfile: any;
   isLoggedIn: boolean;
   loggedIn = new BehaviorSubject<boolean>(this.isLoggedIn);
 
@@ -38,22 +59,46 @@ export class AuthService {
     this.isLoggedIn = value;
   }
 
-  login() {
-    // Auth0 authorize request
-    this.auth0.authorize();
+  public login(): void {
+    this.lock.show();
   }
 
-  handleAuth() {
-    // When Auth0 hash parsed, get profile
-    this.auth0.parseHash(window.location.hash, (err, authResult) => {
+  // Call this method in app.component.ts
+  // if using path-based routing
+  public handleAuthentication(): void {
+    this.lock.on('authenticated', (authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
-        window.location.hash = '';
         this.getProfile(authResult);
-      } else if (err) {
-        console.error(`Error: ${err.error}`);
+        this.router.navigate(['/dashboard']);
       }
-      this.router.navigate(['/dashboard']);
     });
+    this.lock.on('authorization_error', (err) => {
+      this.router.navigate(['/login']);
+      console.log(err);
+      alert(`Error: ${err.error}. Check the console for further details.`);
+    });
+  }
+
+  // Call this method in app.component.ts
+  // if using hash-based routing
+  public handleAuthenticationWithHash(): void {
+    this
+      .router
+      .events
+      .filter(event => event instanceof NavigationStart)
+      .filter((event: NavigationStart) => (/access_token|id_token|error/).test(event.url))
+      .subscribe(() => {
+        this.lock.resumeAuth(window.location.hash, (err, authResult) => {
+          if (err) {
+            this.router.navigate(['/login']);
+            console.log(err);
+            alert(`Error: ${err.error}. Check the console for further details.`);
+            return;
+          }
+          this.getProfile(authResult);
+          this.router.navigate(['/login']);
+        });
+      });
   }
 
   private getProfile(authResult) {
@@ -63,7 +108,7 @@ export class AuthService {
     });
   }
 
-  private setSession(authResult, profile) {
+  private setSession(authResult, profile): void {
     const expTime = authResult.expiresIn * 1000 + Date.now();
     localStorage.setItem('token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
@@ -73,7 +118,7 @@ export class AuthService {
     this.setLoggedIn(true);
   }
 
-  logout() {
+  public logout(): void {
     // Remove tokens and profile and update login status subject
     localStorage.removeItem('token');
     localStorage.removeItem('id_token');
@@ -81,11 +126,14 @@ export class AuthService {
     localStorage.removeItem('expires_at');
     this.userProfile = undefined;
     this.setLoggedIn(false);
+    // Go back to the home route
+    this.router.navigate(['/login']);
   }
 
-  get authenticated(): boolean {
-    // Check if current date is greater than expiration
+  public get authenticated(): boolean {
+    // Check whether the current time is past the
+    // access token's expiry time
     const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
-    return Date.now() < expiresAt;
+    return new Date().getTime() < expiresAt;
   }
 }
