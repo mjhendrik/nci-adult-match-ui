@@ -9,15 +9,15 @@ import { AUTH_CONFIG } from './auth-config';
 
 @Injectable()
 export class AuthService {
-  // Create Auth0 web auth instance
-  auth0 = new auth0.WebAuth({
-    clientID: AUTH_CONFIG.CLIENT_ID,
-    domain: AUTH_CONFIG.CLIENT_DOMAIN,
-    responseType: 'token id_token',
-    redirectUri: AUTH_CONFIG.REDIRECT,
-    audience: AUTH_CONFIG.AUDIENCE,
-    scope: AUTH_CONFIG.SCOPE
-  });
+  // // Create Auth0 web auth instance
+  // auth0 = new auth0.WebAuth({
+  //   clientID: AUTH_CONFIG.CLIENT_ID,
+  //   domain: AUTH_CONFIG.CLIENT_DOMAIN,
+  //   responseType: 'token id_token',
+  //   redirectUri: AUTH_CONFIG.REDIRECT,
+  //   audience: AUTH_CONFIG.AUDIENCE,
+  //   scope: AUTH_CONFIG.SCOPE
+  // });
 
   lock = new Auth0Lock(AUTH_CONFIG.CLIENT_ID, AUTH_CONFIG.CLIENT_DOMAIN, {
     autoclose: true,
@@ -102,8 +102,12 @@ export class AuthService {
   }
 
   private getProfile(authResult) {
-    // Use access token to retrieve user's profile and set session
-    this.auth0.client.userInfo(authResult.accessToken, (err, profile) => {
+    this.lock.getProfile(authResult.idToken, (error: any, profile: any) => {
+      if (error) {
+        // Handle error
+        alert(error);
+        return;
+      }
       this.setSession(authResult, profile);
     });
   }
