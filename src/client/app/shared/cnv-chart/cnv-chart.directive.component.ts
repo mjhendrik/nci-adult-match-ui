@@ -154,10 +154,11 @@ export class CnvChartDirective implements AfterViewInit {
       let values = array[key].values;
       let width:number = values.length;
 
+      //TEMP
       let median:any = ("raw_copy_number" in array[key])===true ? array[key].raw_copy_number : array[key].rawCopyNumber;
       let tsg:any = ("tsg_gene" in array[key])===true ? array[key].tsg_gene : array[key].tsgGene;
 
-      let status:string = !tsg ? '#CD0000' : '#007200';
+      let status:string = !tsg ? '#007200' : '#CD0000'; //TSG true --> RED (#007200)
 
       let position:number = array[key].position;
       let chromosome:string = array[key].chromosome;
@@ -168,6 +169,7 @@ export class CnvChartDirective implements AfterViewInit {
       let error:number = 0;
       endX = ((chromosome !== 'chrX') ? '-' : 'x');
 
+      //Are all gene values in json block
       if(frm > 0) {
         if (typeof chromosome !== 'undefined') {
           error = (parseFloat(median) > parseFloat(max)) ? 1 : 0;
@@ -180,8 +182,10 @@ export class CnvChartDirective implements AfterViewInit {
       let pMin:string = parseFloat(min).toFixed(2);
       let pMax:string = parseFloat(max).toFixed(2);
 
+      //Build Box Plot Object
       let Object:any = {
         x: key,
+        tsg:tsg,
         label: gene,
         status: status,
         error: error,
@@ -201,10 +205,12 @@ export class CnvChartDirective implements AfterViewInit {
       temp.push(Object);
     });
 
+
+    //THE CHART
     let colors:any[] = [];
     let tip:any = 0;
 
-    //COLORS
+    //COLORS IN FAILURE
     Object.keys(temp).forEach((key:any) => {
       (temp[key].error === 1) ? colors.push("#595851") : colors.push(temp[key].status);
       (temp[key].error === 1) ? this.file_error = "Error occured in chart rendering." : this.file_error = "";
@@ -220,6 +226,7 @@ export class CnvChartDirective implements AfterViewInit {
       tip = (temp[keys[0]].values.whisker_high < 7) ? 8 : (temp[keys[0]].values.whisker_high);
     }
 
+    //Set completed data to nvd3 block [data]
     this.cnvdata = temp;
 
     let id:any = function () {
@@ -263,6 +270,7 @@ export class CnvChartDirective implements AfterViewInit {
       return 'There are no CNV data';
     };
 
+    //Set options to nvd3 block [options]
     this.options = {
       chart: {
         noData: noData(),
@@ -293,6 +301,7 @@ export class CnvChartDirective implements AfterViewInit {
 
             const series = d.series[0];
 
+            //Are the series building popup correctly when mouse-over is executed
             if (series.key !== 'Q3') {
               html = "<span class='list-group' style='font-size: 18px'><strong>" +
                 series.key +
@@ -360,20 +369,20 @@ export class CnvChartDirective implements AfterViewInit {
             .select('g')
             .append('g');
 
-          //Get highest gene y value
+          //Get highest gene Y value to set chart height --> [gene, chromosome, key, chrnum[1], min, max, error]
           let keys:any = Object.keys(genes);
           keys.sort(function(a:any,b:any){
-            return genes[b][5] - genes[a][5];
+            return genes[b][5] - genes[a][5]; //Sort Max values
           })
           let tip:any = genes[keys[0]];
 
-          highest = tip[5];
+          highest = tip[5]; //Boxplot top height
 
           Object.keys(genes).forEach((key:any) => {
             let len: number = genes.length;
-            gene = genes[key][0];
-            let temp = genes[key][1];
-            let x = genes[key][2];
+            gene = genes[key][0];//Gene
+            let temp = genes[key][1];//Temp
+            let x = genes[key][2];//Running number of boxplot
             let chrnum = genes[key][3];
             let err = genes[key][6];
 
@@ -388,13 +397,16 @@ export class CnvChartDirective implements AfterViewInit {
             median[1] = highest;
 
 
-            if (temp !== chr && typeof temp !== 'undefined') {
+            //START THE RUN TO ADD LINES AND NUMBERS
+            if (temp !== chr && typeof temp !== 'undefined') { //Temp chr value is changed (chr2 changes to chr3)
               if (x > 0) {
 
+                //Get the chart xscale location of the gene
                 spot = (chart.xScale()(gene)).toFixed(2) - 1;
                 chr = temp;
                 indx = (parseInt(prespot + spot) / 2) - 1;
 
+                //Add line and chr number
                 if(prechrnum !== chrnum) {
                   svg.append('line')
                     .attr('x1', spot)
@@ -450,6 +462,7 @@ export class CnvChartDirective implements AfterViewInit {
           let y1 = chart.yScale()(2);//2.0 line
           let y2 = chart.yScale()(7);//7.0 line
 
+          //Static horizontal / vertical lines
           svg.append('line')
             .attr('x1', 0)
             .attr('y1', y2)
