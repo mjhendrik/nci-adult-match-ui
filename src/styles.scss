@@ -1,8 +1,12 @@
-@import "/src/css/style.css";
-// replace for production: @import "style.min.css";
-@import "/src/css/dropzone.css";
-// replace for production: @import "dropzone.min.css";
-@import "/src/css/dropzone-overrides.css";
+// From npm packages
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~font-awesome/css/font-awesome.min.css";
+@import "~nvd3/build/nv.d3.min.css";
+@import "~ng2-toastr/bundles/ng2-toastr.min.css";
+
+@import "css/style.css";
+@import "css/dropzone.css";
+@import "css/dropzone-overrides.css";
 
 @import "scss/index";
 
