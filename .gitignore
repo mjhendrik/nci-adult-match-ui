@@ -96,3 +96,6 @@ local_db/
 
 gulpfile.js
 gulpfile.js.map
+
+#Local docker-compose environment
+.env
