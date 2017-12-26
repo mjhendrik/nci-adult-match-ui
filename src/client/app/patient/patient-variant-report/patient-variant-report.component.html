@@ -187,12 +187,12 @@
     </div>
   </div>
   <div *ngIf="assignmentReport && assignmentReport.reasons" id="assignment-details" class="panel panel-white panel-accent-sides-purple overflow-hidden">
-    <div class="text-center m-t-20" *ngIf="isAssignmentReportEditable && allowAssignmentReportEdit">
-      <button class="btn btn-lime" (click)="confirmAssignmentReport()">
-        <i class="fa fa-check"></i> Confirm Assignment</button>
-    </div>
     <div class="panel-heading">
       <sd-assignment-reason-table [reasons]="assignmentReport.reasons"></sd-assignment-reason-table>
+    </div>
+    <div class="text-center m-b-20" *ngIf="isAssignmentReportEditable && allowAssignmentReportEdit">
+      <button class="btn btn-lime" (click)="confirmAssignmentReport()">
+        <i class="fa fa-check"></i> Confirm Assignment</button>
     </div>
   </div>
   <div *ngIf="assignmentHistory && assignmentHistory.length > 1" id="assignment-history" class="panel panel-white panel-accent-sides-purple overflow-hidden">

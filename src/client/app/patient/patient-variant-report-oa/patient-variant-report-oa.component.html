@@ -171,11 +171,11 @@
             </div>
           </div>
           <div *ngIf="hasAssignment(outsideData)" id="outside-assignment-details">
-            <div class="text-center m-t-20" *ngIf="outsideData.isAssignmentReportEditable && allowAssignmentReportEdit">
+            <sd-assignment-reason-table [reasons]="outsideData.assignmentReport.reasons"></sd-assignment-reason-table>
+            <div class="text-center m-b-20" *ngIf="outsideData.isAssignmentReportEditable && allowAssignmentReportEdit">
               <button class="btn btn-lime" (click)="confirmOutsideAssignmentReport()">
                 <i class="fa fa-check"></i> Confirm Assignment</button>
             </div>
-            <sd-assignment-reason-table [reasons]="outsideData.assignmentReport.reasons"></sd-assignment-reason-table>
           </div>
           <p *ngIf="!hasAssignment(outsideData)" class="empty-data-panel">No Treatment Report Assignment data</p>
         </ng-template>
@@ -347,11 +347,11 @@
             </div>
           </div>
           <div *ngIf="hasAssignment(matchData)" id="match-assignment-details">
+            <sd-assignment-reason-table [reasons]="matchData.assignmentReport.reasons"></sd-assignment-reason-table>
             <div class="text-center m-b-20" *ngIf="matchData.isAssignmentReportEditable && allowAssignmentReportEdit">
               <button class="btn btn-lime" (click)="confirmMatchAssignmentReport()">
                 <i class="fa fa-check"></i> Confirm Assignment</button>
             </div>
-            <sd-assignment-reason-table [reasons]="matchData.assignmentReport.reasons"></sd-assignment-reason-table>
           </div>
           <p *ngIf="!hasAssignment(matchData)" class="empty-data-panel">No Confirmation Report Assignment data</p>
         </ng-template>
