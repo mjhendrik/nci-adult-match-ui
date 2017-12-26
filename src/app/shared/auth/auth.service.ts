@@ -7,6 +7,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import { AUTH_CONFIG } from './auth-config';
 import { environment } from '../../../environments/environment';
+import { tokenNotExpired } from 'angular2-jwt';
 
 @Injectable()
 export class AuthService {
@@ -39,10 +40,24 @@ export class AuthService {
   loggedIn = new BehaviorSubject<boolean>(this.isLoggedIn);
 
   constructor(private router: Router) {
+    // Add callback for lock `authenticated` event
     this.lock.on('authenticated', (authResult: any) => {
-      console.log('Nice, it worked!');
-      this.router.navigate(['/dashboard']); // go to the home route
-      // ...finish implementing authenticated
+      localStorage.setItem('id_token', authResult.idToken);
+
+      this.lock.getProfile(authResult.idToken, (error: any, profile: any) => {
+        if (error) {
+          // Handle error
+          alert(error);
+          return;
+        }
+
+        localStorage.setItem('profile', JSON.stringify(profile));
+        this.userProfile = profile;
+        this.isLoggedIn = true;
+        this.loggedIn.next(this.isLoggedIn);
+      });
+
+      this.router.navigate(['dashboard']);
     });
 
     this.lock.on('authorization_error', error => {
@@ -67,10 +82,9 @@ export class AuthService {
   }
 
   public get authenticated(): boolean {
-    // Check whether the current time is past the
-    // access token's expiry time
-    const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
-    return new Date().getTime() < expiresAt;
+    // Check if there's an unexpired JWT
+    // It searches for an item in localStorage with key == 'id_token'
+    return tokenNotExpired();
   }
 
   setLoggedIn(value: boolean) {
