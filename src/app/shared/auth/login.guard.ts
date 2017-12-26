@@ -10,6 +10,7 @@ export class LoginGuard implements CanActivate {
 
   canActivate() {
     if (this.auth.authenticated) {
+      // Don't allow redirecting to the login page. Redirect to dashboard if already authenticated.
       this.router.navigate(['dashboard']);
       return false;
     }
