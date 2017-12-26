@@ -53,8 +53,7 @@ export class AuthService {
 
         localStorage.setItem('profile', JSON.stringify(profile));
         this.userProfile = profile;
-        this.isLoggedIn = true;
-        this.loggedIn.next(this.isLoggedIn);
+        this.setLoggedIn(true);
       });
 
       this.router.navigate(['dashboard']);
@@ -71,10 +70,8 @@ export class AuthService {
 
   logout() {
     // Remove tokens and profile and update login status subject
-    localStorage.removeItem('token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('profile');
-    localStorage.removeItem('expires_at');
     this.userProfile = undefined;
     this.setLoggedIn(false);
     // Go back to the home route
@@ -82,15 +79,12 @@ export class AuthService {
   }
 
   public get authenticated(): boolean {
-    // Check if there's an unexpired JWT
-    // It searches for an item in localStorage with key == 'id_token'
     return tokenNotExpired();
   }
 
   setLoggedIn(value: boolean) {
-    // Update login status subject
-    // this.loggedIn.next(value);
     this.isLoggedIn = value;
+    this.loggedIn.next(value);
   }
 
   // // Create Auth0 web auth instance
