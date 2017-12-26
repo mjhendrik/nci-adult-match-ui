@@ -13,7 +13,6 @@ import {
   XHRBackend,
   BaseRequestOptions
 } from '@angular/http';
-import { AuthHttp } from 'angular2-jwt';
 import { Observable } from 'rxjs/Observable';
 import {
   MockBackend,
@@ -30,7 +29,6 @@ export function main() {
           BiopsyTrackingApiService,
           // { provide: Window, useClass: WindowStub },
           { provide: XHRBackend, useClass: MockBackend },
-          { provide: AuthHttp, useExisting: Http },
         ]
       });
     }));

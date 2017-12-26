@@ -11,7 +11,6 @@ import {
   XHRBackend
 } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
-import { AuthHttp } from 'angular2-jwt';
 import { Observable } from 'rxjs/Observable';
 
 import { WindowStub } from './testing/window-stub';
@@ -34,7 +33,6 @@ export function main() {
           PatientApiService,
           { provide: Window, useClass: WindowStub },
           { provide: XHRBackend, useClass: MockBackend },
-          { provide: AuthHttp, useExisting: Http },
         ]
       });
     }));

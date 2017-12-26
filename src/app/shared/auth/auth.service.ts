@@ -7,7 +7,6 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import { AUTH_CONFIG } from './auth-config';
 import { environment } from '../../../environments/environment';
-import { tokenNotExpired } from 'angular2-jwt';
 
 @Injectable()
 export class AuthService {

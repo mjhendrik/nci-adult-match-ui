@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { AuthHttp } from 'angular2-jwt';
 import { Response,RequestOptions,Headers } from '@angular/http';
 
 import { Config } from '../shared/config/env.config';

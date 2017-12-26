@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Config } from '../shared/config/env.config';
-import { AuthHttp } from 'angular2-jwt';
 
 // import 'rxjs/add/operator/do';  // for debugging
 

@@ -15,7 +15,6 @@ import {
   BaseRequestOptions
 } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
-import { AuthHttp } from 'angular2-jwt';
 import { PatientApiServiceStub } from '../patient/testing/patient-api-service-stub';
 
 export function main() {
@@ -30,7 +29,6 @@ export function main() {
         providers: [
           TreatmentArmApiService,
           { provide: XHRBackend, useClass: MockBackend },
-          { provide: AuthHttp, useExisting: Http },
         ]
       });
     }));

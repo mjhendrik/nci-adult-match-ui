@@ -13,7 +13,6 @@ import {
 } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { AUTH_PROVIDERS } from 'angular2-jwt';
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
 import { Router } from '@angular/router';
 import { ModalModule, PopoverModule } from 'ngx-bootstrap';
@@ -52,12 +51,14 @@ import { ModalDialogConfirmationComponent } from './shared/modal-dialogs/modal-d
 import { ErrorPageHttpInterceptor } from './shared/error-handling/error-page-http.interceptor';
 import { ModalDialogPathologyReportComponent } from './shared/modal-dialogs/modal-dialog-pathology-report.component';
 import { TestFeatComponent } from './feat/test-feat/test-feat.component';
+import { JwtModule } from '@auth0/angular-jwt';
 
 import { NvD3Module } from 'ng2-nvd3';
 
 // d3 and nvd3 should be included somewhere
 import 'd3';
 import 'nvd3';
+import { environment } from '../environments/environment';
 
 @NgModule({
   imports: [
@@ -85,11 +86,20 @@ import 'nvd3';
     AssignmentReportModule,
     VariantReportFilteredTableModule,
     VariantReportSimpleTableModule,
-    HttpClientModule,
     NvD3Module,
     ToastModule.forRoot(),
     ModalModule.forRoot(),
     PopoverModule.forRoot(),
+    HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem('access_token');
+        },
+        whitelistedDomains: [...environment.auth0.whitelistDomain],
+        skipWhenExpired: true
+      }
+    }),
     ErrorModule // This needs to be at the bottom of the list for ErrorComponent to work properly
   ],
   declarations: [AppComponent, TestFeatComponent],
@@ -101,7 +111,6 @@ import 'nvd3';
       },
       deps: [XHRBackend, RequestOptions, Router]
     },
-    AUTH_PROVIDERS,
     AuthService,
     AuthGuard,
     LoginGuard,

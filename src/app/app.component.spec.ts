@@ -20,7 +20,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
 import { ModalModule } from 'ngx-bootstrap';
 import { ToastModule, ToastsManager } from 'ng2-toastr/ng2-toastr';
-import { AUTH_PROVIDERS } from 'angular2-jwt';
 
 import { AppComponent } from './app.component';
 import { AuthService } from './shared/auth/auth.service';

@@ -11,7 +11,6 @@ import {
   XHRBackend
 } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
-import { AuthHttp } from 'angular2-jwt';
 import { Observable } from 'rxjs/Observable';
 
 import { CliaApiServiceStub } from './testing/clia-api-service-stub';

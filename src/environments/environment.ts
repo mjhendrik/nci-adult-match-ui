@@ -8,6 +8,7 @@ export const environment = {
   auth0: {
     domain: 'ncimatch.auth0.com',
     clientId: 'RjoYZXUDEzQxMJw04C6B5dsQKqUAEYzA',
-    callbackURL: 'http://localhost:5555/dashboard'
+    callbackURL: 'http://localhost:5555/dashboard',
+    whitelistDomain: ['http://localhost']
   }
 };
