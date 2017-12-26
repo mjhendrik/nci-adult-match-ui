@@ -1,3 +1,4 @@
+ƒ
 <div id="content" class="content">
   <ul class="breadcrumb pull-right">
     <li>
@@ -11,17 +12,12 @@
     </li>
     <li class="active">Variant Report</li>
   </ul>
-
   <h1 class="page-header">Variant and Assignment Report</h1>
-
   <div class="panel">
     <tabset class="nav-tabs-purple">
-
       <!-- #region Treatment Report Tab -->
       <tab heading="Treatment Report" [active]="showOutsideAssay">
-
         <p *ngIf="!hasReportData(outsideData); else outsideDataTemplate" class="empty-data-panel">No Treatment Report data</p>
-
         <ng-template #outsideDataTemplate>
           <div class="row" matchHeight="panel-height-top">
             <div class="col-md-6">
@@ -36,7 +32,6 @@
                         <i class="fa fa-file-excel-o"></i> Excel</a>
                     </div>
                   </div>
-
                   <dl class="dl-horizontal m-b-0">
                     <dt>Molecular Sequence Number</dt>
                     <dd class="ut-outside-msn">{{outsideData.variantReport.molecularSequenceNumber | dashify}}</dd>
@@ -64,9 +59,7 @@
                     <dt>File Received Date</dt>
                     <dd>{{outsideData.variantReport.createdDate | gmt}}</dd>
                   </dl>
-
                   <sd-disease [disease]="outsideData.disease"></sd-disease>
-
                   <div class="m-b-5">
                     <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!outsideData.variantReport.dnaBamFilePath"
                       (click)="download(outsideData.variantReport.dnaBamFilePath)">
@@ -84,11 +77,9 @@
                       (click)="download(outsideData.variantReport.vcfFilePath)">
                       <i class="fa fa-download"></i> VCF</button>
                   </div>
-
                 </div>
               </div>
             </div>
-
             <div class="col-md-6" id="trAssignmentReport">
               <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
                 <div class="panel-heading">
@@ -110,16 +101,14 @@
                       <dt>Assignment Received by ECOG Date</dt>
                       <dd>{{outsideData.assignmentReport.dateReceivedByECOG | gmt}}</dd>
                     </dl>
-
                     <div *ngIf="outsideData.assignmentReport.hasSelectedTreatmentArm">
                       <h5>Selected Treatment Arm</h5>
                       <h5>
-                        <treatment-arm-link [treatmentArmId]="outsideData.assignmentReport.treatmentArm.treatmentArmId"
-                          [version]="outsideData.assignmentReport.treatmentArm.version" [removePrefix]="true"></treatment-arm-link>
+                        <treatment-arm-link [treatmentArmId]="outsideData.assignmentReport.treatmentArm.treatmentArmId" [version]="outsideData.assignmentReport.treatmentArm.version"
+                          [removePrefix]="true"></treatment-arm-link>
                         <span *ngIf="!outsideData.assignmentReport">-</span>
                       </h5>
                     </div>
-
                     <div *ngIf="outsideData.assignmentReport.hasSelectedTreatmentArm" class="panel panel-success overflow-hidden">
                       <div class="panel-heading">
                         <p>
@@ -136,7 +125,6 @@
               </div>
             </div>
           </div>
-
           <div class="row" matchHeight="panel-height-middle">
             <div class="col-md-6">
               <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-middle">
@@ -155,7 +143,6 @@
                 </div>
               </div>
             </div>
-
             <div class="col-md-6">
               <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-middle">
                 <div class="panel-heading" id="trAssay">
@@ -166,19 +153,15 @@
               </div>
             </div>
           </div>
-
-          <app-variant-report-simple-table-snv-indels *ngIf="outsideData && outsideData.variantReport" [items]="outsideData.variantReport.singleNucleotideVariantAndIndels"
+          <sd-variant-report-simple-table-snv-indels *ngIf="outsideData && outsideData.variantReport" [items]="outsideData.variantReport.singleNucleotideVariantAndIndels"
             [isEditable]="outsideData.isVariantReportEditable && allowVariantReportEdit" (onVariantUpdated)="onVariantUpdated(outsideData, $event)"
-            [title]="'Single Nucleotide Variants and Indels'"></app-variant-report-simple-table-snv-indels>
-
-          <app-variant-report-simple-table-cnv *ngIf="outsideData && outsideData.variantReport" [items]="outsideData.variantReport.copyNumberVariants"
+            [title]="'Single Nucleotide Variants and Indels'"></sd-variant-report-simple-table-snv-indels>
+          <sd-variant-report-simple-table-cnv *ngIf="outsideData && outsideData.variantReport" [items]="outsideData.variantReport.copyNumberVariants"
             [isEditable]="outsideData.isVariantReportEditable && allowVariantReportEdit" (onVariantUpdated)="onVariantUpdated(outsideData, $event)"
-            [title]="'Copy Number Variants'"></app-variant-report-simple-table-cnv>
-
-          <app-variant-report-simple-table-gf *ngIf="outsideData && outsideData.variantReport" [items]="outsideData.variantReport.unifiedGeneFusions"
+            [title]="'Copy Number Variants'"></sd-variant-report-simple-table-cnv>
+          <sd-variant-report-simple-table-gf *ngIf="outsideData && outsideData.variantReport" [items]="outsideData.variantReport.unifiedGeneFusions"
             [isEditable]="outsideData.isVariantReportEditable && allowVariantReportEdit" (onVariantUpdated)="onVariantUpdated(outsideData, $event)"
-            [title]="'Gene Fusions'"></app-variant-report-simple-table-gf>
-
+            [title]="'Gene Fusions'"></sd-variant-report-simple-table-gf>
           <div class="row" *ngIf="outsideData.isVariantReportEditable && allowVariantReportEdit">
             <div class="col-md-12 text-center m-t-20">
               <button class="btn btn-danger" (click)="rejectOutsideVariantReport()">
@@ -187,30 +170,21 @@
                 <i class="fa fa-check"></i> Confirm Report</button>
             </div>
           </div>
-
           <div *ngIf="hasAssignment(outsideData)" id="outside-assignment-details">
-            <app-assignment-reason-table [reasons]="outsideData.assignmentReport.reasons"></app-assignment-reason-table>
-
+            <sd-assignment-reason-table [reasons]="outsideData.assignmentReport.reasons"></sd-assignment-reason-table>
             <div class="text-center m-b-20" *ngIf="outsideData.isAssignmentReportEditable && allowAssignmentReportEdit">
               <button class="btn btn-lime" (click)="confirmOutsideAssignmentReport()">
                 <i class="fa fa-check"></i> Confirm Assignment</button>
             </div>
           </div>
-
           <p *ngIf="!hasAssignment(outsideData)" class="empty-data-panel">No Treatment Report Assignment data</p>
-
         </ng-template>
-
       </tab>
       <!-- #endregion Treatment Report Tab -->
-
       <!-- #region Confirmation Report Tab -->
       <tab heading="Confirmation Report" [active]="!showOutsideAssay" *ngIf="!showComparison">
-
         <p *ngIf="!hasReportData(matchData); else matchDataTemplate" class="empty-data-panel">No Confirmation Report data</p>
-
         <ng-template #matchDataTemplate>
-
           <div class="row" matchHeight="panel-height-top">
             <div class="col-md-6">
               <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
@@ -224,7 +198,6 @@
                         <i class="fa fa-file-excel-o"></i> Excel</a>
                     </div>
                   </div>
-
                   <dl class="dl-horizontal m-b-0">
                     <dt>Molecular Sequence Number</dt>
                     <dd class="ut-outside-msn">{{matchData.variantReport.molecularSequenceNumber | dashify}}</dd>
@@ -255,7 +228,6 @@
                     <dd>{{matchData.cellularity | dashify}}</dd>
                     <dt>File Received Date</dt>
                     <dd>{{matchData.variantReport.createdDate | gmt}}</dd>
-
                     <dt *ngIf="!showPools">Torrent Variant Caller Version</dt>
                     <dd *ngIf="!showPools">{{matchData.tvc_version | dashify}}</dd>
                     <dt *ngIf="showPools">Pool 1</dt>
@@ -263,9 +235,7 @@
                     <dt *ngIf="showPools">Pool 2</dt>
                     <dd *ngIf="showPools">{{matchData.pool2 | dashify}}</dd>
                   </dl>
-
                   <sd-disease [disease]="matchData.disease"></sd-disease>
-
                   <div class="m-b-5">
                     <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!matchData.variantReport.dnaBamFilePath"
                       (click)="download(matchData.variantReport.dnaBamFilePath)">
@@ -283,11 +253,9 @@
                       (click)="download(matchData.variantReport.vcfFilePath)">
                       <i class="fa fa-download"></i> VCF</button>
                   </div>
-
                 </div>
               </div>
             </div>
-
             <div class="col-md-6" id="crAssignmentReport">
               <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
                 <div class="panel-heading">
@@ -333,7 +301,6 @@
               </div>
             </div>
           </div>
-
           <div class="row" matchHeight="panel-height-middle">
             <div class="col-md-6">
               <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-middle">
@@ -352,7 +319,6 @@
                 </div>
               </div>
             </div>
-
             <div class="col-md-6">
               <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-middle">
                 <div class="panel-heading" id="crAssay">
@@ -363,19 +329,15 @@
               </div>
             </div>
           </div>
-
-          <app-variant-report-simple-table-snv-indels *ngIf="matchData && matchData.variantReport" [items]="matchData.variantReport.singleNucleotideVariantAndIndels"
+          <sd-variant-report-simple-table-snv-indels *ngIf="matchData && matchData.variantReport" [items]="matchData.variantReport.singleNucleotideVariantAndIndels"
             [isEditable]="matchData.isVariantReportEditable && allowVariantReportEdit" (onVariantUpdated)="onVariantUpdated(matchData, $event)"
-            [title]="'Single Nucleotide Variants and Indels'"></app-variant-report-simple-table-snv-indels>
-
-          <app-variant-report-simple-table-cnv *ngIf="matchData && matchData.variantReport" [items]="matchData.variantReport.copyNumberVariants"
+            [title]="'Single Nucleotide Variants and Indels'"></sd-variant-report-simple-table-snv-indels>
+          <sd-variant-report-simple-table-cnv *ngIf="matchData && matchData.variantReport" [items]="matchData.variantReport.copyNumberVariants"
             [isEditable]="matchData.isVariantReportEditable && allowVariantReportEdit" (onVariantUpdated)="onVariantUpdated(matchData, $event)"
-            [title]="'Copy Number Variants'"></app-variant-report-simple-table-cnv>
-
-          <app-variant-report-simple-table-gf *ngIf="matchData && matchData.variantReport" [items]="matchData.variantReport.unifiedGeneFusions"
+            [title]="'Copy Number Variants'"></sd-variant-report-simple-table-cnv>
+          <sd-variant-report-simple-table-gf *ngIf="matchData && matchData.variantReport" [items]="matchData.variantReport.unifiedGeneFusions"
             [isEditable]="matchData.isVariantReportEditable && allowVariantReportEdit" (onVariantUpdated)="onVariantUpdated(matchData, $event)"
-            [title]="'Gene Fusions'"></app-variant-report-simple-table-gf>
-
+            [title]="'Gene Fusions'"></sd-variant-report-simple-table-gf>
           <div class="row" *ngIf="matchData.isVariantReportEditable && allowVariantReportEdit">
             <div class="col-md-12 text-center m-t-20">
               <button class="btn btn-danger" (click)="rejectMatchVariantReport()">
@@ -384,23 +346,17 @@
                 <i class="fa fa-check"></i> Confirm Report</button>
             </div>
           </div>
-
           <div *ngIf="hasAssignment(matchData)" id="match-assignment-details">
-            <app-assignment-reason-table [reasons]="matchData.assignmentReport.reasons"></app-assignment-reason-table>
-
+            <sd-assignment-reason-table [reasons]="matchData.assignmentReport.reasons"></sd-assignment-reason-table>
             <div class="text-center m-b-20" *ngIf="matchData.isAssignmentReportEditable && allowAssignmentReportEdit">
               <button class="btn btn-lime" (click)="confirmMatchAssignmentReport()">
                 <i class="fa fa-check"></i> Confirm Assignment</button>
             </div>
           </div>
-
           <p *ngIf="!hasAssignment(matchData)" class="empty-data-panel">No Confirmation Report Assignment data</p>
-
         </ng-template>
-
       </tab>
       <!-- #endregion Confirmation Report Tab -->
-
       <!-- #region Comparison Report Tab -->
       <tab heading="Confirmation Report" [active]="!showOutsideAssay" *ngIf="showComparison">
         <div *ngIf="hasReportData(matchData)" class="row" matchHeight="panel-height-top">
@@ -418,7 +374,6 @@
                       <i class="fa fa-file-excel-o"></i> Excel</a>
                   </div>
                 </div>
-
                 <dl class="dl-horizontal">
                   <dt>Molecular Sequence Number</dt>
                   <dd>{{matchData.variantReport.molecularSequenceNumber | dashify}}</dd>
@@ -444,7 +399,6 @@
                   <dd>{{matchData.cellularity | dashify}}</dd>
                   <dt>File Received Date</dt>
                   <dd>{{matchData.variantReport.createdDate | gmt}}</dd>
-
                   <dt *ngIf="!showPools">Torrent Variant Caller Version</dt>
                   <dd *ngIf="!showPools">{{matchData.tvc_version | dashify}}</dd>
                   <dt *ngIf="showPools">Pool 1</dt>
@@ -452,11 +406,9 @@
                   <dt *ngIf="showPools">Pool 2</dt>
                   <dd *ngIf="showPools">{{matchData.pool2 | dashify}}</dd>
                 </dl>
-
               </div>
             </div>
           </div>
-
           <div class="col-md-6">
             <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-top">
               <div class="panel-heading" *ngIf="!hasAssignment(matchData) && !hasAssignment(outsideData)">
@@ -519,9 +471,7 @@
             </div>
           </div>
         </div>
-
         <p *ngIf="!hasReportData(matchData)" class="empty-data-panel">No Confirmation Variant Report data</p>
-
         <div class="panel panel-white panel-accent-bottom-purple overflow-hidden panel-height-middle">
           <div class="panel-heading">
             <dl class="dl-horizontal">
@@ -544,23 +494,15 @@
             </dl>
           </div>
         </div>
-
-        <app-variant-report-comparison-table-snv-indels [items]="comparisonVariantReport.singleNucleotideVariantAndIndels" [title]="'Single Nucleotide Variants and Indels'"></app-variant-report-comparison-table-snv-indels>
-
-        <app-variant-report-comparison-table-cnv [items]="comparisonVariantReport.copyNumberVariants" [title]="'Copy Number Variants'"></app-variant-report-comparison-table-cnv>
-
-        <app-variant-report-comparison-table-gf [items]="comparisonVariantReport.unifiedGeneFusions" [title]="'Gene Fusions'"></app-variant-report-comparison-table-gf>
-
+        <sd-variant-report-comparison-table-snv-indels [items]="comparisonVariantReport.singleNucleotideVariantAndIndels" [title]="'Single Nucleotide Variants and Indels'"></sd-variant-report-comparison-table-snv-indels>
+        <sd-variant-report-comparison-table-cnv [items]="comparisonVariantReport.copyNumberVariants" [title]="'Copy Number Variants'"></sd-variant-report-comparison-table-cnv>
+        <sd-variant-report-comparison-table-gf [items]="comparisonVariantReport.unifiedGeneFusions" [title]="'Gene Fusions'"></sd-variant-report-comparison-table-gf>
         <div *ngIf="hasAssignment(matchData)" id="assignment-details">
-          <app-assignment-reason-table [reasons]="matchData.assignmentReport.reasons"></app-assignment-reason-table>
+          <sd-assignment-reason-table [reasons]="matchData.assignmentReport.reasons"></sd-assignment-reason-table>
         </div>
-
         <p *ngIf="!hasAssignment(matchData)" class="empty-data-panel">No Confirmation Report Assignment data</p>
-
       </tab>
       <!-- #endregion Comparison Report Tab -->
-
     </tabset>
   </div>
-
 </div>

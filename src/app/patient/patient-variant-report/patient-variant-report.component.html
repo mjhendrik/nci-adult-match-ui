@@ -184,6 +184,10 @@
     <div class="text-center m-b-20" *ngIf="isAssignmentReportEditable && allowAssignmentReportEdit">
       <button class="btn btn-lime" (click)="confirmAssignmentReport()"><i class="fa fa-check"></i> Confirm Assignment</button>
     </div>
+    <div class="text-center m-b-20" *ngIf="isAssignmentReportEditable && allowAssignmentReportEdit">
+      <button class="btn btn-lime" (click)="confirmAssignmentReport()">
+        <i class="fa fa-check"></i> Confirm Assignment</button>
+    </div>
   </div>
 
   <div *ngIf="assignmentHistory && assignmentHistory.length > 1" id="assignment-history" class="panel panel-white panel-accent-sides-purple overflow-hidden">
