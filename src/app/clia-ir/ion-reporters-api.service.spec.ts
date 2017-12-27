@@ -12,6 +12,7 @@ import {
 } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { Observable } from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
 
 import { CliaApiServiceStub } from './testing/clia-api-service-stub';
 import { IonReportersApiService } from './ion-reporters-api.service';
@@ -34,7 +35,7 @@ export function main() {
 
     it('can instantiate service with "new"', inject([HttpClient], (http: HttpClient) => {
       expect(http).not.toBeNull('http should be provided');
-      let service = new IonReportersApiService(http);
+      const service = new IonReportersApiService(http);
       expect(service instanceof IonReportersApiService).toBe(true, 'new service should be ok');
     }));
 
@@ -53,7 +54,7 @@ export function main() {
         backend = be;
         service = new IonReportersApiService(http);
         fakeData = CliaApiServiceStub.makeCliaIonData();
-        let options = new ResponseOptions({ status: 200, body: fakeData });
+        const options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
       }));
 
@@ -77,7 +78,7 @@ export function main() {
       })));
 
       it('should be OK returning no items', async(inject([], () => {
-        let resp = new Response(new ResponseOptions({ status: 200, body: [] }));
+        const resp = new Response(new ResponseOptions({ status: 200, body: [] }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
         service.getCliaIon('mocha')
@@ -88,7 +89,7 @@ export function main() {
       })));
 
       it('should treat 404 as an Observable error', async(inject([], () => {
-        let resp = new Response(new ResponseOptions({ status: 404 }));
+        const resp = new Response(new ResponseOptions({ status: 404 }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
         service.getCliaIon('mocha')

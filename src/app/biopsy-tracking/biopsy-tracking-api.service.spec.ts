@@ -47,15 +47,15 @@ export function main() {
     describe('when Biopsy tracking data', () => {
       let backend: MockBackend;
       let service: BiopsyTrackingApiService;
-      let fakeBios: any[];
+      let fakeData: any[];
       let response: Response;
       let fakeCount: number;
 
       beforeEach(inject([HttpClient, XHRBackend], (http: HttpClient, be: MockBackend) => {
         backend = be;
         service = new BiopsyTrackingApiService(http);
-        fakeBios = PatientApiServiceStub.makeBiopsytrackingData();
-        const options = new ResponseOptions({ status: 200, body: fakeBios });
+        fakeData = PatientApiServiceStub.makeBiopsytrackingData();
+        const options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
         fakeCount = 10;
       }));
@@ -65,7 +65,7 @@ export function main() {
 
         service.getBiopsyTracking(1, 2, 'sortOrder', 'sortBy', 'filter').toPromise()
           .then(tracking => {
-            expect(tracking.length).toEqual(fakeBios.length);
+            expect(tracking.length).toEqual(fakeData.length);
           });
       })));
 
@@ -74,7 +74,7 @@ export function main() {
 
         service.getBiopsyCount('fake-search-terms').toPromise()
           .then(count => {
-            expect(count).toBe(fakeBios);
+            expect(count).toBe(fakeData.length);
           });
       })));
 
@@ -83,7 +83,7 @@ export function main() {
 
         service.getBiopsyTotal().toPromise()
           .then(count => {
-            expect(count).toBe(fakeBios);
+            expect(count).toBe(fakeData.length);
           });
       })));
 

@@ -51,7 +51,7 @@ import { ToastrService } from './shared/error-handling/toastr.service';
 import { ErrorPageHttpInterceptor } from './shared/error-handling/error-page-http.interceptor';
 
 export function main() {
-  let config: any[] = [
+  const config: any[] = [
     { path: 'dashboard', component: 'DashboardComponent' }
   ];
 
@@ -103,8 +103,6 @@ export function main() {
             },
             deps: [XHRBackend, RequestOptions, Router]
           },
-          AUTH_PROVIDERS,
-          Auth,
           AuthGuard,
           LoginGuard,
           ToastrService,
@@ -129,7 +127,7 @@ export function main() {
         expect(toastr).not.toBeNull('toastr should be provided');
         expect(router).not.toBeNull('router should be provided');
         expect(toastrService).not.toBeNull('toastrService should be provided');
-        let comp = new AppComponent(vcr, toastr, router, toastrService);
+        const comp = new AppComponent(vcr, toastr, router, toastrService);
         expect(comp instanceof AppComponent).toBe(true, 'new component should be ok');
       }
     ));

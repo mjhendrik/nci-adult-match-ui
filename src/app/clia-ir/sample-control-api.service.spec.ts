@@ -12,6 +12,7 @@ import {
 } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { Observable } from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
 
 import { CliaApiServiceStub } from './testing/clia-api-service-stub';
 import { SampleControlApiService } from './sample-control-api.service';
@@ -34,7 +35,7 @@ export function main() {
 
     it('can instantiate service with "new"', inject([HttpClient], (http: HttpClient) => {
       expect(http).not.toBeNull('http should be provided');
-      let service = new SampleControlApiService(http);
+      const service = new SampleControlApiService(http);
       expect(service instanceof SampleControlApiService).toBe(true, 'new service should be ok');
     }));
 
@@ -53,7 +54,7 @@ export function main() {
         backend = be;
         service = new SampleControlApiService(http);
         fakeData = CliaApiServiceStub.makeCliaDetailsNTCData();
-        let options = new ResponseOptions({ status: 200, body: fakeData });
+        const options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
       }));
 
@@ -77,7 +78,7 @@ export function main() {
       })));
 
       it('should be OK returning no items', async(inject([], () => {
-        let resp = new Response(new ResponseOptions({ status: 200, body: [] }));
+        const resp = new Response(new ResponseOptions({ status: 200, body: [] }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
         service.getCliaDetailsNTC('MoCha')
@@ -88,7 +89,7 @@ export function main() {
       })));
 
       it('should treat 404 as an Observable error', async(inject([], () => {
-        let resp = new Response(new ResponseOptions({ status: 404 }));
+        const resp = new Response(new ResponseOptions({ status: 404 }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
         service.getCliaDetailsNTC('MoCha')
@@ -116,7 +117,7 @@ export function main() {
         backend = be;
         service = new SampleControlApiService(http);
         fakeData = CliaApiServiceStub.makeCliaDetailsPACCData();
-        let options = new ResponseOptions({ status: 200, body: fakeData });
+        const options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
       }));
 
@@ -140,7 +141,7 @@ export function main() {
       })));
 
       it('should be OK returning no items', async(inject([], () => {
-        let resp = new Response(new ResponseOptions({ status: 200, body: [] }));
+        const resp = new Response(new ResponseOptions({ status: 200, body: [] }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
         service.getCliaDetailsPACC('MoCha')
@@ -151,7 +152,7 @@ export function main() {
       })));
 
       it('should treat 404 as an Observable error', async(inject([], () => {
-        let resp = new Response(new ResponseOptions({ status: 404 }));
+        const resp = new Response(new ResponseOptions({ status: 404 }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
         service.getCliaDetailsPACC('MoCha')
@@ -179,7 +180,7 @@ export function main() {
         backend = be;
         service = new SampleControlApiService(http);
         fakeData = CliaApiServiceStub.makeCliaDetailsPCData();
-        let options = new ResponseOptions({ status: 200, body: fakeData });
+        const options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
       }));
 
@@ -203,7 +204,7 @@ export function main() {
       })));
 
       it('should be OK returning no items', async(inject([], () => {
-        let resp = new Response(new ResponseOptions({ status: 200, body: [] }));
+        const resp = new Response(new ResponseOptions({ status: 200, body: [] }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
         service.getCliaDetailsPC('MoCha')
@@ -214,7 +215,7 @@ export function main() {
       })));
 
       it('should treat 404 as an Observable error', async(inject([], () => {
-        let resp = new Response(new ResponseOptions({ status: 404 }));
+        const resp = new Response(new ResponseOptions({ status: 404 }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
         service.getCliaDetailsPC('MoCha')

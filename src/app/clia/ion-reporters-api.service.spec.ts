@@ -12,6 +12,7 @@ import {
 } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { Observable } from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
 
 import { CliaApiServiceStub } from './testing/clia-api-service-stub';
 import { IonReportersApiService } from './ion-reporters-api.service';

@@ -5,7 +5,6 @@ import {
   inject
 } from '@angular/core/testing';
 import { Observable } from 'rxjs/Observable';
-import { TreatmentArmApiService } from './treatment-arm-api.service';
 import {
   HttpModule,
   Http,
@@ -15,6 +14,9 @@ import {
   BaseRequestOptions
 } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
+import { HttpClient } from '@angular/common/http';
+
+import { TreatmentArmApiService } from './treatment-arm-api.service';
 import { PatientApiServiceStub } from '../patient/testing/patient-api-service-stub';
 
 export function main() {
@@ -35,7 +37,7 @@ export function main() {
 
     it('can instantiate service with "new"', inject([HttpClient], (http: HttpClient) => {
       expect(http).not.toBeNull('http should be provided');
-      let service = new TreatmentArmApiService(http);
+      const service = new TreatmentArmApiService(http);
       expect(service instanceof TreatmentArmApiService).toBe(true, 'new service should be ok');
     }));
 
@@ -55,7 +57,7 @@ export function main() {
         backend = be;
         service = new TreatmentArmApiService(http);
         fakeTreatmenArms = PatientApiServiceStub.treatmentArmData();
-        let options = new ResponseOptions({ status: 200, body: fakeTreatmenArms });
+        const options = new ResponseOptions({ status: 200, body: fakeTreatmenArms });
         response = new Response(options);
         fakeCount = 10;
       }));
@@ -83,7 +85,7 @@ export function main() {
 
         service.getTreatmentArmVersions('EAY131-Q').toPromise()
           .then(arms => {
-            expect(arms[0].version).toBe("2016-05-31");
+            expect(arms[0].version).toBe('2016-05-31');
           });
       })));
 

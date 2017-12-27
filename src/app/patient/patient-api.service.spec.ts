@@ -12,6 +12,7 @@ import {
 } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { Observable } from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
 
 import { WindowStub } from './testing/window-stub';
 import { PatientApiServiceStub } from './testing/patient-api-service-stub';
@@ -336,7 +337,7 @@ export function main() {
       })));
 
       it('should be OK returning no fake outside assay comparison report', async(inject([], () => {
-        let resp = new Response(new ResponseOptions({ status: 200, body: {} }));
+        const resp = new Response(new ResponseOptions({ status: 200, body: {} }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
         service.getOutsideAssayComparisonVariantReport('fake-psn')
@@ -347,7 +348,7 @@ export function main() {
       })));
 
       it('should treat 404 as an Observable error', async(inject([], () => {
-        let resp = new Response(new ResponseOptions({ status: 404 }));
+        const resp = new Response(new ResponseOptions({ status: 404 }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
         service.getOutsideAssayComparisonVariantReport('fake-psn')
@@ -374,7 +375,7 @@ export function main() {
         backend = be;
         service = new PatientApiService(http);
         fakeData = PatientApiServiceStub.makeVariantReportQcData();
-        let options = new ResponseOptions({ status: 200, body: fakeData });
+        const options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
       }));
 
@@ -398,7 +399,7 @@ export function main() {
       })));
 
       it('should be OK returning no QC variant report', async(inject([], () => {
-        let resp = new Response(new ResponseOptions({ status: 200, body: {} }));
+        const resp = new Response(new ResponseOptions({ status: 200, body: {} }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
         service.getPatientVariantReportQc('fake-psn', 'fake-analysis-id')
@@ -409,7 +410,7 @@ export function main() {
       })));
 
       it('should treat 404 as an Observable error', async(inject([], () => {
-        let resp = new Response(new ResponseOptions({ status: 404 }));
+        const resp = new Response(new ResponseOptions({ status: 404 }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
         service.getPatientVariantReportQc('fake-psn', 'fake-analysis-id')
@@ -436,7 +437,7 @@ export function main() {
         backend = be;
         service = new PatientApiService(http);
         fakeData = PatientApiServiceStub.makePatientVariantReportOcpData();
-        let options = new ResponseOptions({ status: 200, body: fakeData });
+        const options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
       }));
 
@@ -460,7 +461,7 @@ export function main() {
       })));
 
       it('should be OK returning no OCP data', async(inject([], () => {
-        let resp = new Response(new ResponseOptions({ status: 200, body: {} }));
+        const resp = new Response(new ResponseOptions({ status: 200, body: {} }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
         service.getPatientVariantReportOcp('fake-psn', 'fake-analysis-id')
@@ -471,7 +472,7 @@ export function main() {
       })));
 
       it('should NOT treat 404 as an Observable error', async(inject([], () => {
-        let resp = new Response(new ResponseOptions({ status: 404 }));
+        const resp = new Response(new ResponseOptions({ status: 404 }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
         service.getPatientVariantReportOcp('fake-psn', 'fake-analysis-id')
@@ -498,7 +499,7 @@ export function main() {
         backend = be;
         service = new PatientApiService(http);
         fakeData = PatientApiServiceStub.makePatientCopyNumberReportData();
-        let options = new ResponseOptions({ status: 200, body: fakeData });
+        const options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
       }));
 
@@ -522,7 +523,7 @@ export function main() {
       })));
 
       it('should be OK returning no CNV data', async(inject([], () => {
-        let resp = new Response(new ResponseOptions({ status: 200, body: {} }));
+        const resp = new Response(new ResponseOptions({ status: 200, body: {} }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
         service.getPatientCopyNumberReport('fake-psn', 'fake-analysis-id')
@@ -533,7 +534,7 @@ export function main() {
       })));
 
       it('should NOT treat 404 as an Observable error', async(inject([], () => {
-        let resp = new Response(new ResponseOptions({ status: 404 }));
+        const resp = new Response(new ResponseOptions({ status: 404 }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
         service.getPatientCopyNumberReport('fake-psn', 'fake-analysis-id')
@@ -562,7 +563,7 @@ export function main() {
         backend = be;
         service = new PatientApiService(http);
         fakeData = PatientApiServiceStub.makePatientVariantReportFileInfoData();
-        let options = new ResponseOptions({ status: 200, body: fakeData });
+        const options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
       }));
 
@@ -586,7 +587,7 @@ export function main() {
       })));
 
       it('should be OK returning no file info data', async(inject([], () => {
-        let resp = new Response(new ResponseOptions({ status: 200, body: {} }));
+        const resp = new Response(new ResponseOptions({ status: 200, body: {} }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
         service.getPatientVariantReportFileInfo('fake-psn', 'fake-analysis-id')
@@ -597,7 +598,7 @@ export function main() {
       })));
 
       it('should treat 404 as an Observable error', async(inject([], () => {
-        let resp = new Response(new ResponseOptions({ status: 404 }));
+        const resp = new Response(new ResponseOptions({ status: 404 }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
         service.getPatientVariantReportFileInfo('fake-psn', 'fake-analysis-id')
@@ -630,7 +631,7 @@ export function main() {
         fakeErrorData = {
           message: 'fake-error',
         };
-        let options = new ResponseOptions({ status: 200, body: fakeData });
+        const options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
       }));
 
@@ -643,12 +644,12 @@ export function main() {
             switch (resp.kind) {
               case 'error':
                 expect(resp.kind).toBe('error');
-                let errorRes = resp as ApiError;
+                const errorRes = resp as ApiError;
                 expect(errorRes.message).toBe(fakeErrorData.message);
                 break;
               case 'success':
                 expect(resp.kind).toBe('success');
-                let successRes = resp as ApiSuccess;
+                const successRes = resp as ApiSuccess;
                 expect(successRes.data.download_url).toBe(fakeData.download_url);
                 break;
             }
@@ -661,7 +662,7 @@ export function main() {
         service.downloadPatientFile('fake-psn', 'fake-url')
           .do(resp => {
             expect(resp.kind).toBe('success');
-            let successRes = resp as ApiSuccess;
+            const successRes = resp as ApiSuccess;
             expect(successRes.data.download_url).toBe(fakeData.download_url);
           })
           .toPromise();
@@ -673,7 +674,7 @@ export function main() {
         service.downloadPatientFile('fake-psn', 'fake-url')
           .do(resp => {
             expect(resp.kind).toBe('error');
-            let errorRes = resp as ApiError;
+            const errorRes = resp as ApiError;
             console.log(errorRes);
             expect(errorRes.message).toEqual(fakeErrorData.message);
           })
@@ -701,7 +702,7 @@ export function main() {
         fakeErrorData = {
           message: 'fake-error',
         };
-        let options = new ResponseOptions({ status: 200, body: fakeData });
+        const options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
       }));
 
@@ -714,12 +715,12 @@ export function main() {
             switch (resp.kind) {
               case 'error':
                 expect(resp.kind).toBe('error');
-                let errorRes = resp as ApiStatusUpdateError;
+                const errorRes = resp as ApiStatusUpdateError;
                 expect(errorRes.message).toBe(fakeErrorData.message);
                 break;
               case 'success':
                 expect(resp.kind).toBe('success');
-                let successRes = resp as ApiStatusUpdateSuccess;
+                const successRes = resp as ApiStatusUpdateSuccess;
                 expect(successRes.commenter).toBe(fakeData.commenter);
                 break;
             }
@@ -732,7 +733,7 @@ export function main() {
         service.updateVariantReportStatus('fake-psn', 'fake-bsn', 'fake-analysis-id', true)
           .do(resp => {
             expect(resp.kind).toBe('success');
-            let successRes = resp as ApiStatusUpdateSuccess;
+            const successRes = resp as ApiStatusUpdateSuccess;
             expect(successRes.commenter).toBe(fakeData.commenter);
           })
           .toPromise();
@@ -744,7 +745,7 @@ export function main() {
         service.updateVariantReportStatus('fake-psn', 'fake-bsn', 'fake-analysis-id', true)
           .do(resp => {
             expect(resp.kind).toBe('error');
-            let errorRes = resp as ApiStatusUpdateError;
+            const errorRes = resp as ApiStatusUpdateError;
             expect(errorRes.message).toEqual(fakeErrorData.message);
           })
           .toPromise();
@@ -771,7 +772,7 @@ export function main() {
         fakeErrorData = {
           message: 'fake-error',
         };
-        let options = new ResponseOptions({ status: 200, body: fakeData });
+        const options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
       }));
 
@@ -784,12 +785,12 @@ export function main() {
             switch (resp.kind) {
               case 'error':
                 expect(resp.kind).toBe('error');
-                let errorRes = resp as ApiStatusUpdateError;
+                const errorRes = resp as ApiStatusUpdateError;
                 expect(errorRes.message).toBe(fakeErrorData.message);
                 break;
               case 'success':
                 expect(resp.kind).toBe('success');
-                let successRes = resp as ApiStatusUpdateSuccess;
+                const successRes = resp as ApiStatusUpdateSuccess;
                 expect(successRes.commenter).toBe(fakeData.commenter);
                 break;
             }
@@ -802,7 +803,7 @@ export function main() {
         service.updateVariant('fake-psn', 'fake-bsn', 'fake-analysis-id', 'fake-variant-id', true, 'fake-comment')
           .do(resp => {
             expect(resp.kind).toBe('success');
-            let successRes = resp as ApiStatusUpdateSuccess;
+            const successRes = resp as ApiStatusUpdateSuccess;
             expect(successRes.commenter).toBe(fakeData.commenter);
           })
           .toPromise();
@@ -814,7 +815,7 @@ export function main() {
         service.updateVariant('fake-psn', 'fake-bsn', 'fake-analysis-id', 'fake-variant-id', true, 'fake-comment')
           .do(resp => {
             expect(resp.kind).toBe('error');
-            let errorRes = resp as ApiStatusUpdateError;
+            const errorRes = resp as ApiStatusUpdateError;
             expect(errorRes.message).toEqual(fakeErrorData.message);
           })
           .toPromise();
@@ -841,7 +842,7 @@ export function main() {
         fakeErrorData = {
           message: 'fake-error',
         };
-        let options = new ResponseOptions({ status: 200, body: fakeData });
+        const options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
       }));
 
@@ -854,12 +855,12 @@ export function main() {
             switch (resp.kind) {
               case 'error':
                 expect(resp.kind).toBe('error');
-                let errorRes = resp as ApiStatusUpdateError;
+                const errorRes = resp as ApiStatusUpdateError;
                 expect(errorRes.message).toBe(fakeErrorData.message);
                 break;
               case 'success':
                 expect(resp.kind).toBe('success');
-                let successRes = resp as ApiStatusUpdateSuccess;
+                const successRes = resp as ApiStatusUpdateSuccess;
                 expect(successRes.commenter).toBe(fakeData.commenter);
                 break;
             }
@@ -872,7 +873,7 @@ export function main() {
         service.updateAssignmentReport('fake-psn', true)
           .do(resp => {
             expect(resp.kind).toBe('success');
-            let successRes = resp as ApiStatusUpdateSuccess;
+            const successRes = resp as ApiStatusUpdateSuccess;
             expect(successRes.commenter).toBe(fakeData.commenter);
           })
           .toPromise();
@@ -884,7 +885,7 @@ export function main() {
         service.updateAssignmentReport('fake-psn', true)
           .do(resp => {
             expect(resp.kind).toBe('error');
-            let errorRes = resp as ApiStatusUpdateError;
+            const errorRes = resp as ApiStatusUpdateError;
             expect(errorRes.message).toEqual(fakeErrorData.message);
           })
           .toPromise();
@@ -903,7 +904,7 @@ export function main() {
         backend = be;
         service = new PatientApiService(http);
         fakePatient = PatientApiServiceStub.makePendingAssignmentReports();
-        let options = new ResponseOptions({ status: 200, body: fakePatient });
+        const options = new ResponseOptions({ status: 200, body: fakePatient });
         response = new Response(options);
       }));
 
@@ -927,7 +928,7 @@ export function main() {
       })));
 
       it('should be OK returning no patient details', async(inject([], () => {
-        let resp = new Response(new ResponseOptions({ status: 200, body: {} }));
+        const resp = new Response(new ResponseOptions({ status: 200, body: {} }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
         service.getPendingAssignmentReports()
@@ -964,7 +965,7 @@ export function main() {
         backend = be;
         service = new PatientApiService(http);
         fakePatient = PatientApiServiceStub.makePendingVariantReports();
-        let options = new ResponseOptions({ status: 200, body: fakePatient });
+        const options = new ResponseOptions({ status: 200, body: fakePatient });
         response = new Response(options);
       }));
 
@@ -988,7 +989,7 @@ export function main() {
       })));
 
       it('should be OK returning no patient details', async(inject([], () => {
-        let resp = new Response(new ResponseOptions({ status: 200, body: {} }));
+        const resp = new Response(new ResponseOptions({ status: 200, body: {} }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
         service.getPendingVariantReports()
@@ -1025,7 +1026,7 @@ export function main() {
         backend = be;
         service = new PatientApiService(http);
         fakePatient = PatientApiServiceStub.makePatientsAwaiting();
-        let options = new ResponseOptions({ status: 200, body: fakePatient });
+        const options = new ResponseOptions({ status: 200, body: fakePatient });
         response = new Response(options);
       }));
 
@@ -1049,7 +1050,7 @@ export function main() {
       })));
 
       it('should be OK returning no patient details', async(inject([], () => {
-        let resp = new Response(new ResponseOptions({ status: 200, body: {} }));
+        const resp = new Response(new ResponseOptions({ status: 200, body: {} }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
         service.getPatientsAwaiting()
@@ -1086,7 +1087,7 @@ export function main() {
         backend = be;
         service = new PatientApiService(http);
         fakePatient = PatientApiServiceStub.makeOverviewPatients();
-        let options = new ResponseOptions({ status: 200, body: fakePatient });
+        const options = new ResponseOptions({ status: 200, body: fakePatient });
         response = new Response(options);
       }));
 
@@ -1110,7 +1111,7 @@ export function main() {
       })));
 
       it('should be OK returning no patient details', async(inject([], () => {
-        let resp = new Response(new ResponseOptions({ status: 200, body: {} }));
+        const resp = new Response(new ResponseOptions({ status: 200, body: {} }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
         service.getOverviewPatients()
@@ -1147,7 +1148,7 @@ export function main() {
         backend = be;
         service = new PatientApiService(http);
         fakePatient = PatientApiServiceStub.makeOverviewBt();
-        let options = new ResponseOptions({ status: 200, body: fakePatient });
+        const options = new ResponseOptions({ status: 200, body: fakePatient });
         response = new Response(options);
       }));
 
@@ -1171,7 +1172,7 @@ export function main() {
       })));
 
       it('should be OK returning no patient details', async(inject([], () => {
-        let resp = new Response(new ResponseOptions({ status: 200, body: {} }));
+        const resp = new Response(new ResponseOptions({ status: 200, body: {} }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
         service.getOverviewBt()
