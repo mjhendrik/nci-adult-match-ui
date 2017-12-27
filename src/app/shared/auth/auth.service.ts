@@ -1,220 +1,107 @@
+// src/app/auth/auth.service.ts
 import { Injectable } from '@angular/core';
-import { Router, NavigationStart } from '@angular/router';
-import 'rxjs/add/operator/filter';
-import Auth0Lock from 'auth0-lock';
-import * as auth0 from 'auth0-js';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-
-import { AUTH_CONFIG } from './auth-config';
-import { environment } from '../../../environments/environment';
+import { AUTH_CONFIG } from './auth.config';
+import * as auth0 from 'auth0-js';
 
 @Injectable()
 export class AuthService {
-  auth0Options = {
-    theme: {
-      logo: 'assets/svg/nci-logo-full.svg',
-      primaryColor: '#2d8ca9' // dark-info-color of the theme
-    },
-    auth: {
-      redirectUrl: environment.auth0.callbackURL,
-      redirect: false,
-      responseType: 'token id_token',
-      // audience: `https://${environment.auth0.domain}/userinfo`,
-      params: {
-        scope: 'openid name email roles'
-      }
-    },
-    // autoclose: true,
-    // oidcConformant: true,
-  };
-
-  lock = new Auth0Lock(
-    environment.auth0.clientId,
-    environment.auth0.domain,
-    this.auth0Options
-  );
+  // Create Auth0 web auth instance
+  private _auth0 = new auth0.WebAuth({
+    clientID: AUTH_CONFIG.CLIENT_ID,
+    domain: AUTH_CONFIG.CLIENT_DOMAIN,
+    responseType: 'token id_token',
+    redirectUri: AUTH_CONFIG.REDIRECT,
+    audience: AUTH_CONFIG.AUDIENCE,
+    scope: AUTH_CONFIG.SCOPE
+  });
 
   userProfile: any;
+  // Create a stream of logged-in status to communicate throughout app
   isLoggedIn: boolean;
   loggedIn = new BehaviorSubject<boolean>(this.isLoggedIn);
 
   constructor(private router: Router) {
-    // Add callback for lock `authenticated` event
-    this.lock.on('authenticated', (authResult: any) => {
-      localStorage.setItem('id_token', authResult.idToken);
+    // If authenticated, set local profile property
+    // and update login status subject.
+    // If not authenticated but there are still items
+    // in localStorage, log out.
+    const lsProfile = localStorage.getItem('profile');
 
-      this.lock.getProfile(authResult.idToken, (error: any, profile: any) => {
-        if (error) {
-          // Handle error
-          alert(error);
-          return;
-        }
-
-        localStorage.setItem('profile', JSON.stringify(profile));
-        this.userProfile = profile;
-        this.setLoggedIn(true);
-      });
-
-      this.router.navigate(['dashboard']);
-    });
-
-    this.lock.on('authorization_error', error => {
-      console.log('something went wrong', error);
-    });
-  }
-
-  login() {
-    this.lock.show();
-  }
-
-  logout() {
-    // Remove tokens and profile and update login status subject
-    localStorage.removeItem('id_token');
-    localStorage.removeItem('profile');
-    this.userProfile = undefined;
-    this.setLoggedIn(false);
-    // Go back to the home route
-    this.router.navigate(['/login']);
-  }
-
-  public get authenticated(): boolean {
-    return tokenNotExpired();
+    if (this.tokenValid) {
+      this.userProfile = JSON.parse(lsProfile);
+      this.setLoggedIn(true);
+    } else if (!this.tokenValid && lsProfile) {
+      this.logout();
+    }
   }
 
   setLoggedIn(value: boolean) {
-    this.isLoggedIn = value;
+    // Update login status subject
     this.loggedIn.next(value);
+    this.isLoggedIn = value;
   }
 
-  // // Create Auth0 web auth instance
-  // auth0 = new auth0.WebAuth({
-  //   clientID: AUTH_CONFIG.CLIENT_ID,
-  //   domain: AUTH_CONFIG.CLIENT_DOMAIN,
-  //   responseType: 'token id_token',
-  //   redirectUri: AUTH_CONFIG.REDIRECT,
-  //   audience: AUTH_CONFIG.AUDIENCE,
-  //   scope: AUTH_CONFIG.SCOPE
-  // });
+  login() {
+    // Auth0 authorize request
+    this._auth0.authorize();
+  }
 
-  // lock = new Auth0Lock(AUTH_CONFIG.CLIENT_ID, AUTH_CONFIG.CLIENT_DOMAIN, {
-  //   autoclose: true,
-  //   theme: {
-  //     logo: 'assets/svg/nci-logo-full.svg',
-  //     primaryColor: '#2d8ca9' // dark-info-color of the theme
-  //   },
-  //   languageDictionary: {
-  //     title: 'NCI-MATCH'
-  //   },
-  //   auth: {
-  //     redirectUrl: AUTH_CONFIG.REDIRECT,
-  //     responseType: 'token id_token',
-  //     audience: `https://${AUTH_CONFIG.CLIENT_DOMAIN}/userinfo`,
-  //     params: {
-  //       scope: 'openid name'
-  //     }
-  //   }
-  // });
+  handleAuth() {
+    // When Auth0 hash parsed, get profile
+    this._auth0.parseHash((err, authResult) => {
+      if (authResult && authResult.accessToken && authResult.idToken) {
+        window.location.hash = '';
+        this._getProfile(authResult);
+      } else if (err) {
+        console.error(`Error authenticating: ${err.error}`);
+      }
+      this.router.navigate(['/login']);
+    });
+  }
 
-  // userProfile: any;
-  // isLoggedIn: boolean;
-  // loggedIn = new BehaviorSubject<boolean>(this.isLoggedIn);
+  private _getProfile(authResult) {
+    // Use access token to retrieve user's profile and set session
+    this._auth0.client.userInfo(authResult.accessToken, (err, profile) => {
+      if (profile) {
+        this._setSession(authResult, profile);
+      } else if (err) {
+        console.error(`Error authenticating: ${err.error}`);
+      }
+    });
+  }
 
-  // constructor(private router: Router) {
-  //   // If authenticated, set local profile property and update login status subject
-  //   // If token is expired, log out to clear any data from localStorage
-  //   if (this.authenticated) {
-  //     this.userProfile = JSON.parse(localStorage.getItem('profile'));
-  //     this.setLoggedIn(true);
-  //   } else {
-  //     this.logout();
-  //   }
-  // }
+  private _setSession(authResult, profile) {
+    // Save session data and update login status subject
+    const expiresAt = JSON.stringify((authResult.expiresIn * 1000) + Date.now());
+    // Set tokens and expiration in localStorage and props
+    localStorage.setItem('access_token', authResult.accessToken);
+    localStorage.setItem('id_token', authResult.idToken);
+    localStorage.setItem('expires_at', expiresAt);
+    localStorage.setItem('profile', JSON.stringify(profile));
+    this.userProfile = profile;
+    // Update login status in loggedIn$ stream
+    this.setLoggedIn(true);
+  }
 
-  // setLoggedIn(value: boolean) {
-  //   // Update login status subject
-  //   this.loggedIn.next(value);
-  //   this.isLoggedIn = value;
-  // }
+  logout() {
+    // Ensure all auth items removed from localStorage
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('id_token');
+    localStorage.removeItem('profile');
+    localStorage.removeItem('expires_at');
+    localStorage.removeItem('authRedirect');
+    // Reset local properties, update loggedIn$ stream
+    this.userProfile = undefined;
+    this.setLoggedIn(false);
+    // Return to login page
+    this.router.navigate(['/login']);
+  }
 
-  // public login(): void {
-  //   this.lock.show();
-  // }
-
-  // // Call this method in app.component.ts
-  // // if using path-based routing
-  // public handleAuthentication(): void {
-  //   this.lock.on('authenticated', (authResult) => {
-  //     if (authResult && authResult.accessToken && authResult.idToken) {
-  //       this.getProfile(authResult);
-  //       this.router.navigate(['/dashboard']);
-  //     }
-  //   });
-  //   this.lock.on('authorization_error', (err) => {
-  //     this.router.navigate(['/login']);
-  //     console.log(err);
-  //     alert(`Error: ${err.error}. Check the console for further details.`);
-  //   });
-  // }
-
-  // // Call this method in app.component.ts
-  // // if using hash-based routing
-  // public handleAuthenticationWithHash(): void {
-  //   this
-  //     .router
-  //     .events
-  //     .filter(event => event instanceof NavigationStart)
-  //     .filter((event: NavigationStart) => (/access_token|id_token|error/).test(event.url))
-  //     .subscribe(() => {
-  //       this.lock.resumeAuth(window.location.hash, (err, authResult) => {
-  //         if (err) {
-  //           this.router.navigate(['/login']);
-  //           console.log(err);
-  //           alert(`Error: ${err.error}. Check the console for further details.`);
-  //           return;
-  //         }
-  //         this.getProfile(authResult);
-  //         this.router.navigate(['/login']);
-  //       });
-  //     });
-  // }
-
-  // private getProfile(authResult) {
-  //   this.lock.getProfile(authResult.idToken, (error: any, profile: any) => {
-  //     if (error) {
-  //       // Handle error
-  //       alert(error);
-  //       return;
-  //     }
-  //     this.setSession(authResult, profile);
-  //   });
-  // }
-
-  // private setSession(authResult, profile): void {
-  //   const expTime = authResult.expiresIn * 1000 + Date.now();
-  //   localStorage.setItem('token', authResult.accessToken);
-  //   localStorage.setItem('id_token', authResult.idToken);
-  //   localStorage.setItem('profile', JSON.stringify(profile));
-  //   localStorage.setItem('expires_at', JSON.stringify(expTime));
-  //   this.userProfile = profile;
-  //   this.setLoggedIn(true);
-  // }
-
-  // public logout(): void {
-  //   // Remove tokens and profile and update login status subject
-  //   localStorage.removeItem('token');
-  //   localStorage.removeItem('id_token');
-  //   localStorage.removeItem('profile');
-  //   localStorage.removeItem('expires_at');
-  //   this.userProfile = undefined;
-  //   this.setLoggedIn(false);
-  //   // Go back to the home route
-  //   this.router.navigate(['/login']);
-  // }
-
-  // public get authenticated(): boolean {
-  //   // Check whether the current time is past the
-  //   // access token's expiry time
-  //   const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
-  //   return new Date().getTime() < expiresAt;
-  // }
+  get tokenValid(): boolean {
+    // Check if current time is past access token's expiration
+    const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
+    return Date.now() < expiresAt;
+  }
 }
