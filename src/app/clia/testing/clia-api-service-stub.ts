@@ -3,7 +3,8 @@ import { Observable } from 'rxjs/Observable';
 import {
     CliaVariantReportsNTCViewData,
     CliaVariantReportsPACCViewData,
-    CliaVariantReportsPCViewData
+    CliaVariantReportsPCViewData,
+    CliaVariantReportsQCViewData
 } from '../clia-data-interfaces';
 
 export class CliaApiServiceStub {
@@ -21,12 +22,29 @@ export class CliaApiServiceStub {
         { value1: '4', value2: '1.1' }
     ] as any[]
 
-    static makeCliaDetailsPCData = () => [
-        { value1: '1', value2: '1.1' },
-        { value1: '2', value2: '1.1' },
-        { value1: '3', value2: '1.1' },
-        { value1: '4', value2: '1.1' }
-    ] as any[]
+    static makeCliaDetailsPCData = () => {
+        const data = {
+            molecular_id: {},
+            analysis_id: {},
+            total_variants: {},
+            mapd: {},
+            cellularity: {},
+            torrent_variant_caller_version: {},
+            oncomine_control_panel_summary: {},
+            copy_number_variants: [],
+            gene_fusions: [],
+            snv_indels: [],
+            copy_number_variant_genes: [],
+            parsed_vcf_genes: {},
+            file_name: {},
+            body: {},
+            statusCode: '',
+            header: {},
+            parsedVCFGenes: [],
+            tvcVersion: []
+        };
+        return data as CliaVariantReportsQCViewData;
+    }
 
     static makeCliaVariantReportQCData = () => [
         { value1: '1', value2: '1.1' },
