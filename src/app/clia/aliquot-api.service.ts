@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
 
 import { Config } from '../shared/config/env.config';
 import { ApiService } from '../shared/api/api.service';
@@ -22,7 +23,7 @@ export class AliquotApiService extends ApiService {
   // protected get baseApiUrl(): string { return Config.API.ALIQUOT; } // sample control
   protected get baseApiUrl(): string { return Config.API.MESSAGE; } // message
 
-  constructor(http: AuthHttp) {
+  constructor(http: HttpClient) {
     super(http);
   }
 

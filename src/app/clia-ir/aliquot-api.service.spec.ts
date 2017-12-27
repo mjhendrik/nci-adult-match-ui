@@ -37,7 +37,7 @@ export function main() {
       expect(backend).not.toBeNull('backend should be provided');
     }));
 
-    it('can instantiate service with "new"', inject([AuthHttp], (http: AuthHttp) => {
+    it('can instantiate service with "new"', inject([HttpClient], (http: HttpClient) => {
       expect(http).not.toBeNull('http should be provided');
       let service = new AliquotApiService(http);
       expect(service instanceof AliquotApiService).toBe(true, 'new service should be ok');
@@ -54,7 +54,7 @@ export function main() {
       let fakeData: CliaVariantReportsNTCViewData;
       let response: Response;
 
-      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
+      beforeEach(inject([HttpClient, XHRBackend], (http: HttpClient, be: MockBackend) => {
         backend = be;
         service = new AliquotApiService(http);
         fakeData = CliaApiServiceStub.makeCliaVariantReportsNTCData();
@@ -115,7 +115,7 @@ export function main() {
       let fakeData: CliaVariantReportsPACCViewData;
       let response: Response;
 
-      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
+      beforeEach(inject([HttpClient, XHRBackend], (http: HttpClient, be: MockBackend) => {
         backend = be;
         service = new AliquotApiService(http);
         fakeData = CliaApiServiceStub.makeCliaVariantReportsPACCData();
@@ -175,7 +175,7 @@ export function main() {
       let fakeData: CliaVariantReportsPCViewData;
       let response: Response;
 
-      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
+      beforeEach(inject([HttpClient, XHRBackend], (http: HttpClient, be: MockBackend) => {
         backend = be;
         service = new AliquotApiService(http);
         fakeData = CliaApiServiceStub.makeCliaVariantReportsPCData();

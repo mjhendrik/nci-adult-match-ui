@@ -32,7 +32,7 @@ export function main() {
       expect(backend).not.toBeNull('backend should be provided');
     }));
 
-    it('can instantiate service with "new"', inject([AuthHttp], (http: AuthHttp) => {
+    it('can instantiate service with "new"', inject([HttpClient], (http: HttpClient) => {
       expect(http).not.toBeNull('http should be provided');
       let service = new IonReportersApiService(http);
       expect(service instanceof IonReportersApiService).toBe(true, 'new service should be ok');
@@ -49,7 +49,7 @@ export function main() {
       let fakeData: any[];
       let response: Response;
 
-      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
+      beforeEach(inject([HttpClient, XHRBackend], (http: HttpClient, be: MockBackend) => {
         backend = be;
         service = new IonReportersApiService(http);
         fakeData = CliaApiServiceStub.makeCliaIonData();

@@ -19,6 +19,7 @@ import {
   MockConnection
 } from '@angular/http/testing';
 import { PatientApiServiceStub } from '../patient/testing/patient-api-service-stub';
+import { HttpClient } from '@angular/common/http';
 
 export function main() {
   describe('BiopsyTrackingApiService (mockBackend)', () => {
@@ -33,9 +34,9 @@ export function main() {
       });
     }));
 
-    it('can instantiate service with "new"', inject([AuthHttp], (http: AuthHttp) => {
+    it('can instantiate service with "new"', inject([HttpClient], (http: HttpClient) => {
       expect(http).not.toBeNull('http should be provided');
-      let service = new BiopsyTrackingApiService(http);
+      const service = new BiopsyTrackingApiService(http);
       expect(service instanceof BiopsyTrackingApiService).toBe(true, 'new service should be ok');
     }));
 
@@ -50,11 +51,11 @@ export function main() {
       let response: Response;
       let fakeCount: number;
 
-      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
+      beforeEach(inject([HttpClient, XHRBackend], (http: HttpClient, be: MockBackend) => {
         backend = be;
         service = new BiopsyTrackingApiService(http);
         fakeBios = PatientApiServiceStub.makeBiopsytrackingData();
-        let options = new ResponseOptions({ status: 200, body: fakeBios });
+        const options = new ResponseOptions({ status: 200, body: fakeBios });
         response = new Response(options);
         fakeCount = 10;
       }));
@@ -87,7 +88,7 @@ export function main() {
       })));
 
       xit('should treat 404 as an Observable error', async(inject([], () => {
-        let resp = new Response(new ResponseOptions({ status: 404 }));
+        const resp = new Response(new ResponseOptions({ status: 404 }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
         service.getBiopsyTracking(1, 2, 'sortOrder', 'sortBy', 'filter')

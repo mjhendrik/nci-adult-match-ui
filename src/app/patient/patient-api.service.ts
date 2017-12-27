@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
 
 import { Config } from '../shared/config/env.config';
 import { ApiService } from '../shared/api/api.service';
@@ -36,12 +37,7 @@ export interface ApiStatusUpdateSuccess {
 export class PatientApiService extends ApiService {
   protected get baseApiUrl(): string { return Config.API.PATIENT; }
 
-  /**
-   * Creates a new PatientApiService with the injected AuthHttp.
-   * @param {AuthHttp} http - The injected AuthHttp.
-   * @constructor
-   */
-  constructor(http: AuthHttp) {
+  constructor(http: HttpClient) {
     super(http);
   }
 

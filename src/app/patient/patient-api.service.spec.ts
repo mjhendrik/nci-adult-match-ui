@@ -42,7 +42,7 @@ export function main() {
         expect(backend).not.toBeNull('backend should be provided');
       }));
 
-    it('can instantiate service with "new"', inject([AuthHttp], (http: AuthHttp) => {
+    it('can instantiate service with "new"', inject([HttpClient], (http: HttpClient) => {
       expect(http).not.toBeNull('http should be provided');
       let service = new PatientApiService(http);
       expect(service instanceof PatientApiService).toBe(true, 'new service should be ok');
@@ -59,7 +59,7 @@ export function main() {
       let fakePatients: any[];
       let response: Response;
 
-      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
+      beforeEach(inject([HttpClient, XHRBackend], (http: HttpClient, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http);
         fakePatients = PatientApiServiceStub.makePatientListData();
@@ -122,7 +122,7 @@ export function main() {
       let fakeCount: number;
       let response: Response;
 
-      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
+      beforeEach(inject([HttpClient, XHRBackend], (http: HttpClient, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http);
         fakeCount = 4;
@@ -184,7 +184,7 @@ export function main() {
       let fakeCount: number;
       let response: Response;
 
-      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
+      beforeEach(inject([HttpClient, XHRBackend], (http: HttpClient, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http);
         fakeCount = 4;
@@ -246,7 +246,7 @@ export function main() {
       let fakePatient: any;
       let response: Response;
 
-      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
+      beforeEach(inject([HttpClient, XHRBackend], (http: HttpClient, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http);
         fakePatient = PatientApiServiceStub.makePatientData();
@@ -308,7 +308,7 @@ export function main() {
       let fakeData: VariantReportComparisonData;
       let response: Response;
 
-      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
+      beforeEach(inject([HttpClient, XHRBackend], (http: HttpClient, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http);
         fakeData = PatientApiServiceStub.makeOutsideAssayComparisonVariantReportData();
@@ -370,7 +370,7 @@ export function main() {
       let fakeData: any;
       let response: Response;
 
-      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
+      beforeEach(inject([HttpClient, XHRBackend], (http: HttpClient, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http);
         fakeData = PatientApiServiceStub.makeVariantReportQcData();
@@ -432,7 +432,7 @@ export function main() {
       let fakeData: any;
       let response: Response;
 
-      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
+      beforeEach(inject([HttpClient, XHRBackend], (http: HttpClient, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http);
         fakeData = PatientApiServiceStub.makePatientVariantReportOcpData();
@@ -494,7 +494,7 @@ export function main() {
       let fakeData: any;
       let response: Response;
 
-      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
+      beforeEach(inject([HttpClient, XHRBackend], (http: HttpClient, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http);
         fakeData = PatientApiServiceStub.makePatientCopyNumberReportData();
@@ -558,7 +558,7 @@ export function main() {
       let fakeData: any;
       let response: Response;
 
-      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
+      beforeEach(inject([HttpClient, XHRBackend], (http: HttpClient, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http);
         fakeData = PatientApiServiceStub.makePatientVariantReportFileInfoData();
@@ -621,7 +621,7 @@ export function main() {
       let fakeErrorData: any;
       let response: Response;
 
-      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
+      beforeEach(inject([HttpClient, XHRBackend], (http: HttpClient, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http);
         fakeData = {
@@ -690,7 +690,7 @@ export function main() {
       let fakeErrorData: any;
       let response: Response;
 
-      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
+      beforeEach(inject([HttpClient, XHRBackend], (http: HttpClient, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http);
         fakeData = {
@@ -760,7 +760,7 @@ export function main() {
       let fakeErrorData: any;
       let response: Response;
 
-      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
+      beforeEach(inject([HttpClient, XHRBackend], (http: HttpClient, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http);
         fakeData = {
@@ -830,7 +830,7 @@ export function main() {
       let fakeErrorData: any;
       let response: Response;
 
-      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
+      beforeEach(inject([HttpClient, XHRBackend], (http: HttpClient, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http);
         fakeData = {
@@ -899,7 +899,7 @@ export function main() {
       let fakePatient: any;
       let response: Response;
 
-      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
+      beforeEach(inject([HttpClient, XHRBackend], (http: HttpClient, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http);
         fakePatient = PatientApiServiceStub.makePendingAssignmentReports();
@@ -960,7 +960,7 @@ export function main() {
       let fakePatient: any;
       let response: Response;
 
-      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
+      beforeEach(inject([HttpClient, XHRBackend], (http: HttpClient, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http);
         fakePatient = PatientApiServiceStub.makePendingVariantReports();
@@ -1021,7 +1021,7 @@ export function main() {
       let fakePatient: any;
       let response: Response;
 
-      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
+      beforeEach(inject([HttpClient, XHRBackend], (http: HttpClient, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http);
         fakePatient = PatientApiServiceStub.makePatientsAwaiting();
@@ -1082,7 +1082,7 @@ export function main() {
       let fakePatient: any;
       let response: Response;
 
-      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
+      beforeEach(inject([HttpClient, XHRBackend], (http: HttpClient, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http);
         fakePatient = PatientApiServiceStub.makeOverviewPatients();
@@ -1143,7 +1143,7 @@ export function main() {
       let fakePatient: any;
       let response: Response;
 
-      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
+      beforeEach(inject([HttpClient, XHRBackend], (http: HttpClient, be: MockBackend) => {
         backend = be;
         service = new PatientApiService(http);
         fakePatient = PatientApiServiceStub.makeOverviewBt();

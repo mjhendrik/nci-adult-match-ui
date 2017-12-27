@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Response,RequestOptions,Headers } from '@angular/http';
+import { Response, RequestOptions, Headers } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 
 import { Config } from '../shared/config/env.config';
 import { ApiService } from '../shared/api/api.service';
@@ -37,7 +38,7 @@ export class SampleControlApiService extends ApiService {
   // protected get baseApiUrl(): string { return Config.API.SAMPLE_CONTROLS; } // sample control
   protected get baseApiUrl(): string { return Config.API.MESSAGE; } // message
 
-  constructor(http: AuthHttp) {
+  constructor(http: HttpClient) {
     super(http);
   }
 
@@ -162,8 +163,8 @@ export class SampleControlApiService extends ApiService {
         }
         return Observable.of({ kind: 'error', message: message } as ApiError);
       });
-      // .map(this.extractData)
-      // .catch(this.handleError);
+    // .map(this.extractData)
+    // .catch(this.handleError);
   }
 
   confirmReport(molecular_id: string, type: string): Observable<any> {

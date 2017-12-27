@@ -33,7 +33,7 @@ export function main() {
       });
     }));
 
-    it('can instantiate service with "new"', inject([AuthHttp], (http: AuthHttp) => {
+    it('can instantiate service with "new"', inject([HttpClient], (http: HttpClient) => {
       expect(http).not.toBeNull('http should be provided');
       let service = new TreatmentArmApiService(http);
       expect(service instanceof TreatmentArmApiService).toBe(true, 'new service should be ok');
@@ -51,7 +51,7 @@ export function main() {
       let fakeCount: number;
       let arms:any;
 
-      beforeEach(inject([AuthHttp, XHRBackend], (http: AuthHttp, be: MockBackend) => {
+      beforeEach(inject([HttpClient, XHRBackend], (http: HttpClient, be: MockBackend) => {
         backend = be;
         service = new TreatmentArmApiService(http);
         fakeTreatmenArms = PatientApiServiceStub.treatmentArmData();
