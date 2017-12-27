@@ -8,7 +8,7 @@ import * as auth0 from 'auth0-js';
 @Injectable()
 export class AuthService {
   // Create Auth0 web auth instance
-  private _auth0 = new auth0.WebAuth({
+  private auth = new auth0.WebAuth({
     clientID: AUTH_CONFIG.CLIENT_ID,
     domain: AUTH_CONFIG.CLIENT_DOMAIN,
     responseType: 'token id_token',
@@ -29,10 +29,10 @@ export class AuthService {
     // in localStorage, log out.
     const lsProfile = localStorage.getItem('profile');
 
-    if (this.tokenValid) {
+    if (this.isLoggedIn) {
       this.userProfile = JSON.parse(lsProfile);
       this.setLoggedIn(true);
-    } else if (!this.tokenValid && lsProfile) {
+    } else if (!this.isLoggedIn && lsProfile) {
       this.logout();
     }
   }
@@ -45,15 +45,15 @@ export class AuthService {
 
   login() {
     // Auth0 authorize request
-    this._auth0.authorize();
+    this.auth.authorize();
   }
 
   handleAuth() {
     // When Auth0 hash parsed, get profile
-    this._auth0.parseHash((err, authResult) => {
+    this.auth.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         window.location.hash = '';
-        this._getProfile(authResult);
+        this.getProfile(authResult);
       } else if (err) {
         console.error(`Error authenticating: ${err.error}`);
       }
@@ -61,18 +61,18 @@ export class AuthService {
     });
   }
 
-  private _getProfile(authResult) {
+  private getProfile(authResult) {
     // Use access token to retrieve user's profile and set session
-    this._auth0.client.userInfo(authResult.accessToken, (err, profile) => {
+    this.auth.client.userInfo(authResult.accessToken, (err, profile) => {
       if (profile) {
-        this._setSession(authResult, profile);
+        this.setSession(authResult, profile);
       } else if (err) {
         console.error(`Error authenticating: ${err.error}`);
       }
     });
   }
 
-  private _setSession(authResult, profile) {
+  private setSession(authResult, profile) {
     // Save session data and update login status subject
     const expiresAt = JSON.stringify((authResult.expiresIn * 1000) + Date.now());
     // Set tokens and expiration in localStorage and props

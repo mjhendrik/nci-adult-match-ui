@@ -1,6 +1,6 @@
 <!-- begin #header -->
 <div id="maindiv">
-  <div *ngIf="auth.tokenValid" id="header" class="header  navbar navbar-default navbar-fixed-top">
+  <div *ngIf="auth.isLoggedIn" id="header" class="header  navbar navbar-default navbar-fixed-top">
     <!-- begin container-fluid -->
     <div class="container-fluid header-height">
       <!-- begin mobile sidebar expand / collapse button -->
@@ -37,7 +37,7 @@
   </div>
   <!-- end #header -->
   <!-- begin #top-menu -->
-  <div *ngIf="auth.tokenValid" id="top-menu" class="top-menu top-position fixed-top">
+  <div *ngIf="auth.isLoggedIn" id="top-menu" class="top-menu top-position fixed-top">
     <div class="container-fluid">
       <!-- begin top-menu nav -->
       <ul class="nav">

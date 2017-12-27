@@ -41,6 +41,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     this.auth.loggedIn.subscribe(() => {
+      // TODO: refactor this, unsafe
       if (localStorage.getItem('profile') && JSON.parse(localStorage.getItem('profile')).user_metadata) {
         this.userName = JSON.parse(localStorage.getItem('profile')).user_metadata.name;
       }

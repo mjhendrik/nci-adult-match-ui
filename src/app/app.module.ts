@@ -59,6 +59,7 @@ import { ErrorPageHttpInterceptor } from './shared/error-handling/error-page-htt
 import { ModalDialogPathologyReportComponent } from './shared/modal-dialogs/modal-dialog-pathology-report.component';
 import { TestFeatComponent } from './feat/test-feat/test-feat.component';
 import { environment } from '../environments/environment';
+import { AuthCallbackComponent } from './src/app/shared/auth-callback/auth-callback.component';
 
 // Create a Factory for our JwtModule config since Angular doesn't allow functions in decorators.
 // Also, we have to add the export keyword, otherwise Angular complains again
@@ -106,7 +107,7 @@ export function JwtModuleConfigFactory() {
     }),
     ErrorModule // This needs to be at the bottom of the list for ErrorComponent to work properly
   ],
-  declarations: [AppComponent, TestFeatComponent],
+  declarations: [AppComponent, TestFeatComponent, AuthCallbackComponent],
   providers: [
     {
       provide: Http,
