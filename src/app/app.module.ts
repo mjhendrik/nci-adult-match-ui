@@ -16,6 +16,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
 import { Router } from '@angular/router';
 import { ModalModule, PopoverModule } from 'ngx-bootstrap';
+import { JwtModule } from '@auth0/angular-jwt';
+
+import { NvD3Module } from 'ng2-nvd3';
+
+// d3 and nvd3 should be included somewhere
+import 'd3';
+import 'nvd3';
 
 import { AppComponent } from './app.component';
 import { AuthService } from './shared/auth/auth.service';
@@ -51,14 +58,13 @@ import { ModalDialogConfirmationComponent } from './shared/modal-dialogs/modal-d
 import { ErrorPageHttpInterceptor } from './shared/error-handling/error-page-http.interceptor';
 import { ModalDialogPathologyReportComponent } from './shared/modal-dialogs/modal-dialog-pathology-report.component';
 import { TestFeatComponent } from './feat/test-feat/test-feat.component';
-import { JwtModule } from '@auth0/angular-jwt';
-
-import { NvD3Module } from 'ng2-nvd3';
-
-// d3 and nvd3 should be included somewhere
-import 'd3';
-import 'nvd3';
 import { environment } from '../environments/environment';
+
+// Create a Factory for our JwtModule config since Angular doesn't allow functions in decorators.
+// Also, we have to add the export keyword, otherwise Angular complains again
+export function JwtModuleConfigFactory() {
+  return localStorage.getItem('access_token');
+}
 
 @NgModule({
   imports: [
@@ -93,9 +99,7 @@ import { environment } from '../environments/environment';
     HttpClientModule,
     JwtModule.forRoot({
       config: {
-        tokenGetter: () => {
-          return localStorage.getItem('access_token');
-        },
+        tokenGetter: JwtModuleConfigFactory,
         whitelistedDomains: [...environment.auth0.whitelistDomain],
         skipWhenExpired: true
       }

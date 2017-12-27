@@ -244,31 +244,31 @@ export class PatientApiService extends ApiService {
 
   getPendingAssignmentReports(): Observable<any[]> {
     return this.http.get(this.url('/patients/dashboard/assignment_reports'))
-      .map((res: Response) => res.json())
+      .map(res => res)
       .catch(this.handleError);
   }
 
   getPendingVariantReports(): Observable<any[]> {
     return this.http.get(this.url('/patients/dashboard/variant_reports'))
-      .map((res: Response) => res.json())
+      .map(res => res)
       .catch(this.handleError);
   }
 
   getPatientsAwaiting(): Observable<any[]> {
     return this.http.get(this.url('/patients/dashboard/awaiting'))
-      .map((res: Response) => res.json())
+      .map(res => res)
       .catch(this.handleError);
   }
 
   getOverviewPatients(): Observable<any> {
     return this.http.get(this.url('/patients/dashboard/overview'))
-      .map((res: Response) => res.json())
+      .map(res => res)
       .catch(this.handleError);
   }
 
   getOverviewBt(): Observable<any> {
     return this.http.get(this.url('/patients/tracking/dashboard/overview'))
-      .map((res: Response) => res.json())
+      .map(res => res)
       .catch(this.handleError);
   }
 
@@ -317,7 +317,7 @@ export class PatientApiService extends ApiService {
 
   getPatientDocuments(psn: string): Observable<any[]> {
     return this.http.get(this.url(`/patients/${psn}/documents`))
-      .map((res: Response) => res.json())
+      .map(res => res)
       .catch(this.handleError);
   }
 }

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
+
 import { Config } from '../shared/config/env.config';
 
 // import 'rxjs/add/operator/do';  // for debugging
@@ -16,7 +18,7 @@ export class TreatmentArmApiService {
    * @param {AuthHttp} http - The injected AuthHttp.
    * @constructor
    */
-  constructor(private http: AuthHttp) { }
+  constructor(private http: HttpClient) { }
 
   /**
    * Returns an Observable for the HTTP GET request for the JSON resource.
@@ -29,7 +31,7 @@ export class TreatmentArmApiService {
     return this.http.get(Config.API.TREATMENT_ARM + '/treatment_arms/' + treatmentArmId
       // tslint:disable-next-line:max-line-length
       + '?active=true&projection=treatmentArmId,name,version,treatmentArmDrugs,gene,numPatientsAssigned,treatmentArmStatus,statusLog,assayResults,exclusionDiseases,exclusionDrugs,variantReport,summaryReport,maxPatientsAllowed,dateArchived')
-      .map((res: Response) => res.json())
+      .map(res => res)
       .catch(this.handleError);
   }
 
@@ -40,7 +42,7 @@ export class TreatmentArmApiService {
     return this.http.get(Config.API.TREATMENT_ARM + '/treatment_arms/' + treatmentArmId
       // tslint:disable-next-line:max-line-length
       + '?projection=treatmentArmId,name,version,treatmentArmDrugs,gene,numPatientsAssigned,treatmentArmStatus,statusLog,assayResults,exclusionDiseases,exclusionDrugs,variantReport,dateArchived,summaryReport,maxPatientsAllowed')
-      .map((res: Response) => res.json())
+      .map(res => res)
       .catch(this.handleError);
   }
 
@@ -49,7 +51,7 @@ export class TreatmentArmApiService {
     // return this.http.get('assets/mock-data/treatment-arm-details-version.json')
 
     return this.http.get(Config.API.TREATMENT_ARM + '/treatment_arms/' + treatmentArmId + '?projection=dateArchived,version')
-      .map((res: Response) => res.json())
+      .map(res => res)
       .catch(this.handleError);
   }
 
@@ -59,13 +61,13 @@ export class TreatmentArmApiService {
 
     return this.http.get(Config.API.TREATMENT_ARM
       + '/treatment_arms?active=true&projection=treatmentArmId,name,treatmentArmStatus,dateCreated,statusLog,summaryReport,version')
-      .map((res: Response) => res.json())
+      .map(res => res)
       .catch(this.handleError);
   }
 
   getAmois(variantReport: any): Observable<any> {
     return this.http.patch(Config.API.TREATMENT_ARM + '/treatment_arms/amois', variantReport)
-      .map((res: Response) => res.json())
+      .map(res => res)
       .catch((err: string) => {
         variantReport.amoiError = err;
         return variantReport;
@@ -74,7 +76,7 @@ export class TreatmentArmApiService {
 
   getOverviewTa(): Observable<any> {
     return this.http.get(Config.API.TREATMENT_ARM + '/treatment_arms/dashboard/overview')
-      .map((res: Response) => res.json())
+      .map(res => res)
       .catch(this.handleError);
   }
 

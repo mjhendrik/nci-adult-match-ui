@@ -18,7 +18,7 @@ export class ConfigApiService {
    */
   getBuildInfo(): Observable<any> {
     return this.http.get('assets/build-info.json')
-      .map((res: Response) => res.json())
+      .map(res => res)
       //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
   }
@@ -26,7 +26,7 @@ export class ConfigApiService {
   getCnvChart(): Observable<any> {
     // return this.http.get('assets/mock-data/patient.cnv-chart-v4.json')
     return this.http.get('assets/mock-data/patient.cnv-chart-v5.json')
-    .map((res: Response) => res.json())
+    .map(res => res)
     //              .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
   }
