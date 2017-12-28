@@ -122,12 +122,12 @@ export function main() {
 
     xit('can instantiate component with "new"', inject(
       [ViewContainerRef, ToastsManager, Router, ToastrService],
-      (vcr: ViewContainerRef, toastr: ToastsManager, router: Router, toastrService: ToastrService) => {
+      (vcr: ViewContainerRef, toastr: ToastsManager, router: Router, toastrService: ToastrService, auth: AuthService) => {
         expect(vcr).not.toBeNull('vcr should be provided');
         expect(toastr).not.toBeNull('toastr should be provided');
         expect(router).not.toBeNull('router should be provided');
         expect(toastrService).not.toBeNull('toastrService should be provided');
-        const comp = new AppComponent(vcr, toastr, router, toastrService);
+        const comp = new AppComponent(vcr, toastr, router, toastrService, auth);
         expect(comp instanceof AppComponent).toBe(true, 'new component should be ok');
       }
     ));
@@ -149,7 +149,7 @@ export function main() {
 
 @Component({
   selector: 'app-test-cmp',
-  template: '<sd-app></sd-app>'
+  template: '<app-main></app-main>'
 })
 class TestComponent {
 }
