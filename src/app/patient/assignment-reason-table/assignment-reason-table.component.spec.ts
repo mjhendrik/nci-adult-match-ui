@@ -43,7 +43,7 @@ export function main() {
     beforeEach(() => {
       fixture = TestBed.createComponent(TestComponent);
       hostComponent = fixture.componentInstance;
-      de = fixture.debugElement.query(By.css('sd-assignment-reason-table'));
+      de = fixture.debugElement.query(By.css('app-assignment-reason-table'));
       el = de.nativeElement;
     });
 
