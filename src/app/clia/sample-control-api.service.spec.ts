@@ -174,13 +174,13 @@ export function main() {
     describe('when getCliaDetailsPC', () => {
       let backend: MockBackend;
       let service: SampleControlApiService;
-      let fakeData: any[];
+      let fakeData: CliaVariantReportsQCViewData[];
       let response: Response;
 
       beforeEach(inject([HttpClient, XHRBackend], (http: HttpClient, be: MockBackend) => {
         backend = be;
         service = new SampleControlApiService(http);
-        fakeData = CliaApiServiceStub.makeCliaDetailsPCData();
+        fakeData = [CliaApiServiceStub.makeCliaDetailsPCData()];
         const options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
       }));
