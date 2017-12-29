@@ -15,7 +15,7 @@ import { PipesModule } from './../../shared/pipes/pipes.module';
 import { PatientTimelineComponent } from './patient-timeline.component';
 
 @Component({
-  selector: 'test-cmp',
+  selector: 'app-test-cmp',
   template: '<sd-patient-timeline [items]="items"></sd-patient-timeline>'
 })
 class TestComponent {

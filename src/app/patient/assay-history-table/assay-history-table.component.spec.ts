@@ -14,7 +14,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { AssayHistoryTableComponent, AssayHistoryItem } from './assay-history-table.component';
 
 @Component({
-  selector: 'test-cmp',
+  selector: 'app-test-cmp',
   template: '<sd-assay-history-table [reasons]="testItems"></sd-assay-history-table>'
 })
 class TestComponent {

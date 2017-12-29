@@ -33,7 +33,7 @@ export function main() {
 }
 
 @Component({
-  selector: 'test-cmp',
+  selector: 'app-test-cmp',
   template: '<app-variant-report-comparison-table-cnv></app-variant-report-comparison-table-cnv>'
 })
 class TestComponent { }

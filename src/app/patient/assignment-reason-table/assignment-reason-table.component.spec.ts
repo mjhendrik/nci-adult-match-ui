@@ -14,7 +14,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { AssignmentReasonTableComponent, AssignmentReasonSection } from './assignment-reason-table.component';
 
 @Component({
-  selector: 'test-cmp',
+  selector: 'app-test-cmp',
   template: '<app-assignment-reason-table [reasons]="testItems"></app-assignment-reason-table>'
 })
 class TestComponent {

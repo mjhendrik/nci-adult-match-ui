@@ -21,7 +21,7 @@ export function main() {
 }
 
 @Component({
-  selector: 'test-cmp',
+  selector: 'app-test-cmp',
   template: '<app-variant-report-simple-table-gf></app-variant-report-simple-table-gf>'
 })
 class TestComponent { }

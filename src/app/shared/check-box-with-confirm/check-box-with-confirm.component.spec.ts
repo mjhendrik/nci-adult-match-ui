@@ -21,7 +21,7 @@ import { BsModalServiceStub } from '../../patient/testing/bs-modal.service-stub'
 import { DialogResults } from '../modal-dialogs/modal-dialog-results';
 
 @Component({
-  selector: 'test-cmp',
+  selector: 'app-test-cmp',
   template: `
   <app-check-box-with-confirm [item]="item" [confirmTitle]="confirmTitle" [confirmMessage]="'Please enter a reason:'"
     [promptOnlyIf]="true" [isEnabled]="isEditable" (onItemUpdated)="onItemUpdated(item)">

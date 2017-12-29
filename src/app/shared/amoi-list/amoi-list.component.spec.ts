@@ -64,7 +64,7 @@ const fakeData = {
 };
 
 @Component({
-  selector: 'test-cmp',
+  selector: 'app-test-cmp',
   template: '<app-amoi-list [amois]="testAmois"></app-amoi-list>'
 })
 class TestComponent {

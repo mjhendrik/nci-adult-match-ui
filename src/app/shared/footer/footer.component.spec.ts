@@ -44,7 +44,7 @@ export function main() {
 }
 
 @Component({
-  selector: 'test-cmp',
+  selector: 'app-test-cmp',
   template: '<app-footer></app-footer>'
 })
 class TestComponent { }

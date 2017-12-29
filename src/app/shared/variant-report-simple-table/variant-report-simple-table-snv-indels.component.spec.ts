@@ -21,7 +21,7 @@ export function main() {
 }
 
 @Component({
-  selector: 'test-cmp',
+  selector: 'app-test-cmp',
   template: '<app-variant-report-simple-table-snv-indels></app-variant-report-simple-table-snv-indels>'
 })
 class TestComponent { }

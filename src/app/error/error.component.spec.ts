@@ -31,7 +31,7 @@ export function main() {
 }
 
 @Component({
-  selector: 'test-cmp',
+  selector: 'app-test-cmp',
   template: '<app-error></app-error>'
 })
 class TestComponent { }

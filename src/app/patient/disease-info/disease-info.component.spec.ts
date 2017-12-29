@@ -11,10 +11,10 @@ import { By } from '@angular/platform-browser';
 
 import { PipesModule } from './../../shared/pipes/pipes.module';
 import { DiseaseInfoComponent } from './disease-info.component';
-import { DiseaseInfo } from './disease-info.module';
+import { DiseaseInfo } from './disease-info';
 
 @Component({
-  selector: 'test-cmp',
+  selector: 'app-test-cmp',
   template: '<sd-disease [reasons]="testItems"></sd-disease>'
 })
 class TestComponent {
