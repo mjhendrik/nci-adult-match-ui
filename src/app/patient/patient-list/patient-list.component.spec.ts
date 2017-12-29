@@ -30,7 +30,7 @@ export function main() {
     let el: HTMLElement;
     let tbodyDebugElement: DebugElement;
 
-    let config: any[] = [
+    const config: any[] = [
       { path: 'patients', component: 'PatientListComponent' }
     ];
 
@@ -68,7 +68,7 @@ export function main() {
     });
 
     it('should not show any rows before OnInit', () => {
-      let rows = tbodyDebugElement.queryAll(By.css('tr'));
+      const rows = tbodyDebugElement.queryAll(By.css('tr'));
       expect(rows.length).toBe(0);
     });
 
@@ -76,60 +76,59 @@ export function main() {
       fixture.detectChanges();
 
       fixture.whenStable().then(() => { // wait for async getPatientList
-        let rows = tbodyDebugElement.queryAll(By.css('tr'));
+        const rows = tbodyDebugElement.queryAll(By.css('tr'));
         expect(rows.length).toBe(10);
       });
-
-      it('should instantiate getData',
-        async((done: any) => {
-          TestBed
-            .compileComponents()
-            .then(() => {
-              let fixture = TestBed.createComponent(PatientListComponent);
-              console.log(fixture.componentInstance);
-              let spy = spyOn(fixture.componentInstance, 'getData');
-              let init: any = fixture.componentInstance.ngOnInit();
-
-              fixture.componentInstance.recordsPerPagePatients = 300;
-              fixture.detectChanges();
-
-              expect(spy).toHaveBeenCalled();
-            });
-        }));
-
-      it('should test onSearchChanged',
-        async((done: any) => {
-          TestBed
-            .compileComponents()
-            .then(() => {
-              let fixture = TestBed.createComponent(PatientListComponent);
-              console.log(fixture.componentInstance);
-              fixture.componentInstance.previous = 500;
-              fixture.componentInstance.sortStatus("1,100,asc,patientSequenceNumber");
-              // expect(fixture.componentInstance.tableARData.length).toEqual(dashboard_data.data.AR.length);
-            });
-        }));
-
-      it('should test currentPageActive',
-        async((done: any) => {
-          TestBed
-            .compileComponents()
-            .then(() => {
-              let fixture = TestBed.createComponent(PatientListComponent);
-
-              fixture.componentInstance.onSearchChanged('1,300,asc,patientSequenceNumber');
-              fixture.componentInstance.onSearchChanged(null);
-            });
-        }));
     }));
 
+    it('should instantiate getData',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            fixture = TestBed.createComponent(PatientListComponent);
+            console.log(fixture.componentInstance);
+            spy = spyOn(fixture.componentInstance, 'getData');
+            const init: any = fixture.componentInstance.ngOnInit();
+
+            fixture.componentInstance.recordsPerPagePatients = 300;
+            fixture.detectChanges();
+
+            expect(spy).toHaveBeenCalled();
+          });
+      }));
+
+    it('should test onSearchChanged',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            fixture = TestBed.createComponent(PatientListComponent);
+            console.log(fixture.componentInstance);
+            fixture.componentInstance.previous = 500;
+            fixture.componentInstance.sortStatus('1,100,asc,patientSequenceNumber');
+            // expect(fixture.componentInstance.tableARData.length).toEqual(dashboard_data.data.AR.length);
+          });
+      }));
+
+    it('should test currentPageActive',
+      async((done: any) => {
+        TestBed
+          .compileComponents()
+          .then(() => {
+            fixture = TestBed.createComponent(PatientListComponent);
+
+            fixture.componentInstance.onSearchChanged('1,300,asc,patientSequenceNumber');
+            fixture.componentInstance.onSearchChanged(null);
+          });
+      }));
 
     xdescribe('with sort', () => {
       it('should sort by first column in ASC order', async((done: any) => {
         component.sortStatus({ 'Subhash,': 'what should we pass here? :)' });
 
         fixture.whenStable().then(() => { // wait for async getPatientList
-          let rows = tbodyDebugElement.queryAll(By.css('tr'));
+          const rows = tbodyDebugElement.queryAll(By.css('tr'));
           expect(rows.length).toBe(10);
         });
       }));
@@ -150,8 +149,9 @@ export function main() {
       // it should filter by OA toggle
       // it should filter by both free text anb OA toggle
     });
-
   });
+
+}
 
   // xdescribe('patients component', () => {
   //   let config: any[] = [
@@ -255,6 +255,4 @@ export function main() {
   //     }));
 
   // });
-
-}
 

@@ -45,7 +45,7 @@ export function main() {
 
     it('can instantiate service with "new"', inject([HttpClient], (http: HttpClient) => {
       expect(http).not.toBeNull('http should be provided');
-      let service = new PatientApiService(http);
+      const service = new PatientApiService(http);
       expect(service instanceof PatientApiService).toBe(true, 'new service should be ok');
     }));
 
@@ -64,7 +64,7 @@ export function main() {
         backend = be;
         service = new PatientApiService(http);
         fakePatients = PatientApiServiceStub.makePatientListData();
-        let options = new ResponseOptions({ status: 200, body: fakePatients });
+        const options = new ResponseOptions({ status: 200, body: fakePatients });
         console.log(options);
         response = new Response(options);
       }));
@@ -72,7 +72,7 @@ export function main() {
       it('should have expected fake patients total count (then)', async(inject([], () => {
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
-        service.getPatientList(1, 2, 'sortOrder', 'sortBy', 'filter').toPromise()
+        service.getPatientList(1, 2, 'sortOrder', 'sortBy', 'filter', false).toPromise()
           .then(patients => {
             expect(patients.length).toBe(fakePatients.length, 'should have expected no. of patients');
           });
@@ -81,7 +81,7 @@ export function main() {
       it('should have expected fake patients total count count (Observable.do)', async(inject([], () => {
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
-        service.getPatientList(1, 2, 'sortOrder', 'sortBy', 'filter')
+        service.getPatientList(1, 2, 'sortOrder', 'sortBy', 'filter', false)
           .do(patients => {
             expect(patients.length).toBe(fakePatients.length, 'should have expected no. of patients');
           })
@@ -89,10 +89,10 @@ export function main() {
       })));
 
       it('should be OK returning no patients', async(inject([], () => {
-        let resp = new Response(new ResponseOptions({ status: 200, body: [] }));
+        const resp = new Response(new ResponseOptions({ status: 200, body: [] }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
-        service.getPatientList(1, 2, 'sortOrder', 'sortBy', 'filter')
+        service.getPatientList(1, 2, 'sortOrder', 'sortBy', 'filter', false)
           .do(patients => {
             expect(patients.length).toBe(0, 'should have no patients');
           })
@@ -100,10 +100,10 @@ export function main() {
       })));
 
       it('should treat 404 as an Observable error', async(inject([], () => {
-        let resp = new Response(new ResponseOptions({ status: 404 }));
+        const resp = new Response(new ResponseOptions({ status: 404 }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
-        service.getPatientList(1, 2, 'sortOrder', 'sortBy', 'filter')
+        service.getPatientList(1, 2, 'sortOrder', 'sortBy', 'filter', false)
           .do(patients => {
             fail('should not respond with patients');
           })
@@ -127,7 +127,7 @@ export function main() {
         backend = be;
         service = new PatientApiService(http);
         fakeCount = 4;
-        let options = new ResponseOptions({ status: 200, body: fakeCount });
+        const options = new ResponseOptions({ status: 200, body: fakeCount });
         response = new Response(options);
       }));
 
@@ -151,7 +151,7 @@ export function main() {
       })));
 
       it('should be OK returning 0 patient count', async(inject([], () => {
-        let resp = new Response(new ResponseOptions({ status: 200, body: 0 }));
+        const resp = new Response(new ResponseOptions({ status: 200, body: 0 }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
         service.getPatientCount('fake-search-terms')
@@ -162,7 +162,7 @@ export function main() {
       })));
 
       it('should treat 404 as an Observable error', async(inject([], () => {
-        let resp = new Response(new ResponseOptions({ status: 404 }));
+        const resp = new Response(new ResponseOptions({ status: 404 }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
         service.getPatientCount('fake-search-terms')
@@ -189,7 +189,7 @@ export function main() {
         backend = be;
         service = new PatientApiService(http);
         fakeCount = 4;
-        let options = new ResponseOptions({ status: 200, body: fakeCount });
+        const options = new ResponseOptions({ status: 200, body: fakeCount });
         response = new Response(options);
       }));
 
@@ -213,7 +213,7 @@ export function main() {
       })));
 
       it('should be OK returning 0 patient total count', async(inject([], () => {
-        let resp = new Response(new ResponseOptions({ status: 200, body: 0 }));
+        const resp = new Response(new ResponseOptions({ status: 200, body: 0 }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
         service.getPatientTotal()
@@ -224,7 +224,7 @@ export function main() {
       })));
 
       it('should treat 404 as an Observable error', async(inject([], () => {
-        let resp = new Response(new ResponseOptions({ status: 404 }));
+        const resp = new Response(new ResponseOptions({ status: 404 }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
         service.getPatientTotal()
@@ -251,7 +251,7 @@ export function main() {
         backend = be;
         service = new PatientApiService(http);
         fakePatient = PatientApiServiceStub.makePatientData();
-        let options = new ResponseOptions({ status: 200, body: fakePatient });
+        const options = new ResponseOptions({ status: 200, body: fakePatient });
         response = new Response(options);
       }));
 
@@ -275,7 +275,7 @@ export function main() {
       })));
 
       it('should be OK returning no patient details', async(inject([], () => {
-        let resp = new Response(new ResponseOptions({ status: 200, body: {} }));
+        const resp = new Response(new ResponseOptions({ status: 200, body: {} }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
         service.getPatientDetails('fake-psn')
@@ -286,7 +286,7 @@ export function main() {
       })));
 
       it('should treat 404 as an Observable error', async(inject([], () => {
-        let resp = new Response(new ResponseOptions({ status: 404 }));
+        const resp = new Response(new ResponseOptions({ status: 404 }));
         backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
         service.getPatientDetails('fake-psn')
@@ -313,7 +313,7 @@ export function main() {
         backend = be;
         service = new PatientApiService(http);
         fakeData = PatientApiServiceStub.makeOutsideAssayComparisonVariantReportData();
-        let options = new ResponseOptions({ status: 200, body: fakeData });
+        const options = new ResponseOptions({ status: 200, body: fakeData });
         response = new Response(options);
       }));
 
@@ -933,7 +933,7 @@ export function main() {
 
         service.getPendingAssignmentReports()
           .do(patient => {
-            expect(patient).toEqual({}, 'should have no patient details');
+            expect(patient).toEqual([], 'should have no patient details');
           })
           .toPromise();
       })));
@@ -994,7 +994,7 @@ export function main() {
 
         service.getPendingVariantReports()
           .do(patient => {
-            expect(patient).toEqual({}, 'should have no patient details');
+            expect(patient).toEqual([], 'should have no patient details');
           })
           .toPromise();
       })));
@@ -1055,7 +1055,7 @@ export function main() {
 
         service.getPatientsAwaiting()
           .do(patient => {
-            expect(patient).toEqual({}, 'should have no patient details');
+            expect(patient).toEqual([], 'should have no patient details');
           })
           .toPromise();
       })));
