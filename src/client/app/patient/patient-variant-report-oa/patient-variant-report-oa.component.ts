@@ -5,10 +5,19 @@ import {
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import {
+  BsModalRef,
+  BsModalService
+} from 'ngx-bootstrap';
 
 import { routerTransition } from './../../shared/router.animations';
-import { PatientApiService, ApiStatusUpdateSuccess, ApiStatusUpdateError, ApiError, ApiSuccess } from '../patient-api.service';
+import {
+  PatientApiService,
+  ApiStatusUpdateSuccess,
+  ApiStatusUpdateError,
+  ApiError,
+  ApiSuccess
+} from '../patient-api.service';
 import { ScrollService } from '../../shared/utils/scroll.to.service';
 import { ViewDataTransformer } from '../view-data-transformer.service';
 import { ConfirmableItem } from '../../shared/check-box-with-confirm/check-box-with-confirm.component';
@@ -62,6 +71,7 @@ export class PatientVariantReportOutsideAssayComponent
   concordance: string;
 
   patientData: any = {};
+  patient: any = {};
 
   outsideData: VariantReportData;
   matchData: VariantReportData;
@@ -105,6 +115,17 @@ export class PatientVariantReportOutsideAssayComponent
     this.allowVariantReportEdit = this.profile.checkRoles(roles.variantReportEdit);
     this.allowAssignmentReportEdit = this.profile.checkRoles(roles.assignmentReportEdit);
     this.patientData = this;
+
+    this.patient.raceList = this.patient.races.join(', ');
+    if (this.patient.diseases && this.patient.diseases.length) {
+      if (this.patient.isOutsideAssayWorkflow) {
+        this.patient.disease.outsideData = this.patient.diseases.length > 0 ? this.patient.diseases[0] : {};
+        this.patient.disease.matchData = this.patient.diseases.length > 1 ? this.patient.diseases[1] : {};
+      } else {
+        this.patient.disease = this.patient.diseases && this.patient.diseases.length ? this.patient.diseases[0] : {};
+      }
+    }
+    this.patient.concordance = this.transformConcordance(this.patient);
   }
 
   download(file: string) {
@@ -342,6 +363,19 @@ export class PatientVariantReportOutsideAssayComponent
 
   hasReportData(data: any): boolean {
     return !!data && data.analysisId;
+  }
+
+  private transformConcordance(patient: any): string {
+    if (!patient || !patient.concordance) {
+      return 'UNKNOWN';
+    }
+
+    switch (patient.concordance) {
+      case 'Y': return 'YES';
+      case 'N': return 'NO';
+      case 'U': return 'UNKNOWN';
+      default: return patient.concordance;
+    }
   }
 
   private showConfirmation(

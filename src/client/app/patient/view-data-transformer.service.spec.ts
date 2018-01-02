@@ -163,13 +163,16 @@ export function main() {
         let ocpDataMatch: any = null;
         let isOutsideAssay: boolean;
         let patientSequenceNumber: string;
+        let patient: any = null;
 
         let transformed = service.transformOutsidePatientReport(
           report,
           cnvDataMatch,
           ocpDataMatch,
           isOutsideAssay,
-          patientSequenceNumber);
+          patientSequenceNumber,
+          patient
+        );
 
         expect(transformed).toBeNull();
       });
@@ -180,6 +183,7 @@ export function main() {
         let ocpDataMatch: any = null;
         let isOutsideAssay: boolean;
         let patientSequenceNumber: string;
+        let patient: any = null;
 
         expect(() => {
           service.transformOutsidePatientReport(
@@ -187,7 +191,9 @@ export function main() {
             cnvDataMatch,
             ocpDataMatch,
             isOutsideAssay,
-            patientSequenceNumber);
+            patientSequenceNumber,
+            patient
+          );
         }
         ).not.toThrow();
       });
@@ -199,6 +205,7 @@ export function main() {
         let isOutsideAssay: boolean;
         let transformed: VariantReportComparisonData;
         let patientSequenceNumber: string;
+        let patient: any = null;
 
         expect(() => {
           transformed = service.transformOutsidePatientReport(
@@ -206,7 +213,9 @@ export function main() {
             cnvDataMatch,
             ocpDataMatch,
             isOutsideAssay,
-            patientSequenceNumber);
+            patientSequenceNumber,
+            patient
+          );
         }
         ).not.toThrow();
 

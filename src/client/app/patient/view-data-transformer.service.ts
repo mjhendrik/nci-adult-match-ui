@@ -72,7 +72,9 @@ export class ViewDataTransformer {
     cnvDataMatch: any,
     ocpDataMatch: any,
     isOutsideAssayReport: boolean,
-    patientSequenceNumber: string): VariantReportComparisonData {
+    patientSequenceNumber: string,
+    patient: any
+  ): VariantReportComparisonData {
 
     if (!report) {
       return null;
@@ -86,6 +88,7 @@ export class ViewDataTransformer {
     let ocpDataOutside: any = {};
     cnvDataMatch = cnvDataMatch || {};
     ocpDataMatch = ocpDataMatch || {};
+    patient = patient || {};
 
     transformedReport.matchData = transformedReport.matchData || {};
     transformedReport.matchData.variantReport = transformedReport.matchData.variantReport || {};
@@ -139,6 +142,7 @@ export class ViewDataTransformer {
     this.precessPassFailVariants(transformedReport.comparisonVariantReport);
 
     transformedReport.showOutsideAssay = isOutsideAssayReport;
+    transformedReport.patient = patient[3];
 
     transformedReport.showComparison = transformedReport.outsideData.variantReportStatus &&
       transformedReport.outsideData.variantReportStatus === 'CONFIRMED' &&

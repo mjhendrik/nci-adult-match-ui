@@ -1,6 +1,7 @@
 import { VariantReportData } from './variant-report-data';
 
 export interface VariantReportComparisonData {
+    patient: any;
     patientSequenceNumber?: string;
     showComparison?: boolean;
     showOutsideAssay?: boolean;
