@@ -31,9 +31,9 @@ const roles = {
     'YALE_VARIANT_REPORT_REVIEWER'
   ],
   assignmentReportEdit: [
-  'SYSTEM',
-  'ADMIN',
-  'ASSIGNMENT_REPORT_REVIEWER'
+    'SYSTEM',
+    'ADMIN',
+    'ASSIGNMENT_REPORT_REVIEWER'
   ]
 };
 
@@ -60,6 +60,8 @@ export class PatientVariantReportOutsideAssayComponent
   currentPatientStatus: string;
   currentStepNumber: string;
   concordance: string;
+
+  patientData: any = {};
 
   outsideData: VariantReportData;
   matchData: VariantReportData;
@@ -102,6 +104,7 @@ export class PatientVariantReportOutsideAssayComponent
 
     this.allowVariantReportEdit = this.profile.checkRoles(roles.variantReportEdit);
     this.allowAssignmentReportEdit = this.profile.checkRoles(roles.assignmentReportEdit);
+    this.patientData = this;
   }
 
   download(file: string) {
@@ -129,26 +132,26 @@ export class PatientVariantReportOutsideAssayComponent
       console.info('Confirming outside lab variant report: ' + this.outsideData.analysisId);
       this.patientApi
         .updateVariants(
-          this.patientSequenceNumber,
-          this.outsideData.biopsySequenceNumber,
-          this.outsideData.analysisId,
-          this.transformer.getVariants(this.outsideData.variantReport)
+        this.patientSequenceNumber,
+        this.outsideData.biopsySequenceNumber,
+        this.outsideData.analysisId,
+        this.transformer.getVariants(this.outsideData.variantReport)
         )
         .flatMap(
-          () => this.patientApi.updateVariantReportStatus(this.patientSequenceNumber, this.outsideData.biopsySequenceNumber, this.outsideData.analysisId, true)
+        () => this.patientApi.updateVariantReportStatus(this.patientSequenceNumber, this.outsideData.biopsySequenceNumber, this.outsideData.analysisId, true)
         )
         .subscribe(
-          (x: ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
-            switch (x.kind) {
-              case 'error':
-                this.showToast(x.message, true);
-                break;
-              case 'success':
-                this.transformer.updateVariantReportStatus(this, x);
-                this.showToast(`Variant Report ${this.outsideData.analysisId} has been confirmed`, false);
-                break;
-            }
+        (x: ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
+          switch (x.kind) {
+            case 'error':
+              this.showToast(x.message, true);
+              break;
+            case 'success':
+              this.transformer.updateVariantReportStatus(this, x);
+              this.showToast(`Variant Report ${this.outsideData.analysisId} has been confirmed`, false);
+              break;
           }
+        }
         );
     };
 
@@ -221,12 +224,12 @@ export class PatientVariantReportOutsideAssayComponent
       console.info('Confirming MATCH variant report: ' + this.matchData.analysisId);
       this.patientApi
         .updateVariants(this.patientSequenceNumber,
-          this.matchData.biopsySequenceNumber,
-          this.matchData.analysisId,
-          this.transformer.getVariants(this.matchData.variantReport)
+        this.matchData.biopsySequenceNumber,
+        this.matchData.analysisId,
+        this.transformer.getVariants(this.matchData.variantReport)
         )
         .flatMap(
-          () => this.patientApi.updateVariantReportStatus(this.patientSequenceNumber, this.matchData.biopsySequenceNumber, this.matchData.analysisId, true)
+        () => this.patientApi.updateVariantReportStatus(this.patientSequenceNumber, this.matchData.biopsySequenceNumber, this.matchData.analysisId, true)
         )
         .subscribe(
         (x: ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
@@ -328,7 +331,7 @@ export class PatientVariantReportOutsideAssayComponent
             break;
         }
       }
-    );
+      );
   }
 
   hasAssignment(data: VariantReportData): boolean {
