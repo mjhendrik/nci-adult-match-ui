@@ -28,9 +28,7 @@ export interface ApiStatusUpdateError {
 export interface ApiStatusUpdateSuccess {
   kind: 'success';
   status: string;
-  comments: string;
-  commenter: string;
-  dateTime: string;
+  isReviewer: boolean;
 }
 
 @Injectable()
@@ -83,12 +81,6 @@ export class SampleControlApiService extends ApiService {
     return this.http.get(this.url('/message/ecog/patient/' + molecular_id + '/variant_reports/' + analysisId + '/vcf_graph', ''))
       .map(this.extractData)
       .catch(this.handleError);
-
-    // return this.http.get(this.url('/message/ecog/patient/' + molecular_id + '/variant_reports/' + analysisId + '/vcf_graph', // message
-    //   // analysisId might not be readily available
-    //   'assets/mock-data/clia-variant-report-qc-WHAT_SHOULD_BE_HERE_FOR_GRAPH.json'))
-    //   .map(this.extractData)
-    //   .catch(this.handleError);
   }
 
   downloadCliaDnaBam(molecular_id: string): Observable<any> {
@@ -135,7 +127,7 @@ export class SampleControlApiService extends ApiService {
       .catch(this.handleError);
   }
 
-  rejectReport(molecular_id: string, type: string): Observable<ApiSuccess | ApiError> {
+  rejectReport(molecular_id: string, type: string): Observable<ApiStatusUpdateSuccess | ApiStatusUpdateError> {
     return this.http.put(Config.API.MESSAGE + '/message/clia/' + type + '/status',
       {
         'molecularSequenceNumber': molecular_id,
@@ -143,14 +135,9 @@ export class SampleControlApiService extends ApiService {
         'comment': null
       })
       .map((res: Response) => {
-        const data = JSON.stringify(res);
-        return { kind: 'success', data: data } as ApiSuccess;
+        return { kind: 'success', status: "FAILED" } as ApiStatusUpdateSuccess;
       })
       .catch((err: any) => {
-
-        console.log("ERR-->")
-        console.log(JSON.stringify(err))
-
         let message: string;
         if (err instanceof Response) {
           const errResp = err.json();
@@ -161,10 +148,8 @@ export class SampleControlApiService extends ApiService {
         } else {
           message = (typeof err === 'string') ? err : err.toString();
         }
-        return Observable.of({ kind: 'error', message: message } as ApiError);
+        return Observable.of({ kind: 'error', message: message } as ApiStatusUpdateError);
       });
-      // .map(this.extractData)
-      // .catch(this.handleError);
   }
 
   confirmReport(molecular_id: string, type: string): Observable<any> {

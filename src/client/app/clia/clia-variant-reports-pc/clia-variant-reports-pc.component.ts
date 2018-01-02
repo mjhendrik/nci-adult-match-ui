@@ -13,6 +13,7 @@ import { DialogResults } from '../../shared/modal-dialogs/modal-dialog-results';
 import { UserProfileService } from '../../shared/user-profile/user-profile.service';
 import { CliaDataService } from "./../../shared/clia/clia-data.service";
 import { ToastrService } from '../../shared/error-handling/toastr.service';
+import { CliaDataTransformer } from '../clia-data-transformer.service';
 import { ModalDialogConfirmationComponent } from '../../shared/modal-dialogs/modal-dialog-confirmation.component';
 import { ModalDialogWithCommentsComponent } from '../../shared/modal-dialogs/modal-dialog-with-comments.component';
 
@@ -58,7 +59,8 @@ export class CliaVariantReportsPcComponent implements OnInit {
     private profile: UserProfileService,
     private cliaData: CliaDataService,
     private modalService: BsModalService,
-    private toastrService: ToastrService) { }
+    private toastrService: ToastrService,
+    private transformer: CliaDataTransformer) { }
 
   ngOnInit() {
     let array: any;
@@ -151,13 +153,16 @@ export class CliaVariantReportsPcComponent implements OnInit {
       this.api
         .rejectReport(this.molecular_id, 'sample_control')
         .subscribe(
-          (x: ApiSuccess | ApiError) => {
+          (x:  ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
+
+console.log(x)
+
             switch (x.kind) {
               case 'error':
                 this.showToast(x.message, true);
                 break;
               case 'success':
-                // this.transformer.updateVariantReportStatus(this, x);
+                this.transformer.updateRejectedCliaPCStatus(this, x);
                 this.showToast(`Positive Control Clia Report ${this.molecular_id} has been rejected`, false);
                 break;
             }
