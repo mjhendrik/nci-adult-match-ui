@@ -13,63 +13,7 @@
   <h1 class="page-header">Patient
     <span class="entity-name">{{patient.patientSequenceNumber | dashify}}</span>
   </h1>
-  <div class="row" matchHeight="panel-height">
-    <div class="col-md-6">
-      <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height">
-        <div class="panel-heading" id="patient_detail_left">
-          <dl class="dl-horizontal">
-            <dt>Patient Sequence Number</dt>
-            <dd>{{patient.patientSequenceNumber | dashify}}</dd>
-            <dt>Patient</dt>
-            <dd>
-              <span *ngIf="patient.gender && patient.gender!=='PATIENT_REFUSAL'"> {{patient.gender}}</span>
-              <span *ngIf="patient.ethnicity && patient.ethnicity!=='PATIENT_REFUSAL'"> {{patient.ethnicity}}</span>
-              <span *ngIf="patient.raceList && patient.raceList!=='PATIENT_REFUSAL'"> {{patient.raceList}}</span>
-            </dd>
-            <dt>Status</dt>
-            <dd>
-              <span [colorCodePatients]="patient.currentPatientStatus">{{patient.currentPatientStatus | dashify}}</span>
-            </dd>
-            <dt>Current Step</dt>
-            <dd>{{patient.currentStepNumber | dashify}}</dd>
-            <dt>Treatment Arm</dt>
-            <dd>
-              <treatment-arm-link *ngIf="patient.currentPatientAssignmentLogic" [treatmentArmId]="patient.currentPatientAssignmentLogic.treatmentArmId"
-                [version]="patient.currentPatientAssignmentLogic.treatmentArmVersion" [removePrefix]="true"></treatment-arm-link>
-              <span *ngIf="!patient.currentPatientAssignmentLogic">-</span>
-            </dd>
-            <dt>Registration Date</dt>
-            <dd>{{patient.registrationDate | gmt | dashify}}</dd>
-            <dt>Last Rejoin Scan Date</dt>
-            <dd>{{patient.lastRejoinScanDate | gmt | dashify}}</dd>
-            <dt>Patient Type</dt>
-            <dd>{{patient.patientType | dashify}}</dd>
-          </dl>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height">
-        <div class="panel-heading" id="patient_detail_right">
-          <div class="row" *ngIf="patient.isOutsideAssayWorkflow">
-            <div class="col-md-6">
-              <sd-disease [disease]="patient.disease.outsideData" [isNarrow]="patient.isOutsideAssayWorkflow" [diseasePrefix]="'MATCH'"></sd-disease>
-            </div>
-            <div class="col-md-6">
-              <sd-disease [disease]="patient.disease.matchData" [isNarrow]="patient.isOutsideAssayWorkflow" [diseasePrefix]="'Outside Lab'"></sd-disease>
-            </div>
-          </div>
-          <sd-disease *ngIf="!patient.isOutsideAssayWorkflow" [disease]="patient.disease" [isNarrow]="patient.isOutsideAssayWorkflow"></sd-disease>
-          <dl class="dl-horizontal">
-            <dt>Concordance</dt>
-            <dd [colorCodeConcordance]="patient.concordance">{{patient.concordance | dashify}}</dd>
-            <dt>Assignment Reason</dt>
-            <dd>{{(patient.currentPatientAssignmentLogic ? patient.currentPatientAssignmentLogic.reason : '') | dashify}}</dd>
-          </dl>
-        </div>
-      </div>
-    </div>
-  </div>
+  <sd-patient-header [items]="patient"></sd-patient-header>
   <div class="panel">
     <tabset class="nav-tabs-purple">
       <tab heading="Summary" [active]="summaryData" id="summary" index="0">

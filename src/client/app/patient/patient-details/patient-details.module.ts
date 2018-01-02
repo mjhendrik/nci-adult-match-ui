@@ -12,6 +12,7 @@ import { PipesModule } from '../../shared/pipes/pipes.module';
 import { DirectivesModule } from '../../shared/directives/directives.module';
 import { PatientApiService } from '../patient-api.service';
 import { PatientTimelineModule } from './../patient-timeline/patient-timeline.module';
+import { PatientHeaderModule } from './../patient-header/patient-header.module';
 import { ViewDataTransformer } from './../view-data-transformer.service';
 import { SharedModule } from '../../shared/shared.module';
 import { FileUploadModule } from '../file-upload/file-upload.module';
@@ -44,6 +45,7 @@ const DROPZONE_CONFIG: DropzoneConfigInterface = {
     PipesModule,
     DirectivesModule,
     PatientTimelineModule,
+    PatientHeaderModule,
     SharedModule,
     FileUploadModule,
     DocumentUploadModule,
