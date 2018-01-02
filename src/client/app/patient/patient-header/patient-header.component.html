@@ -19,8 +19,8 @@
           <dd>{{items.currentStepNumber | dashify}}</dd>
           <dt>Treatment Arm</dt>
           <dd>
-            <!-- <treatment-arm-link *ngIf="items.currentPatientAssignmentLogic" [treatmentArmId]="items.currentPatientAssignmentLogic.treatmentArmId"
-              [version]="items.currentPatientAssignmentLogic.treatmentArmVersion" [removePrefix]="true"></treatment-arm-link> -->
+            <treatment-arm-link *ngIf="items.currentPatientAssignmentLogic" [treatmentArmId]="items.currentPatientAssignmentLogic.treatmentArmId"
+              [version]="items.currentPatientAssignmentLogic.treatmentArmVersion" [removePrefix]="true"></treatment-arm-link>
             <span *ngIf="!items.currentPatientAssignmentLogic">-</span>
           </dd>
           <dt>Registration Date</dt>

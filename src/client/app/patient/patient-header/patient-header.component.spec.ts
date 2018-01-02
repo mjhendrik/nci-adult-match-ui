@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 import { DirectivesModule } from './../../shared/directives/directives.module';
 import { PipesModule } from './../../shared/pipes/pipes.module';
 import { PatientHeaderComponent } from './patient-header.component';
+import { SharedModule } from '../../shared/shared.module';
 
 @Component({
   selector: 'test-cmp',
@@ -39,6 +40,7 @@ export function main() {
           CommonModule,
           PipesModule,
           DirectivesModule,
+          SharedModule
         ],
         declarations: [PatientHeaderComponent, TestComponent]
       }).compileComponents();  // compile template and css
