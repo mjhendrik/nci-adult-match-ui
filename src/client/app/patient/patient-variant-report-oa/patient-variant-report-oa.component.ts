@@ -117,13 +117,10 @@ export class PatientVariantReportOutsideAssayComponent
     this.patientData = this;
 
     this.patient.raceList = this.patient.races.join(', ');
+    this.patient.isOutsideAssayWorkflow = true;
     if (this.patient.diseases && this.patient.diseases.length) {
-      if (this.patient.isOutsideAssayWorkflow) {
-        this.patient.disease.outsideData = this.patient.diseases.length > 0 ? this.patient.diseases[0] : {};
-        this.patient.disease.matchData = this.patient.diseases.length > 1 ? this.patient.diseases[1] : {};
-      } else {
-        this.patient.disease = this.patient.diseases && this.patient.diseases.length ? this.patient.diseases[0] : {};
-      }
+      this.patient.disease.outsideData = this.patient.diseases.length > 0 ? this.patient.diseases[0] : {};
+      this.patient.disease.matchData = this.patient.diseases.length > 1 ? this.patient.diseases[1] : {};
     }
     this.patient.concordance = this.transformConcordance(this.patient);
   }

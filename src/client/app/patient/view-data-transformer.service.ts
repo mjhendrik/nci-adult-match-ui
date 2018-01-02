@@ -143,6 +143,7 @@ export class ViewDataTransformer {
 
     transformedReport.showOutsideAssay = isOutsideAssayReport;
     transformedReport.patient = patient[3];
+    transformedReport.patient.disease = [];
 
     transformedReport.showComparison = transformedReport.outsideData.variantReportStatus &&
       transformedReport.outsideData.variantReportStatus === 'CONFIRMED' &&
