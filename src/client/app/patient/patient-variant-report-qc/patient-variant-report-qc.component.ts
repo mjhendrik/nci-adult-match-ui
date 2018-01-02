@@ -32,6 +32,7 @@ export class PatientVariantReportQcComponent implements OnInit, QcVariantReportD
   pool1: number;
   pool2: number;
   cellularity: string;
+  patientData: any = {};
 
   variantReport: any;
   assignmentReport: any;
@@ -56,6 +57,8 @@ export class PatientVariantReportQcComponent implements OnInit, QcVariantReportD
 
   ngOnInit() {
     Object.assign(this, this.route.snapshot.data['data']);
+    this.patientData = this;
+    this.patientDataTransform();
   }
 
   download(file: string) {
@@ -76,6 +79,10 @@ export class PatientVariantReportQcComponent implements OnInit, QcVariantReportD
             break;
         }
       });
+  }
+
+  patientDataTransform(): void {
+    this.patientData.patientSequenceNumber = this.patientData.psn;
   }
 
   getVariantReportLink(report: any): string {

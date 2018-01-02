@@ -28,6 +28,7 @@ import { ToastrService } from '../../shared/error-handling/toastr.service';
 import { ToastrServiceStub } from '../testing/toastr-service-stub';
 import { DownloadService } from '../../shared/utils/download.service';
 import { DownloadMockService } from '../../shared/testing/download-mock.service';
+import { PatientHeaderModule } from './../patient-header/patient-header.module';
 
 export function main() {
   xdescribe('PatientVariantReportQcComponent (templateUrl)', () => {
@@ -55,7 +56,8 @@ export function main() {
           SharedModule,
           NoopAnimationsModule,
           VariantReportFilteredTableModule,
-          UtilsModule
+          UtilsModule,
+          PatientHeaderModule
         ],
         declarations: [PatientVariantReportQcComponent],
         providers: [
