@@ -3,13 +3,23 @@ import {
   OnInit,
   AfterViewInit
 } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import {
+  ActivatedRoute,
+  Router
+} from '@angular/router';
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import {
+  BsModalRef,
+  BsModalService
+} from 'ngx-bootstrap';
 import { Subscription } from 'rxjs/Subscription';
 
 import { routerTransition } from './../../shared/router.animations';
-import { PatientApiService, ApiError, ApiSuccess } from '../patient-api.service';
+import {
+  PatientApiService,
+  ApiError,
+  ApiSuccess
+} from '../patient-api.service';
 import { ViewDataTransformer } from './../view-data-transformer.service';
 import { PatientData } from './patient-details.module';
 import { UserProfileService } from '../../shared/user-profile/user-profile.service';

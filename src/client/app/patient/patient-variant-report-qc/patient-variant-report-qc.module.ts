@@ -9,6 +9,7 @@ import { DirectivesModule } from '../../shared/directives/directives.module';
 import { PatientApiService } from '../patient-api.service';
 import { VariantReportFilteredTableModule } from '../../shared/variant-report-filtered-table/variant-report-filtered-table.module';
 import { PatientHeaderModule } from './../patient-header/patient-header.module';
+import { ViewDataTransformer } from './../view-data-transformer.service';
 
 export interface QcVariantReportData {
   psn: string;
@@ -30,6 +31,7 @@ export interface QcVariantReportData {
   rnaBamFilePath: string;
   vcfFilePath: string;
   showPools: boolean;
+  patient: any;
 }
 
 @NgModule({
@@ -45,6 +47,6 @@ export interface QcVariantReportData {
   ],
   declarations: [PatientVariantReportQcComponent],
   exports: [PatientVariantReportQcComponent],
-  providers: [PatientApiService]
+  providers: [PatientApiService, ViewDataTransformer]
 })
 export class PatientVariantReportQcModule { }

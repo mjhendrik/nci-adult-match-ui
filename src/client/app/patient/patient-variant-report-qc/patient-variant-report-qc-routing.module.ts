@@ -1,4 +1,7 @@
-import { NgModule, Injectable } from '@angular/core';
+import {
+  NgModule,
+  Injectable
+} from '@angular/core';
 import {
   RouterModule,
   Resolve,
@@ -15,7 +18,10 @@ import { ViewDataTransformer } from '../view-data-transformer.service';
 
 @Injectable()
 class DataResolver implements Resolve<QcVariantReportData> {
-  constructor(private api: PatientApiService, private transformer: ViewDataTransformer) { }
+  constructor(
+    private api: PatientApiService,
+    private transformer: ViewDataTransformer
+  ) { }
 
   resolve(
     route: ActivatedRouteSnapshot,
@@ -30,18 +36,17 @@ class DataResolver implements Resolve<QcVariantReportData> {
       this.api.getPatientVariantReportQc(psn, analysisId),
       this.api.getPatientVariantReportOcp(psn, analysisId),
       this.api.getPatientCopyNumberReport(psn, analysisId),
-      this.api.getPatientVariantReportFileInfo(psn, analysisId)
+      this.api.getPatientVariantReportFileInfo(psn, analysisId),
+      this.api.getPatientDetails(psn)
     ).map(
       data => {
-        // getPatientVariantReportQc => data[0]
-        // getPatientVariantReportOcp => data[1]
-        // getPatientCopyNumberReport => data[2]
-        // getPatientVariantReportFileInfo => data[3]
+
+        let patient = this.transformer.transformPatient(data) || {};
 
         let snvAndIndels: any[] = data[0].indels || [];
         snvAndIndels = snvAndIndels.concat(data[0].singleNucleotideVariants || []);
 
-        let ocpSummary: {[key:string]: any} = data[1].genes;
+        let ocpSummary: { [key: string]: any } = data[1].genes;
         let hasData: boolean;
         let sum: number;
         [hasData, sum] = this.calculateOcpSum(ocpSummary);
@@ -52,6 +57,7 @@ class DataResolver implements Resolve<QcVariantReportData> {
 
         return {
           psn: psn,
+          patient: patient[4],
           bsn: bsn,
           analysisId: analysisId,
           molecularSequenceNumber: data[0].molecularSequenceNumber,
@@ -73,10 +79,10 @@ class DataResolver implements Resolve<QcVariantReportData> {
           showPools: showPools
         };
       }
-    );
+      );
   }
 
-  private calculateOcpSum(ocpSummary: {[key:string]: any}): [boolean, number] {
+  private calculateOcpSum(ocpSummary: { [key: string]: any }): [boolean, number] {
     if (!ocpSummary)
       return null;
 

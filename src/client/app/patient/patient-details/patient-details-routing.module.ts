@@ -1,4 +1,7 @@
-import { NgModule, Injectable } from '@angular/core';
+import {
+  NgModule,
+  Injectable
+} from '@angular/core';
 import {
   RouterModule,
   ActivatedRouteSnapshot,
@@ -17,7 +20,8 @@ import { ViewDataTransformer } from '../view-data-transformer.service';
 class DataResolver implements Resolve<PatientData> {
   constructor(
     private api: PatientApiService,
-    private transformer: ViewDataTransformer) { }
+    private transformer: ViewDataTransformer
+  ) { }
 
   resolve(
     route: ActivatedRouteSnapshot,

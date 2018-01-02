@@ -5,11 +5,14 @@ import {
 import { ActivatedRoute } from '@angular/router';
 import { routerTransition } from './../../shared/router.animations';
 import {
-  PatientApiService, ApiError, ApiSuccess
+  PatientApiService,
+  ApiError,
+  ApiSuccess
 } from '../patient-api.service';
 import { QcVariantReportData } from './patient-variant-report-qc.module';
 import { DownloadService } from '../../shared/utils/download.service';
 import { ToastrService } from '../../shared/error-handling/toastr.service';
+import { ViewDataTransformer } from './../view-data-transformer.service';
 
 /**
  * PatientVariantReportQcComponent.
@@ -32,7 +35,7 @@ export class PatientVariantReportQcComponent implements OnInit, QcVariantReportD
   pool1: number;
   pool2: number;
   cellularity: string;
-  patientData: any = {};
+  patient: any = {};
 
   variantReport: any;
   assignmentReport: any;
@@ -50,6 +53,7 @@ export class PatientVariantReportQcComponent implements OnInit, QcVariantReportD
   vcfFilePath: string;
 
   constructor(
+    public transformer: ViewDataTransformer,
     private route: ActivatedRoute,
     private patientApi: PatientApiService,
     private toastrService: ToastrService,
@@ -57,8 +61,17 @@ export class PatientVariantReportQcComponent implements OnInit, QcVariantReportD
 
   ngOnInit() {
     Object.assign(this, this.route.snapshot.data['data']);
-    this.patientData = this;
-    this.patientDataTransform();
+
+    this.patient.raceList = this.patient.races.join(', ');
+    if (this.patient.diseases && this.patient.diseases.length) {
+      if (this.patient.isOutsideAssayWorkflow) {
+        this.patient.disease.outsideData = this.patient.diseases.length > 0 ? this.patient.diseases[0] : {};
+        this.patient.disease.matchData = this.patient.diseases.length > 1 ? this.patient.diseases[1] : {};
+      } else {
+        this.patient.disease = this.patient.diseases && this.patient.diseases.length ? this.patient.diseases[0] : {};
+      }
+    }
+    this.patient.concordance = this.transformConcordance(this.patient);
   }
 
   download(file: string) {
@@ -81,10 +94,6 @@ export class PatientVariantReportQcComponent implements OnInit, QcVariantReportD
       });
   }
 
-  patientDataTransform(): void {
-    this.patientData.patientSequenceNumber = this.patientData.psn;
-  }
-
   getVariantReportLink(report: any): string {
     if (report.patientType === 'OUTSIDE_ASSAY') {
       return `/patients/${this.psn}/variant_reports_oa/${report.analysisId}`;
@@ -98,6 +107,19 @@ export class PatientVariantReportQcComponent implements OnInit, QcVariantReportD
       return { isOutsideAssay: report.isOutsideAssay };
     } else {
       return null;
+    }
+  }
+
+  private transformConcordance(patient: any): string {
+    if (!patient || !patient.concordance) {
+      return 'UNKNOWN';
+    }
+
+    switch (patient.concordance) {
+      case 'Y': return 'YES';
+      case 'N': return 'NO';
+      case 'U': return 'UNKNOWN';
+      default: return patient.concordance;
     }
   }
 
