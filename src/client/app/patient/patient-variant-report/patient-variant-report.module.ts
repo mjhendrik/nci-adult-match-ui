@@ -15,6 +15,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { ScrollService } from '../../shared/utils/scroll.to.service';
 import { DiseaseInfoModule } from '../disease-info/disease-info.module';
 import { AssayHistoryTableModule } from '../assay-history-table/assay-history-table.module';
+import { PatientHeaderModule } from './../patient-header/patient-header.module';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import { AssayHistoryTableModule } from '../assay-history-table/assay-history-ta
     VariantReportSimpleTableModule,
     SharedModule,
     AssayHistoryTableModule,
-    DiseaseInfoModule
+    DiseaseInfoModule,
+    PatientHeaderModule
   ],
   declarations: [PatientVariantReportComponent],
   exports: [PatientVariantReportComponent],

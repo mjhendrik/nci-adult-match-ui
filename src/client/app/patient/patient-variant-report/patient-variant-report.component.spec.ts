@@ -32,6 +32,7 @@ import { ToastrService } from '../../shared/error-handling/toastr.service';
 import { ToastrServiceStub } from '../testing/toastr-service-stub';
 import { DownloadService } from '../../shared/utils/download.service';
 import { DownloadMockService } from '../../shared/testing/download-mock.service';
+import { PatientHeaderModule } from './../patient-header/patient-header.module';
 
 export function main() {
 
@@ -56,7 +57,8 @@ export function main() {
           NoopAnimationsModule,
           VariantReportSimpleTableModule,
           AssignmentReasonTableModule,
-          UtilsModule
+          UtilsModule,
+          PatientHeaderModule
         ],
         declarations: [PatientVariantReportComponent],
         providers: [
