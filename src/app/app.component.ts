@@ -26,7 +26,6 @@ export class AppComponent implements OnInit {
     private router: Router,
     private toastrService: ToastrService,
     private auth: AuthService) {
-    auth.handleAuth();
     // A work-around for ToastsManager not being able to be injected into ErrorHandlingService for some reason
     this.toastrService.toastr = toastr;
     this.toastr.setRootViewContainerRef(vcr);

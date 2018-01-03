@@ -16,7 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
 import { Router } from '@angular/router';
 import { ModalModule, PopoverModule } from 'ngx-bootstrap';
-import { JwtModule } from '@auth0/angular-jwt';
+import { AUTH_PROVIDERS } from 'angular2-jwt';
 
 import { NvD3Module } from 'ng2-nvd3';
 
@@ -97,13 +97,6 @@ export function JwtModuleConfigFactory() {
     ModalModule.forRoot(),
     PopoverModule.forRoot(),
     HttpClientModule,
-    JwtModule.forRoot({
-      config: {
-        tokenGetter: JwtModuleConfigFactory,
-        whitelistedDomains: [...environment.auth0.whitelistDomain],
-        skipWhenExpired: true
-      }
-    }),
     ErrorModule // This needs to be at the bottom of the list for ErrorComponent to work properly
   ],
   declarations: [AppComponent, AuthCallbackComponent],
@@ -116,6 +109,7 @@ export function JwtModuleConfigFactory() {
       deps: [XHRBackend, RequestOptions, Router]
     },
     AuthService,
+    AUTH_PROVIDERS,
     AuthGuard,
     LoginGuard,
     ToastrService,

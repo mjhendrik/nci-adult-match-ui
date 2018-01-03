@@ -22,7 +22,8 @@
         "styles.scss"
       ],
       "scripts": [
-        "../node_modules/auth0-js/build/auth0.min.js"
+        "../node_modules/auth0-js/build/auth0.min.js",
+        "../node_modules/auth0-lock/lib/index.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
