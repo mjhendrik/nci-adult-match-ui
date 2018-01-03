@@ -13,7 +13,7 @@
   <h1 class="page-header">Patient
     <span class="entity-name">{{patient.patientSequenceNumber | dashify}}</span>
   </h1>
-  <sd-patient-header [items]="patient"></sd-patient-header>
+  <app-patient-header [items]="patient"></app-patient-header>
   <div class="panel">
     <tabset class="nav-tabs-purple">
       <tab heading="Summary" [active]="summaryData" id="summary" index="0">

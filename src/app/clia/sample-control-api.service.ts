@@ -150,11 +150,6 @@ export class SampleControlApiService extends ApiService {
         }
         return Observable.of({ kind: 'error', message: message } as ApiStatusUpdateError);
       });
-<<<<<<< HEAD:src/app/clia/sample-control-api.service.ts
-    // .map(this.extractData)
-    // .catch(this.handleError);
-=======
->>>>>>> master:src/client/app/clia/sample-control-api.service.ts
   }
 
   confirmReport(molecular_id: string, type: string): Observable<any> {

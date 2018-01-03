@@ -5,7 +5,7 @@ import {
 
 @Component({
   moduleId: module.id,
-  selector: 'sd-patient-header',
+  selector: 'app-patient-header',
   templateUrl: 'patient-header.component.html'
 })
 

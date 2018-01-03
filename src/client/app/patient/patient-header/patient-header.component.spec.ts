@@ -17,7 +17,7 @@ import { SharedModule } from '../../shared/shared.module';
 
 @Component({
   selector: 'test-cmp',
-  template: '<sd-patient-header [items]="items"></sd-patient-header>'
+  template: '<app-patient-header [items]="items"></app-patient-header>'
 })
 class TestComponent {
   items: any[] = [
@@ -50,7 +50,7 @@ export function main() {
     beforeEach(() => {
       fixture = TestBed.createComponent(TestComponent);
       hostComponent = fixture.componentInstance;
-      de = fixture.debugElement.query(By.css('sd-patient-header'));
+      de = fixture.debugElement.query(By.css('app-patient-header'));
       el = de.nativeElement;
     });
 
