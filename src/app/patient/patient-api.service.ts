@@ -57,7 +57,7 @@ export class PatientApiService extends ApiService {
   }
 
   getPatientCount(filter: string, isOutsideAssayWorkflow?: boolean): Observable<number> {
-    return this.http.get(Config.API.PATIENT
+    return this.http.get(this.baseApiUrl
       // tslint:disable-next-line:max-line-length
       + '/patients/count?projection=patientSequenceNumber,patientType,currentPatientStatus,currentStepNumber,diseases.shortName,registrationDate,patientAssignments.treatmentArm.name,patientAssignments.treatmentArm.version'
       + (filter ? '&projfilter=' + filter : '')
@@ -67,7 +67,7 @@ export class PatientApiService extends ApiService {
   }
 
   getPatientTotal(isOutsideAssayWorkflow?: boolean): Observable<number> {
-    return this.http.get(Config.API.PATIENT + '/patients/count?projection=patientSequenceNumber'
+    return this.http.get(this.baseApiUrl + '/patients/count?projection=patientSequenceNumber'
       + (isOutsideAssayWorkflow !== null ? '&is-oa=' + isOutsideAssayWorkflow : ''))
       .map(this.extractData)
       .catch(this.handleError);
@@ -115,7 +115,7 @@ export class PatientApiService extends ApiService {
   }
 
   downloadPatientFile(psn: string, url: string): Observable<ApiSuccess | ApiError> {
-    return this.http.post(Config.API.PATIENT + '/patients/' + psn + '/download_url', { s3_url: url })
+    return this.http.post(this.baseApiUrl + '/patients/' + psn + '/download_url', { s3_url: url })
       .map((res: Response) => {
         return { kind: 'success', data: res.json() } as ApiSuccess;
       })
