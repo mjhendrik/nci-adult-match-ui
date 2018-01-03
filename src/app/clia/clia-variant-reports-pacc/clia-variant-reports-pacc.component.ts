@@ -5,9 +5,12 @@ import {
 import { ActivatedRoute } from '@angular/router';
 
 import { routerTransition } from './../../shared/router.animations';
+// import { ViewDataTransformer } from '../view-data-transformer.service';
 import { CliaVariantReportsPACCViewData } from '../clia-data-interfaces';
 import { SampleControlApiService } from '../sample-control-api.service';
 import { UserProfileService } from '../../shared/user-profile/user-profile.service';
+import { ApiStatusUpdateError, ApiStatusUpdateSuccess, ApiError, ApiSuccess } from '../sample-control-api.service';
+import { ToastrService } from '../../shared/error-handling/toastr.service';
 // import { CliaDataService } from "./../../shared/clia/clia-data.service";
 
 /**
@@ -44,7 +47,9 @@ export class CliaVariantReportsPaccComponent implements OnInit {
 
   constructor(private api: SampleControlApiService,
     private route: ActivatedRoute,
-    private profile: UserProfileService) {
+    private profile: UserProfileService,
+    // private transformer: ViewDataTransformer,
+    private toastrService: ToastrService) {
   }
 
   ngOnInit() {
@@ -132,10 +137,30 @@ export class CliaVariantReportsPaccComponent implements OnInit {
   };
 
   rejectReport(): void {
-    this.api.rejectReport(this.molecular_id, 'proficiency_competency_control')
-      .subscribe((itemList: any) => {
-        console.info('Report Rejected');
-      });
+    const action = () => {
+      console.info('Rejecting clia report: ' + this.molecular_id);
+
+      this.api
+        .rejectReport(this.molecular_id, 'proficiency_competency_control')
+        .subscribe(
+          (x:  ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
+            switch (x.kind) {
+              case 'error':
+                this.showToast(x.message, true);
+                break;
+              case 'success':
+                // this.transformer.updateVariantReportStatus(this, x);
+                this.showToast(`Clia Report ${this.molecular_id} has been rejected`, false);
+                break;
+            }
+          });
+
+          // (itemList: any) => {
+          // console.info('Report Rejected');
+        // });
+
+    };
+
   };
 
   confirmReport(): void {
@@ -144,5 +169,17 @@ export class CliaVariantReportsPaccComponent implements OnInit {
         console.info('Report Confirmed');
       });
   };
+
+  private showToast(message: string, isError: boolean): void {
+    if (this.toastrService && this.toastrService.toastr) {
+      if (isError) {
+        console.error(message);
+        this.toastrService.toastr.error(message);
+      } else {
+        console.info(message);
+        this.toastrService.toastr.info(message);
+      }
+    }
+  }
 
 }

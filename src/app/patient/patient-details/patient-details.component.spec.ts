@@ -21,6 +21,7 @@ import { PatientDetailsComponent } from './patient-details.component';
 import { PatientApiService } from './../patient-api.service';
 import { ViewDataTransformer } from './../view-data-transformer.service';
 import { PatientTimelineModule } from './../patient-timeline/patient-timeline.module';
+import { PatientHeaderModule } from './../patient-header/patient-header.module';
 import { SharedModule } from '../../shared/shared.module';
 import { Observable } from 'rxjs/Observable';
 
@@ -55,6 +56,7 @@ export function main() {
           FormsModule,
           DataTableModule,
           PatientTimelineModule,
+          PatientHeaderModule,
           DropzoneModule,
           SharedModule,
           NoopAnimationsModule,

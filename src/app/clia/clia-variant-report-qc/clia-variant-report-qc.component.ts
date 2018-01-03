@@ -94,15 +94,11 @@ export class CliaVariantReportQcComponent implements OnInit {
   }
 
   getData(itemList: CliaVariantReportsQCViewData) {
-
     this.total_variants = itemList.total_variants;
     this.mapd = itemList.mapd;
     this.cellularity = itemList.cellularity;
     this.gene_fusions = itemList.gene_fusions;
     this.snv_indels = itemList.snv_indels;
-    // this.molecular_id = itemList.molecular_id;
-    // this.analysis_id = itemList.analysis_id;
-    // this.torrent_variant_caller_version = itemList.torrent_variant_caller_version;
   };
 
   getGraph(itemList: CliaVariantReportsQCViewData) {

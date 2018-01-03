@@ -43,8 +43,8 @@ class DataResolver implements Resolve<VariantReportComparisonData> {
             .map(updatedVariantReport => {
               this.transformer.replaceVariantReportTables(outsideVariantReport, updatedVariantReport);
               return comparisonData;
-            }).subscribe(x=>x);
-            return comparisonData;
+            }).subscribe(x => x);
+          return comparisonData;
         } else {
           return comparisonData;
         }
@@ -59,8 +59,8 @@ class DataResolver implements Resolve<VariantReportComparisonData> {
             .map(updatedVariantReport => {
               this.transformer.replaceVariantReportTables(matchReport, updatedVariantReport);
               return comparisonData;
-            }).subscribe(x=>x);
-            return comparisonData;
+            }).subscribe(x => x);
+          return comparisonData;
         } else {
           return comparisonData;
         }
@@ -79,12 +79,14 @@ class DataResolver implements Resolve<VariantReportComparisonData> {
     return reportObservable.flatMap((comparisonData: VariantReportComparisonData) => Observable.forkJoin(
       Observable.of(comparisonData),
       this.patientApi.getPatientCopyNumberReport(psn, comparisonData.matchData.analysisId),
-      this.patientApi.getPatientVariantReportOcp(psn, comparisonData.matchData.analysisId)
+      this.patientApi.getPatientVariantReportOcp(psn, comparisonData.matchData.analysisId),
+      this.patientApi.getPatientDetails(psn)
     )).map(x => {
+      let patient = this.transformer.transformPatient(x);
       let [report, cnvDataMatch, ocpDataMatch] = x;
 
       const transformedReport = this.transformer.transformOutsidePatientReport(
-        report, cnvDataMatch, ocpDataMatch, isOutsideAssayReport, psn);
+        report, cnvDataMatch, ocpDataMatch, isOutsideAssayReport, psn, patient);
 
       return transformedReport;
     });

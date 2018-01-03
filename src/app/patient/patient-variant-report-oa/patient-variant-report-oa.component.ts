@@ -5,10 +5,19 @@ import {
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import {
+  BsModalRef,
+  BsModalService
+} from 'ngx-bootstrap';
 
 import { routerTransition } from './../../shared/router.animations';
-import { PatientApiService, ApiStatusUpdateSuccess, ApiStatusUpdateError, ApiError, ApiSuccess } from '../patient-api.service';
+import {
+  PatientApiService,
+  ApiStatusUpdateSuccess,
+  ApiStatusUpdateError,
+  ApiError,
+  ApiSuccess
+} from '../patient-api.service';
 import { ScrollService } from '../../shared/utils/scroll.to.service';
 import { ViewDataTransformer } from '../view-data-transformer.service';
 import { ConfirmableItem } from '../../shared/check-box-with-confirm/check-box-with-confirm.component';
@@ -31,9 +40,9 @@ const roles = {
     'YALE_VARIANT_REPORT_REVIEWER'
   ],
   assignmentReportEdit: [
-  'SYSTEM',
-  'ADMIN',
-  'ASSIGNMENT_REPORT_REVIEWER'
+    'SYSTEM',
+    'ADMIN',
+    'ASSIGNMENT_REPORT_REVIEWER'
   ]
 };
 
@@ -60,6 +69,9 @@ export class PatientVariantReportOutsideAssayComponent
   currentPatientStatus: string;
   currentStepNumber: string;
   concordance: string;
+
+  patientData: any = {};
+  patient: any = {};
 
   outsideData: VariantReportData;
   matchData: VariantReportData;
@@ -102,6 +114,15 @@ export class PatientVariantReportOutsideAssayComponent
 
     this.allowVariantReportEdit = this.profile.checkRoles(roles.variantReportEdit);
     this.allowAssignmentReportEdit = this.profile.checkRoles(roles.assignmentReportEdit);
+    this.patientData = this;
+
+    this.patient.raceList = this.patient.races.join(', ');
+    this.patient.isOutsideAssayWorkflow = true;
+    if (this.patient.diseases && this.patient.diseases.length) {
+      this.patient.disease.outsideData = this.patient.diseases.length > 0 ? this.patient.diseases[0] : {};
+      this.patient.disease.matchData = this.patient.diseases.length > 1 ? this.patient.diseases[1] : {};
+    }
+    this.patient.concordance = this.transformConcordance(this.patient);
   }
 
   download(file: string) {
@@ -129,26 +150,26 @@ export class PatientVariantReportOutsideAssayComponent
       console.info('Confirming outside lab variant report: ' + this.outsideData.analysisId);
       this.patientApi
         .updateVariants(
-          this.patientSequenceNumber,
-          this.outsideData.biopsySequenceNumber,
-          this.outsideData.analysisId,
-          this.transformer.getVariants(this.outsideData.variantReport)
+        this.patientSequenceNumber,
+        this.outsideData.biopsySequenceNumber,
+        this.outsideData.analysisId,
+        this.transformer.getVariants(this.outsideData.variantReport)
         )
         .flatMap(
-          () => this.patientApi.updateVariantReportStatus(this.patientSequenceNumber, this.outsideData.biopsySequenceNumber, this.outsideData.analysisId, true)
+        () => this.patientApi.updateVariantReportStatus(this.patientSequenceNumber, this.outsideData.biopsySequenceNumber, this.outsideData.analysisId, true)
         )
         .subscribe(
-          (x: ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
-            switch (x.kind) {
-              case 'error':
-                this.showToast(x.message, true);
-                break;
-              case 'success':
-                this.transformer.updateVariantReportStatus(this, x);
-                this.showToast(`Variant Report ${this.outsideData.analysisId} has been confirmed`, false);
-                break;
-            }
+        (x: ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
+          switch (x.kind) {
+            case 'error':
+              this.showToast(x.message, true);
+              break;
+            case 'success':
+              this.transformer.updateVariantReportStatus(this, x);
+              this.showToast(`Variant Report ${this.outsideData.analysisId} has been confirmed`, false);
+              break;
           }
+        }
         );
     };
 
@@ -221,12 +242,12 @@ export class PatientVariantReportOutsideAssayComponent
       console.info('Confirming MATCH variant report: ' + this.matchData.analysisId);
       this.patientApi
         .updateVariants(this.patientSequenceNumber,
-          this.matchData.biopsySequenceNumber,
-          this.matchData.analysisId,
-          this.transformer.getVariants(this.matchData.variantReport)
+        this.matchData.biopsySequenceNumber,
+        this.matchData.analysisId,
+        this.transformer.getVariants(this.matchData.variantReport)
         )
         .flatMap(
-          () => this.patientApi.updateVariantReportStatus(this.patientSequenceNumber, this.matchData.biopsySequenceNumber, this.matchData.analysisId, true)
+        () => this.patientApi.updateVariantReportStatus(this.patientSequenceNumber, this.matchData.biopsySequenceNumber, this.matchData.analysisId, true)
         )
         .subscribe(
         (x: ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
@@ -328,7 +349,7 @@ export class PatientVariantReportOutsideAssayComponent
             break;
         }
       }
-    );
+      );
   }
 
   hasAssignment(data: VariantReportData): boolean {
@@ -339,6 +360,19 @@ export class PatientVariantReportOutsideAssayComponent
 
   hasReportData(data: any): boolean {
     return !!data && data.analysisId;
+  }
+
+  private transformConcordance(patient: any): string {
+    if (!patient || !patient.concordance) {
+      return 'UNKNOWN';
+    }
+
+    switch (patient.concordance) {
+      case 'Y': return 'YES';
+      case 'N': return 'NO';
+      case 'U': return 'UNKNOWN';
+      default: return patient.concordance;
+    }
   }
 
   private showConfirmation(

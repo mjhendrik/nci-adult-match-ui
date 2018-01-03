@@ -12,11 +12,12 @@ import { PipesModule } from '../../shared/pipes/pipes.module';
 import { DirectivesModule } from '../../shared/directives/directives.module';
 import { PatientApiService } from '../patient-api.service';
 import { PatientTimelineModule } from './../patient-timeline/patient-timeline.module';
+import { PatientHeaderModule } from './../patient-header/patient-header.module';
 import { ViewDataTransformer } from './../view-data-transformer.service';
 import { SharedModule } from '../../shared/shared.module';
 import { FileUploadModule } from '../file-upload/file-upload.module';
 import { DocumentUploadModule } from '../document-upload/document-upload.module';
-import { DiseaseInfoModule } from '../disease-info/disease-info.module';
+// import { DiseaseInfoModule } from '../disease-info/disease-info.module';
 import { AssayHistoryTableModule } from '../assay-history-table/assay-history-table.module';
 
 export interface PatientData {
@@ -44,10 +45,11 @@ const DROPZONE_CONFIG: DropzoneConfigInterface = {
     PipesModule,
     DirectivesModule,
     PatientTimelineModule,
+    PatientHeaderModule,
     SharedModule,
     FileUploadModule,
     DocumentUploadModule,
-    DiseaseInfoModule,
+    // DiseaseInfoModule,
     AssayHistoryTableModule,
     TabsModule.forRoot(),
     DropzoneModule

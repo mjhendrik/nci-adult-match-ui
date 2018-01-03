@@ -8,6 +8,8 @@ import { PipesModule } from '../../shared/pipes/pipes.module';
 import { DirectivesModule } from '../../shared/directives/directives.module';
 import { PatientApiService } from '../patient-api.service';
 import { VariantReportFilteredTableModule } from '../../shared/variant-report-filtered-table/variant-report-filtered-table.module';
+import { PatientHeaderModule } from './../patient-header/patient-header.module';
+import { ViewDataTransformer } from './../view-data-transformer.service';
 
 export interface QcVariantReportData {
   psn: string;
@@ -21,7 +23,7 @@ export interface QcVariantReportData {
   pool1: number;
   pool2: number;
   biopsySequenceNumber: string;
-  ocpSummary: {[key:string]: any};
+  ocpSummary: { [key: string]: any };
   mapd: string;
   cellularity: any;
   parsed_vcf_genes: any;
@@ -29,6 +31,7 @@ export interface QcVariantReportData {
   rnaBamFilePath: string;
   vcfFilePath: string;
   showPools: boolean;
+  patient: any;
 }
 
 @NgModule({
@@ -39,10 +42,11 @@ export interface QcVariantReportData {
     DataTableModule,
     PipesModule,
     DirectivesModule,
-    VariantReportFilteredTableModule
+    VariantReportFilteredTableModule,
+    PatientHeaderModule
   ],
   declarations: [PatientVariantReportQcComponent],
   exports: [PatientVariantReportQcComponent],
-  providers: [PatientApiService]
+  providers: [PatientApiService, ViewDataTransformer]
 })
 export class PatientVariantReportQcModule { }
