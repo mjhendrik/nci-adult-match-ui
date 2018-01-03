@@ -16,6 +16,7 @@
 		"stevejpurves.cucumber",
 		"CoenraadS.bracket-pair-colorizer",
 		"infinity1207.angular2-switcher",
-		"DavidAnson.vscode-markdownlint"
+		"DavidAnson.vscode-markdownlint",
+		"pflannery.vscode-versionlens"
 	]
 }
