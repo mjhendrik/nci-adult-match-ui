@@ -149,7 +149,7 @@ export class CliaVariantReportsPaccComponent implements OnInit {
   rejectReport(): void {
 
     const action = () => {
-      console.info('Rejecting clia report: ' + this.molecular_id);
+      console.info('Rejecting Proficiency and Competency clia report: ' + this.molecular_id);
 
       this.api
         .rejectReport(this.molecular_id, 'proficiency_competency_control')
@@ -178,11 +178,42 @@ export class CliaVariantReportsPaccComponent implements OnInit {
   };
 
   confirmReport(): void {
-    this.api.confirmReport(this.molecular_id, 'proficiency_competency_control')
-      .subscribe((itemList: any) => {
-        console.info('Report Confirmed');
-      });
+
+    const action = () => {
+      console.info('Confirming Proficiency and Competency clia report: ' + this.molecular_id);
+
+      this.api
+        .rejectReport(this.molecular_id, 'proficiency_competency_control')
+        .subscribe(
+          (x:  ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
+            switch (x.kind) {
+              case 'error':
+                this.showToast(x.message, true);
+                break;
+              case 'success':
+                this.transformer.updateConfirmedCliaPCCStatus(this, x);
+                this.showToast(`Profiency and Competency Control Clia Report ${this.molecular_id} has been confirmed`, false);
+                break;
+            }
+          });
+    };
+
+    this.showConfirmation(
+      false,
+      'Profiency and Competency Control Clia Report Confirmation',
+      `Are you sure you want to confirm Profiency and Competency Control Clia Report ${this.molecular_id}?`,
+      'Confirm',
+      `Don't Confirm`,
+      action
+    );
   };
+
+  // confirmReport(): void {
+  //   this.api.confirmReport(this.molecular_id, 'proficiency_competency_control')
+  //     .subscribe((itemList: any) => {
+  //       console.info('Report Confirmed');
+  //     });
+  // };
 
   private showConfirmation(
     withComment: boolean,
