@@ -318,7 +318,7 @@ export function main() {
 
       it('expect the assignment report to be editable when there is no dateConfirmed', () => {
         report.assignmentReport.dateConfirmed = null;
-        report.isAssignmentReportEditable = service.getAssignmentReportEditable(report);
+        report.isAssignmentReportEditable = service.getAssignmentReportEditable(report.assignmentReport);
         expect(report.isAssignmentReportEditable).toEqual(true);
       });
     });
