@@ -18,11 +18,8 @@ interface StringToStringMap {
   selector: 'sd-disease',
   template: `
   <dl class="dl-horizontal" [ngClass]="{true:'narrow-dt',false:''}[isNarrow]">
-    <dt *ngIf="hasOutsideTitle && !hasData" class="text-muted f-w-400"> No Disease data</dt>
-    <dd *ngIf="hasOutsideTitle && !hasData"></dd>
-
-    <dt *ngIf="!hasOutsideTitle">{{diseasePrefix}} Disease</dt>
-    <dd *ngIf="!hasOutsideTitle">{{disease.shortName | dashify}}</dd>
+    <dt>{{diseasePrefix}} Disease</dt>
+    <dd>{{disease.shortName | dashify}}</dd>
     <dt *ngIf="details.length" class="text-muted f-w-500">More</dt>
     <dd *ngIf="details.length" class="text-muted text-ellipsis" [ngClass]="{true:'width-100',false:'width-150'}[isNarrow]">
       <app-inline-pairs [items]="details"></app-inline-pairs>
@@ -34,7 +31,6 @@ export class DiseaseInfoComponent {
   hasData: boolean;
 
   @Input() isNarrow: boolean;
-  @Input() hasOutsideTitle: boolean;
   @Input() diseasePrefix: string;
 
   private diseaseValue: DiseaseInfo = DiseaseInfo.default();

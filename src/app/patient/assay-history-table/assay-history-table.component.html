@@ -4,9 +4,9 @@
       <th>Type</th>
       <th>Gene</th>
       <th>Result</th>
-      <th>Order Date</th>
-      <th>Result Date</th>
-      <th>Comment</th>
+      <th *ngIf="isHistory">Order Date</th>
+      <th *ngIf="isHistory">Result Date</th>
+      <th *ngIf="isHistory">Comment</th>
     </tr>
   </thead>
   <tbody>
@@ -16,12 +16,12 @@
         <cosmic-link [linkType]="'cosmicGene'" [linkId]="item.gene"></cosmic-link>
       </td>
       <td [colorCodeAssay]="item.result">{{item.result | dashify}}</td>
-      <td>{{item.orderedDate | gmt}}</td>
-      <td>{{item.reportedDate | gmt}}</td>
-      <td>{{item.comment | dashify}}</td>
+      <td *ngIf="isHistory">{{item.orderedDate | gmt}}</td>
+      <td *ngIf="isHistory">{{item.reportedDate | gmt}}</td>
+      <td *ngIf="isHistory">{{item.comment | dashify}}</td>
     </tr>
     <tr *ngIf="!items || !items.length">
-      <td colspan="6" class="text-muted">No Assay History data</td>
+      <td colspan="isHistory ? 6 : 3" class="text-muted">No Assay data</td>
     </tr>
   </tbody>
 </table>

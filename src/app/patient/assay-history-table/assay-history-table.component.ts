@@ -22,4 +22,5 @@ export class AssayHistoryItem {
 export class AssayHistoryTableComponent {
   @Input() items: AssayHistoryItem[] = [];
   @Input() tableCssClasses = 'table-condensed white-header';
+  @Input() isHistory: boolean;
 }

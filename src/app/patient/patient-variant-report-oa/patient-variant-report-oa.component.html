@@ -51,7 +51,6 @@
                     <dt>File Received Date</dt>
                     <dd>{{outsideData.variantReport.createdDate | gmt}}</dd>
                   </dl>
-                  <sd-disease [disease]="outsideData.disease"></sd-disease>
                   <div class="m-b-5">
                     <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!outsideData.variantReport.dnaBamFilePath"
                       (click)="download(outsideData.variantReport.dnaBamFilePath)">
@@ -219,7 +218,6 @@
                     <dt *ngIf="showPools">Pool 2</dt>
                     <dd *ngIf="showPools">{{matchData.pool2 | dashify}}</dd>
                   </dl>
-                  <sd-disease [disease]="matchData.disease"></sd-disease>
                   <div class="m-b-5">
                     <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!matchData.variantReport.dnaBamFilePath"
                       (click)="download(matchData.variantReport.dnaBamFilePath)">

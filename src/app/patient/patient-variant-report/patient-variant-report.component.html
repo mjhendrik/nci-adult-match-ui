@@ -83,8 +83,6 @@
             <button type="button" class="btn btn-xs btn-purple-light p-3 p-l-10 p-r-10" [disabled]="!variantReport.vcfFilePath" (click)="download(variantReport.vcfFilePath)">
               <i class="fa fa-download"></i> VCF</button>
           </div>
-          <h4 class="f-w-700 m-t-20">Disease</h4>
-          <sd-disease [disease]="disease" [hasOutsideTitle]="true"></sd-disease>
         </div>
       </div>
     </div>
@@ -137,7 +135,7 @@
       <div class="panel panel-white panel-accent-sides-purple overflow-hidden panel-height-middle">
         <div class="panel-heading">
           <dl class="dl-horizontal">
-            <h4 class="f-w-700">Assay History</h4>
+            <h4 class="f-w-700">Assays</h4>
             <sd-assay-history-table [items]="assayMessages" [tableCssClasses]="'table-condensed white-header'">
             </sd-assay-history-table>
           </dl>
