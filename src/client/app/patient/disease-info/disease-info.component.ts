@@ -20,6 +20,10 @@ interface StringToStringMap {
   <dl class="dl-horizontal" [ngClass]="{true:'narrow-dt',false:''}[isNarrow]">
     <dt>{{diseasePrefix}} Disease</dt>
     <dd>{{disease.shortName | dashify}}</dd>
+    <dt>CTEP Category</dt>
+    <dd>{{disease.ctepCategory | dashify}}</dd>
+    <dt>MedDRA Code</dt>
+    <dd>{{disease._id | dashify}}</dd>
     <dt *ngIf="details.length" class="text-muted f-w-500">More</dt>
     <dd *ngIf="details.length" class="text-muted text-ellipsis" [ngClass]="{true:'width-100',false:'width-150'}[isNarrow]">
       <sd-inline-pairs [items]="details"></sd-inline-pairs>
@@ -48,10 +52,8 @@ export class DiseaseInfoComponent {
       return list;
 
     const extras: StringToStringMap = {
-      'ctepCategory': 'CTEP Category',
       'ctepSubCategory': 'CTEP Sub Category',
-      'ctepTerm': 'CTEP Term',
-      '_id': 'MedDRA Code'
+      'ctepTerm': 'CTEP Term'
     };
 
     Object.keys(extras).forEach(
