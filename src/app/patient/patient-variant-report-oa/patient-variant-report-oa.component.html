@@ -39,14 +39,6 @@
                     <dd>{{outsideData.biopsySequenceNumber | dashify}}</dd>
                     <dt>Analysis ID</dt>
                     <dd>{{outsideData.analysisId | dashify}}</dd>
-                    <dt>Patient</dt>
-                    <dd>
-                      <a href [routerLink]="['/patients', patientSequenceNumber]" class="link-none">{{patientSequenceNumber | dashify}}</a>,
-                      <span [colorCodePatients]="currentPatientStatus">{{currentPatientStatus | dashify}}</span>, Step {{currentStepNumber | dashify}}</dd>
-                    <dt>Disease Concordance</dt>
-                    <dd>
-                      <span [colorCodeConcordance]="concordance">{{concordance | dashify}}</span>
-                    </dd>
                     <dt>Status</dt>
                     <dd>
                       <span [colorCodeVariantReport]="outsideData.variantReport.variantReportStatus">
@@ -205,14 +197,6 @@
                     <dd>{{matchData.biopsySequenceNumber | dashify}}</dd>
                     <dt>Analysis ID</dt>
                     <dd>{{matchData.analysisId | dashify}}</dd>
-                    <dt>Patient</dt>
-                    <dd>
-                      <a href [routerLink]="['/patients', patientSequenceNumber]" class="link-none">{{patientSequenceNumber | dashify}}</a>,
-                      <span [colorCodePatients]="currentPatientStatus">{{currentPatientStatus | dashify}}</span>, Step {{currentStepNumber | dashify}}</dd>
-                    <dt>Disease Concordance</dt>
-                    <dd>
-                      <span [colorCodeConcordance]="concordance">{{concordance | dashify}}</span>
-                    </dd>
                     <dt>Status</dt>
                     <dd>
                       <span [colorCodeVariantReport]="matchData.variantReport.variantReportStatus">
@@ -381,14 +365,6 @@
                   <dd>{{matchData.biopsySequenceNumber | dashify}}</dd>
                   <dt>Analysis ID</dt>
                   <dd>{{matchData.analysisId | dashify}}</dd>
-                  <dt>Patient</dt>
-                  <dd>
-                    <a href [routerLink]="['/patients', patientSequenceNumber]" class="link-none">{{patientSequenceNumber | dashify}}</a>,
-                    <span [colorCodePatients]="currentPatientStatus">{{currentPatientStatus | dashify}}</span>, Step {{currentStepNumber | dashify}}</dd>
-                  <dt>Disease Concordance</dt>
-                  <dd>
-                    <span [colorCodeConcordance]="concordance">{{concordance | dashify}}</span>
-                  </dd>
                   <dt>Status</dt>
                   <dd>
                     <span [colorCodeVariantReport]="matchData.variantReport.variantReportStatus">{{matchData.variantReport.variantReportStatus | dashify}}</span> on {{matchData.variantReport.variantReportCreatedDate

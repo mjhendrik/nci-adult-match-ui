@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { CliaReportData } from './clia-report-data';
+import { CliaReportPcData, CliaReportPccData } from './clia-report-data';
 import { ApiStatusUpdateSuccess, ApiSuccess } from './sample-control-api.service';
 
 /*
@@ -8,9 +8,19 @@ import { ApiStatusUpdateSuccess, ApiSuccess } from './sample-control-api.service
 */
 @Injectable()
 export class CliaDataTransformer {
-  updateRejectedCliaPCStatus(report: CliaReportData, updatedStatus: ApiStatusUpdateSuccess): void {
+  updateRejectedCliaPCStatus(report: CliaReportPcData, updatedStatus: ApiStatusUpdateSuccess): void {
     report.report_status = updatedStatus.status;
     report.isReviewer = false;
+  }
+
+  updateRejectedCliaPCCStatus(report: CliaReportPccData, updatedStatus: ApiStatusUpdateSuccess): void {
+    report.report_status = updatedStatus.status;
+    report.isReviewer = false;
+  }
+
+  updateConfirmedCliaPCCStatus(report: CliaReportPccData, updatedStatus: ApiStatusUpdateSuccess): void {
+    report.report_status = updatedStatus.status;
+    report.isReviewer = true;
   }
 
 }

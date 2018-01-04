@@ -3,15 +3,21 @@ import {
   OnInit
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { Subscription } from 'rxjs/Subscription';
 
 import { routerTransition } from './../../shared/router.animations';
-// import { ViewDataTransformer } from '../view-data-transformer.service';
+import { DialogResults } from '../../shared/modal-dialogs/modal-dialog-results';
 import { CliaVariantReportsPACCViewData } from '../clia-data-interfaces';
 import { SampleControlApiService } from '../sample-control-api.service';
 import { UserProfileService } from '../../shared/user-profile/user-profile.service';
-import { ApiStatusUpdateError, ApiStatusUpdateSuccess, ApiError, ApiSuccess } from '../sample-control-api.service';
 import { ToastrService } from '../../shared/error-handling/toastr.service';
-// import { CliaDataService } from "./../../shared/clia/clia-data.service";
+import { CliaDataTransformer } from '../clia-data-transformer.service';
+import { ModalDialogConfirmationComponent } from '../../shared/modal-dialogs/modal-dialog-confirmation.component';
+import { ModalDialogWithCommentsComponent } from '../../shared/modal-dialogs/modal-dialog-with-comments.component';
+
+import { ApiStatusUpdateError, ApiStatusUpdateSuccess, ApiError, ApiSuccess } from '../sample-control-api.service';
+import { CliaReportPcData, CliaReportPccData } from '../clia-report-data';
 
 /**
  * CLIAVariantReportsPaccComponent.
@@ -41,20 +47,24 @@ export class CliaVariantReportsPaccComponent implements OnInit {
   errorMessage: string;
   paccType: string;
   cliaTypeName: string;
-  isReviewer: boolean = false;
   next_generation_sequence: any;
   parsed_vcf_genes: any;
+  isReviewer: boolean = false;
 
-  constructor(private api: SampleControlApiService,
+  public modalRef: BsModalRef;
+  public dialogSubscription: Subscription;
+
+  constructor(
+    private api: SampleControlApiService,
     private route: ActivatedRoute,
     private profile: UserProfileService,
     // private transformer: ViewDataTransformer,
-    private toastrService: ToastrService) {
+    private modalService: BsModalService,
+    private toastrService: ToastrService,
+    private transformer: CliaDataTransformer) {
   }
 
   ngOnInit() {
-    // let array:any;
-    // array = this.cliaData.transferData;
     this.paccType = this.route.snapshot.url[0].path;
     this.paccType = this.paccType.substring(this.paccType.indexOf('_') + 1).trim();
 
@@ -137,8 +147,9 @@ export class CliaVariantReportsPaccComponent implements OnInit {
   };
 
   rejectReport(): void {
+
     const action = () => {
-      console.info('Rejecting clia report: ' + this.molecular_id);
+      console.info('Rejecting Proficiency and Competency clia report: ' + this.molecular_id);
 
       this.api
         .rejectReport(this.molecular_id, 'proficiency_competency_control')
@@ -149,26 +160,93 @@ export class CliaVariantReportsPaccComponent implements OnInit {
                 this.showToast(x.message, true);
                 break;
               case 'success':
-                // this.transformer.updateVariantReportStatus(this, x);
-                this.showToast(`Clia Report ${this.molecular_id} has been rejected`, false);
+                this.transformer.updateRejectedCliaPCCStatus(this, x);
+                this.showToast(`Profiency and Competency Control Clia Report ${this.molecular_id} has been rejected`, false);
                 break;
             }
           });
-
-          // (itemList: any) => {
-          // console.info('Report Rejected');
-        // });
-
     };
 
+    this.showConfirmation(
+      false,
+      'Profiency and Competency Control Clia Report Rejection',
+      `Are you sure you want to reject Profiency and Competency Control Clia Report ${this.molecular_id}?`,
+      'Reject',
+      `Don't Reject`,
+      action
+    );
   };
 
   confirmReport(): void {
-    this.api.confirmReport(this.molecular_id, 'proficiency_competency_control')
-      .subscribe((itemList: any) => {
-        console.info('Report Confirmed');
-      });
+
+    const action = () => {
+      console.info('Confirming Proficiency and Competency clia report: ' + this.molecular_id);
+
+      this.api
+        .rejectReport(this.molecular_id, 'proficiency_competency_control')
+        .subscribe(
+          (x:  ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
+            switch (x.kind) {
+              case 'error':
+                this.showToast(x.message, true);
+                break;
+              case 'success':
+                this.transformer.updateConfirmedCliaPCCStatus(this, x);
+                this.showToast(`Profiency and Competency Control Clia Report ${this.molecular_id} has been confirmed`, false);
+                break;
+            }
+          });
+    };
+
+    this.showConfirmation(
+      false,
+      'Profiency and Competency Control Clia Report Confirmation',
+      `Are you sure you want to confirm Profiency and Competency Control Clia Report ${this.molecular_id}?`,
+      'Confirm',
+      `Don't Confirm`,
+      action
+    );
   };
+
+  // confirmReport(): void {
+  //   this.api.confirmReport(this.molecular_id, 'proficiency_competency_control')
+  //     .subscribe((itemList: any) => {
+  //       console.info('Report Confirmed');
+  //     });
+  // };
+
+  private showConfirmation(
+    withComment: boolean,
+    confirmTitle: string,
+    confirmMessage: string,
+    okButtonText: string,
+    cancelButtonText: string,
+    action: () => void) {
+    this.dialogSubscription = this.modalService.onHidden.subscribe((results: string) => {
+      const modalResults = DialogResults.fromString(results);
+      if (modalResults.success) {
+        action();
+      }
+      this.unsubscribe();
+    });
+
+    this.modalRef = withComment
+      ? this.modalService.show(ModalDialogWithCommentsComponent)
+      : this.modalService.show(ModalDialogConfirmationComponent);
+
+    this.modalRef.content.title = confirmTitle;
+    this.modalRef.content.message = confirmMessage;
+    this.modalRef.content.okButtonText = okButtonText;
+    this.modalRef.content.cancelButtonText = cancelButtonText;
+  }
+
+  private unsubscribe() {
+    if (!this.dialogSubscription) {
+      return;
+    }
+    this.dialogSubscription.unsubscribe();
+    this.dialogSubscription = null;
+  }
 
   private showToast(message: string, isError: boolean): void {
     if (this.toastrService && this.toastrService.toastr) {

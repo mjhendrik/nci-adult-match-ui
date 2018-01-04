@@ -16,6 +16,7 @@ import { ToastrService } from '../../shared/error-handling/toastr.service';
 import { CliaDataTransformer } from '../clia-data-transformer.service';
 import { ModalDialogConfirmationComponent } from '../../shared/modal-dialogs/modal-dialog-confirmation.component';
 import { ModalDialogWithCommentsComponent } from '../../shared/modal-dialogs/modal-dialog-with-comments.component';
+import { CliaReportPcData, CliaReportPccData } from '../clia-report-data';
 
 import { ApiStatusUpdateError, ApiStatusUpdateSuccess, ApiError, ApiSuccess } from '../sample-control-api.service';
 
@@ -154,9 +155,6 @@ export class CliaVariantReportsPcComponent implements OnInit {
         .rejectReport(this.molecular_id, 'sample_control')
         .subscribe(
           (x:  ApiStatusUpdateSuccess | ApiStatusUpdateError) => {
-
-console.log(x)
-
             switch (x.kind) {
               case 'error':
                 this.showToast(x.message, true);

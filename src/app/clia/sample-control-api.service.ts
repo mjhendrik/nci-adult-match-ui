@@ -128,6 +128,11 @@ export class SampleControlApiService extends ApiService {
   }
 
   rejectReport(molecular_id: string, type: string): Observable<ApiStatusUpdateSuccess | ApiStatusUpdateError> {
+
+    console.log("TYPE--> ")
+console.log(type)
+console.log(molecular_id)
+
     return this.http.put(Config.API.MESSAGE + '/message/clia/' + type + '/status',
       {
         'molecularSequenceNumber': molecular_id,
@@ -152,14 +157,28 @@ export class SampleControlApiService extends ApiService {
       });
   }
 
-  confirmReport(molecular_id: string, type: string): Observable<any> {
+  confirmReport(molecular_id: string, type: string): Observable<ApiStatusUpdateSuccess | ApiStatusUpdateError> {
     return this.http.put(Config.API.MESSAGE + '/message/clia/' + type + '/status',
       {
         'molecularSequenceNumber': molecular_id,
         'confirmation': true,
         'comment': null
       })
-      .map(this.extractData)
-      .catch(this.handleError);
+      .map((res: Response) => {
+        return { kind: 'success', status: "PASSED" } as ApiStatusUpdateSuccess;
+      })
+      .catch((err: any) => {
+        let message: string;
+        if (err instanceof Response) {
+          const errResp = err.json();
+          message = errResp.message;
+        } if (err instanceof Error) {
+          const error = err as Error;
+          message = error.message;
+        } else {
+          message = (typeof err === 'string') ? err : err.toString();
+        }
+        return Observable.of({ kind: 'error', message: message } as ApiStatusUpdateError);
+      });
   }
 }
