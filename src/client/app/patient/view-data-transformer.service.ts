@@ -173,7 +173,7 @@ export class ViewDataTransformer {
     report.assignmentReport.derivedStatus = report.assignmentReport.dateConfirmed ? 'CONFIRMED' : 'PENDING';
     report.assignmentReport.comments = updatedStatus.comments;
     report.assignmentReport.commenter = updatedStatus.commenter;
-    report.isAssignmentReportEditable = this.getAssignmentReportEditable(report);
+    report.isAssignmentReportEditable = this.getAssignmentReportEditable(report.assignmentReport);
   }
 
   updateVariantStatus(variantReport: VariantReportData, item: ConfirmableItem, updatedStatus: ApiStatusUpdateSuccess): void {
@@ -230,10 +230,10 @@ export class ViewDataTransformer {
     return !!tvcVersion && tvcVersion.startsWith('5.2');
   }
 
-  getAssignmentReportEditable(report: any): boolean {
-    if (!report || !report.assignmentReport)
+  getAssignmentReportEditable(assignmentReport: any): boolean {
+    if (!assignmentReport || !assignmentReport.derivedStatus)
       return false;
-    return report.assignmentReport.derivedStatus === 'PENDING';
+    return assignmentReport.derivedStatus === 'PENDING';
   }
 
   getVariantReportEditable(variantReport: VariantReportData): boolean {
@@ -277,7 +277,7 @@ export class ViewDataTransformer {
     this.transformAssayMessages(variantReport.assayMessages);
 
     variantReport.isVariantReportEditable = this.getVariantReportEditable(variantReport);
-    variantReport.isAssignmentReportEditable = this.getAssignmentReportEditable(variantReport);
+    variantReport.isAssignmentReportEditable = this.getAssignmentReportEditable(variantReport.assignmentReport);
     this.postProcessVariantTables(variantReport);
     variantReport.isOutsideAssayWorkflow = false;
     variantReport.disease = transformedPatient.disease || {};
@@ -531,7 +531,7 @@ export class ViewDataTransformer {
       variantReport.isOutsideAssayWorkflow = transformedBiopsy.isOutsideAssayWorkflow;
       variantReport.isOutsideAssay = transformedBiopsy.isOutsideAssay;
       variantReport.variantReportFileReceivedDate = analysis.variantReportFileReceivedDate;
-      variantReport.isAssignmentReportEditable = this.getAssignmentReportEditable(variantReport);
+      variantReport.isAssignmentReportEditable = this.getAssignmentReportEditable(variantReport.assignmentReport);
 
       this.postProcessVariantTables(variantReport);
 
