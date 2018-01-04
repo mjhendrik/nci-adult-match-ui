@@ -191,9 +191,6 @@ export class CliaParentComponent implements OnInit, OnDestroy {
           x.report_status = x.status;
           x.analysis_id = typeof x.dateReceived === 'undefined' ? null : x.nextGenerationSequence.ionReporterResults.jobName;
 
-          // console.log("x.nextGenerationSequence")
-          // console.log(x.nextGenerationSequence)
-
           // if (typeof x.dateReceived !== 'undefined') {
           //   x.analysis_id = x.nextGenerationSequence.ionReporterResults.jobName;
           // }
