@@ -5,7 +5,7 @@
         <dl class="dl-horizontal">
           <dt>Patient Sequence Number</dt>
           <dd>{{items.patientSequenceNumber | dashify}}</dd>
-          <dt>Patient</dt>
+          <dt>Demographics</dt>
           <dd>
             <span *ngIf="items.gender && items.gender!=='PATIENT_REFUSAL'"> {{items.gender}}</span>
             <span *ngIf="items.ethnicity && items.ethnicity!=='PATIENT_REFUSAL'"> {{items.ethnicity}}</span>
@@ -17,12 +17,6 @@
           </dd>
           <dt>Current Step</dt>
           <dd>{{items.currentStepNumber | dashify}}</dd>
-          <dt>Treatment Arm</dt>
-          <dd>
-            <treatment-arm-link *ngIf="items.currentPatientAssignmentLogic" [treatmentArmId]="items.currentPatientAssignmentLogic.treatmentArmId"
-              [version]="items.currentPatientAssignmentLogic.treatmentArmVersion" [removePrefix]="true"></treatment-arm-link>
-            <span *ngIf="!items.currentPatientAssignmentLogic">-</span>
-          </dd>
           <dt>Registration Date</dt>
           <dd>{{items.registrationDate | gmt | dashify}}</dd>
           <dt>Last Rejoin Scan Date</dt>
@@ -48,6 +42,12 @@
         <dl class="dl-horizontal">
           <dt>Concordance</dt>
           <dd [colorCodeConcordance]="items.concordance">{{items.concordance | dashify}}</dd>
+          <dt>Treatment Arm</dt>
+          <dd>
+            <treatment-arm-link *ngIf="items.currentPatientAssignmentLogic" [treatmentArmId]="items.currentPatientAssignmentLogic.treatmentArmId"
+              [version]="items.currentPatientAssignmentLogic.treatmentArmVersion" [removePrefix]="true"></treatment-arm-link>
+            <span *ngIf="!items.currentPatientAssignmentLogic">-</span>
+          </dd>
           <dt>Assignment Reason</dt>
           <dd>{{(items.currentPatientAssignmentLogic ? items.currentPatientAssignmentLogic.reason : '') | dashify}}</dd>
         </dl>
